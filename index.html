@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your Full Stack Web Development Portfolio">
+    <meta name="keywords" content="Zachariah Hopkins, Location, programmer, web, developer, javascript, python, java, portfolio">
+    <meta name="author" content="Zachariah Hopkins">
+    <title>Zachariah Hopkins</title>
+    <!-- Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #C5C6D0;
+            margin: 0;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: white;
+            /* padding: .5rem 0; */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        #navContainer {
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #292f36;  /* Change this to any color you want */
+        }
+
+        nav h1 {
+            font-size: 2.1rem;
+            font-weight: 500;
+            color: #FAF9F6;
+        }
+
+        nav h1:hover {
+            color: #b5bab6;  /* This color will show when someone hovers over the links */
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 1.3rem;
+            color: #FAF9F6;
+        }
+
+        nav a:hover {
+            color: #b5bab6;  /* This color will show when someone hovers over the links */
+        }
+
+        /* Hero Section */
+        #landing {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            background-image: url('index_pics/bio_background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        #bioImage {
+            height: auto;
+            width: 45%;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #bioImage img {
+            width: 85%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        #introText {
+            max-width: 600px;
+        }
+
+        #introText h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #introText p {
+            font-size: 1.5rem;  /* Adjust this value to make text larger or smaller */
+            margin-top: 0.5rem; /* Adds some space between heading and this text */
+        }
+
+        
+
+        /* Main Content */
+        .mainSect {
+            padding: 2rem 2rem;
+        }
+
+        .innerSectContainer {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sectTitle {
+            font-size: 3.0rem;
+            font-weight: bold;
+            border-bottom: 10px solid #333;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin: 0 auto 2rem;
+        }
+
+        .innerSectContainer {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;  /* Add this line to center the sectTitle */
+        }
+
+        /* Skills Section */
+        .skillGroup {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .topSkills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .skillCategory {
+            text-align: center;
+            width: 100%;
+        }
+
+        .topSkills .skillCategory {
+            background: #d4b2b2;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .skillCategory h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+            color: #333;
+            position: relative;  /* Added for absolute positioning of pseudo-element */
+            padding-bottom: 0.5rem;
+        }
+
+        /* New underline styling */
+        .skillCategory h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;  /* Adjust this value to change the line length */
+            height: 3px;   /* Adjust this value to change the line thickness */
+            background-color: #333;  /* Same color as the skill boxes */
+        }
+
+        .skillItems {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Left justify items in top boxes */
+        .topSkills .skillItems {
+            justify-content: flex-start;
+        }
+
+        /* Constrain width of lower sections */
+        .skillGroup > .skillCategory {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .skillBox {
+            background: #9e6c4a;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .topSkills {
+                grid-template-columns: 1fr;
+            }
+            
+            .skillGroup > .skillCategory {
+                padding: 0 1rem;
+                max-width: 100%;
+            }
+        }
+
+        /* Projects Section */
+        #projects_grid_container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project {
+            background: #f0f4f8;        /* Light blue-grey background color */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+
+        .project_img {
+            width: 100%;
+            height: 300px;
+            background-color: #f5f5f5;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Target Laga project specifically */
+        [data-project="laga"] .project_img {
+            background-image: url('index_pics/laga.png');
+        }
+
+        [data-project="cuneiform"] .project_img {
+            background-image: url('index_pics/cuneiform.jpg');
+        }
+
+        [data-project="timeline"] .project_img {
+            background-image: url('index_pics/timeline_afrin.jpg');
+        }
+
+        [data-project="dialect"] .project_img {
+            background-image: url('index_pics/afrini_d.png');
+        }
+
+        [data-project="endlessly"] .project_img {
+            background-image: url('index_pics/endlessly.png');
+        }
+
+        /* This specifically targets the text area of the project box */
+        .project_text {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            background: #D4B2B2;        /* Making sure text area matches */
+        }
+
+        .project_text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project_text p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            text-align: left;  /* Explicitly set left alignment */
+        }
+
+        .project_text .btn {
+            align-self: center;
+            margin: 0 auto;
+            font-size: 1.2rem;          /* Larger font size */
+            padding: 1rem 2rem;         /* Slightly larger padding to match bigger font */
+            background: #9E6B4A;        /* New button color - a deep blue-grey */
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .project_text .btn:hover {
+            background: #CD853F;        /* Slightly lighter shade for hover effect */
+        }
+
+        @media (max-width: 1024px) {
+            #projects_grid_container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            #projects_grid_container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        #about .innerSectContainer {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;  /* This centers the section title */
+        }
+
+        #about .sectTitle {
+            font-size: 3.0rem;
+            font-weight: bold;
+            border-bottom: 10px solid #333;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin: 0 auto 2rem;
+        }
+
+        /* This creates the narrow text column */
+        #about p {
+            max-width: 800px;  /* Makes the text column narrower */
+            margin: 0 auto 1.5rem auto;  /* Centers the paragraph and maintains vertical spacing */
+            line-height: 1.6;
+            font-size: 1.1rem;
+            text-align: left;
+            padding: 0 2rem;  /* Adds extra padding on the sides */
+        }
+
+        #about p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Responsive adjustment for smaller screens */
+        @media (max-width: 768px) {
+            #about p {
+                padding: 0 1rem;
+                max-width: 100%;
+            }
+        }
+
+        /* Add these styles to your existing CSS */
+        .language-box {
+            position: relative;
+            transition: background-color 0.3s ease;
+            overflow: hidden; /* Ensure content stays within bounds */
+        }
+
+        .language-box:hover {
+            background-color: #9E6B4A;
+        }
+
+        /* Original text styling */
+        .language-box span {
+            position: relative;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Native language text styling */
+        .language-box::before {
+            content: attr(data-native);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Show/hide text on hover */
+        .language-box:hover::before {
+            opacity: 1;
+        }
+
+        .language-box:hover > span {
+            opacity: 0;
+        }
+
+        /* Contact Section */
+        #contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .inputContainer {
+            margin-bottom: 1.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+
+
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div id="navContainer">
+            <a href="#"><h1>Zachariah Hopkins</h1></a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="landing">
+        <div id="introText">
+            <h1>Hello!<br>I'm Zachariah Hopkins</h1>
+            <p>A passionate educator from Los Angeles, USA</p>
+        </div>
+        <div id="bioImage">
+            <img src="index_pics/bio_red.gif" alt="Zachariah Hopkins">
+        </div>
+    </header>
+
+    <section id="about" class="mainSect">
+        <div class="innerSectContainer">
+            <h2 class="sectTitle">About Me</h2>
+            <p>I graduated San Francisco State University with a BA degree in Political Science and a minor degree in Islamic and Middle Eastern History; and recently completed a Master's Degree for the program of Middle Eastern Sociology, History, and Anthropology (MESH), in Erfurt Germany.</p>
+                       
+            <p>Due to my interest in the Middle East, I've participated in many Middle Eastern groups and peace initiatives, including an Israeli/Palestinian peace summit in Washington D.C. attended by then-Vice President Biden. Seeking to understand the region beyond politics and theoretical knowledge, I transitioned to hands-on humanitarian work, first volunteering with Syrian refugees in Bulgaria and Turkey. In 2015, I embedded myself in a Syrian refugee community in Izmir, Turkey, gaining insights into Syrian Kurdish, Yazidi, and Arab cultures.</p>
+            
+            <p>Over the past eight years, my work has taken me across multiple continents, from Ukraine to Japan, always focusing on highlighting the human elements of politicized peoples. While my primary focus remains on volunteering and educational development in under-developed areas, I'm also interested in history, language learning, and technology.</p>
+        
+        </div>
+    </section>
+
+    <main>
+        <section id="projects" class="mainSect">
+            <div class="innerSectContainer">
+                <h2 class="sectTitle">Personal Projects</h2>
+                <div id="projects_grid_container">
+
+                    <div class="project" data-project="timeline">
+                        <a href="afrintimeline.html" target="_blank" rel="noopener noreferrer">
+                            <div class="project_img"></div>
+                        </a>
+                        <div class="project_text">
+                            <h3>Timeline of Afrin</h3>
+                            <p>The Timeline of Afrin is a detailed timeline from 2700 BCE until 2010 AD, for both Afrin, Syria and the greater surrounding region. The timeline is in English and translated into Kurdish and Arabic. Phase one of the timeline is complete but it will be updated on a regular basis as I continue my research on Afrin.</p>
+                            <a href="afrintimeline.html" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
+                        </div>
+                    </div>
+                    <div class="project" data-project="cuneiform">
+                        <a href="cuneiform.html" target="_blank" rel="noopener noreferrer">
+                            <div class="project_img"></div>
+                        </a>
+                        <div class="project_text">
+                            <h3>Cuneiform Practice</h3>
+                            <p>A web-app I made to practice Babylonian Akkadian Cuneiform. It focuses on a few of the first laws in the Law Code of Hammurabi, and the famous bricks of Nebuchadnezzar II. It's best used on a phone.</p>
+                            <a href="cuneiform.html" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
+                        </div>
+                    </div>
+
+
+                    <div class="project" data-project="laga">
+                        <a href="https://lagathegame.itch.io/laga" target="_blank" rel="noopener noreferrer">
+                            <div class="project_img"></div>
+                        </a>
+                        <div class="project_text">
+                            <h3>Laga</h3>
+                            <p>An immense language learning game allowing the player to practice 28 different languages. The initial goal of Laga was to help children of refugees to learn the language of their host country - although it seems like it's reached a much greater demographic range. Laga puts the player on a journey into a fantastical world set after the fall of the Tower of Babylon. The game is playable but still in its "proof of concept" stage. Future work on Laga is planned.</p>
+                            <a href="https://lagathegame.itch.io/laga" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
+                        </div>
+                    </div>
+
+
+
+                    <div class="project" data-project="endlessly">
+                        <a href="https://podcasts.apple.com/us/podcast/endlessly-now/id1547675039" target="_blank" rel="noopener noreferrer">
+                            <div class="project_img"></div>
+                        </a>
+                        <div class="project_text">
+                            <h3>Endlessly Now Podcast</h3>
+                            <p>A podcast that focuses on the lives, interests, and (non-political) thoughts of politicized peoples. Season 2 was based in Lebanon. Season 3 is currently being written and will change its focus to creatively discovering ancient cultures of the Middle East.</p>
+                            <a href="https://podcasts.apple.com/us/podcast/endlessly-now/id1547675039" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
+                        </div>
+                    </div>
+                    
+                    <div class="project" data-project="dialect">
+                        <a href="https://www.instagram.com/afrini_zimane/" target="_blank" rel="noopener noreferrer">
+                            <div class="project_img"></div>
+                        </a>
+                        <div class="project_text">
+                            <h3>Afrini Dialect Project</h3>
+                            <p>The Afrini dialect of Kurdish has had no written form... until now! The Afrini Dialect Project seeks to collect and document Afrini proverbs, and make them accessible in written form to both native speakers and the world in general. The project is currently on hold but likely enter a new phase in the future.</p>
+                            <a href="https://www.instagram.com/afrini_zimane/" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+
+
+        
+
+        <section id="skills" class="mainSect">
+            <div class="innerSectContainer">
+                <h2 class="sectTitle">My Skills</h2>
+                <div class="skillGroup">
+                    <div class="topSkills">
+                        <div class="skillCategory">
+                            <h3>Work Skills</h3>
+                            <div class="skillItems">
+                                <div class="skillBox">General Teaching</div>
+                                <div class="skillBox">English Teaching</div>
+                                <div class="skillBox">IT / Digital Technology</div>
+                                <div class="skillBox">Program Management</div>
+                                <div class="skillBox">Volunteering / Working in Emergency Situations</div>
+                                <div class="skillBox">Computer Programming</div>
+                                <div class="skillBox">Research / Writing</div>
+                                <div class="skillBox">Design</div>
+                            </div>
+                        </div>
+                        <div class="skillCategory">
+                            <h3>Hobbies / Interests</h3>
+                            <div class="skillItems">
+                                <div class="skillBox">History</div>
+                                <div class="skillBox">Language Learning</div>
+                                <div class="skillBox">Computer Programming</div>
+                                <div class="skillBox">Reading / Writing</div>
+                                <div class="skillBox">Traveling</div>
+                                <div class="skillBox">Anthropology</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skillCategory">
+                        <h3>Primary Languages</h3>
+                        <div class="skillItems">
+                            <div class="skillBox language-box" data-native="English"><span>English (Native)</span></div>
+                            <div class="skillBox language-box" data-native="Deutsch"><span>German (B2)</span></div>
+                            <div class="skillBox language-box" data-native="Kurdî"><span>Kurmanji Kurdish (B2)</span></div>
+                            <div class="skillBox language-box" data-native="Français"><span>French (B1)</span></div>
+                            <div class="skillBox language-box" data-native="العربية"><span>Levantine Arabic (B1)</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skillCategory">
+                        <h3>Secondary Languages</h3>
+                        <div class="skillItems">
+                            <div class="skillBox language-box" data-native="Latina"><span>Latin</span></div>
+                            <div class="skillBox language-box" data-native="𒆍𒀭𒊏𒆠"><span>Babylonian Akkadian</span></div>
+                            <div class="skillBox language-box" data-native="Русский"><span>Russian</span></div>
+                            <div class="skillBox language-box" data-native="Українська"><span>Ukrainian</span></div>
+                            <div class="skillBox language-box" data-native="Türkçe"><span>Turkish</span></div>
+                            <div class="skillBox language-box" data-native="Ελληνικά"><span>Greek</span></div>
+                        </div>
+                    </div>
+        
+                    <div class="skillCategory">
+                        <h3>Residencies</h3>
+                        <div class="skillItems">
+                            <div class="skillBox">USA (Native)</div>
+                            <div class="skillBox">Germany</div>
+                            <div class="skillBox">Turkey</div>
+                            <div class="skillBox">Ukraine</div>
+                            <div class="skillBox">Kazakhstan</div>
+                            <div class="skillBox">Vietnam</div>
+                            <div class="skillBox">Japan</div>
+                            <div class="skillBox">Lebanon</div>
+                            <div class="skillBox">Greece</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section id="contact" class="mainSect">
+            <div class="innerSectContainer">
+                <h2 class="sectTitle">Contact Me</h2>
+                <a href="mailto:zacahopkins@gmail.com" style="
+                    display: block;
+                    text-align: center;
+                    font-size: 2.5rem;
+                    color: #9E6B4A;
+                    text-decoration: none;
+                    margin: 2rem 0;
+                    transition: color 0.3s ease;
+                ">zacahopkins@gmail.com</a>
+            </div>
+        </section>
+    </main>
+
+    <footer style="
+        text-align: center;
+        padding: 2rem;
+        background: #292f36;
+        color: #FAF9F6;
+    ">
+        <p>&copy; <span id="currentYear">2024</span> Zachariah Hopkins</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
