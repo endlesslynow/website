@@ -26,38 +26,46 @@
     <link rel="icon" type="image/gif" href="other/olive.gif">
     <style>
         html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
         }
+
         body {
             font-family: 'Segoe UI', sans-serif;
             background-color: #f0f4f8;
-            padding-top: 60px; /* Add padding to account for banner */
         }
+
         .timeline-container {
             display: grid;
-            grid-template-rows: auto 1fr;
-            height: calc(100vh - 156px); /* Adjusted to account for banner + h1 height + padding */
+            grid-template-rows: 60px 1fr;  /* Fixed header height */
+            height: calc(100vh - 96px); /* Accounts for h1 height + padding */
             overflow: hidden;
+            position: relative;  /* Add this */
         }
+
         .timeline-headers, .timeline-content {
             display: grid;
             grid-template-columns: 80px repeat(6, minmax(0, 1fr));
             width: 100%;
         }
+
         .timeline-headers, .column-header, .year-header {
             position: sticky;
-            top: 60px; /* Adjusted to account for banner */
+            top: 0;
             z-index: 10;
             background-color: #FFD700;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            height: 60px;
+            height: 60px;  /* Explicit height */
         }
+
         .timeline-content {
             overflow-y: auto;
+            height: calc(100vh - 156px);  /* Explicit height: viewport - header - padding */
+            position: relative;  /* Add this */
         }
+
         .column-header, .year-header {
             padding: 1rem;
             font-weight: bold;
@@ -66,9 +74,19 @@
             border-bottom: 2px solid #e2e8f0;
             box-sizing: border-box;
         }
+
         .year-column, .timeline-column {
             border-right: 1px solid #e2e8f0;
             box-sizing: border-box;
+            height: 100%;  /* Full height */
+            position: relative;  /* Add this */
+        }
+
+        .year-column {
+            border-right: 1px solid #e2e8f0;
+            box-sizing: border-box;
+            height: 100%;  /* Full height */
+            position: relative;  /* Add this */
         }
         .year-marker {
             padding: 0.5rem;
@@ -110,12 +128,13 @@
         }
         .hover-image {
             position: fixed;
-            top: 70px; /* Adjusted to account for banner */
+            top: 10px;
             right: 10px;
             z-index: 1000;
             transition: opacity 0.3s ease-in-out;
         }
-    
+
+        /* Mobile warning styling */
         .mobile-warning {
             display: none;
             height: 100vh;
@@ -126,9 +145,10 @@
             background-color: #c7c8d1;
             z-index: 9999;
             margin: 0;
-            padding: 60px 0 0 0; /* Added top padding to account for banner */
+            padding: 0;
+            overflow: hidden; /* Prevent scrolling */
         }
-    
+
         .mobile-warning-content {
             height: 100%;
             width: 100%;
@@ -140,32 +160,34 @@
             background: none;
             box-shadow: none;
         }
-    
+
         .warning-text {
             margin-bottom: 2rem;
             font-size: 1.2rem;
             line-height: 1.5;
             text-align: center;
         }
-    
+
         .arabic-text {
             font-size: 1.4rem;
             direction: rtl;
         }
-    
-        /* Nav banner styling */
+
+
+        /* Nav banner - always on top */
         .nav-banner {
             width: 100%;
-            height: 60px;
-            background-color: #1a1a1a;
+            height: 40px;
+            background-color: #d4b642;
             display: flex;
             align-items: center;
             padding: 0 20px;
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 1001; /* Ensure banner is above other elements */
+            z-index: 10000;
         }
+
         .nav-link {
             color: white;
             text-decoration: none;
@@ -173,32 +195,67 @@
             font-weight: 500;
             transition: opacity 0.2s ease;
         }
+
         .nav-link:hover {
             opacity: 0.8;
         }
-    
+
+        /* Mobile warning styling */
+        .mobile-warning {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #c7c8d1;
+            z-index: 9999;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .mobile-warning-content {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            margin: 0;
+            background: none;
+            box-shadow: none;
+            padding-top: 70px; /* Space for banner */
+        }
+
+        /* Mobile responsiveness adjustments */
+        
         @media screen and (max-width: 768px) {
             .mobile-warning {
                 display: flex;
-                align-items: center;
-                justify-content: center;
             }
-    
+            
             .timeline-container {
                 display: none;
             }
-    
-            .nav-banner {
-                height: 50px;
-                padding: 0 15px;
-            }
-            .nav-link {
-                font-size: 1rem;
+
+            body {
+                position: fixed;
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Added nav banner -->
+    <nav class="nav-banner">
+        <a href="https://www.zachariahhopkins.com" target="_blank" rel="noopener noreferrer" class="nav-link">
+            Created by Zachariah Hopkins
+        </a>
+    </nav>
+
     <div class="mobile-warning">
         <div class="mobile-warning-content">
             <div class="warning-text">
@@ -217,8 +274,62 @@
             </div>
         </div>
     </div>
-    <div id="root"></div>
+    <div id="root" style="margin-top: 40px"></div>
+
+    <style>
+        /* Reset default margins */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Nav banner styling */
+        .nav-banner {
+            width: 100%;
+            height: 40px;
+            background-color: #d4b642;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1001; /* Increased z-index to show above mobile warning */
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+        }
+        .nav-link:hover {
+            opacity: 0.8;
+        }
+        /* Mobile responsiveness - show banner on mobile */
+        @media (max-width: 768px) {
+            .nav-banner {
+                position: absolute;
+                height: 50px;
+                padding: 0 15px;
+                /* Ensure banner is visible at top of warning screen */
+                background-color: #d4b642;
+                z-index: 10000;
+            }
+            .nav-link {
+                font-size: 1rem;
+            }
+            /* Adjust mobile warning top padding to account for banner */
+            .mobile-warning-content {
+                padding-top: 70px;
+            }
+        }
+        
+
+    </style>
+
     <script type="text/babel">
+
         
 
         const YearColumn = ({ startYear, endYear, decadeMap }) => {
@@ -1150,8 +1261,28 @@
             };
 
             const highlightMatch = (element) => {
-                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Remove any existing highlights
+                document.querySelectorAll('.timeline-item').forEach(item => {
+                    item.style.boxShadow = 'none';
+                });
+
+                // Calculate scroll position
+                const container = document.querySelector('.timeline-content');
+                const containerRect = container.getBoundingClientRect();
+                const elementRect = element.getBoundingClientRect();
+                const relativeTop = elementRect.top - containerRect.top;
+                const centerPosition = relativeTop - (containerRect.height / 2) + (elementRect.height / 2);
+
+                // Smooth scroll the container
+                container.scrollBy({
+                    top: centerPosition,
+                    behavior: 'smooth'
+                });
+
+                // Add highlight
                 element.style.boxShadow = '0 0 10px rgba(59, 130, 246, 0.5)';
+
+                // Remove highlight after delay
                 setTimeout(() => {
                     element.style.boxShadow = 'none';
                 }, 2000);
@@ -1300,7 +1431,7 @@
                         </h1>
                     </div>
                     
-                    <div style={{ position: 'fixed', top: '30px', right: '20px', zIndex: 1000, display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '600px' }}>
+                    <div style={{ position: 'fixed', top: '50px', right: '20px', zIndex: 1000, display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '600px' }}>
                         <div style={{ display: 'flex', gap: '20px' }}>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                                 <div style={{ position: 'relative' }}>
