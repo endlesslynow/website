@@ -1,70 +1,169 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rosetta Reader Definitions</title>
-    <!-- Import Firebase -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-database.js"></script>
+    <title>Definitions App</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .input-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background: #45a049;
+        }
+        
+        .definitions-list {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .definition-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        
+        .definition-item:last-child {
+            border-bottom: none;
+        }
+        
+        .term {
+            font-weight: bold;
+            color: #2196F3;
+            margin: 0;
+        }
+        
+        .definition {
+            margin: 5px 0 0 0;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
         <h1>Definitions Database</h1>
-        <div>
-            <input type="text" id="term" placeholder="Enter word">
-            <input type="text" id="definition" placeholder="Enter definition">
-            <button onclick="saveDefinition()">Save</button>
+        <div class="input-container">
+            <div class="input-row">
+                <input type="text" id="term" placeholder="Enter term">
+                <input type="text" id="definition" placeholder="Enter definition">
+                <button onclick="saveDefinition()">Save</button>
+            </div>
         </div>
-        <div id="definitions-list"></div>
+        <div id="definitions-list" class="definitions-list"></div>
     </div>
 
-    <script>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+        import { getDatabase, ref, set, onValue } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js';
+
+        // Initialize Firebase with your config
         const firebaseConfig = {
-            apiKey: "AIzaSyAL7cAt5eiFr8lPS64l1gJKxP0BYZqmOms",
-            authDomain: "rosetta-reader-database.firebaseapp.com",
-            projectId: "rosetta-reader-database",
-            storageBucket: "rosetta-reader-database.firebasestorage.app",
-            messagingSenderId: "105140538232",
-            appId: "1:105140538232:web:cd7369cce7e7640fd5968d",
-            measurementId: "G-RMKRDLQVFV"
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            databaseURL: "YOUR_DATABASE_URL",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
         };
 
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
 
-        function saveDefinition() {
-            const term = document.getElementById('term').value;
-            const definition = document.getElementById('definition').value;
+        // Save definition function
+        window.saveDefinition = async function() {
+            const termInput = document.getElementById('term');
+            const definitionInput = document.getElementById('definition');
+            
+            const term = termInput.value.trim();
+            const definition = definitionInput.value.trim();
             
             if (term && definition) {
-                database.ref('definitions/' + encodeURIComponent(term)).set({
-                    term: term,
-                    definition: definition,
-                    timestamp: Date.now()
-                });
-
-                document.getElementById('term').value = '';
-                document.getElementById('definition').value = '';
+                try {
+                    await set(ref(db, 'definitions/' + encodeURIComponent(term)), {
+                        term,
+                        definition,
+                        timestamp: Date.now()
+                    });
+                    
+                    // Clear inputs after successful save
+                    termInput.value = '';
+                    definitionInput.value = '';
+                } catch (error) {
+                    console.error('Error saving definition:', error);
+                    alert('Error saving definition. Please try again.');
+                }
             }
-        }
+        };
 
+        // Load and display definitions
         function loadDefinitions() {
             const definitionsList = document.getElementById('definitions-list');
             
-            database.ref('definitions').on('value', (snapshot) => {
+            onValue(ref(db, 'definitions'), (snapshot) => {
                 definitionsList.innerHTML = '';
+                
+                const definitions = [];
                 snapshot.forEach((childSnapshot) => {
-                    const data = childSnapshot.val();
+                    definitions.push({
+                        ...childSnapshot.val(),
+                        key: childSnapshot.key
+                    });
+                });
+                
+                // Sort by timestamp, newest first
+                definitions.sort((a, b) => b.timestamp - a.timestamp);
+                
+                definitions.forEach((data) => {
                     const div = document.createElement('div');
+                    div.className = 'definition-item';
                     div.innerHTML = `
-                        <h3>${data.term}</h3>
-                        <p>${data.definition}</p>
-                        <hr>
+                        <h3 class="term">${data.term}</h3>
+                        <p class="definition">${data.definition}</p>
                     `;
                     definitionsList.appendChild(div);
                 });
             });
         }
 
+        // Start loading definitions when page loads
         loadDefinitions();
     </script>
 </body>
