@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rosetta Reader Definitions</title>
+    <!-- Import Firebase -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.23.0/firebase-database.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Definitions Database</h1>
+        <div>
+            <input type="text" id="term" placeholder="Enter word">
+            <input type="text" id="definition" placeholder="Enter definition">
+            <button onclick="saveDefinition()">Save</button>
+        </div>
+        <div id="definitions-list"></div>
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAL7cAt5eiFr8lPS64l1gJKxP0BYZqmOms",
+            authDomain: "rosetta-reader-database.firebaseapp.com",
+            projectId: "rosetta-reader-database",
+            storageBucket: "rosetta-reader-database.firebasestorage.app",
+            messagingSenderId: "105140538232",
+            appId: "1:105140538232:web:cd7369cce7e7640fd5968d",
+            measurementId: "G-RMKRDLQVFV"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        function saveDefinition() {
+            const term = document.getElementById('term').value;
+            const definition = document.getElementById('definition').value;
+            
+            if (term && definition) {
+                database.ref('definitions/' + encodeURIComponent(term)).set({
+                    term: term,
+                    definition: definition,
+                    timestamp: Date.now()
+                });
+
+                document.getElementById('term').value = '';
+                document.getElementById('definition').value = '';
+            }
+        }
+
+        function loadDefinitions() {
+            const definitionsList = document.getElementById('definitions-list');
+            
+            database.ref('definitions').on('value', (snapshot) => {
+                definitionsList.innerHTML = '';
+                snapshot.forEach((childSnapshot) => {
+                    const data = childSnapshot.val();
+                    const div = document.createElement('div');
+                    div.innerHTML = `
+                        <h3>${data.term}</h3>
+                        <p>${data.definition}</p>
+                        <hr>
+                    `;
+                    definitionsList.appendChild(div);
+                });
+            });
+        }
+
+        loadDefinitions();
+    </script>
+</body>
+</html>
