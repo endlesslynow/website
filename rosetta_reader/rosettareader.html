@@ -10,26 +10,59 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 </head>
 <body>
     <div id="language-learning-container"></div>
 
     <script type="text/babel">
+        // Initialize Firebase - Replace with your config
+        const firebaseConfig = {
+            apiKey: "AIzaSyAL7cAt5eiFr8lPS64l1gJKxP0BYZqmOms",
+            authDomain: "rosetta-reader-database.firebaseapp.com",
+            databaseURL: "https://rosetta-reader-database-default-rtdb.firebaseio.com",
+            projectId: "rosetta-reader-database",
+            storageBucket: "rosetta-reader-database.firebasestorage.app",
+            messagingSenderId: "105140538232",
+            appId: "1:105140538232:web:cd7369cce7e7640fd5968d",
+            measurementId: "G-RMKRDLQVFV"
+        };
+
+
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
         const LanguageLearningDisplay = () => {
             const [showTranslation, setShowTranslation] = React.useState(false);
             const [selectedWord, setSelectedWord] = React.useState(null);
             const [popupPosition, setPopupPosition] = React.useState({ x: 0, y: 0 });
             const [showPopup, setShowPopup] = React.useState(false);
             const [definitionInput, setDefinitionInput] = React.useState('');
+            const [definitions, setDefinitions] = React.useState({});
             
             const originalText = "Ez ji te hez dikim.";
             const translationText = "I love you.";
+
+            // Load definitions from Firebase on component mount
+            React.useEffect(() => {
+                const definitionsRef = database.ref('definitions');
+                
+                definitionsRef.on('value', (snapshot) => {
+                    const data = snapshot.val() || {};
+                    setDefinitions(data);
+                });
+
+                return () => definitionsRef.off();
+            }, []);
 
             const handleWordClick = (word, event) => {
                 const rect = event.target.getBoundingClientRect();
                 const cleanWord = word.replace(/[.,!?;]$/, '').toLowerCase();
                 setSelectedWord(cleanWord);
-                setDefinitionInput('');
+                setDefinitionInput(definitions[cleanWord] || '');
                 
                 const isMobile = window.innerWidth < 640;
                 const xPosition = isMobile ? 
@@ -45,7 +78,8 @@
 
             const handleSave = () => {
                 if (definitionInput.trim()) {
-                    console.log(`Defined ${selectedWord} as: ${definitionInput}`);
+                    // Save to Firebase
+                    database.ref(`definitions/${selectedWord.toLowerCase()}`).set(definitionInput);
                 }
                 setShowPopup(false);
             };
@@ -60,6 +94,9 @@
 
             const renderText = (text, isClickable = true) => {
                 return text.split(' ').map((word, index, array) => {
+                    const cleanWord = word.replace(/[.,!?;]$/, '').toLowerCase();
+                    const hasDefinition = definitions[cleanWord];
+                    
                     if (!isClickable) {
                         return (
                             <span key={index}>
@@ -73,13 +110,13 @@
                         <span key={index}>
                             <button
                                 onClick={(e) => handleWordClick(word, e)}
-                                className="
+                                className={`
                                     inline-block
                                     transition-colors
                                     hover:bg-indigo-500/20
                                     focus:outline-none
-                                    text-gray-100
-                                "
+                                    ${hasDefinition ? 'text-emerald-400' : 'text-gray-100'}
+                                `}
                             >
                                 {word}
                             </button>
