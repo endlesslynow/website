@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Definitions App</title>
+    <title>Definitions Database</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-            background: #f5f5f5;
+            background: #1a1a1a;
+            color: #e0e0e0;
         }
         
         .input-container {
-            background: white;
+            background: #2d2d2d;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
             margin-bottom: 20px;
         }
         
         .input-row {
-            display: flex;
+            display: grid;
+            grid-template-columns: 200px 1fr auto;
             gap: 10px;
             margin-bottom: 10px;
         }
         
         input {
-            flex: 1;
+            width: 100%;
             padding: 8px;
-            border: 1px solid #ddd;
+            border: 1px solid #444;
             border-radius: 4px;
             font-size: 16px;
+            background: #333;
+            color: #e0e0e0;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
         }
         
         button {
@@ -41,22 +51,44 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.2s;
+            white-space: nowrap;
         }
         
         button:hover {
             background: #45a049;
         }
+
+        button.delete {
+            background: #dc3545;
+        }
+
+        button.delete:hover {
+            background: #c82333;
+        }
+
+        button.edit {
+            background: #007bff;
+        }
+
+        button.edit:hover {
+            background: #0056b3;
+        }
         
         .definitions-list {
-            background: white;
+            background: #2d2d2d;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .definition-item {
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #444;
             padding: 15px 0;
+            display: grid;
+            grid-template-columns: 200px 1fr auto;
+            gap: 20px;
+            align-items: center;
         }
         
         .definition-item:last-child {
@@ -65,13 +97,52 @@
         
         .term {
             font-weight: bold;
-            color: #2196F3;
+            color: #64b5f6;
             margin: 0;
+            font-size: 16px;
         }
         
         .definition {
-            margin: 5px 0 0 0;
-            color: #666;
+            margin: 0;
+            color: #bbbbbb;
+            font-size: 16px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .edit-form {
+            display: none;
+            margin-top: 10px;
+            grid-column: 1 / -1;
+        }
+
+        .edit-form.active {
+            display: block;
+        }
+
+        .edit-form .input-row {
+            display: grid;
+            grid-template-columns: 200px 1fr auto;
+            gap: 10px;
+        }
+
+        #debug-log {
+            margin-top: 20px;
+            padding: 10px;
+            background: #2d2d2d;
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            color: #bbbbbb;
+        }
+
+        h1 {
+            color: #64b5f6;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -82,89 +153,209 @@
             <div class="input-row">
                 <input type="text" id="term" placeholder="Enter term">
                 <input type="text" id="definition" placeholder="Enter definition">
-                <button onclick="saveDefinition()">Save</button>
+                <button id="saveButton">Save</button>
             </div>
         </div>
         <div id="definitions-list" class="definitions-list"></div>
+        <div id="debug-log"></div>
     </div>
 
+    <!-- Import Firebase Scripts -->
     <script type="module">
+        // Import Firebase modules
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
-        import { getDatabase, ref, set, onValue } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js';
+        import { getDatabase, ref, set, onValue, remove, update } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js';
 
-        // Initialize Firebase with your config
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            databaseURL: "YOUR_DATABASE_URL",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-
-        // Save definition function
-        window.saveDefinition = async function() {
-            const termInput = document.getElementById('term');
-            const definitionInput = document.getElementById('definition');
-            
-            const term = termInput.value.trim();
-            const definition = definitionInput.value.trim();
-            
-            if (term && definition) {
-                try {
-                    await set(ref(db, 'definitions/' + encodeURIComponent(term)), {
-                        term,
-                        definition,
-                        timestamp: Date.now()
-                    });
-                    
-                    // Clear inputs after successful save
-                    termInput.value = '';
-                    definitionInput.value = '';
-                } catch (error) {
-                    console.error('Error saving definition:', error);
-                    alert('Error saving definition. Please try again.');
-                }
-            }
-        };
-
-        // Load and display definitions
-        function loadDefinitions() {
-            const definitionsList = document.getElementById('definitions-list');
-            
-            onValue(ref(db, 'definitions'), (snapshot) => {
-                definitionsList.innerHTML = '';
-                
-                const definitions = [];
-                snapshot.forEach((childSnapshot) => {
-                    definitions.push({
-                        ...childSnapshot.val(),
-                        key: childSnapshot.key
-                    });
-                });
-                
-                // Sort by timestamp, newest first
-                definitions.sort((a, b) => b.timestamp - a.timestamp);
-                
-                definitions.forEach((data) => {
-                    const div = document.createElement('div');
-                    div.className = 'definition-item';
-                    div.innerHTML = `
-                        <h3 class="term">${data.term}</h3>
-                        <p class="definition">${data.definition}</p>
-                    `;
-                    definitionsList.appendChild(div);
-                });
-            });
+        // Debug logging function
+        function debugLog(message) {
+            const debugDiv = document.getElementById('debug-log');
+            const timestamp = new Date().toLocaleTimeString();
+            debugDiv.innerHTML += `[${timestamp}] ${message}<br>`;
+            console.log(`[${timestamp}] ${message}`);
         }
 
-        // Start loading definitions when page loads
-        loadDefinitions();
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAL7cAt5eiFr8lPS64l1gJKxP0BYZqmOms",
+            authDomain: "rosetta-reader-database.firebaseapp.com",
+            databaseURL: "https://rosetta-reader-database-default-rtdb.firebaseio.com",
+            projectId: "rosetta-reader-database",
+            storageBucket: "rosetta-reader-database.firebasestorage.app",
+            messagingSenderId: "105140538232",
+            appId: "1:105140538232:web:cd7369cce7e7640fd5968d",
+            measurementId: "G-RMKRDLQVFV"
+        };
+
+        try {
+            debugLog('Initializing Firebase...');
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+            debugLog('Firebase initialized successfully');
+
+            // Save definition function
+            async function saveDefinition() {
+                const termInput = document.getElementById('term');
+                const definitionInput = document.getElementById('definition');
+                
+                const term = termInput.value.trim();
+                const definition = definitionInput.value.trim();
+                
+                if (term && definition) {
+                    debugLog(`Attempting to save term: ${term}`);
+                    try {
+                        const definitionId = Date.now().toString();
+                        
+                        await set(ref(db, 'definitions_flat/' + definitionId), {
+                            id: definitionId,
+                            term,
+                            definition,
+                            timestamp: Date.now()
+                        });
+                        
+                        debugLog('Definition saved successfully');
+                        termInput.value = '';
+                        definitionInput.value = '';
+                    } catch (error) {
+                        debugLog(`Error saving definition: ${error.message}`);
+                        alert('Error saving definition. Please check the debug log.');
+                    }
+                } else {
+                    debugLog('Error: Term and definition are required');
+                    alert('Please enter both a term and a definition');
+                }
+            }
+
+            // Delete definition function
+            async function deleteDefinition(id) {
+                try {
+                    debugLog(`Attempting to delete definition: ${id}`);
+                    await remove(ref(db, 'definitions_flat/' + id));
+                    debugLog('Definition deleted successfully');
+                } catch (error) {
+                    debugLog(`Error deleting definition: ${error.message}`);
+                    alert('Error deleting definition. Please check the debug log.');
+                }
+            }
+
+            // Edit definition function
+            async function editDefinition(id, newTerm, newDefinition) {
+                try {
+                    debugLog(`Attempting to update definition: ${id}`);
+                    await update(ref(db, 'definitions_flat/' + id), {
+                        term: newTerm,
+                        definition: newDefinition,
+                        timestamp: Date.now()
+                    });
+                    debugLog('Definition updated successfully');
+                } catch (error) {
+                    debugLog(`Error updating definition: ${error.message}`);
+                    alert('Error updating definition. Please check the debug log.');
+                }
+            }
+
+            // Add event listeners
+            document.getElementById('saveButton').addEventListener('click', saveDefinition);
+
+            document.getElementById('term').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    document.getElementById('definition').focus();
+                }
+            });
+
+            document.getElementById('definition').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    saveDefinition();
+                }
+            });
+
+            // Load and display definitions
+            function loadDefinitions() {
+                debugLog('Loading definitions...');
+                const definitionsList = document.getElementById('definitions-list');
+                
+                onValue(ref(db, 'definitions_flat'), (snapshot) => {
+                    definitionsList.innerHTML = '';
+                    const definitions = [];
+                    
+                    snapshot.forEach((childSnapshot) => {
+                        definitions.push({
+                            ...childSnapshot.val(),
+                            key: childSnapshot.key
+                        });
+                    });
+                    
+                    definitions.sort((a, b) => b.timestamp - a.timestamp);
+                    
+                    if (definitions.length === 0) {
+                        debugLog('No definitions found in database');
+                        definitionsList.innerHTML = '<p>No definitions yet. Add your first one!</p>';
+                    } else {
+                        debugLog(`Loaded ${definitions.length} definitions`);
+                        definitions.forEach((data) => {
+                            const div = document.createElement('div');
+                            div.className = 'definition-item';
+                            div.innerHTML = `
+                                <h3 class="term">${data.term}</h3>
+                                <p class="definition">${data.definition}</p>
+                                <div class="action-buttons">
+                                    <button class="edit" data-id="${data.id}">Edit</button>
+                                    <button class="delete" data-id="${data.id}">Delete</button>
+                                </div>
+                                <div class="edit-form" id="edit-form-${data.id}">
+                                    <div class="input-row">
+                                        <input type="text" id="edit-term-${data.id}" value="${data.term}">
+                                        <input type="text" id="edit-definition-${data.id}" value="${data.definition}">
+                                        <button class="save-edit" data-id="${data.id}">Save</button>
+                                    </div>
+                                </div>
+                            `;
+                            definitionsList.appendChild(div);
+
+                            // Add event listeners for edit and delete buttons
+                            const editButton = div.querySelector('.edit');
+                            const deleteButton = div.querySelector('.delete');
+                            const saveEditButton = div.querySelector('.save-edit');
+                            const editForm = div.querySelector('.edit-form');
+
+                            editButton.addEventListener('click', () => {
+                                editForm.classList.toggle('active');
+                            });
+
+                            deleteButton.addEventListener('click', () => {
+                                if (confirm('Are you sure you want to delete this definition?')) {
+                                    deleteDefinition(data.id);
+                                }
+                            });
+
+                            saveEditButton.addEventListener('click', () => {
+                                const newTerm = document.getElementById(`edit-term-${data.id}`).value.trim();
+                                const newDefinition = document.getElementById(`edit-definition-${data.id}`).value.trim();
+                                
+                                if (newTerm && newDefinition) {
+                                    editDefinition(data.id, newTerm, newDefinition);
+                                    editForm.classList.remove('active');
+                                } else {
+                                    alert('Please enter both a term and a definition');
+                                }
+                            });
+                        });
+                    }
+                }, (error) => {
+                    debugLog(`Error loading definitions: ${error.message}`);
+                    definitionsList.innerHTML = '<p>Error loading definitions. Please check the debug log.</p>';
+                });
+            }
+
+            // Start loading definitions when page loads
+            loadDefinitions();
+            
+        } catch (error) {
+            debugLog(`Fatal error during initialization: ${error.message}`);
+            document.getElementById('app').innerHTML = `
+                <h1>Error</h1>
+                <p>There was an error initializing the application. Please check the debug log.</p>
+            `;
+        }
     </script>
 </body>
 </html>
