@@ -1,4 +1,81 @@
 <!DOCTYPE html>
+<!--
+ROSETTA READER ARCHITECTURE OVERVIEW
+==================================
+
+This is a language learning application. The application is split into multiple files for maintainability
+and separation of concerns. I WILL NOT MAKE NEW FILES. ALL CHANGES AND ADDITIONS MUST BE MADE IN THIS FRAMEWORK!
+
+FILE STRUCTURE AND RESPONSIBILITIES
+---------------------------------
+
+1. rosettareader.html (THIS FILE)
+   - Serves as the application shell
+   - Loads all required external dependencies (React, TailwindCSS, Firebase, Babel)
+   - Provides the mount point (#language-learning-container)
+   - Loads application files in the correct order
+   - Initializes the React application
+
+2. rr_firebase-config.js
+   - Handles Firebase initialization and configuration
+   - Creates and exports the database instance via window.rr_database
+   - All Firebase interactions should go through this centralized configuration
+   - Database is used for storing word definitions (structure: definitions/{word}: string)
+
+3. rr_App.js
+   - Main application component
+   - Currently contains hardcoded sentences data
+   - Designed to be the future home of:
+     * Language selection interface
+     * Text selection interface
+     * Database context/state for selected language and text
+     * Routing/display logic
+   - Currently just passes sentences to LanguageLearningDisplay
+
+4. rr_LanguageLearningDisplay.js
+   - Core display component for the reading interface
+   - Handles:
+     * Displaying original text and translation
+     * Word-level interaction and definition popup
+     * Navigation between sentences
+     * Definition storage and retrieval via Firebase
+   - Receives sentences array as props, where each sentence has:
+     * original: string (text in learning language)
+     * translation: string (text in native language)
+
+IMPORTANT IMPLEMENTATION DETAILS
+------------------------------
+- Components are exposed via window object due to the script loading approach
+- Firebase database reference is shared via window.rr_database
+- Tailwind is used for styling (via CDN)
+- Babel is used for JSX transformation (via CDN)
+- Mobile-responsive design is implemented
+- Word definitions are stored in Firebase with lowercase keys
+
+DATA STRUCTURES
+--------------
+1. Sentences Array:
+   [{
+     original: string,    // Text in learning language
+     translation: string  // Text in native language
+   }]
+
+2. Definitions in Firebase:
+   {
+     "word": "definition" | { definition: "definition" }
+   }
+
+STYLING APPROACH
+---------------
+- TailwindCSS utility classes
+- Fixed layout with dual panes (original text + translation)
+- Mobile-first responsive design
+- Dark theme by default
+
+This architecture is designed to be extended with new features while maintaining
+clear separation of concerns and centralized state management.
+-->
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,188 +91,20 @@
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+    <!-- Application Scripts -->
+    <script src="rr_firebase-config.js"></script>
+    <script type="text/babel" src="rr_App.js"></script>
+    <script type="text/babel" src="rr_LanguageLearningDisplay.js"></script>
 </head>
 <body>
     <div id="language-learning-container"></div>
 
     <script type="text/babel">
-        // Initialize Firebase - Replace with your config
-        const firebaseConfig = {
-            apiKey: "AIzaSyAL7cAt5eiFr8lPS64l1gJKxP0BYZqmOms",
-            authDomain: "rosetta-reader-database.firebaseapp.com",
-            databaseURL: "https://rosetta-reader-database-default-rtdb.firebaseio.com",
-            projectId: "rosetta-reader-database",
-            storageBucket: "rosetta-reader-database.firebasestorage.app",
-            messagingSenderId: "105140538232",
-            appId: "1:105140538232:web:cd7369cce7e7640fd5968d",
-            measurementId: "G-RMKRDLQVFV"
-        };
-
-
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-
-        const LanguageLearningDisplay = () => {
-            const [showTranslation, setShowTranslation] = React.useState(false);
-            const [selectedWord, setSelectedWord] = React.useState(null);
-            const [popupPosition, setPopupPosition] = React.useState({ x: 0, y: 0 });
-            const [showPopup, setShowPopup] = React.useState(false);
-            const [definitionInput, setDefinitionInput] = React.useState('');
-            const [definitions, setDefinitions] = React.useState({});
-            
-            const originalText = "Ez ji te hez dikim.";
-            const translationText = "I love you.";
-
-            // Load definitions from Firebase on component mount
-            React.useEffect(() => {
-                const definitionsRef = database.ref('definitions');
-                
-                definitionsRef.on('value', (snapshot) => {
-                    const data = snapshot.val() || {};
-                    setDefinitions(data);
-                });
-
-                return () => definitionsRef.off();
-            }, []);
-
-            const handleWordClick = (word, event) => {
-                const rect = event.target.getBoundingClientRect();
-                const cleanWord = word.replace(/[.,!?;]$/, '').toLowerCase();
-                setSelectedWord(cleanWord);
-                setDefinitionInput(definitions[cleanWord] || '');
-                
-                const isMobile = window.innerWidth < 640;
-                const xPosition = isMobile ? 
-                    Math.min(window.innerWidth - 240, rect.left) : 
-                    rect.left;
-                
-                setPopupPosition({
-                    x: xPosition,
-                    y: rect.bottom + window.scrollY
-                });
-                setShowPopup(true);
-            };
-
-            const handleSave = () => {
-                if (definitionInput.trim()) {
-                    // Save to Firebase
-                    database.ref(`definitions/${selectedWord.toLowerCase()}`).set(definitionInput);
-                }
-                setShowPopup(false);
-            };
-
-            const handleKeyPress = (e) => {
-                if (e.key === 'Enter') {
-                    handleSave();
-                } else if (e.key === 'Escape') {
-                    setShowPopup(false);
-                }
-            };
-
-            const renderText = (text, isClickable = true) => {
-                return text.split(' ').map((word, index, array) => {
-                    const cleanWord = word.replace(/[.,!?;]$/, '').toLowerCase();
-                    const hasDefinition = definitions[cleanWord];
-                    
-                    if (!isClickable) {
-                        return (
-                            <span key={index}>
-                                {word}
-                                {index < array.length - 1 ? ' ' : ''}
-                            </span>
-                        );
-                    }
-                    
-                    return (
-                        <span key={index}>
-                            <button
-                                onClick={(e) => handleWordClick(word, e)}
-                                className={`
-                                    inline-block
-                                    transition-colors
-                                    hover:bg-indigo-500/20
-                                    focus:outline-none
-                                    ${hasDefinition ? 'text-emerald-400' : 'text-gray-100'}
-                                `}
-                            >
-                                {word}
-                            </button>
-                            {index < array.length - 1 ? ' ' : ''}
-                        </span>
-                    );
-                });
-            };
-
-            return (
-                <div className="fixed inset-0 bg-gray-950">
-                    <div className="h-full flex flex-col">
-                        {/* Original Text Container */}
-                        <div className="flex-1 bg-gray-900/50 shadow-inner">
-                            <div className="h-full flex flex-col bg-gray-800/50 p-4">
-                                <div className="text-2xl sm:text-3xl leading-relaxed pt-4">
-                                    {renderText(originalText)}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Navigation - Fixed height */}
-                        <div className="h-16 flex justify-center items-center bg-gray-900/80">
-                            <button 
-                                onClick={() => setShowTranslation(!showTranslation)}
-                                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md"
-                            >
-                                {showTranslation ? "Hide" : "Show"} Translation
-                            </button>
-                        </div>
-
-                        {/* Translation Container */}
-                        <div className="flex-1 bg-gray-900/50 shadow-inner">
-                            <div className="h-full flex flex-col bg-gray-800/50 p-4">
-                                <div className="text-2xl sm:text-3xl leading-relaxed pt-4 text-gray-100">
-                                    {showTranslation && renderText(translationText, false)}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Floating Definition Popup */}
-                        {showPopup && (
-                            <div 
-                                className="fixed z-50 transform -translate-y-2"
-                                style={{ 
-                                    left: `${popupPosition.x}px`, 
-                                    top: `${popupPosition.y + 8}px`
-                                }}
-                            >
-                                <div className="bg-gray-800 rounded-lg shadow-xl border border-gray-700 p-2 flex gap-2 items-center">
-                                    <input
-                                        value={definitionInput}
-                                        onChange={(e) => setDefinitionInput(e.target.value)}
-                                        onKeyDown={handleKeyPress}
-                                        placeholder="Define..."
-                                        className="w-36 sm:w-48 bg-gray-900 border border-gray-700 text-gray-100 text-sm focus:border-indigo-500 rounded-md px-2 py-1"
-                                        autoFocus
-                                    />
-                                    <button
-                                        onClick={handleSave}
-                                        className="bg-indigo-600 hover:bg-indigo-700 text-white px-2 py-1 h-8 rounded-md text-sm"
-                                    >
-                                        Save
-                                    </button>
-                                </div>
-                                <div 
-                                    className="absolute -top-2 left-4 w-4 h-4 bg-gray-800 border-l border-t border-gray-700 transform rotate-45"
-                                />
-                            </div>
-                        )}
-                    </div>
-                </div>
-            );
-        };
-
         // Render the app
         const container = document.getElementById('language-learning-container');
         const root = ReactDOM.createRoot(container);
-        root.render(<LanguageLearningDisplay />);
+        root.render(<App />);
     </script>
 </body>
 </html>

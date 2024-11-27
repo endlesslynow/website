@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Texts Database</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+        
+        .input-container {
+            background: #2d2d2d;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .text-title-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-size: 16px;
+            background: #333;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+        
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+        
+        button:hover {
+            background: #45a049;
+        }
+
+        button.delete {
+            background: #dc3545;
+        }
+
+        button.delete:hover {
+            background: #c82333;
+        }
+
+        button.edit {
+            background: #007bff;
+        }
+
+        button.edit:hover {
+            background: #0056b3;
+        }
+        
+        .texts-list {
+            background: #2d2d2d;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .text-item {
+            border-bottom: 1px solid #444;
+            padding: 15px 0;
+            margin-bottom: 20px;
+        }
+        
+        .text-item:last-child {
+            border-bottom: none;
+        }
+        
+        .text-title {
+            font-weight: bold;
+            color: #64b5f6;
+            margin: 0;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .sentence-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 10px;
+            padding: 10px;
+            background: #333;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .sentence, .translation {
+            margin: 0;
+            color: #bbbbbb;
+            font-size: 16px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        #debug-log {
+            margin-top: 20px;
+            padding: 10px;
+            background: #2d2d2d;
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            color: #bbbbbb;
+        }
+
+        h1 {
+            color: #64b5f6;
+            margin-bottom: 20px;
+        }
+
+        .language-select {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-size: 16px;
+            background: #333;
+            color: #e0e0e0;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .language-select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+
+        .text-language {
+            font-size: 0.8em;
+            color: #888;
+            font-weight: normal;
+        }
+
+        .import-container {
+            background: #2d2d2d;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background: #333;
+            color: #e0e0e0;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .tab-button.active {
+            background: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Texts Database</h1>
+        
+        <div class="tab-buttons">
+            <button class="tab-button active" data-tab="manual">Manual Entry</button>
+            <button class="tab-button" data-tab="import">Import Text</button>
+        </div>
+
+        <div id="manual-entry" class="input-container">
+            <div class="text-title-row">
+                <input type="text" id="textTitle" placeholder="Enter text title">
+                <select id="textLanguage" class="language-select">
+                    <option value="" disabled selected>Select language</option>
+                    <option value="kurdî">Kurdî</option>
+                    <option value="عربي">عربي</option>
+                </select>
+            </div>
+            <div class="input-row">
+                <textarea id="originalText" placeholder="Enter original text"></textarea>
+                <textarea id="translatedText" placeholder="Enter translated text"></textarea>
+            </div>
+            <button id="processButton">Process and Save</button>
+        </div>
+
+        <div id="import-entry" class="import-container" style="display: none;">
+            <div class="text-title-row">
+                <input type="text" id="importTitle" placeholder="Enter text title">
+                <select id="importLanguage" class="language-select">
+                    <option value="" disabled selected>Select language</option>
+                    <option value="kurdî">Kurdî</option>
+                    <option value="عربي">عربي</option>
+                </select>
+            </div>
+            <textarea id="importText" placeholder="Paste formatted text here with [ORG] and [TRANS] tags"></textarea>
+            <button id="importButton">Import and Save</button>
+        </div>
+
+        <div id="texts-list" class="texts-list"></div>
+        <div id="debug-log"></div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+        import { getDatabase, ref, set, onValue, remove, get } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js';
+
+        function debugLog(message) {
+            const debugDiv = document.getElementById('debug-log');
+            const timestamp = new Date().toLocaleTimeString();
+            debugDiv.innerHTML += `[${timestamp}] ${message}<br>`;
+            console.log(`[${timestamp}] ${message}`);
+        }
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAL7cAt5eiFr8lPS64l1gJKxP0BYZqmOms",
+            authDomain: "rosetta-reader-database.firebaseapp.com",
+            databaseURL: "https://rosetta-reader-database-default-rtdb.firebaseio.com",
+            projectId: "rosetta-reader-database",
+            storageBucket: "rosetta-reader-database.firebasestorage.app",
+            messagingSenderId: "105140538232",
+            appId: "1:105140538232:web:cd7369cce7e7640fd5968d",
+            measurementId: "G-RMKRDLQVFV"
+        };
+
+        try {
+            debugLog('Initializing Firebase...');
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+            debugLog('Firebase initialized successfully');
+
+            function splitIntoSentences(text) {
+                // Split on period followed by space or newline
+                return text.split(/\.\s+|\.\n+/)
+                    .map(sentence => sentence.trim())
+                    .filter(sentence => sentence.length > 0)
+                    .map(sentence => sentence + '.');
+            }
+
+            function parseImportedText(text) {
+                const lines = text.split('\n').filter(line => line.trim() !== '');
+                const sentences = [];
+                let currentOriginal = '';
+                let currentTranslation = '';
+
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (line.startsWith('[ORG]')) {
+                        if (currentOriginal && currentTranslation) {
+                            sentences.push({
+                                original: currentOriginal,
+                                translation: currentTranslation
+                            });
+                        }
+                        currentOriginal = line.replace('[ORG]', '').trim();
+                    } else if (line.startsWith('[TRANS]')) {
+                        currentTranslation = line.replace('[TRANS]', '').trim();
+                    }
+                }
+
+                // Add the last pair if it exists
+                if (currentOriginal && currentTranslation) {
+                    sentences.push({
+                        original: currentOriginal,
+                        translation: currentTranslation
+                    });
+                }
+
+                return sentences;
+            }
+
+            async function importText() {
+                const titleInput = document.getElementById('importTitle');
+                const languageSelect = document.getElementById('importLanguage');
+                const importTextArea = document.getElementById('importText');
+
+                const title = titleInput.value.trim();
+                const language = languageSelect.value;
+                const text = importTextArea.value.trim();
+
+                if (!title || !language || !text) {
+                    alert('Please fill in all fields and select a language');
+                    return;
+                }
+
+                try {
+                    debugLog(`Importing text: ${title} in ${language}`);
+                    const sentences = parseImportedText(text);
+
+                    if (sentences.length === 0) {
+                        alert('No valid sentence pairs found in the imported text');
+                        return;
+                    }
+
+                    const textData = {
+                        title,
+                        language,
+                        sentences
+                    };
+
+                    await set(ref(db, `texts/${title}`), textData);
+                    
+                    debugLog('Text imported successfully');
+                    titleInput.value = '';
+                    importTextArea.value = '';
+                    languageSelect.selectedIndex = 0;
+                } catch (error) {
+                    debugLog(`Error importing text: ${error.message}`);
+                    alert('Error importing text. Please check the debug log.');
+                }
+            }
+
+            async function processAndSaveText() {
+                const titleInput = document.getElementById('textTitle');
+                const originalTextArea = document.getElementById('originalText');
+                const translatedTextArea = document.getElementById('translatedText');
+                const languageSelect = document.getElementById('textLanguage');
+                
+                const title = titleInput.value.trim();
+                const originalText = originalTextArea.value.trim();
+                const translatedText = translatedTextArea.value.trim();
+                const language = languageSelect.value;
+                
+                if (!title || !originalText || !translatedText || !language) {
+                    alert('Please fill in all fields and select a language');
+                    return;
+                }
+
+                const originalSentences = splitIntoSentences(originalText);
+                const translatedSentences = splitIntoSentences(translatedText);
+
+                if (originalSentences.length !== translatedSentences.length) {
+                    alert('The number of sentences in both texts must match');
+                    debugLog(`Sentence count mismatch: ${originalSentences.length} vs ${translatedSentences.length}`);
+                    return;
+                }
+
+                try {
+                    debugLog(`Saving text: ${title} with ${originalSentences.length} sentences in ${language}`);
+                    
+                    const textData = {
+                        title,
+                        language,
+                        sentences: originalSentences.map((sentence, index) => ({
+                            original: sentence,
+                            translation: translatedSentences[index]
+                        }))
+                    };
+
+                    await set(ref(db, `texts/${title}`), textData);
+                    
+                    debugLog('Text saved successfully');
+                    titleInput.value = '';
+                    originalTextArea.value = '';
+                    translatedTextArea.value = '';
+                    languageSelect.selectedIndex = 0;
+                } catch (error) {
+                    debugLog(`Error saving text: ${error.message}`);
+                    alert('Error saving text. Please check the debug log.');
+                }
+            }
+
+            async function deleteText(title) {
+                try {
+                    debugLog(`Attempting to delete text: ${title}`);
+                    await remove(ref(db, `texts/${title}`));
+                    debugLog('Text deleted successfully');
+                } catch (error) {
+                    debugLog(`Error deleting text: ${error.message}`);
+                    alert('Error deleting text. Please check the debug log.');
+                }
+            }
+
+            async function deleteSentence(title, index) {
+                try {
+                    debugLog(`Attempting to delete sentence ${index} from text: ${title}`);
+                    const textRef = ref(db, `texts/${title}`);
+                    const snapshot = await get(textRef);
+                    
+                    if (!snapshot.exists()) {
+                        throw new Error('Text not found');
+                    }
+                    
+                    const textData = snapshot.val();
+                    textData.sentences.splice(index, 1);
+                    
+                    if (textData.sentences.length === 0) {
+                        await remove(textRef);
+                        debugLog('Last sentence deleted, removing text');
+                    } else {
+                        await set(textRef, textData);
+                        debugLog('Sentence deleted successfully');
+                    }
+                } catch (error) {
+                    debugLog(`Error deleting sentence: ${error.message}`);
+                    alert('Error deleting sentence. Please check the debug log.');
+                }
+            }
+
+            function loadTexts() {
+                debugLog('Loading texts...');
+                const textsList = document.getElementById('texts-list');
+                
+                onValue(ref(db, 'texts'), (snapshot) => {
+                    textsList.innerHTML = '';
+                    
+                    if (!snapshot.exists()) {
+                        debugLog('No texts found in database');
+                        textsList.innerHTML = '<p>No texts yet. Add your first one!</p>';
+                        return;
+                    }
+
+                    snapshot.forEach((textSnapshot) => {
+                        const textData = textSnapshot.val();
+                        const div = document.createElement('div');
+                        div.className = 'text-item';
+                        
+                        let sentencesHTML = '';
+                        textData.sentences.forEach((sentence, index) => {
+                            sentencesHTML += `
+                                <div class="sentence-pair">
+                                    <p class="sentence">${sentence.original}</p>
+                                    <p class="translation">${sentence.translation}</p>
+                                    <div class="action-buttons">
+                                        <button class="delete sentence-delete" data-title="${textData.title}" data-index="${index}">Delete</button>
+                                    </div>
+                                </div>
+                            `;
+                        });
+
+                        div.innerHTML = `
+                                <div class="sentence-pair" style="grid-template-columns: 2fr 1fr 1fr;">
+                                    <p class="sentence">${textData.title}</p>
+                                    <p class="sentence" style="text-align: center;">Language: ${textData.language}</p>
+                                    <button class="delete text-delete" data-title="${textData.title}" style="justify-self: end;">Delete Text</button>
+                                </div>
+                                ${sentencesHTML}
+                            `;
+
+                        textsList.appendChild(div);
+
+                        // Add event listeners for delete buttons
+                        div.querySelectorAll('.text-delete').forEach(button => {
+                            button.addEventListener('click', () => {
+                                if (confirm('Are you sure you want to delete this text?')) {
+                                    deleteText(button.dataset.title);
+                                }
+                            });
+                        });
+
+                        div.querySelectorAll('.sentence-delete').forEach(button => {
+                            button.addEventListener('click', () => {
+                                if (confirm('Are you sure you want to delete this sentence?')) {
+                                    deleteSentence(button.dataset.title, parseInt(button.dataset.index));
+                                }
+                            });
+                        });
+                    });
+                    
+                    debugLog('Texts loaded successfully');
+                }, (error) => {
+                    debugLog(`Error loading texts: ${error.message}`);
+                    textsList.innerHTML = '<p>Error loading texts. Please check the debug log.</p>';
+                });
+            }
+
+            // Add event listeners
+            document.getElementById('processButton').addEventListener('click', processAndSaveText);
+            document.getElementById('importButton').addEventListener('click', importText);
+
+            // Tab switching functionality
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update button states
+                    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // Show/hide appropriate containers
+                    const tabName = button.dataset.tab;
+                    document.getElementById('manual-entry').style.display = tabName === 'manual' ? 'block' : 'none';
+                    document.getElementById('import-entry').style.display = tabName === 'import' ? 'block' : 'none';
+                });
+            });
+
+            // Start loading texts when page loads
+            loadTexts();
+            
+        } catch (error) {
+            debugLog(`Fatal error during initialization: ${error.message}`);
+            document.getElementById('app').innerHTML = `
+                <h1>Error</h1>
+                <p>There was an error initializing the application. Please check the debug log.</p>
+            `;
+        }
+    </script>
+</body>
+</html>
