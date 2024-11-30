@@ -9,30 +9,81 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+
+    <script src="chapters.js"></script>
     
-    <!-- Add simple styles -->
+    <!-- Add responsive styles -->
     <style>
         body { 
             background: #111827; 
             color: #ffffff; 
             font-family: system-ui, -apple-system, sans-serif;
             margin: 0;
-            padding: 1rem;
+            padding: 0;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        
+        .container { 
+            width: 100%;
+            max-width: 1200px; 
+            margin: 0 auto;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            width: 100%;
+        }
+        
+        /* Mobile-first approach */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .container {
+                padding: 0.5rem;
+            }
+            
+            pre {
+                font-size: 14px;
+                padding: 0.5rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+                margin: 0.5rem 0;
+            }
+        }
+        
         .card {
             background: #1f2937;
             padding: 1rem;
-            margin: 0.5rem 0;
+            margin: 0.25rem 0;
             border-radius: 0.5rem;
             cursor: pointer;
             transition: background 0.2s;
             text-align: center;
+            word-break: break-word;
+            min-height: 44px; /* Minimum touch target size */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px; /* Readable text size on mobile */
+            -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+            user-select: none; /* Prevent text selection on mobile */
         }
+        
         .card:hover { background: #374151; }
+        .card:active { background: #4B5563; } /* Better touch feedback */
         .card.selected { background: #1e3a8a; }
         .card.matched { opacity: 0; pointer-events: none; }
+        
         .button {
             background: #1e40af;
             color: white;
@@ -41,8 +92,14 @@
             border-radius: 0.5rem;
             cursor: pointer;
             font-size: 1rem;
+            min-height: 44px;
+            min-width: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
-        .button:hover { background: #1e3a8a; }
+        
+        .button:active { background: #1e3a8a; }
+        
         .textarea {
             width: 100%;
             min-height: 160px;
@@ -50,71 +107,129 @@
             color: white;
             border: 1px solid #4b5563;
             border-radius: 0.5rem;
-            padding: 0.5rem;
-            margin: 1rem 0;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
             font-family: inherit;
+            font-size: 16px; /* Prevent zoom on mobile */
+            box-sizing: border-box;
+            resize: vertical;
         }
+        
         .error {
             background: #991b1b;
             padding: 1rem;
             border-radius: 0.5rem;
-            margin: 1rem 0;
+            margin: 0.5rem 0;
+            word-wrap: break-word;
         }
+        
         .center { text-align: center; }
         .mb-4 { margin-bottom: 1rem; }
+        
         pre {
             background: #374151;
             padding: 1rem;
             border-radius: 0.5rem;
-            margin: 1rem 0;
+            margin: 0.5rem 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 14px;
         }
-
-        /* Victory Screen Animations */
-        @keyframes leafExplode {
-            0% {
-                transform: translate(0, 0) rotate(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--x), var(--y)) rotate(var(--r));
-                opacity: 0;
-            }
+    
+        .button-group {
+            display: flex;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+            flex-wrap: wrap;
         }
-
-        @keyframes victoryFade {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+    
+        /* Fixed dropdown positioning for mobile */
+        .dropdown {
+            position: relative;
+            display: inline-block;
         }
-
+    
+        .dropdown-content {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #1f2937;
+            min-width: 200px;
+            width: 90%;
+            max-width: 300px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0;
+        }
+    
+        .dropdown-content.show {
+            display: block;
+        }
+    
+        .dropdown-item {
+            color: white;
+            padding: 1rem;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+    
+        .dropdown-item:active {
+            background: #374151;
+        }
+    
+        /* Victory Screen Improvements */
         .victory-screen {
             text-align: center;
-            padding: 2rem;
+            padding: 1rem;
             animation: victoryFade 1s ease-out;
             position: relative;
             overflow: hidden;
         }
-
+    
         .victory-title {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #ffd700;
             font-family: "Times New Roman", serif;
-            margin-bottom: 1.5rem;
+            margin: 1rem 0;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.1em;
         }
-
-        .victory-text {
-            font-size: 1.2rem;
-            color: #d1d5db;
-            margin-bottom: 2rem;
-            font-style: italic;
+    
+        @media (max-width: 768px) {
+            .victory-title {
+                font-size: 1.5rem;
+            }
+            
+            .victory-text {
+                font-size: 1rem;
+            }
         }
-
-        .laurel-leaf {
-            position: absolute;
-            font-size: 1.5rem;
-            pointer-events: none;
-            animation: leafExplode 2s ease-out forwards;
+    
+        /* Handle extremely small screens */
+        @media (max-width: 320px) {
+            .container {
+                padding: 0.25rem;
+            }
+            
+            .card {
+                padding: 0.75rem;
+                font-size: 14px;
+            }
+            
+            .button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -123,7 +238,8 @@
 
     <script type="text/babel">
         function WordMatchingGame() {
-            const [gameState, setGameState] = React.useState('start');
+            // Change the initial state from 'start' to 'import'
+            const [gameState, setGameState] = React.useState('import');
             const [words, setWords] = React.useState({ latin: [], english: [] });
             const [selectedCards, setSelectedCards] = React.useState([]);
             const [importText, setImportText] = React.useState('');
@@ -131,8 +247,18 @@
             const [allWords, setAllWords] = React.useState([]);
             const [currentRound, setCurrentRound] = React.useState(1);
             const [usedWords, setUsedWords] = React.useState(new Set());
+            const [showChapterDropdown, setShowChapterDropdown] = React.useState(false);
             
             const WORDS_PER_ROUND = 6;
+
+            const handleChapterSelect = (chapterKey) => {
+                const chapter = window.chapters[chapterKey];
+                if (chapter) {
+                    setImportText(chapter.words);
+                    setShowChapterDropdown(false);
+                }
+            };
+
 
             const createLeaves = () => {
                 const leaves = [];
@@ -315,14 +441,6 @@
 
             return (
                 <div className="container">
-                    {gameState === 'start' && (
-                        <div className="center">
-                            <button className="button" onClick={startNewGame}>
-                                New Game
-                            </button>
-                        </div>
-                    )}
-
                     {gameState === 'import' && (
                         <div>
                             <h2>Import Words</h2>
@@ -344,9 +462,30 @@
                                     <strong>Error:</strong> {error}
                                 </div>
                             )}
-                            <button className="button" onClick={handleImport}>
-                                Start Game
-                            </button>
+                            <div className="button-group">
+                                <button className="button" onClick={handleImport}>
+                                    Start Game
+                                </button>
+                                <div className="dropdown">
+                                    <button 
+                                        className="button"
+                                        onClick={() => setShowChapterDropdown(!showChapterDropdown)}
+                                    >
+                                        Chapter
+                                    </button>
+                                    <div className={`dropdown-content ${showChapterDropdown ? 'show' : ''}`}>
+                                        {Object.entries(window.chapters).map(([key, chapter]) => (
+                                            <div 
+                                                key={key}
+                                                className="dropdown-item"
+                                                onClick={() => handleChapterSelect(key)}
+                                            >
+                                                {chapter.title}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     )}
 
@@ -387,15 +526,7 @@
                     )}
 
                     {gameState === 'finalWin' && (
-                        <div 
-                            className="victory-screen"
-                            ref={el => {
-                                if (el && !el.dataset.animated) {
-                                    el.dataset.animated = 'true';
-                                    createLeaves();
-                                }
-                            }}
-                        >
+                        <div className="victory-screen">
                             <h2 className="victory-title">Victoria!</h2>
                             <p className="victory-text">Gloria et honor! You have mastered all the words!</p>
                             <button 
