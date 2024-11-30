@@ -261,105 +261,157 @@ function WordMatchingGame() {
     }, [gameState, words.latin.length, allWords.length]);
 
     return (
-        <div className="container">
-            {gameState === 'start' && (
-                <div className="start-screen">
-                    <div className="roman-border">
-                        <h1 className="roman-title">LVDVS VOCABVLORVM</h1>
-                        <h2 className="roman-subtitle">Selege Caput</h2>
-                        <div className="chapter-grid">
-                            {Object.entries(window.chapters).map(([key, chapter]) => (
-                                <button 
-                                    key={key}
-                                    className="button chapter-button"
-                                    onClick={() => handleChapterSelect(key)}
-                                >
-                                    {chapter.title}
-                                </button>
-                            ))}
-                        </div>
-                        {error && (
-                            <div className="error">
-                                <strong>Error:</strong> {error}
+        <>
+            <nav className="nav-banner">
+                <a href="https://www.zachariahhopkins.com" target="_blank" rel="noopener noreferrer" className="nav-link">
+                    Created by Zachariah Hopkins
+                </a>
+            </nav>
+            <style>
+                {`
+                    .nav-banner {
+                        width: 100%;
+                        height: 40px;
+                        background-color: #2d1810;
+                        display: flex;
+                        align-items: center;
+                        padding: 0 20px;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        z-index: 1000;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                    }
+                    .nav-link {
+                        color: #ffffff;
+                        text-decoration: none;
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        transition: opacity 0.2s ease;
+                    }
+                    .nav-link:hover {
+                        opacity: 0.8;
+                    }
+                    body {
+                        padding-top: 80px;
+                        min-height: 100vh;
+                        margin: 0;
+                    }
+                    @media (max-width: 768px) {
+                        .nav-banner {
+                            height: 40px;
+                            padding: 0 15px;
+                            background-color: #2d1810;
+                        }
+                        .nav-link {
+                            font-size: 1rem;
+                        }
+                        body {
+                            padding-top: 70px;
+                        }
+                    }
+                `}
+            </style>
+            <div className="container">
+                {gameState === 'start' && (
+                    <div className="start-screen">
+                        <div className="roman-border">
+                            <h1 className="roman-title">LVDVS VOCABVLORVM</h1>
+                            <h2 className="roman-subtitle">Selege Caput</h2>
+                            <div className="chapter-grid">
+                                {Object.entries(window.chapters).map(([key, chapter]) => (
+                                    <button 
+                                        key={key}
+                                        className="button chapter-button"
+                                        onClick={() => handleChapterSelect(key)}
+                                    >
+                                        {chapter.title}
+                                    </button>
+                                ))}
                             </div>
-                        )}
-                    </div>
-                </div>
-            )}
-
-            {gameState === 'play' && (
-                <>
-                    <div className="center mb-4">
-                        {isPracticeMode ? 'Exercitatio: ' : ''}
-                        Certamen {currentRound} ex {Math.ceil(
-                            (isPracticeMode ? wrongAnswers.size : allWords.length) / WORDS_PER_ROUND
-                        )}
-                    </div>
-                    <div className="grid">
-                        <div>
-                            {words.latin?.map((word) => (
-                                <div
-                                    key={word.id}
-                                    className={`card ${word.matched ? 'matched' : ''} ${
-                                        selectedCards.find(c => c.id === word.id) ? 'selected' : ''
-                                    }`}
-                                    onClick={() => handleCardClick(word, 'latin')}
-                                >
-                                    {word.org}
+                            {error && (
+                                <div className="error">
+                                    <strong>Error:</strong> {error}
                                 </div>
-                            ))}
-                        </div>
-                        <div>
-                            {words.english?.map((word) => (
-                                <div
-                                    key={word.id}
-                                    className={`card ${word.matched ? 'matched' : ''} ${
-                                        selectedCards.find(c => c.id === word.id) ? 'selected' : ''
-                                    }`}
-                                    onClick={() => handleCardClick(word, 'english')}
-                                >
-                                    {word.trans}
-                                </div>
-                            ))}
+                            )}
                         </div>
                     </div>
-                </>
-            )}
+                )}
 
-            {(gameState === 'finalWin' || gameState === 'practiceWin') && (
-                <div className="victory-screen">
-                    <h2 className="victory-title">Victoria!</h2>
-                    <p className="victory-text">
-                        {gameState === 'practiceWin' 
-                            ? 'Optime! Exercitationem perfecisti!'
-                            : 'Gloria et honor! Omnia verba didicisti!'}
-                    </p>
-                    <div className="button-group">
-                        <button 
-                            className="button"
-                            onClick={handleRepeatGame}
-                        >
-                            Iterum Ludere
-                        </button>
-                        <button 
-                            className="button"
-                            onClick={startNewGame}
-                        >
-                            Ad Initium Redire
-                        </button>
-                        {((gameState === 'finalWin' && wrongAnswers.size > 0) ||
-                          (gameState === 'practiceWin' && practiceWrongAnswers.size > 0)) && (
+                {gameState === 'play' && (
+                    <>
+                        <div className="center mb-4">
+                            {isPracticeMode ? 'Exercitatio: ' : ''}
+                            Certamen {currentRound} ex {Math.ceil(
+                                (isPracticeMode ? wrongAnswers.size : allWords.length) / WORDS_PER_ROUND
+                            )}
+                        </div>
+                        <div className="grid">
+                            <div>
+                                {words.latin?.map((word) => (
+                                    <div
+                                        key={word.id}
+                                        className={`card ${word.matched ? 'matched' : ''} ${
+                                            selectedCards.find(c => c.id === word.id) ? 'selected' : ''
+                                        }`}
+                                        onClick={() => handleCardClick(word, 'latin')}
+                                    >
+                                        {word.org}
+                                    </div>
+                                ))}
+                            </div>
+                            <div>
+                                {words.english?.map((word) => (
+                                    <div
+                                        key={word.id}
+                                        className={`card ${word.matched ? 'matched' : ''} ${
+                                            selectedCards.find(c => c.id === word.id) ? 'selected' : ''
+                                        }`}
+                                        onClick={() => handleCardClick(word, 'english')}
+                                    >
+                                        {word.trans}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </>
+                )}
+
+                {(gameState === 'finalWin' || gameState === 'practiceWin') && (
+                    <div className="victory-screen">
+                        <h2 className="victory-title">Victoria!</h2>
+                        <p className="victory-text">
+                            {gameState === 'practiceWin' 
+                                ? 'Optime! Exercitationem perfecisti!'
+                                : 'Gloria et honor! Omnia verba didicisti!'}
+                        </p>
+                        <div className="button-group">
                             <button 
                                 className="button"
-                                onClick={handlePracticeWrongAnswers}
+                                onClick={handleRepeatGame}
                             >
-                                Exercere Errata
+                                Iterum Ludere
                             </button>
-                        )}
+                            <button 
+                                className="button"
+                                onClick={startNewGame}
+                            >
+                                Ad Initium Redire
+                            </button>
+                            {((gameState === 'finalWin' && wrongAnswers.size > 0) ||
+                              (gameState === 'practiceWin' && practiceWrongAnswers.size > 0)) && (
+                                <button 
+                                    className="button"
+                                    onClick={handlePracticeWrongAnswers}
+                                >
+                                    Exercere Errata
+                                </button>
+                            )}
+                        </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )}
+            </div>
+        </>
     );
 }
 
