@@ -1,5 +1,86 @@
 //This is rr_LanguageLearningDisplay.js
 
+const BookmarkLoader = ({ onSelect, sentences }) => {
+    const [bookmarks, setBookmarks] = React.useState([]);
+
+    React.useEffect(() => {
+        if (!sentences || sentences.length === 0) {
+            console.error('No sentences available');
+            return;
+        }
+
+        // Get text title from current text in Firebase
+        const textsRef = window.rr_database.ref('texts');
+        textsRef.once('value')
+            .then((snapshot) => {
+                const texts = snapshot.val();
+                let textTitle = null;
+                
+                // Find the text that matches our current sentences
+                for (const [title, text] of Object.entries(texts)) {
+                    if (text.sentences && 
+                        text.sentences[0] && 
+                        text.sentences[0].original === sentences[0].original) {
+                        textTitle = title;
+                        break;
+                    }
+                }
+
+                if (!textTitle) {
+                    throw new Error('Could not find text title');
+                }
+
+                // Now load bookmarks for this text
+                const bookmarksRef = window.rr_database.ref('bookmarks');
+                bookmarksRef.on('value', (snapshot) => {
+                    const bookmarksData = snapshot.val() || {};
+                    const bookmarksList = Object.entries(bookmarksData)
+                        .map(([key, value]) => ({
+                            ...value,
+                            key
+                        }))
+                        .filter(bookmark => bookmark.textName === textTitle)
+                        .sort((a, b) => a.sentenceNumber - b.sentenceNumber);
+                    
+                    setBookmarks(bookmarksList);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading bookmarks:', error);
+            });
+
+        return () => {
+            const bookmarksRef = window.rr_database.ref('bookmarks');
+            bookmarksRef.off();
+        };
+    }, [sentences]);
+
+    return React.createElement('div', {
+        className: 'bg-gray-800 p-4 rounded-lg shadow-xl max-h-96 overflow-y-auto'
+    }, [
+        React.createElement('h3', {
+            key: 'title',
+            className: 'text-lg text-gray-200 mb-4'
+        }, 'Load from Bookmark'),
+        bookmarks.length === 0 ?
+            React.createElement('p', {
+                key: 'empty',
+                className: 'text-gray-400'
+            }, 'No bookmarks found for this text.') :
+            React.createElement('div', {
+                key: 'list',
+                className: 'space-y-2'
+            }, bookmarks.map(function(bookmark) {
+                return React.createElement('button', {
+                    key: bookmark.key,
+                    onClick: function() { onSelect(bookmark.sentenceNumber - 1); },
+                    className: 'w-full text-left px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded-md text-gray-200'
+                }, 'Sentence ' + bookmark.sentenceNumber);
+            }))
+    ]);
+};
+
+
 const LanguageLearningDisplay = ({ sentences, onChooseText }) => {
     const [showTranslation, setShowTranslation] = React.useState(false);
     const [selectedWord, setSelectedWord] = React.useState(null);
@@ -12,6 +93,7 @@ const LanguageLearningDisplay = ({ sentences, onChooseText }) => {
     const [showGoToDialog, setShowGoToDialog] = React.useState(false);
     const [showImportDialog, setShowImportDialog] = React.useState(false);
     const [textLanguage, setTextLanguage] = React.useState('');
+    const [showBookmarkDialog, setShowBookmarkDialog] = React.useState(false);
 
     // Load definitions from Firebase on component mount
     // In the useEffect hook for loading definitions
@@ -190,12 +272,80 @@ const LanguageLearningDisplay = ({ sentences, onChooseText }) => {
         return sentences;
     };
 
+    function handlePlaceBookmark() {
+        const currentTextTitle = window.currentTextTitle; // Assuming this is set elsewhere in your app
+        
+        if (!currentTextTitle) {
+            // Try to get the title from the Firebase database based on the current sentence
+            const currentSentence = sentences[0];
+            if (!currentSentence) {
+                alert('Error: No text is currently loaded');
+                return;
+            }
+            
+            // Query Firebase to find the text that contains this sentence
+            const textsRef = window.rr_database.ref('texts');
+            textsRef.once('value')
+                .then((snapshot) => {
+                    const texts = snapshot.val();
+                    let foundTitle = null;
+                    
+                    // Look through all texts to find the one containing our current sentence
+                    for (const [title, text] of Object.entries(texts)) {
+                        if (text.sentences && 
+                            text.sentences[0] && 
+                            text.sentences[0].original === currentSentence.original) {
+                            foundTitle = title;
+                            break;
+                        }
+                    }
+                    
+                    if (foundTitle) {
+                        // Create bookmark with found title
+                        const bookmarkKey = `${foundTitle}_${currentSentenceIndex + 1}`;
+                        return window.rr_database.ref('bookmarks/' + bookmarkKey).set({
+                            textName: foundTitle,
+                            sentenceNumber: currentSentenceIndex + 1
+                        });
+                    } else {
+                        throw new Error('Could not find text title');
+                    }
+                })
+                .then(() => {
+                    alert('Bookmark placed successfully');
+                })
+                .catch((error) => {
+                    alert('Error placing bookmark: ' + error.message);
+                });
+        } else {
+            // If we have the title, create bookmark directly
+            const bookmarkKey = `${currentTextTitle}_${currentSentenceIndex + 1}`;
+            window.rr_database.ref('bookmarks/' + bookmarkKey).set({
+                textName: currentTextTitle,
+                sentenceNumber: currentSentenceIndex + 1
+            })
+            .then(() => {
+                alert('Bookmark placed successfully');
+            })
+            .catch((error) => {
+                alert('Error placing bookmark: ' + error.message);
+            });
+        }
+        
+        setShowMenu(false);
+    }
+
     const renderText = (text, isClickable = true) => {
-        const textDirectionClass = isClickable && textLanguage === 'عربي' ? 'text-right' : 'text-left';
+        // Handle text direction based on language, but only for original text
+        const isArabic = isClickable && textLanguage === 'عربي';
         
         return (
-            <div className={textDirectionClass}>
+            <div 
+                className={`${isArabic ? 'text-right' : 'text-left'}`}
+                dir={isArabic ? 'rtl' : 'ltr'} // Let the browser handle RTL naturally
+            >
                 {text.split(' ').map((word, index, array) => {
+                    // Remove any punctuation for definition lookup but keep it for display
                     const cleanWord = word.replace(/[.,!?;]$/, '').toLowerCase();
                     const hasDefinition = definitions.hasOwnProperty(cleanWord);
                     
@@ -229,6 +379,7 @@ const LanguageLearningDisplay = ({ sentences, onChooseText }) => {
             </div>
         );
     };
+
 
     // Reset current sentence index when sentences change
     React.useEffect(() => {
@@ -284,12 +435,30 @@ const LanguageLearningDisplay = ({ sentences, onChooseText }) => {
                                         </button>
                                         <button
                                             className="block w-full text-left px-4 py-2 text-sm text-gray-100 hover:bg-gray-700"
+                                            onClick={function() {
+                                                handlePlaceBookmark();
+                                                setShowMenu(false);
+                                            }}
+                                        >
+                                            Place Bookmark
+                                        </button>
+                                        <button
+                                            className="block w-full text-left px-4 py-2 text-sm text-gray-100 hover:bg-gray-700"
+                                            onClick={() => {
+                                                setShowBookmarkDialog(true);
+                                                setShowMenu(false);
+                                            }}
+                                        >
+                                            Load from Bookmark
+                                        </button>
+                                        <button
+                                            className="block w-full text-left px-4 py-2 text-sm text-gray-100 hover:bg-gray-700"
                                             onClick={() => {
                                                 setShowImportDialog(true);
                                                 setShowMenu(false);
                                             }}
                                         >
-                                            Import Text
+                                            Import New Text
                                         </button>
                                     </div>
                                 </div>
@@ -475,6 +644,31 @@ const LanguageLearningDisplay = ({ sentences, onChooseText }) => {
                         </div>
                     </div>
                 )}
+                {/* BookmarkLoader Dialog */}
+                {showBookmarkDialog ? (
+                    React.createElement('div', {
+                        className: 'fixed inset-0 bg-black/50 flex items-center justify-center z-50'
+                    }, 
+                        React.createElement('div', {
+                            className: 'relative'
+                        }, [
+                            React.createElement('button', {
+                                key: 'close',
+                                onClick: function() { setShowBookmarkDialog(false); },
+                                className: 'absolute -top-2 -right-2 bg-gray-700 hover:bg-gray-600 rounded-full p-1'
+                            }, '✕'),
+                            React.createElement(BookmarkLoader, {
+                                key: 'loader',
+                                sentences: sentences, // Pass sentences instead of currentTextTitle
+                                onSelect: function(sentenceIndex) {
+                                    setCurrentSentenceIndex(sentenceIndex);
+                                    setShowBookmarkDialog(false);
+                                    setShowTranslation(false);
+                                }
+                            })
+                        ])
+                    )
+                ) : null}
 
                 {/* Counter */}
                 <div className="fixed bottom-4 right-4 text-sm text-gray-400">
