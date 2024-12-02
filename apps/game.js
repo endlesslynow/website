@@ -1,5 +1,5 @@
 function WordMatchingGame() {
-    const [gameState, setGameState] = React.useState('start');
+    const [gameState, setGameState] = React.useState('languageSelect');
     const [words, setWords] = React.useState({ latin: [], english: [] });
     const [selectedCards, setSelectedCards] = React.useState([]);
     const [error, setError] = React.useState('');
@@ -10,11 +10,25 @@ function WordMatchingGame() {
     const [practiceWrongAnswers, setPracticeWrongAnswers] = React.useState(new Set());
     const [isPracticeMode, setIsPracticeMode] = React.useState(false);
     const [practiceUsedWords, setPracticeUsedWords] = React.useState(new Set());
+    const [selectedLanguage, setSelectedLanguage] = React.useState('latin');
     
     const WORDS_PER_ROUND = 6;
 
+
+    const handleLanguageSelect = (language) => {
+        if (language === 'LLPSIFR') {
+            setSelectedLanguage('latin');
+            setGameState('start');
+        } else if (language === 'arabic') {
+            setSelectedLanguage('arabic');
+            setGameState('start');
+        }
+    };
+
+
     const handleChapterSelect = (chapterKey) => {
-        const chapter = window.chapters[chapterKey];
+        const chapters = selectedLanguage === 'latin' ? window.chapters : window.chapters_ar;
+        const chapter = chapters[chapterKey];
         if (chapter) {
             const parsedWords = parseWords(chapter.words);
             if (parsedWords.length > 0) {
@@ -212,7 +226,7 @@ function WordMatchingGame() {
     };
 
     const startNewGame = () => {
-        setGameState('start');
+        setGameState('languageSelect');
         setWords({ latin: [], english: [] });
         setSelectedCards([]);
         setError('');
@@ -313,13 +327,34 @@ function WordMatchingGame() {
                 `}
             </style>
             <div className="container">
+                {gameState === 'languageSelect' && (
+                    <div className="start-screen">
+                        <div className="roman-border">
+                            <div className="chapter-grid">
+                                <button 
+                                    className="button chapter-button"
+                                    onClick={() => handleLanguageSelect('LLPSIFR')}
+                                >
+                                    LLPSIFR
+                                </button>
+                                <button 
+                                    className="button chapter-button"
+                                    onClick={() => handleLanguageSelect('arabic')}
+                                >
+                                    دردشة بالعربي اللبناني
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 {gameState === 'start' && (
                     <div className="start-screen">
                         <div className="roman-border">
                             <h1 className="roman-title">LVDVS VOCABVLORVM</h1>
                             <h2 className="roman-subtitle">Selege Caput</h2>
                             <div className="chapter-grid">
-                                {Object.entries(window.chapters).map(([key, chapter]) => (
+                                {Object.entries(selectedLanguage === 'latin' ? window.chapters : window.chapters_ar).map(([key, chapter]) => (
                                     <button 
                                         key={key}
                                         className="button chapter-button"
@@ -377,7 +412,7 @@ function WordMatchingGame() {
                     </>
                 )}
 
-                {(gameState === 'finalWin' || gameState === 'practiceWin') && (
+{(gameState === 'finalWin' || gameState === 'practiceWin') && (
                     <div className="victory-screen">
                         <h2 className="victory-title">Victoria!</h2>
                         <p className="victory-text">
