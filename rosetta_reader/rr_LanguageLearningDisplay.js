@@ -341,8 +341,8 @@ const LanguageLearningDisplay = ({ sentences, onChooseText }) => {
         
         return (
             <div 
-                className={`${isArabic ? 'text-right' : 'text-left'}`}
-                dir={isArabic ? 'rtl' : 'ltr'} // Let the browser handle RTL naturally
+                className={`${isArabic ? 'text-right font-[Amiri]' : 'text-left'}`}
+                dir={isArabic ? 'rtl' : 'ltr'}
             >
                 {text.split(' ').map((word, index, array) => {
                     // Remove any punctuation for definition lookup but keep it for display
