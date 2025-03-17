@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Language</title>
+    <style>
+        :root {
+            --kurdish-green: #009639;
+            --stripe-red: #ED1C24;
+            --stripe-white: #FFFFFF;
+            --stripe-green: #009639;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            width: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Creating the three equal horizontal stripes */
+            background: linear-gradient(to bottom, 
+                var(--stripe-red) 0%, 
+                var(--stripe-red) 33.33%, 
+                var(--stripe-white) 33.33%, 
+                var(--stripe-white) 66.66%, 
+                var(--stripe-green) 66.66%, 
+                var(--stripe-green) 100%);
+            background-attachment: fixed;
+        }
+        
+        .container {
+            background-color: rgba(255, 215, 0, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px;
+            max-width: 90%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+
+        
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .language-button {
+            background-color: var(--kurdish-green);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 10px;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 90px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        
+        .language-button:hover, .language-button:focus {
+            transform: translateY(-3px);
+            background-color: #00802f;
+        }
+        
+        .flag {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            margin-top: 8px;
+        }
+
+        /* Additional mobile optimizations */
+        @media (max-width: 480px) {
+            .language-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .language-button {
+                height: 80px;
+                padding: 10px 8px;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .language-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="language-grid">
+            <button class="language-button" data-lang="english">
+                <span>I speak English</span>
+                <span class="flag">🇬🇧</span>
+            </button>
+            
+            <button class="language-button" data-lang="arabic">
+                <span>أتحدث العربية</span>
+                <span class="flag">🇸🇦</span>
+            </button>
+            
+            <button class="language-button" data-lang="turkish">
+                <span>Türkçe konuşuyorum</span>
+                <span class="flag">🇹🇷</span>
+            </button>
+            
+            <button class="language-button" data-lang="hebrew">
+                <span>אני מדבר עברית</span>
+                <span class="flag">🇮🇱</span>
+            </button>
+            
+            <button class="language-button" data-lang="german">
+                <span>Ich spreche Deutsch</span>
+                <span class="flag">🇩🇪</span>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // Map full language names to their abbreviations
+        const languageAbbreviations = {
+            'english': 'en',
+            'arabic': 'ar',
+            'turkish': 'tr',
+            'hebrew': 'he',
+            'german': 'de'
+        };
+        
+        document.querySelectorAll('.language-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const language = this.getAttribute('data-lang');
+                const langAbbr = languageAbbreviations[language];
+                console.log(`Selected language: ${language} (${langAbbr})`);
+                
+                // Visual feedback
+                document.querySelectorAll('.language-button').forEach(btn => {
+                    btn.style.backgroundColor = 'var(--kurdish-green)';
+                });
+                this.style.backgroundColor = '#00802f';
+                
+                // Redirect to the appropriate page
+                window.location.href = `/kurmanji_lessons/kl_lessons_${langAbbr}.html`;
+            });
+        });
+    </script>
+</body>
+</html>

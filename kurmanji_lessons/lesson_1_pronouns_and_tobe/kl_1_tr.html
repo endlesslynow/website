@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ders 1: Zamirler ve "Olmak" Fiili</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Kurdish-inspired color scheme */
+        :root {
+            --kurdish-yellow: #F5CB5C;      /* Primary color - warm yellow */
+            --kurdish-red: #9E2A2B;         /* Secondary color - deep red */
+            --kurdish-green: #4F7942;       /* Tertiary color - forest green */
+            --kurdish-light-yellow: #FFF7E0; /* Light background */
+            --kurdish-dark-yellow: #DBA53A;  /* Darker yellow for hover states */
+            --kurdish-light-red: #E0C1C1;    /* Light red for alternate backgrounds */
+            --kurdish-light-green: #BFDBC1;  /* Light green for notes */
+            --text-color: #333333;           /* Main text color */
+            --text-light: #FFFFFF;           /* Light text for dark backgrounds */
+        }
+
+        body {
+            font-family: 'Nunito', Arial, sans-serif;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: var(--kurdish-light-yellow);
+            box-sizing: border-box;
+            color: var(--text-color);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3 {
+            color: var(--kurdish-red);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 {
+            text-align: left;
+            border-bottom: 3px solid var(--kurdish-yellow);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 25px;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: none;
+        }
+
+        th {
+            background-color: var(--kurdish-yellow);
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--kurdish-light-yellow);
+        }
+
+        tr:hover {
+            background-color: #FFEEB4;
+        }
+
+        .examples {
+            background-color: var(--kurdish-light-yellow);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .examples p:not(:first-of-type) {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        /* Alternating background colors for example sentences - yellow to green gradient */
+        .examples p:nth-of-type(2) {
+            background-color: #FFF2C2;
+        }
+
+        .examples p:nth-of-type(3) {
+            background-color: #FBEAA6;
+        }
+
+        .examples p:nth-of-type(4) {
+            background-color: #F7E28A;
+        }
+
+        .examples p:nth-of-type(5) {
+            background-color: #F3DA6E;
+        }
+
+        .examples p:nth-of-type(6) {
+            background-color: #EFD256;
+        }
+
+        .examples p:nth-of-type(7) {
+            background-color: #EACC42;
+        }
+
+        .exercise {
+            background-color: #E5F0E3; /* Light green for exercise sections */
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .note {
+            background-color: #FFF2C2; /* Light yellow for notes */
+            padding: 15px;
+            border-left: 4px solid var(--kurdish-yellow);
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight {
+            font-weight: 700;
+            color: var(--kurdish-red);
+        }
+
+        /* Interactive Exercise Styles */
+        .exercise-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .question {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .answer-input {
+            width: 100px;
+            padding: 10px 12px;
+            border: 2px solid var(--kurdish-yellow);
+            border-radius: 6px;
+            font-size: 16px;
+            margin: 0 8px;
+            font-family: inherit;
+        }
+
+        /* Make inputs for translation exercises wider */
+        #answer7, #answer8, #answer9, #answer10, #answer11, #answer12 {
+            width: 300px;
+        }
+
+        .check-btn {
+            background-color: var(--kurdish-yellow);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.2s ease;
+            font-family: inherit;
+            font-weight: 600;
+        }
+
+        .check-btn:hover {
+            background-color: var(--kurdish-dark-yellow);
+        }
+
+        .feedback {
+            margin-left: 5px;
+            font-weight: bold;
+        }
+
+        .correct {
+            color: var(--kurdish-green);
+        }
+
+        .incorrect {
+            color: var(--kurdish-red);
+        }
+
+        /* Matching Game Styles */
+        .matching-game {
+            background-color: #FFF7E0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .matching-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .matching-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .matching-item {
+            padding: 12px 15px;
+            background-color: white;
+            border: 2px solid var(--kurdish-yellow);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .matching-item:hover {
+            background-color: var(--kurdish-light-yellow);
+        }
+
+        .matching-item.selected {
+            background-color: var(--kurdish-yellow);
+            color: var(--text-color);
+        }
+
+        .matching-item.matched {
+            background-color: var(--kurdish-green);
+            color: white;
+            border-color: var(--kurdish-green);
+            cursor: default;
+        }
+
+        .matching-result {
+            text-align: center;
+        }
+
+        #matching-feedback {
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        #match-progress {
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        #reset-matching {
+            margin-top: 15px;
+            width: 100%;
+            max-width: 200px;
+            padding: 12px;
+        }
+
+        /* Celebration Styles */
+        .celebration-section {
+            position: relative;
+            min-height: 300px;
+            overflow: hidden;
+            text-align: center;
+            background: linear-gradient(135deg, #FFF7E0, #F5CB5C);
+        }
+
+        .celebration-container {
+            position: relative;
+            height: 300px;
+            padding: 20px;
+        }
+
+        .congrats-message {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--kurdish-red);
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        .congrats-translation {
+            font-size: 1.2rem;
+            color: var(--kurdish-green);
+            margin-bottom: 30px;
+        }
+
+        .floating-word {
+            position: absolute;
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: rgba(245, 203, 92, 0.3);
+            color: var(--kurdish-red);
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            animation-duration: 4s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        .floating-word:nth-child(3) { animation-name: float1; animation-duration: 4.5s; }
+        .floating-word:nth-child(4) { animation-name: float2; animation-duration: 5s; }
+        .floating-word:nth-child(5) { animation-name: float3; animation-duration: 5.5s; }
+        .floating-word:nth-child(6) { animation-name: float1; animation-duration: 6s; }
+        .floating-word:nth-child(7) { animation-name: float2; animation-duration: 4.8s; }
+        .floating-word:nth-child(8) { animation-name: float3; animation-duration: 5.2s; }
+        .floating-word:nth-child(9) { animation-name: float1; animation-duration: 5.8s; }
+        .floating-word:nth-child(10) { animation-name: float2; animation-duration: 4.2s; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float1 {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(20px, -15px) rotate(5deg); }
+        }
+
+        @keyframes float2 {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-15px, 10px) rotate(-3deg); }
+        }
+
+        @keyframes float3 {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(10px, 20px) rotate(2deg); }
+        }
+
+        @keyframes vibrate {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            20% { transform: translate(-4px, -2px) rotate(-2deg); }
+            40% { transform: translate(4px, 2px) rotate(2deg); }
+            60% { transform: translate(-4px, 2px) rotate(-1deg); }
+            80% { transform: translate(4px, -2px) rotate(1deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        @keyframes crazy-pop {
+            0% { transform: scale(1) rotate(0deg); opacity: 1; }
+            20% { transform: scale(2) rotate(20deg); opacity: 1; }
+            50% { transform: scale(3) rotate(-15deg) translate(0, -80px); opacity: 0.8; }
+            80% { transform: scale(0.5) rotate(180deg) translate(0, 50px); opacity: 0.6; }
+            100% { transform: scale(0) rotate(360deg) translate(0, 100px); opacity: 0; }
+        }
+
+        @keyframes bounce-in {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.3); opacity: 1; }
+            70% { transform: scale(0.8); }
+            85% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .vibrating {
+            animation: vibrate 0.4s linear !important;
+            background-color: rgba(245, 203, 92, 0.7) !important;
+            box-shadow: 0 2px 15px rgba(245, 203, 92, 0.4) !important;
+            cursor: pointer;
+        }
+
+        .crazy-popping {
+            animation: crazy-pop 1s ease-in-out forwards !important;
+            background-color: rgba(245, 203, 92, 0.7) !important;
+            box-shadow: 0 0 25px rgba(245, 203, 92, 0.8) !important;
+            z-index: 10 !important;
+        }
+
+        .floating-word {
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .floating-word:hover {
+            transform: scale(1.1);
+        }
+
+        .bounce-in {
+            animation: bounce-in 0.6s ease-out;
+        }
+
+        .pop {
+            animation: pop 0.3s ease-out;
+        }
+
+        /* Media queries */
+        @media (max-width: 600px) {
+            .section {
+                padding: 20px 15px;
+                border-radius: 10px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+                padding-bottom: 10px;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            h3 {
+                font-size: 1.1rem;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            th, td {
+                padding: 10px 12px;
+            }
+            
+            th:nth-child(1):contains("Pronoun") {
+                font-size: 0.85rem;
+            }
+            
+            th:nth-child(2):contains("To Be") {
+                font-size: 0.85rem;
+            }
+            
+            th {
+                font-size: 0.9rem;
+                padding: 10px 8px;
+            }
+            
+            .exercise {
+                padding: 15px;
+            }
+            
+            .exercise-item {
+                padding: 12px;
+            }
+            
+            .question {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .answer-input {
+                margin: 8px 0;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            #answer7, #answer8, #answer9, #answer10, #answer11, #answer12 {
+                width: 100%;
+            }
+            
+            .check-btn {
+                margin-top: 10px;
+                width: 100%;
+                max-width: 300px;
+                padding: 12px;
+            }
+            
+            .feedback {
+                display: block;
+                margin-top: 8px;
+            }
+            
+            .congrats-message {
+                font-size: 1.6rem;
+            }
+            
+            .congrats-translation {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .matching-item {
+                padding: 10px 8px;
+                font-size: 0.9em;
+            }
+            
+            .matching-column {
+                gap: 8px;
+            }
+            
+            .matching-container {
+                gap: 8px;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Ders 1<br>Zamirler ve "Olmak" Fiili</h1>
+    
+    <div class="section">
+        <h2>1. Kurmanci Kürtçesinde Kişi Zamirleri</h2>
+        <p>Kurmanci Kürtçesindeki temel kişi zamirlerini öğrenerek başlayalım:</p>
+        
+        <table>
+            <tr>
+                <th>Kürtçe</th>
+                <th>Türkçe</th>
+            </tr>
+            <tr>
+                <td>Ez</td>
+                <td>Ben</td>
+            </tr>
+            <tr>
+                <td>Tu</td>
+                <td>Sen (tekil)</td>
+            </tr>
+            <tr>
+                <td>Ew</td>
+                <td>O (erkek/kadın/şey)</td>
+            </tr>
+            <tr>
+                <td>Em</td>
+                <td>Biz</td>
+            </tr>
+            <tr>
+                <td>Hûn</td>
+                <td>Siz (çoğul)</td>
+            </tr>
+            <tr>
+                <td>Ew</td>
+                <td>Onlar</td>
+            </tr>
+        </table>
+        
+        <div class="note">
+            <p>Not: Kurmanci Kürtçesinde, "Ew" hem üçüncü tekil şahıs (o) hem de üçüncü çoğul şahıs (onlar) için kullanılır.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>2. Kurmanci Kürtçesinde "Olmak" Fiili</h2>
+        <p>Kurmanci Kürtçesinde, "olmak" fiili kullanılan zamire göre değişir. İşte şimdiki zaman formları:</p>
+        
+        <table>
+            <tr>
+                <th>Zamir</th>
+                <th>Form</th>
+                <th>Türkçe</th>
+            </tr>
+            <tr>
+                <td>Ez</td>
+                <td>im</td>
+                <td>Ben ...im</td>
+            </tr>
+            <tr>
+                <td>Tu</td>
+                <td>î</td>
+                <td>Sen ...sin</td>
+            </tr>
+            <tr>
+                <td>Ew</td>
+                <td>e</td>
+                <td>O ...dir</td>
+            </tr>
+            <tr>
+                <td>Em</td>
+                <td>in</td>
+                <td>Biz ...iz</td>
+            </tr>
+            <tr>
+                <td>Hûn</td>
+                <td>in</td>
+                <td>Siz ...siniz</td>
+            </tr>
+            <tr>
+                <td>Ew</td>
+                <td>in</td>
+                <td>Onlar ...dirler</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="section">
+        <h2>3. Ünlülerden Sonra Varyasyonlar</h2>
+        <p>Bir kelime ünlü ile bittiğinde, "olmak" formları şu şekilde değişir:</p>
+        
+        <table>
+            <tr>
+                <th>Standart</th>
+                <th>Ünlüden Sonra</th>
+                <th>Örnek</th>
+            </tr>
+            <tr>
+                <td>im (Ben ...im)</td>
+                <td>me</td>
+                <td>mamoste + im → mamoste me</td>
+            </tr>
+            <tr>
+                <td>î (Sen ...sin)</td>
+                <td>yî</td>
+                <td>mamoste + î → mamoste yî</td>
+            </tr>
+            <tr>
+                <td>e (O ...dir)</td>
+                <td>ye</td>
+                <td>mamoste + e → mamoste ye</td>
+            </tr>
+            <tr>
+                <td>in (Biz/Siz/Onlar ...iz)</td>
+                <td>ne</td>
+                <td>mamoste + in → mamoste ne</td>
+            </tr>
+        </table>
+        
+        <div class="note">
+            <p>Bu değişiklik, Kürtçenin kelime sınırları boyunca yan yana iki ünlüden kaçınması nedeniyle olur.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>4. "xwendekar" (öğrenci) ve "mamoste" (öğretmen) ile Örnekler</h2>
+        
+        <div class="examples">
+            <h3>"xwendekar" (öğrenci) ile Örnekler</h3>
+            <p>"Xwendekar" bir ünsüz ('r') ile biter, bu yüzden standart formları kullanırız:</p>
+            <p>Ez xwendekar <span class="highlight">im</span>. (Ben bir öğrenciyim.)</p>
+            <p>Tu xwendekar <span class="highlight">î</span>. (Sen bir öğrencisin.)</p>
+            <p>Ew xwendekar <span class="highlight">e</span>. (O bir öğrencidir.)</p>
+            <p>Em xwendekar <span class="highlight">in</span>. (Biz öğrenciyiz.)</p>
+            <p>Hûn xwendekar <span class="highlight">in</span>. (Siz öğrencisiniz.)</p>
+            <p>Ew xwendekar <span class="highlight">in</span>. (Onlar öğrencidirler.)</p>
+        </div>
+        
+        <div class="examples">
+            <h3>"mamoste" (öğretmen) ile Örnekler</h3>
+            <p>"Mamoste" bir ünlü ('e') ile biter, bu yüzden ünlüden sonraki formları kullanırız:</p>
+            <p>Ez mamoste <span class="highlight">me</span>. (Ben bir öğretmenim.)</p>
+            <p>Tu mamoste <span class="highlight">yî</span>. (Sen bir öğretmensin.)</p>
+            <p>Ew mamoste <span class="highlight">ye</span>. (O bir öğretmendir.)</p>
+            <p>Em mamoste <span class="highlight">ne</span>. (Biz öğretmeniz.)</p>
+            <p>Hûn mamoste <span class="highlight">ne</span>. (Siz öğretmensiniz.)</p>
+            <p>Ew mamoste <span class="highlight">ne</span>. (Onlar öğretmendirler.)</p>
+        </div>
+        
+        <div class="note">
+            <p>"Olmak" fiilinin ünlüden sonra "im"den "me"ye, "î"den "yî"ye, "e"den "ye"ye ve "in"den "ne"ye nasıl değiştiğine dikkat edin.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>5. Alıştırmalar</h2>
+        
+        <div class="exercise">
+            <h3>Alıştırma 1: Boşlukları Doldurun</h3>
+            <p>Cümleleri "olmak" fiilinin doğru formu ile tamamlayın:</p>
+            
+            <div class="exercise-item">
+                <div class="question">
+                    <span>1. Ez xwendekar </span>
+                    <input type="text" id="answer1" class="answer-input">
+                    <span>. (Ben bir öğrenciyim.)</span>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(1, 'im')">Cevabı Kontrol Et</button>
+                <span id="feedback1" class="feedback"></span>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="question">
+                    <span>2. Tu mamoste </span>
+                    <input type="text" id="answer2" class="answer-input">
+                    <span>. (Sen bir öğretmensin.)</span>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(2, 'yî')">Cevabı Kontrol Et</button>
+                <span id="feedback2" class="feedback"></span>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="question">
+                    <span>3. Ew xwendekar </span>
+                    <input type="text" id="answer3" class="answer-input">
+                    <span>. (O bir öğrencidir.)</span>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(3, 'e')">Cevabı Kontrol Et</button>
+                <span id="feedback3" class="feedback"></span>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="question">
+                    <span>4. Em mamoste </span>
+                    <input type="text" id="answer4" class="answer-input">
+                    <span>. (Biz öğretmeniz.)</span>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(4, 'ne')">Cevabı Kontrol Et</button>
+                <span id="feedback4" class="feedback"></span>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="question">
+                    <span>5. Hûn xwendekar </span>
+                    <input type="text" id="answer5" class="answer-input">
+                    <span>. (Siz öğrencisiniz.)</span>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(5, 'in')">Cevabı Kontrol Et</button>
+                <span id="feedback5" class="feedback"></span>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="question">
+                    <span>6. Ew mamoste </span>
+                    <input type="text" id="answer6" class="answer-input">
+                    <span>. (Onlar öğretmendirler.)</span>
+                </div>
+                <button class="check-btn" onclick="checkAnswer(6, 'ne')">Cevabı Kontrol Et</button>
+                <span id="feedback6" class="feedback"></span>
+            </div>
+        </div>
+        
+        <div class="exercise">
+            <h3>Alıştırma 2: Çeviri</h3>
+            <p>Aşağıdaki cümleleri Kurmanci Kürtçesine çevirin:</p>
+            
+            <div class="exercise-item">
+                <div class="question">
+                    <span>1. Ben bir öğretmenim.</span>
+                    <input type="text" id="answer7" class="answer-input">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(7, 'Ez mamoste me')">Cevabı Kontrol Et</button>
+                <span id="feedback7" class="feedback"></span>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="question">
+                    <span>2. Sen bir öğrencisin.</span>
+                    <input type="text" id="answer8" class="answer-input">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(8, 'Tu xwendekar î')">Cevabı Kontrol Et</button>
+                <span id="feedback8" class="feedback"></span>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="question">
+                    <span>3. O bir öğretmendir.</span>
+                    <input type="text" id="answer9" class="answer-input">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(9, 'Ew mamoste ye')">Cevabı Kontrol Et</button>
+                <span id="feedback9" class="feedback"></span>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="question">
+                    <span>4. Biz öğrenciyiz.</span>
+                    <input type="text" id="answer10" class="answer-input">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(10, 'Em xwendekar in')">Cevabı Kontrol Et</button>
+                <span id="feedback10" class="feedback"></span>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="question">
+                    <span>5. Siz öğretmensiniz.</span>
+                    <input type="text" id="answer11" class="answer-input">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(11, 'Hûn mamoste ne')">Cevabı Kontrol Et</button>
+                <span id="feedback11" class="feedback"></span>
+            </div>
+            
+            <div class="exercise-item">
+                <div class="question">
+                    <span>6. Onlar öğrencidirler.</span>
+                    <input type="text" id="answer12" class="answer-input">
+                </div>
+                <button class="check-btn" onclick="checkAnswer(12, 'Ew xwendekar in')">Cevabı Kontrol Et</button>
+                <span id="feedback12" class="feedback"></span>
+            </div>
+        </div>
+        
+        <div class="exercise">
+            <h3>Alıştırma 3: Zamirleri Eşleştir</h3>
+            <p>Kürtçe zamirleri Türkçe karşılıklarıyla eşleştirmek için çiftlere tıklayın:</p>
+            
+            <div class="matching-game">
+                <div class="matching-container">
+                    <div class="matching-column">
+                        <div class="matching-item kurdish" data-id="1">Ez</div>
+                        <div class="matching-item kurdish" data-id="2">Tu</div>
+                        <div class="matching-item kurdish" data-id="3">Ew (tekil)</div>
+                        <div class="matching-item kurdish" data-id="4">Em</div>
+                        <div class="matching-item kurdish" data-id="5">Hûn</div>
+                        <div class="matching-item kurdish" data-id="6">Ew (çoğul)</div>
+                    </div>
+                    <div class="matching-column">
+                        <div class="matching-item english" data-id="4">Biz</div>
+                        <div class="matching-item english" data-id="6">Onlar</div>
+                        <div class="matching-item english" data-id="2">Sen (tekil)</div>
+                        <div class="matching-item english" data-id="5">Siz (çoğul)</div>
+                        <div class="matching-item english" data-id="1">Ben</div>
+                        <div class="matching-item english" data-id="3">O (erkek/kadın/şey)</div>
+                    </div>
+                </div>
+                <div class="matching-result">
+                    <p id="matching-feedback">Bir Kürtçe zamir ve Türkçe karşılığını seçin</p>
+                    <div id="match-progress">Eşleşmeler: <span id="matches-count">0</span>/6</div>
+                    <button id="reset-matching" class="check-btn">Oyunu Sıfırla</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Celebration Section -->
+    <div class="section celebration-section">
+        <h2>Ders Tamamlandı!</h2>
+        
+        <div class="celebration-container">
+            <div class="congrats-message">Pîroz be! Te dersa xwe temam kir!</div>
+            <div class="congrats-translation">(Tebrikler! Dersini tamamladın!)</div>
+            
+            <!-- Pre-positioned floating words -->
+            <div class="floating-word" style="top:15%; left:20%;">Ez</div>
+            <div class="floating-word" style="top:60%; left:15%;">Tu</div>
+            <div class="floating-word" style="top:30%; left:75%;">Ew</div>
+            <div class="floating-word" style="top:70%; left:65%;">Em</div>
+            <div class="floating-word" style="top:25%; left:35%;">Hûn</div>
+            <div class="floating-word" style="top:45%; left:80%;">im</div>
+            <div class="floating-word" style="top:80%; left:40%;">î</div>
+            <div class="floating-word" style="top:40%; left:60%;">e</div>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle floating word interactions
+        function initializeFloatingWords() {
+            const floatingWords = document.querySelectorAll('.floating-word');
+            
+            floatingWords.forEach(word => {
+                // Add click event to each floating word
+                word.addEventListener('click', function() {
+                    // Skip if already in an animation
+                    if (this.classList.contains('vibrating') || 
+                        this.classList.contains('crazy-popping')) {
+                        return;
+                    }
+                    
+                    // Store the original position and animation
+                    const originalPosition = {
+                        top: this.offsetTop,
+                        left: this.offsetLeft
+                    };
+                    const originalAnimation = this.style.animation;
+                    
+                    // Add vibration class
+                    this.classList.add('vibrating');
+                    
+                    // After vibration completes, do the crazy pop
+                    setTimeout(() => {
+                        this.classList.remove('vibrating');
+                        this.classList.add('crazy-popping');
+                        
+                        // After crazy pop animation completes, replace with a new bouncing word
+                        setTimeout(() => {
+                            // Hide the original word temporarily
+                            this.style.opacity = '0';
+                            this.classList.remove('crazy-popping');
+                            
+                            // Create and insert a new word with bounce-in animation
+                            const newWord = document.createElement('div');
+                            newWord.textContent = this.textContent;
+                            newWord.className = 'floating-word bounce-in';
+                            newWord.style.position = 'absolute';
+                            newWord.style.top = originalPosition.top + 'px';
+                            newWord.style.left = originalPosition.left + 'px';
+                            document.querySelector('.celebration-container').appendChild(newWord);
+                            
+                            // After bounce-in completes, remove the new word and restore the original
+                            setTimeout(() => {
+                                newWord.remove();
+                                this.style.opacity = '1';
+                                this.style.animation = originalAnimation;
+                            }, 600);
+                        }, 1000);
+                    }, 400);
+                });
+            });
+        }
+        
+        function checkAnswer(questionNumber, correctAnswer) {
+            const inputField = document.getElementById(`answer${questionNumber}`);
+            const feedbackElement = document.getElementById(`feedback${questionNumber}`);
+            const userAnswer = inputField.value.trim();
+            
+            // Normalize both answers: convert to lowercase and remove punctuation
+            const normalizedUserAnswer = userAnswer.toLowerCase().replace(/[.,!?;:]/g, '');
+            const normalizedCorrectAnswer = correctAnswer.toLowerCase().replace(/[.,!?;:]/g, '');
+            
+            if (normalizedUserAnswer === normalizedCorrectAnswer) {
+                feedbackElement.textContent = "✓ Doğru!";
+                feedbackElement.className = "feedback correct";
+                inputField.style.borderColor = "#4F7942";
+            } else {
+                feedbackElement.textContent = "✗ Yanlış. Doğru cevap: " + correctAnswer;
+                feedbackElement.className = "feedback incorrect";
+                inputField.style.borderColor = "#9E2A2B";
+            }
+        }
+        
+        // Add event listeners for Enter key
+        document.addEventListener('DOMContentLoaded', function() {
+            const correctAnswers = {
+                1: 'im', 
+                2: 'yî', 
+                3: 'e', 
+                4: 'ne', 
+                5: 'in', 
+                6: 'ne',
+                7: 'Ez mamoste me',
+                8: 'Tu xwendekar î',
+                9: 'Ew mamoste ye',
+                10: 'Em xwendekar in',
+                11: 'Hûn mamoste ne',
+                12: 'Ew xwendekar in'
+            };
+            
+            for (let i = 1; i <= 12; i++) {
+                const inputField = document.getElementById(`answer${i}`);
+                if (inputField) {
+                    const currentQuestionNumber = i;
+                    
+                    inputField.addEventListener('keypress', function(event) {
+                        if (event.key === 'Enter') {
+                            event.preventDefault();
+                            checkAnswer(currentQuestionNumber, correctAnswers[currentQuestionNumber]);
+                        }
+                    });
+                }
+            }
+            
+            // Initialize matching game
+            initializeMatchingGame();
+            
+            // Initialize the floating words in the celebration section
+            initializeFloatingWords();
+        });
+        
+        function initializeMatchingGame() {
+            const matchingItems = document.querySelectorAll('.matching-item');
+            const resetButton = document.getElementById('reset-matching');
+            const feedback = document.getElementById('matching-feedback');
+            const matchesCount = document.getElementById('matches-count');
+            const englishColumn = document.querySelector('.matching-column:nth-child(2)');
+            
+            let selectedKurdish = null;
+            let selectedEnglish = null;
+            let totalMatches = 0;
+            
+            // Function to shuffle the English options
+            function shuffleEnglishOptions() {
+                const englishItems = Array.from(document.querySelectorAll('.matching-item.english:not(.matched)'));
+                // Fisher-Yates shuffle algorithm
+                for (let i = englishItems.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    englishColumn.appendChild(englishItems[j]);
+                    englishColumn.appendChild(englishItems[i]);
+                }
+            }
+            
+            // Add click event to all matching items
+            matchingItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Skip if already matched
+                    if (this.classList.contains('matched')) {
+                        return;
+                    }
+                    
+                    const isKurdish = this.classList.contains('kurdish');
+                    const isEnglish = this.classList.contains('english');
+                    const itemId = this.getAttribute('data-id');
+                    
+                    // If clicking on Kurdish item
+                    if (isKurdish) {
+                        // Deselect previous Kurdish if any
+                        const prevSelected = document.querySelector('.kurdish.selected');
+                        if (prevSelected) {
+                            prevSelected.classList.remove('selected');
+                        }
+                        
+                        // Select current
+                        this.classList.add('selected');
+                        selectedKurdish = { element: this, id: itemId };
+                        
+                        feedback.textContent = "Şimdi Türkçe karşılığını seçin";
+                    }
+                    
+                    // If clicking on English item
+                    if (isEnglish) {
+                        // Deselect previous English if any
+                        const prevSelected = document.querySelector('.english.selected');
+                        if (prevSelected) {
+                            prevSelected.classList.remove('selected');
+                        }
+                        
+                        // Select current
+                        this.classList.add('selected');
+                        selectedEnglish = { element: this, id: itemId };
+                        
+                        feedback.textContent = "Şimdi Kürtçe zamiri seçin";
+                    }
+                    
+                    // Check if we have both selections
+                    if (selectedKurdish && selectedEnglish) {
+                        // Check if match
+                        if (selectedKurdish.id === selectedEnglish.id) {
+                            // It's a match!
+                            selectedKurdish.element.classList.remove('selected');
+                            selectedEnglish.element.classList.remove('selected');
+                            
+                            selectedKurdish.element.classList.add('matched');
+                            selectedEnglish.element.classList.add('matched');
+                            
+                            totalMatches++;
+                            matchesCount.textContent = totalMatches;
+                            
+                            feedback.textContent = "Doğru eşleşme! Harika!";
+                            
+                            // Check if game completed
+                            if (totalMatches === 6) {
+                                feedback.textContent = "Tebrikler! Tüm zamirleri doğru eşleştirdiniz!";
+                            }
+                        } else {
+                            // Not a match
+                            selectedKurdish.element.classList.remove('selected');
+                            selectedEnglish.element.classList.remove('selected');
+                            
+                            feedback.textContent = "Eşleşme yok. Tekrar deneyin!";
+                        }
+                        
+                        // Reset selections
+                        selectedKurdish = null;
+                        selectedEnglish = null;
+                    }
+                });
+            });
+            
+            // Reset button
+            resetButton.addEventListener('click', function() {
+                matchingItems.forEach(item => {
+                    item.classList.remove('selected', 'matched');
+                });
+                
+                selectedKurdish = null;
+                selectedEnglish = null;
+                totalMatches = 0;
+                matchesCount.textContent = totalMatches;
+                feedback.textContent = "Bir Kürtçe zamir ve Türkçe karşılığını seçin";
+                
+                // Shuffle English options on reset
+                shuffleEnglishOptions();
+            });
+            
+            // Shuffle English options on initial load
+            shuffleEnglishOptions();
+            
+            // Add touch feedback for mobile
+            matchingItems.forEach(item => {
+                item.addEventListener('touchstart', function() {
+                    this.style.opacity = '0.7';
+                });
+                
+                item.addEventListener('touchend', function() {
+                    this.style.opacity = '1';
+                });
+            });
+        }
+    </script>
+</body>
+</html>
