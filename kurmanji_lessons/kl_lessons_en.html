@@ -11,13 +11,13 @@
             --stripe-white: #FFFFFF;
             --stripe-green: #009639;
         }
-        
+       
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+       
         html, body {
             height: 100%;
             width: 100%;
@@ -26,16 +26,16 @@
             justify-content: center;
             align-items: center;
             /* Creating the three equal horizontal stripes */
-            background: linear-gradient(to bottom, 
-                var(--stripe-red) 0%, 
-                var(--stripe-red) 33.33%, 
-                var(--stripe-white) 33.33%, 
-                var(--stripe-white) 66.66%, 
-                var(--stripe-green) 66.66%, 
+            background: linear-gradient(to bottom,
+                var(--stripe-red) 0%,
+                var(--stripe-red) 33.33%,
+                var(--stripe-white) 33.33%,
+                var(--stripe-white) 66.66%,
+                var(--stripe-green) 66.66%,
                 var(--stripe-green) 100%);
             background-attachment: fixed;
         }
-        
+       
         .container {
             background-color: rgba(255, 215, 0, 0.7);
             border-radius: 12px;
@@ -44,7 +44,7 @@
             max-width: 90%;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-        
+       
         .lesson-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -52,7 +52,7 @@
             width: 100%;
             max-width: 600px;
         }
-        
+       
         .lesson-button {
             background-color: var(--kurdish-green);
             color: white;
@@ -68,23 +68,22 @@
             height: 90px;
             transition: transform 0.2s, background-color 0.2s;
         }
-        
+       
         .lesson-button:hover, .lesson-button:focus {
             transform: translateY(-3px);
             background-color: #00802f;
         }
-        
+       
         .icon {
             font-size: clamp(1.2rem, 4vw, 1.5rem);
             margin-top: 8px;
         }
-
         /* Additional mobile optimizations */
         @media (max-width: 480px) {
             .container {
                 padding: 15px;
             }
-            
+           
             .lesson-button {
                 height: 80px;
                 padding: 10px 8px;
@@ -98,20 +97,27 @@
             <button class="lesson-button" data-lesson="1">
                 <span>Lesson 1: Pronouns and the "To be" Verb</span>
             </button>
+            <button class="lesson-button" data-lesson="2">
+                <span>Lesson 2: Family Members and Possession</span>
+            </button>
         </div>
     </div>
-    
+   
     <script>
         document.querySelectorAll('.lesson-button').forEach(button => {
             button.addEventListener('click', function() {
                 const lesson = this.getAttribute('data-lesson');
                 console.log(`Selected lesson: ${lesson}`);
-                
+               
                 // Visual feedback
                 this.style.backgroundColor = '#00802f';
-                
+               
                 // Redirect to the appropriate page
-                window.location.href = `/kurmanji_lessons/lesson_1_pronouns_and_tobe/kl_1_en.html`;
+                if (lesson === "1") {
+                    window.location.href = `/kurmanji_lessons/lesson_1_pronouns_and_tobe/kl_1_en.html`;
+                } else if (lesson === "2") {
+                    window.location.href = `/kurmanji_lessons/lesson_2_family_and_possession/kl_2_en.html`;
+                }
             });
         });
     </script>
