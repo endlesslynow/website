@@ -261,9 +261,11 @@ body {
         }
 
         .correct {
-            color: var(--ottoman-teal);
-        }
+    color: black !important;
 
+    font-size: 1.5em !important;
+
+}
         .incorrect {
             color: var(--ottoman-red);
         }
@@ -604,7 +606,6 @@ body {
     </div>
     
     <div class="section">
-        <h2>First Part, Ottoman Turkish Grammar<br>Lesson 1: Articles, Pronouns, and Questions</h2>
         <h3>Lesson Objectives</h3>
         <ul>
             <li><a href="#definite-articles" style="color: inherit; text-decoration: none;">Understand the usage of definite and indefinite articles</a></li>
@@ -616,7 +617,7 @@ body {
     </div>
     
     <div class="section">
-        <h2>Grammar Points</h2>
+        <h2>Articles, Adjectives, and Gender</h2>
         
         <h3 id="definite-articles">The Definite Article</h3>
         <p>There is no Definite Article in Ottoman Turkish; all nouns, when used alone in a sentence, are usually considered as definite.</p>
@@ -675,8 +676,9 @@ body {
             </tr>
         </table>
         
-        <h3 id="adjectives">Adjectives</h3>
+        <h3 id="adjectives">Adjective Placement</h3>
         <p>The Adjective always precedes the noun.</p>
+        <h4>Adjectives</h4>
         
         <table>
             <tr>
@@ -782,9 +784,9 @@ body {
     
     <!-- New section for the exercise immediately after Grammar Points -->
     <div class="section">
-        <h2>Grammar Review Exercise</h2>
+        <h2>Review Exercises</h2>
         
-        <h3>Part 1: Matching</h3>
+        <h3>Exercise 1: Matching</h3>
         <p>Match the Ottoman Turkish words with their English meanings by clicking on one item from each column.</p>
         
         <div class="matching-game">
@@ -819,7 +821,7 @@ body {
             </div>
         </div>
         
-        <h3>Part 2: Sentence Building</h3>
+        <h3>Exercise 2: Sentence Building</h3>
 <p>Complete the following sentences by clicking the letters or typing your answer.</p>
 
 <div class="fill-exercise">
@@ -920,7 +922,7 @@ body {
         </table>
     
     
-    <div class="section">
+    
         <h2>Demonstrative Pronouns</h2>
         
         <table>
@@ -945,12 +947,12 @@ body {
                 <td>that (distant)</td>
             </tr>
         </table>
-    </div>
+    
 
-    <div class="section">
-        <h2>Pronoun Review Exercise</h2>
+    
+        <h2>Review Exercise</h2>
         
-        <h3>Matching Pronouns</h3>
+        <h3>Exercise 3: Matching</h3>
         <p>Match the Ottoman Turkish pronouns with their English meanings by clicking on one item from each column.</p>
         
         <div class="matching-game">
@@ -987,7 +989,7 @@ body {
             <div class="matching-result">
                 <div id="pronoun-matching-feedback"></div>
             </div>
-        </div>
+        
     
     <script>
     // Completely separate script for the pronoun matching game
@@ -1074,7 +1076,7 @@ body {
     </div>
 </div>
     <div class="section">
-        <h2>Present Tense of the Turkish Substantive Verb</h2>
+        <h2>Present Tense of the "to be" Verb</h2>
         
         <h3>Affirmative Present</h3>
         <table>
@@ -1115,7 +1117,8 @@ body {
             </tr>
         </table>
         
-        <h3>Matching Pronouns with To Be Verbs</h3>
+        <h2>Review Exercise</h2>
+        <h3>Exercise 4: Matching</h3>
         <p>Match the Ottoman Turkish pronouns with their corresponding "to be" verb forms by clicking on one item from each column.</p>
         
         <style>
@@ -1288,8 +1291,9 @@ body {
     
     
 
-    <div class="section">
-    <h3>Interrogative Sentence Practice</h3>
+    
+    <h2>Review Exercise</h2>
+    <h3>Exercise 5: Sentence Building</h3>
     <p>Form the complete Ottoman Turkish sentence based on the English translation by clicking the word buttons below.</p>
 
 <script>
@@ -1334,7 +1338,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const isCorrect = normalizedUserAnswer === normalizedCorrect || normalizedUserAnswer === normalizedOttoman;
       
       // Update UI based on result
-      feedback.textContent = isCorrect ? 'Correct!' : 'Incorrect ❌';
+      feedback.textContent = isCorrect ? 'Correct 💯' : 'Incorrect ❌';
       feedback.className = isCorrect ? 'correct' : 'incorrect';
       input.style.borderColor = isCorrect ? 'var(--ottoman-teal)' : 'var(--ottoman-red)';
       
@@ -1474,8 +1478,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
         <div class="section">
             <h2>Copula Pronunciation Note</h2>
-            <p>The Copula, or the "to be" verb, like that of mi می, is governed by the preceding vowel, and is: dir, dir, dour, dür, as the case may be.</p>
-        </div>
+            <p>The Copula, or the "to be" verb, is governed by the preceding vowel, like that of mi می, and is: dir, dir, dour, dür, as the case may be.</p>
+        
         
         <table>
             <tr>
@@ -1504,6 +1508,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>Is this the rose?</td>
             </tr>
         </table>
+    </div>
     </div>
     
     
@@ -1601,7 +1606,6 @@ function checkFill(id, correctAnswers, ottomanAnswers) {
   }
 }
 
-    // Fixed keyboard functionality for all exercises
 document.addEventListener('DOMContentLoaded', function() {
   // Remove all existing event listeners and add new ones
   document.querySelectorAll('.key-btn').forEach(btn => {
@@ -1611,13 +1615,22 @@ document.addEventListener('DOMContentLoaded', function() {
     newBtn.addEventListener('click', function() {
       const container = this.closest('.fill-item');
       const input = container.querySelector('.fill-input');
+      const inputId = input.id;
       
-      // Add spacing correctly
+      // Check if this is for Exercise 2 (fill1, fill2, fill3) or Exercise 5 (fill4 through fill9)
+      const isExercise2 = ['fill1', 'fill2', 'fill3'].includes(inputId);
+      
+      // For Exercise 2, don't add spaces; for Exercise 5, add spaces
       if (this.textContent === '؟') {
         input.value += this.textContent;
+      } else if (isExercise2) {
+        // Exercise 2: just add the letter with no space
+        input.value += this.textContent;
       } else {
+        // Exercise 5: add the letter and a space
         input.value += this.textContent + ' ';
       }
+      
       input.focus();
     });
   });
