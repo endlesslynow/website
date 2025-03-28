@@ -148,44 +148,40 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="ottoman-cell" onclick="showTranslation(this, 'Good morning!')">Eféndi! Jömerd misiniz?</td>
-                    <td class="ottoman-cell" onclick="showTranslation(this, 'صباحلر خير اولسون!')">Evét eféndim, bén jömerdim.</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Good morning!')">Sabah'lar khayr' olsoun!</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Good morning!')">Sabah'lar khayr' olsoun!</td>
                 </tr>
                 <tr>
                     <td class="ottoman-cell" onclick="showTranslation(this, 'Good evening!')">Akh'shamlar khayr' olsoun!</td>
-                    <td class="ottoman-cell" onclick="showTranslation(this, 'آقشاملر خير اولسون!')">Good evening!</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Good evening!')">Akh'shamlar khayr' olsoun!</td>
                 </tr>
                 <tr>
                     <td class="ottoman-cell" onclick="showTranslation(this, 'Good day!')">Vaqïtlar khayr' olsoun!</td>
-                    <td class="ottoman-cell" onclick="showTranslation(this, 'وقتلر خير اولسون!')">Good day!</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Good day!')">Vaqïtlar khayr' olsoun!</td>
                 </tr>
                 <tr>
                     <td class="ottoman-cell" onclick="showTranslation(this, 'How do you do?')">Na'sïl sïnïz, éyi'mi sïnïz?</td>
-                    <td class="ottoman-cell" onclick="showTranslation(this, 'نصل سكز، ايى مى سكز؟')">How do you do?</td>
-                </tr>
-                <tr>
                     <td class="ottoman-cell" onclick="showTranslation(this, 'I am well, thank you!')">Éyi'yim, téshék'kür édérim.</td>
-                    <td class="ottoman-cell" onclick="showTranslation(this, 'ايى يم، تشكر ايدرم.')">I am well, thank you!</td>
                 </tr>
                 <tr>
                     <td class="ottoman-cell" onclick="showTranslation(this, 'How are you, are you well?')">Siz na'sïl sïnïz, éyi'mi sïnïz?</td>
-                    <td class="ottoman-cell" onclick="showTranslation(this, 'سز نصل سكز، ايى مى سكز؟')">How are you, are you well?</td>
-                </tr>
-                <tr>
                     <td class="ottoman-cell" onclick="showTranslation(this, 'I am very well, Sir!')">Choq'éyiyim éfféndim.</td>
-                    <td class="ottoman-cell" onclick="showTranslation(this, 'چوق ايى يم افندم.')">I am very well, Sir!</td>
                 </tr>
                 <tr>
                     <td class="ottoman-cell" onclick="showTranslation(this, 'Thank God, I am very well.')">Elham'dül'lah' éyi'yim.</td>
-                    <td class="ottoman-cell" onclick="showTranslation(this, 'الحمدلله ايى يم.')">Thank God, I am very well.</td>
-                </tr>
-                <tr>
                     <td class="ottoman-cell" onclick="showTranslation(this, 'Please take a seat.')">Rija'édérim, otourounouz.</td>
-                    <td class="ottoman-cell" onclick="showTranslation(this, 'رجا ايدرم، اوتورنكز.')">Please take a seat.</td>
                 </tr>
                 <tr>
                     <td class="ottoman-cell" onclick="showTranslation(this, 'Thank you!')">Téshék'kür édérim.</td>
-                    <td class="ottoman-cell" onclick="showTranslation(this, 'تشكر ايدرم.')">Thank you!</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Come in, Sir; take a seat.')">Bouyou'roun éfféndim, otou'rouñ.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Mr. Hassan, where are you?')">Hassan' Efféndí, néré'dé sïnïz?</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Yes, Sir.')">Bouyou'rouñ éfféndim!</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Good night!')">Géjé'lér khayr' olsoun!</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'You are welcome.')">Hosh' géldiniz.</td>
                 </tr>
             </tbody>
         </table>
@@ -302,9 +298,9 @@
         <h2>Original Ottoman Text</h2>
         <p>If you could do Exercise 1, then you can read this! This is the original Ottoman text of Exercise 1. Make sure to read the entire thing for "real" Ottoman reading practice.</p>
         <div style="text-align: center; margin: 20px 0;">
-            <img src="ex_3.png" alt="Original Ottoman Text" style="max-width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+            <img src="ex_2.png" alt="Original Ottoman Text" style="max-width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
         </div>
-        <p>Congratulations on reading your second Ottoman text!</p>
+        <p>Congratulations on reading your third Ottoman text!</p>
     </div>
     
     <div class="section" id="exercise2-section">
@@ -496,113 +492,58 @@
 
         // --- General Fill-in Exercise Checker ---
         function checkFill(id, correctAnswers) {
-            const input = document.getElementById(`fill${id}`);
-            const feedback = document.getElementById(`feedback${id}`);
-            if (!input || !feedback) return;
+    const input = document.getElementById(`fill${id}`);
+    const feedback = document.getElementById(`feedback${id}`);
+    if (!input || !feedback) return;
 
-            const userAnswer = input.value.trim().toLowerCase();
+    let userAnswer = input.value.trim();
 
-            // More aggressive normalization to ignore spelling and punctuation
-            let normalizedUserAnswer = userAnswer
-                .replace(/[.,?!\[\](){}:;'"\-_]/g, '') // Remove all punctuation
-                .replace(/\s+/g, ' ')                  // Standardize whitespace
-                .trim();                               // Remove leading/trailing spaces
+    // Simple normalization: remove punctuation and spacing
+    function normalizeText(text) {
+        return text
+            .toLowerCase()
+            // Remove ALL punctuation including special characters
+            .replace(/[.,!?;:'"()\[\]{}\-_،؛…—–\u2013\u2014\u2012\u2015\u2053؟]/g, '')
+            // Remove all whitespace
+            .replace(/\s+/g, '')
+            // Remove diacritics for Ottoman text
+            .replace(/[\u064B-\u065F\u0640]/g, '')
+            .trim();
+    }
 
-            correctAnswers = Array.isArray(correctAnswers) ? correctAnswers : [correctAnswers]; // Ensure array
+    // Normalize user answer
+    const normalizedUserAnswer = normalizeText(userAnswer);
 
-            // Determine if it's a sentence building exercise
-            const isSentenceBuilding = true; // All exercises are considered sentence building
+    // Ensure correctAnswers is an array
+    correctAnswers = Array.isArray(correctAnswers) ? correctAnswers : [correctAnswers];
 
-            let isCorrect = false;
-            let correctDisplayAnswer = correctAnswers[0]; // Store the first correct answer for display
+    // Store first correct answer for display
+    let correctDisplayAnswer = correctAnswers[0];
 
-            // Format the display answer based on input type
-            if (input.classList.contains('ottoman-input')) {
-                 // For Ottoman input, just use the first answer as is.
-                 correctDisplayAnswer = correctAnswers[0];
-            } else {
-                // For English input, capitalize first letter of each sentence
-                correctDisplayAnswer = correctDisplayAnswer.replace(/(?:^|[.!?]\s+)([a-z])/g, (match, letter) => {
-                    return match.replace(letter, letter.toUpperCase());
-                });
-            }
+    // Normalize all correct answers
+    const normalizedCorrectAnswers = correctAnswers.map(ans => normalizeText(ans));
 
+    // Simple exact matching after normalization (no similarity matching)
+    const isCorrect = normalizedCorrectAnswers.includes(normalizedUserAnswer);
 
-            // Normalize correct answers for comparison - much more lenient now
-            const normalizedCorrectAnswers = correctAnswers.map(ans => {
-                // Normalize based on input type
-                if (input.classList.contains('ottoman-input')) {
-                    // For Ottoman, basic trim and potentially remove kashida/diacritics if needed
-                    return ans.trim().replace(/[\u064B-\u065F\u0640]/g, '');
-                } else {
-                    // For English, use the aggressive normalization
-                    return ans.toLowerCase()
-                       .replace(/[.,?!\[\](){}:;'"\-_]/g, '') // Remove all punctuation
-                       .replace(/\s+/g, ' ')                  // Standardize whitespace
-                       .trim();                                // Remove leading/trailing spaces
-                }
-            });
-
-
-            // Check if any of the normalized correct answers match the normalized user answer
-             for (let normAnswer of normalizedCorrectAnswers) {
-                 // Check based on input type
-                 if (input.classList.contains('ottoman-input')) {
-                      // Direct comparison for Ottoman after normalization
-                      if (normalizedUserAnswer === normAnswer) {
-                           isCorrect = true;
-                           break;
-                      }
-                 } else {
-                      // Lenient check for English
-                      // Simple matching allowing for different spellings by checking if main words are present
-                      const userWords = normalizedUserAnswer.split(' ');
-                      const correctWords = normAnswer.split(' ');
-                      const threshold = Math.max(2, Math.floor(correctWords.length * 0.5)); // At least 50% of words should match
-                      let matchCount = 0;
-                      for (const userWord of userWords) {
-                          if (userWord.length > 2 && correctWords.some(word =>
-                              word.includes(userWord.substring(0, Math.floor(userWord.length * 0.7))) ||
-                              userWord.includes(word.substring(0, Math.floor(word.length * 0.7)))
-                          )) {
-                              matchCount++;
-                          }
-                      }
-                      if (matchCount >= threshold) {
-                          isCorrect = true;
-                          break;
-                      }
-                      // Alternative: Direct comparison after normalization
-                      if (normalizedUserAnswer === normAnswer) {
-                          isCorrect = true;
-                          break;
-                      }
-                 }
-             }
-
-
-            // --- Feedback Display (Match Lesson 2) ---
-            const correctFeedbackText = isSentenceBuilding ? 'Correct 💯' : 'Correct!';
-            feedback.textContent = isCorrect ? correctFeedbackText : 'Incorrect ❌';
-
-            // Add sentence-building class for styling if it's a sentence building exercise
-            if (isCorrect && isSentenceBuilding) {
-                feedback.className = 'fill-feedback correct sentence-building';
-            } else {
-                feedback.className = `fill-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
-            }
-            input.style.borderColor = isCorrect ? 'var(--ottoman-teal)' : 'var(--ottoman-red)';
-
-            if (!isCorrect && correctDisplayAnswer !== '') {
-                // Show the correct answer on incorrect attempts
-                feedback.innerHTML = `Incorrect ❌ Correct: <span class="correct-answer-display">${correctDisplayAnswer}</span>`;
-                // Don't clear input on incorrect - let user see their mistake
-                // Clear input for Ottoman exercises
-                if (input.classList.contains('ottoman-input')) {
-                     input.value = '';
-                }
-            }
+    // Display feedback
+    const correctFeedbackText = 'Correct 💯';
+    
+    if (isCorrect) {
+        feedback.textContent = correctFeedbackText;
+        feedback.className = 'fill-feedback correct sentence-building';
+        input.style.borderColor = 'var(--ottoman-teal)';
+    } else {
+        feedback.innerHTML = `Incorrect ❌ Correct: <span class="correct-answer-display">${correctDisplayAnswer}</span>`;
+        feedback.className = 'fill-feedback incorrect';
+        input.style.borderColor = 'var(--ottoman-red)';
+        
+        // Only clear Ottoman inputs on incorrect
+        if (input.classList.contains('ottoman-input')) {
+            input.value = '';
         }
+    }
+}
 
         // Add event listeners to all input fields for Enter key
         document.addEventListener('DOMContentLoaded', function() {
