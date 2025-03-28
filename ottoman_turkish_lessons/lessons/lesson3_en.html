@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lesson 3: Past Tense, Numbers, and the Locative Case</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Ottoman-inspired color scheme (Matches Lesson 1) */
+        :root {
+            --ottoman-blue: #0081C9; --ottoman-red: #C70039; --ottoman-gold: #FFB100;
+            --ottoman-teal: #00B8A9; --ottoman-navy: #023E7D; --ottoman-cream: #FFF8E1;
+            --ottoman-light-blue: #E0F7FF; --ottoman-pink: #FFCCDF; --ottoman-light-teal: #CCFCF6;
+            --body-background: #1D2F6F; --text-color: #1A3A5A; --text-light: #FFFFFF;
+        }
+        body { font-family: 'Nunito', Arial, sans-serif; line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 15px; background-color: var(--body-background); background-image: url('../ottoman_background.png'); background-repeat: repeat; background-size: 300px auto; box-sizing: border-box; color: var(--text-color); }
+        [lang="ar"], td:first-child, .ottoman-text, .matching-item.ottoman-text, .fill-input.ottoman-input, .key-btn, .correct-answer-display { font-family: 'Noto Naskh Arabic', serif; font-size: 1.4em; line-height: 1.5; font-weight: 500; direction: rtl; text-align: right; }
+        .matching-item.ottoman-text, .key-btn { text-align: center; }
+        .fill-input.ottoman-input { text-align: right; font-size: 1.6em; }
+        td:first-child, td[lang="ar"] { text-align: left !important; padding-top: 18px; padding-bottom: 18px; }
+        * { box-sizing: border-box; }
+        h1, h2, h3 { color: var(--ottoman-navy); font-weight: 700; line-height: 1.3; }
+        h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; color: var(--text-light); }
+        h2 { font-size: 1.5rem; margin-top: 30px; }
+        h3 { font-size: 1.2rem; margin-top: 25px; color: var(--ottoman-blue); }
+        .section { background-color: var(--ottoman-light-blue); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background-color: #C0E0F0; }
+        .title-section { background-color: var(--ottoman-navy); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        .title-section h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 0; margin-top: 0; font-size: 1.8rem; color: var(--text-light); }
+        th, td { padding: 12px 15px; text-align: left; border: none; }
+        th { background-color: var(--ottoman-blue); color: var(--text-light); font-weight: 600; }
+        tr:nth-child(even) { background-color: var(--ottoman-light-blue); }
+        tr:hover { background-color: #B9E7FE; }
+        .note { background-color: var(--ottoman-pink); padding: 15px; border-left: 4px solid var(--ottoman-red); margin: 20px 0; border-radius: 0 8px 8px 0; }
+
+        /* Feedback Styles (Match Lesson 1) */
+        .feedback, .fill-feedback { margin-top: 8px; margin-left: 5px; font-weight: bold; }
+        /* Correct/Incorrect feedback text colors AND STYLE - MATCH L1 Ex2 */
+        .fill-feedback.correct { color: var(--ottoman-teal); /* L1 uses teal for .correct */ }
+        .fill-feedback.incorrect { color: var(--ottoman-red); /* L1 uses red for .incorrect */ }
+        /* Specific style for matching game 'Correct' feedback to match L1 */
+        .matching-feedback.correct { color: black !important; font-size: 1.5rem !important; }
+        /* Style for sentence building feedback */
+        .fill-feedback.correct.sentence-building { 
+            color: black !important; 
+            font-size: 1.5rem !important; 
+            font-weight: bold !important;
+            font-family: 'Nunito', Arial, sans-serif !important;
+            background-color: var(--ottoman-gold);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        /* Display for showing correct answer on incorrect attempt */
+        .correct-answer-display { display: inline-block; margin-left: 5px; }
+
+        /* Matching Game Styles (Match Lesson 1) */
+        .matching-game { background-color: var(--ottoman-gold); padding: 20px; border-radius: 8px; margin-top: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .matching-columns-container { display: flex; gap: 10px; margin-bottom: 20px; }
+        .matching-column { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .matching-column h4 { text-align: center; margin-bottom: 10px; }
+        .matching-item-container { display: flex; flex-direction: column; gap: 10px; }
+        .matching-item { padding: 12px 15px; background-color: white; border: 2px solid var(--ottoman-blue); border-radius: 8px; cursor: pointer; transition: all 0.2s ease; text-align: center; -webkit-tap-highlight-color: transparent; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .matching-item:hover { background-color: var(--ottoman-light-blue); }
+        .matching-item.selected { background-color: var(--ottoman-blue); color: var(--text-light); }
+        .matching-item.matched { background-color: var(--ottoman-gold); color: black; border-color: var(--ottoman-gold); cursor: default; }
+        .matching-result { text-align: center; }
+        .matching-result div { font-size: 1.2rem; font-weight: bold; color: black; margin-top: 15px; }
+
+
+        /* Fill-in / Sentence Building Styles (Match Lesson 1 Ex2 & Ex5) */
+        .fill-exercise { margin-top: 30px; }
+        /* Container for each exercise item - MATCH L1 Ex2 */
+        .fill-item { background-color: var(--ottoman-gold); /* #FFB100 */ margin-bottom: 20px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        /* General row for inputs/text - MATCH L1 Ex2 */
+        .exercise-row { display: flex; align-items: center; gap: 12px; /* MATCH L1 Ex2 gap */ margin-bottom: 10px; flex-wrap: wrap; color: var(--text-color); font-weight: 500; }
+        /* Translation text style - MATCH L1 Ex2 placement (inside flex row) */
+        .translation { color: black; font-size: 1.1em; /* Adjusted slightly from L1's 1.2em for better fit in this context */ }
+        /* Input field - MATCH L1 Ex2 styles */
+        .fill-input { background-color: var(--ottoman-gold); /* #FFB100 - Match L1 Ex2 internal color */ width: 120px; /* Default width like L1 Ex2 */ padding: 8px 12px; border: 2px solid #997000; /* Match L1 Ex2 border */ border-radius: 6px; font-size: 16px; font-family: inherit; }
+        /* Wider input for sentence building like L1 Ex5 */
+        .fill-input.long-input { width: 100%; max-width: 400px; }
+        /* Ottoman Input specific font override (already present, ensure consistency) */
+        .fill-input.ottoman-input { font-family: 'Noto Naskh Arabic', serif; font-size: 1.6em; direction: rtl; text-align: right; }
+        /* Container for key buttons - MATCH L1 Ex2 */
+        .key-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        /* Key buttons (Match L1 Ex2/Ex5) */
+        .key-btn { padding: 5px 12px; background-color: #FFECB3; border: 1px solid #E6A800; border-radius: 6px; cursor: pointer; color: #333; font-size: 1.6em; font-family: 'Noto Naskh Arabic', serif; /* Explicitly set font */ text-align: center; /* Ensure centering */ }
+        .key-btn:hover { background-color: #FFE082; color: black; }
+        /* Check button (Match L1 Ex2/Ex5) */
+        .fill-check { padding: 8px 15px; background-color: #FFECB3; color: black; border: none; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: 600; transition: background-color 0.2s ease; }
+        .fill-check:hover { background-color: #FFE082; }
+
+
+        /* Congratulations (Match Lesson 1 Structure/Style) */
+         /* Using standard .section */
+         .congrats-ottoman { font-family: 'Amiri', serif; font-size: 30px; /* Match L1 inline style */ line-height: 1.4; }
+         .congrats-english { font-size: 1.2em; margin-top: 10px; }
+
+         
+
+        /* Navigation (Match Lesson 1) */
+        .nav-buttons-container { display: flex; justify-content: space-between; margin-top: 30px; margin-bottom: 40px; padding: 0 10px; }
+        .nav-button { background-color: var(--ottoman-navy); color: var(--text-light); border: 3px solid var(--ottoman-blue); border-radius: 12px; padding: 15px 20px; font-family: 'Nunito', Arial, sans-serif; font-weight: 600; font-size: 1.3rem; /* Match L1 size */ cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; text-decoration: none; text-align: center; display: inline-block; line-height: 1.4; }
+        .nav-button:hover { background-color: var(--ottoman-blue); border-color: var(--ottoman-navy); }
+        .prev-button { margin-right: auto; }
+        .next-button, .exercises-button { margin-left: 10px; }
+        .nav-button.next-button {
+    padding-top: 27px;  /* Add padding to the top to push text down */
+}
+
+         /* Small Latin text (Match Lesson 1) */
+         .small-latin { font-size: 0.6em !important; font-family: 'Nunito', Arial, sans-serif !important; font-weight: normal !important; display: inline-block; vertical-align: middle; direction: ltr; text-align: left; }
+
+        /* Media queries (Copied from Lesson 1 for consistency) */
+        @media (max-width: 600px) {
+            .section, .title-section { padding: 20px 15px; border-radius: 10px; }
+            h1 { font-size: 1.6rem; padding-bottom: 10px; } h2 { font-size: 1.3rem; } h3 { font-size: 1.1rem; }
+            table { display: block; overflow-x: auto; white-space: nowrap; } th, td { padding: 10px 12px; } th { font-size: 0.9rem; padding: 10px 8px; }
+            .exercise { padding: 15px; }
+            .matching-columns-container { flex-direction: column; gap: 15px; } .matching-item { font-size: 1em; padding: 10px 12px; } .matching-item.ottoman-text { font-size: 1.2em; }
+            /* Fill-in exercises - Adjust layout like L1 Ex2 on mobile */
+            .exercise-row { flex-direction: row; align-items: center; gap: 8px; flex-wrap: wrap;} /* Keep row, allow wrap, smaller gap */
+            .exercise-row .ottoman-text { flex-shrink: 0; /* Prevent shrinking */ margin-right: 5px;}
+            .exercise-row .fill-input { flex-grow: 1; width: auto; min-width: 80px; margin-right: 5px;} /* Allow input to grow */
+            .exercise-row .translation { flex-basis: auto; /* Don't force full width */}
+
+            .fill-input { width: 100%; max-width: none; margin-top: 5px; } /* Override default width */
+            .key-container { justify-content: center; }
+            .fill-check { width: 100%; max-width: 300px; margin-top: 10px; }
+            /* Specific adjustments for Ex2 layout on mobile (Already present, review) */
+             .fill-item .exercise-row-ex2 { flex-direction: row; flex-wrap: wrap;} /* Allow wrap */
+             .fill-item .exercise-row-ex2 .ottoman-text { margin-left: 10px; } /* Space between name and input */
+            /* Navigation */
+            .nav-buttons-container { flex-direction: column; gap: 15px; } .nav-button { width: 100%; margin: 0; font-size: 1rem;}
+            body { padding: 10px; }
+        }
+         @media (max-width: 450px) {
+             .matching-item { padding: 10px 8px; font-size: 0.9em; } .matching-item.ottoman-text { font-size: 1.1em; }
+             .key-btn { font-size: 1.4em; padding: 4px 10px;} .nav-button { padding: 12px 15px; }
+             .exercise-row {gap: 5px;} /* Further reduce gap on very small screens */
+         }
+    </style>
+</head>
+<body>
+    <div class="title-section">
+        <h1>Lesson 3<br>Past Tense, Numbers, and the Locative Case</h1>
+    </div>
+
+    <div class="section">
+        <h3>Lesson Objectives</h3>
+        <ul>
+             <li><a href="#past-tense" style="color: inherit; text-decoration: none;">Learn the Past Tense of the substantive verb</a></li>
+             <li><a href="#negative-past" style="color: inherit; text-decoration: none;">Understand the Negative Past Tense</a></li>
+             <li><a href="#interrogative-forms" style="color: inherit; text-decoration: none;">Learn the Interrogative Forms</a></li>
+             <li><a href="#numerals" style="color: inherit; text-decoration: none;">Study Numerals and their placement</a></li>
+             <li><a href="#half" style="color: inherit; text-decoration: none;">Understand how to express "Half" in Ottoman</a></li>
+             <li><a href="#verb-of-existence" style="color: inherit; text-decoration: none;">Learn the Verb of Existence ("there is/are")</a></li>
+             <li><a href="#locative-case" style="color: inherit; text-decoration: none;">Study the Locative Case</a></li>
+             <li><a href="#asking-time" style="color: inherit; text-decoration: none;">Learn how to Ask for the Time</a></li>
+        </ul>
+    </div>
+
+    <!-- Past Tense Section -->
+    <div class="section">
+        <h2 id="past-tense">The Preterite or Past Tense of the Substantive Verb</h2>
+        <p>The Past Tense of the substantive verb (to be) is formed using the suffixes attached to the past stem <span class="ottoman-text" style="font-size: 1.1em; display: inline-block;">ايد</span> (id).</p>
+        <!-- Tables -->
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">بن ايدم</td> <td>bén idim</td> <td>I was</td> </tr>
+            <tr> <td lang="ar">سن ايدك</td> <td>sén idin</td> <td>you were (singular/informal)</td> </tr>
+            <tr> <td lang="ar">او ايدى</td> <td>o idi</td> <td>he/she/it was</td> </tr>
+            <tr> <td lang="ar">بز ايدك</td> <td>biz idik</td> <td>we were</td> </tr>
+            <tr> <td lang="ar">سز ايدكز</td> <td>siz idiniz</td> <td>you were (plural/formal)</td> </tr>
+            <tr> <td lang="ar">انلر ايديلر</td> <td>onlar idiler</td> <td>they were</td> </tr>
+        </table>
+
+        <!-- Exercise 1: Past Tense (MODIFIED TO MATCH L1 EX2) -->
+        <div class="fill-exercise">
+            <h3>Exercise 1: Sentence Building</h3>
+            <p>Complete the past tense form by typing or using the keys provided.</p>
+            <!-- Item 1 -->
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <div style="direction: rtl; display: inline-flex; align-items: center;">
+                        <span class="ottoman-text">بن</span>
+                        <input type="text" class="fill-input ottoman-input" id="fill1" style="margin-right: 10px;">
+                    </div>
+                    <span class="translation">(I was)</span>
+                </div>
+                <div class="key-container" id="keys1">
+                    <button class="key-btn">ايدم</button>
+                    <button class="key-btn">ايدك</button>
+                    <button class="key-btn">ايدى</button>
+                    <button class="key-btn">ايدكز</button>
+                    <button class="key-btn">ايديلر</button>
+                 </div>
+                <button class="fill-check" onclick="checkFill(1, [''], ['ايدم'])">Check</button>
+                <div class="fill-feedback" id="feedback1"></div>
+            </div>
+            <!-- Item 2 -->
+             <div class="fill-item">
+                 <div class="exercise-row">
+                    <div style="direction: rtl; display: inline-flex; align-items: center;">
+                        <span class="ottoman-text">سز</span>
+                        <input type="text" class="fill-input ottoman-input" id="fill2" style="margin-right: 10px;">
+                    </div>
+                    <span class="translation">(you were - plural/formal)</span>
+                 </div>
+                 <div class="key-container" id="keys2">
+                    <button class="key-btn">ايدم</button>
+                    <button class="key-btn">ايدك</button>
+                    <button class="key-btn">ايدى</button>
+                    <button class="key-btn">ايدكز</button>
+                    <button class="key-btn">ايديلر</button>
+                 </div>
+                 <button class="fill-check" onclick="checkFill(2, [''], ['ايدكز'])">Check</button>
+                 <div class="fill-feedback" id="feedback2"></div>
+             </div>
+            <!-- Item 3 -->
+             <div class="fill-item">
+                  <div class="exercise-row">
+                      <div style="direction: rtl; display: inline-flex; align-items: center;">
+                          <span class="ottoman-text">او</span>
+                          <input type="text" class="fill-input ottoman-input" id="fill3" style="margin-right: 10px;">
+                      </div>
+                      <span class="translation">(he/she/it was)</span>
+                  </div>
+                 <div class="key-container" id="keys3">
+                    <button class="key-btn">ايدم</button>
+                    <button class="key-btn">ايدك</button>
+                    <button class="key-btn">ايدى</button>
+                    <button class="key-btn">ايدكز</button>
+                    <button class="key-btn">ايديلر</button>
+                 </div>
+                 <button class="fill-check" onclick="checkFill(3, [''], ['ايدى'])">Check</button>
+                 <div class="fill-feedback" id="feedback3"></div>
+             </div>
+            <!-- Item 4 -->
+             <div class="fill-item">
+                  <div class="exercise-row">
+                      <div style="direction: rtl; display: inline-flex; align-items: center;">
+                          <span class="ottoman-text">انلر</span>
+                          <input type="text" class="fill-input ottoman-input" id="fill4" style="margin-right: 10px;">
+                      </div>
+                      <span class="translation">(they were)</span>
+                  </div>
+                 <div class="key-container" id="keys4">
+                    <button class="key-btn">ايدم</button>
+                    <button class="key-btn">ايدك</button>
+                    <button class="key-btn">ايدى</button>
+                    <button class="key-btn">ايدكز</button>
+                    <button class="key-btn">ايديلر</button>
+                 </div>
+                 <button class="fill-check" onclick="checkFill(4, [''], ['ايديلر'])">Check</button>
+                 <div class="fill-feedback" id="feedback4"></div>
+             </div>
+        </div>
+    </div>
+
+    <!-- Negative Past Section -->
+    <div class="section">
+        <h2 id="negative-past">The Negative Past Tense</h2>
+        <p>The negative past tense is formed by using <span class="ottoman-text" style="font-size: 1.1em; display: inline-block;">دكل</span> (<code>déyil</code>) before the past tense forms.</p>
+        <!-- Tables -->
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">بن دكل ايدم</td> <td>bén déyil idim</td> <td>I was not</td> </tr>
+            <tr> <td lang="ar">سن دكل ايدك</td> <td>sén déyil idin</td> <td>you were not (singular/informal)</td> </tr>
+            <tr> <td lang="ar">او دكل ايدى</td> <td>o déyil idi</td> <td>he/she/it was not</td> </tr>
+            <tr> <td lang="ar">بز دكل ايدك</td> <td>biz déyil idik</td> <td>we were not</td> </tr>
+            <tr> <td lang="ar">سز دكل ايدكز</td> <td>siz déyil idiniz</td> <td>you were not (plural/formal)</td> </tr>
+            <tr> <td lang="ar">انلر دكل ايديلر</td> <td>onlar déyil idiler</td> <td>they were not</td> </tr>
+        </table>
+    </div>
+
+    <!-- Interrogative Forms Section -->
+    <div class="section">
+        <h2 id="interrogative-forms">The Interrogative Forms</h2>
+        <p>Interrogative forms are created by inserting the question particle <span class="ottoman-text" style="font-size: 1.1em; display: inline-block;">می</span> (<code>mi</code>) between the pronoun and the verb.</p>
+        
+        <h3>Interrogative Past Tense</h3>
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">بنمى ايدم؟</td> <td>Bén mi idim?</td> <td>Was it I?</td> </tr>
+            <tr> <td lang="ar">سنمى ايدك؟</td> <td>sén mi idin?</td> <td>Was it you? (singular)</td> </tr>
+            <tr> <td lang="ar">اومى ايدى؟</td> <td>o mou idi?</td> <td>Was it he/she/it?</td> </tr>
+            <tr> <td lang="ar">بزمى ايدك؟</td> <td>Biz mi idik?</td> <td>Was it we?</td> </tr>
+            <tr> <td lang="ar">سزمى ايدكز؟</td> <td>siz mi idiniz?</td> <td>Was it you? (plural)</td> </tr>
+            <tr> <td lang="ar">انلرمى ايديلر؟</td> <td>onlar mi idiler?</td> <td>Was it they?</td> </tr>
+        </table>
+
+        <h3>Interrogative Negative Forms</h3>
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">بن دكل مى ايدم؟</td> <td>Bén déyil mi idim?</td> <td>Was I not?</td> </tr>
+            <tr> <td lang="ar">سن دكل مى ايدك؟</td> <td>sén déyil mi idin?</td> <td>Were you not? (singular)</td> </tr>
+            <tr> <td lang="ar">او دكل مى ايدى؟</td> <td>o déyil mi idi?</td> <td>Was he/she/it not?</td> </tr>
+            <tr> <td lang="ar">بز دكل مى ايدك؟</td> <td>Biz déyil mi idik?</td> <td>Were we not?</td> </tr>
+            <tr> <td lang="ar">سز دكل مى ايدكز؟</td> <td>siz déyil mi idiniz?</td> <td>Were you not? (plural)</td> </tr>
+            <tr> <td lang="ar">انلر دكل مى ايديلر؟</td> <td>onlar déyil mi idiler?</td> <td>Were they not?</td> </tr>
+        </table>
+    </div>
+
+    <!-- Numerals Section -->
+    <div class="section">
+        <h2 id="numerals">The Numerals</h2>
+        <p>The Numerals are used just like all other adjectives. Like them, they precede the noun. The noun qualified by cardinals always remains in the singular.</p>
+
+        <h3>Examples:</h3>
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">بر آدم</td> <td>bir adém</td> <td>a man</td> </tr>
+            <tr> <td lang="ar">ايكى چوجوق</td> <td>iki chojouq</td> <td>two boys</td> </tr>
+        </table>
+
+        <h3>Cardinal Numbers 1-12</h3>
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">بر</td> <td>bir</td> <td>one</td> </tr>
+            <tr> <td lang="ar">ايكى</td> <td>iki</td> <td>two</td> </tr>
+            <tr> <td lang="ar">اوچ</td> <td>üch</td> <td>three</td> </tr>
+            <tr> <td lang="ar">درت</td> <td>dört</td> <td>four</td> </tr>
+            <tr> <td lang="ar">بش</td> <td>bésh</td> <td>five</td> </tr>
+            <tr> <td lang="ar">آلتى</td> <td>alti</td> <td>six</td> </tr>
+            <tr> <td lang="ar">يدى</td> <td>yédi</td> <td>seven</td> </tr>
+            <tr> <td lang="ar">سكز</td> <td>sékiz</td> <td>eight</td> </tr>
+            <tr> <td lang="ar">طقوز</td> <td>doqouz</td> <td>nine</td> </tr>
+            <tr> <td lang="ar">اون</td> <td>on</td> <td>ten</td> </tr>
+            <tr> <td lang="ar">اون بر</td> <td>on bir</td> <td>eleven</td> </tr>
+            <tr> <td lang="ar">اون ايكى</td> <td>on iki</td> <td>twelve</td> </tr>
+        </table>
+
+        <!-- Exercise 2: Numerals (Layout like L1 Ex2, uses key-btn) -->
+        <div class="fill-exercise">
+            <h3>Exercise 2: Number Words</h3>
+            <p>Choose the correct Ottoman Turkish numeral to match the given English number.</p>
+            <div class="fill-item">
+                <div class="exercise-row exercise-row-ex2">
+                    <div style="direction: rtl; display: inline-flex; align-items: center;">
+                        <input type="text" class="fill-input ottoman-input" id="fill5" style="width: 100px; margin-right: 10px;">
+                    </div>
+                    <span class="translation" style="flex-basis: auto; margin-left: 10px;">(five)</span>
+                </div>
+                <div class="key-container" id="keys5">
+                    <button class="key-btn">بش</button> <button class="key-btn">درت</button> <button class="key-btn">اوچ</button>
+                </div>
+                <button class="fill-check" onclick="checkFill(5, [''], ['بش'])">Check</button>
+                <div class="fill-feedback" id="feedback5"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row exercise-row-ex2">
+                    <div style="direction: rtl; display: inline-flex; align-items: center;">
+                        <input type="text" class="fill-input ottoman-input" id="fill6" style="width: 100px; margin-right: 10px;">
+                    </div>
+                    <span class="translation" style="flex-basis: auto; margin-left: 10px;">(eight)</span>
+                </div>
+                <div class="key-container" id="keys6">
+                    <button class="key-btn">يدى</button> <button class="key-btn">سكز</button> <button class="key-btn">طقوز</button>
+                </div>
+                <button class="fill-check" onclick="checkFill(6, [''], ['سكز'])">Check</button>
+                <div class="fill-feedback" id="feedback6"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row exercise-row-ex2">
+                    <div style="direction: rtl; display: inline-flex; align-items: center;">
+                        <input type="text" class="fill-input ottoman-input" id="fill7" style="width: 100px; margin-right: 10px;">
+                    </div>
+                    <span class="translation" style="flex-basis: auto; margin-left: 10px;">(eleven)</span>
+                </div>
+                <div class="key-container" id="keys7">
+                    <button class="key-btn">اون</button> <button class="key-btn">اون بر</button> <button class="key-btn">اون ايكى</button>
+                </div>
+                <button class="fill-check" onclick="checkFill(7, [''], ['اون بر'])">Check</button>
+                <div class="fill-feedback" id="feedback7"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Half Section -->
+    <div class="section">
+        <h2 id="half">Expressing "Half"</h2>
+        <p>The English word "half" is expressed in two ways, by <span class="ottoman-text" style="font-size: 1.1em; display: inline-block;">ياريم</span> (<code>yarim</code>) and by <span class="ottoman-text" style="font-size: 1.1em; display: inline-block;">بوچوق</span> (<code>bouchouq</code>).</p>
+
+        <h3>Yarim</h3>
+        <p><code>Yarim</code> is used before a noun like an adjective:</p>
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">ياريم كون</td> <td>yarim gün</td> <td>half a day</td> </tr>
+            <tr> <td lang="ar">ياريم ساعت</td> <td>yarim sa'at</td> <td>half an hour</td> </tr>
+            <tr> <td lang="ar">ياريم الما</td> <td>yarim alma</td> <td>half an apple</td> </tr>
+        </table>
+
+        <h3>Bouchouq</h3>
+        <p><code>Bouchouq</code> is always used in connection with a number:</p>
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">ايكى بوچوق</td> <td>iki bouchouq</td> <td>two and a half</td> </tr>
+            <tr> <td lang="ar">اوچ بوچوق ساعت</td> <td>üch bouchouq sa'at</td> <td>three hours and a half</td> </tr>
+            <tr> <td lang="ar">آلتى بوچوق كون</td> <td>alti bouchouq gün</td> <td>six days and a half</td> </tr>
+        </table>
+    </div>
+
+    <!-- Verb of Existence Section -->
+    <div class="section">
+        <h2 id="verb-of-existence">"There is, there are"</h2>
+        <p>The English phrase "there is, there are" etc. is expressed in Ottoman by <span class="ottoman-text" style="font-size: 1.1em; display: inline-block;">وار</span> (<code>var</code>) 'there is, exists'; its negative being <span class="ottoman-text" style="font-size: 1.1em; display: inline-block;">يوق</span> (<code>yoq</code>) 'there is not'.</p>
+        
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">وار، وار در</td> <td>var, var dir</td> <td>there is</td> </tr>
+            <tr> <td lang="ar">يوق، يوقدر</td> <td>yoq, yoq dour</td> <td>there is not</td> </tr>
+            <tr> <td lang="ar">وار ايدى</td> <td>var idi, varidi</td> <td>there was</td> </tr>
+            <tr> <td lang="ar">يوق ايدى</td> <td>yoq idi</td> <td>there was not</td> </tr>
+        </table>
+
+        <h3>Examples with the Verb of Existence:</h3>
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">بر كتاب وار (در)</td> <td>bir kitab var (dir)</td> <td>there is a book</td> </tr>
+            <tr> <td lang="ar">بر كتاب وار ايدى</td> <td>bir kitab var idi</td> <td>there was a book</td> </tr>
+            <tr> <td lang="ar">بر كتاب يوق</td> <td>bir kitab yoq</td> <td>there is not a book</td> </tr>
+            <tr> <td lang="ar">بر كتاب يوق ايدى</td> <td>bir kitab yoq idi</td> <td>there was not a book</td> </tr>
+        </table>
+
+        <!-- Exercise 3: Matching -->
+        <h3>Exercise 3: Matching</h3>
+        <p>Match the Ottoman Turkish expressions with their English meanings.</p>
+        <div class="matching-game">
+            <div class="matching-columns-container">
+                <div class="matching-column"> <h4>Ottoman Turkish:</h4> <div class="matching-item-container" id="existence-ottoman-container"> <div class="matching-item ottoman-text" data-id="1">وار در</div> <div class="matching-item ottoman-text" data-id="2">يوقدر</div> <div class="matching-item ottoman-text" data-id="3">وار ايدى</div> <div class="matching-item ottoman-text" data-id="4">يوق ايدى</div> <div class="matching-item ottoman-text" data-id="5">بر كتاب وار (در)</div> <div class="matching-item ottoman-text" data-id="6">بر كتاب يوق ايدى</div> </div> </div>
+                <div class="matching-column"> <h4>English:</h4> <div class="matching-item-container" id="existence-english-container"> <div class="matching-item" data-id="1">there is</div> <div class="matching-item" data-id="2">there is not</div> <div class="matching-item" data-id="3">there was</div> <div class="matching-item" data-id="4">there was not</div> <div class="matching-item" data-id="5">there is a book</div> <div class="matching-item" data-id="6">there was not a book</div> </div> </div>
+            </div>
+            <div class="matching-result"> <div class="matching-feedback" id="existence-matching-feedback"></div> </div>
+        </div>
+    </div>
+
+    <!-- Locative Case Section -->
+    <div class="section">
+        <h2 id="locative-case">The Locative Case</h2>
+        <p>The Locative case is made by the addition of <span class="ottoman-text" style="font-size: 1.1em; display:inline-block">ده</span> (<code>dé, da</code>) to the end of the word.</p>
+        
+        <h3>Examples:</h3>
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">اوده</td> <td>évdé</td> <td>in the house</td> </tr>
+            <tr> <td lang="ar">كتابده</td> <td>kitabda'</td> <td>in the book</td> </tr>
+            <tr> <td lang="ar">باغچه‌ده</td> <td>bah'-jé-dé</td> <td>in the garden</td> </tr>
+        </table>
+
+        <h3>Examples with the Verb of Existence:</h3>
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">اوده بر آدم وار در</td> <td>Evdé bir adém var, dir</td> <td>there is a man in the house</td> </tr>
+            <tr> <td lang="ar">باغچه‌ده چيچك يوقدر</td> <td>Bah'-jé-dé chichék yoq dour</td> <td>there are no flowers in the garden</td> </tr>
+            <tr> <td lang="ar">باغچه‌ده بر كل وار ايدى</td> <td>Bah'-jé-dé bir gül var idi</td> <td>there was a rose in the garden</td> </tr>
+        </table>
+    </div>
+
+    <!-- Asking Time Section -->
+    <div class="section">
+        <h2 id="asking-time">Asking for the Time</h2>
+        <p>In asking the hour, it is said:</p>
+        
+        <table>
+            <tr> <th>Ottoman Turkish</th> <th>Latin Script</th> <th>English</th> </tr>
+            <tr> <td lang="ar">ساعت قاچدر؟</td> <td>sa-at qach'dir?</td> <td>What o'clock is it?</td> </tr>
+            <tr> <td lang="ar">ساعت ايكيدر</td> <td>sa-at iki'dir</td> <td>it is two o'clock</td> </tr>
+        </table>
+
+        <!-- Exercise 4: Time Expressions (Layout like L1 Ex5) -->
+        <div class="fill-exercise">
+            <h3>Exercise 4: Sentence Building</h3>
+            <p>Form complete Ottoman Turkish sentences about time and location by clicking the word buttons below.</p>
+
+            <div class="fill-item">
+                <div class="exercise-row"> <div class="translation">There is a book in the house.</div> </div>
+                <div class="exercise-row"> <input type="text" class="fill-input ottoman-input long-input" id="fill8"> </div>
+                <div class="key-container" id="keys8"> <button class="key-btn">اوده</button> <button class="key-btn">بر</button> <button class="key-btn">كتاب</button> <button class="key-btn">وار</button> <button class="key-btn">در</button> </div>
+                <button class="fill-check" onclick="checkFill(8, [''], ['اوده بر كتاب وار در'])">Check</button> <div class="fill-feedback" id="feedback8"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row"> <div class="translation">What o'clock is it?</div> </div>
+                <div class="exercise-row"> <input type="text" class="fill-input ottoman-input long-input" id="fill9"> </div>
+                <div class="key-container" id="keys9"> <button class="key-btn">ساعت</button> <button class="key-btn">قاچدر</button> <button class="key-btn">؟</button> <button class="key-btn">ايكيدر</button> </div>
+                <button class="fill-check" onclick="checkFill(9, [''], ['ساعت قاچدر؟'])">Check</button> <div class="fill-feedback" id="feedback9"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row"> <div class="translation">It is two o'clock.</div> </div>
+                <div class="exercise-row"> <input type="text" class="fill-input ottoman-input long-input" id="fill10"> </div>
+                <div class="key-container" id="keys10"> <button class="key-btn">ساعت</button> <button class="key-btn">ايكيدر</button> <button class="key-btn">قاچدر</button> <button class="key-btn">؟</button> </div>
+                <button class="fill-check" onclick="checkFill(10, [''], ['ساعت ايكيدر'])">Check</button> <div class="fill-feedback" id="feedback10"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row"> <div class="translation">There are no flowers in the garden.</div> </div>
+                <div class="exercise-row"> <input type="text" class="fill-input ottoman-input long-input" id="fill11"> </div>
+                <div class="key-container" id="keys11"> <button class="key-btn">باغچه‌ده</button> <button class="key-btn">چيچك</button> <button class="key-btn">يوقدر</button> <button class="key-btn">وار در</button> </div>
+                <button class="fill-check" onclick="checkFill(11, [''], ['باغچه‌ده چيچك يوقدر'])">Check</button> <div class="fill-feedback" id="feedback11"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Congratulations Section (Match L1 Style) -->
+    <div class="section">
+        <h2 style="text-align: center;">
+            <span class="congrats-ottoman">تبريكات<br>درس اوچنجى اكمال ايتدكز</span><br><br>
+            <span class="congrats-english" style="display: block; font-size: inherit;">Congratulations<br>You finished Lesson 3</span>
+        </h2>
+    </div>
+
+    <!-- Navigation Buttons (Match L1 Style) -->
+    <div class="nav-buttons-container">
+        <a href="lesson2_en.html" class="nav-button prev-button">Previous Lesson<br>Review</a>
+        <a href="lesson4_en.html" class="nav-button next-button">Next Lesson</a>
+        <a href="../exercises/lesson3_exercises_en.html" class="nav-button exercises-button">Additional Exercises<br>for Lesson 3</a>
+    </div>
+
+    <script>
+        // --- General Fill-in Exercise Checker ---
+        function checkFill(id, correctLatinAnswers, correctOttomanAnswers) {
+            const input = document.getElementById(`fill${id}`);
+            const feedback = document.getElementById(`feedback${id}`);
+            if (!input || !feedback) return;
+
+            const userAnswer = input.value.trim();
+            let normalizedUserAnswer = userAnswer;
+            correctOttomanAnswers = Array.isArray(correctOttomanAnswers) ? correctOttomanAnswers : [correctOttomanAnswers]; // Ensure array
+
+            // Determine if it's a sentence building exercise
+            // Now ALL exercises are considered sentence building
+            const isSentenceBuilding = true; // ALL exercises use same styling
+
+            if (isSentenceBuilding) {
+                // Remove ALL spaces and punctuation for sentence checking
+                normalizedUserAnswer = userAnswer.replace(/\s+|[؟?]/g, '');
+            } else {
+                 // For word fill-ins (Ex 1, Ex 2), just trim and remove common diacritics/kashida for robust matching
+                 normalizedUserAnswer = userAnswer.trim().replace(/[\u064B-\u065F\u0640]/g, '');
+            }
+
+            let isCorrect = false;
+            let correctDisplayAnswer = ''; // Store the first correct Ottoman answer for display
+
+            for (const answer of correctOttomanAnswers) {
+                 let normalizedCorrectOttoman = answer.trim();
+                 correctDisplayAnswer = correctDisplayAnswer || normalizedCorrectOttoman; // Store the first one
+
+                 if (isSentenceBuilding) {
+                      // Remove spaces/punctuation from correct answer for comparison
+                      normalizedCorrectOttoman = normalizedCorrectOttoman.replace(/\s+|[؟?]/g, '');
+                 } else {
+                     // Also normalize the correct answer for comparison in Ex1/Ex2
+                     normalizedCorrectOttoman = normalizedCorrectOttoman.replace(/[\u064B-\u065F\u0640]/g, '');
+                 }
+
+                 if (normalizedUserAnswer === normalizedCorrectOttoman) {
+                    isCorrect = true;
+                    break;
+                }
+            }
+
+            // --- Feedback Display (Match L1 Ex2/Ex5) ---
+            // All sentence building exercises use 'Correct 💯'
+            // Other exercises use 'Correct!'
+            const correctFeedbackText = isSentenceBuilding ? 'Correct 💯' : 'Correct!'; 
+            feedback.textContent = isCorrect ? correctFeedbackText : 'Incorrect ❌';
+            
+            // Add sentence-building class for styling if it's a sentence building exercise
+            if (isCorrect && isSentenceBuilding) {
+                feedback.className = 'fill-feedback correct sentence-building';
+            } else {
+                feedback.className = `fill-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+            }
+            input.style.borderColor = isCorrect ? 'var(--ottoman-teal)' : 'var(--ottoman-red)'; // Match L1 border feedback
+
+            if (!isCorrect && correctDisplayAnswer !== '') {
+                 // Show the correct Ottoman answer like L1 does on incorrect attempts
+                 feedback.innerHTML = `Incorrect ❌ Correct: <span class="correct-answer-display">${correctDisplayAnswer}</span>`;
+                 // Clear input on incorrect
+                 input.value = '';
+            }
+        }
+
+
+        // --- Key Button Listeners for Fill-in Exercises ---
+         document.addEventListener('DOMContentLoaded', function() {
+             document.querySelectorAll('.key-container').forEach(container => {
+                 const fillItem = container.closest('.fill-item');
+                 if (!fillItem) return;
+                 const input = fillItem.querySelector('.fill-input');
+                 if (!input) return;
+                 const inputId = input.id;
+                 const exerciseNum = parseInt(inputId.replace('fill', ''), 10);
+
+                 // Determine if the exercise should add spaces (like L1 Ex5 / L2 Ex4) or not (like L1 Ex2 / L2 Ex1, L2 Ex2)
+                 const addSpace = (exerciseNum >= 8 && exerciseNum <= 13); // Only L3 Ex4 (matches L1 Ex5 behavior)
+
+                 container.querySelectorAll('.key-btn').forEach(btn => {
+                     const newBtn = btn.cloneNode(true); // Clone to remove old listeners
+                     btn.parentNode.replaceChild(newBtn, btn);
+
+                    newBtn.addEventListener('click', function() {
+                        if (addSpace && this.textContent !== '؟') {
+                             input.value += this.textContent + ' '; // Add space for sentence building
+                        } else {
+                            input.value += this.textContent; // No space for word completion (L3 Ex1, L3 Ex2) or punctuation
+                        }
+                        input.focus();
+                    });
+                });
+            });
+        });
+
+
+        // --- Matching Game Logic (Generic - Re-verified against L1) ---
+        function initializeMatchingGame(ottomanContainerId, englishContainerId, feedbackId, totalPairs) {
+            let selected = { ottoman: null, english: null }; let matchCount = 0;
+            const ottomanContainer = document.getElementById(ottomanContainerId);
+            const englishContainer = document.getElementById(englishContainerId);
+            const feedbackElement = document.getElementById(feedbackId);
+            if (!ottomanContainer || !englishContainer || !feedbackElement) return;
+            const shuffle = c => Array.from(c.children).sort(() => .5-Math.random()).forEach(i=>c.appendChild(i));
+            shuffle(ottomanContainer); shuffle(englishContainer);
+            const items = document.querySelectorAll(`#${ottomanContainerId} .matching-item, #${englishContainerId} .matching-item`);
+            items.forEach(item => {
+                const newItem = item.cloneNode(true); item.parentNode.replaceChild(newItem, item); // Prevent duplicate listeners
+                newItem.addEventListener('click', function() {
+                    if (this.classList.contains('matched')) return;
+                    const isOttoman = this.closest(`#${ottomanContainerId}`) !== null;
+                    const side = isOttoman ? 'ottoman' : 'english';
+                    if (selected[side]) selected[side].classList.remove('selected');
+                    this.classList.add('selected'); selected[side] = this;
+                    feedbackElement.textContent = ''; // Clear feedback on selection
+                    if (selected.ottoman && selected.english) {
+                        if (selected.ottoman.dataset.id === selected.english.dataset.id) {
+                            // Correct Match
+                            ['ottoman', 'english'].forEach(s => { selected[s].classList.remove('selected'); selected[s].classList.add('matched'); });
+                            matchCount++;
+                            if (matchCount === totalPairs) {
+                                feedbackElement.textContent = 'Correct'; // Match L1 final feedback TEXT
+                                feedbackElement.className = 'matching-feedback correct'; // Use specific class with L1 styles (black text, large font)
+                            } selected = { ottoman: null, english: null };
+                        } else { // Incorrect Match
+                            feedbackElement.textContent = ''; // L1 doesn't show 'Incorrect Match' text
+                            const selO = selected.ottoman, selE = selected.english;
+                            setTimeout(() => { if(selO) selO.classList.remove('selected'); if(selE) selE.classList.remove('selected'); }, 800); // Match L1 timeout behavior
+                            selected = { ottoman: null, english: null };
+                        }
+                    }
+                });
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Randomize key buttons in all key containers
+            document.querySelectorAll('.key-container').forEach(container => {
+                // Get all buttons in the container
+                const buttons = Array.from(container.querySelectorAll('.key-btn'));
+                
+                // Shuffle the buttons
+                for (let i = buttons.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    // Swap button HTML content
+                    const temp = buttons[i].innerHTML;
+                    buttons[i].innerHTML = buttons[j].innerHTML;
+                    buttons[j].innerHTML = temp;
+                }
+            });
+            
+            initializeMatchingGame('existence-ottoman-container', 'existence-english-container', 'existence-matching-feedback', 6);
+        });
+    </script>
+
+</body>
+</html>
