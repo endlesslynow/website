@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Exercise: Translate Ottoman Phrases</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Ottoman-inspired color scheme (Matches Lesson 2) */
+        :root {
+            --ottoman-blue: #0081C9; --ottoman-red: #C70039; --ottoman-gold: #FFB100;
+            --ottoman-teal: #00B8A9; --ottoman-navy: #023E7D; --ottoman-cream: #FFF8E1;
+            --ottoman-light-blue: #E0F7FF; --ottoman-pink: #FFCCDF; --ottoman-light-teal: #CCFCF6;
+            --body-background: #1D2F6F; --text-color: #1A3A5A; --text-light: #FFFFFF;
+        }
+        body { font-family: 'Nunito', Arial, sans-serif; line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 15px; background-color: var(--body-background); background-image: url('../ottoman_background.png'); background-repeat: repeat; background-size: 300px auto; box-sizing: border-box; color: var(--text-color); }
+        [lang="ar"], td:first-child, .ottoman-text, .matching-item.ottoman-text, .fill-input.ottoman-input, .key-btn, .correct-answer-display { font-family: 'Noto Naskh Arabic', serif; font-size: 1.4em; line-height: 1.5; font-weight: 500; }
+        .matching-item.ottoman-text, .key-btn { text-align: center; }
+        .fill-input.ottoman-input { text-align: right; font-size: 1.6em; }
+        td:first-child, td[lang="ar"] { text-align: left !important; padding-top: 18px; padding-bottom: 18px; }
+        * { box-sizing: border-box; }
+        h1, h2, h3 { color: var(--ottoman-navy); font-weight: 700; line-height: 1.3; }
+        h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; color: var(--text-light); }
+        h2 { font-size: 1.5rem; margin-top: 30px; }
+        h3 { font-size: 1.2rem; margin-top: 25px; color: var(--ottoman-blue); }
+        .section { background-color: var(--ottoman-light-blue); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background-color: #C0E0F0; }
+        .title-section { background-color: var(--ottoman-navy); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        .title-section h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 0; margin-top: 0; font-size: 1.8rem; color: var(--text-light); }
+        th, td { padding: 12px 15px; text-align: left; border: none; }
+        th { background-color: var(--ottoman-blue); color: var(--text-light); font-weight: 600; }
+        tr:nth-child(even) { background-color: var(--ottoman-light-blue); }
+        tr:hover { background-color: #B9E7FE; }
+
+        /* Exercise styles - Matching lesson 2 */
+        .exercise-list { list-style: none; padding: 0; margin: 0; }
+        .exercise-item { background-color: var(--ottoman-gold); margin-bottom: 20px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .ottoman-text-exercise { font-family: 'Noto Naskh Arabic', serif; font-size: 1.5em; line-height: 1.6; margin-bottom: 5px; text-align: left; direction: ltr; }
+        .translit { font-style: italic; font-size: 0.9em; color: #555; display: block; margin-bottom: 8px; font-family: 'Nunito', Arial, sans-serif; }
+
+        /* Question styles */
+        .question { display: flex; align-items: center; margin-top: 10px; margin-bottom: 5px; flex-wrap: wrap; gap: 10px; }
+        .answer-input { padding: 8px 12px; border: 2px solid #997000; border-radius: 6px; font-size: 16px; font-family: inherit; }
+        .translation-input { width: 100%; max-width: 400px; }
+
+        /* Button styles */
+        .check-btn { padding: 8px 15px; background-color: #FFECB3; color: black; border: none; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: 600; transition: background-color 0.2s ease; }
+        .check-btn:hover { background-color: #FFE082; }
+
+        /* Feedback styles */
+        .feedback, .fill-feedback { margin-top: 8px; margin-left: 5px; font-weight: bold; }
+        .correct, .fill-feedback.correct { color: var(--ottoman-teal); }
+        .incorrect, .fill-feedback.incorrect { color: var(--ottoman-red); }
+        /* Make Ottoman text in correct answer display larger */
+        .correct-answer-display {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 1.5em;
+            font-weight: 600;
+            text-align: left;
+            direction: rtl;
+            display: block;
+            margin-top: 3px;
+            color: #333;
+        }
+        /* Specific style for sentence building 'Correct' feedback */
+        .fill-feedback.correct.sentence-building {
+            color: black !important;
+            font-size: 1.5rem !important;
+            font-weight: bold !important;
+            font-family: 'Nunito', Arial, sans-serif !important;
+            background-color: var(--ottoman-gold);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        /* Navigation */
+        .nav-buttons-container { display: flex; justify-content: space-between; margin-top: 30px; margin-bottom: 40px; padding: 0 10px; }
+        .nav-button { background-color: var(--ottoman-navy); color: var(--text-light); border: 3px solid var(--ottoman-blue); border-radius: 12px; padding: 15px 20px; font-family: 'Nunito', Arial, sans-serif; font-weight: 600; font-size: 1.3rem; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; text-decoration: none; text-align: center; display: inline-block; line-height: 1.4; }
+        .nav-button:hover { background-color: var(--ottoman-blue); border-color: var(--ottoman-navy); }
+
+        /* Media queries */
+        @media (max-width: 600px) {
+            .section, .title-section { padding: 20px 15px; border-radius: 10px; }
+            h1 { font-size: 1.6rem; padding-bottom: 10px; } h2 { font-size: 1.3rem; } h3 { font-size: 1.1rem; }
+            table { display: block; overflow-x: auto; white-space: nowrap; } th, td { padding: 10px 12px; } th { font-size: 0.9rem; padding: 10px 8px; }
+            .question { flex-direction: column; align-items: stretch; }
+            .answer-input, .translation-input { margin: 0; width: 100%; max-width: none; }
+            .check-btn { margin-top: 10px; width: 100%; padding: 12px; }
+            .feedback, .fill-feedback { display: block; margin-top: 8px; text-align: center; }
+            .nav-buttons-container { flex-direction: column; gap: 15px; } .nav-button { width: 100%; margin: 0; font-size: 1rem;}
+        }
+
+        @media (max-width: 450px) {
+            body { padding: 10px; }
+        }
+
+        /* ADDED STYLES FOR CONGRATS AND NAV BUTTONS - EXACTLY FROM SECOND FILE */
+         .congrats-ottoman { font-family: 'Amiri', serif; font-size: 30px; line-height: 1.4; }
+         .congrats-english { font-size: 1.2em; margin-top: 10px; }
+         .prev-button { margin-right: auto; }
+         .next-button, .exercises-button { margin-left: 10px; }
+         .nav-button.next-button {
+             padding-top: 27px; /* Add padding to the top to push text down */
+         }
+         /* End of added styles */
+    </style>
+</head>
+<body>
+    <div class="title-section">
+        <h1>Exercises for Lesson 1</h1>
+    </div>
+
+    <div class="section">
+        <h2>Important Note About The Exercises</h2>
+        <p>You are under no obligation to complete these exercises. They are a lot of them and you may not need to do them all to get the point. Feel free to pick and choose whatever you'd like to do or not do.</p>
+        <div style="background-color: #FFD6E0; padding: 15px 20px; margin: 15px 0; position: relative; border-radius: 4px; overflow: hidden;">
+            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 8px; background-color: #FF4D6D;"></div>
+            <p style="margin: 0; padding-left: 10px; color: #1A3A5A;">
+                <strong>Note:</strong> You must know the Lesson 1 Vocabulary from the vocabulary section to do these exercises.
+            </p>
+        </div>
+
+        <div class="nav-buttons-container">
+            <a href="#dialogue-section" class="nav-button">Dialogue</a>
+            <a href="#exercise1-section" class="nav-button">Exercise 1</a>
+            <a href="#ottomantext-section" class="nav-button">Ottoman Text</a>
+            <a href="#exercise2-section" class="nav-button">Exercise 2</a>
+        </div>
+    </div>
+
+    <div class="section" id="dialogue-section">
+        <h2>Dialogue: Questions and Answers (سوال و جواب)</h2>
+        <p>Click on any phrase to see its English translation.</p>
+
+        <table class="dialogue-table" id="dialogue-table">
+            <thead>
+                <tr>
+                    <th style="width: 40%;">Question - سوال</th>
+                    <th style="width: 40%;">Answer - جواب</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Are you rich?')">Sén zéngin'mi sin?</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Yes, I am rich.')">Ev'vét, zéngin'im.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Is the brother poor?')">Qardash faqir'mi dir?</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Yes, he is poor.')">Ev'vét, faqir dir.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Is the boy good?')">Ogh'lan é'yi'mi dir?</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Yes, the boy is good.')">Ev'vét, oghlan é'yi'dir.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Are you good or bad?')">Sén é'yi'mi sin, kötü'mü sün?</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'I am good.')">Bén é'yi'yim.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Is the sister good?')">Qïz qardash é'yi'mi?</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Yes, the sister is a girl.')">Ev'vét,qïzqardash'bir'qïzdir.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Is this mountain high?')">Bou dagh yüksék'mi?</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Yes, it is high.')">Ev'vét, yüksék'dir.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Are they young?')">Onlar gönj'mi dir?</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Yes, they are young.')">Ev'vét, gönj'dirler.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Are you (plural) poor?')">Siz faqir'mi siniz?</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'We are rich.')">Biz zéngin'iz.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Is the White Sea big?')">Aq Déniz bö'yük'mü dür?</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'The Black Sea is small.')">Qara-Déniz küchük dür.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Is the white father (stork) a big bird?')">Aq baba bö'yük bir qoush'mou dour?</td>
+                    <td class="ottoman-cell" onclick="showTranslation(this, 'Yes, it is a big bird.')">Ev'vét, bö'yük bir qoush'dour.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="exercise1-section">
+        <h2>Exercise 1: Translate into English (تعليم)</h2>
+        <p>Type the English translation for each Ottoman phrase below.</p>
+
+        <ol class="exercise-list">
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">بر چوجق ، چوجق</div>
+                <div class="translit">Bir chojuq. Chojuq.</div>
+                <div class="question">
+                    <input type="text" id="fill1" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(1, ['a boy. the boy.', 'a boy the boy'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback1"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">بر قوش ، قوش</div>
+                <div class="translit">Bir qoush. Qoush.</div>
+                <div class="question">
+                    <input type="text" id="fill2" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(2, ['a bird. the bird.', 'a bird the bird'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback2"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">اوكوز</div>
+                <div class="translit">Eûkûz. Bir eûkûz.</div>
+                <div class="question">
+                    <input type="text" id="fill3" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(3, ['the ox', 'ox', 'an ox'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback3"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">شو دره ، بو دره</div>
+                <div class="translit">Shou déré. Bou déré.</div>
+                <div class="question">
+                    <input type="text" id="fill4" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(4, ['that valley. a valley.', 'that valley a valley', 'that valley. this valley.', 'that valley this valley'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback4"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">بر ياقين كوى ، ياقين بر كوى</div>
+                <div class="translit">Bir yaqïn köy. Yaqïn bir köy.</div>
+                <div class="question">
+                    <input type="text" id="fill5" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(5, ['a near village. a near village.', 'a near village a near village', 'a near village'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback5"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">بويوك</div>
+                <div class="translit">Böyûk.</div>
+                <div class="question">
+                    <input type="text" id="fill6" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(6, ['big', 'large', 'a high mountain', 'high mountain'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback6"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">بويوكدر ، بو يوكمى طاغ ؟ بويوك طاغ ، اوزاق شهر ، شهر اوزاقدر</div>
+                <div class="translit">Böyûkdür. Bou yük mü dagh? Böyük dagh. Ouzaq shéhir. Shéhir ouzaq dïr.</div>
+                <div class="question">
+                    <input type="text" id="fill7" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(7, ['a distant city. the city is far. is that city far?', 'a distant city the city is far is that city far'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback7"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">بو يوك طاغ يوكمى مدر ؟ طاغ بويوك مدر ؟ بو بويوك طاغ</div>
+                <div class="translit">Bou yük dagh yük müdür? Dagh böyük müdür? Bou böyük dagh.</div>
+                <div class="question">
+                    <input type="text" id="fill8" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(8, ['this big mountain. is this mountain big?', 'this big mountain is this mountain big'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback8"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">ياقين چوجق ، چوجغى ياقیندر ، ايو بر چوجق ، اي چوجقدر</div>
+                <div class="translit">Yaqïn chojuq. Chojuq yaqïndïr. Éyi bir chojuq. Éyi chojuqdur.</div>
+                <div class="question">
+                    <input type="text" id="fill9" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(9, ['the good child. the child is good. that good boy. that is a nice boy.', 'the good child the child is good that good boy that is a nice boy'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback9"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">بو آت ، بر آت ، آت ، ايى آت ، بو بر آت در</div>
+                <div class="translit">Bou at. Bir at. At. Éyi at. Bou bir at dïr.</div>
+                <div class="question">
+                    <input type="text" id="fill10" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(10, ['this horse. a horse. the horse. a good horse. this is a horse. a good horse. the horse is good.', 'this horse a horse the horse a good horse this is a horse a good horse the horse is good', 'this horse. a horse. the horse. a good horse. this is a horse.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback10"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">اوزاق بر شهر ، بر ياقين شهر ، شهر ياقين ميدر ؟ شهر اوزاقدر</div>
+                <div class="translit">Ouzaq bir shéhir. Bir yaqïn shéhir. Shéhir yaqïn mï dïr? Shéhir ouzaq dïr.</div>
+                <div class="question">
+                    <input type="text" id="fill11" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(11, ['a distant city. a neighbouring city. is the city near? the city is far.', 'a distant city a neighbouring city is the city near the city is far', 'a distant city. a near city. is the city near? the city is far.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback11"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">هوا ايى در ، هوا صيجاق ميدر ؟ هوا</div>
+                <div class="translit">Hava éyi dïr. Hava sïjaq mï dïr? Hava.</div>
+                <div class="question">
+                    <input type="text" id="fill12" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(12, ['the weather is good. is the weather hot? the weather is cold.', 'the weather is pleasant. is the weather hot? the weather is cold.', 'the weather is good is the weather hot the weather is cold'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback12"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">قره داش ، قره داش زنكين دردر ، قره داش ، بابا و آغا ايله دردر</div>
+                <div class="translit">Qardash vé qïz qardash zéngin dïrlér. Qardash, qïz qardash, baba vé ana éyi dïrlér.</div>
+                <div class="question">
+                    <input type="text" id="fill13" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(13, ['the brother and sister are rich. the brother, the sister, the father and the mother are good.', 'the brother and sister are rich the brother the sister the father and the mother are good'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback13"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">سن بويوك ميسين كوچوك ميسين ؟</div>
+                <div class="translit">Sén böyûk' mü sin, küchük' mü sin?</div>
+                <div class="question">
+                    <input type="text" id="fill14" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(14, ['are you big or little?', 'are you old or young?', 'are you big or small?'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback14"></div>
+            </li>
+
+
+        </ol>
+    </div>
+
+        <div class="section" id="ottomantext-section"> <!-- Changed ID for uniqueness -->
+        <h2>Original Ottoman Text</h2>
+        <p>If you could do Exercise 1, then you can read this! This is the original Ottoman text of Exercise 1. Make sure to read the entire thing for "real" Ottoman reading practice.</p>
+        <div style="text-align: center; margin: 20px 0;">
+            <img src="ex_1.png" alt="Original Ottoman Text" style="max-width: 100%; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+        </div>
+        <p>Congratulations on reading your first Ottoman text!</p>
+    </div>
+    <div class="section"> <!-- Removed duplicate ID -->
+        <div class="section" id="exercise2-section">
+            <h2>Exercise 2: Translate into Ottoman (تمرین)</h2>
+            <p>Type the Ottoman translation for each English phrase below.</p>
+            <p><strong>Note:</strong> You must use a Persian or Ottoman keyboard to be able to do this exercise. <em>Do Ottoman keyboards even exist?</em></p>
+        <ol class="exercise-list">
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">A boy. The boy.</div>
+                <div class="question">
+                    <input type="text" id="fill15" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(15, ['بر چوجق ، چوجق'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback15"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">A bird. The bird.</div>
+                <div class="question">
+                    <input type="text" id="fill16" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(16, ['بر قوش ، قوش'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback16"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">The ox. An ox.</div>
+                <div class="question">
+                    <input type="text" id="fill17" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(17, ['اوكوز'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback17"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">That valley. A valley.</div>
+                <div class="question">
+                    <input type="text" id="fill18" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(18, ['شو دره ، بو دره'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback18"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">A near village.</div>
+                <div class="question">
+                    <input type="text" id="fill19" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(19, ['بر ياقين كوى', 'ياقين بر كوى'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback19"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">A high mountain.</div>
+                <div class="question">
+                    <input type="text" id="fill20" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(20, ['بويوك'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback20"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">A distant city. The city is far.</div>
+                <div class="question">
+                    <input type="text" id="fill21" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(21, ['اوزاق شهر ، شهر اوزاقدر'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback21"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">This big mountain. Is this mountain big?</div>
+                <div class="question">
+                    <input type="text" id="fill22" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(22, ['بو بويوك طاغ ، طاغ بويوك مدر'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback22"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">The good child. The child is good.</div>
+                <div class="question">
+                    <input type="text" id="fill23" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(23, ['اي چوجق ، چوجق ايدر'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback23"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">This horse. A horse. The horse.</div>
+                <div class="question">
+                    <input type="text" id="fill24" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(24, ['بو آت ، بر آت ، آت'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback24"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">A good horse. This is a horse.</div>
+                <div class="question">
+                    <input type="text" id="fill25" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(25, ['ايى آت ، بو بر آت در'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback25"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">A distant city. A neighbouring city.</div>
+                <div class="question">
+                    <input type="text" id="fill26" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(26, ['اوزاق بر شهر ، بر ياقين شهر'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback26"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">Is the city near? The city is far.</div>
+                <div class="question">
+                    <input type="text" id="fill27" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(27, ['شهر ياقين ميدر ؟ شهر اوزاقدر'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback27"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">The weather is good. Is the weather hot?</div>
+                <div class="question">
+                    <input type="text" id="fill28" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(28, ['هوا ايى در ، هوا صيجاق ميدر'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback28"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">The brother and sister are rich.</div>
+                <div class="question">
+                    <input type="text" id="fill29" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(29, ['قره داش و قز قره داش زنكين دردر'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback29"></div>
+            </li>
+
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em;">Are you big or little?</div>
+                <div class="question">
+                    <input type="text" id="fill30" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(30, ['سن بويوك ميسين كوچوك ميسين'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback30"></div>
+            </li>
+        </ol>
+    </div>
+</div>
+
+    <!-- START OF ADDED CONTENT -->
+    <!-- Congratulations Section (Match L1 Style) -->
+    <div class="section">
+        <h2 style="text-align: center;">
+            <span class="congrats-ottoman">تبريكات<br>درس ايكنجى اكمال ايتدكز</span><br><br> <!-- UPDATE THIS TEXT IF NEEDED -->
+            <span class="congrats-english" style="display: block; font-size: inherit;">Congratulations<br>You finished the exercises for Lesson 1</span> <!-- UPDATE THIS TEXT IF NEEDED -->
+        </h2>
+    </div>
+</div>
+    <!-- Navigation Buttons (Match L1 Style) -->
+    <div class="nav-buttons-container">
+        <a href="https://www.zachariahhopkins.com/ottoman_lessons_en.html" class="nav-button prev-button">Back to all <br></b>Lessons</a> <!-- Changed href and text -->
+        <a href="../lessons/lesson2_plurals_en.html" class="nav-button next-button">Start Lesson 2</a>
+
+        <!-- <a href="lesson2_exercises.html" class="nav-button exercises-button">Additional Exercises<br>for Lesson 2</a> -->
+    </div>
+
+
+    <style>
+        /* Additional styles for the dialogue table */
+        .dialogue-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background-color: #F0FAFF; /* Very light blue background */
+        }
+
+        .dialogue-table th {
+            background-color: var(--ottoman-blue);
+            color: var(--text-light);
+            padding: 12px 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .dialogue-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #B9E7FE;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.2s;
+            font-family: 'Nunito', Arial, sans-serif !important;
+            font-size: 1rem !important;
+            font-weight: 400 !important;
+            line-height: 1.7 !important;
+        }
+
+        .dialogue-table td:first-child {
+            font-family: 'Nunito', Arial, sans-serif !important;
+            font-size: 1rem !important;
+            font-weight: 400 !important;
+            line-height: 1.7 !important;
+        }
+
+        .dialogue-table td:hover {
+            background-color: #B9E7FE;
+        }
+
+        .ottoman-cell {
+            position: relative;
+        }
+
+        .translation {
+            display: block;
+            margin-top: 5px;
+            font-style: italic;
+            color: #555;
+            font-size: 0.9em;
+        }
+    </style>
+
+    <script>
+        // Function to show/hide translations when dialogue cells are clicked
+        function showTranslation(element, translation) {
+            // Check if translation is already showing
+            const existingTranslation = element.querySelector('.translation');
+
+            if (existingTranslation) {
+                // If translation exists, remove it (toggle off)
+                element.removeChild(existingTranslation);
+            } else {
+                // If no translation showing, add it
+                const translationSpan = document.createElement('span');
+                translationSpan.className = 'translation';
+                translationSpan.textContent = translation;
+                element.appendChild(translationSpan);
+            }
+        }
+
+        // --- General Fill-in Exercise Checker ---
+        function checkFill(id, correctAnswers) {
+            const input = document.getElementById(`fill${id}`);
+            const feedback = document.getElementById(`feedback${id}`);
+            if (!input || !feedback) return;
+
+            const userAnswer = input.value.trim().toLowerCase();
+
+            // More aggressive normalization to ignore spelling and punctuation
+            let normalizedUserAnswer = userAnswer
+                .replace(/[.,?!\[\](){}:;'"\-_]/g, '') // Remove all punctuation
+                .replace(/\s+/g, ' ')                  // Standardize whitespace
+                .trim();                               // Remove leading/trailing spaces
+
+            correctAnswers = Array.isArray(correctAnswers) ? correctAnswers : [correctAnswers]; // Ensure array
+
+            // Determine if it's a sentence building exercise
+            const isSentenceBuilding = true; // All exercises are considered sentence building
+
+            let isCorrect = false;
+            let correctDisplayAnswer = correctAnswers[0]; // Store the first correct answer for display
+
+            // Format the display answer based on input type
+            if (input.classList.contains('ottoman-input')) {
+                 // For Ottoman input, just use the first answer as is.
+                 correctDisplayAnswer = correctAnswers[0];
+            } else {
+                // For English input, capitalize first letter of each sentence
+                correctDisplayAnswer = correctDisplayAnswer.replace(/(?:^|[.!?]\s+)([a-z])/g, (match, letter) => {
+                    return match.replace(letter, letter.toUpperCase());
+                });
+            }
+
+
+            // Normalize correct answers for comparison - much more lenient now
+            const normalizedCorrectAnswers = correctAnswers.map(ans => {
+                // Normalize based on input type
+                if (input.classList.contains('ottoman-input')) {
+                    // For Ottoman, basic trim and potentially remove kashida/diacritics if needed
+                    return ans.trim().replace(/[\u064B-\u065F\u0640]/g, '');
+                } else {
+                    // For English, use the aggressive normalization
+                    return ans.toLowerCase()
+                       .replace(/[.,?!\[\](){}:;'"\-_]/g, '') // Remove all punctuation
+                       .replace(/\s+/g, ' ')                  // Standardize whitespace
+                       .trim();                                // Remove leading/trailing spaces
+                }
+            });
+
+
+            // Check if any of the normalized correct answers match the normalized user answer
+             for (let normAnswer of normalizedCorrectAnswers) {
+                 // Check based on input type
+                 if (input.classList.contains('ottoman-input')) {
+                      // Direct comparison for Ottoman after normalization
+                      if (normalizedUserAnswer === normAnswer) {
+                           isCorrect = true;
+                           break;
+                      }
+                 } else {
+                      // Lenient check for English
+                      // Simple matching allowing for different spellings by checking if main words are present
+                      const userWords = normalizedUserAnswer.split(' ');
+                      const correctWords = normAnswer.split(' ');
+                      const threshold = Math.max(2, Math.floor(correctWords.length * 0.5)); // At least 50% of words should match
+                      let matchCount = 0;
+                      for (const userWord of userWords) {
+                          if (userWord.length > 2 && correctWords.some(word =>
+                              word.includes(userWord.substring(0, Math.floor(userWord.length * 0.7))) ||
+                              userWord.includes(word.substring(0, Math.floor(word.length * 0.7)))
+                          )) {
+                              matchCount++;
+                          }
+                      }
+                      if (matchCount >= threshold) {
+                          isCorrect = true;
+                          break;
+                      }
+                      // Alternative: Direct comparison after normalization
+                      if (normalizedUserAnswer === normAnswer) {
+                          isCorrect = true;
+                          break;
+                      }
+                 }
+             }
+
+
+            // --- Feedback Display (Match Lesson 2) ---
+            const correctFeedbackText = isSentenceBuilding ? 'Correct 💯' : 'Correct!';
+            feedback.textContent = isCorrect ? correctFeedbackText : 'Incorrect ❌';
+
+            // Add sentence-building class for styling if it's a sentence building exercise
+            if (isCorrect && isSentenceBuilding) {
+                feedback.className = 'fill-feedback correct sentence-building';
+            } else {
+                feedback.className = `fill-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+            }
+            input.style.borderColor = isCorrect ? 'var(--ottoman-teal)' : 'var(--ottoman-red)';
+
+            if (!isCorrect && correctDisplayAnswer !== '') {
+                // Show the correct answer on incorrect attempts
+                feedback.innerHTML = `Incorrect ❌ Correct: <span class="correct-answer-display">${correctDisplayAnswer}</span>`;
+                // Don't clear input on incorrect - let user see their mistake
+                // Clear input for Ottoman exercises
+                if (input.classList.contains('ottoman-input')) {
+                     input.value = '';
+                }
+            }
+        }
+
+        // Add event listeners to all input fields for Enter key
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all input fields
+            const inputs = document.querySelectorAll('.answer-input');
+
+            // Add event listener to each input field
+            inputs.forEach(input => {
+                input.addEventListener('keypress', function(event) {
+                    // Check if the pressed key is Enter
+                    if (event.key === 'Enter') {
+                        // Prevent default behavior (form submission)
+                        event.preventDefault();
+
+                        // Find the nearest check button and click it
+                        const checkBtn = this.closest('.question').querySelector('.check-btn');
+                        if (checkBtn) {
+                            checkBtn.click();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

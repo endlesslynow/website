@@ -12,6 +12,8 @@
             --ottoman-navy: #023E7D;
             --body-background: #1D2F6F;
             --text-dark: #333333;
+            --vocab-blue: #165A9C;
+            --exercises-blue: #0F85C9;
         }
        
         * {
@@ -21,17 +23,21 @@
         }
        
         html, body {
-            height: 100%;
+            min-height: 100vh;
             width: 100%;
             font-family: Arial, Helvetica, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background-color: var(--body-background);
             background-image: url('ottoman_turkish_lessons/ottoman_background.png');
             background-repeat: repeat;
             background-size: 300px auto;
             background-attachment: fixed;
+            padding: 20px 0;
+        }
+       
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
        
         .container {
@@ -39,16 +45,16 @@
             border-radius: 16px;
             padding: 30px;
             margin: 15px;
-            max-width: 90%;
+            width: 95%;
+            max-width: 1200px;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
         }
        
         .lesson-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             width: 100%;
-            max-width: 600px;
         }
        
         .lesson-button {
@@ -65,6 +71,7 @@
             justify-content: center;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            height: 100%;
         }
         
         .lesson-title {
@@ -115,19 +122,35 @@
             top: 0;
         }
        
-        /* Additional mobile optimizations */
-        @media (max-width: 480px) {
+        /* Tablet and smaller desktops */
+        @media (max-width: 1024px) {
+            .lesson-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Mobile devices */
+        @media (max-width: 768px) {
+            .lesson-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .container {
                 padding: 20px;
+                margin: 10px;
             }
            
             .lesson-button {
                 padding: 20px 15px;
-                font-size: 1.2rem;
+            }
+            
+            .lesson-title .line1,
+            .lesson-title .line2 {
+                font-size: 1.5rem;
             }
             
             .bullet-points {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -148,6 +171,37 @@
                     <li>Learn question formation</li>
                 </ul>
             </button>
+            
+            <button class="lesson-button" data-lesson="1-vocab" style="background-color: var(--vocab-blue);">
+                <div class="lesson-title">
+                    <span class="line1">Lesson 1</span>
+                    <span class="line2">Vocabulary</span>
+                </div>
+
+            </button>
+            
+            <button class="lesson-button" data-lesson="1-exercises" style="background-color: var(--exercises-blue);">
+                <div class="lesson-title">
+                    <span class="line1">Lesson 1</span>
+                    <span class="line2">Exercises</span>
+                </div>
+
+            </button>
+            
+            <button class="lesson-button" data-lesson="2">
+                <div class="lesson-title">
+                    <span class="line1">Lesson 2</span>
+                    <span class="line2">The Substantive Verb, Plurals, and Titles</span>
+                </div>
+                <ul class="bullet-points">
+                    <li>Learn how to form the Plural</li>
+                    <li>Understand common Titles of Respect and their usage</li>
+                    <li>Learn about Subject Pronoun Omission</li>
+                    <li>Review Adjective Placement with plural nouns</li>
+                    <li>Learn the Negative Present Tense ("to be")</li>
+                    <li>Learn the Interrogative Negative Present ("to be")</li>
+                </ul>
+            </button>
         </div>
     </div>
    
@@ -163,6 +217,12 @@
                 // Redirect to the appropriate page
                 if (lesson === "1") {
                     window.location.href = "ottoman_turkish_lessons/lessons/lesson1_articles_en.html";
+                } else if (lesson === "2") {
+                    window.location.href = "ottoman_turkish_lessons/lessons/lesson2_plurals_en.html";
+                } else if (lesson === "1-exercises") {
+                    window.location.href = "ottoman_turkish_lessons/exercises/lesson1_exercises_en.html";
+                } else if (lesson === "1-vocab") {
+                    window.location.href = "ottoman_turkish_lessons/vocabulary/lesson1_vocabulary_en.html";
                 }
             });
         });
