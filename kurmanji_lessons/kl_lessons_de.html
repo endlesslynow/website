@@ -6,87 +6,95 @@
     <title>Wählen Sie Ihre Lektion</title>
     <style>
         :root {
-            --kurdish-green: #009639;
-            --stripe-red: #ED1C24;
-            --stripe-white: #FFFFFF;
-            --stripe-green: #009639;
+            --lesson-dark-green: #bc2129;
+            --vocab-light-green: #2F9E44;
+            --gold-overlay: rgba(255, 215, 0, 0.7);
         }
-       
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-       
+
         html, body {
-            height: 100%;
+            min-height: 100%;
             width: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #1D2F6F;
+            background-image: url('kurmanji_background.png');
+            background-repeat: repeat;
+            background-size: 300px auto;
+            background-attachment: fixed;
             display: flex;
             justify-content: center;
-            align-items: center;
-            /* Creating the three equal horizontal stripes */
-            background: linear-gradient(to bottom,
-                var(--stripe-red) 0%,
-                var(--stripe-red) 33.33%,
-                var(--stripe-white) 33.33%,
-                var(--stripe-white) 66.66%,
-                var(--stripe-green) 66.66%,
-                var(--stripe-green) 100%);
-            background-attachment: fixed;
-        }
-       
-        .container {
-            background-color: rgba(255, 215, 0, 0.7);
-            border-radius: 12px;
+            align-items: flex-start;
             padding: 20px;
-            margin: 15px;
-            max-width: 90%;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            overflow-x: hidden;
         }
-       
+
+        .container {
+            background-color: var(--gold-overlay);
+            border-radius: 16px;
+            padding: 30px;
+            width: 95%;
+            max-width: 900px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            margin-top: 40px;
+        }
+
         .lesson-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 15px;
-            width: 100%;
-            max-width: 600px;
         }
-       
+
         .lesson-button {
-            background-color: var(--kurdish-green);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 15px 10px;
-            font-size: clamp(0.9rem, 3vw, 1rem);
-            cursor: pointer;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 90px;
-            transition: transform 0.2s, background-color 0.2s;
+            align-items: flex-start;
+            justify-content: flex-start;
+            text-align: left;
+            padding: 20px 25px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            background-color: var(--lesson-dark-green);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            min-height: 80px;
+            height: auto;
+            line-height: 1.6;
+            white-space: normal;
         }
-       
-        .lesson-button:hover, .lesson-button:focus {
+
+        .lesson-button.vocab {
+            background-color: var(--vocab-light-green);
+            color: white;
+        }
+
+        .lesson-button:hover,
+        .lesson-button:focus {
             transform: translateY(-3px);
-            background-color: #00802f;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
-       
-        .icon {
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            margin-top: 8px;
-        }
-        /* Additional mobile optimizations */
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
+
+        @media (max-width: 768px) {
+            html, body {
+                align-items: flex-start;
+                padding-top: 40px;
             }
-           
+
+            .lesson-grid {
+                grid-template-columns: 1fr;
+            }
+
             .lesson-button {
-                height: 80px;
-                padding: 10px 8px;
+                font-size: 1.2rem;
+                height: auto;
+                padding: 18px;
             }
         }
     </style>
@@ -94,29 +102,34 @@
 <body>
     <div class="container">
         <div class="lesson-grid">
-            <button class="lesson-button" data-lesson="1">
-                <span>Lektion 1: Pronomen und das Verb "Sein"</span>
-            </button>
-            <button class="lesson-button" data-lesson="2">
-                <span>Lektion 2: Familienmitglieder und Besitz</span>
-            </button>
+            <button class="lesson-button" data-lesson="1">Lektion 1<br>Pronomen und das Verb "Sein"</button>
+            <button class="lesson-button" data-lesson="2">Lektion 2<br>Familienmitglieder und Besitz</button>
+            <button class="lesson-button" data-lesson="3">Lektion 3<br>Aktivitäten und Präsens</button>
+            <button class="lesson-button" data-lesson="4">Lektion 4<br>Präpositionen und Zirkumpositionen</button>
         </div>
     </div>
-   
+
     <script>
         document.querySelectorAll('.lesson-button').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const lesson = this.getAttribute('data-lesson');
-                console.log(`Selected lesson: ${lesson}`);
-               
-                // Visual feedback
-                this.style.backgroundColor = '#00802f';
-               
-                // Redirect to the appropriate page
+
                 if (lesson === "1") {
-                    window.location.href = `/kurmanji_lessons/lesson_1_pronouns_and_tobe/kl_1_de.html`;
+                    window.location.href = "lesson_1_pronouns_and_tobe/kl_1_de.html";
                 } else if (lesson === "2") {
-                    window.location.href = `/kurmanji_lessons/lesson_2_family_and_possession/kl_2_de.html`;
+                    window.location.href = "lesson_2_family_and_possession/kl_2_de.html";
+                } else if (lesson === "3") {
+                    window.location.href = "lesson_3_activities_present/kl_3_de.html";
+                } else if (lesson === "4") {
+                    window.location.href = "lesson_4_preps_cir/kl_4_de.html";
+                } else if (lesson === "1-vocab") {
+                    window.location.href = "kurmanji_vocab_1/kl_vocab_1_de.html";
+                } else if (lesson === "2-vocab") {
+                    window.location.href = "kurmanji_vocab_2/kl_vocab_2_de.html";
+                } else if (lesson === "3-vocab") {
+                    window.location.href = "kurmanji_vocab_3/kl_vocab_3_de.html";
+                } else if (lesson === "4-vocab") {
+                    window.location.href = "kurmanji_vocab_4/kl_vocab_4_de.html";
                 }
             });
         });
