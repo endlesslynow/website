@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Lesson 1: Basic Grammar and Vocabulary</title>
+    <title>Topic 1: Forms of Etiquette. Greetings. Farewells.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -17,14 +17,14 @@
             --ukrainian-blue: #0057B8; --ukrainian-yellow: #FFD700; --ukrainian-dark-blue: #003893;
             --ukrainian-light-blue: #88BFFF; --ukrainian-navy: #001F54; --ukrainian-cream: #FFF8E1;
             --ukrainian-light-yellow: #FFF2B0; --ukrainian-gold: #E8C000; --ukrainian-light-teal: #CCFCF6;
-            --body-background: #0057B8; --text-color: #003893; --text-light: #FFFFFF;
+            --body-background: #3C80D4; --text-color: #003893; --text-light: #FFFFFF;
         }
         body { font-family: 'Nunito', Arial, sans-serif; line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 15px; background-color: var(--body-background); background-image: url('../ukrainian_background.png'); background-repeat: repeat; background-size: 300px auto; box-sizing: border-box; color: var(--ukrainian-navy); }
-        [lang="uk"], td:first-child, .ukrainian-text, .matching-item.ukrainian-text, .fill-input.ukrainian-input, .key-btn, .correct-answer-display { font-family: 'Nunito', serif; font-size: 1em; line-height: 1.5; font-weight: 500; direction: ltr; text-align: left; }
+        [lang="uk"], td:first-child, .ukrainian-text, .matching-item.ukrainian-text, .fill-input.ukrainian-input, .key-btn, .correct-answer-display, .word-box.ukrainian-text { font-family: 'Nunito', serif; font-size: 1em; line-height: 1.5; font-weight: 500; direction: ltr; text-align: left; }
         /* Latin text styling - Fix for oversized Latin text */
-        .latin-text { font-family: 'Nunito', Arial, sans-serif !important; font-size: 0.7em !important; font-weight: normal !important; direction: ltr !important; }
-        
-        .matching-item.ukrainian-text, .key-btn { text-align: center; }
+        .latin-text, .pronunciation { font-family: 'Nunito', Arial, sans-serif !important; font-size: 0.9em !important; font-style: italic; font-weight: normal !important; direction: ltr !important; color: #555; }
+
+        .matching-item.ukrainian-text, .key-btn, .word-box.ukrainian-text { text-align: center; }
         .fill-input.ukrainian-input { text-align: left; font-size: 1em; }
         td:first-child, td[lang="uk"] { text-align: left !important; padding-top: 18px; padding-bottom: 18px; }
         * { box-sizing: border-box; }
@@ -39,8 +39,11 @@
         th, td { padding: 12px 15px; text-align: left; border: none; }
         th { background-color: var(--ukrainian-blue); color: var(--text-light); font-weight: 600; }
         tr:nth-child(even) { background-color: var(--ukrainian-light-blue); }
+        tr:nth-child(odd) { background-color: #A9D1FF; }
         tr:hover { background-color: #B9DBFF; }
         .note { background-color: var(--ukrainian-light-yellow); padding: 15px; border-left: 4px solid var(--ukrainian-yellow); margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .listen-repeat-read { font-weight: bold; color: var(--ukrainian-dark-blue); margin-bottom: 10px; }
+        .stress-model-table td { padding: 8px 12px; } /* Smaller padding for stress model tables */
 
         /* Feedback Styles */
         .feedback, .fill-feedback { margin-top: 8px; margin-left: 5px; font-weight: bold; }
@@ -50,9 +53,9 @@
         /* Specific style for matching game 'Correct' feedback */
         .matching-feedback.correct { color: black !important; font-size: 1.5rem !important; }
         /* Style for sentence building feedback */
-        .fill-feedback.correct.sentence-building { 
-            color: black !important; 
-            font-size: 1.5rem !important; 
+        .fill-feedback.correct.sentence-building {
+            color: black !important;
+            font-size: 1.5rem !important;
             font-weight: bold !important;
             font-family: 'Nunito', Arial, sans-serif !important;
             background-color: var(--ukrainian-yellow);
@@ -61,13 +64,13 @@
             display: inline-block;
         }
         /* Display for showing correct answer on incorrect attempt */
-        .correct-answer-display { display: inline-block; margin-left: 5px; }
+        .correct-answer-display { display: inline-block; margin-left: 5px; font-weight: normal; font-style: italic; }
 
         /* Matching Game Styles */
         .matching-game { background-color: var(--ukrainian-yellow); padding: 20px; border-radius: 8px; margin-top: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .matching-columns-container { display: flex; gap: 10px; margin-bottom: 20px; }
         .matching-column { flex: 1; display: flex; flex-direction: column; gap: 10px; }
-        .matching-column h4 { text-align: center; margin-bottom: 10px; }
+        .matching-column h4 { text-align: center; margin-bottom: 10px; color: var(--ukrainian-navy); }
         .matching-item-container { display: flex; flex-direction: column; gap: 10px; }
         .matching-item { padding: 12px 15px; background-color: white; border: 2px solid var(--ukrainian-blue); border-radius: 8px; cursor: pointer; transition: all 0.2s ease; text-align: center; -webkit-tap-highlight-color: transparent; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .matching-item:hover { background-color: var(--ukrainian-light-blue); }
@@ -90,7 +93,7 @@
         /* Wider input for sentence building */
         .fill-input.long-input { width: 100%; max-width: 400px; }
         /* Ukrainian Input specific font override */
-        .fill-input.ukrainian-input { font-family: 'Nunito', serif; font-size: 1.6em; direction: ltr; text-align: left; }
+        .fill-input.ukrainian-input { font-family: 'Nunito', serif; font-size: 1.2em; direction: ltr; text-align: left; } /* Adjusted font size */
         /* Container for key buttons */
         .key-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
         /* Key buttons */
@@ -105,7 +108,7 @@
          /* Using standard .section */
          .congrats-ukrainian { font-family: 'Nunito', serif; font-size: 30px; line-height: 1.4; }
          .congrats-english { font-size: 1.2em; margin-top: 10px; }
-         
+
         /* Word Order Game Styles - For Duolingo-style exercise */
         .word-order-game {
             background-color: var(--ukrainian-light-blue);
@@ -114,7 +117,7 @@
             margin: 20px 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        
+
         .game-sentence {
             background-color: white;
             border-radius: 8px;
@@ -124,25 +127,25 @@
             display: flex;
             flex-direction: column;
         }
-        
+
         .game-sentence.completed {
             background-color: var(--ukrainian-light-teal);
             border-left: 4px solid var(--ukrainian-dark-blue);
         }
-        
+
         .game-sentence-translation {
             font-weight: 600;
             margin-bottom: 15px;
             color: var(--text-color);
         }
-        
+
         .sentence-number {
             display: inline-block;
             min-width: 45px;
             font-weight: 700;
             color: var(--ukrainian-dark-blue);
         }
-        
+
         .solution-area {
             min-height: 60px;
             padding: 10px;
@@ -156,7 +159,7 @@
             direction: ltr;
             justify-content: flex-start;
         }
-        
+
         .words-bank {
             display: flex;
             flex-wrap: wrap;
@@ -167,7 +170,7 @@
             margin-bottom: 10px;
             direction: ltr;
         }
-        
+
         .word-box {
             display: inline-block;
             padding: 8px 12px;
@@ -182,36 +185,36 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             transition: all 0.2s ease;
         }
-        
+
         .solution-area .word-box {
             background-color: #88BFFF;
             color: var(--text-color);
             border-color: var(--ukrainian-blue);
         }
-        
+
         .word-box:active {
             transform: scale(0.95);
         }
-        
+
         .game-feedback {
             margin-top: 10px;
             font-weight: 600;
         }
-        
+
         .feedback-correct {
             color: var(--ukrainian-dark-blue);
         }
-        
+
         .feedback-incorrect {
             color: #C70039;
         }
-        
+
         .sentence-buttons {
             display: flex;
             gap: 10px;
             margin-top: 10px;
         }
-        
+
         .check-btn, .show-answer-btn, .delete-btn {
             flex: 1;
             background-color: var(--ukrainian-blue);
@@ -224,29 +227,29 @@
             font-weight: 600;
             transition: all 0.2s ease;
         }
-        
+
         .check-btn:hover, .show-answer-btn:hover, .delete-btn:hover {
             background-color: #0050a3;
         }
-        
+
         .check-btn:active, .show-answer-btn:active, .delete-btn:active {
             transform: scale(0.98);
         }
-        
+
         .show-answer-btn {
             background-color: var(--ukrainian-light-blue);
             color: var(--text-color);
         }
-        
+
         .show-answer-btn:hover {
             background-color: #70B0FF;
         }
-        
+
         .delete-btn {
             background-color: #FFE8B0;
             color: var(--text-color);
         }
-        
+
         .delete-btn:hover {
             background-color: #FFD980;
         }
@@ -257,9 +260,6 @@
         .nav-button:hover { background-color: var(--ukrainian-blue); border-color: var(--ukrainian-navy); }
         .prev-button { margin-right: auto; }
         .next-button, .exercises-button { margin-left: 10px; }
-        .nav-button.next-button {
-    padding-top: 27px;
-}
 
          /* Small Latin text */
          .small-latin { font-size: 0.6em !important; font-family: 'Nunito', Arial, sans-serif !important; font-weight: normal !important; display: inline-block; vertical-align: middle; direction: ltr; text-align: left; }
@@ -286,12 +286,12 @@
             /* Navigation */
             .nav-buttons-container { flex-direction: column; gap: 15px; } .nav-button { width: 100%; margin: 0; font-size: 1rem;}
             body { padding: 10px; }
-            
+
             /* Word order game mobile adjustments */
             .sentence-buttons {
                 flex-direction: column;
             }
-            
+
             .check-btn, .show-answer-btn, .delete-btn {
                 width: 100%;
             }
@@ -305,95 +305,286 @@
 </head>
 <body>
     <div class="title-section">
-        <h1>Lesson 1<br>Basic Grammar and Vocabulary</h1>
+        <h1>Тема 1.<br>Форми етикету. Вітання. Прощання.</h1>
+        <span class="latin-text" style="color: white; font-size: 1em !important;">Topic 1. Forms of Etiquette. Greetings. Farewells.</span>
     </div>
 
     <div class="section">
-        <h3>Lesson Objectives</h3>
+        <h3>What you'll learn</h3>
         <ul>
-             <li><a href="#greetings" style="color: inherit; text-decoration: none;">Basic Greetings</a></li>
-             <li><a href="#personal-pronouns" style="color: inherit; text-decoration: none;">Personal Pronouns</a></li>
-             <li><a href="#verb-to-be" style="color: inherit; text-decoration: none;">The Verb "To Be"</a></li>
-             <li><a href="#question-words" style="color: inherit; text-decoration: none;">Question Words</a></li>
-             <li><a href="#simple-sentences" style="color: inherit; text-decoration: none;">Simple Sentences</a></li>
-             <li><a href="#noun-gender" style="color: inherit; text-decoration: none;">Noun Gender</a></li>
+             <li><a href="#grammar" style="color: inherit; text-decoration: none;">Grammar</a></li>
+             <li><a href="#etiquette" style="color: inherit; text-decoration: none;">Greetings & Farewells</a></li>
+             <li><a href="#practice" style="color: inherit; text-decoration: none;">Practice & Vocabulary</a></li>
+             <li><a href="#reading" style="color: inherit; text-decoration: none;">Reading Practice</a></li>
         </ul>
     </div>
 
-    <!-- Basic Greetings Section -->
+    <!-- Grammar Section -->
     <div class="section">
-        <h2 id="greetings">1. Basic Greetings</h2>
-        <p>Here are some common greetings and expressions in Ukrainian:</p>
-    
+        <h2 id="grammar">1. Grammar</h2>
+
+        <h3>Yes/No Questions</h3>
+        <p>In Ukrainian, yes/no questions are formed using rising intonation at the end of the sentence.</p>
+
         <table>
-            <tr><th>Ukrainian</th><th>Pronunciation</th><th>English</th></tr>
-            <tr>
-                <td lang="uk">Привіт</td>
-                <td>pryvit</td>
-                <td>Hello (informal)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Добрий день</td>
-                <td>dobryi den</td>
-                <td>Good day / Hello (formal)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Добрий ранок</td>
-                <td>dobryi ranok</td>
-                <td>Good morning</td>
-            </tr>
-            <tr>
-                <td lang="uk">Добрий вечір</td>
-                <td>dobryi vechir</td>
-                <td>Good evening</td>
-            </tr>
-            <tr>
-                <td lang="uk">До побачення</td>
-                <td>do pobachennya</td>
-                <td>Goodbye</td>
-            </tr>
-            <tr>
-                <td lang="uk">Дякую</td>
-                <td>dyakuyu</td>
-                <td>Thank you</td>
-            </tr>
-            <tr>
-                <td lang="uk">Будь ласка</td>
-                <td>bud laska</td>
-                <td>Please / You're welcome</td>
-            </tr>
-            <tr>
-                <td lang="uk">Так</td>
-                <td>tak</td>
-                <td>Yes</td>
-            </tr>
-            <tr>
-                <td lang="uk">Ні</td>
-                <td>ni</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td lang="uk">Перепрошую</td>
-                <td>pereproshuyu</td>
-                <td>Excuse me / I'm sorry</td>
-            </tr>
+            <thead>
+                <tr><th>Ukrainian</th><th>English</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>– Це Юрко?↗ – Так, це Юрко.</td><td>– Is this Yurko? – Yes, this is Yurko.</td></tr>
+                <tr><td>– Це Зоя?↗ – Так, це Зоя.</td><td>– Is this Zoya? – Yes, this is Zoya.</td></tr>
+                <tr><td>– Це Юрко і Тая?↗ – Так, це Юрко і Тая.</td><td>– Is this Yurko and Taya? – Yes, this is Yurko and Taya.</td></tr>
+                <tr><td>– А це Зоя і Єва?↗ – Так, це Зоя і Єва.</td><td>– And is this Zoya and Eva? – Yes, this is Zoya and Eva.</td></tr>
+                <tr><td>– Це Єва?↗ – Так, це Єва.</td><td>– Is this Eva? – Yes, this is Eva.</td></tr>
+                <tr><td>– А це Яна?↗ – Так, це Яна.</td><td>– And is this Yana? – Yes, this is Yana.</td></tr>
+            </tbody>
+        </table>
+        
+        <table>
+            <thead>
+                <tr><th>Ukrainian</th><th>English</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Це лампа.</td><td>This is a lamp.</td></tr>
+                <tr><td>Це словник.</td><td>This is a dictionary.</td></tr>
+                <tr><td>Це масло.</td><td>This is butter.</td></tr>
+                <tr><td>Це яблуко.</td><td>This is an apple.</td></tr>
+                <tr><td>Це салат.</td><td>This is a salad.</td></tr>
+                <tr><td>Це телефон.</td><td>This is a telephone.</td></tr>
+                <tr><td>Це молоко.</td><td>This is milk.</td></tr>
+                <tr><td>Це лимон.</td><td>This is a lemon.</td></tr>
+            </tbody>
         </table>
 
-        <!-- Exercise 1: Matching Greetings -->
+        <h3>Connecting Words: І, А, ТАКОЖ, ТЕЖ</h3>
+        <h4>Ways to say "and": І, Й, ТА</h4>
+        <p><span lang="uk">І</span> and <span lang="uk">ТА</span> both mean "and." Use <span lang="uk">Й</span> instead of <span lang="uk">І</span> after vowels for easier pronunciation.</p>
+        <p>Examples:</p>
+        <ul>
+            <li><span lang="uk">Це То́мас та Тама́ра.</span> (This is Tomas and Tamara.)</li>
+            <li><span lang="uk">Це Тама́ра й Анто́н.</span> (This is Tamara and Anton.)</li>
+            <li><span lang="uk">Це Рома́н і Тара́с.</span> (This is Roman and Taras.)</li>
+            <li><span lang="uk">Це ма́ма й та́то.</span> (This is mom and dad.)</li>
+        </ul>
+        <h4>Using А (and/but)</h4>
+        <p>Use <span lang="uk">А</span> to introduce a different or contrasting idea:</p>
+        <ul>
+            <li><span lang="uk">Це роди́на. А це Тара́с.</span> (This is the family. And this is Taras.)</li>
+            <li><span lang="uk">Студе́нти тут. А там буди́нок № 3.</span> (The students are here. And building No. 3 is there.)</li>
+            <li><span lang="uk">Мо́я кни́жка теж тут. А ша́пка і шарф вдо́ма.</span> (My book is also here. But the hat and scarf are at home.)</li>
+        </ul>
+
+        <h4>Words for "also" and "too"</h4>
+        <p>Use <span lang="uk">ТАКОЖ</span> and <span lang="uk">ТЕЖ</span> to say "also" or "too." Don't start sentences with <span lang="uk">ТАКОЖ</span>.</p>
+        <p>Examples:</p>
+        <ul>
+            <li><span lang="uk">Це Су́ми. Це та́кож Ки́їв.</span> (This is Sumy. This is also Kyiv.)</li>
+            <li><span lang="uk">Я тут. Моя́ гру́па теж тут.</span> (I am here. My group is also here.)</li>
+            <li><span lang="uk">Зо́шит і журна́л тут. Моя́ кни́жка теж тут.</span> (The notebook and journal are here. My book is also here.)</li>
+        </ul>
+
+        <!-- Grammar Practice Exercise -->
         <div class="fill-exercise">
-            <h3>Exercise 1: Matching</h3>
-            <p>Match the Ukrainian greetings with their English meanings.</p>
+            <h3>Exercise 1: Fill in the blanks</h3>
+
+
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це карта </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-grammar1" data-correct="і">
+                    <span class="ukrainian-text"> це словник.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">і</div> <div class="key-btn">а</div> <div class="key-btn">також</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-grammar1')">Check</button>
+                <div class="fill-feedback" id="fill-grammar1-feedback"></div>
+            </div>
+
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це Оксана </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-grammar2" data-correct="й">
+                    <span class="ukrainian-text"> Антон.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">і</div> <div class="key-btn">й</div> <div class="key-btn">та</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-grammar2')">Check</button>
+                <div class="fill-feedback" id="fill-grammar2-feedback"></div>
+            </div>
+
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це чай. </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-grammar3" data-correct="А">
+                    <span class="ukrainian-text"> це кава.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">І</div> <div class="key-btn">А</div> <div class="key-btn">Також</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-grammar3')">Check</button>
+                <div class="fill-feedback" id="fill-grammar3-feedback"></div>
+            </div>
+
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Книжка тут. Зошит </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-grammar4" data-correct="теж">
+                    <span class="ukrainian-text"> тут.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">та</div> <div class="key-btn">теж</div> <div class="key-btn">також</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-grammar4')">Check</button>
+                <div class="fill-feedback" id="fill-grammar4-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це стіл </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-grammar5" data-correct="і">
+                    <span class="ukrainian-text"> це стілець.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">і</div> <div class="key-btn">а</div> <div class="key-btn">та</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-grammar5')">Check</button>
+                <div class="fill-feedback" id="fill-grammar5-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Яблуко </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-grammar6" data-correct="та">
+                    <span class="ukrainian-text"> груша – це фрукти.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">і</div> <div class="key-btn">й</div> <div class="key-btn">та</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-grammar6')">Check</button>
+                <div class="fill-feedback" id="fill-grammar6-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Вікно там. </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-grammar7" data-correct="А">
+                    <span class="ukrainian-text"> двері тут.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">І</div> <div class="key-btn">А</div> <div class="key-btn">Теж</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-grammar7')">Check</button>
+                <div class="fill-feedback" id="fill-grammar7-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Вода </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-grammar8" data-correct="і">
+                    <span class="ukrainian-text"> сік – це напої.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">і</div> <div class="key-btn">й</div> <div class="key-btn">та</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-grammar8')">Check</button>
+                <div class="fill-feedback" id="fill-grammar8-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Я вдома. Мама </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-grammar9" data-correct="теж">
+                    <span class="ukrainian-text"> вдома.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">та</div> <div class="key-btn">теж</div> <div class="key-btn">також</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-grammar9')">Check</button>
+                <div class="fill-feedback" id="fill-grammar9-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Тато </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-grammar10" data-correct="й">
+                    <span class="ukrainian-text"> мама тут.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">і</div> <div class="key-btn">й</div> <div class="key-btn">та</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-grammar10')">Check</button>
+                <div class="fill-feedback" id="fill-grammar10-feedback"></div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Etiquette Section -->
+    <div class="section">
+        <h2 id="etiquette">2. Greetings & Farewells</h2>
+
+        <h3>Common Ukrainian Expressions</h3>
+        <p class="listen-repeat-read">Read.</p>
+        <table class="stress-model-table">
+            <thead><tr><th>Ukrainian Formula</th><th>English Equivalent</th></tr></thead>
+            <tbody>
+                <tr><td><span lang="uk">До́брого ра́нку!</span></td><td>Good morning!</td></tr>
+                <tr><td><span lang="uk">До́брий день!</span></td><td>Good day! / Hello! (formal)</td></tr>
+                <tr><td><span lang="uk">До́брий ве́чір!</span></td><td>Good evening!</td></tr>
+                <tr><td><span lang="uk">Приві́т!</span></td><td>Hi! / Hello! (informal)</td></tr>
+                <tr><td><span lang="uk">Як пожива́єте?</span></td><td>How are you doing? (formal/plural)</td></tr>
+                <tr><td><span lang="uk">Як спра́ви? (Як Ви? / Як ти?)</span></td><td>How are you? (Formal/Informal)</td></tr>
+                <tr><td><span lang="uk">До поба́чення!</span></td><td>Goodbye! (formal)</td></tr>
+                <tr><td><span lang="uk">До зу́стрічі!</span></td><td>See you later! / Until next time!</td></tr>
+                <tr><td><span lang="uk">Бува́й! / Бувайте!</span></td><td>Bye! (informal singular / formal or plural)</td></tr>
+                <tr><td><span lang="uk">На все до́бре!</span></td><td>All the best! / Take care!</td></tr>
+                <tr><td><span lang="uk">Па-па́!</span></td><td>Bye-bye! (very informal)</td></tr>
+                <tr><td><span lang="uk">Так</span></td><td>Yes</td></tr>
+                <tr><td><span lang="uk">Ні</span></td><td>No</td></tr>
+                 <tr><td><span lang="uk">Дя́кую</span></td><td>Thank you</td></tr>
+                 <tr><td><span lang="uk">Будь ла́ска</span></td><td>Please / You're welcome</td></tr>
+            </tbody>
+        </table>
+<br>
+        <h3>Responding to "How are you?"</h3>
+        <p>Possible responses to <span lang="uk">Як спра́ви?</span> / <span lang="uk">Як пожива́єте?</span>:</p>
+         <table class="stress-model-table">
+             <tr><td><span lang="uk">Чудо́во.</span></td><td>Wonderful / Great.</td><td>😊</td></tr>
+             <tr><td><span lang="uk">До́бре.</span></td><td>Good / Fine.</td><td>🙂</td></tr>
+             <tr><td><span lang="uk">Непога́но.</span></td><td>Not bad.</td><td>😐</td></tr>
+             <tr><td><span lang="uk">Пога́но.</span></td><td>Bad / Poorly.</td><td>🙁</td></tr>
+             <tr><td><span lang="uk">Жахли́во.</span></td><td>Terrible / Awful.</td><td>☹️</td></tr>
+             <tr><td><span lang="uk">Все до́бре.</span></td><td>Everything is fine.</td><td>👍</td></tr>
+             <tr><td><span lang="uk">Так, все до́бре.</span></td><td>Yes, everything is fine.</td><td>✓</td></tr>
+        </table>
+<br>
+        <h3>Dialogue Practice</h3>
+
+        <ul>
+            <li><span lang="uk">– До́брого ра́нку!</span><br/><span lang="uk">– До́брого ра́нку!</span></li>
+            <li><span lang="uk">– Як ти? Як спра́ви?</span><br/><span lang="uk">– Все до́бре.</span></li>
+            <li><span lang="uk">– Ну, бува́й! На все до́бре!</span><br/><span lang="uk">– Па-па́! До за́втра!</span></li>
+            <li><span lang="uk">– До́брий день!</span><br/><span lang="uk">– До́брий день!</span></li>
+             <li><span lang="uk">– Як Ви? Як спра́ви?</span><br/><span lang="uk">– До́бре.</span><br/><span lang="uk">– Приє́мно ба́чити Вас. До за́втра!</span><br/><span lang="uk">– Навза́єм. До за́втра!</span></li>
+             <li><span lang="uk">– До́брий день, Окса́но!</span><br/><span lang="uk">– До́брий день.</span></li>
+        </ul>
+
+        <!-- Exercise: Matching Greetings -->
+        <div class="fill-exercise">
+            <h3>Exercise 2: Matching Game</h3>
+
             <div class="matching-game">
                 <div class="matching-columns-container">
                     <div class="matching-column">
                         <h4>Ukrainian:</h4>
                         <div class="matching-item-container" id="greetings-ukrainian-container">
-                            <div class="matching-item ukrainian-text" data-id="1">Привіт</div>
-                            <div class="matching-item ukrainian-text" data-id="2">Добрий день</div>
-                            <div class="matching-item ukrainian-text" data-id="3">Дякую</div>
-                            <div class="matching-item ukrainian-text" data-id="4">До побачення</div>
-                            <div class="matching-item ukrainian-text" data-id="5">Будь ласка</div>
-                            <div class="matching-item ukrainian-text" data-id="6">Перепрошую</div>
+                            <div class="matching-item ukrainian-text" data-id="1">Приві́т</div>
+                            <div class="matching-item ukrainian-text" data-id="2">До́брий день</div>
+                            <div class="matching-item ukrainian-text" data-id="3">Як спра́ви?</div>
+                            <div class="matching-item ukrainian-text" data-id="4">До поба́чення</div>
+                            <div class="matching-item ukrainian-text" data-id="5">Дя́кую</div>
+                            <div class="matching-item ukrainian-text" data-id="6">Чудо́во</div>
                         </div>
                     </div>
                     <div class="matching-column">
@@ -401,10 +592,10 @@
                         <div class="matching-item-container" id="greetings-english-container">
                             <div class="matching-item" data-id="1">Hello (informal)</div>
                             <div class="matching-item" data-id="2">Good day / Hello (formal)</div>
-                            <div class="matching-item" data-id="3">Thank you</div>
+                            <div class="matching-item" data-id="3">How are you?</div>
                             <div class="matching-item" data-id="4">Goodbye</div>
-                            <div class="matching-item" data-id="5">Please / You're welcome</div>
-                            <div class="matching-item" data-id="6">Excuse me / I'm sorry</div>
+                            <div class="matching-item" data-id="5">Thank you</div>
+                            <div class="matching-item" data-id="6">Wonderful / Great</div>
                         </div>
                     </div>
                 </div>
@@ -413,437 +604,253 @@
                 </div>
             </div>
         </div>
+
     </div>
 
-    <!-- Personal Pronouns Section -->
+     <!-- Combined Practice & Vocabulary Section -->
     <div class="section">
-        <h2 id="personal-pronouns">2. Personal Pronouns</h2>
-        <p>Personal pronouns in Ukrainian change based on their case. Here are the basic personal pronouns in the nominative case (the subject form):</p>
+        <h2 id="practice">3. Practice & Vocabulary</h2>
 
-        <table>
-            <tr><th>Ukrainian</th><th>Pronunciation</th><th>English</th></tr>
-            <tr>
-                <td lang="uk">я</td>
-                <td>ya</td>
-                <td>I</td>
-            </tr>
-            <tr>
-                <td lang="uk">ти</td>
-                <td>ty</td>
-                <td>you (singular, informal)</td>
-            </tr>
-            <tr>
-                <td lang="uk">він</td>
-                <td>vin</td>
-                <td>he</td>
-            </tr>
-            <tr>
-                <td lang="uk">вона</td>
-                <td>vona</td>
-                <td>she</td>
-            </tr>
-            <tr>
-                <td lang="uk">воно</td>
-                <td>vono</td>
-                <td>it</td>
-            </tr>
-            <tr>
-                <td lang="uk">ми</td>
-                <td>my</td>
-                <td>we</td>
-            </tr>
-            <tr>
-                <td lang="uk">ви</td>
-                <td>vy</td>
-                <td>you (plural or formal singular)</td>
-            </tr>
-            <tr>
-                <td lang="uk">вони</td>
-                <td>vony</td>
-                <td>they</td>
-            </tr>
+        <h3>Vocabulary Review</h3>
+        <p>Common Ukrainian words from this lesson:</p>
+        <table class="stress-model-table">
+            <thead>
+                <tr><th>Ukrainian</th><th>English</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>куртка</td><td>jacket</td></tr>
+                <tr><td>сумка</td><td>bag</td></tr>
+                <tr><td>рука</td><td>hand/arm</td></tr>
+                <tr><td>нога</td><td>leg/foot</td></tr>
+                <tr><td>цукор</td><td>sugar</td></tr>
+                <tr><td>стакан</td><td>glass</td></tr>
+                <tr><td>паспорт</td><td>passport</td></tr>
+                <tr><td>банан</td><td>banana</td></tr>
+                <tr><td>будинок</td><td>building</td></tr>
+                <tr><td>батон</td><td>loaf of bread</td></tr>
+                <tr><td>автобус</td><td>bus</td></tr>
+                <tr><td>кафе</td><td>cafe</td></tr>
+                <tr><td>вухо</td><td>ear</td></tr>
+                <tr><td>кава</td><td>coffee</td></tr>
+                <tr><td>лампа</td><td>lamp</td></tr>
+                <tr><td>словник</td><td>dictionary</td></tr>
+                <tr><td>масло</td><td>butter</td></tr>
+                <tr><td>яблуко</td><td>apple</td></tr>
+                <tr><td>салат</td><td>salad</td></tr>
+                <tr><td>телефон</td><td>telephone</td></tr>
+                <tr><td>молоко</td><td>milk</td></tr>
+                <tr><td>лимон</td><td>lemon</td></tr>
+                <tr><td>зошит</td><td>notebook</td></tr>
+                <tr><td>груша</td><td>pear</td></tr>
+                <tr><td>шарф</td><td>scarf</td></tr>
+                <tr><td>шафа</td><td>wardrobe/closet</td></tr>
+                <tr><td>журнал</td><td>magazine/journal</td></tr>
+                <tr><td>шапка</td><td>hat</td></tr>
+                <tr><td>книжка</td><td>book</td></tr>
+                <tr><td>машина</td><td>car</td></tr>
+                <tr><td>чашка</td><td>cup</td></tr>
+                <tr><td>ложка</td><td>spoon</td></tr>
+                <tr><td>ручка</td><td>pen</td></tr>
+                <tr><td>викладач</td><td>teacher/lecturer</td></tr>
+                <tr><td>сорочка</td><td>shirt</td></tr>
+                <tr><td>чай</td><td>tea</td></tr>
+            </tbody>
         </table>
 
-        <p class="note">Note: Ukrainian has formal and informal ways of saying "you." Use "ти" (ty) with friends, family members, and children. Use "ви" (vy) with people you don't know well, with elders, or in formal situations.</p>
-
-        <!-- Exercise 2: Matching Pronouns -->
+         <!-- Exercise: Fill in the Vocabulary -->
         <div class="fill-exercise">
-            <h3>Exercise 2: Matching</h3>
-            <p>Match the Ukrainian pronouns with their English meanings.</p>
-            <div class="matching-game">
-                <div class="matching-columns-container">
-                    <div class="matching-column">
-                        <h4>Ukrainian:</h4>
-                        <div class="matching-item-container" id="pronouns-ukrainian-container">
-                            <div class="matching-item ukrainian-text" data-id="1">я</div>
-                            <div class="matching-item ukrainian-text" data-id="2">ти</div>
-                            <div class="matching-item ukrainian-text" data-id="3">він</div>
-                            <div class="matching-item ukrainian-text" data-id="4">вона</div>
-                            <div class="matching-item ukrainian-text" data-id="5">ми</div>
-                            <div class="matching-item ukrainian-text" data-id="6">вони</div>
-                        </div>
-                    </div>
-                    <div class="matching-column">
-                        <h4>English:</h4>
-                        <div class="matching-item-container" id="pronouns-english-container">
-                            <div class="matching-item" data-id="1">I</div>
-                            <div class="matching-item" data-id="2">you (singular, informal)</div>
-                            <div class="matching-item" data-id="3">he</div>
-                            <div class="matching-item" data-id="4">she</div>
-                            <div class="matching-item" data-id="5">we</div>
-                            <div class="matching-item" data-id="6">they</div>
-                        </div>
-                    </div>
+            <br>
+            <h3>Exercise 3: Fill in the blanks</h3>
+
+
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-vocab1" data-correct="стіл">
                 </div>
-                <div class="matching-result">
-                    <div class="matching-feedback" id="pronouns-matching-feedback"></div>
+                <div class="key-container">
+                    <div class="key-btn">стіл</div> <div class="key-btn">книга</div> <div class="key-btn">вікно</div>
                 </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-vocab1')">Check</button>
+                <div class="fill-feedback" id="fill-vocab1-feedback"></div>
+            </div>
+
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-vocab2" data-correct="книга">
+                </div>
+                 <div class="key-container">
+                    <div class="key-btn">стіл</div> <div class="key-btn">книга</div> <div class="key-btn">вікно</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-vocab2')">Check</button>
+                <div class="fill-feedback" id="fill-vocab2-feedback"></div>
+            </div>
+
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-vocab3" data-correct="чай">
+                </div>
+                 <div class="key-container">
+                    <div class="key-btn">кава</div> <div class="key-btn">сік</div> <div class="key-btn">чай</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-vocab3')">Check</button>
+                <div class="fill-feedback" id="fill-vocab3-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-vocab4" data-correct="вікно">
+                </div>
+                 <div class="key-container">
+                    <div class="key-btn">двері</div> <div class="key-btn">стіна</div> <div class="key-btn">вікно</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-vocab4')">Check</button>
+                <div class="fill-feedback" id="fill-vocab4-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-vocab5" data-correct="телефон">
+                </div>
+                 <div class="key-container">
+                    <div class="key-btn">телефон</div> <div class="key-btn">комп'ютер</div> <div class="key-btn">лампа</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-vocab5')">Check</button>
+                <div class="fill-feedback" id="fill-vocab5-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-vocab6" data-correct="словник">
+                </div>
+                 <div class="key-container">
+                    <div class="key-btn">словник</div> <div class="key-btn">зошит</div> <div class="key-btn">книга</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-vocab6')">Check</button>
+                <div class="fill-feedback" id="fill-vocab6-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-vocab7" data-correct="яблуко">
+                </div>
+                 <div class="key-container">
+                    <div class="key-btn">лимон</div> <div class="key-btn">яблуко</div> <div class="key-btn">груша</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-vocab7')">Check</button>
+                <div class="fill-feedback" id="fill-vocab7-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-vocab8" data-correct="кава">
+                </div>
+                 <div class="key-container">
+                    <div class="key-btn">чай</div> <div class="key-btn">кава</div> <div class="key-btn">молоко</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-vocab8')">Check</button>
+                <div class="fill-feedback" id="fill-vocab8-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-vocab9" data-correct="зошит">
+                </div>
+                 <div class="key-container">
+                    <div class="key-btn">книга</div> <div class="key-btn">словник</div> <div class="key-btn">зошит</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-vocab9')">Check</button>
+                <div class="fill-feedback" id="fill-vocab9-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-vocab10" data-correct="ручка">
+                </div>
+                 <div class="key-container">
+                    <div class="key-btn">олівець</div> <div class="key-btn">ручка</div> <div class="key-btn">маркер</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-vocab10')">Check</button>
+                <div class="fill-feedback" id="fill-vocab10-feedback"></div>
             </div>
         </div>
+
     </div>
-
-    <!-- The Verb "To Be" Section -->
     <div class="section">
-        <h2 id="verb-to-be">3. The Verb "To Be"</h2>
-        <p>The verb "to be" in Ukrainian is "бути" (buty). In the present tense, it is often omitted or represented by the word "є" (ye).</p>
 
+        <h2 id="reading">4. Reading Practice</h2>
+
+        <h3>Read</h3>
+
+        <p lang="uk">Тут клас. Зараз урок. Ми тут. Це текст.
+        Тут буква А (а). А це звук [а]. Це буква М (ем). А це звук [м]. Це слово «мама». А це фрази: «Це моя мама. Вона вдома».</p>
+        <br>
+        <br>
+        
         <table>
-            <tr><th>Ukrainian</th><th>Pronunciation</th><th>English</th></tr>
-            <tr>
-                <td lang="uk">Я студент.</td>
-                <td>Ya student.</td>
-                <td>I am a student. (male)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Я студентка.</td>
-                <td>Ya studentka.</td>
-                <td>I am a student. (female)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Ти вчитель.</td>
-                <td>Ty vchytel.</td>
-                <td>You are a teacher. (male)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Ти вчителька.</td>
-                <td>Ty vchytelka.</td>
-                <td>You are a teacher. (female)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Він лікар.</td>
-                <td>Vin likar.</td>
-                <td>He is a doctor.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Вона лікарка.</td>
-                <td>Vona likarka.</td>
-                <td>She is a doctor.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Ми українці.</td>
-                <td>My ukrayintsi.</td>
-                <td>We are Ukrainians.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Ви студенти.</td>
-                <td>Vy studenty.</td>
-                <td>You are students.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Вони друзі.</td>
-                <td>Vony druzi.</td>
-                <td>They are friends.</td>
-            </tr>
+            <thead>
+                <tr><th>Ukrainian</th><th>English</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Тут клас. Зараз урок. Ми тут. Це текст.</td><td>This is a classroom. It's lesson time. We are here. This is text.</td></tr>
+                <tr><td>Тут буква А (а). А це звук [а].</td><td>This is the letter A. And this is the sound [a].</td></tr>
+                <tr><td>Це буква М (ем). А це звук [м].</td><td>This is the letter M. And this is the sound [m].</td></tr>
+                <tr><td>Це слово «мама».</td><td>This is the word "mama" (mom).</td></tr>
+                <tr><td>А це фрази: «Це моя мама. Вона вдома».</td><td>And these phrases: "This is my mom. She is at home".</td></tr>
+            </tbody>
+        </table>
+<br>
+        <h3>Read and answer the questions.</h3>
+        <p lang="uk">Це клас. Зараз урок. Я тут. Моя група теж тут. Зошит і журнал тут. Моя книжка теж тут. А шапка і шарф вдома.</p>
+        <br>
+        <br>
+        <table>
+            <thead>
+                <tr><th>Ukrainian</th><th>English</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Це клас. Зараз урок.</td><td>This is a classroom. It's lesson time.</td></tr>
+                <tr><td>Я тут. Моя група теж тут.</td><td>I am here. My group is also here.</td></tr>
+                <tr><td>Зошит і журнал тут. Моя книжка теж тут.</td><td>The notebook and journal are here. My book is also here.</td></tr>
+                <tr><td>А шапка і шарф вдома.</td><td>But the hat and scarf are at home.</td></tr>
+            </tbody>
+        </table>
+        <p>Questions:</p>
+        <table>
+            <thead>
+                <tr><th>Ukrainian</th><th>English</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Де я і моя група?</td><td>Where am I and my group?</td></tr>
+                <tr><td>Де зошит і журнал?</td><td>Where are the notebook and journal?</td></tr>
+                <tr><td>Де шапка і шарф?</td><td>Where are the hat and scarf?</td></tr>
+            </tbody>
+        </table>
+         <p>Answers:</p>
+         <table>
+            <thead>
+                <tr><th>Ukrainian</th><th>English</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Ви і Ваша група тут.</td><td>You and your group are here.</td></tr>
+                <tr><td>Зошит і журнал тут.</td><td>The notebook and journal are here.</td></tr>
+                <tr><td>Шапка і шарф вдома.</td><td>The hat and scarf are at home.</td></tr>
+            </tbody>
         </table>
 
-        <p class="note">Note: In Ukrainian, there is usually no verb "to be" in the present tense. The subject and predicate are simply placed next to each other. However, "є" (ye) can be used for emphasis or in certain structures.</p>
-
-        <h3>The Verb "To Be" in the Past Tense</h3>
-        <p>In the past tense, the verb "to be" is "був/була/було" (buv/bula/bulo) depending on gender and "були" (buly) for plural.</p>
-
-        <table>
-            <tr><th>Ukrainian</th><th>Pronunciation</th><th>English</th></tr>
-            <tr>
-                <td lang="uk">Я був студентом.</td>
-                <td>Ya buv studentom.</td>
-                <td>I was a student. (male speaker)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Я була студенткою.</td>
-                <td>Ya bula studentkoyu.</td>
-                <td>I was a student. (female speaker)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Ти був вчителем.</td>
-                <td>Ty buv vchytelem.</td>
-                <td>You were a teacher. (male)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Вона була вчителькою.</td>
-                <td>Vona bula vchytelkoyu.</td>
-                <td>She was a teacher.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Ми були в Києві.</td>
-                <td>My buly v Kyyevi.</td>
-                <td>We were in Kyiv.</td>
-            </tr>
-        </table>
-
-        <!-- Fill-in Exercise -->
+         <!-- Exercise: Sentence Building -->
         <div class="fill-exercise">
-            <h3>Exercise 3: Fill in the Blanks</h3>
-            <p>Fill in the blanks with the correct form of the past tense "to be" (був, була, було, були).</p>
-            
-            <div class="fill-item">
-                <div class="exercise-row">
-                    <span class="ukrainian-text">Я (чоловік) </span>
-                    <input type="text" class="fill-input ukrainian-input" id="fill1" data-correct="був">
-                    <span class="ukrainian-text"> у школі.</span>
-                    <span class="translation">I (male) was at school.</span>
-                </div>
-                <div class="key-container">
-                    <div class="key-btn">був</div>
-                    <div class="key-btn">була</div>
-                    <div class="key-btn">було</div>
-                    <div class="key-btn">були</div>
-                </div>
-                <button class="fill-check" onclick="checkFillAnswer('fill1')">Check</button>
-                <div class="fill-feedback" id="fill1-feedback"></div>
-            </div>
-            
-            <div class="fill-item">
-                <div class="exercise-row">
-                    <span class="ukrainian-text">Вона </span>
-                    <input type="text" class="fill-input ukrainian-input" id="fill2" data-correct="була">
-                    <span class="ukrainian-text"> вчителькою.</span>
-                    <span class="translation">She was a teacher.</span>
-                </div>
-                <div class="key-container">
-                    <div class="key-btn">був</div>
-                    <div class="key-btn">була</div>
-                    <div class="key-btn">було</div>
-                    <div class="key-btn">були</div>
-                </div>
-                <button class="fill-check" onclick="checkFillAnswer('fill2')">Check</button>
-                <div class="fill-feedback" id="fill2-feedback"></div>
-            </div>
-            
-            <div class="fill-item">
-                <div class="exercise-row">
-                    <span class="ukrainian-text">Вони </span>
-                    <input type="text" class="fill-input ukrainian-input" id="fill3" data-correct="були">
-                    <span class="ukrainian-text"> в університеті.</span>
-                    <span class="translation">They were at the university.</span>
-                </div>
-                <div class="key-container">
-                    <div class="key-btn">був</div>
-                    <div class="key-btn">була</div>
-                    <div class="key-btn">було</div>
-                    <div class="key-btn">були</div>
-                </div>
-                <button class="fill-check" onclick="checkFillAnswer('fill3')">Check</button>
-                <div class="fill-feedback" id="fill3-feedback"></div>
-            </div>
-            
-            <div class="fill-item">
-                <div class="exercise-row">
-                    <span class="ukrainian-text">Воно (яблуко) </span>
-                    <input type="text" class="fill-input ukrainian-input" id="fill4" data-correct="було">
-                    <span class="ukrainian-text"> червоне.</span>
-                    <span class="translation">It (the apple) was red.</span>
-                </div>
-                <div class="key-container">
-                    <div class="key-btn">був</div>
-                    <div class="key-btn">була</div>
-                    <div class="key-btn">було</div>
-                    <div class="key-btn">були</div>
-                </div>
-                <button class="fill-check" onclick="checkFillAnswer('fill4')">Check</button>
-                <div class="fill-feedback" id="fill4-feedback"></div>
-            </div>
-        </div>
-    </div>
+            <h3>Exercise 4: Sentence Building</h3>
 
-    <!-- Question Words Section -->
-    <div class="section">
-        <h2 id="question-words">4. Question Words</h2>
-        <p>Here are the most common question words in Ukrainian:</p>
-
-        <table>
-            <tr><th>Ukrainian</th><th>Pronunciation</th><th>English</th><th>Example</th></tr>
-            <tr>
-                <td lang="uk">Хто?</td>
-                <td>Khto?</td>
-                <td>Who?</td>
-                <td lang="uk">Хто це? (Who is this?)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Що?</td>
-                <td>Shcho?</td>
-                <td>What?</td>
-                <td lang="uk">Що це? (What is this?)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Де?</td>
-                <td>De?</td>
-                <td>Where?</td>
-                <td lang="uk">Де ти? (Where are you?)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Коли?</td>
-                <td>Koly?</td>
-                <td>When?</td>
-                <td lang="uk">Коли ми почнемо? (When will we start?)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Чому?</td>
-                <td>Chomu?</td>
-                <td>Why?</td>
-                <td lang="uk">Чому ти тут? (Why are you here?)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Як?</td>
-                <td>Yak?</td>
-                <td>How?</td>
-                <td lang="uk">Як справи? (How are you?)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Скільки?</td>
-                <td>Skilky?</td>
-                <td>How many/much?</td>
-                <td lang="uk">Скільки це коштує? (How much does it cost?)</td>
-            </tr>
-            <tr>
-                <td lang="uk">Який?</td>
-                <td>Yakyi?</td>
-                <td>Which/What kind?</td>
-                <td lang="uk">Який це колір? (What color is this?)</td>
-            </tr>
-        </table>
-
-        <p class="note">Note: In Ukrainian, the question word usually comes at the beginning of the sentence. The word order may change in questions, but it's not required as it is in English.</p>
-
-        <!-- Exercise 4: Matching Question Words -->
-        <div class="fill-exercise">
-            <h3>Exercise 4: Matching</h3>
-            <p>Match the Ukrainian question words with their English meanings.</p>
-            <div class="matching-game">
-                <div class="matching-columns-container">
-                    <div class="matching-column">
-                        <h4>Ukrainian:</h4>
-                        <div class="matching-item-container" id="questions-ukrainian-container">
-                            <div class="matching-item ukrainian-text" data-id="1">Хто?</div>
-                            <div class="matching-item ukrainian-text" data-id="2">Що?</div>
-                            <div class="matching-item ukrainian-text" data-id="3">Де?</div>
-                            <div class="matching-item ukrainian-text" data-id="4">Коли?</div>
-                            <div class="matching-item ukrainian-text" data-id="5">Чому?</div>
-                            <div class="matching-item ukrainian-text" data-id="6">Як?</div>
-                        </div>
-                    </div>
-                    <div class="matching-column">
-                        <h4>English:</h4>
-                        <div class="matching-item-container" id="questions-english-container">
-                            <div class="matching-item" data-id="1">Who?</div>
-                            <div class="matching-item" data-id="2">What?</div>
-                            <div class="matching-item" data-id="3">Where?</div>
-                            <div class="matching-item" data-id="4">When?</div>
-                            <div class="matching-item" data-id="5">Why?</div>
-                            <div class="matching-item" data-id="6">How?</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="matching-result">
-                    <div class="matching-feedback" id="questions-matching-feedback"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Simple Sentences Section -->
-    <div class="section">
-        <h2 id="simple-sentences">5. Simple Sentences</h2>
-        <p>Now let's look at some basic sentence structures in Ukrainian:</p>
-
-        <h3>Subject + Verb</h3>
-        <table>
-            <tr><th>Ukrainian</th><th>Pronunciation</th><th>English</th></tr>
-            <tr>
-                <td lang="uk">Я читаю.</td>
-                <td>Ya chytayu.</td>
-                <td>I am reading.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Ти пишеш.</td>
-                <td>Ty pyshesh.</td>
-                <td>You are writing.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Вона працює.</td>
-                <td>Vona pratsyuye.</td>
-                <td>She is working.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Ми слухаємо.</td>
-                <td>My slukhayemo.</td>
-                <td>We are listening.</td>
-            </tr>
-        </table>
-
-        <h3>Subject + Verb + Object</h3>
-        <table>
-            <tr><th>Ukrainian</th><th>Pronunciation</th><th>English</th></tr>
-            <tr>
-                <td lang="uk">Я читаю книжку.</td>
-                <td>Ya chytayu knyzhku.</td>
-                <td>I am reading a book.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Ти пишеш лист.</td>
-                <td>Ty pyshesh lyst.</td>
-                <td>You are writing a letter.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Вона готує вечерю.</td>
-                <td>Vona hotuye vecheryu.</td>
-                <td>She is cooking dinner.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Ми вивчаємо українську мову.</td>
-                <td>My vyvchayemo ukrayinsku movu.</td>
-                <td>We are learning the Ukrainian language.</td>
-            </tr>
-        </table>
-
-        <h3>Prepositional Phrases</h3>
-        <table>
-            <tr><th>Ukrainian</th><th>Pronunciation</th><th>English</th></tr>
-            <tr>
-                <td lang="uk">Книжка на столі.</td>
-                <td>Knyzhka na stoli.</td>
-                <td>The book is on the table.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Я йду до школи.</td>
-                <td>Ya ydu do shkoly.</td>
-                <td>I am going to school.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Вони живуть в Києві.</td>
-                <td>Vony zhyvut v Kyyevi.</td>
-                <td>They live in Kyiv.</td>
-            </tr>
-            <tr>
-                <td lang="uk">Мій друг із Львова.</td>
-                <td>Miy druh iz Lvova.</td>
-                <td>My friend is from Lviv.</td>
-            </tr>
-        </table>
-
-        <!-- Exercise 5: Duolingo-style Sentence Building -->
-        <div class="fill-exercise">
-            <h3>Exercise 5: Sentence Building</h3>
-            <p>Form complete Ukrainian sentences by arranging the words in the correct order.</p>
 
             <div class="word-order-game">
                 <div id="sentences-container"></div>
@@ -851,55 +858,27 @@
 
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
-                    // Sentences data with translations
+                    // Sentences data based on lesson content
                     const sentencesData = [
-                        { 
-                            ukrainian: "Я читаю книжку", 
-                            english: "I am reading a book."
-                        },
-                        { 
-                            ukrainian: "Вона живе в Києві", 
-                            english: "She lives in Kyiv."
-                        },
-                        { 
-                            ukrainian: "Ми вивчаємо українську мову", 
-                            english: "We are learning the Ukrainian language."
-                        },
-                        { 
-                            ukrainian: "Він працює в університеті", 
-                            english: "He works at the university."
-                        },
-                        { 
-                            ukrainian: "Де ти живеш", 
-                            english: "Where do you live?"
-                        },
-                        { 
-                            ukrainian: "Скільки це коштує", 
-                            english: "How much does it cost?"
-                        },
-                        { 
-                            ukrainian: "Я був у Львові", 
-                            english: "I was in Lviv."
-                        },
-                        { 
-                            ukrainian: "Мій брат лікар", 
-                            english: "My brother is a doctor."
-                        }
+                        { ukrainian: "Це Томас та Тамара", english: "This is Tomas and Tamara." },
+                        { ukrainian: "Де Антон", english: "Where is Anton?" },
+                        { ukrainian: "Антон тут", english: "Anton is here." },
+                        { ukrainian: "Це моя мама", english: "This is my mom." },
+                        { ukrainian: "Вона вдома", english: "She is at home." },
+                        { ukrainian: "Це Роман і Тарас", english: "This is Roman and Taras." },
+                        { ukrainian: "Карта тут", english: "The map is here." },
+                        { ukrainian: "Це кава", english: "This is coffee." },
+                        { ukrainian: "Моя група теж тут", english: "My group is also here." },
+                        { ukrainian: "Зараз урок", english: "The lesson is now." }
                     ];
-                    
-                    // Process the sentences
-                    const sentences = sentencesData.map(item => {
-                        return {
-                            original: item.ukrainian,
-                            english: item.english,
-                            words: item.ukrainian.split(/\s+/)
-                        };
-                    });
-                    
-                    // Initialize the game
+
+                    // --- Rest of the Sentence Building Game Logic (identical to original template) ---
+                    const sentences = sentencesData.map(item => ({
+                        original: item.ukrainian,
+                        english: item.english,
+                        words: item.ukrainian.split(/\s+/)
+                    }));
                     const gameContainer = document.getElementById('sentences-container');
-                    
-                    // Shuffle function for words
                     function shuffleArray(array) {
                         const newArray = [...array];
                         for (let i = newArray.length - 1; i > 0; i--) {
@@ -908,146 +887,97 @@
                         }
                         return newArray;
                     }
-                    
-                    // Create all sentence elements
                     sentences.forEach((sentence, index) => {
-                        // Create game sentence element
                         const sentenceElement = document.createElement('div');
                         sentenceElement.className = 'game-sentence';
                         sentenceElement.id = `sentence-${index}`;
-                        
-                        // Create numbered translation
                         const translation = document.createElement('div');
                         translation.className = 'game-sentence-translation';
                         translation.innerHTML = `<span class="sentence-number">${index + 1}/${sentences.length}</span> ${sentence.english}`;
                         sentenceElement.appendChild(translation);
-                        
-                        // Create solution area (where selected words will go)
                         const solutionArea = document.createElement('div');
                         solutionArea.className = 'solution-area';
                         solutionArea.id = `solution-area-${index}`;
                         sentenceElement.appendChild(solutionArea);
-                        
-                        // Create words bank (where unselected words are)
                         const wordsBank = document.createElement('div');
                         wordsBank.className = 'words-bank';
                         wordsBank.id = `words-bank-${index}`;
                         sentenceElement.appendChild(wordsBank);
-                        
-                        // Add shuffled words to the words bank
                         const shuffledWords = shuffleArray(sentence.words);
                         shuffledWords.forEach(word => {
                             const wordElement = document.createElement('div');
                             wordElement.className = 'word-box ukrainian-text';
                             wordElement.textContent = word;
-                            
-                            // Add click event to move words between banks
                             wordElement.addEventListener('click', () => {
                                 const parent = wordElement.parentElement;
-                                
                                 if (parent.classList.contains('words-bank')) {
-                                    // Move from words bank to solution area
-                                    const solutionArea = document.getElementById(`solution-area-${index}`);
-                                    solutionArea.appendChild(wordElement);
+                                    document.getElementById(`solution-area-${index}`).appendChild(wordElement);
                                 } else {
-                                    // Move from solution area to words bank
-                                    const wordsBank = document.getElementById(`words-bank-${index}`);
-                                    wordsBank.appendChild(wordElement);
+                                    document.getElementById(`words-bank-${index}`).appendChild(wordElement);
                                 }
-                                
-                                // Clear feedback when words are changed
                                 const feedbackElement = document.getElementById(`feedback-${index}`);
                                 feedbackElement.textContent = '';
                                 feedbackElement.className = 'game-feedback';
                             });
-                            
                             wordsBank.appendChild(wordElement);
                         });
-                        
-                        // Add feedback area
                         const feedback = document.createElement('div');
                         feedback.className = 'game-feedback';
                         feedback.id = `feedback-${index}`;
                         sentenceElement.appendChild(feedback);
-                        
-                        // Add buttons
                         const buttonContainer = document.createElement('div');
                         buttonContainer.className = 'sentence-buttons';
-                        
                         const checkButton = document.createElement('button');
                         checkButton.className = 'check-btn';
                         checkButton.textContent = 'Check Answer';
                         checkButton.addEventListener('click', () => checkAnswer(index));
                         buttonContainer.appendChild(checkButton);
-                        
                         const showAnswerButton = document.createElement('button');
                         showAnswerButton.className = 'show-answer-btn';
                         showAnswerButton.textContent = 'Show Answer';
                         showAnswerButton.addEventListener('click', () => showAnswer(index));
                         buttonContainer.appendChild(showAnswerButton);
-                        
                         const deleteBtn = document.createElement('button');
                         deleteBtn.className = 'delete-btn';
                         deleteBtn.textContent = 'Clear Box';
                         deleteBtn.addEventListener('click', () => {
                             const solutionArea = document.getElementById(`solution-area-${index}`);
                             const wordsBank = document.getElementById(`words-bank-${index}`);
-                            
-                            // Move all words from solution area back to words bank
                             while (solutionArea.firstChild) {
                                 wordsBank.appendChild(solutionArea.firstChild);
                             }
-                            
-                            // Clear feedback when words are changed
                             const feedbackElement = document.getElementById(`feedback-${index}`);
                             feedbackElement.textContent = '';
                             feedbackElement.className = 'game-feedback';
                         });
                         buttonContainer.appendChild(deleteBtn);
-                        
                         sentenceElement.appendChild(buttonContainer);
-                        
-                        // Add to game container
                         gameContainer.appendChild(sentenceElement);
-                        
-                        // Initially hide all sentences except the first one
                         if (index > 0) {
                             sentenceElement.style.display = 'none';
                         }
                     });
-                    
-                    // Check answer function
                     function checkAnswer(sentenceId) {
                         const solutionArea = document.getElementById(`solution-area-${sentenceId}`);
                         const feedbackElement = document.getElementById(`feedback-${sentenceId}`);
                         const sentenceElement = document.getElementById(`sentence-${sentenceId}`);
-                        
-                        // Get current word order in solution area
                         const currentWords = Array.from(solutionArea.children).map(word => word.textContent);
                         const correctWords = sentences[sentenceId].words;
-                        
-                        // Check if all words are in the solution area
                         if (currentWords.length !== correctWords.length) {
                             feedbackElement.textContent = '✗ Please use all the words.';
                             feedbackElement.className = 'game-feedback feedback-incorrect';
                             return;
                         }
-                        
-                        // Check if the order is correct
                         const isCorrect = arraysEqual(currentWords, correctWords);
-                        
                         if (isCorrect) {
                             feedbackElement.textContent = '✓ Correct! Well done!';
                             feedbackElement.className = 'game-feedback feedback-correct';
                             sentenceElement.classList.add('completed');
-                            
-                            // Show next sentence if there is one
                             if (sentenceId < sentences.length - 1) {
                                 setTimeout(() => {
                                     const nextSentence = document.getElementById(`sentence-${sentenceId + 1}`);
                                     if (nextSentence) {
                                         nextSentence.style.display = 'block';
-                                        // Scroll to next sentence
                                         nextSentence.scrollIntoView({ behavior: 'smooth', block: 'start' });
                                     }
                                 }, 800);
@@ -1057,47 +987,32 @@
                             feedbackElement.className = 'game-feedback feedback-incorrect';
                         }
                     }
-                    
-                    // Show answer function
                     function showAnswer(sentenceId) {
                         const solutionArea = document.getElementById(`solution-area-${sentenceId}`);
                         const wordsBank = document.getElementById(`words-bank-${sentenceId}`);
                         const feedbackElement = document.getElementById(`feedback-${sentenceId}`);
                         const sentenceElement = document.getElementById(`sentence-${sentenceId}`);
-                        
-                        // Clear both areas
                         solutionArea.innerHTML = '';
                         wordsBank.innerHTML = '';
-                        
-                        // Add words in correct order to solution area
                         sentences[sentenceId].words.forEach(word => {
                             const wordElement = document.createElement('div');
                             wordElement.className = 'word-box ukrainian-text';
                             wordElement.textContent = word;
                             solutionArea.appendChild(wordElement);
                         });
-                        
-                        // Update feedback
                         feedbackElement.textContent = 'This is the correct order.';
                         feedbackElement.className = 'game-feedback';
-                        
-                        // Mark as completed
                         sentenceElement.classList.add('completed');
-                        
-                        // Show next sentence if there is one
-                        if (sentenceId < sentences.length - 1) {
-                            setTimeout(() => {
-                                const nextSentence = document.getElementById(`sentence-${sentenceId + 1}`);
-                                if (nextSentence) {
-                                    nextSentence.style.display = 'block';
-                                    // Scroll to next sentence
-                                    nextSentence.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                }
-                            }, 800);
-                        }
+                         if (sentenceId < sentences.length - 1) {
+                                setTimeout(() => {
+                                    const nextSentence = document.getElementById(`sentence-${sentenceId + 1}`);
+                                    if (nextSentence) {
+                                        nextSentence.style.display = 'block';
+                                        nextSentence.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }
+                                }, 800);
+                            }
                     }
-                    
-                    // Helper function to compare arrays
                     function arraysEqual(a, b) {
                         if (a.length !== b.length) return false;
                         return a.every((val, index) => val === b[index]);
@@ -1105,141 +1020,21 @@
                 });
             </script>
         </div>
+
     </div>
 
-    <!-- Noun Gender Section -->
-    <div class="section">
-        <h2 id="noun-gender">6. Noun Gender</h2>
-        <p>Ukrainian nouns have three grammatical genders: masculine, feminine, and neuter. The gender of a noun affects how adjectives and some verbs agree with it.</p>
-
-        <h3>Masculine Nouns</h3>
-        <p>Masculine nouns typically end in a consonant, or rarely in -й or -ь.</p>
-        <table>
-            <tr><th>Ukrainian</th><th>Pronunciation</th><th>English</th></tr>
-            <tr>
-                <td lang="uk">стіл</td>
-                <td>stil</td>
-                <td>table</td>
-            </tr>
-            <tr>
-                <td lang="uk">дім</td>
-                <td>dim</td>
-                <td>house</td>
-            </tr>
-            <tr>
-                <td lang="uk">хлопець</td>
-                <td>khlopets</td>
-                <td>boy</td>
-            </tr>
-            <tr>
-                <td lang="uk">чай</td>
-                <td>chai</td>
-                <td>tea</td>
-            </tr>
-        </table>
-
-        <h3>Feminine Nouns</h3>
-        <p>Feminine nouns typically end in -а or -я, and sometimes in -ь.</p>
-        <table>
-            <tr><th>Ukrainian</th><th>Pronunciation</th><th>English</th></tr>
-            <tr>
-                <td lang="uk">книга</td>
-                <td>knyha</td>
-                <td>book</td>
-            </tr>
-            <tr>
-                <td lang="uk">школа</td>
-                <td>shkola</td>
-                <td>school</td>
-            </tr>
-            <tr>
-                <td lang="uk">земля</td>
-                <td>zemlya</td>
-                <td>land, earth</td>
-            </tr>
-            <tr>
-                <td lang="uk">ніч</td>
-                <td>nich</td>
-                <td>night</td>
-            </tr>
-        </table>
-
-        <h3>Neuter Nouns</h3>
-        <p>Neuter nouns typically end in -о, -е, or -я.</p>
-        <table>
-            <tr><th>Ukrainian</th><th>Pronunciation</th><th>English</th></tr>
-            <tr>
-                <td lang="uk">вікно</td>
-                <td>vikno</td>
-                <td>window</td>
-            </tr>
-            <tr>
-                <td lang="uk">море</td>
-                <td>more</td>
-                <td>sea</td>
-            </tr>
-            <tr>
-                <td lang="uk">життя</td>
-                <td>zhyttya</td>
-                <td>life</td>
-            </tr>
-            <tr>
-                <td lang="uk">яблуко</td>
-                <td>yabluko</td>
-                <td>apple</td>
-            </tr>
-        </table>
-
-        <p class="note">Note: While these patterns are common, there are exceptions. The gender of a noun is important for proper agreement with adjectives and verbs.</p>
-
-        <!-- Exercise 6: Matching Noun Genders -->
-        <div class="fill-exercise">
-            <h3>Exercise 6: Matching</h3>
-            <p>Match each Ukrainian noun with its grammatical gender.</p>
-            <div class="matching-game">
-                <div class="matching-columns-container">
-                    <div class="matching-column">
-                        <h4>Ukrainian:</h4>
-                        <div class="matching-item-container" id="gender-ukrainian-container">
-                            <div class="matching-item ukrainian-text" data-id="1">книга</div>
-                            <div class="matching-item ukrainian-text" data-id="2">стіл</div>
-                            <div class="matching-item ukrainian-text" data-id="3">вікно</div>
-                            <div class="matching-item ukrainian-text" data-id="4">земля</div>
-                            <div class="matching-item ukrainian-text" data-id="5">дім</div>
-                            <div class="matching-item ukrainian-text" data-id="6">море</div>
-                        </div>
-                    </div>
-                    <div class="matching-column">
-                        <h4>Gender:</h4>
-                        <div class="matching-item-container" id="gender-english-container">
-                            <div class="matching-item" data-id="1">Feminine</div>
-                            <div class="matching-item" data-id="2">Masculine</div>
-                            <div class="matching-item" data-id="3">Neuter</div>
-                            <div class="matching-item" data-id="4">Feminine</div>
-                            <div class="matching-item" data-id="5">Masculine</div>
-                            <div class="matching-item" data-id="6">Neuter</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="matching-result">
-                    <div class="matching-feedback" id="gender-matching-feedback"></div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Congratulations Section -->
     <div class="section" style="background: linear-gradient(to bottom, #0057B7 50%, #FFDD00 50%);">
         <h2 style="text-align: center;">
-            <span class="congrats-ukrainian" style="color: #FFDD00;">Вітаємо!<br>Ви завершили Урок 1</span><br><br>
-            <span class="congrats-english" style="display: block; font-size: inherit;">Congratulations!<br>You finished Lesson 1</span>
+            <span class="congrats-ukrainian" style="color: #FFDD00;">Вітаємо!<br>Ви завершили Тему 1</span><br><br>
+            <span class="congrats-english" style="display: block; font-size: inherit;">Congratulations!<br>You finished Topic 1</span>
         </h2>
     </div>
 
     <!-- Navigation Buttons -->
     <div class="nav-buttons-container">
-        <a href="index.html" class="nav-button prev-button">Return to Lessons</a>
-        <a href="lesson1_vocabulary.html" class="nav-button next-button">Lesson 1 Vocabulary</a>
+        <a href="/ukrainian_lessons_en.html" class="nav-button">Back to all lessons</a>
     </div>
 
     <script>
@@ -1287,27 +1082,27 @@
             const input = document.getElementById(inputId);
             const feedback = document.getElementById(`${inputId}-feedback`);
             const correctAnswer = input.dataset.correct;
-            const userAnswer = input.value.trim();
-            
-            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+            // Normalize input: trim whitespace, convert to lowercase for case-insensitive comparison
+            const userAnswer = input.value.trim().toLowerCase();
+            const normalizedCorrectAnswer = correctAnswer.trim().toLowerCase();
+
+            if (userAnswer === normalizedCorrectAnswer) {
                 feedback.textContent = "✓ Correct!";
                 feedback.className = "fill-feedback correct";
-                input.style.backgroundColor = "#e6ffee";
+                input.style.backgroundColor = "#e6ffee"; // Light green background for correct
             } else {
-                feedback.innerHTML = `✗ Not quite. The correct answer is: <span class="correct-answer-display">${correctAnswer}</span>`;
+                feedback.innerHTML = `✗ Not quite. Correct is: <span class="correct-answer-display ukrainian-text">${correctAnswer}</span>`;
                 feedback.className = "fill-feedback incorrect";
-                input.style.backgroundColor = "#ffebeb";
+                input.style.backgroundColor = "#ffebeb"; // Light red background for incorrect
             }
         }
-        
+
+
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize all matching games
+            // Initialize matching game for greetings
             initializeMatchingGame('greetings-ukrainian-container', 'greetings-english-container', 'greetings-matching-feedback', 6);
-            initializeMatchingGame('pronouns-ukrainian-container', 'pronouns-english-container', 'pronouns-matching-feedback', 6);
-            initializeMatchingGame('questions-ukrainian-container', 'questions-english-container', 'questions-matching-feedback', 6);
-            initializeMatchingGame('gender-ukrainian-container', 'gender-english-container', 'gender-matching-feedback', 6);
-            
-            // Add key button functionality
+
+            // Add key button functionality for fill-in exercises
             document.querySelectorAll('.key-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     // Find the closest fill-item parent
@@ -1324,10 +1119,25 @@
                             feedback.className = 'fill-feedback';
                         }
                         // Reset input background
-                        input.style.backgroundColor = '';
+                        input.style.backgroundColor = ''; // Reset background on new input
                     }
                 });
             });
+
+             // Add listener for Enter key in fill-in inputs
+            document.querySelectorAll('.fill-input').forEach(input => {
+                input.addEventListener('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault(); // Prevent form submission if applicable
+                        const fillItem = this.closest('.fill-item');
+                        const checkButton = fillItem.querySelector('.fill-check');
+                        if (checkButton) {
+                            checkButton.click(); // Trigger the check function
+                        }
+                    }
+                });
+            });
+
         });
     </script>
 
