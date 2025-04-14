@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ottoman Snow Letters</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #0f172a, #1e293b);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .screen {
+            width: 100%;
+            max-width: 800px;
+            height: 600px; /* Reduced height to fit laptop screens better */
+            position: relative;
+            overflow: visible; /* Let content overflow if needed */
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            background-color: rgba(15, 23, 42, 0.7);
+            margin: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        button {
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #3b82f6;
+        }
+
+        .panel {
+            background-color: #1f2937;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid #1e3a8a;
+            max-width: 90%;
+            margin: 20px auto;
+        }
+
+        /* Menu Screen */
+        #menu-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #menu-screen h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #93c5fd;
+            text-shadow: 0 0 10px rgba(147, 197, 253, 0.5);
+        }
+
+        #high-score-display {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        /* Game Screen */
+        #game-screen {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid #1e3a8a;
+        }
+
+        #hearts {
+            display: flex;
+        }
+
+        .heart {
+            color: #ef4444;
+            font-size: 1.5rem;
+            margin-right: 5px;
+        }
+
+        #level-indicator {
+            background-color: #1e40af;
+            color: #bfdbfe;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        #timer {
+            background-color: #1e40af;
+            color: #bfdbfe;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        #timer.warning {
+            background-color: #b91c1c;
+            color: #fecaca;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        #score {
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        #game-area {
+            height: 350px; /* Reduced game area height */
+            position: relative;
+            overflow: hidden;
+            flex-grow: 1;
+            margin-bottom: 200px; /* Makes space for the keyboard */
+        }
+
+        .falling-letter {
+            position: absolute;
+            font-size: 2rem;
+            color: #ffffff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+            transition: transform 0.2s;
+        }
+
+        .matched {
+            color: #22c55e;
+            transform: scale(1.5);
+            text-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+        }
+
+        /* Virtual Keyboard */
+        #keyboard {
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid #1e3a8a;
+            display: flex;
+            flex-direction: column;
+            gap: 0; /* No gap between rows */
+            height: 200px; /* Shorter since we removed a row and spacing */
+            position: absolute; /* Position it absolutely */
+            bottom: 0; /* Stick to bottom */
+            left: 0;
+        }
+
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 0; /* NO spacing between rows as requested */
+        }
+
+        .key {
+            min-width: 48px; /* Larger keys */
+            height: 48px; /* Taller keys */
+            background-color: #1e293b;
+            color: white;
+            border: 1px solid #1e3a8a;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            user-select: none;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .key:hover {
+            background-color: #2563eb;
+        }
+
+        .key.active {
+            background-color: #2563eb;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.7);
+        }
+
+        .key-label {
+            position: absolute;
+            bottom: 3px;
+            right: 3px;
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        .key-latin {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            font-size: 1.2rem;
+            opacity: 0.8;
+            color: #93c5fd;
+        }
+
+        /* Game Over Screen */
+        #game-over-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #game-over-screen h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ef4444;
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+        }
+
+        #stats {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        #new-high-score {
+            color: #f59e0b;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+            text-shadow: 0 0 10px rgba(245, 158, 11, 0.7);
+        }
+
+        /* Snowfall effect */
+        .snowflake {
+            position: absolute;
+            color: #ffffff;
+            opacity: 0.3;
+            font-size: 1rem;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .screen {
+                height: 600px; /* Reduced screen height */
+                margin: 10px;
+                overflow: visible;
+            }
+            
+            #game-area {
+                height: 250px; /* Reduced game area for mobile */
+                margin-bottom: 200px; /* Space for keyboard */
+            }
+            
+            .falling-letter {
+                font-size: 1.8rem;
+            }
+            
+            #menu-screen h1 {
+                font-size: 2rem;
+            }
+
+            #keyboard {
+                height: 200px;
+            }
+
+            .key {
+                min-width: 30px; /* Slightly smaller keys for mobile */
+                height: 30px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Screen -->
+    <div id="menu-screen" class="screen">
+        <h1>Ottoman Snow Letters</h1>
+        <div id="high-score-display">High Score: 0</div>
+        <button id="start-button" style="font-size: 2rem; padding: 20px 40px; margin-top: 30px;">START</button>
+        <p style="margin-top: 20px; opacity: 0.8;">Press Enter to start</p>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+        <div id="top-bar">
+            <div id="hearts"></div>
+            <div id="level-indicator">Level 1 (Slow)</div>
+            <div id="timer">10:00</div>
+            <div id="score">Score: 0</div>
+        </div>
+        <div id="game-area"></div>
+        <div id="keyboard">
+            <div class="keyboard-row" id="keyboard-row1"></div>
+            <div class="keyboard-row" id="keyboard-row2"></div>
+            <div class="keyboard-row" id="keyboard-row3"></div>
+            <div class="keyboard-row" id="keyboard-row4"></div>
+        </div>
+        <input id="input-field" class="hidden" type="text" autocomplete="off">
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="game-over-screen" class="screen hidden">
+        <h2>Game Over</h2>
+        <div id="stats" class="panel">
+            <p id="final-score">Final Score: 0</p>
+            <p id="level-reached">Level Reached: 1</p>
+            <p id="time-survived">Time Survived: 0 seconds</p>
+        </div>
+        <div id="new-high-score" class="hidden">New High Score!</div>
+        <button id="play-again-button">Play Again</button>
+        <button id="menu-button">Back to Menu</button>
+    </div>
+
+    <script>
+        // Game Variables
+        const ottomanLetters = [
+            'ا', 'ب', 'پ', 'ت', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 
+            'ذ', 'ر', 'ز', 'ژ', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 
+            'ع', 'غ', 'ف', 'ق', 'ک', 'گ', 'ل', 'م', 'ن', 'و', 
+            'ه', 'ی', 'ئ', 'ة', 'ء'
+        ];
+        
+        // Persian standard keyboard layout based on QWERTY
+        // Format: [Persian character, Latin key]
+        const keyboardLayout = [
+            // Row 2 - Main keys with their shifted versions
+            [['ض', 'ْ'], ['ص', 'ٌ'], ['ث', 'ٍ'], ['ق', 'ً'], ['ف', 'ُ'], ['غ', 'ِ'], ['ع', 'َ'], ['ه', 'ّ'], ['خ', ''], ['ح', ''], ['ج', ''], ['چ', ''], ['\\', '|']],
+            // Row 3 - Main keys with their shifted versions
+            [['ش', 'ۀ'], ['س', 'ؤ'], ['ی', 'ئ'], ['ب', 'إ'], ['ل', 'أ'], ['ا', 'آ'], ['ت', 'ة'], ['ن', '»'], ['م', '«'], ['ک', ':'], ['گ', '؛']],
+            // Row 4 - Main keys with their shifted versions
+            [['ظ', 'ك'], ['ط', 'ى'], ['ز', 'ژ'], ['ر', '~'], ['ذ', 'ء'], ['د', '>'], ['پ', '<'], ['و', '.'], ['.', '/'], ['/', '؟']]
+        ];
+            
+        // Mapping from Latin keys to Ottoman characters
+        const keyMapping = {
+            'q': 'ض', 'w': 'ص', 'e': 'ث', 'r': 'ق', 't': 'ف', 'y': 'غ', 'u': 'ع', 'i': 'ه', 'o': 'خ', 'p': 'ح',
+            '[': 'ج', ']': 'چ', '\\': '\\', 'a': 'ش', 's': 'س', 'd': 'ی', 'f': 'ب', 'g': 'ل', 'h': 'ا', 'j': 'ت', 'k': 'ن',
+            'l': 'م', ';': 'ک', "'": 'گ', 'z': 'ظ', 'x': 'ط', 'c': 'ز', 'v': 'ر', 'b': 'ذ', 'n': 'د', 'm': 'پ',
+            ',': 'و', '.': '.', '/': '/'
+        };
+                
+        // Also create a reverse mapping for Farsi keyboard layout
+        const reverseKeyMapping = {};
+        Object.entries(keyMapping).forEach(([latin, ottoman]) => {
+            reverseKeyMapping[ottoman] = latin;
+        });
+        
+        // Track letter distribution for balanced randomness
+        let letterDistribution = {};
+        
+        let gameState = {
+            score: 0,
+            level: 1,
+            lives: 10,
+            gameActive: false,
+            letterFallInterval: null,
+            fallingLetters: [],
+            startTime: 0,
+            highScore: 0,
+            activeKey: null,
+            timerInterval: null,
+            timeRemaining: 10 * 60 // 10 minutes in seconds
+        };
+
+        // DOM Elements
+        const menuScreen = document.getElementById('menu-screen');
+        const gameScreen = document.getElementById('game-screen');
+        const gameOverScreen = document.getElementById('game-over-screen');
+        const startButton = document.getElementById('start-button');
+        const playAgainButton = document.getElementById('play-again-button');
+        const menuButton = document.getElementById('menu-button');
+        const inputField = document.getElementById('input-field');
+        const gameArea = document.getElementById('game-area');
+        const heartsContainer = document.getElementById('hearts');
+        const levelIndicator = document.getElementById('level-indicator');
+        const scoreDisplay = document.getElementById('score');
+        const finalScore = document.getElementById('final-score');
+        const levelReached = document.getElementById('level-reached');
+        const timeSurvived = document.getElementById('time-survived');
+        const newHighScore = document.getElementById('new-high-score');
+        const highScoreDisplay = document.getElementById('high-score-display');
+        const keyboardRow1 = document.getElementById('keyboard-row1');
+        const keyboardRow2 = document.getElementById('keyboard-row2');
+        const keyboardRow3 = document.getElementById('keyboard-row3');
+        const keyboardRow4 = document.getElementById('keyboard-row4');
+
+        // Load high score with localStorage fallback
+        try {
+            if (localStorage.getItem('ottomanLettersHighScore')) {
+                gameState.highScore = parseInt(localStorage.getItem('ottomanLettersHighScore'));
+                highScoreDisplay.textContent = `High Score: ${gameState.highScore}`;
+            }
+        } catch (error) {
+            // Continue with default highScore value of 0
+        }
+
+        // Event Listeners
+        startButton.addEventListener('click', startGame);
+        playAgainButton.addEventListener('click', startGame);
+        menuButton.addEventListener('click', showMenu);
+        document.addEventListener('keydown', function(event) {
+            // Start game when Enter is pressed on menu screen
+            if (event.key === "Enter" && !menuScreen.classList.contains('hidden')) {
+                startGame();
+                return;
+            }
+            
+            // Handle regular gameplay key presses
+            if (gameState.gameActive) {
+                console.log("Key pressed:", event.key, "Shift:", event.shiftKey);
+                
+                // Check for direct match with Ottoman characters first (for Farsi keyboard)
+                if (ottomanLetters.includes(event.key)) {
+                    console.log("Direct Ottoman character match:", event.key);
+                    handleKeyPress({ key: event.key });
+                    event.preventDefault();
+                    return;
+                }
+                
+                // Then check QWERTY mapping (for English keyboard)
+                const keyPressed = event.key.toLowerCase();
+                
+                // Check if shift is pressed and handle accordingly
+                if (event.shiftKey) {
+                    // Find the key in the keyboard layout to get its shifted version
+                    for (const row of keyboardLayout) {
+                        for (const keyPair of row) {
+                            const latinKey = reverseKeyMapping[keyPair[0]];
+                            if (latinKey === keyPressed) {
+                                // Use the shifted version (second item in the pair)
+                                const shiftedChar = keyPair[1];
+                                console.log("Shift mapping:", keyPressed, "->", shiftedChar);
+                                highlightKey(shiftedChar);
+                                handleKeyPress({ key: shiftedChar });
+                                event.preventDefault();
+                                return;
+                            }
+                        }
+                    }
+                }
+                
+                // Regular key press without shift
+                if (keyMapping[keyPressed]) {
+                    console.log("QWERTY mapping:", keyPressed, "->", keyMapping[keyPressed]);
+                    highlightKey(keyPressed);
+                    handleKeyPress({ key: keyMapping[keyPressed] });
+                    event.preventDefault();
+                }
+            }
+        });
+
+        // Function to setup the virtual keyboard
+        function setupVirtualKeyboard() {
+            // Clear existing keys
+            keyboardRow1.innerHTML = '';
+            keyboardRow2.innerHTML = '';
+            keyboardRow3.innerHTML = '';
+            keyboardRow4.innerHTML = '';
+            
+            // Create keys for each row
+            keyboardLayout.forEach((row, rowIndex) => {
+                // Adjust index because we removed the top row
+                const rowElement = document.getElementById(`keyboard-row${rowIndex + 2}`);
+                
+                if (rowElement) {  // Make sure the element exists
+                    row.forEach(keyPair => {
+                        const keyElement = document.createElement('div');
+                        keyElement.className = 'key';
+                        
+                        // The Ottoman/Farsi character is the primary content
+                        const ottomanChar = keyPair[0];
+                        keyElement.textContent = ottomanChar;
+                        
+                        // Store the Latin key as a data attribute (for QWERTY keyboard users)
+                        const latinKey = keyPair[1].toLowerCase();
+                        keyElement.dataset.key = latinKey;
+                        
+                        // Show Latin key as a label
+                        const label = document.createElement('span');
+                        label.className = 'key-latin';
+                        label.textContent = keyPair[1];
+                        keyElement.appendChild(label);
+                        
+                        // Add click event - uses the Ottoman character for matching
+                        keyElement.addEventListener('click', () => {
+                            console.log("Key clicked:", ottomanChar);
+                            
+                            // Handle the keypress with the Ottoman character
+                            handleKeyPress({ key: ottomanChar });
+                            
+                            // Visual feedback
+                            highlightKey(ottomanChar);
+                        });
+                        
+                        rowElement.appendChild(keyElement);
+                    });
+                }
+            });
+        }
+        
+        // Function to highlight a key when pressed
+        function highlightKey(keyOrChar) {
+            // Remove highlight from previous key
+            if (gameState.activeKey) {
+                const oldKey = document.querySelector(`.key[data-key="${gameState.activeKey}"]`);
+                if (oldKey) oldKey.classList.remove('active');
+            }
+            
+            let keyElement;
+            
+            // First try to find by data-key attribute (for Latin keys)
+            keyElement = document.querySelector(`.key[data-key="${keyOrChar}"]`);
+            
+            // If not found, try to find by Ottoman character content
+            if (!keyElement) {
+                // Find the Ottoman character in the reverseKeyMapping
+                const latinKey = reverseKeyMapping[keyOrChar];
+                if (latinKey) {
+                    keyElement = document.querySelector(`.key[data-key="${latinKey}"]`);
+                }
+                
+                // If still not found, just find any key with this text content
+                if (!keyElement) {
+                    const allKeys = document.querySelectorAll('.key');
+                    for (const key of allKeys) {
+                        if (key.textContent.includes(keyOrChar)) {
+                            keyElement = key;
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            if (keyElement) {
+                keyElement.classList.add('active');
+                
+                // Remove highlight after a short delay
+                setTimeout(() => {
+                    keyElement.classList.remove('active');
+                }, 300);
+                
+                gameState.activeKey = keyElement.dataset.key || keyOrChar;
+            }
+        }
+
+        // Initialize the letter distribution counter
+        function initializeLetterDistribution() {
+            // Reset the counter
+            letterDistribution = {};
+            
+            // Initialize counter for each letter
+            ottomanLetters.forEach(letter => {
+                letterDistribution[letter] = 0;
+            });
+        }
+
+        // Game Functions
+        function startGame() {
+            // Reset game state
+            gameState.score = 0;
+            gameState.level = 1;
+            gameState.lives = 10;
+            gameState.gameActive = true;
+            gameState.fallingLetters = [];
+            gameState.startTime = Date.now();
+            gameState.activeKey = null;
+            gameState.timeRemaining = 10 * 60; // 10 minutes in seconds
+            
+            // Initialize letter distribution for balanced randomness
+            initializeLetterDistribution();
+            
+            // Clear any existing intervals
+            if (gameState.letterFallInterval) {
+                clearInterval(gameState.letterFallInterval);
+            }
+            if (gameState.timerInterval) {
+                clearInterval(gameState.timerInterval);
+            }
+            
+            // Update UI
+            updateHearts();
+            updateLevel();
+            updateScore();
+            updateTimer();
+            
+            // Setup virtual keyboard
+            setupVirtualKeyboard();
+            
+            // Clear game area
+            gameArea.innerHTML = '';
+            
+            // Show game screen
+            menuScreen.classList.add('hidden');
+            gameOverScreen.classList.add('hidden');
+            gameScreen.classList.remove('hidden');
+            newHighScore.classList.add('hidden');
+            
+            // Focus on input field
+            inputField.value = '';
+            inputField.focus();
+            
+            // Start letter falling
+            startLetterFall();
+            
+            // Start the timer
+            startTimer();
+        }
+
+        function showMenu() {
+            gameScreen.classList.add('hidden');
+            gameOverScreen.classList.add('hidden');
+            menuScreen.classList.remove('hidden');
+            
+            // Stop the game
+            gameState.gameActive = false;
+            if (gameState.letterFallInterval) {
+                clearInterval(gameState.letterFallInterval);
+            }
+            if (gameState.timerInterval) {
+                clearInterval(gameState.timerInterval);
+            }
+            
+            // Update high score display
+            highScoreDisplay.textContent = `High Score: ${gameState.highScore}`;
+        }
+
+        function updateHearts() {
+            heartsContainer.innerHTML = '';
+            for (let i = 0; i < gameState.lives; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        function updateLevel() {
+            let speedDescription;
+            if (gameState.level <= 10) speedDescription = "Slow";
+            else if (gameState.level <= 20) speedDescription = "Moderate";
+            else if (gameState.level <= 30) speedDescription = "Fast";
+            else if (gameState.level <= 40) speedDescription = "Very Fast";
+            else speedDescription = "Extreme";
+            
+            levelIndicator.textContent = `Level ${gameState.level} (${speedDescription})`;
+        }
+
+        function updateScore() {
+            scoreDisplay.textContent = `Score: ${gameState.score}`;
+        }
+
+        function calculateFallingSpeed() {
+            // Base speed in milliseconds (higher = slower)
+            // Making level 1 MUCH slower as requested
+            const baseSpeed = 30000; // 30 seconds for level 1
+            // Reduce by level (faster as level increases)
+            // More gradual speed increase
+            return baseSpeed - (gameState.level * 500);
+        }
+
+        function startLetterFall() {
+            // Set interval for letters to fall
+            // Slowing down the spawn rate significantly
+            const spawnRate = 5000 - (gameState.level * 80);
+            gameState.letterFallInterval = setInterval(createFallingLetter, Math.max(spawnRate, 1000));
+            
+            // Create the first letter immediately
+            createFallingLetter();
+        }
+
+        function createFallingLetter() {
+            if (!gameState.gameActive) return;
+            
+            // Create a DOM element for the letter
+            const letterElement = document.createElement('div');
+            letterElement.className = 'falling-letter';
+            
+            // Initialize letter distribution if it hasn't been done
+            if (Object.keys(letterDistribution).length === 0) {
+                initializeLetterDistribution();
+            }
+            
+            // Decide if we should create a single letter or a combination
+            let letterContent;
+            if (gameState.level >= 6 && Math.random() > 0.7) {
+                // Two-letter combination
+                // Find the least frequent letters
+                const sortedLetters = Object.entries(letterDistribution)
+                    .sort((a, b) => a[1] - b[1])
+                    .map(entry => entry[0]);
+                
+                // Select from the least frequent 30% of letters for better distribution
+                const selectionPoolSize = Math.max(3, Math.floor(sortedLetters.length * 0.3));
+                const selectionPool = sortedLetters.slice(0, selectionPoolSize);
+                
+                // Select two different letters from the lower frequency pool
+                const letter1 = selectionPool[Math.floor(Math.random() * selectionPool.length)];
+                
+                // For the second letter, select again from the pool, avoiding the first letter if possible
+                let filteredPool = selectionPool.filter(l => l !== letter1);
+                // If we filtered out all options, use the original pool
+                if (filteredPool.length === 0) filteredPool = selectionPool;
+                
+                const letter2 = filteredPool[Math.floor(Math.random() * filteredPool.length)];
+                
+                letterContent = letter1 + letter2;
+                
+                // Update distribution counters
+                letterDistribution[letter1]++;
+                letterDistribution[letter2]++;
+            } else {
+                // Single letter - select from the least frequent letters
+                const sortedLetters = Object.entries(letterDistribution)
+                    .sort((a, b) => a[1] - b[1])
+                    .map(entry => entry[0]);
+                
+                // Select from the least frequent 30% of letters for better distribution
+                const selectionPoolSize = Math.max(3, Math.floor(sortedLetters.length * 0.3));
+                const selectionPool = sortedLetters.slice(0, selectionPoolSize);
+                
+                // Randomly select from the pool of less frequent letters
+                letterContent = selectionPool[Math.floor(Math.random() * selectionPool.length)];
+                
+                // Update distribution counter
+                letterDistribution[letterContent]++;
+            }
+            
+            letterElement.textContent = letterContent;
+            letterElement.id = `letter-${Date.now()}`;
+            
+            // Position the letter randomly across the width
+            const leftPosition = Math.random() * (gameArea.offsetWidth - 50);
+            letterElement.style.left = `${leftPosition}px`;
+            letterElement.style.top = '0px';
+            
+            // Add to game area
+            gameArea.appendChild(letterElement);
+            
+            // Add to tracking array
+            const letterObj = {
+                element: letterElement,
+                id: letterElement.id,
+                content: letterContent,
+                position: 0,
+                matched: false
+            };
+            gameState.fallingLetters.push(letterObj);
+            
+            // Start animation
+            animateLetter(letterObj);
+            
+            // Debug - log current distribution (uncomment if needed)
+            // console.log("Letter distribution:", letterDistribution);
+        }
+
+        function animateLetter(letterObj) {
+            if (!gameState.gameActive) return;
+            
+            const speed = calculateFallingSpeed();
+            const gameAreaHeight = gameArea.offsetHeight;
+            const startTime = Date.now();
+            
+            function update() {
+    if (!gameState.gameActive || letterObj.matched) {
+        return;
+    }
+    
+    const currentTime = Date.now();
+    const elapsed = currentTime - startTime;
+    
+    // Calculate position based on elapsed time and speed
+    const newPosition = (elapsed / speed) * gameAreaHeight;
+    letterObj.position = newPosition;
+    letterObj.element.style.top = `${newPosition}px`;
+    
+    // Check if letter has fallen to bottom
+    if (newPosition >= gameAreaHeight) {
+        // Remove letter
+        gameArea.removeChild(letterObj.element);
+        gameState.fallingLetters = gameState.fallingLetters.filter(l => l.id !== letterObj.id);
+        
+        // Reduce lives
+        gameState.lives--;
+        updateHearts();
+        
+        // Check game over
+        if (gameState.lives <= 0) {
+            endGame();
+        }
+        
+        return;
+    }
+    
+    // Continue animation
+    requestAnimationFrame(update);
+}
+
+// Start the animation
+requestAnimationFrame(update);
+}
+
+function handleKeyPress(event) {
+// Get the key pressed
+const keyPressed = event.key;
+
+// Debug output to see what's happening
+console.log("Handling key press:", keyPressed);
+console.log("Falling letters:", gameState.fallingLetters.map(l => l.content));
+
+// Highlight the corresponding key on the virtual keyboard
+highlightKey(keyPressed);
+
+// Look for any unmatched letter
+const activeLetters = gameState.fallingLetters.filter(l => !l.matched);
+
+// Check each falling letter for a match
+for (const letter of activeLetters) {
+    console.log("Checking letter:", letter.content);
+    
+    // For double letters, we'll track which part of the letter we're matching
+    if (!letter.matchProgress) {
+        letter.matchProgress = 0; // Initialize match progress for tracking partial matches
+    }
+    
+    // Check if this is a single letter or a multi-letter combination
+    if (letter.content.length > 1) {
+        // This is a multi-letter combination
+        // Check if the pressed key matches the next character to be matched
+        if (letter.content[letter.matchProgress] === keyPressed) {
+            letter.matchProgress++;
+            
+            // Visual feedback for partial match
+            letter.element.innerHTML = `<span style="color: #22c55e">${letter.content.substring(0, letter.matchProgress)}</span>${letter.content.substring(letter.matchProgress)}`;
+            
+            // If all characters in the combination are matched
+            if (letter.matchProgress >= letter.content.length) {
+                console.log("FULL MATCH FOUND with multi-letter:", letter.content);
+                
+                // Mark as matched
+                letter.matched = true;
+                letter.element.classList.add('matched');
+                
+                // Update score - bonus points for multi-letter combinations
+                gameState.score += 10 * letter.content.length;
+                updateScore();
+                
+                // Check for level up
+                if (gameState.score >= gameState.level * 100) {
+                    levelUp();
+                }
+                
+                // Remove the letter after a brief animation
+                setTimeout(() => {
+                    if (gameState.gameActive && document.getElementById(letter.id)) {
+                        gameArea.removeChild(letter.element);
+                        gameState.fallingLetters = gameState.fallingLetters.filter(l => l.id !== letter.id);
+                        
+                        // Check if there are no letters left and create new ones if needed
+                        checkAndCreateNewLetters();
+                    }
+                }, 200);
+                
+                // Only match one letter per keypress
+                return;
+            } else {
+                // Partial match - continue to next letter
+                console.log("PARTIAL MATCH with multi-letter:", letter.content, "progress:", letter.matchProgress);
+                return;
+            }
+        }
+    } else if (letter.content === keyPressed) {
+        // Single letter match
+        console.log("MATCH FOUND with single letter:", letter.content);
+        
+        // Mark as matched
+        letter.matched = true;
+        letter.element.classList.add('matched');
+        
+        // Update score
+        gameState.score += 10;
+        updateScore();
+        
+        // Check for level up
+        if (gameState.score >= gameState.level * 100) {
+            levelUp();
+        }
+        
+        // Remove the letter after a brief animation
+        setTimeout(() => {
+            if (gameState.gameActive && document.getElementById(letter.id)) {
+                gameArea.removeChild(letter.element);
+                gameState.fallingLetters = gameState.fallingLetters.filter(l => l.id !== letter.id);
+                
+                // Check if there are no letters left and create new ones if needed
+                checkAndCreateNewLetters();
+            }
+        }, 200);
+        
+        // Only match one letter per keypress
+        return;
+    }
+}
+
+// If there are no letters on screen, create new ones immediately
+if (activeLetters.length === 0) {
+    checkAndCreateNewLetters();
+}
+}
+
+// Helper function to check if we need to create new letters
+function checkAndCreateNewLetters() {
+if (!gameState.gameActive) return;
+
+const activeLetters = gameState.fallingLetters.filter(l => !l.matched);
+
+// If there are no active letters, create 2 new ones immediately
+if (activeLetters.length === 0) {
+    console.log("No letters on screen, creating new ones");
+    createFallingLetter();
+    // Add a small delay for the second letter to make them easier to distinguish
+    setTimeout(createFallingLetter, 300);
+}
+}
+
+function levelUp() {
+gameState.level++;
+
+// Cap at level 50
+if (gameState.level > 50) {
+    gameState.level = 50;
+}
+
+updateLevel();
+
+// Update falling speed by clearing and restarting the interval
+clearInterval(gameState.letterFallInterval);
+startLetterFall();
+}
+
+function startTimer() {
+// Update the timer display immediately
+updateTimer();
+
+// Start the interval to update every second
+gameState.timerInterval = setInterval(() => {
+    if (gameState.gameActive) {
+        gameState.timeRemaining--;
+        
+        // Update the display
+        updateTimer();
+        
+        // Check if time is up
+        if (gameState.timeRemaining <= 0) {
+            // Time's up - end the game
+            endGame("Time's Up!");
+        }
+    }
+}, 1000);
+}
+
+function updateTimer() {
+const timerElement = document.getElementById('timer');
+
+// Convert seconds to minutes and seconds
+const minutes = Math.floor(gameState.timeRemaining / 60);
+const seconds = gameState.timeRemaining % 60;
+
+// Format with leading zeros
+const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+// Update the display
+timerElement.textContent = formattedTime;
+
+// Add warning class for last minute
+if (gameState.timeRemaining <= 60) {
+    timerElement.classList.add('warning');
+} else {
+    timerElement.classList.remove('warning');
+}
+}
+
+function endGame(reason = "Game Over") {
+gameState.gameActive = false;
+clearInterval(gameState.letterFallInterval);
+clearInterval(gameState.timerInterval);
+
+// Calculate time played
+const timePlayed = Math.floor((Date.now() - gameState.startTime) / 1000);
+
+// Update game over screen
+document.querySelector('#game-over-screen h2').textContent = reason;
+finalScore.textContent = `Final Score: ${gameState.score}`;
+levelReached.textContent = `Level Reached: ${gameState.level}`;
+timeSurvived.textContent = `Time Survived: ${timePlayed} seconds`;
+
+// Check for new high score
+if (gameState.score > gameState.highScore) {
+    gameState.highScore = gameState.score;
+    try {
+        localStorage.setItem('ottomanLettersHighScore', gameState.highScore);
+    } catch (error) {
+        // Continue without saving to localStorage
+    }
+    newHighScore.classList.remove('hidden');
+} else {
+    newHighScore.classList.add('hidden');
+}
+
+// Show game over screen
+gameScreen.classList.add('hidden');
+gameOverScreen.classList.remove('hidden');
+
+// Clear game area
+gameArea.innerHTML = '';
+}
+
+// Create snowflake background effect
+function createSnowflakes() {
+const screenWidth = window.innerWidth;
+const screenHeight = window.innerHeight;
+const numberOfSnowflakes = Math.floor(screenWidth * screenHeight / 10000);
+
+for (let i = 0; i < numberOfSnowflakes; i++) {
+    const snowflake = document.createElement('div');
+    snowflake.classList.add('snowflake');
+    snowflake.textContent = '*';
+    snowflake.style.left = `${Math.random() * 100}%`;
+    snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`;
+    snowflake.style.opacity = Math.random() * 0.3 + 0.1;
+    document.body.appendChild(snowflake);
+}
+}
+
+// Initialize snowflakes
+createSnowflakes();
+
+// Initialize the game - call setupVirtualKeyboard immediately
+document.addEventListener('DOMContentLoaded', function() {
+// Setup virtual keyboard for mobile devices
+setupVirtualKeyboard();
+});
+
+// Also call it now in case DOMContentLoaded has already fired
+setupVirtualKeyboard();
+    </script>
+</body>
+</html>
