@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Arabic Reading</title>
+    <style>
+        :root {
+            --primary-green: #0D8A52;  /* Rich emerald green - common in Arabic design */
+            --light-green: #66B27F;    /* Softer complementary green */
+            --beige-bg: #F8F3E3;       /* Warm sand/beige background */
+            --gold-accent: rgba(201, 173, 91, 0.8); /* Muted gold with transparency */
+            --dark-accent: #2A623D;    /* Darker green for hover states */
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            min-height: 100%;
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #F2E8C7; /* Parchment color */
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M50,0 L0,50 M100,50 L50,100" stroke="%23DAC99E22" stroke-width="0.5"/></svg>');
+            background-repeat: repeat;
+            background-size: 100px 100px;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.65); /* Semi-transparent white */
+            border: 2px solid var(--gold-accent);
+            border-radius: 16px;
+            padding: 20px;
+            display: inline-block;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+        .lesson-grid {
+            display: flex;
+            gap: 20px;
+        }
+        .lesson-button {
+            display: block;
+            padding: 15px 25px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            width: 100%;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .lesson-button:hover,
+        .lesson-button:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background-color: var(--dark-accent);
+        }
+        @media (max-width: 768px) {
+            html, body {
+                align-items: flex-start;
+                padding-top: 40px;
+            }
+            .lesson-grid {
+                flex-direction: column;
+            }
+            .lesson-button {
+                font-size: 1.2rem;
+                width: 100%;
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lesson-grid">
+            <button class="lesson-button" data-lesson="1">Story 1</button>
+            <button class="lesson-button" data-lesson="2">Story 2</button>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.lesson-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const lesson = this.getAttribute('data-lesson');
+                if (lesson === "1") {
+                    window.location.href = "../arabic_reading/story_1.html";
+                } else if (lesson === "2") {
+                    window.location.href = "../arabic_reading/story_2.html";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
