@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Story 1: Arabic Reading</title>
+    <title>Story 1: Arabic Reading (Updated Colors & Alignment)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,158 +12,541 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
 
     <style>
-        /* Ottoman-inspired color scheme (Matches Lesson 1) */
+        /* New color scheme based on the second file - NOW LIGHTER */
         :root {
-            --ottoman-blue: #0081C9; --ottoman-red: #C70039; --ottoman-gold: #FFB100;
-            --ottoman-teal: #00B8A9; --ottoman-navy: #023E7D; --ottoman-cream: #FFF8E1;
-            --ottoman-light-blue: #E0F7FF; --ottoman-pink: #FFCCDF; --ottoman-light-teal: #CCFCF6;
-            --body-background: #1D2F6F; --text-color: #1A3A5A; --text-light: #FFFFFF;
+            --primary-green: #0D8A52;  /* Rich emerald green (kept) */
+            --light-green: #8BC3A0;   /* Lighter complementary green */
+            --beige-bg: #FAF7ED;      /* Lighter warm sand/beige background */
+            --gold-accent: #C9AD5B;   /* Traditional Islamic gold (kept) */
+            --dark-accent: #2A623D;   /* Darker green for text/hover (kept) */
+            --deep-blue: #1D4D8E;     /* Deep Islamic blue (kept) */
+            --rich-burgundy: #8C1C13; /* Rich burgundy/maroon for accents/errors (kept) */
+            --sand: #F0EAD6;          /* Lighter sand color for backgrounds */
+            --text-light: #FFFFFF;    /* White text (kept) */
+            --text-dark: #333333;     /* Dark text for light backgrounds (kept) */
         }
-        body { font-family: 'Nunito', Arial, sans-serif; line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 15px; background-color: var(--body-background); background-image: url('../ottoman_background.png'); background-repeat: repeat; background-size: 300px auto; box-sizing: border-box; color: var(--text-color); font-size: 16px; /* Base font size */ }
 
-        /* Arabic text styling */
-        [lang="ar"], td:first-child, .ottoman-text, .matching-item.ottoman-text, .fill-input.ottoman-input, .key-btn, .correct-answer-display.ottoman-text, .word-box.ottoman-text, .exercise-row .ottoman-text, .story-arabic, .vocabulary-arabic { font-family: 'Noto Naskh Arabic', serif; font-size: 1.4em; line-height: 1.5; font-weight: 500; direction: rtl; text-align: right; }
+        body {
+            font-family: 'Nunito', Arial, sans-serif;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+            /* Updated background color and image - NOW LIGHTER */
+            background-color: #CDE0BE; /* Lighter green background */
+            background-image: url('../arabic_reading/reading_background.png'); /* Path from second file */
+            background-repeat: repeat;
+            background-size: auto;
+            background-attachment: fixed;
+            box-sizing: border-box;
+            color: var(--dark-accent); /* Default text color */
+            font-size: 16px;
+        }
 
-        /* Latin/English text styling - Default to body size unless overridden */
+        /* Arabic text styling (Kept original font rules) */
+        [lang="ar"], td:first-child, .ottoman-text, .matching-item.ottoman-text, .fill-input.ottoman-input, .key-btn, .correct-answer-display.ottoman-text, .word-box.ottoman-text, .exercise-row .ottoman-text, .story-arabic, .vocabulary-arabic {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 1.4em;
+            line-height: 1.5;
+            font-weight: 500;
+            direction: rtl;
+            text-align: right; /* Default right alignment for Arabic */
+        }
+
+        /* Latin/English text styling (REMOVED text-align: center !important;) */
         .latin-text, .story-english, .vocabulary-english, .translation-popup,
         .translation, .matching-item:not(.ottoman-text), .game-sentence-translation,
         .matching-column h4, .fill-check, .check-btn, .show-answer-btn, .delete-btn,
-        .game-feedback, .congrats-english, p, li, th, td:nth-child(2) /* Target English table cells */
-         {
+        .game-feedback, .congrats-english, p, li, th, td:nth-child(2)
+        {
             font-family: 'Arial', Arial, sans-serif !important;
             font-weight: normal !important;
             direction: ltr !important;
-            text-align: center !important;
-            font-size: 1em; /* Default normal size relative to body */
+            /* text-align: center !important; <-- REMOVED */
+            font-size: 1em;
         }
 
-        /* Specific overrides for smaller/different sizes */
-        .translation-popup { font-size: 0.9em; } /* Keep popup slightly smaller */
-        .small-latin { font-size: 0.8em !important; } /* Make small latin slightly larger than before */
-        th { font-size: 0.9em; font-weight: 600; } /* Table headers slightly smaller/bolder */
-        .matching-column h4 { text-align: center; } /* Center matching headers */
-        .correct-answer-display { display: inline-block; margin-left: 5px; font-weight: normal; font-style: italic; font-size: 1em;} /* Normal size, but keep italic */
+        /* --- NEW: Re-apply center alignment where needed --- */
+        th, td:nth-child(2), .fill-check, .check-btn, .show-answer-btn, .delete-btn, .game-feedback, .matching-item:not(.ottoman-text) {
+             text-align: center !important; /* Center align table cells, buttons, feedback, English matching items */
+        }
+        /* Keep congratulations centered (already handled by inline style and default block behavior) */
+        .congrats-ottoman, .congrats-english {
+             text-align: center;
+        }
+        /* --- End NEW Alignment Rules --- */
 
-        /* Ensure Arabic overrides apply where needed */
-        .matching-item.ottoman-text { font-size: 1.4em !important; text-align: center; }
-        .key-btn { font-size: 1.6em !important; text-align: center; }
+        /* Specific overrides for smaller/different sizes (Kept original rules) */
+        .translation-popup { font-size: 0.9em; text-align: left !important; } /* Ensure popup text is left aligned */
+        .small-latin { font-size: 0.8em !important; }
+        th { font-size: 0.9em; font-weight: 600; }
+        /* .matching-column h4 alignment handled below */
+        .correct-answer-display { display: inline-block; margin-left: 5px; font-weight: normal; font-style: italic; font-size: 1em;}
+
+        /* Ensure Arabic overrides apply where needed (Kept original rules) */
+        .matching-item.ottoman-text { font-size: 1.4em !important; text-align: center; } /* Keep Arabic matching items centered */
+        .key-btn { font-size: 1.6em !important; text-align: center; } /* Keep key buttons centered */
         .fill-input.ottoman-input { font-size: 1.6em !important; text-align: right; }
-        .correct-answer-display.ottoman-text { font-size: 1.4em !important; font-style: normal; }
+        .correct-answer-display.ottoman-text { font-size: 1.4em !important; font-style: normal; text-align: right;} /* Ensure correct answer display is right aligned */
         .word-box.ottoman-text { font-size: 1.4em !important; }
 
 
         .fill-input.ottoman-input { text-align: right; }
-        td:first-child, td[lang="ar"] { text-align: left !important; padding-top: 18px; padding-bottom: 18px; }
+        td:first-child, td[lang="ar"] { text-align: right !important; padding-top: 18px; padding-bottom: 18px; } /* Changed to right align Arabic table cells */
         * { box-sizing: border-box; }
-        h1, h2, h3 { color: var(--ottoman-navy); font-weight: 700; line-height: 1.3; }
-        h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; color: var(--text-light); }
-        h2 { font-size: 1.5rem; margin-top: 30px; }
-        h3 { font-size: 1.2rem; margin-top: 25px; color: var(--ottoman-blue); }
-        .section { background-color: var(--ottoman-light-blue); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background-color: #C0E0F0; }
-        .title-section { background-color: var(--ottoman-navy); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
-        .title-section h1 { /* Default left align removed, handled by inline style now */ border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 0; margin-top: 0; font-size: 1.8rem; color: var(--text-light); }
-        th, td { padding: 12px 15px; border: none; }
-        th { background-color: var(--ottoman-blue); color: var(--text-light); }
-        tr:nth-child(even) { background-color: var(--ottoman-light-blue); }
-        tr:hover { background-color: #B9E7FE; }
-        .note { background-color: var(--ottoman-pink); padding: 15px; border-left: 4px solid var(--ottoman-red); margin: 20px 0; border-radius: 0 8px 8px 0; }
 
-        /* Feedback Styles */
-        .feedback, .fill-feedback { margin-top: 8px; margin-left: 5px; font-weight: bold; text-align: center; direction: ltr; text-align: left;}
-        .fill-feedback.correct { color: var(--ottoman-teal); }
-        .fill-feedback.incorrect { color: var(--ottoman-red); }
-        .matching-feedback.correct { color: black !important; font-size: 1.5rem !important; }
+        /* Headings with new colors */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.3;
+            text-align: left; /* Default left align headings */
+        }
+        h1 { /* Title H1 styling */
+            border-bottom: 3px solid var(--gold-accent);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            color: var(--text-light);
+        }
+        h2 { /* Section H2 styling */
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: var(--dark-accent);
+        }
+        h3 { /* Section H3 styling */
+            font-size: 1.2rem;
+            margin-top: 25px;
+            color: var(--primary-green);
+        }
+        .section h3 { /* Explicitly left-align "Parts of the Lesson" etc. */
+             text-align: left !important;
+        }
+
+        /* Sections with new LIGHTER background */
+        .section {
+            background-color: var(--sand); /* Lighter sand background */
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .section ul { /* Left align the list in "Parts of the Lesson" */
+            text-align: left !important;
+            padding-left: 20px; /* Add some padding for list items */
+            list-style-position: outside;
+        }
+         .section ul li {
+             text-align: left !important; /* Ensure list items are left aligned */
+         }
+         .section p { /* Left align paragraphs within sections */
+             text-align: left !important;
+         }
+
+
+        /* Table styling with new LIGHTER colors */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            background-color: var(--beige-bg); /* Lighter beige background */
+        }
+        th, td {
+            padding: 12px 15px;
+            border: none;
+        }
+        th {
+            background-color: var(--primary-green);
+            color: var(--text-light);
+        }
+        tr:nth-child(even) {
+            background-color: var(--sand); /* Lighter sand */
+        }
+        tr:hover {
+            background-color: var(--light-green); /* Lighter green hover */
+        }
+
+        /* Title section with new colors */
+        .title-section {
+            background-color: var(--primary-green);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .title-section h1 { /* Keep title H1 alignment handled by inline style */
+            border-bottom: 3px solid var(--gold-accent);
+            padding-bottom: 15px;
+            margin-bottom: 0;
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: var(--text-light);
+            /* text-align: right; <--- Applied inline */
+        }
+
+        /* Note box with new LIGHTER colors */
+        .note {
+            background-color: var(--light-green); /* Lighter green */
+            padding: 15px;
+            border-left: 4px solid var(--primary-green);
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            text-align: left !important; /* Ensure note text is left aligned */
+        }
+
+        /* Feedback Styles with new colors */
+        .feedback, .fill-feedback {
+            margin-top: 8px;
+            margin-left: 5px;
+            font-weight: bold;
+            direction: ltr;
+            text-align: left !important; /* Left align feedback */
+        }
+        .fill-feedback.correct {
+            color: var(--primary-green);
+        }
+        .fill-feedback.incorrect {
+            color: var(--rich-burgundy);
+        }
+        .matching-feedback.correct {
+            color: var(--dark-accent) !important;
+            font-size: 1.5rem !important;
+            text-align: center !important; /* Keep matching game final feedback centered */
+        }
         .fill-feedback.correct.sentence-building {
-            color: black !important;
+            color: var(--text-dark) !important;
             font-size: 1.5rem !important;
             font-weight: bold !important;
             font-family: 'Nunito', Arial, sans-serif !important;
-            background-color: var(--ottoman-gold);
+            background-color: var(--gold-accent);
             padding: 5px 10px;
             border-radius: 5px;
             display: inline-block;
+            text-align: center !important; /* Center this specific feedback */
         }
 
-        /* Matching Game Styles */
-        .matching-game { background-color: var(--ottoman-gold); padding: 20px; border-radius: 8px; margin-top: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        /* Matching Game Styles with new LIGHTER colors */
+        .matching-game {
+            background-color: var(--light-green); /* Lighter green */
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
         .matching-columns-container { display: flex; gap: 10px; margin-bottom: 20px; }
         .matching-column { flex: 1; display: flex; flex-direction: column; gap: 10px; }
-        /* .matching-column h4 already styled above */
+        .matching-column h4 { /* Left align column headers */
+             text-align: left !important;
+             padding-left: 5px; /* Add slight indent */
+             color: var(--dark-accent); /* Ensure color */
+        }
         .matching-item-container { display: flex; flex-direction: column; gap: 10px; }
-        .matching-item { padding: 12px 15px; background-color: white; border: 2px solid var(--ottoman-blue); border-radius: 8px; cursor: pointer; transition: all 0.2s ease; text-align: center; -webkit-tap-highlight-color: transparent; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        /* .matching-item font-size handled above */
-        .matching-item:hover { background-color: var(--ottoman-light-blue); }
-        .matching-item.selected { background-color: var(--ottoman-blue); color: var(--text-light); }
-        .matching-item.matched { background-color: var(--ottoman-gold); color: black; border-color: var(--ottoman-gold); cursor: default; }
+        .matching-item {
+            padding: 12px 15px;
+            background-color: white;
+            border: 2px solid var(--primary-green);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            color: var(--dark-accent);
+            /* text-align: center !important; <-- Re-applied above for non-ottoman text */
+        }
+        .matching-item:hover {
+            background-color: var(--beige-bg); /* Lighter beige */
+        }
+        .matching-item.selected {
+            background-color: var(--deep-blue);
+            color: var(--text-light);
+            border-color: var(--deep-blue);
+        }
+        .matching-item.matched {
+            background-color: var(--gold-accent);
+            color: var(--text-dark);
+            border-color: var(--gold-accent);
+            cursor: default;
+        }
         .matching-result { text-align: center; }
-        .matching-result div { font-size: 1.2rem; font-weight: bold; color: black; margin-top: 15px; }
+        .matching-result div {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--dark-accent);
+            margin-top: 15px;
+        }
 
 
-        /* Fill-in / Sentence Building Styles */
+        /* Fill-in / Sentence Building Styles with new LIGHTER colors */
         .fill-exercise { margin-top: 30px; }
-        .fill-item { background-color: var(--ottoman-gold); margin-bottom: 20px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .exercise-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; color: var(--text-color); font-weight: 500; direction: rtl; }
+        .fill-item {
+            background-color: var(--sand); /* Lighter sand */
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .exercise-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            color: var(--dark-accent);
+            font-weight: 500;
+            direction: rtl;
+        }
         .exercise-row .ottoman-text { display: inline; padding: 0 3px; }
-        /* .translation font-size handled above */
-        .fill-input { background-color: var(--ottoman-gold); width: auto; min-width: 100px; flex-grow: 1; padding: 6px 10px; border: 2px solid #997000; border-radius: 6px; font-size: 1em; /* Default input size */ font-family: inherit; margin: 0 5px; }
-        /* .fill-input.ottoman-input font-size handled above */
-        .key-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; justify-content: center; }
-        /* .key-btn font-size handled above */
-        .key-btn { padding: 5px 12px; background-color: #FFECB3; border: 1px solid #E6A800; border-radius: 6px; cursor: pointer; color: #333; font-family: 'Noto Naskh Arabic', serif; }
-        .key-btn:hover { background-color: #FFE082; color: black; }
-        /* .fill-check font-size handled above */
-        .fill-check { padding: 8px 15px; background-color: #FFECB3; color: black; border: none; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: 600; transition: background-color 0.2s ease; display: block; margin: 10px auto 0; }
-        .fill-check:hover { background-color: #FFE082; }
+        .translation { /* Left align English translations */
+             text-align: left !important;
+             width: 100%; /* Ensure it takes full width for alignment */
+             padding-left: 5px; /* Optional indent */
+        }
+        .fill-input {
+            background-color: white;
+            width: auto;
+            min-width: 100px;
+            flex-grow: 1;
+            padding: 6px 10px;
+            border: 2px solid var(--gold-accent);
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            margin: 0 5px;
+            color: var(--dark-accent);
+        }
+        .key-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+            justify-content: center;
+        }
+        .key-btn {
+            padding: 5px 12px;
+            background-color: var(--beige-bg); /* Lighter beige */
+            border: 1px solid var(--gold-accent);
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--dark-accent);
+            font-family: 'Noto Naskh Arabic', serif;
+        }
+        .key-btn:hover {
+            background-color: var(--sand); /* Lighter sand */
+            color: var(--dark-accent);
+        }
+        .fill-check {
+            padding: 8px 15px;
+            background-color: var(--beige-bg); /* Lighter beige */
+            color: var(--dark-accent);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            display: block;
+            margin: 10px auto 0;
+        }
+        .fill-check:hover {
+            background-color: var(--sand); /* Lighter sand */
+        }
+        .fill-input.correct-input { background-color: #e6ffee; border-color: var(--primary-green); }
+        .fill-input.incorrect-input { background-color: #ffebeb; border-color: var(--rich-burgundy); }
 
 
-        /* Congratulations */
-         .congrats-ottoman { font-family: 'Amiri', serif; font-size: 30px; line-height: 1.4; }
-         /* .congrats-english font-size handled above */
+        /* Congratulations with new color */
+        .congrats-ottoman {
+            font-family: 'Amiri', serif;
+            font-size: 30px;
+            line-height: 1.4;
+            color: var(--primary-green);
+        }
 
-        /* Word Order Game Styles */
-        .word-order-game { background-color: var(--ottoman-light-blue); padding: 15px; border-radius: 8px; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .game-sentence { background-color: white; border-radius: 8px; padding: 15px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-        .game-sentence.completed { background-color: var(--ottoman-light-teal); border-left: 4px solid var(--ottoman-teal); }
-        /* .game-sentence-translation font-size handled above */
-        .sentence-number { display: inline-block; min-width: 45px; font-weight: 700; color: var(--ottoman-red); }
-        .solution-area { min-height: 60px; padding: 10px; background-color: #e0f7ff; border-radius: 8px; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; border: 2px dashed var(--ottoman-blue); direction: rtl; justify-content: flex-start; }
-        .words-bank { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px; background-color: var(--ottoman-cream); border-radius: 6px; margin-bottom: 10px; direction: rtl; justify-content: flex-start; }
-        .word-box { display: inline-block; padding: 8px 12px; background-color: var(--ottoman-blue); color: white; border-radius: 5px; cursor: pointer; user-select: none; margin: 0; font-weight: 500; border: 2px solid transparent; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease; }
-        /* .word-box.ottoman-text font-size handled above */
-        .solution-area .word-box { background-color: #c0e0f0; color: var(--text-color); border-color: var(--ottoman-blue); }
+        /* Word Order Game Styles with new LIGHTER colors */
+        .word-order-game {
+            background-color: var(--beige-bg); /* Lighter beige */
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .game-sentence {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+         .game-sentence-translation { /* Left align sentence translation */
+             text-align: left !important;
+             margin-bottom: 10px; /* Add space below translation */
+         }
+         .game-sentence-translation .sentence-number { /* Style sentence number */
+              display: inline-block;
+              min-width: 45px;
+              font-weight: 700;
+              color: var(--rich-burgundy);
+              margin-right: 5px; /* Space after number */
+         }
+        .game-sentence.completed {
+            background-color: var(--light-green); /* Lighter green */
+            border-left: 4px solid var(--primary-green);
+        }
+        /* .sentence-number styling moved to .game-sentence-translation */
+        .solution-area {
+            min-height: 60px;
+            padding: 10px;
+            background-color: var(--sand); /* Lighter sand */
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+            border: 2px dashed var(--deep-blue);
+            direction: rtl;
+            justify-content: flex-start;
+        }
+        .words-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+            background-color: var(--beige-bg); /* Lighter beige */
+            border-radius: 6px;
+            margin-bottom: 10px;
+            direction: rtl;
+            justify-content: flex-start;
+        }
+        .word-box {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: var(--deep-blue);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            user-select: none;
+            margin: 0;
+            font-weight: 500;
+            border: 2px solid transparent;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+        .solution-area .word-box {
+            background-color: var(--sand); /* Lighter sand */
+            color: var(--dark-accent);
+            border-color: var(--deep-blue);
+        }
         .word-box:active { transform: scale(0.95); }
-        /* .game-feedback font-size handled above */
-        .feedback-correct { color: var(--ottoman-teal); }
-        .feedback-incorrect { color: var(--ottoman-red); }
+        .feedback-correct { color: var(--primary-green); }
+        .feedback-incorrect { color: var(--rich-burgundy); }
         .sentence-buttons { display: flex; gap: 10px; margin-top: 10px; }
-        /* .check-btn, .show-answer-btn, .delete-btn font-size handled above */
-        .check-btn, .show-answer-btn, .delete-btn { flex: 1; background-color: var(--ottoman-blue); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-family: inherit; font-weight: 600; transition: all 0.2s ease; }
-        .check-btn:hover, .show-answer-btn:hover, .delete-btn:hover { background-color: #006aa3; }
+        .check-btn, .show-answer-btn, .delete-btn {
+            flex: 1;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            /* text-align: center !important; <-- Re-applied above */
+        }
+        .check-btn {
+            background-color: var(--deep-blue);
+            color: white;
+        }
+        .check-btn:hover { background-color: var(--dark-accent); }
         .check-btn:active, .show-answer-btn:active, .delete-btn:active { transform: scale(0.98); }
-        .show-answer-btn { background-color: var(--ottoman-light-blue); color: var(--text-color); }
-        .show-answer-btn:hover { background-color: #c0e0f0; }
-        .delete-btn { background-color: #ffccdf; color: var(--text-color); }
-        .delete-btn:hover { background-color: #ffb3c6; }
+        .show-answer-btn {
+            background-color: var(--light-green); /* Lighter green */
+            color: var(--text-dark);
+        }
+        .show-answer-btn:hover { background-color: var(--sand); } /* Lighter sand */
+        .delete-btn {
+            background-color: var(--rich-burgundy);
+            color: white;
+        }
+        .delete-btn:hover { background-color: #6a150e; }
 
-        /* Navigation */
-        .nav-buttons-container { display: flex; justify-content: space-between; margin-top: 30px; margin-bottom: 40px; padding: 0 10px; }
-        .nav-button { background-color: var(--ottoman-navy); color: var(--text-light); border: 3px solid var(--ottoman-blue); border-radius: 12px; padding: 15px 20px; font-family: 'Nunito', Arial, sans-serif; font-weight: 600; font-size: 1.3rem; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; text-decoration: none; text-align: center; display: inline-block; line-height: 1.4; }
-        .nav-button:hover { background-color: var(--ottoman-blue); border-color: var(--ottoman-navy); }
+        /* Navigation with new colors */
+        .nav-buttons-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+        .nav-button {
+            background-color: var(--deep-blue);
+            color: var(--text-light);
+            border: 3px solid var(--gold-accent);
+            border-radius: 12px;
+            padding: 15px 20px;
+            font-family: 'Nunito', Arial, sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center; /* Keep nav buttons centered */
+            display: inline-block;
+            line-height: 1.4;
+        }
+        .nav-button:hover {
+            background-color: var(--dark-accent);
+            border-color: var(--gold-accent);
+        }
         .prev-button { margin-right: auto; }
         .next-button, .exercises-button { margin-left: 10px; }
         .nav-button.next-button { padding-top: 27px; }
 
-         /* === Interactive Story Styles === */
-         .story-container { background-color: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; line-height: 2; }
-         .story-arabic { line-height: 1.8; text-align: right; direction: rtl; }
-         .word { display: inline-block; cursor: pointer; padding: 0 2px; border-radius: 3px; transition: background-color 0.2s; }
-         .word:hover { background-color: #FFECB3; }
-         .word.active { background-color: var(--ottoman-gold); }
-         .translation-popup { display: none; position: absolute; background-color: #fff; border: 1px solid var(--ottoman-gold); border-radius: 4px; padding: 5px 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 100; max-width: 200px; color: var(--text-color); }
-         /* .translation-popup font-size handled above */
+        /* === Interactive Story Styles with new LIGHTER colors === */
+        .story-container {
+            background-color: rgba(255, 255, 255, 0.92); /* Slightly less transparent white */
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            line-height: 2;
+        }
+        .story-arabic {
+            line-height: 1.8;
+            text-align: right;
+            direction: rtl;
+            color: var(--dark-accent);
+        }
+        .word {
+            display: inline-block;
+            cursor: pointer;
+            padding: 0 2px;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+        .word:hover {
+            background-color: var(--sand); /* Lighter sand */
+        }
+        .word.active {
+            background-color: var(--gold-accent);
+        }
+        .translation-popup {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid var(--gold-accent);
+            border-radius: 4px;
+            padding: 5px 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+            max-width: 200px;
+            color: var(--dark-accent);
+            /* text-align: left !important; <-- Applied above */
+        }
 
-        /* Media queries */
+        /* Media queries (Kept original rules, colors/alignment applied above will cascade) */
         @media (max-width: 600px) {
             .section, .title-section { padding: 20px 15px; border-radius: 10px; }
             h1 { font-size: 1.6rem !important; padding-bottom: 10px; }
@@ -171,45 +554,41 @@
             h3 { font-size: 1.1rem !important; }
             table { display: block; overflow-x: auto; white-space: nowrap; }
             th, td { padding: 10px 12px; }
-            th { font-size: 0.9em; padding: 10px 8px; } /* Adjusted from 0.9rem */
+            th { font-size: 0.9em; padding: 10px 8px; }
             .exercise { padding: 15px; }
             .matching-columns-container { flex-direction: column; gap: 15px; }
-            .matching-item { font-size: 1em; padding: 10px 12px; } /* Adjusted from 0.9em */
-            .matching-item.ottoman-text { font-size: 1.2em !important; } /* Adjusted from 1.1em */
+            .matching-item { font-size: 1em; padding: 10px 12px; }
+            .matching-item.ottoman-text { font-size: 1.2em !important; }
 
-            /* Fill-in exercises - Keep row layout but allow wrapping */
             .exercise-row { flex-direction: row; align-items: baseline; gap: 8px; flex-wrap: wrap;}
             .exercise-row .ottoman-text { flex-shrink: 0; margin: 0 3px; }
             .exercise-row .fill-input { flex-grow: 1; width: auto; min-width: 80px; margin: 0 3px;}
-            .translation { flex-basis: 100%; margin-bottom: 8px; font-size: 0.9em; } /* Slightly smaller translation on mobile */
+            .translation { flex-basis: 100%; margin-bottom: 8px; font-size: 0.9em; }
 
-            .fill-input { width: auto; max-width: none; margin-top: 0; font-size: 1em; } /* Ensure consistent input size */
+            .fill-input { width: auto; max-width: none; margin-top: 0; font-size: 1em; }
             .key-container { justify-content: center; margin-top: 10px; }
             .fill-check { width: 100%; max-width: 300px; margin-top: 10px; }
 
-            /* Navigation */
             .nav-buttons-container { flex-direction: column; gap: 15px; }
             .nav-button { width: 100%; margin: 0; font-size: 1rem; }
             body { padding: 10px; }
 
-            /* Word order game mobile adjustments */
             .sentence-buttons { flex-direction: column; }
             .check-btn, .show-answer-btn, .delete-btn { width: 100%; }
 
-            /* Story adjustments */
             .story-container { padding: 15px; }
-            .story-arabic { font-size: 1.2em; } /* Slightly smaller on mobile */
+            .story-arabic { font-size: 1.2em; }
         }
-         @media (max-width: 450px) {
-             .matching-item { padding: 10px 8px; font-size: 0.9em; } /* Keep consistent */
+        @media (max-width: 450px) {
+             .matching-item { padding: 10px 8px; font-size: 0.9em; }
              .matching-item.ottoman-text { font-size: 1.1em !important; }
              .key-btn { font-size: 1.4em !important; padding: 4px 10px;}
              .nav-button { padding: 12px 15px; }
              .exercise-row {gap: 5px;}
              .exercise-row .fill-input { min-width: 60px; }
-             .story-arabic { font-size: 1.1em; } /* Even smaller on very small screens */
-             .translation-popup { font-size: 0.8em; } /* Adjusted from 0.6em */
-         }
+             .story-arabic { font-size: 1.1em; }
+             .translation-popup { font-size: 0.8em; }
+        }
     </style>
 </head>
 <body>
@@ -220,15 +599,14 @@
     <div class="section">
         <h3>Parts of the Lesson</h3>
         <ul>
-             <li><a href="#nouns" style="color: inherit; text-decoration: none;">Vocabulary</a></li>
-             <li><a href="#sentence_building" style="color: inherit; text-decoration: none;">Sentence Building</a></li>
-             <li><a href="#story" style="color: inherit; text-decoration: none;">The Story</a></li>
+              <li><a href="#nouns" style="color: inherit; text-decoration: none;">Vocabulary</a></li>
+              <li><a href="#sentence_building" style="color: inherit; text-decoration: none;">Sentence Building</a></li>
+              <li><a href="#story" style="color: inherit; text-decoration: none;">The Story</a></li>
         </ul>
     </div>
 
     <div class="section">
         <h2 id="nouns">1. Nouns</h2>
-
         <table>
             <tr><th>Arabic</th><th>English</th></tr>
             <tr> <td lang="ar">العمل</td> <td>work/employment</td> </tr>
@@ -250,75 +628,73 @@
             <tr> <td lang="ar">المَرْءُ</td> <td>the person</td> </tr>
         </table>
 
+        <div id="exercises"></div>
 
-    <div id="exercises"></div>
-
-    <div class="fill-exercise">
-        <h3>Exercise 1: Match Nouns</h3>
-        <p>Match the Arabic noun with its English translation.</p>
-        <div class="matching-game">
-            <div class="matching-columns-container">
-                <div class="matching-column">
-                    <h4>Arabic Noun:</h4>
-                    <div class="matching-item-container" id="arabic-nouns-col1-container"></div>
+        <div class="fill-exercise">
+            <h3>Exercise 1: Match Nouns</h3>
+            <p>Match the Arabic noun with its English translation.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Arabic Noun:</h4>
+                        <div class="matching-item-container" id="arabic-nouns-col1-container"></div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>English Translation:</h4>
+                        <div class="matching-item-container" id="arabic-nouns-col2-container"></div>
+                    </div>
                 </div>
-                <div class="matching-column">
-                    <h4>English Translation:</h4>
-                    <div class="matching-item-container" id="arabic-nouns-col2-container"></div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="arabic-nouns-matching-feedback"></div>
                 </div>
             </div>
-            <div class="matching-result">
-                <div class="matching-feedback" id="arabic-nouns-matching-feedback"></div>
+        </div>
+
+        <div class="fill-exercise">
+            <h3>Exercise 2: Fill in the Noun</h3>
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ottoman-text">ذهب الرجل إلى</span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-noun1" data-correct="الغابة">
+                    <span class="ottoman-text">.</span>
+                </div>
+                <div class="translation">(The man went to the forest.)</div>
+                <div class="key-container">
+                    <div class="key-btn">الغابة</div> <div class="key-btn">العمل</div> <div class="key-btn">الفقر</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun1')">Check</button>
+                <div class="fill-feedback" id="fill-noun1-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">أعطاه الله</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun2" data-correct="طعاما">
+                     <span class="ottoman-text">.</span>
+                </div>
+                 <div class="translation">(God gave him food.)</div>
+                <div class="key-container">
+                     <div class="key-btn">الفقر</div> <div class="key-btn">طعاما</div> <div class="key-btn">الحطب</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun2')">Check</button>
+                <div class="fill-feedback" id="fill-noun2-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">كان النبي رسول</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun3" data-correct="الله">
+                     <span class="ottoman-text">.</span>
+                </div>
+                 <div class="translation">(The prophet was the messenger of God.)</div>
+                <div class="key-container">
+                     <div class="key-btn">الله</div> <div class="key-btn">رجل</div> <div class="key-btn">المَرْءُ</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun3')">Check</button>
+                <div class="fill-feedback" id="fill-noun3-feedback"></div>
             </div>
         </div>
     </div>
-
-    <div class="fill-exercise">
-        <h3>Exercise 2: Fill in the Noun</h3>
-        <div class="fill-item">
-            <div class="exercise-row">
-                <span class="ottoman-text">ذهب الرجل إلى</span>
-                <input type="text" class="fill-input ottoman-input" id="fill-noun1" data-correct="الغابة">
-                <span class="ottoman-text">.</span>
-            </div>
-            <div class="translation">(The man went to the forest.)</div>
-            <div class="key-container">
-                <div class="key-btn">الغابة</div> <div class="key-btn">العمل</div> <div class="key-btn">الفقر</div>
-            </div>
-            <button class="fill-check" onclick="checkFillAnswer('fill-noun1')">Check</button>
-            <div class="fill-feedback" id="fill-noun1-feedback"></div>
-        </div>
-        <div class="fill-item">
-            <div class="exercise-row">
-                 <span class="ottoman-text">أعطاه الله</span>
-                 <input type="text" class="fill-input ottoman-input" id="fill-noun2" data-correct="طعاما">
-                 <span class="ottoman-text">.</span>
-            </div>
-             <div class="translation">(God gave him food.)</div>
-            <div class="key-container">
-                 <div class="key-btn">الفقر</div> <div class="key-btn">طعاما</div> <div class="key-btn">الحطب</div>
-            </div>
-            <button class="fill-check" onclick="checkFillAnswer('fill-noun2')">Check</button>
-            <div class="fill-feedback" id="fill-noun2-feedback"></div>
-        </div>
-         <div class="fill-item">
-            <div class="exercise-row">
-                 <span class="ottoman-text">كان النبي رسول</span>
-                 <input type="text" class="fill-input ottoman-input" id="fill-noun3" data-correct="الله">
-                 <span class="ottoman-text">.</span>
-            </div>
-             <div class="translation">(The prophet was the messenger of God.)</div>
-            <div class="key-container">
-                 <div class="key-btn">الله</div> <div class="key-btn">رجل</div> <div class="key-btn">المَرْءُ</div>
-            </div>
-            <button class="fill-check" onclick="checkFillAnswer('fill-noun3')">Check</button>
-            <div class="fill-feedback" id="fill-noun3-feedback"></div>
-        </div>
-    </div>
-</div>
     <div class="section">
         <h2 id="verbs">2. Verbs</h2>
-
         <table>
             <tr><th>Arabic</th><th>English</th></tr>
             <tr> <td lang="ar">جاء</td> <td>came</td> </tr>
@@ -341,70 +717,69 @@
             <tr> <td lang="ar">ينتظر</td> <td>waits for</td> </tr>
         </table>
 
-
-    <div class="fill-exercise">
-        <h3>Exercise 3: Match Verbs</h3>
-        <p>Match the Arabic verb with its English translation.</p>
-        <div class="matching-game">
-            <div class="matching-columns-container">
-                <div class="matching-column">
-                    <h4>Arabic Verb:</h4>
-                    <div class="matching-item-container" id="arabic-verbs-col1-container"></div>
+        <div class="fill-exercise">
+            <h3>Exercise 3: Match Verbs</h3>
+            <p>Match the Arabic verb with its English translation.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Arabic Verb:</h4>
+                        <div class="matching-item-container" id="arabic-verbs-col1-container"></div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>English Translation:</h4>
+                        <div class="matching-item-container" id="arabic-verbs-col2-container"></div>
+                    </div>
                 </div>
-                <div class="matching-column">
-                    <h4>English Translation:</h4>
-                    <div class="matching-item-container" id="arabic-verbs-col2-container"></div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="arabic-verbs-matching-feedback"></div>
                 </div>
             </div>
-            <div class="matching-result">
-                <div class="matching-feedback" id="arabic-verbs-matching-feedback"></div>
+        </div>
+
+        <div class="fill-exercise">
+            <h3>Exercise 4: Fill in the Verb</h3>
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ottoman-text">الرجل</span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-verb1" data-correct="قال">
+                    <span class="ottoman-text">«إني فقير».</span>
+                </div>
+                <div class="translation">(The man said: "I am poor".)</div>
+                <div class="key-container">
+                    <div class="key-btn">جاء</div> <div class="key-btn">قال</div> <div class="key-btn">ذهب</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb1')">Check</button>
+                <div class="fill-feedback" id="fill-verb1-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">الرجل</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb2" data-correct="ذهب">
+                     <span class="ottoman-text">إلى الغابة.</span>
+                </div>
+                 <div class="translation">(The man went to the forest.)</div>
+                <div class="key-container">
+                     <div class="key-btn">رجع</div> <div class="key-btn">ذهب</div> <div class="key-btn">جمع</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb2')">Check</button>
+                <div class="fill-feedback" id="fill-verb2-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">الرجل</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb3" data-correct="اشترى">
+                     <span class="ottoman-text">طعاما.</span>
+                </div>
+                 <div class="translation">(The man bought food.)</div>
+                <div class="key-container">
+                     <div class="key-btn">اشترى</div> <div class="key-btn">باعها</div> <div class="key-btn">أعطاه</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb3')">Check</button>
+                <div class="fill-feedback" id="fill-verb3-feedback"></div>
             </div>
         </div>
     </div>
-
-    <div class="fill-exercise">
-        <h3>Exercise 4: Fill in the Verb</h3>
-        <div class="fill-item">
-            <div class="exercise-row">
-                <span class="ottoman-text">الرجل</span>
-                <input type="text" class="fill-input ottoman-input" id="fill-verb1" data-correct="قال">
-                <span class="ottoman-text">«إني فقير».</span>
-            </div>
-            <div class="translation">(The man said: "I am poor".)</div>
-            <div class="key-container">
-                <div class="key-btn">جاء</div> <div class="key-btn">قال</div> <div class="key-btn">ذهب</div>
-            </div>
-            <button class="fill-check" onclick="checkFillAnswer('fill-verb1')">Check</button>
-            <div class="fill-feedback" id="fill-verb1-feedback"></div>
-        </div>
-         <div class="fill-item">
-            <div class="exercise-row">
-                 <span class="ottoman-text">الرجل</span>
-                 <input type="text" class="fill-input ottoman-input" id="fill-verb2" data-correct="ذهب">
-                 <span class="ottoman-text">إلى الغابة.</span>
-            </div>
-             <div class="translation">(The man went to the forest.)</div>
-            <div class="key-container">
-                 <div class="key-btn">رجع</div> <div class="key-btn">ذهب</div> <div class="key-btn">جمع</div>
-            </div>
-            <button class="fill-check" onclick="checkFillAnswer('fill-verb2')">Check</button>
-            <div class="fill-feedback" id="fill-verb2-feedback"></div>
-        </div>
-         <div class="fill-item">
-            <div class="exercise-row">
-                 <span class="ottoman-text">الرجل</span>
-                 <input type="text" class="fill-input ottoman-input" id="fill-verb3" data-correct="اشترى">
-                 <span class="ottoman-text">طعاما.</span>
-            </div>
-             <div class="translation">(The man bought food.)</div>
-            <div class="key-container">
-                 <div class="key-btn">اشترى</div> <div class="key-btn">باعها</div> <div class="key-btn">أعطاه</div>
-            </div>
-            <button class="fill-check" onclick="checkFillAnswer('fill-verb3')">Check</button>
-            <div class="fill-feedback" id="fill-verb3-feedback"></div>
-        </div>
-    </div>
-</div>
     <div class="section">
         <h2 id="adjectives">3. Adjectives</h2>
         <p>These adjectives can help you describe things in Arabic:</p>
@@ -415,57 +790,56 @@
             <tr> <td lang="ar">بسيطا</td> <td>simple</td> </tr>
         </table>
 
-
-    <div class="fill-exercise">
-        <h3>Exercise 5: Match Adjectives</h3>
-
-        <div class="matching-game">
-            <div class="matching-columns-container">
-                <div class="matching-column">
-                    <h4>Arabic Adjective:</h4>
-                    <div class="matching-item-container" id="arabic-adjectives-col1-container"></div>
+        <div class="fill-exercise">
+            <h3>Exercise 5: Match Adjectives</h3>
+            <p>Match the Arabic adjective with its English translation.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Arabic Adjective:</h4>
+                        <div class="matching-item-container" id="arabic-adjectives-col1-container"></div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>English Translation:</h4>
+                        <div class="matching-item-container" id="arabic-adjectives-col2-container"></div>
+                    </div>
                 </div>
-                <div class="matching-column">
-                    <h4>English Translation:</h4>
-                    <div class="matching-item-container" id="arabic-adjectives-col2-container"></div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="arabic-adjectives-matching-feedback"></div>
                 </div>
             </div>
-            <div class="matching-result">
-                <div class="matching-feedback" id="arabic-adjectives-matching-feedback"></div>
+        </div>
+
+        <div class="fill-exercise">
+            <h3>Exercise 6: Fill in the Adjective</h3>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">كان الرجل</span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-adj1" data-correct="فقير">
+                    <span class="ottoman-text">.</span>
+                </div>
+                 <div class="translation">(The man was poor.)</div>
+                <div class="key-container">
+                    <div class="key-btn">خير</div> <div class="key-btn">فقير</div> <div class="key-btn">بسيطا</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-adj1')">Check</button>
+                <div class="fill-feedback" id="fill-adj1-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">العمل</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-adj2" data-correct="خير">
+                     <span class="ottoman-text">من البطالة.</span>
+                </div>
+                 <div class="translation">(Work is better than unemployment.)</div>
+                <div class="key-container">
+                     <div class="key-btn">خير</div> <div class="key-btn">فقير</div> <div class="key-btn">بسيطا</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-adj2')">Check</button>
+                <div class="fill-feedback" id="fill-adj2-feedback"></div>
             </div>
         </div>
     </div>
-
-    <div class="fill-exercise">
-        <h3>Exercise 6: Fill in the Adjective</h3>
-        <div class="fill-item">
-            <div class="exercise-row">
-                 <span class="ottoman-text">كان الرجل</span>
-                <input type="text" class="fill-input ottoman-input" id="fill-adj1" data-correct="فقير">
-                <span class="ottoman-text">.</span>
-            </div>
-             <div class="translation">(The man was poor.)</div>
-            <div class="key-container">
-                <div class="key-btn">خير</div> <div class="key-btn">فقير</div> <div class="key-btn">بسيطا</div>
-            </div>
-            <button class="fill-check" onclick="checkFillAnswer('fill-adj1')">Check</button>
-            <div class="fill-feedback" id="fill-adj1-feedback"></div>
-        </div>
-         <div class="fill-item">
-            <div class="exercise-row">
-                 <span class="ottoman-text">العمل</span>
-                 <input type="text" class="fill-input ottoman-input" id="fill-adj2" data-correct="خير">
-                 <span class="ottoman-text">من البطالة.</span>
-            </div>
-             <div class="translation">(Work is better than unemployment.)</div>
-            <div class="key-container">
-                 <div class="key-btn">خير</div> <div class="key-btn">فقير</div> <div class="key-btn">بسيطا</div>
-            </div>
-            <button class="fill-check" onclick="checkFillAnswer('fill-adj2')">Check</button>
-            <div class="fill-feedback" id="fill-adj2-feedback"></div>
-        </div>
-    </div>
-</div>
 
     <div class="section">
         <h2 id="prepositions">4. Prepositions and Conjunctions</h2>
@@ -479,56 +853,55 @@
             <tr> <td lang="ar">لـ</td> <td>for</td> </tr>
         </table>
 
-
-    <div class="fill-exercise">
-        <h3>Exercise 7: Match Prepositions & Conjunctions</h3>
-
-        <div class="matching-game">
-            <div class="matching-columns-container">
-                <div class="matching-column">
-                    <h4>Arabic Word:</h4>
-                    <div class="matching-item-container" id="arabic-prepositions-col1-container"></div>
+        <div class="fill-exercise">
+            <h3>Exercise 7: Match Prepositions & Conjunctions</h3>
+            <p>Match the Arabic word with its English translation.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Arabic Word:</h4>
+                        <div class="matching-item-container" id="arabic-prepositions-col1-container"></div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>English Translation:</h4>
+                        <div class="matching-item-container" id="arabic-prepositions-col2-container"></div>
+                    </div>
                 </div>
-                <div class="matching-column">
-                    <h4>English Translation:</h4>
-                    <div class="matching-item-container" id="arabic-prepositions-col2-container"></div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="arabic-prepositions-matching-feedback"></div>
                 </div>
             </div>
-            <div class="matching-result">
-                <div class="matching-feedback" id="arabic-prepositions-matching-feedback"></div>
-            </div>
         </div>
-    </div>
 
-    <div class="fill-exercise">
-        <h3>Exercise 8: Fill in the Word</h3>
-        <div class="fill-item">
-            <div class="exercise-row">
-                <span class="ottoman-text">ذهب الرجل</span>
-                <input type="text" class="fill-input ottoman-input" id="fill-prep1" data-correct="إلى">
-                <span class="ottoman-text">الغابة.</span>
+        <div class="fill-exercise">
+            <h3>Exercise 8: Fill in the Word</h3>
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ottoman-text">ذهب الرجل</span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-prep1" data-correct="إلى">
+                    <span class="ottoman-text">الغابة.</span>
+                </div>
+                <div class="translation">(The man went to the forest.)</div>
+                <div class="key-container">
+                    <div class="key-btn">من</div> <div class="key-btn">إلى</div> <div class="key-btn">و</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep1')">Check</button>
+                <div class="fill-feedback" id="fill-prep1-feedback"></div>
             </div>
-            <div class="translation">(The man went to the forest.)</div>
-            <div class="key-container">
-                <div class="key-btn">من</div> <div class="key-btn">إلى</div> <div class="key-btn">و</div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">جمع الحطب</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep2" data-correct="ثم">
+                     <span class="ottoman-text">باعها.</span>
+                </div>
+                 <div class="translation">(He gathered firewood and then sold it.)</div>
+                <div class="key-container">
+                     <div class="key-btn">ثم</div> <div class="key-btn">لـ</div> <div class="key-btn">و</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep2')">Check</button>
+                <div class="fill-feedback" id="fill-prep2-feedback"></div>
             </div>
-            <button class="fill-check" onclick="checkFillAnswer('fill-prep1')">Check</button>
-            <div class="fill-feedback" id="fill-prep1-feedback"></div>
         </div>
-         <div class="fill-item">
-            <div class="exercise-row">
-                 <span class="ottoman-text">جمع الحطب</span>
-                 <input type="text" class="fill-input ottoman-input" id="fill-prep2" data-correct="ثم">
-                 <span class="ottoman-text">باعها.</span>
-            </div>
-             <div class="translation">(He gathered firewood and then sold it.)</div>
-            <div class="key-container">
-                 <div class="key-btn">ثم</div> <div class="key-btn">لـ</div> <div class="key-btn">و</div>
-            </div>
-            <button class="fill-check" onclick="checkFillAnswer('fill-prep2')">Check</button>
-            <div class="fill-feedback" id="fill-prep2-feedback"></div>
-        </div>
-    </div>
     </div>
     <div class="section">
         <h2 id="other-words">5. Other Words</h2>
@@ -544,12 +917,12 @@
         </table>
     </div>
     <div class="section">
-    <div class="fill-exercise">
-        <h2 id="sentence_building">Exercise 9: Sentence Building</h2>
-
-        <div class="word-order-game">
-            <div id="sentences-container">
-                </div>
+        <div class="fill-exercise">
+            <h2 id="sentence_building">Exercise 9: Sentence Building</h2>
+            <p>Drag the words into the correct order to form the sentence.</p> <div class="word-order-game">
+                <div id="sentences-container">
+                    </div>
+            </div>
         </div>
     </div>
 
@@ -574,21 +947,22 @@
                 <br><br>
                 كل عمل، مهما كان بسيطا، خير من أن يقعد المَرْءُ يَشْكُو الفقر وينتظر الصدقة.
             </div>
-            </div>
-        <div class="translation-popup" id="translation-popup"></div> </div>
-    <div class="section">
-        <h2 style="text-align: center;">
-            <span class="congrats-ottoman" style="font-family: 'Amiri', serif; font-size: 30px; line-height: 1.4; color: #023E7D;">مبروك<br>لقد انهيت الدرس الاول</span><br><br>
-            <span class="congrats-english" style="display: block; font-size: inherit;">Congratulations!<br>You finished Story 1</span>
-        </h2>
-    </div>
-</div>
-    <div class="nav-buttons-container">
-        <a href="../../landing_pages/arabic_reading.html" class="nav-button prev-button">Return to Stories</a>
+         </div>
+        <div class="translation-popup" id="translation-popup"></div>
     </div>
 
+    <div class="section">
+        <div style="text-align: center;"> <span class="congrats-ottoman" style="font-family: 'Amiri', serif; font-size: 30px; line-height: 1.4;">مبروك<br>لقد انهيت الدرس الاول</span><br><br>
+            <span class="congrats-english" style="display: block; font-size: inherit;">Congratulations!<br>You finished Story 1</span>
+        </div>
+    </div>
+
+    <div class="nav-buttons-container">
+        <a href="../../landing_pages/arabic_reading.html" class="nav-button prev-button">Return to Stories</a>
+        </div>
+
     <script>
-        // --- Generic Matching Game Logic (No changes needed) ---
+        // --- Generic Matching Game Logic (No changes needed from original) ---
         function initializeMatchingGame(col1ContainerId, col2ContainerId, feedbackId, pairsData) {
             let selected = { col1: null, col2: null };
             let matchCount = 0;
@@ -621,13 +995,13 @@
 
             shuffledPairs.forEach((pair, index) => {
                 const item1 = document.createElement('div');
-                item1.classList.add('matching-item', 'ottoman-text');
+                item1.classList.add('matching-item', 'ottoman-text'); // Keep ottoman-text for Arabic font
                 item1.textContent = pair.col1;
                 item1.dataset.id = index;
                 col1Items.push(item1);
 
                 const item2 = document.createElement('div');
-                item2.classList.add('matching-item');
+                item2.classList.add('matching-item'); // English item
                 item2.textContent = pair.col2;
                 item2.dataset.id = index;
                 col2Items.push(item2);
@@ -659,12 +1033,12 @@
                             selected.col2.classList.add('matched');
                             matchCount++;
                             if (matchCount === pairsData.length) {
-                                feedbackElement.textContent = 'Correct';
-                                feedbackElement.className = 'matching-feedback correct';
+                                feedbackElement.textContent = 'Correct'; // Simple text feedback
+                                feedbackElement.className = 'matching-feedback correct'; // Use class for styling
                             }
                             selected = { col1: null, col2: null };
                         } else {
-                            feedbackElement.textContent = '';
+                            feedbackElement.textContent = ''; // Clear feedback on mismatch
                             const sel1 = selected.col1;
                             const sel2 = selected.col2;
                             setTimeout(() => {
@@ -678,7 +1052,7 @@
             });
         }
 
-        // --- Fill-in-the-blank Logic (No changes needed) ---
+        // --- Fill-in-the-blank Logic (Updated to add input classes) ---
         function checkFillAnswer(inputId) {
              const input = document.getElementById(inputId);
              const feedback = document.getElementById(`${inputId}-feedback`);
@@ -686,18 +1060,21 @@
              const userAnswer = input.value.trim();
              const normalizedCorrectAnswer = correctAnswer.trim();
 
+             // Remove previous result classes
+             input.classList.remove('correct-input', 'incorrect-input');
+
              if (userAnswer === normalizedCorrectAnswer) {
                  feedback.textContent = "✓ Correct!";
                  feedback.className = "fill-feedback correct";
-                 input.style.backgroundColor = "#e6ffee";
+                 input.classList.add('correct-input'); // Add class for green background/border
              } else {
                  feedback.innerHTML = `✗ Not quite. Correct is: <span class="correct-answer-display ottoman-text">${correctAnswer}</span>`;
                  feedback.className = "fill-feedback incorrect";
-                 input.style.backgroundColor = "#ffebeb";
+                 input.classList.add('incorrect-input'); // Add class for red background/border
              }
          }
 
-        // --- Sentence Building Game Logic (No changes needed) ---
+        // --- Sentence Building Game Logic (No changes needed from original) ---
         function initializeSentenceGame(containerId, sentencesData) {
              const gameContainer = document.getElementById(containerId);
              if (!gameContainer) {
@@ -709,7 +1086,7 @@
              const sentences = sentencesData.map(item => ({
                  original: item.arabic,
                  english: item.english,
-                 words: item.arabic.split(/\s+/)
+                 words: item.arabic.split(/\s+/) // Simple split by space
              }));
 
              function shuffleArray(array) {
@@ -744,7 +1121,7 @@
                  const shuffledWords = shuffleArray(sentence.words);
                  shuffledWords.forEach(word => {
                      const wordElement = document.createElement('div');
-                     wordElement.className = 'word-box ottoman-text';
+                     wordElement.className = 'word-box ottoman-text'; // Keep ottoman-text for Arabic font
                      wordElement.textContent = word;
 
                      wordElement.addEventListener('click', () => {
@@ -760,7 +1137,7 @@
                          }
 
                          if (targetFeedbackElement) {
-                             targetFeedbackElement.textContent = '';
+                             targetFeedbackElement.textContent = ''; // Clear feedback on move
                              targetFeedbackElement.className = 'game-feedback';
                          }
                      });
@@ -795,9 +1172,11 @@
                      const targetWordsBank = document.getElementById(`words-bank-${containerId}-${index}`);
                      const targetFeedbackElement = document.getElementById(`feedback-${containerId}-${index}`);
 
+                     // Move all words back to the bank
                      while (targetSolutionArea.firstChild) {
                          targetWordsBank.appendChild(targetSolutionArea.firstChild);
                      }
+                     // Clear feedback
                      if (targetFeedbackElement) {
                          targetFeedbackElement.textContent = '';
                          targetFeedbackElement.className = 'game-feedback';
@@ -808,6 +1187,7 @@
                  sentenceElement.appendChild(buttonContainer);
                  gameContainer.appendChild(sentenceElement);
 
+                 // Initially hide all but the first sentence
                  if (index > 0) {
                      sentenceElement.style.display = 'none';
                  }
@@ -820,8 +1200,9 @@
                  const currentWords = Array.from(solutionArea.children).map(word => word.textContent);
                  const correctWords = sentences[sentenceIndex].words;
 
-                 if (!feedbackElement || !sentenceElement) return;
+                 if (!feedbackElement || !sentenceElement) return; // Safety check
 
+                 // Check if all words are used
                  if (currentWords.length !== correctWords.length) {
                      feedbackElement.textContent = '✗ Please use all the words.';
                      feedbackElement.className = 'game-feedback feedback-incorrect';
@@ -833,16 +1214,18 @@
                  if (isCorrect) {
                      feedbackElement.textContent = '✓ Correct! Well done!';
                      feedbackElement.className = 'game-feedback feedback-correct';
-                     sentenceElement.classList.add('completed');
+                     sentenceElement.classList.add('completed'); // Mark as completed
 
+                     // Show next sentence after a delay
                      if (sentenceIndex < sentences.length - 1) {
                          setTimeout(() => {
                              const nextSentence = document.getElementById(`sentence-${instanceId}-${sentenceIndex + 1}`);
                              if (nextSentence) {
-                                 nextSentence.style.display = 'flex';
-                                 nextSentence.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                 nextSentence.style.display = 'flex'; // Use flex to match initial display
+                                 // Optionally scroll into view
+                                 nextSentence.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                              }
-                         }, 800);
+                         }, 800); // Adjust delay as needed
                      }
                  } else {
                      feedbackElement.textContent = '✗ Not quite right. Try again!';
@@ -856,31 +1239,34 @@
                  const feedbackElement = document.getElementById(`feedback-${instanceId}-${sentenceIndex}`);
                  const sentenceElement = document.getElementById(`sentence-${instanceId}-${sentenceIndex}`);
 
-                 if (!solutionArea || !wordsBank || !feedbackElement || !sentenceElement) return;
+                 if (!solutionArea || !wordsBank || !feedbackElement || !sentenceElement) return; // Safety check
 
+                 // Clear existing words in solution and bank (to avoid duplicates)
                  while (solutionArea.firstChild) {
-                     wordsBank.appendChild(solutionArea.firstChild);
+                     solutionArea.removeChild(solutionArea.firstChild);
                  }
-                 wordsBank.innerHTML = '';
+                 wordsBank.innerHTML = ''; // Clear the bank completely
 
+                 // Add correct words to solution area
                  sentences[sentenceIndex].words.forEach(word => {
                      const wordElement = document.createElement('div');
                      wordElement.className = 'word-box ottoman-text';
                      wordElement.textContent = word;
-                     wordElement.style.cursor = 'default';
+                     wordElement.style.cursor = 'default'; // Make non-interactive
                      solutionArea.appendChild(wordElement);
                  });
 
                  feedbackElement.textContent = 'This is the correct order.';
-                 feedbackElement.className = 'game-feedback';
-                 sentenceElement.classList.add('completed');
+                 feedbackElement.className = 'game-feedback'; // Neutral feedback class
+                 sentenceElement.classList.add('completed'); // Mark as completed
 
+                 // Show next sentence after a delay
                  if (sentenceIndex < sentences.length - 1) {
                      setTimeout(() => {
                          const nextSentence = document.getElementById(`sentence-${instanceId}-${sentenceIndex + 1}`);
                          if (nextSentence) {
-                             nextSentence.style.display = 'flex';
-                              nextSentence.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                             nextSentence.style.display = 'flex'; // Use flex
+                              nextSentence.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                          }
                      }, 800);
                  }
@@ -890,7 +1276,7 @@
                  if (a.length !== b.length) return false;
                  return a.every((val, index) => val === b[index]);
              }
-        }
+         }
 
 
         // --- Initialize All Games on DOM Load ---
@@ -933,7 +1319,7 @@
             ];
             initializeMatchingGame('arabic-prepositions-col1-container', 'arabic-prepositions-col2-container', 'arabic-prepositions-matching-feedback', prepositionPairs);
 
-            // Game 9: Sentence Building Data (Expanded to 10)
+            // Game 9: Sentence Building Data
             const sentenceGameData = [
                  { arabic: "الرجل فقير", english: "The man is poor." },
                  { arabic: "ذهب الرجل إلى الغابة", english: "The man went to the forest." },
@@ -958,10 +1344,10 @@
                         const feedbackId = input.id + '-feedback';
                         const feedback = document.getElementById(feedbackId);
                         if (feedback) {
-                            feedback.textContent = '';
+                            feedback.textContent = ''; // Clear feedback
                             feedback.className = 'fill-feedback';
                         }
-                        input.style.backgroundColor = ''; // Reset background
+                        input.classList.remove('correct-input', 'incorrect-input'); // Reset input style
                     }
                 });
             });
@@ -970,21 +1356,21 @@
             document.querySelectorAll('.fill-input').forEach(input => {
                  input.addEventListener('keypress', function(event) {
                      if (event.key === 'Enter') {
-                         event.preventDefault();
+                         event.preventDefault(); // Prevent form submission if any
                          const fillItem = this.closest('.fill-item');
                          const checkButton = fillItem.querySelector('.fill-check');
                          if (checkButton) {
-                             checkButton.click();
+                             checkButton.click(); // Trigger the check function
                          }
                      }
                  });
              });
 
-             // === Story Initialization (REVISED Logic v3) ===
-             const storyContainer = document.getElementById('arabic-story');
-             const translationPopup = document.getElementById('translation-popup');
+            // === Story Initialization (REVISED Logic v3 - Kept from original) ===
+            const storyContainer = document.getElementById('arabic-story');
+            const translationPopup = document.getElementById('translation-popup');
 
-             if (storyContainer && translationPopup) {
+            if (storyContainer && translationPopup) {
                 const storyVocabulary = {
                     'العمل': 'work/employment', 'خير': 'better', 'من': 'than/from', 'البطالة': 'unemployment',
                     'جاء': 'came', 'رجل': 'man', 'إلى': 'to', 'النبي': 'the prophet', 'وقال': 'and said',
@@ -1028,7 +1414,6 @@
 
                                 // --- Word Processing Logic ---
                                 let baseWord = trimmedPart;
-                                let prefix = '';
                                 let suffix = '';
                                 let vocabKey = null;
 
@@ -1043,23 +1428,22 @@
                                 if (storyVocabulary[baseWord]) {
                                     vocabKey = baseWord;
                                 }
-                                // 3. If not found, check for 'و' prefix on the cleaned word
-                                else if (baseWord.startsWith('و') && baseWord.length > 1) {
-                                    let potentialBase = baseWord.substring(1);
-                                    if (storyVocabulary[potentialBase]) {
-                                        vocabKey = potentialBase; // Found base word
-                                    }
+                                // 3. If not found, check for common prefixes (add more as needed)
+                                else if (baseWord.startsWith('و') && baseWord.length > 1 && storyVocabulary[baseWord.substring(1)]) {
+                                     vocabKey = baseWord.substring(1); // Found base word after 'و'
                                 }
-                                // Add more prefix checks here (e.g., ف, ب, ل) if needed
-                                // else if (baseWord.startsWith('ف') ... )
+                                else if (baseWord.startsWith('ف') && baseWord.length > 1 && storyVocabulary[baseWord.substring(1)]) {
+                                     vocabKey = baseWord.substring(1); // Found base word after 'ف'
+                                }
+                                // Add checks for 'ب', 'ل', 'ك' if necessary
 
                                 // --- Span Creation ---
                                 if (vocabKey) {
                                     // Found in vocabulary
                                     const span = document.createElement('span');
                                     span.className = 'word';
-                                    span.dataset.word = vocabKey; // Use the base key found in the dictionary
-                                    span.textContent = part; // Display the original part (with prefix/suffix/space)
+                                    span.dataset.word = vocabKey; // Use the base key found
+                                    span.textContent = part; // Display the original part
                                     fragment.appendChild(span);
                                 } else {
                                     // Not in vocabulary, append original part as text
@@ -1107,6 +1491,12 @@
                             if (leftPos < 10) {
                                 leftPos = 10;
                             }
+                            // Adjust if popup goes below viewport fold
+                            const popupHeight = translationPopup.offsetHeight;
+                             if (topPos + popupHeight > window.innerHeight + window.scrollY - 10) {
+                                 topPos = rect.top + window.scrollY - popupHeight - 5; // Position above word
+                             }
+
                             translationPopup.style.left = leftPos + 'px';
                             translationPopup.style.top = topPos + 'px';
                         } else {
@@ -1124,10 +1514,10 @@
                         storyContainer.querySelectorAll('.word.active').forEach(w => w.classList.remove('active'));
                     }
                 });
-             } else {
+            } else {
                  console.error("Story container or translation popup not found.");
-             }
-             // === END: Story Initialization ===
+            }
+            // === END: Story Initialization ===
 
         });
     </script>

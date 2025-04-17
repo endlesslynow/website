@@ -9,22 +9,32 @@
             --primary-green: #0D8A52;  /* Rich emerald green - common in Arabic design */
             --light-green: #66B27F;    /* Softer complementary green */
             --beige-bg: #F8F3E3;       /* Warm sand/beige background */
-            --gold-accent: rgba(201, 173, 91, 0.8); /* Muted gold with transparency */
+            --gold-accent: #C9AD5B;    /* Traditional Islamic gold */
             --dark-accent: #2A623D;    /* Darker green for hover states */
+            --deep-blue: #1D4D8E;      /* Deep Islamic blue */
+            --rich-burgundy: #8C1C13;  /* Rich burgundy/maroon */
+            --sand: #E7D7B1;           /* Sand color for backgrounds */
         }
+        
+        /* Adding proper font loading */
+        @import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
         html, body {
             min-height: 100%;
             width: 100%;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #F2E8C7; /* Parchment color */
-            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M50,0 L0,50 M100,50 L50,100" stroke="%23DAC99E22" stroke-width="0.5"/></svg>');
+            font-family: 'Amiri', 'Scheherazade New', serif;
+            background-color: #BAD4A8; /* Match the light green in the image */
+            background-image: url('../arabic_reading/reading_background.png');
             background-repeat: repeat;
-            background-size: 100px 100px;
+            background-size: auto;
             background-attachment: fixed;
             display: flex;
             justify-content: center;
@@ -32,48 +42,154 @@
             padding: 20px;
             overflow-x: hidden;
         }
+        
         .container {
-            background-color: rgba(255, 255, 255, 0.65); /* Semi-transparent white */
-            border: 2px solid var(--gold-accent);
-            border-radius: 16px;
-            padding: 20px;
-            display: inline-block;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.85); /* More opaque for better readability */
+            border: none;
+            border-radius: 0;
+            padding: 30px;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             margin-top: 40px;
+            position: relative;
         }
+        
+        /* Islamic arch-shaped container */
+        .container:before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 100% 100% 0 0 / 200%;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Golden border with Islamic pattern */
+        .decorative-border {
+            border: 4px solid var(--gold-accent);
+            border-radius: 0;
+            padding: 20px;
+            margin: 10px 0 25px;
+            position: relative;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M0,20 L20,0 L40,20 L20,40 Z' fill='none' stroke='%23C9AD5B' stroke-width='0.5'/%3E%3Cpath d='M10,20 A10,10 0 0,1 20,10 A10,10 0 0,1 30,20 A10,10 0 0,1 20,30 A10,10 0 0,1 10,20 Z' fill='none' stroke='%23C9AD5B' stroke-width='0.5'/%3E%3C/svg%3E");
+            background-size: 40px 40px;
+            background-repeat: repeat;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .site-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .site-title {
+            font-size: 4.5rem; /* BIGGER size */
+            color: #0D4F22; /* Dark green color */
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
+            font-family: 'Aref Ruqaa', 'Noto Nastaliq Urdu', 'Scheherazade New', serif;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+        
+        /* Remove the decorative flourish under the title */
+        .site-title:after {
+            content: none;
+        }
+        
         .lesson-grid {
             display: flex;
-            gap: 20px;
+            flex-direction: column;
+            gap: 25px;
+            justify-content: center;
+            padding: 10px;
         }
+        
         .lesson-button {
             display: block;
-            padding: 15px 25px;
-            font-size: 1.4rem;
+            padding: 20px 25px;
+            font-size: 1.5rem;
             font-weight: 700;
-            background-color: var(--primary-green);
+            background-color: var(--deep-blue); /* Back to the original deep blue */
             color: white;
-            border: none;
-            border-radius: 12px;
+            border: 2px solid var(--gold-accent);
+            border-radius: 0; /* No border radius for traditional Islamic style */
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            transition: all 0.3s ease;
             width: 100%;
             line-height: 1.6;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
+        
+        /* Islamic decorative elements for buttons */
+        .lesson-button:before {
+            content: ""; /* Removed the symbol */
+        }
+        
+        .lesson-button:after {
+            content: ""; /* Removed the symbol */
+        }
+        
         .lesson-button:hover,
         .lesson-button:focus {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            background-color: var(--dark-accent);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            background-color: var(--rich-burgundy); /* Original hover color */
         }
+        
+        .arabic-text {
+            font-family: 'Amiri', 'Scheherazade New', serif;
+            direction: rtl;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        
+        .english-text {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 5px;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: var(--dark-accent);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--gold-accent);
+            padding-top: 20px;
+        }
+        
+        .decorative-symbol {
+            font-size: 1.5rem;
+            color: var(--gold-accent);
+            margin: 0 10px;
+        }
+        
         @media (max-width: 768px) {
             html, body {
                 align-items: flex-start;
                 padding-top: 40px;
             }
+            
+            .site-title {
+                font-size: 2.2rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
             .lesson-grid {
                 flex-direction: column;
             }
+            
             .lesson-button {
                 font-size: 1.2rem;
                 width: 100%;
@@ -84,9 +200,25 @@
 </head>
 <body>
     <div class="container">
-        <div class="lesson-grid">
-            <button class="lesson-button" data-lesson="1">Story 1</button>
-            <button class="lesson-button" data-lesson="2">Story 2</button>
+        <div class="site-header">
+            <h1 class="site-title" style="font-family: 'Aref Ruqaa', serif; font-size: 3.2rem; color: #0D4F22;">تدريب القراءة العربية</h1>
+        </div>
+        
+        <div class="decorative-border">
+            <div class="lesson-grid">
+                <button class="lesson-button" data-lesson="1">
+                    <span class="arabic-text">القصة ١</span>
+                    <div class="english-text">العمل خير من البطالة</div>
+                </button>
+                <button class="lesson-button" data-lesson="2">
+                    <span class="arabic-text">القصة ٢</span>
+                    <div class="english-text">Story 2</div>
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            
         </div>
     </div>
     <script>
