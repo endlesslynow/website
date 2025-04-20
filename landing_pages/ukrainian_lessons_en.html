@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Define color variables for Ukrainian theme */
         :root {
             --ukrainian-blue: #0057B8;
             --ukrainian-yellow: #FFD700;
@@ -17,70 +18,71 @@
             --ukrainian-cream: #FFF8E1;
             --ukrainian-light-yellow: #FFF2B0;
             --ukrainian-gold: #E8C000;
-            --vocabulary-blue: #0F85C9;
             --body-background: #3C80D4;
             --text-color: #003893;
             --text-light: #FFFFFF;
         }
-       
+
+        /* Basic reset and body styling */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-       
+
         html, body {
             min-height: 100vh;
             width: 100%;
             font-family: 'Nunito', Arial, sans-serif;
             background-color: var(--body-background);
-            background-image: url('ukrainian_lessons/ukrainian_background.png');
-            background-repeat: repeat;
-            background-size: 300px auto;
-            background-attachment: fixed;
-            padding: 20px 0;
+            padding: 20px 0; /* Add padding top and bottom */
         }
-       
+
         body {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Align container to the top */
+            padding-top: 30px; /* Add some padding at the top */
         }
-       
+
+        /* Main container styling */
         .container {
-            background-color: rgba(255, 248, 225, 0.85);
+            background-color: rgba(255, 248, 225, 0.9); /* Slightly less transparent cream */
             border-radius: 16px;
             padding: 30px;
-            margin: 15px;
+            margin: 15px; /* Add margin for spacing */
             width: 95%;
-            max-width: 1200px;
+            max-width: 1200px; /* Max width for larger screens */
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
         }
-       
+
+        /* Grid layout for lesson buttons */
         .lesson-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(2, 1fr); /* Default to 2 columns */
+            gap: 20px; /* Increased gap */
             width: 100%;
         }
-       
+
+        /* Styling for individual lesson buttons */
         .lesson-button {
-            color: white;
+            color: white; /* Default text color (overridden by yellow button style) */
             border: none;
             border-radius: 12px;
             padding: 25px 20px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: flex-start; /* Align content to the start */
             text-align: left;
             justify-content: center;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            height: 100%;
-            border: 3px solid var(--ukrainian-blue);
+            height: 100%; /* Make buttons fill grid cell height */
+            border: 3px solid transparent; /* Start with transparent border, overridden below */
         }
-        
+
+        /* Lesson title styling within buttons */
         .lesson-title {
             font-family: 'Nunito', Arial, sans-serif;
             font-weight: 700;
@@ -88,160 +90,215 @@
             width: 100%;
             display: flex;
             flex-direction: column;
+            margin-bottom: 10px; /* Space between title and bullets (if any) */
         }
-        
+
         .lesson-title .line1 {
-            font-size: 1.7rem;
+            font-size: 1.7rem; /* Main lesson number/title */
             margin-bottom: 0.1em;
         }
-        
+
         .lesson-title .line2 {
-            font-size: 1.7rem;
+            font-size: 1.3rem; /* Subtitle or topic */
+            font-weight: 600;
         }
-       
+
+        /* Hover and focus effects for buttons */
         .lesson-button:hover, .lesson-button:focus {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            background-color: var(--ukrainian-blue);
-            border-color: var(--ukrainian-navy);
+            transform: translateY(-4px); /* Slightly more lift */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
         }
-        
+
+        /* === Button Color Styles === */
+
+        /* Blue Button Styles (Lessons) */
+        .lesson-button.blue-button {
+             background-color: var(--ukrainian-blue);
+             border-color: var(--ukrainian-yellow);
+             color: var(--text-light); /* White text */
+        }
+        .lesson-button.blue-button:hover, .lesson-button.blue-button:focus {
+             background-color: var(--ukrainian-dark-blue); /* Darker blue on hover */
+             border-color: var(--ukrainian-yellow); /* Keep yellow border */
+        }
+        .lesson-button.blue-button .bullet-points li:before {
+            color: var(--ukrainian-yellow); /* Yellow bullets */
+        }
+
+        /* Yellow Button Styles (Vocabulary) */
+        .lesson-button.yellow-button {
+             background-color: var(--ukrainian-yellow);
+             border-color: var(--ukrainian-blue);
+             color: var(--ukrainian-navy); /* Navy text */
+        }
+        .lesson-button.yellow-button:hover, .lesson-button.yellow-button:focus {
+             background-color: var(--ukrainian-gold); /* Darker yellow (gold) on hover */
+             border-color: var(--ukrainian-blue); /* Keep blue border */
+             color: var(--ukrainian-navy); /* Keep navy text */
+        }
+         /* Vocab buttons don't have bullets, but if they did: */
+        .lesson-button.yellow-button .bullet-points li:before {
+             color: var(--ukrainian-blue); /* Blue bullets */
+        }
+
+
+        /* Styling for bullet points within buttons */
         .bullet-points {
             margin-top: 10px;
             font-size: 1rem;
             text-align: left;
-            color: white;
-            list-style-type: none;
+            list-style-type: none; /* Remove default bullets */
             width: 100%;
+            padding-left: 0; /* Remove default padding */
         }
-        
+
         .bullet-points li {
-            margin-bottom: 4px;
+            margin-bottom: 5px; /* Space between bullet points */
             position: relative;
-            padding-left: 15px;
-            line-height: 1.3;
+            padding-left: 20px; /* Space for custom bullet */
+            line-height: 1.4; /* Improve readability */
         }
-        
+
+        /* Custom bullet point style */
         .bullet-points li:before {
             content: "•";
-            color: var(--ukrainian-yellow);
+            /* Color defined in button-specific styles above */
             position: absolute;
             left: 0;
-            font-size: 1rem;
-            top: 0;
+            font-size: 1.2rem; /* Slightly larger bullet */
+            top: -2px; /* Adjust vertical alignment */
         }
 
-        .title-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
+        /* Responsive adjustments */
 
-        .title-section {
-            background-color: var(--ukrainian-blue);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            border: 3px solid var(--ukrainian-yellow);
-            text-align: center;
-            color: white;
-            max-width: 800px;
-            width: 100%;
-        }
-
-        .title-section h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            font-weight: 700;
-        }
-
-        .title-section .subtitle {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            font-weight: 400;
-        }
-       
         /* Tablet and smaller desktops */
         @media (max-width: 1024px) {
             .lesson-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* Maintain 2 columns */
+            }
+            .container {
+                 padding: 25px;
             }
         }
-        
+
         /* Mobile devices */
         @media (max-width: 768px) {
-            .lesson-grid {
-                grid-template-columns: 1fr;
+            body {
+                padding-top: 20px; /* Reduce top padding on mobile */
             }
-            
+            .lesson-grid {
+                grid-template-columns: 1fr; /* Stack buttons vertically */
+                gap: 15px; /* Reduce gap for single column */
+            }
+
             .container {
                 padding: 20px;
                 margin: 10px;
             }
-           
+
             .lesson-button {
                 padding: 20px 15px;
             }
-            
-            .lesson-title .line1,
-            .lesson-title .line2 {
-                font-size: 1.5rem;
+
+            .lesson-title .line1 {
+                 font-size: 1.5rem; /* Adjust title size */
             }
-            
-            .bullet-points {
-                font-size: 0.95rem;
+             .lesson-title .line2 {
+                 font-size: 1.1rem; /* Adjust subtitle size */
             }
 
-            .title-section h1 {
-                font-size: 2rem;
+            .bullet-points {
+                font-size: 0.95rem; /* Adjust bullet text size */
+            }
+             .bullet-points li {
+                padding-left: 18px; /* Adjust bullet padding */
+            }
+             .bullet-points li:before {
+                font-size: 1rem; /* Adjust bullet size */
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-
-        
         <div class="lesson-grid">
-            <button class="lesson-button" style="background-color: var(--ukrainian-blue);" data-lesson="1">
+            <button class="lesson-button blue-button" data-lesson="1">
                 <div class="lesson-title">
                     <span class="line1">Lesson 1</span>
-                    <span class="line2">Forms of Etiquette, Greetings, Farewells</span>
+                    <span class="line2">Etiquette, Greetings, Farewells</span>
                 </div>
                 <ul class="bullet-points">
                     <li>Yes/No Questions</li>
                     <li>Connecting Words</li>
-                    <li>Common Ukrainian Expressions</li>
+                    <li>Common Expressions</li>
                     <li>Reading Practice</li>
                 </ul>
             </button>
-            
-            <button class="lesson-button" style="background-color: var(--ukrainian-yellow); color: var(--ukrainian-navy); border-color: var(--ukrainian-navy);" data-lesson="1-vocab">
+
+            <button class="lesson-button yellow-button" data-lesson="1-vocab">
                 <div class="lesson-title">
-                    <span class="line1">Most Common Ukrainian Words 1-50</span>
+                    <span class="line1">Vocabulary</span>
+                    <span class="line2">Words 1-50</span>
                 </div>
+                </button>
+
+            <button class="lesson-button blue-button" data-lesson="2">
+                <div class="lesson-title">
+                    <span class="line1">Lesson 2</span>
+                    <span class="line2">Pronouns & Basic Questions</span>
+                </div>
+                <ul class="bullet-points">
+                    <li>Personal Pronouns (Я, ти, він...)</li>
+                    <li>Noun Gender & Pronouns (Він, Вона, Воно)</li>
+                    <li>Possessive Pronouns (Мій, Моя, Моє)</li>
+                    <li>Questions: Хто це? / Що це?</li>
+                    <li>Questions: Як звати?</li>
+                    <li>Conjunction 'чи'</li>
+                </ul>
             </button>
-        </div>
-    </div>
-   
-    <script>
-document.querySelectorAll('.lesson-button').forEach(button => {
-    button.addEventListener('click', function() {
-        const lesson = this.getAttribute('data-lesson');
-        console.log(`Selected lesson: ${lesson}`);
-        
-        // Redirect to the appropriate page
-        if (lesson === "1") {
-            window.location.href = "../ukrainian_lessons/lessons/lesson1_en.html";
 
-        } else if (lesson === "1-vocab") {
-            window.location.href = "../ukrainian_lessons/vocabulary/vocab1_en.html";
+            <button class="lesson-button yellow-button" data-lesson="2-vocab">
+                <div class="lesson-title">
+                    <span class="line1">Vocabulary</span>
+                     <span class="line2">Words 51-100</span>
+                </div>
+                 </button>
 
-        }
-    });
-});
+            </div> </div> <script>
+        // Add event listeners to all buttons with the class 'lesson-button'
+        document.querySelectorAll('.lesson-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Get the lesson identifier from the data-lesson attribute
+                const lesson = this.getAttribute('data-lesson');
+                console.log(`Selected lesson identifier: ${lesson}`); // Log selection to console
+
+                // Placeholder URLs - replace with your actual file paths
+                let targetUrl = '';
+
+                if (lesson === "1") {
+                    targetUrl = "../ukrainian_lessons/lessons/lesson1_en.html"; // Example path
+                } else if (lesson === "1-vocab") {
+                    targetUrl = "../ukrainian_lessons/vocabulary/vocab1_en.html"; // Example path
+                } else if (lesson === "2") {
+                    targetUrl = "../ukrainian_lessons/lessons/lesson2_en.html"; // Example path for lesson 2
+                } else if (lesson === "2-vocab") {
+                    targetUrl = "../ukrainian_lessons/vocabulary/vocab2_en.html"; // Example path for vocab 2
+                }
+                // Add more else if conditions here for future lessons/vocab lists
+                // else if (lesson === "3") {
+                //     targetUrl = "../ukrainian_lessons/lessons/lesson3_en.html";
+                // } else if (lesson === "3-vocab") {
+                //     targetUrl = "../ukrainian_lessons/vocabulary/vocab3_en.html";
+                // }
+
+                // If a target URL was determined, navigate to it
+                if (targetUrl) {
+                    window.location.href = targetUrl;
+                } else {
+                    console.warn(`No URL defined for lesson identifier: ${lesson}`); // Warn if no URL is set
+                }
+            });
+        });
     </script>
 </body>
 </html>
