@@ -1,0 +1,2128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Story 4: Juha and the Thief</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* New color scheme based on the second file - NOW LIGHTER */
+        :root {
+            --primary-green: #0D8A52;  /* Rich emerald green (kept) */
+            --light-green: #8BC3A0;   /* Lighter complementary green */
+            --beige-bg: #FAF7ED;      /* Lighter warm sand/beige background */
+            --gold-accent: #C9AD5B;   /* Traditional Islamic gold (kept) */
+            --dark-accent: #2A623D;   /* Darker green for text/hover (kept) */
+            --deep-blue: #1D4D8E;     /* Deep Islamic blue (kept) */
+            --rich-burgundy: #8C1C13; /* Rich burgundy/maroon for accents/errors (kept) */
+            --sand: #F0EAD6;          /* Lighter sand color for backgrounds */
+            --text-light: #FFFFFF;    /* White text (kept) */
+            --text-dark: #333333;     /* Dark text for light backgrounds (kept) */
+        }
+
+        body {
+            font-family: 'Nunito', Arial, sans-serif;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+            /* Updated background color and image - NOW LIGHTER */
+            background-color: #CDE0BE; /* Lighter green background */
+            background-image: url('../arabic_reading/reading_background.png'); /* Path from second file */
+            background-repeat: repeat;
+            background-size: auto;
+            background-attachment: fixed;
+            box-sizing: border-box;
+            color: var(--dark-accent); /* Default text color */
+            font-size: 16px;
+        }
+
+        /* Arabic text styling (Kept original font rules) */
+        [lang="ar"], td:first-child, .ottoman-text, .matching-item.ottoman-text, .fill-input.ottoman-input, .key-btn, .correct-answer-display.ottoman-text, .word-box.ottoman-text, .exercise-row .ottoman-text, .story-arabic, .vocabulary-arabic {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 1.4em;
+            line-height: 1.5;
+            font-weight: 500;
+            direction: rtl;
+            text-align: right; /* Default right alignment for Arabic */
+        }
+
+        /* Latin/English text styling (REMOVED text-align: center !important;) */
+        .latin-text, .story-english, .vocabulary-english, .translation-popup,
+        .translation, .matching-item:not(.ottoman-text), .game-sentence-translation,
+        .matching-column h4, .fill-check, .check-btn, .show-answer-btn, .delete-btn,
+        .game-feedback, .congrats-english, p, li, th, td:nth-child(2)
+        {
+            font-family: 'Arial', Arial, sans-serif !important;
+            font-weight: normal !important;
+            direction: ltr !important;
+            /* text-align: center !important; <-- REMOVED */
+            font-size: 1em;
+        }
+
+        /* --- NEW: Re-apply center alignment where needed --- */
+        th, td:nth-child(2), .fill-check, .check-btn, .show-answer-btn, .delete-btn, .game-feedback, .matching-item:not(.ottoman-text) {
+             text-align: center !important; /* Center align table cells, buttons, feedback, English matching items */
+        }
+        /* Keep congratulations centered (already handled by inline style and default block behavior) */
+        .congrats-ottoman, .congrats-english {
+             text-align: center;
+        }
+        /* --- End NEW Alignment Rules --- */
+
+        /* Specific overrides for smaller/different sizes (Kept original rules) */
+        .translation-popup { font-size: 0.9em; text-align: left !important; } /* Ensure popup text is left aligned */
+        .small-latin { font-size: 0.8em !important; }
+        th { font-size: 0.9em; font-weight: 600; }
+        /* .matching-column h4 alignment handled below */
+        .correct-answer-display { display: inline-block; margin-left: 5px; font-weight: normal; font-style: italic; font-size: 1em;}
+
+        /* Ensure Arabic overrides apply where needed (Kept original rules) */
+        .matching-item.ottoman-text { font-size: 1.4em !important; text-align: center; } /* Keep Arabic matching items centered */
+        .key-btn { font-size: 1.6em !important; text-align: center; } /* Keep key buttons centered */
+        .fill-input.ottoman-input { font-size: 1.6em !important; text-align: right; }
+        .correct-answer-display.ottoman-text { font-size: 1.4em !important; font-style: normal; text-align: right;} /* Ensure correct answer display is right aligned */
+        .word-box.ottoman-text { font-size: 1.4em !important; }
+
+
+        .fill-input.ottoman-input { text-align: right; }
+        td:first-child, td[lang="ar"] { text-align: right !important; padding-top: 18px; padding-bottom: 18px; } /* Changed to right align Arabic table cells */
+        * { box-sizing: border-box; }
+
+        /* Headings with new colors */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.3;
+            text-align: left; /* Default left align headings */
+        }
+        h1 { /* Title H1 styling */
+            border-bottom: 3px solid var(--gold-accent);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            color: var(--text-light);
+        }
+        h2 { /* Section H2 styling */
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: var(--dark-accent);
+        }
+        h3 { /* Section H3 styling */
+            font-size: 1.2rem;
+            margin-top: 25px;
+            color: var(--primary-green);
+        }
+        .section h3 { /* Explicitly left-align "Parts of the Lesson" etc. */
+             text-align: left !important;
+        }
+
+        /* Sections with new LIGHTER background */
+        .section {
+            background-color: var(--sand); /* Lighter sand background */
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .section ul { /* Left align the list in "Parts of the Lesson" */
+            text-align: left !important;
+            padding-left: 20px; /* Add some padding for list items */
+            list-style-position: outside;
+        }
+         .section ul li {
+             text-align: left !important; /* Ensure list items are left aligned */
+         }
+         .section p { /* Left align paragraphs within sections */
+             text-align: left !important;
+         }
+
+
+        /* Table styling with new LIGHTER colors */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            background-color: var(--beige-bg); /* Lighter beige background */
+        }
+        th, td {
+            padding: 12px 15px;
+            border: none;
+        }
+        th {
+            background-color: var(--primary-green);
+            color: var(--text-light);
+        }
+        tr:nth-child(even) {
+            background-color: var(--sand); /* Lighter sand */
+        }
+        tr:hover {
+            background-color: var(--light-green); /* Lighter green hover */
+        }
+
+        /* Title section with new colors */
+        .title-section {
+            background-color: var(--primary-green);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        .title-section h1 { /* Keep title H1 alignment handled by inline style */
+            border-bottom: 3px solid var(--gold-accent);
+            padding-bottom: 15px;
+            margin-bottom: 0;
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: var(--text-light);
+            /* text-align: right; <--- Applied inline */
+        }
+
+        /* Note box with new LIGHTER colors */
+        .note {
+            background-color: var(--light-green); /* Lighter green */
+            padding: 15px;
+            border-left: 4px solid var(--primary-green);
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            text-align: left !important; /* Ensure note text is left aligned */
+        }
+
+        /* Feedback Styles with new colors */
+        .feedback, .fill-feedback {
+            margin-top: 8px;
+            margin-left: 5px;
+            font-weight: bold;
+            direction: ltr;
+            text-align: left !important; /* Left align feedback */
+        }
+        .fill-feedback.correct {
+            color: var(--primary-green);
+        }
+        .fill-feedback.incorrect {
+            color: var(--rich-burgundy);
+        }
+        .matching-feedback.correct {
+            color: var(--dark-accent) !important;
+            font-size: 1.5rem !important;
+            text-align: center !important; /* Keep matching game final feedback centered */
+        }
+        .fill-feedback.correct.sentence-building {
+            color: var(--text-dark) !important;
+            font-size: 1.5rem !important;
+            font-weight: bold !important;
+            font-family: 'Nunito', Arial, sans-serif !important;
+            background-color: var(--gold-accent);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            text-align: center !important; /* Center this specific feedback */
+        }
+
+        /* Matching Game Styles with new LIGHTER colors */
+        .matching-game {
+            background-color: var(--light-green); /* Lighter green */
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .matching-columns-container { display: flex; gap: 10px; margin-bottom: 20px; }
+        .matching-column { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .matching-column h4 { /* Left align column headers */
+             text-align: left !important;
+             padding-left: 5px; /* Add slight indent */
+             color: var(--dark-accent); /* Ensure color */
+        }
+        .matching-item-container { display: flex; flex-direction: column; gap: 10px; }
+        .matching-item {
+            padding: 12px 15px;
+            background-color: white;
+            border: 2px solid var(--primary-green);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            color: var(--dark-accent);
+            /* text-align: center !important; <-- Re-applied above for non-ottoman text */
+        }
+        .matching-item:hover {
+            background-color: var(--beige-bg); /* Lighter beige */
+        }
+        .matching-item.selected {
+            background-color: var(--deep-blue);
+            color: var(--text-light);
+            border-color: var(--deep-blue);
+        }
+        .matching-item.matched {
+            background-color: var(--gold-accent);
+            color: var(--text-dark);
+            border-color: var(--gold-accent);
+            cursor: default;
+        }
+        .matching-result { text-align: center; }
+        .matching-result div {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--dark-accent);
+            margin-top: 15px;
+        }
+
+
+        /* Fill-in / Sentence Building Styles with new LIGHTER colors */
+        .fill-exercise { margin-top: 30px; }
+        .fill-item {
+            background-color: var(--sand); /* Lighter sand */
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .exercise-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            color: var(--dark-accent);
+            font-weight: 500;
+            direction: rtl;
+        }
+        .exercise-row .ottoman-text { display: inline; padding: 0 3px; }
+        .translation { /* Left align English translations */
+             text-align: left !important;
+             width: 100%; /* Ensure it takes full width for alignment */
+             padding-left: 5px; /* Optional indent */
+        }
+        .fill-input {
+            background-color: white;
+            width: 100px;  /* Fixed width */
+            flex-grow: 0;
+            padding: 6px 10px;
+            border: 2px solid var(--gold-accent);
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            margin: 0 5px;
+            color: var(--dark-accent);
+        }
+        .key-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+            justify-content: center;
+        }
+        .key-btn {
+            padding: 5px 12px;
+            background-color: var(--beige-bg); /* Lighter beige */
+            border: 1px solid var(--gold-accent);
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--dark-accent);
+            font-family: 'Noto Naskh Arabic', serif;
+        }
+        .key-btn:hover {
+            background-color: var(--sand); /* Lighter sand */
+            color: var(--dark-accent);
+        }
+        .fill-check {
+            padding: 8px 15px;
+            background-color: var(--beige-bg); /* Lighter beige */
+            color: var(--dark-accent);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            display: block;
+            margin: 10px auto 0;
+        }
+        .fill-check:hover {
+            background-color: var(--sand); /* Lighter sand */
+        }
+        .fill-input.correct-input { background-color: #e6ffee; border-color: var(--primary-green); }
+        .fill-input.incorrect-input { background-color: #ffebeb; border-color: var(--rich-burgundy); }
+
+
+        /* Congratulations with new color */
+        .congrats-ottoman {
+            font-family: 'Amiri', serif;
+            font-size: 30px;
+            line-height: 1.4;
+            color: var(--primary-green);
+        }
+
+        /* Word Order Game Styles with new LIGHTER colors */
+        .word-order-game {
+            background-color: var(--beige-bg); /* Lighter beige */
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .game-sentence {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+         .game-sentence-translation { /* Left align sentence translation */
+             text-align: left !important;
+             margin-bottom: 10px; /* Add space below translation */
+         }
+         .game-sentence-translation .sentence-number { /* Style sentence number */
+              display: inline-block;
+              min-width: 45px;
+              font-weight: 700;
+              color: var(--rich-burgundy);
+              margin-right: 5px; /* Space after number */
+         }
+        .game-sentence.completed {
+            background-color: var(--light-green); /* Lighter green */
+            border-left: 4px solid var(--primary-green);
+        }
+        /* .sentence-number styling moved to .game-sentence-translation */
+        .solution-area {
+            min-height: 60px;
+            padding: 10px;
+            background-color: var(--sand); /* Lighter sand */
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+            border: 2px dashed var(--deep-blue);
+            direction: rtl;
+            justify-content: flex-start;
+        }
+        .words-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+            background-color: var(--beige-bg); /* Lighter beige */
+            border-radius: 6px;
+            margin-bottom: 10px;
+            direction: rtl;
+            justify-content: flex-start;
+        }
+        .word-box {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: var(--deep-blue);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            user-select: none;
+            margin: 0;
+            font-weight: 500;
+            border: 2px solid transparent;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+        .solution-area .word-box {
+            background-color: var(--sand); /* Lighter sand */
+            color: var(--dark-accent);
+            border-color: var(--deep-blue);
+        }
+        .word-box:active { transform: scale(0.95); }
+        .feedback-correct { color: var(--primary-green); }
+        .feedback-incorrect { color: var(--rich-burgundy); }
+        .sentence-buttons { display: flex; gap: 10px; margin-top: 10px; }
+        .check-btn, .show-answer-btn, .delete-btn {
+            flex: 1;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            /* text-align: center !important; <-- Re-applied above */
+        }
+        .check-btn {
+            background-color: var(--deep-blue);
+            color: white;
+        }
+        .check-btn:hover { background-color: var(--dark-accent); }
+        .check-btn:active, .show-answer-btn:active, .delete-btn:active { transform: scale(0.98); }
+        .show-answer-btn {
+            background-color: var(--light-green); /* Lighter green */
+            color: var(--text-dark);
+        }
+        .show-answer-btn:hover { background-color: var(--sand); } /* Lighter sand */
+        .delete-btn {
+            background-color: var(--rich-burgundy);
+            color: white;
+        }
+        .delete-btn:hover { background-color: #6a150e; }
+
+        /* Navigation with new colors */
+        .nav-buttons-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+        .nav-button {
+            background-color: var(--deep-blue);
+            color: var(--text-light);
+            border: 3px solid var(--gold-accent);
+            border-radius: 12px;
+            padding: 15px 20px;
+            font-family: 'Nunito', Arial, sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center; /* Keep nav buttons centered */
+            display: inline-block;
+            line-height: 1.4;
+        }
+        .nav-button:hover {
+            background-color: var(--dark-accent);
+            border-color: var(--gold-accent);
+        }
+        .prev-button { margin-right: auto; }
+        .next-button, .exercises-button { margin-left: 10px; }
+        .nav-button.next-button { padding-top: 27px; }
+
+        /* === Interactive Story Styles with new LIGHTER colors === */
+        .story-container {
+            background-color: rgba(255, 255, 255, 0.92); /* Slightly less transparent white */
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            line-height: 2;
+        }
+        .story-arabic {
+            line-height: 1.8;
+            text-align: right;
+            direction: rtl;
+            color: var(--dark-accent);
+        }
+        .word {
+            display: inline-block;
+            cursor: pointer;
+            padding: 0 2px;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+        .word:hover {
+            background-color: var(--sand); /* Lighter sand */
+        }
+        .word.active {
+            background-color: var(--gold-accent);
+        }
+        .translation-popup {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid var(--gold-accent);
+            border-radius: 4px;
+            padding: 5px 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+            max-width: 200px;
+            color: var(--dark-accent);
+            /* text-align: left !important; <-- Applied above */
+        }
+
+        /* Media queries (Kept original rules, colors/alignment applied above will cascade) */
+        @media (max-width: 600px) {
+            .section, .title-section { padding: 20px 15px; border-radius: 10px; }
+            h1 { font-size: 1.6rem !important; padding-bottom: 10px; }
+            h2 { font-size: 1.3rem !important; }
+            h3 { font-size: 1.1rem !important; }
+            table { display: block; overflow-x: auto; white-space: nowrap; }
+            th, td { padding: 10px 12px; }
+            th { font-size: 0.9em; padding: 10px 8px; }
+            .exercise { padding: 15px; }
+            .matching-columns-container { flex-direction: column; gap: 15px; }
+            .matching-item { font-size: 1em; padding: 10px 12px; }
+            .matching-item.ottoman-text { font-size: 1.2em !important; }
+
+            .exercise-row { flex-direction: row; align-items: baseline; gap: 8px; flex-wrap: wrap;}
+            .exercise-row .ottoman-text { flex-shrink: 0; margin: 0 3px; }
+            .exercise-row .fill-input { flex-grow: 1; width: auto; min-width: 40px; margin: 0 3px;}
+            .translation { flex-basis: 100%; margin-bottom: 8px; font-size: 0.9em; }
+
+            .fill-input { width: auto; max-width: none; margin-top: 0; font-size: 1em; }
+            .key-container { justify-content: center; margin-top: 10px; }
+            .fill-check { width: 100%; max-width: 300px; margin-top: 10px; }
+
+            .nav-buttons-container { flex-direction: column; gap: 15px; }
+            .nav-button { width: 100%; margin: 0; font-size: 1rem; }
+            body { padding: 10px; }
+
+            .sentence-buttons { flex-direction: column; }
+            .check-btn, .show-answer-btn, .delete-btn { width: 100%; }
+
+            .story-container { padding: 15px; }
+            .story-arabic { font-size: 1.2em; }
+        }
+        @media (max-width: 450px) {
+             .matching-item { padding: 10px 8px; font-size: 0.9em; }
+             .matching-item.ottoman-text { font-size: 1.1em !important; }
+             .key-btn { font-size: 1.4em !important; padding: 4px 10px;}
+             .nav-button { padding: 12px 15px; }
+             .exercise-row {gap: 5px;}
+             .exercise-row .fill-input { min-width: 60px; }
+             .story-arabic { font-size: 1.1em; }
+             .translation-popup { font-size: 0.8em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="title-section">
+        <h1 style="text-align: right; direction: rtl;">القصة ٤<br>جحا واللص</h1>
+    </div>
+
+    <div class="section">
+        <h3>Parts of the Lesson</h3>
+        <ul>
+              <li><a href="#nouns" style="color: inherit; text-decoration: none;">Vocabulary</a></li>
+              <li><a href="#sentence_building" style="color: inherit; text-decoration: none;">Sentence Building</a></li>
+              <li><a href="#story" style="color: inherit; text-decoration: none;">The Story</a></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 id="nouns">1. Nouns</h2>
+        <table>
+            <tr><th>Arabic</th><th>English</th></tr>
+            <tr> <td lang="ar">لصّ</td> <td>thief</td> </tr>
+            <tr> <td lang="ar">اللص</td> <td>the thief</td> </tr>
+            <tr> <td lang="ar">دار</td> <td>house</td> </tr>
+            <tr> <td lang="ar">ليل</td> <td>night</td> </tr>
+            <tr> <td lang="ar">خزانة</td> <td>closet</td> </tr>
+            <tr> <td lang="ar">الخزانة</td> <td>the closet</td> </tr>
+            <tr> <td lang="ar">غرفة</td> <td>room</td> </tr>
+            <tr> <td lang="ar">النوم</td> <td>sleep</td> </tr>
+            <tr> <td lang="ar">شيء</td> <td>thing / something</td> </tr>
+            <tr> <td lang="ar">جحا</td> <td>Juha</td> </tr>
+            <tr> <td lang="ar">شيخ</td> <td>old man</td> </tr>
+            <tr> <td lang="ar">سيد</td> <td>sir / master</td> </tr>
+            <tr> <td lang="ar">خجل</td> <td>shame / embarrassment</td> </tr>
+        </table>
+
+        <div id="exercises"></div>
+
+        <div class="fill-exercise">
+            <h3>Exercise 1: Match Nouns</h3>
+            <p>Match the Arabic noun with its English translation.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Arabic Noun:</h4>
+                        <div class="matching-item-container" id="arabic-nouns-col1-container"></div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>English Translation:</h4>
+                        <div class="matching-item-container" id="arabic-nouns-col2-container"></div>
+                    </div>
+                </div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="arabic-nouns-matching-feedback"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fill-exercise">
+            <h3>Exercise 2: Fill in the Noun</h3>
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ottoman-text">شعر جحا بـِ</span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-noun1" data-correct="لصّ">
+                    <span class="ottoman-text">في داره.</span>
+                </div>
+                <div class="translation">(Juha sensed a thief in his house.)</div>
+                <div class="key-container">
+                    <div class="key-btn">لصّ</div> <div class="key-btn">اللص</div> <div class="key-btn">جحا</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun1')">Check</button>
+                <div class="fill-feedback" id="fill-noun1-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فخاف</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun2" data-correct="اللص">
+                     <span class="ottoman-text">ولكنه تشجع.</span>
+                </div>
+                 <div class="translation">(The thief was frightened, but he took courage.)</div>
+                <div class="key-container">
+                     <div class="key-btn">اللص</div> <div class="key-btn">لصّ</div> <div class="key-btn">شيخ</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun2')">Check</button>
+                <div class="fill-feedback" id="fill-noun2-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">شعر جحا بلصٍّ في</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun3" data-correct="دار">
+                     <span class="ottoman-text">ه ليلاً.</span>
+                </div>
+                 <div class="translation">(Juha sensed a thief in his house at night.)</div>
+                <div class="key-container">
+                     <div class="key-btn">دار</div> <div class="key-btn">خزانة</div> <div class="key-btn">غرفة</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun3')">Check</button>
+                <div class="fill-feedback" id="fill-noun3-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ottoman-text">شعر جحا بلصٍّ في داره</span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-noun4" data-correct="ليل">
+                    <span class="ottoman-text">اً.</span>
+                </div>
+                <div class="translation">(Juha sensed a thief in his house at night.)</div>
+                <div class="key-container">
+                    <div class="key-btn">ليل</div> <div class="key-btn">شيء</div> <div class="key-btn">خجل</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun4')">Check</button>
+                <div class="fill-feedback" id="fill-noun4-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فقام إلى</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun5" data-correct="خزانة">
+                     <span class="ottoman-text">غرفة النوم.</span>
+                </div>
+                 <div class="translation">(So he went to the bedroom closet.)</div>
+                <div class="key-container">
+                     <div class="key-btn">خزانة</div> <div class="key-btn">الخزانة</div> <div class="key-btn">غرفة</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun5')">Check</button>
+                <div class="fill-feedback" id="fill-noun5-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فرأى</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun6" data-correct="الخزانة">
+                     <span class="ottoman-text">ففتحها.</span>
+                </div>
+                 <div class="translation">(He saw the closet and opened it.)</div>
+                <div class="key-container">
+                     <div class="key-btn">الخزانة</div> <div class="key-btn">خزانة</div> <div class="key-btn">دار</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun6')">Check</button>
+                <div class="fill-feedback" id="fill-noun6-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فقام إلى خزانة</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun7" data-correct="غرفة">
+                     <span class="ottoman-text">النوم.</span>
+                </div>
+                 <div class="translation">(So he went to the bedroom closet.)</div>
+                <div class="key-container">
+                     <div class="key-btn">غرفة</div> <div class="key-btn">النوم</div> <div class="key-btn">خزانة</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun7')">Check</button>
+                <div class="fill-feedback" id="fill-noun7-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فقام إلى خزانة غرفة</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun8" data-correct="النوم">
+                     <span class="ottoman-text">.</span>
+                </div>
+                 <div class="translation">(So he went to the bedroom closet.)</div>
+                <div class="key-container">
+                     <div class="key-btn">النوم</div> <div class="key-btn">غرفة</div> <div class="key-btn">ليل</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun8')">Check</button>
+                <div class="fill-feedback" id="fill-noun8-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">وبحث اللص عن</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun9" data-correct="شيء">
+                     <span class="ottoman-text">يسرقه فلم يجد.</span>
+                </div>
+                 <div class="translation">(The thief looked for something to steal but didn't find.)</div>
+                <div class="key-container">
+                     <div class="key-btn">شيء</div> <div class="key-btn">شيخ</div> <div class="key-btn">سيد</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun9')">Check</button>
+                <div class="fill-feedback" id="fill-noun9-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">شعر</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun10" data-correct="جحا">
+                     <span class="ottoman-text">بلصٍّ في داره.</span>
+                </div>
+                 <div class="translation">(Juha sensed a thief in his house.)</div>
+                <div class="key-container">
+                     <div class="key-btn">جحا</div> <div class="key-btn">لصّ</div> <div class="key-btn">اللص</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun10')">Check</button>
+                <div class="fill-feedback" id="fill-noun10-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">ماذا تفعل هنا يا</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun11" data-correct="شيخ">
+                     <span class="ottoman-text">؟</span>
+                </div>
+                 <div class="translation">(What are you doing here, old man?)</div>
+                <div class="key-container">
+                     <div class="key-btn">شيخ</div> <div class="key-btn">سيد</div> <div class="key-btn">جحا</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun11')">Check</button>
+                <div class="fill-feedback" id="fill-noun11-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">متأسف يا</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun12" data-correct="سيد">
+                     <span class="ottoman-text">ي.</span>
+                </div>
+                 <div class="translation">(I'm sorry, my sir.)</div>
+                <div class="key-container">
+                     <div class="key-btn">سيد</div> <div class="key-btn">شيخ</div> <div class="key-btn">لصّ</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun12')">Check</button>
+                <div class="fill-feedback" id="fill-noun12-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">ولهذا استحيت واختبأت</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-noun13" data-correct="خجل">
+                     <span class="ottoman-text">اً منك.</span>
+                </div>
+                 <div class="translation">(And for this I was ashamed and hid out of embarrassment from you.)</div>
+                <div class="key-container">
+                     <div class="key-btn">خجل</div> <div class="key-btn">ليل</div> <div class="key-btn">شيء</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-noun13')">Check</button>
+                <div class="fill-feedback" id="fill-noun13-feedback"></div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <h2 id="verbs">2. Verbs</h2>
+        <table>
+            <tr><th>Arabic</th><th>English</th></tr>
+            <tr> <td lang="ar">شعر</td> <td>sensed / felt</td> </tr>
+            <tr> <td lang="ar">قام</td> <td>went / got up</td> </tr>
+            <tr> <td lang="ar">اختبأ</td> <td>hid</td> </tr>
+            <tr> <td lang="ar">بحث</td> <td>looked for / searched</td> </tr>
+            <tr> <td lang="ar">يسرق</td> <td>to steal</td> </tr>
+            <tr> <td lang="ar">يجد</td> <td>find</td> </tr>
+            <tr> <td lang="ar">رأى</td> <td>saw</td> </tr>
+            <tr> <td lang="ar">فتح</td> <td>opened</td> </tr>
+            <tr> <td lang="ar">خاف</td> <td>was frightened</td> </tr>
+            <tr> <td lang="ar">تشجع</td> <td>took courage</td> </tr>
+            <tr> <td lang="ar">قال</td> <td>said</td> </tr>
+            <tr> <td lang="ar">فقال</td> <td>so he said</td> </tr>
+            <tr> <td lang="ar">تفعل</td> <td>you do</td> </tr>
+            <tr> <td lang="ar">أعرف</td> <td>I know</td> </tr>
+            <tr> <td lang="ar">تجد</td> <td>you find</td> </tr>
+            <tr> <td lang="ar">تسرق</td> <td>you steal</td> </tr>
+            <tr> <td lang="ar">استحيت</td> <td>I was ashamed</td> </tr>
+            <tr> <td lang="ar">اختبأت</td> <td>I hid</td> </tr>
+        </table>
+
+        <div class="fill-exercise">
+            <h3>Exercise 3: Match Verbs</h3>
+            <p>Match the Arabic verb with its English translation.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Arabic Verb:</h4>
+                        <div class="matching-item-container" id="arabic-verbs-col1-container"></div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>English Translation:</h4>
+                        <div class="matching-item-container" id="arabic-verbs-col2-container"></div>
+                    </div>
+                </div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="arabic-verbs-matching-feedback"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fill-exercise">
+            <h3>Exercise 4: Fill in the Verb</h3>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text"></span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-verb1" data-correct="شعر">
+                    <span class="ottoman-text">جحا بلصٍّ في داره.</span>
+                </div>
+                 <div class="translation">(Juha sensed a thief in his house.)</div>
+                <div class="key-container">
+                    <div class="key-btn">شعر</div> <div class="key-btn">قام</div> <div class="key-btn">اختبأ</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb1')">Check</button>
+                <div class="fill-feedback" id="fill-verb1-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فـ</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb2" data-correct="قام">
+                     <span class="ottoman-text">إلى خزانة غرفة النوم.</span>
+                </div>
+                 <div class="translation">(So he went to the bedroom closet.)</div>
+                <div class="key-container">
+                     <div class="key-btn">قام</div> <div class="key-btn">شعر</div> <div class="key-btn">اختبأ</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb2')">Check</button>
+                <div class="fill-feedback" id="fill-verb2-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">و</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb3" data-correct="اختبأ">
+                     <span class="ottoman-text">فيها.</span>
+                </div>
+                 <div class="translation">(And hid in it.)</div>
+                <div class="key-container">
+                     <div class="key-btn">اختبأ</div> <div class="key-btn">قام</div> <div class="key-btn">بحث</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb3')">Check</button>
+                <div class="fill-feedback" id="fill-verb3-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">و</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb4" data-correct="بحث">
+                     <span class="ottoman-text">اللص عن شيء يسرقه.</span>
+                </div>
+                 <div class="translation">(And the thief looked for something to steal.)</div>
+                <div class="key-container">
+                     <div class="key-btn">بحث</div> <div class="key-btn">يسرق</div> <div class="key-btn">يجد</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb4')">Check</button>
+                <div class="fill-feedback" id="fill-verb4-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">بحث اللص عن شيء</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb5" data-correct="يسرق">
+                     <span class="ottoman-text">ه فلم يجد.</span>
+                </div>
+                 <div class="translation">(The thief looked for something to steal but didn't find.)</div>
+                <div class="key-container">
+                     <div class="key-btn">يسرق</div> <div class="key-btn">يجد</div> <div class="key-btn">رأى</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb5')">Check</button>
+                <div class="fill-feedback" id="fill-verb5-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فلم</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb6" data-correct="يجد">
+                     <span class="ottoman-text">.</span>
+                </div>
+                 <div class="translation">(But he didn't find [anything].)</div>
+                <div class="key-container">
+                     <div class="key-btn">يجد</div> <div class="key-btn">يسرق</div> <div class="key-btn">فتح</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb6')">Check</button>
+                <div class="fill-feedback" id="fill-verb6-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فـ</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb7" data-correct="رأى">
+                     <span class="ottoman-text">الخزانة.</span>
+                </div>
+                 <div class="translation">(So he saw the closet.)</div>
+                <div class="key-container">
+                     <div class="key-btn">رأى</div> <div class="key-btn">فتح</div> <div class="key-btn">خاف</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb7')">Check</button>
+                <div class="fill-feedback" id="fill-verb7-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فـ</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb8" data-correct="فتح">
+                     <span class="ottoman-text">ها.</span>
+                </div>
+                 <div class="translation">(So he opened it.)</div>
+                <div class="key-container">
+                     <div class="key-btn">فتح</div> <div class="key-btn">رأى</div> <div class="key-btn">خاف</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb8')">Check</button>
+                <div class="fill-feedback" id="fill-verb8-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فـ</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb9" data-correct="خاف">
+                     <span class="ottoman-text">اللص.</span>
+                </div>
+                 <div class="translation">(So the thief was frightened.)</div>
+                <div class="key-container">
+                     <div class="key-btn">خاف</div> <div class="key-btn">تشجع</div> <div class="key-btn">قال</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb9')">Check</button>
+                <div class="fill-feedback" id="fill-verb9-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">ولكنه</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb10" data-correct="تشجع">
+                     <span class="ottoman-text">وقال.</span>
+                </div>
+                 <div class="translation">(But he took courage and said.)</div>
+                <div class="key-container">
+                     <div class="key-btn">تشجع</div> <div class="key-btn">خاف</div> <div class="key-btn">قال</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb10')">Check</button>
+                <div class="fill-feedback" id="fill-verb10-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">ولكنه تشجع و</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb11" data-correct="قال">
+                     <span class="ottoman-text">.</span>
+                </div>
+                 <div class="translation">(But he took courage and said.)</div>
+                <div class="key-container">
+                     <div class="key-btn">قال</div> <div class="key-btn">فقال</div> <div class="key-btn">تفعل</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb11')">Check</button>
+                <div class="fill-feedback" id="fill-verb11-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text"></span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb12" data-correct="فقال">
+                     <span class="ottoman-text">جحا: متأسف يا سيدي.</span>
+                </div>
+                 <div class="translation">(So Juha said: I'm sorry, my sir.)</div>
+                <div class="key-container">
+                     <div class="key-btn">فقال</div> <div class="key-btn">قال</div> <div class="key-btn">أعرف</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb12')">Check</button>
+                <div class="fill-feedback" id="fill-verb12-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">ماذا</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb13" data-correct="تفعل">
+                     <span class="ottoman-text">هنا يا شيخ؟</span>
+                </div>
+                 <div class="translation">(What are you doing here, old man?)</div>
+                <div class="key-container">
+                     <div class="key-btn">تفعل</div> <div class="key-btn">أعرف</div> <div class="key-btn">تجد</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb13')">Check</button>
+                <div class="fill-feedback" id="fill-verb13-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فإني</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb14" data-correct="أعرف">
+                     <span class="ottoman-text">أنك لن تجد ما تسرقه.</span>
+                </div>
+                 <div class="translation">(For I know that you won't find what to steal.)</div>
+                <div class="key-container">
+                     <div class="key-btn">أعرف</div> <div class="key-btn">تفعل</div> <div class="key-btn">تجد</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb14')">Check</button>
+                <div class="fill-feedback" id="fill-verb14-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">أنك لن</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb15" data-correct="تجد">
+                     <span class="ottoman-text">ما تسرقه.</span>
+                </div>
+                 <div class="translation">(That you won't find what to steal.)</div>
+                <div class="key-container">
+                     <div class="key-btn">تجد</div> <div class="key-btn">يجد</div> <div class="key-btn">تسرق</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb15')">Check</button>
+                <div class="fill-feedback" id="fill-verb15-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">أنك لن تجد ما</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb16" data-correct="تسرق">
+                     <span class="ottoman-text">ه.</span>
+                </div>
+                 <div class="translation">(That you won't find what to steal.)</div>
+                <div class="key-container">
+                     <div class="key-btn">تسرق</div> <div class="key-btn">يسرق</div> <div class="key-btn">تجد</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb16')">Check</button>
+                <div class="fill-feedback" id="fill-verb16-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">ولهذا</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb17" data-correct="استحيت">
+                     <span class="ottoman-text">واختبأت خجلاً منك.</span>
+                </div>
+                 <div class="translation">(And for this I was ashamed and hid out of embarrassment from you.)</div>
+                <div class="key-container">
+                     <div class="key-btn">استحيت</div> <div class="key-btn">اختبأت</div> <div class="key-btn">أعرف</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb17')">Check</button>
+                <div class="fill-feedback" id="fill-verb17-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">ولهذا استحيت و</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-verb18" data-correct="اختبأت">
+                     <span class="ottoman-text">خجلاً منك.</span>
+                </div>
+                 <div class="translation">(And for this I was ashamed and hid out of embarrassment from you.)</div>
+                <div class="key-container">
+                     <div class="key-btn">اختبأت</div> <div class="key-btn">اختبأ</div> <div class="key-btn">استحيت</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-verb18')">Check</button>
+                <div class="fill-feedback" id="fill-verb18-feedback"></div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <h2 id="question-words">3. Question Words</h2>
+        <p>These question words can help you ask questions in Arabic:</p>
+        <table>
+            <tr><th>Arabic</th><th>English</th></tr>
+            <tr> <td lang="ar">ماذا</td> <td>what</td> </tr>
+        </table>
+
+        <div class="fill-exercise">
+            <h3>Exercise 5: Match Question Words</h3>
+            <p>Match the Arabic word with its English translation.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Arabic Word:</h4>
+                        <div class="matching-item-container" id="arabic-question-words-col1-container"></div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>English Translation:</h4>
+                        <div class="matching-item-container" id="arabic-question-words-col2-container"></div>
+                    </div>
+                </div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="arabic-question-words-matching-feedback"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fill-exercise">
+            <h3>Exercise 6: Fill in the Question Word</h3>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text"></span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-question1" data-correct="ماذا">
+                    <span class="ottoman-text">تفعل هنا يا شيخ؟</span>
+                </div>
+                 <div class="translation">(What are you doing here, old man?)</div>
+                <div class="key-container">
+                    <div class="key-btn">ماذا</div> <div class="key-btn">ما</div> <div class="key-btn">من</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-question1')">Check</button>
+                <div class="fill-feedback" id="fill-question1-feedback"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 id="prepositions">4. Prepositions and Conjunctions</h2>
+        <p>These words help connect ideas and indicate relationships between words:</p>
+        <table>
+            <tr><th>Arabic</th><th>English</th></tr>
+            <tr> <td lang="ar">بـِ</td> <td>with / in</td> </tr>
+            <tr> <td lang="ar">في</td> <td>in</td> </tr>
+            <tr> <td lang="ar">إلى</td> <td>to</td> </tr>
+            <tr> <td lang="ar">عن</td> <td>for / about</td> </tr>
+            <tr> <td lang="ar">فـَ</td> <td>so / then</td> </tr>
+            <tr> <td lang="ar">لَمْ</td> <td>did not (negation)</td> </tr>
+            <tr> <td lang="ar">إذا بـِ</td> <td>and there was / suddenly</td> </tr>
+            <tr> <td lang="ar">و</td> <td>and</td> </tr>
+            <tr> <td lang="ar">لكنَّ</td> <td>but</td> </tr>
+            <tr> <td lang="ar">يا</td> <td>O (vocative)</td> </tr>
+            <tr> <td lang="ar">أنَّ</td> <td>that (conjunction)</td> </tr>
+            <tr> <td lang="ar">لَنْ</td> <td>will not (negation)</td> </tr>
+            <tr> <td lang="ar">لِـ</td> <td>for / because of</td> </tr>
+            <tr> <td lang="ar">مِنْ</td> <td>from / out of</td> </tr>
+        </table>
+
+        <div class="fill-exercise">
+            <h3>Exercise 7: Match Prepositions & Conjunctions</h3>
+            <p>Match the Arabic word with its English translation.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Arabic Word:</h4>
+                        <div class="matching-item-container" id="arabic-prepositions-col1-container"></div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>English Translation:</h4>
+                        <div class="matching-item-container" id="arabic-prepositions-col2-container"></div>
+                    </div>
+                </div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="arabic-prepositions-matching-feedback"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fill-exercise">
+            <h3>Exercise 8: Fill in the Word</h3>
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ottoman-text">شعر جحا</span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-prep1" data-correct="بـِ">
+                    <span class="ottoman-text">لصٍّ في داره.</span>
+                </div>
+                <div class="translation">(Juha sensed a thief in his house.)</div>
+                <div class="key-container">
+                    <div class="key-btn">بـِ</div> <div class="key-btn">في</div> <div class="key-btn">إلى</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep1')">Check</button>
+                <div class="fill-feedback" id="fill-prep1-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ottoman-text">شعر جحا بلصٍّ</span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-prep2" data-correct="في">
+                    <span class="ottoman-text">داره ليلاً.</span>
+                </div>
+                <div class="translation">(Juha sensed a thief in his house at night.)</div>
+                <div class="key-container">
+                    <div class="key-btn">في</div> <div class="key-btn">إلى</div> <div class="key-btn">عن</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep2')">Check</button>
+                <div class="fill-feedback" id="fill-prep2-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فقام</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep3" data-correct="إلى">
+                     <span class="ottoman-text">خزانة غرفة النوم.</span>
+                </div>
+                 <div class="translation">(So he went to the bedroom closet.)</div>
+                <div class="key-container">
+                     <div class="key-btn">إلى</div> <div class="key-btn">في</div> <div class="key-btn">عن</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep3')">Check</button>
+                <div class="fill-feedback" id="fill-prep3-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">وبحث اللص</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep4" data-correct="عن">
+                     <span class="ottoman-text">شيء يسرقه.</span>
+                </div>
+                 <div class="translation">(The thief looked for something to steal.)</div>
+                <div class="key-container">
+                     <div class="key-btn">عن</div> <div class="key-btn">في</div> <div class="key-btn">إلى</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep4')">Check</button>
+                <div class="fill-feedback" id="fill-prep4-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text"></span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep5" data-correct="فـَ">
+                     <span class="ottoman-text">قام إلى خزانة غرفة النوم.</span>
+                </div>
+                 <div class="translation">(So he went to the bedroom closet.)</div>
+                <div class="key-container">
+                     <div class="key-btn">فـَ</div> <div class="key-btn">و</div> <div class="key-btn">لكنَّ</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep5')">Check</button>
+                <div class="fill-feedback" id="fill-prep5-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فـ</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep6" data-correct="لَمْ">
+                     <span class="ottoman-text">يجد.</span>
+                </div>
+                 <div class="translation">(But he did not find [anything].)</div>
+                <div class="key-container">
+                     <div class="key-btn">لَمْ</div> <div class="key-btn">لَنْ</div> <div class="key-btn">فـَ</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep6')">Check</button>
+                <div class="fill-feedback" id="fill-prep6-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فتحها و</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep7" data-correct="إذا بـِ">
+                     <span class="ottoman-text">جحا فيها.</span>
+                </div>
+                 <div class="translation">(He opened it and there was Juha inside.)</div>
+                <div class="key-container">
+                     <div class="key-btn">إذا بـِ</div> <div class="key-btn">فـَ</div> <div class="key-btn">و</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep7')">Check</button>
+                <div class="fill-feedback" id="fill-prep7-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">اختبأ فيها</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep8" data-correct="و">
+                     <span class="ottoman-text">بحث اللص.</span>
+                </div>
+                 <div class="translation">(He hid in it and the thief looked.)</div>
+                <div class="key-container">
+                     <div class="key-btn">و</div> <div class="key-btn">فـَ</div> <div class="key-btn">لكنَّ</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep8')">Check</button>
+                <div class="fill-feedback" id="fill-prep8-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فخاف اللص</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep9" data-correct="لكنَّ">
+                     <span class="ottoman-text">ه تشجع.</span>
+                </div>
+                 <div class="translation">(The thief was frightened, but he took courage.)</div>
+                <div class="key-container">
+                     <div class="key-btn">لكنَّ</div> <div class="key-btn">و</div> <div class="key-btn">فـَ</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep9')">Check</button>
+                <div class="fill-feedback" id="fill-prep9-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">ماذا تفعل هنا</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep10" data-correct="يا">
+                     <span class="ottoman-text">شيخ؟</span>
+                </div>
+                 <div class="translation">(What are you doing here, O old man?)</div>
+                <div class="key-container">
+                     <div class="key-btn">يا</div> <div class="key-btn">و</div> <div class="key-btn">فـَ</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep10')">Check</button>
+                <div class="fill-feedback" id="fill-prep10-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فإني أعرف</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep11" data-correct="أنَّ">
+                     <span class="ottoman-text">ك لن تجد.</span>
+                </div>
+                 <div class="translation">(For I know that you won't find.)</div>
+                <div class="key-container">
+                     <div class="key-btn">أنَّ</div> <div class="key-btn">إنَّ</div> <div class="key-btn">لكنَّ</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep11')">Check</button>
+                <div class="fill-feedback" id="fill-prep11-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">أعرف أنك</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep12" data-correct="لَنْ">
+                     <span class="ottoman-text">تجد ما تسرقه.</span>
+                </div>
+                 <div class="translation">(I know that you will not find what to steal.)</div>
+                <div class="key-container">
+                     <div class="key-btn">لَنْ</div> <div class="key-btn">لَمْ</div> <div class="key-btn">لا</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep12')">Check</button>
+                <div class="fill-feedback" id="fill-prep12-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">و</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep13" data-correct="لِـ">
+                     <span class="ottoman-text">هذا استحيت.</span>
+                </div>
+                 <div class="translation">(And for this I was ashamed.)</div>
+                <div class="key-container">
+                     <div class="key-btn">لِـ</div> <div class="key-btn">مِنْ</div> <div class="key-btn">عن</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep13')">Check</button>
+                <div class="fill-feedback" id="fill-prep13-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">اختبأت خجلاً</span>
+                     <input type="text" class="fill-input ottoman-input" id="fill-prep14" data-correct="مِنْ">
+                     <span class="ottoman-text">ك.</span>
+                </div>
+                 <div class="translation">(I hid out of embarrassment from you.)</div>
+                <div class="key-container">
+                     <div class="key-btn">مِنْ</div> <div class="key-btn">لِـ</div> <div class="key-btn">عن</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-prep14')">Check</button>
+                <div class="fill-feedback" id="fill-prep14-feedback"></div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <h2 id="other-words">5. Other Words</h2>
+        <p>Here are some additional useful words that don't fit neatly into the categories above:</p>
+        <table>
+            <tr><th>Arabic</th><th>English</th></tr>
+            <tr> <td lang="ar">هنا</td> <td>here</td> </tr>
+            <tr> <td lang="ar">متأسف</td> <td>sorry / regretful</td> </tr>
+            <tr> <td lang="ar">إنَّ</td> <td>indeed / truly</td> </tr>
+            <tr> <td lang="ar">ما</td> <td>what / that which</td> </tr>
+            <tr> <td lang="ar">هذا</td> <td>this</td> </tr>
+        </table>
+        <div class="fill-exercise">
+            <h3>Exercise 9: Match Other Words</h3>
+            <p>Match the Arabic word with its English translation.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Arabic Word:</h4>
+                        <div class="matching-item-container" id="arabic-other-words-col1-container"></div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>English Translation:</h4>
+                        <div class="matching-item-container" id="arabic-other-words-col2-container"></div>
+                    </div>
+                </div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="arabic-other-words-matching-feedback"></div>
+                </div>
+            </div>
+        </div>
+         <div class="fill-exercise">
+            <h3>Exercise 10: Fill in the Word</h3>
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ottoman-text">ماذا تفعل</span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-other1" data-correct="هنا">
+                    <span class="ottoman-text">يا شيخ؟</span>
+                </div>
+                <div class="translation">(What are you doing here, old man?)</div>
+                <div class="key-container">
+                    <div class="key-btn">هنا</div> <div class="key-btn">هذا</div> <div class="key-btn">ما</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-other1')">Check</button>
+                <div class="fill-feedback" id="fill-other1-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text"></span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-other2" data-correct="متأسف">
+                    <span class="ottoman-text">يا سيدي.</span>
+                </div>
+                 <div class="translation">(Sorry, my sir.)</div>
+                <div class="key-container">
+                    <div class="key-btn">متأسف</div> <div class="key-btn">إنَّ</div> <div class="key-btn">هذا</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-other2')">Check</button>
+                <div class="fill-feedback" id="fill-other2-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">فـ</span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-other3" data-correct="إنَّ">
+                    <span class="ottoman-text">ي أعرف.</span>
+                </div>
+                 <div class="translation">(For indeed I know.)</div>
+                <div class="key-container">
+                    <div class="key-btn">إنَّ</div> <div class="key-btn">أنَّ</div> <div class="key-btn">لكنَّ</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-other3')">Check</button>
+                <div class="fill-feedback" id="fill-other3-feedback"></div>
+            </div>
+             <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">لن تجد</span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-other4" data-correct="ما">
+                    <span class="ottoman-text">تسرقه.</span>
+                </div>
+                 <div class="translation">(You won't find what to steal.)</div>
+                <div class="key-container">
+                    <div class="key-btn">ما</div> <div class="key-btn">ماذا</div> <div class="key-btn">هذا</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-other4')">Check</button>
+                <div class="fill-feedback" id="fill-other4-feedback"></div>
+            </div>
+            <div class="fill-item">
+                <div class="exercise-row">
+                     <span class="ottoman-text">ولهـ</span>
+                    <input type="text" class="fill-input ottoman-input" id="fill-other5" data-correct="هذا">
+                    <span class="ottoman-text">استحيت.</span>
+                </div>
+                 <div class="translation">(And for this I was ashamed.)</div>
+                <div class="key-container">
+                    <div class="key-btn">هذا</div> <div class="key-btn">هنا</div> <div class="key-btn">ما</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-other5')">Check</button>
+                <div class="fill-feedback" id="fill-other5-feedback"></div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="fill-exercise">
+            <h2 id="sentence_building">Exercise 11: Sentence Building</h2>
+            <p>Drag the words into the correct order to form the sentence.</p> <div class="word-order-game">
+                <div id="sentences-container">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="story">
+        <h2>The Story</h2>
+        <p>Click the Arabic words for English translations.</p>
+        <div class="story-container">
+            <div class="story-arabic" id="arabic-story">
+                جحا واللص
+                <br><br>
+                شعر جحا بلصٍّ في داره ليلاً، فقام إلى خزانة غرفة النوم واختبأ فيها.
+                <br>
+                وبحث اللص عن شيء يسرقه فلم يجد،
+                <br>
+                فرأى الخزانة ففتحها وإذا بجحا فيها.
+                <br><br>
+                فخاف اللص ولكنه تشجع وقال:
+                <br><br>
+                ماذا تفعل هنا يا شيخ؟
+                <br><br>
+                فقال جحا:
+                <br><br>
+                متأسف يا سيدي، فإني أعرف أنك لن تجد ما تسرقه، ولهذا استحيت واختبأت خجلاً منك.
+            </div>
+         </div>
+        <div class="translation-popup" id="translation-popup"></div>
+    </div>
+
+    <div class="section">
+        <div style="text-align: center;"> <span class="congrats-ottoman" style="font-family: 'Amiri', serif; font-size: 30px; line-height: 1.4;">مبروك<br>لقد انهيت الدرس الرابع</span><br><br>
+            <span class="congrats-english" style="display: block; font-size: inherit;">Congratulations!<br>You finished Story 4</span>
+        </div>
+    </div>
+
+    <div class="nav-buttons-container">
+        <a href="../../landing_pages/arabic_reading.html" class="nav-button prev-button">Return to Stories</a>
+        </div>
+
+    <script>
+        // --- Generic Matching Game Logic (No changes needed from original) ---
+        function initializeMatchingGame(col1ContainerId, col2ContainerId, feedbackId, pairsData) {
+            let selected = { col1: null, col2: null };
+            let matchCount = 0;
+            const col1Container = document.getElementById(col1ContainerId);
+            const col2Container = document.getElementById(col2ContainerId);
+            const feedbackElement = document.getElementById(feedbackId);
+
+            if (!col1Container || !col2Container || !feedbackElement) {
+                console.error("Error initializing matching game: One or more elements not found.", col1ContainerId, col2ContainerId, feedbackId);
+                return;
+            }
+
+            col1Container.innerHTML = '';
+            col2Container.innerHTML = '';
+            feedbackElement.textContent = '';
+            feedbackElement.className = 'matching-feedback';
+
+            const shuffleArray = (array) => {
+                const newArray = [...array];
+                for (let i = newArray.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+                }
+                return newArray;
+            };
+
+            const shuffledPairs = shuffleArray(pairsData);
+            const col1Items = [];
+            const col2Items = [];
+
+            shuffledPairs.forEach((pair, index) => {
+                const item1 = document.createElement('div');
+                item1.classList.add('matching-item', 'ottoman-text'); // Keep ottoman-text for Arabic font
+                item1.textContent = pair.col1;
+                item1.dataset.id = index;
+                col1Items.push(item1);
+
+                const item2 = document.createElement('div');
+                item2.classList.add('matching-item'); // English item
+                item2.textContent = pair.col2;
+                item2.dataset.id = index;
+                col2Items.push(item2);
+            });
+
+            shuffleArray(col1Items).forEach(item => col1Container.appendChild(item));
+            shuffleArray(col2Items).forEach(item => col2Container.appendChild(item));
+
+            const allItems = document.querySelectorAll(`#${col1ContainerId} .matching-item, #${col2ContainerId} .matching-item`);
+            allItems.forEach(item => {
+                const newItem = item.cloneNode(true);
+                item.parentNode.replaceChild(newItem, item);
+
+                newItem.addEventListener('click', function() {
+                    if (this.classList.contains('matched')) return;
+                    const isCol1 = this.closest(`#${col1ContainerId}`) !== null;
+                    const side = isCol1 ? 'col1' : 'col2';
+                    if (selected[side] && selected[side] !== this) {
+                        selected[side].classList.remove('selected');
+                    }
+                    this.classList.toggle('selected');
+                    selected[side] = this.classList.contains('selected') ? this : null;
+                    feedbackElement.textContent = '';
+                    if (selected.col1 && selected.col2) {
+                        if (selected.col1.dataset.id === selected.col2.dataset.id) {
+                            selected.col1.classList.remove('selected');
+                            selected.col1.classList.add('matched');
+                            selected.col2.classList.remove('selected');
+                            selected.col2.classList.add('matched');
+                            matchCount++;
+                            if (matchCount === pairsData.length) {
+                                feedbackElement.textContent = 'Correct'; // Simple text feedback
+                                feedbackElement.className = 'matching-feedback correct'; // Use class for styling
+                            }
+                            selected = { col1: null, col2: null };
+                        } else {
+                            feedbackElement.textContent = ''; // Clear feedback on mismatch
+                            const sel1 = selected.col1;
+                            const sel2 = selected.col2;
+                            setTimeout(() => {
+                                if(sel1) sel1.classList.remove('selected');
+                                if(sel2) sel2.classList.remove('selected');
+                            }, 800);
+                            selected = { col1: null, col2: null };
+                        }
+                    }
+                });
+            });
+        }
+
+        // --- Fill-in-the-blank Logic (Updated to add input classes) ---
+        function checkFillAnswer(inputId) {
+             const input = document.getElementById(inputId);
+             const feedback = document.getElementById(`${inputId}-feedback`);
+             const correctAnswer = input.dataset.correct;
+             const userAnswer = input.value.trim();
+             const normalizedCorrectAnswer = correctAnswer.trim();
+
+             // Remove previous result classes
+             input.classList.remove('correct-input', 'incorrect-input');
+
+             if (userAnswer === normalizedCorrectAnswer) {
+                 feedback.textContent = "✓ Correct!";
+                 feedback.className = "fill-feedback correct";
+                 input.classList.add('correct-input'); // Add class for green background/border
+             } else {
+                 feedback.innerHTML = `✗ Not quite. Correct is: <span class="correct-answer-display ottoman-text">${correctAnswer}</span>`;
+                 feedback.className = "fill-feedback incorrect";
+                 input.classList.add('incorrect-input'); // Add class for red background/border
+             }
+         }
+
+        // --- Sentence Building Game Logic (No changes needed from original) ---
+        function initializeSentenceGame(containerId, sentencesData) {
+             const gameContainer = document.getElementById(containerId);
+             if (!gameContainer) {
+                 console.error("Sentence game container not found:", containerId);
+                 return;
+             }
+             gameContainer.innerHTML = '';
+
+             const sentences = sentencesData.map(item => ({
+                 original: item.arabic,
+                 english: item.english,
+                 words: item.arabic.split(/\s+/) // Simple split by space
+             }));
+
+             function shuffleArray(array) {
+                 const newArray = [...array];
+                 for (let i = newArray.length - 1; i > 0; i--) {
+                     const j = Math.floor(Math.random() * (i + 1));
+                     [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+                 }
+                 return newArray;
+             }
+
+             sentences.forEach((sentence, index) => {
+                 const sentenceElement = document.createElement('div');
+                 sentenceElement.className = 'game-sentence';
+                 sentenceElement.id = `sentence-${containerId}-${index}`;
+
+                 const translation = document.createElement('div');
+                 translation.className = 'game-sentence-translation';
+                 translation.innerHTML = `<span class="sentence-number">${index + 1}/${sentences.length}</span> ${sentence.english}`;
+                 sentenceElement.appendChild(translation);
+
+                 const solutionArea = document.createElement('div');
+                 solutionArea.className = 'solution-area';
+                 solutionArea.id = `solution-area-${containerId}-${index}`;
+                 sentenceElement.appendChild(solutionArea);
+
+                 const wordsBank = document.createElement('div');
+                 wordsBank.className = 'words-bank';
+                 wordsBank.id = `words-bank-${containerId}-${index}`;
+                 sentenceElement.appendChild(wordsBank);
+
+                 const shuffledWords = shuffleArray(sentence.words);
+                 shuffledWords.forEach(word => {
+                     const wordElement = document.createElement('div');
+                     wordElement.className = 'word-box ottoman-text'; // Keep ottoman-text for Arabic font
+                     wordElement.textContent = word;
+
+                     wordElement.addEventListener('click', () => {
+                         const parent = wordElement.parentElement;
+                         const targetSolutionArea = document.getElementById(`solution-area-${containerId}-${index}`);
+                         const targetWordsBank = document.getElementById(`words-bank-${containerId}-${index}`);
+                         const targetFeedbackElement = document.getElementById(`feedback-${containerId}-${index}`);
+
+                         if (parent.classList.contains('words-bank')) {
+                             targetSolutionArea.appendChild(wordElement);
+                         } else {
+                             targetWordsBank.appendChild(wordElement);
+                         }
+
+                         if (targetFeedbackElement) {
+                             targetFeedbackElement.textContent = ''; // Clear feedback on move
+                             targetFeedbackElement.className = 'game-feedback';
+                         }
+                     });
+                     wordsBank.appendChild(wordElement);
+                 });
+
+                 const feedback = document.createElement('div');
+                 feedback.className = 'game-feedback';
+                 feedback.id = `feedback-${containerId}-${index}`;
+                 sentenceElement.appendChild(feedback);
+
+                 const buttonContainer = document.createElement('div');
+                 buttonContainer.className = 'sentence-buttons';
+
+                 const checkButton = document.createElement('button');
+                 checkButton.className = 'check-btn';
+                 checkButton.textContent = 'Check Answer';
+                 checkButton.addEventListener('click', () => checkAnswer(containerId, index));
+                 buttonContainer.appendChild(checkButton);
+
+                 const showAnswerButton = document.createElement('button');
+                 showAnswerButton.className = 'show-answer-btn';
+                 showAnswerButton.textContent = 'Show Answer';
+                 showAnswerButton.addEventListener('click', () => showAnswer(containerId, index));
+                 buttonContainer.appendChild(showAnswerButton);
+
+                 const deleteBtn = document.createElement('button');
+                 deleteBtn.className = 'delete-btn';
+                 deleteBtn.textContent = 'Clear Box';
+                 deleteBtn.addEventListener('click', () => {
+                     const targetSolutionArea = document.getElementById(`solution-area-${containerId}-${index}`);
+                     const targetWordsBank = document.getElementById(`words-bank-${containerId}-${index}`);
+                     const targetFeedbackElement = document.getElementById(`feedback-${containerId}-${index}`);
+
+                     // Move all words back to the bank
+                     while (targetSolutionArea.firstChild) {
+                         targetWordsBank.appendChild(targetSolutionArea.firstChild);
+                     }
+                     // Clear feedback
+                     if (targetFeedbackElement) {
+                         targetFeedbackElement.textContent = '';
+                         targetFeedbackElement.className = 'game-feedback';
+                     }
+                 });
+                 buttonContainer.appendChild(deleteBtn);
+
+                 sentenceElement.appendChild(buttonContainer);
+                 gameContainer.appendChild(sentenceElement);
+
+                 // Initially hide all but the first sentence
+                 if (index > 0) {
+                     sentenceElement.style.display = 'none';
+                 }
+             });
+
+             function checkAnswer(instanceId, sentenceIndex) {
+                 const solutionArea = document.getElementById(`solution-area-${instanceId}-${sentenceIndex}`);
+                 const feedbackElement = document.getElementById(`feedback-${instanceId}-${sentenceIndex}`);
+                 const sentenceElement = document.getElementById(`sentence-${instanceId}-${sentenceIndex}`);
+                 const currentWords = Array.from(solutionArea.children).map(word => word.textContent);
+                 const correctWords = sentences[sentenceIndex].words;
+
+                 if (!feedbackElement || !sentenceElement) return; // Safety check
+
+                 // Check if all words are used
+                 if (currentWords.length !== correctWords.length) {
+                     feedbackElement.textContent = '✗ Please use all the words.';
+                     feedbackElement.className = 'game-feedback feedback-incorrect';
+                     return;
+                 }
+
+                 const isCorrect = arraysEqual(currentWords, correctWords);
+
+                 if (isCorrect) {
+                     feedbackElement.textContent = '✓ Correct! Well done!';
+                     feedbackElement.className = 'game-feedback feedback-correct';
+                     sentenceElement.classList.add('completed'); // Mark as completed
+
+                     // Show next sentence after a delay
+                     if (sentenceIndex < sentences.length - 1) {
+                         setTimeout(() => {
+                             const nextSentence = document.getElementById(`sentence-${instanceId}-${sentenceIndex + 1}`);
+                             if (nextSentence) {
+                                 nextSentence.style.display = 'flex'; // Use flex to match initial display
+                                 // Optionally scroll into view
+                                 nextSentence.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                             }
+                         }, 800); // Adjust delay as needed
+                     }
+                 } else {
+                     feedbackElement.textContent = '✗ Not quite right. Try again!';
+                     feedbackElement.className = 'game-feedback feedback-incorrect';
+                 }
+             }
+
+             function showAnswer(instanceId, sentenceIndex) {
+                 const solutionArea = document.getElementById(`solution-area-${instanceId}-${sentenceIndex}`);
+                 const wordsBank = document.getElementById(`words-bank-${instanceId}-${sentenceIndex}`);
+                 const feedbackElement = document.getElementById(`feedback-${instanceId}-${sentenceIndex}`);
+                 const sentenceElement = document.getElementById(`sentence-${instanceId}-${sentenceIndex}`);
+
+                 if (!solutionArea || !wordsBank || !feedbackElement || !sentenceElement) return; // Safety check
+
+                 // Clear existing words in solution and bank (to avoid duplicates)
+                 while (solutionArea.firstChild) {
+                     solutionArea.removeChild(solutionArea.firstChild);
+                 }
+                 wordsBank.innerHTML = ''; // Clear the bank completely
+
+                 // Add correct words to solution area
+                 sentences[sentenceIndex].words.forEach(word => {
+                     const wordElement = document.createElement('div');
+                     wordElement.className = 'word-box ottoman-text';
+                     wordElement.textContent = word;
+                     wordElement.style.cursor = 'default'; // Make non-interactive
+                     solutionArea.appendChild(wordElement);
+                 });
+
+                 feedbackElement.textContent = 'This is the correct order.';
+                 feedbackElement.className = 'game-feedback'; // Neutral feedback class
+                 sentenceElement.classList.add('completed'); // Mark as completed
+
+                 // Show next sentence after a delay
+                 if (sentenceIndex < sentences.length - 1) {
+                     setTimeout(() => {
+                         const nextSentence = document.getElementById(`sentence-${instanceId}-${sentenceIndex + 1}`);
+                         if (nextSentence) {
+                             nextSentence.style.display = 'flex'; // Use flex
+                              nextSentence.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                         }
+                     }, 800);
+                 }
+             }
+
+             function arraysEqual(a, b) {
+                 if (a.length !== b.length) return false;
+                 return a.every((val, index) => val === b[index]);
+             }
+         }
+
+
+        // --- Initialize All Games on DOM Load ---
+        document.addEventListener('DOMContentLoaded', function() {
+            // Game 1: Nouns Data (Matching)
+            const nounPairs = [
+                 { col1: "لصّ", col2: "thief" }, { col1: "اللص", col2: "the thief" },
+                 { col1: "دار", col2: "house" }, { col1: "ليل", col2: "night" },
+                 { col1: "خزانة", col2: "closet" }, { col1: "الخزانة", col2: "the closet" },
+                 { col1: "غرفة", col2: "room" }, { col1: "النوم", col2: "sleep" },
+                 { col1: "شيء", col2: "thing / something" }, { col1: "جحا", col2: "Juha" },
+                 { col1: "شيخ", col2: "old man" }, { col1: "سيد", col2: "sir / master" },
+                 { col1: "خجل", col2: "shame / embarrassment" }
+            ];
+            initializeMatchingGame('arabic-nouns-col1-container', 'arabic-nouns-col2-container', 'arabic-nouns-matching-feedback', nounPairs);
+
+            // Game 3: Verbs Data (Matching)
+            const verbPairs = [
+                 { col1: "شعر", col2: "sensed / felt" }, { col1: "قام", col2: "went / got up" },
+                 { col1: "اختبأ", col2: "hid" }, { col1: "بحث", col2: "looked for / searched" },
+                 { col1: "يسرق", col2: "to steal" }, { col1: "يجد", col2: "find" },
+                 { col1: "رأى", col2: "saw" }, { col1: "فتح", col2: "opened" },
+                 { col1: "خاف", col2: "was frightened" }, { col1: "تشجع", col2: "took courage" },
+                 { col1: "قال", col2: "said" }, { col1: "فقال", col2: "so he said" },
+                 { col1: "تفعل", col2: "you do" }, { col1: "أعرف", col2: "I know" },
+                 { col1: "تجد", col2: "you find" }, { col1: "تسرق", col2: "you steal" },
+                 { col1: "استحيت", col2: "I was ashamed" }, { col1: "اختبأت", col2: "I hid" }
+            ];
+            initializeMatchingGame('arabic-verbs-col1-container', 'arabic-verbs-col2-container', 'arabic-verbs-matching-feedback', verbPairs);
+
+            // Game 5: Question Words Data (Matching)
+            const questionWordPairs = [
+                { col1: "ماذا", col2: "what" }
+            ];
+            initializeMatchingGame('arabic-question-words-col1-container', 'arabic-question-words-col2-container', 'arabic-question-words-matching-feedback', questionWordPairs);
+
+            // Game 7: Prepositions/Conjunctions Data (Matching)
+            const prepositionPairs = [
+                 { col1: "بـِ", col2: "with / in" }, { col1: "في", col2: "in" },
+                 { col1: "إلى", col2: "to" }, { col1: "عن", col2: "for / about" },
+                 { col1: "فـَ", col2: "so / then" }, { col1: "لَمْ", col2: "did not (negation)" },
+                 { col1: "إذا بـِ", col2: "and there was / suddenly" }, { col1: "و", col2: "and" },
+                 { col1: "لكنَّ", col2: "but" }, { col1: "يا", col2: "O (vocative)" },
+                 { col1: "أنَّ", col2: "that (conjunction)" }, { col1: "لَنْ", col2: "will not (negation)" },
+                 { col1: "لِـ", col2: "for / because of" }, { col1: "مِنْ", col2: "from / out of" }
+            ];
+            initializeMatchingGame('arabic-prepositions-col1-container', 'arabic-prepositions-col2-container', 'arabic-prepositions-matching-feedback', prepositionPairs);
+
+             // Game 9: Other Words Data (Matching)
+            const otherWordPairs = [
+                 { col1: "هنا", col2: "here" }, { col1: "متأسف", col2: "sorry / regretful" },
+                 { col1: "إنَّ", col2: "indeed / truly" }, { col1: "ما", col2: "what / that which" },
+                 { col1: "هذا", col2: "this" }
+            ];
+            initializeMatchingGame('arabic-other-words-col1-container', 'arabic-other-words-col2-container', 'arabic-other-words-matching-feedback', otherWordPairs);
+
+            // Game 11: Sentence Building Data
+             const sentenceGameData = [
+                 { arabic: "شعر جحا بلص في داره", english: "Juha sensed a thief in his house." },
+                 { arabic: "قام إلى خزانة غرفة النوم", english: "He went to the bedroom closet." },
+                 { arabic: "اختبأ فيها", english: "He hid in it." },
+                 { arabic: "بحث اللص عن شيء يسرقه", english: "The thief looked for something to steal." },
+                 { arabic: "فلم يجد", english: "But he didn't find [anything]." },
+                 { arabic: "رأى الخزانة ففتحها", english: "He saw the closet and opened it." },
+                 { arabic: "فخاف اللص", english: "The thief was frightened." },
+                 { arabic: "لكنه تشجع وقال", english: "But he took courage and said." },
+                 { arabic: "ماذا تفعل هنا يا شيخ", english: "What are you doing here, old man?" },
+                 { arabic: "إني أعرف أنك لن تجد ما تسرقه", english: "I know that you won't find what to steal." },
+                 { arabic: "لهذا استحيت واختبأت منك", english: "For this [reason] I was ashamed and hid from you." }
+             ];
+            initializeSentenceGame('sentences-container', sentenceGameData);
+
+            // Add key button functionality for ALL fill-in exercises
+            document.querySelectorAll('.key-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const fillItem = this.closest('.fill-item');
+                    const input = fillItem.querySelector('.fill-input');
+                    if (input) {
+                        input.value = this.textContent;
+                        const feedbackId = input.id + '-feedback';
+                        const feedback = document.getElementById(feedbackId);
+                        if (feedback) {
+                            feedback.textContent = ''; // Clear feedback
+                            feedback.className = 'fill-feedback';
+                        }
+                        input.classList.remove('correct-input', 'incorrect-input'); // Reset input style
+                    }
+                });
+            });
+
+            // Add listener for Enter key in ALL fill-in inputs
+            document.querySelectorAll('.fill-input').forEach(input => {
+                 input.addEventListener('keypress', function(event) {
+                     if (event.key === 'Enter') {
+                         event.preventDefault(); // Prevent form submission if any
+                         const fillItem = this.closest('.fill-item');
+                         const checkButton = fillItem.querySelector('.fill-check');
+                         if (checkButton) {
+                             checkButton.click(); // Trigger the check function
+                         }
+                     }
+                 });
+             });
+
+            // === Story Initialization ===
+            const storyContainer = document.getElementById('arabic-story');
+            const translationPopup = document.getElementById('translation-popup');
+
+            if (storyContainer && translationPopup) {
+                const storyVocabulary = {
+                     'جحا': 'Juha', 'واللص': 'and the thief', 'اللص': 'the thief',
+                     'شعر': 'sensed / felt', 'بلصٍّ': 'with/in a thief', 'لصّ': 'thief',
+                     'في': 'in', 'داره': 'his house', 'دار': 'house', 'ليلاً': 'at night',
+                     'ليل': 'night', 'فقام': 'so he went', 'قام': 'went / got up',
+                     'إلى': 'to', 'خزانة': 'closet', 'غرفة': 'room', 'النوم': 'sleep',
+                     'واختبأ': 'and hid', 'اختبأ': 'hid', 'فيها': 'in it',
+                     'وبحث': 'and looked for', 'بحث': 'looked for / searched', 'عن': 'for / about',
+                     'شيء': 'thing / something', 'يسرقه': 'he steals it', 'يسرق': 'to steal',
+                     'فلم': 'so did not', 'لَمْ': 'did not', 'يجد': 'find',
+                     'فرأى': 'so he saw', 'رأى': 'saw', 'الخزانة': 'the closet',
+                     'ففتحها': 'so he opened it', 'فتحها': 'he opened it', 'فتح': 'opened',
+                     'وإذا': 'and suddenly', 'إذا': 'suddenly / if', 'بجحا': 'there was Juha',
+                     'فخاف': 'so was frightened', 'خاف': 'was frightened', 'ولكنه': 'but he',
+                     'لكن': 'but', 'تشجع': 'took courage', 'وقال': 'and said', 'قال': 'said',
+                     'ماذا': 'what', 'تفعل': 'you do', 'هنا': 'here', 'يا': 'O',
+                     'شيخ': 'old man', 'متأسف': 'sorry / regretful', 'سيدي': 'my sir',
+                     'سيد': 'sir / master', 'فإني': 'for indeed I', 'إني': 'indeed I',
+                     'إن': 'indeed', 'أعرف': 'I know', 'أنك': 'that you', 'أن': 'that',
+                     'لن': 'will not', 'تجد': 'you find', 'ما': 'what / that which',
+                     'تسرقه': 'you steal it', 'تسرق': 'you steal', 'ولهذا': 'and for this',
+                     'لهذا': 'for this', 'لِـ': 'for / because of', 'هذا': 'this',
+                     'استحيت': 'I was ashamed', 'واختبأت': 'and hid', 'اختبأت': 'I hid',
+                     'خجلاً': 'out of embarrassment', 'خجل': 'shame / embarrassment',
+                     'منك': 'from you', 'مِنْ': 'from / out of'
+                };
+
+
+                // Function to process nodes recursively (same as before)
+                function processNodes(element) {
+                    const childNodes = Array.from(element.childNodes); // Create static array
+
+                    childNodes.forEach(child => {
+                        if (child.nodeType === Node.TEXT_NODE) {
+                            const fragment = document.createDocumentFragment();
+                            const text = child.textContent;
+                            // Split by whitespace. Punctuation and prefixes handled per part.
+                            const parts = text.split(/([ .,:؛؟!،\n\r]+|\s+)/); // Keep spaces and punctuation as delimiters
+
+                            parts.forEach(part => {
+                                if (!part) return; // Skip empty strings
+
+                                // Check if part is purely a delimiter (space or punctuation)
+                                if (part.match(/^([ .,:؛؟!،\n\r]+|\s+)$/)) {
+                                    fragment.appendChild(document.createTextNode(part));
+                                    return;
+                                }
+
+                                // --- Word Processing Logic ---
+                                let baseWord = part; // Use the original part first
+                                let vocabKey = null;
+
+                                // 1. Check if the exact part is in vocab (handles combined forms like ولهذا)
+                                if (storyVocabulary[baseWord]) {
+                                    vocabKey = baseWord;
+                                }
+                                // 2. If not, check common prefixes (و, ف) ONLY if the remaining part is in vocab
+                                else if (baseWord.length > 1 && storyVocabulary[baseWord.substring(1)]) {
+                                    const firstChar = baseWord.substring(0, 1);
+                                    const restOfWord = baseWord.substring(1);
+                                     if ((firstChar === 'و' || firstChar === 'ف' || firstChar === 'ب') && storyVocabulary[restOfWord]) {
+                                         vocabKey = restOfWord; // Found base word after prefix
+                                     } else if (baseWord.startsWith('ل') && storyVocabulary[baseWord.substring(1)] && baseWord === 'لهذا') {
+                                        // Special case for لهذا if needed, but already covered by exact match.
+                                        // Keep simple prefix check generally.
+                                        // vocabKey = baseWord.substring(1); // Example for generic 'ل'
+                                     }
+                                }
+
+                                // --- Span Creation ---
+                                if (vocabKey && storyVocabulary[vocabKey]) { // Check if the identified key has a translation
+                                    const span = document.createElement('span');
+                                    span.className = 'word';
+                                    span.dataset.word = vocabKey; // Use the base key found
+                                    span.textContent = part; // Display the original part
+                                    fragment.appendChild(span);
+                                } else if (storyVocabulary[part]) { // Fallback check for the original part itself
+                                      const span = document.createElement('span');
+                                      span.className = 'word';
+                                      span.dataset.word = part;
+                                      span.textContent = part;
+                                      fragment.appendChild(span);
+                                }
+                                else {
+                                    // Not in vocabulary, append original part as text
+                                    fragment.appendChild(document.createTextNode(part));
+                                }
+                            });
+                            // Replace the original text node with the processed fragment
+                           if (child.parentNode) {
+                                child.parentNode.replaceChild(fragment, child);
+                            } else {
+                                // Handle cases where the node might have been removed or is detached
+                                console.warn("Node parent not found during replacement:", child);
+                            }
+
+                        } else if (child.nodeType === Node.ELEMENT_NODE && child.tagName !== 'SCRIPT' && child.tagName !== 'STYLE' && !child.classList.contains('word') && child.tagName !== 'BR') {
+                            // Recursively process element nodes, but not BR tags or already processed spans
+                            processNodes(child);
+                        }
+                    });
+                }
+
+
+                // Start processing from the story container
+                processNodes(storyContainer);
+
+
+                // Add click event listeners (same as before)
+                const wordElements = storyContainer.querySelectorAll('.word');
+                wordElements.forEach(wordElement => {
+                    wordElement.addEventListener('click', function(e) {
+                        let wordKey = this.dataset.word; // Key used for dictionary lookup
+                        const displayedWord = this.textContent.trim(); // Word shown to user
+                        let translation = storyVocabulary[wordKey];
+
+                        // Additional check: If key lookup fails, try the displayed word directly
+                        if (!translation && storyVocabulary[displayedWord]) {
+                             translation = storyVocabulary[displayedWord];
+                             wordKey = displayedWord; // Update key if found this way
+                        }
+                         // Handle common prefixes if direct lookup failed
+                         if (!translation && displayedWord.length > 1) {
+                              const firstChar = displayedWord.substring(0, 1);
+                              const restOfWord = displayedWord.substring(1);
+                              if ((firstChar === 'و' || firstChar === 'ف' || firstChar === 'ب') && storyVocabulary[restOfWord]) {
+                                  translation = storyVocabulary[restOfWord];
+                                  wordKey = restOfWord;
+                              }
+                         }
+
+
+                        storyContainer.querySelectorAll('.word.active').forEach(w => w.classList.remove('active'));
+                        this.classList.add('active');
+
+                        if (translation) {
+                            // Display original text from span + translation
+                            translationPopup.textContent = displayedWord + ': ' + translation;
+                            translationPopup.style.display = 'block';
+                            const rect = this.getBoundingClientRect();
+                            let topPos = rect.bottom + window.scrollY + 5;
+                            let leftPos = rect.left + window.scrollX;
+                            // Basic boundary check
+                            const popupWidth = translationPopup.offsetWidth;
+                            if (leftPos + popupWidth > window.innerWidth - 10) {
+                                leftPos = window.innerWidth - popupWidth - 10;
+                            }
+                            if (leftPos < 10) {
+                                leftPos = 10;
+                            }
+                            // Adjust if popup goes below viewport fold
+                            const popupHeight = translationPopup.offsetHeight;
+                             if (topPos + popupHeight > window.innerHeight + window.scrollY - 10) {
+                                 topPos = rect.top + window.scrollY - popupHeight - 5; // Position above word
+                             }
+
+                            translationPopup.style.left = leftPos + 'px';
+                            translationPopup.style.top = topPos + 'px';
+                        } else {
+                            console.warn("Translation not found for key/word:", wordKey, displayedWord); // Debugging
+                            translationPopup.style.display = 'none';
+                        }
+                        e.stopPropagation(); // Prevent click bubbling to document listener immediately
+                    });
+                });
+
+                // Close popup when clicking elsewhere
+                document.addEventListener('click', function(e) {
+                    if (!e.target.classList.contains('word') && translationPopup.style.display === 'block') {
+                        translationPopup.style.display = 'none';
+                        storyContainer.querySelectorAll('.word.active').forEach(w => w.classList.remove('active'));
+                    }
+                });
+            } else {
+                 console.error("Story container or translation popup not found.");
+            }
+            // === END: Story Initialization ===
+
+        });
+    </script>
+
+</body>
+</html>
