@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alevism</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+        
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08; 
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+        
+        /* Original heading styles */
+        h1 {
+            font-size: 34px; 
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+        
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+        
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+        
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+        
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2; 
+        }
+        
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+        
+        .audio-icon {
+            margin-right: 8px;
+        }
+        
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2; 
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2; 
+             white-space: pre-wrap; /* Preserve line breaks from input */
+         }
+        
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2; 
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+        
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+        
+        .pdf-icon {
+            margin-right: 8px;
+        }
+        
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2; 
+        }
+        
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+        
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+        
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+        
+        .sources a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2; 
+        }
+        
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+        
+        .back-icon {
+            margin-right: 8px;
+        }
+        
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2; 
+        }
+        
+        .disclaimer p {
+            margin: 0;
+            font-size: 20px; /* Original font size */
+            font-weight: 500;
+        }
+        
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px; 
+            color: #8b7355;
+             position: relative; z-index: 2; 
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+         }
+        
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+            /* Note: Original did not have responsive h2 */
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+            /* No padding in original wrapper style */
+        }
+        
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+            /* filter was applied to 'audio' tag globally */
+        }
+        
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+            /* margin-left was not present in original */
+            /* transition was not present in original */
+            /* line-height was not present in original */
+            /* padding was not present in original */
+        }
+         /* No hover style in original */
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Alevism</h1>
+        
+        <div class="audio-player"> 
+            <div class="player-wrapper"> 
+                <audio id="audioPlayer" controls> 
+                    <source src="../audio/Understanding Alevism_ Beliefs, History, and Practices.mp3" type="audio/mpeg"> 
+                    Your browser does not support the audio element.
+                </audio>
+                
+                <button id="rewindBtn" class="rewind-button"> 
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Understanding Alevism_ Beliefs, History, and Practices.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+        
+        <div class="description">
+            <h2>Description</h2>
+            <p>The provided text offers a comprehensive overview of Alevism, exploring its beliefs and doctrines, including the central concepts of Haqq-Muhammad-Ali and the Dört Kapı Kırk Makam. It traces the historical trajectory of Alevism from its medieval Anatolian roots, through the Babai Revolt and its association with the Kızılbaş and Safavids, to the challenges and revival it experienced in the Ottoman and modern Turkish eras. The sources also detail key figures such as Ali, Haji Bektash Veli, and poet-saints like Pir Sultan Abdal and Hatayi, alongside rituals, worship, and community life, focusing on the Cem ceremony, the Twelve Services, the Semah dance, fasting practices, and the evolution of the Cemevi. Finally, the text examines the social and religious organization of Alevism, explaining the Ocak system, the role of the Dede and its transformation, and issues surrounding Alevi identity and rights in contemporary Turkey.</p>
+        </div>
+        
+        <a href="../../landing_pages/kurdish_research.html" class="back-button"> 
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+        
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Alevi Beliefs, History, and Status_.pdf" class="download-btn" download> 
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline> </svg>
+                Download PDF
+            </a>
+        </div>
+        
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+                        <li>Alevism - Wikipedia, accessed April 25, 2025, <a href="https://en.wikipedia.org/wiki/Alevism" target="_blank">https://en.wikipedia.org/wiki/Alevism</a></li>
+                        <li>Alevis | Oxford Research Encyclopedia of Religion, accessed April 25, 2025, <a href="https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?d=%2F10.1093%2Facrefore%2F9780199340378.001.0001%2Facrefore-9780199340378-e-101&p=emailAG39%2FoB3PKlJ2" target="_blank">https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?d=%2F10.1093%2Facrefore%2F9780199340378.001.0001%2Facrefore-9780199340378-e-101&p=emailAG39%2FoB3PKlJ2</a></li>
+                        <li>Alevis | Oxford Research Encyclopedia of Religion, accessed April 25, 2025, <a href="https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?p=emailAmi/niBttqdvk&d=/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101" target="_blank">https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?p=emailAmi/niBttqdvk&d=/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101</a></li>
+                        <li>Alevis | Oxford Research Encyclopedia of Religion, accessed April 25, 2025, <a href="https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?p=emailA/B4VtGlBrHKE&d=/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101" target="_blank">https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?p=emailA/B4VtGlBrHKE&d=/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101</a></li>
+                        <li>Islamic Studies - Alawis - Oxford Bibliographies, accessed April 25, 2025, <a href="https://www.oxfordbibliographies.com/abstract/document/obo-9780195390155/obo-9780195390155-0175.xml" target="_blank">https://www.oxfordbibliographies.com/abstract/document/obo-9780195390155/obo-9780195390155-0175.xml</a></li>
+                        <li>Alevis | Oxford Research Encyclopedia of Religion, accessed April 25, 2025, <a href="https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?d=%2F10.1093%2Facrefore%2F9780199340378.001.0001%2Facrefore-9780199340378-e-101&p=emailAKUtX5hiPuLKU" target="_blank">https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?d=%2F10.1093%2Facrefore%2F9780199340378.001.0001%2Facrefore-9780199340378-e-101&p=emailAKUtX5hiPuLKU</a></li>
+                        <li>Qizilbash - Wikipedia, accessed April 25, 2025, <a href="https://en.wikipedia.org/wiki/Qizilbash" target="_blank">https://en.wikipedia.org/wiki/Qizilbash</a></li>
+                        <li>What is Alevism and what we learn from the Alevis ⋆ - Abrahamic Study Hall, accessed April 25, 2025, <a href="https://www.abrahamicstudyhall.org/2021/06/12/what-is-alevism-and-what-we-learn-from-the-alevis/" target="_blank">https://www.abrahamicstudyhall.org/2021/06/12/what-is-alevism-and-what-we-learn-from-the-alevis/</a></li>
+                        <li>What Is Alevism? - Pir Sultan Abdal Cultural Associates USA, accessed April 25, 2025, <a href="https://www.pirsultanusa.org/what-is-alevism/" target="_blank">https://www.pirsultanusa.org/what-is-alevism/</a></li>
+                        <li>Alevilik Deyince Ne Anlıyoruz? - HUSEYİN DEDEKARGINOĞLU - perspektif, accessed April 25, 2025, <a href="https://www.perspektif.online/alevilik-deyince-ne-anliyoruz/" target="_blank">https://www.perspektif.online/alevilik-deyince-ne-anliyoruz/</a></li>
+                        <li>Tanıtmalar Reviews / Vorstellung, accessed April 25, 2025, <a href="https://abked.de/index.php/abked/article/download/366/292/985" target="_blank">https://abked.de/index.php/abked/article/download/366/292/985</a></li>
+                        <li>What are Alevis? : r/AskMiddleEast - Reddit, accessed April 25, 2025, <a href="https://www.reddit.com/r/AskMiddleEast/comments/1hv5f0z/what_are_alevis/" target="_blank">https://www.reddit.com/r/AskMiddleEast/comments/1hv5f0z/what_are_alevis/</a></li>
+                        <li>Islam: Sunnis and Shiites - UM Carey Law, accessed April 25, 2025, <a href="https://www2.law.umaryland.edu/marshall/crsreports/crsdocuments/RS2174501232004.pdf" target="_blank">https://www2.law.umaryland.edu/marshall/crsreports/crsdocuments/RS2174501232004.pdf</a></li>
+                        <li>ELI5: Difference between Alevi, Alewite, and Shia Islam? - Reddit, accessed April 25, 2025, <a href="https://www.reddit.com/r/islam/comments/6m9isr/eli5_difference_between_alevi_alewite_and_shia/" target="_blank">https://www.reddit.com/r/islam/comments/6m9isr/eli5_difference_between_alevi_alewite_and_shia/</a></li>
+                        <li>Alevism and Secularism in Turkey Gulce Tilbe Esikara, accessed April 25, 2025, <a href="https://history.hanover.edu/hhr/23/hhr2023esikara.pdf" target="_blank">https://history.hanover.edu/hhr/23/hhr2023esikara.pdf</a></li>
+                        <li>Alevi history - Wikipedia, accessed April 25, 2025, <a href="https://en.wikipedia.org/wiki/Alevi_history" target="_blank">https://en.wikipedia.org/wiki/Alevi_history</a></li>
+                        <li>Religion or culture? Concepts of identity in the Alevi diaspora, accessed April 25, 2025, <a href="https://epub.ub.uni-muenchen.de/29324/1/Martin_Soekefeld_Religion_or_culture.pdf" target="_blank">https://epub.ub.uni-muenchen.de/29324/1/Martin_Soekefeld_Religion_or_culture.pdf</a></li>
+                        <li>Universal Faith or Islamic Denomination: On the Struggle to Define Alevism | Journal of Church and State | Oxford Academic, accessed April 25, 2025, <a href="https://academic.oup.com/jcs/article/63/1/47/5827850?rss=1" target="_blank">https://academic.oup.com/jcs/article/63/1/47/5827850?rss=1</a></li>
+                        <li>Alevi Identity: Cultural, Religious and Social Perspectives - WordPress.com, accessed April 25, 2025, <a href="https://tempsyndromelive.files.wordpress.com/2019/11/ad3af-tord-olsson-alevi-identity-cultural-religious-and-social-perspectives.pdf" target="_blank">https://tempsyndromelive.files.wordpress.com/2019/11/ad3af-tord-olsson-alevi-identity-cultural-religious-and-social-perspectives.pdf</a></li>
+                        <li>The Nation Contested: Alevi Identity as a Response to Turkish Nationalism - Columbia Academic Commons, accessed April 25, 2025, <a href="https://academiccommons.columbia.edu/doi/10.7916/D8HQ49VC/download" target="_blank">https://academiccommons.columbia.edu/doi/10.7916/D8HQ49VC/download</a></li>
+                        <li>The latent politicization of Alevism: the affiliation between Alevis and leftist politics (1960–1980) - Taylor and Francis, accessed April 25, 2025, <a href="https://www.informahealthcare.com/doi/epub/10.1080/00263206.2019.1591276?needAccess=true" target="_blank">https://www.informahealthcare.com/doi/epub/10.1080/00263206.2019.1591276?needAccess=true</a></li>
+                        <li>Alevi politics in contemporary Turkey, accessed April 25, 2025, <a href="https://repository.bilkent.edu.tr/bitstreams/56d61c7e-aae4-49f9-b621-5eb463c8c45c/download" target="_blank">https://repository.bilkent.edu.tr/bitstreams/56d61c7e-aae4-49f9-b621-5eb463c8c45c/download</a></li>
+                        <li>Turkish secularism and Islam: A difficult dialogue with the Alevis - YolPedia, accessed April 25, 2025, <a href="https://yolpedia.eu/wp-content/uploads/2021/12/Turkish_secularism_and_Islam_A_difficult.pdf" target="_blank">https://yolpedia.eu/wp-content/uploads/2021/12/Turkish_secularism_and_Islam_A_difficult.pdf</a></li>
+                        <li>Cemevi - Wikipedia, accessed April 25, 2025, <a href="https://en.wikipedia.org/wiki/Cemevi" target="_blank">https://en.wikipedia.org/wiki/Cemevi</a></li>
+                        <li>2022 Report on International Religious Freedom: Turkey (Türkiye) - State Department, accessed April 25, 2025, <a href="https://www.state.gov/reports/2022-report-on-international-religious-freedom/turkey/" target="_blank">https://www.state.gov/reports/2022-report-on-international-religious-freedom/turkey/</a></li>
+                        <li>Full article: Challenging the boundaries of citizenship: Alevi citizens' pursuit of equal citizenship in Turkey - Taylor & Francis Online, accessed April 25, 2025, <a href="https://www.tandfonline.com/doi/full/10.1080/14683857.2024.2403161?af=R" target="_blank">https://www.tandfonline.com/doi/full/10.1080/14683857.2024.2403161?af=R</a></li>
+                        <li>Entangled Identities: Ritual Performance of Alevi in an Urban Area – CASCA, accessed April 25, 2025, <a href="https://cas-sca.ca/en/entangled-identities-ritual-performance-of-alevi-in-an-urban-area/" target="_blank">https://cas-sca.ca/en/entangled-identities-ritual-performance-of-alevi-in-an-urban-area/</a></li>
+                        <li>What are Alevis and their beliefs? : r/Turkey - Reddit, accessed April 25, 2025, <a href="https://www.reddit.com/r/Turkey/comments/104tcm0/what_are_alevis_and_their_beliefs/" target="_blank">https://www.reddit.com/r/Turkey/comments/104tcm0/what_are_alevis_and_their_beliefs/</a></li>
+                        <li>AFA | Alevi Federation of Australia | Alevilik | Ögretisi, accessed April 25, 2025, <a href="https://www.alevi.org.au/alevilik/ogreti.asp" target="_blank">https://www.alevi.org.au/alevilik/ogreti.asp</a></li>
+                        <li>Alevism - Britanya Alevi Federasyonu, accessed April 25, 2025, <a href="http://www.alevinet.org/RP.aspx?pid=AkedemikCalismalar_en-GB&aid=97847432_92832609" target="_blank">http://www.alevinet.org/RP.aspx?pid=AkedemikCalismalar_en-GB&aid=97847432_92832609</a></li>
+                        <li>The Semah: ritual movement for International Dance Day - Pajama Press, accessed April 25, 2025, <a href="https://pajamapress.ca/2016/04/29/the_semah/" target="_blank">https://pajamapress.ca/2016/04/29/the_semah/</a></li>
+                        <li>Who Are the Alevis in Turkey? - Britannica, accessed April 25, 2025, <a href="https://www.britannica.com/story/who-are-the-alevis-in-turkey" target="_blank">https://www.britannica.com/story/who-are-the-alevis-in-turkey</a></li>
+                        <li>I am an Anatolian Alevi. AMA. : r/religion - Reddit, accessed April 25, 2025, <a href="https://www.reddit.com/r/religion/comments/urgwi4/i_am_an_anatolian_alevi_ama/" target="_blank">https://www.reddit.com/r/religion/comments/urgwi4/i_am_an_anatolian_alevi_ama/</a></li>
+                        <li>İnanç Esasları - Alevilik-Bektaşilik Araştırmaları Sitesi, accessed April 25, 2025, <a href="https://www.alevibektasi.eu/index.php?option=com_content&view=article&id=78&Itemid=63" target="_blank">https://www.alevibektasi.eu/index.php?option=com_content&view=article&id=78&Itemid=63</a></li>
+                        <li>Alevi | Encyclopedia.com, accessed April 25, 2025, <a href="https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/alevi" target="_blank">https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/alevi</a></li>
+                        <li>Tekirdağ Tur, Yurtiçi Yurtdışı Turlar. : Incoming : Attractions : Culture : Semah, Alevi-Bektaşi Ritual - Tatil yeriniz, accessed April 25, 2025, <a href="https://www.tatilyeriniz.com/en/incoming/attractions/culture/semah-alevi-bektasi-ritual/" target="_blank">https://www.tatilyeriniz.com/en/incoming/attractions/culture/semah-alevi-bektasi-ritual/</a></li>
+                        <li>(PDF) Cem evi – rewriting tradition - ResearchGate, accessed April 25, 2025, <a href="https://www.researchgate.net/publication/337722533_Cem_evi_-_rewriting_tradition" target="_blank">https://www.researchgate.net/publication/337722533_Cem_evi_-_rewriting_tradition</a></li>
+                        <li>Alevis | Oxford Research Encyclopedia of Religion, accessed April 25, 2025, <a href="https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?d=%2F10.1093%2Facrefore%2F9780199340378.001.0001%2Facrefore-9780199340378-e-101&p=emailAUM%2Frf14uPnmE" target="_blank">https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?d=%2F10.1093%2Facrefore%2F9780199340378.001.0001%2Facrefore-9780199340378-e-101&p=emailAUM%2Frf14uPnmE</a></li>
+                        <li>CEMEVİS IN ISTANBUL | History of Istanbul, accessed April 25, 2025, <a href="https://istanbultarihi.ist/543-cemevis-in-istanbul" target="_blank">https://istanbultarihi.ist/543-cemevis-in-istanbul</a></li>
+                        <li>Alevitentum - Religionen Entdecken, accessed April 25, 2025, <a href="https://www.religionen-entdecken.de/lexikon/a/alevitentum" target="_blank">https://www.religionen-entdecken.de/lexikon/a/alevitentum</a></li>
+                        <li>'4 Kapı 40 Makam'ın anlamı nedir? - Muharrem Sohbetleri (4 Eylül 2019) - YouTube, accessed April 25, 2025, <a href="https://www.youtube.com/watch?v=ZyXVLZiv_qQ" target="_blank">https://www.youtube.com/watch?v=ZyXVLZiv_qQ</a></li>
+                        <li>Haqq–Muhammad–Ali - Wikipedia, accessed April 25, 2025, <a href="https://en.wikipedia.org/wiki/Haqq%E2%80%93Muhammad%E2%80%93Ali" target="_blank">https://en.wikipedia.org/wiki/Haqq%E2%80%93Muhammad%E2%80%93Ali</a></li>
+                        <li>Alevilikte inanç - Vikipedi, accessed April 25, 2025, <a href="https://tr.wikipedia.org/wiki/Alevilikte_inan%C3%A7" target="_blank">https://tr.wikipedia.org/wiki/Alevilikte_inan%C3%A7</a></li>
+                        <li>I am a born and raised Alevi Muslim. Ask me anything : r/religion, accessed April 25, 2025, <a href="https://www.reddit.com/r/religion/comments/11f2p3l/i_am_a_born_and_raised_alevi_muslim_ask_me/" target="_blank">https://www.reddit.com/r/religion/comments/11f2p3l/i_am_a_born_and_raised_alevi_muslim_ask_me/</a></li>
+                        <li>Florentina Badalanova Geller: Islamic Mystical Poetry and Alevi, accessed April 25, 2025, <a href="https://www.mprl-series.mpg.de/media/studies/10/9/Studies10Chap6.pdf" target="_blank">https://www.mprl-series.mpg.de/media/studies/10/9/Studies10Chap6.pdf</a></li>
+                        <li>Differences & Similarities Between Anatolian Alevis ... - YolPedia, accessed April 25, 2025, <a href="https://yolpedia.eu/wp-content/uploads/2024/12/Differences_and_Similarities_Between_An-1.pdf" target="_blank">https://yolpedia.eu/wp-content/uploads/2024/12/Differences_and_Similarities_Between_An-1.pdf</a></li>
+                        <li>thoughts on Alevism ? : r/progressive_islam - Reddit, accessed April 25, 2025, <a href="https://www.reddit.com/r/progressive_islam/comments/1dzahpe/thoughts_on_alevism/" target="_blank">https://www.reddit.com/r/progressive_islam/comments/1dzahpe/thoughts_on_alevism/</a></li>
+                        <li>Dört Kapı Kırk Makam - Vikipedi, accessed April 25, 2025, <a href="https://tr.wikipedia.org/wiki/D%C3%B6rt_Kap%C4%B1_K%C4%B1rk_Makam" target="_blank">https://tr.wikipedia.org/wiki/D%C3%B6rt_Kap%C4%B1_K%C4%B1rk_Makam</a></li>
+                        <li>Dede (religious figure) - Wikipedia, accessed April 25, 2025, <a href="https://en.wikipedia.org/wiki/Dede_(religious_figure)" target="_blank">https://en.wikipedia.org/wiki/Dede_(religious_figure)</a></li>
+                        <li>Ist die Alevitische Gemeinde Deutschland e.V. eine Religionsgemeinschaft? Religionswissenschaftliches Gutachten erstattet dem Mi - YolPedia, accessed April 25, 2025, <a href="https://yolpedia.eu/wp-content/uploads/2019/12/Ist-die-Alevitische-Gemeinde-Deutschland-e.V.-eine.pdf" target="_blank">https://yolpedia.eu/wp-content/uploads/2019/12/Ist-die-Alevitische-Gemeinde-Deutschland-e.V.-eine.pdf</a></li>
+                        <li>Historicising Alevism: The Evolution of Abdal and Bektashi Doctrine - YolPedia, accessed April 25, 2025, <a href="https://yolpedia.eu/wp-content/uploads/2024/09/Historicising_Alevism_The_Evolution_of_A.pdf" target="_blank">https://yolpedia.eu/wp-content/uploads/2024/09/Historicising_Alevism_The_Evolution_of_A.pdf</a></li>
+                        <li>Untitled, accessed April 25, 2025, <a href="https://repository.rice.edu/server/api/core/bitstreams/eb7e22eb-5eac-49aa-a84d-80cbb2c5f9d9/content" target="_blank">https://repository.rice.edu/server/api/core/bitstreams/eb7e22eb-5eac-49aa-a84d-80cbb2c5f9d9/content</a></li>
+                        <li>England Alevi Cultural Centre and Cemevi - ALEVISM - BEKTASHISM - YolPedia, accessed April 25, 2025, <a href="https://yolpedia.eu/wp-content/uploads/2024/10/Alevism_Bektashism_A_Brief_Introduction-1-1.pdf" target="_blank">https://yolpedia.eu/wp-content/uploads/2024/10/Alevism_Bektashism_A_Brief_Introduction-1-1.pdf</a></li>
+                        <li>Dört Kapı Kırk Makam - ALEVİ KÜLTÜR DERNEKLERİ BURSA ŞUBESİ, accessed April 25, 2025, <a href="https://www.alevikulturdernekleribursa.com/arsivler/4252" target="_blank">https://www.alevikulturdernekleribursa.com/arsivler/4252</a></li>
+                        <li>citeseerx.ist.psu.edu, accessed April 25, 2025, <a href="https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=b26e587fb7cfe9abd2ddf440a424e10e3a51f1a6" target="_blank">https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=b26e587fb7cfe9abd2ddf440a424e10e3a51f1a6</a></li>
+                        <li>Folklor/Edebiyat » Makale » ŞAH İSMAİL HATAİ VE PİR SULTAN ABDAL DEYİŞ VE NEFESLERİNDEN ALEVİ-BEKTAŞİ KOZMOGONİSİ VE KIRKLAR MECLİSİ'NE - DergiPark, accessed April 25, 2025, <a href="https://dergipark.org.tr/en/pub/fe/issue/26054/274429" target="_blank">https://dergipark.org.tr/en/pub/fe/issue/26054/274429</a></li>
+                        <li>Cem (Alevism) - Wikipedia, accessed April 25, 2025, <a href="https://en.wikipedia.org/wiki/Cem_(Alevism)" target="_blank">https://en.wikipedia.org/wiki/Cem_(Alevism)</a></li>
+                        <li>Cultural Heritage of Kopuz (Lute) as a Folkloric Musical Instrument from the Book of Dede Korkut to Contemporary Times, accessed April 25, 2025, <a href="https://www.agathos-international-review.com/issues/2022/24/Mohammadi.pdf" target="_blank">https://www.agathos-international-review.com/issues/2022/24/Mohammadi.pdf</a></li>
+                        <li>Ashik - Wikipedia, accessed April 25, 2025, <a href="https://en.wikipedia.org/wiki/Ashik" target="_blank">https://en.wikipedia.org/wiki/Ashik</a></li>
+                        <li>The Soundtrack of Social Movements among Kurdish Alevi Immigrant from Turkey in Germany, accessed April 25, 2025, <a href="https://www.ejecs.org/index.php/JECS/article/download/253/pdf/1208" target="_blank">https://www.ejecs.org/index.php/JECS/article/download/253/pdf/1208</a></li>
+                        <li>Music of Turkey - Wikipedia, accessed April 25, 2025, <a href="https://en.wikipedia.org/wiki/Music_of_Turkey" target="_blank">https://en.wikipedia.org/wiki/Music_of_Turkey</a></li>
+                        <li>The Saz as a Mode of Understanding Alevism | Voices: A World Forum for Music Therapy, accessed April 25, 2025, <a href="https://voices.no/index.php/voices/article/view/2337" target="_blank">https://voices.no/index.php/voices/article/view/2337</a></li>
+                        <li>Alevilik - Vikipedi, accessed April 25, 2025, <a href="https://tr.wikipedia.org/wiki/Alevilik" target="_blank">https://tr.wikipedia.org/wiki/Alevilik</a></li>
+                        <li>Four Doors - Wikipedia, accessed April 25, 2025, <a href="https://en.wikipedia.org/wiki/Four_Doors" target="_blank">https://en.wikipedia.org/wiki/Four_Doors</a></li>
+                        <li>(PDF) Path to the Universal Self in Haji Baktash Walî: Four Doors ..., accessed April 25, 2025, <a href="https://www.researchgate.net/publication/309381442_Path_to_the_Universal_Self_in_Haji_Baktash_Wali_Four_Doors_-_Forty_Stations" target="_blank">https://www.researchgate.net/publication/309381442_Path_to_the_Universal_Self_in_Haji_Baktash_Wali_Four_Doors_-_Forty_Stations</a></li>
+                        <li>Eski Türk İnanç Sisteminde Kutsal Dört Elementin ve Dört Yönün Mitolojik Bağlantıları - DergiPark, accessed April 25, 2025, <a href="https://dergipark.org.tr/en/download/article-file/4041411" target="_blank">https://dergipark.org.tr/en/download/article-file/4041411</a></li>
+                        <li>Path to the Universal Self in Haji Baktash Walî: Four Doors - Forty Stations - Spiritual Psychology and Counseling, accessed April 25, 2025, <a href="https://spiritualpc.net/wp-content/uploads/2016/10/2016-0014.pdf" target="_blank">https://spiritualpc.net/wp-content/uploads/2016/10/2016-0014.pdf</a></li>
+                        <li>Dört Kapı Kırk Makam Belgeseli Resmi Web Sayfası, accessed April 25, 2025, <a href="http://dortkapikirkmakam.com/" target="_blank">http://dortkapikirkmakam.com/</a></li>
+                        <li>Semah, Alevi-Bektaşi ritual - ichLinks, accessed April 25, 2025, <a href="https://www.ichlinks.com/archive/elements/elementsV.do?nation=TR&page=9&elementsUid=13829896119913900142&mode=list&orderCd=B" target="_blank">https://www.ichlinks.com/archive/elements/elementsV.do?nation=TR&page=9&elementsUid=13829896119913900142&mode=list&orderCd=B</a></li>
+                        <li>AleviNet | Britanya Alevi Federasyonu | Cemevi, accessed April 25, 2025, <a href="http://www.alevinet.org/SAP.aspx?pid=Kisaca_en-GB" target="_blank">http://www.alevinet.org/SAP.aspx?pid=Kisaca_en-GB</a></li>
+                        <li>Between Dersim and Dâlahû: Reflections on Kurdish Alevism and the Ahl-i Haqq religion - YolPedia, accessed April 25, 2025, <a href="https://yolpedia.eu/wp-content/uploads/2019/11/Bruinessen_Dersim_and_Dalahu_2.pdf" target="_blank">https://yolpedia.eu/wp-content/uploads/2019/11/Bruinessen_Dersim_and_Dalahu_2.pdf</a></li>
+                        <li>Three Concepts That Are Confused With Each Other In Academia: Alevism, Bektashism, and Shiism - ResearchGate, accessed April 25, 2025, <a href="https://www.researchgate.net/publication/372608797_Three_Concepts_That_Are_Confused_With_Each_Other_In_Academia_Alevism_Bektashism_and_Shiism" target="_blank">https://www.researchgate.net/publication/372608797_Three_Concepts_That_Are_Confused_With_Each_Other_In_Academia_Alevism_Bektashism_and_Shiism</a></li>
+                        <li>Bektashi Sufi Order - Islamic Studies - Oxford Bibliographies, accessed April 25, 2025, <a href="https://www.oxfordbibliographies.com/display/document/obo-9780195390155/obo-9780195390155-0304.xml" target="_blank">https://www.oxfordbibliographies.com/display/document/obo-9780195390155/obo-9780195390155-0304.xml</a></li>
+                        <li>Alevilik nedir - Kanada Alevi Kültür Merkezi, accessed April 25, 2025, <a href="https://kanadaalevi.com/alevilik-nedir/" target="_blank">https://kanadaalevi.com/alevilik-nedir/</a></li>
+                        <li>A Survey of the Roots and History of Kurdish Alevism: What Are the Divergences and Convergences between Kurdish Alevi Groups in Turkey? in - Brill, accessed April 25, 2025, <a href="https://brill.com/abstract/book/9789004700369/BP000008.xml" target="_blank">https://brill.com/abstract/book/9789004700369/BP000008.xml</a></li>
+                        <li>Alevism: Origins? : r/Turkey - Reddit, accessed April 25, 2025, <a href="https://www.reddit.com/r/Turkey/comments/67wuqm/alevism_origins/" target="_blank">https://www.reddit.com/r/Turkey/comments/67wuqm/alevism_origins/</a></li>
+                        <li>The Safavid-Qizilbash Ecumene and the Formation of the Qizilbash-Alevi Community in the Ottoman Empire, c. 1500–c. 1700 | Iranian Studies - Cambridge University Press, accessed April 25, 2025, <a href="https://www.cambridge.org/core/journals/iranian-studies/article/safavidqizilbash-ecumene-and-the-formation-of-the-qizilbashalevi-community-in-the-ottoman-empire-c-1500c-1700/23E2C81B4BAD0DFAAADD54A25EEB5896" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/safavidqizilbash-ecumene-and-the-formation-of-the-qizilbashalevi-community-in-the-ottoman-empire-c-1500c-1700/23E2C81B4BAD0DFAAADD54A25EEB5896</a></li>
+                        <li>Is it true that Anatolian Turkish Alevis sided with Safavid Empire during the Ottoman-Safavid wars? : r/AskMiddleEast - Reddit, accessed April 25, 2025, <a href="https://www.reddit.com/r/AskMiddleEast/comments/1i9yfgf/is_it_true_that_anatolian_turkish_alevis_sided/" target="_blank">https://www.reddit.com/r/AskMiddleEast/comments/1i9yfgf/is_it_true_that_anatolian_turkish_alevis_sided/</a></li>
+                        <li>The Safavid-Qizilbash Ecumene and the Formation of the Qizilbash-Alevi Community in the Ottoman Empire, c. 1500–c. 1700 - Taylor & Francis Online, accessed April 25, 2025, <a href="https://www.tandfonline.com/doi/abs/10.1080/00210862.2019.1646120" target="_blank">https://www.tandfonline.com/doi/abs/10.1080/00210862.2019.1646120</a></li>
+                        <li>PİR SULTAN ABDAL - Dr. Ismail Kaygusuz, accessed April 25, 2025, <a href="http://www.ismailkaygusuz.com/index.php/makalelerim/arastirma-inceleme-makaleleri/284-pir-sultan-abdal" target="_blank">http://www.ismailkaygusuz.com/index.php/makalelerim/arastirma-inceleme-makaleleri/284-pir-sultan-abdal</a></li>
+                        <li>(PDF) ŞAH İSMAİL HATAİ VE pİR SULTAN ABDAL DEYİŞ VE NEFESLERİNDEN ALEVİ-BEKTAŞİ KOZMOGONİSİ VE KIRKLAR MECLİSİ'NE - ResearchGate, accessed April 25, 2025, <a href="https://www.researchgate.net/publication/361813754_SAH_ISMAIL_HATAI_VE_pIR_SULTAN_ABDAL_DEYIS_VE_NEFESLERINDEN_ALEVI-BEKTASI_KOZMOGONISI_VE_KIRKLAR_MECLISI'NE" target="_blank">https://www.researchgate.net/publication/361813754_SAH_ISMAIL_HATAI_VE_pIR_SULTAN_ABDAL_DEYIS_VE_NEFESLERINDEN_ALEVI-BEKTASI_KOZMOGONISI_VE_KIRKLAR_MECLISI'NE</a></li>
+                        <li>KALENDER ÇELEBİ VE ŞAH İSMAİL BULUŞMALARI - Dr. Ismail Kaygusuz, accessed April 25, 2025, <a href="http://www.ismailkaygusuz.com/index.php/makalelerim/arastirma-inceleme-makaleleri/529-kalender-celebi-ve-sah-ismail-bulusmalari" target="_blank">http://www.ismailkaygusuz.com/index.php/makalelerim/arastirma-inceleme-makaleleri/529-kalender-celebi-ve-sah-ismail-bulusmalari</a></li>
+                        <li>EHL-İ HAK ALEVİLERİN TARİHÎ KAYNAKLARINDA ŞAH İSMAİL HATAYİ - YolPedia, accessed April 25, 2025, <a href="https://yolpedia.eu/wp-content/uploads/2025/01/PDF-6-1.pdf" target="_blank">https://yolpedia.eu/wp-content/uploads/2025/01/PDF-6-1.pdf</a></li>
+                        <li>Alevilik Tarihi - Nürnberg Alevi Kültür Merkezi Cemevi, accessed April 25, 2025, <a href="https://www.aleviten-nuernberg.de/alevilik/alevilik-tarihi/?L=1" target="_blank">https://www.aleviten-nuernberg.de/alevilik/alevilik-tarihi/?L=1</a></li>
+                        <li>alevi-bektaşi inancının mitik temellerini - dergi-11 ocak.indd, accessed April 25, 2025, <a href="https://isamveri.org/pdfdrg/D04118/2015_10/2015_10_KUSCAS.pdf" target="_blank">https://isamveri.org/pdfdrg/D04118/2015_10/2015_10_KUSCAS.pdf</a></li>
+                        <li>şah ismail hatayi, pir sultan abdal ve kul himmet'in şiirlerinde islam öncesi inanç motifleri - ACARINDEX, accessed April 25, 2025, <a href="https://www.acarindex.com/turk-kulturu-ve-haci-bektas-veli-arastirma-dergisi/sah-ismail-hatayi-pir-sultan-abdal-ve-kul-himmetin-siirlerinde-islam-oncesi-inanc-motifleri-162204" target="_blank">https://www.acarindex.com/turk-kulturu-ve-haci-bektas-veli-arastirma-dergisi/sah-ismail-hatayi-pir-sultan-abdal-ve-kul-himmetin-siirlerinde-islam-oncesi-inanc-motifleri-162204</a></li>
+                        <li>Subjects of the Sultan, Disciples of the Shah: Formation and Transformation of the Kizilbash/Alevi Communities in Ottoman Anatolia | Center for Middle Eastern Studies - Harvard University, accessed April 25, 2025, <a href="https://cmes.fas.harvard.edu/publications/subjects-sultan-disciples-shah-formation-and-transformation-kizilbashalevi" target="_blank">https://cmes.fas.harvard.edu/publications/subjects-sultan-disciples-shah-formation-and-transformation-kizilbashalevi</a></li>
+                        <li>Resilient Identity: Turkey's Alevis and Their Enduring Struggle for Recognition, accessed April 25, 2025, <a href="https://intpolicydigest.org/the-platform/resilient-identity-turkey-s-alevis-and-their-enduring-struggle-for-recognition/" target="_blank">https://intpolicydigest.org/the-platform/resilient-identity-turkey-s-alevis-and-their-enduring-struggle-for-recognition/</a></li>
+                        <li>Alevis under Law: The Politics of Religious Freedom in Turkey - Northwestern University, accessed April 25, 2025, <a href="https://faculty.wcas.northwestern.edu/esh291/Elizabeth_Shakman_Hurd/publications_files/Hurd%20-%20Alevis%20under%20Law.pdf" target="_blank">https://faculty.wcas.northwestern.edu/esh291/Elizabeth_Shakman_Hurd/publications_files/Hurd%20-%20Alevis%20under%20Law.pdf</a></li>
+                        <li>Cumhuriyetçi Eğitim Ve Kültür Merkezi Vakfı v. Turkey - HUDOC, accessed April 25, 2025, <a href="https://hudoc.echr.coe.int/eng?i=002-10397" target="_blank">https://hudoc.echr.coe.int/eng?i=002-10397</a></li>
+                        <li>Responses to Information Requests - Immigration and Refugee Board of Canada, accessed April 25, 2025, <a href="https://www.irb-cisr.gc.ca/en/country-information/rir/Pages/index.aspx?doc=457666" target="_blank">https://www.irb-cisr.gc.ca/en/country-information/rir/Pages/index.aspx?doc=457666</a></li>
+                        <li>Responses to Information Requests - Immigration and Refugee Board of Canada, accessed April 25, 2025, <a href="https://www.irb-cisr.gc.ca/en/country-information/rir/Pages/index.aspx?doc=454024" target="_blank">https://www.irb-cisr.gc.ca/en/country-information/rir/Pages/index.aspx?doc=454024</a></li>
+                        <li>(PDF) The Alevi identity and Alevis' Human rights conditions in the Republic of Turkey, accessed April 25, 2025, <a href="https://www.researchgate.net/publication/375921947_The_Alevi_identity_and_Alevis'_Human_rights_conditions_in_the_Republic_of_Turkey" target="_blank">https://www.researchgate.net/publication/375921947_The_Alevi_identity_and_Alevis'_Human_rights_conditions_in_the_Republic_of_Turkey</a></li>
+                        <li>Kurdish Alevism - Wikipedia, accessed April 25, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_Alevism" target="_blank">https://en.wikipedia.org/wiki/Kurdish_Alevism</a></li>
+                        <li>MASTERARBEIT “Religiöse, ethnische, und politische Identität der Aleviten in Österreich” - PHAIDRA - Universität Wien, accessed April 25, 2025, <a href="https://phaidra.univie.ac.at/open/o:1320393" target="_blank">https://phaidra.univie.ac.at/open/o:1320393</a></li>
+                        <li>Alevi Religious Ceremony, Architecture, and Practice - Ottoman History Podcast, accessed April 25, 2025, <a href="https://www.ottomanhistorypodcast.com/2017/02/alevi-architecture.html" target="_blank">https://www.ottomanhistorypodcast.com/2017/02/alevi-architecture.html</a></li>
+                        <li>The Transformation of the Role of Dedes in Modern Times - YolPedia, accessed April 25, 2025, <a href="https://yolpedia.eu/wp-content/uploads/2024/11/abkedABKED_Bolum_1-2-1-1.pdf" target="_blank">https://yolpedia.eu/wp-content/uploads/2024/11/abkedABKED_Bolum_1-2-1-1.pdf</a></li>
+                        <li>Kizilbash Alevi Dedes - Alevilik-Bektaşilik Araştırmaları Sitesi, accessed April 25, 2025, <a href="https://www.alevibektasi.eu/index.php?option=com_content&view=article&id=688:kizilbash-alevi-dedes&catid=46:aratrmalar-ingilizce&Itemid=69" target="_blank">https://www.alevibektasi.eu/index.php?option=com_content&view=article&id=688:kizilbash-alevi-dedes&catid=46:aratrmalar-ingilizce&Itemid=69</a></li>
+                        <li>An Alevi Tide Headed for Turkey's Parliament | The Washington Institute, accessed April 25, 2025, <a href="https://www.washingtoninstitute.org/policy-analysis/alevi-tide-headed-turkeys-parliament" target="_blank">https://www.washingtoninstitute.org/policy-analysis/alevi-tide-headed-turkeys-parliament</a></li>
+                        <li>ULUSLARARASI HACI BEKTAŞ VELÎ VE TAKİPÇİLERİ SEMPOZYUMU BİLDİRİLER KİTABI - isamveri.org, accessed April 25, 2025, <a href="https://isamveri.org/pdfdrg/G01532/2020/2020_KELESB.pdf" target="_blank">https://isamveri.org/pdfdrg/G01532/2020/2020_KELESB.pdf</a></li>
+                        <li>Avrupa'da Yaşayan Türkiye Kökenli Gençler Alevilik/Sünnilik Temelinde Kimlik, Aidiyet, Sosyal Hayat, Siyaset, accessed April 25, 2025, <a href="http://podem.org.tr/researches/avrupada-yasayan-turkiye-kokenli-gencler-alevilik-sunnilik-temelinde-kimlik-aidiyet-sosyal-hayat-siyaset/" target="_blank">http://podem.org.tr/researches/avrupada-yasayan-turkiye-kokenli-gencler-alevilik-sunnilik-temelinde-kimlik-aidiyet-sosyal-hayat-siyaset/</a></li>
+                        <li>ALEVİLİK NEDİR? ALEVİ KİMDİR? - YouTube, accessed April 25, 2025, <a href="https://www.youtube.com/watch?v=-M-4o9jByxk" target="_blank">https://www.youtube.com/watch?v=-M-4o9jByxk</a></li>
+                        <li>HER ALEVİYİM DİYENİN BİLMESİ GEREKENLER GENEL HUSUSLAR / 02 Aralık 2022, Cuma - Cem Vakfi | İnanç Hizmetleri Başkanlığı Detay, accessed April 25, 2025, <a href="https://www.cemvakfi.org/pages/inancHizmetleriDetay/167/her-aleviyim-diyenin-bilmesi-gerekenler-genel-hususlar" target="_blank">https://www.cemvakfi.org/pages/inancHizmetleriDetay/167/her-aleviyim-diyenin-bilmesi-gerekenler-genel-hususlar</a></li>
+                        <li>Shia Islam - Wikipedia, accessed April 25, 2025, <a href="https://en.wikipedia.org/wiki/Shia_Islam" target="_blank">https://en.wikipedia.org/wiki/Shia_Islam</a></li>
+                        <li>Muharrem Orucu Nedir? Nasıl Tutulur? - Ramazan - Kardeş Eli Derneği, accessed April 25, 2025, <a href="https://www.kardeselidernegi.org.tr/tr/blog/ramazan-faydali-bilgiler/muharrem-orucu-nedir-nasil-tutulur" target="_blank">https://www.kardeselidernegi.org.tr/tr/blog/ramazan-faydali-bilgiler/muharrem-orucu-nedir-nasil-tutulur</a></li>
+                        <li>Sofça Örnekleminde Kalburcu Şeyhi Pîr Ahmed Efendi ve Alevilik Anlayışı - İnsan ve Toplum Dergisi, accessed April 25, 2025, <a href="https://www.insanvetoplum.org/content/6-sayilar/11-6-1/3-m0177/rifat.turkel.pdf" target="_blank">https://www.insanvetoplum.org/content/6-sayilar/11-6-1/3-m0177/rifat.turkel.pdf</a></li>
+                        <li>Muharrem Matemi/Orucu, Aşure Günü ve Erzincan'da Aşure Etkinliklerii Muharrem Mourning / Fasting, the Day of Ashura and As - DergiPark, accessed April 25, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/1368385" target="_blank">https://dergipark.org.tr/tr/download/article-file/1368385</a></li>
+                        <li>Hünkâr - isamveri.org, accessed April 25, 2025, <a href="https://isamveri.org/pdfdrg/D04052/2014_1/2014_1_DEDEKARGINOGLUH.pdf" target="_blank">https://isamveri.org/pdfdrg/D04052/2014_1/2014_1_DEDEKARGINOGLUH.pdf</a></li>
+                        <li>Alevi dedesi Veysel Kara, muharrem orucunu anlattı: Yalan söylemek orucu bozar, canlı hücre bulunan bir şeyi yemeyiz | Independent Türkçe, accessed April 25, 2025, <a href="https://www.indyturk.com/node/66991/ya%C5%9Fam/alevi-dedesi-veysel-kara-muharrem-orucunu-anlatt%C4%B1-yalan-s%C3%B6ylemek-orucu-bozar-canl%C4%B1" target="_blank">https://www.indyturk.com/node/66991/ya%C5%9Fam/alevi-dedesi-veysel-kara-muharrem-orucunu-anlatt%C4%B1-yalan-s%C3%B6ylemek-orucu-bozar-canl%C4%B1</a></li>
+                        <li>The Ritual that Shapes Everyday Life and Belief World of Alevis: Cem, accessed April 25, 2025, <a href="https://abked.de/index.php/abked/article/view/415" target="_blank">https://abked.de/index.php/abked/article/view/415</a></li>
+                        <li>The Transmission of Alevi Ritualistic Practices in Austria as the Religious Other's Society* SUZUKI Manami**, accessed April 25, 2025, <a href="https://repository.kulib.kyoto-u.ac.jp/dspace/bitstream/2433/282870/1/I.A.S_016_045.pdf" target="_blank">https://repository.kulib.kyoto-u.ac.jp/dspace/bitstream/2433/282870/1/I.A.S_016_045.pdf</a></li>
+                        <li>Semah, Alevi-Bektaşi ritual - intangible heritage - Culture Sector - UNESCO, accessed April 25, 2025, <a href="https://www.unesco.org/en/intangible-cultural-heritage/semah-alevi-bektasi-ritual" target="_blank">https://www.unesco.org/en/intangible-cultural-heritage/semah-alevi-bektasi-ritual</a></li>
+                        <li>Funeral Dance Traditions in Different Cultures - More Than Dancers, accessed April 25, 2025, <a href="https://www.morethandancers.com/posts/funeral-dance-traditions-in-different-cultures" target="_blank">https://www.morethandancers.com/posts/funeral-dance-traditions-in-different-cultures</a></li>
+                        <li>Küştdepdi - Turkmen national spiritual, ritual dance. : r/Tiele - Reddit, accessed April 25, 2025, <a href="https://www.reddit.com/r/Tiele/comments/18la0hq/k%C3%BC%C5%9Ftdepdi_turkmen_national_spiritual_ritual_dance/" target="_blank">https://www.reddit.com/r/Tiele/comments/18la0hq/k%C3%BC%C5%9Ftdepdi_turkmen_national_spiritual_ritual_dance/</a></li>
+                        <li>Şahkulu Sultan Dergahı, accessed April 25, 2025, <a href="https://www.sahkulu.com/?pnum=37&pt=H%C4%B1z%C4%B1r+Orucu" target="_blank">https://www.sahkulu.com/?pnum=37&pt=H%C4%B1z%C4%B1r+Orucu</a></li>
+                        <li>Turkey (Türkiye) - United States Department of State, accessed April 25, 2025, <a href="https://www.state.gov/reports/2023-report-on-international-religious-freedom/turkey/" target="_blank">https://www.state.gov/reports/2023-report-on-international-religious-freedom/turkey/</a></li>
+                        <li>The concept of ocak and institution in alevism: Meaning and historical background | Request PDF - ResearchGate, accessed April 25, 2025, <a href="https://www.researchgate.net/publication/294677825_The_concept_of_ocak_and_institution_in_alevism_Meaning_and_historical_background" target="_blank">https://www.researchgate.net/publication/294677825_The_concept_of_ocak_and_institution_in_alevism_Meaning_and_historical_background</a></li>
+ 
+            </ul>
+        </div>
+        
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+        
+        <div class="last-updated">
+            <p>This page was created on: April 25, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+    
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+            
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) { 
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10); 
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

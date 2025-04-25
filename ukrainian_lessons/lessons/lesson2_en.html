@@ -20,7 +20,7 @@
             --body-background: #3C80D4; --text-color: #003893; --text-light: #FFFFFF;
         }
         body { font-family: 'Nunito', Arial, sans-serif; line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 15px; background-color: var(--body-background); background-image: url('../ukrainian_background.png'); background-repeat: repeat; background-size: 300px auto; box-sizing: border-box; color: var(--ukrainian-navy); }
-        [lang="uk"], th.ukrainian-header, td:first-child, .ukrainian-text, .matching-item.ukrainian-text, .fill-input.ukrainian-input, .key-btn, .correct-answer-display, .word-box.ukrainian-text, .speaker.ukrainian-speaker, .reading-answer { font-family: 'Nunito', serif; font-size: 1em; line-height: 1.5; font-weight: 500; direction: ltr; text-align: left; }
+        [lang="uk"], th.ukrainian-header, td:first-child, .ukrainian-text, .matching-item.ukrainian-text, .fill-input.ukrainian-input, .key-btn, .correct-answer-display, .word-box.ukrainian-text, .speaker.ukrainian-speaker, .reading-answer, .reading-question-text { font-family: 'Nunito', serif; font-size: 1em; line-height: 1.5; font-weight: 500; direction: ltr; text-align: left; }
         .latin-text, .pronunciation { font-family: 'Nunito', Arial, sans-serif !important; font-size: 0.9em !important; font-style: italic; font-weight: normal !important; direction: ltr !important; color: #555; }
 
         .matching-item.ukrainian-text, .key-btn, .word-box.ukrainian-text { text-align: center; }
@@ -47,12 +47,37 @@
         .reading-answer {
             font-style: italic;
             color: var(--ukrainian-navy);
-            margin-left: 20px;
-            display: block;
+            margin-left: 5px; /* Adjusted margin */
+            display: none; /* Hidden by default */
             margin-top: 5px;
         }
         .reading-questions ol { list-style-type: decimal; padding-left: 20px; }
         .reading-questions li { margin-bottom: 15px; }
+        .reading-question-item { /* Container for question, button, and answer */
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            align-items: baseline; /* Align items nicely */
+            gap: 10px; /* Space between elements */
+        }
+        .reading-question-text { /* Style for the question text */
+            flex-grow: 1; /* Allow question text to take available space */
+        }
+        .check-answer-btn { /* Style for the new button */
+            padding: 5px 10px;
+            background-color: var(--ukrainian-yellow);
+            color: var(--ukrainian-navy);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: background-color 0.2s ease;
+            white-space: nowrap; /* Prevent button text wrapping */
+        }
+        .check-answer-btn:hover {
+            background-color: var(--ukrainian-gold);
+        }
 
 
         /* Feedback Styles */
@@ -155,6 +180,8 @@
             .dialogue-line { display: flex; flex-direction: column; align-items: flex-start; }
             .trans-btn { margin-left: 0; margin-top: 5px; }
             .translation { margin-left: 0; }
+            .reading-question-item { flex-direction: column; align-items: flex-start; gap: 5px; } /* Stack reading question elements */
+            .reading-answer { margin-left: 0; } /* Remove left margin for answer on small screens */
         }
          @media (max-width: 450px) {
              .matching-item { padding: 10px 8px; font-size: 0.9em; } .matching-item.ukrainian-text { font-size: 1.1em; }
@@ -193,18 +220,17 @@
                 <tr>
                     <th class="ukrainian-header">Українська</th>
                     <th>English</th>
-                    <th>Transliteration</th>
-                </tr>
+                    </tr>
             </thead>
             <tbody>
-                <tr><td>я</td><td>I</td><td class="latin-text">ya</td></tr>
-                <tr><td>ти</td><td>you (informal, singular)</td><td class="latin-text">ty</td></tr>
-                <tr><td>він</td><td>he</td><td class="latin-text">vin</td></tr>
-                <tr><td>вона</td><td>she</td><td class="latin-text">vona</td></tr>
-                <tr><td>воно</td><td>it</td><td class="latin-text">vono</td></tr>
-                <tr><td>ми</td><td>we</td><td class="latin-text">my</td></tr>
-                <tr><td>ви</td><td>you (formal singular / plural)</td><td class="latin-text">vy</td></tr>
-                <tr><td>вони</td><td>they</td><td class="latin-text">vony</td></tr>
+                <tr><td>я</td><td>I</td></tr>
+                <tr><td>ти</td><td>you (informal, singular)</td></tr>
+                <tr><td>він</td><td>he</td></tr>
+                <tr><td>вона</td><td>she</td></tr>
+                <tr><td>воно</td><td>it</td></tr>
+                <tr><td>ми</td><td>we</td></tr>
+                <tr><td>ви</td><td>you (formal singular / plural)</td></tr>
+                <tr><td>вони</td><td>they</td></tr>
             </tbody>
         </table>
         <div class="matching-game">
@@ -247,7 +273,6 @@
             <thead>
                 <tr>
                     <th>Gender (English)</th>
-                    <th class="ukrainian-header">Рід (Українська)</th>
                     <th>Common Ending</th>
                     <th>Pronoun</th>
                     <th>Examples</th>
@@ -256,31 +281,23 @@
             <tbody>
                 <tr>
                     <td>Masculine</td>
-                    <td>Чоловічий</td>
                     <td>Consonant</td>
-                    <td><span lang="uk">він</span> (vin)</td>
-                    <td><span lang="uk">студент, стіл, будинок</span></td>
+                    <td><span lang="uk">він</span></td> <td><span lang="uk">студент, стіл, будинок</span></td>
                 </tr>
                 <tr>
                     <td>Feminine</td>
-                    <td>Жіночий</td>
                     <td>-а / -я</td>
-                    <td><span lang="uk">вона</span> (vona)</td>
-                    <td><span lang="uk">студентка, книга, вулиця</span></td>
+                    <td><span lang="uk">вона</span></td> <td><span lang="uk">студентка, книга, вулиця</span></td>
                 </tr>
                 <tr>
                     <td>Neuter</td>
-                    <td>Середній</td>
                     <td>-о / -е</td>
-                    <td><span lang="uk">воно</span> (vono)</td>
-                    <td><span lang="uk">вікно, слово, місто, море</span></td>
+                    <td><span lang="uk">воно</span></td> <td><span lang="uk">вікно, слово, місто, море</span></td>
                 </tr>
                  <tr>
                     <td>Plural</td>
-                    <td>Множина</td>
                     <td>(Varies)</td>
-                    <td><span lang="uk">вони</span> (vony)</td>
-                    <td><span lang="uk">студенти, книги, вікна, слова</span></td>
+                    <td><span lang="uk">вони</span></td> <td><span lang="uk">студенти, книги, вікна, слова</span></td>
                 </tr>
             </tbody>
         </table>
@@ -1091,11 +1108,41 @@
          <div class="reading-questions">
              <h4>Питання до Тексту 3:</h4>
              <ol>
-                  <li><span lang="uk">Її звати Оксана чи Марія?</span><span class="reading-answer" lang="uk">Відповідь: Її звати Оксана.</span></li>
-                  <li><span lang="uk">Її прізвище Коваленко чи Петренко?</span><span class="reading-answer" lang="uk">Відповідь: Її прізвище Коваленко.</span></li>
-                  <li><span lang="uk">Вона школярка чи студентка?</span><span class="reading-answer" lang="uk">Відповідь: Вона студентка.</span></li>
-                  <li><span lang="uk">Це її мама чи бабуся?</span><span class="reading-answer" lang="uk">Відповідь: Це її мама.</span></li>
-                  <li><span lang="uk">Маму звати Ганна чи Марія?</span><span class="reading-answer" lang="uk">Відповідь: Маму звати Марія.</span></li>
+                 <li>
+                     <div class="reading-question-item">
+                         <span class="reading-question-text" lang="uk">Її звати Оксана чи Марія?</span>
+                         <button class="check-answer-btn" onclick="showReadingAnswer('answer-3-1')">Check Answer</button>
+                         <span class="reading-answer" id="answer-3-1" lang="uk">Відповідь: Її звати Оксана.</span>
+                     </div>
+                 </li>
+                 <li>
+                     <div class="reading-question-item">
+                         <span class="reading-question-text" lang="uk">Її прізвище Коваленко чи Петренко?</span>
+                         <button class="check-answer-btn" onclick="showReadingAnswer('answer-3-2')">Check Answer</button>
+                         <span class="reading-answer" id="answer-3-2" lang="uk">Відповідь: Її прізвище Коваленко.</span>
+                     </div>
+                 </li>
+                 <li>
+                     <div class="reading-question-item">
+                         <span class="reading-question-text" lang="uk">Вона школярка чи студентка?</span>
+                         <button class="check-answer-btn" onclick="showReadingAnswer('answer-3-3')">Check Answer</button>
+                         <span class="reading-answer" id="answer-3-3" lang="uk">Відповідь: Вона студентка.</span>
+                     </div>
+                 </li>
+                 <li>
+                     <div class="reading-question-item">
+                         <span class="reading-question-text" lang="uk">Це її мама чи бабуся?</span>
+                         <button class="check-answer-btn" onclick="showReadingAnswer('answer-3-4')">Check Answer</button>
+                         <span class="reading-answer" id="answer-3-4" lang="uk">Відповідь: Це її мама.</span>
+                     </div>
+                 </li>
+                 <li>
+                     <div class="reading-question-item">
+                         <span class="reading-question-text" lang="uk">Маму звати Ганна чи Марія?</span>
+                         <button class="check-answer-btn" onclick="showReadingAnswer('answer-3-5')">Check Answer</button>
+                         <span class="reading-answer" id="answer-3-5" lang="uk">Відповідь: Маму звати Марія.</span>
+                     </div>
+                 </li>
              </ol>
          </div>
 
@@ -1152,49 +1199,49 @@
 
             const newItems = document.querySelectorAll(`#${ukrainianContainerId} .matching-item, #${englishContainerId} .matching-item`);
             newItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    if (this.classList.contains('matched')) return;
-                    const isUkrainian = this.closest(`#${ukrainianContainerId}`) !== null;
-                    const side = isUkrainian ? 'ukrainian' : 'english';
+                 item.addEventListener('click', function() {
+                     if (this.classList.contains('matched')) return;
+                     const isUkrainian = this.closest(`#${ukrainianContainerId}`) !== null;
+                     const side = isUkrainian ? 'ukrainian' : 'english';
 
-                    if (selected[side] && selected[side] !== this) {
-                        selected[side].classList.remove('selected');
-                    }
-                    this.classList.toggle('selected');
-                    if (this.classList.contains('selected')) {
-                        selected[side] = this;
-                    } else {
-                        selected[side] = null;
-                    }
-                    feedbackElement.textContent = '';
+                     if (selected[side] && selected[side] !== this) {
+                         selected[side].classList.remove('selected');
+                     }
+                     this.classList.toggle('selected');
+                     if (this.classList.contains('selected')) {
+                         selected[side] = this;
+                     } else {
+                         selected[side] = null;
+                     }
+                     feedbackElement.textContent = '';
 
-                    if (selected.ukrainian && selected.english) {
-                        if (selected.ukrainian.dataset.id === selected.english.dataset.id) {
-                            ['ukrainian', 'english'].forEach(s => {
-                                if (selected[s]) {
-                                    selected[s].classList.remove('selected');
-                                    selected[s].classList.add('matched');
-                                }
-                            });
-                            matchCount++;
-                            if (matchCount === totalPairs) {
-                                feedbackElement.textContent = '✓ Correct! All matched!';
-                                feedbackElement.className = 'matching-feedback correct';
-                            }
-                            selected = { ukrainian: null, english: null };
-                        } else {
-                            feedbackElement.textContent = '✗ Try again!';
-                            feedbackElement.className = 'matching-feedback incorrect';
-                            const selUkr = selected.ukrainian;
-                            const selEng = selected.english;
-                            setTimeout(() => {
-                                if (selUkr) selUkr.classList.remove('selected');
-                                if (selEng) selEng.classList.remove('selected');
-                            }, 800); // Delay for incorrect match
-                            selected = { ukrainian: null, english: null };
-                        }
-                    }
-                });
+                     if (selected.ukrainian && selected.english) {
+                         if (selected.ukrainian.dataset.id === selected.english.dataset.id) {
+                             ['ukrainian', 'english'].forEach(s => {
+                                 if (selected[s]) {
+                                     selected[s].classList.remove('selected');
+                                     selected[s].classList.add('matched');
+                                 }
+                             });
+                             matchCount++;
+                             if (matchCount === totalPairs) {
+                                 feedbackElement.textContent = '✓ Correct! All matched!';
+                                 feedbackElement.className = 'matching-feedback correct';
+                             }
+                             selected = { ukrainian: null, english: null };
+                         } else {
+                             feedbackElement.textContent = '✗ Try again!';
+                             feedbackElement.className = 'matching-feedback incorrect';
+                             const selUkr = selected.ukrainian;
+                             const selEng = selected.english;
+                             setTimeout(() => {
+                                 if (selUkr) selUkr.classList.remove('selected');
+                                 if (selEng) selEng.classList.remove('selected');
+                             }, 800); // Delay for incorrect match
+                             selected = { ukrainian: null, english: null };
+                         }
+                     }
+                 });
             });
         }
 
@@ -1205,7 +1252,12 @@
             const correctAnswer = input.dataset.correct;
             const userAnswer = input.value.trim();
 
-            if (userAnswer === correctAnswer) {
+            // Case-insensitive check for Ukrainian (first letter capitalized, rest lower)
+            const isCorrect = userAnswer.toLowerCase() === correctAnswer.toLowerCase() ||
+                              (userAnswer.charAt(0).toUpperCase() + userAnswer.slice(1).toLowerCase() === correctAnswer);
+
+
+            if (isCorrect) {
                 feedback.textContent = "✓ Correct!";
                 feedback.className = "fill-feedback correct";
                 input.style.backgroundColor = "#e6ffee";
@@ -1248,71 +1300,71 @@
              gameContainer.innerHTML = ''; // Clear previous content if any
 
              sentences.forEach((sentence, index) => {
-                 const sentenceId = `${gamePrefix}sentence-${index}`;
-                 const solutionAreaId = `${gamePrefix}solution-area-${index}`;
-                 const wordsBankId = `${gamePrefix}words-bank-${index}`;
-                 const feedbackId = `${gamePrefix}feedback-${index}`;
+                  const sentenceId = `${gamePrefix}sentence-${index}`;
+                  const solutionAreaId = `${gamePrefix}solution-area-${index}`;
+                  const wordsBankId = `${gamePrefix}words-bank-${index}`;
+                  const feedbackId = `${gamePrefix}feedback-${index}`;
 
-                 const sentenceElement = document.createElement('div');
-                 sentenceElement.className = 'game-sentence';
-                 sentenceElement.id = sentenceId;
+                  const sentenceElement = document.createElement('div');
+                  sentenceElement.className = 'game-sentence';
+                  sentenceElement.id = sentenceId;
 
-                 const translation = document.createElement('div');
-                 translation.className = 'game-sentence-translation';
-                 translation.innerHTML = `<span class="sentence-number">${index + 1}/${sentences.length}</span> ${sentence.english}`;
-                 sentenceElement.appendChild(translation);
+                  const translation = document.createElement('div');
+                  translation.className = 'game-sentence-translation';
+                  translation.innerHTML = `<span class="sentence-number">${index + 1}/${sentences.length}</span> ${sentence.english}`;
+                  sentenceElement.appendChild(translation);
 
-                 const solutionArea = document.createElement('div');
-                 solutionArea.className = 'solution-area';
-                 solutionArea.id = solutionAreaId;
-                 sentenceElement.appendChild(solutionArea);
+                  const solutionArea = document.createElement('div');
+                  solutionArea.className = 'solution-area';
+                  solutionArea.id = solutionAreaId;
+                  sentenceElement.appendChild(solutionArea);
 
-                 const wordsBank = document.createElement('div');
-                 wordsBank.className = 'words-bank';
-                 wordsBank.id = wordsBankId;
-                 sentenceElement.appendChild(wordsBank);
+                  const wordsBank = document.createElement('div');
+                  wordsBank.className = 'words-bank';
+                  wordsBank.id = wordsBankId;
+                  sentenceElement.appendChild(wordsBank);
 
-                 const shuffledWords = shuffleArray(sentence.words);
-                 shuffledWords.forEach(word => {
-                     const wordElement = document.createElement('div');
-                     wordElement.className = 'word-box ukrainian-text';
-                     wordElement.textContent = word;
-                     wordElement.addEventListener('click', () => moveWord(wordElement, solutionAreaId, wordsBankId, feedbackId));
-                     wordsBank.appendChild(wordElement);
-                 });
+                  const shuffledWords = shuffleArray(sentence.words);
+                  shuffledWords.forEach(word => {
+                      const wordElement = document.createElement('div');
+                      wordElement.className = 'word-box ukrainian-text';
+                      wordElement.textContent = word;
+                      wordElement.addEventListener('click', () => moveWord(wordElement, solutionAreaId, wordsBankId, feedbackId));
+                      wordsBank.appendChild(wordElement);
+                  });
 
-                 const feedback = document.createElement('div');
-                 feedback.className = 'game-feedback';
-                 feedback.id = feedbackId;
-                 sentenceElement.appendChild(feedback);
+                  const feedback = document.createElement('div');
+                  feedback.className = 'game-feedback';
+                  feedback.id = feedbackId;
+                  sentenceElement.appendChild(feedback);
 
-                 const buttonContainer = document.createElement('div');
-                 buttonContainer.className = 'sentence-buttons';
+                  const buttonContainer = document.createElement('div');
+                  buttonContainer.className = 'sentence-buttons';
 
-                 const checkButton = document.createElement('button');
-                 checkButton.className = 'check-btn';
-                 checkButton.textContent = 'Check Answer';
-                 checkButton.addEventListener('click', () => checkSentenceAnswer(index, sentences, solutionAreaId, wordsBankId, feedbackId, sentenceId, containerId));
-                 buttonContainer.appendChild(checkButton);
+                  const checkButton = document.createElement('button');
+                  checkButton.className = 'check-btn';
+                  checkButton.textContent = 'Check Answer';
+                  checkButton.addEventListener('click', () => checkSentenceAnswer(index, sentences, solutionAreaId, wordsBankId, feedbackId, sentenceId, containerId));
+                  buttonContainer.appendChild(checkButton);
 
-                 const showAnswerButton = document.createElement('button');
-                 showAnswerButton.className = 'show-answer-btn';
-                 showAnswerButton.textContent = 'Show Answer';
-                 showAnswerButton.addEventListener('click', () => showSentenceAnswer(index, sentences, solutionAreaId, wordsBankId, feedbackId, sentenceId, containerId));
-                 buttonContainer.appendChild(showAnswerButton);
+                  const showAnswerButton = document.createElement('button');
+                  showAnswerButton.className = 'show-answer-btn';
+                  showAnswerButton.textContent = 'Show Answer';
+                  showAnswerButton.addEventListener('click', () => showSentenceAnswer(index, sentences, solutionAreaId, wordsBankId, feedbackId, sentenceId, containerId));
+                  buttonContainer.appendChild(showAnswerButton);
 
-                 const deleteBtn = document.createElement('button');
-                 deleteBtn.className = 'delete-btn';
-                 deleteBtn.textContent = 'Clear Box';
-                 deleteBtn.addEventListener('click', () => clearSolutionArea(solutionAreaId, wordsBankId, feedbackId));
-                 buttonContainer.appendChild(deleteBtn);
+                  const deleteBtn = document.createElement('button');
+                  deleteBtn.className = 'delete-btn';
+                  deleteBtn.textContent = 'Clear Box';
+                  deleteBtn.addEventListener('click', () => clearSolutionArea(solutionAreaId, wordsBankId, feedbackId));
+                  buttonContainer.appendChild(deleteBtn);
 
-                 sentenceElement.appendChild(buttonContainer);
-                 gameContainer.appendChild(sentenceElement);
+                  sentenceElement.appendChild(buttonContainer);
+                  gameContainer.appendChild(sentenceElement);
 
-                 if (index > 0) {
-                     sentenceElement.style.display = 'none';
-                 }
+                  if (index > 0) {
+                       sentenceElement.style.display = 'none';
+                  }
              });
         }
 
@@ -1457,6 +1509,20 @@
             }
         }
 
+        // --- Reading Question Answer Toggle ---
+        function showReadingAnswer(answerId) {
+            const answer = document.getElementById(answerId);
+            if (answer) {
+                answer.style.display = 'inline'; // Show the answer
+                // Optionally, disable or hide the button after clicking
+                // const button = answer.previousElementSibling;
+                // if (button && button.classList.contains('check-answer-btn')) {
+                //     button.disabled = true;
+                //     button.style.opacity = 0.6;
+                // }
+            }
+        }
+
 
         // --- Initialization on DOMContentLoaded ---
         document.addEventListener('DOMContentLoaded', function() {
@@ -1494,38 +1560,38 @@
 
             // Add key button functionality for all fill-in exercises
             document.querySelectorAll('.key-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const fillItem = this.closest('.fill-item');
-                    if (!fillItem) return;
-                    const input = fillItem.querySelector('.fill-input');
-                    if (input) {
-                        input.value = this.textContent;
-                        // Clear feedback when a key is pressed
-                        const feedbackId = input.id + '-feedback';
-                        const feedback = document.getElementById(feedbackId);
-                        if (feedback) {
-                            feedback.textContent = '';
-                            feedback.className = 'fill-feedback';
-                        }
-                        input.style.backgroundColor = ''; // Reset background color
-                    }
-                });
+                 button.addEventListener('click', function() {
+                     const fillItem = this.closest('.fill-item');
+                     if (!fillItem) return;
+                     const input = fillItem.querySelector('.fill-input');
+                     if (input) {
+                         input.value = this.textContent;
+                         // Clear feedback when a key is pressed
+                         const feedbackId = input.id + '-feedback';
+                         const feedback = document.getElementById(feedbackId);
+                         if (feedback) {
+                             feedback.textContent = '';
+                             feedback.className = 'fill-feedback';
+                         }
+                         input.style.backgroundColor = ''; // Reset background color
+                     }
+                 });
             });
 
             // Add listener for Enter key in fill-in inputs to trigger check
             document.querySelectorAll('.fill-input').forEach(input => {
-                input.addEventListener('keypress', function(event) {
-                    if (event.key === 'Enter') {
-                        event.preventDefault(); // Prevent default form submission
-                        const fillItem = this.closest('.fill-item');
-                        if (fillItem) {
-                            const checkButton = fillItem.querySelector('.fill-check');
-                            if (checkButton) {
-                                checkButton.click(); // Simulate click on the check button
-                            }
-                        }
-                    }
-                });
+                 input.addEventListener('keypress', function(event) {
+                     if (event.key === 'Enter') {
+                         event.preventDefault(); // Prevent default form submission
+                         const fillItem = this.closest('.fill-item');
+                         if (fillItem) {
+                             const checkButton = fillItem.querySelector('.fill-check');
+                             if (checkButton) {
+                                 checkButton.click(); // Simulate click on the check button
+                             }
+                         }
+                     }
+                 });
             });
         });
 
