@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armenians of Afrin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+        
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08; 
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+        
+        /* Original heading styles */
+        h1 {
+            font-size: 34px; 
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+        
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+        
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+        
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+        
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2; 
+        }
+        
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+        
+        .audio-icon {
+            margin-right: 8px;
+        }
+        
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2; 
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2; 
+             white-space: pre-wrap; /* Preserve line breaks from input */
+         }
+        
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2; 
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+        
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+        
+        .pdf-icon {
+            margin-right: 8px;
+        }
+        
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2; 
+        }
+        
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+        
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+        
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+        
+        .sources a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2; 
+        }
+        
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+        
+        .back-icon {
+            margin-right: 8px;
+        }
+        
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2; 
+        }
+        
+        .disclaimer p {
+            margin: 0;
+            font-size: 20px; /* Original font size */
+            font-weight: 500;
+        }
+        
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px; 
+            color: #8b7355;
+             position: relative; z-index: 2; 
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+         }
+        
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+            /* Note: Original did not have responsive h2 */
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+            /* No padding in original wrapper style */
+        }
+        
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+            /* filter was applied to 'audio' tag globally */
+        }
+        
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+            /* margin-left was not present in original */
+            /* transition was not present in original */
+            /* line-height was not present in original */
+            /* padding was not present in original */
+        }
+         /* No hover style in original */
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Armenians of Afrin</h1>
+        
+        <div class="audio-player"> 
+            <div class="player-wrapper"> 
+                <audio id="audioPlayer" controls> 
+                    <source src="../audio/Afrin Armenians_ Displacement, Erasure, and Echoes of Genocide.mp3" type="audio/mpeg"> 
+                    Your browser does not support the audio element.
+                </audio>
+                
+                <button id="rewindBtn" class="rewind-button"> 
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Afrin Armenians_ Displacement, Erasure, and Echoes of Genocide.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+        
+        <div class="description">
+            <h2>Description</h2>
+            <p>The provided text meticulously chronicles the history and displacement of the Armenian community in Afrin, Syria, tracing their origins as survivors of the Armenian Genocide who sought refuge in the region. It details their peaceful coexistence within the Kurdish-majority area before the 2018 Turkish military offensive ("Operation Olive Branch"), which led to their forced removal and the occupation of Afrin. The sources further describe the demographic changes, human rights abuses, and cultural erasure under Turkish-backed control, concluding with the dismal prospects for the Armenians' return and their dispersal as part of a broader exodus from Syria.</p>
+        </div>
+        
+        <a href="../../landing_pages/kurdish_research.html" class="back-button"> 
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+        
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Afrin Armenian Community Research_.pdf" class="download-btn" download> 
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline> </svg>
+                Download PDF
+            </a>
+        </div>
+        
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+                        <li>Afrin, Syria - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Afrin,_Syria" target="_blank">https://en.wikipedia.org/wiki/Afrin,_Syria</a></li>
+                        <li>Afrin Under Turkish Control: Political, Economic and Social Transformations, accessed April 26, 2025, <a href="https://cadmus.eui.eu/bitstream/handle/1814/63745/MED_2019_10.pdf" target="_blank">https://cadmus.eui.eu/bitstream/handle/1814/63745/MED_2019_10.pdf</a></li>
+                        <li>cyrrhus | dianadarke, accessed April 26, 2025, <a href="https://dianadarke.com/tag/cyrrhus/" target="_blank">https://dianadarke.com/tag/cyrrhus/</a></li>
+                        <li>Afrin Region - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Afrin_Region" target="_blank">https://en.wikipedia.org/wiki/Afrin_Region</a></li>
+                        <li>www.ceasefire.org, accessed April 26, 2025, <a href="https://www.ceasefire.org/wp-content/uploads/2020/07/CFR_Syria_EN_July20.pdf" target="_blank">https://www.ceasefire.org/wp-content/uploads/2020/07/CFR_Syria_EN_July20.pdf</a></li>
+                        <li>Turkey's Demographic Engineering in Syria's Afrin Region: A Closer Look, accessed April 26, 2025, <a href="https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin-region-a-closer-look" target="_blank">https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin-region-a-closer-look</a></li>
+                        <li>Operation Olive Branch - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Operation_Olive_Branch" target="_blank">https://en.wikipedia.org/wiki/Operation_Olive_Branch</a></li>
+                        <li>Withering Branch: The Story of Afrin and its Peoples, Pre & Post “Operation Olive Branch" | Washington Kurdish Institute, accessed April 26, 2025, <a href="https://dckurd.org/2022/03/09/withering-branch-the-story-of-afrin-and-its-peoples-pre-post-operation-olive-branch/" target="_blank">https://dckurd.org/2022/03/09/withering-branch-the-story-of-afrin-and-its-peoples-pre-post-operation-olive-branch/</a></li>
+                        <li>The last Armenian in Afrin: Genocide found us a century later - Public Radio of Armenia, accessed April 26, 2025, <a href="https://en.armradio.am/2018/02/07/the-last-armenian-in-afrin-genocide-found-us-a-century-later/" target="_blank">https://en.armradio.am/2018/02/07/the-last-armenian-in-afrin-genocide-found-us-a-century-later/</a></li>
+                        <li>Turkey continues killing children and women – says last Armenian living in Afrin, accessed April 26, 2025, <a href="https://armenpress.am/en/article/921851" target="_blank">https://armenpress.am/en/article/921851</a></li>
+                        <li>Afrin Syria - The Kurdish Project, accessed April 26, 2025, <a href="https://thekurdishproject.org/kurdistan-map/syrian-kurdistan/afrin-syria/" target="_blank">https://thekurdishproject.org/kurdistan-map/syrian-kurdistan/afrin-syria/</a></li>
+                        <li>Afrin: A landscape of unprecedented Arabization | Rudaw.net, accessed April 26, 2025, <a href="https://www.rudaw.net/english/middleeast/syria/14052018" target="_blank">https://www.rudaw.net/english/middleeast/syria/14052018</a></li>
+                        <li>Afrin, Syria: Kurdish population more than halved since 2018 ..., accessed April 26, 2025, <a href="https://www.genocidewatch.com/single-post/2020/04/20/afrin-syria-kurdish-population-more-than-halved-since-2018-turkish-invasion" target="_blank">https://www.genocidewatch.com/single-post/2020/04/20/afrin-syria-kurdish-population-more-than-halved-since-2018-turkish-invasion</a></li>
+                        <li>Afrin Armenians: Turkey is source of killing, destruction - ANHA, accessed April 26, 2025, <a href="https://hawarnews.com/en/15467523005997" target="_blank">https://hawarnews.com/en/15467523005997</a></li>
+                        <li>Turkish Shelling Destroys 3,000-Year-Old Temple in Afrin; Armenian Possibly Killed as Offensive Continues, accessed April 26, 2025, <a href="https://armenianweekly.com/2018/01/29/turkish-shelling-continues-in-afrin/" target="_blank">https://armenianweekly.com/2018/01/29/turkish-shelling-continues-in-afrin/</a></li>
+                        <li>Afrin's last Armenian migrates to Aleppo - NEWS.am, accessed April 26, 2025, <a href="https://news.am/eng/news/504122.html" target="_blank">https://news.am/eng/news/504122.html</a></li>
+                        <li>Armenians in Syria - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Armenians_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Armenians_in_Syria</a></li>
+                        <li>أرمن سوريا - ويكيبيديا, accessed April 26, 2025, <a href="https://ar.wikipedia.org/wiki/%D8%A3%D8%B1%D9%85%D9%86_%D8%B3%D9%88%D8%B1%D9%8A%D8%A7" target="_blank">https://ar.wikipedia.org/wiki/%D8%A3%D8%B1%D9%85%D9%86_%D8%B3%D9%88%D8%B1%D9%8A%D8%A7</a></li>
+                        <li>Armenians in Syria | AGBU, accessed April 26, 2025, <a href="https://agbu.org/leaving-syria/armenians-syria" target="_blank">https://agbu.org/leaving-syria/armenians-syria</a></li>
+                        <li>Forty Martyrs Cathedral - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Forty_Martyrs_Cathedral" target="_blank">https://en.wikipedia.org/wiki/Forty_Martyrs_Cathedral</a></li>
+                        <li>Հայերը Սիրիայում - Վիքիպեդիա, accessed April 26, 2025, <a href="https://hy.wikipedia.org/wiki/%D5%80%D5%A1%D5%B5%D5%A5%D6%80%D5%A8_%D5%8D%D5%AB%D6%80%D5%AB%D5%A1%D5%B5%D5%B8%D6%82%D5%B4" target="_blank">https://hy.wikipedia.org/wiki/%D5%80%D5%A1%D5%B5%D5%A5%D6%80%D5%A8_%D5%8D%D5%AB%D6%80%D5%AB%D5%A1%D5%B5%D5%B8%D6%82%D5%B4</a></li>
+                        <li>Twice Displaced: Syrian Armenian Stories of Resettlement and Revival in Armenia and Abroad | Center for Middle Eastern Studies, accessed April 26, 2025, <a href="https://cmes.fas.harvard.edu/event/journey-home-syrian-armenian-resettlement-armenia" target="_blank">https://cmes.fas.harvard.edu/event/journey-home-syrian-armenian-resettlement-armenia</a></li>
+                        <li>Encountering Turkish Denialism: From the Syrian conflict to the Second Karabakh War1 Arsen Hakobyan Marcello Mollica, accessed April 26, 2025, <a href="https://www.anthrojournal-urbanities.com/wp-content/uploads/2021/05/5-MollicaHakobyan.pdf" target="_blank">https://www.anthrojournal-urbanities.com/wp-content/uploads/2021/05/5-MollicaHakobyan.pdf</a></li>
+                        <li>Brief History | Genocide Education Project, accessed April 26, 2025, <a href="https://genocideeducation.org/background/brief-history/" target="_blank">https://genocideeducation.org/background/brief-history/</a></li>
+                        <li>Ethno-Sectarianism and Political Order in the Middle East - Bipartisan Policy Center, accessed April 26, 2025, <a href="https://bipartisanpolicy.org/wp-content/uploads/2019/03/Ethno-Sectarianism-and-Political-Order-in-the-Middle-East.pdf" target="_blank">https://bipartisanpolicy.org/wp-content/uploads/2019/03/Ethno-Sectarianism-and-Political-Order-in-the-Middle-East.pdf</a></li>
+                        <li>Armenian Mass Graves Revisited: A Photo-Essay, accessed April 26, 2025, <a href="https://armenianweekly.com/2014/07/01/mass-graves/" target="_blank">https://armenianweekly.com/2014/07/01/mass-graves/</a></li>
+                        <li>ISIS Destroys Armenian Genocide Memorial Church in Der Zor, accessed April 26, 2025, <a href="https://armenianweekly.com/2014/09/21/der-zor/" target="_blank">https://armenianweekly.com/2014/09/21/der-zor/</a></li>
+                        <li>Testimony by: DAVID L. PHILLIPS Director, Program on Peacebuilding and Human Rights Institute for the Study of Human Rights Colu - US Commission on International Religious Freedom, accessed April 26, 2025, <a href="https://www.uscirf.gov/sites/default/files/David%20Phillips%20Final.pdf" target="_blank">https://www.uscirf.gov/sites/default/files/David%20Phillips%20Final.pdf</a></li>
+                        <li>Reflections on the destruction of the Armenian church in Deir Zor, accessed April 26, 2025, <a href="https://www.oikoumene.org/news/reflections-on-the-destruction-of-the-armenian-church-in-deir-zor" target="_blank">https://www.oikoumene.org/news/reflections-on-the-destruction-of-the-armenian-church-in-deir-zor</a></li>
+                        <li>List of heritage sites damaged during the Syrian civil war - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/List_of_heritage_sites_damaged_during_the_Syrian_civil_war" target="_blank">https://en.wikipedia.org/wiki/List_of_heritage_sites_damaged_during_the_Syrian_civil_war</a></li>
+                        <li>(PDF) The League of Nations and Armenian Refugees. The Formation of the Armenian Diaspora in Syria - ResearchGate, accessed April 26, 2025, <a href="https://www.researchgate.net/publication/273303856_The_League_of_Nations_and_Armenian_Refugees_The_Formation_of_the_Armenian_Diaspora_in_Syria" target="_blank">https://www.researchgate.net/publication/273303856_The_League_of_Nations_and_Armenian_Refugees_The_Formation_of_the_Armenian_Diaspora_in_Syria</a></li>
+                        <li>Religion in Syria - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Religion_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Religion_in_Syria</a></li>
+                        <li>Syria - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Syria" target="_blank">https://en.wikipedia.org/wiki/Syria</a></li>
+                        <li>Syria - Minority Rights Group, accessed April 26, 2025, <a href="https://minorityrights.org/country/syria/" target="_blank">https://minorityrights.org/country/syria/</a></li>
+                        <li>Աֆրինի վերջին հայը բռնագաղթել է Հալեպ - Պանորամա | Հայաստանի նորություններ, accessed April 26, 2025, <a href="https://www.panorama.am/am/news/2019/03/29/%D4%B1%D6%86%D6%80%D5%AB%D5%B6-%D5%BE%D5%A5%D6%80%D5%BB%D5%AB%D5%B6-%D5%B0%D5%A1%D5%B5-%D5%80%D5%A1%D5%AC%D5%A5%D5%BA/2093126" target="_blank">https://www.panorama.am/am/news/2019/03/29/%D4%B1%D6%86%D6%80%D5%AB%D5%B6-%D5%BE%D5%A5%D6%80%D5%BB%D5%AB%D5%B6-%D5%B0%D5%A1%D5%B5-%D5%80%D5%A1%D5%AC%D5%A5%D5%BA/2093126</a></li>
+                        <li>عملية غصن الزيتون - ويكيبيديا, accessed April 26, 2025, <a href="https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D9%8A%D8%A9_%D8%BA%D8%B5%D9%86_%D8%A7%D9%84%D8%B2%D9%8A%D8%AA%D9%88%D9%86" target="_blank">https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D9%8A%D8%A9_%D8%BA%D8%B5%D9%86_%D8%A7%D9%84%D8%B2%D9%8A%D8%AA%D9%88%D9%86</a></li>
+                        <li>'Under the Olive Branch': Understanding the Turkish Occupation of Afrin, North Syria - Lund University Publications, accessed April 26, 2025, <a href="https://lup.lub.lu.se/student-papers/record/9175005/file/9175018.pdf" target="_blank">https://lup.lub.lu.se/student-papers/record/9175005/file/9175018.pdf</a></li>
+                        <li>Turkish Intervention in Syria: An Existential Threat for Yezidis - Kurdish Peace Institute, accessed April 26, 2025, <a href="https://www.kurdishpeace.org/research/human-rights/turkish-intervention-in-syria-an-existential-threat-for-yezidis/" target="_blank">https://www.kurdishpeace.org/research/human-rights/turkish-intervention-in-syria-an-existential-threat-for-yezidis/</a></li>
+                        <li>Աֆրին. «Տարօրինակ պատերազմ» - Western, accessed April 26, 2025, <a href="https://westernarmeniatv.com/?p=9654" target="_blank">https://westernarmeniatv.com/?p=9654</a></li>
+                        <li>How European arms exports are forcing millions from their homes - Transnational Institute, accessed April 26, 2025, <a href="https://www.tni.org/files/publication-downloads/smokingguns-report-tni_final.pdf" target="_blank">https://www.tni.org/files/publication-downloads/smokingguns-report-tni_final.pdf</a></li>
+                        <li>Smoking Guns – How European arms exports are forcing millions from their homes - Transnational Institute, accessed April 26, 2025, <a href="https://www.tni.org/en/publication/smoking-guns" target="_blank">https://www.tni.org/en/publication/smoking-guns</a></li>
+                        <li>Nearly half of Rojava's population fled due to Syria war: Study - Rudaw, accessed April 26, 2025, <a href="https://www.rudaw.net/english/middleeast/syria/120620241" target="_blank">https://www.rudaw.net/english/middleeast/syria/120620241</a></li>
+                        <li>Afrin returnees decry ruined livelihoods after years of displacement - Rudaw, accessed April 26, 2025, <a href="https://www.rudaw.net/english/middleeast/syria/250320251" target="_blank">https://www.rudaw.net/english/middleeast/syria/250320251</a></li>
+                        <li>The displaced people of Afrin in Al-Shahba are victims of disputes between the PYD administration and the regime | ARK News, accessed April 26, 2025, <a href="https://www.arknews.net/en/node/49585" target="_blank">https://www.arknews.net/en/node/49585</a></li>
+                        <li>Thousands return to Afrin after Assad regime's fall - Enab Baladi, accessed April 26, 2025, <a href="https://english.enabbaladi.net/archives/2025/01/thousands-return-to-afrin-after-assad-regimes-fall/" target="_blank">https://english.enabbaladi.net/archives/2025/01/thousands-return-to-afrin-after-assad-regimes-fall/</a></li>
+                        <li>Shahba Canton - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Shahba_Canton" target="_blank">https://en.wikipedia.org/wiki/Shahba_Canton</a></li>
+                        <li>Crimes in Syria: The neglected atrocities of Afrin - ECCHR, accessed April 26, 2025, <a href="https://www.ecchr.eu/en/case/crimes-in-syria-the-neglected-atrocities-of-afrin/" target="_blank">https://www.ecchr.eu/en/case/crimes-in-syria-the-neglected-atrocities-of-afrin/</a></li>
+                        <li>www.ceasefire.org, accessed April 26, 2025, <a href="https://www.ceasefire.org/wp-content/uploads/2021/09/Afrin-briefing-09.2021-1.pdf" target="_blank">https://www.ceasefire.org/wp-content/uploads/2021/09/Afrin-briefing-09.2021-1.pdf</a></li>
+                        <li>Settlement Construction in Syrian District Renews Accusations of Demographic Engineering, accessed April 26, 2025, <a href="https://www.voanews.com/a/settlement-construction-in-syrian-district-renews-accusations-of-demographic-engineering-/6916667.html" target="_blank">https://www.voanews.com/a/settlement-construction-in-syrian-district-renews-accusations-of-demographic-engineering-/6916667.html</a></li>
+                        <li>Ethnic or political cleansing? Identity, cultural heritage and demographic engineering in the Turkish-occupied territories of, accessed April 26, 2025, <a href="https://ojs.unito.it/index.php/deeuropa/article/download/10572/9061/35628" target="_blank">https://ojs.unito.it/index.php/deeuropa/article/download/10572/9061/35628</a></li>
+                        <li>CHI – Incident Report Feature – Intentional Destruction of Religious Sites in Afrin - American Society of Overseas Research (ASOR), accessed April 26, 2025, <a href="https://www.asor.org/chi/reports/incident-report-feature/Intentional-Destruction-of-Religious-Sites-in-Afrin" target="_blank">https://www.asor.org/chi/reports/incident-report-feature/Intentional-Destruction-of-Religious-Sites-in-Afrin</a></li>
+                        <li>Yezidi shrines desecrated by Turkish-backed groups in Afrin - Genocide Watch, accessed April 26, 2025, <a href="https://www.genocidewatch.com/single-post/2020/04/28/yezidi-shrines-desecrated-by-turkish-backed-groups-in-afrin" target="_blank">https://www.genocidewatch.com/single-post/2020/04/28/yezidi-shrines-desecrated-by-turkish-backed-groups-in-afrin</a></li>
+                        <li>لماذا أسقط جنود "أردوغان" تمثال "كاوا حداد" فى عفرين؟.. الشخصية الأسطورية صدرت الربيع إلى العالم وحاربت "الملك الظالم" قبل 2700 عام.. الرئيس التركى يسير على درب العثمانيين فى تحطيم التماثيل وتدمير الثقافة.. صور - اليوم السابع, accessed April 26, 2025, <a href="https://www.youm7.com/story/2018/3/19/%D9%84%D9%85%D8%A7%D8%B0%D8%A7-%D8%A3%D8%B3%D9%82%D8%B7-%D8%AC%D9%86%D9%88%D8%AF-%D8%A3%D8%B1%D8%AF%D9%88%D8%BA%D8%A7%D9%86-%D8%AA%D9%85%D8%AB%D8%A7%D9%84-%D9%83%D8%A7%D9%88%D8%A7-%D8%AD%D8%AF%D8%A7%D8%AF-%D9%81%D9%89-%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A%D8%A9/3703164" target="_blank">https://www.youm7.com/story/2018/3/19/%D9%84%D9%85%D8%A7%D8%B0%D8%A7-%D8%A3%D8%B3%D9%82%D8%B7-%D8%AC%D9%86%D9%88%D8%AF-%D8%A3%D8%B1%D8%AF%D9%88%D8%BA%D8%A7%D9%86-%D8%AA%D9%85%D8%AB%D8%A7%D9%84-%D9%83%D8%A7%D9%88%D8%A7-%D8%AD%D8%AF%D8%A7%D8%AF-%D9%81%D9%89-%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A%D8%A9/3703164</a></li>
+                        <li>Syrian Kurds open church in Kobani, once besieged by IS - Kurdistan24, accessed April 26, 2025, <a href="https://www.kurdistan24.net/en/story/377356" target="_blank">https://www.kurdistan24.net/en/story/377356</a></li>
+                        <li>Armenia's Illegal Resettlement Policy in occupied Karabakh, accessed April 26, 2025, <a href="https://story.karabakh.center/en/armenia-s-illegal-resettlement-policy-in-occupied-karabakh" target="_blank">https://story.karabakh.center/en/armenia-s-illegal-resettlement-policy-in-occupied-karabakh</a></li>
+                        <li>Most Syrian Armenians have left the country, while those remaining are in fear | Agos, accessed April 26, 2025, <a href="https://www.agos.com.tr/en/article/32269/most-syrian-armenians-have-left-the-country-while-those-remaining-are-in-fear" target="_blank">https://www.agos.com.tr/en/article/32269/most-syrian-armenians-have-left-the-country-while-those-remaining-are-in-fear</a></li>
+                        <li>Aleppo's Armenians in a changing Syria, accessed April 26, 2025, <a href="https://armenianweekly.com/2025/03/28/aleppos-armenians-in-a-changing-syria/" target="_blank">https://armenianweekly.com/2025/03/28/aleppos-armenians-in-a-changing-syria/</a></li>
+                        <li>First group of Syrian-Armenians of Aleppo to arrive in Yerevan on December 14, accessed April 26, 2025, <a href="https://armenpress.am/en/article/1206758" target="_blank">https://armenpress.am/en/article/1206758</a></li>
+                        <li>Syrian-Armenian Population Movement 2024 - IFRC GO - Field Report Details, accessed April 26, 2025, <a href="https://go.ifrc.org/field-reports/17405" target="_blank">https://go.ifrc.org/field-reports/17405</a></li>
+                        <li>The Kurdish issue in Syria and the future of Turkey's role in the Levant, accessed April 26, 2025, <a href="https://armenianweekly.com/2025/03/19/the-kurdish-issue-in-syria-and-the-future-of-turkeys-role-in-the-levant/" target="_blank">https://armenianweekly.com/2025/03/19/the-kurdish-issue-in-syria-and-the-future-of-turkeys-role-in-the-levant/</a></li>
+                        <li>Twice displaced: Palestinian refugees from Syria live and remember in Lebanon's Rashidieh camp, accessed April 26, 2025, <a href="https://syriadirect.org/twice-displaced-palestinian-refugees-from-syria-live-and-remember-in-lebanons-rashidieh-camp/" target="_blank">https://syriadirect.org/twice-displaced-palestinian-refugees-from-syria-live-and-remember-in-lebanons-rashidieh-camp/</a></li>
+                        <li>Armenia: Population Movement 2024 - DREF Operational Update (MDRAM014), 03 March 2025 - ReliefWeb, accessed April 26, 2025, <a href="https://reliefweb.int/report/armenia/armenia-population-movement-2024-dref-operational-update-mdram014-03-march-2025" target="_blank">https://reliefweb.int/report/armenia/armenia-population-movement-2024-dref-operational-update-mdram014-03-march-2025</a></li>
+                        <li>Uncertain Future in Rojava: Syrian Public Security Forces Assume Control of Afrin, accessed April 26, 2025, <a href="https://www.kurdistan24.net/en/story/823481/uncertain-future-in-rojava-syrian-public-security-forces-assume-control-of-afrin" target="_blank">https://www.kurdistan24.net/en/story/823481/uncertain-future-in-rojava-syrian-public-security-forces-assume-control-of-afrin</a></li>
+                        <li>Population of Armenia in 1827-2018 - Orbeli Analitical Research, accessed April 26, 2025, <a href="https://www.orbeli.am/en/post/538/2020-08-13/Population+of+Armenia+in+1827-2018" target="_blank">https://www.orbeli.am/en/post/538/2020-08-13/Population+of+Armenia+in+1827-2018</a></li>
+                        <li>Armenia's Demographic Situation: Short- and Longer-Term Trends - Jamestown, accessed April 26, 2025, <a href="https://jamestown.org/program/armenias-demographic-situation-short-and-longer-term-trends/" target="_blank">https://jamestown.org/program/armenias-demographic-situation-short-and-longer-term-trends/</a></li>
+                        <li>Syrian Christians, building cemeteries instead of schools | Catholic News Agency, accessed April 26, 2025, <a href="https://www.catholicnewsagency.com/news/30813/syrian-christians-building-cemeteries-instead-of-schools" target="_blank">https://www.catholicnewsagency.com/news/30813/syrian-christians-building-cemeteries-instead-of-schools</a></li>
+                        <li>International Religious Freedom Reports: Custom Report Excerpts - United States Department of State, accessed April 26, 2025, <a href="https://www.state.gov/report/custom/b5a7ca03ae/" target="_blank">https://www.state.gov/report/custom/b5a7ca03ae/</a></li>
+                        <li>من "التلل" و"الأرمن" إلى عفرين: أردوغان حين يُعيد مذابح أجداده! | الميادين, accessed April 26, 2025, <a href="https://www.almayadeen.net/articles/opinion/856536/%D9%85%D9%86--%D8%A7%D9%84%D8%AA%D9%84%D9%84--%D9%88-%D8%A7%D9%84%D8%A3%D8%B1%D9%85%D9%86--%D8%A5%D9%84%D9%89-%D8%B9%D9%81%D8%B1%D9%8A%D9%86--%D8%A3%D8%B1%D8%AF%D9%88%D8%BA%D8%A7%D9%86-%D8%AD%D9%8A%D9%86-%D9%8A%D8%B9%D9%8A%D8%AF-%D9%85%D8%B0%D8%A7%D8%A8%D8%AD-%D8%A3%D8%AC%D8%AF%D8%A7%D8%AF" target="_blank">https://www.almayadeen.net/articles/opinion/856536/%D9%85%D9%86--%D8%A7%D9%84%D8%AA%D9%84%D9%84--%D9%88-%D8%A7%D9%84%D8%A3%D8%B1%D9%85%D9%86--%D8%A5%D9%84%D9%89-%D8%B9%D9%81%D8%B1%D9%8A%D9%86--%D8%A3%D8%B1%D8%AF%D9%88%D8%BA%D8%A7%D9%86-%D8%AD%D9%8A%D9%86-%D9%8A%D8%B9%D9%8A%D8%AF-%D9%85%D8%B0%D8%A7%D8%A8%D8%AD-%D8%A3%D8%AC%D8%AF%D8%A7%D8%AF</a></li>
+                        <li>արաբական երկրների նոր եվ նորագույն պատմություն - ԵՊՀ, accessed April 26, 2025, <a href="http://publishing.ysu.am/files/Ruben_Karapetyan.pdf" target="_blank">http://publishing.ysu.am/files/Ruben_Karapetyan.pdf</a></li>
+                        <li>Քրդեր - Վիքիպեդիա, accessed April 26, 2025, <a href="https://hy.wikipedia.org/wiki/%D5%94%D6%80%D5%A4%D5%A5%D6%80" target="_blank">https://hy.wikipedia.org/wiki/%D5%94%D6%80%D5%A4%D5%A5%D6%80</a></li>
+                        <li>Աֆրինը` ցեղասպանության ականատեսի աչքերով - Western Armenia TV, accessed April 26, 2025, <a href="https://westernarmeniatv.com/hy/society_am/%D5%A1%D6%86%D6%80%D5%AB%D5%B6%D5%A8-%D6%81%D5%A5%D5%B2%D5%A1%D5%BD%D5%BA%D5%A1%D5%B6%D5%B8%D6%82%D5%A9%D5%B5%D5%A1%D5%B6-%D5%A1%D5%AF%D5%A1%D5%B6%D5%A1%D5%BF%D5%A5%D5%BD%D5%AB-%D5%A1%D5%B9%D6%84/" target="_blank">https://westernarmeniatv.com/hy/society_am/%D5%A1%D6%86%D6%80%D5%AB%D5%B6%D5%A8-%D6%81%D5%A5%D5%B2%D5%A1%D5%BD%D5%BA%D5%A1%D5%B6%D5%B8%D6%82%D5%A9%D5%B5%D5%A1%D5%B6-%D5%A1%D5%AF%D5%A1%D5%B6%D5%A1%D5%BF%D5%A5%D5%BD%D5%AB-%D5%A1%D5%B9%D6%84/</a></li>
+                        <li>After 30 years, Nagorno-Karabakh Republic vanishes | Responsible Statecraft, accessed April 26, 2025, <a href="https://responsiblestatecraft.org/nagorno-karabakh-conflict/" target="_blank">https://responsiblestatecraft.org/nagorno-karabakh-conflict/</a></li>
+                        <li>Turkish war crimes - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Turkish_war_crimes" target="_blank">https://en.wikipedia.org/wiki/Turkish_war_crimes</a></li>
+                        <li>2025 USCIRF Annual Report - US Commission on International Religious Freedom, accessed April 26, 2025, <a href="https://www.uscirf.gov/sites/default/files/2025-03/2025%20USCIRF%20Annual%20Report.pdf" target="_blank">https://www.uscirf.gov/sites/default/files/2025-03/2025%20USCIRF%20Annual%20Report.pdf</a></li>
+                        <li>rethinking state and border formation in the middle east - Edinburgh University Press Books, accessed April 26, 2025, <a href="https://edinburghuniversitypress.com/pub/media/ebooks/9781399503679.pdf" target="_blank">https://edinburghuniversitypress.com/pub/media/ebooks/9781399503679.pdf</a></li>
+                        <li>accessed January 1, 1970, <a href="https://www.panorama.am/am/news/2019/03/29/%D4%B1%D6%86%D6%80%D5%AB%D5%B6-%D5%BE%D5%A5%D6%80%D5%AB%D5%B6-%D5%BE%D5%A5%D6%80%D5%BB%D5%AB%D5%B6-%D5%B0%D5%A1%D5%B5-%D5%80%D5%A1%D5%AC%D5%A5%D5%BA/2093126" target="_blank">https://www.panorama.am/am/news/2019/03/29/%D4%B1%D6%86%D6%80%D5%AB%D5%B6-%D5%BE%D5%A5%D6%80%D5%AB%D5%B6-%D5%BE%D5%A5%D6%80%D5%BB%D5%AB%D5%B6-%D5%B0%D5%A1%D5%B5-%D5%80%D5%A1%D5%AC%D5%A5%D5%BA/2093126</a></li>
+ 
+            </ul>
+        </div>
+        
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+        
+        <div class="last-updated">
+            <p>This page was created on: April 26, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+    
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+            
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) { 
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10); 
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

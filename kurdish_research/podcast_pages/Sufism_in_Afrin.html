@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sufism in Afrin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+        
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08; 
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+        
+        /* Original heading styles */
+        h1 {
+            font-size: 34px; 
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+        
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+        
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+        
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+        
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2; 
+        }
+        
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+        
+        .audio-icon {
+            margin-right: 8px;
+        }
+        
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2; 
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2; 
+             white-space: pre-wrap; /* Preserve line breaks from input */
+         }
+        
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2; 
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+        
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+        
+        .pdf-icon {
+            margin-right: 8px;
+        }
+        
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2; 
+        }
+        
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+        
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+        
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+        
+        .sources a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2; 
+        }
+        
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+        
+        .back-icon {
+            margin-right: 8px;
+        }
+        
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2; 
+        }
+        
+        .disclaimer p {
+            margin: 0;
+            font-size: 20px; /* Original font size */
+            font-weight: 500;
+        }
+        
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px; 
+            color: #8b7355;
+             position: relative; z-index: 2; 
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+         }
+        
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+            /* Note: Original did not have responsive h2 */
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+            /* No padding in original wrapper style */
+        }
+        
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+            /* filter was applied to 'audio' tag globally */
+        }
+        
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+            /* margin-left was not present in original */
+            /* transition was not present in original */
+            /* line-height was not present in original */
+            /* padding was not present in original */
+        }
+         /* No hover style in original */
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sufism in Afrin</h1>
+        
+        <div class="audio-player"> 
+            <div class="player-wrapper"> 
+                <audio id="audioPlayer" controls> 
+                    <source src="../audio/Afrin Sufism_ Mystics, Orders, and Society Before 2010.mp3" type="audio/mpeg"> 
+                    Your browser does not support the audio element.
+                </audio>
+                
+                <button id="rewindBtn" class="rewind-button"> 
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Afrin Sufism_ Mystics, Orders, and Society Before 2010.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+        
+        <div class="description">
+            <h2>Description</h2>
+            <p>Afrin's Kurd Dagh region before 2010 was a significant center for Sufism, a mystical branch of Islam, deeply intertwined with Kurdish identity. This collection of sources explores the history, practices, and social impact of Sufi orders in this area of northern Syria. It highlights the prominence of the Rifa'iyya, Naqshbandiyya, and Qadiriyya orders, each with distinct leaders, rituals, and community roles. The texts examine the central role of the zawiya (Sufi lodge) and the authority of shaykhs (spiritual leaders) in shaping social life and mediating between rural Afrin and urban Aleppo. Furthermore, the material analyzes the historical Murid Movement, a Naqshbandi-led socio-political uprising in the 1930s, and how Sufism provided a space for Kurdish cultural expression under Syrian state pressures. Ultimately, these sources paint a picture of a vibrant Sufi landscape in Afrin prior to the upheaval of the Syrian Civil War.</p>
+        </div>
+        
+        <a href="../../landing_pages/kurdish_research.html" class="back-button"> 
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+        
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Afrin Sufism Before 2010_.pdf" class="download-btn" download> 
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline> </svg>
+                Download PDF
+            </a>
+        </div>
+        
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+                        <li>Syria's Afrin, a perennial battleground - dianadarke, accessed April 26, 2025, <a href="https://dianadarke.com/2018/02/28/syrias-afrin-a-perennial-battleground/" target="_blank">https://dianadarke.com/2018/02/28/syrias-afrin-a-perennial-battleground/</a></li>
+                        <li>Kurdish Sufi Spaces of Rural-Urban. Connection in Northern Syria, accessed April 26, 2025, <a href="https://journals.openedition.org/etudesrurales/9290" target="_blank">https://journals.openedition.org/etudesrurales/9290</a></li>
+                        <li>Afrin, Syria - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Afrin,_Syria" target="_blank">https://en.wikipedia.org/wiki/Afrin,_Syria</a></li>
+                        <li>Evîn hebûn e û hebûn zanîn e, accessed April 26, 2025, <a href="https://foulabook.com/book/downloading/690480323" target="_blank">https://foulabook.com/book/downloading/690480323</a></li>
+                        <li>Afrin District - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Afrin_District" target="_blank">https://en.wikipedia.org/wiki/Afrin_District</a></li>
+                        <li>Afrin Canton - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Afrin_Canton" target="_blank">https://en.wikipedia.org/wiki/Afrin_Canton</a></li>
+                        <li>War on Afrin – Rojava Information Center, accessed April 26, 2025, <a href="https://rojavainformationcenter.org/background/war-on-afrin/" target="_blank">https://rojavainformationcenter.org/background/war-on-afrin/</a></li>
+                        <li>Stranded between Syria's frontlines, Afrin's Yazidis yearn for lost homelands, accessed April 26, 2025, <a href="https://www.middleeasteye.net/news/stranded-between-syrias-frontlines-afrins-yazidis-yearn-lost-homelands" target="_blank">https://www.middleeasteye.net/news/stranded-between-syrias-frontlines-afrins-yazidis-yearn-lost-homelands</a></li>
+                        <li>Sufi Mystic Orders - KURDISTANICA, accessed April 26, 2025, <a href="https://kurdistanica.com/581/sufi-mystic-orders/" target="_blank">https://kurdistanica.com/581/sufi-mystic-orders/</a></li>
+                        <li>Religion in Kurdistan - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Religion_in_Kurdistan" target="_blank">https://en.wikipedia.org/wiki/Religion_in_Kurdistan</a></li>
+                        <li>SURİYE VE İSRAİL'DE TARİKATLAR: GÜNÜMÜZDEKİ DURUMA TOPLU BİR BAKIŞ Itzchak Weismann Çev. - Tasavvuf Akademi, accessed April 26, 2025, <a href="http://www.tasavvufakademi.com/indir.php?tur=1&no=650" target="_blank">http://www.tasavvufakademi.com/indir.php?tur=1&no=650</a></li>
+                        <li>Sufism and Sufi Brotherhoods in Syria and Palestine, accessed April 26, 2025, <a href="https://www.ou.edu/mideast/Additional%20pages%20-%20non-catagory/Sufism%20in%20Syriawebpage.htm" target="_blank">https://www.ou.edu/mideast/Additional%20pages%20-%20non-catagory/Sufism%20in%20Syriawebpage.htm</a></li>
+                        <li>Islam in Syria - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Islam_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Islam_in_Syria</a></li>
+                        <li>Sufism, Moral Performance and the Public Sphere in Syria - OpenEdition Journals, accessed April 26, 2025, <a href="https://journals.openedition.org/remmm/3026?&id=3026" target="_blank">https://journals.openedition.org/remmm/3026?&id=3026</a></li>
+                        <li>Sufism, Moral Performance and the Public Sphere in Syria, accessed April 26, 2025, <a href="https://journals.openedition.org/remmm/3026" target="_blank">https://journals.openedition.org/remmm/3026</a></li>
+                        <li>THE LIMITS OF THE PUBLIC: SUFISM AND THE RELIGIOUS DEBATE IN SYRIA - Brill, accessed April 26, 2025, <a href="https://brill.com/display/book/edcoll/9789047402824/B9789047402824_s011.pdf" target="_blank">https://brill.com/display/book/edcoll/9789047402824/B9789047402824_s011.pdf</a></li>
+                        <li>Five Years of Hell & Evil: Turkish Occupied Afrin - The Kurdish Center for Studies, accessed April 26, 2025, <a href="https://nlka.net/eng/five-years-of-hell-evil-turkish-occupied-afrin/" target="_blank">https://nlka.net/eng/five-years-of-hell-evil-turkish-occupied-afrin/</a></li>
+                        <li>dergipark.org.tr, accessed April 26, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/525048" target="_blank">https://dergipark.org.tr/tr/download/article-file/525048</a></li>
+                        <li>صوفية - ويكيبيديا, accessed April 26, 2025, <a href="https://ar.wikipedia.org/wiki/%D8%B5%D9%88%D9%81%D9%8A%D8%A9" target="_blank">https://ar.wikipedia.org/wiki/%D8%B5%D9%88%D9%81%D9%8A%D8%A9</a></li>
+                        <li>Mystical bodies/unruly bodies: Experience, empowerment and ..., accessed April 26, 2025, <a href="https://www.researchgate.net/publication/295503603_Mystical_bodiesunruly_bodies_Experience_empowerment_and_subjectification_in_Syrian_Sufism" target="_blank">https://www.researchgate.net/publication/295503603_Mystical_bodiesunruly_bodies_Experience_empowerment_and_subjectification_in_Syrian_Sufism</a></li>
+                        <li>Naqshbandi - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Naqshbandi" target="_blank">https://en.wikipedia.org/wiki/Naqshbandi</a></li>
+                        <li>Mystics, Mountains, and Miracles: Inside Iraq's Living Sufi Traditions (Context in Comment) : r/IslamicHistoryMeme - Reddit, accessed April 26, 2025, <a href="https://www.reddit.com/r/IslamicHistoryMeme/comments/1js3waj/mystics_mountains_and_miracles_inside_iraqs/" target="_blank">https://www.reddit.com/r/IslamicHistoryMeme/comments/1js3waj/mystics_mountains_and_miracles_inside_iraqs/</a></li>
+                        <li>Nebî Hurî Camii - Vikipedi, accessed April 26, 2025, <a href="https://tr.wikipedia.org/wiki/Neb%C3%AE_Hur%C3%AE_Camii" target="_blank">https://tr.wikipedia.org/wiki/Neb%C3%AE_Hur%C3%AE_Camii</a></li>
+                        <li>Mystical metaphors: ritual, symbols and self in Syrian Sufism | Request PDF - ResearchGate, accessed April 26, 2025, <a href="https://www.researchgate.net/publication/316976495_Mystical_metaphors_ritual_symbols_and_self_in_Syrian_Sufism" target="_blank">https://www.researchgate.net/publication/316976495_Mystical_metaphors_ritual_symbols_and_self_in_Syrian_Sufism</a></li>
+                        <li>The Anthropologist and the Initiated: Reflections on the Ethnography of Mystical Experience among the Sufis of Aleppo, Syria - ResearchGate, accessed April 26, 2025, <a href="https://www.researchgate.net/publication/258186313_The_Anthropologist_and_the_Initiated_Reflections_on_the_Ethnography_of_Mystical_Experience_among_the_Sufis_of_Aleppo_Syria" target="_blank">https://www.researchgate.net/publication/258186313_The_Anthropologist_and_the_Initiated_Reflections_on_the_Ethnography_of_Mystical_Experience_among_the_Sufis_of_Aleppo_Syria</a></li>
+                        <li>Mosque of Prophet Huri - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Mosque_of_Prophet_Huri" target="_blank">https://en.wikipedia.org/wiki/Mosque_of_Prophet_Huri</a></li>
+                        <li>Kurdish Sufi Spaces of Rural-Urban. Connection in Northern Syria - OpenEdition Journals, accessed April 26, 2025, <a href="https://journals.openedition.org/etudesrurales/9290?lang=en" target="_blank">https://journals.openedition.org/etudesrurales/9290?lang=en</a></li>
+                        <li>شاهد| النبي هوري.. مكان يجمع بين الآثار التاريخية والتنزه في عفرين | صباح سوريا - YouTube, accessed April 26, 2025, <a href="https://www.youtube.com/watch?v=VUlSG_Yhwuo" target="_blank">https://www.youtube.com/watch?v=VUlSG_Yhwuo</a></li>
+                        <li>مقام النبي هوري في عفرين بعدسة عنب بلدي, accessed April 26, 2025, <a href="https://www.enabbaladi.net/210426/%D9%85%D9%82%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%A8%D9%8A-%D9%87%D9%88%D8%B1%D9%8A-%D9%81%D9%8A-%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D8%A8%D8%B9%D8%AF%D8%B3%D8%A9-%D8%B9%D9%86%D8%A8-%D8%A8%D9%84%D8%AF%D9%8A/" target="_blank">https://www.enabbaladi.net/210426/%D9%85%D9%82%D8%A7%D9%85-%D8%A7%D9%84%D9%86%D8%A8%D9%8A-%D9%87%D9%88%D8%B1%D9%8A-%D9%81%D9%8A-%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D8%A8%D8%B9%D8%AF%D8%B3%D8%A9-%D8%B9%D9%86%D8%A8-%D8%A8%D9%84%D8%AF%D9%8A/</a></li>
+                        <li>رحلات ونزهات على ضفاف نهر النبي هوري في عفرين بريف حلب - مجلة طلعنا عالحرية, accessed April 26, 2025, <a href="https://freedomraise.net/%D8%B1%D8%AD%D9%84%D8%A7%D8%AA-%D9%88%D9%86%D8%B2%D9%87%D8%A7%D8%AA-%D8%B9%D9%84%D9%89-%D8%B6%D9%81%D8%A7%D9%81-%D9%86%D9%87%D8%B1-%D8%A7%D9%84%D9%86%D8%A8%D9%8A-%D9%87%D9%88%D8%B1%D9%8A-%D9%81%D9%8A/" target="_blank">https://freedomraise.net/%D8%B1%D8%AD%D9%84%D8%A7%D8%AA-%D9%88%D9%86%D8%B2%D9%87%D8%A7%D8%AA-%D8%B9%D9%84%D9%89-%D8%B6%D9%81%D8%A7%D9%81-%D9%86%D9%87%D8%B1-%D8%A7%D9%84%D9%86%D8%A8%D9%8A-%D9%87%D9%88%D8%B1%D9%8A-%D9%81%D9%8A/</a></li>
+                        <li>النبي هوري: معلم تاريخي وسياحي يجذب الزوار في الشمال السوري #عفرين #حلب - YouTube, accessed April 26, 2025, <a href="https://www.youtube.com/watch?v=jMmRin3LPA8" target="_blank">https://www.youtube.com/watch?v=jMmRin3LPA8</a></li>
+                        <li>Syria's Transition Must Not Leave Afrin and Sere Kaniye Behind - Kurdish Peace Institute, accessed April 26, 2025, <a href="https://www.kurdishpeace.org/research/conflict-resolution-and-peacebuilding/syrias-transition-must-not-leave-afrin-and-sere-kaniye-behind/" target="_blank">https://www.kurdishpeace.org/research/conflict-resolution-and-peacebuilding/syrias-transition-must-not-leave-afrin-and-sere-kaniye-behind/</a></li>
+                        <li>Turkish regime's mercenaries cause huge damage to Nabi Huri archeological site in Afrin, accessed April 26, 2025, <a href="https://sana.sy/en/?p=144666" target="_blank">https://sana.sy/en/?p=144666</a></li>
+                        <li>The Kurds in Syria after Afrin.. Where to? - Enab Baladi, accessed April 26, 2025, <a href="https://english.enabbaladi.net/archives/2018/04/the-kurds-in-syria-after-afrin-where-to/" target="_blank">https://english.enabbaladi.net/archives/2018/04/the-kurds-in-syria-after-afrin-where-to/</a></li>
+                        <li>Pilgrimage, Sciences and Sufism: Islamic Art in the West Bank and Gaza (Islamic Art in the Mediterranean) - Amazon.com, accessed April 26, 2025, <a href="https://www.amazon.com/Pilgrimage-Sciences-Sufism-Islamic-Mediterranean/dp/3902782102" target="_blank">https://www.amazon.com/Pilgrimage-Sciences-Sufism-Islamic-Mediterranean/dp/3902782102</a></li>
+                        <li>Vakıflar Genel Müdürlüğünce restorasyonu tamamlanan 10 camide ramazanda yeniden ezan sesi yükseldi - Anadolu Ajansı, accessed April 26, 2025, <a href="https://www.aa.com.tr/tr/turkiye/vakiflar-genel-mudurlugunce-restorasyonu-tamamlanan-10-camide-ramazanda-yeniden-ezan-sesi-yukseldi/2242170" target="_blank">https://www.aa.com.tr/tr/turkiye/vakiflar-genel-mudurlugunce-restorasyonu-tamamlanan-10-camide-ramazanda-yeniden-ezan-sesi-yukseldi/2242170</a></li>
+                        <li>Full text of "Pend Û Peng" - Internet Archive, accessed April 26, 2025, <a href="https://archive.org/stream/pend-u-peng/Pend%20%C3%BB%20Peng_djvu.txt" target="_blank">https://archive.org/stream/pend-u-peng/Pend%20%C3%BB%20Peng_djvu.txt</a></li>
+                        <li>Pend û Peng - Calaméo, accessed April 26, 2025, <a href="https://www.calameo.com/books/005071515fb728350a158" target="_blank">https://www.calameo.com/books/005071515fb728350a158</a></li>
+                        <li>الفرع العربي الأسيوي - آل الصوفي, accessed April 26, 2025, <a href="http://alsoufi.syrianstory.com/alsoufi-4-1.htm" target="_blank">http://alsoufi.syrianstory.com/alsoufi-4-1.htm</a></li>
+                        <li>Dr. Öğr. Üyesi ERCAN BARAN - Bingöl Üniversitesi - Rehber, accessed April 26, 2025, <a href="https://rehber.bingol.edu.tr/personel/?p=4f3f5714-6fe3-44da-a585-1d99e6ec1f34" target="_blank">https://rehber.bingol.edu.tr/personel/?p=4f3f5714-6fe3-44da-a585-1d99e6ec1f34</a></li>
+                        <li>Sufi Trail - Culture Routes Society, accessed April 26, 2025, <a href="https://cultureroutesinturkey.com/sufi-trail/" target="_blank">https://cultureroutesinturkey.com/sufi-trail/</a></li>
+                        <li>النبي هوري أهم معالم منطقة عفرين - ANF, accessed April 26, 2025, <a href="https://anfarabic.com/%D8%AB%D9%82%D8%A7%D9%81%D8%A9-%D9%88%D9%85%D8%AC%D8%AA%D9%85%D8%B9/lnby-hwry-hm-m-lm-mntq-fryn-7101" target="_blank">https://anfarabic.com/%D8%AB%D9%82%D8%A7%D9%81%D8%A9-%D9%88%D9%85%D8%AC%D8%AA%D9%85%D8%B9/lnby-hwry-hm-m-lm-mntq-fryn-7101</a></li>
+                        <li>seta - KİM KİMDİR?, accessed April 26, 2025, <a href="https://www.setav.org/assets/uploads/2022/05/Suriyede-kim-kimdir.pdf" target="_blank">https://www.setav.org/assets/uploads/2022/05/Suriyede-kim-kimdir.pdf</a></li>
+                        <li>Full article: Commemoration and devotion in the resurgence of contemporary Sufi communities in their homeland and western settings: descendants and followers of a medieval Sufi Saint in Syria and Cambridge, Ontario - Taylor & Francis Online, accessed April 26, 2025, <a href="https://www.tandfonline.com/doi/full/10.1080/14755610.2024.2367964" target="_blank">https://www.tandfonline.com/doi/full/10.1080/14755610.2024.2367964</a></li>
+                        <li>Sufism: A Global History: Green, Nile: 9781405157612 - Amazon.com, accessed April 26, 2025, <a href="https://www.amazon.com/Sufism-Global-History-Nile-Green/dp/1405157615" target="_blank">https://www.amazon.com/Sufism-Global-History-Nile-Green/dp/1405157615</a></li>
+                        <li>مذكرات وذكريات ما قبل التأسيس وحتي عام 1954 - Ikhwan Wiki | الموسوعة التاريخية الرسمية لجماعة الإخوان المسلمين, accessed April 26, 2025, <a href="https://www.ikhwan.wiki/index.php?title=%D9%85%D8%B0%D9%83%D8%B1%D8%A7%D8%AA_%D9%88%D8%B0%D9%83%D8%B1%D9%8A%D8%A7%D8%AA_%D9%85%D8%A7_%D9%82%D8%A8%D9%84_%D8%A7%D9%84%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3_%D9%88%D8%AD%D8%AA%D9%8A_%D8%B9%D8%A7%D9%85_1954" target="_blank">https://www.ikhwan.wiki/index.php?title=%D9%85%D8%B0%D9%83%D8%B1%D8%A7%D8%AA_%D9%88%D8%B0%D9%83%D8%B1%D9%8A%D8%A7%D8%AA_%D9%85%D8%A7_%D9%82%D8%A8%D9%84_%D8%A7%D9%84%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3_%D9%88%D8%AD%D8%AA%D9%8A_%D8%B9%D8%A7%D9%85_1954</a></li>
+                        <li>الطريقة الصوفية البكتاشية - مجلة العقيدة, accessed April 26, 2025, <a href="https://aqeeda.iicss.iq/?id=66&sid=150" target="_blank">https://aqeeda.iicss.iq/?id=66&sid=150</a></li>
+                        <li>هل تُحكم سوريا من قبل أقلية مرة أخرى؟ - مركز أبحاث مينا - MENA Research Center, accessed April 26, 2025, <a href="https://www.mena-researchcenter.org/ar/%D9%87%D9%84-%D8%AA%D9%8F%D8%AD%D9%83%D9%85-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D9%85%D9%86-%D9%82%D8%A8%D9%84-%D8%A3%D9%82%D9%84%D9%8A%D8%A9-%D9%85%D8%B1%D8%A9-%D8%A3%D8%AE%D8%B1%D9%89%D8%9F/" target="_blank">https://www.mena-researchcenter.org/ar/%D9%87%D9%84-%D8%AA%D9%8F%D8%AD%D9%83%D9%85-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D9%85%D9%86-%D9%82%D8%A8%D9%84-%D8%A3%D9%82%D9%84%D9%8A%D8%A9-%D9%85%D8%B1%D8%A9-%D8%A3%D8%AE%D8%B1%D9%89%D8%9F/</a></li>
+                        <li>اللُّغة العربيَّة وآدابُها - وزارة التربية, accessed April 26, 2025, <a href="https://moed.gov.sy/curricula-new/12/Lit-Arabic.pdf" target="_blank">https://moed.gov.sy/curricula-new/12/Lit-Arabic.pdf</a></li>
+                        <li>بسم الله الرحمن الرحيم, accessed April 26, 2025, <a href="https://nuc.edu.ng/wp-content/uploads/2015/01/DR.-SANI-UMAR-MUSA-PhD.doc" target="_blank">https://nuc.edu.ng/wp-content/uploads/2015/01/DR.-SANI-UMAR-MUSA-PhD.doc</a></li>
+                        <li>Lêkolînên stratejîk, accessed April 26, 2025, <a href="https://nrls.net/ku/wp-content/uploads/2022/09/Lekolinen-stratejik_Hejmara_04.pdf" target="_blank">https://nrls.net/ku/wp-content/uploads/2022/09/Lekolinen-stratejik_Hejmara_04.pdf</a></li>
+                        <li>اخلطرة الثانية األنسية للروضة الدانية القدسية للشيخ مصطفى بن كمال الدين بن علي البكري الصديقي م(1759هـ/1162 )ت, accessed April 26, 2025, <a href="https://www.qou.edu/ar/sciResearch/pdf/book/The_second_attempt_of_the_divine_kindergarten_Sheikh_Mustafa_bin_Kamal_al_Din_bin_Ali_al_Bakri_Siddiqui_d._1162_1759.pdf" target="_blank">https://www.qou.edu/ar/sciResearch/pdf/book/The_second_attempt_of_the_divine_kindergarten_Sheikh_Mustafa_bin_Kamal_al_Din_bin_Ali_al_Bakri_Siddiqui_d._1162_1759.pdf</a></li>
+                        <li>Islamic Institutions in Arab States:, accessed April 26, 2025, <a href="https://carnegie-production-assets.s3.amazonaws.com/static/files/202106-IslamicInstitutions-final.pdf" target="_blank">https://carnegie-production-assets.s3.amazonaws.com/static/files/202106-IslamicInstitutions-final.pdf</a></li>
+                        <li>Kurds in Syria - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Kurds_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Kurds_in_Syria</a></li>
+                        <li>Zeytin Dalı Harekâtı - Vikipedi, accessed April 26, 2025, <a href="https://tr.wikipedia.org/wiki/Zeytin_Dal%C4%B1_Harek%C3%A2t%C4%B1" target="_blank">https://tr.wikipedia.org/wiki/Zeytin_Dal%C4%B1_Harek%C3%A2t%C4%B1</a></li>
+                        <li>Afrin - Vikipedi, accessed April 26, 2025, <a href="https://tr.wikipedia.org/wiki/Afrin" target="_blank">https://tr.wikipedia.org/wiki/Afrin</a></li>
+                        <li>Untitled, accessed April 26, 2025, <a href="https://api.pageplace.de/preview/DT0400.9780755600786_A41245229/preview-9780755600786_A41245229.pdf" target="_blank">https://api.pageplace.de/preview/DT0400.9780755600786_A41245229/preview-9780755600786_A41245229.pdf</a></li>
+                        <li>tradition : Euro-Synergies - WordPress.com, accessed April 26, 2025, <a href="https://litamidis1979.files.wordpress.com/2018/08/rat.pdf" target="_blank">https://litamidis1979.files.wordpress.com/2018/08/rat.pdf</a></li>
+                        <li>Sufi Brotherhoods in Syria and Israel - Qsm Journals, accessed April 26, 2025, <a href="http://ojs.qsm.ac.il/index.php/majma/article/download/562/625" target="_blank">http://ojs.qsm.ac.il/index.php/majma/article/download/562/625</a></li>
+ 
+            </ul>
+        </div>
+        
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+        
+        <div class="last-updated">
+            <p>This page was created on: April 26, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+    
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+            
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) { 
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10); 
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

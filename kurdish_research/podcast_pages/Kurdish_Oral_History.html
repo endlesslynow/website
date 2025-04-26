@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurdish Oral History</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+        
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08; 
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+        
+        /* Original heading styles */
+        h1 {
+            font-size: 34px; 
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+        
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+        
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+        
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+        
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2; 
+        }
+        
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+        
+        .audio-icon {
+            margin-right: 8px;
+        }
+        
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2; 
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2; 
+             white-space: pre-wrap; /* Preserve line breaks from input */
+         }
+        
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2; 
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+        
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+        
+        .pdf-icon {
+            margin-right: 8px;
+        }
+        
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2; 
+        }
+        
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+        
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+        
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+        
+        .sources a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2; 
+        }
+        
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+        
+        .back-icon {
+            margin-right: 8px;
+        }
+        
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2; 
+        }
+        
+        .disclaimer p {
+            margin: 0;
+            font-size: 20px; /* Original font size */
+            font-weight: 500;
+        }
+        
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px; 
+            color: #8b7355;
+             position: relative; z-index: 2; 
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+         }
+        
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+            /* Note: Original did not have responsive h2 */
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+            /* No padding in original wrapper style */
+        }
+        
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+            /* filter was applied to 'audio' tag globally */
+        }
+        
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+            /* margin-left was not present in original */
+            /* transition was not present in original */
+            /* line-height was not present in original */
+            /* padding was not present in original */
+        }
+         /* No hover style in original */
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kurdish Oral History</h1>
+        
+        <div class="audio-player"> 
+            <div class="player-wrapper"> 
+                <audio id="audioPlayer" controls> 
+                    <source src="../audio/Kurdish Oral History_ Living Archive, Challenges, and Preservation.mp3" type="audio/mpeg"> 
+                    Your browser does not support the audio element.
+                </audio>
+                
+                <button id="rewindBtn" class="rewind-button"> 
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Kurdish Oral History_ Living Archive, Challenges, and Preservation.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+        
+        <div class="description">
+            <h2>Description</h2>
+            <p>The provided text, "The Living Archive: An Exploration of Kurdish Oral History," examines the multifaceted nature and significance of Kurdish oral traditions. It highlights how these traditions have served as vital repositories of culture, history, and identity for the stateless Kurdish nation, especially in the face of linguistic and cultural suppression. The report explores various forms of oral expression, including myths, epics, storytelling, and the roles of key figures like the Dengbêj (bard) and Zarbêj (female oral creator) in their transmission. Furthermore, it discusses contemporary challenges to preserving this heritage due to political conflict, modernization, and the complexities of archiving, while also outlining ongoing revitalization efforts and the "archival turn" in Kurdish studies.</p>
+        </div>
+        
+        <a href="../../landing_pages/kurdish_research.html" class="back-button"> 
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+        
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/The Living Archive_ An Exploration of Kurdish Oral History.pdf" class="download-btn" download> 
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline> </svg>
+                Download PDF
+            </a>
+        </div>
+        
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+                        <li>Zarbêj and Dengbêj Women whose voices resonate with music in ..., accessed April 26, 2025, <a href="https://www.culture-civic.org/en/projects/zarb-j-and-dengb-j-women-in-mesopotamia" target="_blank">https://www.culture-civic.org/en/projects/zarb-j-and-dengb-j-women-in-mesopotamia</a></li>
+                        <li>The Dengbêj: Keepers of Kurdish Memory & History - The Kurdish ..., accessed April 26, 2025, <a href="https://nlka.net/eng/the-dengbej-keepers-of-kurdish-memory-and-history/" target="_blank">https://nlka.net/eng/the-dengbej-keepers-of-kurdish-memory-and-history/</a></li>
+                        <li>kurdishstudies.net, accessed April 26, 2025, <a href="https://kurdishstudies.net/menu-script/index.php/KS/article/download/72/62/63" target="_blank">https://kurdishstudies.net/menu-script/index.php/KS/article/download/72/62/63</a></li>
+                        <li>The Role of Kurdish Journalism in Language Preservation and Development of Kurdish Nationalism in the 20th Century - Nishtman Strategy Institute (NSI), accessed April 26, 2025, <a href="https://nishtmansi.com/blog/the-role-of-kurdish-journalism-in-language-preservation-and-development-of-kurdish-nationalism-in-the-20th-century" target="_blank">https://nishtmansi.com/blog/the-role-of-kurdish-journalism-in-language-preservation-and-development-of-kurdish-nationalism-in-the-20th-century</a></li>
+                        <li>Kurdish mythology - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_mythology" target="_blank">https://en.wikipedia.org/wiki/Kurdish_mythology</a></li>
+                        <li>Oral Tradition to Written Language - Kurdish Academy, accessed April 26, 2025, <a href="https://kurdishacademy.org/wp/oral-tradition-to-written-language/" target="_blank">https://kurdishacademy.org/wp/oral-tradition-to-written-language/</a></li>
+                        <li>Gender-Affected Dualism of Serpent Symbol in the Myths of Zahhāk and Shāhmārān - ScholarWorks, accessed April 26, 2025, <a href="https://scholarworks.calstate.edu/downloads/8s45qj414" target="_blank">https://scholarworks.calstate.edu/downloads/8s45qj414</a></li>
+                        <li>Armenian Epic Tradition and Kurdish Folklore : Sargis Haroutyunian : Free Download, Borrow, and Streaming - Internet Archive, accessed April 26, 2025, <a href="https://archive.org/details/Haroutyunian1997ArmenKurd" target="_blank">https://archive.org/details/Haroutyunian1997ArmenKurd</a></li>
+                        <li>Kurdish Folklore, accessed April 26, 2025, <a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore/</a></li>
+                        <li>Kurdish culture - Wikipedia, accessed April 26, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_culture" target="_blank">https://en.wikipedia.org/wiki/Kurdish_culture</a></li>
+                        <li>(PDF) Kurdish Reader: Modern Literature and Oral Texts in Kurmanji. With Kurdish-English Glossaries and Grammatical Sketch - ResearchGate, accessed April 26, 2025, <a href="https://www.researchgate.net/publication/335834877_Kurdish_Reader_Modern_Literature_and_Oral_Texts_in_Kurmanji_With_Kurdish-English_Glossaries_and_Grammatical_Sketch" target="_blank">https://www.researchgate.net/publication/335834877_Kurdish_Reader_Modern_Literature_and_Oral_Texts_in_Kurmanji_With_Kurdish-English_Glossaries_and_Grammatical_Sketch</a></li>
+                        <li>AMERICAN UNIVERSITY OF BEIRUT NEWROZ AS A SITE OF PERFORMANCE: RELATING KURDISH LIFEWORLDS ON BEIRUT'S DALIEH KELLEN RAE MINIC - AUB ScholarWorks, accessed April 26, 2025, <a href="https://scholarworks.aub.edu.lb/bitstream/handle/10938/24088/MinickKellen_2023.pdf?sequence=5" target="_blank">https://scholarworks.aub.edu.lb/bitstream/handle/10938/24088/MinickKellen_2023.pdf?sequence=5</a></li>
+                        <li>Dengbêjs on Borderlands: Borders and the State as Seen through the Eyes of Kurdish Singer-poets - Brill, accessed April 26, 2025, <a href="https://brill.com/edcollchap-oa/book/9789004706538/BP000009.pdf" target="_blank">https://brill.com/edcollchap-oa/book/9789004706538/BP000009.pdf</a></li>
+                        <li>Capstone Project by Gayane Ghazaryan Department of English & Communications American University of Armenia Spring 2020, accessed April 26, 2025, <a href="https://baec.aua.am/files/2020/09/Gayane-Ghazaryan_The-Kurdish-Voice-of-Radio-Yerevan-1.pdf" target="_blank">https://baec.aua.am/files/2020/09/Gayane-Ghazaryan_The-Kurdish-Voice-of-Radio-Yerevan-1.pdf</a></li>
+                        <li>Documenting Kurdish heritage in Turkey: Seyda Goyan's quest to preserve a cultural legacy - Rudaw, accessed April 26, 2025, <a href="https://www.rudaw.net/english/interview/24122019" target="_blank">https://www.rudaw.net/english/interview/24122019</a></li>
+                        <li>VOICE AS A SPACE OF MEMORY AND SONOROUS OBJECT IN THE DENGBÊJ TRADITION DİLAN SALIK BOĞAZİÇİ UNIVERSITY 2019, accessed April 26, 2025, <a href="https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/323168/yokAcikBilim_10283121.pdf?sequence=-1&isAllowed=y" target="_blank">https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/323168/yokAcikBilim_10283121.pdf?sequence=-1&isAllowed=y</a></li>
+                        <li>From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Tradition and Revitalization of the Kurdish Language in the Works of Mehmed Uzun and Mehmet Dicle, accessed April 26, 2025, <a href="https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revitalization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehmet_dicle.pdf" target="_blank">https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revitalization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehmet_dicle.pdf</a></li>
+                        <li>The roots of literary identity - Kurdishstudies, accessed April 26, 2025, <a href="https://www.kurdishstudies.pl/?en_the-roots-of-literary-identity,34" target="_blank">https://www.kurdishstudies.pl/?en_the-roots-of-literary-identity,34</a></li>
+                        <li>Tracing connections: Kurdish women singers and the ambiguities of owning oral tradition, accessed April 26, 2025, <a href="https://backoffice.biblio.ugent.be/download/8584002/8584004" target="_blank">https://backoffice.biblio.ugent.be/download/8584002/8584004</a></li>
+                        <li>Kurdish Transnational Indigeneity - CORE, accessed April 26, 2025, <a href="https://core.ac.uk/download/pdf/426882105.pdf" target="_blank">https://core.ac.uk/download/pdf/426882105.pdf</a></li>
+                        <li>Kurdish Transnational Indigeneity - White Rose Research Online, accessed April 26, 2025, <a href="https://eprints.whiterose.ac.uk/id/eprint/173714/1/Kurdish" target="_blank">https://eprints.whiterose.ac.uk/id/eprint/173714/1/Kurdish</a></li>
+                        <li>Tracing Connections: Kurdish Women Singers and the Ambiguities of Owning Oral Tradition - Nomos eLibrary, accessed April 26, 2025, <a href="https://www.nomos-elibrary.de/10.5771/9783956504815-77.pdf" target="_blank">https://www.nomos-elibrary.de/10.5771/9783956504815-77.pdf</a></li>
+                        <li>The Invention of a Tradition: Diyarbakır's Dengbêj Project - OpenEdition Journals, accessed April 26, 2025, <a href="https://journals.openedition.org/ejts/4055" target="_blank">https://journals.openedition.org/ejts/4055</a></li>
+                        <li>(PDF) The Legacy of Sounds in Turkey: Âşıks and Dengbêjs - ResearchGate, accessed April 26, 2025, <a href="https://www.researchgate.net/publication/332214702_The_Legacy_of_Sounds_in_Turkey_Asiks_and_Dengbejs" target="_blank">https://www.researchgate.net/publication/332214702_The_Legacy_of_Sounds_in_Turkey_Asiks_and_Dengbejs</a></li>
+                        <li>narrative, morality, and the Kurdish nation - Scholarly Publications Leiden University, accessed April 26, 2025, <a href="https://scholarlypublications.universiteitleiden.nl/access/item%3A2944879/view" target="_blank">https://scholarlypublications.universiteitleiden.nl/access/item%3A2944879/view</a></li>
+                        <li>Being sick of politics: The production of dengbêjî as Kurdish cultural heritage in contemporary Turkey - OpenEdition Journals, accessed April 26, 2025, <a href="https://journals.openedition.org/ejts/pdf/5200" target="_blank">https://journals.openedition.org/ejts/pdf/5200</a></li>
+                        <li>The role of storytelling in Kurdish heritage preservation - KurDup.com, accessed April 26, 2025, <a href="https://kurdup.com/the-role-of-storytelling-in-kurdish-heritage-preservation/" target="_blank">https://kurdup.com/the-role-of-storytelling-in-kurdish-heritage-preservation/</a></li>
+                        <li>Religious Musical Knowledge and Modes of Transmission among the Kurdish Ahl-e Haqq of Gurān - Oral Tradition Journal, accessed April 26, 2025, <a href="https://oraltradition.org/religious-musical-knowledge-and-modes-of-transmission-among-the-kurdish-ahl-e-haqq-of-guran/" target="_blank">https://oraltradition.org/religious-musical-knowledge-and-modes-of-transmission-among-the-kurdish-ahl-e-haqq-of-guran/</a></li>
+                        <li>Inherited traumas in diaspora: postmemory, past-presencing and ..., accessed April 26, 2025, <a href="https://www.tandfonline.com/doi/full/10.1080/01419870.2023.2261288" target="_blank">https://www.tandfonline.com/doi/full/10.1080/01419870.2023.2261288</a></li>
+                        <li>(PDF) Ozan and Dengbej: The Lost Voices of Oral Tradition in Turkey - ResearchGate, accessed April 26, 2025, <a href="https://www.researchgate.net/publication/342058048_Ozan_and_Dengbej_The_Lost_Voices_of_Oral_Tradition_in_Turkey" target="_blank">https://www.researchgate.net/publication/342058048_Ozan_and_Dengbej_The_Lost_Voices_of_Oral_Tradition_in_Turkey</a></li>
+                        <li>Rethinking Oral History and Tradition: An Indigenous PerspectiveAn Indigenous Perspective - ResearchGate, accessed April 26, 2025, <a href="https://www.researchgate.net/publication/350142581_Rethinking_Oral_History_and_Tradition_An_Indigenous_PerspectiveAn_Indigenous_Perspective" target="_blank">https://www.researchgate.net/publication/350142581_Rethinking_Oral_History_and_Tradition_An_Indigenous_PerspectiveAn_Indigenous_Perspective</a></li>
+                        <li>Inherited traumas in diaspora: postmemory, past-presencing and mobilisation of second-generation Kurds in Europe - Taylor & Francis Online, accessed April 26, 2025, <a href="https://www.tandfonline.com/doi/pdf/10.1080/01419870.2023.2261288" target="_blank">https://www.tandfonline.com/doi/pdf/10.1080/01419870.2023.2261288</a></li>
+                        <li>Imagine Home: Making a Place in Binghamton, accessed April 26, 2025, <a href="https://www.ejecs.org/index.php/JECS/article/download/243/pdf_1/1204" target="_blank">https://www.ejecs.org/index.php/JECS/article/download/243/pdf_1/1204</a></li>
+                        <li>Imagine Home: Making a Place in Binghamton - ResearchGate, accessed April 26, 2025, <a href="https://www.researchgate.net/publication/335217715_Imagine_Home_Making_a_Place_in_Binghamton" target="_blank">https://www.researchgate.net/publication/335217715_Imagine_Home_Making_a_Place_in_Binghamton</a></li>
+                        <li>Kurdish Queer Studies in - Brill, accessed April 26, 2025, <a href="https://brill.com/view/journals/ksj/1/1-2/article-p7_4.xml" target="_blank">https://brill.com/view/journals/ksj/1/1-2/article-p7_4.xml</a></li>
+                        <li>Regional Political Developments and the Kurds in the Twentieth and Twenty-First Centuries (Part II) - The Cambridge History of the Kurds, accessed April 26, 2025, <a href="https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/regional-political-developments-and-the-kurds-in-the-twentieth-and-twentyfirst-centuries/2979C442B6E297EE2C2889FE27ED3557" target="_blank">https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/regional-political-developments-and-the-kurds-in-the-twentieth-and-twentyfirst-centuries/2979C442B6E297EE2C2889FE27ED3557</a></li>
+                        <li>Histories and geographies of Kurdish suppression - Respond Crisis Translation, accessed April 26, 2025, <a href="https://respondcrisistranslation.org/en/blog/ks-histories-and-geographies-of-kurdish-suppression" target="_blank">https://respondcrisistranslation.org/en/blog/ks-histories-and-geographies-of-kurdish-suppression</a></li>
+                        <li>Kurds and Kurdish Nationalism in the Interwar Period (Chapter 7) - Cambridge University Press, accessed April 26, 2025, <a href="https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/kurds-and-kurdish-nationalism-in-the-interwar-period/1C6C81ABFE0926AB4E1205D6BC5514D9" target="_blank">https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/kurds-and-kurdish-nationalism-in-the-interwar-period/1C6C81ABFE0926AB4E1205D6BC5514D9</a></li>
+                        <li>Introduction to Special Issue Kurdish: a Critical Research Overview in - Brill, accessed April 26, 2025, <a href="https://brill.com/edcollchap-oa/book/9789004706552/BP000007.xml" target="_blank">https://brill.com/edcollchap-oa/book/9789004706552/BP000007.xml</a></li>
+                        <li>THE ANTIQUITY OF KURMANJI KURDISH AND THE BIBLICAL BOOK OF NAHUM - PRIZREN SOCIAL SCIENCE JOURNAL, accessed April 26, 2025, <a href="https://prizrenjournal.com/index.php/PSSJ/article/download/206/125/631" target="_blank">https://prizrenjournal.com/index.php/PSSJ/article/download/206/125/631</a></li>
+                        <li>“This Tribute by an Irishman” in: Kurdish Studies Journal Volume 2 Issue 2 (2024) - Brill, accessed April 26, 2025, <a href="https://brill.com/view/journals/ksj/aop/article-10.1163-29502292-00202001/article-10.1163-29502292-00202001.xml" target="_blank">https://brill.com/view/journals/ksj/aop/article-10.1163-29502292-00202001/article-10.1163-29502292-00202001.xml</a></li>
+                        <li>Interview with Karwan Zebari - Digital Collections - Binghamton University, accessed April 26, 2025, <a href="https://omeka.binghamton.edu/omeka/items/show/565" target="_blank">https://omeka.binghamton.edu/omeka/items/show/565</a></li>
+                        <li>Interview with Jotiyar Taha and Ridwan Zebari - Digital Collections - Binghamton University, accessed April 26, 2025, <a href="https://omeka.binghamton.edu/omeka/items/show/566" target="_blank">https://omeka.binghamton.edu/omeka/items/show/566</a></li>
+                        <li>Musical spirits and poetic tongues: oral traditions in the cultural politics of Kurdish intellectuals (1920s-1940s), accessed April 26, 2025, <a href="https://www.tandfonline.com/doi/pdf/10.1080/13530194.2022.2025763" target="_blank">https://www.tandfonline.com/doi/pdf/10.1080/13530194.2022.2025763</a></li>
+                        <li>On the aesthetic regime of Kurdish cinema - Scholarly Publications Leiden University, accessed April 26, 2025, <a href="https://scholarlypublications.universiteitleiden.nl/access/item%3A3166236/view" target="_blank">https://scholarlypublications.universiteitleiden.nl/access/item%3A3166236/view</a></li>
+                        <li>Kurdish Oral History · Digital Collections, accessed April 26, 2025, <a href="https://omeka.binghamton.edu/omeka/collections/show/16" target="_blank">https://omeka.binghamton.edu/omeka/collections/show/16</a></li>
+                        <li>iismm.hypotheses.org, accessed April 26, 2025, <a href="https://iismm.hypotheses.org/files/2025/02/archives_workshop-Berlin.pdf" target="_blank">https://iismm.hypotheses.org/files/2025/02/archives_workshop-Berlin.pdf</a></li>
+                        <li>Editors' Introduction: Palimpsestic Genocide in Kurdistan, accessed April 26, 2025, <a href="https://utppublishing.com/doi/10.3138/gsi.13.1.01" target="_blank">https://utppublishing.com/doi/10.3138/gsi.13.1.01</a></li>
+                        <li>Saving Yazidi Song — The Dial, accessed April 26, 2025, <a href="https://www.thedial.world/articles/news/issue-22/yazidi-oral-tradition-kurmanji" target="_blank">https://www.thedial.world/articles/news/issue-22/yazidi-oral-tradition-kurmanji</a></li>
+                        <li>Kurdish Heritage Institute, Silêmanî - New York Kurdish Cultural ..., accessed April 26, 2025, <a href="https://nykcc.org/kurdish-heritage-institute-silemani/" target="_blank">https://nykcc.org/kurdish-heritage-institute-silemani/</a></li>
+                        <li>The future of Kurdish heritage preservation: challenges and opportunities - KurDup.com, accessed April 26, 2025, <a href="https://kurdup.com/the-future-of-kurdish-heritage-preservation-challenges-and-opportunities/" target="_blank">https://kurdup.com/the-future-of-kurdish-heritage-preservation-challenges-and-opportunities/</a></li>
+                        <li>An “Archival Turn” in Kurdish Studies? New sources and approaches to Kurdish diasporas, transnational networks and social history | EHESS, accessed April 26, 2025, <a href="https://www.ehess.fr/fr/atelier/%E2%80%9Carchival-turn%E2%80%9D-kurdish-studies-new-sources-and-approaches-kurdish-diasporas-transnational" target="_blank">https://www.ehess.fr/fr/atelier/%E2%80%9Carchival-turn%E2%80%9D-kurdish-studies-new-sources-and-approaches-kurdish-diasporas-transnational</a></li>
+                        <li>Articles | Research and Innovation | University of Exeter, accessed April 26, 2025, <a href="https://news-archive.exeter.ac.uk/research/articles/expertstoestablishnewarch.html" target="_blank">https://news-archive.exeter.ac.uk/research/articles/expertstoestablishnewarch.html</a></li>
+                        <li>June 4 – 6, 2014 - Binghamton University - New York Archives Conference, accessed April 26, 2025, <a href="https://www.nyarchivists.org/nyac/wp-content/uploads/2014/05/NYAC-2014-Program.pdf" target="_blank">https://www.nyarchivists.org/nyac/wp-content/uploads/2014/05/NYAC-2014-Program.pdf</a></li>
+                        <li>Modern Society and Politics - Division of the Social Sciences - The University of Chicago, accessed April 26, 2025, <a href="https://socialsciences.uchicago.edu/department/center-for-middle-eastern-studies/modern-society-and-politics-0" target="_blank">https://socialsciences.uchicago.edu/department/center-for-middle-eastern-studies/modern-society-and-politics-0</a></li>
+                        <li>Oral History and Interviews | Libraries - Binghamton University, accessed April 26, 2025, <a href="https://www.binghamton.edu/libraries/about/collections/oral-histories/index.html" target="_blank">https://www.binghamton.edu/libraries/about/collections/oral-histories/index.html</a></li>
+                        <li>Kurdish Folklore as World Heritage - Kurdishstudies, accessed April 26, 2025, <a href="https://www.kurdishstudies.pl/?en_kurdish-folklore-as-world-heritage,273" target="_blank">https://www.kurdishstudies.pl/?en_kurdish-folklore-as-world-heritage,273</a></li>
+                        <li>narrative, morality, and the Kurdish nation - Scholarly Publications Leiden University, accessed April 26, 2025, <a href="https://scholarlypublications.universiteitleiden.nl/access/item%3A2944875/view" target="_blank">https://scholarlypublications.universiteitleiden.nl/access/item%3A2944875/view</a></li>
+                        <li>PROMISING BEGINNINGS: EARLY CONTRIBUTIONS TO THE DEVELOPMENT OF KURDISH STUDIES AT THE TIME OF THE AUSTRO-HUNGARIAN MONARCHY, accessed April 26, 2025, <a href="https://www.austriaca.at/0xc1aa5576_0x003d20f7.pdf" target="_blank">https://www.austriaca.at/0xc1aa5576_0x003d20f7.pdf</a></li>
+                        <li>'Gan qey bedenî yeno çi mana' (What the Soul Means for the Body): Collecting and Archiving Kurdish Folklore, accessed April 26, 2025, <a href="https://ore.exeter.ac.uk/rest/bitstreams/193966/retrieve" target="_blank">https://ore.exeter.ac.uk/rest/bitstreams/193966/retrieve</a></li>
+                        <li>From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Tradition and Revitalization of the Kurdish Language in the Works of Mehmed Uzun and Mehmet Dicle | Iranian Studies - Cambridge University Press, accessed April 26, 2025, <a href="https://www.cambridge.org/core/journals/iranian-studies/article/from-dengbej-to-modern-writer-heritagization-of-the-kurdish-oral-tradition-and-revitalization-of-the-kurdish-language-in-the-works-of-mehmed-uzun-and-mehmet-dicle/0F3BA0717D881D70DE8923CF6CAE4099" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/from-dengbej-to-modern-writer-heritagization-of-the-kurdish-oral-tradition-and-revitalization-of-the-kurdish-language-in-the-works-of-mehmed-uzun-and-mehmet-dicle/0F3BA0717D881D70DE8923CF6CAE4099</a></li>
+                        <li>(PDF) From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Tradition and Revitalization of the Kurdish Language in the Works of Mehmed Uzun and Mehmet Dicle - ResearchGate, accessed April 26, 2025, <a href="https://www.researchgate.net/publication/360279865_From_Dengbej_to_Modern_Writer_Heritagization_of_the_Kurdish_Oral_Tradition_and_Revitalization_of_the_Kurdish_Language_in_the_Works_of_Mehmed_Uzun_and_Mehmet_Dicle" target="_blank">https://www.researchgate.net/publication/360279865_From_Dengbej_to_Modern_Writer_Heritagization_of_the_Kurdish_Oral_Tradition_and_Revitalization_of_the_Kurdish_Language_in_the_Works_of_Mehmed_Uzun_and_Mehmet_Dicle</a></li>
+ 
+            </ul>
+        </div>
+        
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+        
+        <div class="last-updated">
+            <p>This page was created on: April 26, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+    
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+            
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) { 
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10); 
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
