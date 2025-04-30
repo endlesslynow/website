@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afrin - Kilis Relations</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Afrin - Kilis Relations</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Kilis-Afrin Borderland Before 2010.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Kilis-Afrin Borderland Before 2010.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This report analyzes the complex relationship between Kilis province in Turkey and Afrin district in Syria prior to 2010, focusing on how the border&#x27;s historical creation after the Ottoman Empire&#x27;s fall impacted the areas. It details the distinct demographic profiles of Kilis, a mixed province, and Afrin, a largely Kurdish area, highlighting the legacy of the border&#x27;s imposition, particularly for the Kurdish population. The text then explores cross-border interactions, including the long-standing prevalence of smuggling and the significant increase in formal economic and social ties during the Turkish-Syrian political rapprochement of the 2000s. Ultimately, it presents a picture of a borderland shaped by division, demographic difference, informal trade, and a unique decade of cooperation before the Syrian conflict dramatically altered the region.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Kilis-Afrin Ties Before 2010_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Afrin Canton - Wikipedia, accessed April 30, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_Canton" target="_blank">https://en.wikipedia.org/wiki/Afrin_Canton</a></li>
+            <li>​ Afrin District - Wikipedia, accessed April 30, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_District" target="_blank">https://en.wikipedia.org/wiki/Afrin_District</a></li>
+            <li>​ Turkey&#x27;s Demographic Engineering in Syria&#x27;s Afrin Region: A Closer Look,accessed April 30, 2025,<a href="https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin-region-a-closer-look" target="_blank">https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin-region-a-closer-look</a></li>
+            <li>​ Syrian Kurdish official decries US position on Afrin&#x27;s demographic changes -Kurdistan24, accessed April 30, 2025,<a href="https://www.kurdistan24.net/en/story/392159/Syrian-Kurdish-official-decries-US-position-on-Afrin%E2%80%99s-demographic-changes" target="_blank">https://www.kurdistan24.net/en/story/392159/Syrian-Kurdish-official-decries-US-position-on-Afrin%E2%80%99s-demographic-changes</a></li>
+            <li>​ Zeytin Dalı Harekâtı - Vikipedi, accessed April 30, 2025,<a href="https://tr.wikipedia.org/wiki/Zeytin_Dal%C4%B1_Harek%C3%A2t%C4%B1" target="_blank">https://tr.wikipedia.org/wiki/Zeytin_Dal%C4%B1_Harek%C3%A2t%C4%B1</a></li>
+            <li>​ Afrin Harekâtı&#x27;nın Güncel ve Potansiyel Stratejik Sonuçları - TASAM, accessed April30, 2025,<a href="https://tasam.org/tr-TR/Icerik/50198/afrin_harekatinin_guncel_ve_potansiyel_stratejik_sonuclari" target="_blank">https://tasam.org/tr-TR/Icerik/50198/afrin_harekatinin_guncel_ve_potansiyel_stratejik_sonuclari</a></li>
+            <li>​ Zeytin Dalı Harekatı: Güncel Afrin Son Durum Haritası - Stratejik Ortak, accessedApril 30, 2025, <a href="https://stratejikortak.com/2020/01/zeytin-dali-harekati-harita.html" target="_blank">https://stratejikortak.com/2020/01/zeytin-dali-harekati-harita.html</a></li>
+            <li>​ Türk Silahlı Kuvvetlerinin Suriye&#x27;ye yaptığı operasyonlar listesi - Vikipedi, accessedApril 30, 2025,<a href="https://tr.wikipedia.org/wiki/T%C3%BCrk_Silahl%C4%B1_Kuvvetlerinin_Suriye%27ye_yapt%C4%B1%C4%9F%C4%B1_operasyonlar_listesi" target="_blank">https://tr.wikipedia.org/wiki/T%C3%BCrk_Silahl%C4%B1_Kuvvetlerinin_Suriye%27ye_yapt%C4%B1%C4%9F%C4%B1_operasyonlar_listesi</a></li>
+            <li>​ Afrin - Vikipedi, accessed April 30, 2025, <a href="https://tr.wikipedia.org/wiki/Afrin" target="_blank">https://tr.wikipedia.org/wiki/Afrin</a></li>
+            <li>​“Her Şey Silah Zoruyla”: Türkiye İşgali Altındaki Kuzey Suriye&#x27;de Hak İhlalleri veCezasızlık, accessed April 30, 2025,<a href="https://www.hrw.org/tr/report/2024/02/29/387395" target="_blank">https://www.hrw.org/tr/report/2024/02/29/387395</a></li>
+            <li>​Suriye&#x27;de 13 yılda demografik yapı nasıl değiştirildi? - İlke TV, accessed April 30,2025, <a href="https://ilketv.com.tr/suriyede-13-yilda-demografik-yapi-nasil-degistirildi/" target="_blank">https://ilketv.com.tr/suriyede-13-yilda-demografik-yapi-nasil-degistirildi/</a></li>
+            <li>​Kuzey Suriye neresidir? Sosyo-ekonomik bir analiz - Fikir Turu, accessed April 30,2025,<a href="https://fikirturu.com/jeo-politika/kuzey-suriye-neresidir-sosyo-ekonomik-bir-analiz/" target="_blank">https://fikirturu.com/jeo-politika/kuzey-suriye-neresidir-sosyo-ekonomik-bir-analiz/</a></li>
+            <li>​Afrin Under Turkish Control: Political, Economic and Social Transformations -CADMUS, EUI Research Repository., accessed April 30, 2025,<a href="https://cadmus.eui.eu/bitstream/handle/1814/63745/MED_2019_10.pdf" target="_blank">https://cadmus.eui.eu/bitstream/handle/1814/63745/MED_2019_10.pdf</a></li>
+            <li>​Afrin after Operation Olive Branch: An update on the situation in north-west Syria- The Ceasefire Centre for Civilian Rights, accessed April 30, 2025,<a href="https://www.ceasefire.org/wp-content/uploads/2021/09/Afrin-briefing-09.2021-1.pdf" target="_blank">https://www.ceasefire.org/wp-content/uploads/2021/09/Afrin-briefing-09.2021-1.pdf</a></li>
+            <li>​Operation Olive Branch - Wikipedia, accessed April 30, 2025,<a href="https://en.wikipedia.org/wiki/Operation_Olive_Branch" target="_blank">https://en.wikipedia.org/wiki/Operation_Olive_Branch</a></li>
+            <li>​Cultivating Chaos: Afrin after Operation Olive Branch - The Ceasefire Centre forCivilian Rights, accessed April 30, 2025,<a href="https://www.ceasefire.org/wp-content/uploads/2020/07/CFR_Syria_EN_July20.pdf" target="_blank">https://www.ceasefire.org/wp-content/uploads/2020/07/CFR_Syria_EN_July20.pdf</a></li>
+            <li>​“Everything is by the Power of the Weapon”: Abuses and Impunity inTurkish-Occupied Northern Syria - Human Rights Watch, accessed April 30, 2025,<a href="https://www.hrw.org/report/2024/02/29/everything-power-weapon/abuses-and-impunity-turkish-occupied-northern-syria" target="_blank">https://www.hrw.org/report/2024/02/29/everything-power-weapon/abuses-and-impunity-turkish-occupied-northern-syria</a></li>
+            <li>​Human Rights Abuses in Afrin, Syria - FARA eFile, accessed April 30, 2025,<a href="https://efile.fara.gov/docs/6639-Informational-Materials-20220330-15.pdf" target="_blank">https://efile.fara.gov/docs/6639-Informational-Materials-20220330-15.pdf</a></li>
+            <li>​Ethnic or political cleansing? Identity, cultural heritage and demographicengineering in the Turkish-occupied territories of, accessed April 30, 2025,<a href="https://ojs.unito.it/index.php/deeuropa/article/download/10572/9061/35628" target="_blank">https://ojs.unito.it/index.php/deeuropa/article/download/10572/9061/35628</a></li>
+            <li>​How Syria Changed Turkey&#x27;s Foreign Policy | Carnegie Endowment forInternational Peace, accessed April 30, 2025,<a href="https://carnegieendowment.org/research/2021/09/how-syria-changed-turkeys-foreign-policy?lang=en¢er=europe" target="_blank">https://carnegieendowment.org/research/2021/09/how-syria-changed-turkeys-foreign-policy?lang=en¢er=europe</a></li>
+            <li>​Border Nation: The Reshaping of the Syrian-Turkish Borderlands ..., accessed April30, 2025,<a href="https://carnegieendowment.org/research/2022/03/border-nation-the-reshaping-of-the-syrian-turkish-borderlands?lang=en" target="_blank">https://carnegieendowment.org/research/2022/03/border-nation-the-reshaping-of-the-syrian-turkish-borderlands?lang=en</a></li>
+            <li>​Border Nation: The Reshaping of the Syrian-Turkish Borderlands | CarnegieEndowment for International Peace, accessed April 30, 2025,<a href="https://carnegieendowment.org/research/2022/03/border-nation-the-reshaping-of-the-syrian-turkish-borderlands?lang=en¢er=middle-east" target="_blank">https://carnegieendowment.org/research/2022/03/border-nation-the-reshaping-of-the-syrian-turkish-borderlands?lang=en¢er=middle-east</a></li>
+            <li>​Turkish involvement in the Syrian civil war - Wikipedia, accessed April 30, 2025,<a href="https://en.wikipedia.org/wiki/Turkish_involvement_in_the_Syrian_civil_war" target="_blank">https://en.wikipedia.org/wiki/Turkish_involvement_in_the_Syrian_civil_war</a></li>
+            <li>​Turkey – Syria: A Brief Anatomy of a Complicated Relationship - IRIS, accessedApril 30, 2025,<a href="https://www.iris-france.org/en/turquie-syrie-breve-anatomie-dune-relation-compliquee/" target="_blank">https://www.iris-france.org/en/turquie-syrie-breve-anatomie-dune-relation-compliquee/</a></li>
+            <li>​Into the Quagmire: Turkey&#x27;s Frustrated Syria Policy - Chatham House, accessedApril 30, 2025,<a href="https://www.chathamhouse.org/sites/default/files/public/Research/Middle%20East/1212bp_phillips.pdf" target="_blank">https://www.chathamhouse.org/sites/default/files/public/Research/Middle%20East/1212bp_phillips.pdf</a></li>
+            <li>​Kilis - Wikipedia, accessed April 30, 2025, <a href="https://en.wikipedia.org/wiki/Kilis" target="_blank">https://en.wikipedia.org/wiki/Kilis</a></li>
+            <li>​Syria Crisis Common Context Analysis - IASC, accessed April 30, 2025,<a href="https://interagencystandingcommittee.org/sites/default/files/migrated/2016-11/syria_crisis_common_context_analysis_june_2014.pdf" target="_blank">https://interagencystandingcommittee.org/sites/default/files/migrated/2016-11/syria_crisis_common_context_analysis_june_2014.pdf</a></li>
+            <li>​الوجود الكردي في سورياًتاريخياًواجتماعيا, accessed April 30, 2025,<a href="https://www.medaratkurd.com/2018/01/08/2294/" target="_blank">https://www.medaratkurd.com/2018/01/08/2294/</a></li>
+            <li>​التغيير الديموغرافي في منطقة عفرين رؤية(قانن)Yek.Dem, accessed April 30<a href="https://yek-dem.net/ar/?p=5997" target="_blank">https://yek-dem.net/ar/?p=5997</a></li>
+            <li>​Syria–Turkey border - Wikipedia, accessed April 30, 2025,<a href="https://en.wikipedia.org/wiki/Syria%E2%80%93Turkey_border" target="_blank">https://en.wikipedia.org/wiki/Syria%E2%80%93Turkey_border</a></li>
+            <li>​Reflecting on the Centenary of the Treaty of Lausanne: The Kurdish Struggle andUnyielding Resilience | The Washington Institute, accessed April 30, 2025,<a href="https://www.washingtoninstitute.org/policy-analysis/reflecting-centenary-treaty-lausanne-kurdish-struggle-and-unyielding-resilience" target="_blank">https://www.washingtoninstitute.org/policy-analysis/reflecting-centenary-treaty-lausanne-kurdish-struggle-and-unyielding-resilience</a></li>
+            <li>​Treaty of Lausanne - Wikipedia, accessed April 30, 2025,<a href="https://en.wikipedia.org/wiki/Treaty_of_Lausanne" target="_blank">https://en.wikipedia.org/wiki/Treaty_of_Lausanne</a></li>
+            <li>​The truth of the Treaty of Lausanne and its historical impact - ANF, accessed April30, 2025,<a href="https://anfenglish.com/news/the-truth-of-the-treaty-of-lausanne-and-its-historical-impact-69290" target="_blank">https://anfenglish.com/news/the-truth-of-the-treaty-of-lausanne-and-its-historical-impact-69290</a></li>
+            <li>​The Treaty of Lausanne: 100 Years of Destroying Kurdistan - The Kurdish Centerfor Studies, accessed April 30, 2025,<a href="https://nlka.net/eng/treaty-of-lausanne-100-years-of-systematic-destruction-of-kurdistan/" target="_blank">https://nlka.net/eng/treaty-of-lausanne-100-years-of-systematic-destruction-of-kurdistan/</a></li>
+            <li>​Suriye&#x27;de Riskler ve Fırsatlar, Dış Politika Bora Bayraktar | Kriter Dergi, accessedApril 30, 2025, <a href="https://kriterdergi.com/dis-politika/suriyede-riskler-ve-firsatlar" target="_blank">https://kriterdergi.com/dis-politika/suriyede-riskler-ve-firsatlar</a></li>
+            <li>​Kilis Province - Wikipedia, accessed April 30, 2025,<a href="https://en.wikipedia.org/wiki/Kilis_Province" target="_blank">https://en.wikipedia.org/wiki/Kilis_Province</a></li>
+            <li>​Kilis (Turkey): Cities, Towns and Villages in Districts - Population Statistics, Chartsand Map, accessed April 30, 2025, <a href="https://www.citypopulation.de/en/turkey/kilis/" target="_blank">https://www.citypopulation.de/en/turkey/kilis/</a></li>
+            <li>​Kilis - Vikipedi, accessed April 30, 2025, <a href="https://tr.wikipedia.org/wiki/Kilis" target="_blank">https://tr.wikipedia.org/wiki/Kilis</a></li>
+            <li>​(PDF) Kindergarten students&#x27; levels of understanding some science concepts andscientific inquiry processes according to demographic variables (the sampling ofKilis Province in Turkey) - ResearchGate, accessed April 30, 2025,<a href="https://www.researchgate.net/publication/294421663_Kindergarten_students&#x27;_levels_of_understanding_some_science_concepts_and_scientific_inquiry_processes_according_to_demographic_variables_the_sampling_of_Kilis_Province_in_Turkey" target="_blank">https://www.researchgate.net/publication/294421663_Kindergarten_students&#x27;_levels_of_understanding_some_science_concepts_and_scientific_inquiry_processes_according_to_demographic_variables_the_sampling_of_Kilis_Province_in_Turkey</a></li>
+            <li>​Demographics of Turkey - Wikipedia, accessed April 30, 2025,<a href="https://en.wikipedia.org/wiki/Demographics_of_Turkey" target="_blank">https://en.wikipedia.org/wiki/Demographics_of_Turkey</a></li>
+            <li>​Kilis Şehri&#x27;nin Demografik Yapılanması Üzerine Bazı Görüşler (16-20. Yüzyıllar)Some Perspectives - DergiPark, accessed April 30, 2025,<a href="https://dergipark.org.tr/en/download/article-file/3039840" target="_blank">https://dergipark.org.tr/en/download/article-file/3039840</a></li>
+            <li>​عفرين-ويكيبيديا, accessed April 30, 2025,<a href="https://ar.wikipedia.org/wiki/%D8%B9%D9%81%D8%B1%D9%8A%D9%86" target="_blank">https://ar.wikipedia.org/wiki/%D8%B9%D9%81%D8%B1%D9%8A%D9%86</a></li>
+            <li>​Afrin: Incidents Of Desecration And Destruction Of Cultural Sites - bellingcat,accessed April 30, 2025,<a href="https://www.bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites/" target="_blank">https://www.bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites/</a></li>
+            <li>​كيف أثر النزوح على التركيبة السكانية في عفرين السورية؟|سياسة-الجزيرة نت, accessed April 30,2025,<a href="https://www.aljazeera.net/politics/2025/1/21/%D9%83%D9%8A%D9%81-%D8%A3%D8%AB%D8%B1-%D8%A7%D9%84%D9%86%D8%B2%D9%88%D8%AD-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%AA%D8%B1%D9%83%D9%8A%D8%A8%D8%A9-%D8%A7%D9%84%D8%B3%D9%83%D8%A7%D9%86%D9%8A%D8%A9" target="_blank">https://www.aljazeera.net/politics/2025/1/21/%D9%83%D9%8A%D9%81-%D8%A3%D8%AB%D8%B1-%D8%A7%D9%84%D9%86%D8%B2%D9%88%D8%AD-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%AA%D8%B1%D9%83%D9%8A%D8%A8%D8%A9-%D8%A7%D9%84%D8%B3%D9%83%D8%A7%D9%86%D9%8A%D8%A9</a></li>
+            <li>​بير رستم-التغيير الديمغرافي في سوريا عفرين_من_, accessed April<a href="https://www.ahewar.org/debat/show.art.asp?aid=603061" target="_blank">https://www.ahewar.org/debat/show.art.asp?aid=603061</a></li>
+            <li>​شهادة عن التركيبة السكانية لمدينة عفرين-المجلس الوطني الكوردي في سوريا, accessed April 30, 2025,<a href="https://www.r-enks.net/?p=12538" target="_blank">https://www.r-enks.net/?p=12538</a></li>
+            <li>​بعد13عاما من..الصراع. .كيتغيرالتركيبالسكانيفسوري  -الوط, accessed April 30, 2025<a href="https://www.elwatannews.com/news/details/7730136" target="_blank">https://www.elwatannews.com/news/details/7730136</a></li>
+            <li>​التركيبة السكانية في..سوريا. .تقديراإحصائيمتباينوتنوعرقوطائف  -الشرللأخبا, accessed April 30, 2025<a href="https://asharq.com/politics/109422/%D8%A7%D9%84%D8%B3%D9%83%D8%A7%D9%86-%D9%81%D9%8A-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D8%AA%D9%82%D8%AF%D9%8A%D8%B1%D8%A7%D8%AA-%D8%A5%D8%AD%D8%B5%D8%A7%D8%A6%D9%8A%D8%A9-%D9%85%D8%AA%D8%A8%D8%A7%D9%8A%D9%86%D8%A9-%D9%88%D8%AA%D9%86%D9%88%D8%B9-%D8%B9%D8%B1%D9%82%D9%8A-%D9%88%D8%B7%D8%A7%D8%A6%D9%81%D9%8A/" target="_blank">https://asharq.com/politics/109422/%D8%A7%D9%84%D8%B3%D9%83%D8%A7%D9%86-%D9%81%D9%8A-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D8%AA%D9%82%D8%AF%D9%8A%D8%B1%D8%A7%D8%AA-%D8%A5%D8%AD%D8%B5%D8%A7%D8%A6%D9%8A%D8%A9-%D9%85%D8%AA%D8%A8%D8%A7%D9%8A%D9%86%D8%A9-%D9%88%D8%AA%D9%86%D9%88%D8%B9-%D8%B9%D8%B1%D9%82%D9%8A-%D9%88%D8%B7%D8%A7%D8%A6%D9%81%D9%8A/</a></li>
+            <li>​Kilis as “little Beirut”: Shadow Markets and Illegality in the Southeastern Margins ofTurkey, accessed April 30, 2025,<a href="https://journals.openedition.org/espacepolitique/3581" target="_blank">https://journals.openedition.org/espacepolitique/3581</a></li>
+            <li>​Yeni Başlayanlar İçin Kilis (1): Ne Oldu, Ne Oluyor, Ne Olabilir? - Mehmet NuriGültekin, accessed April 30, 2025,<a href="https://birikimdergisi.com/guncel/7645/yeni-baslayanlar-icin-kilis-1-ne-oldu-ne-oluyor-ne-olabilir" target="_blank">https://birikimdergisi.com/guncel/7645/yeni-baslayanlar-icin-kilis-1-ne-oldu-ne-oluyor-ne-olabilir</a></li>
+            <li>​Turkey continues to steal Afrin&#x27;s olives, oil | Al Mayadeen English, accessed April30, 2025,<a href="https://english.almayadeen.net/articles/features/turkey-continues-to-steal-afrin-s-olives--oil" target="_blank">https://english.almayadeen.net/articles/features/turkey-continues-to-steal-afrin-s-olives--oil</a></li>
+            <li>​Sahanın Gölgeleriyle Baş Etmek: Türkiye-Suriye Sınırındaki Kilis&#x27;te KaçakçılıkAnlatıları Dealing with the Shadows - DergiPark, accessed April 30, 2025,<a href="https://dergipark.org.tr/tr/download/article-file/223165" target="_blank">https://dergipark.org.tr/tr/download/article-file/223165</a></li>
+            <li>​(PDF) Regional Power Role and Intervention: The Turkish Case Over Syria in the2000s, accessed April 30, 2025,<a href="https://www.researchgate.net/publication/339318026_Regional_Power_Role_and_Intervention_The_Turkish_Case_Over_Syria_in_the_2000s" target="_blank">https://www.researchgate.net/publication/339318026_Regional_Power_Role_and_Intervention_The_Turkish_Case_Over_Syria_in_the_2000s</a></li>
+            <li>​Gümrük | ÖNCÜPINAR SINIR KAPISI YENİDEN AÇILDI - UTİKAD, accessed April 30,2025,<a href="https://www.utikad.org.tr/Detay/Sektor-Haberleri/15620/oncupinar-sinir-kapisi-yeniden-acildi" target="_blank">https://www.utikad.org.tr/Detay/Sektor-Haberleri/15620/oncupinar-sinir-kapisi-yeniden-acildi</a></li>
+            <li>​Öncüpınar sınır kapısı açıldı | Al Jazeera Turk - Ortadoğu, Kafkasya, Balkanlar,Türkiye ve çevresindeki bölgeden son dakika haberleri ve analizler, accessed April30, 2025, <a href="https://www.aljazeera.com.tr/haber/oncupinar-sinir-kapisi-acildi" target="_blank">https://www.aljazeera.com.tr/haber/oncupinar-sinir-kapisi-acildi</a></li>
+            <li>​Life In Kilis with Its Traditional Urban Fabric and Houses - Scientific ResearchPublishing, accessed April 30, 2025,<a href="https://www.scirp.org/journal/paperinformation?paperid=61309" target="_blank">https://www.scirp.org/journal/paperinformation?paperid=61309</a></li>
+            <li>​بير رستم-عفرينًمجتمعا وجغرافيا بين العمق التاريخي والصراع السياسي-الحوار المتمدن, accessed April30, 2025, <a href="https://www.ahewar.org/debat/show.art.asp?aid=625584" target="_blank">https://www.ahewar.org/debat/show.art.asp?aid=625584</a></li>
+            <li>​Kilis | Syrian Refugees, Ottoman Empire &amp; Geography - Britannica, accessed April30, 2025, <a href="https://www.britannica.com/place/Kilis" target="_blank">https://www.britannica.com/place/Kilis</a></li>
+            <li>​(PDF) The Effects of Refugees on Kilis Culture and Economy - ResearchGate,accessed April 30, 2025,<a href="https://www.researchgate.net/publication/367796640_THE_EFFECTS_OF_REFUGEES_ON_KILIS_CULTURE_AND_ECONOMY" target="_blank">https://www.researchgate.net/publication/367796640_THE_EFFECTS_OF_REFUGEES_ON_KILIS_CULTURE_AND_ECONOMY</a></li>
+            <li>​Impact of Syrian Refugees on the Turkish Labor Market - World Bank Documents,accessed April 30, 2025,<a href="https://documents.worldbank.org/curated/en/505471468194980180/pdf/WPS7402.pdf" target="_blank">https://documents.worldbank.org/curated/en/505471468194980180/pdf/WPS7402.pdf</a></li>
+            <li>​Agricultural Livelihood Resources and Labor Market for Syrian under TemporaryProtection and Vulnerable Host Communities in Six Provinces of Turkey -ResearchGate, accessed April 30, 2025,<a href="https://www.researchgate.net/publication/343474194_Agricultural_Livelihood_Resources_and_Labor_Market_for_Syrian_under_Temporary_Protection_and_Vulnerable_Host_Communities_in_Six_Provinces_of_Turkey" target="_blank">https://www.researchgate.net/publication/343474194_Agricultural_Livelihood_Resources_and_Labor_Market_for_Syrian_under_Temporary_Protection_and_Vulnerable_Host_Communities_in_Six_Provinces_of_Turkey</a></li>
+            <li>​Türkiye&#x27;de Mevsimlik Tarımsal Üretimde Mevcut Durum Raporu - YABANCIGÖÇMEN İŞÇİLER - Kalkınma Atölyesi, accessed April 30, 2025,<a href="https://www.ka.org.tr/dosyalar/file/Yayinlar/Cocuk-Haklari/Raporlar/TURKIYEDE-MEVSIMLIK-TARIMSAL-URETIMDE-YABANCI-GOCMEN-ISCILER-MEVCUT-DURUM-RAPORU.pdf" target="_blank">https://www.ka.org.tr/dosyalar/file/Yayinlar/Cocuk-Haklari/Raporlar/TURKIYEDE-MEVSIMLIK-TARIMSAL-URETIMDE-YABANCI-GOCMEN-ISCILER-MEVCUT-DURUM-RAPORU.pdf</a></li>
+            <li>​SURİYELİ SIĞINMACILARIN TÜRKİYE&#x27;YE ETKİLERİ - TESEV, accessed April 30, 2025,<a href="https://www.tesev.org.tr/wp-content/uploads/rapor_Suriyeli_Siginmacilarin_Turkiyeye_Etkileri.pdf" target="_blank">https://www.tesev.org.tr/wp-content/uploads/rapor_Suriyeli_Siginmacilarin_Turkiyeye_Etkileri.pdf</a></li>
+            <li>​Suriye-Türkiye ilişkileri - Vikipedi, accessed April 30, 2025,<a href="https://tr.wikipedia.org/wiki/Suriye-T%C3%BCrkiye_ili%C5%9Fkileri" target="_blank">https://tr.wikipedia.org/wiki/Suriye-T%C3%BCrkiye_ili%C5%9Fkileri</a></li>
+            <li>​How domestic politics reverberated in Turkish foreign policy in the Middle East |Too big for its boots - Clingendael Institute, accessed April 30, 2025,<a href="https://www.clingendael.org/pub/2018/too-big-for-its-boots/2-how-domestic-politics-reverberated/" target="_blank">https://www.clingendael.org/pub/2018/too-big-for-its-boots/2-how-domestic-politics-reverberated/</a></li>
+            <li>​MAKING OF THE MULTIDIMENSIONAL PARTNERSHIP: TURKEY-SYRIA RELATIONSBETWEEN 2003 AND 2011 A THESIS SUBMITTED TO THE GRADUATE SCH - MiddleEast Technical University, accessed April 30, 2025,<a href="https://open.metu.edu.tr/bitstream/handle/11511/96051/Final_Master_Thesis_Muharrem_15_2_2022.pdf" target="_blank">https://open.metu.edu.tr/bitstream/handle/11511/96051/Final_Master_Thesis_Muharrem_15_2_2022.pdf</a></li>
+            <li>​Arap Baharına Kadar Türkiye-Suriye İlişkileri* - DergiPark, accessed April 30, 2025,<a href="https://dergipark.org.tr/en/download/article-file/820140" target="_blank">https://dergipark.org.tr/en/download/article-file/820140</a></li>
+            <li>​Suriye Politikasının Türkiye Siyaseti Üzerine Etkileri: 2000 Sonrası Dönem -DergiPark, accessed April 30, 2025,<a href="https://dergipark.org.tr/tr/pub/iktisad/issue/80529/1341353" target="_blank">https://dergipark.org.tr/tr/pub/iktisad/issue/80529/1341353</a></li>
+            <li>​IMPACT OF SYRIA&#x27;S REFUGEES SOUTHERN TURKEY - The Washington Institute,accessed April 30, 2025,<a href="https://www.washingtoninstitute.org/sites/default/files/pdf/PolicyFocus130_Cagaptay_Revised3s.pdf" target="_blank">https://www.washingtoninstitute.org/sites/default/files/pdf/PolicyFocus130_Cagaptay_Revised3s.pdf</a></li>
+            <li>​Halep&#x27;te Türkiye-suriye Bölgelerarası İşbirliği Programı Toplantısı, accessed April30, 2025,<a href="https://www.karacadag.gov.tr/haber/49/halepte-turkiye-suriye-bolgelerarasi-isbirligi-programi-toplantisi/" target="_blank">https://www.karacadag.gov.tr/haber/49/halepte-turkiye-suriye-bolgelerarasi-isbirligi-programi-toplantisi/</a></li>
+            <li>​Borders Without a Nation: Syria, Outside Powers, and Open-Ended Instability,accessed April 30, 2025,<a href="https://carnegieendowment.org/research/2024/09/borders-without-a-nation-syria-outside-powers-and-open-ended-instability" target="_blank">https://carnegieendowment.org/research/2024/09/borders-without-a-nation-syria-outside-powers-and-open-ended-instability</a></li>
+            <li>​عفرين قبل:االحتالل:- ANF, accessed April 30, 2025,<a href="https://anfarabic.com/%D9%83%D8%B1%D8%AF%D8%B3%D8%AA%D8%A7%D9%86/fryn-qbl-alahtlal-nhju-lmshrw-alamt-aldymqratyt-walysh-almshtrk-77571" target="_blank">https://anfarabic.com/%D9%83%D8%B1%D8%AF%D8%B3%D8%AA%D8%A7%D9%86/fryn-qbl-alahtlal-nhju-lmshrw-alamt-aldymqratyt-walysh-almshtrk-77571</a></li>
+            <li>​إمارة كلس-ويكيبيديا, accessed April 30, 2025,<a href="https://ar.wikipedia.org/wiki/%D8%A5%D9%85%D8%A7%D8%B1%D8%A9_%D9%83%D9%84%D8%B3" target="_blank">https://ar.wikipedia.org/wiki/%D8%A5%D9%85%D8%A7%D8%B1%D8%A9_%D9%83%D9%84%D8%B3</a></li>
+            <li>​THE WAR ECONOMY IN NORTHERN SYRIA - Blue Shield International, accessedApril 30, 2025,<a href="https://theblueshield.org/wp-content/uploads/2022/03/Tokmajyan_War-Economy_N-Syria.pdf" target="_blank">https://theblueshield.org/wp-content/uploads/2022/03/Tokmajyan_War-Economy_N-Syria.pdf</a></li>
+            <li>​Kilis is located in the southern foothills of the Taurus Mountains in the west of theEuphrates River on the northern edge of the Syria Plain. The district containsareas of good agricultural land, watered by small rivers and 68% of the land areaof Kilis is planted. Almost 4% of Turkey&#x27;s grape production comes from Kilis.Other important agricultural products are olives, fruit, wheat, barley and tobacco.- Uluslararası İlişkiler Ofisi, accessed April 30, 2025,<a href="http://uluslararasi.kilis.edu.tr/sayfa/4353/city-of-kilis" target="_blank">http://uluslararasi.kilis.edu.tr/sayfa/4353/city-of-kilis</a></li>
+            <li>​390 SINIRIN TARİHİ VE COĞRAFİ YANSIMALARI: KİLİS ÖRNEĞİ - DergiPark,accessed April 30, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/2760861" target="_blank">https://dergipark.org.tr/tr/download/article-file/2760861</a></li>
+            <li>​Afrin and the Race for the Azaz Corridor - Atlantic Council, accessed April 30,2025,<a href="https://www.atlanticcouncil.org/blogs/syriasource/afrin-and-the-race-for-the-azaz-corridor/" target="_blank">https://www.atlanticcouncil.org/blogs/syriasource/afrin-and-the-race-for-the-azaz-corridor/</a></li>
+            <li>​World Atlas of Illicit Flows - Global Initiative Against Transnational OrganizedCrime, accessed April 30, 2025,<a href="https://globalinitiative.net/wp-content/uploads/2018/09/Atlas-Illicit-Flows-Second-Edition-EN-WEB.pdf" target="_blank">https://globalinitiative.net/wp-content/uploads/2018/09/Atlas-Illicit-Flows-Second-Edition-EN-WEB.pdf</a></li>
+            <li>​MARAŞ VE ÇEVRESİNDE AŞİRETLER (1774-1865), accessed April 30, 2025,<a href="https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/206007/yokAcikBilim_1" target="_blank">https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/206007/yokAcikBilim_1</a></li>
+            <li>pdf?sequence=-1&amp;isAllowed=y</li>
+            <li>​antakya ve çevresi türkmenleri: küçük alioğulları ve reyhanlı aşireti - AtatürkÜniversitesi, accessed April 30, 2025,<a href="https://www.atauni.edu.tr/yuklemeler/ebf93751a5bb2536049d9e37c2ccd63a.pdf" target="_blank">https://www.atauni.edu.tr/yuklemeler/ebf93751a5bb2536049d9e37c2ccd63a.pdf</a></li>
+            <li>​COMMUNITY, BELONGING AND SOCIAL MOBILITY AMONG SOCIO-ECONOMICSTRATA ON THE SYRIAN BORDER OF, accessed April 30, 2025,<a href="https://etd.lib.metu.edu.tr/upload/12618206/index.pdf" target="_blank">https://etd.lib.metu.edu.tr/upload/12618206/index.pdf</a></li>
+            <li>​Dış Ticaret - T.C. KİLİS VALİLİĞİ, accessed April 30, 2025,<a href="http://www.kilis.gov.tr/dis-ticaret" target="_blank">http://www.kilis.gov.tr/dis-ticaret</a></li>
+            <li>​تقرير حقوقي عن االنتهاكات الجسيمة المرتكبة من قبل القوات التركية والمجموعات المسلحة اثناء احتالل عفرينوقراها ج-2-, accessed April 30, 2025<a href="http://cdf-sy.org/content/index.php?option=com_content&amp;view=article&amp;id=2823:----------------2-&amp;catid=11:2010-07-06-15-21-27&amp;Itemid=12" target="_blank">http://cdf-sy.org/content/index.php?option=com_content&amp;view=article&amp;id=2823:----------------2-&amp;catid=11:2010-07-06-15-21-27&amp;Itemid=12</a></li>
+            <li>​عملية غصن الزيتون-ويكيبيديا, accessed April 30, 2025,<a href="https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D9%8A%D8%A9_%D8%BA%D8%B5%D9%86_%D8%A7%D9%84%D8%B2%D9%8A%D8%AA%D9%88%D9%86" target="_blank">https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D9%8A%D8%A9_%D8%BA%D8%B5%D9%86_%D8%A7%D9%84%D8%B2%D9%8A%D8%AA%D9%88%D9%86</a></li>
+            <li>​ُالحياة اليوميَّة في كرداغ شمال(سناء َلالِالفيحربَِّةِنية-ارا,April 30, 2025, <a href="https://www.medaratkurd.com/2016/12/29/1817/" target="_blank">https://www.medaratkurd.com/2016/12/29/1817/</a></li>
+            <li>​عفرين عروسة..كردستان. .تاريوتراعريوأصالشعصامحتلاآ, accessed April 30, 2025<a href="https://alawset.net/2018/03/14/%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D8%B9%D8%B1%D9%88%D8%B3%D8%A9-%D9%83%D8%B1%D8%AF%D8%B3%D8%AA%D8%A7%D9%86-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%88%D8%AA%D8%B1%D8%A7%D8%AB-%D8%B9%D8%B1%D9%8A%D9%82-%D9%88/" target="_blank">https://alawset.net/2018/03/14/%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D8%B9%D8%B1%D9%88%D8%B3%D8%A9-%D9%83%D8%B1%D8%AF%D8%B3%D8%AA%D8%A7%D9%86-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D9%88%D8%AA%D8%B1%D8%A7%D8%AB-%D8%B9%D8%B1%D9%8A%D9%82-%D9%88/</a></li>
+            <li>​2023&#x27;te Türkiye-Suriye İlişkileri: Hasar Tespiti ve Güven İnşası - Serhat Erkmen,accessed April 30, 2025, <a href="https://www.globalpanorama.org/2023/01/se/" target="_blank">https://www.globalpanorama.org/2023/01/se/</a></li>
+            <li>​Local Intermediaries in post-2011 Syria - Bibliothek der Friedrich-Ebert-Stiftung,accessed April 30, 2025, <a href="https://library.fes.de/pdf-files/bueros/beirut/15547.pdf" target="_blank">https://library.fes.de/pdf-files/bueros/beirut/15547.pdf</a></li>
+            <li>​Syrian Salvation Government - Wikipedia, accessed April 30, 2025,<a href="https://en.wikipedia.org/wiki/Syrian_Salvation_Government" target="_blank">https://en.wikipedia.org/wiki/Syrian_Salvation_Government</a></li>
+            <li>​Turkish intervention strategy in Northern Syria (2011-2023 AD) - MalquePublishing, accessed April 30, 2025,<a href="https://malque.pub/ojs/index.php/mr/article/download/3097/2150/26833" target="_blank">https://malque.pub/ojs/index.php/mr/article/download/3097/2150/26833</a></li>
+            <li>​Borders Without a Nation: Syria, Outside Powers, and Open-Ended Instability,accessed April 30, 2025,<a href="https://carnegieendowment.org/research/2024/09/borders-without-a-nation-syria-outside-powers-and-open-ended-instability?lang=en¢er=russia-eurasia" target="_blank">https://carnegieendowment.org/research/2024/09/borders-without-a-nation-syria-outside-powers-and-open-ended-instability?lang=en¢er=russia-eurasia</a></li>
+            <li>​Tarihçe - T.C. KİLİS VALİLİĞİ, accessed April 30, 2025,<a href="http://www.kilis.gov.tr/tarihce" target="_blank">http://www.kilis.gov.tr/tarihce</a></li>
+            <li>​SURİYELİ SIĞINMACILARIN KİLİS EKONOMİSİNE ETKİSİ 1 THE IMPACT OF SYRIANREFUGEES ON THE KILIS ECONOMY آﺛﺎراﻟ - DergiPark, accessed April 30, 2025,<a href="https://dergipark.org.tr/tr/download/article-file/388982" target="_blank">https://dergipark.org.tr/tr/download/article-file/388982</a></li>
+            <li>​1 Bu plan, AFAD Planlama ve Risk Azaltma Dairesi tarafından oluşturulmuş olanİRAP Hazırlama Kılavuzu doğrultusunda haz - Kilis AFAD, accessed April 30, 2025,<a href="https://kilis.afad.gov.tr/kurumlar/kilis.afad/Kutuphane/il-planlari/Kilis_IRAP.pdf" target="_blank">https://kilis.afad.gov.tr/kurumlar/kilis.afad/Kutuphane/il-planlari/Kilis_IRAP.pdf</a></li>
+            <li>​Göçmen Mahallelerinde Yaşam: Türkiye&#x27;de 2010 Sonrası Göçler ve GöçmenlerinToplumsal Katılımı, accessed April 30, 2025,<a href="https://tr.boell.org/sites/default/files/2023-11/gocmenyasamirapor_tr_28.11.23_web.pdf" target="_blank">https://tr.boell.org/sites/default/files/2023-11/gocmenyasamirapor_tr_28.11.23_web.pdf</a></li>
+            <li>​Turkey&#x27;s Refugee Dilemma - Center for American Progress, accessed April 30,2025, <a href="https://www.americanprogress.org/article/turkeys-refugee-dilemma/" target="_blank">https://www.americanprogress.org/article/turkeys-refugee-dilemma/</a></li>
+            <li>​Türkiye&#x27;deki Suriyeliler ve Sınır Ötesi Güvenli Bölge - Polis Akademisi, accessedApril 30, 2025,<a href="https://cdn2.pa.edu.tr/Upload/Rapor/Dosya/turkiyedeki-suriyeliler-ve-sinir-otesi-guvenli-bolge.pdf" target="_blank">https://cdn2.pa.edu.tr/Upload/Rapor/Dosya/turkiyedeki-suriyeliler-ve-sinir-otesi-guvenli-bolge.pdf</a></li>
+            <li>​suriye&#x27;deki iklim değişikliğinin ve susuzluğun türkiye&#x27;ye olan suriyeli göçüneetkisinin hatay özelinde araştırılması - İklimin.org, accessed April 30, 2025,<a href="https://www.iklimin.org/wp-content/uploads/2018/01/HatayBB_026_Suriyeli-G%C3%B6c%C3%BCn-Etkisi.pdf" target="_blank">https://www.iklimin.org/wp-content/uploads/2018/01/HatayBB_026_Suriyeli-G%C3%B6c%C3%BCn-Etkisi.pdf</a></li>
+            <li>​The Impact of the Mass Migration of Syrian Refugees on Turkish Cities -Czasopisma, accessed April 30, 2025,<a href="https://czasopisma.marszalek.com.pl/images/pliki/ppsy/52/ppsy202385.pdf" target="_blank">https://czasopisma.marszalek.com.pl/images/pliki/ppsy/52/ppsy202385.pdf</a></li>
+            <li>​The Impact of the Syrian Refugee Crisis on Firm Entry and Performance inTurkey - Open Knowledge Repository, accessed April 30, 2025,<a href="https://openknowledge.worldbank.org/server/api/core/bitstreams/5b6c6651-816b-5219-9dd9-3a97648ef75c/content" target="_blank">https://openknowledge.worldbank.org/server/api/core/bitstreams/5b6c6651-816b-5219-9dd9-3a97648ef75c/content</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: April 30, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
