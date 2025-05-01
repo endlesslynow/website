@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurdish Legends</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kurdish Legends</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Major Kurdish Legends and Their Significance.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Major Kurdish Legends and Their Significance.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>These sources provide a comprehensive overview of Kurdish folklore, highlighting its deep connection to Kurdish identity and resistance. They emphasize the crucial role of dengbêj, traditional bards who preserved oral traditions like the liberation myth of Kawa the Blacksmith and the tragic epic of Mem û Zîn, which have evolved into powerful symbols of national struggle and unity. The sources also examine the complex figure of Shahmaran, the serpent queen representing wisdom and healing, and touch upon other significant narratives such as the historical epic of Dimdim and various origin myths, demonstrating the rich and dynamic nature of Kurdish cultural heritage in both oral and written forms, often within a contested political landscape.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Kurdish Legends_ Story and History_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Kurdish Mythology | Mythosphere, accessed May 1, 2025,<a href="https://www.folklore.earth/culture/kurd/" target="_blank">https://www.folklore.earth/culture/kurd/</a></li>
+            <li>​ Kurdish Folklore, accessed May 1, 2025,<a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore/</a></li>
+            <li>​ Kurdish Folklore as World Heritage - Kurdishstudies, accessed May 1, 2025,<a href="https://www.kurdishstudies.pl/?en_kurdish-folklore-as-world-heritage,273" target="_blank">https://www.kurdishstudies.pl/?en_kurdish-folklore-as-world-heritage,273</a></li>
+            <li>​ The Kurdish Romeo and Juliet, the legend of Mem and Zin ..., accessed May 1,2025,<a href="https://www.independent.co.uk/arts-entertainment/books/kurdish-literature-mem-zin-b2305194.html" target="_blank">https://www.independent.co.uk/arts-entertainment/books/kurdish-literature-mem-zin-b2305194.html</a></li>
+            <li>​ “Mem û Zîn,” the Kurdish epic - New York Kurdish Cultural Center, accessed May1, 2025, <a href="https://nykcc.org/mem-u-zin/" target="_blank">https://nykcc.org/mem-u-zin/</a></li>
+            <li>​ Dengbej, or the epic of Kurdish people - ANF, accessed May 1, 2025,<a href="https://anfenglishmobile.com/culture/dengbej-or-the-epic-of-kurdish-people-1500" target="_blank">https://anfenglishmobile.com/culture/dengbej-or-the-epic-of-kurdish-people-1500</a></li>
+            <li>​ Some Kurdish bards | Stephen Jones: a blog, accessed May 1, 2025,<a href="https://stephenjones.blog/2022/06/20/kurdish-bards/" target="_blank">https://stephenjones.blog/2022/06/20/kurdish-bards/</a></li>
+            <li>​ VOICE AS A SPACE OF MEMORY AND SONOROUS OBJECT IN THE DENGBÊJTRADITION DİLAN SALIK BOĞAZİÇİ UNIVERSITY 2019, accessed May 1, 2025,<a href="https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/323168/yokAcikBilim_10" target="_blank">https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/323168/yokAcikBilim_10</a></li>
+            <li>pdf?sequence=-1&amp;isAllowed=y</li>
+            <li>​ &#x27;Dengbej&#x27; culture in Kurdish music | Daily Sabah, accessed May 1, 2025,<a href="https://www.dailysabah.com/arts/dengbej-culture-in-kurdish-music/news" target="_blank">https://www.dailysabah.com/arts/dengbej-culture-in-kurdish-music/news</a></li>
+            <li>​pure.uva.nl, accessed May 1, 2025,<a href="https://pure.uva.nl/ws/files/144591580/10.4324_9781315627427-7_chapterpdf.pdf" target="_blank">https://pure.uva.nl/ws/files/144591580/10.4324_9781315627427-7_chapterpdf.pdf</a></li>
+            <li>​(PDF) Ehmedê Xanî&#x27;s Mem û Zîn and its role in the emergence of ..., accessed May1, 2025,<a href="https://www.academia.edu/12121513/Ehmed%C3%AA_Xan%C3%AEs_Mem_%C3%BB_Z%C3%AEn_and_its_role_in_the_emergence_of_Kurdish_nationalism" target="_blank">https://www.academia.edu/12121513/Ehmed%C3%AA_Xan%C3%AEs_Mem_%C3%BB_Z%C3%AEn_and_its_role_in_the_emergence_of_Kurdish_nationalism</a></li>
+            <li>​From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Tradition andRevitalization of the Kurdish Language in the Works of Mehmed Uzun andMehmet Dicle, accessed May 1, 2025,<a href="https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revitalization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehmet_dicle.pdf" target="_blank">https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revitalization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehmet_dicle.pdf</a></li>
+            <li>​From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Tradition andRevitalization of the Kurdish Language in the Works of Mehmed Uzun andMehmet Dicle | Iranian Studies - Cambridge University Press, accessed May 1,2025,<a href="https://www.cambridge.org/core/journals/iranian-studies/article/from-dengbej-to-modern-writer-heritagization-of-the-kurdish-oral-tradition-and-revitalization-of-the-kurdish-language-in-the-works-of-mehmed-uzun-and-mehmet-dicle/0F3BA0717D881D70DE8923CF6CAE4099" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/from-dengbej-to-modern-writer-heritagization-of-the-kurdish-oral-tradition-and-revitalization-of-the-kurdish-language-in-the-works-of-mehmed-uzun-and-mehmet-dicle/0F3BA0717D881D70DE8923CF6CAE4099</a></li>
+            <li>​Oral Tradition Journal at Harvard University, accessed May 1, 2025,<a href="https://oraltradition.org/mirza-mihemed-mirza-pamat/" target="_blank">https://oraltradition.org/mirza-mihemed-mirza-pamat/</a></li>
+            <li>​&#x27;Gan qey bedenî yeno çi mana&#x27; (What the Soul Means for the Body): Collectingand Archiving Kurdish Folklore as a Strategy for Language Revitalization andIndigenous Knowledge Production - Taylor &amp; Francis Online, accessed May 1,2025, <a href="https://www.tandfonline.com/doi/abs/10.1080/0015587X.2023.2205777" target="_blank">https://www.tandfonline.com/doi/abs/10.1080/0015587X.2023.2205777</a></li>
+            <li>​Kurdish folklore collectors are helping to revitalise endangered ..., accessed May1, 2025,<a href="https://news.exeter.ac.uk/faculty-of-humanities-arts-and-social-sciences/kurdish-folklore-collectors-are-helping-to-revitalise-endangered-languages-study-shows/" target="_blank">https://news.exeter.ac.uk/faculty-of-humanities-arts-and-social-sciences/kurdish-folklore-collectors-are-helping-to-revitalise-endangered-languages-study-shows/</a></li>
+            <li>​&#x27;Gan qey bedenî yeno çi mana&#x27; (What the Soul Means for the Body): Collectingand Archiving Kurdish Folklore, accessed May 1, 2025,<a href="https://ruj.uj.edu.pl/server/api/core/bitstreams/a8780cf5-7194-4f0a-90a7-c0ff287f2545/content" target="_blank">https://ruj.uj.edu.pl/server/api/core/bitstreams/a8780cf5-7194-4f0a-90a7-c0ff287f2545/content</a></li>
+            <li>​ore.exeter.ac.uk, accessed May 1, 2025,<a href="https://ore.exeter.ac.uk/repository/bitstream/handle/10871/20421/KurdishFolkloreRevisitedsubmitted.pdf?sequence=1" target="_blank">https://ore.exeter.ac.uk/repository/bitstream/handle/10871/20421/KurdishFolkloreRevisitedsubmitted.pdf?sequence=1</a></li>
+            <li>​Kawa the Blacksmith: A Symbol of Kurdish Courage and Resistance, accessedMay 1, 2025,<a href="https://kurdishprogress.com/kawa-the-blacksmith-a-symbol-of-kurdish-courage-and-resistance/" target="_blank">https://kurdishprogress.com/kawa-the-blacksmith-a-symbol-of-kurdish-courage-and-resistance/</a></li>
+            <li>​Newroz as celebrated by Kurds - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Newroz_as_celebrated_by_Kurds" target="_blank">https://en.wikipedia.org/wiki/Newroz_as_celebrated_by_Kurds</a></li>
+            <li>​&#x27;Nevruz&#x27; or &#x27;Newroz&#x27;? deconstructing the &#x27;invention&#x27; of a contested tradition incontemporary Turkey, accessed May 1, 2025,<a href="https://repository.bilkent.edu.tr/server/api/core/bitstreams/2decbe73-a3b1-429e-a930-16c0895ae92c/content" target="_blank">https://repository.bilkent.edu.tr/server/api/core/bitstreams/2decbe73-a3b1-429e-a930-16c0895ae92c/content</a></li>
+            <li>​Kurdish mythology - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Kurdish_mythology" target="_blank">https://en.wikipedia.org/wiki/Kurdish_mythology</a></li>
+            <li>​Kurdish mythology - Wikiwand, accessed May 1, 2025,<a href="https://www.wikiwand.com/en/articles/Kurdish_mythology" target="_blank">https://www.wikiwand.com/en/articles/Kurdish_mythology</a></li>
+            <li>​Kawa and the story of Newroz, accessed May 1, 2025,<a href="https://www.kurdishinstitute.be/en/kawa-and-the-story-of-newroz/" target="_blank">https://www.kurdishinstitute.be/en/kawa-and-the-story-of-newroz/</a></li>
+            <li>​Nowruz: A Journey Through Time and Tradition - Indrosphere, accessed May 1,2025,<a href="https://indroyc.com/2017/03/21/kurdish-mythology-behind-newroz-celebration/" target="_blank">https://indroyc.com/2017/03/21/kurdish-mythology-behind-newroz-celebration/</a></li>
+            <li>​The Kurdish Roots of Kawa the Blacksmith and Newroz Resistanceω -Kurdishvoice Περιοδικό Ελλάδα Κουρδιστάν | Η φωνή των Κούρδων, accessedMay 1, 2025,<a href="https://kurdishvoice.gr/en/the-kurdish-roots-of-kawa-the-blacksmith-and-newroz-resistanceo/" target="_blank">https://kurdishvoice.gr/en/the-kurdish-roots-of-kawa-the-blacksmith-and-newroz-resistanceo/</a></li>
+            <li>​Newroz: National identity under political repression - ANHA, accessed May 1,2025,<a href="https://hawarnews.com/en/newroz-national-identity-under-political-repression" target="_blank">https://hawarnews.com/en/newroz-national-identity-under-political-repression</a></li>
+            <li>​The Roots and Significance of Newroz - Botan Times -, accessed May 1, 2025,<a href="https://botantimes.com/the-roots-and-significance-of-newroz/" target="_blank">https://botantimes.com/the-roots-and-significance-of-newroz/</a></li>
+            <li>​Newroz from Kurdish and Persian Perspectives – A Comparative Study, accessedMay 1, 2025, <a href="https://www.ejecs.org/index.php/JECS/article/download/318/pdf/1618" target="_blank">https://www.ejecs.org/index.php/JECS/article/download/318/pdf/1618</a></li>
+            <li>​Newroz: Kawa the Blacksmith represents the people&#x27;s justice - Medya News,accessed May 1, 2025,<a href="https://medyanews.net/newroz-kawa-the-blacksmith-represents-the-peoples-justice/" target="_blank">https://medyanews.net/newroz-kawa-the-blacksmith-represents-the-peoples-justice/</a></li>
+            <li>​Kurdish Newroz: Myths Renewed by Jin, Jiyan, Azadî, accessed May 1, 2025,<a href="https://nlka.net/eng/kurdish-newroz-myths-renewed-by-jin-jiyan-azadi/" target="_blank">https://nlka.net/eng/kurdish-newroz-myths-renewed-by-jin-jiyan-azadi/</a></li>
+            <li>​MOBILIZING THE KURDS IN TURKEY: NEWROZ AS A MYTH - Middle East TechnicalUniversity, accessed May 1, 2025,<a href="https://etd.lib.metu.edu.tr/upload/12606923/index.pdf" target="_blank">https://etd.lib.metu.edu.tr/upload/12606923/index.pdf</a></li>
+            <li>​Newroz - Lund University Publications, accessed May 1, 2025,<a href="https://lup.lub.lu.se/student-papers/record/9160134/file/9160136.pdf" target="_blank">https://lup.lub.lu.se/student-papers/record/9160134/file/9160136.pdf</a></li>
+            <li>​en.wikipedia.org, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Kurdish_mythology#:~:text=Shahmaran%20(or%20%C5%9Eahmaran)%20is%20a,spirit%20passes%20to%20her%20daughter." target="_blank">https://en.wikipedia.org/wiki/Kurdish_mythology#:~:text=Shahmaran%20(or%20%C5%9Eahmaran)%20is%20a,spirit%20passes%20to%20her%20daughter.</a></li>
+            <li>​Shahmaran - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Shahmaran" target="_blank">https://en.wikipedia.org/wiki/Shahmaran</a></li>
+            <li>​Shamaran, a Legendary Creature and a Significant Symbol of ..., accessed May 1,2025, <a href="https://kurdshop.net/en/culture/1585" target="_blank">https://kurdshop.net/en/culture/1585</a></li>
+            <li>​Female Head Snake in Kurdish Mythology: Shahmaran - Hevsel Times, accessedMay 1, 2025,<a href="https://www.hevseltimes.org/post/female-head-snake-in-kurdish-mythology-shahmaran" target="_blank">https://www.hevseltimes.org/post/female-head-snake-in-kurdish-mythology-shahmaran</a></li>
+            <li>​Who Was Shahmaran? Lover, Trickster, Ancient Persian Snake Lady, accessed May1, 2025, <a href="https://www.ancient-origins.net/myths-legends-asia/shahmaran-0015789" target="_blank">https://www.ancient-origins.net/myths-legends-asia/shahmaran-0015789</a></li>
+            <li>​The Journal of Turk-Islam World Social Studies, accessed May 1, 2025,<a href="https://tidsad.com/index.jsp?mod=makale_ing_ozet&amp;makale_id=30576" target="_blank">https://tidsad.com/index.jsp?mod=makale_ing_ozet&amp;makale_id=30576</a></li>
+            <li>​The Creation according to Shamaran myth in Kurdish Regions: A ComparativeAnalysis of Mesopotamian Mythology and Hebrew Texts - ResearchGate,accessed May 1, 2025,<a href="https://www.researchgate.net/publication/383590209_The_Creation_according_to_Shamaran_myth_in_Kurdish_Regions_A_Comparative_Analysis_of_Mesopotamian_Mythology_and_Hebrew_Texts" target="_blank">https://www.researchgate.net/publication/383590209_The_Creation_according_to_Shamaran_myth_in_Kurdish_Regions_A_Comparative_Analysis_of_Mesopotamian_Mythology_and_Hebrew_Texts</a></li>
+            <li>​The Role of the Kurdish Myth of Shamaran in Shaping the Story of the Queen ofthe Thousand and One Nights and Tracing its root in the Myths of Ancient Elam -Tarbiat Modares University, accessed May 1, 2025,<a href="https://cfl.modares.ac.ir/article-11-61336-en.html" target="_blank">https://cfl.modares.ac.ir/article-11-61336-en.html</a></li>
+            <li>​Kurdish legend of Shamaran – Kewsan textile and more, accessed May 1, 2025,<a href="https://kewsan.com/sv/pages/kurdish-legend-of-shamaran" target="_blank">https://kewsan.com/sv/pages/kurdish-legend-of-shamaran</a></li>
+            <li>​The Shaymaran: Philosophy, Resistance, and the Defeat of the Lost Goddess ofKurdistan, accessed May 1, 2025,<a href="https://www.researchgate.net/publication/354404113_The_Shaymaran_Philosophy_Resistance_and_the_Defeat_of_the_Lost_Goddess_of_Kurdistan" target="_blank">https://www.researchgate.net/publication/354404113_The_Shaymaran_Philosophy_Resistance_and_the_Defeat_of_the_Lost_Goddess_of_Kurdistan</a></li>
+            <li>​The Shaymaran: Philosophy, Resistance, and the Defeat of the Lost Goddess ofKurdistan, accessed May 1, 2025,<a href="https://journal.equinoxpub.com/POM/article/view/20926" target="_blank">https://journal.equinoxpub.com/POM/article/view/20926</a></li>
+            <li>​Gender-Affected Dualism of Serpent Symbol in the Myths of Zahhāk andShāhmārān - ScholarWorks, accessed May 1, 2025,<a href="https://scholarworks.calstate.edu/downloads/8s45qj414" target="_blank">https://scholarworks.calstate.edu/downloads/8s45qj414</a></li>
+            <li>​Mem and Zin - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Mem_and_Zin" target="_blank">https://en.wikipedia.org/wiki/Mem_and_Zin</a></li>
+            <li>​Nation, Kingship, and Language: the Ambiguous Politics of Ehmedê Xanî&#x27;s Mem ûZîn in, accessed May 1, 2025,<a href="https://brill.com/view/book/9789004708488/BP000008.xml" target="_blank">https://brill.com/view/book/9789004708488/BP000008.xml</a></li>
+            <li>​Mem u Zin: A Reflection on History, Division, and Resilience - Kurdistan Chronicle,accessed May 1, 2025, <a href="https://kurdistanchronicle.com/b/3310" target="_blank">https://kurdistanchronicle.com/b/3310</a></li>
+            <li>​The Precocious Emergence of Kurdish Nationalism and the Tragic Love Story ofMem and Zin - GeoCurrents, accessed May 1, 2025,<a href="http://www.geocurrents.info/blog/2022/12/20/the-precocious-emergence-of-kurdish-nationalism-and-the-tragic-love-story-of-mem-and-zin/" target="_blank">http://www.geocurrents.info/blog/2022/12/20/the-precocious-emergence-of-kurdish-nationalism-and-the-tragic-love-story-of-mem-and-zin/</a></li>
+            <li>​Sîabend u Xecê - IFFR EN, accessed May 1, 2025,<a href="https://iffr.com/en/iffr/1993/films/s%C3%AEabend-u-xec%C3%AA" target="_blank">https://iffr.com/en/iffr/1993/films/s%C3%AEabend-u-xec%C3%AA</a></li>
+            <li>​Sîyabend û Xecê (Siyabend and Xece) - Film Fest Gent, accessed May 1, 2025,<a href="https://www.filmfestival.be/en/film/siyabend-u-xece-siyabend-and-xece" target="_blank">https://www.filmfestival.be/en/film/siyabend-u-xece-siyabend-and-xece</a></li>
+            <li>​Kurds, Kurdistān - Brill - Reference Works, accessed May 1, 2025,<a href="https://referenceworks.brill.com/display/entries/EIEO/COM-0544.xml?language=en" target="_blank">https://referenceworks.brill.com/display/entries/EIEO/COM-0544.xml?language=en</a></li>
+            <li>​Oral Literature of Iranian Languages: Kurdish, Pashto, Balochi, Ossetic, Persianand Tajik 9780755610440, 9781845119188 - DOKUMEN.PUB, accessed May 1,2025,<a href="https://dokumen.pub/oral-literature-of-iranian-languages-kurdish-pashto-balochi-ossetic-persian-and-tajik-9780755610440-9781845119188.html" target="_blank">https://dokumen.pub/oral-literature-of-iranian-languages-kurdish-pashto-balochi-ossetic-persian-and-tajik-9780755610440-9781845119188.html</a></li>
+            <li>​wHat is tHe source of good and Beauty? etHic and aestHetic asPects of kurdisHfairy tales from jalils&#x27; family collection., accessed May 1, 2025,<a href="https://journals.pan.pl/Content/85447?format_id=1" target="_blank">https://journals.pan.pl/Content/85447?format_id=1</a></li>
+            <li>​(PDF) From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Traditionand Revitalization of the Kurdish Language in the Works of Mehmed Uzun andMehmet Dicle - ResearchGate, accessed May 1, 2025,<a href="https://www.researchgate.net/publication/360279865_From_Dengbej_to_Modern_Writer_Heritagization_of_the_Kurdish_Oral_Tradition_and_Revitalization_of_the_Kurdish_Language_in_the_Works_of_Mehmed_Uzun_and_Mehmet_Dicle" target="_blank">https://www.researchgate.net/publication/360279865_From_Dengbej_to_Modern_Writer_Heritagization_of_the_Kurdish_Oral_Tradition_and_Revitalization_of_the_Kurdish_Language_in_the_Works_of_Mehmed_Uzun_and_Mehmet_Dicle</a></li>
+            <li>​From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Tradition andRevitalization of the Kurdish Language in the Works of Mehmed Uzun andMehmet Dicle - Cambridge University Press, accessed May 1, 2025,<a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from-dengbej-to-modern-writer-heritagization-of-the-kurdish-oral-tradition-and-revitalization-of-the-kurdish-language-in-the-works-of-mehmed-uzun-and-mehmet-dicle.pdf" target="_blank">https://www.cambridge.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from-dengbej-to-modern-writer-heritagization-of-the-kurdish-oral-tradition-and-revitalization-of-the-kurdish-language-in-the-works-of-mehmed-uzun-and-mehmet-dicle.pdf</a></li>
+            <li>​Editorial in: Kurdish Studies Archive - Brill, accessed May 1, 2025,<a href="https://brill.com/edcollchap-oa/book/9789004706538/BP000006.xml" target="_blank">https://brill.com/edcollchap-oa/book/9789004706538/BP000006.xml</a></li>
+            <li>​Resistance, Loss and Grief: The Implications of Melancholy in Modern KurdishNovels - SOAS Research Online, accessed May 1, 2025,<a href="https://eprints.soas.ac.uk/39077/1/Atas_2023.pdf" target="_blank">https://eprints.soas.ac.uk/39077/1/Atas_2023.pdf</a></li>
+            <li>​“This Tribute by an Irishman” in: Kurdish Studies Journal Volume 2 Issue 2 (2024) -Brill, accessed May 1, 2025,<a href="https://brill.com/view/journals/ksj/aop/article-10.1163-29502292-00202001/article-10.1163-29502292-00202001.xml" target="_blank">https://brill.com/view/journals/ksj/aop/article-10.1163-29502292-00202001/article-10.1163-29502292-00202001.xml</a></li>
+            <li>​Siyabend and Xece (1991) - IMDb, accessed May 1, 2025,<a href="https://www.imdb.com/title/tt0108150/" target="_blank">https://www.imdb.com/title/tt0108150/</a></li>
+            <li>​FOLKLORE AS FORGING A MEANS FOR KURDISH NATIONAL IDENTITY -International journal of communication research, accessed May 1, 2025,<a href="https://www.ijcr.eu/articole/414_03%20Ramazan%20PERTEV%20213-217.pdf" target="_blank">https://www.ijcr.eu/articole/414_03%20Ramazan%20PERTEV%20213-217.pdf</a></li>
+            <li>​Research Methodology in Kurdish Studies in - Berghahn Journals, accessed May1, 2025,<a href="https://www.berghahnjournals.com/view/journals/ame/15/1/ame150102.xml" target="_blank">https://www.berghahnjournals.com/view/journals/ame/15/1/ame150102.xml</a></li>
+            <li>​“This Tribute by an Irishman” in: Kurdish Studies Journal Volume 2 Issue 2 (2024) -Brill, accessed May 1, 2025,<a href="https://brill.com/view/journals/ksj/2/2/article-p125_2.xml" target="_blank">https://brill.com/view/journals/ksj/2/2/article-p125_2.xml</a></li>
+            <li>​Sprachtypol. Univ. Forsch. (STUF), Berlin 55 (2002) 1, 3-14 - GEOFFREY HAIG (Kiel)- YARON MATRAS (Manchester), accessed May 1, 2025,<a href="http://people.scs.carleton.ca/~armyunis/projects/KAPI/resources/kurdish_linguistics_a_brief.pdf" target="_blank">http://people.scs.carleton.ca/~armyunis/projects/KAPI/resources/kurdish_linguistics_a_brief.pdf</a></li>
+            <li>​29649_Hamelink v5.indd - Scholarly Publications Leiden University, accessed May1, 2025,<a href="https://scholarlypublications.universiteitleiden.nl/access/item%3A2944878/view" target="_blank">https://scholarlypublications.universiteitleiden.nl/access/item%3A2944878/view</a></li>
+            <li>​A NARRATOLOGICAL ANALYSIS OF &#x27;MIRINA KALEKÎ RIND&#x27; (THE DEATH OFELDERLY RIND) AND &#x27;ROJEK JI ROJÊN EVDALÊ ZEYNIKÊ&#x27; (A, accessed May 1,2025,<a href="https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/631797/yokAcikBilim_10" target="_blank">https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/631797/yokAcikBilim_10</a></li>
+            <li>pdf?sequence=-1&amp;isAllowed=y</li>
+            <li>​Theatre and Cultural Nationalism: Kurdish Theatre under the Baath, 1975-1991 -Open Research Exeter (ORE), accessed May 1, 2025,<a href="https://ore.exeter.ac.uk/repository/bitstream/handle/10871/19578/RashidirostamiM.pdf?sequence=1" target="_blank">https://ore.exeter.ac.uk/repository/bitstream/handle/10871/19578/RashidirostamiM.pdf?sequence=1</a></li>
+            <li>​Kurdish Music-Making in Istanbul: Music, Sentiment and Ideology in a ChangingUrban Context - Harvard DASH, accessed May 1, 2025,<a href="https://dash.harvard.edu/server/api/core/bitstreams/54e54300-68eb-4303-973b-d37b0644fc0f/content" target="_blank">https://dash.harvard.edu/server/api/core/bitstreams/54e54300-68eb-4303-973b-d37b0644fc0f/content</a></li>
+            <li>​The Invention of a Tradition: Diyarbakır&#x27;s Dengbêj Project - OpenEdition Journals,accessed May 1, 2025, <a href="https://journals.openedition.org/ejts/4055" target="_blank">https://journals.openedition.org/ejts/4055</a></li>
+            <li>​The Invention of a Tradition:Diyarbakır&#x27;s Dengbêj Project - ResearchGate,accessed May 1, 2025,<a href="https://www.researchgate.net/publication/40903248_The_Invention_of_a_TraditionDiyarbakir&#x27;s_Dengbej_Project" target="_blank">https://www.researchgate.net/publication/40903248_The_Invention_of_a_TraditionDiyarbakir&#x27;s_Dengbej_Project</a></li>
+            <li>​Kurdish music tradition revived with dengbej culture | Daily Sabah, accessed May1, 2025,<a href="https://www.dailysabah.com/life/2015/03/06/kurdish-music-tradition-revived-with-dengbej-culture" target="_blank">https://www.dailysabah.com/life/2015/03/06/kurdish-music-tradition-revived-with-dengbej-culture</a></li>
+            <li>​From Kawa the Blacksmith to Ishtar the Goddess: Gender Constructions inIdeological-Political Discourses of the Kurdish Movement in post-1980 Turkey -OpenEdition Journals, accessed May 1, 2025,<a href="https://journals.openedition.org/ejts/4657" target="_blank">https://journals.openedition.org/ejts/4657</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 01, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

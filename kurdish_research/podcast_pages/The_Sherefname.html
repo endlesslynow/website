@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sherefname</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Sherefname</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/The Sharafnama_ History, Context, and Legacy.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/The Sharafnama_ History, Context, and Legacy.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>The sources examine Şerefxanê Bedlîsî&#x27;s Şerefname, a significant 16th-century historical work written in Persian about Kurdish dynasties, tribes, and rulers. They provide context on the author&#x27;s life, shaped by his experiences between the Safavid and Ottoman empires, highlighting the volatile political landscape of Kurdistan during this rivalry. The sources explain the structure and content of the Şerefname, detailing its focus on various Kurdish ruling houses and its importance as a foundational text for Kurdish historiography. They also discuss the work&#x27;s complex legacy and interpretation, particularly its role in modern Kurdish national narratives and the ongoing academic debates surrounding its &quot;ethno-political&quot; significance. Finally, the sources touch upon the history of Şerefname translations and the need for a comprehensive critical edition.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Sherefname Summary and Context_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Sharafkhan Bidlisi - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Sharafkhan_Bidlisi" target="_blank">https://en.wikipedia.org/wiki/Sharafkhan_Bidlisi</a></li>
+            <li>​ (PDF) Sharaf al-Din Bidlisi, Encyclopaedia of Islam–Three - Academia.edu,accessed May 1, 2025,<a href="https://www.academia.edu/98265150/Sharaf_al_Din_Bidlisi_Encyclopaedia_of_Islam_Three" target="_blank">https://www.academia.edu/98265150/Sharaf_al_Din_Bidlisi_Encyclopaedia_of_Islam_Three</a></li>
+            <li>​ About: Sharafnama - DBpedia, accessed May 1, 2025,<a href="https://dbpedia.org/page/Sharafnama" target="_blank">https://dbpedia.org/page/Sharafnama</a></li>
+            <li>​ Sharafnama - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Sharafnama" target="_blank">https://en.wikipedia.org/wiki/Sharafnama</a></li>
+            <li>​ Şeref Xan&#x27;s Sharafnama: Kurdish Ethno-Politics in the Early Modern World, ItsMeaning and Its Legacy - ResearchGate, accessed May 1, 2025,<a href="https://www.researchgate.net/publication/263068012_Seref_Xan&#x27;s_Sharafnama_Kurdish_Ethno-Politics_in_the_Early_Modern_World_Its_Meaning_and_Its_Legacy" target="_blank">https://www.researchgate.net/publication/263068012_Seref_Xan&#x27;s_Sharafnama_Kurdish_Ethno-Politics_in_the_Early_Modern_World_Its_Meaning_and_Its_Legacy</a></li>
+            <li>​ Sharafnama - Mazda Publishers, accessed May 1, 2025,<a href="http://www.mazdapublishers.com/book/sharafnama" target="_blank">http://www.mazdapublishers.com/book/sharafnama</a></li>
+            <li>​ www.oeaw.ac.at, accessed May 1, 2025,<a href="http://www.oeaw.ac.at/isa/forschung/projektarchiv-alt/sharaf-nama-amir-sharaf-khan-bidlisi-a-persian-source-for-the-history-of-kurds#:~:text=The%20Sharaf%2Dn%C4%81ma%20is%2C%20without,reference%20work%20to%20this%20day." target="_blank">http://www.oeaw.ac.at/isa/forschung/projektarchiv-alt/sharaf-nama-amir-sharaf-khan-bidlisi-a-persian-source-for-the-history-of-kurds#:~:text=The%20Sharaf%2Dn%C4%81ma%20is%2C%20without,reference%20work%20to%20this%20day.</a></li>
+            <li>​ Sharaf-nāma. Amīr Sharaf Khān Bidlīsī A Persian Source for the History of Kurds -Österreichische Akademie der Wissenschaften, accessed May 1, 2025,<a href="https://www.oeaw.ac.at/isa/forschung/projektarchiv-alt/sharaf-nama-amir-sharaf-khan-bidlisi-a-persian-source-for-the-history-of-kurds" target="_blank">https://www.oeaw.ac.at/isa/forschung/projektarchiv-alt/sharaf-nama-amir-sharaf-khan-bidlisi-a-persian-source-for-the-history-of-kurds</a></li>
+            <li>​ Djene Rhys Bajalan Şeref Xan&#x27;s Sharafnama:1 Kurdish Ethno-Politics in the EarlyModern World, Its Meaning and Its Legacy - Cambridge University Press,accessed May 1, 2025,<a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4E63160179AFBDA92C97DDA93B5F4BBF/S0021086200023197a.pdf/div-class-title-seref-xan-s-span-class-italic-sharafnama-span-kurdish-ethno-politics-in-the-early-modern-world-its-meaning-and-its-legacy-div.pdf" target="_blank">https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4E63160179AFBDA92C97DDA93B5F4BBF/S0021086200023197a.pdf/div-class-title-seref-xan-s-span-class-italic-sharafnama-span-kurdish-ethno-politics-in-the-early-modern-world-its-meaning-and-its-legacy-div.pdf</a></li>
+            <li>​Şeref Xan&#x27;s Sharafnama: Kurdish Ethno-Politics in the Early Modern ..., accessedMay 1, 2025,<a href="https://www.cambridge.org/core/journals/iranian-studies/article/seref-xans-sharafnama-kurdish-ethnopolitics-in-the-early-modern-world-its-meaning-and-its-legacy/4E63160179AFBDA92C97DDA93B5F4BBF" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/seref-xans-sharafnama-kurdish-ethnopolitics-in-the-early-modern-world-its-meaning-and-its-legacy/4E63160179AFBDA92C97DDA93B5F4BBF</a></li>
+            <li>​Şeref Xan&#x27;s Sharafnama: Kurdish Ethno-Politics in the Early Modern World, ItsMeaning and Its Legacy - Taylor &amp; Francis Online, accessed May 1, 2025,<a href="https://www.tandfonline.com/doi/abs/10.1080/00210862.2012.737726" target="_blank">https://www.tandfonline.com/doi/abs/10.1080/00210862.2012.737726</a></li>
+            <li>​About: Sharafkhan Bidlisi - DBpedia, accessed May 1, 2025,<a href="https://dbpedia.org/page/Sharafkhan_Bidlisi" target="_blank">https://dbpedia.org/page/Sharafkhan_Bidlisi</a></li>
+            <li>​Sharaf Khan Bidlisi - Simple English Wikipedia, the free encyclopedia, accessedMay 1, 2025, <a href="https://simple.wikipedia.org/wiki/Sharaf_Khan_Bidlisi" target="_blank">https://simple.wikipedia.org/wiki/Sharaf_Khan_Bidlisi</a></li>
+            <li>​BEDLĪSĪ, ŠARAF-AL-DĪN KHAN - Encyclopaedia Iranica, accessed May 1, 2025,<a href="https://iranicaonline.org/articles/bedlisi-saraf-al-din-khan-b" target="_blank">https://iranicaonline.org/articles/bedlisi-saraf-al-din-khan-b</a></li>
+            <li>​Sharafkhan Bidlisi - Kurdipedia, accessed May 1, 2025,<a href="https://www.kurdipedia.org/default.aspx?q=20220120173046402162&amp;lng=13" target="_blank">https://www.kurdipedia.org/default.aspx?q=20220120173046402162&amp;lng=13</a></li>
+            <li>​Sharaf Khan Badlisi, the Author of Sharafnameh - KURDSHOP, accessed May 1,2025, <a href="https://kurdshop.net/en/famous-kurdish-persons/1823" target="_blank">https://kurdshop.net/en/famous-kurdish-persons/1823</a></li>
+            <li>​How did Sharafkhan Badlisi Grow Up and When Did He Write Sharafnama? -KURDSHOP, accessed May 1, 2025, <a href="https://kurdshop.net/en/history/3791" target="_blank">https://kurdshop.net/en/history/3791</a></li>
+            <li>​Sharafkhan Bidlisi - KURDISTANICA, accessed May 1, 2025,<a href="https://kurdistanica.com/465/sharafkhan-bidlisi/" target="_blank">https://kurdistanica.com/465/sharafkhan-bidlisi/</a></li>
+            <li>​Principality of Bitlis - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Principality_of_Bitlis" target="_blank">https://en.wikipedia.org/wiki/Principality_of_Bitlis</a></li>
+            <li>​The Kurdish Community from the Abbasids to Safavids; Sharafkhan Bedlisi&#x27;sPerspective, accessed May 1, 2025,<a href="https://www.researchgate.net/publication/353888661_The_Kurdish_Community_from_the_Abbasids_to_Safavids_Sharafkhan_Bedlisi&#x27;s_Perspective" target="_blank">https://www.researchgate.net/publication/353888661_The_Kurdish_Community_from_the_Abbasids_to_Safavids_Sharafkhan_Bedlisi&#x27;s_Perspective</a></li>
+            <li>​Principality of Bitlis - Wikiwand, accessed May 1, 2025,<a href="https://www.wikiwand.com/en/articles/Principality_of_Bitlis" target="_blank">https://www.wikiwand.com/en/articles/Principality_of_Bitlis</a></li>
+            <li>​The Kurdish Community from the Abbasids to Safavids; Sharafkhan Bedlisi&#x27;sPerspective - Revista GEINTEC, accessed May 1, 2025,<a href="http://revistageintec.net/old/wp-content/uploads/2022/03/2456.pdf" target="_blank">http://revistageintec.net/old/wp-content/uploads/2022/03/2456.pdf</a></li>
+            <li>​BEDLĪSĪ, ŠARAF-AL-DĪN KHAN - Encyclopaedia Iranica, accessed May 1, 2025,<a href="https://www.iranicaonline.org/articles/bedlisi-saraf-al-din-khan-b" target="_blank">https://www.iranicaonline.org/articles/bedlisi-saraf-al-din-khan-b</a></li>
+            <li>​Safavid Kurdistan - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Safavid_Kurdistan" target="_blank">https://en.wikipedia.org/wiki/Safavid_Kurdistan</a></li>
+            <li>​Ottoman-Safavid Relations: A Religious or Political Rivalry | Oxford ResearchEncyclopedia of Asian History, accessed May 1, 2025,<a href="https://oxfordre.com/asianhistory/display/10.1093/acrefore/9780190277727.001.0001/acrefore-9780190277727-e-769?p=emailAqv4gnHcbgGzE&amp;d=/10.1093/acrefore/9780190277727.001.0001/acrefore-9780190277727-e-769" target="_blank">https://oxfordre.com/asianhistory/display/10.1093/acrefore/9780190277727.001.0001/acrefore-9780190277727-e-769?p=emailAqv4gnHcbgGzE&amp;d=/10.1093/acrefore/9780190277727.001.0001/acrefore-9780190277727-e-769</a></li>
+            <li>​Ottoman–Safavid War (1578–1590) - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Ottoman%E2%80%93Safavid_War_(1578%E2%80%931590)" target="_blank">https://en.wikipedia.org/wiki/Ottoman%E2%80%93Safavid_War_(1578%E2%80%931590)</a></li>
+            <li>​Kurdish Emirates in The Conflicts Between The Ottoman And Safavids In The 16thAnd 17th Centuries - GCRIS, accessed May 1, 2025,<a href="https://gcris.artuklu.edu.tr/entities/publication/7b224132-fc03-4039-8f9c-54eac542a304" target="_blank">https://gcris.artuklu.edu.tr/entities/publication/7b224132-fc03-4039-8f9c-54eac542a304</a></li>
+            <li>​Sharafnama book - History Of Kurdistan, accessed May 1, 2025,<a href="https://historyofkurd.com/english/2022/03/01/sharafnama-book/" target="_blank">https://historyofkurd.com/english/2022/03/01/sharafnama-book/</a></li>
+            <li>​Sharaf-nāma. Amīr Sharaf Khān Bidlīsī A Persian Source for the ..., accessed May 1,2025,<a href="https://www.oeaw.ac.at/en/isa/research/project-archive/sharaf-nama-amir-sharaf-khan-bidlisi-a-persian-source-for-the-history-of-kurds" target="_blank">https://www.oeaw.ac.at/en/isa/research/project-archive/sharaf-nama-amir-sharaf-khan-bidlisi-a-persian-source-for-the-history-of-kurds</a></li>
+            <li>​Great Power Competition in the Age of Islam: Contemporary Lessons from theOttoman-Safavid Rivalry - DTIC, accessed May 1, 2025,<a href="https://apps.dtic.mil/sti/tr/pdf/AD1068686.pdf" target="_blank">https://apps.dtic.mil/sti/tr/pdf/AD1068686.pdf</a></li>
+            <li>​Kurds as spies: Information-gathering on the 16th-century Ottoman–Safavidfrontier in: Acta Orientalia Academiae Scientiarum Hungaricae Volume 71 Issue 2(2018) - AKJournals, accessed May 1, 2025,<a href="https://akjournals.com/abstract/journals/062/71/2/article-p197.xml" target="_blank">https://akjournals.com/abstract/journals/062/71/2/article-p197.xml</a></li>
+            <li>​kurds as spies: information-gathering on the 16th-century ottoman–safavidfrontier - Academia.edu, accessed May 1, 2025,<a href="https://www.academia.edu/36781540/KURDS_AS_SPIES_INFORMATION_GATHERING_ON_THE_16TH_CENTURY_OTTOMAN_SAFAVID_FRONTIER" target="_blank">https://www.academia.edu/36781540/KURDS_AS_SPIES_INFORMATION_GATHERING_ON_THE_16TH_CENTURY_OTTOMAN_SAFAVID_FRONTIER</a></li>
+            <li>​The Rise and Fall of the Kurdish Emirates (Fifteenth to Nineteenth Centuries)(Chapter 1) - The Cambridge History of the Kurds, accessed May 1, 2025,<a href="https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/rise-and-fall-of-the-kurdish-emirates-fifteenth-to-nineteenth-centuries/A75615835AE09CB5A625245A43C92171" target="_blank">https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/rise-and-fall-of-the-kurdish-emirates-fifteenth-to-nineteenth-centuries/A75615835AE09CB5A625245A43C92171</a></li>
+            <li>​History-Karabakh during the Safavid-Ottoman wars, accessed May 1, 2025,<a href="https://karabakh.org/karabakh-history/karabakh-during-the-xvi-xvii-cc/karabakh-during-the-safavid-ottoman-wars/" target="_blank">https://karabakh.org/karabakh-history/karabakh-during-the-xvi-xvii-cc/karabakh-during-the-safavid-ottoman-wars/</a></li>
+            <li>​“The Kurds of the Ottoman Empire between cooperation and rebellion, arenewed history” - حبر أبيض, accessed May 1, 2025,<a href="https://whiteink.info/the-kurds-of-the-ottoman-empire-between-cooperation-and-rebellion-a-renewed-history/?lang=en" target="_blank">https://whiteink.info/the-kurds-of-the-ottoman-empire-between-cooperation-and-rebellion-a-renewed-history/?lang=en</a></li>
+            <li>​Ottoman-Safavid Wars | EBSCO Research Starters, accessed May 1, 2025,<a href="https://www.ebsco.com/research-starters/history/ottoman-safavid-wars" target="_blank">https://www.ebsco.com/research-starters/history/ottoman-safavid-wars</a></li>
+            <li>​Ottoman-Safavid Relations: A Religious or Political Rivalry | Oxford ResearchEncyclopedia of Asian History, accessed May 1, 2025,<a href="https://oxfordre.com/asianhistory/display/10.1093/acrefore/9780190277727.001.0001/acrefore-9780190277727-e-769?p=emailAkYsvKdIDhP3Q&amp;d=/10.1093/acrefore/9780190277727.001.0001/acrefore-9780190277727-e-769" target="_blank">https://oxfordre.com/asianhistory/display/10.1093/acrefore/9780190277727.001.0001/acrefore-9780190277727-e-769?p=emailAkYsvKdIDhP3Q&amp;d=/10.1093/acrefore/9780190277727.001.0001/acrefore-9780190277727-e-769</a></li>
+            <li>​Safavid dynasty | History, Culture, Religion, &amp; Facts - Britannica, accessed May 1,2025, <a href="https://www.britannica.com/topic/Safavid-dynasty" target="_blank">https://www.britannica.com/topic/Safavid-dynasty</a></li>
+            <li>​Safavid Iran - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Safavid_Iran" target="_blank">https://en.wikipedia.org/wiki/Safavid_Iran</a></li>
+            <li>​www.fredaprim.com, accessed May 1, 2025,<a href="https://www.fredaprim.com/pdfs/2025/The%20Politicizing%20of%20Sharafnama%20REVISED.pdf" target="_blank">https://www.fredaprim.com/pdfs/2025/The%20Politicizing%20of%20Sharafnama%20REVISED.pdf</a></li>
+            <li>​Ottoman Kurds - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Ottoman_Kurds" target="_blank">https://en.wikipedia.org/wiki/Ottoman_Kurds</a></li>
+            <li>​1590: Ottomans, Safavids, costs of empire, etc | Just World News, accessed May1, 2025,<a href="https://justworldnews.org/2021/03/11/1590-ottomans-safavids-costs-of-empire-etc/" target="_blank">https://justworldnews.org/2021/03/11/1590-ottomans-safavids-costs-of-empire-etc/</a></li>
+            <li>​The Ottoman-Safavid War of 1578-1590 in Narrative Sources: An Evaluation ofHungarian Academy of Sciences Manuscript Ms Török O.176 - Academia.edu,accessed May 1, 2025,<a href="https://www.academia.edu/102453470/The_Ottoman_Safavid_War_of_1578_1590_in_Narrative_Sources_An_Evaluation_of_Hungarian_Academy_of_Sciences_Manuscript_Ms_T%C3%B6r%C3%B6k_O_176" target="_blank">https://www.academia.edu/102453470/The_Ottoman_Safavid_War_of_1578_1590_in_Narrative_Sources_An_Evaluation_of_Hungarian_Academy_of_Sciences_Manuscript_Ms_T%C3%B6r%C3%B6k_O_176</a></li>
+            <li>​en.wikipedia.org, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Safavid_Kurdistan#:~:text=The%20Safavids&#x27;%20policy%20of%20forcing,the%20frontier%20from%20Uzbek%20intrusions." target="_blank">https://en.wikipedia.org/wiki/Safavid_Kurdistan#:~:text=The%20Safavids&#x27;%20policy%20of%20forcing,the%20frontier%20from%20Uzbek%20intrusions.</a></li>
+            <li>​The Untold History of Turkish-Kurdish Alliances - New Lines Magazine, accessedMay 1, 2025,<a href="https://newlinesmag.com/essays/the-untold-history-of-turkish-kurdish-alliances/" target="_blank">https://newlinesmag.com/essays/the-untold-history-of-turkish-kurdish-alliances/</a></li>
+            <li>​Kurdish emirates - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Kurdish_emirates" target="_blank">https://en.wikipedia.org/wiki/Kurdish_emirates</a></li>
+            <li>​The Kurdish Nobility in the Ottoman Empire - MESPI, accessed May 1, 2025,<a href="https://mespi.org/project/the-kurdish-nobility-in-the-ottoman-empire/" target="_blank">https://mespi.org/project/the-kurdish-nobility-in-the-ottoman-empire/</a></li>
+            <li>​Nilay Özok-Gündoğan, The Kurdish Nobility in the Ottoman Empire: Loyalty,Autonomy and Privilege (New Texts Out Now) - Jadaliyya, accessed May 1, 2025,<a href="https://www.jadaliyya.com/Details/45135" target="_blank">https://www.jadaliyya.com/Details/45135</a></li>
+            <li>​Relations between Kurdish Tribes and the State from the Late Ottoman Period tothe Early Modern, accessed May 1, 2025,<a href="https://www.ijcv.org/index.php/ijcv/article/download/5952/5541/27538" target="_blank">https://www.ijcv.org/index.php/ijcv/article/download/5952/5541/27538</a></li>
+            <li>​Kurdish Power Holders in Seventeenth-Century Bidlīs: A Brief Introduction,accessed May 1, 2025,<a href="https://kurdishstudies.net/menu-script/index.php/KS/article/download/197/159/214" target="_blank">https://kurdishstudies.net/menu-script/index.php/KS/article/download/197/159/214</a></li>
+            <li>​Boris James, Genèse du Kurdistan. Les Kurdes dans l&#x27;Orient mamelouk et mongol(1250-1340) - OpenEdition Journals, accessed May 1, 2025,<a href="https://journals.openedition.org/bcai/2919?fbclid=IwAR0zumgrfYu_8tnzHFeSiAKP4KeuOmzziqvOX0o8ihMMDC98rTCjvchhgfE&amp;lang=fr" target="_blank">https://journals.openedition.org/bcai/2919?fbclid=IwAR0zumgrfYu_8tnzHFeSiAKP4KeuOmzziqvOX0o8ihMMDC98rTCjvchhgfE&amp;lang=fr</a></li>
+            <li>​An evaluation about not mentioning milan/milli tribe in sharafnama | HumanitiesJournal of University of Zakho, accessed May 1, 2025,<a href="https://hjuoz.uoz.edu.krd/index.php/hum/article/view/1339" target="_blank">https://hjuoz.uoz.edu.krd/index.php/hum/article/view/1339</a></li>
+            <li>​History of the Kurds - The Kurdistan Memory Programme, accessed May 1, 2025,<a href="https://kurdistanmemoryprogramme.com/history-of-the-kurds/" target="_blank">https://kurdistanmemoryprogramme.com/history-of-the-kurds/</a></li>
+            <li>​ENCYCLOPAEDIA IRANICA – Encyclopaedia Iranica, accessed May 1, 2025,<a href="https://www.iranicaonline.org/articles/encyclopaedia-iranica" target="_blank">https://www.iranicaonline.org/articles/encyclopaedia-iranica</a></li>
+            <li>​Politics, Ethics, and Complicity in Turkey&#x27;s Kurdistan: Anxieties of an Era by ÖzgeKorkmaz A dissertation submitted in parti - University of Michigan Library,accessed May 1, 2025,<a href="http://deepblue.lib.umich.edu/bitstream/2027.42/174454/1/ozgekork_1.pdf" target="_blank">http://deepblue.lib.umich.edu/bitstream/2027.42/174454/1/ozgekork_1.pdf</a></li>
+            <li>​Shekak (tribe) - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Shekak_(tribe)" target="_blank">https://en.wikipedia.org/wiki/Shekak_(tribe)</a></li>
+            <li>​Kurdish Studies Archive - ResearchGate, accessed May 1, 2025,<a href="https://www.researchgate.net/publication/386095241_Cross-border_Kurdish_Solidarity_an_Endangered_Aspect_of_Kurdishness/fulltext/674414f827661f7ae66ab698/Cross-border-Kurdish-Solidarity-an-Endangered-Aspect-of-Kurdishness.pdf" target="_blank">https://www.researchgate.net/publication/386095241_Cross-border_Kurdish_Solidarity_an_Endangered_Aspect_of_Kurdishness/fulltext/674414f827661f7ae66ab698/Cross-border-Kurdish-Solidarity-an-Endangered-Aspect-of-Kurdishness.pdf</a></li>
+            <li>​Table of Contents - Encyclopaedia Iranica, accessed May 1, 2025,<a href="https://iranicaonline.org/articles/index/B/page:12/limit:50" target="_blank">https://iranicaonline.org/articles/index/B/page:12/limit:50</a></li>
+            <li>​VIAF Results, accessed May 1, 2025,<a href="https://www.viaf.org/viaf/search?query=local.names+all+%22Iran%22&amp;sortKeys=holdingscount&amp;recordSchema=BriefVIAF" target="_blank">https://www.viaf.org/viaf/search?query=local.names+all+%22Iran%22&amp;sortKeys=holdingscount&amp;recordSchema=BriefVIAF</a></li>
+            <li>​A negotiation of power during the age of reforms in the Ottoman Empire:notables, tribes and state in Muş (1820-1840), accessed May 1, 2025,<a href="https://www.tandfonline.com/doi/abs/10.1080/00263206.2020.1856092" target="_blank">https://www.tandfonline.com/doi/abs/10.1080/00263206.2020.1856092</a></li>
+            <li>​The Politics of Loyalty - Ceu - Central European University, accessed May 1, 2025,<a href="https://www.etd.ceu.edu/2014/conklin_tyler.pdf" target="_blank">https://www.etd.ceu.edu/2014/conklin_tyler.pdf</a></li>
+            <li>​Encyclopaedia Islamica - Wikipedia, accessed May 1, 2025,<a href="https://en.wikipedia.org/wiki/Encyclopaedia_Islamica" target="_blank">https://en.wikipedia.org/wiki/Encyclopaedia_Islamica</a></li>
+            <li>​THE ENCYCLOPAEDIA OF ISLAM, accessed May 1, 2025,<a href="https://ia601404.us.archive.org/29/items/EncyclopaediaDictionaryIslamMuslimWorldEtcGibbKramerScholars.13/08.EncycIslam.NewEdPrepNumLeadOrient.EdEdComCon.BosDonLewPel.etc.UndPatIUA.v8.Ned-Sam.Leid.EJBrill.1995..pdf" target="_blank">https://ia601404.us.archive.org/29/items/EncyclopaediaDictionaryIslamMuslimWorldEtcGibbKramerScholars.13/08.EncycIslam.NewEdPrepNumLeadOrient.EdEdComCon.BosDonLewPel.etc.UndPatIUA.v8.Ned-Sam.Leid.EJBrill.1995..pdf</a></li>
+            <li>​The History of Kurdish Language, accessed May 1, 2025,<a href="https://kurdishacademy.org/wp/2011/04/10/the-history-of-kurdish-language/" target="_blank">https://kurdishacademy.org/wp/2011/04/10/the-history-of-kurdish-language/</a></li>
+            <li>​The Origins and Appearance of the Kurds in Pre-Islamic Iran - Dr. Kaveh Farrokh,accessed May 1, 2025,<a href="https://www.kavehfarrokh.com/wp-content/uploads/2009/07/origins-of-kurds-in-preislamic-iran.pdf" target="_blank">https://www.kavehfarrokh.com/wp-content/uploads/2009/07/origins-of-kurds-in-preislamic-iran.pdf</a></li>
+            <li>​Learn About Kurdish Culture, accessed May 1, 2025,<a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/</a></li>
+            <li>​The Safavids were of Kurdish origin : r/kurdistan - Reddit, accessed May 1, 2025,<a href="https://www.reddit.com/r/kurdistan/comments/11bwtf2/the_safavids_were_of_kurdish_origin/" target="_blank">https://www.reddit.com/r/kurdistan/comments/11bwtf2/the_safavids_were_of_kurdish_origin/</a></li>
+            <li>​4.3 The Safavid Empire - World History Volume 2, from 1400 | OpenStax,accessed May 1, 2025,<a href="https://openstax.org/books/world-history-volume-2/pages/4-3-the-safavid-empire" target="_blank">https://openstax.org/books/world-history-volume-2/pages/4-3-the-safavid-empire</a></li>
+            <li>​Kurds as spies: Information-gathering on the 16th-century Ottoman–Safavidfrontier in: Acta Orientalia Academiae Scientiarum Hungaricae Volume 71 Issue 2(2018) - AKJournals, accessed May 1, 2025,<a href="https://akjournals.com/view/journals/062/71/2/article-p197.xml" target="_blank">https://akjournals.com/view/journals/062/71/2/article-p197.xml</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 01, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
