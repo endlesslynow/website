@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Тема 4. Моя сім'я</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Ukrainian-inspired color scheme */
+        :root {
+            --ukrainian-blue: #0057B8; --ukrainian-yellow: #FFD700; --ukrainian-dark-blue: #003893;
+            --ukrainian-light-blue: #88BFFF; --ukrainian-navy: #001F54; --ukrainian-cream: #FFF8E1;
+            --ukrainian-light-yellow: #FFF2B0; --ukrainian-gold: #E8C000; --ukrainian-light-teal: #CCFCF6;
+            --body-background: #3C80D4; --text-color: #003893; --text-light: #FFFFFF;
+        }
+        body { font-family: 'Nunito', Arial, sans-serif; line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 15px; background-color: var(--body-background); background-image: url('../ukrainian_background.png'); background-repeat: repeat; background-size: 300px auto; box-sizing: border-box; color: var(--ukrainian-navy); }
+        [lang="uk"], th.ukrainian-header, td:first-child, .ukrainian-text, .matching-item.ukrainian-text, .fill-input.ukrainian-input, .key-btn, .correct-answer-display, .word-box.ukrainian-text, .speaker.ukrainian-speaker, .reading-answer, .reading-question-text { font-family: 'Nunito', serif; font-size: 1em; line-height: 1.5; font-weight: 500; direction: ltr; text-align: left; }
+        .latin-text, .pronunciation { font-family: 'Nunito', Arial, sans-serif !important; font-size: 0.9em !important; font-style: italic; font-weight: normal !important; direction: ltr !important; color: #555; }
+
+        .matching-item.ukrainian-text, .key-btn, .word-box.ukrainian-text { text-align: center; }
+        .fill-input.ukrainian-input { text-align: left; font-size: 1em; }
+        th.ukrainian-header, td:first-child, td[lang="uk"] { text-align: left !important; padding-top: 18px; padding-bottom: 18px; }
+        * { box-sizing: border-box; }
+        h1, h2, h3 { color: var(--ukrainian-navy); font-weight: 700; line-height: 1.3; }
+        h1 { text-align: left; border-bottom: 3px solid var(--ukrainian-yellow); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; color: var(--text-light); }
+        h2 { font-size: 1.5rem; margin-top: 30px; }
+        h3 { font-size: 1.2rem; margin-top: 25px; color: var(--ukrainian-blue); }
+        .section { background-color: var(--ukrainian-light-blue); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background-color: #88BFFF; }
+        .title-section { background-color: #0057B7; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border: 3px solid #FFDD00; }
+        .title-section h1 { text-align: left; border-bottom: 3px solid var(--ukrainian-yellow); padding-bottom: 15px; margin-bottom: 0; margin-top: 0; font-size: 1.8rem; color: var(--text-light); }
+        th, td { padding: 12px 15px; text-align: left; border: none; }
+        th { background-color: var(--ukrainian-blue); color: var(--text-light); font-weight: 600; }
+        tr:nth-child(even) { background-color: var(--ukrainian-light-blue); }
+        tr:nth-child(odd) { background-color: #A9D1FF; }
+        tr:hover { background-color: #B9DBFF; }
+        .listen-repeat-read { font-weight: bold; color: var(--ukrainian-dark-blue); margin-bottom: 10px; }
+        .stress-model-table td { padding: 8px 12px; }
+        .note { background-color: var(--ukrainian-light-yellow); padding: 15px; border-left: 4px solid var(--ukrainian-yellow); margin: 20px 0; border-radius: 0 8px 8px 0; }
+
+        /* Reading Questions Answer Style */
+        .reading-answer {
+            font-style: italic;
+            color: var(--ukrainian-navy);
+            margin-left: 5px; /* Adjusted margin */
+            display: none; /* Hidden by default */
+            margin-top: 5px;
+        }
+        .reading-questions ol { list-style-type: decimal; padding-left: 20px; }
+        .reading-questions li { margin-bottom: 15px; }
+        .reading-question-item { /* Container for question, button, and answer */
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            align-items: baseline; /* Align items nicely */
+            gap: 10px; /* Space between elements */
+        }
+        .reading-question-text { /* Style for the question text */
+            flex-grow: 1; /* Allow question text to take available space */
+        }
+        .check-answer-btn { /* Style for the new button */
+            padding: 5px 10px;
+            background-color: var(--ukrainian-yellow);
+            color: var(--ukrainian-navy);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: background-color 0.2s ease;
+            white-space: nowrap; /* Prevent button text wrapping */
+        }
+        .check-answer-btn:hover {
+            background-color: var(--ukrainian-gold);
+        }
+
+
+        /* Feedback Styles */
+        .feedback, .fill-feedback, .game-feedback { margin-top: 8px; margin-left: 5px; font-weight: bold; min-height: 1.2em; }
+        .fill-feedback.correct, .feedback-correct { color: var(--ukrainian-dark-blue); }
+        .fill-feedback.incorrect, .feedback-incorrect { color: #C70039; }
+        .matching-feedback.correct { color: black !important; font-size: 1.5rem !important; }
+        .fill-feedback.correct.sentence-building { color: black !important; font-size: 1.5rem !important; font-weight: bold !important; font-family: 'Nunito', Arial, sans-serif !important; background-color: var(--ukrainian-yellow); padding: 5px 10px; border-radius: 5px; display: inline-block; }
+        .correct-answer-display { display: inline-block; margin-left: 5px; font-weight: normal; font-style: italic; }
+
+        /* Matching Game Styles */
+        .matching-game { background-color: var(--ukrainian-yellow); padding: 20px; border-radius: 8px; margin-top: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .matching-columns-container { display: flex; gap: 10px; margin-bottom: 20px; }
+        .matching-column { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .matching-item-container { display: flex; flex-direction: column; gap: 10px; }
+        .matching-item { padding: 12px 15px; background-color: white; border: 2px solid var(--ukrainian-blue); border-radius: 8px; cursor: pointer; transition: all 0.2s ease; text-align: center; -webkit-tap-highlight-color: transparent; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .matching-item:hover { background-color: var(--ukrainian-light-blue); }
+        .matching-item.selected { background-color: var(--ukrainian-blue); color: var(--text-light); }
+        .matching-item.matched { background-color: var(--ukrainian-yellow); color: black; border-color: var(--ukrainian-yellow); cursor: default; opacity: 0.7; }
+        .matching-result { text-align: center; }
+        .matching-result div { font-size: 1.2rem; font-weight: bold; color: black; margin-top: 15px; min-height: 1.5em; }
+
+        /* Fill-in / Sentence Building Styles */
+        .fill-exercise { margin-top: 25px; }
+        .fill-item { background-color: var(--ukrainian-yellow); margin-bottom: 20px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .exercise-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; color: var(--text-color); font-weight: 500; }
+        .translation { color: black; font-size: 1.1em; }
+        .fill-input { background-color: var(--ukrainian-yellow); width: 120px; padding: 8px 12px; border: 2px solid #997000; border-radius: 6px; font-size: 16px; font-family: inherit; }
+        .fill-input.long-input { width: 100%; max-width: 400px; }
+        .fill-input.ukrainian-input { font-family: 'Nunito', serif; font-size: 1.2em; direction: ltr; text-align: left; }
+        .key-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .key-btn { padding: 5px 12px; background-color: #FFF2B0; border: 1px solid #E6A800; border-radius: 6px; cursor: pointer; color: #333; font-size: 1em; font-family: 'Nunito', serif; text-align: center; }
+        .key-btn:hover { background-color: #FFE082; color: black; }
+        .fill-check { padding: 8px 15px; background-color: #FFF2B0; color: black; border: none; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: 600; transition: background-color 0.2s ease; }
+        .fill-check:hover { background-color: #FFE082; }
+
+        /* Congratulations */
+         .congrats-ukrainian { font-family: 'Nunito', serif; font-size: 30px; line-height: 1.4; }
+         .congrats-english { font-size: 1.2em; margin-top: 10px; }
+
+        /* Word Order Game Styles */
+        .word-order-game { background-color: var(--ukrainian-light-blue); padding: 15px; border-radius: 8px; margin: 25px 0 0 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .game-sentence { background-color: white; border-radius: 8px; padding: 15px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+        .game-sentence.completed { background-color: var(--ukrainian-light-teal); border-left: 4px solid var(--ukrainian-dark-blue); }
+        .game-sentence-translation { font-weight: 600; margin-bottom: 15px; color: var(--text-color); }
+        .sentence-number { display: inline-block; min-width: 45px; font-weight: 700; color: var(--ukrainian-dark-blue); }
+        .solution-area { min-height: 60px; padding: 10px; background-color: #e0efff; border-radius: 8px; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; border: 2px dashed var(--ukrainian-blue); direction: ltr; justify-content: flex-start; }
+        .words-bank { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px; background-color: var(--ukrainian-cream); border-radius: 6px; margin-bottom: 10px; direction: ltr; }
+        .word-box { display: inline-block; padding: 8px 12px; background-color: var(--ukrainian-blue); color: white; border-radius: 5px; cursor: pointer; user-select: none; margin: 0; font-weight: 500; border: 2px solid transparent; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease; }
+        .solution-area .word-box { background-color: #88BFFF; color: var(--text-color); border-color: var(--ukrainian-blue); }
+        .word-box:active { transform: scale(0.95); }
+        .sentence-buttons { display: flex; gap: 10px; margin-top: 10px; }
+        .check-btn, .show-answer-btn, .delete-btn { flex: 1; background-color: var(--ukrainian-blue); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-family: inherit; font-weight: 600; transition: all 0.2s ease; }
+        .check-btn:hover, .show-answer-btn:hover, .delete-btn:hover { background-color: #0050a3; }
+        .check-btn:active, .show-answer-btn:active, .delete-btn:active { transform: scale(0.98); }
+        .show-answer-btn { background-color: var(--ukrainian-light-blue); color: var(--text-color); }
+        .show-answer-btn:hover { background-color: #70B0FF; }
+        .delete-btn { background-color: #FFE8B0; color: var(--text-color); }
+        .delete-btn:hover { background-color: #FFD980; }
+
+        /* Dialogue box styles */
+        .dialogue-box { background-color: var(--ukrainian-cream); border-radius: 10px; padding: 20px; margin: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .dialogue-line { margin-bottom: 12px; line-height: 1.6; }
+        .speaker { font-weight: bold; color: var(--ukrainian-navy); margin-right: 8px; }
+        .dialogue-text { display: inline; }
+        .translation { display: none; font-style: italic; color: #555; margin-top: 5px; margin-left: 15px; font-size: 0.9em; }
+        .trans-btn { background-color: var(--ukrainian-yellow); border: none; border-radius: 4px; padding: 3px 8px; margin-left: 10px; font-size: 0.8em; cursor: pointer; transition: background-color 0.2s; color: var(--ukrainian-navy); font-weight: 600; }
+        .trans-btn:hover { background-color: var(--ukrainian-gold); }
+
+        /* Navigation */
+        .nav-buttons-container { display: flex; justify-content: space-between; margin-top: 30px; margin-bottom: 40px; padding: 0 10px; }
+        .nav-button { background-color: var(--ukrainian-navy); color: var(--text-light); border: 3px solid var(--ukrainian-blue); border-radius: 12px; padding: 15px 20px; font-family: 'Nunito', Arial, sans-serif; font-weight: 600; font-size: 1.3rem; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.4; }
+        .nav-button:hover { background-color: var(--ukrainian-blue); border-color: var(--ukrainian-navy); }
+        .prev-button { margin-right: auto; }
+        .next-button, .exercises-button { margin-left: 10px; }
+
+         /* Small Latin text */
+         .small-latin { font-size: 0.6em !important; font-family: 'Nunito', Arial, sans-serif !important; font-weight: normal !important; display: inline-block; vertical-align: middle; direction: ltr; text-align: left; }
+
+        /* Media queries */
+        @media (max-width: 600px) {
+            .section, .title-section { padding: 20px 15px; border-radius: 10px; }
+            h1 { font-size: 1.6rem; padding-bottom: 10px; } h2 { font-size: 1.3rem; } h3 { font-size: 1.1rem; }
+            table { display: block; overflow-x: auto; white-space: nowrap; } th, td { padding: 10px 12px; } th { font-size: 0.9rem; padding: 10px 8px; }
+            .exercise { padding: 15px; }
+            .matching-columns-container { flex-direction: column; gap: 15px; } .matching-item { font-size: 1em; padding: 10px 12px; } .matching-item.ukrainian-text { font-size: 1.2em; }
+            .exercise-row { flex-direction: row; align-items: center; gap: 8px; flex-wrap: wrap;}
+            .exercise-row .ukrainian-text { flex-shrink: 0; margin-right: 5px;}
+            .exercise-row .fill-input { flex-grow: 1; width: auto; min-width: 80px; margin-right: 5px;}
+            .exercise-row .translation { flex-basis: auto; }
+            .fill-input { width: 100%; max-width: none; margin-top: 5px; }
+            .key-container { justify-content: center; }
+            .fill-check { width: 100%; max-width: 300px; margin-top: 10px; }
+             .fill-item .exercise-row-ex2 { flex-direction: row; flex-wrap: wrap;}
+             .fill-item .exercise-row-ex2 .ukrainian-text { margin-left: 10px; }
+            .nav-buttons-container { flex-direction: column; gap: 15px; } .nav-button { width: 100%; margin: 0; font-size: 1rem;}
+            body { padding: 10px; }
+            .sentence-buttons { flex-direction: column; }
+            .check-btn, .show-answer-btn, .delete-btn { width: 100%; }
+            .dialogue-line { display: flex; flex-direction: column; align-items: flex-start; }
+            .trans-btn { margin-left: 0; margin-top: 5px; }
+            .translation { margin-left: 0; }
+            .reading-question-item { flex-direction: column; align-items: flex-start; gap: 5px; } /* Stack reading question elements */
+            .reading-answer { margin-left: 0; } /* Remove left margin for answer on small screens */
+        }
+         @media (max-width: 450px) {
+             .matching-item { padding: 10px 8px; font-size: 0.9em; } .matching-item.ukrainian-text { font-size: 1.1em; }
+             .key-btn { font-size: 1.4em; padding: 4px 10px;} .nav-button { padding: 12px 15px; }
+             .exercise-row {gap: 5px;}
+         }
+    </style>
+</head>
+<body>
+    <div class="title-section">
+        <h1>Тема 4.<br>Моя сім'я</h1>
+        <span class="latin-text" style="color: white; font-size: 1em !important;">Topic 4. My Family</span>
+    </div>
+
+    <div class="section">
+        <h3>What you'll learn</h3>
+        <ul>
+            <li><a href="#possessive-pronouns" style="color: inherit; text-decoration: none;">Grammar: Possessive Pronouns</a></li>
+            <li><a href="#interrogative-whose" style="color: inherit; text-decoration: none;">Grammar: Interrogative Sentences with "Whose?"</a></li>
+            <li><a href="#vocabulary" style="color: inherit; text-decoration: none;">Vocabulary: Family Members</a></li>
+            <li><a href="#communicative-model" style="color: inherit; text-decoration: none;">Communicative Model: Talking About Family</a></li>
+            <li><a href="#dialogues" style="color: inherit; text-decoration: none;">Dialogues: Family Conversations</a></li>
+            <li><a href="#reading" style="color: inherit; text-decoration: none;">Reading Practice</a></li>
+            <li><a href="#final-exercise" style="color: inherit; text-decoration: none;">Final Exercise: Sentence Building</a></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 id="possessive-pronouns">1. Possessive Pronouns</h2>
+        <p>Possessive pronouns in Ukrainian indicate ownership or belonging. They agree with the gender, number, and case of the noun they qualify.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="ukrainian-header">Person</th>
+                    <th class="ukrainian-header">Він (masculine)</th>
+                    <th class="ukrainian-header">Вона (feminine)</th>
+                    <th class="ukrainian-header">Воно (neuter)</th>
+                    <th class="ukrainian-header">Вони (plural)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>я (I)</td>
+                    <td>мій</td>
+                    <td>моя</td>
+                    <td>моє</td>
+                    <td>мої</td>
+                </tr>
+                <tr>
+                    <td>ти (you, singular)</td>
+                    <td>твій</td>
+                    <td>твоя</td>
+                    <td>твоє</td>
+                    <td>твої</td>
+                </tr>
+                <tr>
+                    <td>він (he)</td>
+                    <td>його</td>
+                    <td>його</td>
+                    <td>його</td>
+                    <td>його</td>
+                </tr>
+                <tr>
+                    <td>вона (she)</td>
+                    <td>її</td>
+                    <td>її</td>
+                    <td>її</td>
+                    <td>її</td>
+                </tr>
+                <tr>
+                    <td>ми (we)</td>
+                    <td>наш</td>
+                    <td>наша</td>
+                    <td>наше</td>
+                    <td>наші</td>
+                </tr>
+                <tr>
+                    <td>ви (you, plural)</td>
+                    <td>ваш</td>
+                    <td>ваша</td>
+                    <td>ваше</td>
+                    <td>ваші</td>
+                </tr>
+                <tr>
+                    <td>вони (they)</td>
+                    <td>їхній</td>
+                    <td>їхня</td>
+                    <td>їхнє</td>
+                    <td>їхні</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note">
+            <p><b>Note:</b> The forms of pronouns <b>твій/твоє/твоя/твої</b> are similar to the forms of the pronoun <b>мій/моє/моя/мої</b> — they change according to the form of the word to which they agree.</p>
+            <p>The pronouns <b>його</b> (his) and <b>її</b> (her) never change regardless of the gender or number of the noun they modify.</p>
+        </div>
+
+        <h3>Examples</h3>
+        <p lang="uk">
+            мій брат — твій брат — наш брат — ваш брат<br>
+            моя сестра — твоя сестра — наша сестра — ваша сестра<br>
+            моє місто — твоє місто — наше місто — ваше місто
+        </p>
+
+        <div class="matching-game">
+            <h3>Practice: Match Possessive Pronouns</h3>
+            <div class="matching-columns-container">
+                <div class="matching-column">
+                    <div class="matching-item-container" id="possessive-ukr-container">
+                        <div class="matching-item ukrainian-text" data-id="p1">мій</div>
+                        <div class="matching-item ukrainian-text" data-id="p2">твоя</div>
+                        <div class="matching-item ukrainian-text" data-id="p3">його</div>
+                        <div class="matching-item ukrainian-text" data-id="p4">її</div>
+                        <div class="matching-item ukrainian-text" data-id="p5">наше</div>
+                        <div class="matching-item ukrainian-text" data-id="p6">ваші</div>
+                        <div class="matching-item ukrainian-text" data-id="p7">їхні</div>
+                        <div class="matching-item ukrainian-text" data-id="p8">моє</div>
+                    </div>
+                </div>
+                <div class="matching-column">
+                    <div class="matching-item-container" id="possessive-eng-container">
+                        <div class="matching-item" data-id="p1">my (masculine)</div>
+                        <div class="matching-item" data-id="p2">your (feminine)</div>
+                        <div class="matching-item" data-id="p3">his</div>
+                        <div class="matching-item" data-id="p4">her</div>
+                        <div class="matching-item" data-id="p5">our (neuter)</div>
+                        <div class="matching-item" data-id="p6">your (plural)</div>
+                        <div class="matching-item" data-id="p7">their (plural)</div>
+                        <div class="matching-item" data-id="p8">my (neuter)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="matching-result">
+                <div class="matching-feedback" id="possessive-matching-feedback"></div>
+            </div>
+        </div>
+
+        <div class="fill-exercise">
+            <h3>Practice: Fill in Possessive Pronouns</h3>
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це я. Тут </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-poss1" data-correct="мій">
+                    <span class="ukrainian-text"> гуртожиток.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">мій</div>
+                    <div class="key-btn">твій</div>
+                    <div class="key-btn">наш</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-poss1')">Check</button>
+                <div class="fill-feedback" id="fill-poss1-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це ти. Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-poss2" data-correct="твій">
+                    <span class="ukrainian-text"> зошит.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">мій</div>
+                    <div class="key-btn">твій</div>
+                    <div class="key-btn">його</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-poss2')">Check</button>
+                <div class="fill-feedback" id="fill-poss2-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це Антон. Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-poss3" data-correct="його">
+                    <span class="ukrainian-text"> брат.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">мій</div>
+                    <div class="key-btn">твій</div>
+                    <div class="key-btn">його</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-poss3')">Check</button>
+                <div class="fill-feedback" id="fill-poss3-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це Ганна. Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-poss4" data-correct="її">
+                    <span class="ukrainian-text"> фото.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">її</div>
+                    <div class="key-btn">його</div>
+                    <div class="key-btn">наше</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-poss4')">Check</button>
+                <div class="fill-feedback" id="fill-poss4-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це ми. Тут </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-poss5" data-correct="наш">
+                    <span class="ukrainian-text"> клас.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">ваш</div>
+                    <div class="key-btn">наш</div>
+                    <div class="key-btn">їхній</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-poss5')">Check</button>
+                <div class="fill-feedback" id="fill-poss5-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це ви. Тут </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-poss6" data-correct="ваше">
+                    <span class="ukrainian-text"> молоко.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">наше</div>
+                    <div class="key-btn">ваше</div>
+                    <div class="key-btn">їхнє</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-poss6')">Check</button>
+                <div class="fill-feedback" id="fill-poss6-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це Ганна і Тарас. Це </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-poss7" data-correct="їхні">
+                    <span class="ukrainian-text"> словники.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">наші</div>
+                    <div class="key-btn">ваші</div>
+                    <div class="key-btn">їхні</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-poss7')">Check</button>
+                <div class="fill-feedback" id="fill-poss7-feedback"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 id="interrogative-whose">2. Interrogative Sentences with "Whose?"</h2>
+        <p>The interrogative sentence with the question word "Чий?" (Whose?) is used to ask about possession or ownership.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th class="ukrainian-header">Чий? (masculine)</th>
+                    <th class="ukrainian-header">Чия? (feminine)</th>
+                    <th class="ukrainian-header">Чиє? (neuter)</th>
+                    <th class="ukrainian-header">Чиї? (plural)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>брат</td>
+                    <td>сестра</td>
+                    <td>вікно</td>
+                    <td>брати</td>
+                </tr>
+                <tr>
+                    <td>клас</td>
+                    <td>лампа</td>
+                    <td>вухо</td>
+                    <td>сестри</td>
+                </tr>
+                <tr>
+                    <td>зошит</td>
+                    <td>ваза</td>
+                    <td>місто</td>
+                    <td>вікна</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="note">
+            <p><b>Pay attention:</b> In this interrogative construction, the invariable word <b>це</b> is used after the question word.</p>
+            <p>Чий це словник?<br>
+            Чия це машина?<br>
+            Чиє це місто?<br>
+            Чиї це зошити?</p>
+            <p>Remember that interrogative constructions with a question word are pronounced according to intonation pattern IC-2 (lesson 2).</p>
+        </div>
+
+        <div class="fill-exercise">
+            <h3>Practice: Ask "Whose?"</h3>
+            <div style="background-color: #F9F9F9; padding: 15px; border: 1px solid #DDD; border-radius: 8px; margin: 15px 0;">
+                <p style="text-align: center;">
+                    <span lang="uk">— Чий це зошит?</span><br>
+                    <span lang="uk">— Мій. (Це мій зошит.)</span>
+                </p>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">— </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-whose1" data-correct="Чия">
+                    <span class="ukrainian-text"> це книжка?</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">Чий</div>
+                    <div class="key-btn">Чия</div>
+                    <div class="key-btn">Чиє</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-whose1')">Check</button>
+                <div class="fill-feedback" id="fill-whose1-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">— </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-whose2" data-correct="Чиє">
+                    <span class="ukrainian-text"> це фото?</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">Чий</div>
+                    <div class="key-btn">Чия</div>
+                    <div class="key-btn">Чиє</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-whose2')">Check</button>
+                <div class="fill-feedback" id="fill-whose2-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">— </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-whose3" data-correct="Чиї">
+                    <span class="ukrainian-text"> це журнали?</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">Чий</div>
+                    <div class="key-btn">Чия</div>
+                    <div class="key-btn">Чиї</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-whose3')">Check</button>
+                <div class="fill-feedback" id="fill-whose3-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">— </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-whose4" data-correct="Чий">
+                    <span class="ukrainian-text"> це словник?</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">Чий</div>
+                    <div class="key-btn">Чия</div>
+                    <div class="key-btn">Чиє</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-whose4')">Check</button>
+                <div class="fill-feedback" id="fill-whose4-feedback"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 id="vocabulary">3. Vocabulary: Family Members</h2>
+        <p>Words related to family and family relationships:</p>
+        
+        <table class="stress-model-table">
+            <thead>
+                <tr><th class="ukrainian-header">Українська</th><th>English</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>сім'я</td><td>family</td></tr>
+                <tr><td>родина</td><td>family (extended)</td></tr>
+                <tr><td>мати, мама</td><td>mother, mom</td></tr>
+                <tr><td>батько, тато</td><td>father, dad</td></tr>
+                <tr><td>син</td><td>son</td></tr>
+                <tr><td>дочка</td><td>daughter</td></tr>
+                <tr><td>брат</td><td>brother</td></tr>
+                <tr><td>сестра</td><td>sister</td></tr>
+                <tr><td>дідусь, дід</td><td>grandfather</td></tr>
+                <tr><td>бабуся, баба</td><td>grandmother</td></tr>
+                <tr><td>онук</td><td>grandson</td></tr>
+                <tr><td>онука</td><td>granddaughter</td></tr>
+                <tr><td>дядько</td><td>uncle</td></tr>
+                <tr><td>тітка</td><td>aunt</td></tr>
+                <tr><td>племінник</td><td>nephew</td></tr>
+                <tr><td>племінниця</td><td>niece</td></tr>
+                <tr><td>чоловік</td><td>husband</td></tr>
+                <tr><td>дружина</td><td>wife</td></tr>
+                <tr><td>батьки</td><td>parents</td></tr>
+                <tr><td>діти</td><td>children</td></tr>
+                <tr><td>домогосподарка</td><td>housewife</td></tr>
+                <tr><td>великий</td><td>big, large</td></tr>
+                <tr><td>малий</td><td>small</td></tr>
+            </tbody>
+        </table>
+        
+        <div class="note">
+            <p><b>For inquisitive learners:</b></p>
+            <p>
+                Мати — мама, матуся, матінка, мамуся, неня, ненечка.<br>
+                Батько — тато, таточко, татусь, батечко.<br>
+                Син — синок, синочок, синятко.<br>
+                Дочка — доня, доця, донька, донечка, дочечка.<br>
+                Брат — братик, братусик, братець.<br>
+                Сестра — сестричка, сестриця, сестронька.<br>
+                Дід — дідусь, дідусик, дідонько, дідусенько.<br>
+                Баба — бабуся, бабусечка, бабусенька.
+            </p>
+        </div>
+
+        <div class="matching-game">
+            <h3>Vocabulary Matching Game</h3>
+            <div class="matching-columns-container">
+                <div class="matching-column">
+                    <div class="matching-item-container" id="family-ukr-container">
+                        <div class="matching-item ukrainian-text" data-id="f1">тато</div>
+                        <div class="matching-item ukrainian-text" data-id="f2">мама</div>
+                        <div class="matching-item ukrainian-text" data-id="f3">син</div>
+                        <div class="matching-item ukrainian-text" data-id="f4">дочка</div>
+                        <div class="matching-item ukrainian-text" data-id="f5">брат</div>
+                        <div class="matching-item ukrainian-text" data-id="f6">сестра</div>
+                        <div class="matching-item ukrainian-text" data-id="f7">дідусь</div>
+                        <div class="matching-item ukrainian-text" data-id="f8">бабуся</div>
+                        <div class="matching-item ukrainian-text" data-id="f9">чоловік</div>
+                        <div class="matching-item ukrainian-text" data-id="f10">дружина</div>
+                    </div>
+                </div>
+                <div class="matching-column">
+                    <div class="matching-item-container" id="family-eng-container">
+                        <div class="matching-item" data-id="f1">dad</div>
+                        <div class="matching-item" data-id="f2">mom</div>
+                        <div class="matching-item" data-id="f3">son</div>
+                        <div class="matching-item" data-id="f4">daughter</div>
+                        <div class="matching-item" data-id="f5">brother</div>
+                        <div class="matching-item" data-id="f6">sister</div>
+                        <div class="matching-item" data-id="f7">grandfather</div>
+                        <div class="matching-item" data-id="f8">grandmother</div>
+                        <div class="matching-item" data-id="f9">husband</div>
+                        <div class="matching-item" data-id="f10">wife</div>
+                    </div>
+                </div>
+            </div>
+            <div class="matching-result">
+                <div class="matching-feedback" id="family-matching-feedback"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 id="communicative-model">4. Communicative Model: Talking About Family</h2>
+        <p>When talking about family in Ukrainian, you'll use possessive pronouns to indicate relationships.</p>
+        
+        <div class="fill-exercise">
+            <h3>Practice: Complete Sentences About Family</h3>
+            <div style="background-color: #F9F9F9; padding: 15px; border: 1px solid #DDD; border-radius: 8px; margin: 15px 0;">
+                <p><span style="font-weight: bold;">Example:</span> <span lang="uk">Це мій шарф, а це моя шапка.</span></p>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це наш гуртожиток, а це наша </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-family1" data-correct="кімната">
+                    <span class="ukrainian-text">.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">кімната</div>
+                    <div class="key-btn">шафа</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-family1')">Check</button>
+                <div class="fill-feedback" id="fill-family1-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це мій брат, а це моя </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-family2" data-correct="сестра">
+                    <span class="ukrainian-text">.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">сестра</div>
+                    <div class="key-btn">мама</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-family2')">Check</button>
+                <div class="fill-feedback" id="fill-family2-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це її сумка, а це її </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-family3" data-correct="книжки">
+                    <span class="ukrainian-text">.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">книжки</div>
+                    <div class="key-btn">ручка</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-family3')">Check</button>
+                <div class="fill-feedback" id="fill-family3-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це наші листи, а це ваші </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-family4" data-correct="журнали">
+                    <span class="ukrainian-text">.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">журнали</div>
+                    <div class="key-btn">зошити</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-family4')">Check</button>
+                <div class="fill-feedback" id="fill-family4-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це його яблуко, а це його </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-family5" data-correct="груша">
+                    <span class="ukrainian-text">.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">груша</div>
+                    <div class="key-btn">сік</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-family5')">Check</button>
+                <div class="fill-feedback" id="fill-family5-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це твій словник, а це твій </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-family6" data-correct="зошит">
+                    <span class="ukrainian-text">.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">зошит</div>
+                    <div class="key-btn">лист</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-family6')">Check</button>
+                <div class="fill-feedback" id="fill-family6-feedback"></div>
+            </div>
+            
+            <div class="fill-item">
+                <div class="exercise-row">
+                    <span class="ukrainian-text">Це їхні книжки, а це їхні </span>
+                    <input type="text" class="fill-input ukrainian-input" id="fill-family7" data-correct="зошити">
+                    <span class="ukrainian-text">.</span>
+                </div>
+                <div class="key-container">
+                    <div class="key-btn">зошити</div>
+                    <div class="key-btn">сестра</div>
+                </div>
+                <button class="fill-check" onclick="checkFillAnswer('fill-family7')">Check</button>
+                <div class="fill-feedback" id="fill-family7-feedback"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 id="dialogues">5. Dialogues: Family Conversations</h2>
+        <h3>Dialogue 1: Meeting a Family</h3>
+        <div class="dialogue-box">
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Це тато?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d1_trans1')">Translate</button>
+                <div id="d1_trans1" class="translation">Is this dad?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Так, це тато.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d1_trans2')">Translate</button>
+                <div id="d1_trans2" class="translation">Yes, this is dad.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Хто це?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d1_trans3')">Translate</button>
+                <div id="d1_trans3" class="translation">Who is this?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Це мама.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d1_trans4')">Translate</button>
+                <div id="d1_trans4" class="translation">This is mom.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Це дідусь?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d1_trans5')">Translate</button>
+                <div id="d1_trans5" class="translation">Is this grandfather?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Так, це він.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d1_trans6')">Translate</button>
+                <div id="d1_trans6" class="translation">Yes, it's him.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Хто це?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d1_trans7')">Translate</button>
+                <div id="d1_trans7" class="translation">Who is this?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Це тітка.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d1_trans8')">Translate</button>
+                <div id="d1_trans8" class="translation">This is aunt.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Хто це?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d1_trans9')">Translate</button>
+                <div id="d1_trans9" class="translation">Who is this?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Це сестра та брати.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d1_trans10')">Translate</button>
+                <div id="d1_trans10" class="translation">This is sister and brothers.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Це брати?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d1_trans11')">Translate</button>
+                <div id="d1_trans11" class="translation">Are these brothers?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Так, це брати.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d1_trans12')">Translate</button>
+                <div id="d1_trans12" class="translation">Yes, these are brothers.</div>
+            </div>
+        </div>
+
+        <h3>Dialogue 2: Talking about My Family</h3>
+        <div class="dialogue-box">
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Це твоя сім'я?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d2_trans1')">Translate</button>
+                <div id="d2_trans1" class="translation">Is this your family?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Так, це моя сім'я. Це мої тато, мама і брат.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d2_trans2')">Translate</button>
+                <div id="d2_trans2" class="translation">Yes, this is my family. These are my dad, mom, and brother.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">А де твоя сестра?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d2_trans3')">Translate</button>
+                <div id="d2_trans3" class="translation">And where is your sister?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">У мене немає сестри.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d2_trans4')">Translate</button>
+                <div id="d2_trans4" class="translation">I don't have a sister.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Хто твій тато?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d2_trans5')">Translate</button>
+                <div id="d2_trans5" class="translation">What does your dad do?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Мій тато інженер.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d2_trans6')">Translate</button>
+                <div id="d2_trans6" class="translation">My dad is an engineer.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">А твоя мама?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d2_trans7')">Translate</button>
+                <div id="d2_trans7" class="translation">And your mom?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Вона вчителька.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d2_trans8')">Translate</button>
+                <div id="d2_trans8" class="translation">She is a teacher.</div>
+            </div>
+        </div>
+
+        <h3>Dialogue 3: Asking about Family</h3>
+        <div class="dialogue-box">
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Чиї це книжки?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d3_trans1')">Translate</button>
+                <div id="d3_trans1" class="translation">Whose books are these?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Це мої книжки.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d3_trans2')">Translate</button>
+                <div id="d3_trans2" class="translation">These are my books.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">У тебе є брат?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d3_trans3')">Translate</button>
+                <div id="d3_trans3" class="translation">Do you have a brother?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Так, у мене є брат.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d3_trans4')">Translate</button>
+                <div id="d3_trans4" class="translation">Yes, I have a brother.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">А сестра?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d3_trans5')">Translate</button>
+                <div id="d3_trans5" class="translation">And a sister?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">У мене немає сестри.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d3_trans6')">Translate</button>
+                <div id="d3_trans6" class="translation">I don't have a sister.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Як звати твого брата?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d3_trans7')">Translate</button>
+                <div id="d3_trans7" class="translation">What is your brother's name?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Його звати Максим.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d3_trans8')">Translate</button>
+                <div id="d3_trans8" class="translation">His name is Maksym.</div>
+            </div>
+        </div>
+        
+        <h3>Dialogue 4: Family Photo</h3>
+        <div class="dialogue-box">
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Це твоя сім'я?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d4_trans1')">Translate</button>
+                <div id="d4_trans1" class="translation">Is this your family?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Так, це моя сім'я.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d4_trans2')">Translate</button>
+                <div id="d4_trans2" class="translation">Yes, this is my family.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Хто це?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d4_trans3')">Translate</button>
+                <div id="d4_trans3" class="translation">Who is this?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Це мій батько і моя мати.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d4_trans4')">Translate</button>
+                <div id="d4_trans4" class="translation">This is my father and my mother.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Чим займається твій батько?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d4_trans5')">Translate</button>
+                <div id="d4_trans5" class="translation">What does your father do?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Він лікар. А моя мама вчителька.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d4_trans6')">Translate</button>
+                <div id="d4_trans6" class="translation">He is a doctor. And my mom is a teacher.</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">У тебе є брати або сестри?</span>
+                <button class="trans-btn" onclick="toggleTranslation('d4_trans7')">Translate</button>
+                <div id="d4_trans7" class="translation">Do you have brothers or sisters?</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker ukrainian-speaker">–</span>
+                <span class="dialogue-text" lang="uk">Так, у мене є брат і сестра. Ось вони.</span>
+                <button class="trans-btn" onclick="toggleTranslation('d4_trans8')">Translate</button>
+                <div id="d4_trans8" class="translation">Yes, I have a brother and a sister. Here they are.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 id="reading">6. Reading Practice</h2>
+        <h3>Text 1: My Family</h3>
+        <p class="listen-repeat-read">Read.</p>
+        <p lang="uk">Це фото. Тут моя сім'я. Мій тато, моя мама, мій дідусь, моя бабуся, моя сестра та мій брат. Мій тато — лікар. Його звати Ігор Петрович. Моя мама — інженер. Її звати Оксана Іванівна. Мій дідусь Петро Максимович теж лікар, а моя бабуся Марія Степанівна — домогосподарка. Моя сестра Марина та брат Микита ще діти. Моя сім'я велика.</p>
+        <br>
+        <h3>Translation</h3>
+        <p>
+            This is a photo. Here is my family. My dad, my mom, my grandfather, my grandmother, my sister and my brother. My father is a doctor. His name is Igor Petrovich. My mother is an engineer. Her name is Oksana Ivanivna. My grandfather Petro Maksymovych is also a doctor, and my grandmother Maria Stepanivna is a housewife. My sister Maryna and brother Mykyta are still children. My family is large.
+        </p>
+        <div class="reading-questions">
+            <h4>Questions about Text 1:</h4>
+            <ol>
+                <tr>
+                <div class="reading-question-item">
+                    <span class="reading-question-text" lang="uk">Це фото?</span>
+                    <button class="check-answer-btn" onclick="showReadingAnswer('answer-1-1')">Check Answer</button>
+                    <span class="reading-answer" id="answer-1-1" lang="uk">Так, це фото.</span>
+                </div>
+                </li>
+                <li>
+                <div class="reading-question-item">
+                    <span class="reading-question-text" lang="uk">Хто тут?</span>
+                    <button class="check-answer-btn" onclick="showReadingAnswer('answer-1-2')">Check Answer</button>
+                    <span class="reading-answer" id="answer-1-2" lang="uk">Тут сім'я.</span>
+                </div>
+                </li>
+                <li>
+                <div class="reading-question-item">
+                    <span class="reading-question-text" lang="uk">Тато лікар?</span>
+                    <button class="check-answer-btn" onclick="showReadingAnswer('answer-1-3')">Check Answer</button>
+                    <span class="reading-answer" id="answer-1-3" lang="uk">Так, тато лікар.</span>
+                </div>
+                </li>
+                <li>
+                <div class="reading-question-item">
+                    <span class="reading-question-text" lang="uk">Як його звати?</span>
+                    <button class="check-answer-btn" onclick="showReadingAnswer('answer-1-4')">Check Answer</button>
+                    <span class="reading-answer" id="answer-1-4" lang="uk">Його звати Ігор Петрович.</span>
+                </div>
+                </li>
+                <li>
+                <div class="reading-question-item">
+                    <span class="reading-question-text" lang="uk">Мама інженер?</span>
+                    <button class="check-answer-btn" onclick="showReadingAnswer('answer-1-5')">Check Answer</button>
+                    <span class="reading-answer" id="answer-1-5" lang="uk">Так, мама інженер.</span>
+                </div>
+                </li>
+                <li>
+                <div class="reading-question-item">
+                    <span class="reading-question-text" lang="uk">Як її звати?</span>
+                    <button class="check-answer-btn" onclick="showReadingAnswer('answer-1-6')">Check Answer</button>
+                    <span class="reading-answer" id="answer-1-6" lang="uk">Її звати Оксана Іванівна.</span>
+                </div>
+                </li>
+                <li>
+                <div class="reading-question-item">
+                    <span class="reading-question-text" lang="uk">Хто дідусь?</span>
+                    <button class="check-answer-btn" onclick="showReadingAnswer('answer-1-7')">Check Answer</button>
+                    <span class="reading-answer" id="answer-1-7" lang="uk">Дідусь лікар.</span>
+                </div>
+                </li>
+                <li>
+                <div class="reading-question-item">
+                    <span class="reading-question-text" lang="uk">Як його звати?</span>
+                    <button class="check-answer-btn" onclick="showReadingAnswer('answer-1-8')">Check Answer</button>
+                    <span class="reading-answer" id="answer-1-8" lang="uk">Його звати Петро Максимович.</span>
+                </div>
+                </li>
+                <li>
+                <div class="reading-question-item">
+                    <span class="reading-question-text" lang="uk">Бабуся домогосподарка?</span>
+                    <button class="check-answer-btn" onclick="showReadingAnswer('answer-1-9')">Check Answer</button>
+                    <span class="reading-answer" id="answer-1-9" lang="uk">Так, бабуся домогосподарка.</span>
+                </div>
+                </li>
+                <li>
+                <div class="reading-question-item">
+                    <span class="reading-question-text" lang="uk">Як її звати?</span>
+                    <button class="check-answer-btn" onclick="showReadingAnswer('answer-1-10')">Check Answer</button>
+                    <span class="reading-answer" id="answer-1-10" lang="uk">Її звати Марія Степанівна.</span>
+                </div>
+                </li>
+                <li>
+                <div class="reading-question-item">
+                    <span class="reading-question-text" lang="uk">Марина та Микита – діти?</span>
+                    <button class="check-answer-btn" onclick="showReadingAnswer('answer-1-11')">Check Answer</button>
+                    <span class="reading-answer" id="answer-1-11" lang="uk">Так, Марина та Микита – діти.</span>
+                </div>
+                </li>
+            </ol>
+        </div>
+
+        <h3>Text 2: Our Class</h3>
+        <p class="listen-repeat-read">Read.</p>
+        <p lang="uk">Це наш клас. Тут Роман. Це його місце. Тут його зошити та ручка. А це Оксана. Тут її книжки.
+        Це моє фото. Тут я, мій тато, моя мама та моя сестра.
+        Це мій друг. Його звати Хасан. Це його фото. Тут його тато, його мама, його брати й сестри.
+        Це моя подруга. Її звати Марта. Це її фото. Тут її мама, її син.
+        Це наше фото. Тут ми й наші товариші.
+        Це наш університет. Тут студенти і студентки. А це їхній викладач Ганна Іванівна.
+        Це наш буфет. Тут кава і сік, тістечка і печиво. А це фрукти: апельсини, мандарини і ківі.</p>
+        <br>
+        <h3>Translation</h3>
+        <p>
+            This is our class. Here is Roman. This is his place. Here are his notebooks and pen. And this is Oksana. Here are her books.
+            This is my photo. Here I am, my dad, my mom and my sister.
+            This is my friend. His name is Hasan. This is his photo. Here are his dad, his mom, his brothers and sisters.
+            This is my friend (female). Her name is Marta. This is her photo. Here are her mom, her son.
+            This is our photo. Here we are and our friends.
+            This is our university. Here are students (male and female). And this is their teacher Hanna Ivanivna.
+            This is our cafeteria. Here are coffee and juice, cakes and cookies. And these are fruits: oranges, tangerines and kiwi.
+        </p>
+
+        <h3>Text 3: Nina and the Doctor</h3>
+        <p class="listen-repeat-read">Read.</p>
+        <p lang="uk">Це Ніна. Вона лікар. Тут її лікарня. А це Тарас. Він також лікар. Там його поліклініка.
+        Це Ірина та Богдан. Вони учні. А це їхня школа. Тут їхні вчителі.
+        Це фото. Тут місто Київ. Це моє місто. Тут річка Дніпро. Там великі мости.</p>
+        <br>
+        <h3>Translation</h3>
+        <p>
+            This is Nina. She is a doctor. Here is her hospital. And this is Taras. He is also a doctor. There is his polyclinic.
+            This is Iryna and Bohdan. They are pupils. And this is their school. Here are their teachers.
+            This is a photo. Here is the city of Kyiv. This is my city. Here is the Dnipro River. There are big bridges.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2 id="final-exercise">7. Final Exercise: Sentence Building</h2>
+        <div class="fill-exercise">
+            <div class="word-order-game">
+                <div id="final-sentences-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" style="background: linear-gradient(to bottom, #0057B7 50%, #FFDD00 50%);">
+        <h2 style="text-align: center;">
+            <span class="congrats-ukrainian" style="color: #FFDD00;">Вітаємо!<br>Ви завершили Тему 4</span><br><br>
+            <span class="congrats-english" style="display: block; font-size: inherit;">Congratulations!<br>You finished Topic 4</span>
+        </h2>
+    </div>
+
+    <div class="nav-buttons-container">
+        <a href="../../landing_pages/ukrainian_lessons_en.html" class="nav-button">Back to all lessons</a>
+    </div>
+
+    <script>
+        // --- Generic Matching Game Logic ---
+        function initializeMatchingGame(ukrainianContainerId, englishContainerId, feedbackId, totalPairs) {
+            let selected = { ukrainian: null, english: null };
+            let matchCount = 0;
+            const ukrainianContainer = document.getElementById(ukrainianContainerId);
+            const englishContainer = document.getElementById(englishContainerId);
+            const feedbackElement = document.getElementById(feedbackId);
+
+            if (!ukrainianContainer || !englishContainer || !feedbackElement) {
+                console.error("Matching game containers or feedback element not found for:", ukrainianContainerId, englishContainerId, feedbackId);
+                return;
+            }
+
+            const shuffle = (container) => {
+                const items = Array.from(container.children).filter(node => node.nodeType === 1);
+                items.sort(() => 0.5 - Math.random());
+                items.forEach(item => container.appendChild(item));
+            };
+
+            shuffle(ukrainianContainer);
+            shuffle(englishContainer);
+
+            const items = document.querySelectorAll(`#${ukrainianContainerId} .matching-item, #${englishContainerId} .matching-item`);
+            items.forEach(item => {
+                 const newItem = item.cloneNode(true);
+                 item.parentNode.replaceChild(newItem, item);
+            });
+
+            const newItems = document.querySelectorAll(`#${ukrainianContainerId} .matching-item, #${englishContainerId} .matching-item`);
+            newItems.forEach(item => {
+                 item.addEventListener('click', function() {
+                     if (this.classList.contains('matched')) return;
+                     const isUkrainian = this.closest(`#${ukrainianContainerId}`) !== null;
+                     const side = isUkrainian ? 'ukrainian' : 'english';
+
+                     if (selected[side] && selected[side] !== this) {
+                         selected[side].classList.remove('selected');
+                     }
+                     this.classList.toggle('selected');
+                     if (this.classList.contains('selected')) {
+                         selected[side] = this;
+                     } else {
+                         selected[side] = null;
+                     }
+                     feedbackElement.textContent = '';
+
+                     if (selected.ukrainian && selected.english) {
+                         if (selected.ukrainian.dataset.id === selected.english.dataset.id) {
+                             ['ukrainian', 'english'].forEach(s => {
+                                 if (selected[s]) {
+                                     selected[s].classList.remove('selected');
+                                     selected[s].classList.add('matched');
+                                 }
+                             });
+                             matchCount++;
+                             if (matchCount === totalPairs) {
+                                 feedbackElement.textContent = '✓ Correct! All matched!';
+                                 feedbackElement.className = 'matching-feedback correct';
+                             }
+                             selected = { ukrainian: null, english: null };
+                         } else {
+                             feedbackElement.textContent = '✗ Try again!';
+                             feedbackElement.className = 'matching-feedback incorrect';
+                             const selUkr = selected.ukrainian;
+                             const selEng = selected.english;
+                             setTimeout(() => {
+                                 if (selUkr) selUkr.classList.remove('selected');
+                                 if (selEng) selEng.classList.remove('selected');
+                             }, 800); // Delay for incorrect match
+                             selected = { ukrainian: null, english: null };
+                         }
+                     }
+                 });
+            });
+        }
+
+        // --- Fill-in Exercise Logic ---
+        function checkFillAnswer(inputId) {
+            const input = document.getElementById(inputId);
+            const feedback = document.getElementById(`${inputId}-feedback`);
+            const correctAnswer = input.dataset.correct;
+            const userAnswer = input.value.trim();
+
+            // Case-insensitive check for Ukrainian (first letter capitalized, rest lower)
+            const isCorrect = userAnswer.toLowerCase() === correctAnswer.toLowerCase() ||
+                              (userAnswer.charAt(0).toUpperCase() + userAnswer.slice(1).toLowerCase() === correctAnswer);
+
+
+            if (isCorrect) {
+                feedback.textContent = "✓ Correct!";
+                feedback.className = "fill-feedback correct";
+                input.style.backgroundColor = "#e6ffee";
+            } else {
+                feedback.innerHTML = `✗ Not quite. Correct is: <span class="correct-answer-display ukrainian-text">${correctAnswer}</span>`;
+                feedback.className = "fill-feedback incorrect";
+                input.style.backgroundColor = "#ffebeb";
+            }
+        }
+
+        // --- Sentence Building Game Logic ---
+        // Generic helper functions (can be used by both games)
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        function arraysEqual(a, b) {
+            if (a.length !== b.length) return false;
+            return a.every((val, index) => val === b[index]);
+        }
+
+        // Function to initialize a sentence building game instance
+        function initializeSentenceGame(containerId, sentencesData, gamePrefix = '') {
+             const sentences = sentencesData.map(item => ({
+                 original: item.ukrainian,
+                 english: item.english,
+                 words: item.ukrainian.split(/\s+/)
+             }));
+
+             const gameContainer = document.getElementById(containerId);
+             if (!gameContainer) {
+                  console.error(`Sentence game container '${containerId}' not found!`);
+                  return;
+             }
+             gameContainer.innerHTML = ''; // Clear previous content if any
+
+             sentences.forEach((sentence, index) => {
+                  const sentenceId = `${gamePrefix}sentence-${index}`;
+                  const solutionAreaId = `${gamePrefix}solution-area-${index}`;
+                  const wordsBankId = `${gamePrefix}words-bank-${index}`;
+                  const feedbackId = `${gamePrefix}feedback-${index}`;
+
+                  const sentenceElement = document.createElement('div');
+                  sentenceElement.className = 'game-sentence';
+                  sentenceElement.id = sentenceId;
+
+                  const translation = document.createElement('div');
+                  translation.className = 'game-sentence-translation';
+                  translation.innerHTML = `<span class="sentence-number">${index + 1}/${sentences.length}</span> ${sentence.english}`;
+                  sentenceElement.appendChild(translation);
+
+                  const solutionArea = document.createElement('div');
+                  solutionArea.className = 'solution-area';
+                  solutionArea.id = solutionAreaId;
+                  sentenceElement.appendChild(solutionArea);
+
+                  const wordsBank = document.createElement('div');
+                  wordsBank.className = 'words-bank';
+                  wordsBank.id = wordsBankId;
+                  sentenceElement.appendChild(wordsBank);
+
+                  const shuffledWords = shuffleArray(sentence.words);
+                  shuffledWords.forEach(word => {
+                      const wordElement = document.createElement('div');
+                      wordElement.className = 'word-box ukrainian-text';
+                      wordElement.textContent = word;
+                      wordElement.addEventListener('click', () => moveWord(wordElement, solutionAreaId, wordsBankId, feedbackId));
+                      wordsBank.appendChild(wordElement);
+                  });
+
+                  const feedback = document.createElement('div');
+                  feedback.className = 'game-feedback';
+                  feedback.id = feedbackId;
+                  sentenceElement.appendChild(feedback);
+
+                  const buttonContainer = document.createElement('div');
+                  buttonContainer.className = 'sentence-buttons';
+
+                  const checkButton = document.createElement('button');
+                  checkButton.className = 'check-btn';
+                  checkButton.textContent = 'Check Answer';
+                  checkButton.addEventListener('click', () => checkSentenceAnswer(index, sentences, solutionAreaId, wordsBankId, feedbackId, sentenceId, containerId));
+                  buttonContainer.appendChild(checkButton);
+
+                  const showAnswerButton = document.createElement('button');
+                  showAnswerButton.className = 'show-answer-btn';
+                  showAnswerButton.textContent = 'Show Answer';
+                  showAnswerButton.addEventListener('click', () => showSentenceAnswer(index, sentences, solutionAreaId, wordsBankId, feedbackId, sentenceId, containerId));
+                  buttonContainer.appendChild(showAnswerButton);
+
+                  const deleteBtn = document.createElement('button');
+                  deleteBtn.className = 'delete-btn';
+                  deleteBtn.textContent = 'Clear Box';
+                  deleteBtn.addEventListener('click', () => clearSolutionArea(solutionAreaId, wordsBankId, feedbackId));
+                  buttonContainer.appendChild(deleteBtn);
+
+                  sentenceElement.appendChild(buttonContainer);
+                  gameContainer.appendChild(sentenceElement);
+
+                  if (index > 0) {
+                       sentenceElement.style.display = 'none';
+                  }
+             });
+        }
+
+        // Modified Helper functions for Sentence Building (accepting IDs)
+        function moveWord(wordElement, solutionAreaId, wordsBankId, feedbackId) {
+            const parent = wordElement.parentElement;
+            const solutionArea = document.getElementById(solutionAreaId);
+            const wordsBank = document.getElementById(wordsBankId);
+            const feedbackElement = document.getElementById(feedbackId);
+
+            if (parent.classList.contains('words-bank')) {
+                solutionArea.appendChild(wordElement);
+            } else {
+                wordsBank.appendChild(wordElement);
+            }
+            if (feedbackElement) {
+                feedbackElement.textContent = '';
+                feedbackElement.className = 'game-feedback';
+            }
+        }
+
+        function checkSentenceAnswer(sentenceIndex, sentences, solutionAreaId, wordsBankId, feedbackId, sentenceElementId, gameContainerId) {
+            const solutionArea = document.getElementById(solutionAreaId);
+            const feedbackElement = document.getElementById(feedbackId);
+            const sentenceElement = document.getElementById(sentenceElementId);
+            const currentWords = Array.from(solutionArea.children).map(word => word.textContent);
+            const correctWords = sentences[sentenceIndex].words;
+            const wordsBank = document.getElementById(wordsBankId);
+            const gameContainer = document.getElementById(gameContainerId);
+
+            if (wordsBank.children.length > 0) {
+                 feedbackElement.textContent = '✗ Please use all the words.';
+                 feedbackElement.className = 'game-feedback feedback-incorrect';
+                 return;
+            }
+            const isCorrect = arraysEqual(currentWords, correctWords);
+
+            if (isCorrect) {
+                feedbackElement.textContent = '✓ Correct! Well done!';
+                feedbackElement.className = 'game-feedback feedback-correct';
+                sentenceElement.classList.add('completed');
+                const nextSentenceIndex = sentenceIndex + 1;
+                if (nextSentenceIndex < sentences.length) {
+                    setTimeout(() => {
+                        const gamePrefix = sentenceElementId.includes('final-') ? 'final-' : '';
+                        const nextSentenceId = `${gamePrefix}sentence-${nextSentenceIndex}`;
+                        const nextSentence = document.getElementById(nextSentenceId);
+                        if (nextSentence) {
+                            nextSentence.style.display = 'block';
+                            nextSentence.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }, 1000);
+                } else {
+                     const allDoneMsg = document.createElement('p');
+                     allDoneMsg.textContent = 'Всі речення складено! / All sentences built!';
+                     allDoneMsg.style.textAlign = 'center';
+                     allDoneMsg.style.fontWeight = 'bold';
+                     allDoneMsg.style.marginTop = '20px';
+                     if (!gameContainer.querySelector('.all-done-msg')) {
+                          allDoneMsg.className = 'all-done-msg';
+                          gameContainer.appendChild(allDoneMsg);
+                     }
+                }
+            } else {
+                feedbackElement.textContent = '✗ Not quite right. Try again!';
+                feedbackElement.className = 'game-feedback feedback-incorrect';
+            }
+        }
+
+        function showSentenceAnswer(sentenceIndex, sentences, solutionAreaId, wordsBankId, feedbackId, sentenceElementId, gameContainerId) {
+            const solutionArea = document.getElementById(solutionAreaId);
+            const wordsBank = document.getElementById(wordsBankId);
+            const feedbackElement = document.getElementById(feedbackId);
+            const sentenceElement = document.getElementById(sentenceElementId);
+            const gameContainer = document.getElementById(gameContainerId);
+
+            solutionArea.innerHTML = '';
+            wordsBank.innerHTML = '';
+
+            sentences[sentenceIndex].words.forEach(word => {
+                const wordElement = document.createElement('div');
+                wordElement.className = 'word-box ukrainian-text';
+                wordElement.textContent = word;
+                wordElement.style.cursor = 'default'; // Make it non-clickable
+                solutionArea.appendChild(wordElement);
+            });
+            feedbackElement.textContent = 'This is the correct order.';
+            feedbackElement.className = 'game-feedback';
+            sentenceElement.classList.add('completed'); // Mark as completed
+
+            const nextSentenceIndex = sentenceIndex + 1;
+             if (nextSentenceIndex < sentences.length) {
+                 setTimeout(() => {
+                     const gamePrefix = sentenceElementId.includes('final-') ? 'final-' : '';
+                     const nextSentenceId = `${gamePrefix}sentence-${nextSentenceIndex}`;
+                     const nextSentence = document.getElementById(nextSentenceId);
+                      if (nextSentence) {
+                          nextSentence.style.display = 'block';
+                          nextSentence.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }
+                 }, 800);
+             } else {
+                  const allDoneMsg = document.createElement('p');
+                  allDoneMsg.textContent = 'Всі речення складено! / All sentences built!';
+                  allDoneMsg.style.textAlign = 'center';
+                  allDoneMsg.style.fontWeight = 'bold';
+                  allDoneMsg.style.marginTop = '20px';
+                  if (!gameContainer.querySelector('.all-done-msg')) {
+                       allDoneMsg.className = 'all-done-msg';
+                       gameContainer.appendChild(allDoneMsg);
+                  }
+             }
+        }
+
+        function clearSolutionArea(solutionAreaId, wordsBankId, feedbackId) {
+            const solutionArea = document.getElementById(solutionAreaId);
+            const wordsBank = document.getElementById(wordsBankId);
+            const feedbackElement = document.getElementById(feedbackId);
+            while (solutionArea.firstChild) {
+                wordsBank.appendChild(solutionArea.firstChild);
+            }
+            // Re-shuffle words in the bank after clearing
+            shuffleArray(Array.from(wordsBank.children)).forEach(node => wordsBank.appendChild(node));
+            if(feedbackElement){
+                feedbackElement.textContent = '';
+                feedbackElement.className = 'game-feedback';
+            }
+        }
+
+
+        // --- Dialogue Translation Toggle ---
+        function toggleTranslation(id) {
+            const translation = document.getElementById(id);
+            const button = translation.previousElementSibling; // Assumes button is right before translation div
+
+            if (translation.style.display === 'block') {
+                translation.style.display = 'none';
+                button.textContent = 'Translate';
+            } else {
+                translation.style.display = 'block';
+                button.textContent = 'Hide';
+            }
+        }
+
+        // --- Reading Question Answer Toggle ---
+        function showReadingAnswer(answerId) {
+            const answer = document.getElementById(answerId);
+            if (answer) {
+                answer.style.display = 'inline'; // Show the answer
+                // Optionally, disable or hide the button after clicking
+                // const button = answer.previousElementSibling;
+                // if (button && button.classList.contains('check-answer-btn')) {
+                //     button.disabled = true;
+                //     button.style.opacity = 0.6;
+                // }
+            }
+        }
+
+
+        // --- Initialization on DOMContentLoaded ---
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Matching Games
+            initializeMatchingGame('possessive-ukr-container', 'possessive-eng-container', 'possessive-matching-feedback', 8);
+            initializeMatchingGame('family-ukr-container', 'family-eng-container', 'family-matching-feedback', 10);
+
+            // Initialize Final Sentence Building Game
+            const finalSentencesData = [
+                // Sentences covering all lesson aspects
+                { ukrainian: "Моя сім'я велика", english: "My family is large." },
+                { ukrainian: "Це мій тато", english: "This is my dad." },
+                { ukrainian: "Її звати Оксана", english: "Her name is Oksana." },
+                { ukrainian: "Його брат студент", english: "His brother is a student." },
+                { ukrainian: "Чий це словник?", english: "Whose dictionary is this?" },
+                { ukrainian: "Це наша кімната", english: "This is our room." },
+                { ukrainian: "Це твоя сестра?", english: "Is this your sister?" },
+                { ukrainian: "Мій дідусь лікар", english: "My grandfather is a doctor." },
+                { ukrainian: "Це ваша сім'я?", english: "Is this your family?" },
+                { ukrainian: "Їхні батьки вчителі", english: "Their parents are teachers." },
+                { ukrainian: "У мене є брат", english: "I have a brother." },
+                { ukrainian: "Це їхня школа", english: "This is their school." },
+                { ukrainian: "Моя мама інженер", english: "My mom is an engineer." },
+                { ukrainian: "Чия це книжка?", english: "Whose book is this?" },
+                { ukrainian: "Це моя бабуся", english: "This is my grandmother." },
+                { ukrainian: "Це моє фото", english: "This is my photo." },
+                { ukrainian: "Це наші друзі", english: "These are our friends." },
+                { ukrainian: "Чиї це зошити?", english: "Whose notebooks are these?" },
+                { ukrainian: "Це його фото", english: "This is his photo." },
+                { ukrainian: "Твій брат студент?", english: "Is your brother a student?" }
+            ];
+            initializeSentenceGame('final-sentences-container', finalSentencesData, 'final-');
+
+            // Add key button functionality for all fill-in exercises
+            document.querySelectorAll('.key-btn').forEach(button => {
+                 button.addEventListener('click', function() {
+                     const fillItem = this.closest('.fill-item');
+                     if (!fillItem) return;
+                     const input = fillItem.querySelector('.fill-input');
+                     if (input) {
+                         input.value = this.textContent;
+                         // Clear feedback when a key is pressed
+                         const feedbackId = input.id + '-feedback';
+                         const feedback = document.getElementById(feedbackId);
+                         if (feedback) {
+                             feedback.textContent = '';
+                             feedback.className = 'fill-feedback';
+                         }
+                         input.style.backgroundColor = ''; // Reset background color
+                     }
+                 });
+            });
+
+            // Add listener for Enter key in fill-in inputs to trigger check
+            document.querySelectorAll('.fill-input').forEach(input => {
+                 input.addEventListener('keypress', function(event) {
+                     if (event.key === 'Enter') {
+                         event.preventDefault(); // Prevent default form submission
+                         const fillItem = this.closest('.fill-item');
+                         if (fillItem) {
+                             const checkButton = fillItem.querySelector('.fill-check');
+                             if (checkButton) {
+                                 checkButton.click(); // Simulate click on the check button
+                             }
+                         }
+                     }
+                 });
+            });
+        });
+    </script>
+
+</body>
+</html>
