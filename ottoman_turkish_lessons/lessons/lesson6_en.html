@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lesson 6: The Izafét</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Ottoman-inspired color scheme (Matches Lesson 1) */
+        :root {
+            --ottoman-blue: #0081C9; --ottoman-red: #C70039; --ottoman-gold: #FFB100;
+            --ottoman-teal: #00B8A9; --ottoman-navy: #023E7D; --ottoman-cream: #FFF8E1;
+            --ottoman-light-blue: #E0F7FF; --ottoman-pink: #FFCCDF; --ottoman-light-teal: #CCFCF6;
+            --body-background: #1D2F6F; --text-color: #1A3A5A; --text-light: #FFFFFF;
+        }
+        body { font-family: 'Nunito', Arial, sans-serif; line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 15px; background-color: var(--body-background); background-image: url('../ottoman_background.png'); background-repeat: repeat; background-size: 300px auto; box-sizing: border-box; color: var(--text-color); }
+        [lang="ar"], td:first-child, .ottoman-text, .matching-item.ottoman-text, .fill-input.ottoman-input, .key-btn, .correct-answer-display { font-family: 'Noto Naskh Arabic', serif; font-size: 1.4em; line-height: 1.5; font-weight: 500; direction: rtl; text-align: right; }
+        /* Latin text styling - Increased base font size */
+        .latin-text { font-family: 'Nunito', Arial, sans-serif !important; font-size: 0.9em !important; /* Increased from 0.7em */ font-weight: normal !important; direction: ltr !important; }
+
+        /* Increased font size for Ottoman/Latin text in paragraphs (Kept as original) */
+        p .ottoman-text { font-size: 1.4em; display: inline-block; /* Keep inline-block for spacing */ vertical-align: middle; }
+        p .latin-text { font-size: 1.0em; display: inline-block; vertical-align: middle; margin: 0 2px; /* Add slight margin */ }
+
+        .matching-item.ottoman-text, .key-btn { text-align: center; }
+        .fill-input.ottoman-input { text-align: right; font-size: 1.6em; }
+        /* Adjusted table cell alignment for better readability */
+        td:first-child, td[lang="ar"] { text-align: right !important; /* Changed from left */ padding-top: 18px; padding-bottom: 18px; }
+        td:nth-child(2), td:nth-child(3) { text-align: left !important; /* Ensure Latin text columns align left */ }
+        * { box-sizing: border-box; }
+        h1, h2, h3 { color: var(--ottoman-navy); font-weight: 700; line-height: 1.3; }
+        h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; color: var(--text-light); }
+        h2 { font-size: 1.5rem; margin-top: 30px; }
+        h3 { font-size: 1.2rem; margin-top: 25px; color: var(--ottoman-blue); }
+        .section { background-color: var(--ottoman-light-blue); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background-color: #C0E0F0; }
+        .title-section { background-color: var(--ottoman-navy); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        .title-section h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 0; margin-top: 0; font-size: 1.8rem; color: var(--text-light); }
+        th, td { padding: 12px 15px; text-align: left; border: none; }
+        th { background-color: var(--ottoman-blue); color: var(--text-light); font-weight: 600; }
+        tr:nth-child(even) { background-color: var(--ottoman-light-blue); }
+        tr:hover { background-color: #B9E7FE; }
+        .note { background-color: var(--ottoman-pink); padding: 15px; border-left: 4px solid var(--ottoman-red); margin: 20px 0; border-radius: 0 8px 8px 0; }
+
+        /* Feedback Styles (Match Lesson 1) */
+        .feedback, .fill-feedback { margin-top: 8px; margin-left: 5px; font-weight: bold; }
+        /* Correct/Incorrect feedback text colors AND STYLE - MATCH L1 Ex2 */
+        .fill-feedback.correct { color: var(--ottoman-teal); /* L1 uses teal for .correct */ }
+        .fill-feedback.incorrect { color: var(--ottoman-red); /* L1 uses red for .incorrect */ }
+        /* Specific style for matching game 'Correct' feedback to match L1 */
+        .matching-feedback.correct { color: black !important; font-size: 1.5rem !important; }
+        /* Style for sentence building feedback */
+        .fill-feedback.correct.sentence-building {
+            color: black !important;
+            font-size: 1.5rem !important;
+            font-weight: bold !important;
+            font-family: 'Nunito', Arial, sans-serif !important;
+            background-color: var(--ottoman-gold);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        /* Display for showing correct answer on incorrect attempt */
+        .correct-answer-display { display: inline-block; margin-left: 5px; }
+
+        /* Matching Game Styles (Match Lesson 1) */
+        .matching-game { background-color: var(--ottoman-gold); padding: 20px; border-radius: 8px; margin-top: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .matching-columns-container { display: flex; gap: 10px; margin-bottom: 20px; }
+        .matching-column { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .matching-column h4 { text-align: center; margin-bottom: 10px; }
+        .matching-item-container { display: flex; flex-direction: column; gap: 10px; }
+        .matching-item { padding: 12px 15px; background-color: white; border: 2px solid var(--ottoman-blue); border-radius: 8px; cursor: pointer; transition: all 0.2s ease; text-align: center; -webkit-tap-highlight-color: transparent; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .matching-item:hover { background-color: var(--ottoman-light-blue); }
+        .matching-item.selected { background-color: var(--ottoman-blue); color: var(--text-light); }
+        .matching-item.matched { background-color: var(--ottoman-gold); color: black; border-color: var(--ottoman-gold); cursor: default; }
+        .matching-result { text-align: center; }
+        .matching-result div { font-size: 1.2rem; font-weight: bold; color: black; margin-top: 15px; }
+
+
+        /* Fill-in / Sentence Building Styles (Match Lesson 1 Ex2 & Ex5) */
+        .fill-exercise { margin-top: 30px; }
+        /* Container for each exercise item - MATCH L1 Ex2 */
+        .fill-item { background-color: var(--ottoman-gold); /* #FFB100 */ margin-bottom: 20px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        /* General row for inputs/text - MATCH L1 Ex2 */
+        .exercise-row { display: flex; align-items: center; gap: 12px; /* MATCH L1 Ex2 gap */ margin-bottom: 10px; flex-wrap: wrap; color: var(--text-color); font-weight: 500; }
+        /* Translation text style - MATCH L1 Ex2 placement (inside flex row) */
+        .translation { color: black; font-size: 1.1em; /* Adjusted slightly from L1's 1.2em for better fit in this context */ }
+        /* Input field - MATCH L1 Ex2 styles */
+        .fill-input { background-color: var(--ottoman-gold); /* #FFB100 - Match L1 Ex2 internal color */ width: 120px; /* Default width like L1 Ex2 */ padding: 8px 12px; border: 2px solid #997000; /* Match L1 Ex2 border */ border-radius: 6px; font-size: 16px; font-family: inherit; }
+        /* Wider input for sentence building like L1 Ex5 */
+        .fill-input.long-input { width: 100%; max-width: 400px; }
+        /* Ottoman Input specific font override (already present, ensure consistency) */
+        .fill-input.ottoman-input { font-family: 'Noto Naskh Arabic', serif; font-size: 1.6em; direction: rtl; text-align: right; }
+        /* Container for key buttons - MATCH L1 Ex2 */
+        .key-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        /* Key buttons (Match L1 Ex2/Ex5) */
+        .key-btn { padding: 5px 12px; background-color: #FFECB3; border: 1px solid #E6A800; border-radius: 6px; cursor: pointer; color: #333; font-size: 1.6em; font-family: 'Noto Naskh Arabic', serif; /* Explicitly set font */ text-align: center; /* Ensure centering */ }
+        .key-btn:hover { background-color: #FFE082; color: black; }
+        /* Check button (Match L1 Ex2/Ex5) */
+        .fill-check { padding: 8px 15px; background-color: #FFECB3; color: black; border: none; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: 600; transition: background-color 0.2s ease; }
+        .fill-check:hover { background-color: #FFE082; }
+
+
+        /* Congratulations (Match Lesson 1 Structure/Style) */
+                /* Using standard .section */
+                .congrats-ottoman { font-family: 'Amiri', serif; font-size: 30px; /* Match L1 inline style */ line-height: 1.4; }
+                .congrats-english { font-size: 1.2em; margin-top: 10px; }
+
+        /* Word Order Game Styles - For Duolingo-style exercise */
+        .word-order-game {
+            background-color: var(--ottoman-light-blue);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .game-sentence {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-sentence.completed {
+            background-color: var(--ottoman-light-teal);
+            border-left: 4px solid var(--ottoman-teal);
+        }
+
+        .game-sentence-translation {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .sentence-number {
+            display: inline-block;
+            min-width: 45px;
+            font-weight: 700;
+            color: var(--ottoman-red);
+        }
+
+        .solution-area {
+            min-height: 60px;
+            padding: 10px;
+            background-color: #e0f7ff;
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+            border: 2px dashed var(--ottoman-blue);
+            direction: rtl; /* Fix for RTL language */
+            justify-content: flex-start; /* Right justify content for RTL */
+        }
+
+        .words-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+            background-color: var(--ottoman-cream);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            direction: rtl; /* Fix for RTL language */
+        }
+
+        .word-box {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: var(--ottoman-blue); /* Changed to match website blue */
+            color: white; /* Better contrast for blue background */
+            border-radius: 5px;
+            cursor: pointer;
+            user-select: none;
+            margin: 0;
+            font-weight: 500;
+            border: 2px solid transparent;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+
+        .solution-area .word-box {
+            background-color: #c0e0f0;
+            color: var(--text-color); /* Reset color for solution box */
+            border-color: var(--ottoman-blue);
+        }
+
+        .word-box:active {
+            transform: scale(0.95);
+        }
+
+        .game-feedback {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .feedback-correct {
+            color: var(--ottoman-teal);
+        }
+
+        .feedback-incorrect {
+            color: var(--ottoman-red);
+        }
+
+        .sentence-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .check-btn, .show-answer-btn, .delete-btn {
+            flex: 1;
+            background-color: var(--ottoman-blue);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .check-btn:hover, .show-answer-btn:hover, .delete-btn:hover {
+            background-color: #006aa3; /* Darker blue on hover */
+        }
+
+        .check-btn:active, .show-answer-btn:active, .delete-btn:active {
+            transform: scale(0.98);
+        }
+
+        .show-answer-btn {
+            background-color: var(--ottoman-light-blue);
+            color: var(--text-color);
+        }
+
+        .show-answer-btn:hover {
+            background-color: #c0e0f0;
+        }
+
+        .delete-btn {
+            background-color: #ffccdf;
+            color: var(--text-color);
+        }
+
+        .delete-btn:hover {
+            background-color: #ffb3c6;
+        }
+
+        /* Navigation (Match Lesson 1) */
+        .nav-buttons-container { display: flex; justify-content: space-between; margin-top: 30px; margin-bottom: 40px; padding: 0 10px; }
+        .nav-button { background-color: var(--ottoman-navy); color: var(--text-light); border: 3px solid var(--ottoman-blue); border-radius: 12px; padding: 15px 20px; font-family: 'Nunito', Arial, sans-serif; font-weight: 600; font-size: 1.3rem; /* Match L1 size */ cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; text-decoration: none; text-align: center; display: inline-block; line-height: 1.4; }
+        .nav-button:hover { background-color: var(--ottoman-blue); border-color: var(--ottoman-navy); }
+        .prev-button { margin-right: auto; }
+        .next-button, .exercises-button { margin-left: 10px; }
+        .nav-button.next-button {
+            padding-top: 27px;  /* Add padding to the top to push text down */
+        }
+
+                /* Small Latin text (Adjusted to match .latin-text increase) */
+                .small-latin { font-size: 0.7em !important; /* Increased from 0.6em */ font-family: 'Nunito', Arial, sans-serif !important; font-weight: normal !important; display: inline-block; vertical-align: middle; direction: ltr; text-align: left; }
+
+        /* Media queries (Copied from Lesson 1 for consistency) */
+        @media (max-width: 600px) {
+            .section, .title-section { padding: 20px 15px; border-radius: 10px; }
+            h1 { font-size: 1.6rem; padding-bottom: 10px; } h2 { font-size: 1.3rem; } h3 { font-size: 1.1rem; }
+            table { display: block; overflow-x: auto; white-space: nowrap; } th, td { padding: 10px 12px; } th { font-size: 0.9rem; padding: 10px 8px; }
+            .exercise { padding: 15px; }
+            .matching-columns-container { flex-direction: column; gap: 15px; } .matching-item { font-size: 1em; padding: 10px 12px; } .matching-item.ottoman-text { font-size: 1.2em; }
+            /* Fill-in exercises - Adjust layout like L1 Ex2 on mobile */
+            .exercise-row { flex-direction: row; align-items: center; gap: 8px; flex-wrap: wrap;} /* Keep row, allow wrap, smaller gap */
+            .exercise-row .ottoman-text { flex-shrink: 0; /* Prevent shrinking */ margin-right: 5px;}
+            .exercise-row .fill-input { flex-grow: 1; width: auto; min-width: 80px; margin-right: 5px;} /* Allow input to grow */
+            .exercise-row .translation { flex-basis: auto; /* Don't force full width */}
+
+            .fill-input { width: 100%; max-width: none; margin-top: 5px; } /* Override default width */
+            .key-container { justify-content: center; }
+            .fill-check { width: 100%; max-width: 300px; margin-top: 10px; }
+            /* Specific adjustments for Ex2 layout on mobile (Already present, review) */
+                    .fill-item .exercise-row-ex2 { flex-direction: row; flex-wrap: wrap;} /* Allow wrap */
+                    .fill-item .exercise-row-ex2 .ottoman-text { margin-left: 10px; } /* Space between name and input */
+            /* Navigation */
+            .nav-buttons-container { flex-direction: column; gap: 15px; } .nav-button { width: 100%; margin: 0; font-size: 1rem;}
+            body { padding: 10px; }
+
+            /* Word order game mobile adjustments */
+            .sentence-buttons {
+                flex-direction: column;
+            }
+
+            .check-btn, .show-answer-btn, .delete-btn {
+                width: 100%;
+            }
+        }
+                @media (max-width: 450px) {
+                    .matching-item { padding: 10px 8px; font-size: 0.9em; } .matching-item.ottoman-text { font-size: 1.1em; }
+                    .key-btn { font-size: 1.4em; padding: 4px 10px;} .nav-button { padding: 12px 15px; }
+                    .exercise-row {gap: 5px;} /* Further reduce gap on very small screens */
+                }
+    </style>
+</head>
+<body>
+    <div class="title-section">
+        <h1>Lesson 6<br>The Izafét</h1>
+    </div>
+
+    <div class="section">
+        <h3>Lesson Objectives</h3>
+        <ul>
+             <li><a href="#izafet-intro" style="color: inherit; text-decoration: none;">Introduction to Izafét</a></li>
+             <li><a href="#izafet-types" style="color: inherit; text-decoration: none;">The Three Types of Izafét</a></li>
+             <li><a href="#constructions" style="color: inherit; text-decoration: none;">Special Constructions</a></li>
+             <li><a href="#vocabulary" style="color: inherit; text-decoration: none;">Family Vocabulary</a></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 id="izafet-intro">1. Introduction to Izafét</h2>
+        <p>The possession or connexion of one thing or person with another is called in Ottoman,<span class="ottoman-text">اضافت</span><span class="latin-text">Izafét</span>, which means 'addition or annexation'.</p>
+        <p>One substantive is governed by another in three different ways:</p>
+    </div>
+
+    <div class="section">
+        <h2 id="izafet-types">2. The Three Types of Izafét</h2>
+
+        <h3>I. By juxtaposition, without change</h3>
+        <p>This is used to show the relation between a material and the thing composed of it. The name of the material is simply put, like an adjective, before the other substantive.</p>
+
+        <h3>Examples:</h3>
+        <table>
+            <tr>
+                <th>Ottoman</th>
+                <th>Transliteration</th>
+                <th>Translation</th>
+            </tr>
+            <tr>
+                <td lang="ar">آلتون قوطو</td>
+                <td>altoun qoutou</td>
+                <td>a golden box</td>
+            </tr>
+            <tr>
+                <td lang="ar">ايپك منديل</td>
+                <td>ipék méndil</td>
+                <td>a silk handkerchief</td>
+            </tr>
+            <tr>
+                <td lang="ar">گومش ساعت</td>
+                <td>gü-müsh sa'at</td>
+                <td>a silver watch</td>
+            </tr>
+        </table>
+
+        <p>Or the noun expressing the material is put in the ablative case; as:</p>
+
+        <table>
+            <tr>
+                <th>Ottoman</th>
+                <th>Transliteration</th>
+                <th>Translation</th>
+            </tr>
+            <tr>
+                <td lang="ar">آلتوندن كوستك</td>
+                <td>altoundan kösték</td>
+                <td>a chain of gold</td>
+            </tr>
+            <tr>
+                <td lang="ar">الماسدن بيلزيك</td>
+                <td>élmasdan biléz'ik</td>
+                <td>a bracelet of diamond</td>
+            </tr>
+            <tr>
+                <td lang="ar">يوكدن چوراب</td>
+                <td>youndan chorab</td>
+                <td>woollen stockings</td>
+            </tr>
+        </table>
+
+        <h3>II. By placing the first substantive in nominative or unaltered form</h3>
+        <p>By placing the first substantive in nominative or unaltered form, and adding to the second the pronominal affix of the third person (<span class="ottoman-text">ی</span><span class="latin-text">-i</span> or <span class="ottoman-text">سی</span><span class="latin-text">-si</span>). This is used to indicate not only possession but also genus and species, the name of the species coming first.</p>
+
+        <h3>Examples:</h3>
+        <table>
+            <tr>
+                <th>Ottoman</th>
+                <th>Transliteration</th>
+                <th>Translation</th>
+            </tr>
+            <tr>
+                <td lang="ar">او قپوسی</td>
+                <td>év qapousou</td>
+                <td>a house-door (indefinite)</td>
+            </tr>
+            <tr>
+                <td lang="ar">قويو صويی</td>
+                <td>qouyou souyou</td>
+                <td>well water</td>
+            </tr>
+            <tr>
+                <td lang="ar">آرمود آغاجی</td>
+                <td>armoud a-ghaji</td>
+                <td>pear tree</td>
+            </tr>
+            <tr>
+                <td lang="ar">آماسيه الماسی</td>
+                <td>Amasiya élmasi</td>
+                <td>Amasia apple</td>
+            </tr>
+        </table>
+
+        <div class="note">
+             <p>The names of countries, rivers, mountains, cities etc. are formed in this way; the first of the two nouns remaining unchanged:</p>
+        </div>
+
+        <table>
+            <tr>
+                <th>Ottoman</th>
+                <th>Transliteration</th>
+                <th>Translation</th>
+            </tr>
+            <tr>
+                <td lang="ar">عثمانلی دولتی</td>
+                <td>Osmanlı dévléti</td>
+                <td>The Ottoman government</td>
+            </tr>
+            <tr>
+                <td lang="ar">انگلتره قراليچه‌سی</td>
+                <td>İn-gil-tiz qraliçhési</td>
+                <td>The queen of England</td>
+            </tr>
+            <tr>
+                <td lang="ar">سيواس شهری</td>
+                <td>Sivas shéhri</td>
+                <td>The city of Sivas</td>
+            </tr>
+            <tr>
+                <td lang="ar">ارمنی ملتی</td>
+                <td>Érméni milléti</td>
+                <td>The Armenian nation</td>
+            </tr>
+            <tr>
+                <td lang="ar">ارجياس طاغی</td>
+                <td>Ér-ji-yas da-ghi</td>
+                <td>Mount Argæas</td>
+            </tr>
+            <tr>
+                <td lang="ar">طونه نهری</td>
+                <td>Touna néhri</td>
+                <td>The river Danube</td>
+            </tr>
+            <tr>
+                <td lang="ar">مايس آيی</td>
+                <td>Mayis a-yi</td>
+                <td>The month of May</td>
+            </tr>
+        </table>
+
+        <h3>III. By placing the first in the Genitive</h3>
+        <p>By placing the first in the Genitive, and adding to the second the pronominal affix of the third person (<span class="ottoman-text">ی</span><span class="latin-text">-i</span> or <span class="ottoman-text">سی</span><span class="latin-text">-si</span>). This indicates the relation of possession and is essentially definite, and is generally used when the article 'the' would be put before the first noun in English.</p>
+
+        <p>The name of the possessor is placed first, as when the possessive case is used in English.</p>
+
+        <h3>Examples:</h3>
+        <table>
+            <tr>
+                <th>Ottoman</th>
+                <th>Transliteration</th>
+                <th>Translation</th>
+            </tr>
+            <tr>
+                <td lang="ar">اوك قپوسی</td>
+                <td>évin qapousou</td>
+                <td>The door of the house (definite)</td>
+            </tr>
+            <tr>
+                <td lang="ar">الماسك آغاجی</td>
+                <td>élmanin a-ghaji</td>
+                <td>The tree of the apple</td>
+            </tr>
+            <tr>
+                <td lang="ar">قويونك صويی</td>
+                <td>qou-younoun souyou</td>
+                <td>The water of the well</td>
+            </tr>
+        </table>
+
+        <div class="fill-exercise">
+            <h3>Exercise 1: Matching</h3>
+            <p>Match the Ottoman Izafét forms with their correct translations.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Ottoman:</h4>
+                        <div class="matching-item-container" id="first-form-ottoman-container">
+                            </div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>Translation:</h4>
+                        <div class="matching-item-container" id="first-form-case-container">
+                             </div>
+                    </div>
+                </div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="first-form-matching-feedback"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 id="constructions">3. Special Constructions</h2>
+
+        <h3>Quantity Expressions</h3>
+        <p>When the two nouns come together in English, with the word <i>of</i> between them, the first expressing the quantity of the second, it is translated into Ottoman by simply putting the name of the quantity before the other noun and omitting 'of' as German they say 'Eine Flasche Wein', 'a bottle of wine'.</p>
+
+        <table>
+            <tr>
+                <th>Ottoman</th>
+                <th>Transliteration</th>
+                <th>Translation</th>
+            </tr>
+            <tr>
+                <td lang="ar">بر فنجان چای</td>
+                <td>bir finjan chay</td>
+                <td>a cup of tea</td>
+            </tr>
+            <tr>
+                <td lang="ar">اوچ اوقيه شكر</td>
+                <td>üch oqiyé shékér</td>
+                <td>three okes of sugar</td>
+            </tr>
+            <tr>
+                <td lang="ar">اون آرشين بز</td>
+                <td>on arshin béz</td>
+                <td>ten yards of cloth</td>
+            </tr>
+            <tr>
+                <td lang="ar">يوز اولچك بوغداى</td>
+                <td>yüz ölchék boughday</td>
+                <td>a hundred bushels of wheat</td>
+            </tr>
+            <tr>
+                <td lang="ar">بر سورو قويون</td>
+                <td>bir sürü qoyoun</td>
+                <td>a flock of sheep</td>
+            </tr>
+        </table>
+
+        <h3>Construction with Cardinal Numbers</h3>
+        <p>The following construction is frequent between a noun and a cardinal number.</p>
+
+        <table>
+            <tr>
+                <th>Ottoman</th>
+                <th>Transliteration</th>
+                <th>Translation</th>
+            </tr>
+            <tr>
+                <td lang="ar">كتابك دوردی</td>
+                <td>kitabin dördi</td>
+                <td>four of the books</td>
+            </tr>
+            <tr>
+                <td lang="ar">اوطه‌نك ايكيسی</td>
+                <td>o-da-nin ikisi</td>
+                <td>two of the rooms</td>
+            </tr>
+        </table>
+
+        <h3>Declension of Constructions</h3>
+        <p>These constructions are declined:<span class="ottoman-text">اوك قپوسی‌نك</span><span class="latin-text">évin qapousou-noun</span>,<span class="ottoman-text">اوك قپوسی‌نه</span><span class="latin-text">évin qapousou-na</span>,<span class="ottoman-text">اوك قپوسی‌نی</span><span class="latin-text">évin qapousou-nou</span>,<span class="ottoman-text">اوك قپوسی‌نده</span><span class="latin-text">évin qapousou-nda</span>,<span class="ottoman-text">اوك قپوسی‌ندن</span><span class="latin-text">évin qapousou-ndan</span>.</p>
+
+        <h3>The suffix -dé</h3>
+        <p>There are two words<span class="ottoman-text">ده</span><span class="latin-text">-dé</span> in Ottoman; one is used with the nouns in the Locative case, and is always accented:<span class="ottoman-text">اوده</span><span class="latin-text">év'dé</span>,<span class="ottoman-text">باغده</span><span class="latin-text">baghdá</span> 'in the house, in the vineyard'.</p>
+
+        <p>The other<span class="ottoman-text">ده</span><span class="latin-text">-dé</span> is a conjunction, meaning 'also, and': it is never connected with the noun, nor is it accented; that is, the accent is at the end of the preceding word; as:<span class="ottoman-text">او ده</span><span class="latin-text">év' dé'</span>,<span class="ottoman-text">باغ ده</span><span class="latin-text">bagh' da'</span>,<span class="ottoman-text">پدر ده</span><span class="latin-text">pédér' dé'</span>,<span class="ottoman-text">بنم ده</span><span class="latin-text">bénim' dé'</span>, meaning 'The house also, the vineyard too, my father also, mine also'.</p>
+
+        <h3>The suffix Da-khí</h3>
+        <p><span class="ottoman-text">دخی</span><span class="latin-text">Da-khí</span> is also used with the same meaning ('also, too'); as:<span class="ottoman-text">بنده دخی</span><span class="latin-text">béndé dakhí</span>,<span class="ottoman-text">سنده دخی</span><span class="latin-text">séndé dakhí</span> 'in me also, in thee too'.</p>
+
+        <div class="fill-exercise">
+            <h3>Exercise 2: Matching</h3>
+            <p>Match the Ottoman quantity expressions with their correct translations.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Ottoman:</h4>
+                        <div class="matching-item-container" id="second-form-ottoman-container">
+                           </div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>Translation:</h4>
+                        <div class="matching-item-container" id="second-form-case-container">
+                           </div>
+                    </div>
+                </div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="second-form-matching-feedback"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 id="vocabulary">4. Family Vocabulary</h2>
+        <h3>Familya فاميليا The Family</h3>
+
+        <table>
+            <tr>
+                <th>Ottoman</th>
+                <th>Transliteration</th>
+                <th>Translation</th>
+            </tr>
+            <tr>
+                <td lang="ar">آنا بابا</td>
+                <td>a-na baba</td>
+                <td>parents</td>
+            </tr>
+            <tr>
+                <td lang="ar">والدين</td>
+                <td>validéyin</td>
+                <td>parents</td>
+            </tr>
+            <tr>
+                <td lang="ar">بابا</td>
+                <td>baba</td>
+                <td>father</td>
+            </tr>
+            <tr>
+                <td lang="ar">پدر</td>
+                <td>pédér</td>
+                <td>father</td>
+            </tr>
+            <tr>
+                <td lang="ar">آنا</td>
+                <td>a-na</td>
+                <td>mother</td>
+            </tr>
+            <tr>
+                <td lang="ar">والده</td>
+                <td>validé</td>
+                <td>mother</td>
+            </tr>
+            <tr>
+                <td lang="ar">آننه</td>
+                <td>an'-né</td>
+                <td>mamma</td>
+            </tr>
+            <tr>
+                <td lang="ar">بويوك بابا</td>
+                <td>büyük baba</td>
+                <td>grandfather</td>
+            </tr>
+            <tr>
+                <td lang="ar">دده</td>
+                <td>dédé</td>
+                <td>grandfather</td>
+            </tr>
+            <tr>
+                <td lang="ar">ننه</td>
+                <td>néné</td>
+                <td>grandmother</td>
+            </tr>
+            <tr>
+                <td lang="ar">ابه</td>
+                <td>é-bé</td>
+                <td>grandmother</td>
+            </tr>
+            <tr>
+                <td lang="ar">بويوك آنا</td>
+                <td>büyük ana</td>
+                <td>grandmother</td>
+            </tr>
+            <tr>
+                <td lang="ar">طورون</td>
+                <td>toroun</td>
+                <td>grandchild</td>
+            </tr>
+            <tr>
+                <td lang="ar">قارداش</td>
+                <td>qardash</td>
+                <td>brother</td>
+            </tr>
+            <tr>
+                <td lang="ar">قرنداش</td>
+                <td>qa-rindash</td>
+                <td>brother</td>
+            </tr>
+            <tr>
+                <td lang="ar">قز قارداش</td>
+                <td>qiz qardash</td>
+                <td>sister</td>
+            </tr>
+            <tr>
+                <td lang="ar">همشيره</td>
+                <td>hémshiré</td>
+                <td>sister</td>
+            </tr>
+            <tr>
+                <td lang="ar">اوغول</td>
+                <td>oghoul</td>
+                <td>son</td>
+            </tr>
+            <tr>
+                <td lang="ar">اوغلان</td>
+                <td>oghlan</td>
+                <td>boy</td>
+            </tr>
+            <tr>
+                <td lang="ar">چوجوق</td>
+                <td>chojouq</td>
+                <td>child</td>
+            </tr>
+            <tr>
+                <td lang="ar">قز</td>
+                <td>qiz</td>
+                <td>girl, daughter</td>
+            </tr>
+            <tr>
+                <td lang="ar">كريمه</td>
+                <td>kérimé</td>
+                <td>daughter</td>
+            </tr>
+            <tr>
+                <td lang="ar">قاری</td>
+                <td>qari</td>
+                <td>wife, woman</td>
+            </tr>
+            <tr>
+                <td lang="ar">عمی</td>
+                <td>ém'mi</td>
+                <td>uncle (father's brother)</td>
+            </tr>
+            <tr>
+                <td lang="ar">عموجه</td>
+                <td>a-mou-ja</td>
+                <td>uncle (father's brother)</td>
+            </tr>
+            <tr>
+                <td lang="ar">تيزه</td>
+                <td>téy'zé</td>
+                <td>aunt (mother's sister)</td>
+            </tr>
+            <tr>
+                <td lang="ar">خاله</td>
+                <td>khala</td>
+                <td>aunt (mother's sister)</td>
+            </tr>
+            <tr>
+                <td lang="ar">عمه</td>
+                <td>ém-mé</td>
+                <td>aunt (father's sister)</td>
+            </tr>
+            <tr>
+                <td lang="ar">دايی</td>
+                <td>da-yi</td>
+                <td>uncle (mother's brother)</td>
+            </tr>
+            <tr>
+                <td lang="ar">قاين</td>
+                <td>qa-yin</td>
+                <td>brother-in-law</td>
+            </tr>
+            <tr>
+                <td lang="ar">قاين برادر</td>
+                <td>qa-yin biradér</td>
+                <td>brother-in-law</td>
+            </tr>
+        </table>
+        <div class="fill-exercise">
+            <h3>Exercise 3: Matching (Family Vocabulary 1)</h3>
+            <p>Match the Ottoman family terms with their correct translations.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Ottoman:</h4>
+                        <div class="matching-item-container" id="family1-ottoman-container">
+                             </div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>Translation:</h4>
+                        <div class="matching-item-container" id="family1-english-container">
+                             </div>
+                    </div>
+                </div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="family1-matching-feedback"></div>
+                </div>
+            </div>
+        </div>
+
+        <h3>More Family Terms</h3>
+        <table>
+            <tr>
+                <th>Ottoman</th>
+                <th>Transliteration</th>
+                <th>Translation</th>
+            </tr>
+            <tr>
+                <td lang="ar">قاين آتا</td>
+                <td>qa-yin ata</td>
+                <td>father-in-law</td>
+            </tr>
+            <tr>
+                <td lang="ar">قاين آنا</td>
+                <td>qa-yin ana</td>
+                <td>mother-in-law</td>
+            </tr>
+            <tr>
+                <td lang="ar">گلين</td>
+                <td>gélin</td>
+                <td>the bride, the daughter-in-law</td>
+            </tr>
+            <tr>
+                <td lang="ar">گوه‌گی</td>
+                <td>güvé-yi</td>
+                <td>the groom</td>
+            </tr>
+            <tr>
+                <td lang="ar">داماد</td>
+                <td>damad</td>
+                <td>the son-in-law</td>
+            </tr>
+            <tr>
+                <td lang="ar">انيشته</td>
+                <td>énishté</td>
+                <td>sister's husband</td>
+            </tr>
+            <tr>
+                <td lang="ar">باجناق</td>
+                <td>bajanaq</td>
+                <td>brother-in-law (wife's sister's husband)</td>
+            </tr>
+            <tr>
+                <td lang="ar">قوجه</td>
+                <td>qoja</td>
+                <td>husband</td>
+            </tr>
+            <tr>
+                <td lang="ar">آبله</td>
+                <td>abla</td>
+                <td>elder sister</td>
+            </tr>
+            <tr>
+                <td lang="ar">عبده</td>
+                <td>abdé</td>
+                <td>elder sister</td>
+            </tr>
+            <tr>
+                <td lang="ar">خذمتكار</td>
+                <td>khizmétkâr</td>
+                <td>servant</td>
+            </tr>
+            <tr>
+                <td lang="ar">خذمتجی</td>
+                <td>khizmétji</td>
+                <td>servant</td>
+            </tr>
+            <tr>
+                <td lang="ar">خانم</td>
+                <td>khanim</td>
+                <td>Lady, Miss, Mrs.</td>
+            </tr>
+            <tr>
+                <td lang="ar">الای</td>
+                <td>alti</td> <td>husband's brother's wife</td>
+            </tr>
+            <tr>
+                <td lang="ar">گورميجه</td>
+                <td>görümjé</td>
+                <td>husband's sister</td>
+            </tr>
+            <tr>
+                <td lang="ar">دونور</td>
+                <td>dünür</td>
+                <td>relative (by intermarriage)</td>
+            </tr>
+            <tr>
+                <td lang="ar">يكن</td>
+                <td>yégén, yiyén</td>
+                <td>a nephew; a niece</td>
+            </tr>
+            <tr>
+                <td lang="ar">عمجه زاده</td>
+                <td>amja zadé</td>
+                <td>cousin</td>
+            </tr>
+            <tr>
+                <td lang="ar">خاله زاده</td>
+                <td>khala zadé</td>
+                <td>cousin</td>
+            </tr>
+            <tr>
+                <td lang="ar">دايی زاده</td>
+                <td>dayi zadé</td>
+                <td>cousin</td>
+            </tr>
+            <tr>
+                <td lang="ar">صايی</td>
+                <td>sa-yi</td>
+                <td>number</td>
+            </tr>
+            <tr>
+                <td lang="ar">خالاصق</td>
+                <td>khala-jiq</td> <td>maid</td>
+            </tr>
+            <tr>
+                <td lang="ar">جاريه</td>
+                <td>jariyé</td>
+                <td>servant</td>
+            </tr>
+            <tr>
+                <td lang="ar">افندی</td>
+                <td>éféndi</td>
+                <td>gentleman, Sir</td>
+            </tr>
+            <tr>
+                <td lang="ar">مسافر</td>
+                <td>misafir</td>
+                <td>guest</td>
+            </tr>
+            <tr>
+                <td lang="ar">قفس</td>
+                <td>qafés</td>
+                <td>cage</td>
+            </tr>
+        </table>
+        <div class="fill-exercise">
+            <h3>Exercise 4: Matching (Family Vocabulary 2)</h3>
+            <p>Match the Ottoman family terms with their correct translations.</p>
+            <div class="matching-game">
+                <div class="matching-columns-container">
+                    <div class="matching-column">
+                        <h4>Ottoman:</h4>
+                        <div class="matching-item-container" id="family2-ottoman-container">
+                             </div>
+                    </div>
+                    <div class="matching-column">
+                        <h4>Translation:</h4>
+                        <div class="matching-item-container" id="family2-english-container">
+                             </div>
+                    </div>
+                </div>
+                <div class="matching-result">
+                    <div class="matching-feedback" id="family2-matching-feedback"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fill-exercise">
+            <h3>Exercise 5: Sentence Building</h3>
+            <p>Form complete Ottoman sentences by arranging the words in the correct order.</p>
+
+            <div class="word-order-game">
+                <div id="sentences-container"></div>
+            </div>
+
+            <script>
+                // Ensure this script runs after the DOM is loaded
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Sentences data with translations (Updated English)
+                    // *** ADDED 2 NEW SENTENCES ***
+                    const sentencesData = [
+                        {
+                            ottoman: "بو آلتون قوطو در",
+                            english: "This is a golden box."
+                        },
+                        {
+                            ottoman: "قويونك صويی تميز در",
+                            english: "The water of the well is clean."
+                        },
+                        {
+                            ottoman: "او آرمود آغاجی اوزون در",
+                            english: "That pear tree is tall."
+                        },
+                        {
+                            ottoman: "بر فنجان چای ايستر ميسك",
+                            english: "Would you like a cup of tea?"
+                        },
+                        {
+                            ottoman: "بابا ده آنا ده اوده درلر",
+                            english: "Both father and mother are at home."
+                        },
+                        {
+                            ottoman: "بنم گلينم قارداشمك قزی در",
+                            english: "My daughter-in-law is my brother's daughter."
+                        },
+                        {
+                            ottoman: "قاين آتا و قاين آنا گلديلر",
+                            english: "Father-in-law and mother-in-law came."
+                        },
+                        {
+                            ottoman: "او سيواس شهرينه گيتدی",
+                            english: "He went to the city of Sivas."
+                        },
+                        { // New Sentence 9
+                            ottoman: "بويوك بابامك اوی بويوك در",
+                            english: "My grandfather's house is big."
+                        },
+                        { // New Sentence 10
+                            ottoman: "عمكك قزی بوراده میدر",
+                            english: "Is your uncle's daughter here?"
+                        }
+                    ];
+                    // *** END ADDED SENTENCES ***
+
+                    // Process the sentences
+                    const sentences = sentencesData.map(item => {
+                        return {
+                            original: item.ottoman,
+                            english: item.english,
+                            words: item.ottoman.split(/\s+/) // Don't reverse here - display in logical order
+                        };
+                    });
+
+                    // Initialize the game
+                    const gameContainer = document.getElementById('sentences-container');
+                    if (!gameContainer) {
+                        console.error("Sentence game container not found!");
+                        return;
+                    }
+
+                    // Shuffle function for words
+                    function shuffleArray(array) {
+                        const newArray = [...array];
+                        for (let i = newArray.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+                        }
+                        return newArray;
+                    }
+
+                    // Create all sentence elements
+                    sentences.forEach((sentence, index) => {
+                        // Create game sentence element
+                        const sentenceElement = document.createElement('div');
+                        sentenceElement.className = 'game-sentence';
+                        sentenceElement.id = `sentence-${index}`;
+
+                        // Create numbered translation
+                        const translation = document.createElement('div');
+                        translation.className = 'game-sentence-translation';
+                        translation.innerHTML = `<span class="sentence-number">${index + 1}/${sentences.length}</span> ${sentence.english}`;
+                        sentenceElement.appendChild(translation);
+
+                        // Create solution area (where selected words will go)
+                        const solutionArea = document.createElement('div');
+                        solutionArea.className = 'solution-area';
+                        solutionArea.id = `solution-area-${index}`;
+                        sentenceElement.appendChild(solutionArea);
+
+                        // Create words bank (where unselected words are)
+                        const wordsBank = document.createElement('div');
+                        wordsBank.className = 'words-bank';
+                        wordsBank.id = `words-bank-${index}`;
+                        sentenceElement.appendChild(wordsBank);
+
+                        // Add shuffled words to the words bank
+                        const shuffledWords = shuffleArray(sentence.words);
+                        shuffledWords.forEach(word => {
+                            const wordElement = document.createElement('div');
+                            wordElement.className = 'word-box ottoman-text';
+                            wordElement.textContent = word;
+
+                            // Add click event to move words between banks
+                            wordElement.addEventListener('click', () => {
+                                const parent = wordElement.parentElement;
+
+                                if (parent.classList.contains('words-bank')) {
+                                    // Move from words bank to solution area
+                                    const currentSolutionArea = document.getElementById(`solution-area-${index}`);
+                                    currentSolutionArea.appendChild(wordElement);
+                                } else {
+                                    // Move from solution area to words bank
+                                    const currentWordsBank = document.getElementById(`words-bank-${index}`);
+                                    currentWordsBank.appendChild(wordElement);
+                                }
+
+                                // Clear feedback when words are changed
+                                const feedbackElement = document.getElementById(`feedback-${index}`);
+                                if (feedbackElement) {
+                                    feedbackElement.textContent = '';
+                                    feedbackElement.className = 'game-feedback';
+                                }
+                            });
+
+                            wordsBank.appendChild(wordElement);
+                        });
+
+                        // Add feedback area
+                        const feedback = document.createElement('div');
+                        feedback.className = 'game-feedback';
+                        feedback.id = `feedback-${index}`;
+                        sentenceElement.appendChild(feedback);
+
+                        // Add buttons
+                        const buttonContainer = document.createElement('div');
+                        buttonContainer.className = 'sentence-buttons';
+
+                        const checkButton = document.createElement('button');
+                        checkButton.className = 'check-btn';
+                        checkButton.textContent = 'Check Answer';
+                        checkButton.addEventListener('click', () => checkAnswer(index));
+                        buttonContainer.appendChild(checkButton);
+
+                        const showAnswerButton = document.createElement('button');
+                        showAnswerButton.className = 'show-answer-btn';
+                        showAnswerButton.textContent = 'Show Answer';
+                        showAnswerButton.addEventListener('click', () => showAnswer(index));
+                        buttonContainer.appendChild(showAnswerButton);
+
+                        const deleteBtn = document.createElement('button');
+                        deleteBtn.className = 'delete-btn';
+                        deleteBtn.textContent = 'Clear Box';
+                        deleteBtn.addEventListener('click', () => {
+                            const currentSolutionArea = document.getElementById(`solution-area-${index}`);
+                            const currentWordsBank = document.getElementById(`words-bank-${index}`);
+
+                            // Move all words from solution area back to words bank
+                            while (currentSolutionArea.firstChild) {
+                                currentWordsBank.appendChild(currentSolutionArea.firstChild);
+                            }
+
+                            // Clear feedback when words are changed
+                            const feedbackElement = document.getElementById(`feedback-${index}`);
+                            if (feedbackElement) {
+                                feedbackElement.textContent = '';
+                                feedbackElement.className = 'game-feedback';
+                            }
+                        });
+                        buttonContainer.appendChild(deleteBtn);
+
+                        sentenceElement.appendChild(buttonContainer);
+
+                        // Add to game container
+                        gameContainer.appendChild(sentenceElement);
+
+                        // Initially hide all sentences except the first one
+                        if (index > 0) {
+                            sentenceElement.style.display = 'none';
+                        }
+                    });
+
+                    // Check answer function
+                    function checkAnswer(sentenceId) {
+                        const solutionArea = document.getElementById(`solution-area-${sentenceId}`);
+                        const feedbackElement = document.getElementById(`feedback-${sentenceId}`);
+                        const sentenceElement = document.getElementById(`sentence-${sentenceId}`);
+
+                        if (!solutionArea || !feedbackElement || !sentenceElement) return; // Safety check
+
+                        // Get current word order in solution area
+                        const currentWords = Array.from(solutionArea.children).map(word => word.textContent);
+                        const correctWords = sentences[sentenceId].words;
+
+                        // Check if all words are in the solution area
+                        if (currentWords.length !== correctWords.length) {
+                            feedbackElement.textContent = '✗ Please use all the words.';
+                            feedbackElement.className = 'game-feedback feedback-incorrect';
+                            return;
+                        }
+
+                        // Check if the order is correct - words are already in correct order
+                        const isCorrect = arraysEqual(currentWords, correctWords);
+
+                        if (isCorrect) {
+                            feedbackElement.textContent = '✓ Correct! Well done!';
+                            feedbackElement.className = 'game-feedback feedback-correct';
+                            sentenceElement.classList.add('completed');
+
+                            // Show next sentence if there is one
+                            if (sentenceId < sentences.length - 1) {
+                                setTimeout(() => {
+                                    const nextSentence = document.getElementById(`sentence-${sentenceId + 1}`);
+                                    if (nextSentence) {
+                                        nextSentence.style.display = 'block';
+                                        // Scroll to next sentence
+                                        nextSentence.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }
+                                }, 800);
+                            }
+                        } else {
+                            feedbackElement.textContent = '✗ Not quite right. Try again!';
+                            feedbackElement.className = 'game-feedback feedback-incorrect';
+                        }
+                    }
+
+                    // Show answer function
+                    function showAnswer(sentenceId) {
+                        const solutionArea = document.getElementById(`solution-area-${sentenceId}`);
+                        const wordsBank = document.getElementById(`words-bank-${sentenceId}`);
+                        const feedbackElement = document.getElementById(`feedback-${sentenceId}`);
+                        const sentenceElement = document.getElementById(`sentence-${sentenceId}`);
+
+                        if (!solutionArea || !wordsBank || !feedbackElement || !sentenceElement) return; // Safety check
+
+                        // Clear both areas
+                        solutionArea.innerHTML = '';
+                        wordsBank.innerHTML = '';
+
+                        // Add words in correct order to solution area
+                        // Words are already in correct order in the sentences array
+                        sentences[sentenceId].words.forEach(word => {
+                            const wordElement = document.createElement('div');
+                            wordElement.className = 'word-box ottoman-text';
+                            wordElement.textContent = word;
+                            solutionArea.appendChild(wordElement);
+                        });
+
+                        // Update feedback
+                        feedbackElement.textContent = 'This is the correct order.';
+                        feedbackElement.className = 'game-feedback';
+
+                        // Mark as completed
+                        sentenceElement.classList.add('completed');
+
+                        // Show next sentence if there is one
+                        if (sentenceId < sentences.length - 1) {
+                            setTimeout(() => {
+                                const nextSentence = document.getElementById(`sentence-${sentenceId + 1}`);
+                                if (nextSentence) {
+                                    nextSentence.style.display = 'block';
+                                    // Scroll to next sentence
+                                    nextSentence.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                }
+                            }, 800);
+                        }
+                    }
+
+                    // Helper function to compare arrays
+                    function arraysEqual(a, b) {
+                        if (a.length !== b.length) return false;
+                        return a.every((val, index) => val === b[index]);
+                    }
+                }); // End DOMContentLoaded for sentence builder
+            </script>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 style="text-align: center;">
+            <span class="congrats-ottoman">تبريكات<br>درس آلتنجی اكمال ايتدكز</span><br><br>
+            <span class="congrats-english" style="display: block; font-size: inherit;">Congratulations<br>You finished Lesson 6</span>
+        </h2>
+    </div>
+
+    <div class="nav-buttons-container">
+        <a href="../../landing_pages/ottoman_lessons_en.html" class="nav-button prev-button">Back to all lessons</a>
+    </div>
+
+    <script>
+        // --- Generic Matching Game Logic ---
+        function initializeMatchingGame(ottomanContainerId, englishContainerId, feedbackId, itemsData) {
+            let selected = { ottoman: null, english: null };
+            let matchCount = 0;
+            const totalPairs = itemsData.length; // Get total pairs from data length
+
+            const ottomanContainer = document.getElementById(ottomanContainerId);
+            const englishContainer = document.getElementById(englishContainerId);
+            const feedbackElement = document.getElementById(feedbackId);
+
+            if (!ottomanContainer || !englishContainer || !feedbackElement) {
+                console.warn(`Matching game initialization skipped: Could not find elements for ${ottomanContainerId}, ${englishContainerId}, or ${feedbackId}`);
+                return; // Exit if essential elements are missing
+            }
+
+            // Clear existing items before adding new ones
+            ottomanContainer.innerHTML = '';
+            englishContainer.innerHTML = '';
+
+            // Populate containers with items from data
+            itemsData.forEach((item, index) => {
+                const ottomanItem = document.createElement('div');
+                ottomanItem.className = 'matching-item ottoman-text';
+                ottomanItem.textContent = item.ottoman;
+                ottomanItem.dataset.id = index; // Use index as ID
+                ottomanContainer.appendChild(ottomanItem);
+
+                const englishItem = document.createElement('div');
+                englishItem.className = 'matching-item';
+                englishItem.textContent = item.english;
+                englishItem.dataset.id = index; // Use index as ID
+                englishContainer.appendChild(englishItem);
+            });
+
+
+            const shuffle = c => Array.from(c.children).sort(() => .5-Math.random()).forEach(i=>c.appendChild(i));
+            // Check if containers have children before shuffling
+            if (ottomanContainer.children.length > 0) shuffle(ottomanContainer);
+            if (englishContainer.children.length > 0) shuffle(englishContainer);
+
+            const items = document.querySelectorAll(`#${ottomanContainerId} .matching-item, #${englishContainerId} .matching-item`);
+            items.forEach(item => {
+                // Remove old listeners if re-initializing (though clearing innerHTML should handle this)
+                const newItem = item.cloneNode(true);
+                item.parentNode.replaceChild(newItem, item);
+
+                newItem.addEventListener('click', function() {
+                    if (this.classList.contains('matched')) return;
+                    const isOttoman = this.closest(`#${ottomanContainerId}`) !== null;
+                    const side = isOttoman ? 'ottoman' : 'english';
+
+                    // Deselect previous selection on the same side
+                    if (selected[side]) {
+                        selected[side].classList.remove('selected');
+                    }
+
+                    // Select the new item
+                    this.classList.add('selected');
+                    selected[side] = this;
+
+                    feedbackElement.textContent = ''; // Clear feedback on selection
+
+                    // Check for match if both sides have a selection
+                    if (selected.ottoman && selected.english) {
+                        if (selected.ottoman.dataset.id === selected.english.dataset.id) {
+                            // Correct Match
+                            ['ottoman', 'english'].forEach(s => {
+                                selected[s].classList.remove('selected');
+                                selected[s].classList.add('matched');
+                            });
+                            matchCount++;
+                            if (matchCount === totalPairs) {
+                                feedbackElement.textContent = 'Correct'; // Match L1 final feedback TEXT
+                                feedbackElement.className = 'matching-feedback correct'; // Use specific class with L1 styles
+                            }
+                            selected = { ottoman: null, english: null }; // Reset selection
+                        } else {
+                            // Incorrect Match
+                            feedbackElement.textContent = ''; // L1 doesn't show 'Incorrect Match' text
+                            const selO = selected.ottoman, selE = selected.english;
+                            // Flash selection off
+                            setTimeout(() => {
+                                if(selO) selO.classList.remove('selected');
+                                if(selE) selE.classList.remove('selected');
+                            }, 800); // Match L1 timeout behavior
+                            selected = { ottoman: null, english: null }; // Reset selection
+                        }
+                    }
+                });
+            });
+        }
+
+        // --- Data for Matching Games ---
+        const izafet1Data = [
+            { ottoman: "گومش ساعت", english: "a silver watch" },
+            { ottoman: "او قپوسی", english: "a house-door (indefinite)" },
+            { ottoman: "اوك قپوسی", english: "the door of the house (definite)" },
+            { ottoman: "آلتوندن كوستك", english: "a chain of gold" },
+            { ottoman: "آرمود آغاجی", english: "pear tree" },
+            { ottoman: "الماسك آغاجی", english: "the tree of the apple" }
+        ];
+
+        const izafet2Data = [
+            { ottoman: "بر فنجان چای", english: "a cup of tea" },
+            { ottoman: "اوچ اوقيه شكر", english: "three okes of sugar" },
+            { ottoman: "بر سورو قويون", english: "a flock of sheep" },
+            { ottoman: "كتابك دوردی", english: "four of the books" },
+            { ottoman: "او ده", english: "the house also" },
+            { ottoman: "بنده دخی", english: "in me also" }
+        ];
+
+        const family1Data = [
+             { ottoman: "آنا بابا", english: "parents" },
+             { ottoman: "والدين", english: "parents" }, // Duplicate meaning, keep both
+             { ottoman: "بابا", english: "father" },
+             { ottoman: "پدر", english: "father" }, // Duplicate meaning
+             { ottoman: "آنا", english: "mother" },
+             { ottoman: "والده", english: "mother" }, // Duplicate meaning
+             { ottoman: "آننه", english: "mamma" },
+             { ottoman: "بويوك بابا", english: "grandfather" },
+             { ottoman: "دده", english: "grandfather" }, // Duplicate meaning
+             { ottoman: "ننه", english: "grandmother" },
+             { ottoman: "ابه", english: "grandmother" }, // Duplicate meaning
+             { ottoman: "بويوك آنا", english: "grandmother" }, // Duplicate meaning
+             { ottoman: "طورون", english: "grandchild" },
+             { ottoman: "قارداش", english: "brother" },
+             { ottoman: "قرنداش", english: "brother" }, // Duplicate meaning
+             { ottoman: "قز قارداش", english: "sister" },
+             { ottoman: "همشيره", english: "sister" }, // Duplicate meaning
+             { ottoman: "اوغول", english: "son" },
+             { ottoman: "اوغلان", english: "boy" },
+             { ottoman: "چوجوق", english: "child" },
+             { ottoman: "قز", english: "girl, daughter" },
+             { ottoman: "كريمه", english: "daughter" },
+             { ottoman: "قاری", english: "wife, woman" },
+             { ottoman: "عمی", english: "uncle (father's brother)" },
+             { ottoman: "عموجه", english: "uncle (father's brother)" }, // Duplicate meaning
+             { ottoman: "تيزه", english: "aunt (mother's sister)" },
+             { ottoman: "خاله", english: "aunt (mother's sister)" }, // Duplicate meaning
+             { ottoman: "عمه", english: "aunt (father's sister)" },
+             { ottoman: "دايی", english: "uncle (mother's brother)" },
+             { ottoman: "قاين", english: "brother-in-law" },
+             { ottoman: "قاين برادر", english: "brother-in-law" } // Duplicate meaning
+        ];
+
+        const family2Data = [
+            { ottoman: "قاين آتا", english: "father-in-law" },
+            { ottoman: "قاين آنا", english: "mother-in-law" },
+            { ottoman: "گلين", english: "the bride, the daughter-in-law" },
+            { ottoman: "گوه‌گی", english: "the groom" },
+            { ottoman: "داماد", english: "the son-in-law" },
+            { ottoman: "انيشته", english: "sister's husband" },
+            { ottoman: "باجناق", english: "brother-in-law (wife's sister's husband)" },
+            { ottoman: "قوجه", english: "husband" },
+            { ottoman: "آبله", english: "elder sister" },
+            { ottoman: "عبده", english: "elder sister" }, // Duplicate meaning
+            { ottoman: "خذمتكار", english: "servant" },
+            { ottoman: "خذمتجی", english: "servant" }, // Duplicate meaning
+            { ottoman: "خانم", english: "Lady, Miss, Mrs." },
+            { ottoman: "الای", english: "husband's brother's wife" },
+            { ottoman: "گورميجه", english: "husband's sister" },
+            { ottoman: "دونور", english: "relative (by intermarriage)" },
+            { ottoman: "يكن", english: "a nephew; a niece" },
+            { ottoman: "عمجه زاده", english: "cousin" },
+            { ottoman: "خاله زاده", english: "cousin" }, // Duplicate meaning
+            { ottoman: "دايی زاده", english: "cousin" }, // Duplicate meaning
+            { ottoman: "صايی", english: "number" },
+            { ottoman: "خالاصق", english: "maid" },
+            { ottoman: "جاريه", english: "servant" }, // Duplicate meaning
+            { ottoman: "افندی", english: "gentleman, Sir" },
+            { ottoman: "مسافر", english: "guest" },
+            { ottoman: "قفس", english: "cage" }
+        ];
+
+
+        // --- Initialize All Matching Games on DOM Load ---
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize original matching games
+            initializeMatchingGame('first-form-ottoman-container', 'first-form-case-container', 'first-form-matching-feedback', izafet1Data);
+            initializeMatchingGame('second-form-ottoman-container', 'second-form-case-container', 'second-form-matching-feedback', izafet2Data);
+
+            // Initialize NEW family vocabulary matching games
+            initializeMatchingGame('family1-ottoman-container', 'family1-english-container', 'family1-matching-feedback', family1Data);
+            initializeMatchingGame('family2-ottoman-container', 'family2-english-container', 'family2-matching-feedback', family2Data);
+
+            // Note: The sentence builder script is already inside its own DOMContentLoaded listener
+        });
+    </script>
+
+</body>
+</html>
