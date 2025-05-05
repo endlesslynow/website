@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afrin Architecture</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Afrin Architecture</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Afrin Architecture Before 2010.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Afrin Architecture Before 2010.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This report offers an overview of the architectural heritage of the Afrin region in Syria, focusing on the built environment before 2010. It examines a wide range of structures, from ancient archaeological sites like the Syro-Hittite temple at Ain Dara and the multi-layered city of Cyrrhus (Nabi Huri) to the Islamic-era shrine and mosque complex at Nabi Huri. The document also considers the characteristics of traditional domestic architecture in both Afrin town and the surrounding Kurd Mountain villages, noting the influence of local limestone as a primary building material across different periods and styles. While major archaeological sites are relatively well-documented, the report highlights a significant lack of specific pre-2010 research on the region&#x27;s unique rural vernacular architecture. Ultimately, the text emphasizes the importance of understanding this pre-conflict architectural landscape as a baseline for appreciating the region&#x27;s history and cultural identity.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Afrin Architecture Pre-2010 Research_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Kurd Mountain - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Kurd_Mountain" target="_blank">https://en.wikipedia.org/wiki/Kurd_Mountain</a></li>
+            <li>​ Battle for the Mountain of the Kurds: Self-Determination and Ethnic Cleansing inRojava (Kairos) - Amazon.com, accessed May 5, 2025,<a href="https://www.amazon.com/Battle-Mountain-Kurds-Self-Determination-Cleansing/dp/1629636517" target="_blank">https://www.amazon.com/Battle-Mountain-Kurds-Self-Determination-Cleansing/dp/1629636517</a></li>
+            <li>​ Afrin, Syria - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Afrin,_Syria" target="_blank">https://en.wikipedia.org/wiki/Afrin,_Syria</a></li>
+            <li>​ al-Nabi Houri النبي هوري - Syria Photo Guide, accessed May 5, 2025,<a href="https://syriaphotoguide.com/al-nabi-houri-%D8%A7%D9%84%D9%86%D8%A8%D9%8A-%D9%87%D9%88%D8%B1%D9%8A/" target="_blank">https://syriaphotoguide.com/al-nabi-houri-%D8%A7%D9%84%D9%86%D8%A8%D9%8A-%D9%87%D9%88%D8%B1%D9%8A/</a></li>
+            <li>​ Mosque of Prophet Huri - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Mosque_of_Prophet_Huri" target="_blank">https://en.wikipedia.org/wiki/Mosque_of_Prophet_Huri</a></li>
+            <li>​ Turkey&#x27;s Demographic Engineering in Syria&#x27;s Afrin Region: A Closer Look,accessed May 5, 2025,<a href="https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin-region-a-closer-look" target="_blank">https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin-region-a-closer-look</a></li>
+            <li>​ Afrin District - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_District" target="_blank">https://en.wikipedia.org/wiki/Afrin_District</a></li>
+            <li>​ Archaeological Heritage Crimes in Occupied Afrin - The Kurdish Center forStudies, accessed May 5, 2025,<a href="https://nlka.net/eng/archaeological-heritage-crimes-in-occupied-afrin/" target="_blank">https://nlka.net/eng/archaeological-heritage-crimes-in-occupied-afrin/</a></li>
+            <li>​ Northern Syria: Replacement of Kurdish Landmarks in Afrin, Turkification inAl-Bab, accessed May 5, 2025,<a href="https://stj-sy.org/en/northern-syria-replacement-of-kurdish-landmarks-in-afrin-turkification-in-al-bab/" target="_blank">https://stj-sy.org/en/northern-syria-replacement-of-kurdish-landmarks-in-afrin-turkification-in-al-bab/</a></li>
+            <li>​List of heritage sites damaged during the Syrian civil war - Wikipedia, accessedMay 5, 2025,<a href="https://en.wikipedia.org/wiki/List_of_heritage_sites_damaged_during_the_Syrian_civil_war" target="_blank">https://en.wikipedia.org/wiki/List_of_heritage_sites_damaged_during_the_Syrian_civil_war</a></li>
+            <li>​Ain Dara (archaeological site) - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Ain_Dara_(archaeological_site)" target="_blank">https://en.wikipedia.org/wiki/Ain_Dara_(archaeological_site)</a></li>
+            <li>​Photos: Destruction at Syria&#x27;s Temple of Ain Dara - Live Science, accessed May 5,2025, <a href="https://www.livescience.com/61572-photos-destruction-syria-temple.html" target="_blank">https://www.livescience.com/61572-photos-destruction-syria-temple.html</a></li>
+            <li>​Kurds - Summary - eHRAF World Cultures, accessed May 5, 2025,<a href="https://ehrafworldcultures.yale.edu/cultures/MA11/summary" target="_blank">https://ehrafworldcultures.yale.edu/cultures/MA11/summary</a></li>
+            <li>​THE LEGACY OF ALEPPINE OTTOMAN HOUSES - WIT Press, accessed May 5,2025, <a href="https://www.witpress.com/Secure/ejournals/papers/HA010312f.pdf" target="_blank">https://www.witpress.com/Secure/ejournals/papers/HA010312f.pdf</a></li>
+            <li>​Destroying Afrin: The Historical Roots of Turkey&#x27;s Occupation - The KurdishCenter for Studies, accessed May 5, 2025,<a href="https://nlka.net/eng/destroying-afrin-the-historical-roots-of-turkeys-occupation/" target="_blank">https://nlka.net/eng/destroying-afrin-the-historical-roots-of-turkeys-occupation/</a></li>
+            <li>​Architecture of Africa - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Architecture_of_Africa" target="_blank">https://en.wikipedia.org/wiki/Architecture_of_Africa</a></li>
+            <li>​Afrin Region - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_Region" target="_blank">https://en.wikipedia.org/wiki/Afrin_Region</a></li>
+            <li>​Cyrrhus (Nebi Houri) - World Monuments Fund, accessed May 5, 2025,<a href="https://www.wmf.org/projects/cyrrhus-nebi-houri" target="_blank">https://www.wmf.org/projects/cyrrhus-nebi-houri</a></li>
+            <li>​Nebi huri hi-res stock photography and images - Alamy, accessed May 5, 2025,<a href="https://www.alamy.com/stock-photo/nebi-huri.html" target="_blank">https://www.alamy.com/stock-photo/nebi-huri.html</a></li>
+            <li>​Cyrrhus (al-Nabi Huri) يروه يبنال, accessed May 5, 2025,<a href="https://unosat.web.cern.ch/unitar/downloads/chs/Cyrrhus.pdf" target="_blank">https://unosat.web.cern.ch/unitar/downloads/chs/Cyrrhus.pdf</a></li>
+            <li>​The Castle of Nabi Huri - KURDSHOP, accessed May 5, 2025,<a href="https://kurdshop.net/en/history/4674" target="_blank">https://kurdshop.net/en/history/4674</a></li>
+            <li>​Reports - Syrians for Heritage (SIMAT), accessed May 5, 2025,<a href="https://syriansforheritage.org/?page_id=403" target="_blank">https://syriansforheritage.org/?page_id=403</a></li>
+            <li>​Turkey Ottomanizes old heritage sites in Syria&#x27;s Afrin - North press agency,accessed May 5, 2025, <a href="https://npasyria.com/en/64236/" target="_blank">https://npasyria.com/en/64236/</a></li>
+            <li>​(PDF) THE LEGACY OF ALEPPINE OTTOMAN HOUSES - ResearchGate, accessedMay 5, 2025,<a href="https://www.researchgate.net/publication/313226197_THE_LEGACY_OF_ALEPPINE_OTTOMAN_HOUSES" target="_blank">https://www.researchgate.net/publication/313226197_THE_LEGACY_OF_ALEPPINE_OTTOMAN_HOUSES</a></li>
+            <li>​Ancient Aleppo - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Ancient_Aleppo" target="_blank">https://en.wikipedia.org/wiki/Ancient_Aleppo</a></li>
+            <li>​Traditional houses syria hi-res stock photography and images - Alamy, accessedMay 5, 2025, <a href="https://www.alamy.com/stock-photo/traditional-houses-syria.html" target="_blank">https://www.alamy.com/stock-photo/traditional-houses-syria.html</a></li>
+            <li>​The Rural Cultural Landscapes of Sarawat Mountains - UNESCO World HeritageCentre, accessed May 5, 2025, <a href="https://whc.unesco.org/en/tentativelists/6640/" target="_blank">https://whc.unesco.org/en/tentativelists/6640/</a></li>
+            <li>​Sustainable Construction in Kurdish Vernacular Architecture | GlobalABC,accessed May 5, 2025,<a href="https://globalabc.org/sustainable-materials-hub/resources/sustainable-construction-kurdish-vernacular-architecture" target="_blank">https://globalabc.org/sustainable-materials-hub/resources/sustainable-construction-kurdish-vernacular-architecture</a></li>
+            <li>​The Old Houses of Slemani - Global History Dialogues, accessed May 5, 2025,<a href="https://globalhistorydialogues.org/projects/the-old-houses-of-slemani/" target="_blank">https://globalhistorydialogues.org/projects/the-old-houses-of-slemani/</a></li>
+            <li>​5+ Thousand Kurdish Architecture Royalty-Free Images, Stock Photos &amp; Pictures |Shutterstock, accessed May 5, 2025,<a href="https://www.shutterstock.com/search/kurdish-architecture" target="_blank">https://www.shutterstock.com/search/kurdish-architecture</a></li>
+            <li>​Traditional syrian house hi-res stock photography and images - Alamy, accessedMay 5, 2025, <a href="https://www.alamy.com/stock-photo/traditional-syrian-house.html" target="_blank">https://www.alamy.com/stock-photo/traditional-syrian-house.html</a></li>
+            <li>​Afrin Syria - The Kurdish Project, accessed May 5, 2025,<a href="https://thekurdishproject.org/kurdistan-map/syrian-kurdistan/afrin-syria/" target="_blank">https://thekurdishproject.org/kurdistan-map/syrian-kurdistan/afrin-syria/</a></li>
+            <li>​Distinctive Features of the Composition of Damascus Buildings During the Periodof the French Mandate - Atlantis Press, accessed May 5, 2025,<a href="https://www.atlantis-press.com/article/125964332.pdf" target="_blank">https://www.atlantis-press.com/article/125964332.pdf</a></li>
+            <li>​Syria - French Mandate, Middle East, Conflict - Britannica, accessed May 5, 2025,<a href="https://www.britannica.com/place/Syria/The-French-mandate" target="_blank">https://www.britannica.com/place/Syria/The-French-mandate</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 05, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

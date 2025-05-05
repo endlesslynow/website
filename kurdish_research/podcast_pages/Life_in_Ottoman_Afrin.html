@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life in Ottoman Afrin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Life in Ottoman Afrin</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Life in Ottoman Afrin_ Agriculture and Pastoralism.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Life in Ottoman Afrin_ Agriculture and Pastoralism.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This report explores the lifeways of Ottoman Afrin (Kurd-Dagh) between 1516 and 1918, focusing primarily on the balance between settled agriculture and pastoral nomadism. Geographically suited for both, the region&#x27;s economy was predominantly shaped by extensive olive cultivation and trade with Aleppo, indicating a strong foundation in settled farming. While pastoralism, including transhumance and mixed practices, was present, the text suggests it constituted a significant minority lifeway, with estimations placing agriculturalists at 70-85% of the population. The sources also touch upon social structures, Ottoman administration (including land tenure and taxation), and the diverse religious and cultural aspects, such as Sunni Islam, Sufism, Yazidi and Alevi minorities, and the celebration of Newroz, painting a complex picture of life in this distinct region.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Afrin Ottoman Era Lifestyles_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Kurd Mountain - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Kurd_Mountain" target="_blank">https://en.wikipedia.org/wiki/Kurd_Mountain</a></li>
+            <li>​ Battle for the Mountain of the Kurds: Self-Determination and Ethnic Cleansing inRojava, accessed May 5, 2025,<a href="https://www.amazon.in/Battle-Mountain-Kurds-Self-Determination-Cleansing/dp/1629636517" target="_blank">https://www.amazon.in/Battle-Mountain-Kurds-Self-Determination-Cleansing/dp/1629636517</a></li>
+            <li>​ Afrin Region - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_Region" target="_blank">https://en.wikipedia.org/wiki/Afrin_Region</a></li>
+            <li>​ Aleppo vilayet - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Aleppo_vilayet" target="_blank">https://en.wikipedia.org/wiki/Aleppo_vilayet</a></li>
+            <li>​ Justice for Afrin - Living Open Archive - ECCHR, accessed May 5, 2025,<a href="https://loa.ecchr.eu/dossiers/justice-for-afrin/" target="_blank">https://loa.ecchr.eu/dossiers/justice-for-afrin/</a></li>
+            <li>​ Withering Branch_ The Story of Afrin and its Peoples, Pre &amp; Post Operation OliveBranch - Washington Kurdish Institute, accessed May 5, 2025,<a href="https://dckurd.org/wp-content/uploads/2022/03/Withering-Branch_-The-Story-of-Afrin-and-its-Peoples-Pre-Post-Operation-Olive-Branch-_-Dominic-Brunaccioni.docx-3.pdf" target="_blank">https://dckurd.org/wp-content/uploads/2022/03/Withering-Branch_-The-Story-of-Afrin-and-its-Peoples-Pre-Post-Operation-Olive-Branch-_-Dominic-Brunaccioni.docx-3.pdf</a></li>
+            <li>​ Farming and Animal Husbandry - Musa Dagh - Houshamadyan, accessed May 5,2025,<a href="https://www.houshamadyan.org/mapottomanempire/vilayetaleppo/mousa-ler/economy/farming-and-animal-husbandry.html" target="_blank">https://www.houshamadyan.org/mapottomanempire/vilayetaleppo/mousa-ler/economy/farming-and-animal-husbandry.html</a></li>
+            <li>​ Destroying Afrin: The Historical Roots of Turkey&#x27;s Occupation - The KurdishCenter for Studies, accessed May 5, 2025,<a href="https://nlka.net/eng/destroying-afrin-the-historical-roots-of-turkeys-occupation/" target="_blank">https://nlka.net/eng/destroying-afrin-the-historical-roots-of-turkeys-occupation/</a></li>
+            <li>​ Kurds in Syria - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Kurds_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Kurds_in_Syria</a></li>
+            <li>​The Ottoman Census System and Population, 1831-1914 Author(s): Stanford J.Shaw Source - PSI424, accessed May 5, 2025,<a href="https://psi424.cankaya.edu.tr/uploads/files/Shaw,%20Ott%20Census%20System%20and%20Pop,%201831-1914%20%281978%29.pdf" target="_blank">https://psi424.cankaya.edu.tr/uploads/files/Shaw,%20Ott%20Census%20System%20and%20Pop,%201831-1914%20%281978%29.pdf</a></li>
+            <li>​The Ottoman Empire, 1700–1922, accessed May 5, 2025,<a href="https://mkaymak.files.wordpress.com/2016/02/quataert_ottoman-economy.pdf" target="_blank">https://mkaymak.files.wordpress.com/2016/02/quataert_ottoman-economy.pdf</a></li>
+            <li>​Cuinet, Vital (18..-19..). La Turquie d&#x27;Asie, géographie administrative : statistique,descriptive et raisonnée de chaque - WESTERN ARMENIA, accessed May 5, 2025,<a href="http://www.western-armenia.eu/archives-nationales/Question-Armenienne/Cuinet-V1.pdf" target="_blank">http://www.western-armenia.eu/archives-nationales/Question-Armenienne/Cuinet-V1.pdf</a></li>
+            <li>​Economic history of the Ottoman Empire - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Economic_history_of_the_Ottoman_Empire" target="_blank">https://en.wikipedia.org/wiki/Economic_history_of_the_Ottoman_Empire</a></li>
+            <li>​Syria - Ottoman Rule, Conflict, Refugees - Britannica, accessed May 5, 2025,<a href="https://www.britannica.com/place/Syria/Ottoman-period" target="_blank">https://www.britannica.com/place/Syria/Ottoman-period</a></li>
+            <li>​Iltizām | Middle East, Ottoman Empire &amp; Revenue | Britannica, accessed May 5,2025, <a href="https://www.britannica.com/topic/iltizam-tax-system" target="_blank">https://www.britannica.com/topic/iltizam-tax-system</a></li>
+            <li>​Intimate agrarian experiences of the Syrian Economic Reform - Athimar.org,accessed May 5, 2025,<a href="https://www.athimar.org/en/articles/details/intimate-agrarian-experiences-of-the-syrian-economic-reform" target="_blank">https://www.athimar.org/en/articles/details/intimate-agrarian-experiences-of-the-syrian-economic-reform</a></li>
+            <li>​Kurdish Sufi Spaces of Rural-Urban. Connection in Northern Syria, accessed May5, 2025, <a href="https://journals.openedition.org/etudesrurales/9290?lang=en" target="_blank">https://journals.openedition.org/etudesrurales/9290?lang=en</a></li>
+            <li>​Kurdish Sufi Spaces of Rural-Urban. Connection in Northern Syria - OpenEditionJournals, accessed May 5, 2025,<a href="https://journals.openedition.org/etudesrurales/9290?lang=fr" target="_blank">https://journals.openedition.org/etudesrurales/9290?lang=fr</a></li>
+            <li>​A Tale of Afrin - Youth4Nature, accessed May 5, 2025,<a href="https://www.youth4nature.org/stories/tale-afrin" target="_blank">https://www.youth4nature.org/stories/tale-afrin</a></li>
+            <li>​The Stolen Olive Land: How Afrin Farmers&#x27; Struggles Turned into a Bitter Reality,accessed May 5, 2025, <a href="https://r-d-i.org/en/?p=2986" target="_blank">https://r-d-i.org/en/?p=2986</a></li>
+            <li>​Kurds - Summary - eHRAF World Cultures, accessed May 5, 2025,<a href="https://ehrafworldcultures.yale.edu/cultures/MA11/summary" target="_blank">https://ehrafworldcultures.yale.edu/cultures/MA11/summary</a></li>
+            <li>​Syria - Urbanization, Agriculture, Deserts - Britannica, accessed May 5, 2025,<a href="https://www.britannica.com/place/Syria/Settlement-patterns" target="_blank">https://www.britannica.com/place/Syria/Settlement-patterns</a></li>
+            <li>​etheses.bham.ac.uk, accessed May 5, 2025,<a href="https://etheses.bham.ac.uk/7196/1/Usta17PhD.pdf" target="_blank">https://etheses.bham.ac.uk/7196/1/Usta17PhD.pdf</a></li>
+            <li>​RURAL HABITATION IN SYRIA: THE CULTURE OF TRADITIONAL ARCHITECTUREAND ITS ROLE IN THE RECONSTRUCTION PROCESS, accessed May 5, 2025,<a href="https://jfa.arch.metu.edu.tr/uploads/docs/sayilar/sayi-33-2/metujfa2016206.pdf" target="_blank">https://jfa.arch.metu.edu.tr/uploads/docs/sayilar/sayi-33-2/metujfa2016206.pdf</a></li>
+            <li>​THE KURDS | Ecoi.net, accessed May 5, 2025,<a href="https://www.ecoi.net/en/file/local/1262738/90_1447760239_bfa-regiones-et-res-publicae-the-kurds-2015.pdf" target="_blank">https://www.ecoi.net/en/file/local/1262738/90_1447760239_bfa-regiones-et-res-publicae-the-kurds-2015.pdf</a></li>
+            <li>​Three Stages of Political Transformation in the 19 th century Ottoman Kurdistan,accessed May 5, 2025, <a href="https://journals.openedition.org/anatoli/602" target="_blank">https://journals.openedition.org/anatoli/602</a></li>
+            <li>​The Fate of the Kurds - Origins: Current Events in Historical Perspective, accessedMay 5, 2025, <a href="https://origins.osu.edu/article/kurds-stateless-turkey-syria-iraq-iran" target="_blank">https://origins.osu.edu/article/kurds-stateless-turkey-syria-iraq-iran</a></li>
+            <li>​Introduction (Chapter 1) - Nomads in the Middle East - Cambridge UniversityPress, accessed May 5, 2025,<a href="https://www.cambridge.org/core/books/nomads-in-the-middle-east/introduction/B02C2A4466AEC64AFD09C8917A11EA67" target="_blank">https://www.cambridge.org/core/books/nomads-in-the-middle-east/introduction/B02C2A4466AEC64AFD09C8917A11EA67</a></li>
+            <li>​Winter-Quartering Tribes: Nomad–Peasant Relations in the ..., accessed May 5,2025,<a href="https://www.cambridge.org/core/journals/international-review-of-social-history/article/winterquartering-tribes-nomadpeasant-relations-in-the-northeastern-frontiers-of-the-ottoman-empire-1800s1850s/7443D5729920C9F9171E2D7179F69432" target="_blank">https://www.cambridge.org/core/journals/international-review-of-social-history/article/winterquartering-tribes-nomadpeasant-relations-in-the-northeastern-frontiers-of-the-ottoman-empire-1800s1850s/7443D5729920C9F9171E2D7179F69432</a></li>
+            <li>​NOMADS, TRIBES, AND THE STATE IN THE ANCIENT NEAR EAST - The University ofChicago, accessed May 5, 2025,<a href="https://oi-idb-static.uchicago.edu/multimedia/1030/ois5.pdf" target="_blank">https://oi-idb-static.uchicago.edu/multimedia/1030/ois5.pdf</a></li>
+            <li>​Kurds - Wikipedia, accessed May 5, 2025, <a href="https://en.wikipedia.org/wiki/Kurds" target="_blank">https://en.wikipedia.org/wiki/Kurds</a></li>
+            <li>​An Empty Land? Nomads and Property Administration in Hamidian Syria by NoraElizabeth Barakat - eScholarship.org, accessed May 5, 2025,<a href="https://escholarship.org/content/qt3mk2f52r/qt3mk2f52r_noSplash_da8e3ee94243e61d5155e865d36e2766.pdf" target="_blank">https://escholarship.org/content/qt3mk2f52r/qt3mk2f52r_noSplash_da8e3ee94243e61d5155e865d36e2766.pdf</a></li>
+            <li>​Cuinet, Vital (18..-19..). La Turquie d&#x27;Asie, géographie administrative : statistique,descriptive et raisonnée de chaque - WESTERN ARMENIA, accessed May 5, 2025,<a href="http://www.western-armenia.eu/archives-nationales/Question-Armenienne/Cuinet-V2.pdf" target="_blank">http://www.western-armenia.eu/archives-nationales/Question-Armenienne/Cuinet-V2.pdf</a></li>
+            <li>​Ottoman Empire - Classical Society, Administration, Reforms | Britannica,accessed May 5, 2025,<a href="https://www.britannica.com/place/Ottoman-Empire/Classical-Ottoman-society-and-administration" target="_blank">https://www.britannica.com/place/Ottoman-Empire/Classical-Ottoman-society-and-administration</a></li>
+            <li>​Social class in the Ottoman Empire - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Social_class_in_the_Ottoman_Empire" target="_blank">https://en.wikipedia.org/wiki/Social_class_in_the_Ottoman_Empire</a></li>
+            <li>​Iltizam - Wikipedia, accessed May 5, 2025, <a href="https://en.wikipedia.org/wiki/Iltizam" target="_blank">https://en.wikipedia.org/wiki/Iltizam</a></li>
+            <li>​Jewish entrepreneurs as seen in the ottoman tax-farming (İltizam) contracts(1560-1630) (with 7 documents) | Request PDF - ResearchGate, accessed May 5,2025,<a href="https://www.researchgate.net/publication/327838788_Jewish_entrepreneurs_as_seen_in_the_ottoman_tax-farming_Iltizam_contracts_1560-1630_with_7_documents" target="_blank">https://www.researchgate.net/publication/327838788_Jewish_entrepreneurs_as_seen_in_the_ottoman_tax-farming_Iltizam_contracts_1560-1630_with_7_documents</a></li>
+            <li>​THE ECONOMICS OF OTTOMAN TAXATION - University of Connecticut,accessed May 5, 2025, <a href="https://media.economics.uconn.edu/working/2004-02.pdf" target="_blank">https://media.economics.uconn.edu/working/2004-02.pdf</a></li>
+            <li>​Taxes, Efficiency, and Redistribution: Discriminatory Taxation of Villages inOttoman Palestine, Southern Syria and Transjordan in the Sixteenth Century |Request PDF - ResearchGate, accessed May 5, 2025,<a href="https://www.researchgate.net/publication/222687118_Taxes_Efficiency_and_Redistribution_Discriminatory_Taxation_of_Villages_in_Ottoman_Palestine_Southern_Syria_and_Transjordan_in_the_Sixteenth_Century" target="_blank">https://www.researchgate.net/publication/222687118_Taxes_Efficiency_and_Redistribution_Discriminatory_Taxation_of_Villages_in_Ottoman_Palestine_Southern_Syria_and_Transjordan_in_the_Sixteenth_Century</a></li>
+            <li>​Ottoman Taxation in Palestine, southern Syria, and Transjordan in the SixteenthCentury: the Determinants of Differential Tax - University of Connecticut,accessed May 5, 2025,<a href="https://media.economics.uconn.edu/working/2002-22R.pdf" target="_blank">https://media.economics.uconn.edu/working/2002-22R.pdf</a></li>
+            <li>​UNIVERSITY OF CALIFORNIA SAN DIEGO To the Edge of the Desert: CaucasianRefugees, Civilization, and Settlement on the Ottoman Fr - eScholarship,accessed May 5, 2025,<a href="https://escholarship.org/content/qt6cv111x5/qt6cv111x5_noSplash_5672707b2e7d5fd5afb38d98eaf0c092.pdf" target="_blank">https://escholarship.org/content/qt6cv111x5/qt6cv111x5_noSplash_5672707b2e7d5fd5afb38d98eaf0c092.pdf</a></li>
+            <li>​Syria - Ottoman Rule, Restoration, Conflict - Britannica, accessed May 5, 2025,<a href="https://www.britannica.com/place/Syria/Ottoman-rule-restored" target="_blank">https://www.britannica.com/place/Syria/Ottoman-rule-restored</a></li>
+            <li>​Kurdish–Turkish conflict - Wikipedia, accessed May 5, 2025,<a href="https://en.wikipedia.org/wiki/Kurdish%E2%80%93Turkish_conflict" target="_blank">https://en.wikipedia.org/wiki/Kurdish%E2%80%93Turkish_conflict</a></li>
+            <li>​WWI and the Middle East | National WWI Museum and Memorial, accessed May 5,2025,<a href="https://www.theworldwar.org/learn/educator-resource/wwi-and-middle-east" target="_blank">https://www.theworldwar.org/learn/educator-resource/wwi-and-middle-east</a></li>
+            <li>​Aleppo / Halep Vilayet (Province) - Virtual Genocide Memorial, accessed May 5,2025, <a href="https://virtual-genocide-memorial.de/region/ort-3/ort-33/" target="_blank">https://virtual-genocide-memorial.de/region/ort-3/ort-33/</a></li>
+            <li>​Charles Issawi The Fertile Crescent, 1800-1914 | PDF | Syria - Scribd, accessedMay 5, 2025,<a href="https://www.scribd.com/document/521173417/Charles-Issawi-The-Fertile-Crescent-1800-1914" target="_blank">https://www.scribd.com/document/521173417/Charles-Issawi-The-Fertile-Crescent-1800-1914</a></li>
+            <li>​La Turquie D&#x27;asie: Géographie Administrative, Statistique, Descriptive EtRaisonnée De Chaque Province De L&#x27;asie-Mineure; Volume 3 (French Edition):Cuinet, Vital: 9781020027352 - Amazon.com, accessed May 5, 2025,<a href="https://www.amazon.com/Turquie-Dasie-Administrative-Statistique-Lasie-Mineure/dp/1020027355" target="_blank">https://www.amazon.com/Turquie-Dasie-Administrative-Statistique-Lasie-Mineure/dp/1020027355</a></li>
+            <li>​La Turquie d&#x27;Asie: géographie administrative, statistique, descriptive et - GoogleBooks, accessed May 5, 2025,<a href="https://books.google.com.fj/books?id=Vt4LAkn-1cQC&amp;hl=fr&amp;source=gbs_navlinks_s" target="_blank">https://books.google.com.fj/books?id=Vt4LAkn-1cQC&amp;hl=fr&amp;source=gbs_navlinks_s</a></li>
+            <li>​La Turquie d&#x27;Asie: géographie administrative, statistique, descriptive et - GoogleBooks, accessed May 5, 2025,<a href="https://books.google.com/books/about/La_Turquie_d_Asie.html?id=eCVBAQAAIAAJ" target="_blank">https://books.google.com/books/about/La_Turquie_d_Asie.html?id=eCVBAQAAIAAJ</a></li>
+            <li>​La Turquie d&#x27;Asie: géographie administrative, statistique, descriptive et - GoogleLibros, accessed May 5, 2025,<a href="https://books.google.com.ec/books?id=j_1VqHVhfq4C" target="_blank">https://books.google.com.ec/books?id=j_1VqHVhfq4C</a></li>
+            <li>​the origins of cities - in dry-farming syria - and mesopotamia in the - Tell LeilanProject, accessed May 5, 2025,<a href="https://leilan.yale.edu/sites/default/files/publications/article-specific/the.origins.of_.cities-libre.pdf" target="_blank">https://leilan.yale.edu/sites/default/files/publications/article-specific/the.origins.of_.cities-libre.pdf</a></li>
+            <li>​(PDF) The governance structure of Turkish-controlled Afrin - ResearchGate,accessed May 5, 2025,<a href="https://www.researchgate.net/publication/371482361_The_governance_structure_of_Turkish-controlled_Afrin" target="_blank">https://www.researchgate.net/publication/371482361_The_governance_structure_of_Turkish-controlled_Afrin</a></li>
+            <li>​Cultivating Chaos: Afrin after Operation Olive Branch - The Ceasefire Centre forCivilian Rights, accessed May 5, 2025,<a href="https://www.ceasefire.org/wp-content/uploads/2020/07/CFR_Syria_EN_July20.pdf" target="_blank">https://www.ceasefire.org/wp-content/uploads/2020/07/CFR_Syria_EN_July20.pdf</a></li>
+            <li>​Five Years of Hell &amp; Evil: Turkish Occupied Afrin - The Kurdish Center for Studies,accessed May 5, 2025,<a href="https://nlka.net/eng/five-years-of-hell-evil-turkish-occupied-afrin/" target="_blank">https://nlka.net/eng/five-years-of-hell-evil-turkish-occupied-afrin/</a></li>
+            <li>​Newroz from Kurdish and Persian Perspectives – A Comparative Study, accessedMay 5, 2025, <a href="https://www.ejecs.org/index.php/JECS/article/download/318/pdf/1618" target="_blank">https://www.ejecs.org/index.php/JECS/article/download/318/pdf/1618</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 05, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
