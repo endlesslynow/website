@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribes of Afrin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tribes of Afrin</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Afrin&#x27;s Tribes, Society, and History Before 2010.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Afrin&#x27;s Tribes, Society, and History Before 2010.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This collection of sources provides a detailed socio-historical analysis of the Afrin region (Kurd Dagh) in northwestern Syria before the Syrian Civil War. It focuses on the geography and historical significance of the area, its predominantly Kurdish population, and the notable presence of Yezidi and Alevi minority communities. The text examines the centrality and evolution of tribal structures, including the influential role of Agha families and the impact of Syrian state policies like land reforms. It also highlights the significant Muridiyya movement and its effect on tribal loyalties and social cohesion, alongside the region&#x27;s agricultural economy, particularly olive cultivation.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Afrin Tribes Before 2010_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Afrin: Incidents Of Desecration And Destruction Of Cultural Sites - bellingcat,accessed May 6, 2025,<a href="https://www.bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites/" target="_blank">https://www.bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites/</a></li>
+            <li>​ (PDF) The governance structure of Turkish-controlled Afrin - ResearchGate,accessed May 6, 2025,<a href="https://www.researchgate.net/publication/371482361_The_governance_structure_of_Turkish-controlled_Afrin" target="_blank">https://www.researchgate.net/publication/371482361_The_governance_structure_of_Turkish-controlled_Afrin</a></li>
+            <li>​ Justice for Afrin - Living Open Archive - ECCHR, accessed May 6, 2025,<a href="https://loa.ecchr.eu/dossiers/justice-for-afrin/" target="_blank">https://loa.ecchr.eu/dossiers/justice-for-afrin/</a></li>
+            <li>​ Destroying Afrin: The Historical Roots of Turkey&#x27;s Occupation - The KurdishCenter for Studies, accessed May 6, 2025,<a href="https://nlka.net/eng/destroying-afrin-the-historical-roots-of-turkeys-occupation/" target="_blank">https://nlka.net/eng/destroying-afrin-the-historical-roots-of-turkeys-occupation/</a></li>
+            <li>​ Afrin, Syria - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Afrin,_Syria" target="_blank">https://en.wikipedia.org/wiki/Afrin,_Syria</a></li>
+            <li>​ Afrin Region - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_Region" target="_blank">https://en.wikipedia.org/wiki/Afrin_Region</a></li>
+            <li>​ Afrin Syria - The Kurdish Project, accessed May 6, 2025,<a href="https://thekurdishproject.org/kurdistan-map/syrian-kurdistan/afrin-syria/" target="_blank">https://thekurdishproject.org/kurdistan-map/syrian-kurdistan/afrin-syria/</a></li>
+            <li>​ Afrin Canton - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_Canton" target="_blank">https://en.wikipedia.org/wiki/Afrin_Canton</a></li>
+            <li>​ Afrin District - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_District" target="_blank">https://en.wikipedia.org/wiki/Afrin_District</a></li>
+            <li>​Five Years of Hell &amp; Evil: Turkish Occupied Afrin - The Kurdish Center for Studies,accessed May 6, 2025,<a href="https://nlka.net/eng/five-years-of-hell-evil-turkish-occupied-afrin/" target="_blank">https://nlka.net/eng/five-years-of-hell-evil-turkish-occupied-afrin/</a></li>
+            <li>​Kurds in Syria - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Kurds_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Kurds_in_Syria</a></li>
+            <li>​Kurds - Summary - eHRAF World Cultures, accessed May 6, 2025,<a href="https://ehrafworldcultures.yale.edu/cultures/MA11/summary" target="_blank">https://ehrafworldcultures.yale.edu/cultures/MA11/summary</a></li>
+            <li>​Kurd | Syria, Language, Map, Women, Turkey, Iraq, Iran, History, &amp; Culture |Britannica, accessed May 6, 2025, <a href="https://www.britannica.com/topic/Kurd" target="_blank">https://www.britannica.com/topic/Kurd</a></li>
+            <li>​Kurdish tribes - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Kurdish_tribes" target="_blank">https://en.wikipedia.org/wiki/Kurdish_tribes</a></li>
+            <li>​Kurdish Sufi Spaces of Rural-Urban. Connection in Northern Syria - OpenEditionJournals, accessed May 6, 2025,<a href="https://journals.openedition.org/etudesrurales/9290?lang=en" target="_blank">https://journals.openedition.org/etudesrurales/9290?lang=en</a></li>
+            <li>​موقع تيريج عفرين, accessed May 6, 2025,<a href="https://www.tirejafrin.com/print_details.php?page=show_det&amp;id=71&amp;lang=ar" target="_blank">https://www.tirejafrin.com/print_details.php?page=show_det&amp;id=71&amp;lang=ar</a></li>
+            <li>​عشائر في عفرين, accessed May 6, 2025, <a href="http://lokmanafrin.com/asher%20afrin.htm" target="_blank">http://lokmanafrin.com/asher%20afrin.htm</a></li>
+            <li>​www.tirejafrin.com, accessed May 6, 2025,<a href="http://www.tirejafrin.com/pdf/jabal%20alkurd3.pdf" target="_blank">http://www.tirejafrin.com/pdf/jabal%20alkurd3.pdf</a></li>
+            <li>​عشيرة شكاك Şikak / عفرين-لقمان عفرين, accessed May 6, 2025,<a href="http://lokmanafrin.com/images/3sher/shikak.htm" target="_blank">http://lokmanafrin.com/images/3sher/shikak.htm</a></li>
+            <li>​دراسة وجيزة عن العشائر في منطقة عفرين========================فيما يلي أهم العائالتوالعشائر الكردية في منطقة عفرين والتي كان لها نفوذ ودور في حياة المنطقة عائلة بطال(آل كنج)-تيريج عفرين,accessed May 6, 2025, <a href="http://www.tirejafrin.com/site/page-5a.htm" target="_blank">http://www.tirejafrin.com/site/page-5a.htm</a></li>
+            <li>​عشيرة آمكان - Kurdipedia, accessed May 6, 2025,<a href="https://kurdipedia.org/Default.aspx?lng=11&amp;q=20230505074325487569" target="_blank">https://kurdipedia.org/Default.aspx?lng=11&amp;q=20230505074325487569</a></li>
+            <li>​محمد.د.محمد عبد, accessed May<a href="https://www.medaratkurd.com/author/rozad_eli/" target="_blank">https://www.medaratkurd.com/author/rozad_eli/</a></li>
+            <li>​الوجود الكردي في شمال سوريا:منطقة جبل األكراد عفرين)(, accessed May<a href="https://nlka.net/pdf/Afrin.pdf" target="_blank">https://nlka.net/pdf/Afrin.pdf</a></li>
+            <li>​کرديبيديا-العشائر الكردية في عفرين, accessed May 6, 2025,<a href="https://www.kurdipedia.org/Default.aspx?q=20230221145229469162&amp;lng=11" target="_blank">https://www.kurdipedia.org/Default.aspx?q=20230221145229469162&amp;lng=11</a></li>
+            <li>​العشائر في منطقة عفرين, accessed May 6, 2025,<a href="http://www.tirejafrin.com/index.php?page=category&amp;category_id=118&amp;lang=ar" target="_blank">http://www.tirejafrin.com/index.php?page=category&amp;category_id=118&amp;lang=ar</a></li>
+            <li>​Turkey&#x27;s Demographic Engineering in Syria&#x27;s Afrin Region: A Closer Look,accessed May 6, 2025,<a href="https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin-region-a-closer-look" target="_blank">https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin-region-a-closer-look</a></li>
+            <li>​Zeytin Dalı Harekâtı - Vikipedi, accessed May 6, 2025,<a href="https://tr.wikipedia.org/wiki/Zeytin_Dal%C4%B1_Harek%C3%A2t%C4%B1" target="_blank">https://tr.wikipedia.org/wiki/Zeytin_Dal%C4%B1_Harek%C3%A2t%C4%B1</a></li>
+            <li>​Afrin&#x27;de ne oldu, bundan sonra ne olması ihtimali var - Serbestiyet, accessed May6, 2025,<a href="https://serbestiyet.com/haberler/afrinde-ne-oldu-bundan-sonra-ne-olmak-ihtimali-var-106959/" target="_blank">https://serbestiyet.com/haberler/afrinde-ne-oldu-bundan-sonra-ne-olmak-ihtimali-var-106959/</a></li>
+            <li>​Explainer: Afrin, 5 years under Turkish occupation - Rojava Information Center,accessed May 6, 2025,<a href="https://rojavainformationcenter.org/2023/01/explainer-afrin-5-years-under-turkish-occupation/" target="_blank">https://rojavainformationcenter.org/2023/01/explainer-afrin-5-years-under-turkish-occupation/</a></li>
+            <li>​Crimes in Syria: The neglected atrocities of Afrin - ECCHR, accessed May 6, 2025,<a href="https://www.ecchr.eu/en/case/crimes-in-syria-the-neglected-atrocities-of-afrin/" target="_blank">https://www.ecchr.eu/en/case/crimes-in-syria-the-neglected-atrocities-of-afrin/</a></li>
+            <li>​(PDF) &quot;Nothing is ours anymore&quot; - HLP rights violations in Afrin, Syria -ResearchGate, accessed May 6, 2025,<a href="https://www.researchgate.net/publication/336059330_Nothing_is_ours_anymore_-_HLP_rights_violations_in_Afrin_Syria" target="_blank">https://www.researchgate.net/publication/336059330_Nothing_is_ours_anymore_-_HLP_rights_violations_in_Afrin_Syria</a></li>
+            <li>​Borders Without a Nation: Syria, Outside Powers, and Open-Ended Instability,accessed May 6, 2025,<a href="https://carnegieendowment.org/research/2024/09/borders-without-a-nation-syria-outside-powers-and-open-ended-instability" target="_blank">https://carnegieendowment.org/research/2024/09/borders-without-a-nation-syria-outside-powers-and-open-ended-instability</a></li>
+            <li>​Afrin: A Case Study in Turkish de-Kurdification - Washington Kurdish Institute,accessed May 6, 2025,<a href="https://dckurd.org/2023/03/30/turkish-de-kurdification-afrin/" target="_blank">https://dckurd.org/2023/03/30/turkish-de-kurdification-afrin/</a></li>
+            <li>​Population movement in Syria: the link between Idlib and Afrin | The Strategist,accessed May 6, 2025,<a href="https://www.aspistrategist.org.au/population-movement-in-syria-the-link-between-idlib-and-afrin/" target="_blank">https://www.aspistrategist.org.au/population-movement-in-syria-the-link-between-idlib-and-afrin/</a></li>
+            <li>​Syrian Kurdish official decries US position on Afrin&#x27;s demographic changes -Kurdistan24, accessed May 6, 2025, <a href="https://www.kurdistan24.net/en/story/392159" target="_blank">https://www.kurdistan24.net/en/story/392159</a></li>
+            <li>​Anthropology and the Study of Africa | Oxford Research Encyclopedia of AfricanHistory, accessed May 6, 2025,<a href="https://oxfordre.com/africanhistory/display/10.1093/acrefore/9780190277734.001.0001/acrefore-9780190277734-e-179?d=%2F10.1093%2Facrefore%2F978019027" target="_blank">https://oxfordre.com/africanhistory/display/10.1093/acrefore/9780190277734.001.0001/acrefore-9780190277734-e-179?d=%2F10.1093%2Facrefore%2F978019027</a></li>
+            <li>001.0001%2Facrefore-9780190277734-e-179&amp;p=emailAwwor.TPVkXGU</li>
+            <li>​Ethnonymic Politics, Ethnographic Traditions and the Alur- ization of AidanSouthall NAME, accessed May 6, 2025,<a href="https://durham-repository.worktribe.com/OutputFile/1328437" target="_blank">https://durham-repository.worktribe.com/OutputFile/1328437</a></li>
+            <li>​Anthropological and Ethnographic Methods and Sources | Oxford ResearchEncyclopedia of African History, accessed May 6, 2025,<a href="https://oxfordre.com/africanhistory/display/10.1093/acrefore/9780190277734.001.0001/acrefore-9780190277734-e-244?d=%2F10.1093%2Facrefore%2F978019027" target="_blank">https://oxfordre.com/africanhistory/display/10.1093/acrefore/9780190277734.001.0001/acrefore-9780190277734-e-244?d=%2F10.1093%2Facrefore%2F978019027</a></li>
+            <li>001.0001%2Facrefore-9780190277734-e-244&amp;p=emailAcKujDCLBx67.</li>
+            <li>​How Abdullah Öcalan&#x27;s years in Syria influenced Syrian Kurds - Medya News,accessed May 6, 2025,<a href="https://medyanews.net/how-abdullah-ocalans-years-in-syria-influenced-syrian-kurds/" target="_blank">https://medyanews.net/how-abdullah-ocalans-years-in-syria-influenced-syrian-kurds/</a></li>
+            <li>​SURİYE SAVAŞININ TARAFLARI ARASINDA MENBİÇ AŞİRETLERİ - SETA, accessedMay 6, 2025, <a href="https://www.setav.org/assets/uploads/2019/11/R145.pdf" target="_blank">https://www.setav.org/assets/uploads/2019/11/R145.pdf</a></li>
+            <li>​Afrin&#x27;s Yazidis: An Ancient Culture Edges Toward the Precipice - The KurdishCenter for Studies, accessed May 6, 2025,<a href="https://nlka.net/eng/afrins-rich-and-millennia-old-yazidi-culture-edges-to-the-precipice/" target="_blank">https://nlka.net/eng/afrins-rich-and-millennia-old-yazidi-culture-edges-to-the-precipice/</a></li>
+            <li>​Syrian Arab Republic: Alevis and Yazidis in Afrin threatened with extinction - GfbV,accessed May 6, 2025,<a href="https://www.gfbv.de/fileadmin/redaktion/UN-statements/2020_2/Syrian_Arab_Republic_Alevis_and_Yazidis_in_Afrin_threatened_with_extinction.pdf" target="_blank">https://www.gfbv.de/fileadmin/redaktion/UN-statements/2020_2/Syrian_Arab_Republic_Alevis_and_Yazidis_in_Afrin_threatened_with_extinction.pdf</a></li>
+            <li>​Yazidi social organization - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Yazidi_social_organization" target="_blank">https://en.wikipedia.org/wiki/Yazidi_social_organization</a></li>
+            <li>​Yazidi | History, Culture, &amp; Religion - Britannica, accessed May 6, 2025,<a href="https://www.britannica.com/topic/Yazidi" target="_blank">https://www.britannica.com/topic/Yazidi</a></li>
+            <li>​The Status of the Yazidis: Eight Years on from the ISIS Genocide | - WashingtonKurdish Institute, accessed May 6, 2025,<a href="https://dckurd.org/2022/05/27/the-status-of-the-yazidis-eight-years/" target="_blank">https://dckurd.org/2022/05/27/the-status-of-the-yazidis-eight-years/</a></li>
+            <li>​Yazidis - Wikipedia, accessed May 6, 2025, <a href="https://en.wikipedia.org/wiki/Yazidis" target="_blank">https://en.wikipedia.org/wiki/Yazidis</a></li>
+            <li>​Decades of Denial of Existence and Discrimination - The Yazidi minority in Syria issubject to multi-fold oppression. Yazidis are denied basic religious rights andconstitutional recognition - Syrians for Truth and Justice, accessed May 6, 2025,<a href="https://stj-sy.org/wp-content/uploads/2022/09/Final_English_Yazidis-in-Syria_Decades-of-Denial-of-Existence-and-Discrimination.pdf" target="_blank">https://stj-sy.org/wp-content/uploads/2022/09/Final_English_Yazidis-in-Syria_Decades-of-Denial-of-Existence-and-Discrimination.pdf</a></li>
+            <li>​Who Are The Yazidis? – Analysis - Eurasia Review, accessed May 6, 2025,<a href="https://www.eurasiareview.com/15032022-who-are-the-yazidis-analysis/" target="_blank">https://www.eurasiareview.com/15032022-who-are-the-yazidis-analysis/</a></li>
+            <li>​Kurds, Turks and the Alevi Revival in Turkey - MERIP, accessed May 6, 2025,<a href="https://merip.org/1996/09/kurds-turks-and-the-alevi-revival-in-turkey/" target="_blank">https://merip.org/1996/09/kurds-turks-and-the-alevi-revival-in-turkey/</a></li>
+            <li>​MERIA: The Alevi of Anatolia - Columbia International Affairs Online, accessedMay 6, 2025, <a href="https://ciaotest.cc.columbia.edu/olj/meria/meria99_zed02.html" target="_blank">https://ciaotest.cc.columbia.edu/olj/meria/meria99_zed02.html</a></li>
+            <li>​Alevism - Wikipedia, accessed May 6, 2025, <a href="https://en.wikipedia.org/wiki/Alevism" target="_blank">https://en.wikipedia.org/wiki/Alevism</a></li>
+            <li>​Turkey&#x27;s Alevi Issue: Implications for sectarianism in the region, accessed May 6,2025,<a href="https://www.orfonline.org/research/turkeys-alevi-issue-implications-for-sectarianism-in-the-region" target="_blank">https://www.orfonline.org/research/turkeys-alevi-issue-implications-for-sectarianism-in-the-region</a></li>
+            <li>​A Survey of the Roots and History of Kurdish Alevism: What Are the Divergencesand Convergences between Kurdish Alevi Groups in Turkey? in - Brill, accessedMay 6, 2025, <a href="https://brill.com/abstract/book/9789004700369/BP000008.xml" target="_blank">https://brill.com/abstract/book/9789004700369/BP000008.xml</a></li>
+            <li>​Kurdish Alevism - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Kurdish_Alevism" target="_blank">https://en.wikipedia.org/wiki/Kurdish_Alevism</a></li>
+            <li>​Syria&#x27;s Kurds: History, politics and society - National Academic Digital Library ofEthiopia, accessed May 6, 2025,<a href="http://ndl.ethernet.edu.et/bitstream/123456789/23576/1/287.pdf.pdf" target="_blank">http://ndl.ethernet.edu.et/bitstream/123456789/23576/1/287.pdf.pdf</a></li>
+            <li>​Turkey continues to face scrutiny over Afrin&#x27;s olive oil - Kurdistan24, accessedMay 6, 2025,<a href="https://www.kurdistan24.net/en/story/378995/Turkey-continues-to-face-scrutiny-over-Afrin%27s-olive-oil" target="_blank">https://www.kurdistan24.net/en/story/378995/Turkey-continues-to-face-scrutiny-over-Afrin%27s-olive-oil</a></li>
+            <li>​ذوات في فضاءات متنازع:عليها:, accessed May 6, 2025,<a href="https://omran.dohainstitute.org/ar/040/Documents/Omran-40-2022-Abakay.pdf" target="_blank">https://omran.dohainstitute.org/ar/040/Documents/Omran-40-2022-Abakay.pdf</a></li>
+            <li>​عشيرة:أمكي:-Maroc - TikTok, accessed May 6, 2025,<a href="https://www.tiktok.com/@marociya6865/video/7463377611746528534" target="_blank">https://www.tiktok.com/@marociya6865/video/7463377611746528534</a></li>
+            <li>​سمكو آغا شكاك-ويكيبيديا, accessed May 6, 2025,<a href="https://ar.wikipedia.org/wiki/%D8%B3%D9%85%D9%83%D9%88_%D8%A2%D8%BA%D8%A7_%D8%B4%D9%83%D8%A7%D9%83" target="_blank">https://ar.wikipedia.org/wiki/%D8%B3%D9%85%D9%83%D9%88_%D8%A2%D8%BA%D8%A7_%D8%B4%D9%83%D8%A7%D9%83</a></li>
+            <li>​نبذة عن عشيرة)شكاك(دية-ريدة, accessed May<a href="https://altaakhi.net/2024/04/88901/" target="_blank">https://altaakhi.net/2024/04/88901/</a></li>
+            <li>​أصول قبيلة الرشوان أو ريشفان حسب تقارير في(القبائل(ف ييف .)- , accessed May 6, 2<a href="https://kitabat.com/%D8%A3%D8%B5%D9%88%D9%84-%D9%82%D8%A8%D9%8A%D9%84%D8%A9-%D8%A7%D9%84%D8%B1%D8%B4%D9%88%D8%A7%D9%86-%D8%A3%D9%88-%D8%B1%D9%8A%D8%B4%D9%81%D8%A7%D9%86-%D8%AD%D8%B3%D8%A8-%D8%AA%D9%82%D8%A7%D8%B1%D9%8A/" target="_blank">https://kitabat.com/%D8%A3%D8%B5%D9%88%D9%84-%D9%82%D8%A8%D9%8A%D9%84%D8%A9-%D8%A7%D9%84%D8%B1%D8%B4%D9%88%D8%A7%D9%86-%D8%A3%D9%88-%D8%B1%D9%8A%D8%B4%D9%81%D8%A7%D9%86-%D8%AD%D8%B3%D8%A8-%D8%AA%D9%82%D8%A7%D8%B1%D9%8A/</a></li>
+            <li>​منطقة:عفرين:-, accessed May 6, 2025,<a href="https://alawset.net/2018/03/14/%D9%85%D9%86%D8%B7%D9%82%D8%A9-%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A7%D9%8B-%D9%88%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE%D9%8A%D8%A7%D9%8B/" target="_blank">https://alawset.net/2018/03/14/%D9%85%D9%86%D8%B7%D9%82%D8%A9-%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A7%D9%8B-%D9%88%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE%D9%8A%D8%A7%D9%8B/</a></li>
+            <li>​عدنان بوزان:الشيخاني من العشائر الكردية وأصولها تنتمي إلى الديانة األيزيدية(الحلقات األربعة)|صوت ونداء,accessed May 6, 2025,<a href="https://dengubang.wordpress.com/2010/10/04/%D8%B9%D8%AF%D9%86%D8%A7%D9%86-%D8%A8%D9%88%D8%B2%D8%A7%D9%86-%D8%A7%D9%84%D8%B4%D9%8A%D8%AE%D8%A7%D9%86%D9%8A-%D9%85%D9%86-%D8%A7%D9%84%D8%B9%D8%B4%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%83%D8%B1%D8%AF/" target="_blank">https://dengubang.wordpress.com/2010/10/04/%D8%B9%D8%AF%D9%86%D8%A7%D9%86-%D8%A8%D9%88%D8%B2%D8%A7%D9%86-%D8%A7%D9%84%D8%B4%D9%8A%D8%AE%D8%A7%D9%86%D9%8A-%D9%85%D9%86-%D8%A7%D9%84%D8%B9%D8%B4%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%83%D8%B1%D8%AF/</a></li>
+            <li>​کرديبيديا-اسماء العائالت في جبل االكراد في الساحل السوري, accessed May 6, 2025,<a href="https://www.kurdipedia.org/Default.aspx?q=20230601222715495365&amp;lng=11" target="_blank">https://www.kurdipedia.org/Default.aspx?q=20230601222715495365&amp;lng=11</a></li>
+            <li>​العشائر الكردية في شرق الفرات-نون بوست, accessed May 6, 2025,<a href="https://www.noonpost.com/34757/" target="_blank">https://www.noonpost.com/34757/</a></li>
+            <li>​األكراد أو الكرد والعشائر الكردية في الجزيرة من.السورية.منابئلئررةة. لمقوم-الحوا, acces<a href="https://www.ahewar.org/debat/show.art.asp?aid=625904" target="_blank">https://www.ahewar.org/debat/show.art.asp?aid=625904</a></li>
+            <li>​Trade networks and inter-tribal relations | Archaeology of Colonial America ClassNotes | Fiveable, accessed May 6, 2025,<a href="https://library.fiveable.me/archaeology-of-colonial-america/unit-2/trade-networks-inter-tribal-relations/study-guide/NaGETqpZwMgd22sB" target="_blank">https://library.fiveable.me/archaeology-of-colonial-america/unit-2/trade-networks-inter-tribal-relations/study-guide/NaGETqpZwMgd22sB</a></li>
+            <li>​Durability and Duress: Inter-Tribal Kinship and Indian Gaming Capitalism - StartingPoints, accessed May 6, 2025,<a href="https://startingpointsjournal.com/durability-and-duress-inter-tribal-kinship-and-indian-gaming-capitalism/" target="_blank">https://startingpointsjournal.com/durability-and-duress-inter-tribal-kinship-and-indian-gaming-capitalism/</a></li>
+            <li>​Water Conflict Chronology Timeline List, accessed May 6, 2025,<a href="https://www.worldwater.org/conflict/list/" target="_blank">https://www.worldwater.org/conflict/list/</a></li>
+            <li>​Democratic Autonomous Administration of North and East Syria - Wikipedia,accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Democratic_Autonomous_Administration_of_North_and_East_Syria" target="_blank">https://en.wikipedia.org/wiki/Democratic_Autonomous_Administration_of_North_and_East_Syria</a></li>
+            <li>​كيف استخدمت تركيا المريدية واإلخوان في اختراق المجتمعات الكردية؟-حفريات, accessed May 6, 2025,<a href="https://hafryat.com/ar/blog/%D9%83%D9%8A%D9%81-%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D9%85%D8%AA-%D8%AA%D8%B1%D9%83%D9%8A%D8%A7-%D8%A7%D9%84%D9%85%D8%B1%D9%8A%D8%AF%D9%8A%D8%A9-%D9%88%D8%A7%D9%84%D8%A5%D8%AE%D9%88%D8%A7%D9%86-%D9%81%D9%8A-%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D9%82-%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D8%A7%D8%AA-%D8%A7%D9%84%D9%83%D8%B1%D8%AF%D9%8A%D8%A9%D8%9F" target="_blank">https://hafryat.com/ar/blog/%D9%83%D9%8A%D9%81-%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D9%85%D8%AA-%D8%AA%D8%B1%D9%83%D9%8A%D8%A7-%D8%A7%D9%84%D9%85%D8%B1%D9%8A%D8%AF%D9%8A%D8%A9-%D9%88%D8%A7%D9%84%D8%A5%D8%AE%D9%88%D8%A7%D9%86-%D9%81%D9%8A-%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D9%82-%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9%D8%A7%D8%AA-%D8%A7%D9%84%D9%83%D8%B1%D8%AF%D9%8A%D8%A9%D8%9F</a></li>
+            <li>​ُالحياة اليوميَّة في كرداغ شمال(سناء َلالِالفيحربَِّةِنية-ارا,May 6, 2025, <a href="https://www.medaratkurd.com/2016/12/29/1817/" target="_blank">https://www.medaratkurd.com/2016/12/29/1817/</a></li>
+            <li>​كُرد جيايي...كورمينج...خعةني-22, accessed May 6, 202<a href="https://raseef22.net/article/1094301-%D9%83%D8%B1%D8%AF-%D8%AC%D9%8A%D8%A7%D9%8A%D9%8A-%D9%83%D9%88%D8%B1%D9%85%D9%8A%D9%86%D8%AC-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D8%A7%D9%84%D8%AA%D8%B7%D9%88%D9%8A%D8%B9-%D8%A8%D8%A7%D9%84%D9%84%D8%BA%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D8%B9%D8%AB%D9%85%D8%A7%D9%86%D9%8A-%D9%88%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A" target="_blank">https://raseef22.net/article/1094301-%D9%83%D8%B1%D8%AF-%D8%AC%D9%8A%D8%A7%D9%8A%D9%8A-%D9%83%D9%88%D8%B1%D9%85%D9%8A%D9%86%D8%AC-%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D8%A7%D9%84%D8%AA%D8%B7%D9%88%D9%8A%D8%B9-%D8%A8%D8%A7%D9%84%D9%84%D8%BA%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D8%B9%D8%AB%D9%85%D8%A7%D9%86%D9%8A-%D9%88%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A</a></li>
+            <li>​Mouride - Wikipedia, accessed May 6, 2025, <a href="https://en.wikipedia.org/wiki/Mouride" target="_blank">https://en.wikipedia.org/wiki/Mouride</a></li>
+            <li>​Dahira and the Urbanization of the Muridiyya | Cairn.info, accessed May 6, 2025,<a href="https://shs.cairn.info/comprendre-le-senegal-et-l-afrique-aujourd-hui--9782384091010-page-463?lang=en" target="_blank">https://shs.cairn.info/comprendre-le-senegal-et-l-afrique-aujourd-hui--9782384091010-page-463?lang=en</a></li>
+            <li>​State, Religion and Muridism in Senegal - Journal of Central and Eastern EuropeanAfrican Studies, accessed May 6, 2025,<a href="https://jceeas.bdi.uni-obuda.hu/index.php/jceeas/article/download/69/156" target="_blank">https://jceeas.bdi.uni-obuda.hu/index.php/jceeas/article/download/69/156</a></li>
+            <li>​National Liberation Movement of North Caucasus (1820-1860): A Study ofMuridist Movement - Muslim Societies, accessed May 6, 2025,<a href="https://www.muslimsocieties.org/national-liberation-movement-of-north-caucasus-1820-1860-a-study-of-muridist-movement/" target="_blank">https://www.muslimsocieties.org/national-liberation-movement-of-north-caucasus-1820-1860-a-study-of-muridist-movement/</a></li>
+            <li>​Muridiyya Foundation | Murid Islamic Community in America Inc, accessed May 6,2025, <a href="https://toubamica.org/history-of-the-foundation/" target="_blank">https://toubamica.org/history-of-the-foundation/</a></li>
+            <li>​المقاومة الشعبية ضد قوات االنتداب الفرنسية-تيريج عفرين, accessed May 6, 2025,<a href="http://tirejafrin.com/index.php?page=category&amp;category_id=123&amp;lang=ar" target="_blank">http://tirejafrin.com/index.php?page=category&amp;category_id=123&amp;lang=ar</a></li>
+            <li>​Tirkiye - Wîkîpediya, accessed May 6, 2025, <a href="https://ku.wikipedia.org/wiki/Tirkiye" target="_blank">https://ku.wikipedia.org/wiki/Tirkiye</a></li>
+            <li>​Koçberiya kurdan - Wîkîpediya, accessed May 6, 2025,<a href="https://ku.wikipedia.org/wiki/Ko%C3%A7beriya_kurdan" target="_blank">https://ku.wikipedia.org/wiki/Ko%C3%A7beriya_kurdan</a></li>
+            <li>​devoknasî – Zimannas - WordPress.com, accessed May 6, 2025,<a href="https://zimannas.wordpress.com/category/devoknasi/" target="_blank">https://zimannas.wordpress.com/category/devoknasi/</a></li>
+            <li>​KARWAN, EŞÎR Û BAZINBELEK: NÊRÎNEK LI VARYANTÊN FILÎTÊ QUTO - DergiPark,accessed May 6, 2025, <a href="https://dergipark.org.tr/en/download/article-file/3950638" target="_blank">https://dergipark.org.tr/en/download/article-file/3950638</a></li>
+            <li>​Dîroknas Ulugana: Divê ji malbata Barzanî re bê gotin ku gelê Kurd ji PDK&#x27;ê mezintire, accessed May 6, 2025, <a href="https://hawarnews.com/kr/162494070048112" target="_blank">https://hawarnews.com/kr/162494070048112</a></li>
+            <li>​HALEP VİLAYETİNDE KAYIT ALTINA ALINAN AŞİRETLER (1909).pdf - intoba.org,accessed May 6, 2025,<a href="https://intoba.org/wp-content/uploads/2022/04/HALEP-VILAYETINDE-KAYIT-ALTINA-ALINAN-ASIRETLER-1909.pdf" target="_blank">https://intoba.org/wp-content/uploads/2022/04/HALEP-VILAYETINDE-KAYIT-ALTINA-ALINAN-ASIRETLER-1909.pdf</a></li>
+            <li>​Ayaklanma, Uzlaşı, İşbirliği ve Direniş: Suriye&#x27;nin Doğusundaki Arap Aşiretleri -OMRAN STRATEJİK ARAŞTIRMALAR MERKEZİ, accessed May 6, 2025,<a href="https://tr.omrandirasat.org/yay%C4%B1nlar%C4%B1m%C4%B1z/raporlar/download/105_2d702d656765465fd2d7eb875489b34f.html" target="_blank">https://tr.omrandirasat.org/yay%C4%B1nlar%C4%B1m%C4%B1z/raporlar/download/105_2d702d656765465fd2d7eb875489b34f.html</a></li>
+            <li>​lot 21 - Swann Auction Galleries, accessed May 6, 2025,<a href="http://www.swanngalleries.com/ms/Sale2474/lot21" target="_blank">http://www.swanngalleries.com/ms/Sale2474/lot21</a></li>
+            <li>​Full article: Autonomising Conflict: Conflict Transportation in Online Activityamong Kurdish and Turkish Diasporas in Denmark, accessed May 6, 2025,<a href="https://www.tandfonline.com/doi/full/10.1080/17449057.2023.2199604" target="_blank">https://www.tandfonline.com/doi/full/10.1080/17449057.2023.2199604</a></li>
+            <li>​Kurds - Syria - Country Studies, accessed May 6, 2025,<a href="https://countrystudies.us/syria/23.htm" target="_blank">https://countrystudies.us/syria/23.htm</a></li>
+            <li>​Kurd, Kurmanji in Syria Profile - Joshua Project, accessed May 6, 2025,<a href="https://joshuaproject.net/people_groups/print/12877/SY" target="_blank">https://joshuaproject.net/people_groups/print/12877/SY</a></li>
+            <li>​The Battle for the Mountain of the Kurds | The Anarchist Library, accessed May 6,2025,<a href="https://theanarchistlibrary.org/library/thomas-schmidinger-the-battle-for-the-mountain-of-the-kurds" target="_blank">https://theanarchistlibrary.org/library/thomas-schmidinger-the-battle-for-the-mountain-of-the-kurds</a></li>
+            <li>​An Ethnographic Study of Socio-Emotional Factors In Interpersonal PeerRelationships and Their Impact on the Academic Success of - ScholarWorks atGSU, accessed May 6, 2025,<a href="https://scholarworks.gsu.edu/cgi/viewcontent.cgi?article=1001&amp;context=mse_diss" target="_blank">https://scholarworks.gsu.edu/cgi/viewcontent.cgi?article=1001&amp;context=mse_diss</a></li>
+            <li>​RECLAIM YO&#x27; ROOTS: A GUIDE TO TRACING AFRICAN AMERICAN ANCESTORS &amp;FAMILY HISTORY THROUGH LAND OWNERSHIP - Kinkofa, accessed May 6, 2025,<a href="https://www.kinkofa.com/blog/reclaim-yo-roots-a-guide-to-tracing-african-american-ancestors-and-family-history-through-land-ownership/" target="_blank">https://www.kinkofa.com/blog/reclaim-yo-roots-a-guide-to-tracing-african-american-ancestors-and-family-history-through-land-ownership/</a></li>
+            <li>​Minority Family Forest Owners in the United States - Southern Research Station,accessed May 6, 2025,<a href="https://www.srs.fs.usda.gov/pubs/ja/2019/ja_2019_butler_001.pdf" target="_blank">https://www.srs.fs.usda.gov/pubs/ja/2019/ja_2019_butler_001.pdf</a></li>
+            <li>​The Kurds in a Volatile Middle East - Begin-Sadat Center for Strategic Studies,accessed May 6, 2025,<a href="https://besacenter.org/wp-content/uploads/2017/02/MSPS130web.pdf" target="_blank">https://besacenter.org/wp-content/uploads/2017/02/MSPS130web.pdf</a></li>
+            <li>​Alevi Kurds: History, Politics, Migration and Identity: an Interview with Martin vanBruinessen in - Brill, accessed May 6, 2025,<a href="https://brill.com/abstract/book/9789004700369/BP000007.xml" target="_blank">https://brill.com/abstract/book/9789004700369/BP000007.xml</a></li>
+            <li>​Persecution of Yazidis - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Persecution_of_Yazidis" target="_blank">https://en.wikipedia.org/wiki/Persecution_of_Yazidis</a></li>
+            <li>​أحمد الشرع يعينًكوردياًمسؤوال عن منطقة عفرين-نيت.رووداو., accessed May 6,<a href="https://www.rudawarabia.net/arabic/middleeast/syria/130420252" target="_blank">https://www.rudawarabia.net/arabic/middleeast/syria/130420252</a></li>
+            <li>​Walid A Hassan - الكطارنة - Google Sites, accessed May 6, 2025,<a href="https://sites.google.com/site/walidahassan/other-pages/-qtarna" target="_blank">https://sites.google.com/site/walidahassan/other-pages/-qtarna</a></li>
+            <li>​العشــائر العربية في كردســتان سوريا-خالد عيسى - | Kurd Online |, accessed May 6, 2025,<a href="https://kurd-online.com/%D8%A7%D9%84%D8%B9%D8%B4%D9%80%D9%80%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D9%81%D9%8A-%D9%83%D8%B1%D8%AF%D8%B3%D9%80%D9%80%D8%AA%D8%A7%D9%86-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7/" target="_blank">https://kurd-online.com/%D8%A7%D9%84%D8%B9%D8%B4%D9%80%D9%80%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D9%81%D9%8A-%D9%83%D8%B1%D8%AF%D8%B3%D9%80%D9%80%D8%AA%D8%A7%D9%86-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7/</a></li>
+            <li>​7184_Tejel &amp; Oztan.indd - Graduate Institute of International and DevelopmentStudies, accessed May 6, 2025,<a href="https://repository.graduateinstitute.ch/record/300187/files/9781474487986.pdf?ln=en" target="_blank">https://repository.graduateinstitute.ch/record/300187/files/9781474487986.pdf?ln=en</a></li>
+            <li>​The Yezidis: The History of a Community, Culture and Religion 9780755624423,9781784532161 - DOKUMEN.PUB, accessed May 6, 2025,<a href="https://dokumen.pub/the-yezidis-the-history-of-a-community-culture-and-religion-9780755624423-9781784532161.html" target="_blank">https://dokumen.pub/the-yezidis-the-history-of-a-community-culture-and-religion-9780755624423-9781784532161.html</a></li>
+            <li>​6 Contested Terrain: Cross-border Violence, Politics and Memory in Syria&#x27;sKurd Dagh Region - ResearchGate, accessed May 6, 2025,<a href="https://www.researchgate.net/publication/384185610_6_Contested_Terrain_Cross-border_Violence_Politics_and_Memory_in_Syria&#x27;s_Kurd_Dagh_Region" target="_blank">https://www.researchgate.net/publication/384185610_6_Contested_Terrain_Cross-border_Violence_Politics_and_Memory_in_Syria&#x27;s_Kurd_Dagh_Region</a></li>
+            <li>​The Kurds of Syria: Political Parties and Identity in the Middle East9780755609178, 9781780765631 - DOKUMEN.PUB, accessed May 6, 2025,<a href="https://dokumen.pub/the-kurds-of-syria-political-parties-and-identity-in-the-middle-east-9780755609178-9781780765631.html" target="_blank">https://dokumen.pub/the-kurds-of-syria-political-parties-and-identity-in-the-middle-east-9780755609178-9781780765631.html</a></li>
+            <li>​Syria&#x27;s Kurds: History, politics and society - National Academic Digital Libraryof Ethiopia, accessed May 6, 2025,<a href="http://ndl.ethernet.edu.et/bitstream/123456789/54983/1/109.pdf.pdf" target="_blank">http://ndl.ethernet.edu.et/bitstream/123456789/54983/1/109.pdf.pdf</a></li>
+            <li>​Iroquois Confederacy - (World History – 1400 to Present) - Vocab, Definition,Explanations, accessed May 6, 2025,<a href="https://library.fiveable.me/key-terms/world-history-since-1400/iroquois-confederacy" target="_blank">https://library.fiveable.me/key-terms/world-history-since-1400/iroquois-confederacy</a></li>
+            <li>​Afrin Under Occupation (319)- Special: Seven Years of TurkishOccupation……/336/ Civilian Martyrs and Victims, Including /66/ Children and /54/Women, with /37/ in the Last Year – Yek.Dem, accessed May 6, 2025,<a href="https://yek-dem.net/ku/?p=15718" target="_blank">https://yek-dem.net/ku/?p=15718</a></li>
+            <li>​POLICY NOTES - The Washington Institute, accessed May 6, 2025,<a href="https://www.washingtoninstitute.org/sites/default/files/pdf/PolicyNote52-2.pdf" target="_blank">https://www.washingtoninstitute.org/sites/default/files/pdf/PolicyNote52-2.pdf</a></li>
+            <li>​Under Kurdish Rule: Abuses in PYD-run Enclaves of Syria - Human RightsWatch, accessed May 6, 2025,<a href="https://www.hrw.org/report/2014/06/19/under-kurdish-rule/abuses-pyd-run-enclaves-syria" target="_blank">https://www.hrw.org/report/2014/06/19/under-kurdish-rule/abuses-pyd-run-enclaves-syria</a></li>
+            <li>​SNHR&#x27;s 12th Annual Report - on Enforced Disappearance in Syria on theInternational Day of the Disappeared, accessed May 6, 2025,<a href="https://snhr.org/wp-content/uploads/2023/08/R230810E.pdf" target="_blank">https://snhr.org/wp-content/uploads/2023/08/R230810E.pdf</a></li>
+            <li>​syria - Department of Justice, accessed May 6, 2025,<a href="https://www.justice.gov/file/265281/dl?inline=" target="_blank">https://www.justice.gov/file/265281/dl?inline=</a></li>
+            <li>​المقاومة الشعبية في منطقة عفرين, accessed May 6, 2025,<a href="http://www.lokmanafrin.com/images/almakome/almokaome.htm" target="_blank">http://www.lokmanafrin.com/images/almakome/almokaome.htm</a></li>
+            <li>​خارطة اليسار العر345, accessed May 6, 2025,<a href="https://www.rosalux.de/fileadmin/rls_uploads/pdfs/engl/Mapping_of_Arab_Left_2.pdf" target="_blank">https://www.rosalux.de/fileadmin/rls_uploads/pdfs/engl/Mapping_of_Arab_Left_2.pdf</a></li>
+            <li>​السنة،الخامسة العدد13،مارس2022-مجلة العلوم اإلنسانية, accessed May 6, 2025,<a href="https://uoh-jh.com/wp-content/uploads/2022/10/Issue-13.pdf" target="_blank">https://uoh-jh.com/wp-content/uploads/2022/10/Issue-13.pdf</a></li>
+            <li>​وﺳﺎﺋط اﻻﺗﺻﺎﻝ اﻟﺟدﻳدة وﻋوﻟﻣﺔ اﻟﺛﻘﺎﻓﺔ اﻟﻣﺣﻠﻳﺔ - DSpace de l&#x27;Université d&#x27;Alger 3 - جامعة الجزائر3, accessed May 6, 2025,<a href="https://dspace.univ-alger3.dz/jspui/bitstream/123456789/1464/1/%D8%AF.857.070.pdf" target="_blank">https://dspace.univ-alger3.dz/jspui/bitstream/123456789/1464/1/%D8%AF.857.070.pdf</a></li>
+            <li>​الوجود الكردي في شمال سوريا:منطقة جبل األكراد)عفرين()1, accessed Ma<a href="https://www.medaratkurd.com/2016/12/04/1778/" target="_blank">https://www.medaratkurd.com/2016/12/04/1778/</a></li>
+            <li>​تاريخ الكرد في شــمال ســورياًقديماًوحديثا ـ2في”ـفيصور - | Kurd Online |, accessed May 6,<a href="https://kurd-online.com/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D8%A7%D9%84%D9%83%D8%B1%D8%AF-%D9%81%D9%8A-%D8%B4%D9%80%D9%80%D9%85%D8%A7%D9%84-%D8%B3%D9%80%D9%80%D9%88%D8%B1%D9%8A%D8%A7-%D9%82%D8%AF%D9%8A%D9%85%D8%A7%D9%8B-%D9%88/" target="_blank">https://kurd-online.com/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D8%A7%D9%84%D9%83%D8%B1%D8%AF-%D9%81%D9%8A-%D8%B4%D9%80%D9%80%D9%85%D8%A7%D9%84-%D8%B3%D9%80%D9%80%D9%88%D8%B1%D9%8A%D8%A7-%D9%82%D8%AF%D9%8A%D9%85%D8%A7%D9%8B-%D9%88/</a></li>
+            <li>​Local Economies in Syria - Divisions and Dependencies - Bibliothek derFriedrich-Ebert-Stiftung, accessed May 6, 2025,<a href="https://library.fes.de/pdf-files/bueros/beirut/15702.pdf" target="_blank">https://library.fes.de/pdf-files/bueros/beirut/15702.pdf</a></li>
+            <li>​The Links between Conflict and Hunger in Syria - Insecurity Insight, accessedMay 6, 2025,<a href="https://insecurityinsight.org/wp-content/uploads/2023/04/Syria-Conflict-and-Hunger-March-2023.pdf" target="_blank">https://insecurityinsight.org/wp-content/uploads/2023/04/Syria-Conflict-and-Hunger-March-2023.pdf</a></li>
+            <li>​RISK REDUCTION OF COGNITIVE DECLINE AND DEMENTIA - World HealthOrganization (WHO), accessed May 6, 2025,<a href="https://apps.who.int/iris/bitstream/handle/10665/312180/9789241550543-eng.pdf" target="_blank">https://apps.who.int/iris/bitstream/handle/10665/312180/9789241550543-eng.pdf</a></li>
+            <li>​Economic Recovery in Syria: Mapping Actors and Assessing Current Policies -Pro Justice, accessed May 6, 2025,<a href="https://pro-justice.org/wp-content/uploads/2019/10/Cc_-_Economic_recovery-Web-_EN_-_V2.pdf" target="_blank">https://pro-justice.org/wp-content/uploads/2019/10/Cc_-_Economic_recovery-Web-_EN_-_V2.pdf</a></li>
+            <li>​(PDF) Yezidis in ancient India, or Indians in ancient Mesopotamia?:Re-imagining Ancient Yezidi Origins - ResearchGate, accessed May 6, 2025,<a href="https://www.researchgate.net/publication/335217402_Yezidis_in_ancient_India_or_Indians_in_ancient_Mesopotamia_Re-imagining_Ancient_Yezidi_Origins" target="_blank">https://www.researchgate.net/publication/335217402_Yezidis_in_ancient_India_or_Indians_in_ancient_Mesopotamia_Re-imagining_Ancient_Yezidi_Origins</a></li>
+            <li>​Yezidis in Iraq: Demographic Islamisation, Internal Divisions, and Drivers ofPerpetual Genocide - eismena.com, accessed May 6, 2025,<a href="https://eismena.com/en/article/the-yezidis-in-iraq-demographic-islamisation-internal-divisions-and-drivers-of-perpetual-genocide-2024-06-19" target="_blank">https://eismena.com/en/article/the-yezidis-in-iraq-demographic-islamisation-internal-divisions-and-drivers-of-perpetual-genocide-2024-06-19</a></li>
+            <li>​Kurds in a New Century (Chapter 11) - The Cambridge History of the Kurds,accessed May 6, 2025,<a href="https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/kurds-in-a-new-century/E3574C078BB8812F27975FAE0AD45FEC" target="_blank">https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/kurds-in-a-new-century/E3574C078BB8812F27975FAE0AD45FEC</a></li>
+            <li>​The Alevi Opening: Concept, Strategy and Process, Articles Necdet Subaşı |Insight Turkey, accessed May 6, 2025,<a href="https://www.insightturkey.com/articles/the-alevi-opening-concept-strategy-and-process" target="_blank">https://www.insightturkey.com/articles/the-alevi-opening-concept-strategy-and-process</a></li>
+            <li>​من اجمل واروع اغاني عراس عفرين في أوروبا الفنان عبدو محمد&amp;كروب رامان Efrîn - YouTube,accessed May 6, 2025, <a href="https://www.youtube.com/watch?v=XhRkuH2ragU" target="_blank">https://www.youtube.com/watch?v=XhRkuH2ragU</a></li>
+            <li>​تشييع جثمان مقاتل قسد الشهيد برخدان عفرين في قامشلو-وكالة هاوار لألنباء, accessed May 6, 2025,<a href="https://hawarnews.com/ar/122559" target="_blank">https://hawarnews.com/ar/122559</a></li>
+            <li>​WAR AND SOCIETY IN THE EASTERN MEDITERRANEAN, 7TH-15TH CENTURIES- Brill, accessed May 6, 2025,<a href="https://brill.com/downloadpdf/edcollbook/title/2429.pdf" target="_blank">https://brill.com/downloadpdf/edcollbook/title/2429.pdf</a></li>
+            <li>​Nūr ad-Dīn. Tome I - Bibliographie - Presses de l&#x27;Ifpo - OpenEdition Books,accessed May 6, 2025, <a href="https://books.openedition.org/ifpo/6408?lang=en" target="_blank">https://books.openedition.org/ifpo/6408?lang=en</a></li>
+            <li>​Catalogue en ligne Centre d&#x27;Étude Diocésain - Les Glycines, accessed May 6,2025,<a href="http://www.catalogue-glycines.org/index.php?lvl=indexint_see&amp;id=156&amp;page=1&amp;nbr_lignes=387&amp;l_typdoc=&amp;nb_per_page_custom=200" target="_blank">http://www.catalogue-glycines.org/index.php?lvl=indexint_see&amp;id=156&amp;page=1&amp;nbr_lignes=387&amp;l_typdoc=&amp;nb_per_page_custom=200</a></li>
+            <li>​la nation et le territoire - ResearchGate, accessed May 6, 2025,<a href="https://www.researchgate.net/profile/Elisabeth-Dorier/publication/32970040_Des_quartiers_pour_territoires_guerre_des_milices_fragmentation_urbaine_et_recompositions_identitaires_a_Brazzaville/links/0c9605330613197f7f000000/Des-quartiers-pour-territoires-guerre-des-milices-fragmentation-urbaine-et-recompositions-identitaires-a-Brazzaville.pdf" target="_blank">https://www.researchgate.net/profile/Elisabeth-Dorier/publication/32970040_Des_quartiers_pour_territoires_guerre_des_milices_fragmentation_urbaine_et_recompositions_identitaires_a_Brazzaville/links/0c9605330613197f7f000000/Des-quartiers-pour-territoires-guerre-des-milices-fragmentation-urbaine-et-recompositions-identitaires-a-Brazzaville.pdf</a></li>
+            <li>​Culti e Tradizioni dello Yezidismo. Spazio sacro e identità religiosa (Sheikhan -Kurdistan iracheno) - IRIS, accessed May 6, 2025,<a href="https://iris.uniroma1.it/retrieve/3de40f7f-bc62-4046-80e0-11f2321fbdca/Tesi_dottorato_Rammo.pdf" target="_blank">https://iris.uniroma1.it/retrieve/3de40f7f-bc62-4046-80e0-11f2321fbdca/Tesi_dottorato_Rammo.pdf</a></li>
+            <li>​Travaux de recherche ou d&#x27;intérêt documentaire - Interassociation deSarreguemines, accessed May 6, 2025,<a href="http://www.interassociation.org/Travauxderecherche.pdf" target="_blank">http://www.interassociation.org/Travauxderecherche.pdf</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 06, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

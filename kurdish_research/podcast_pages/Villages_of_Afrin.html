@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villages of Afrin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Villages of Afrin</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Afrin Villages Pre-2010 Importance.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Afrin Villages Pre-2010 Importance.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This document offers an extensive overview of the Afrin District in northwestern Syria prior to 2010. It details the region&#x27;s geographical features, administrative structure including its seven subdistricts and key towns like Afrin city and Jindires, and provides historical context stretching from ancient times through the Ottoman and French Mandate periods, noting the long-standing Kurdish presence and later Arabization policies. A significant portion focuses on the district&#x27;s villages, highlighting their historical and archaeological importance, including sites like Ain Dara and those part of the &quot;Dead Cities,&quot; alongside their ethno-religious diversity with notable Yazidi, Alevi, Christian, Arab, and Turkmen communities. Finally, the text examines the villages&#x27; economic significance, primarily centered on extensive olive cultivation but also including other agricultural activities and local markets.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Afrin Villages_ Pre-2010 Importance_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Afrin District - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_District" target="_blank">https://en.wikipedia.org/wiki/Afrin_District</a></li>
+            <li>​ Afrin Canton - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_Canton" target="_blank">https://en.wikipedia.org/wiki/Afrin_Canton</a></li>
+            <li>​ Afrin Region - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_Region" target="_blank">https://en.wikipedia.org/wiki/Afrin_Region</a></li>
+            <li>​ The file of Religions and nationalities in Afrin – Peace in Kurdistan, accessed May6, 2025,<a href="https://www.peaceinkurdistancampaign.com/the-file-of-religions-and-nationalities-in-afrin/" target="_blank">https://www.peaceinkurdistancampaign.com/the-file-of-religions-and-nationalities-in-afrin/</a></li>
+            <li>​ Destroying Afrin: The Historical Roots of Turkey&#x27;s Occupation - The KurdishCenter for Studies, accessed May 6, 2025,<a href="https://nlka.net/eng/destroying-afrin-the-historical-roots-of-turkeys-occupation/" target="_blank">https://nlka.net/eng/destroying-afrin-the-historical-roots-of-turkeys-occupation/</a></li>
+            <li>​ Syria&#x27;s Afrin becoming arid due to illegal logging, accessed May 6, 2025,<a href="https://npasyria.com/en/83537/" target="_blank">https://npasyria.com/en/83537/</a></li>
+            <li>​ Afrin: Kurdish Town Isolated by Siege, Geography - News Deeply, accessed May6, 2025,<a href="https://deeply.thenewhumanitarian.org/syria/articles/2017/01/28/afrin-kurdish-town-isolated-by-siege-politics" target="_blank">https://deeply.thenewhumanitarian.org/syria/articles/2017/01/28/afrin-kurdish-town-isolated-by-siege-politics</a></li>
+            <li>​ Afrin, Syria - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Afrin,_Syria" target="_blank">https://en.wikipedia.org/wiki/Afrin,_Syria</a></li>
+            <li>​ dckurd.org, accessed May 6, 2025,<a href="https://dckurd.org/wp-content/uploads/2022/03/Withering-Branch_-The-Story-of-Afrin-and-its-Peoples-Pre-Post-Operation-Olive-Branch-_-Dominic-Brunaccioni.docx-3.pdf" target="_blank">https://dckurd.org/wp-content/uploads/2022/03/Withering-Branch_-The-Story-of-Afrin-and-its-Peoples-Pre-Post-Operation-Olive-Branch-_-Dominic-Brunaccioni.docx-3.pdf</a></li>
+            <li>​The War in Syria: Olive oil income booms after Afrin liberation - YouTube,accessed May 6, 2025, <a href="https://www.youtube.com/watch?v=NfyGsRJIsOY" target="_blank">https://www.youtube.com/watch?v=NfyGsRJIsOY</a></li>
+            <li>​ALEPPO – Governorate profile - MapAction, accessed May 6, 2025,<a href="https://maps.mapaction.org/dataset/28183240-0071-41d3-8406-56f7b7d98957/resource/b84d21b1-88b3-42bd-9149-23eefb333573/download/snapaleppogovernorateprofileapr2013.pdf" target="_blank">https://maps.mapaction.org/dataset/28183240-0071-41d3-8406-56f7b7d98957/resource/b84d21b1-88b3-42bd-9149-23eefb333573/download/snapaleppogovernorateprofileapr2013.pdf</a></li>
+            <li>​Ain Dara (archaeological site) - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Ain_Dara_(archaeological_site)" target="_blank">https://en.wikipedia.org/wiki/Ain_Dara_(archaeological_site)</a></li>
+            <li>​Turkey&#x27;s Demographic Engineering in Syria&#x27;s Afrin Region: A Closer Look,accessed May 6, 2025,<a href="https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin-region-a-closer-look" target="_blank">https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin-region-a-closer-look</a></li>
+            <li>​عفرين|التاريخ السوري المعاصر, accessed May 6, 2025,<a href="https://syrmh.com/2023/01/15/%D8%B9%D9%81%D8%B1%D9%8A%D9%86/" target="_blank">https://syrmh.com/2023/01/15/%D8%B9%D9%81%D8%B1%D9%8A%D9%86/</a></li>
+            <li>​Syrian Arab Republic - Subnational Administrative Boundaries | HumanitarianDataset, accessed May 6, 2025, <a href="https://data.humdata.org/dataset/cod-ab-syr" target="_blank">https://data.humdata.org/dataset/cod-ab-syr</a></li>
+            <li>​تعريب أسماء قرى مركز وناحية ـ أفرين أو إرفين ـ المعربة إلى عفرين ..., accessed May 6, 2025,<a href="https://vdc-nsy.com/%D8%AA%D8%B9%D8%B1%D9%8A%D8%A8-%D8%A3%D8%B3%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%85%D8%AF%D9%86-%D9%88%D8%A7%D9%84%D9%82%D8%B1%D9%89-%D8%A7%D9%84%D9%83%D8%B1%D8%AF%D9%8A%D8%A9-%D9%81%D9%8A-%D8%B4%D9%85/%D8%AA%D8%B9%D8%B1%D9%8A%D8%A8-%D8%A3%D8%B3%D9%85%D8%A7%D8%A1-%D9%82%D8%B1%D9%89-%D9%85%D8%B1%D9%83%D8%B2-%D9%88%D9%86%D8%A7%D8%AD%D9%8A%D8%A9-%D9%80-%D8%A3%D9%81%D8%B1%D9%8A%D9%86-%D8%A3%D9%88-%D8%A5" target="_blank">https://vdc-nsy.com/%D8%AA%D8%B9%D8%B1%D9%8A%D8%A8-%D8%A3%D8%B3%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%85%D8%AF%D9%86-%D9%88%D8%A7%D9%84%D9%82%D8%B1%D9%89-%D8%A7%D9%84%D9%83%D8%B1%D8%AF%D9%8A%D8%A9-%D9%81%D9%8A-%D8%B4%D9%85/%D8%AA%D8%B9%D8%B1%D9%8A%D8%A8-%D8%A3%D8%B3%D9%85%D8%A7%D8%A1-%D9%82%D8%B1%D9%89-%D9%85%D8%B1%D9%83%D8%B2-%D9%88%D9%86%D8%A7%D8%AD%D9%8A%D8%A9-%D9%80-%D8%A3%D9%81%D8%B1%D9%8A%D9%86-%D8%A3%D9%88-%D8%A5</a></li>
+            <li>​Kurdish Sufi Spaces of Rural-Urban. Connection in Northern Syria - OpenEditionJournals, accessed May 6, 2025,<a href="https://journals.openedition.org/etudesrurales/9290?lang=en" target="_blank">https://journals.openedition.org/etudesrurales/9290?lang=en</a></li>
+            <li>​تغيير األسماء الجغرافية والحقائق التاريخية في جبل الكرد عفرين(..., accessed May<a href="https://yek-dem.net/ar/?p=6072" target="_blank">https://yek-dem.net/ar/?p=6072</a></li>
+            <li>​Afrin (ilçe) - Vikipedi, accessed May 6, 2025,<a href="https://tr.wikipedia.org/wiki/Afrin_(il%C3%A7e)" target="_blank">https://tr.wikipedia.org/wiki/Afrin_(il%C3%A7e)</a></li>
+            <li>​District d&#x27;Afrin - Wikipédia, accessed May 6, 2025,<a href="https://fr.wikipedia.org/wiki/District_d%27Afrin" target="_blank">https://fr.wikipedia.org/wiki/District_d%27Afrin</a></li>
+            <li>​Bulbul, Syria - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Bulbul,_Syria" target="_blank">https://en.wikipedia.org/wiki/Bulbul,_Syria</a></li>
+            <li>​Jindires - Wikipedia, accessed May 6, 2025, <a href="https://en.wikipedia.org/wiki/Jindires" target="_blank">https://en.wikipedia.org/wiki/Jindires</a></li>
+            <li>​Rajo, Syria - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Rajo,_Syria" target="_blank">https://en.wikipedia.org/wiki/Rajo,_Syria</a></li>
+            <li>​ناحية راجو-لقمان عفرين, accessed May 6, 2025, <a href="http://www.lokmanafrin.com/rajo.htm" target="_blank">http://www.lokmanafrin.com/rajo.htm</a></li>
+            <li>​Shaykh al-Hadid - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Shaykh_al-Hadid" target="_blank">https://en.wikipedia.org/wiki/Shaykh_al-Hadid</a></li>
+            <li>​Afrin: Shaykh Al Hadid: Intimidation and Economic Tightening - Syrians for Truthand Justice, accessed May 6, 2025,<a href="https://stj-sy.org/en/afrin-shaykh-al-hadid-intimidation-and-economic-tightening/" target="_blank">https://stj-sy.org/en/afrin-shaykh-al-hadid-intimidation-and-economic-tightening/</a></li>
+            <li>​ناحية شيخ الحديد-لقمان عفرين, accessed May 6, 2025,<a href="http://www.lokmanafrin.com/chiya.htm" target="_blank">http://www.lokmanafrin.com/chiya.htm</a></li>
+            <li>​Maabatli - Wikipedia, accessed May 6, 2025, <a href="https://en.wikipedia.org/wiki/Maabatli" target="_blank">https://en.wikipedia.org/wiki/Maabatli</a></li>
+            <li>​Syrian Arab Republic: Alevis and Yazidis in Afrin threatened with extinction - GfbV,accessed May 6, 2025,<a href="https://www.gfbv.de/fileadmin/redaktion/UN-statements/2020_2/Syrian_Arab_Republic_Alevis_and_Yazidis_in_Afrin_threatened_with_extinction.pdf" target="_blank">https://www.gfbv.de/fileadmin/redaktion/UN-statements/2020_2/Syrian_Arab_Republic_Alevis_and_Yazidis_in_Afrin_threatened_with_extinction.pdf</a></li>
+            <li>​Religion in Syria - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Religion_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Religion_in_Syria</a></li>
+            <li>​When life halted, humanity frozen to death at Kurdish Jindires, accessed May 6,2025, <a href="https://npasyria.com/en/92929/" target="_blank">https://npasyria.com/en/92929/</a></li>
+            <li>​Special Report: Current Status of the Tell Ain Dara Temple - Biblical ArchaeologySociety, accessed May 6, 2025,<a href="https://www.biblicalarchaeology.org/daily/news/special-report-current-status-tell-ain-dara-temple/" target="_blank">https://www.biblicalarchaeology.org/daily/news/special-report-current-status-tell-ain-dara-temple/</a></li>
+            <li>​The Lion Statue of Ain Dara: Revealing the Fate of an Icon of Syrian ArchaeologyLooted During the Conflict | International Journal of Cultural Property -Cambridge University Press, accessed May 6, 2025,<a href="https://www.cambridge.org/core/journals/international-journal-of-cultural-property/article/lion-statue-of-ain-dara-revealing-the-fate-of-an-icon-of-syrian-archaeology-looted-during-the-conflict/E5C39A892C631F939AF0684EC91CCCED" target="_blank">https://www.cambridge.org/core/journals/international-journal-of-cultural-property/article/lion-statue-of-ain-dara-revealing-the-fate-of-an-icon-of-syrian-archaeology-looted-during-the-conflict/E5C39A892C631F939AF0684EC91CCCED</a></li>
+            <li>​Villages antiques du Nord de la Syrie - Wikipédia, accessed May 6, 2025,<a href="https://fr.wikipedia.org/wiki/Villages_antiques_du_Nord_de_la_Syrie" target="_blank">https://fr.wikipedia.org/wiki/Villages_antiques_du_Nord_de_la_Syrie</a></li>
+            <li>​Villages antiques de Syrie du Nord | Archéologie | culture.fr, accessed May 6,2025, <a href="https://archeologie.culture.gouv.fr/fr/villages-antiques-syrie-du-nord" target="_blank">https://archeologie.culture.gouv.fr/fr/villages-antiques-syrie-du-nord</a></li>
+            <li>​Basufan - Wikipedia, accessed May 6, 2025, <a href="https://en.wikipedia.org/wiki/Basufan" target="_blank">https://en.wikipedia.org/wiki/Basufan</a></li>
+            <li>​Revolution in Rojava: Democratic Autonomy and Women&#x27;s Liberation in SyrianKurdistan, accessed May 6, 2025,<a href="https://dl1.cuni.cz/pluginfile.php/1173463/mod_resource/content/1/Abdullah%2C%20Asya_Ayboga%2C%20Ercan_Biehl%2C%20Janet_Flach%2C%20Anja_Graeber%2C%20David_Knapp%2C%20Michael%20-%20Revolution%20in%20Rojava.pdf" target="_blank">https://dl1.cuni.cz/pluginfile.php/1173463/mod_resource/content/1/Abdullah%2C%20Asya_Ayboga%2C%20Ercan_Biehl%2C%20Janet_Flach%2C%20Anja_Graeber%2C%20David_Knapp%2C%20Michael%20-%20Revolution%20in%20Rojava.pdf</a></li>
+            <li>​Qibar - Wikipedia, accessed May 6, 2025, <a href="https://en.wikipedia.org/wiki/Qibar" target="_blank">https://en.wikipedia.org/wiki/Qibar</a></li>
+            <li>​Syrian Kurdistan - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Syrian_Kurdistan" target="_blank">https://en.wikipedia.org/wiki/Syrian_Kurdistan</a></li>
+            <li>​Yazidism in Syria - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Yazidism_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Yazidism_in_Syria</a></li>
+            <li>​Yazidi | History, Culture, &amp; Religion - Britannica, accessed May 6, 2025,<a href="https://www.britannica.com/topic/Yazidi" target="_blank">https://www.britannica.com/topic/Yazidi</a></li>
+            <li>​Yazidis - Wikipedia, accessed May 6, 2025, <a href="https://en.wikipedia.org/wiki/Yazidis" target="_blank">https://en.wikipedia.org/wiki/Yazidis</a></li>
+            <li>​Suriye&#x27;de Türkmen Köyleri ve Ankara Antlaşması Hükümleri - Milli DüşünceMerkezi, accessed May 6, 2025,<a href="https://millidusunce.com/misak/suriyede-turkmen-koyleri-ve-ankara-antlasmasi-hukumleri/" target="_blank">https://millidusunce.com/misak/suriyede-turkmen-koyleri-ve-ankara-antlasmasi-hukumleri/</a></li>
+            <li>​أماكن:تصنيف:أماكنأهفي منطقة فرين- , accessed Ma<a href="https://ar.wikipedia.org/wiki/%D8%AA%D8%B5%D9%86%D9%8A%D9%81:%D8%A3%D9%85%D8%A7%D9%83%D9%86_%D9%85%D8%A3%D9%87%D9%88%D9%84%D8%A9_%D9%81%D9%8A_%D9%85%D9%86%D8%B7%D9%82%D8%A9_%D8%B9%D9%81%D8%B1%D9%8A%D9%86" target="_blank">https://ar.wikipedia.org/wiki/%D8%AA%D8%B5%D9%86%D9%8A%D9%81:%D8%A3%D9%85%D8%A7%D9%83%D9%86_%D9%85%D8%A3%D9%87%D9%88%D9%84%D8%A9_%D9%81%D9%8A_%D9%85%D9%86%D8%B7%D9%82%D8%A9_%D8%B9%D9%81%D8%B1%D9%8A%D9%86</a></li>
+            <li>​أسماء القرى في عفرين المحتلة...٧٦٣ قرية, accessed May 6, 2025,<a href="https://kurd-online.com/%D8%A3%D8%B3%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%82%D8%B1%D9%89-%D9%81%D9%8A-%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D8%AD%D8%AA%D9%84%D8%A9-%D9%A3%D9%A6%D9%A7-%D9%82%D8%B1%D9%8A%D8%A9/" target="_blank">https://kurd-online.com/%D8%A3%D8%B3%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%82%D8%B1%D9%89-%D9%81%D9%8A-%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D8%AD%D8%AA%D9%84%D8%A9-%D9%A3%D9%A6%D9%A7-%D9%82%D8%B1%D9%8A%D8%A9/</a></li>
+            <li>​Turkish-backed opposition shelling keeps &#x27;a people of olives&#x27; from their land inAfrin - Syria Direct, accessed May 6, 2025,<a href="https://syriadirect.org/turkish-backed-opposition-shelling-keeps-a-people-of-olives-from-their-land-in-afrin/" target="_blank">https://syriadirect.org/turkish-backed-opposition-shelling-keeps-a-people-of-olives-from-their-land-in-afrin/</a></li>
+            <li>​Food Insecurity in War-Torn Syria: From Decades of Self-Sufficiency to FoodDependence, accessed May 6, 2025,<a href="https://carnegieendowment.org/2015/06/04/food-insecurity-in-war-torn-syria-from-decades-of-self-sufficiency-to-food-dependence-pub-60320" target="_blank">https://carnegieendowment.org/2015/06/04/food-insecurity-in-war-torn-syria-from-decades-of-self-sufficiency-to-food-dependence-pub-60320</a></li>
+            <li>​ناحية راجو-ويكيبيديا, accessed May 6, 2025,<a href="https://ar.wikipedia.org/wiki/%D9%86%D8%A7%D8%AD%D9%8A%D8%A9_%D8%B1%D8%A7%D8%AC%D9%88" target="_blank">https://ar.wikipedia.org/wiki/%D9%86%D8%A7%D8%AD%D9%8A%D8%A9_%D8%B1%D8%A7%D8%AC%D9%88</a></li>
+            <li>​ناحية شيخ الحديد-ويكيبيديا, accessed May 6, 2025,<a href="https://ar.wikipedia.org/wiki/%D9%86%D8%A7%D8%AD%D9%8A%D8%A9_%D8%B4%D9%8A%D8%AE_%D8%A7%D9%84%D8%AD%D8%AF%D9%8A%D8%AF" target="_blank">https://ar.wikipedia.org/wiki/%D9%86%D8%A7%D8%AD%D9%8A%D8%A9_%D8%B4%D9%8A%D8%AE_%D8%A7%D9%84%D8%AD%D8%AF%D9%8A%D8%AF</a></li>
+            <li>​Afrin Syria - The Kurdish Project, accessed May 6, 2025,<a href="https://thekurdishproject.org/kurdistan-map/syrian-kurdistan/afrin-syria/" target="_blank">https://thekurdishproject.org/kurdistan-map/syrian-kurdistan/afrin-syria/</a></li>
+            <li>​Afrin offensive map : r/MapPorn - Reddit, accessed May 6, 2025,<a href="https://www.reddit.com/r/MapPorn/comments/1bpppuo/afrin_offensive_map/" target="_blank">https://www.reddit.com/r/MapPorn/comments/1bpppuo/afrin_offensive_map/</a></li>
+            <li>​الطبعة األولى - UNCCD, accessed May 6, 2025,<a href="https://www.unccd.int/sites/default/files/documents/2017-09/GLO_Full_Report_low_res_Arabic.pdf" target="_blank">https://www.unccd.int/sites/default/files/documents/2017-09/GLO_Full_Report_low_res_Arabic.pdf</a></li>
+            <li>​Nearly half of Rojava&#x27;s population fled due to Syria war: Study - Rudaw, accessedMay 6, 2025, <a href="https://manage.rudaw.net/english/middleeast/syria/120620241" target="_blank">https://manage.rudaw.net/english/middleeast/syria/120620241</a></li>
+            <li>​Afrin&#x27;de köy ve meydan isimleri değiştiriliyor - Kurdistan24, accessed May 6, 2025,<a href="https://www.kurdistan24.net/tr/story/493520" target="_blank">https://www.kurdistan24.net/tr/story/493520</a></li>
+            <li>​Afrin&#x27;de 7 köy daha teröristlerden arındırıldı - TRT Haber, accessed May 6, 2025,<a href="https://www.trthaber.com/haber/gundem/afrinde-7-koy-daha-teroristlerden-arindirildi-355059.html" target="_blank">https://www.trthaber.com/haber/gundem/afrinde-7-koy-daha-teroristlerden-arindirildi-355059.html</a></li>
+            <li>​Silahlı gruplar Afrin&#x27;de 13 kişiyi kaçırdı - Kurdistan24, accessed May 6, 2025,<a href="https://www.kurdistan24.net/tr/story/475556" target="_blank">https://www.kurdistan24.net/tr/story/475556</a></li>
+            <li>​Classement par Population - Villages (Syrie) - Classements de lieux - DataCommons, accessed May 6, 2025,<a href="https://datacommons.org/ranking/Count_Person/Village/country/SYR?h=wikidataId%2FQ305241&amp;hl=fr" target="_blank">https://datacommons.org/ranking/Count_Person/Village/country/SYR?h=wikidataId%2FQ305241&amp;hl=fr</a></li>
+            <li>​L&#x27;invasion turque d&#x27;Afrine | Pages 77670-77679 - Institut kurde de Paris, accessedMay 6, 2025, <a href="https://www.institutkurde.org/pages/pages-afrine-77669/" target="_blank">https://www.institutkurde.org/pages/pages-afrine-77669/</a></li>
+            <li>​نص قانون التقسيمات اإلدارية في اإلدارة الذاتية الديمقراطية إلقليم شمال وشرق سوريا - ANF, accessed May6, 2025,<a href="https://anfarabic.com/%D8%A2%D8%B1%D8%A7%D8%A1-%D9%88%D8%AD%D9%88%D8%A7%D8%B1%D8%A7%D8%AA/ns-qanwn-altqsymat-aladaryt-fy-aladart-aldhatyt-aldymqratyt-laqlym-shmal-wshrq-swrya-104897" target="_blank">https://anfarabic.com/%D8%A2%D8%B1%D8%A7%D8%A1-%D9%88%D8%AD%D9%88%D8%A7%D8%B1%D8%A7%D8%AA/ns-qanwn-altqsymat-aladaryt-fy-aladart-aldhatyt-aldymqratyt-laqlym-shmal-wshrq-swrya-104897</a></li>
+            <li>​مجلس الشعوب الديمقراطي يعدل قانون التقسيمات اإلدارية في إقليم شمال وشرق سوريا - ANF, accessed May6, 2025,<a href="https://anfarabic.com/%D9%83%D8%B1%D8%AF%D8%B3%D8%AA%D8%A7%D9%86/-105322" target="_blank">https://anfarabic.com/%D9%83%D8%B1%D8%AF%D8%B3%D8%AA%D8%A7%D9%86/-105322</a></li>
+            <li>​Afrin - Vikipedi, accessed May 6, 2025, <a href="https://tr.wikipedia.org/wiki/Afrin" target="_blank">https://tr.wikipedia.org/wiki/Afrin</a></li>
+            <li>​Afrin Bölgesi - Vikipedi, accessed May 6, 2025,<a href="https://tr.wikipedia.org/wiki/Afrin_B%C3%B6lgesi" target="_blank">https://tr.wikipedia.org/wiki/Afrin_B%C3%B6lgesi</a></li>
+            <li>​Afrin: Zeytin Dalı Öncesi ve Sonrası - Bianet, accessed May 6, 2025,<a href="https://bianet.org/haber/afrin-zeytin-dali-oncesi-ve-sonrasi-195298" target="_blank">https://bianet.org/haber/afrin-zeytin-dali-oncesi-ve-sonrasi-195298</a></li>
+            <li>​Şehir Savaşının Karakteri ve Afrin - İNSAMER, accessed May 6, 2025,<a href="https://www.insamer.com/tr/sehir-savasinin-karakteri-ve-afrin_1183.html" target="_blank">https://www.insamer.com/tr/sehir-savasinin-karakteri-ve-afrin_1183.html</a></li>
+            <li>​TÜRKİYE&#x27;NİN SURİYE POLİTİKASI BAĞLAMINDA TSK&#x27;NIN SURİYE&#x27;DEKİ SINIR ÖTESİHAREKÂTLARININ NEDENLERİ VE SONUÇ - DergiPark, accessed May 6, 2025,<a href="https://dergipark.org.tr/tr/download/article-file/1973279" target="_blank">https://dergipark.org.tr/tr/download/article-file/1973279</a></li>
+            <li>​Syria - Afrin District - Facts and Figures (Updated: 18 March 2018) [EN/AR] - SyrianArab Republic | ReliefWeb, accessed May 6, 2025,<a href="https://reliefweb.int/report/syrian-arab-republic/syria-afrin-district-facts-and-figures-updated-18-march-2018-enar" target="_blank">https://reliefweb.int/report/syrian-arab-republic/syria-afrin-district-facts-and-figures-updated-18-march-2018-enar</a></li>
+            <li>​The Turkish Intervention in Northern Syria: One Strategy, Discrepant Policies,accessed May 6, 2025,<a href="https://cadmus.eui.eu/bitstream/handle/1814/69657/MED_RR_2021_01s.pdf" target="_blank">https://cadmus.eui.eu/bitstream/handle/1814/69657/MED_RR_2021_01s.pdf</a></li>
+            <li>​Syrian economy before 2011 - North press agency, accessed May 6, 2025,<a href="https://npasyria.com/en/60231/" target="_blank">https://npasyria.com/en/60231/</a></li>
+            <li>​Local Economies in Syria - Divisions and Dependencies - Bibliothek derFriedrich-Ebert-Stiftung, accessed May 6, 2025,<a href="https://library.fes.de/pdf-files/bueros/beirut/15702.pdf" target="_blank">https://library.fes.de/pdf-files/bueros/beirut/15702.pdf</a></li>
+            <li>​From Graffiti to Liberation: The Story of Syria&#x27;s Revolution - YouTube, accessedMay 6, 2025, <a href="https://www.youtube.com/watch?v=WhCynTTPZKo" target="_blank">https://www.youtube.com/watch?v=WhCynTTPZKo</a></li>
+            <li>​Syrian Civil War - Britannica, accessed May 6, 2025,<a href="https://www.britannica.com/event/Syrian-Civil-War" target="_blank">https://www.britannica.com/event/Syrian-Civil-War</a></li>
+            <li>​History of Syria - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/History_of_Syria" target="_blank">https://en.wikipedia.org/wiki/History_of_Syria</a></li>
+            <li>​Modern history of Syria - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Modern_history_of_Syria" target="_blank">https://en.wikipedia.org/wiki/Modern_history_of_Syria</a></li>
+            <li>​A Brief History of Syria and the Syrian Muslim Brotherhood (Chapter 1), accessedMay 6, 2025,<a href="https://www.cambridge.org/core/books/muslim-brotherhood-in-syria/brief-history-of-syria-and-the-syrian-muslim-brotherhood/6CD455531E0388695618C2AE4B78FACB" target="_blank">https://www.cambridge.org/core/books/muslim-brotherhood-in-syria/brief-history-of-syria-and-the-syrian-muslim-brotherhood/6CD455531E0388695618C2AE4B78FACB</a></li>
+            <li>​Shaykh Hadid - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Shaykh_Hadid" target="_blank">https://en.wikipedia.org/wiki/Shaykh_Hadid</a></li>
+            <li>​Silent Genocide: Who are the Alevis and Alawites? What is happening in Syria? -The Blogs, accessed May 6, 2025,<a href="https://blogs.timesofisrael.com/silent-genocide-who-are-the-alevis-and-alawites-what-is-happening-in-syria/" target="_blank">https://blogs.timesofisrael.com/silent-genocide-who-are-the-alevis-and-alawites-what-is-happening-in-syria/</a></li>
+            <li>​List of Yazidi settlements - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/List_of_Yazidi_settlements" target="_blank">https://en.wikipedia.org/wiki/List_of_Yazidi_settlements</a></li>
+            <li>​Decades of Denial of Existence and Discrimination - The Yazidi minority in Syria issubject to multi-fold oppression. Yazidis are denied basic religious rights andconstitutional recognition - Syrians for Truth and Justice, accessed May 6, 2025,<a href="https://stj-sy.org/wp-content/uploads/2022/09/Final_English_Yazidis-in-Syria_Decades-of-Denial-of-Existence-and-Discrimination.pdf" target="_blank">https://stj-sy.org/wp-content/uploads/2022/09/Final_English_Yazidis-in-Syria_Decades-of-Denial-of-Existence-and-Discrimination.pdf</a></li>
+            <li>​The Status of the Yazidis: Eight Years on from the ISIS Genocide | - WashingtonKurdish Institute, accessed May 6, 2025,<a href="https://dckurd.org/2022/05/27/the-status-of-the-yazidis-eight-years/" target="_blank">https://dckurd.org/2022/05/27/the-status-of-the-yazidis-eight-years/</a></li>
+            <li>​labour and family in the Syrian refugee camps of the Biqa&#x27;a valley, Lebanon - UCLDiscovery, accessed May 6, 2025,<a href="https://discovery.ucl.ac.uk/id/eprint/10163359/4/Cassani_10163359_%20Thesis_id_removed.pdf" target="_blank">https://discovery.ucl.ac.uk/id/eprint/10163359/4/Cassani_10163359_%20Thesis_id_removed.pdf</a></li>
+            <li>​Syrian refugees and the politics of waiting in a Turkish border town - BerghahnJournals, accessed May 6, 2025,<a href="https://www.berghahnjournals.com/view/journals/saas/29/3/soca13081.pdf" target="_blank">https://www.berghahnjournals.com/view/journals/saas/29/3/soca13081.pdf</a></li>
+            <li>​Ethnic or political cleansing? Identity, cultural heritage and demographicengineering in the Turkish-occupied territories of northern Syria - ResearchGate,accessed May 6, 2025,<a href="https://www.researchgate.net/publication/384725220_Ethnic_or_political_cleansing_Identity_cultural_heritage_and_demographic_engineering_in_the_Turkish-occupied_territories_of_northern_Syria" target="_blank">https://www.researchgate.net/publication/384725220_Ethnic_or_political_cleansing_Identity_cultural_heritage_and_demographic_engineering_in_the_Turkish-occupied_territories_of_northern_Syria</a></li>
+            <li>​2018 Country Reports on Human Rights Practices: Turkey - State Department,accessed May 6, 2025,<a href="https://www.state.gov/reports/2018-country-reports-on-human-rights-practices/turkey/" target="_blank">https://www.state.gov/reports/2018-country-reports-on-human-rights-practices/turkey/</a></li>
+            <li>​Kurds - Wikipedia, accessed May 6, 2025, <a href="https://en.wikipedia.org/wiki/Kurds" target="_blank">https://en.wikipedia.org/wiki/Kurds</a></li>
+            <li>​Human Rights Reports: Custom Report Excerpts - United States Department ofState, accessed May 6, 2025, <a href="https://www.state.gov/report/custom/ca03641408/" target="_blank">https://www.state.gov/report/custom/ca03641408/</a></li>
+            <li>​Obituary content by year - Wits University, accessed May 6, 2025,<a href="https://www.wits.ac.za/alumni/obituaries/obituary-content-by-year/" target="_blank">https://www.wits.ac.za/alumni/obituaries/obituary-content-by-year/</a></li>
+            <li>​Axed &amp; Burned | PAX, accessed May 6, 2025,<a href="https://paxforpeace.nl/wp-content/uploads/sites/2/import/2023-03/PAX_axed_and_burned.pdf" target="_blank">https://paxforpeace.nl/wp-content/uploads/sites/2/import/2023-03/PAX_axed_and_burned.pdf</a></li>
+            <li>​Syria 2021 - International Legal Assistance Consortium, accessed May 6, 2025,<a href="http://ilacnet.org/wp-content/uploads/2021/06/ILAC-Rule-of-Law-Assessment-Syria-2021-.pdf" target="_blank">http://ilacnet.org/wp-content/uploads/2021/06/ILAC-Rule-of-Law-Assessment-Syria-2021-.pdf</a></li>
+            <li>​Syria&#x27;s Civil War: The Descent Into Horror - Council on Foreign Relations, accessedMay 6, 2025, <a href="https://www.cfr.org/article/syrias-civil-war" target="_blank">https://www.cfr.org/article/syrias-civil-war</a></li>
+            <li>​THE KURDS | Ecoi.net, accessed May 6, 2025,<a href="https://www.ecoi.net/en/file/local/1262738/90_1447760239_bfa-regiones-et-res-publicae-the-kurds-2015.pdf" target="_blank">https://www.ecoi.net/en/file/local/1262738/90_1447760239_bfa-regiones-et-res-publicae-the-kurds-2015.pdf</a></li>
+            <li>​Syria&#x27;s Kurds: History, politics and society - National Academic Digital Library ofEthiopia, accessed May 6, 2025,<a href="http://ndl.ethernet.edu.et/bitstream/123456789/23576/1/287.pdf.pdf" target="_blank">http://ndl.ethernet.edu.et/bitstream/123456789/23576/1/287.pdf.pdf</a></li>
+            <li>​Border Markets: An Introduction - OpenEdition Journals, accessed May 6, 2025,<a href="https://journals.openedition.org/articulo/2532" target="_blank">https://journals.openedition.org/articulo/2532</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 06, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

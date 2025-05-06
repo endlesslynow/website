@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yezidis of Afrin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Yezidis of Afrin</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Afrin Yezidis Before 2010(1).mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Afrin Yezidis Before 2010(1).mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This collection of text provides an in-depth overview of the Yezidi community in Syria, focusing on their history, identity, and experiences. It examines the complex factors shaping their identity, including their religious beliefs centered around a passive God and manifestations like Tawsi Melek, and their connection to Kurdish language and culture, while also noting a desire for a distinct Yezidi ethnicity. The sources also discuss the challenges faced by Syrian Yezidis, such as persecution, displacement due to conflict and government policies like the &quot;Arab Belt,&quot; and the struggle to maintain cultural and religious practices. Finally, the text highlights the emergence of self-administration in certain areas of Syria and how this has offered new opportunities for Yezidi self-organization, religious education, and political participation through local councils.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Afrin Yezidis Before 2010_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Yazidi | History, Culture, &amp; Religion - Britannica, accessed May 6, 2025,<a href="https://www.britannica.com/topic/Yazidi" target="_blank">https://www.britannica.com/topic/Yazidi</a></li>
+            <li>​ Decades of Denial of Existence and Discrimination - The Yazidi minority in Syria issubject to multi-fold oppression. Yazidis are denied basic religious rights andconstitutional recognition - Syrians for Truth and Justice, accessed May 6, 2025,<a href="https://stj-sy.org/wp-content/uploads/2022/09/Final_English_Yazidis-in-Syria_Decades-of-Denial-of-Existence-and-Discrimination.pdf" target="_blank">https://stj-sy.org/wp-content/uploads/2022/09/Final_English_Yazidis-in-Syria_Decades-of-Denial-of-Existence-and-Discrimination.pdf</a></li>
+            <li>​ Persecution of Yazidis - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Persecution_of_Yazidis" target="_blank">https://en.wikipedia.org/wiki/Persecution_of_Yazidis</a></li>
+            <li>​اليزيدية-ويكيبيديا, accessed May 6, 2025,<a href="https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%8A%D8%B2%D9%8A%D8%AF%D9%8A%D8%A9" target="_blank">https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%8A%D8%B2%D9%8A%D8%AF%D9%8A%D8%A9</a></li>
+            <li>​ Yazidis - Wikipedia, accessed May 6, 2025, <a href="https://en.wikipedia.org/wiki/Yazidis" target="_blank">https://en.wikipedia.org/wiki/Yazidis</a></li>
+            <li>​ Chapter 32 Yezidism in: Handbook of Islamic Sects and Movements, accessedMay 6, 2025, <a href="https://brill.com/display/book/9789004435544/BP000046.xml" target="_blank">https://brill.com/display/book/9789004435544/BP000046.xml</a></li>
+            <li>​ The Yezidis: The History of a Community, Culture and Religion (Library of ModernReligion) - Amazon.com, accessed May 6, 2025,<a href="https://www.amazon.com/Yezidis-History-Community-Culture-Religion/dp/1784532169" target="_blank">https://www.amazon.com/Yezidis-History-Community-Culture-Religion/dp/1784532169</a></li>
+            <li>​ Sectarian-Based Violence: The Case of the Yezidis in Iraq and Syria | Middle EastInstitute, accessed May 6, 2025,<a href="https://www.mei.edu/publications/sectarian-based-violence-case-yezidis-iraq-and-syria" target="_blank">https://www.mei.edu/publications/sectarian-based-violence-case-yezidis-iraq-and-syria</a></li>
+            <li>​ Refugees Once Again? Rethinking the History of Ezidi Forced Migration andDisplacement - transcript.open, accessed May 6, 2025,<a href="https://www.transcript-open.de/pdf_chapter/bis%205399/9783839450130/9783839450130-005.pdf" target="_blank">https://www.transcript-open.de/pdf_chapter/bis%205399/9783839450130/9783839450130-005.pdf</a></li>
+            <li>​Cultivating Chaos: Afrin after Operation Olive Branch - The Ceasefire Centre forCivilian Rights, accessed May 6, 2025,<a href="https://www.ceasefire.org/wp-content/uploads/2020/07/CFR_Syria_EN_July20.pdf" target="_blank">https://www.ceasefire.org/wp-content/uploads/2020/07/CFR_Syria_EN_July20.pdf</a></li>
+            <li>​Turkey&#x27;s Demographic Engineering in Syria&#x27;s Afrin Region: A Closer Look,accessed May 6, 2025,<a href="https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin-region-a-closer-look" target="_blank">https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin-region-a-closer-look</a></li>
+            <li>​Afrin District - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_District" target="_blank">https://en.wikipedia.org/wiki/Afrin_District</a></li>
+            <li>​4.10.2. Kurds | European Union Agency for Asylum - EUAA, accessed May 6, 2025,<a href="https://euaa.europa.eu/country-guidance-syria-2024/4102-kurds" target="_blank">https://euaa.europa.eu/country-guidance-syria-2024/4102-kurds</a></li>
+            <li>​Afrin: Incidents Of Desecration And Destruction Of Cultural Sites ..., accessedMay 6, 2025,<a href="https://www.bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites/" target="_blank">https://www.bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites/</a></li>
+            <li>​Crimes in Syria: The neglected atrocities of Afrin Q&amp;A on the legal background -ECCHR, accessed May 6, 2025,<a href="https://www.ecchr.eu/fileadmin/user_upload/QA_Crimes_in_Afrin_EN.pdf" target="_blank">https://www.ecchr.eu/fileadmin/user_upload/QA_Crimes_in_Afrin_EN.pdf</a></li>
+            <li>​(PDF) &quot;Nothing is ours anymore&quot; - HLP rights violations in Afrin, Syria, accessedMay 6, 2025,<a href="https://www.researchgate.net/publication/336059330_Nothing_is_ours_anymore_-_HLP_rights_violations_in_Afrin_Syria" target="_blank">https://www.researchgate.net/publication/336059330_Nothing_is_ours_anymore_-_HLP_rights_violations_in_Afrin_Syria</a></li>
+            <li>​Kurdish Sufi Spaces of Rural-Urban. Connection in Northern Syria - OpenEditionJournals, accessed May 6, 2025,<a href="https://journals.openedition.org/etudesrurales/9290?lang=en" target="_blank">https://journals.openedition.org/etudesrurales/9290?lang=en</a></li>
+            <li>​Human rights issues concerning Kurds in Syria - Ecoi.net, accessed May 6, 2025,<a href="https://www.ecoi.net/en/file/local/1111863/90_1273216397_2010-05-dis-accord-human-rights-issues-concerning-kurds-in-syria.pdf" target="_blank">https://www.ecoi.net/en/file/local/1111863/90_1273216397_2010-05-dis-accord-human-rights-issues-concerning-kurds-in-syria.pdf</a></li>
+            <li>​www.wilsoncenter.org, accessed May 6, 2025,<a href="https://www.wilsoncenter.org/sites/default/files/media/uploads/documents/Syrian%20Yezidis%20under%20Four%20Regimes.pdf" target="_blank">https://www.wilsoncenter.org/sites/default/files/media/uploads/documents/Syrian%20Yezidis%20under%20Four%20Regimes.pdf</a></li>
+            <li>​Yazidis in Afrin on the brink of disappearance ​| Rudaw.net, accessed May 6, 2025,<a href="https://www.rudaw.net/english/opinion/26072022" target="_blank">https://www.rudaw.net/english/opinion/26072022</a></li>
+            <li>​Yazidis&#x27; long struggle against landlessness and discrimination in rural Hasakah,accessed May 6, 2025,<a href="https://syriadirect.org/yazidis-long-struggle-against-landlessness-and-discrimination-in-rural-hasakah/" target="_blank">https://syriadirect.org/yazidis-long-struggle-against-landlessness-and-discrimination-in-rural-hasakah/</a></li>
+            <li>​Syrian Arab Republic: Alevis and Yazidis in Afrin threatened with extinction - GfbV,accessed May 6, 2025,<a href="https://www.gfbv.de/fileadmin/redaktion/UN-statements/2020_2/Syrian_Arab_Republic_Alevis_and_Yazidis_in_Afrin_threatened_with_extinction.pdf" target="_blank">https://www.gfbv.de/fileadmin/redaktion/UN-statements/2020_2/Syrian_Arab_Republic_Alevis_and_Yazidis_in_Afrin_threatened_with_extinction.pdf</a></li>
+            <li>​Afrin: A landscape of unprecedented Arabization - Genocide Watch, accessedMay 6, 2025,<a href="https://www.genocidewatch.com/single-post/2018/05/14/afrin-a-landscape-of-unprecedented-arabization" target="_blank">https://www.genocidewatch.com/single-post/2018/05/14/afrin-a-landscape-of-unprecedented-arabization</a></li>
+            <li>​List of Yazidi settlements - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/List_of_Yazidi_settlements" target="_blank">https://en.wikipedia.org/wiki/List_of_Yazidi_settlements</a></li>
+            <li>​Yazidism in Syria - Wikipedia, accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Yazidism_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Yazidism_in_Syria</a></li>
+            <li>​(PDF) Yezidis in ancient India, or Indians in ancient Mesopotamia?: Re-imaginingAncient Yezidi Origins - ResearchGate, accessed May 6, 2025,<a href="https://www.researchgate.net/publication/335217402_Yezidis_in_ancient_India_or_Indians_in_ancient_Mesopotamia_Re-imagining_Ancient_Yezidi_Origins" target="_blank">https://www.researchgate.net/publication/335217402_Yezidis_in_ancient_India_or_Indians_in_ancient_Mesopotamia_Re-imagining_Ancient_Yezidi_Origins</a></li>
+            <li>​Amazon.com: Yezidis in Syria: Identity Building among a Double Minority,accessed May 6, 2025,<a href="https://www.amazon.com/Yezidis-Syria-Identity-Building-Minority/dp/0739177745" target="_blank">https://www.amazon.com/Yezidis-Syria-Identity-Building-Minority/dp/0739177745</a></li>
+            <li>​Free Yezidi Foundation (FYF), accessed May 6, 2025, <a href="https://freeyezidi.org/" target="_blank">https://freeyezidi.org/</a></li>
+            <li>​Nobody&#x27;s Listening: Supporting the Yezidi Community 10 Years After theGenocide, accessed May 6, 2025,<a href="https://www.ushmm.org/genocide-prevention/blog/nobodys-listening-supporting-the-yezidi-community-10-years-after-the" target="_blank">https://www.ushmm.org/genocide-prevention/blog/nobodys-listening-supporting-the-yezidi-community-10-years-after-the</a></li>
+            <li>​Failure to Protect: Syria and the UN Security Council, accessed May 6, 2025,<a href="https://www.globalr2p.org/wp-content/uploads/2020/07/syriapaper_final.pdf" target="_blank">https://www.globalr2p.org/wp-content/uploads/2020/07/syriapaper_final.pdf</a></li>
+            <li>​Nearly half of Rojava&#x27;s population fled due to Syria war: Study - Rudaw, accessedMay 6, 2025, <a href="https://www.rudaw.net/english/middleeast/syria/120620241" target="_blank">https://www.rudaw.net/english/middleeast/syria/120620241</a></li>
+            <li>​Partiya Yekîtiya Demokrat - Wîkîpediya, accessed May 6, 2025,<a href="https://ku.wikipedia.org/wiki/Partiya_Yek%C3%AEtiya_Demokrat" target="_blank">https://ku.wikipedia.org/wiki/Partiya_Yek%C3%AEtiya_Demokrat</a></li>
+            <li>​Amed - Wîkîpediya, accessed May 6, 2025, <a href="https://ku.wikipedia.org/wiki/Amed" target="_blank">https://ku.wikipedia.org/wiki/Amed</a></li>
+            <li>​K. T. Zanîngeha Mardîn Artukluyê Enstîtuya Zimanên Zindî yên Li, accessed May 6,2025,<a href="https://gcris.artuklu.edu.tr/bitstreams/a3b837da-fe64-4973-8d3d-801a601216f4/download" target="_blank">https://gcris.artuklu.edu.tr/bitstreams/a3b837da-fe64-4973-8d3d-801a601216f4/download</a></li>
+            <li>​K.T. Zanîngeha Mardîn Artukluyê Enstîtuya Zimanên Zindî yên li, accessed May 6,2025,<a href="https://gcris.artuklu.edu.tr/bitstreams/bfabc1f1-ed8f-4cfc-85dd-6697d68372cf/download" target="_blank">https://gcris.artuklu.edu.tr/bitstreams/bfabc1f1-ed8f-4cfc-85dd-6697d68372cf/download</a></li>
+            <li>​Full text of &quot;مراجع ومصادر عن تاريخ العلويين في العراق وبالد الشام&quot; - Internet Archive, accessedMay 6, 2025,<a href="https://archive.org/stream/Alawite_books_sy_iq/%D9%81%D9%84%D8%A7%D8%AD%D9%88%20%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20-%20%D8%AD%D9%86%D8%A7%20%D8%A8%D8%B7%D8%A7%D8%B7%D9%88_djvu.txt" target="_blank">https://archive.org/stream/Alawite_books_sy_iq/%D9%81%D9%84%D8%A7%D8%AD%D9%88%20%D8%B3%D9%88%D8%B1%D9%8A%D8%A7%20-%20%D8%AD%D9%86%D8%A7%20%D8%A8%D8%B7%D8%A7%D8%B7%D9%88_djvu.txt</a></li>
+            <li>​اضطهاد تنظيم الدولة اإلسالمية)داعش(يين- , accessed May<a href="https://ar.wikipedia.org/wiki/%D8%A7%D8%B6%D8%B7%D9%87%D8%A7%D8%AF_%D8%AA%D9%86%D8%B8%D9%8A%D9%85_%D8%A7%D9%84%D8%AF%D9%88%D9%84%D8%A9_%D8%A7%D9%84%D8%A5%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9_(%D8%AF%D8%A7%D8%B9%D8%B4)_%D9%84%D9%84%D9%8A%D8%B2%D9%8A%D8%AF%D9%8A%D9%8A%D9%86" target="_blank">https://ar.wikipedia.org/wiki/%D8%A7%D8%B6%D8%B7%D9%87%D8%A7%D8%AF_%D8%AA%D9%86%D8%B8%D9%8A%D9%85_%D8%A7%D9%84%D8%AF%D9%88%D9%84%D8%A9_%D8%A7%D9%84%D8%A5%D8%B3%D9%84%D8%A7%D9%85%D9%8A%D8%A9_(%D8%AF%D8%A7%D8%B9%D8%B4)_%D9%84%D9%84%D9%8A%D8%B2%D9%8A%D8%AF%D9%8A%D9%8A%D9%86</a></li>
+            <li>​بيشة في عهد الدولة السعودية األولى غرب وجنوب غربي البالد(1212-1232هـ/1798-1817)م)(دراسة) Bisha in the first Saudi state era and its influence on the west and southwest of the state (1212-1232 AH / 1798-1817 AD) - JournalA trciel  -مجلةجماع ةامية-جماع ةلاميةمدينة, accessed Ma<a href="https://journals.iu.edu.sa/ESS/Main/Article/3416" target="_blank">https://journals.iu.edu.sa/ESS/Main/Article/3416</a></li>
+            <li>​البحث السريع•مركز ودود للفهارس وكتب التحقيق, accessed May 6, 2025,<a href="https://wadod.net/find/fast" target="_blank">https://wadod.net/find/fast</a></li>
+            <li>​Minorities in Syria&#x27;s Afrin Fear Persecution as Turkey Escalates Offensive - VOA,accessed May 6, 2025,<a href="https://www.voanews.com/a/afrin-syria-minorities-fear-persecution/4234119.html" target="_blank">https://www.voanews.com/a/afrin-syria-minorities-fear-persecution/4234119.html</a></li>
+            <li>​The Yazidi Refugee Crisis, accessed May 6, 2025,<a href="https://www.ourcommons.ca/Content/Committee/421/CIMM/Brief/BR9342569/br-external/Yazda-e.pdf" target="_blank">https://www.ourcommons.ca/Content/Committee/421/CIMM/Brief/BR9342569/br-external/Yazda-e.pdf</a></li>
+            <li>​Persecution and Discrimination against Kurdish Citizens in Syria - UPR info,accessed May 6, 2025,<a href="https://upr-info.org/sites/default/files/documents/2013-10/kis-kurdsinsyria-eng.pdf" target="_blank">https://upr-info.org/sites/default/files/documents/2013-10/kis-kurdsinsyria-eng.pdf</a></li>
+            <li>​Borders Without a Nation: Syria, Outside Powers, and Open-Ended Instability,accessed May 6, 2025,<a href="https://carnegieendowment.org/research/2024/09/borders-without-a-nation-syria-outside-powers-and-open-ended-instability" target="_blank">https://carnegieendowment.org/research/2024/09/borders-without-a-nation-syria-outside-powers-and-open-ended-instability</a></li>
+            <li>​Syria - bti-project.org, accessed May 6, 2025,<a href="https://bti-project.org/fileadmin/api/content/en/downloads/reports/country_report_2018_SYR.pdf" target="_blank">https://bti-project.org/fileadmin/api/content/en/downloads/reports/country_report_2018_SYR.pdf</a></li>
+            <li>​Democratic Autonomous Administration of North and East Syria - Wikipedia,accessed May 6, 2025,<a href="https://en.wikipedia.org/wiki/Democratic_Autonomous_Administration_of_North_and_East_Syria" target="_blank">https://en.wikipedia.org/wiki/Democratic_Autonomous_Administration_of_North_and_East_Syria</a></li>
+            <li>​Syria and its Regional Neighbors: A Case of Cultural Property Protection PolicyFailure?, accessed May 6, 2025,<a href="https://www.researchgate.net/publication/282832754_Syria_and_its_Regional_Neighbors_A_Case_of_Cultural_Property_Protection_Policy_Failure" target="_blank">https://www.researchgate.net/publication/282832754_Syria_and_its_Regional_Neighbors_A_Case_of_Cultural_Property_Protection_Policy_Failure</a></li>
+            <li>​Ethnic or political cleansing? Identity, cultural heritage and demographicengineering in the Turkish-occupied territories of, accessed May 6, 2025,<a href="https://ojs.unito.it/index.php/deeuropa/article/download/10572/9061/35628" target="_blank">https://ojs.unito.it/index.php/deeuropa/article/download/10572/9061/35628</a></li>
+            <li>​Reclaiming Home, The struggle for socially just housing, land and property rightsin Syria, Iraq and Libya - Bibliothek der Friedrich-Ebert-Stiftung, accessed May 6,2025, <a href="https://library.fes.de/pdf-files/bueros/tunesien/15664.pdf" target="_blank">https://library.fes.de/pdf-files/bueros/tunesien/15664.pdf</a></li>
+            <li>​Kurds - Wikipedia, accessed May 6, 2025, <a href="https://en.wikipedia.org/wiki/Kurds" target="_blank">https://en.wikipedia.org/wiki/Kurds</a></li>
+            <li>​Syria Report, Part One: Ethnic Cleansing and the Persecution of Yezidis andChristians in Afrin, Northwestern Syria | Free Burma Rangers, accessed May 6,2025,<a href="https://www.freeburmarangers.org/2018/06/13/syria-report-part-one-ethnic-cleansing-persecution-yezidis-christians-afrin-northwestern-syria/" target="_blank">https://www.freeburmarangers.org/2018/06/13/syria-report-part-one-ethnic-cleansing-persecution-yezidis-christians-afrin-northwestern-syria/</a></li>
+            <li>​Syria - Country Focus - EUAA, accessed May 6, 2025,<a href="https://euaa.europa.eu/sites/default/files/publications/2023-10/2023_10_COI_Report_Syria_Country_Focus_EN.pdf" target="_blank">https://euaa.europa.eu/sites/default/files/publications/2023-10/2023_10_COI_Report_Syria_Country_Focus_EN.pdf</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 06, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
