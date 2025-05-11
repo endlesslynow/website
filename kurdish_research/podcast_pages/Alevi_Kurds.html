@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alevi Kurds</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Alevi Kurds</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Alevi Kurds Before 2010.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Alevi Kurds Before 2010.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>These sources provide an overview of the Alevi Kurds before 2010, an ethno-religious minority in Turkey characterized by their distinct Alevi faith and Kurdish ethnicity, who faced systemic discrimination and a &quot;double exclusion&quot; from the Turkish state. They trace the community&#x27;s historical roots under the Ottoman Empire and the Turkish Republic, highlighting the Dersim Massacres as a foundational trauma and explaining their syncretic faith, Raa Haq, the ocak spiritual leadership system, and core rituals like the cem. The sources emphasize the vital role of oral tradition and music in preserving cultural identity amidst state suppression, as well as the community&#x27;s growing politicization and mobilization through cemevis and organizations, including the significant impact of the diaspora in advocating for recognition and rights. The text concludes by summarizing the ongoing struggle for identity and justice faced by Alevi Kurds on the cusp of 2010, marked by both deep historical wounds and newfound assertiveness.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Alevi Kurds Before 2010_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ d-nb.info, accessed May 11, 2025, <a href="https://d-nb.info/1245373986/34" target="_blank">https://d-nb.info/1245373986/34</a></li>
+            <li>​ Full article: The roads to empowerment: an intersectional analysis of ..., accessedMay 11, 2025,<a href="https://www.tandfonline.com/doi/full/10.1080/23311983.2025.2483582" target="_blank">https://www.tandfonline.com/doi/full/10.1080/23311983.2025.2483582</a></li>
+            <li>​ The Kurdish Alevis (Chapter 22) - The Cambridge History of the Kurds, accessedMay 11, 2025,<a href="https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/kurdish-alevis/797E48815927A3729A0265BFCF2A033C" target="_blank">https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/kurdish-alevis/797E48815927A3729A0265BFCF2A033C</a></li>
+            <li>​ Kurdish Studies - Open Research Online - The Open University, accessed May 11,2025, <a href="https://oro.open.ac.uk/76119/1/KurdishStudies.pdf" target="_blank">https://oro.open.ac.uk/76119/1/KurdishStudies.pdf</a></li>
+            <li>​ www.multiple-secularities.de, accessed May 11, 2025,<a href="https://www.multiple-secularities.de/media/wps_18_gueltekin_alevikurds.pdf" target="_blank">https://www.multiple-secularities.de/media/wps_18_gueltekin_alevikurds.pdf</a></li>
+            <li>​ Alevis | Oxford Research Encyclopedia of Religion, accessed May 11, 2025,<a href="https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?p=emailAmi/niBttqdvk&amp;d=/10.1093/acrefore/978" target="_blank">https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?p=emailAmi/niBttqdvk&amp;d=/10.1093/acrefore/978</a></li>
+            <li>001.0001/acrefore-9780199340378-e-101</li>
+            <li>​ (PDF) The Alevi identity and Alevis&#x27; Human rights conditions in the ..., accessedMay 11, 2025,<a href="https://www.researchgate.net/publication/375921947_The_Alevi_identity_and_Alevis&#x27;_Human_rights_conditions_in_the_Republic_of_Turkey" target="_blank">https://www.researchgate.net/publication/375921947_The_Alevi_identity_and_Alevis&#x27;_Human_rights_conditions_in_the_Republic_of_Turkey</a></li>
+            <li>​ Music and migration among the Alevi immigrants from Turkey in Germany -ResearchGate, accessed May 11, 2025,<a href="https://www.researchgate.net/publication/330291361_Music_and_migration_among_the_Alevi_immigrants_from_Turkey_in_Germany" target="_blank">https://www.researchgate.net/publication/330291361_Music_and_migration_among_the_Alevi_immigrants_from_Turkey_in_Germany</a></li>
+            <li>​ The Music and Multiple Identities of Kurdish Alevis from Turkey in ..., accessedMay 11, 2025,<a href="https://academicworks.cuny.edu/cgi/viewcontent.cgi?params=/context/gc_etds/article/1004/&amp;path_info=Aksoy_minarees_0046D_12914.pdf" target="_blank">https://academicworks.cuny.edu/cgi/viewcontent.cgi?params=/context/gc_etds/article/1004/&amp;path_info=Aksoy_minarees_0046D_12914.pdf</a></li>
+            <li>​Alevi history - Wikipedia, accessed May 11, 2025,<a href="https://en.wikipedia.org/wiki/Alevi_history" target="_blank">https://en.wikipedia.org/wiki/Alevi_history</a></li>
+            <li>​(PDF) The Alevi Movement in Europe: A Collective Struggle for Visibility, Rights,and Recognition - ResearchGate, accessed May 11, 2025,<a href="https://www.researchgate.net/publication/382085035_The_Alevi_Movement_in_Europe_A_Collective_Struggle_for_Visibility_Rights_and_Recognition" target="_blank">https://www.researchgate.net/publication/382085035_The_Alevi_Movement_in_Europe_A_Collective_Struggle_for_Visibility_Rights_and_Recognition</a></li>
+            <li>​Full article: Euro-Who? Competition over the definition of Dersim&#x27;s collectiveidentity in Turkey&#x27;s diasporas - Taylor &amp; Francis Online, accessed May 11, 2025,<a href="https://www.tandfonline.com/doi/full/10.1080/14683849.2019.1708738" target="_blank">https://www.tandfonline.com/doi/full/10.1080/14683849.2019.1708738</a></li>
+            <li>​Alevi Cultural Heritage in Turkey and Germany: Negotiating “Useable Pasts” inTransnational Space - OpenEdition Journals, accessed May 11, 2025,<a href="https://journals.openedition.org/ejts/5206" target="_blank">https://journals.openedition.org/ejts/5206</a></li>
+            <li>​A never‐ending story of an identity crisis or a creative reformulation of anAlevi‐mindset? What the case of Alevi youth in - Refubium - Freie UniversitätBerlin, accessed May 11, 2025,<a href="https://refubium.fu-berlin.de/bitstream/handle/fub188/44295/Studies%20Ethnicity%20National%20-%202024%20-%20G%C3%BCltekin%20-%20A%20never%E2%80%90ending%20story%20of%20an%20identity%20crisis%20or%20a%20creative%20reformulation%20of.pdf?sequence=2&amp;isAllowed=y" target="_blank">https://refubium.fu-berlin.de/bitstream/handle/fub188/44295/Studies%20Ethnicity%20National%20-%202024%20-%20G%C3%BCltekin%20-%20A%20never%E2%80%90ending%20story%20of%20an%20identity%20crisis%20or%20a%20creative%20reformulation%20of.pdf?sequence=2&amp;isAllowed=y</a></li>
+            <li>​A Survey of the Roots and History of Kurdish Alevism: What Are the ..., accessedMay 11, 2025, <a href="https://brill.com/display/book/9789004700369/BP000008.xml" target="_blank">https://brill.com/display/book/9789004700369/BP000008.xml</a></li>
+            <li>​A Survey of the Roots and History of Kurdish Alevism: What Are the Divergencesand Convergences between Kurdish Alevi Groups in Turkey? in - Brill, accessedMay 11, 2025, <a href="https://brill.com/abstract/book/9789004700369/BP000008.xml" target="_blank">https://brill.com/abstract/book/9789004700369/BP000008.xml</a></li>
+            <li>​Kurds, Turks and the Alevi revival in Turkey - DSpace, accessed May 11, 2025,<a href="https://dspace.library.uu.nl/bitstream/handle/1874/20749/bruinessen_96_kurdsturksandthealevi.pdf?sequence=1&amp;isAllowed=y" target="_blank">https://dspace.library.uu.nl/bitstream/handle/1874/20749/bruinessen_96_kurdsturksandthealevi.pdf?sequence=1&amp;isAllowed=y</a></li>
+            <li>​Re-assessing the Genocide of Kurdish Alevis in Dersim, 1937-38 - DigitalCommons @ USF - University of South Florida, accessed May 11, 2025,<a href="https://digitalcommons.usf.edu/cgi/viewcontent.cgi?article=1728&amp;context=gsp" target="_blank">https://digitalcommons.usf.edu/cgi/viewcontent.cgi?article=1728&amp;context=gsp</a></li>
+            <li>​Alevism - Britanya Alevi Federasyonu, accessed May 11, 2025,<a href="http://www.alevinet.org/RP.aspx?pid=AkedemikCalismalar_en-GB&amp;aid=97847432_92832609" target="_blank">http://www.alevinet.org/RP.aspx?pid=AkedemikCalismalar_en-GB&amp;aid=97847432_92832609</a></li>
+            <li>​Kurdish Alevism - Wikipedia, accessed May 11, 2025,<a href="https://en.wikipedia.org/wiki/Kurdish_Alevism" target="_blank">https://en.wikipedia.org/wiki/Kurdish_Alevism</a></li>
+            <li>​Alevi Kurds: History, Politics, Migration and Identity: an Interview with Martin vanBruinessen in - Brill, accessed May 11, 2025,<a href="https://brill.com/abstract/book/9789004700369/BP000007.xml" target="_blank">https://brill.com/abstract/book/9789004700369/BP000007.xml</a></li>
+            <li>​Zaza language - Wikipedia, accessed May 11, 2025,<a href="https://en.wikipedia.org/wiki/Zaza_language" target="_blank">https://en.wikipedia.org/wiki/Zaza_language</a></li>
+            <li>​&#x27;Aslini inkar eden haramzadedir!&#x27;: the debate on the ethnic identity of the KurdishAlevis, accessed May 11, 2025,<a href="https://www.researchgate.net/publication/46635711_&#x27;Aslini_inkar_eden_haramzadedir&#x27;_the_debate_on_the_ethnic_identity_of_the_Kurdish_Alevis" target="_blank">https://www.researchgate.net/publication/46635711_&#x27;Aslini_inkar_eden_haramzadedir&#x27;_the_debate_on_the_ethnic_identity_of_the_Kurdish_Alevis</a></li>
+            <li>​Alevism - Wikipedia, accessed May 11, 2025, <a href="https://en.wikipedia.org/wiki/Alevism" target="_blank">https://en.wikipedia.org/wiki/Alevism</a></li>
+            <li>​Aesthetic and Performative Dimensions of Alevi Cultural Heritage, accessed May11, 2025,<a href="https://opendata.uni-halle.de/bitstream/1981185920/118590/1/ITS_43_Greve_Oezdemir_Motika_Aesthetic_and_performative_dimensions_of_Alevi_cultural_heritage.pdf" target="_blank">https://opendata.uni-halle.de/bitstream/1981185920/118590/1/ITS_43_Greve_Oezdemir_Motika_Aesthetic_and_performative_dimensions_of_Alevi_cultural_heritage.pdf</a></li>
+            <li>​Reflection of Alevi Rituals in Anatolia on language, literature and music. TurkishStudies - isamveri.org, accessed May 11, 2025,<a href="https://isamveri.org/pdfdrg/D04438/2023_3/2023_3_BAZANCIR.pdf" target="_blank">https://isamveri.org/pdfdrg/D04438/2023_3/2023_3_BAZANCIR.pdf</a></li>
+            <li>​Urban Alevism and the Young Alevis&#x27; Search for Identity | PODEM, accessed May11, 2025,<a href="http://podem.org.tr/en/researches/urban-alevism-and-the-young-alevis-search-for-identity/" target="_blank">http://podem.org.tr/en/researches/urban-alevism-and-the-young-alevis-search-for-identity/</a></li>
+            <li>​Oral Tradition Special Issue 35.2 Front Matter Proofs 8.2.2022, accessed May 11,2025,<a href="https://journal.oraltradition.org/wp-content/uploads/OT-35.2-Special-Issue-Complete-1.pdf" target="_blank">https://journal.oraltradition.org/wp-content/uploads/OT-35.2-Special-Issue-Complete-1.pdf</a></li>
+            <li>​Kurdish music - Wikipedia, accessed May 11, 2025,<a href="https://en.wikipedia.org/wiki/Kurdish_music" target="_blank">https://en.wikipedia.org/wiki/Kurdish_music</a></li>
+            <li>​Kurdish Folklore, accessed May 11, 2025,<a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore/</a></li>
+            <li>​Kurdish literature - Wikipedia, accessed May 11, 2025,<a href="https://en.wikipedia.org/wiki/Kurdish_literature" target="_blank">https://en.wikipedia.org/wiki/Kurdish_literature</a></li>
+            <li>​An Introduction to Kurdish Folk Music - FolkWorks, accessed May 11, 2025,<a href="https://folkworks.org/article/an-introduction-to-kurdish-folk-music/" target="_blank">https://folkworks.org/article/an-introduction-to-kurdish-folk-music/</a></li>
+            <li>​DERSIM FROM DIFFERENT ANGLES, accessed May 11, 2025,<a href="https://www.austriaca.at/0xc1aa5576_0x003d2107.pdf" target="_blank">https://www.austriaca.at/0xc1aa5576_0x003d2107.pdf</a></li>
+            <li>​PARADOKS EKOnOmi, SOSyOlOJi vE POlitiKA DERgiSi - DergiPark, accessed May11, 2025, <a href="https://dergipark.org.tr/en/download/article-file/804799" target="_blank">https://dergipark.org.tr/en/download/article-file/804799</a></li>
+            <li>​About us - Alevitische Gemeinde Deutschland K.d.ö.R., accessed May 11, 2025,<a href="https://alevi.com/en/about-us/" target="_blank">https://alevi.com/en/about-us/</a></li>
+            <li>​Where faith meets modernity: cemevi and local Alevi politics, accessed May 11,2025,<a href="https://openaccess.iku.edu.tr/bitstreams/66b49265-f7a7-4cc9-8f04-b3225db2d2ca/download" target="_blank">https://openaccess.iku.edu.tr/bitstreams/66b49265-f7a7-4cc9-8f04-b3225db2d2ca/download</a></li>
+            <li>​The Alevi Opening: Concept, Strategy and Process, Articles Necdet Subaşı |Insight Turkey, accessed May 11, 2025,<a href="https://www.insightturkey.com/articles/the-alevi-opening-concept-strategy-and-process" target="_blank">https://www.insightturkey.com/articles/the-alevi-opening-concept-strategy-and-process</a></li>
+            <li>​Alevis and Alevism in the Changing Context of Turkish Politics: The Justice andDevelopment Party&#x27;s Alevi Opening, accessed May 11, 2025,<a href="https://academicrepository.khas.edu.tr/bitstreams/1c41aae2-5a9c-409b-8f9d-4d71085eab5c/download" target="_blank">https://academicrepository.khas.edu.tr/bitstreams/1c41aae2-5a9c-409b-8f9d-4d71085eab5c/download</a></li>
+            <li>​A Survey of the Roots and History of Kurdish Alevism: What are the Divergencesand Convergences between Kurdish Alevi Groups in Turkey? - CEEOL - ArticleDetail, accessed May 11, 2025,<a href="https://www.ceeol.com/search/article-detail?id=870858" target="_blank">https://www.ceeol.com/search/article-detail?id=870858</a></li>
+            <li>​Editorial: Alevi Kurds: History, Politics and Identity - Kurdish Studies, accessed May11, 2025, <a href="https://kurdishstudies.net/menu-script/index.php/KS/article/view/74" target="_blank">https://kurdishstudies.net/menu-script/index.php/KS/article/view/74</a></li>
+            <li>​How Angel Gabriel Became Our Brother of the Hereafter (On the Question ofIsmaili Influence on Alevism) - Taylor &amp; Francis Online, accessed May 11, 2025,<a href="https://www.tandfonline.com/doi/abs/10.1080/13530194.2015.1060154" target="_blank">https://www.tandfonline.com/doi/abs/10.1080/13530194.2015.1060154</a></li>
+            <li>​Alevis | Oxford Research Encyclopedia of Religion, accessed May 11, 2025,<a href="https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?p=emailAs7vyfojwSTtk&amp;d=/10.1093/acrefore/978" target="_blank">https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780199340378-e-101?p=emailAs7vyfojwSTtk&amp;d=/10.1093/acrefore/978</a></li>
+            <li>001.0001/acrefore-9780199340378-e-101</li>
+            <li>​Tarihsel Arka Planı ile Alevilik Kürtler ve Türkler - Transnational Press London,accessed May 11, 2025,<a href="https://www.tplondon.com/product/alevilik-kurtler-turkler/" target="_blank">https://www.tplondon.com/product/alevilik-kurtler-turkler/</a></li>
+            <li>​Tradition and modernity: Alevis&#x27; ambiguous terms and Turkey&#x27;s ambivalentsubjects - ResearchGate, accessed May 11, 2025,<a href="https://www.researchgate.net/publication/233218082_Tradition_and_modernity_Alevis&#x27;_ambiguous_terms_and_Turkey&#x27;s_ambivalent_subjects" target="_blank">https://www.researchgate.net/publication/233218082_Tradition_and_modernity_Alevis&#x27;_ambiguous_terms_and_Turkey&#x27;s_ambivalent_subjects</a></li>
+            <li>​&#x27;Les Fils du Soleil&#x27;: An Inquiry into the Common History of the Armenians andAlevis of Dersim, accessed May 11, 2025,<a href="https://armenianweekly.com/2014/09/15/les-fils-du-soleil/" target="_blank">https://armenianweekly.com/2014/09/15/les-fils-du-soleil/</a></li>
+            <li>​Kurds in Turkey - Wikipedia, accessed May 11, 2025,<a href="https://en.wikipedia.org/wiki/Kurds_in_Turkey" target="_blank">https://en.wikipedia.org/wiki/Kurds_in_Turkey</a></li>
+            <li>​Modern Approaches to the Kızılbaş-Alevi and Bektashi Studies, accessed May 11,2025,<a href="https://www.iskolakultura.hu/index.php/mediterran_tanulmanyok/article/download/44103/42950/51787" target="_blank">https://www.iskolakultura.hu/index.php/mediterran_tanulmanyok/article/download/44103/42950/51787</a></li>
+            <li>​Pir Sultan Abdal Kültür Derneği USA – Gelin Canlar Bir Olalım, accessed May 11,2025, <a href="https://www.pirsultanusa.org/tr/anasayfa/" target="_blank">https://www.pirsultanusa.org/tr/anasayfa/</a></li>
+            <li>​1 CHANGING POLITICAL CONSCIOUSNESS IN DERSIM/TUNCELI FROM THEEARLY REPUBLICAN ERA TO THE 1970S A THESIS SUBMITTED TO THE GRADUA,accessed May 11, 2025,<a href="https://open.metu.edu.tr/bitstream/handle/11511/109453/10636598.pdf" target="_blank">https://open.metu.edu.tr/bitstream/handle/11511/109453/10636598.pdf</a></li>
+            <li>​Alevi Kurds: History, Politics, Migration and Identity: an Interview with Martin vanBruinessen, accessed May 11, 2025,<a href="https://www.researchgate.net/publication/387799587_Alevi_Kurds_History_Politics_Migration_and_Identity_an_Interview_with_Martin_van_Bruinessen" target="_blank">https://www.researchgate.net/publication/387799587_Alevi_Kurds_History_Politics_Migration_and_Identity_an_Interview_with_Martin_van_Bruinessen</a></li>
+            <li>​Alevis in Germany On the Way to Public Recognition? - Scholarly PublicationsLeiden University, accessed May 11, 2025,<a href="https://scholarlypublications.universiteitleiden.nl/access/item:2722066/view" target="_blank">https://scholarlypublications.universiteitleiden.nl/access/item:2722066/view</a></li>
+            <li>​Kurd | Syria, Language, Map, Women, Turkey, Iraq, Iran, History, &amp; Culture |Britannica, accessed May 11, 2025, <a href="https://www.britannica.com/topic/Kurd" target="_blank">https://www.britannica.com/topic/Kurd</a></li>
+            <li>​The Past as Resource in the Turkic Speaking World, accessed May 11, 2025,<a href="https://opendata.uni-halle.de/bitstream/1981185920/110484/354/864733267.pdf" target="_blank">https://opendata.uni-halle.de/bitstream/1981185920/110484/354/864733267.pdf</a></li>
+            <li>​Full article: The roads to empowerment: an intersectional analysis of Kurdish Aleviwomen&#x27;s struggle for equality and freedom - Taylor and Francis, accessed May 11,2025,<a href="https://www.tandfonline.com/doi/full/10.1080/23311983.2025.2483582?fbclid=IwY2xjawJZIsNleHRuA2FlbQIxMAABHXwiAaePRXMgkoSYDfn_pGQKomzYrBAk3VCRIHQIqkouKj8YdEqwgFFQbg_aem_x2Qd9RErKsyZ_1etgl-xZQ" target="_blank">https://www.tandfonline.com/doi/full/10.1080/23311983.2025.2483582?fbclid=IwY2xjawJZIsNleHRuA2FlbQIxMAABHXwiAaePRXMgkoSYDfn_pGQKomzYrBAk3VCRIHQIqkouKj8YdEqwgFFQbg_aem_x2Qd9RErKsyZ_1etgl-xZQ</a></li>
+            <li>​Martin van Bruinessen, &#x27;Tribes and ethnic identity&#x27; published in: Faleh A. Jabar andRenad Mansour (eds), The Kurds in a Ch - DSpace, accessed May 11, 2025,<a href="https://dspace.library.uu.nl/bitstream/handle/1874/420966/Bruinessen_Tribes_and_ethnic_identity_pre_publication.pdf?sequence=1" target="_blank">https://dspace.library.uu.nl/bitstream/handle/1874/420966/Bruinessen_Tribes_and_ethnic_identity_pre_publication.pdf?sequence=1</a></li>
+            <li>​Alawis - Islamic Studies - Oxford Bibliographies, accessed May 11, 2025,<a href="https://www.oxfordbibliographies.com/view/document/obo-9780195390155/obo-9780195390155-0175.xml?rskey=" target="_blank">https://www.oxfordbibliographies.com/view/document/obo-9780195390155/obo-9780195390155-0175.xml?rskey=</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 11, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
