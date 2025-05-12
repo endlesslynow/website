@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurdish Oral Traditions</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kurdish Oral Traditions</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Kurdish Oral Traditions Pre-2010.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Kurdish Oral Traditions Pre-2010.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This report explores Kurdish oral traditions before 2010, highlighting their crucial role in preserving cultural identity, history, and language despite political suppression and displacement. It focuses on the dengbêj, revered singer-storytellers who transmitted epics, history, and social norms through performance. The text examines diverse genres including epic romances, shorter songs, folktales, proverbs, and riddles, detailing their content and performance contexts. It also discusses the challenges faced by these traditions, such as linguicide and modernization, alongside revitalization efforts like the establishment of Dengbêj Houses.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Kurdish Oral Traditions Pre-2010_-1.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​11 -<a href="https://www.researchgate.net/publication/390085908_Heritageization_of_Kurdish_Oral_Traditions" target="_blank">https://www.researchgate.net/publication/390085908_Heritageization_of_Kurdish_Oral_Traditions</a> - Heritageization of Kurdish Oral Traditions</li>
+            <li>​3 -<a href="https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revitalization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehmet_dicle.pdf" target="_blank">https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revitalization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehmet_dicle.pdf</a> - From Dengbêjto Modern Writer: Heritagization of the Kurdish Oral Tradition...</li>
+            <li>​6 - <a href="https://en.wikipedia.org/wiki/Dengb%C3%AAj" target="_blank">https://en.wikipedia.org/wiki/Dengb%C3%AAj</a> - Dengbêj - Wikipedia</li>
+            <li>​7 - <a href="https://sumac.space/artworks/genesis-of-a-soundteller/" target="_blank">https://sumac.space/artworks/genesis-of-a-soundteller/</a> - Genesis of a Soundteller</li>
+            <li>​24 - <a href="https://pure.uva.nl/ws/files/144591580/10.4324_9781315627427-7_chapterpdf.pdf" target="_blank">https://pure.uva.nl/ws/files/144591580/10.4324_9781315627427-7_chapterpdf.pdf</a> -Chapter on Mem û Zîn (likely from a book on Kurdish literature/culture)</li>
+            <li>​25 -<a href="https://www.independent.co.uk/arts-entertainment/books/kurdish-literature-mem-zin-b" target="_blank">https://www.independent.co.uk/arts-entertainment/books/kurdish-literature-mem-zin-b</a></li>
+            <li>html - Why Mem and Zin is the Kurdish Romeo and Juliet</li>
+            <li>​29 - <a href="https://iffr.com/en/iffr/1993/films/s%C3%AEabend-u-xec%C3%AA" target="_blank">https://iffr.com/en/iffr/1993/films/s%C3%AEabend-u-xec%C3%AA</a> - Film description:Sîabend u Xecê (IFFR 1993)</li>
+            <li>​55 - <a href="https://www.tandfonline.com/doi/abs/10.1080/00210862.2015.1058636" target="_blank">https://www.tandfonline.com/doi/abs/10.1080/00210862.2015.1058636</a> - Abstract onSoviet studies of Kurdish language</li>
+            <li>​40 -<a href="https://books.google.com/books/about/Female_Figures_in_Kurdish_Mythology_and.html?id=vfuezwEACAAJ" target="_blank">https://books.google.com/books/about/Female_Figures_in_Kurdish_Mythology_and.html?id=vfuezwEACAAJ</a> - Female Figures in Kurdish Mythology and Folklore - Ozlem Bor -Google Books</li>
+            <li>​35 - <a href="https://www.amazon.com/Fire-My-Heart-Kurdish-Folklore/dp/159158437X" target="_blank">https://www.amazon.com/Fire-My-Heart-Kurdish-Folklore/dp/159158437X</a> - A Fire inMy Heart: Kurdish Tales (World Folklore Series) - Diane Edgecomb</li>
+            <li>​32 -<a href="https://masoudmohammadirad.com/2022%20narrative%20style%20and%20discourse%20in%20Kurdish%20and%20Neo-Aramaic.pdf" target="_blank">https://masoudmohammadirad.com/2022%20narrative%20style%20and%20discourse%20in%20Kurdish%20and%20Neo-Aramaic.pdf</a> - Narrative Style and Discourse inKurdish and Neo-Aramaic Oral Literature</li>
+            <li>​4 - <a href="https://referenceworks.brill.com/display/entries/EIRO/COM-365272.xml" target="_blank">https://referenceworks.brill.com/display/entries/EIRO/COM-365272.xml</a> - Oralliterature in Iranian languages (Brill Encyclopedia of Islam)</li>
+            <li>​56 - <a href="https://en.wikipedia.org/wiki/List_of_Kurds" target="_blank">https://en.wikipedia.org/wiki/List_of_Kurds</a> - List of Kurds - Wikipedia (Used forhistorical context, not specific dengbêjs)</li>
+            <li>​9 - <a href="https://globalrights.info/2010/07/dengbej-the-tradition-of-storytelling-in-kurdistan/" target="_blank">https://globalrights.info/2010/07/dengbej-the-tradition-of-storytelling-in-kurdistan/</a> -Dengbêj: the tradition of storytelling in Kurdistan (Article on Seyîtxanê Boyaxcî)</li>
+            <li>​17 - <a href="https://core.ac.uk/download/481566368.pdf" target="_blank">https://core.ac.uk/download/481566368.pdf</a> - PDF Document mentioning variousDengbêjî forms (Title unclear from snippet)</li>
+            <li>​18 -<a href="https://www.researchgate.net/profile/Dicle_Oezcan_Elci/publication/338689752_dengbejliksempozyumu/links/5e2569b392851cafc3935a29/dengbejliksempozyumu.pdf" target="_blank">https://www.researchgate.net/profile/Dicle_Oezcan_Elci/publication/338689752_dengbejliksempozyumu/links/5e2569b392851cafc3935a29/dengbejliksempozyumu.pdf</a> -Dengbêjlik Symposium Proceedings (Detailed genre classification)</li>
+            <li>​19 -<a href="https://opendata.uni-halle.de/bitstream/1981185920/118586/1/ITS_40_Oezdemir_Hamelink_Greve_Diversity_and_contact_among_singer-poet%20traditions_in%20Eastern_Anatolia.pdf" target="_blank">https://opendata.uni-halle.de/bitstream/1981185920/118586/1/ITS_40_Oezdemir_Hamelink_Greve_Diversity_and_contact_among_singer-poet%20traditions_in%20Eastern_Anatolia.pdf</a> - Diversity and contact among singer-poet traditions in Eastern Anatolia</li>
+            <li>​41 -<a href="https://utoronto.scholaris.ca/server/api/core/bitstreams/27d729e5-8d79-4857-a813-eb042058332b/content" target="_blank">https://utoronto.scholaris.ca/server/api/core/bitstreams/27d729e5-8d79-4857-a813-eb042058332b/content</a> - PhD Dissertation Abstract on Kurdish Movement in Turkey(Themes: Resistance, Land)</li>
+            <li>​57 -<a href="https://eprints.glos.ac.uk/13961/1/13961%20Subasi%2C%20Rojda%20%282023%29%20PhD_The%20Effects%20of%20a%20Regional%20Currency%20on%20Cultural%20Identity%20in%20Kurdistan%20%281990-2003%29.pdf" target="_blank">https://eprints.glos.ac.uk/13961/1/13961%20Subasi%2C%20Rojda%20%282023%29%20PhD_The%20Effects%20of%20a%20Regional%20Currency%20on%20Cultural%20Identity%20in%20Kurdistan%20%281990-2003%29.pdf</a> - PhD Dissertation Abstract onCurrency and Kurdish Identity (Contextual)</li>
+            <li>​15 - <a href="https://en.wikipedia.org/wiki/%C5%9Eakiro" target="_blank">https://en.wikipedia.org/wiki/%C5%9Eakiro</a> - Şakiro - Wikipedia</li>
+            <li>​22 - <a href="https://en.m.wikipedia.org/wiki/Karapete_Xaco" target="_blank">https://en.m.wikipedia.org/wiki/Karapete_Xaco</a> - Karapetê Xaço - Wikipedia</li>
+            <li>​28 - <a href="https://bnk.institutkurde.org/images/pdf/7KS6DGQY39.pdf" target="_blank">https://bnk.institutkurde.org/images/pdf/7KS6DGQY39.pdf</a> - PDF Documentdiscussing Mem û Zîn and oral versions (Title unclear)</li>
+            <li>​58 - <a href="https://files.eric.ed.gov/fulltext/ED089545.pdf" target="_blank">https://files.eric.ed.gov/fulltext/ED089545.pdf</a> - Document on Kurdish Dialects(Contextual)</li>
+            <li>​29 - <a href="https://iffr.com/en/iffr/1993/films/s%C3%AEabend-u-xec%C3%AA" target="_blank">https://iffr.com/en/iffr/1993/films/s%C3%AEabend-u-xec%C3%AA</a> - Film description:Sîabend u Xecê (IFFR 1993)</li>
+            <li>​30 - <a href="https://www.filmfestival.be/en/film/siyabend-u-xece-siyabend-and-xece" target="_blank">https://www.filmfestival.be/en/film/siyabend-u-xece-siyabend-and-xece</a> - Filmdescription: Sîyabend û Xecê (Film Fest Gent)</li>
+            <li>​12 - <a href="https://journals.openedition.org/etudesrurales/9253?lang=en" target="_blank">https://journals.openedition.org/etudesrurales/9253?lang=en</a> - Yezidis in theCollective Towns of Sheikhan and Sinjar (Forced Displacement/Urbanization)</li>
+            <li>​44 -<a href="https://documents1.worldbank.org/curated/en/940291575434038147/txt/Forced-Displacement-Literature-Review.txt" target="_blank">https://documents1.worldbank.org/curated/en/940291575434038147/txt/Forced-Displacement-Literature-Review.txt</a> - Forced Displacement Literature Review (World Bank -Contextual)</li>
+            <li>​○​ <a href="https://en.wikipedia.org/wiki/Kurds" target="_blank">https://en.wikipedia.org/wiki/Kurds</a> - Kurds - Wikipedia (General background)</li>
+            <li>​39 - <a href="https://ehrafworldcultures.yale.edu/cultures/MA11/summary" target="_blank">https://ehrafworldcultures.yale.edu/cultures/MA11/summary</a> - Kurds CultureSummary (eHRAF Yale - Traditional life, gender roles)</li>
+            <li>​26 - <a href="https://ckcc.cz/en/culture-and-habits/" target="_blank">https://ckcc.cz/en/culture-and-habits/</a> - Kurdish Culture and Customs(Czech-Kurdish Chamber of Commerce)</li>
+            <li>​45 - <a href="https://www.wilsonquarterly.com/quarterly/_/the-faces-of-kurdistan" target="_blank">https://www.wilsonquarterly.com/quarterly/_/the-faces-of-kurdistan</a> - The Faces ofKurdistan (Wilson Quarterly - Contextual)</li>
+            <li>​34 - <a href="https://www.scribd.com/document/2490840/Kurdish-folktales" target="_blank">https://www.scribd.com/document/2490840/Kurdish-folktales</a> - Kurdish Folktales(Translated by Wheeler Thackston)</li>
+            <li>​27 - <a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore/</a> -Kurdish Folklore (The Kurdish Project)</li>
+            <li>​59 - <a href="https://www.kurdishstudies.pl/files/Fritillaria_Kurdica_2022_21-2.pdf" target="_blank">https://www.kurdishstudies.pl/files/Fritillaria_Kurdica_2022_21-2.pdf</a> - FritillariaKurdica Journal Issue (Focus on folklore collectors)</li>
+            <li>​36 -<a href="https://www.researchgate.net/publication/357335775_Zayenda_Civaki_u_Imaja_Jina_Bas-Nebas_di_Gotinen_Pesiyan_de" target="_blank">https://www.researchgate.net/publication/357335775_Zayenda_Civaki_u_Imaja_Jina_Bas-Nebas_di_Gotinen_Pesiyan_de</a> - Article on Gender in Kurdish Proverbs (GotinênPêşiyan)</li>
+            <li>​13 - <a href="https://brill.com/edcollchap-oa/book/9789004706538/BP000009.pdf" target="_blank">https://brill.com/edcollchap-oa/book/9789004706538/BP000009.pdf</a> - Article onDengbêj art, home, borders (Hamelink and Bariş)</li>
+            <li>​23 - <a href="https://journals.openedition.org/ejts/4055" target="_blank">https://journals.openedition.org/ejts/4055</a> - Article on the Dengbêj &#x27;tradition&#x27; andnegotiation with the state</li>
+            <li>​51 -<a href="https://www.amazon.com/History-Oskar-Mann-Books/s?rh=n%3A9%2Cp_27%3AOskar%2BMann" target="_blank">https://www.amazon.com/History-Oskar-Mann-Books/s?rh=n%3A9%2Cp_27%3AOskar%2BMann</a> - Amazon search results for Oskar Mann books</li>
+            <li>​52 - <a href="http://onlinebooks.library.upenn.edu/webbin/book/lookupid?key=ha008521698" target="_blank">http://onlinebooks.library.upenn.edu/webbin/book/lookupid?key=ha008521698</a> -Online Books Page entry for Mann&#x27;s &quot;Die mundart der Mukri-Kurden&quot;</li>
+            <li>​47 - <a href="https://www.tandfonline.com/doi/pdf/10.1080/0015587X.2023.2205777" target="_blank">https://www.tandfonline.com/doi/pdf/10.1080/0015587X.2023.2205777</a> - Article onKurdish folklore collecting, revitalization, Prym &amp; Socin mentioned</li>
+            <li>​48 -<a href="https://www.amazon.com/Kurdische-Sammlungen-German-Eugen-Prym/dp/1017262608" target="_blank">https://www.amazon.com/Kurdische-Sammlungen-German-Eugen-Prym/dp/1017262608</a> - Amazon listing for Prym &amp; Socin&#x27;s &quot;Kurdische Sammlungen&quot; (Reprint)</li>
+            <li>​29 - <a href="https://iffr.com/en/iffr/1993/films/s%C3%AEabend-u-xec%C3%AA" target="_blank">https://iffr.com/en/iffr/1993/films/s%C3%AEabend-u-xec%C3%AA</a> - Film description:Sîabend u Xecê (IFFR 1993)</li>
+            <li>​30 - <a href="https://www.filmfestival.be/en/film/siyabend-u-xece-siyabend-and-xece" target="_blank">https://www.filmfestival.be/en/film/siyabend-u-xece-siyabend-and-xece</a> - Filmdescription: Sîyabend û Xecê (Film Fest Gent)</li>
+            <li>​12 - <a href="https://journals.openedition.org/etudesrurales/9253?lang=en" target="_blank">https://journals.openedition.org/etudesrurales/9253?lang=en</a> - Yezidis in theCollective Towns of Sheikhan and Sinjar (Impact of Urbanization)</li>
+            <li>​3 -<a href="https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revitalization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehmet_dicle.pdf" target="_blank">https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revitalization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehmet_dicle.pdf</a> - From Dengbêjto Modern Writer (Impact of linguicide, modernization)</li>
+            <li>​46 -<a href="https://performancematters-thejournal.com/index.php/pm/article/download/155/216/929-" target="_blank">https://performancematters-thejournal.com/index.php/pm/article/download/155/216/929-</a> Article on Kurdish Theatre (Mentions decline/challenges to Dengbêj)</li>
+            <li>​16 - <a href="https://www.jadaliyya.com/Details/30076" target="_blank">https://www.jadaliyya.com/Details/30076</a> - From Oriental Nightingales to PeacePigeons (Challenges, state pressure on Dengbêjs)</li>
+            <li>​21 - <a href="https://www.balcanicaucaso.org/eng/Areas/Turkey/The-Kurdish-Storytellers-163457-" target="_blank">https://www.balcanicaucaso.org/eng/Areas/Turkey/The-Kurdish-Storytellers-163457-</a> The Kurdish Storytellers (Mentions wedding context)</li>
+            <li>​20 -<a href="https://kurdishstudies.net/menu-script/index.php/KS/article/download/3610/2462/6874" target="_blank">https://kurdishstudies.net/menu-script/index.php/KS/article/download/3610/2462/6874</a> -The Evolution Of Storytelling In Modern Culture (General oral tradition context)</li>
+            <li>​42 - <a href="https://lithub.com/why-resistance-is-foundational-to-kurdish-literature/" target="_blank">https://lithub.com/why-resistance-is-foundational-to-kurdish-literature/</a> - WhyResistance Is Foundational to Kurdish Literature (Themes: Resistance, Land,Oppression)</li>
+            <li>​43 -<a href="https://research-repository.griffith.edu.au/bitstreams/b276bc4e-ef74-419f-82c9-95a14111cf29/download" target="_blank">https://research-repository.griffith.edu.au/bitstreams/b276bc4e-ef74-419f-82c9-95a14111cf29/download</a> - PhD Thesis Abstract on Anglophone Kurdish Diaspora Writing(Themes: Resistance, Testimony)</li>
+            <li>​10 - <a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/</a> - Kurdish Culture(The Kurdish Project - Defines Lawj)</li>
+            <li>​31 - <a href="https://en.wikipedia.org/wiki/Kurdish_music" target="_blank">https://en.wikipedia.org/wiki/Kurdish_music</a> - Kurdish music - Wikipedia (DefinesLawje, Payizok)</li>
+            <li>​33 - <a href="https://www.folklore.ee/folklore/vol73/kurdish.pdf" target="_blank">https://www.folklore.ee/folklore/vol73/kurdish.pdf</a> - Article on Kurdish Riddles(Mamik/Təŝtānok characteristics, context)</li>
+            <li>​38 - <a href="https://jfst.modares.ac.ir/article-11-64504-en.html" target="_blank">https://jfst.modares.ac.ir/article-11-64504-en.html</a> - Article on Sorani KurdishRiddles (Mamik characteristics, examples)</li>
+            <li>​14 - <a href="https://www.kurdishstudies.pl/?en_the-roots-of-literary-identity,34" target="_blank">https://www.kurdishstudies.pl/?en_the-roots-of-literary-identity,34</a> - The roots ofliterary identity (Mehmed Uzun, influence of Dengbêjs like Evdalê Zeynikê)</li>
+            <li>​5 -<a href="https://www.kurdipedia.org/default.aspx/files/relatedfiles/2009/2088/www.youtube.com/default.aspx?q=20230727084402509827&amp;lng=8" target="_blank">https://www.kurdipedia.org/default.aspx/files/relatedfiles/2009/2088/www.youtube.com/default.aspx?q=20230727084402509827&amp;lng=8</a> - Article on Evdalê Zeynikê andDengbêj tradition significance</li>
+            <li>​29 - <a href="https://iffr.com/en/iffr/1993/films/s%C3%AEabend-u-xec%C3%AA" target="_blank">https://iffr.com/en/iffr/1993/films/s%C3%AEabend-u-xec%C3%AA</a> - Film description:Sîabend u Xecê (IFFR 1993)</li>
+            <li>​30 - <a href="https://www.filmfestival.be/en/film/siyabend-u-xece-siyabend-and-xece" target="_blank">https://www.filmfestival.be/en/film/siyabend-u-xece-siyabend-and-xece</a> - Filmdescription: Sîyabend û Xecê (Film Fest Gent)</li>
+            <li>​2 - <a href="https://africame.factsanddetails.com/article/entry-343.html" target="_blank">https://africame.factsanddetails.com/article/entry-343.html</a> - Article on Kurds(Theme: Mountains as friends/land)</li>
+            <li>​37 -<a href="https://dokumen.pub/essays-on-modern-kurdish-literature-9783110630039-9783110634686-9783110631470.html" target="_blank">https://dokumen.pub/essays-on-modern-kurdish-literature-9783110630039-9783110634686-9783110631470.html</a> - Essays on Modern Kurdish Literature (Themes: Nationalism,Folklore, Resistance)</li>
+            <li>​53 - <a href="https://uu.diva-portal.org/smash/get/diva2:1890378/FULLTEXT01.pdf" target="_blank">https://uu.diva-portal.org/smash/get/diva2:1890378/FULLTEXT01.pdf</a> - Thesis onMalā-yē Jazīrī (Contextual, mentions Oskar Mann tangentially)</li>
+            <li>​54 - <a href="https://www.kurdipedia.org/docviewer.aspx?lng=3&amp;book=20220816235906428748" target="_blank">https://www.kurdipedia.org/docviewer.aspx?lng=3&amp;book=20220816235906428748</a> -Kurdish Art and Identity: Verbal Art... (Mentions Oskar Mann, Prym/Socin contextually)</li>
+            <li>​49 -<a href="https://de.scribd.com/document/841806837/A-Kurdish-Garshuni-Poem-by-David-of-Bara" target="_blank">https://de.scribd.com/document/841806837/A-Kurdish-Garshuni-Poem-by-David-of-Bara</a> - A Kurdish Garshuni Poem (Mentions Prym/Socin contextually)</li>
+            <li>​50 - <a href="https://www.gutenberg.org/files/24614/24614-h/24614-h.htm" target="_blank">https://www.gutenberg.org/files/24614/24614-h/24614-h.htm</a> - Andrew Lang onFolklore (General context for Prym/Socin era)</li>
+            <li>​8 - <a href="https://nlka.net/eng/the-dengbej-keepers-of-kurdish-memory-and-history/" target="_blank">https://nlka.net/eng/the-dengbej-keepers-of-kurdish-memory-and-history/</a> - TheDengbej: Keepers of Kurdish Memory and History (Role, transmission, apprenticeship)</li>
+            <li>​9 - <a href="https://globalrights.info/2010/07/dengbej-the-tradition-of-storytelling-in-kurdistan/" target="_blank">https://globalrights.info/2010/07/dengbej-the-tradition-of-storytelling-in-kurdistan/</a> -Dengbêj: the tradition of storytelling in Kurdistan (Repetitive info on Seyîtxanê Boyaxcî)</li>
+            <li>​11 - ResearchGate Summary - Heritageization of Kurdish Oral Traditions (Overview)</li>
+            <li>​60 - Cambridge Core PDF - From Dengbêj to Modern Writer (Inaccessible)</li>
+            <li>​6 - Wikipedia Summary - Dengbêj (History, styles, revitalization)</li>
+            <li>​24 - UVA PDF Summary - Mem û Zîn vs Memê Alan (Analysis of differences)</li>
+            <li>​32 - Mohammadirad PDF Summary - Narrative Style in Kurdish Oral Lit (Transmission,techniques)</li>
+            <li>​9 - Global Rights Summary - Seyîtxanê Boyaxcî and Dengbêj Role</li>
+            <li>​17 - Core PDF Summary - Dengbêjî Genres (Kilam, Stran, Lawik, Şer, Dîlok, Heyranok,etc.)</li>
+            <li>​18 - ResearchGate PDF Summary - Dengbêjlik Genres and Contexts (Divan, Şevbêrk)</li>
+            <li>​15 - Wikipedia Summary - Şakiro (Life, importance)</li>
+            <li>​22 - Wikipedia Summary - Karapetê Xaço (Life, significance)</li>
+            <li>​12 - OpenEdition Journals Summary - Impact of Displacement/Urbanization onKurds/Yezidis</li>
+            <li>​19 - Uni Halle PDF Summary - Performance Contexts and Interactions in E. AnatoliaWorks cited</li>
+            <li>​ Kurds - Wikipedia, accessed May 12, 2025, <a href="https://en.wikipedia.org/wiki/Kurds" target="_blank">https://en.wikipedia.org/wiki/Kurds</a></li>
+            <li>​ Kurds | Middle East And North Africa - Facts and Details, accessed May 12, 2025,<a href="https://africame.factsanddetails.com/article/entry-343.html" target="_blank">https://africame.factsanddetails.com/article/entry-343.html</a></li>
+            <li>​ From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Tradition andRevitalization of the Kurdish Language in the Works of Mehmed Uzun andMehmet Dicle, accessed May 12, 2025,<a href="https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revitalization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehmet_dicle.pdf" target="_blank">https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revitalization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehmet_dicle.pdf</a></li>
+            <li>​ ORAL LITERATURE IN IRAN - Brill - Reference Works, accessed May 12, 2025,<a href="https://referenceworks.brill.com/display/entries/EIRO/COM-365272.xml" target="_blank">https://referenceworks.brill.com/display/entries/EIRO/COM-365272.xml</a></li>
+            <li>​ THE DENGBÊJ: KEEPERS OF KURDISH MEMORY AND HISTORY - Kurdipedia,accessed May 12, 2025,<a href="https://www.kurdipedia.org/default.aspx/files/relatedfiles/2009/2088/www.youtube.com/default.aspx?q=20230727084402509827&amp;lng=8" target="_blank">https://www.kurdipedia.org/default.aspx/files/relatedfiles/2009/2088/www.youtube.com/default.aspx?q=20230727084402509827&amp;lng=8</a></li>
+            <li>​ Dengbêj - Wikipedia, accessed May 12, 2025,<a href="https://en.wikipedia.org/wiki/Dengb%C3%AAj" target="_blank">https://en.wikipedia.org/wiki/Dengb%C3%AAj</a></li>
+            <li>​ Genesis of a Soundteller by Seba Kayan // Sumac Space–Art Practices of theMiddle East, accessed May 12, 2025,<a href="https://sumac.space/artworks/genesis-of-a-soundteller/" target="_blank">https://sumac.space/artworks/genesis-of-a-soundteller/</a></li>
+            <li>​ The Dengbêj: Keepers of Kurdish Memory &amp; History, accessed May 12, 2025,<a href="https://nlka.net/eng/the-dengbej-keepers-of-kurdish-memory-and-history/" target="_blank">https://nlka.net/eng/the-dengbej-keepers-of-kurdish-memory-and-history/</a></li>
+            <li>​ Dengbêj: the tradition of storytelling in Kurdistan - Global Rights, accessed May12, 2025,<a href="https://globalrights.info/2010/07/dengbej-the-tradition-of-storytelling-in-kurdistan/" target="_blank">https://globalrights.info/2010/07/dengbej-the-tradition-of-storytelling-in-kurdistan/</a></li>
+            <li>​Learn About Kurdish Culture, accessed May 12, 2025,<a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/</a></li>
+            <li>​Heritageization of Kurdish Oral Traditions | Request PDF, accessed May 12, 2025,<a href="https://www.researchgate.net/publication/390085908_Heritageization_of_Kurdish_Oral_Traditions" target="_blank">https://www.researchgate.net/publication/390085908_Heritageization_of_Kurdish_Oral_Traditions</a></li>
+            <li>​Effectively Urbanized - OpenEdition Journals, accessed May 12, 2025,<a href="https://journals.openedition.org/etudesrurales/9253?lang=en" target="_blank">https://journals.openedition.org/etudesrurales/9253?lang=en</a></li>
+            <li>​Dengbêjs on Borderlands: Borders and the State as Seen through the Eyes ofKurdish Singer-poets - Brill, accessed May 12, 2025,<a href="https://brill.com/edcollchap-oa/book/9789004706538/BP000009.pdf" target="_blank">https://brill.com/edcollchap-oa/book/9789004706538/BP000009.pdf</a></li>
+            <li>​The roots of literary identity - Kurdishstudies, accessed May 12, 2025,<a href="https://www.kurdishstudies.pl/?en_the-roots-of-literary-identity,34" target="_blank">https://www.kurdishstudies.pl/?en_the-roots-of-literary-identity,34</a></li>
+            <li>​Şakiro - Wikipedia, accessed May 12, 2025,<a href="https://en.wikipedia.org/wiki/%C5%9Eakiro" target="_blank">https://en.wikipedia.org/wiki/%C5%9Eakiro</a></li>
+            <li>​From Oriental Nightingales to Peace Pigeons - Jadaliyya, accessed May 12, 2025,<a href="https://www.jadaliyya.com/Details/30076" target="_blank">https://www.jadaliyya.com/Details/30076</a></li>
+            <li>​core.ac.uk, accessed May 12, 2025, <a href="https://core.ac.uk/download/481566368.pdf" target="_blank">https://core.ac.uk/download/481566368.pdf</a></li>
+            <li>​S E M P O Z Y U M B İ L D İ R İ L E R İ - ResearchGate, accessed May 12, 2025,<a href="https://www.researchgate.net/profile/Dicle_Oezcan_Elci/publication/338689752_dengbejliksempozyumu/links/5e2569b392851cafc3935a29/dengbejliksempozyumu.pdf" target="_blank">https://www.researchgate.net/profile/Dicle_Oezcan_Elci/publication/338689752_dengbejliksempozyumu/links/5e2569b392851cafc3935a29/dengbejliksempozyumu.pdf</a></li>
+            <li>​opendata.uni-halle.de, accessed May 12, 2025,<a href="https://opendata.uni-halle.de/bitstream/1981185920/118586/1/ITS_40_Oezdemir_Hamelink_Greve_Diversity_and_contact_among_singer-poet%20traditions_in%20Eastern_Anatolia.pdf" target="_blank">https://opendata.uni-halle.de/bitstream/1981185920/118586/1/ITS_40_Oezdemir_Hamelink_Greve_Diversity_and_contact_among_singer-poet%20traditions_in%20Eastern_Anatolia.pdf</a></li>
+            <li>​The Evolution Of Storytelling In Modern Culture - Kurdish Studies, accessed May12, 2025,<a href="https://kurdishstudies.net/menu-script/index.php/KS/article/download/3610/2462/6874" target="_blank">https://kurdishstudies.net/menu-script/index.php/KS/article/download/3610/2462/6874</a></li>
+            <li>​The Kurdish Storytellers / Turkey / Areas / Homepage - Osservatorio Balcani eCaucaso Transeuropa, accessed May 12, 2025,<a href="https://www.balcanicaucaso.org/eng/Areas/Turkey/The-Kurdish-Storytellers-163457" target="_blank">https://www.balcanicaucaso.org/eng/Areas/Turkey/The-Kurdish-Storytellers-163457</a></li>
+            <li>​Karapetê Xaço - Wikipedia, accessed May 12, 2025,<a href="https://en.m.wikipedia.org/wiki/Karapete_Xaco" target="_blank">https://en.m.wikipedia.org/wiki/Karapete_Xaco</a></li>
+            <li>​The Invention of a Tradition: Diyarbakır&#x27;s Dengbêj Project - OpenEdition Journals,accessed May 12, 2025, <a href="https://journals.openedition.org/ejts/4055" target="_blank">https://journals.openedition.org/ejts/4055</a></li>
+            <li>​pure.uva.nl, accessed May 12, 2025,<a href="https://pure.uva.nl/ws/files/144591580/10.4324_9781315627427-7_chapterpdf.pdf" target="_blank">https://pure.uva.nl/ws/files/144591580/10.4324_9781315627427-7_chapterpdf.pdf</a></li>
+            <li>​The Kurdish Romeo and Juliet, the legend of Mem and Zin throughout the ages |The Independent, accessed May 12, 2025,<a href="https://www.independent.co.uk/arts-entertainment/books/kurdish-literature-mem-zin-b2305194.html" target="_blank">https://www.independent.co.uk/arts-entertainment/books/kurdish-literature-mem-zin-b2305194.html</a></li>
+            <li>​Culture and Customs - Česko-kurdská obchodní komora, accessed May 12, 2025,<a href="https://ckcc.cz/en/culture-and-habits/" target="_blank">https://ckcc.cz/en/culture-and-habits/</a></li>
+            <li>​Kurdish Folklore, accessed May 12, 2025,<a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore/</a></li>
+            <li>​studies on &quot;mem u zin&quot; , a kurdish - La bibliothèque numérique kurde (BNK),accessed May 12, 2025,<a href="https://bnk.institutkurde.org/images/pdf/7KS6DGQY39.pdf" target="_blank">https://bnk.institutkurde.org/images/pdf/7KS6DGQY39.pdf</a></li>
+            <li>​Sîabend u Xecê - IFFR EN, accessed May 12, 2025,<a href="https://iffr.com/en/iffr/1993/films/s%C3%AEabend-u-xec%C3%AA" target="_blank">https://iffr.com/en/iffr/1993/films/s%C3%AEabend-u-xec%C3%AA</a></li>
+            <li>​Sîyabend û Xecê (Siyabend and Xece) - Film Fest Gent, accessed May 12, 2025,<a href="https://www.filmfestival.be/en/film/siyabend-u-xece-siyabend-and-xece" target="_blank">https://www.filmfestival.be/en/film/siyabend-u-xece-siyabend-and-xece</a></li>
+            <li>​Kurdish music - Wikipedia, accessed May 12, 2025,<a href="https://en.wikipedia.org/wiki/Kurdish_music" target="_blank">https://en.wikipedia.org/wiki/Kurdish_music</a></li>
+            <li>​masoudmohammadirad.com, accessed May 12, 2025,<a href="https://masoudmohammadirad.com/2022%20narrative%20style%20and%20discourse%20in%20Kurdish%20and%20Neo-Aramaic.pdf" target="_blank">https://masoudmohammadirad.com/2022%20narrative%20style%20and%20discourse%20in%20Kurdish%20and%20Neo-Aramaic.pdf</a></li>
+            <li>​METAPHORICAL INTEGRATIONS IN KURDISH RIDDLES - Folklore.ee, accessedMay 12, 2025, <a href="https://www.folklore.ee/folklore/vol73/kurdish.pdf" target="_blank">https://www.folklore.ee/folklore/vol73/kurdish.pdf</a></li>
+            <li>​Kurdish Folktales | PDF | Kurds | Iraqi Kurdistan - Scribd, accessed May 12, 2025,<a href="https://www.scribd.com/document/2490840/Kurdish-folktales" target="_blank">https://www.scribd.com/document/2490840/Kurdish-folktales</a></li>
+            <li>​A Fire in My Heart: Kurdish Tales (World Folklore Series) - Amazon.com, accessedMay 12, 2025,<a href="https://www.amazon.com/Fire-My-Heart-Kurdish-Folklore/dp/159158437X" target="_blank">https://www.amazon.com/Fire-My-Heart-Kurdish-Folklore/dp/159158437X</a></li>
+            <li>​(PDF) Zayenda Civakî û Îmaja Jina Baş-Nebaş di Gotinên Pêşiyan de -ResearchGate, accessed May 12, 2025,<a href="https://www.researchgate.net/publication/357335775_Zayenda_Civaki_u_Imaja_Jina_Bas-Nebas_di_Gotinen_Pesiyan_de" target="_blank">https://www.researchgate.net/publication/357335775_Zayenda_Civaki_u_Imaja_Jina_Bas-Nebas_di_Gotinen_Pesiyan_de</a></li>
+            <li>​Essays on Modern Kurdish Literature 9783110630039, 9783110634686,9783110631470 - DOKUMEN.PUB, accessed May 12, 2025,<a href="https://dokumen.pub/essays-on-modern-kurdish-literature-9783110630039-9783110634686-9783110631470.html" target="_blank">https://dokumen.pub/essays-on-modern-kurdish-literature-9783110630039-9783110634686-9783110631470.html</a></li>
+            <li>​The Analysis of Enigma in Kurdish (Sorani) Dialect - Tarbiat Modares UniversityJournals System - Culture and Folk Literature, accessed May 12, 2025,<a href="https://jfst.modares.ac.ir/article-11-64504-en.html" target="_blank">https://jfst.modares.ac.ir/article-11-64504-en.html</a></li>
+            <li>​Kurds - Summary - eHRAF World Cultures, accessed May 12, 2025,<a href="https://ehrafworldcultures.yale.edu/cultures/MA11/summary" target="_blank">https://ehrafworldcultures.yale.edu/cultures/MA11/summary</a></li>
+            <li>​Female Figures in Kurdish Mythology and Folklore - Ozlem Bor - Google Books,accessed May 12, 2025,<a href="https://books.google.com/books/about/Female_Figures_in_Kurdish_Mythology_and.html?id=vfuezwEACAAJ" target="_blank">https://books.google.com/books/about/Female_Figures_in_Kurdish_Mythology_and.html?id=vfuezwEACAAJ</a></li>
+            <li>​City and Resistance in Kurdistan: Poverty, Urban Development, and the Strugglefor Democratic Autonomy in Diyarbakir by Sardar S, accessed May 12, 2025,<a href="https://utoronto.scholaris.ca/server/api/core/bitstreams/27d729e5-8d79-4857-a813-eb042058332b/content" target="_blank">https://utoronto.scholaris.ca/server/api/core/bitstreams/27d729e5-8d79-4857-a813-eb042058332b/content</a></li>
+            <li>​Why Resistance Is Foundational to Kurdish Literature - Literary Hub, accessedMay 12, 2025,<a href="https://lithub.com/why-resistance-is-foundational-to-kurdish-literature/" target="_blank">https://lithub.com/why-resistance-is-foundational-to-kurdish-literature/</a></li>
+            <li>​Roots and Routes: Kurdish Literature as World Literature Author Published ThesisType School DOI Rights statement Downloaded fro - Griffith Research Online,accessed May 12, 2025,<a href="https://research-repository.griffith.edu.au/bitstreams/b276bc4e-ef74-419f-82c9-95a14111cf29/download" target="_blank">https://research-repository.griffith.edu.au/bitstreams/b276bc4e-ef74-419f-82c9-95a14111cf29/download</a></li>
+            <li>​Forced-Displacement-Literature-Review.txt - World Bank Documents andReports, accessed May 12, 2025,<a href="https://documents1.worldbank.org/curated/en/940291575434038147/txt/Forced-Displacement-Literature-Review.txt" target="_blank">https://documents1.worldbank.org/curated/en/940291575434038147/txt/Forced-Displacement-Literature-Review.txt</a></li>
+            <li>​The Faces of Kurdistan - The Wilson Quarterly, accessed May 12, 2025,<a href="https://www.wilsonquarterly.com/quarterly/_/the-faces-of-kurdistan" target="_blank">https://www.wilsonquarterly.com/quarterly/_/the-faces-of-kurdistan</a></li>
+            <li>​“Acting” under Turkey&#x27;s State of Emergency: A Conversation with Kurdish Artistsabout Theatre, the Dengbêj Tradition, and - Performance Matters, accessed May12, 2025,<a href="https://performancematters-thejournal.com/index.php/pm/article/download/155/216/929" target="_blank">https://performancematters-thejournal.com/index.php/pm/article/download/155/216/929</a></li>
+            <li>​Collecting and Archiving Kurdish Folklore as a Strategy - Taylor &amp; Francis Online,accessed May 12, 2025,<a href="https://www.tandfonline.com/doi/pdf/10.1080/0015587X.2023.2205777" target="_blank">https://www.tandfonline.com/doi/pdf/10.1080/0015587X.2023.2205777</a></li>
+            <li>​Kurdische Sammlungen. (German Edition): Prym, Eugen, Socin, Albert -Amazon.com, accessed May 12, 2025,<a href="https://www.amazon.com/Kurdische-Sammlungen-German-Eugen-Prym/dp/1017262608" target="_blank">https://www.amazon.com/Kurdische-Sammlungen-German-Eugen-Prym/dp/1017262608</a></li>
+            <li>​A Kurdish Garshuni Poem by David of Bara | PDF | Rhyme | Arabic - Scribd,accessed May 12, 2025,<a href="https://de.scribd.com/document/841806837/A-Kurdish-Garshuni-Poem-by-David-of-Bara" target="_blank">https://de.scribd.com/document/841806837/A-Kurdish-Garshuni-Poem-by-David-of-Bara</a></li>
+            <li>​The Project Gutenberg eBook of The Science of Fairy Tales, by Edwin SidneyHartland., accessed May 12, 2025,<a href="https://www.gutenberg.org/files/24614/24614-h/24614-h.htm" target="_blank">https://www.gutenberg.org/files/24614/24614-h/24614-h.htm</a></li>
+            <li>​Oskar Mann - History: Books - Amazon.com, accessed May 12, 2025,<a href="https://www.amazon.com/History-Oskar-Mann-Books/s?rh=n%3A9%2Cp_27%3AOskar%2BMann" target="_blank">https://www.amazon.com/History-Oskar-Mann-Books/s?rh=n%3A9%2Cp_27%3AOskar%2BMann</a></li>
+            <li>​Die mundart der Mukri-Kurden - The Online Books Page, accessed May 12, 2025,<a href="http://onlinebooks.library.upenn.edu/webbin/book/lookupid?key=ha008521698" target="_blank">http://onlinebooks.library.upenn.edu/webbin/book/lookupid?key=ha008521698</a></li>
+            <li>​We Drank the Wine from His Hand. Studies on the time, life and poetry of theKurdish Sufi poet Malā-yē Jazīrī - uu .diva, accessed May 12, 2025,<a href="https://uu.diva-portal.org/smash/get/diva2:1890378/FULLTEXT01.pdf" target="_blank">https://uu.diva-portal.org/smash/get/diva2:1890378/FULLTEXT01.pdf</a></li>
+            <li>​Kurdish Art and Identity, accessed May 12, 2025,<a href="https://www.kurdipedia.org/docviewer.aspx?lng=3&amp;book=20220816235906428748" target="_blank">https://www.kurdipedia.org/docviewer.aspx?lng=3&amp;book=20220816235906428748</a></li>
+            <li>​“A People Forgotten by History”: Soviet Studies of the Kurds - Taylor &amp; FrancisOnline, accessed May 12, 2025,<a href="https://www.tandfonline.com/doi/abs/10.1080/00210862.2015.1058636" target="_blank">https://www.tandfonline.com/doi/abs/10.1080/00210862.2015.1058636</a></li>
+            <li>​List of Kurds - Wikipedia, accessed May 12, 2025,<a href="https://en.wikipedia.org/wiki/List_of_Kurds" target="_blank">https://en.wikipedia.org/wiki/List_of_Kurds</a></li>
+            <li>​The Effects of a Regional Currency on Cul- tural Identity in Kurdistan (1990-2003)- Research Repository, accessed May 12, 2025,<a href="https://eprints.glos.ac.uk/13961/1/13961%20Subasi%2C%20Rojda%20%282023%29%20PhD_The%20Effects%20of%20a%20Regional%20Currency%20on%20Cultural%20Identity%20in%20Kurdistan%20%281990-2003%29.pdf" target="_blank">https://eprints.glos.ac.uk/13961/1/13961%20Subasi%2C%20Rojda%20%282023%29%20PhD_The%20Effects%20of%20a%20Regional%20Currency%20on%20Cultural%20Identity%20in%20Kurdistan%20%281990-2003%29.pdf</a></li>
+            <li>​DOCUMENT RESUME A Kurdish Grammar: Descriptive Analysis of the Kurdish ofSulaimaniya, Iraq. American Council of Learned Societi, accessed May 12, 2025,<a href="https://files.eric.ed.gov/fulltext/ED089545.pdf" target="_blank">https://files.eric.ed.gov/fulltext/ED089545.pdf</a></li>
+            <li>​fritillaria kurdica - bulletin of kurdish studies, accessed May 12, 2025,<a href="https://www.kurdishstudies.pl/files/Fritillaria_Kurdica_2022_21-2[1].pdf" target="_blank">https://www.kurdishstudies.pl/files/Fritillaria_Kurdica_2022_21-2[1].pdf</a></li>
+            <li>​accessed January 1, 1970,<a href="https://core-cms.cambridge.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revitalization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehmet_dicle.pdf" target="_blank">https://core-cms.cambridge.org/core/services/aop-cambridge-core/content/view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revitalization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehmet_dicle.pdf</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 12, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

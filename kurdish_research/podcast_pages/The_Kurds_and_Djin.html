@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Kurds and Djin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Kurds and Djin</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Kurds and Djinn Beliefs.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Kurds and Djinn Beliefs.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This report examines the complex beliefs surrounding Jinn (Cin) among the Kurdish people, a transnational ethnic group with significant cultural and religious diversity.  It first provides a background on the concept of Jinn originating in pre-Islamic traditions and integrated into Islamic theology, describing their nature and abilities.  The analysis then focuses on Kurdish culture, history, and religious landscape, highlighting that beliefs about supernatural beings vary across Sunni, Alevi, Yazidi, and Yarsani communities.  The text explores Kurdish folklore regarding Jinn, noting specific terminology and characteristics attributed to these beings, often linked to nature and sacred sites.  Finally, it compares how different Kurdish religious groups understand the supernatural, emphasizing that while mainstream Islam influences the majority, unique theological frameworks in minority faiths lead to distinct interpretations of Jinn or similar entities.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Kurds and Djinn Beliefs_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Kurds - Students | Britannica Kids | Homework Help, accessed May 12, 2025, <a href="https://kids.britannica.com/students/article/Kurds/275335" target="_blank">https://kids.britannica.com/students/article/Kurds/275335</a></li>
+<li>​ Kurdish population - Wikipedia, accessed May 12, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_population" target="_blank">https://en.wikipedia.org/wiki/Kurdish_population</a></li>
+<li>​ Kurdistan | History, Religion, Map, &amp; Facts | Britannica, accessed May 12, 2025, <a href="https://www.britannica.com/place/Kurdistan" target="_blank">https://www.britannica.com/place/Kurdistan</a></li>
+<li>​ Are Kurds an Iranic people? - Quora, accessed May 12, 2025, <a href="https://www.quora.com/Are-Kurds-an-Iranic-people" target="_blank">https://www.quora.com/Are-Kurds-an-Iranic-people</a></li>
+<li>​ Kordestān | History, Culture &amp; Geography - Britannica, accessed May 12, 2025, <a href="https://www.britannica.com/place/Kordestan" target="_blank">https://www.britannica.com/place/Kordestan</a></li>
+<li>​ Middle East Studies: History, Politics, And Law, accessed May 12, 2025, <a href="http://ndl.ethernet.edu.et/bitstream/123456789/18674/1/93.pdf" target="_blank">http://ndl.ethernet.edu.et/bitstream/123456789/18674/1/93.pdf</a></li>
+<li>​ en.wikipedia.org, accessed May 12, 2025, <a href="https://en.wikipedia.org/wiki/Jinn#:~:text=Jinn%20or%20djinn%20(Arabic%3A%20" target="_blank">https://en.wikipedia.org/wiki/Jinn#:~:text=Jinn%20or%20djinn%20(Arabic%3A%20</a> %D8%AC%D9%90%D9%86%D9%91,%D8%AC%D9%90%D9%86%D9%91</li>
+<li>​ Jinn - WikiIslam, accessed May 12, 2025, <a href="https://wikiislam.net/wiki/Jinn" target="_blank">https://wikiislam.net/wiki/Jinn</a></li>
+<li>​ Jinn: Who are the supernatural beings of Arabian and Islamic tradition? | Middle East Eye, accessed May 12, 2025, <a href="https://www.middleeasteye.net/discover/jinn-islamic-arabian-tradition-supernatu" target="_blank">https://www.middleeasteye.net/discover/jinn-islamic-arabian-tradition-supernatu</a> ral-beings</li>
+<li>​Jinn, The Ancient Genies Said To Haunt The Human World - All That&#x27;s Interesting, accessed May 12, 2025, <a href="https://allthatsinteresting.com/jinn" target="_blank">https://allthatsinteresting.com/jinn</a></li>
+<li>​Abdurrahman Gümgüm/Kürt folkloru ve Reso&#x27;nun stranlarında Kürt folklor unsurları – 1 - Kovara Bîr, accessed May 12, 2025, <a href="https://kovarabir.com/13313/abdurrahman-gumgumkurt-folkloru-ve-resonun-stra" target="_blank">https://kovarabir.com/13313/abdurrahman-gumgumkurt-folkloru-ve-resonun-stra</a> nlarinda-kurt-folklor-unsurlari-1/</li>
+<li>​أدب الفولكلور الكردي, accessed May 12, 2025, <a href="https://www.harmoon.org/wp-content/uploads/2019/10/%D8%A3%D8%AF%D8%" target="_blank">https://www.harmoon.org/wp-content/uploads/2019/10/%D8%A3%D8%AF%D8%</a> A8-%D8%A7%D9%84%D9%81%D9%88%D9%84%D9%83%D9%84%D9%88%D8 %B1-%D8%A7%D9%84%D9%83%D8%B1%D8%AF%D9%8A-1.pdf</li>
+<li>​فولکلور - معنی در دیکشنری آبادیس, accessed May 12, 2025, <a href="https://abadis.ir/fatofa/%D9%81%D9%88%D9%84%DA%A9%D9%84%D9%88%D8" target="_blank">https://abadis.ir/fatofa/%D9%81%D9%88%D9%84%DA%A9%D9%84%D9%88%D8</a> %B1/</li>
+<li>​Kurdish Mythology - Mythosphere, accessed May 12, 2025, <a href="https://www.folklore.earth/culture/kurd/" target="_blank">https://www.folklore.earth/culture/kurd/</a></li>
+<li>​Religion in Kurdistan - Wikipedia, accessed May 12, 2025, <a href="https://en.wikipedia.org/wiki/Religion_in_Kurdistan" target="_blank">https://en.wikipedia.org/wiki/Religion_in_Kurdistan</a></li>
+<li>​Islam - Wikipedia, accessed May 12, 2025, <a href="https://en.wikipedia.org/wiki/Islam" target="_blank">https://en.wikipedia.org/wiki/Islam</a></li>
+<li>​How ancient are the Kurdish people? - Quora, accessed May 12, 2025, <a href="https://www.quora.com/How-ancient-are-the-Kurdish-people" target="_blank">https://www.quora.com/How-ancient-are-the-Kurdish-people</a></li>
+<li>​Alevism - Wikipedia, accessed May 12, 2025, <a href="https://en.wikipedia.org/wiki/Alevism" target="_blank">https://en.wikipedia.org/wiki/Alevism</a></li>
+<li>​Alevism — The Alevis of the Munzur Valley, accessed May 12, 2025, <a href="http://www.munzurvalley.com/alevism" target="_blank">http://www.munzurvalley.com/alevism</a></li>
+<li>​Yazidism - Wikipedia, accessed May 12, 2025, <a href="https://en.wikipedia.org/wiki/Yazidism" target="_blank">https://en.wikipedia.org/wiki/Yazidism</a></li>
+<li>​Tawûsî Melek - Wikipedia, accessed May 12, 2025, <a href="https://en.wikipedia.org/wiki/Taw%C3%BBs%C3%AE_Melek" target="_blank">https://en.wikipedia.org/wiki/Taw%C3%BBs%C3%AE_Melek</a></li>
+<li>​Kurdish mythology - Wikipedia, accessed May 12, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_mythology" target="_blank">https://en.wikipedia.org/wiki/Kurdish_mythology</a></li>
+<li>​Kurdish mythology - Wikiwand, accessed May 12, 2025, <a href="https://www.wikiwand.com/en/articles/Kurdish_mythology" target="_blank">https://www.wikiwand.com/en/articles/Kurdish_mythology</a></li>
+<li>​Iranian Festivals And Celebrations: A Guide To Persian Traditions - surfiran, accessed May 12, 2025, <a href="https://surfiran.com/mag/iranian-festivals-and-celebrations/" target="_blank">https://surfiran.com/mag/iranian-festivals-and-celebrations/</a></li>
+<li>​Cin - Wîkîpediya, accessed May 12, 2025, <a href="https://ku.wikipedia.org/wiki/Cin" target="_blank">https://ku.wikipedia.org/wiki/Cin</a></li>
+<li>​Folklora Kurdan | Jêhat Rojhilat - YouTube, accessed May 12, 2025, <a href="https://www.youtube.com/watch?v=9poaAXezTvY" target="_blank">https://www.youtube.com/watch?v=9poaAXezTvY</a></li>
+<li>​Sacred Trees in Kurdish Culture &amp; Mythology - The Kurdish Center ..., accessed May 12, 2025, <a href="https://nlka.net/eng/sacred-trees-in-kurdish-culture-mythology/" target="_blank">https://nlka.net/eng/sacred-trees-in-kurdish-culture-mythology/</a></li>
+<li>​Eledîn û lembeya newaze - Wîkîpediya, accessed May 12, 2025, <a href="https://ku.wikipedia.org/wiki/Eled%C3%AEn_%C3%BB_lembeya_newaze" target="_blank">https://ku.wikipedia.org/wiki/Eled%C3%AEn_%C3%BB_lembeya_newaze</a></li>
+<li>​History of Kurdistan-5 - الپەڕەی سەرەکی - قەڵەم, accessed May 12, 2025, <a href="https://www.qelam.com/index.php?option=com_content&amp;view=article&amp;id=3291:hi" target="_blank">https://www.qelam.com/index.php?option=com_content&amp;view=article&amp;id=3291:hi</a> storyofkurdistan-5&amp;catid=95&amp;Itemid=527</li>
+<li>​Shamaran ormarnas drottning - KURDISH FOLK TALES - Pinterest, accessed May 12, 2025, <a href="https://www.pinterest.com/pin/420523683936419543/" target="_blank">https://www.pinterest.com/pin/420523683936419543/</a></li>
+<li>​What are some sources about Kurdish people in the Byzantine Empire? - Quora, accessed May 12, 2025, <a href="https://www.quora.com/What-are-some-sources-about-Kurdish-people-in-the-" target="_blank">https://www.quora.com/What-are-some-sources-about-Kurdish-people-in-the-</a> Byzantine-Empire</li>
+<li>​Samuel Dolbee, Locusts of Power: Borders, Empire, and Environment in the Modern Middle East (New Texts Out Now) - Jadaliyya, accessed May 12, 2025, <a href="https://www.jadaliyya.com/Details/45709" target="_blank">https://www.jadaliyya.com/Details/45709</a></li>
+<li>​Turkey&#x27;s Necropolitical Laboratory - Edinburgh University Press Books, accessed May 12, 2025, <a href="https://edinburghuniversitypress.com/media/resources/9781474450287_Turkey_s_" target="_blank">https://edinburghuniversitypress.com/media/resources/9781474450287_Turkey_s_</a> Necropolitical_Laboratory_-_Chapter_1.pdf</li>
+<li>​Kurdish Studies Archive - Brill, accessed May 12, 2025, <a href="https://brill.com/display/book/9789004726215/9789004726215_webready_content" target="_blank">https://brill.com/display/book/9789004726215/9789004726215_webready_content</a> _text.pdf</li>
+<li>​(PDF) The Forgotten Years of Kurdish Nationalism in Iran [Minorities in West Asia and North Africa], written by Abbas Vali - ResearchGate, accessed May 12, 2025, <a href="https://www.researchgate.net/publication/388840582_The_Forgotten_Years_of_K" target="_blank">https://www.researchgate.net/publication/388840582_The_Forgotten_Years_of_K</a> urdish_Nationalism_in_Iran_Minorities_in_West_Asia_and_North_Africa_written_b y_Abbas_Vali</li>
+<li>​Oriental Whispers: Unveiling Chinese Cultural Influences in Classical Kurdish Literature, accessed May 12, 2025, <a href="https://kurdishstudies.net/menu-script/index.php/KS/article/download/1386/1003/" target="_blank">https://kurdishstudies.net/menu-script/index.php/KS/article/download/1386/1003/</a> 2573</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 12, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
