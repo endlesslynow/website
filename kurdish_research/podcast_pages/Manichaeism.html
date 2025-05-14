@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manichaeism</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manichaeism</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/The Religion of Light_ Manichaeism.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/The Religion of Light_ Manichaeism.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>These sources comprehensively introduce Manichaeism, a syncretic world religion founded by Mani in the 3rd century CE, highlighting its core dualistic tenets of Light and Darkness and salvation through gnosis. They explore the life and revelations of Mani, his missionary efforts, and eventual martyrdom, which became central to the faith&#x27;s narrative. The texts also detail Manichaean cosmogony, soteriology, and eschatology, explaining the cosmic struggle and the path to liberation for the soul. Furthermore, they discuss Manichaeism&#x27;s absorption of elements from Zoroastrianism, Christianity, Gnosticism, and Buddhism, as well as the structure of the Manichaean church, its rituals, sacred texts, and remarkable geographical spread along the Silk Road. Finally, the sources cover the religion&#x27;s eventual decline due to persecution and internal challenges, its legacy in later dualistic movements, and the profound impact of modern archaeological discoveries on current scholarship of this once-global faith.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Start research-7.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Manichaeism summary - Britannica, accessed May 14, 2025, <a href="https://www.britannica.com/summary/Manichaeism" target="_blank">https://www.britannica.com/summary/Manichaeism</a></li>
+<li>​ Mani | Prophet, Founder, Dualism | Britannica, accessed May 14, 2025, <a href="https://www.britannica.com/biography/Mani-Iranian-religious-leader" target="_blank">https://www.britannica.com/biography/Mani-Iranian-religious-leader</a></li>
+<li>​ Manichaeism - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Manichaeism" target="_blank">https://en.wikipedia.org/wiki/Manichaeism</a></li>
+<li>​ Manichaeism - Monergism |, accessed May 14, 2025, <a href="https://www.monergism.com/manichaeism" target="_blank">https://www.monergism.com/manichaeism</a></li>
+<li>​ Manichaeism - New World Encyclopedia, accessed May 14, 2025, <a href="https://www.newworldencyclopedia.org/entry/Manichaeism" target="_blank">https://www.newworldencyclopedia.org/entry/Manichaeism</a></li>
+<li>​ Shāpuragān | book by Mani - Britannica, accessed May 14, 2025, <a href="https://www.britannica.com/topic/Shapuragan" target="_blank">https://www.britannica.com/topic/Shapuragan</a></li>
+<li>​ World History Connected | Vol. 13 No. 3 | Silvia Mantz : Manichaeism on the Silk Road, accessed May 14, 2025, <a href="https://worldhistoryconnected.press.uillinois.edu/13.3/forum_02_mantz.html" target="_blank">https://worldhistoryconnected.press.uillinois.edu/13.3/forum_02_mantz.html</a></li>
+<li>​ Manichaeism - (World History – Before 1500) - Vocab, Definition ..., accessed May 14, 2025, <a href="https://library.fiveable.me/key-terms/world-history-to-1500/manichaeism" target="_blank">https://library.fiveable.me/key-terms/world-history-to-1500/manichaeism</a></li>
+<li>​ Policy of Roman Empire towards Manicheans - imperium romanum, accessed May 14, 2025, <a href="https://imperiumromanum.pl/en/article/policy-of-roman-empire-towards-manich" target="_blank">https://imperiumromanum.pl/en/article/policy-of-roman-empire-towards-manich</a> eans/</li>
+<li>​Manicheism - Livius, accessed May 14, 2025, <a href="https://www.livius.org/articles/religion/manicheism/" target="_blank">https://www.livius.org/articles/religion/manicheism/</a></li>
+<li>​Mani/Manichaeism - Brill - Reference Works, accessed May 14, 2025, <a href="https://referenceworks.brill.com/view/entries/EECO/SIM-00002066.xml" target="_blank">https://referenceworks.brill.com/view/entries/EECO/SIM-00002066.xml</a></li>
+<li>​ijas.usb.ac.ir, accessed May 14, 2025, <a href="https://ijas.usb.ac.ir/article_7495_4d08871772703e726c1165ee93e48619.pdf" target="_blank">https://ijas.usb.ac.ir/article_7495_4d08871772703e726c1165ee93e48619.pdf</a></li>
+<li>​Manichaean schisms - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Manichaean_schisms" target="_blank">https://en.wikipedia.org/wiki/Manichaean_schisms</a></li>
+<li>​hcommons.org, accessed May 14, 2025, <a href="https://hcommons.org/app/uploads/sites/1001499/2021/09/Pregill_Elchasaites.pdf" target="_blank">https://hcommons.org/app/uploads/sites/1001499/2021/09/Pregill_Elchasaites.pdf</a></li>
+<li>​Mani (prophet) - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Mani_(prophet)" target="_blank">https://en.wikipedia.org/wiki/Mani_(prophet)</a></li>
+<li>​Manichaeism | Definition, Beliefs, History, &amp; Facts - Britannica, accessed May 14, 2025, <a href="https://www.britannica.com/topic/Manichaeism" target="_blank">https://www.britannica.com/topic/Manichaeism</a></li>
+<li>​Manichaean scripture - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Manichaean_scripture" target="_blank">https://en.wikipedia.org/wiki/Manichaean_scripture</a></li>
+<li>​Zoroastrianism &amp; Manichaeism - mesosyn.com, accessed May 14, 2025, <a href="https://mesosyn.com/myth2d.html" target="_blank">https://mesosyn.com/myth2d.html</a></li>
+<li>​Catholic Encyclopedia: MANICHAEISM, accessed May 14, 2025, <a href="https://www3.nd.edu/~afreddos/courses/264/manicheism.htm" target="_blank">https://www3.nd.edu/~afreddos/courses/264/manicheism.htm</a></li>
+<li>​Manichaeism: The Ancient Religion that Rivaled Christianity ..., accessed May 14, 2025, <a href="https://www.ancient-origins.net/history/manichaeism-one-most-popular-religion" target="_blank">https://www.ancient-origins.net/history/manichaeism-one-most-popular-religion</a> s-ancient-world-002658</li>
+<li>​Manichaeism: An Early Universalist Religion – borderlessblogger, accessed May 14, 2025, <a href="https://borderlessblogger.com/2023/09/07/manichaeism-a-universalist-iranian-rel" target="_blank">https://borderlessblogger.com/2023/09/07/manichaeism-a-universalist-iranian-rel</a> igion/</li>
+<li>​Manichaeism: Third Century Inspiration - Yoga International, accessed May 14, 2025, <a href="https://yogainternational.com/article/view/manichaeism-third-century-inspiration/" target="_blank">https://yogainternational.com/article/view/manichaeism-third-century-inspiration/</a></li>
+<li>​Manichaeanism and Wolfram&#x27;s Parzival - UTK-EECS, accessed May 14, 2025, <a href="https://web.eecs.utk.edu/~bmaclenn/Classes/US310/Manichaeanism.html" target="_blank">https://web.eecs.utk.edu/~bmaclenn/Classes/US310/Manichaeanism.html</a></li>
+<li>​The Buddha in Manichaeism - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/The_Buddha_in_Manichaeism" target="_blank">https://en.wikipedia.org/wiki/The_Buddha_in_Manichaeism</a></li>
+<li>​Mani (216-276 CE) and Ethiopian enoch, accessed May 14, 2025, <a href="https://scielo.org.za/scielo.php?script=sci_arttext&amp;pid=S0259-942220140003000" target="_blank">https://scielo.org.za/scielo.php?script=sci_arttext&amp;pid=S0259-942220140003000</a> 10</li>
+<li>​Manichaeism Improvements | Paradox Interactive Forums, accessed May 14, 2025, <a href="https://forum.paradoxplaza.com/forum/threads/manichaeism-improvements.1725" target="_blank">https://forum.paradoxplaza.com/forum/threads/manichaeism-improvements.1725</a> 907/</li>
+<li>​John Chrysostom on Manichaeism - SciELO SA, accessed May 14, 2025, <a href="https://scielo.org.za/scielo.php?script=sci_arttext&amp;pid=S0259-942220190001000" target="_blank">https://scielo.org.za/scielo.php?script=sci_arttext&amp;pid=S0259-942220190001000</a> 42</li>
+<li>​Chinese Manichaeism - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Chinese_Manichaeism" target="_blank">https://en.wikipedia.org/wiki/Chinese_Manichaeism</a></li>
+<li>​First Iranians who introduced Perfumery, accessed May 14, 2025, <a href="http://iranian.com/main/blog/m-saadat-noury/first-iranians-who-introduced-perf" target="_blank">http://iranian.com/main/blog/m-saadat-noury/first-iranians-who-introduced-perf</a> umery.html</li>
+<li>​Other resources – IAMS – The International Association of ..., accessed May 14, 2025, <a href="https://www.manichaeism.de/other-resources/" target="_blank">https://www.manichaeism.de/other-resources/</a></li>
+<li>​Turpan Manichaean texts - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Turpan_Manichaean_texts" target="_blank">https://en.wikipedia.org/wiki/Turpan_Manichaean_texts</a></li>
+<li>​Manichaeism East and West - Bibliographia Iranica, accessed May 14, 2025, <a href="https://www.biblioiranica.info/manichaeism-east-and-west-2/" target="_blank">https://www.biblioiranica.info/manichaeism-east-and-west-2/</a></li>
+<li>​Blossoming out of the religious diversity which so strongly characterizes both late antiquity and the Silk Roads of Eurasia, the teaching of Mani spread as far west as North Africa and as far east as the China Sea, intentionally utilizing and incorporating imagery, language and symbolism of whatever religions it encountered so as to better express itself to its respective audience., accessed May 14, 2025, <a href="https://depts.washington.edu/silkroad/exhibit/religion/manichaeism/essay.html" target="_blank">https://depts.washington.edu/silkroad/exhibit/religion/manichaeism/essay.html</a></li>
+<li>​Manichaeism – Page 3 - Bibliographia Iranica, accessed May 14, 2025, <a href="https://www.biblioiranica.info/tag/manichaeism/page/3/" target="_blank">https://www.biblioiranica.info/tag/manichaeism/page/3/</a></li>
+<li>​Corpus Fontium Manichaeorum - MONGOLS CHINA AND THE SILK ROAD, accessed May 14, 2025, <a href="http://mongolschinaandthesilkroad.blogspot.com/2012/01/corpus-fontium-manic" target="_blank">http://mongolschinaandthesilkroad.blogspot.com/2012/01/corpus-fontium-manic</a> haeorum.html</li>
+<li>​The Manichean Debate | Wesley Scholar, accessed May 14, 2025, <a href="https://wesleyscholar.com/wp-content/uploads/2019/04/Augustine-The-Maniche" target="_blank">https://wesleyscholar.com/wp-content/uploads/2019/04/Augustine-The-Maniche</a> an-Debate.pdf</li>
+<li>​Religion and the everyday life of Manichaeans in Kellis: beyond light and darkness, accessed May 14, 2025, <a href="https://bmcr.brynmawr.edu/2023/2023.03.25/" target="_blank">https://bmcr.brynmawr.edu/2023/2023.03.25/</a></li>
+<li>​en.wikipedia.org, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Manichaeism#:~:text=In%20291%2C%20persecution" target="_blank">https://en.wikipedia.org/wiki/Manichaeism#:~:text=In%20291%2C%20persecution</a> %20arose%20in,state%20was%20issued%20under%20Diocletian.</li>
+<li>​Manichaeism: The Religion that Went Extinct - WorldAtlas, accessed May 14, 2025, <a href="https://www.worldatlas.com/religion/manichaeism-the-religion-that-went-extinct" target="_blank">https://www.worldatlas.com/religion/manichaeism-the-religion-that-went-extinct</a> .html</li>
+<li>​The Interchange between Religious Heterodoxies in the Balkans and Caucasus - the Case of the Paulicians - SOAS Research Online, accessed May 14, 2025, <a href="https://eprints.soas.ac.uk/40090/1/ReligiousHeterodoxyBalkansCaucasus_Stoyan" target="_blank">https://eprints.soas.ac.uk/40090/1/ReligiousHeterodoxyBalkansCaucasus_Stoyan</a> ov.pdf</li>
+<li>​Paulicianism - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Paulicianism" target="_blank">https://en.wikipedia.org/wiki/Paulicianism</a></li>
+<li>​A Heretical Movement in Medieval Bulgaria: Bogomilism - Istanbul University Press, accessed May 14, 2025, <a href="https://iupress.istanbul.edu.tr/en/journal/jses/article/ortacag-bulgaristaninda-sapki" target="_blank">https://iupress.istanbul.edu.tr/en/journal/jses/article/ortacag-bulgaristaninda-sapki</a> n-bir-hareket-bogomilizm</li>
+<li>​The Bogomils - The Database of Religious History, accessed May 14, 2025, <a href="https://religiondatabase.org/browse/1087" target="_blank">https://religiondatabase.org/browse/1087</a></li>
+<li>​Catharism - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Catharism" target="_blank">https://en.wikipedia.org/wiki/Catharism</a></li>
+<li>​Albigensian Crusade - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Albigensian_Crusade" target="_blank">https://en.wikipedia.org/wiki/Albigensian_Crusade</a></li>
+<li>​Eastern Elements in Cathar Doctrines – an Argument for the Traditional Interpretation of Catharism - ResearchGate, accessed May 14, 2025, <a href="https://www.researchgate.net/publication/389456449_Eastern_Elements_in_Cath" target="_blank">https://www.researchgate.net/publication/389456449_Eastern_Elements_in_Cath</a> ar_Doctrines_-_an_Argument_for_the_Traditional_Interpretation_of_Catharism</li>
+<li>​Eastern Elements in Cathar Doctrines – an Argument for the Traditional Interpretation of ... - DOAJ, accessed May 14, 2025, <a href="https://doaj.org/article/b6d01408ec314a08b72ac3e0f4278e29" target="_blank">https://doaj.org/article/b6d01408ec314a08b72ac3e0f4278e29</a></li>
+<li>​Gnosticism: Gnosticism from the Middle Ages to the Present - Encyclopedia.com, accessed May 14, 2025, <a href="https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts" target="_blank">https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts</a> -and-maps/gnosticism-gnosticism-middle-ages-present</li>
+<li>​Corpus Fontium Manichaeorum - The International Association of ..., accessed May 14, 2025, <a href="https://www.manichaeism.de/history-of-cfm/" target="_blank">https://www.manichaeism.de/history-of-cfm/</a></li>
+<li>​The Manichaeans of Kellis : religion, community, and everyday life - Scholarly Publications Leiden University, accessed May 14, 2025, <a href="https://scholarlypublications.universiteitleiden.nl/handle/1887/71236" target="_blank">https://scholarlypublications.universiteitleiden.nl/handle/1887/71236</a></li>
+<li>​Berlin Turfan-Collection | Orientabteilung, accessed May 14, 2025, <a href="https://staatsbibliothek-berlin.de/die-staatsbibliothek/abteilungen/orient/aufgabe" target="_blank">https://staatsbibliothek-berlin.de/die-staatsbibliothek/abteilungen/orient/aufgabe</a> n-profil/veroeffentlichungen/berlin-turfan-collection</li>
+<li>​The Functions of Manuscripts for the Turfan Manichaean Community (9th-11th Centuries) Shutao Wang (王舒韬) - ediss.sub.hamburg, accessed May 14, 2025, <a href="https://ediss.sub.uni-hamburg.de/bitstream/ediss/11285/1/Shutao%20Wang_PhD" target="_blank">https://ediss.sub.uni-hamburg.de/bitstream/ediss/11285/1/Shutao%20Wang_PhD</a> %20Dissertation_Stabi.pdf</li>
+<li>​Dunhuang Texts | Oxford Research Encyclopedia of Religion, accessed May 14, 2025, <a href="https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/" target="_blank">https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/</a> acrefore-9780199340378-e-771?p=emailAeVYcDYAA54jU&amp;d=/10.1093/acrefore/9</li>
+<li>001.0001/acrefore-9780199340378-e-771</li>
+<li>​Dunhuang manuscripts - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Dunhuang_manuscripts" target="_blank">https://en.wikipedia.org/wiki/Dunhuang_manuscripts</a></li>
+<li>​Dunhuang Manichaean texts - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Dunhuang_Manichaean_texts" target="_blank">https://en.wikipedia.org/wiki/Dunhuang_Manichaean_texts</a></li>
+<li>​Dunhuang Manuscripts: An Introduction to Texts from the Silk Road, accessed May 14, 2025, <a href="https://glorisunglobalnetwork.org/dunhuang-manuscripts-an-introduction-to-tex" target="_blank">https://glorisunglobalnetwork.org/dunhuang-manuscripts-an-introduction-to-tex</a> ts-from-the-silk-road/</li>
+<li>​Xiapu Manichaean manuscripts - Wikipedia, accessed May 14, 2025, <a href="https://en.wikipedia.org/wiki/Xiapu_Manichaean_manuscripts" target="_blank">https://en.wikipedia.org/wiki/Xiapu_Manichaean_manuscripts</a></li>
+<li>​Yishu (Jesu) Worship in Xiapu Manichaean Manuscripts1 - Brill, accessed May 14, 2025, <a href="https://brill.com/previewpdf/book/edcoll/9789004384972/B9789004384972_008." target="_blank">https://brill.com/previewpdf/book/edcoll/9789004384972/B9789004384972_008.</a> xml</li>
+<li>​The International Association of Manichaean Studies: IAMS, accessed May 14, 2025, <a href="https://www.manichaeism.de/" target="_blank">https://www.manichaeism.de/</a></li>
+<li>​The State of Research on the Manichaean Bishop Faustus, accessed May 14, 2025, <a href="https://scielo.org.za/scielo.php?script=sci_arttext&amp;pid=S0259-942220130001000" target="_blank">https://scielo.org.za/scielo.php?script=sci_arttext&amp;pid=S0259-942220130001000</a> 37</li>
+<li>​Series - Corpus Fontium Manichaeorum - Brepols Publishers, accessed May 14, 2025, <a href="https://www.brepols.net/series/CFM" target="_blank">https://www.brepols.net/series/CFM</a></li>
+<li>​Gnosis: Journal of Gnostic Studies - Brill, accessed May 14, 2025, <a href="https://brill.com/view/journals/gnos/gnos-overview.xml" target="_blank">https://brill.com/view/journals/gnos/gnos-overview.xml</a></li>
+<li>​www.newworldencyclopedia.org, accessed May 14, 2025, <a href="https://www.newworldencyclopedia.org/entry/Manichaeism#:~:text=Manichaeism" target="_blank">https://www.newworldencyclopedia.org/entry/Manichaeism#:~:text=Manichaeism</a> %20is%20an%20extinct%20dualistic,from%20North%20Africa%20to%20China.</li>
+<li>​The Influence of Manichaeism on Augustine of Hippo as a Spiritual Mentor1, accessed May 14, 2025, <a href="https://www.otcpub.com/Seminars/christmylifeinfo/Augustine/The%20Influence%" target="_blank">https://www.otcpub.com/Seminars/christmylifeinfo/Augustine/The%20Influence%</a> 20of%20Manichaeism%20on%20Augustine%20of%20Hippo%20as%20a%20Spi ritual%20Mentor..pdf</li>
+<li>​Philip Schaff: NPNF1-04. Augustine: The Writings Against the Manichaeans and Against the Donatists - Christian Classics Ethereal Library, accessed May 14, 2025, <a href="https://www.ccel.org/fathers2/NPNF1-04/npnf1-04-35.htm" target="_blank">https://www.ccel.org/fathers2/NPNF1-04/npnf1-04-35.htm</a></li>
+<li>​The Astonishing Finds from the Turfan Oasis: What They Reveal about the History of the Silk Road, accessed May 14, 2025, <a href="https://history.yale.edu/sites/default/files/files/hansen-astonishing-finds.pdf" target="_blank">https://history.yale.edu/sites/default/files/files/hansen-astonishing-finds.pdf</a></li>
+<li>​Bibliographies: &#x27;Manichaeism&#x27; - Grafiati, accessed May 14, 2025, <a href="https://www.grafiati.com/en/literature-selections/manichaeism/" target="_blank">https://www.grafiati.com/en/literature-selections/manichaeism/</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 14, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
