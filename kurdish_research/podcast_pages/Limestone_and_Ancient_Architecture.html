@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limestone and Ancient Architecture</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Limestone and Ancient Architecture</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Limestone in Ancient Civilizations and Architecture.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Limestone in Ancient Civilizations and Architecture.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This report examines limestone&#x27;s significant role in ancient architecture, highlighting its geological properties, workability, and availability as key reasons for its widespread use across diverse civilizations like Egypt, Greece, Rome, Mesoamerica, the Indus Valley, and Malta. It details the various types of limestone and their specific applications, the technologies developed for quarrying, transporting, and joining stone, and the symbolic meanings embedded in limestone structures. Furthermore, the text addresses the challenges of deterioration and weathering that affect these ancient monuments and the modern conservation approaches used to preserve them. Ultimately, the source emphasizes that studying limestone in ancient architecture provides crucial insights into human ingenuity, social organization, and cultural expression.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Start research-14.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Limestone | EBSCO Research Starters, accessed May 17, 2025, <a href="https://www.ebsco.com/research-starters/chemistry/limestone" target="_blank">https://www.ebsco.com/research-starters/chemistry/limestone</a></li>
+<li>​ Limestone | Characteristics, Formation, Texture, Uses, &amp; Facts ..., accessed May 17, 2025, <a href="https://www.britannica.com/science/limestone" target="_blank">https://www.britannica.com/science/limestone</a></li>
+<li>​ Types and Use of Limestone in Architecture, accessed May 17, 2025, <a href="https://www.regattaexports.com/types-and-use-of-limestone-in-architecture/" target="_blank">https://www.regattaexports.com/types-and-use-of-limestone-in-architecture/</a></li>
+<li>​ Limestones in Germany used as building stones: an overview ..., accessed May 17, 2025, <a href="https://www.lyellcollection.org/doi/10.1144/sp331.4" target="_blank">https://www.lyellcollection.org/doi/10.1144/sp331.4</a></li>
+<li>​ Famous Buildings That Are Made Using Limestone - Regatta Universal Exports, accessed May 17, 2025, <a href="https://www.regattaexports.com/famous-buildings-that-are-made-using-limesto" target="_blank">https://www.regattaexports.com/famous-buildings-that-are-made-using-limesto</a> ne/</li>
+<li>​ Roman Travertine - Dedalo Stone, accessed May 17, 2025, <a href="https://www.dedalostone.com/en/materials/roman-travertine/" target="_blank">https://www.dedalostone.com/en/materials/roman-travertine/</a></li>
+<li>​ Working the tufa stone | The Loire-Anjou-Touraine natural Park, accessed May 17, 2025, <a href="https://www.parc-loire-anjou-touraine.fr/en/territory/culture/working-tufa-stone" target="_blank">https://www.parc-loire-anjou-touraine.fr/en/territory/culture/working-tufa-stone</a></li>
+<li>​ geologyscience.com, accessed May 17, 2025, <a href="https://geologyscience.com/rocks/sedimentary-rocks/non-clastic-sedimentary-r" target="_blank">https://geologyscience.com/rocks/sedimentary-rocks/non-clastic-sedimentary-r</a> ock/tufa/#:~:text=Ancient%20Architecture%20and%20Tufa,was%20sourced%20 from%20local%20quarries.</li>
+<li>​ Chalk - Wikipedia, accessed May 17, 2025, <a href="https://en.wikipedia.org/wiki/Chalk" target="_blank">https://en.wikipedia.org/wiki/Chalk</a></li>
+<li>​Chalk | Encyclopedia MDPI, accessed May 17, 2025, <a href="https://encyclopedia.pub/entry/36700" target="_blank">https://encyclopedia.pub/entry/36700</a></li>
+<li>​List of types of limestone - Wikipedia, accessed May 17, 2025, <a href="https://en.wikipedia.org/wiki/List_of_types_of_limestone" target="_blank">https://en.wikipedia.org/wiki/List_of_types_of_limestone</a></li>
+<li>​Different Formations and Uses of Limestone - Vetter Stone, accessed May 17, 2025, <a href="https://www.vetterstone.com/2019/09/16/different-formations-and-uses-of-limes" target="_blank">https://www.vetterstone.com/2019/09/16/different-formations-and-uses-of-limes</a> tone/</li>
+<li>​Oolitic Limestones Used To Build Pentagon, Empire State Building Are Made Of Dinosaur-Era Microbes - Tech Times, accessed May 17, 2025, <a href="https://www.techtimes.com/articles/219386/20180122/oolitic-limestones-used-to-" target="_blank">https://www.techtimes.com/articles/219386/20180122/oolitic-limestones-used-to-</a> build-pentagon-empire-state-building-made-of-dinosaur-era-microbes.htm</li>
+<li>​Construction of the Egyptian pyramids - Wikipedia, accessed May 17, 2025, <a href="https://en.wikipedia.org/wiki/Construction_of_the_Egyptian_pyramids" target="_blank">https://en.wikipedia.org/wiki/Construction_of_the_Egyptian_pyramids</a></li>
+<li>​Ancient Egyptian architecture - Wikipedia, accessed May 17, 2025, <a href="https://en.wikipedia.org/wiki/Ancient_Egyptian_architecture" target="_blank">https://en.wikipedia.org/wiki/Ancient_Egyptian_architecture</a></li>
+<li>​Why Limestone Is the Ideal Choice for Traditional Architecture? - Best Tile Store in San Jose Marblus Granite, Inc., accessed May 17, 2025, <a href="https://marblusgranite.com/why-limestone-is-the-ideal-choice-for-traditional-ar" target="_blank">https://marblusgranite.com/why-limestone-is-the-ideal-choice-for-traditional-ar</a> chitecture/</li>
+<li>​Why Is Limestone Good for Building: Top 10 Reasons | Stone Center, accessed May 17, 2025, <a href="https://stonecenters.com/blog/reasons-to-go-for-limestone-for-your-next-buildi" target="_blank">https://stonecenters.com/blog/reasons-to-go-for-limestone-for-your-next-buildi</a> ng-project</li>
+<li>​Limestone in Architecture - Pablo Luna Studio, accessed May 17, 2025, <a href="https://pablolunastudio.com/limestone-in-architecture/" target="_blank">https://pablolunastudio.com/limestone-in-architecture/</a></li>
+<li>​The Top 3 Uses of Limestone in Construction | Hello Gravel, accessed May 17, 2025, <a href="https://hellogravel.com/the-top-3-uses-of-limestone-in-construction/" target="_blank">https://hellogravel.com/the-top-3-uses-of-limestone-in-construction/</a></li>
+<li>​A Review of Atmospheric Deterioration and Sustainable Conservation of Calcareous Stone in Historical Buildings and Monuments - MDPI, accessed May 17, 2025, <a href="https://www.mdpi.com/2071-1050/16/23/10751" target="_blank">https://www.mdpi.com/2071-1050/16/23/10751</a></li>
+<li>​Ancient Egyptian quarries – an illustrated overview, accessed May 17, 2025, <a href="https://www.ngu.no/upload/Publikasjoner/Special%20publication/SP12_s7-50.pdf" target="_blank">https://www.ngu.no/upload/Publikasjoner/Special%20publication/SP12_s7-50.pdf</a></li>
+<li>​Preservation in Stone: The Role of Limestone Restoration in Historical Conservation, accessed May 17, 2025, <a href="https://stonerepairsandrestoration.co.uk/preservation-in-stone-the-role-of-limes" target="_blank">https://stonerepairsandrestoration.co.uk/preservation-in-stone-the-role-of-limes</a> tone-restoration-in-historical-conservation/</li>
+<li>​CHAPTER 11 LIMESTONE ACqUISITION NETwORkS - Harappa, accessed May 17, 2025, <a href="https://www.harappa.com/sites/default/files/essays/Chapter%2011.pdf" target="_blank">https://www.harappa.com/sites/default/files/essays/Chapter%2011.pdf</a></li>
+<li>​Lime in Masonry – From Ancient Times to Modern Day | Heritage Lime, accessed May 17, 2025, <a href="https://www.heritage-lime.com/lime-in-masonry-from-ancient-times-to-modern" target="_blank">https://www.heritage-lime.com/lime-in-masonry-from-ancient-times-to-modern</a> -day/</li>
+<li>​stonecenters.com, accessed May 17, 2025, <a href="https://stonecenters.com/blog/reasons-to-go-for-limestone-for-your-next-buildi" target="_blank">https://stonecenters.com/blog/reasons-to-go-for-limestone-for-your-next-buildi</a> ng-project#:~:text=Limestone%20has%20natural%20insulating%20properties,ab sorbs%20and%20slowly%20releases%20heat.</li>
+<li>​Cements Around the Ancient World: Holding it Together Since the ..., accessed May 17, 2025, <a href="https://pubs.geoscienceworld.org/msa/elements/article/18/5/293/619790/Cements" target="_blank">https://pubs.geoscienceworld.org/msa/elements/article/18/5/293/619790/Cements</a> -Around-the-Ancient-World-Holding-it</li>
+<li>​STONE IN ANCIENT EGYPT - Department of Environmental Sciences - University of Toledo, accessed May 17, 2025, <a href="http://www.eeescience.utoledo.edu/faculty/Harrell/Egypt/Stone%20Use/Harrell_St" target="_blank">http://www.eeescience.utoledo.edu/faculty/Harrell/Egypt/Stone%20Use/Harrell_St</a> ones_text.htm</li>
+<li>​Quarries | Oxford Classical Dictionary, accessed May 17, 2025, <a href="https://oxfordre.com/classics/display/10.1093/acrefore/9780199381135.001.0001/a" target="_blank">https://oxfordre.com/classics/display/10.1093/acrefore/9780199381135.001.0001/a</a> crefore-9780199381135-e-5471</li>
+<li>​Building stones of the Acropolis (Athens, Greece) - Mountain Beltway, accessed May 17, 2025, <a href="https://mountainbeltway.all-geo.org/2015/01/20/building-stones-acropolis-athens" target="_blank">https://mountainbeltway.all-geo.org/2015/01/20/building-stones-acropolis-athens</a> -greece/</li>
+<li>​Limestone Through The Years, accessed May 17, 2025, <a href="https://www.limestone.com/about-us/limestone-learning-center/limestone-years" target="_blank">https://www.limestone.com/about-us/limestone-learning-center/limestone-years</a> -2/</li>
+<li>​Constructing the Temple – Μάθε περισσότερα… Ένας Αρχαίος Ναός, accessed May 17, 2025, <a href="https://learnmore.ancienttemple.ysma.gr/constructing-the-temple/?lang=en" target="_blank">https://learnmore.ancienttemple.ysma.gr/constructing-the-temple/?lang=en</a></li>
+<li>​7 Impressive Examples of Roman Architecture (Outside of Italy) - Daily Passport, accessed May 17, 2025, <a href="https://dailypassport.com/roman-architecture-outside-of-italy/" target="_blank">https://dailypassport.com/roman-architecture-outside-of-italy/</a></li>
+<li>​Ancient Roman architecture - Wikipedia, accessed May 17, 2025, <a href="https://en.wikipedia.org/wiki/Ancient_Roman_architecture" target="_blank">https://en.wikipedia.org/wiki/Ancient_Roman_architecture</a></li>
+<li>​A brief overview of Maya architecture | Seldom Scene Photography, accessed May 17, 2025, <a href="https://seldomscenephotography.com/pg2-ebooks/maya_architecture/" target="_blank">https://seldomscenephotography.com/pg2-ebooks/maya_architecture/</a></li>
+<li>​www.heritageuniversityofkerala.com, accessed May 17, 2025, <a href="http://www.heritageuniversityofkerala.com/JournalPDF/Volume8.2/53.pdf" target="_blank">http://www.heritageuniversityofkerala.com/JournalPDF/Volume8.2/53.pdf</a></li>
+<li>​Megalithic Temples of Malta - UNESCO World Heritage Centre, accessed May 17, 2025, <a href="https://whc.unesco.org/en/list/132/" target="_blank">https://whc.unesco.org/en/list/132/</a></li>
+<li>​Guide to the Megalithic Temples of Malta - Everything Everywhere Daily, accessed May 17, 2025, <a href="https://everything-everywhere.com/megalithic-temples-of-malta/" target="_blank">https://everything-everywhere.com/megalithic-temples-of-malta/</a></li>
+<li>​Introduction to Prehistoric Architecture in Malta - Culture Malta ..., accessed May 17, 2025, <a href="https://culture-malta.org/introduction-prehistoric-architecture-in-malta/" target="_blank">https://culture-malta.org/introduction-prehistoric-architecture-in-malta/</a></li>
+<li>​Casing stone from the Great Pyramid of Giza | National Museums Scotland, accessed May 17, 2025, <a href="https://www.nms.ac.uk/discover-catalogue/casing-stone-from-the-great-pyrami" target="_blank">https://www.nms.ac.uk/discover-catalogue/casing-stone-from-the-great-pyrami</a> d-of-giza</li>
+<li>​Dry stone - Wikipedia, accessed May 17, 2025, <a href="https://en.wikipedia.org/wiki/Dry_stone" target="_blank">https://en.wikipedia.org/wiki/Dry_stone</a></li>
+<li>​Building the Ages: How Architecture Has Shaped Human Civilization, accessed May 17, 2025, <a href="https://amazingarchitecture.com/articles/building-the-ages-how-architecture-ha" target="_blank">https://amazingarchitecture.com/articles/building-the-ages-how-architecture-ha</a> s-shaped-human-civilization</li>
+<li>​Exploring Classical Architecture - Linvisibile, accessed May 17, 2025, <a href="https://linvisibile.com/news/exploring-classical-architecture-materials-shapes-sig" target="_blank">https://linvisibile.com/news/exploring-classical-architecture-materials-shapes-sig</a> nificance/</li>
+<li>​The History &amp; Evolution of Quarrying - Booth Ventures, accessed May 17, 2025, <a href="https://www.boothventures.co.uk/news/the-history-evolution-of-quarrying/" target="_blank">https://www.boothventures.co.uk/news/the-history-evolution-of-quarrying/</a></li>
+<li>​Limestone: The Building Blocks of Ancient Architecture - Written in ..., accessed May 17, 2025, <a href="http://intlstoneworks.com/blog/2014/09/04/limestone-the-building-blocks-of-an" target="_blank">http://intlstoneworks.com/blog/2014/09/04/limestone-the-building-blocks-of-an</a> cient-architecture/</li>
+<li>​Ancient Quarry Techniques in the Ptolemaic Period in the Middle Egypt - Bollettino di archeologia online, accessed May 17, 2025, <a href="https://bollettinodiarcheologiaonline.beniculturali.it/wp-content/uploads/2021/10/" target="_blank">https://bollettinodiarcheologiaonline.beniculturali.it/wp-content/uploads/2021/10/</a> 9_HORI.pdf</li>
+<li>​Mining in ancient Rome - Wikipedia, accessed May 17, 2025, <a href="https://en.wikipedia.org/wiki/Mining_in_ancient_Rome" target="_blank">https://en.wikipedia.org/wiki/Mining_in_ancient_Rome</a></li>
+<li>​Rare Dacian stonemason&#x27;s tool kit unearthed in Romanian quarry, accessed May 17, 2025, <a href="https://archaeologymag.com/2025/05/dacian-stonemasons-tool-kit-unearthed-i" target="_blank">https://archaeologymag.com/2025/05/dacian-stonemasons-tool-kit-unearthed-i</a> n-romania/</li>
+<li>​(PDF) Stone Architecture: Stone Dressing in Petra, Jordan - ResearchGate, accessed May 17, 2025, <a href="https://www.researchgate.net/publication/298782089_Stone_Architecture_Stone_" target="_blank">https://www.researchgate.net/publication/298782089_Stone_Architecture_Stone_</a> Dressing_in_Petra_Jordan</li>
+<li>​Stone Working: Quarrying, Carving, and Finishing | Maya Art and ..., accessed May 17, 2025, <a href="https://library.fiveable.me/maya-art-and-architecture/unit-12/stone-working-quar" target="_blank">https://library.fiveable.me/maya-art-and-architecture/unit-12/stone-working-quar</a> rying-carving-finishing/study-guide/q8ESeZaYg9grOJSh</li>
+<li>​Late Classic Maya Art (600-900 CE) | Maya Art and Architecture Class Notes | Fiveable, accessed May 17, 2025, <a href="https://library.fiveable.me/maya-art-and-architecture/unit-4" target="_blank">https://library.fiveable.me/maya-art-and-architecture/unit-4</a></li>
+<li>​Stone Masonry — MayaIncaAztec.com, accessed May 17, 2025, <a href="https://www.mayaincaaztec.com/mia-similarities/stone-masonry" target="_blank">https://www.mayaincaaztec.com/mia-similarities/stone-masonry</a></li>
+<li>​Europe&#x27;s Oldest Civilization: Malta&#x27;s Temple-Builders, accessed May 17, 2025, <a href="https://www.um.edu.mt/library/oar/bitstream/123456789/31282/1/Miceli-Farrugia_" target="_blank">https://www.um.edu.mt/library/oar/bitstream/123456789/31282/1/Miceli-Farrugia_</a> %20Euope%27s%20oldest-civilization-Malta%27s%20temple%20builders.pdf</li>
+<li>​www.boothventures.co.uk, accessed May 17, 2025, <a href="https://www.boothventures.co.uk/news/the-history-evolution-of-quarrying/#:~:te" target="_blank">https://www.boothventures.co.uk/news/the-history-evolution-of-quarrying/#:~:te</a> xt=In%20ancient%20times%2C%20quarrying%20was,of%20stone%20from%20t he%20quarry.</li>
+<li>​Querying Quarries: Stone Extraction Practices and Socioeconomic Organization in Three Sub-Regions of the Maya Lowlands - NSF-PAR, accessed May 17, 2025, <a href="https://par.nsf.gov/servlets/purl/10327521" target="_blank">https://par.nsf.gov/servlets/purl/10327521</a></li>
+<li>​The Great Pyramid of Giza - Kemet Experience, accessed May 17, 2025, <a href="https://www.kemetexperience.com/the-great-pyramid-of-giza/" target="_blank">https://www.kemetexperience.com/the-great-pyramid-of-giza/</a></li>
+<li>​The Great Pyramid of Giza: Architectural Masterpiece - Kemet Boutique Hotel, accessed May 17, 2025, <a href="https://kemetboutiquehotel.com/the-great-pyramid-of-giza/" target="_blank">https://kemetboutiquehotel.com/the-great-pyramid-of-giza/</a></li>
+<li>​Greek and Roman Columns - Museum of Natural Sciences | University of Saskatchewan, accessed May 17, 2025, <a href="https://artsandscience.usask.ca/museumofnaturalsciences/programming/downto" target="_blank">https://artsandscience.usask.ca/museumofnaturalsciences/programming/downto</a> wn-tour/columns.php</li>
+<li>​Parthenon: Definition, Facts, Athens &amp; Greece - HISTORY, accessed May 17, 2025, <a href="https://www.history.com/topics/ancient-greece/parthenon" target="_blank">https://www.history.com/topics/ancient-greece/parthenon</a></li>
+<li>​Ancient Maya art - Wikipedia, accessed May 17, 2025, <a href="https://en.wikipedia.org/wiki/Ancient_Maya_art" target="_blank">https://en.wikipedia.org/wiki/Ancient_Maya_art</a></li>
+<li>​Advantages and Disadvantages of using limestone &amp; building materials made from limstone, accessed May 17, 2025, <a href="https://getrevising.co.uk/grids/advantages_and_disadvantages_of_using_limeston" target="_blank">https://getrevising.co.uk/grids/advantages_and_disadvantages_of_using_limeston</a> e</li>
+<li>​www.hoffarch.com, accessed May 17, 2025, <a href="http://www.hoffarch.com/wp-content/uploads/Vol-22-N1-Historic-Marble-and-Li" target="_blank">http://www.hoffarch.com/wp-content/uploads/Vol-22-N1-Historic-Marble-and-Li</a> mestone-Structures.pdf</li>
+<li>​How does weathering affect limestone? - Internet Geography, accessed May 17, 2025, <a href="https://www.internetgeography.net/topics/how-does-weathering-affect-limeston" target="_blank">https://www.internetgeography.net/topics/how-does-weathering-affect-limeston</a> e/</li>
+<li>​Identifying Problems with Your Historic Stone Building | Wisconsin Historical Society, accessed May 17, 2025, <a href="https://www.wisconsinhistory.org/Records/Article/CS4231" target="_blank">https://www.wisconsinhistory.org/Records/Article/CS4231</a></li>
+<li>​Deterioration Processes of Travertine Monumental and Contemporary Stonestructures | Geologica Balcanica, accessed May 17, 2025, <a href="https://www.geologica-balcanica.eu/journal/39/1-2/pp.-310-311" target="_blank">https://www.geologica-balcanica.eu/journal/39/1-2/pp.-310-311</a></li>
+<li>​(PDF) The Effect Of Weathering Processes On The Rocks Of The Pyramids Of Dahshur, South Of Giza, Egypt: A Geoarchaeological Study - ResearchGate, accessed May 17, 2025, <a href="https://www.researchgate.net/publication/383108764_The_Effect_Of_Weathering_" target="_blank">https://www.researchgate.net/publication/383108764_The_Effect_Of_Weathering_</a> Processes_On_The_Rocks_Of_The_Pyramids_Of_Dahshur_South_Of_Giza_Egypt_ A_Geoarchaeological_Study</li>
+<li>​Secrets of the Colosseum - Smithsonian Magazine, accessed May 17, 2025, <a href="https://www.smithsonianmag.com/history/secrets-of-the-colosseum-75827047/" target="_blank">https://www.smithsonianmag.com/history/secrets-of-the-colosseum-75827047/</a></li>
+<li>​The Handling and Lifting of Limestone Blocks among the Egyptians - ResearchGate, accessed May 17, 2025, <a href="https://www.researchgate.net/publication/388498356_The_Handling_and_Lifting_" target="_blank">https://www.researchgate.net/publication/388498356_The_Handling_and_Lifting_</a> of_Limestone_Blocks_among_the_Egyptians</li>
+<li>​A Brief History of Stone Masonry With Modern Day Examples &amp; Techniques, accessed May 17, 2025, <a href="https://www.brickandlevel.com/a-brief-history-of-stone-masonry-with-modern-" target="_blank">https://www.brickandlevel.com/a-brief-history-of-stone-masonry-with-modern-</a> day-examples-techniques/</li>
+<li>​Maya Architecture - Reed College, accessed May 17, 2025, <a href="https://www.reed.edu/uxmal/biblio-subject-MayaArchitecture.pdf" target="_blank">https://www.reed.edu/uxmal/biblio-subject-MayaArchitecture.pdf</a></li>
+<li>​Travertine : Properties, Formation, Uses, Localities - Geology Science, accessed May 17, 2025, <a href="https://geologyscience.com/rocks/sedimentary-rocks/non-clastic-sedimentary-r" target="_blank">https://geologyscience.com/rocks/sedimentary-rocks/non-clastic-sedimentary-r</a> ock/travertine/</li>
+<li>​Raw Material Selection and Stone Tool Production: Limestone Bifaces in the Mopan Valley, Belize | Latin American Antiquity - Cambridge University Press &amp; Assessment, accessed May 17, 2025, <a href="https://www.cambridge.org/core/journals/latin-american-antiquity/article/raw-ma" target="_blank">https://www.cambridge.org/core/journals/latin-american-antiquity/article/raw-ma</a> terial-selection-and-stone-tool-production-limestone-bifaces-in-the-mopan-vall ey-belize/94F0259277E72FFD6CE09527868903EF</li>
+<li>​Giza: The Mysteries of The Pyramids &amp; The Sphinx - Sailingstone Travel, accessed May 17, 2025, <a href="https://sailingstonetravel.com/giza-mysteries-of-the-pyramids-sphinx/" target="_blank">https://sailingstonetravel.com/giza-mysteries-of-the-pyramids-sphinx/</a></li>
+<li>​Archaeometric Investigations on the Significance of Limestones in the Roman Provinces of the Southern Lower Danube - MDPI, accessed May 17, 2025, <a href="https://www.mdpi.com/2075-163X/15/3/267" target="_blank">https://www.mdpi.com/2075-163X/15/3/267</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 17, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
