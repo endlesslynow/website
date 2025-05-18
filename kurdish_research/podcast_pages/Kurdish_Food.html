@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurdish Food</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kurdish Food</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Kurdish Traditional Clothing_ Identity and Symbolism.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Kurdish Traditional Clothing_ Identity and Symbolism.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>C:\Users\zacah\Desktop\programs I made\python programs\auto_prompt\output\auto_deep_research\audios</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Start research-24.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Kurdish culture - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_culture" target="_blank">https://en.wikipedia.org/wiki/Kurdish_culture</a></li>
+<li>​ Iraq, Turkey, and Iran, accessed May 18, 2025, <a href="https://saylordotorg.github.io/text_world-regional-geography-people-places-and" target="_blank">https://saylordotorg.github.io/text_world-regional-geography-people-places-and</a> -globalization/s11-06-iraq-turkey-and-iran.html</li>
+<li>​ www.sbs.com.au, accessed May 18, 2025, <a href="https://www.sbs.com.au/language/kurdish/en/article/sharing-kurdish-culture-arou" target="_blank">https://www.sbs.com.au/language/kurdish/en/article/sharing-kurdish-culture-arou</a> nd-the-world-through-its-unique-cuisine/g9ebaoi9t#:~:text=Most%20Kurdish%2 0meals%20contain%20slow,salads%20or%20mixed%20fresh%20herbs.&amp;text=Tr aditionally%2C%20some%20dishes%20would%20have%20different%20versions %20in%20different%20seasons.</li>
+<li>​ Sharing Kurdish culture around the world through its unique cuisine ..., accessed May 18, 2025, <a href="https://www.sbs.com.au/language/kurdish/en/article/sharing-kurdish-culture-arou" target="_blank">https://www.sbs.com.au/language/kurdish/en/article/sharing-kurdish-culture-arou</a> nd-the-world-through-its-unique-cuisine/g9ebaoi9t</li>
+<li>​ Kurdish Cuisine – Kurdistan Regional Government-Iraq ... - GOV.KRD, accessed May 18, 2025, <a href="http://austria.gov.krd/en/kurdische-kuche-2/" target="_blank">http://austria.gov.krd/en/kurdische-kuche-2/</a></li>
+<li>​ Kurdish Cuisine, accessed May 18, 2025, <a href="https://www.turkish-cuisine.org/ottoman-heritage-3/kurdish-cuisine-34.html" target="_blank">https://www.turkish-cuisine.org/ottoman-heritage-3/kurdish-cuisine-34.html</a></li>
+<li>​ Kurdish cuisine - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_cuisine" target="_blank">https://en.wikipedia.org/wiki/Kurdish_cuisine</a></li>
+<li>​ Learn About Kurdish Food, accessed May 18, 2025, <a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-food/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-food/</a></li>
+<li>​ Discover Kurdistan: The Middle East&#x27;s best-kept travel secret ..., accessed May 18, 2025, <a href="https://shafaq.com/en/Report/Discover-Kurdistan-The-Middle-East-s-best-kept-t" target="_blank">https://shafaq.com/en/Report/Discover-Kurdistan-The-Middle-East-s-best-kept-t</a> ravel-secret</li>
+<li>​Kurdish Meaningful Foods, accessed May 18, 2025, <a href="https://www.greatplainsfoodbank.org/wp-content/uploads/2023/08/Meaningful-f" target="_blank">https://www.greatplainsfoodbank.org/wp-content/uploads/2023/08/Meaningful-f</a> ood-list-Kurdish.pdf</li>
+<li>​5 Kurdish Eating Habits and Food Rules to Eat Like a Kurd ..., accessed May 18, 2025, <a href="https://www.languagetrainers.co.uk/blog/5-kurdish-eating-habits-and-rules-to-e" target="_blank">https://www.languagetrainers.co.uk/blog/5-kurdish-eating-habits-and-rules-to-e</a> at-like-a-kurd/</li>
+<li>​THE FOOD THAT LAUNCHED CIVILIZATION - Kurdistan, Ground of The Civilisation - SARA Distribution, accessed May 18, 2025, <a href="https://www.saradistribution.com/sharistani.htm" target="_blank">https://www.saradistribution.com/sharistani.htm</a></li>
+<li>​Middle Eastern cuisine - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Middle_Eastern_cuisine" target="_blank">https://en.wikipedia.org/wiki/Middle_Eastern_cuisine</a></li>
+<li>​Tag: kurdish yogurt drink Illinois, accessed May 18, 2025, <a href="https://erbilbrand.com/tag/kurdish-yogurt-drink-illinois/" target="_blank">https://erbilbrand.com/tag/kurdish-yogurt-drink-illinois/</a></li>
+<li>​&#x27;Kunapeest,&#x27; the traditional Kurdish method of preserving cheese, accessed May 18, 2025, <a href="https://www.kurdistan24.net/en/story/393002/%E2%80%98Kunapeest,%E2%80%" target="_blank">https://www.kurdistan24.net/en/story/393002/%E2%80%98Kunapeest,%E2%80%</a> 99-the-traditional-Kurdish-method-of-preserving-cheese</li>
+<li>​www.turkish-cuisine.org, accessed May 18, 2025, <a href="https://www.turkish-cuisine.org/ottoman-heritage-3/kurdish-cuisine-34.html#:~:t" target="_blank">https://www.turkish-cuisine.org/ottoman-heritage-3/kurdish-cuisine-34.html#:~:t</a> ext=The%20foods%20prepared%20for%20these,lentils%2C%20chickpeas%20a nd%20dry%20beans.</li>
+<li>​Recipes from Iraqi Kurdistan | Community Peacemaker Teams, accessed May 18, 2025, <a href="https://cpt.org/suppers/recipes-from-iraqi-kurdistan" target="_blank">https://cpt.org/suppers/recipes-from-iraqi-kurdistan</a></li>
+<li>​Kurdish Dolma Recipe – S+S Goods Shop, accessed May 18, 2025, <a href="https://ssgoods.co/blogs/news/kurdish-dolma-recipe" target="_blank">https://ssgoods.co/blogs/news/kurdish-dolma-recipe</a></li>
+<li>​Kermanshah - UNESCO City of Gastronomy | Top 25 Restaurants ..., accessed May 18, 2025, <a href="https://www.top25restaurants.com/middle-east-gastronomy-cities/kermanshah-i" target="_blank">https://www.top25restaurants.com/middle-east-gastronomy-cities/kermanshah-i</a> ran/</li>
+<li>​Iran Kurds: Religion, Population, Culture, Food, Clothes, accessed May 18, 2025, <a href="https://irandoostan.com/iranian-kurds/" target="_blank">https://irandoostan.com/iranian-kurds/</a></li>
+<li>​What to eat KURDISTAN ☀️ Tirşik (Kurdish lamb and eggplant stew), accessed May 18, 2025, <a href="https://www.globaldining.ch/what-to-eat-kurdistan-tirsik-kurdish-lamb-and-egg" target="_blank">https://www.globaldining.ch/what-to-eat-kurdistan-tirsik-kurdish-lamb-and-egg</a> plant-stew/</li>
+<li>​Traditional Lamb Kawarma Recipe (or Goat) - Shepherd Song Farm, accessed May 18, 2025, <a href="https://shepherdsongfarm.com/lamb-and-goat-recipes/lamb-or-goat-kawarma/" target="_blank">https://shepherdsongfarm.com/lamb-and-goat-recipes/lamb-or-goat-kawarma/</a></li>
+<li>​Preparing a Traditional Kurdish Mezze Feast at Home | TikTok, accessed May 18, 2025, <a href="https://www.tiktok.com/@melizcooks/video/7474216130853293334" target="_blank">https://www.tiktok.com/@melizcooks/video/7474216130853293334</a></li>
+<li>​Turkish Aubergine meze | Recipe - Kitchen Stories, accessed May 18, 2025, <a href="https://www.kitchenstories.com/en/recipes/turkish-aubergine-meze-17d4" target="_blank">https://www.kitchenstories.com/en/recipes/turkish-aubergine-meze-17d4</a></li>
+<li>​The Ultimate Middle Eastern Meze Platter - Cooking Gorgeous, accessed May 18, 2025, <a href="https://cookingorgeous.com/blog/the-ultimate-middle-eastern-meze-platter/" target="_blank">https://cookingorgeous.com/blog/the-ultimate-middle-eastern-meze-platter/</a></li>
+<li>​12 Most Delicious Turkish Mezes to Cement that Friendship - Yummy Istanbul, accessed May 18, 2025, <a href="https://yummyistanbul.com/turkish-mezes/" target="_blank">https://yummyistanbul.com/turkish-mezes/</a></li>
+<li>​Middle Eastern Meze Platter | The Edible Schoolyard Project, accessed May 18, 2025, <a href="https://edibleschoolyard.org/resource/middle-eastern-meze-platter" target="_blank">https://edibleschoolyard.org/resource/middle-eastern-meze-platter</a></li>
+<li>​Kurdish Spicy Lentil Soup Recipe - Food.com, accessed May 18, 2025, <a href="https://www.food.com/recipe/kurdish-spicy-lentil-soup-318259" target="_blank">https://www.food.com/recipe/kurdish-spicy-lentil-soup-318259</a></li>
+<li>​Kurdish Soup Dowjic Recipe - Food.com, accessed May 18, 2025, <a href="https://www.food.com/recipe/kurdish-soup-dowjic-318276" target="_blank">https://www.food.com/recipe/kurdish-soup-dowjic-318276</a></li>
+<li>​Kutilk Daw From Kurdistan - Tastes From The Road, accessed May 18, 2025, <a href="https://www.tastesfromtheroad.com/recipes/kutilk-daw-from-kurdistan" target="_blank">https://www.tastesfromtheroad.com/recipes/kutilk-daw-from-kurdistan</a></li>
+<li>​Kutilk Dow (Yogurt Soup with Dumplings) - A Tastes of Iraqi Kurdistan, accessed May 18, 2025, <a href="https://www.tastesfromtheroad.com/post/kutilk-dow-yogurt-soup-with-dumplin" target="_blank">https://www.tastesfromtheroad.com/post/kutilk-dow-yogurt-soup-with-dumplin</a> gs-a-tastes-of-iraqi-kurdistan</li>
+<li>​Dumplings in yogurt soup | Kutilkdew | cooking my roots - YouTube, accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=Op-u36nBP4E" target="_blank">https://www.youtube.com/watch?v=Op-u36nBP4E</a></li>
+<li>​Marivan Cuisine | Top 25 Kurdish Foods and Recipes, accessed May 18, 2025, <a href="http://ir-handicrafts.ir/blog/en/marivan-food" target="_blank">http://ir-handicrafts.ir/blog/en/marivan-food</a></li>
+<li>​Vegan Kurdish Kutilk (Bulgur Dumplings in Warm Mint-Yogurt Sauce topped with Chili Butter) - Pinterest, accessed May 18, 2025, <a href="https://www.pinterest.com/pin/recipe-inspo--616359899005590373/" target="_blank">https://www.pinterest.com/pin/recipe-inspo--616359899005590373/</a></li>
+<li>​Antidote to bad weather: Kurdish Jewish dumpling stew, accessed May 18, 2025, <a href="https://jweekly.com/2023/01/10/antidote-to-bad-weather-kurdish-jewish-dumplin" target="_blank">https://jweekly.com/2023/01/10/antidote-to-bad-weather-kurdish-jewish-dumplin</a> g-stew/</li>
+<li>​Juwan&#x27;s Kurdish Dumpling (Kotulk Daw) - Recipes for Ramadan, accessed May 18, 2025, <a href="https://recipesforramadan.com/recipes/juwans-kurdish-dumpling-kotulk-daw/" target="_blank">https://recipesforramadan.com/recipes/juwans-kurdish-dumpling-kotulk-daw/</a></li>
+<li>​Kurdish Shifta. . . vegan and free-from ⋆ Life Diet Health, accessed May 18, 2025, <a href="https://lifediethealth.com/kurdish-shifta-vegan-and-free-from/" target="_blank">https://lifediethealth.com/kurdish-shifta-vegan-and-free-from/</a></li>
+<li>​The Legacy of Ottoman Cuisine - Istanbul Grill, accessed May 18, 2025, <a href="https://istanbulgrillorlando.com/desserts/the-legacy-of-ottoman-cuisine-a-glimp" target="_blank">https://istanbulgrillorlando.com/desserts/the-legacy-of-ottoman-cuisine-a-glimp</a> se-into-history/</li>
+<li>​A Blog That Makes the Case for Kurdish Cuisine | Eurasianet, accessed May 18, 2025, <a href="https://eurasianet.org/a-blog-that-makes-the-case-for-kurdish-cuisine" target="_blank">https://eurasianet.org/a-blog-that-makes-the-case-for-kurdish-cuisine</a></li>
+<li>​Assyrian cuisine - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Assyrian_cuisine" target="_blank">https://en.wikipedia.org/wiki/Assyrian_cuisine</a></li>
+<li>​Diyarbakır, Turkey: Like a phoenix rising from the ashes - Mr. Food ..., accessed May 18, 2025, <a href="https://mrfoodandtravel.com/en/diyarbakir-turkey-like-a-phoenix-rising-from-the" target="_blank">https://mrfoodandtravel.com/en/diyarbakir-turkey-like-a-phoenix-rising-from-the</a> -ashes/</li>
+<li>​Kavurma - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Kavurma" target="_blank">https://en.wikipedia.org/wiki/Kavurma</a></li>
+<li>​Kurdish Tareh Stew Recipe on Food52, accessed May 18, 2025, <a href="https://food52.com/recipes/92675-kurdish-tareh-stew" target="_blank">https://food52.com/recipes/92675-kurdish-tareh-stew</a></li>
+<li>​Taskababi / Lamb Onion Stew | dwllcdishesanddips.sites.uiowa.edu - The University of Iowa, accessed May 18, 2025, <a href="https://dwllcdishesanddips.sites.uiowa.edu/news/2020/04/taskababi-lamb-onion-" target="_blank">https://dwllcdishesanddips.sites.uiowa.edu/news/2020/04/taskababi-lamb-onion-</a> stew</li>
+<li>​Like My Grandmother Used to Make: Kurdish Biryani - Greater Govanhill, accessed May 18, 2025, <a href="https://www.greatergovanhill.com/latest/like-my-grandmother-used-to-make-ku" target="_blank">https://www.greatergovanhill.com/latest/like-my-grandmother-used-to-make-ku</a> rdish-biryani</li>
+<li>​37 Kurdish vegetable and vegetable based food ideas - Pinterest, accessed May 18, 2025, <a href="https://uk.pinterest.com/tanyarashid75/kurdish-vegetable-and-vegetable-based-" target="_blank">https://uk.pinterest.com/tanyarashid75/kurdish-vegetable-and-vegetable-based-</a> food/</li>
+<li>​Perde Pilavi – Lotus Foods, accessed May 18, 2025, <a href="https://www.lotusfoods.com/blogs/recipes/perde-pilavi" target="_blank">https://www.lotusfoods.com/blogs/recipes/perde-pilavi</a></li>
+<li>​Turkish Chicken And Rice Pie (Perde Pilavı, or veiled pilaf) | Gimaş Ship Supply &amp; Services, accessed May 18, 2025, <a href="https://www.gimas.com/turkish-chicken-and-rice-pie-perde-pilavi-or-veiled-pilaf" target="_blank">https://www.gimas.com/turkish-chicken-and-rice-pie-perde-pilavi-or-veiled-pilaf</a></li>
+<li>​kurdish food – Chef in disguise, accessed May 18, 2025, <a href="https://chefindisguise.com/tag/kurdish-food/" target="_blank">https://chefindisguise.com/tag/kurdish-food/</a></li>
+<li>​Naan, a delicious staple of Kurdish culture - Kurdistan24, accessed May 18, 2025, <a href="https://www.kurdistan24.net/en/story/385254/Naan,-a-delicious-staple-of-Kurdis" target="_blank">https://www.kurdistan24.net/en/story/385254/Naan,-a-delicious-staple-of-Kurdis</a> h-culture#:~:text=There%20are%20many%20different%20names,them%20on%2 0a%20daily%20basis.</li>
+<li>​Naan, a delicious staple of Kurdish culture - Kurdistan24, accessed May 18, 2025, <a href="https://www.kurdistan24.net/en/story/385254/Naan,-a-delicious-staple-of-Kurdis" target="_blank">https://www.kurdistan24.net/en/story/385254/Naan,-a-delicious-staple-of-Kurdis</a> h-culture</li>
+<li>​Bread in the Kurdish Language and Culture - Part 2 - KURDSHOP, accessed May 18, 2025, <a href="https://kurdshop.net/en/culture/3173" target="_blank">https://kurdshop.net/en/culture/3173</a></li>
+<li>​traditional Kurdish bread recipe - YouTube, accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=tXJDazpN7pE" target="_blank">https://www.youtube.com/watch?v=tXJDazpN7pE</a></li>
+<li>​Kelaneh (bread) - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Kelaneh_(bread)" target="_blank">https://en.wikipedia.org/wiki/Kelaneh_(bread)</a></li>
+<li>​Borsaq: A Yummy Iranian Kurdish Bread - Iran Front Page, accessed May 18, 2025, <a href="https://ifpnews.com/borsaq-a-yummy-iranian-kurdish-bread/" target="_blank">https://ifpnews.com/borsaq-a-yummy-iranian-kurdish-bread/</a></li>
+<li>​How to Make Kurdish Bread : 10 Steps - Instructables, accessed May 18, 2025, <a href="https://www.instructables.com/How-to-Make-Kurdish-Bread/" target="_blank">https://www.instructables.com/How-to-Make-Kurdish-Bread/</a></li>
+<li>​Iraqi Flatbread: A Recipe from Our Kitchen to Yours - Frontiers USA, accessed May 18, 2025, <a href="https://frontiersusa.org/blog/iraqi-flatbread-recipe/" target="_blank">https://frontiersusa.org/blog/iraqi-flatbread-recipe/</a></li>
+<li>​Easy Homemade bread (Kurdish Samoon) - YouTube, accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=I7czVq7YpO0" target="_blank">https://www.youtube.com/watch?v=I7czVq7YpO0</a></li>
+<li>​Kurdish Kadeh and Zijik Recipe - Alon Hadar | Asif, accessed May 18, 2025, <a href="https://asif.org/en/recipes/kurdish-kadeh-and-zijik/" target="_blank">https://asif.org/en/recipes/kurdish-kadeh-and-zijik/</a></li>
+<li>​Nawsaji Bread - PUKmedia, accessed May 18, 2025, <a href="https://pukmedia.com/EN/GalleryDetails/4494" target="_blank">https://pukmedia.com/EN/GalleryDetails/4494</a></li>
+<li>​Stuffed Flatbread/Kelane Naan Bread نان کالنه - Rozina&#x27;s Persian Kitchen - WordPress.com, accessed May 18, 2025, <a href="https://rozinaspersiankitchen.wordpress.com/2019/06/23/stuffed-flat-naan-bread" target="_blank">https://rozinaspersiankitchen.wordpress.com/2019/06/23/stuffed-flat-naan-bread</a> -bolani/</li>
+<li>​Kelane Bread! Baking the most popular and delicious bread in Kurdistan Nomadic Lifestyle - YouTube, accessed May 18, 2025, <a href="https://m.youtube.com/watch?v=mZhFyTXFLhg&amp;pp=ygUMI2VscGFuYWJlbmR5" target="_blank">https://m.youtube.com/watch?v=mZhFyTXFLhg&amp;pp=ygUMI2VscGFuYWJlbmR5</a></li>
+<li>​If you make this once, you&#x27;ll love it. - Life Diet Health, accessed May 18, 2025, <a href="https://lifediethealth.com/if-you-make-this-once-youll-love-it/" target="_blank">https://lifediethealth.com/if-you-make-this-once-youll-love-it/</a></li>
+<li>​Iraqi Samoon Bread - Habibi, What&#x27;s Cooking? Classic Lebanese and Mediterranean Recipes, accessed May 18, 2025, <a href="https://www.habibiwhatscooking.com/recipeblog/iraqi-samoon-bread" target="_blank">https://www.habibiwhatscooking.com/recipeblog/iraqi-samoon-bread</a></li>
+<li>​Samoon/Iraqi Flatbread - Priya&#x27;s Versatile Recipes, accessed May 18, 2025, <a href="http://priyaeasyntastyrecipes.blogspot.com/2017/04/samooniraqi-flatbread.html" target="_blank">http://priyaeasyntastyrecipes.blogspot.com/2017/04/samooniraqi-flatbread.html</a></li>
+<li>​Carbo-loading at Edessa in Little Kurdistan - The Nashvillian, accessed May 18, 2025, <a href="https://thenashvillian.com/kurdish-bread-edessa-nashville/" target="_blank">https://thenashvillian.com/kurdish-bread-edessa-nashville/</a></li>
+<li>​File:Traditional Kurdish bread, a crusty white loaf that is baked on a round hot iron.jpg, accessed May 18, 2025, <a href="https://en.m.wikipedia.org/wiki/File:Traditional_Kurdish_bread,_a_crusty_white_loa" target="_blank">https://en.m.wikipedia.org/wiki/File:Traditional_Kurdish_bread,_a_crusty_white_loa</a> f_that_is_baked_on_a_round_hot_iron.jpg</li>
+<li>​&quot;Traditional Kurdish Sweet Bread Recipe: Baking Kolireh Naskeh in ..., accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=RMmEPaH945M" target="_blank">https://www.youtube.com/watch?v=RMmEPaH945M</a></li>
+<li>​Iraqi Red Rice - Three Teas Kitchen Recipes, accessed May 18, 2025, <a href="https://threeteaskitchen.com/iraqi-red-rice/" target="_blank">https://threeteaskitchen.com/iraqi-red-rice/</a></li>
+<li>​Holy Moly — A Perfect Red Rice - Sephardic Spice Girls, accessed May 18, 2025, <a href="https://sephardicspicegirls.com/holy-moly-a-perfect-red-rice/" target="_blank">https://sephardicspicegirls.com/holy-moly-a-perfect-red-rice/</a></li>
+<li>​My Grandma&#x27;s Famous Iraqi Red Rice - Sacha Served What, accessed May 18, 2025, <a href="https://sachaservedwhat.com/recipe/my-grandmas-famous-iraqi-red-rice/" target="_blank">https://sachaservedwhat.com/recipe/my-grandmas-famous-iraqi-red-rice/</a></li>
+<li>​Iraqi Mung Beans and Rice - Mash M&#x27;tubuq Recipe - Low-cholesterol.Food.com, accessed May 18, 2025, <a href="https://www.food.com/recipe/iraqi-mung-beans-and-rice-mash-mtubuq-420012" target="_blank">https://www.food.com/recipe/iraqi-mung-beans-and-rice-mash-mtubuq-420012</a></li>
+<li>​Kurdish Rice and beef sausage Givishk | Givişk | cooking my roots - YouTube, accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=hLo0dTOR_NU" target="_blank">https://www.youtube.com/watch?v=hLo0dTOR_NU</a></li>
+<li>​935. Iraqi Mung Bean Rice - Maryam&#x27;s Culinary Wonders, accessed May 18, 2025, <a href="https://maryamsculinarywonders.blogspot.com/2016/05/935-iraqi-mung-bean-ri" target="_blank">https://maryamsculinarywonders.blogspot.com/2016/05/935-iraqi-mung-bean-ri</a> ce.html</li>
+<li>​Traditional Kurdish Kulicha for Eid - Life Diet Health, accessed May 18, 2025, <a href="https://lifediethealth.com/traditional-kurdish-kulicha-for-eid/" target="_blank">https://lifediethealth.com/traditional-kurdish-kulicha-for-eid/</a></li>
+<li>​Kleicha (Iraqi Cookies) - Yasmeen&#x27;s Kitchen Diary, accessed May 18, 2025, <a href="https://www.yasmeenskitchendiary.com/recipe/kleicha-iraqi-cookies" target="_blank">https://www.yasmeenskitchendiary.com/recipe/kleicha-iraqi-cookies</a></li>
+<li>​Kulicha/Kleicha, more than a cookie, for Kurds - Dalia&#x27;s Table, accessed May 18, 2025, <a href="https://www.daliastable.com/blog/wy3o0j39w9ppp31h1ktshb0ut91f6n" target="_blank">https://www.daliastable.com/blog/wy3o0j39w9ppp31h1ktshb0ut91f6n</a></li>
+<li>​Turkish cuisine - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Turkish_cuisine" target="_blank">https://en.wikipedia.org/wiki/Turkish_cuisine</a></li>
+<li>​Dining with Darius - The Cairo Review of Global Affairs, accessed May 18, 2025, <a href="https://www.thecairoreview.com/essays/dining-with-darius/" target="_blank">https://www.thecairoreview.com/essays/dining-with-darius/</a></li>
+<li>​Persian Food: A Journey Through Iran&#x27;s Rich And Flavorful Cuisine - OrientTrips, accessed May 18, 2025, <a href="https://orienttrips.com/mag/persian-food/" target="_blank">https://orienttrips.com/mag/persian-food/</a></li>
+<li>​Easy Homemade Cookies with a Kurdish Village Twist - YouTube, accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=CieIDiJVGF0" target="_blank">https://www.youtube.com/watch?v=CieIDiJVGF0</a></li>
+<li>​Just keeping busy making kurdish cookies while fasting. Should we post... | TikTok, accessed May 18, 2025, <a href="https://www.tiktok.com/@yarinnafood/video/7346206992618229025" target="_blank">https://www.tiktok.com/@yarinnafood/video/7346206992618229025</a></li>
+<li>​Baqsome: Delicious Kurdish Coconut Cookies Recipe - TikTok, accessed May 18, 2025, <a href="https://www.tiktok.com/@eman_inthekitchen/video/7487359176851688750" target="_blank">https://www.tiktok.com/@eman_inthekitchen/video/7487359176851688750</a></li>
+<li>​Ramadan Day 29 Baqsome or Baksum kurdish coconut and sesame seed cookies - YouTube, accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=pPqKhOQnZ_4" target="_blank">https://www.youtube.com/watch?v=pPqKhOQnZ_4</a></li>
+<li>​Kurdish Israeli Kade - The Israel Forever Foundation, accessed May 18, 2025, <a href="https://israelforever.org/israel/cooking/kurdish_israeli_kade/" target="_blank">https://israelforever.org/israel/cooking/kurdish_israeli_kade/</a></li>
+<li>​Turkish kadayif recipe - A super sweet dessert - Karlijn&#x27;s Kitchen, accessed May 18, 2025, <a href="https://www.karlijnskitchen.com/en/turkish-kadayif/" target="_blank">https://www.karlijnskitchen.com/en/turkish-kadayif/</a></li>
+<li>​Ashure (Noah&#x27;s Pudding) Recipe - The Oldest Dessert in the World! - The Navage Patch, accessed May 18, 2025, <a href="https://www.thenavagepatch.com/ashure-noahs-pudding/" target="_blank">https://www.thenavagepatch.com/ashure-noahs-pudding/</a></li>
+<li>​Iraqi Cardamom Cookies (Hadgi Badah) Recipe - Food.com, accessed May 18, 2025, <a href="https://www.food.com/recipe/iraqi-cardamom-cookies-hadgi-badah-187849" target="_blank">https://www.food.com/recipe/iraqi-cardamom-cookies-hadgi-badah-187849</a></li>
+<li>​Kurdish coffee - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_coffee" target="_blank">https://en.wikipedia.org/wiki/Kurdish_coffee</a></li>
+<li>​Wedding Ceremonies in the Jawaro region of Hawraman in East ..., accessed May 18, 2025, <a href="https://kurdshop.net/en/sociality/1371" target="_blank">https://kurdshop.net/en/sociality/1371</a></li>
+<li>​The Art of Preserving Food: Dried Vegetables and More | Mama Fatma, accessed May 18, 2025, <a href="https://mamafatma.com/preserving-dried-vegetables/" target="_blank">https://mamafatma.com/preserving-dried-vegetables/</a></li>
+<li>​Middle Eastern Cuisine - Shef, accessed May 18, 2025, <a href="https://shef.com/homemade-food/middle-eastern-cuisine/" target="_blank">https://shef.com/homemade-food/middle-eastern-cuisine/</a></li>
+<li>​A STUDY OF DIET IN MESOPOTAMIA (c.3000 ... - UCL Discovery, accessed May 18, 2025, <a href="https://discovery.ucl.ac.uk/1349279/1/454702_vol1.pdf" target="_blank">https://discovery.ucl.ac.uk/1349279/1/454702_vol1.pdf</a></li>
+<li>​Traditional Persian Cuisine: From Ancient Persopolis to the Dinner ..., accessed May 18, 2025, <a href="https://eatshistory.com/traditional-persian-cuisine-from-ancient-persopolis-to-th" target="_blank">https://eatshistory.com/traditional-persian-cuisine-from-ancient-persopolis-to-th</a> e-dinner-table/</li>
+<li>​Iranian cuisine - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Iranian_cuisine" target="_blank">https://en.wikipedia.org/wiki/Iranian_cuisine</a></li>
+<li>​Persian Food&#x27;s Journey from Royalty to Racism - Seasoned Traveller, accessed May 18, 2025, <a href="https://seasonedtraveller.com/stories/persian-food" target="_blank">https://seasonedtraveller.com/stories/persian-food</a></li>
+<li>​Ottoman cuisine - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Ottoman_cuisine" target="_blank">https://en.wikipedia.org/wiki/Ottoman_cuisine</a></li>
+<li>​Arab cuisine - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Arab_cuisine" target="_blank">https://en.wikipedia.org/wiki/Arab_cuisine</a></li>
+<li>​similarities between kurds and armenians : r/kurdistan - Reddit, accessed May 18, 2025, <a href="https://www.reddit.com/r/kurdistan/comments/1df55s2/similarities_between_kurd" target="_blank">https://www.reddit.com/r/kurdistan/comments/1df55s2/similarities_between_kurd</a> s_and_armenians/</li>
+<li>​ Armenian cuisine - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Armenian_cuisine" target="_blank">https://en.wikipedia.org/wiki/Armenian_cuisine</a></li>
+<li>​ Cuisine Connects Turkish Armenians To Ancient Roots - Life &amp; Thyme, accessed May 18, 2025, <a href="https://lifeandthyme.com/travel/cuisine-connects-turkish-armenians-to-ancient-r" target="_blank">https://lifeandthyme.com/travel/cuisine-connects-turkish-armenians-to-ancient-r</a> oots/</li>
+<li>​ Food — Armenian Institute, accessed May 18, 2025, <a href="https://www.armenianinstitute.org.uk/food" target="_blank">https://www.armenianinstitute.org.uk/food</a></li>
+<li>​ Maps | Vilayet of Van | Kaza of Van | Local characteristics | Cuisine ..., accessed May 18, 2025, <a href="https://www.houshamadyan.org/mapottomanempire/vilayet-of-van/kaza-of-van/l" target="_blank">https://www.houshamadyan.org/mapottomanempire/vilayet-of-van/kaza-of-van/l</a> ocal-characteristics/cuisine.html</li>
+<li>​ Why You Should Eat Like the Ancient Assyrians Ate - Chicago Magazine, accessed May 18, 2025, <a href="https://www.chicagomag.com/city-life/march-2017/why-you-should-eat-like-the-" target="_blank">https://www.chicagomag.com/city-life/march-2017/why-you-should-eat-like-the-</a> ancient-assyrians-ate/</li>
+<li>​ Assyrian Cuisine, accessed May 18, 2025, <a href="https://www.turkish-cuisine.org/ottoman-heritage-3/assyrian-cuisine-38.html" target="_blank">https://www.turkish-cuisine.org/ottoman-heritage-3/assyrian-cuisine-38.html</a></li>
+<li>​ Şanlıurfa Province - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/%C5%9Eanl%C4%B1urfa_Province" target="_blank">https://en.wikipedia.org/wiki/%C5%9Eanl%C4%B1urfa_Province</a></li>
+<li>​ Food Of Kurdish - Duhok Province, accessed May 18, 2025, <a href="http://duhokprovince.com/food-of-kurdish/" target="_blank">http://duhokprovince.com/food-of-kurdish/</a></li>
+<li>​ &quot;Ash-e Sangsir&quot; A Delicious Kurdish Dish Cooked in the Heart of the Mountain Village!, accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=lTUpYIYQwYI" target="_blank">https://www.youtube.com/watch?v=lTUpYIYQwYI</a></li>
+<li>​ About me and this blog | The awesome things I do., accessed May 18, 2025, <a href="https://myawesomethings.wordpress.com/about/" target="_blank">https://myawesomethings.wordpress.com/about/</a></li>
+<li>​ The Kurdish Cookbook - Kindle edition by Sinjari, Emel. Cookbooks ..., accessed May 18, 2025, <a href="https://www.amazon.com/Kurdish-Cookbook-Emel-Sinjari-ebook/dp/B01LZ0DZ5I" target="_blank">https://www.amazon.com/Kurdish-Cookbook-Emel-Sinjari-ebook/dp/B01LZ0DZ5I</a></li>
+<li>​ www.antropologinenseura.fi, accessed May 18, 2025, <a href="https://www.antropologinenseura.fi/wordpress/wp-content/uploads/session-6-so" target="_blank">https://www.antropologinenseura.fi/wordpress/wp-content/uploads/session-6-so</a> cial-dynamics-of-food.pdf</li>
+<li>​ Uncover the Rich and Diverse Flavors of Kurdistan - Kurdish Cookbooks - Etsy, accessed May 18, 2025, <a href="https://www.etsy.com/listing/1631310582/kurdish-cookbook-uncover-the-rich-an" target="_blank">https://www.etsy.com/listing/1631310582/kurdish-cookbook-uncover-the-rich-an</a> d</li>
+<li>​ From Terrace to Tray: Agriculture and Foodways at a 13th Century &#x27;Alquería&#x27; - Equinox Publishing, accessed May 18, 2025, <a href="https://journal.equinoxpub.com/AFF/article/view/28606" target="_blank">https://journal.equinoxpub.com/AFF/article/view/28606</a></li>
+<li>​ North african squash and chickpea stew - River Cottage, accessed May 18, 2025, <a href="https://rivercottage.net/recipes/north-african-squash-and-chickpea-stew/" target="_blank">https://rivercottage.net/recipes/north-african-squash-and-chickpea-stew/</a></li>
+<li>​ Kurdish Chicken Stew (Dagh Kebab): A Hearty &amp; Flavorful Winter | culinary creationss, accessed May 18, 2025, <a href="https://culinarycreationss.com/posts/kurdish-chicken-stew-dagh-kebab-a-hearty" target="_blank">https://culinarycreationss.com/posts/kurdish-chicken-stew-dagh-kebab-a-hearty</a> -flavorful-winter</li>
+<li>​ Rice and milk dessert | birinc û şîr | mihelebî | cooking my roots - YouTube, accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=jWtAurBu7Ng" target="_blank">https://www.youtube.com/watch?v=jWtAurBu7Ng</a></li>
+<li>​ Chicken with sumac teshrib | Teşrîba mirîşkê | cooking my roots - YouTube, accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=xu6orNkHT40" target="_blank">https://www.youtube.com/watch?v=xu6orNkHT40</a></li>
+<li>​ Kunefe (A Sweet Cheese Pastry made with Kadaifi) - Food.com, accessed May 18, 2025, <a href="https://www.food.com/recipe/kunefe-a-sweet-cheese-pastry-made-with-kadaifi" target="_blank">https://www.food.com/recipe/kunefe-a-sweet-cheese-pastry-made-with-kadaifi</a> -74792</li>
+<li>​ Kadaif: A Sweet &amp; Crispy Dessert (Kadayif) Recipe - Cakies, accessed May 18, 2025, <a href="https://cakieshq.com/recipe/sweet-crispy-kadaif-kadayif/" target="_blank">https://cakieshq.com/recipe/sweet-crispy-kadaif-kadayif/</a></li>
+<li>​ History of Preserving Meat | D&#x27;Artagnan, accessed May 18, 2025, <a href="https://www.dartagnan.com/preserved-meat-methods.html" target="_blank">https://www.dartagnan.com/preserved-meat-methods.html</a></li>
+<li>​ What techniques did Native Americans use to preserve meat? - Quora, accessed May 18, 2025, <a href="https://www.quora.com/What-techniques-did-Native-Americans-use-to-preserv" target="_blank">https://www.quora.com/What-techniques-did-Native-Americans-use-to-preserv</a> e-meat</li>
+<li>​ What do we know about how indigenous Qoordaya are to Mesopotamia and Anatolia? : r/Assyria - Reddit, accessed May 18, 2025, <a href="https://www.reddit.com/r/Assyria/comments/1gydpkv/what_do_we_know_about_" target="_blank">https://www.reddit.com/r/Assyria/comments/1gydpkv/what_do_we_know_about_</a> how_indigenous_qoordaya_are/</li>
+<li>​ What does Persian food look like in the Pahlavani (Parthian) and ..., accessed May 18, 2025, <a href="https://www.quora.com/What-does-Persian-food-look-like-in-the-Pahlavani-Part" target="_blank">https://www.quora.com/What-does-Persian-food-look-like-in-the-Pahlavani-Part</a> hian-and-Sassanid-period</li>
+<li>​ Mezze Platter Recipe - Love and Lemons, accessed May 18, 2025, <a href="https://www.loveandlemons.com/mezze-platter/" target="_blank">https://www.loveandlemons.com/mezze-platter/</a></li>
+<li>​ The Enduring Flavors of Persia: A Journey Through Iran&#x27;s Culinary History and Culture, accessed May 18, 2025, <a href="https://foodexiran.com/en/from-ancient-persia-to-modern-iran-a-journey-throug" target="_blank">https://foodexiran.com/en/from-ancient-persia-to-modern-iran-a-journey-throug</a> h-iranian-food-culture/</li>
+<li>​ History &amp; Tradition Behind Middle Eastern Cuisine - The Palace Lounge, accessed May 18, 2025, <a href="https://palacerest.com/middle-eastern-cuisine-history-tradition/" target="_blank">https://palacerest.com/middle-eastern-cuisine-history-tradition/</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 18, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

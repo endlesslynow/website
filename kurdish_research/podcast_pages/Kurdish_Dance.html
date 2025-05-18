@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurdish Dance</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kurdish Dance</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Kurdish Folk Dance Traditions and Identity.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Kurdish Folk Dance Traditions and Identity.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>C:\Users\zacah\Desktop\programs I made\python programs\auto_prompt\output\auto_deep_research\audios</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Start research-21.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Everything About Kurdish Dance (History, Tutorial, Wedding), accessed May 18, 2025, <a href="https://irandoostan.com/kurdish-dance/" target="_blank">https://irandoostan.com/kurdish-dance/</a></li>
+<li>​آشنایی با رقص کردی و انواع و ویژگی های آن - صحرادنس, accessed May 18, 2025, <a href="https://sahradance.com/dance-training/kordi-dance/" target="_blank">https://sahradance.com/dance-training/kordi-dance/</a></li>
+<li>​آموزش رقص کردی - اخطارهای دنیای مجازی, accessed May 18, 2025, <a href="https://naghavian.blogsky.com/1393/10/08/post-1478/%D8%A2%D9%85%D9%88" target="_blank">https://naghavian.blogsky.com/1393/10/08/post-1478/%D8%A2%D9%85%D9%88</a> %D8%B2%D8%B4-%D8%B1%D9%82%D8%B5-%DA%A9%D8%B1%D8%AF%DB% 8C</li>
+<li>​نمادها و ‌ها اسطوره در ‌رکی ‌لپه هه !کُردی! - , accessed May 18, 2025, <a href="https://www.faratab.com/news/11344/%D9%86%D9%85%D8%A7%D8%AF%D9%" target="_blank">https://www.faratab.com/news/11344/%D9%86%D9%85%D8%A7%D8%AF%D9%</a> 87%D8%A7-%D9%88-%D8%A7%D8%B3%D8%B7%D9%88%D8%B1%D9%87%E2 %80%8C%D9%87%D8%A7-%D8%AF%D8%B1-%D9%87%D9%87%E2%80%8C% D9%84%D9%BE%D9%87%E2%80%8C%D8%B1%DA%A9%DB%8C-%DA%A9%D9 %8F%D8%B1%D8%AF%DB%8C%21</li>
+<li>​ Kürtlerde dans: Kültürel ve sosyal bir ifade | Rudaw.net, accessed May 18, 2025, <a href="https://www.rudaw.net/turkish/opinion/180320251" target="_blank">https://www.rudaw.net/turkish/opinion/180320251</a></li>
+<li>​ Our Living Link With Antiquity. Kurdish dances originate from the wine-growing culture - SARA Distribution, accessed May 18, 2025, <a href="https://www.saradistribution.com/folklor.htm" target="_blank">https://www.saradistribution.com/folklor.htm</a></li>
+<li>​ Kurdish Dancing - Kurdish Central, accessed May 18, 2025, <a href="https://kurdishcentral.org/dancing/" target="_blank">https://kurdishcentral.org/dancing/</a></li>
+<li>​ Philosophy of Kurdish Dance - Part 4 - KURDSHOP, accessed May 18, 2025, <a href="https://kurdshop.net/en/culture/3292" target="_blank">https://kurdshop.net/en/culture/3292</a></li>
+<li>​ Direniş olarak Kürt dansı: Govend&#x27;den baleye – Jin Dergi, accessed May 18, 2025, <a href="https://jindergi.com/ceviri/direnis-olarak-kurt-dansi-govendden-baleye/" target="_blank">https://jindergi.com/ceviri/direnis-olarak-kurt-dansi-govendden-baleye/</a></li>
+<li>​Comparative Analysis of Kurdish Rhythms And Dance Movements - BPAS Journals, accessed May 18, 2025, <a href="https://bpasjournals.com/library-science/index.php/journal/article/download/4157/" target="_blank">https://bpasjournals.com/library-science/index.php/journal/article/download/4157/</a> 3951/8566</li>
+<li>​Newroz as celebrated by Kurds - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Newroz_as_celebrated_by_Kurds" target="_blank">https://en.wikipedia.org/wiki/Newroz_as_celebrated_by_Kurds</a></li>
+<li>​Kurdish dance: origins and step-by-step guide - Decibel danse, accessed May 18, 2025, <a href="https://www.decibel-danse.com/en/advice/kurdish-dance/" target="_blank">https://www.decibel-danse.com/en/advice/kurdish-dance/</a></li>
+<li>​Learn About Kurdish Dance, accessed May 18, 2025, <a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-dance/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-dance/</a></li>
+<li>​Reviving Traditional Kurdish Dance Styles in Rojava | The Kurdish ..., accessed May 18, 2025, <a href="https://thekurdishproject.org/reviving-traditional-kurdish-dance-styles-rojava/" target="_blank">https://thekurdishproject.org/reviving-traditional-kurdish-dance-styles-rojava/</a></li>
+<li>​موسیقی و رقص کردی - موسسه طبیعت, accessed May 18, 2025, <a href="https://www.tabiat.ir/page/8384/%D9%85%D9%88%D8%B3%DB%8C%D9%82%D" target="_blank">https://www.tabiat.ir/page/8384/%D9%85%D9%88%D8%B3%DB%8C%D9%82%D</a> B%8C-%D9%88-%D8%B1%D9%82%D8%B5-%D9%82%D9%88%D9%85-%DA%A 9%D8%B1%D8%AF</li>
+<li>​Kurdish dance: origins and step-by-step guide - Decibel danse, accessed May 18, 2025, <a href="https://www.decibel-danse.com/en/advice/danse-kurde/" target="_blank">https://www.decibel-danse.com/en/advice/danse-kurde/</a></li>
+<li>​Assyrian folk dance - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Assyrian_folk_dance" target="_blank">https://en.wikipedia.org/wiki/Assyrian_folk_dance</a></li>
+<li>​رقص کردی اتحاد و نظم را نشان میدهد نشان مقابله و مبارزه در جنگ ..., accessed May 18, 2025, <a href="https://caspiantrip.com/mag/%D8%B1%D9%82%D8%B5-%DA%A9%D8%B1%D8%" target="_blank">https://caspiantrip.com/mag/%D8%B1%D9%82%D8%B5-%DA%A9%D8%B1%D8%</a> AF%DB%8C/</li>
+<li>​Philosophy of Kurdish Dance - Part 3 - KURDSHOP, accessed May 18, 2025, <a href="https://kurdshop.net/en/culture/3172" target="_blank">https://kurdshop.net/en/culture/3172</a></li>
+<li>​Kürt Oyunları ve Kürtçe Halay - Kurdipedia.org, accessed May 18, 2025, <a href="https://www.kurdipedia.org/Default.aspx?q=20220712104135422537&amp;lng=13" target="_blank">https://www.kurdipedia.org/Default.aspx?q=20220712104135422537&amp;lng=13</a></li>
+<li>​منصوره ثابت زاده - دانلود آلبوم موسیقی رقص های کردستان - بیپ تونز, accessed May 18, 2025, <a href="https://beeptunes.com/album/3414044/%D9%85%D9%88%D8%B3%DB%8C%D9" target="_blank">https://beeptunes.com/album/3414044/%D9%85%D9%88%D8%B3%DB%8C%D9</a> %82%DB%8C-%D8%B1%D9%82%D8%B5-%D9%87%D8%A7%DB%8C-%DA%A9 %D8%B1%D8%AF%D8%B3%D8%AA%D8%A7%D9%86</li>
+<li>​Kürt kültüründe dini inançların dans, folklor ve... | Rudaw.net, accessed May 18, 2025, <a href="https://www.rudaw.net/turkish/opinion/260320252" target="_blank">https://www.rudaw.net/turkish/opinion/260320252</a></li>
+<li>​Philosophy of Kurdish Dance – Part 2 - KURDSHOP, accessed May 18, 2025, <a href="https://kurdshop.net/en/culture/3170" target="_blank">https://kurdshop.net/en/culture/3170</a></li>
+<li>​Dilan Govend Sar chopy Kurdish Dance Halparke Silver 4 pieces ..., accessed May 18, 2025, <a href="https://kewsan.com/products/dilan-govend-sar-chopy-kurdish-dance-halparke" target="_blank">https://kewsan.com/products/dilan-govend-sar-chopy-kurdish-dance-halparke</a></li>
+<li>​Zurna - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Zurna" target="_blank">https://en.wikipedia.org/wiki/Zurna</a></li>
+<li>​Kurdish tanbur - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_tanbur" target="_blank">https://en.wikipedia.org/wiki/Kurdish_tanbur</a></li>
+<li>​Kurdistan Authentic traditional Kurdish dance songs CD ... - eBay, accessed May 18, 2025, <a href="https://www.ebay.com/itm/200410556711" target="_blank">https://www.ebay.com/itm/200410556711</a></li>
+<li>​Kurdish folk dances music - Last.fm, accessed May 18, 2025, <a href="https://www.last.fm/tag/kurdish+folk+dances" target="_blank">https://www.last.fm/tag/kurdish+folk+dances</a></li>
+<li>​Music and Culture of the Kurds, accessed May 18, 2025, <a href="https://minpaku.repo.nii.ac.jp/record/3449/files/SES05_005.pdf" target="_blank">https://minpaku.repo.nii.ac.jp/record/3449/files/SES05_005.pdf</a></li>
+<li>​Music and Culture of the Kurds, accessed May 18, 2025, <a href="https://www.kurdipedia.org/docviewer.aspx?id=540106&amp;document=0001.PDF" target="_blank">https://www.kurdipedia.org/docviewer.aspx?id=540106&amp;document=0001.PDF</a></li>
+<li>​Dengbêj - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Dengb%C3%AAj" target="_blank">https://en.wikipedia.org/wiki/Dengb%C3%AAj</a></li>
+<li>​Kurdish Musical Tradition is Revived with Dengbej Culture, accessed May 18, 2025, <a href="https://thekurdishproject.org/kurdish-musical-tradition-is-revived-with-dengbej-" target="_blank">https://thekurdishproject.org/kurdish-musical-tradition-is-revived-with-dengbej-</a> culture/</li>
+<li>​Kurdish traditional clothing - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_traditional_clothing" target="_blank">https://en.wikipedia.org/wiki/Kurdish_traditional_clothing</a></li>
+<li>​Learn About Kurdish Dress, accessed May 18, 2025, <a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-dress/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-dress/</a></li>
+<li>​انواع لباس محلی ایران از شمال تا جنوب کشور, accessed May 18, 2025, <a href="https://dayanshop.com/blog/the-most-beautiful-local-clothes-in-iran/" target="_blank">https://dayanshop.com/blog/the-most-beautiful-local-clothes-in-iran/</a></li>
+<li>​پوشاک محلی اقوام ایرانی - ،‌پدیا ویکی ٔدانشنامه آزاد, accessed May 18, 2025, <a href="https://fa.wikipedia.org/wiki/%D9%BE%D9%88%D8%B4%D8%A7%DA%A9_%D9%" target="_blank">https://fa.wikipedia.org/wiki/%D9%BE%D9%88%D8%B4%D8%A7%DA%A9_%D9%</a> 85%D8%AD%D9%84%DB%8C_%D8%A7%D9%82%D9%88%D8%A7%D9%85_%D 8%A7%DB%8C%D8%B1%D8%A7%D9%86%DB%8C</li>
+<li>​لباس محلی کردی؛ ‌ای جلوه از پوشش اصیل و زیبای ایرانی - کجارو, accessed May 18, 2025, <a href="https://www.kojaro.com/iran-visit/123452-traditional-clothing-kord/" target="_blank">https://www.kojaro.com/iran-visit/123452-traditional-clothing-kord/</a></li>
+<li>​Clothing - Kurdish Central, accessed May 18, 2025, <a href="https://kurdishcentral.org/clothing/" target="_blank">https://kurdishcentral.org/clothing/</a></li>
+<li>​Kurdish Dress Day: Cultural Significance of a Vibrant Celebration, accessed May 18, 2025, <a href="https://iranwire.com/en/features/126318-kurdish-dress-day-cultural-significance-" target="_blank">https://iranwire.com/en/features/126318-kurdish-dress-day-cultural-significance-</a> of-a-vibrant-celebration/</li>
+<li>​پوشاک سنتی مردان کرد - صاحو استایل, accessed May 18, 2025, <a href="https://sahostyle.com/blog/%D9%BE%D9%88%D8%B4%D8%A7%DA%A9-%D8%" target="_blank">https://sahostyle.com/blog/%D9%BE%D9%88%D8%B4%D8%A7%DA%A9-%D8%</a> B3%D9%86%D8%AA%DB%8C-%D9%85%D8%B1%D8%AF%D8%A7%D9%86-%D A%A9%D8%B1%D8%AF/</li>
+<li>​انواع مدل لباس کردی مردانه و زنانه در کردستان - کردینو, accessed May 18, 2025, <a href="https://kordino.ir/%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D9%85%D8%AF" target="_blank">https://kordino.ir/%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D9%85%D8%AF</a> %D9%84-%D9%84%D8%A8%D8%A7%D8%B3-%DA%A9%D8%B1%D8%AF%DB% 8C-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87-%D9%88-%D8%B2%D 9%86%D8%A7%D9%86%D9%87-%D8%AF%D8%B1-%D8%A7%DB%8C/</li>
+<li>​لباس کردی - کلوت - K A L U T, accessed May 18, 2025, <a href="https://kalut.ir/2024/02/20/%D9%84%D8%A8%D8%A7%D8%B3-%DA%A9%D8%B" target="_blank">https://kalut.ir/2024/02/20/%D9%84%D8%A8%D8%A7%D8%B3-%DA%A9%D8%B</a> 1%D8%AF%DB%8C/</li>
+<li>​The Kurdish Shal: A Symbol of Cultural Authenticity, accessed May 18, 2025, <a href="https://kurdistanchronicle.com/b/3253" target="_blank">https://kurdistanchronicle.com/b/3253</a></li>
+<li>​Kurdish Clothing, 1912 | TOTA, accessed May 18, 2025, <a href="https://www.tota.world/article/1152/" target="_blank">https://www.tota.world/article/1152/</a></li>
+<li>​پوشاک قوم کرد - موسسه طبیعت, accessed May 18, 2025, <a href="https://www.tabiat.ir/page/8385/%D9%BE%D9%88%D8%B4%D8%A7%DA%A9-%" target="_blank">https://www.tabiat.ir/page/8385/%D9%BE%D9%88%D8%B4%D8%A7%DA%A9-%</a> D9%82%D9%88%D9%85-%DA%A9%D8%B1%D8%AF</li>
+<li>​جزئیات و اسامی لباس محلی کردی زنانه و مردانه کردستان - نمناک, accessed May 18, 2025, <a href="https://namnak.com/%D9%84%D8%A8%D8%A7%D8%B3-%D9%85%D8%AD%D9" target="_blank">https://namnak.com/%D9%84%D8%A8%D8%A7%D8%B3-%D9%85%D8%AD%D9</a> %84%DB%8C.p213</li>
+<li>​The Beauty of Kurdish Dresses: A Celebration of Culture – Kewsan ..., accessed May 18, 2025, <a href="https://kewsan.com/blogs/news/the-beauty-of-kurdish-dresses-a-celebration-of" target="_blank">https://kewsan.com/blogs/news/the-beauty-of-kurdish-dresses-a-celebration-of</a> -culture</li>
+<li>​پوشاک کردی - ،‌پدیا ویکی ٔدانشنامه آزاد, accessed May 18, 2025, <a href="https://fa.wikipedia.org/wiki/%D9%BE%D9%88%D8%B4%D8%A7%DA%A9_%DA%" target="_blank">https://fa.wikipedia.org/wiki/%D9%BE%D9%88%D8%B4%D8%A7%DA%A9_%DA%</a> A9%D8%B1%D8%AF%DB%8C</li>
+<li>​معرفی اجزای پوشش کُردی - مجله مد روز, accessed May 18, 2025, <a href="https://moderoozmag.com/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A" target="_blank">https://moderoozmag.com/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%A</a> 7%D8%AC%D8%B1%D8%A7%DB%8C-%D9%BE%D9%88%D8%B4%D8%A7%DA %A9-%DA%A9%D9%8F%D8%B1%D8%AF%DB%8C/</li>
+<li>​لباس کُردی؛ نماد فرهنگ و اصالت کُردها | کوردتودی, accessed May 18, 2025, <a href="https://kordtoday.com/%D9%84%D8%A8%D8%A7%D8%B3-%DA%A9%D9%8F%" target="_blank">https://kordtoday.com/%D9%84%D8%A8%D8%A7%D8%B3-%DA%A9%D9%8F%</a> D8%B1%D8%AF%DB%8C%D8%9B-%D9%86%D9%85%D8%A7%D8%AF-%D9%81 %D8%B1%D9%87%D9%86%DA%AF-%D9%88-%D8%A7%D8%B5%D8%A7%D9% 84%D8%AA-%DA%A9%D9%8F%D8%B1%D8%AF%D9%87%D8%A7/</li>
+<li>​What are these types of Kurdish dress called? : r/kurdistan - Reddit, accessed May 18, 2025, <a href="https://www.reddit.com/r/kurdistan/comments/1doilqd/what_are_these_types_of_" target="_blank">https://www.reddit.com/r/kurdistan/comments/1doilqd/what_are_these_types_of_</a> kurdish_dress_called/</li>
+<li>​PM Barzani: National Clothing Day Showcases Kurdistan&#x27;s Diversity ..., accessed May 18, 2025, <a href="https://www.kurdistan24.net/en/story/828931/pm-barzani-national-clothing-day-s" target="_blank">https://www.kurdistan24.net/en/story/828931/pm-barzani-national-clothing-day-s</a> howcases-kurdistans-diversity-and-peaceful-coexistence</li>
+<li>​Kurdish Dance ( Reyhani ) : r/kurdistan - Reddit, accessed May 18, 2025, <a href="https://www.reddit.com/r/kurdistan/comments/1b3uhwj/kurdish_dance_reyhani/" target="_blank">https://www.reddit.com/r/kurdistan/comments/1b3uhwj/kurdish_dance_reyhani/</a></li>
+<li>​Kurds in Iraq and Syria celebrate the Newroz festival of spring at a time of new political horizons - AP News, accessed May 18, 2025, <a href="https://apnews.com/article/kurds-newroz-iraq-syria-celebration-pkk-sdf-734ac1" target="_blank">https://apnews.com/article/kurds-newroz-iraq-syria-celebration-pkk-sdf-734ac1</a> ac13962ba1c1c7dc23e8222f5b</li>
+<li>​رقص کردی شاد نوروز 1404 kordish dancing iran - آپارات, accessed May 18, 2025, <a href="https://www.aparat.com/v/sxvp45q" target="_blank">https://www.aparat.com/v/sxvp45q</a></li>
+<li>​جشن نوروز کردستان - YouTube, accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=GzgIvpSwaQY" target="_blank">https://www.youtube.com/watch?v=GzgIvpSwaQY</a></li>
+<li>​Nevruz - Vikipedi, accessed May 18, 2025, <a href="https://tr.wikipedia.org/wiki/Nevruz" target="_blank">https://tr.wikipedia.org/wiki/Nevruz</a></li>
+<li>​The Kurds&#x27; Biggest Newroz Celebration | An Unforgettable Night in Akre - YouTube, accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=j_-Je1yOXgY" target="_blank">https://www.youtube.com/watch?v=j_-Je1yOXgY</a></li>
+<li>​هزاران نفر در سراسر شرق کردستان با رقص های سنتی و برافروختن آتش بە استقبال نوروز رفتند, accessed May 18, 2025, <a href="https://channel8.com/persian/news/26074" target="_blank">https://channel8.com/persian/news/26074</a></li>
+<li>​Newroz in East Kurdistan: Iranian state&#x27;s suppression and Kurdish people&#x27;s resistance, accessed May 18, 2025, <a href="https://nlka.net/eng/newroz-in-east-kurdistan-iranian-states-suppression-and-ku" target="_blank">https://nlka.net/eng/newroz-in-east-kurdistan-iranian-states-suppression-and-ku</a> rdish-peoples-resistance/</li>
+<li>​Halparke Kurdish Dance - Travel to Iran, accessed May 18, 2025, <a href="https://www.tasteiran.net/stories/12098/halparke-kurdish-dance" target="_blank">https://www.tasteiran.net/stories/12098/halparke-kurdish-dance</a></li>
+<li>​آهنگ ‌العاده فوق شاد کُردی »کمری«ی» _ -آ, accessed May <a href="https://www.aparat.com/v/b19v2h8" target="_blank">https://www.aparat.com/v/b19v2h8</a></li>
+<li>​رقص کوردی از نگاه دیگر - هاژه, accessed May 18, 2025, <a href="https://haje.ir/newsdetails.aspx?itemid=3805" target="_blank">https://haje.ir/newsdetails.aspx?itemid=3805</a></li>
+<li>​World-class Kurdish dance group hopes to open academy in Erbil - Rudaw, accessed May 18, 2025, <a href="https://www.rudaw.net/english/kurdistan/260420252" target="_blank">https://www.rudaw.net/english/kurdistan/260420252</a></li>
+<li>​Kurdish Diaspora Unites in Cologne to Celebrate Newroz and Demand Rights in Syria, accessed May 18, 2025, <a href="https://www.kurdistan24.net/en/story/830962" target="_blank">https://www.kurdistan24.net/en/story/830962</a></li>
+<li>​Dance in Iran and the Iranian Diaspora, accessed May 18, 2025, <a href="https://iran1400.org/content/dance-in-iran-and-the-iranian-diaspora/" target="_blank">https://iran1400.org/content/dance-in-iran-and-the-iranian-diaspora/</a></li>
+<li>​Kurdish institute inaugurated in Lausanne,... | Rudaw.net, accessed May 18, 2025, <a href="https://www.rudaw.net/english/culture/04052025" target="_blank">https://www.rudaw.net/english/culture/04052025</a></li>
+<li>​About KCAC - Kurdistan Center for Arts Culture, accessed May 18, 2025, <a href="https://kcac.org/en/about/" target="_blank">https://kcac.org/en/about/</a></li>
+<li>​Hakkari showcases Kurdish culture in folk dance... | Rudaw.net, accessed May 18, 2025, <a href="https://www.rudaw.net/english/middleeast/turkey/12032025" target="_blank">https://www.rudaw.net/english/middleeast/turkey/12032025</a></li>
+<li>​Our Mission | The Kurdish Project, accessed May 18, 2025, <a href="https://thekurdishproject.org/our-mission/" target="_blank">https://thekurdishproject.org/our-mission/</a></li>
+<li>​Kurdish Teacher Training Program - Northeastern Illinois University, accessed May 18, 2025, <a href="https://www.neiu.edu/academics/our-centers-and-programs/multilingual-learning" target="_blank">https://www.neiu.edu/academics/our-centers-and-programs/multilingual-learning</a> -center/summer-institute-kurdish-language-and-culture/kurdish-teacher-trainin g-program</li>
+<li>​رقص کردی،رقصی حماسی دست در دست هم - زراس تور, accessed May 18, 2025, <a href="https://zarastours.com/mag/this-is-a-great-photo-and-nice-style-for-shooting/" target="_blank">https://zarastours.com/mag/this-is-a-great-photo-and-nice-style-for-shooting/</a></li>
+<li>​مردم ،کرد ‌ترین کهن قوم ‌تبار ایرانی - مای اسمارت ژن, accessed May 18, 2025, <a href="https://mysmartgene.com/blog/genetics/kurdish-people/" target="_blank">https://mysmartgene.com/blog/genetics/kurdish-people/</a></li>
+<li>​ ‌جشن خوانی محلی در سیستان و بلوچستان - تهران اسپیکر, accessed May 18, 2025, <a href="https://www.tehranspeaker.com/local-festivity-sistan-baluchestan/" target="_blank">https://www.tehranspeaker.com/local-festivity-sistan-baluchestan/</a></li>
+<li>​Why does the Arabic Dabke dance look and sound so similar to the ..., accessed May 18, 2025, <a href="https://www.quora.com/Why-does-the-Arabic-Dabke-dance-look-and-sound-so" target="_blank">https://www.quora.com/Why-does-the-Arabic-Dabke-dance-look-and-sound-so</a> -similar-to-the-Greek-Sirtaki-dance</li>
+<li>​Which ethnicities in your opinion are the closest to Assyrians, culturally speaking? - Reddit, accessed May 18, 2025, <a href="https://www.reddit.com/r/Assyria/comments/192clfd/which_ethnicities_in_your_op" target="_blank">https://www.reddit.com/r/Assyria/comments/192clfd/which_ethnicities_in_your_op</a> inion_are_the_closest/</li>
+<li>​رقص محلی و معرفی ۵ رقص ایرانی - بزم کده, accessed May 18, 2025, <a href="https://bazmkade.ir/introduction-of-iranian-folk-dance/" target="_blank">https://bazmkade.ir/introduction-of-iranian-folk-dance/</a></li>
+<li>​Iranian dance - Wikipedia, accessed May 18, 2025, <a href="https://en.wikipedia.org/wiki/Iranian_dance" target="_blank">https://en.wikipedia.org/wiki/Iranian_dance</a></li>
+<li>​Sheikhani (L\*)- Assyria (also Kurdish, Armenian) – UPDATE ..., accessed May 18, 2025, <a href="https://folkdancefootnotes.org/dance/a-real-folk-dance-what-is-it/about/sheikha" target="_blank">https://folkdancefootnotes.org/dance/a-real-folk-dance-what-is-it/about/sheikha</a> ni-assyria-also-kurdish-armenian/</li>
+<li>​KÜRTÇE HALAY GOVEND DELİLO - KOMA DİLAN HALME ÇEKİR - YouTube, accessed May 18, 2025, <a href="https://www.youtube.com/watch?v=j7NhlEL8yCo" target="_blank">https://www.youtube.com/watch?v=j7NhlEL8yCo</a></li>
+<li>​Memorable Dances from the Days of War: A Study on the Form and Meaning of Kurdish Dances in North-Eastern Iran | Request PDF - ResearchGate, accessed May 18, 2025, <a href="https://www.researchgate.net/publication/381437532_Memorable_Dances_from_t" target="_blank">https://www.researchgate.net/publication/381437532_Memorable_Dances_from_t</a> he_Days_of_War_A_Study_on_the_Form_and_Meaning_of_Kurdish_Dances_in_No rth-Eastern_Iran</li>
+<li>​رقص آذری فرهنگی تمام نشدنی - بالگ ایران هتل آنالین, accessed May 18, 2025, <a href="https://www.iranhotelonline.com/blog/post-1290/%D8%B1%D9%82%D8%B5-%D8" target="_blank">https://www.iranhotelonline.com/blog/post-1290/%D8%B1%D9%82%D8%B5-%D8</a> %A2%D8%B0%D8%B1%DB%8C/</li>
+<li>​تاریخچه رقص آذربایجانی - گروه هنری سوین, accessed May 18, 2025, <a href="https://sevinacademy.com/%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE%DA%8" target="_blank">https://sevinacademy.com/%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE%DA%8</a> 6%D9%87-%D8%B1%D9%82%D8%B5-%D8%A2%D8%B0%D8%B1%D8%A8%D8 %A7%DB%8C%D8%AC%D8%A7%D9%86%DB%8C/</li>
+<li>​دانلود آهنگ های کردی شاد برای رقص و عروسی - موزیکدل, accessed May 18, 2025, <a href="https://musicdel.ir/single-tracks/92763/" target="_blank">https://musicdel.ir/single-tracks/92763/</a></li>
+<li>​ویژگی های فرهنگی استان کردستان - بانه پدیا, accessed May 18, 2025, <a href="https://www.banehpedia.com/posts/about-baneh/kurdistan-province-culture" target="_blank">https://www.banehpedia.com/posts/about-baneh/kurdistan-province-culture</a></li>
+<li>​نگاهی به مراسم ها و جشن ها و آیین های کردستان - خبرگزاری میزان, accessed May 18, 2025, <a href="https://www.mizanonline.ir/fa/news/402195/%D9%86%DA%AF%D8%A7%D9%87%" target="_blank">https://www.mizanonline.ir/fa/news/402195/%D9%86%DA%AF%D8%A7%D9%87%</a> DB%8C-%D8%A8%D9%87-%D9%85%D8%B1%D8%A7%D8%B3%D9%85-%D9%8 7%D8%A7-%D9%88-%D8%AC%D8%B4%D9%86-%D9%87%D8%A7-%D9%88-% D8%A2%DB%8C%DB%8C%D9%86-%D9%87%D8%A7%DB%8C-%DA%A9%D8% B1%D8%AF%D8%B3%D8%AA%D8%A7%D9%86</li>
+<li>​Artículos de revistas: &quot;Modern dance Women dancers&quot; - Grafiati, accessed May 18, 2025, <a href="https://www.grafiati.com/es/literature-selections/modern-dance-women-dancers" target="_blank">https://www.grafiati.com/es/literature-selections/modern-dance-women-dancers</a> /journal/</li>
+<li>​Dance, Symbolic Capital; An Option for the Development of Tourism in Iran, accessed May 18, 2025, <a href="https://www.bagh-sj.com/jufile?ar_sfile=1327756" target="_blank">https://www.bagh-sj.com/jufile?ar_sfile=1327756</a></li>
+<li>​namnak.com, accessed May 18, 2025, <a href="https://namnak.com/%D9%84%D8%A7%D8%B3-%D9%85%D8%AD%D9%84%DB" target="_blank">https://namnak.com/%D9%84%D8%A7%D8%B3-%D9%85%D8%AD%D9%84%DB</a> %8C.p213</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: May 18, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
