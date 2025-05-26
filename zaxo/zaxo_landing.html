@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The People of Zakho - Historical Exploration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0891b2;
+            --primary-dark: #0e7490;
+            --secondary-color: #0d9488;
+            --accent-color: #f59e0b;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --background-light: #f8fafc;
+            --background-white: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-color: rgba(15, 23, 42, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 30%, #f8fafc 60%, #e2e8f0 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(8, 145, 178, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 40%, rgba(13, 148, 136, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 40%),
+                linear-gradient(45deg, transparent 40%, rgba(8, 145, 178, 0.02) 50%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+            background: var(--background-white);
+            border-radius: 2rem;
+            padding: 4rem 3rem;
+            box-shadow: 0 10px 25px -5px var(--shadow-color), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .title {
+            color: var(--text-primary);
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .language-button {
+            background: var(--background-white);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 500;
+            padding: 1.5rem 3rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 280px;
+            box-shadow: 0 4px 15px -3px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .language-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .language-button:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px var(--shadow-color), 0 10px 10px -5px rgba(15, 23, 42, 0.08);
+        }
+
+        .language-button:hover::before {
+            left: 0;
+        }
+
+        .language-button:active {
+            transform: translateY(-1px);
+        }
+
+        .english-btn {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .arabic-btn {
+            font-family: 'Tahoma', 'Arial Unicode MS', sans-serif;
+            direction: rtl;
+        }
+
+        .hebrew-btn {
+            font-family: 'David', 'Tahoma', 'Arial Unicode MS', sans-serif;
+            direction: rtl;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button-enter {
+            animation: buttonEnter 0.8s ease-out;
+        }
+
+        @keyframes buttonEnter {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 3rem 2rem;
+                margin: 1rem;
+            }
+            
+            .title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
+            }
+            
+            .language-button {
+                font-size: 1.3rem;
+                padding: 1.2rem 2.5rem;
+                min-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.7rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .language-button {
+                font-size: 1.2rem;
+                padding: 1rem 2rem;
+                min-width: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <h1 class="title">The People of Zakho from 1850-1950)</h1>
+        <p class="subtitle">An Interactive Historical Exploration in English, Arabic, and Hebrew</p>
+        
+        <div class="buttons-container">
+            <button class="language-button english-btn button-enter" onclick="selectLanguage('english')" style="animation-delay: 0.2s">
+                English
+            </button>
+            
+            <button class="language-button arabic-btn button-enter" onclick="selectLanguage('arabic')" style="animation-delay: 0.4s">
+                العربية
+            </button>
+            
+            <button class="language-button hebrew-btn button-enter" onclick="selectLanguage('hebrew')" style="animation-delay: 0.6s">
+                עברית
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function selectLanguage(language) {
+            // Add a subtle animation feedback
+            event.target.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                event.target.style.transform = '';
+                
+                // Navigate to the appropriate language version
+                switch(language) {
+                    case 'english':
+                        window.location.href = 'file:///C:/Users/zacah/Desktop/The%20Website/zaxo/zaxo_main_ar.html';
+                        break;
+                    case 'arabic':
+                        // Please provide the correct path for Arabic
+                        window.location.href = 'file:///C:/Users/zacah/Desktop/The%20Website/zaxo/zaxo_main_ar.html';
+                        break;
+                    case 'hebrew':
+                        // Please provide the correct path for Hebrew
+                        window.location.href = 'file:///C:/Users/zacah/Desktop/The%20Website/zaxo/zaxo_main_he.html';
+                        break;
+                    default:
+                        console.log(`Language ${language} not configured`);
+                }
+            }, 100);
+        }
+
+        // Add staggered animation to buttons on load
+        window.addEventListener('load', function() {
+            const buttons = document.querySelectorAll('.language-button');
+            buttons.forEach((button, index) => {
+                button.style.opacity = '0';
+                button.style.transform = 'translateY(20px) scale(0.95)';
+                
+                setTimeout(() => {
+                    button.style.transition = 'all 0.8s ease';
+                    button.style.opacity = '1';
+                    button.style.transform = 'translateY(0) scale(1)';
+                }, 200 + (index * 200));
+            });
+        });
+    </script>
+</body>
+</html>
