@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The People of Zakho from 1850-1950</title>
+    <title>سكان زاخو من 1850-1950</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #0891b2;
@@ -22,7 +23,7 @@
         }
         
         body { 
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Cairo', 'Inter', sans-serif; /* Added Cairo as a primary Arabic font */
             line-height: 1.7;
             color: var(--text-primary);
             background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 30%, #f8fafc 60%, #e2e8f0 100%);
@@ -112,8 +113,9 @@
             background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
             top: 0; 
             bottom: 0; 
-            left: 50%; 
-            margin-left: -2px;
+            right: 50%; /* RTL */
+            margin-right: -2px; /* RTL */
+            margin-left: auto; /* RTL */
             border-radius: 2px;
         }
         
@@ -124,15 +126,16 @@
             width: 50%; 
         }
         
-        .timeline-container.left { left: 0; }
-        .timeline-container.right { left: 50%; }
+        .timeline-container.left { right: 0; left:auto; } /* RTL: 'left' class items are visually on the right */
+        .timeline-container.right { right: 50%; left:auto; } /* RTL: 'right' class items are visually on the left */
         
-        .timeline-container::after { 
+        .timeline-container.left::after { /* Dot for original 'left' container (now visually on right) */
             content: ''; 
             position: absolute; 
             width: 24px; 
             height: 24px; 
-            right: -12px; 
+            left: -12px; /* RTL */
+            right: auto; /* RTL */
             background: var(--background-white);
             border: 4px solid var(--primary-color); 
             top: 25px; 
@@ -141,32 +144,47 @@
             box-shadow: 0 0 0 6px rgba(8, 145, 178, 0.1);
         }
         
-        .timeline-container.right::after { left: -12px; }
-        
-        .timeline-container.left::before { 
+        .timeline-container.right::after { /* Dot for original 'right' container (now visually on left) */
+            content: ''; 
+            position: absolute; 
+            width: 24px; 
+            height: 24px; 
+            right: -12px; /* RTL */
+            left: auto; /* RTL */
+            background: var(--background-white);
+            border: 4px solid var(--primary-color); 
+            top: 25px; 
+            border-radius: 50%; 
+            z-index: 1;
+            box-shadow: 0 0 0 6px rgba(8, 145, 178, 0.1);
+        }
+                
+        .timeline-container.left::before { /* Arrow for original 'left' container (now visually on right, arrow points left) */
             content: " "; 
             height: 0; 
             position: absolute; 
             top: 32px; 
             width: 0; 
             z-index: 1; 
-            right: 30px; 
+            left: 30px; /* RTL */
+            right: auto; /* RTL */
             border: solid var(--primary-color);
-            border-width: 10px 0 10px 15px; 
-            border-color: transparent transparent transparent var(--primary-color); 
+            border-width: 10px 15px 10px 0; /* RTL: arrow points left */
+            border-color: transparent var(--primary-color) transparent transparent; /* RTL */
         }
         
-        .timeline-container.right::before { 
+        .timeline-container.right::before { /* Arrow for original 'right' container (now visually on left, arrow points right) */
             content: " "; 
             height: 0; 
             position: absolute; 
             top: 32px; 
             width: 0; 
             z-index: 1; 
-            left: 30px; 
+            right: 30px; /* RTL */
+            left: auto; /* RTL */
             border: solid var(--primary-color);
-            border-width: 10px 15px 10px 0; 
-            border-color: transparent var(--primary-color) transparent transparent; 
+            border-width: 10px 0 10px 15px; /* RTL: arrow points right */
+            border-color: transparent transparent transparent var(--primary-color); /* RTL */
         }
         
         .timeline-content { 
@@ -176,8 +194,11 @@
             cursor: pointer;
             box-shadow: 0 10px 25px -5px var(--shadow-color);
             transition: all 0.3s ease;
-            border-left: 6px solid var(--primary-color);
-            border: 1px solid var(--border-color);
+            border-right: 6px solid var(--primary-color); /* RTL */
+            border-left: none; /* RTL */
+            border-top: 1px solid var(--border-color); /* RTL to maintain consistency */
+            border-bottom: 1px solid var(--border-color); /* RTL to maintain consistency */
+            border-left: 1px solid var(--border-color); /* RTL to maintain consistency */
         }
         
         .timeline-content:hover { 
@@ -191,8 +212,11 @@
             padding: 1.5rem; 
             background: linear-gradient(135deg, var(--background-light), #f1f5f9);
             border-radius: 1rem;
-            border-left: 4px solid var(--accent-color);
-            border: 1px solid var(--border-color);
+            border-right: 4px solid var(--accent-color); /* RTL */
+            border-left: none; /* RTL */
+            border-top: 1px solid var(--border-color); /* RTL */
+            border-bottom: 1px solid var(--border-color); /* RTL */
+            border-left: 1px solid var(--border-color); /* RTL */
         }
         
         h1, h2, h3 { 
@@ -201,27 +225,28 @@
         }
         
         h2 { 
-    font-size: 2rem !important; 
-    color: var(--primary-color);
-    font-weight: 700;
-    margin-bottom: 2rem; 
-    margin-top: 3rem;
-    position: relative;
-    padding-bottom: 1rem;
-    scroll-margin-top: 120px;
-}
+            font-size: 2rem !important; 
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 2rem; 
+            margin-top: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+            scroll-margin-top: 120px;
+        }
 
-@media (max-width: 768px) {
-    h2 {
-        font-size: 2.5rem !important;
-    }
-}
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2.5rem !important;
+            }
+        }
         
         h2::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            right: 0; /* RTL */
+            left: auto; /* RTL */
             width: 80px;
             height: 4px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
@@ -243,12 +268,14 @@
         ul { 
             list-style: none;
             margin-bottom: 2rem; 
+            padding-right: 0; /* RTL */
             padding-left: 0;
         }
         
         li { 
             margin-bottom: 1rem;
-            padding-left: 2rem;
+            padding-right: 2rem; /* RTL */
+            padding-left: 0; /* RTL */
             position: relative;
             color: var(--text-secondary);
         }
@@ -258,12 +285,13 @@
             color: var(--primary-color);
             font-weight: bold;
             position: absolute;
-            left: 0;
+            right: 0; /* RTL */
+            left: auto; /* RTL */
             font-size: 1.2rem;
         }
         
         .list-disc li::before {
-            content: '▶';
+            content: '◀'; /* Arrow points to start in RTL */
             font-size: 1rem;
         }
         
@@ -281,7 +309,7 @@
         th, td { 
             border: none;
             padding: 1.5rem; 
-            text-align: left; 
+            text-align: right; /* RTL */
         }
         
         th { 
@@ -300,20 +328,25 @@
             margin-bottom: 3rem; 
             padding: 2.5rem; 
             background: linear-gradient(135deg, rgba(8, 145, 178, 0.05), rgba(13, 148, 136, 0.05));
-            border-left: 6px solid var(--primary-color);
+            border-right: 6px solid var(--primary-color); /* RTL */
+            border-left: none; /* RTL */
             border-radius: 1.5rem;
             box-shadow: 0 10px 25px -5px var(--shadow-color);
-            border: 1px solid var(--border-color);
+            border-top: 1px solid var(--border-color); /* RTL */
+            border-bottom: 1px solid var(--border-color); /* RTL */
+            border-left: 1px solid var(--border-color); /* RTL */
         }
         
         .works-cited-list { 
             list-style: none;
+            padding-right: 0; /* RTL */
             padding-left: 0;
             counter-reset: item;
         }
         
         .works-cited-list li {
             counter-increment: item;
+            padding-right: 0; /* RTL */
             padding-left: 0;
             margin-bottom: 1.5rem;
             position: relative;
@@ -323,7 +356,8 @@
             content: counter(item) ".";
             color: var(--primary-color);
             font-weight: 600;
-            margin-right: 1rem;
+            margin-left: 1rem; /* RTL */
+            margin-right: 0; /* RTL */
             position: static;
         }
         
@@ -342,8 +376,8 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
+            right: 0; /* RTL */
+            left: 0; 
             height: 6px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
@@ -364,8 +398,8 @@
             content: '';
             position: absolute;
             top: 0;
+            right: 0; /* RTL */
             left: 0;
-            right: 0;
             height: 4px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
@@ -399,22 +433,27 @@
             
             .timeline-container {
                 width: 100%;
-                left: 0 !important;
-                padding: 15px 40px;
+                right: 0 !important; /* RTL */
+                left: auto !important; /* RTL */
+                padding: 15px 40px; /* Adjust padding if needed for RTL text flow */
             }
             
             .timeline::after {
-                left: 20px;
+                right: 20px; /* RTL */
+                left: auto; /* RTL */
             }
             
-            .timeline-container::after {
-                left: 8px !important;
+            .timeline-container::after { /* Dot for all containers in mobile */
+                right: 8px !important; /* RTL */
+                left: auto !important; /* RTL */
             }
             
-            .timeline-container::before {
-                left: 30px !important;
-                border-width: 10px 15px 10px 0 !important;
-                border-color: transparent var(--primary-color) transparent transparent !important;
+            /* Arrow for all containers in mobile (points right, from container to timeline on its right) */
+            .timeline-container::before { 
+                right: 30px !important; /* RTL */
+                left: auto !important; /* RTL */
+                border-width: 10px 0 10px 15px !important; /* RTL: arrow points right */
+                border-color: transparent transparent transparent var(--primary-color) !important; /* RTL */
             }
         }
         
@@ -435,18 +474,22 @@
         
         .community-highlight {
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
-            border-left: 6px solid var(--accent-color);
+            border-right: 6px solid var(--accent-color); /* RTL */
+            border-left: none; /* RTL */
             padding: 2rem;
             border-radius: 1.5rem;
             margin: 2rem 0;
             box-shadow: 0 5px 15px -3px rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-top: 1px solid rgba(245, 158, 11, 0.2); /* RTL */
+            border-bottom: 1px solid rgba(245, 158, 11, 0.2); /* RTL */
+            border-left: 1px solid rgba(245, 158, 11, 0.2); /* RTL */
         }
         
         .scroll-to-top {
             position: fixed;
             bottom: 2rem;
-            right: 2rem;
+            left: 2rem; /* RTL: Usually kept on one side, can be right: 2rem; left: auto; */
+            right: auto;
             background: var(--primary-color);
             color: white;
             width: 56px;
@@ -490,414 +533,407 @@
             content: '';
             position: absolute;
             top: 0;
+            right: 0; /* RTL */
             left: 0;
-            right: 0;
             height: 6px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
         
         .toc-item {
-    display: block;
-    padding: 1rem 1.5rem;
-    margin: 0.5rem 0;
-    background: var(--background-light);
-    border-radius: 1rem;
-    text-decoration: none;
-    color: var(--text-primary);
-    transition: all 0.3s ease;
-    border-left: 4px solid var(--primary-color);
-    font-size: 1.0rem !important;
-    font-weight: 500;
-}
+            display: block;
+            padding: 1rem 1.5rem;
+            margin: 0.5rem 0;
+            background: var(--background-light);
+            border-radius: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            border-right: 4px solid var(--primary-color); /* RTL */
+            border-left: none; /* RTL */
+            font-size: 1.0rem !important;
+            font-weight: 500;
+        }
         
         .toc-item:hover {
             background: rgba(8, 145, 178, 0.1);
-            transform: translateX(10px);
+            transform: translateX(-10px); /* RTL */
             box-shadow: 0 5px 15px -3px var(--shadow-color);
         }
     </style>
 </head>
 <body>
-    <header class="hero-header shadow-lg" id="mainHeader">
-        <div class="container mx-auto px-6 py-4">
-            <h1 class="text-white text-4xl font-bold text-center mb-2">The People of Zakho from 1850-1950)</h1>
-            <p class="text-white/90 text-lg font-light text-center">An Interactive Historical Exploration</p>
-        </div>
-    </header>
 
     <main class="container mx-auto px-4 py-8 max-w-7xl">
         <div class="table-of-contents fade-in">
-            <h2>Table of Contents</h2>
+            <h2>جدول المحتويات</h2>
             <nav>
-    <a href="#prelude" class="toc-item">Prelude</a>
-    <a href="#introduction" class="toc-item">I. Introduction: Zakho in the Mid-19th to Mid-20th Century</a>
-                <a href="#demographic-landscape" class="toc-item">II. The Demographic Landscape of Zakho</a>
-                <a href="#jewish-community" class="toc-item">III. The Jewish Community: "The Jerusalem of Kurdistan"</a>
-                <a href="#christian-communities" class="toc-item">IV. Christian Communities: Resilience and Transformation</a>
-                <a href="#muslim-populace" class="toc-item">V. The Muslim Populace: Kurds, "Turks," and Arabs</a>
-                <a href="#yezidi-community" class="toc-item">VI. The Yezidi Community: Presence in the Zakho Environs</a>
-                <a href="#inter-community-dynamics" class="toc-item">VII. Inter-Community Dynamics: Coexistence and Conflict</a>
-                <a href="#historical-events" class="toc-item">VIII. The Crucible of Change: Major Historical Events</a>
-                <a href="#conclusion" class="toc-item">IX. Conclusion: The Shifting Sands of Zakho's Demography</a>
-                <a href="#works-cited" class="toc-item">Works Cited</a>
+                <a href="#prelude" class="toc-item">تمهيد</a>
+                <a href="#introduction" class="toc-item">أولاً: مقدمة: زاخو في منتصف القرن التاسع عشر إلى منتصف القرن العشرين</a>
+                <a href="#demographic-landscape" class="toc-item">ثانياً: المشهد الديموغرافي لزاخو</a>
+                <a href="#jewish-community" class="toc-item">ثالثاً: الجالية اليهودية: "قدس كردستان"</a>
+                <a href="#christian-communities" class="toc-item">رابعاً: الطوائف المسيحية: صمود وتحول</a>
+                <a href="#muslim-populace" class="toc-item">خامساً: السكان المسلمون: الأكراد، "الأتراك"، والعرب</a>
+                <a href="#yezidi-community" class="toc-item">سادساً: الطائفة الإيزيدية: التواجد في ضواحي زاخو</a>
+                <a href="#inter-community-dynamics" class="toc-item">سابعاً: الديناميكيات بين الطوائف: تعايش وصراع</a>
+                <a href="#historical-events" class="toc-item">ثامناً: بوتقة التغيير: الأحداث التاريخية الكبرى</a>
+                <a href="#conclusion" class="toc-item">تاسعاً: خاتمة: رمال زاخو الديموغرافية المتحركة</a>
+                <a href="#works-cited" class="toc-item">المراجع والمصادر</a>
             </nav>
         </div>
 
-        <section id="introduction" class="content-section fade-in">
-
-
-            <section id="prelude" class="content-section fade-in">
-    <h2>Prelude</h2>
-    <div class="text-center mb-8">
-        <img src="napkin_map.jpg" alt="Hand-drawn map of Zakho" class="clickable-image cursor-pointer max-w-full h-auto rounded-lg shadow-lg mx-auto" style="max-height: 600px;">
-        <p class="text-gray-600 italic mt-4">Map drawn from memory, 26.05.2025</p>
-    </div>
-    
-    <p>I've been to Iraqi-Kurdistan twice, once in 2016 and again in 2022. Both times I had plans to visit Zakho. Both times I got as far as Dohuk, and turned back. Zakho is not a city one can just go to. You have to plan thoroughly to go to Zakho. You have to research the political situation for months ahead of time, make backup plans, make escape plans, carefully monitor the situation the night before you leave, the morning before you leave, five minutes before you step into the taxi, and one minute before you step into the taxi. Most importantly, before travelling to Zakho, you have to decide if you're feeling lucky.</p><br>
-    
-    <p>In 2016 I abandoned my plans to visit Zakho because a coup happened in Turkey the night I arrived in Dohuk. Now going to a city sandwiched between ISIS and a border lined with an extremely anxious Turkish military seemed like a bad idea. On my 2022 visit, I wasn't feeling lucky. Soon after, the road to the Zakho was unexpectedly bombed by Turkey. 20 civilians were killed.</p>
-    
-    <p>Zakho itself is not a dangerous city. Like all cities in Iraqi-Kurdistan, you will be safer there than any western-European city. The danger lies in getting there, its remoteness, and its violent neighbors.</p><br>
-    
-    <p>Paradoxically, Zakho is a thriving city because of these very same factors. For example, for geographical and political reasons, ISIS could never dream of reaching Zakho, despite their ability to seize over a hundred thousand square kilometres, and despite its capital city, Mosul, being just 50 kilometres away. However, because of ISIS, hundreds of thousands of people from all over Syria and Iraq fled their homes and moved to the safety of Zakho's remoteness.</p><br>
-    
-    <p>On the borders of Syria, Iraq, and Iraqi-Kurdistan; and having the protection of the American-backed Kurdish military, Zakho's remoteness has allowed it to become a safe-haven for Syrian refugees fleeing the civil war, Yazidi refugees who either fled or survived their 74th genocide in nearby Sinjar, other Iraqi peoples escaping either ISIS or the endless poverty and turmoil in Iraq, and wealthy Turkish businessmen who flock to Zakho like prospectors in a gold rush. Here in the Middle East, safety is gold. With safety comes business, and with business, comes a future - something most people in the Middle East are desperate to obtain.</p><br>
-    
-    <p>This is present-day Zakho. I believe it shares a lot of similarities with the Zakho of 1950. It's still peaceful, it's certainly multi-cultural, and it's still a remote border city with probably more smugglers than police. However, besides its new massive size and modernity, there is one outlying difference. The Jews of Zakho are gone forever.</p><br>
-    
-    <p>Ariel Sabar's "My Father's Paradise" recalls the last days of a Zakho as its "good old days" dried up and the ultra-violent modern Middle East was born. Sabar paints a picture of a Zakho that's poor, but peaceful. The kind of place where Jews and Muslims couldn't dream of harming one another. However, I have my doubts.</p><br>
-    
-    <p>This is a common narrative people in the Middle East tend to promote. "Before the colonizers, everything worked. We were peaceful." They say. Or if they're feeling particularly brave, "Before the modern governments, everything worked." I was also taught this in my American university.</p><br>
-    
-    <p>Later, as I studied further, and as shown in this data, I learned that the Middle East was never a peaceful place. The past, just as Sabar's father discovered about life in Israel, and again about life in America, is not a perfect place. But that doesn't stop us from trying to make it one.</p>
-</section>
-            <h2>I. Introduction: Zakho in the Mid-19th to Mid-20th Century – A Demographic Crossroads</h2>
-            <p class="section-intro">Zakho's strategic importance as a border town and commercial hub set the stage for its diverse population. It highlights the multi-ethnic and multi-religious tapestry of Kurds, Jews, Christians, and Yezidis, and outlines the scope of the demographic analysis for the turbulent period of 1850-1950.</p>
-            
-            <h3>A. Zakho's Strategic and Historical Significance</h3>
-            <p>The town of Zakho, situated in present-day Iraqi Kurdistan, was strategically vital from 1850 to 1950 due to its location near Turkish and Syrian borders, making it a key nexus for Greater Kurdistan. Historically a significant trading center for commodities like gallnuts, rice, and fruits, its economic dynamism attracted diverse peoples. Ancient roots, possibly linked to the Assyrian period and Hasaniyeh, and its mention in Islamic history underscore a long, varied past, predisposing it to complex settlement patterns.</p>
-
-            <h3>B. The Multi-Ethnic and Multi-Religious Tapestry</h3>
-            <div class="community-highlight">
-                <p><strong>A Crossroads of Cultures:</strong> Zakho was characterized by a rich mosaic of Kurds, a significant Jewish population, various Christian denominations (Chaldean Catholics, Armenians, Syriac Christians, Nestorians/Assyrians), and Yezidis in the broader district.</p>
+        <section id="prelude" class="content-section fade-in">
+            <h2>تمهيد</h2>
+            <div class="text-center mb-8">
+                <img src="napkin_map.jpg" alt="خريطة مرسومة باليد لزاخو" class="clickable-image cursor-pointer max-w-full h-auto rounded-lg shadow-lg mx-auto" style="max-height: 600px;">
+                <p class="text-gray-600 italic mt-4">خريطة مرسومة من الذاكرة، 26.05.2025</p>
             </div>
-            <p>This diversity, typical of Historic Kurdistan, was dynamic, shaped by migrations, economic shifts, and political pressures. Ancient settlements, trade, imperial expansions (Ottoman), and refugee influxes (e.g., Armenians) all contributed to this demographic complexity, amplified by Zakho's borderland status.</p>
+            
+            <p>لقد زرت كردستان العراق مرتين، مرة في عام 2016 ومرة أخرى في عام 2022. في كلتا المرتين كان لدي خطط لزيارة زاخو. وفي كلتا المرتين وصلت إلى دهوك، ثم عدت أدراجي. زاخو ليست مدينة يمكن للمرء الذهاب إليها ببساطة. يجب أن تخطط جيدًا للذهاب إلى زاخو. يجب أن تبحث عن الوضع السياسي لأشهر مقدمًا، وأن تضع خططًا احتياطية، وخططًا للهروب، وأن تراقب الوضع بعناية في الليلة التي تسبق مغادرتك، وفي صباح يوم المغادرة، وقبل خمس دقائق من ركوب سيارة الأجرة، وقبل دقيقة واحدة من ركوب سيارة الأجرة. والأهم من ذلك، قبل السفر إلى زاخو، يجب أن تقرر ما إذا كنت تشعر بأنك محظوظ.</p><br>
+            
+            <p>في عام 2016، تخليت عن خططي لزيارة زاخو بسبب حدوث انقلاب في تركيا في الليلة التي وصلت فيها إلى دهوك. الآن، بدا الذهاب إلى مدينة تقع بين داعش وحدود مليئة بالجيش التركي القلق للغاية فكرة سيئة. في زيارتي عام 2022، لم أكن أشعر بأنني محظوظ. بعد ذلك بوقت قصير، قُصف الطريق إلى زاخو بشكل غير متوقع من قبل تركيا. قُتل 20 مدنياً.</p>
+            
+            <p>زاخو نفسها ليست مدينة خطرة. مثل جميع المدن في كردستان العراق، ستكون فيها أكثر أمانًا من أي مدينة في أوروبا الغربية. الخطر يكمن في الوصول إليها، وفي بعدها، وفي جيرانها العنيفين.</p><br>
+            
+            <p>ومن المفارقات أن زاخو مدينة مزدهرة بسبب هذه العوامل نفسها. على سبيل المثال، لأسباب جغرافية وسياسية، لم يستطع داعش أن يحلم بالوصول إلى زاخو، على الرغم من قدرته على الاستيلاء على أكثر من مائة ألف كيلومتر مربع، وعلى الرغم من أن عاصمته، الموصل، تبعد 50 كيلومترًا فقط. ومع ذلك، بسبب داعش، فر مئات الآلاف من الناس من جميع أنحاء سوريا والعراق من ديارهم وانتقلوا إلى أمان بُعد زاخو.</p><br>
+            
+            <p>على حدود سوريا والعراق وكردستان العراق؛ وبفضل حماية الجيش الكردي المدعوم من أمريكا، سمح بُعد زاخو لها بأن تصبح ملاذًا آمنًا للاجئين السوريين الفارين من الحرب الأهلية، واللاجئين الإيزيديين الذين فروا أو نجوا من إبادتهم الجماعية الرابعة والسبعين في سنجار القريبة، وشعوب عراقية أخرى هاربة إما من داعش أو من الفقر والاضطرابات التي لا نهاية لها في العراق، ورجال الأعمال الأتراك الأثرياء الذين يتدفقون على زاخو مثل المنقبين في حمى الذهب. هنا في الشرق الأوسط، الأمان هو الذهب. ومع الأمان يأتي العمل، ومع العمل، يأتي المستقبل - وهو شيء يسعى معظم الناس في الشرق الأوسط بشدة للحصول عليه.</p><br>
+            
+            <p>هذه هي زاخو الحالية. أعتقد أنها تشترك في الكثير من أوجه التشابه مع زاخو عام 1950. لا تزال سلمية، ومن المؤكد أنها متعددة الثقافات، ولا تزال مدينة حدودية نائية ربما تضم عددًا من المهربين أكثر من الشرطة. ومع ذلك، إلى جانب حجمها الهائل الجديد وحداثتها، هناك اختلاف واحد بارز. يهود زاخو قد رحلوا إلى الأبد.</p><br>
+            
+            <p>يستذكر كتاب أرييل صبار "جنة أبي" الأيام الأخيرة لزاخو حيث جفت "أيامها الخوالي الطيبة" ووُلد الشرق الأوسط الحديث شديد العنف. يرسم صبار صورة لزاخو الفقيرة، ولكن السلمية. ذلك النوع من الأماكن التي لم يكن اليهود والمسلمون ليحلموا بإيذاء بعضهم البعض. ومع ذلك، لدي شكوكي.</p><br>
+            
+            <p>هذه رواية شائعة يميل الناس في الشرق الأوسط إلى الترويج لها. "قبل المستعمرين، كان كل شيء يعمل. كنا مسالمين." يقولون. أو إذا كانوا يشعرون بشجاعة خاصة، "قبل الحكومات الحديثة، كان كل شيء يعمل." لقد تعلمت هذا أيضًا في جامعتي الأمريكية.</p><br>
+            
+            <p>لاحقًا، ومع دراستي بشكل أعمق، وكما هو موضح في هذه البيانات، تعلمت أن الشرق الأوسط لم يكن مكانًا سلميًا أبدًا. الماضي، تمامًا كما اكتشف والد صبار عن الحياة في إسرائيل، ومرة أخرى عن الحياة في أمريكا، ليس مكانًا مثاليًا. لكن هذا لا يمنعنا من محاولة جعله كذلك.</p>
+        </section>
 
-            <h3>C. Scope and Methodology of the Demographic Analysis</h3>
-            <p>This analysis covers the ethnic and religious demographics of Zakho town and district from 1850-1950, a period of transformation from late Ottoman rule to the nascent Iraqi state. It focuses on principal groups, their populations, communal structures, inter-group relations, and the impact of historical events. Reconstructing these demographics is challenging due to variable sources (travelers' accounts, missionary reports, Ottoman records, early Iraqi censuses), each with biases. A nuanced understanding of the "Muslim" category is crucial, often implying Kurds but also potentially including "Turks" (likely officials) and regional Arabs.</p>
+        <section id="introduction" class="content-section fade-in">
+            <h2>أولاً: مقدمة: زاخو في منتصف القرن التاسع عشر إلى منتصف القرن العشرين – مفترق طرق ديموغرافي</h2>
+            <p class="section-intro">أهمية زاخو الاستراتيجية كبلدة حدودية ومركز تجاري مهدت الطريق لتنوع سكانها. يسلط هذا القسم الضوء على النسيج المتعدد الأعراق والأديان من الأكراد واليهود والمسيحيين والإيزيديين، ويحدد نطاق التحليل الديموغرافي للفترة المضطربة من 1850-1950.</p>
+            
+            <h3>أ. الأهمية الاستراتيجية والتاريخية لزاخو</h3>
+            <p>كانت بلدة زاخو، الواقعة في كردستان العراق الحالية، ذات أهمية استراتيجية حيوية من عام 1850 إلى 1950 بسبب موقعها بالقرب من الحدود التركية والسورية، مما جعلها نقطة وصل رئيسية لكردستان الكبرى. تاريخيًا، كانت مركزًا تجاريًا هامًا لسلع مثل عفص البلوط والأرز والفواكه، وقد اجتذب نشاطها الاقتصادي شعوبًا متنوعة. الجذور القديمة، التي ربما ترتبط بالفترة الآشورية والحسنية، وذكرها في التاريخ الإسلامي يؤكدان على ماض طويل ومتنوع، مما جعلها عرضة لأنماط استيطانية معقدة.</p>
+
+            <h3>ب. النسيج المتعدد الأعراق والأديان</h3>
+            <div class="community-highlight">
+                <p><strong>ملتقى الثقافات:</strong> تميزت زاخو بفسيفساء غنية من الأكراد، وعدد كبير من السكان اليهود، ومختلف الطوائف المسيحية (الكلدان الكاثوليك، الأرمن، السريان المسيحيين، النساطرة/الآشوريين)، والإيزيديين في المنطقة الأوسع.</p>
+            </div>
+            <p>كان هذا التنوع، النموذجي لكردستان التاريخية، ديناميكيًا، تشكل بفعل الهجرات والتحولات الاقتصادية والضغوط السياسية. ساهمت المستوطنات القديمة والتجارة والتوسعات الإمبراطورية (العثمانية) وتدفقات اللاجئين (مثل الأرمن) في هذا التعقيد الديموغرافي، الذي تضاعف بسبب وضع زاخو كمنطقة حدودية.</p>
+
+            <h3>ج. نطاق ومنهجية التحليل الديموغرافي</h3>
+            <p>يغطي هذا التحليل التركيبة السكانية العرقية والدينية لبلدة زاخو ومنطقتها من 1850-1950، وهي فترة تحول من الحكم العثماني المتأخر إلى الدولة العراقية الناشئة. ويركز على المجموعات الرئيسية، وتعداد سكانها، وهياكلها المجتمعية، والعلاقات بين المجموعات، وتأثير الأحداث التاريخية. إن إعادة بناء هذه التركيبة السكانية أمر صعب بسبب تنوع المصادر (روايات الرحالة، تقارير المبشرين، السجلات العثمانية، التعدادات العراقية المبكرة)، ولكل منها تحيزاته. يعد الفهم الدقيق لفئة "المسلمين" أمرًا بالغ الأهمية، وغالبًا ما يشير ضمنيًا إلى الأكراد ولكن من المحتمل أيضًا أن يشمل "الأتراك" (على الأرجح المسؤولين) والعرب الإقليميين.</p>
         </section>
 
         <section id="demographic-landscape" class="content-section fade-in">
-            <h2>II. The Demographic Landscape of Zakho: An Overview (1850-1950)</h2>
-            <p class="section-intro">The complexities of reconstructing Zakho's historical demographics, discussing source variability and the challenge of distinguishing between town and district figures. It provides general population trends and estimates, highlighting significant fluctuations and the impact of events like famines and migrations. The transition from Ottoman to Iraqi administration and its effect on census-taking is also explored.</p>
+            <h2>ثانياً: المشهد الديموغرافي لزاخو: نظرة عامة (1850-1950)</h2>
+            <p class="section-intro">تعقيدات إعادة بناء التركيبة السكانية التاريخية لزاخو، ومناقشة تنوع المصادر والتحدي المتمثل في التمييز بين أرقام البلدة وأرقام المنطقة. يقدم هذا القسم اتجاهات وتقديرات سكانية عامة، ويسلط الضوء على التقلبات الكبيرة وتأثير الأحداث مثل المجاعات والهجرات. كما يستكشف الانتقال من الإدارة العثمانية إلى الإدارة العراقية وتأثيره على عمليات التعداد السكاني.</p>
 
-            <h3>A. Challenges in Reconstructing Historical Demographics</h3>
-            <p>Reconstructing Zakho's precise 1850-1950 demographics is complex due to source limitations:</p>
+            <h3>أ. تحديات في إعادة بناء التركيبة السكانية التاريخية</h3>
+            <p>تعتبر إعادة بناء التركيبة السكانية الدقيقة لزاخو في الفترة 1850-1950 معقدة بسبب محدودية المصادر:</p>
             <ul>
-                <li><strong>Source Variability:</strong> Data from travelers (often anecdotal, e.g., Campanile's ~10,000 population pre-1850), Ottoman censuses (e.g., 1881/82-1893, often undercounting, male-focused, giving 543 Jewish males for Zaku Kaza), and early Iraqi records (e.g., 1930 census: 26,835 for Zakho district) vary in methodology and bias.</li>
-                <li><strong>Town vs. Kaza/District:</strong> Sources often ambiguously refer to Zakho town or the wider Kaza. For example, the 1930 census figure of 26,835 likely refers to the district, while a 1929 estimate of 4,000 likely refers to the town.</li>
-                <li><strong>Defining Categories:</strong> Terminology for ethnic/religious groups can be inconsistent. "Turks" in early accounts likely meant Ottoman officials, not a large settled Turkoman group. "Christians" often grouped distinct denominations.</li>
+                <li><strong>تنوع المصادر:</strong> البيانات من الرحالة (غالبًا ما تكون قصصية، مثل تقدير كامبانيل لسكان يبلغ حوالي 10,000 نسمة قبل عام 1850)، والتعدادات العثمانية (مثل 1881/82-1893، التي غالبًا ما تقلل من الأعداد، وتركز على الذكور، وتعطي 543 ذكرًا يهوديًا لقضاء زاخو)، والسجلات العراقية المبكرة (مثل تعداد عام 1930: 26,835 لقضاء زاخو) تختلف في المنهجية والتحيز.</li>
+                <li><strong>البلدة مقابل القضاء/المنطقة:</strong> غالبًا ما تشير المصادر بشكل غامض إلى بلدة زاخو أو القضاء الأوسع. على سبيل المثال، من المرجح أن يشير رقم تعداد عام 1930 البالغ 26,835 إلى القضاء، بينما من المرجح أن يشير تقدير عام 1929 البالغ 4,000 إلى البلدة.</li>
+                <li><strong>تحديد الفئات:</strong> يمكن أن تكون المصطلحات الخاصة بالمجموعات العرقية/الدينية غير متسقة. من المرجح أن مصطلح "الأتراك" في الروايات المبكرة كان يعني المسؤولين العثمانيين، وليس مجموعة تركمانية كبيرة مستقرة. غالبًا ما كان مصطلح "المسيحيون" يجمع طوائف متميزة.</li>
             </ul>
 
-            <h3>B. General Population Trends and Estimates for Zakho Town and Kaza</h3>
+            <h3>ب. الاتجاهات السكانية العامة والتقديرات لبلدة وقضاء زاخو</h3>
             <div class="chart-container">
                 <canvas id="zakhoTotalPopulationChart"></canvas>
             </div>
-            <p class="text-center text-gray-600 mb-6 italic">Selected population estimates for Zakho Town. Data points are indicative due to source variability.</p>
+            <p class="text-center text-gray-600 mb-6 italic">تقديرات سكانية مختارة لبلدة زاخو. نقاط البيانات إرشادية بسبب تنوع المصادر.</p>
             
-            <p>Key population estimates and trends:</p>
+            <p>تقديرات واتجاهات سكانية رئيسية:</p>
             <ul>
-                <li><strong>Mid-19th Century (Town):</strong> Campanile (pre-1850) estimated ~10,000. Jewish sources suggest Jews were half to two-thirds; an 1851 account states Jews occupied 100 of 150 houses.</li>
-                <li><strong>Late 19th Century (Kaza):</strong> Ottoman census (1881/82-1893) recorded 543 Jewish males in Zaku Kaza, suggesting a total Jewish Kaza population of ~2,172-2,715.</li>
-                <li><strong>Early 20th Century (Town, pre-WWI):</strong> Jewish population estimated at 2,400 in 1906.</li>
-                <li><strong>Post-WWI & Mandate Period:</strong> Zakho town reported as 4,000 in 1929. Zakho Kaza (district) recorded 26,835 in 1930 Iraqi census.</li>
-                <li><strong>Mid-20th Century (Town, up to 1950):</strong> Population reached ~30,000 by 1950, a rapid increase from ~4,000 in 1929, suggesting significant in-migration, likely of Kurds, a trend that accelerated post-1950.</li>
+                <li><strong>منتصف القرن التاسع عشر (البلدة):</strong> قدر كامبانيل (قبل 1850) السكان بحوالي 10,000. تشير المصادر اليهودية إلى أن اليهود كانوا يشكلون نصف إلى ثلثي السكان؛ تذكر رواية من عام 1851 أن اليهود شغلوا 100 منزل من أصل 150.</li>
+                <li><strong>أواخر القرن التاسع عشر (القضاء):</strong> سجل التعداد العثماني (1881/82-1893) 543 ذكرًا يهوديًا في قضاء زاخو، مما يشير إلى إجمالي عدد السكان اليهود في القضاء يتراوح بين 2,172 و 2,715 نسمة.</li>
+                <li><strong>أوائل القرن العشرين (البلدة، قبل الحرب العالمية الأولى):</strong> قدر عدد السكان اليهود بـ 2,400 في عام 1906.</li>
+                <li><strong>بعد الحرب العالمية الأولى وفترة الانتداب:</strong> أفيد بأن عدد سكان بلدة زاخو بلغ 4,000 في عام 1929. سجل قضاء زاخو 26,835 نسمة في التعداد العراقي لعام 1930.</li>
+                <li><strong>منتصف القرن العشرين (البلدة، حتى عام 1950):</strong> وصل عدد السكان إلى حوالي 30,000 بحلول عام 1950، وهي زيادة سريعة من حوالي 4,000 في عام 1929، مما يشير إلى هجرة داخلية كبيرة، على الأرجح من الأكراد، وهو اتجاه تسارع بعد عام 1950.</li>
             </ul>
-            <p>Variations in figures reflect data collection difficulties and genuine demographic volatility due to migration, crises (e.g., 1880 famine), and administrative changes. The shift to Iraqi administration brought more systematic but politically influenced censuses.</p>
+            <p>تعكس الاختلافات في الأرقام صعوبات جمع البيانات والتقلبات الديموغرافية الحقيقية بسبب الهجرة والأزمات (مثل مجاعة عام 1880) والتغيرات الإدارية. أدى التحول إلى الإدارة العراقية إلى تعدادات أكثر منهجية ولكنها متأثرة سياسياً.</p>
             
-            <h3>C. Comparative Population Data Summary</h3>
-            <p>The report includes detailed tables (Table 1: Comparative Estimates, Table 2: Ottoman/Iraqi Census Data) summarizing available figures. These tables highlight the numerical presence of Jewish, Christian, and Muslim communities over time, noting the challenges in consistent categorization and scope (town vs. district). For instance, Campanile's early 1800s estimate for the town was ~10,000 (6,000 Jews, 1,000 Christians, 3,000 "Turks"). The 1922-24 Mosul Vilayet enumeration showed Kurds as 64.9%, Jews 1.5%, Christians 7.7%, Yezidis 3.3%, Turks/Turkomans 4.8%, and Arabs 20.8% of the wider Vilayet.</p>
+            <h3>ج. ملخص مقارن للبيانات السكانية</h3>
+            <p>يتضمن التقرير جداول مفصلة (الجدول 1: تقديرات مقارنة، الجدول 2: بيانات التعداد العثماني/العراقي) تلخص الأرقام المتاحة. تسلط هذه الجداول الضوء على الوجود العددي للجاليات اليهودية والمسيحية والمسلمة بمرور الوقت، مع الإشارة إلى التحديات في التصنيف المتسق والنطاق (البلدة مقابل القضاء). على سبيل المثال، كان تقدير كامبانيل في أوائل القرن التاسع عشر للبلدة حوالي 10,000 (6,000 يهودي، 1,000 مسيحي، 3,000 "تركي"). أظهر تعداد ولاية الموصل 1922-1924 أن الأكراد يشكلون 64.9%، واليهود 1.5%، والمسيحيين 7.7%، والإيزيديين 3.3%، والأتراك/التركمان 4.8%، والعرب 20.8% من الولاية الأوسع.</p>
         </section>
 
         <section id="jewish-community" class="content-section fade-in">
-            <h2>III. The Jewish Community: "The Jerusalem of Kurdistan"</h2>
-            <p class="section-intro">Zakho's ancient and prominent Jewish community, tracing their historical presence and population fluctuations. It explores their rich religious and communal life, their significant socio-economic role, the periods of insecurity they faced, and the eventual mass emigration to Israel which marked the end of their millennia-long presence.</p>
+            <h2>ثالثاً: الجالية اليهودية: "قدس كردستان"</h2>
+            <p class="section-intro">الجالية اليهودية القديمة والبارزة في زاخو، وتتبع وجودها التاريخي وتقلبات عدد سكانها. يستكشف هذا القسم حياتهم الدينية والمجتمعية الغنية، ودورهم الاجتماعي والاقتصادي الهام، وفترات انعدام الأمن التي واجهوها، والهجرة الجماعية النهائية إلى إسرائيل التي شكلت نهاية لوجودهم الذي دام آلاف السنين.</p>
             
-            <h3>A. Historical Presence and Population Estimates (1850-1950)</h3>
             <div class="chart-container">
                 <canvas id="jewishPopulationChart"></canvas>
             </div>
-            <p class="text-center text-gray-600 mb-6 italic">Jewish population estimates in Zakho (Town/Kaza). Figures are approximate based on various sources.</p>
+            <p class="text-center text-gray-600 mb-6 italic">تقديرات السكان اليهود في زاخو (البلدة/القضاء). الأرقام تقريبية بناءً على مصادر مختلفة.</p>
             
-            <p>Key population points:</p>
+            <p>نقاط سكانية رئيسية:</p>
             <ul>
-                <li><strong>1827:</strong> ~600 Jewish families (Rabbi David D'Beth Hillel).</li>
-                <li><strong>1848:</strong> 200-300 families (Benjamin II/Zaken).</li>
-                <li><strong>1851:</strong> Occupied 100 of 150 houses in town (Stern).</li>
-                <li><strong>1880:</strong> Half of 400-500 houses owned by Jews; famine year.</li>
-                <li><strong>1881/82-93:</strong> 543 Jewish males in Kaza (Ottoman Census).</li>
-                <li><strong>1906:</strong> Peak estimate of 2,400 individuals in town.</li>
-                <li><strong>1930:</strong> 1,471 Aramaic-speaking Jews (Iraqi Census).</li>
-                <li><strong>1947:</strong> 1,394 individuals (Iraqi Census).</li>
-                <li><strong>1950-51:</strong> ~1,800-1,900 individuals (350 families) on eve of mass exodus.</li>
+                <li><strong>1827:</strong> حوالي 600 عائلة يهودية (الحاخام ديفيد دبيت هليل).</li>
+                <li><strong>1848:</strong> 200-300 عائلة (بنيامين الثاني/زاكن).</li>
+                <li><strong>1851:</strong> شغلوا 100 منزل من أصل 150 في البلدة (شتيرن).</li>
+                <li><strong>1880:</strong> نصف المنازل البالغ عددها 400-500 يملكها اليهود؛ سنة مجاعة.</li>
+                <li><strong>1881/82-93:</strong> 543 ذكرًا يهوديًا في القضاء (التعداد العثماني).</li>
+                <li><strong>1906:</strong> تقدير الذروة بـ 2,400 فرد في البلدة.</li>
+                <li><strong>1930:</strong> 1,471 يهوديًا يتحدثون الآرامية (التعداد العراقي).</li>
+                <li><strong>1947:</strong> 1,394 فردًا (التعداد العراقي).</li>
+                <li><strong>1950-51:</strong> حوالي 1,800-1,900 فرد (350 عائلة) عشية الهجرة الجماعية.</li>
             </ul>
             <div class="community-highlight">
-                <p><strong>Note:</strong> An anomalous figure of 15,000 Jews in "Zakho city" in 1945 is likely an outlier or refers to a wider region. Most sources suggest 1,500-2,500 for the town in the first half of the 20th century.</p>
+                <p><strong>ملاحظة:</strong> الرقم الشاذ البالغ 15,000 يهودي في "مدينة زاخو" عام 1945 من المرجح أن يكون قيمة متطرفة أو يشير إلى منطقة أوسع. تشير معظم المصادر إلى 1,500-2,500 للبلدة في النصف الأول من القرن العشرين.</p>
             </div>
 
-            <h3>B. Religious and Communal Life</h3>
+            <h3>ب. الحياة الدينية والمجتمعية</h3>
             <div class="community-highlight">
-                <p><strong>"Jerusalem of Kurdistan":</strong> Zakho was a major spiritual center, training rabbis, mohalim, and shoḥaṭim for Kurdish Jewry.</p>
+                <p><strong>"قدس كردستان":</strong> كانت زاخو مركزًا روحيًا رئيسيًا، حيث دربت الحاخامات والموهاليم والشوحاطيم ليهود كردستان.</p>
             </div>
             <ul>
-                <li><strong>Synagogues:</strong> Two main ones: Knishta Rabta (Great Synagogue, est. or renovated 1798, capacity ~3,000) and Knishta Zurta (Small Synagogue, with study hall and school, capacity ~1,000, destroyed in 1891 attack).</li>
-                <li><strong>Language:</strong> Spoke a Jewish Neo-Aramaic dialect and Kurmanji Kurdish.</li>
-                <li><strong>Residential Area:</strong> Lived in a Jewish quarter (*maḥallət huzaye*).</li>
-                <li><strong>Culture:</strong> Preserved ancient customs, rich oral traditions. Notably, Jews of Zakho bore arms, similar to Kurdish Muslims.</li>
+                <li><strong>الكُنُس:</strong> اثنان رئيسيان: كنيشتا رابتا (الكنيس الكبير، أُسس أو جُدد عام 1798، يتسع لحوالي 3,000 شخص) وكنيشتا زورتا (الكنيس الصغير، مع قاعة دراسة ومدرسة، يتسع لحوالي 1,000 شخص، دُمر في هجوم عام 1891).</li>
+                <li><strong>اللغة:</strong> تحدثوا لهجة آرامية يهودية حديثة والكردية الكورمانجية.</li>
+                <li><strong>المنطقة السكنية:</strong> عاشوا في حي يهودي (*محلة اليهود*).</li>
+                <li><strong>الثقافة:</strong> حافظوا على عادات قديمة وتقاليد شفوية غنية. والجدير بالذكر أن يهود زاخو حملوا السلاح، على غرار المسلمين الأكراد.</li>
             </ul>
 
-            <h3>C. Socio-Economic Role</h3>
-            <p>The Jewish community was vital to Zakho's economy, engaged in commerce, crafts (weaving, goldsmithing, jewelry, shoemaking), cattle raising, logging, and agriculture. Some achieved considerable wealth. Their trade involvement significantly contributed to Zakho's status as a commercial hub.</p>
+            <h3>ج. الدور الاجتماعي والاقتصادي</h3>
+            <p>كانت الجالية اليهودية حيوية لاقتصاد زاخو، حيث انخرطت في التجارة والحرف اليدوية (النسيج، صياغة الذهب، المجوهرات، صناعة الأحذية)، وتربية الماشية، وقطع الأخشاب، والزراعة. حقق البعض ثروة كبيرة. ساهمت مشاركتهم التجارية بشكل كبير في مكانة زاخو كمركز تجاري.</p>
 
-            <h3>D. Periods of Insecurity and Persecution</h3>
+            <h3>د. فترات انعدام الأمن والاضطهاد</h3>
             <ul>
-                <li><strong>1880:</strong> Severe famine, many deaths.</li>
-                <li><strong>1891:</strong> Attack, Knishta Zurta burned.</li>
-                <li><strong>1892:</strong> Troubles intensified, Tigris flood destroyed homes and synagogues.</li>
-                <li><strong>1920s-1930s:</strong> Deteriorating security and economic status led to emigration.</li>
-                <li><strong>1941 (Farhud):</strong> Though not directly in Zakho, the Baghdad pogrom created widespread fear among Iraqi Jews, accelerating emigration sentiment.</li>
+                <li><strong>1880:</strong> مجاعة شديدة، وفيات كثيرة.</li>
+                <li><strong>1891:</strong> هجوم، حرق كنيشتا زورتا.</li>
+                <li><strong>1892:</strong> اشتدت الاضطرابات، دمر فيضان دجلة المنازل والكُنُس.</li>
+                <li><strong>1920-1930:</strong> أدى تدهور الوضع الأمني والاقتصادي إلى الهجرة.</li>
+                <li><strong>1941 (الفرهود):</strong> على الرغم من أنه لم يحدث مباشرة في زاخو، إلا أن مذبحة بغداد أوجدت خوفًا واسع النطاق بين اليهود العراقيين، مما سرع من مشاعر الهجرة.</li>
             </ul>
 
-            <h3>E. Emigration to Palestine/Israel</h3>
-            <p>Emigration was a gradual process culminating in a mass exodus:</p>
+            <h3>هـ. الهجرة إلى فلسطين/إسرائيل</h3>
+            <p>كانت الهجرة عملية تدريجية بلغت ذروتها في نزوح جماعي:</p>
             <ul>
-                <li><strong>Mid-19th Century:</strong> Initial movements due to economic decline (Suez Canal impact) and religious motivations.</li>
-                <li><strong>Post-WWI (1920s-1930s):</strong> Intensified due to war consequences, British Mandate, deteriorating security, and economic decline. Zakho served as a clandestine crossing point. Between 1912-1942, ~285 families immigrated.</li>
-                <li><strong>1950-1952 (Mass Exodus):</strong> Following Israel's establishment (1948) and hostile Iraqi policies (property confiscation), almost the entire remaining community (over 1,800 people) left for Israel, ending millennia of presence. First group of 70 families left Oct 1950.</li>
+                <li><strong>منتصف القرن التاسع عشر:</strong> تحركات أولية بسبب التدهور الاقتصادي (تأثير قناة السويس) ودوافع دينية.</li>
+                <li><strong>بعد الحرب العالمية الأولى (1920-1930):</strong> اشتدت بسبب عواقب الحرب، والانتداب البريطاني، وتدهور الأمن، والتدهور الاقتصادي. خدمت زاخو كنقطة عبور سرية. بين عامي 1912-1942، هاجرت حوالي 285 عائلة.</li>
+                <li><strong>1950-1952 (النزوح الجماعي):</strong> بعد قيام دولة إسرائيل (1948) والسياسات العراقية العدائية (مصادرة الممتلكات)، غادرت الجالية المتبقية بأكملها تقريبًا (أكثر من 1,800 شخص) إلى إسرائيل، منهية آلاف السنين من الوجود. غادرت المجموعة الأولى المكونة من 70 عائلة في أكتوبر 1950.</li>
             </ul>
         </section>
 
         <section id="christian-communities" class="content-section fade-in">
-            <h2>IV. Christian Communities: Resilience and Transformation</h2>
-            <p class="section-intro">The ancient Christian presence in Zakho, including Chaldean Catholics, Syriac Catholics and Orthodox, Armenians, and Nestorians/Assyrians. It covers their distinct quarters, languages, key religious institutions, population estimates, and the profound impact of crises like the Seyfo and Armenian Genocide, as well as their resilience in rebuilding communities.</p>
+            <h2>رابعاً: الطوائف المسيحية: صمود وتحول</h2>
+            <p class="section-intro">الوجود المسيحي القديم في زاخو، بما في ذلك الكلدان الكاثوليك، السريان الكاثوليك والأرثوذكس، الأرمن، والنساطرة/الآشوريين. يغطي هذا القسم أحيائهم المتميزة، ولغاتهم، ومؤسساتهم الدينية الرئيسية، وتقديرات السكان، والتأثير العميق للأزمات مثل السيفو والإبادة الجماعية للأرمن، فضلاً عن قدرتهم على الصمود في إعادة بناء مجتمعاتهم.</p>
             
             <div class="chart-container">
                 <canvas id="christianPopulationComparisonChart"></canvas>
             </div>
-            <p class="text-center text-gray-600 mb-6 italic">Population composition estimate for Zakho Town in 1923 (Source: Brill Reference [7]). Christian denominations are grouped.</p>
+            <p class="text-center text-gray-600 mb-6 italic">تقدير التركيبة السكانية لبلدة زاخو عام 1923 (المصدر: مرجع بريل [7]). تم تجميع الطوائف المسيحية.</p>
 
-            <h3>A. Chaldean Catholics</h3>
+            <h3>أ. الكلدان الكاثوليك</h3>
             <div class="community-highlight">
-                <p><strong>Ecclesiastical Significance:</strong> Zakho became a separate Chaldean archdiocese around 1850.</p>
+                <p><strong>الأهمية الكنسية:</strong> أصبحت زاخو أبرشية كلدانية منفصلة حوالي عام 1850.</p>
             </div>
             <ul>
-                <li><strong>Churches:</strong> Mar Gorgis (St. George) Cathedral (built 1911), Mariam al Adra (Abassia), Sacred Heart (Bidar).</li>
-                <li><strong>Population:</strong> 50 Chaldeans in Zakho town in 1914. Campanile (early 19th C) included them in his 1,000 "Catholics & Jacobites."</li>
+                <li><strong>الكنائس:</strong> كاتدرائية مار كوركيس (القديس جاورجيوس) (بُنيت عام 1911)، مريم العذراء (العباسية)، القلب الأقدس (بيدار).</li>
+                <li><strong>السكان:</strong> 50 كلدانيًا في بلدة زاخو عام 1914. أدرجهم كامبانيل (أوائل القرن التاسع عشر) ضمن 1,000 "كاثوليكي ويعقوبي".</li>
             </ul>
 
-            <h3>B. Syriac Catholics</h3>
-            <p>Maintained a presence. Mariam Al Adra Church (Nassara quarter, attested 1850) originally Syriac Orthodox, transitioned to Syriac Catholicism, influenced by Catholic missions (e.g., Léopold Soldini, d.1779 in Zakho). Campanile's 1,000 Christians included "Catholic and Jacobite."</p>
+            <h3>ب. السريان الكاثوليك</h3>
+            <p>حافظوا على وجودهم. كنيسة مريم العذراء (حي النصارى، مُوثقة عام 1850) كانت في الأصل سريانية أرثوذكسية، ثم انتقلت إلى الكاثوليكية السريانية، متأثرة بالبعثات الكاثوليكية (مثل ليوبولد سولديني، توفي عام 1779 في زاخو). أدرج كامبانيل ضمن 1,000 مسيحي "كاثوليكي ويعقوبي".</p>
 
-            <h3>C. Armenians</h3>
+            <h3>ج. الأرمن</h3>
             <div class="community-highlight">
-                <p><strong>Refuge and Rebuilding:</strong> Community largely formed post-Armenian Genocide (1915). Refugees fled persecution near Turkey-Iraq border.</p>
+                <p><strong>اللجوء وإعادة البناء:</strong> تشكلت الجالية إلى حد كبير بعد الإبادة الجماعية للأرمن (1915). فر اللاجئون من الاضطهاد بالقرب من الحدود التركية العراقية.</p>
             </div>
             <ul>
-                <li><strong>Protection:</strong> Sheltered by Kurdish notable Mohammed Beg Shemdin Agha, who provided land for a church.</li>
-                <li><strong>Church:</strong> First Armenian church formally established in 1923. Some references to an older church being rebuilt.</li>
-                <li><strong>Population:</strong> Grew significantly after 1915. Post-1950 data indicates 1,500 during Iran-Iraq war; contemporary estimates suggest ~1,000 with historical roots.</li>
-                <li><strong>Economy:</strong> Contributed as sheepherders, farmers, craftsmen (traditional Kurdish clothing *Shal u Shepk*).</li>
+                <li><strong>الحماية:</strong> آواهم الزعيم الكردي البارز محمد بك شمدين آغا، الذي قدم أرضًا لكنيسة.</li>
+                <li><strong>الكنيسة:</strong> تأسست أول كنيسة أرمنية رسميًا عام 1923. تشير بعض المراجع إلى إعادة بناء كنيسة أقدم.</li>
+                <li><strong>السكان:</strong> نما بشكل كبير بعد عام 1915. تشير بيانات ما بعد عام 1950 إلى 1,500 خلال الحرب الإيرانية العراقية؛ تشير التقديرات المعاصرة إلى حوالي 1,000 لهم جذور تاريخية.</li>
+                <li><strong>الاقتصاد:</strong> ساهموا كرعاة أغنام ومزارعين وحرفيين (ملابس كردية تقليدية *شال وشبك*).</li>
             </ul>
 
-            <h3>D. Nestorians/Assyrians (Church of the East)</h3>
-            <p>Historical presence in the broader region. Devastated by the Seyfo (Assyrian Genocide, 1915-1918).</p>
+            <h3>د. النساطرة/الآشوريون (كنيسة المشرق)</h3>
+            <p>وجود تاريخي في المنطقة الأوسع. دُمروا بفعل السيفو (الإبادة الجماعية الآشورية، 1915-1918).</p>
             <ul>
-                <li><strong>Presence:</strong> Mark Sykes (c.1908) noted Nestorians in Hakkiari, Amadia, and Zakho.</li>
-                <li><strong>Conversions:</strong> From 17th/18th C, many converted to Chaldean Catholicism due to missionary efforts, reducing Nestorian numbers.</li>
+                <li><strong>الوجود:</strong> أشار مارك سايكس (حوالي 1908) إلى وجود النساطرة في هكاري والعمادية وزاخو.</li>
+                <li><strong>التحولات الدينية:</strong> منذ القرن السابع عشر/الثامن عشر، تحول الكثيرون إلى الكاثوليكية الكلدانية بسبب جهود المبشرين، مما قلل من أعداد النساطرة.</li>
             </ul>
 
-            <h3>E. Overall Christian Population and Inter-Community Dynamics</h3>
-            <p>Early 19th C (Campanile): 1,000 Christians (Catholic & Jacobite) of ~10,000 total. Brill Reference: 1,000 Christians in 1800 and again in 1923 (with 2,000 Jews, 1,000 Muslims).</p>
-            <p>Christians generally resided in the "Nassara" quarter and spoke Neo-Aramaic dialects.</p>
-            <p>Late 19th/early 20th C was a period of crisis: raids by some Kurdish tribes, and the Genocides (Seyfo, Armenian) led to a "collapse of community and denominational unity." Despite hardships, communities showed resilience, rebuilding churches. The arrival of Armenians added a new dimension. Establishment of separate ecclesiastical structures (Chaldean, Armenian) showed vitality and formalization of identities.</p>
+            <h3>هـ. إجمالي السكان المسيحيين والديناميكيات بين الطوائف</h3>
+            <p>أوائل القرن التاسع عشر (كامبانيل): 1,000 مسيحي (كاثوليكي ويعقوبي) من إجمالي حوالي 10,000. مرجع بريل: 1,000 مسيحي في عام 1800 ومرة أخرى في عام 1923 (مع 2,000 يهودي و 1,000 مسلم).</p>
+            <p>أقام المسيحيون بشكل عام في حي "النصارى" وتحدثوا لهجات آرامية حديثة.</p>
+            <p>كان أواخر القرن التاسع عشر/أوائل القرن العشرين فترة أزمات: غارات من بعض القبائل الكردية، والإبادات الجماعية (السيفو، الأرمن) أدت إلى "انهيار المجتمع والوحدة الطائفية". على الرغم من الصعوبات، أظهرت المجتمعات قدرة على الصمود، وأعادت بناء الكنائس. أضاف وصول الأرمن بُعدًا جديدًا. أظهر تأسيس هياكل كنسية منفصلة (كلدانية، أرمنية) حيوية وتأطيرًا للهويات.</p>
         </section>
 
         <section id="muslim-populace" class="content-section fade-in">
-            <h2>V. The Muslim Populace: Kurds, "Turks," and Arabs</h2>
-            <p class="section-intro">The Muslim population, predominantly Kurdish, constituted the majority in Zakho and its region. The Kurds as the dominant ethnic group, the interpretation of historical mentions of "Turks" (likely Ottoman officials), and the limited Arab presence within Zakho town during the 1850-1950 period.</p>
+            <h2>خامساً: السكان المسلمون: الأكراد، "الأتراك"، والعرب</h2>
+            <p class="section-intro">السكان المسلمون، وأغلبهم من الأكراد، شكلوا الأغلبية في زاخو ومنطقتها. الأكراد هم المجموعة العرقية المهيمنة، وتفسير الإشارات التاريخية إلى "الأتراك" (على الأرجح المسؤولين العثمانيين)، والوجود العربي المحدود داخل بلدة زاخو خلال الفترة 1850-1950.</p>
 
-            <h3>A. Kurds: The Dominant Ethnic Group</h3>
+            <h3>أ. الأكراد: المجموعة العرقية المهيمنة</h3>
             <div class="community-highlight">
-                <p><strong>Regional Dominance:</strong> Kurds were the principal ethnic group, largely Sunni Muslims organized along tribal lines, speaking Kurdish.</p>
+                <p><strong>الهيمنة الإقليمية:</strong> كان الأكراد المجموعة العرقية الرئيسية، معظمهم من المسلمين السنة المنظمين على أسس قبلية، ويتحدثون الكردية.</p>
             </div>
             <ul>
-                <li><strong>Local Leadership:</strong> The Shamdin Agha family (Slivani tribe) was prominent, reportedly "ruled all the Muslims, Jews and Christians of Zakho and its surroundings" from the late 19th century. Hazim Beg, a powerful figure from this family, served in Iraqi parliament/senate. This leadership mediated relations within the Ottoman/Iraqi state framework.</li>
-                <li><strong>Regional Majority:</strong> British intelligence (early 20th C) and the 1922-24 Iraqi enumeration (64.9% of Mosul Vilayet) confirmed Kurdish predominance.</li>
-                <li><strong>Urban Consolidation:</strong> Zakho's population growth to ~30,000 by 1950 was largely due to Kurdish influx from rural areas, a trend starting in the early 20th century due to instability and economic factors.</li>
+                <li><strong>القيادة المحلية:</strong> كانت عائلة شمدين آغا (قبيلة سليفاني) بارزة، ويقال إنها "حكمت جميع المسلمين واليهود والمسيحيين في زاخو وضواحيها" منذ أواخر القرن التاسع عشر. خدم حازم بك، وهو شخصية قوية من هذه العائلة، في البرلمان/مجلس الأعيان العراقي. توسطت هذه القيادة في العلاقات ضمن إطار الدولة العثمانية/العراقية.</li>
+                <li><strong>الأغلبية الإقليمية:</strong> أكدت المخابرات البريطانية (أوائل القرن العشرين) والتعداد العراقي 1922-1924 (64.9% من ولاية الموصل) على هيمنة الأكراد.</li>
+                <li><strong>التركز الحضري:</strong> كان نمو سكان زاخو إلى حوالي 30,000 بحلول عام 1950 يرجع إلى حد كبير إلى تدفق الأكراد من المناطق الريفية، وهو اتجاه بدأ في أوائل القرن العشرين بسبب عدم الاستقرار والعوامل الاقتصادية.</li>
             </ul>
 
-            <h3>B. The "Turks" of Zakho: Interpretation of Historical Mentions</h3>
-            <p>Campanile (early 19th C) mentioned "three thousand Turks." This term in 19th C Ottoman Kurdistan likely referred to:</p>
+            <h3>ب. "أتراك" زاخو: تفسير الإشارات التاريخية</h3>
+            <p>ذكر كامبانيل (أوائل القرن التاسع عشر) "ثلاثة آلاف تركي". من المرجح أن هذا المصطلح في كردستان العثمانية في القرن التاسع عشر كان يشير إلى:</p>
             <ul>
-                <li>Ottoman officials, military personnel, or state functionaries (most probable).</li>
-                <li>Turkish-speaking Muslims, not necessarily a large settled ethnic Turkoman group (Turkomans were 4.8% in Mosul Vilayet, concentrated elsewhere like Kirkuk).</li>
+                <li>المسؤولين العثمانيين أو العسكريين أو موظفي الدولة (الأكثر احتمالاً).</li>
+                <li>المسلمين الناطقين بالتركية، وليس بالضرورة مجموعة عرقية تركمانية كبيرة مستقرة (شكل التركمان 4.8% في ولاية الموصل، وتركزوا في أماكن أخرى مثل كركوك).</li>
             </ul>
-            <p>The withdrawal of Ottoman forces in Nov 1918 ended this official Turkish presence. Consistent references to a large, permanent Turkoman community *in Zakho town* are lacking.</p>
+            <p>أنهى انسحاب القوات العثمانية في نوفمبر 1918 هذا الوجود التركي الرسمي. تفتقر الإشارات المتسقة إلى وجود جالية تركمانية كبيرة ودائمة *في بلدة زاخو*.</p>
 
-            <h3>C. Arab Presence</h3>
-            <p>The 1922-24 Iraqi enumeration showed Arabs as 20.8% of Mosul Vilayet. While Zakho town was predominantly Kurdish, its proximity to Arab regions (Syria/Iraq) and trade role implied some Arab presence (transient traders, intermarriage, small settlements in the district). Specific demographic data for a settled Arab community *within Zakho town* (1850-1950) is sparse. Faysh Khabur (Zakho District) had Arabs settled much later (post-1950); earlier it was Assyrian/Chaldean.</p>
+            <h3>ج. الوجود العربي</h3>
+            <p>أظهر التعداد العراقي 1922-1924 أن العرب يشكلون 20.8% من ولاية الموصل. بينما كانت بلدة زاخو ذات أغلبية كردية، فإن قربها من المناطق العربية (سوريا/العراق) ودورها التجاري يعني وجودًا عربيًا ما (تجار عابرون، تزاوج، مستوطنات صغيرة في القضاء). البيانات الديموغرافية المحددة لجالية عربية مستقرة *داخل بلدة زاخو* (1850-1950) نادرة. استقر العرب في فيشخابور (قضاء زاخو) في وقت لاحق (بعد 1950)؛ قبل ذلك كانت آشورية/كلدانية.</p>
         </section>
 
         <section id="yezidi-community" class="content-section fade-in">
-            <h2>VI. The Yezidi Community: Presence in the Zakho Environs</h2>
-            <p class="section-intro">The Yezidi religious minority, historically present in northern Iraq, including the Zakho district. However, their demographic footprint within Zakho town itself appears less prominent compared to their presence in surrounding rural areas and traditional heartlands like Sinjar and Sheikhan.</p>
+            <h2>سادساً: الطائفة الإيزيدية: التواجد في ضواحي زاخو</h2>
+            <p class="section-intro">الأقلية الدينية الإيزيدية، الموجودة تاريخيًا في شمال العراق، بما في ذلك قضاء زاخو. ومع ذلك، يبدو أن بصمتهم الديموغرافية داخل بلدة زاخو نفسها أقل بروزًا مقارنة بوجودهم في المناطق الريفية المحيطة ومعاقلهم التقليدية مثل سنجار والشيخان.</p>
 
-            <h3>A. Demographic Presence and Location</h3>
+            <h3>أ. الوجود الديموغرافي والموقع</h3>
             <div class="community-highlight">
-                <p><strong>Traditional Heartlands:</strong> Yezidis are concentrated in Sinjar and Sheikhan, with their main shrine at Lalish. The Zakho district is also an area of Yezidi habitation.</p>
+                <p><strong>المعاقل التقليدية:</strong> يتركز الإيزيديون في سنجار والشيخان، مع معبدهم الرئيسي في لالش. منطقة زاخو هي أيضًا منطقة سكن إيزيدية.</p>
             </div>
             <ul>
-                <li><strong>Regional Presence:</strong> Evliya Çelebi (17th C) mentioned Yezidis in nearby regions (Amedi, Cizre, Duhok).</li>
-                <li><strong>Mosul Vilayet Data:</strong> The 1922-24 Iraqi enumeration listed 26,257 Yezidis (3.3% of Vilayet). General Iraqi Yezidi population (1920-1947) was 26,000-30,000.</li>
-                <li><strong>Zakho Town:</strong> Specific figures for a significant, settled Yezidi community *within Zakho town* (1850-1950) are scarce. They likely interacted with Zakho as a market/administrative center but primarily resided rurally.</li>
+                <li><strong>الوجود الإقليمي:</strong> ذكر أوليا جلبي (القرن السابع عشر) الإيزيديين في المناطق المجاورة (العمادية، جزيرة ابن عمر، دهوك).</li>
+                <li><strong>بيانات ولاية الموصل:</strong> أدرج التعداد العراقي 1922-1924 ما مجموعه 26,257 إيزيديًا (3.3% من الولاية). تراوح إجمالي عدد السكان الإيزيديين في العراق (1920-1947) بين 26,000 و 30,000 نسمة.</li>
+                <li><strong>بلدة زاخو:</strong> الأرقام المحددة لجالية إيزيدية كبيرة ومستقرة *داخل بلدة زاخو* (1850-1950) نادرة. من المرجح أنهم تفاعلوا مع زاخو كمركز سوق/إداري لكنهم أقاموا بشكل أساسي في المناطق الريفية.</li>
             </ul>
 
-            <h3>B. Social and Political Context</h3>
+            <h3>ب. السياق الاجتماعي والسياسي</h3>
             <ul>
-                <li><strong>Society:</strong> Traditionally tribal, some formed confederations with Muslim/Christian tribes. Predominantly Kurmanji-speaking; identity debated (Kurds vs. distinct Yezidi ethno-religious group).</li>
-                <li><strong>19th Century Persecution:</strong> Endured devastating assaults from Ottoman troops and some Sunni Kurdish tribes (e.g., 1832 massacre by Mir Mohammed of Rawanduz). This likely led to displacement and isolation in defensible areas, possibly limiting urban presence.</li>
-                <li><strong>State Resistance:</strong> Resisted Ottoman and later Iraqi conscription attempts, leading to uprisings (e.g., 1935-1940), reflecting a desire for autonomy.</li>
+                <li><strong>المجتمع:</strong> تقليديًا قبلي، شكل البعض اتحادات مع قبائل مسلمة/مسيحية. يتحدثون الكورمانجية في الغالب؛ الهوية موضع نقاش (أكراد مقابل مجموعة عرقية دينية إيزيدية متميزة).</li>
+                <li><strong>اضطهاد القرن التاسع عشر:</strong> تعرضوا لاعتداءات مدمرة من القوات العثمانية وبعض القبائل الكردية السنية (مثل مذبحة عام 1832 على يد مير محمد الرواندزي). من المرجح أن هذا أدى إلى النزوح والعزلة في مناطق يمكن الدفاع عنها، مما حد من الوجود الحضري.</li>
+                <li><strong>مقاومة الدولة:</strong> قاوموا محاولات التجنيد العثمانية ثم العراقية، مما أدى إلى انتفاضات (مثل 1935-1940)، مما يعكس رغبة في الحكم الذاتي.</li>
             </ul>
         </section>
 
         <section id="inter-community-dynamics" class="content-section fade-in">
-            <h2>VII. Inter-Community Dynamics: Coexistence and Conflict</h2>
-            <p class="section-intro">Zakho, a diverse town, mirrored the complex inter-communal relations of the Ottoman Empire and its successors. The period 1850-1950 saw both peaceful coexistence and shared civic life, alongside severe tensions and violence that significantly impacted its demographic fabric.</p>
+            <h2>سابعاً: الديناميكيات بين الطوائف: تعايش وصراع</h2>
+            <p class="section-intro">زاخو، بلدة متنوعة، عكست العلاقات المعقدة بين الطوائف في الإمبراطورية العثمانية وخلفائها. شهدت الفترة 1850-1950 تعايشًا سلميًا وحياة مدنية مشتركة، إلى جانب توترات وعنف شديدين أثرا بشكل كبير على نسيجها الديموغرافي.</p>
 
             <div class="comparison-grid">
                 <div class="card-elevated bg-emerald-50 p-8 rounded-2xl">
-                    <h3 class="text-emerald-700 mb-6 text-xl font-semibold">A. Coexistence and Shared Life</h3>
+                    <h3 class="text-emerald-700 mb-6 text-xl font-semibold">أ. التعايش والحياة المشتركة</h3>
                     <ul class="list-disc space-y-3">
-                        <li><strong>Daily Interaction:</strong> Vibrant market served as a primary venue for mixing and commercial exchange among all groups (Kurds, Jews, Christians).</li>
-                        <li><strong>Residential Quarters:</strong> Distinct quarters (Jewish *maḥallət huzaye*, Christian *Nassara*), but Kurmanji Kurdish often served as a lingua franca.</li>
-                        <li><strong>Cultural Exchange:</strong> Shared myths and traditions (e.g., Jewish folklore incorporating Muslim elements).</li>
-                        <li><strong>Local Governance:</strong> Kurdish leadership (e.g., Shamdin Agha family) "ruled all communities," implying a hierarchical system. Hazim Beg showed respect to Jewish leaders.</li>
-                        <li><strong>Shared Security:</strong> Jews of Zakho bore arms, like Kurdish Muslims, suggesting integration or shared security needs.</li>
-                        <li><strong>Protection/Solidarity:</strong> Mohammed Beg Shemdin Agha sheltered Armenian refugees (1915). Local Muslims sometimes defended Jewish neighbors.</li>
-                        <li><strong>Modern Interactions:</strong> State institutions (schools, government, army under Iraqi state) provided new avenues for inter-communal friendships. Shared attendance at life events based on personal friendships.</li>
+                        <li><strong>التفاعل اليومي:</strong> كان السوق النابض بالحياة بمثابة مكان رئيسي للاختلاط والتبادل التجاري بين جميع المجموعات (الأكراد واليهود والمسيحيين).</li>
+                        <li><strong>الأحياء السكنية:</strong> أحياء متميزة (الحي اليهودي *محلة اليهود*، الحي المسيحي *النصارى*)، لكن الكردية الكورمانجية غالبًا ما كانت بمثابة لغة مشتركة.</li>
+                        <li><strong>التبادل الثقافي:</strong> أساطير وتقاليد مشتركة (مثل الفولكلور اليهودي الذي يتضمن عناصر إسلامية).</li>
+                        <li><strong>الحكم المحلي:</strong> "حكمت" القيادة الكردية (مثل عائلة شمدين آغا) جميع الطوائف، مما يعني نظامًا هرميًا. أظهر حازم بك احترامًا للقادة اليهود.</li>
+                        <li><strong>الأمن المشترك:</strong> حمل يهود زاخو السلاح، مثل المسلمين الأكراد، مما يشير إلى الاندماج أو الاحتياجات الأمنية المشتركة.</li>
+                        <li><strong>الحماية/التضامن:</strong> آوى محمد بك شمدين آغا اللاجئين الأرمن (1915). دافع المسلمون المحليون أحيانًا عن جيرانهم اليهود.</li>
+                        <li><strong>التفاعلات الحديثة:</strong> وفرت مؤسسات الدولة (المدارس، الحكومة، الجيش في ظل الدولة العراقية) سبلًا جديدة للصداقات بين الطوائف. حضور مشترك للمناسبات الحياتية بناءً على الصداقات الشخصية.</li>
                     </ul>
                 </div>
                 <div class="card-elevated bg-red-50 p-8 rounded-2xl">
-                    <h3 class="text-red-700 mb-6 text-xl font-semibold">B. Tension, Violence, and Persecution</h3>
+                    <h3 class="text-red-700 mb-6 text-xl font-semibold">ب. التوتر والعنف والاضطهاد</h3>
                     <ul class="list-disc space-y-3">
-                        <li><strong>Against Jews:</strong> 1891 attack (synagogue burned), 1892 troubles. Precarious security noted in 1881. 20th C: Rising Iraqi nationalism and anti-Zionism deteriorated their situation, leading to emigration.</li>
-                        <li><strong>Against Christians:</strong> Late 19th/early 20th C: Increased raids by some Kurdish tribes on Christian villages. Armenian Genocide (1915+) and Assyrian/Chaldean/Syriac Seyfo (1915-18) were devastating. Some Kurdish tribes cooperated with Ottomans, others offered protection. These events altered demographics and sowed distrust.</li>
-                        <li><strong>Against Yezidis:</strong> Severe assaults from Ottoman troops and some Sunni Kurdish tribes throughout the 19th century in the broader region.</li>
+                        <li><strong>ضد اليهود:</strong> هجوم عام 1891 (حرق الكنيس)، اضطرابات عام 1892. لوحظ وضع أمني هش في عام 1881. القرن العشرون: أدى تصاعد القومية العراقية ومعاداة الصهيونية إلى تدهور وضعهم، مما أدى إلى الهجرة.</li>
+                        <li><strong>ضد المسيحيين:</strong> أواخر القرن التاسع عشر/أوائل القرن العشرين: زيادة الغارات من بعض القبائل الكردية على القرى المسيحية. كانت الإبادة الجماعية للأرمن (1915+) والسيفو الآشوري/الكلداني/السرياني (1915-18) مدمرة. تعاونت بعض القبائل الكردية مع العثمانيين، بينما قدم البعض الآخر الحماية. غيرت هذه الأحداث التركيبة السكانية وزرعت عدم الثقة.</li>
+                        <li><strong>ضد الإيزيديين:</strong> اعتداءات شديدة من القوات العثمانية وبعض القبائل الكردية السنية طوال القرن التاسع عشر في المنطقة الأوسع.</li>
                     </ul>
                 </div>
             </div>
-             
-            <h3>C. Role of Local Leadership and Ottoman/State Policies</h3>
-            <p>Broader political contexts heavily influenced dynamics. Ottoman Tanzimat reforms (mid-19th C) aimed to centralize control, disrupting local autonomies. The Hamidiye regiments (late 19th C), composed of Kurdish tribes armed by the state, often abused power against Armenians and others, exacerbating tensions. The Ottoman collapse, rise of nationalisms (Turkish, Arab), British Mandate, and Iraqi state formation introduced new frameworks impacting minorities. These larger currents often overwhelmed local coexistence, leading to significant demographic shifts.</p>
+            
+            <h3>ج. دور القيادة المحلية والسياسات العثمانية/الدولة</h3>
+            <p>أثرت السياقات السياسية الأوسع بشكل كبير على الديناميكيات. هدفت إصلاحات التنظيمات العثمانية (منتصف القرن التاسع عشر) إلى مركزية السيطرة، مما أدى إلى تعطيل الاستقلال الذاتي المحلي. غالبًا ما أساءت أفواج الحميدية (أواخر القرن التاسع عشر)، المكونة من قبائل كردية مسلحة من قبل الدولة، استخدام السلطة ضد الأرمن وغيرهم، مما أدى إلى تفاقم التوترات. أدى انهيار الدولة العثمانية، وصعود القوميات (التركية، العربية)، والانتداب البريطاني، وتشكيل الدولة العراقية إلى إدخال أطر جديدة أثرت على الأقليات. غالبًا ما طغت هذه التيارات الأكبر على التعايش المحلي، مما أدى إلى تحولات ديموغرافية كبيرة.</p>
         </section>
 
         <section id="historical-events" class="content-section fade-in">
-            <h2>VIII. The Crucible of Change: Major Historical Events and Their Demographic Impact (1850-1950)</h2>
-            <p class="section-intro">Zakho's demography was profoundly shaped by major historical events. These pivotal moments—from Ottoman reforms and the World Wars to the rise of nationalisms and specific crises like the Armenian Genocide and the Farhud—and their transformative effects on the town's diverse communities.</p>
+            <h2>ثامناً: بوتقة التغيير: الأحداث التاريخية الكبرى وتأثيرها الديموغرافي (1850-1950)</h2>
+            <p class="section-intro">تشكلت ديموغرافية زاخو بشكل عميق بفعل الأحداث التاريخية الكبرى. هذه اللحظات المحورية - من الإصلاحات العثمانية والحروب العالمية إلى صعود القوميات والأزمات المحددة مثل الإبادة الجماعية للأرمن والفرهود - وآثارها التحويلية على مجتمعات البلدة المتنوعة.</p>
 
             <div class="text-center mb-6">
                 <p class="text-lg text-gray-600 bg-blue-50 px-6 py-3 rounded-full inline-block border border-blue-200">
-                    Click timeline items for more information
+                    انقر على عناصر الخط الزمني لمزيد من المعلومات
                 </p>
             </div>
             <div class="timeline">
                 <div class="timeline-container left">
                     <div class="timeline-content" data-event="tanzimat">
-                        <h3>Mid-19th C onwards: Late Ottoman Reforms (Tanzimat) & Centralization</h3>
+                        <h3>منتصف القرن التاسع عشر وما بعده: الإصلاحات العثمانية المتأخرة (التنظيمات) والمركزية</h3>
                         <div class="event-details">
-                            <p>Ottoman reforms aimed to strengthen state control, curtailing local Kurdish dynasties (e.g., Mir Bedir Khan). This created power vacuums filled by tribal leaders like the Shamdin Agha in Zakho. Increased state intervention pressured communities like Yezidis (resisting conscription/taxation).</p>
+                            <p>هدفت الإصلاحات العثمانية إلى تعزيز سيطرة الدولة، وتقليص نفوذ السلالات الكردية المحلية (مثل مير بدرخان). أدى هذا إلى فراغات في السلطة ملأتها زعامات قبلية مثل شمدين آغا في زاخو. زاد تدخل الدولة من الضغط على مجتمعات مثل الإيزيديين (الذين قاوموا التجنيد والضرائب).</p>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-container right">
                     <div class="timeline-content" data-event="hamidiye">
-                        <h3>Late 19th C: "Armenian Question" & Hamidiye Regiments</h3>
+                        <h3>أواخر القرن التاسع عشر: "المسألة الأرمنية" وأفواج الحميدية</h3>
                         <div class="event-details">
-                            <p>Ottoman concern over Armenian aspirations led to Hamidiye cavalry (Kurdish tribes armed by state). These regiments often abused power, appropriating land from Armenians and others, increasing regional insecurity for Christians.</p>
+                            <p>أدى قلق العثمانيين بشأن تطلعات الأرمن إلى تشكيل فرسان الحميدية (قبائل كردية مسلحة من قبل الدولة). غالبًا ما أساءت هذه الأفواج استخدام السلطة، واستولت على أراضٍ من الأرمن وغيرهم، مما زاد من انعدام الأمن الإقليمي للمسيحيين.</p>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-container left">
                     <div class="timeline-content" data-event="genocides">
-                        <h3>1915-1918: Armenian Genocide & Assyrian Seyfo</h3>
+                        <h3>1915-1918: الإبادة الجماعية للأرمن والسيفو الآشوري</h3>
                         <div class="event-details">
-                            <p>Systematic extermination/deportation of Armenians by Ottoman government. Assyrians, Chaldeans, Syriacs suffered genocidal massacres (Seyfo). Some Kurdish tribes cooperated, others protected. Zakho became a refuge for Armenian survivors, forming a new community. Pre-existing Christian groups devastated, altering demographics and inter-communal relations.</p>
+                            <p>إبادة وترحيل منهجي للأرمن من قبل الحكومة العثمانية. عانى الآشوريون والكلدان والسريان من مذابح إبادة جماعية (السيفو). تعاونت بعض القبائل الكردية، بينما قدم البعض الآخر الحماية. أصبحت زاخو ملاذًا للناجين الأرمن، مما شكل جالية جديدة. دُمرت المجموعات المسيحية الموجودة مسبقًا، مما غير التركيبة السكانية والعلاقات بين الطوائف.</p>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-container right">
                     <div class="timeline-content" data-event="ww1">
-                        <h3>1914-1918: WWI & Collapse of Ottoman Empire</h3>
+                        <h3>1914-1918: الحرب العالمية الأولى وانهيار الإمبراطورية العثمانية</h3>
                         <div class="event-details">
-                            <p>Ottoman defeat and dissolution. Nov 1918: Ottoman forces withdrew from Zakho, British took control. Kurdistan partitioned among Turkey, Iraq, Syria. Mosul Province (inc. Zakho) controversially joined British Mandate of Iraq. Fundamental shift in governance for Zakho. Temporary improvement for Jews post-WWI.</p>
+                            <p>هزيمة وحل الإمبراطورية العثمانية. نوفمبر 1918: انسحبت القوات العثمانية من زاخو، وسيطر البريطانيون. قُسمت كردستان بين تركيا والعراق وسوريا. ضُمت ولاية الموصل (بما في ذلك زاخو) بشكل مثير للجدل إلى الانتداب البريطاني على العراق. تحول جذري في حكم زاخو. تحسن مؤقت لليهود بعد الحرب العالمية الأولى.</p>
                         </div>
                     </div>
                 </div>
-                 <div class="timeline-container left">
+                <div class="timeline-container left">
                     <div class="timeline-content" data-event="mandate">
-                        <h3>1920-1932: British Mandate & Establishment of Iraq</h3>
+                        <h3>1920-1932: الانتداب البريطاني وتأسيس العراق</h3>
                         <div class="event-details">
-                            <p>Iraq became a British Mandate. Jews granted citizenship, some economic improvement, but association with British sometimes negative socially. Rise of Arab nationalism as dominant force. Kurds struggled for rights/autonomy.</p>
+                            <p>أصبح العراق تحت الانتداب البريطاني. مُنح اليهود الجنسية، وتحسن وضعهم الاقتصادي بعض الشيء، لكن ارتباطهم بالبريطانيين كان أحيانًا سلبيًا اجتماعيًا. صعود القومية العربية كقوة مهيمنة. كافح الأكراد من أجل الحقوق والحكم الذاتي.</p>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-container right">
                     <div class="timeline-content" data-event="farhud">
-                        <h3>1941: The Farhud</h3>
+                        <h3>1941: الفرهود</h3>
                         <div class="event-details">
-                            <p>Violent pogrom against Baghdad's Jews. Though Zakho not directly hit, it created pervasive fear among all Iraqi Jews, signaling a dangerous shift and accelerating emigration sentiment. Subsequent Iraqi policies (denaturalization, property confiscation) sealed community's fate.</p>
+                            <p>مذبحة عنيفة ضد يهود بغداد. على الرغم من أن زاخو لم تتأثر بشكل مباشر، إلا أنها أوجدت خوفًا منتشرًا بين جميع اليهود العراقيين، مما يشير إلى تحول خطير وتسريع مشاعر الهجرة. أدت السياسات العراقية اللاحقة (إسقاط الجنسية، مصادرة الممتلكات) إلى حسم مصير الجالية.</p>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-container left">
                     <div class="timeline-content" data-event="zionism">
-                        <h3>Culminating 1950-51: Rise of Zionism & Mass Jewish Emigration</h3>
+                        <h3>ذروتها 1950-51: صعود الصهيونية والهجرة اليهودية الجماعية</h3>
                         <div class="event-details">
-                            <p>Long-standing connection to Eretz Israel. Emigration began mid-19th C, intensified post-WWI. Mass exodus (1950-51) of ~1,800-1,900 Jews to Israel after Israel's establishment and hostile Iraqi environment. Ended ancient Jewish presence, fundamentally altering Zakho's demography.</p>
+                            <p>ارتباط طويل الأمد بأرض إسرائيل. بدأت الهجرة في منتصف القرن التاسع عشر، واشتدت بعد الحرب العالمية الأولى. نزوح جماعي (1950-51) لحوالي 1,800-1,900 يهودي إلى إسرائيل بعد قيام دولة إسرائيل والبيئة العراقية المعادية. أنهى وجودًا يهوديًا قديمًا، وغير بشكل جذري ديموغرافية زاخو.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="community-highlight mt-8">
-                <p><strong>Historical Impact:</strong> The period 1850-1950 saw relentless external shocks: declining Ottoman power, European colonial influence, competing nationalisms (Turkish, Arab, Kurdish, Zionist), and genocidal policies converged on Zakho. These forces reshaped its demography more profoundly than internal dynamics alone, making Zakho a poignant example of the Middle East's turbulent modernization. The creation of new nation-states acutely impacted transnational groups like Kurds and Assyrians. Local agency, like Mohammed Beg Shemdin Agha's protection of Armenians, showed pockets of sanctuary amidst crises.</p>
+                <p><strong>التأثير التاريخي:</strong> شهدت الفترة 1850-1950 صدمات خارجية لا هوادة فيها: تراجع القوة العثمانية، النفوذ الاستعماري الأوروبي، القوميات المتنافسة (التركية، العربية، الكردية، الصهيونية)، وسياسات الإبادة الجماعية التي تلاقت في زاخو. أعادت هذه القوى تشكيل ديموغرافيتها بشكل أعمق من الديناميكيات الداخلية وحدها، مما جعل زاخو مثالاً مؤثرًا على التحديث المضطرب في الشرق الأوسط. أثر إنشاء دول قومية جديدة بشكل حاد على المجموعات العابرة للحدود الوطنية مثل الأكراد والآشوريين. أظهرت الفاعلية المحلية، مثل حماية محمد بك شمدين آغا للأرمن، جيوبًا من الملاذ وسط الأزمات.</p>
             </div>
         </section>
 
         <section id="conclusion" class="content-section fade-in">
-            <h2>IX. Conclusion: The Shifting Sands of Zakho's Demography (1850-1950)</h2>
-            <p class="section-intro">The major demographic transformations in Zakho over the century, highlighting the exodus of the Jewish community, the resilience of Christian groups, and the consolidation of the Kurdish Muslim majority. It reflects on the enduring legacy of Zakho's diverse past and the challenges in reconstructing its complex demographic history.</p>
+            <h2>تاسعاً: خاتمة: رمال زاخو الديموغرافية المتحركة (1850-1950)</h2>
+            <p class="section-intro">التحولات الديموغرافية الكبرى في زاخو على مدار قرن، مع تسليط الضوء على نزوح الجالية اليهودية، وصمود الجماعات المسيحية، وترسيخ الأغلبية الكردية المسلمة. يعكس هذا القسم الإرث الدائم لماضي زاخو المتنوع والتحديات في إعادة بناء تاريخها الديموغرافي المعقد.</p>
 
-            <h3>A. Recapitulation of Major Demographic Transformations</h3>
-            <p>The century 1850-1950 saw profound demographic shifts in Zakho:</p>
+            <h3>أ. خلاصة التحولات الديموغرافية الكبرى</h3>
+            <p>شهد القرن الممتد من 1850 إلى 1950 تحولات ديموغرافية عميقة في زاخو:</p>
             <ul>
-                <li><strong>Jewish Exodus:</strong> Near-total departure of the ancient Jewish community by 1951-52, erasing a key part of Zakho's identity ("Jerusalem of Kurdistan").</li>
-                <li><strong>Christian Resilience:</strong> Chaldeans, Syriacs, Nestorians/Assyrians, and later Armenians persisted despite severe persecution (Seyfo, Armenian Genocide). Armenian refugees added a new element.</li>
-                <li><strong>Muslim Consolidation:</strong> Predominantly Kurdish Muslim population solidified its majority. Local Kurdish Aghas (e.g., Shamdin Agha family) were influential. Late-period population growth driven by Kurdish influx. "Turks" (likely Ottoman officials) waned; settled Arab presence in town was small. Yezidis were in the district, not a major town component.</li>
+                <li><strong>نزوح اليهود:</strong> رحيل شبه كامل للجالية اليهودية القديمة بحلول 1951-1952، مما محا جزءًا رئيسيًا من هوية زاخو ("قدس كردستان").</li>
+                <li><strong>صمود المسيحيين:</strong> استمر الكلدان والسريان والنساطرة/الآشوريون، ولاحقًا الأرمن، على الرغم من الاضطهاد الشديد (السيفو، الإبادة الجماعية للأرمن). أضاف اللاجئون الأرمن عنصرًا جديدًا.</li>
+                <li><strong>ترسيخ المسلمين:</strong> عزز السكان المسلمون ذوو الأغلبية الكردية أغلبيتهم. كان للأغوات الأكراد المحليين (مثل عائلة شمدين آغا) نفوذ. كان النمو السكاني في أواخر الفترة مدفوعًا بتدفق الأكراد. تضاءل وجود "الأتراك" (على الأرجح المسؤولين العثمانيين)؛ كان الوجود العربي المستقر في البلدة صغيرًا. كان الإيزيديون في القضاء، وليسوا مكونًا رئيسيًا في البلدة.</li>
             </ul>
             <div class="community-highlight">
-                <p><strong>Key Transformation:</strong> By 1950, Zakho was becoming more ethnically/religiously homogeneous (primarily Kurdish Muslim) due to forced displacement, persecution, and politically driven demographic engineering affecting non-Muslim minorities.</p>
+                <p><strong>التحول الرئيسي:</strong> بحلول عام 1950، أصبحت زاخو أكثر تجانسًا عرقيًا/دينيًا (في الغالب كردية مسلمة) بسبب النزوح القسري والاضطهاد والهندسة الديموغرافية ذات الدوافع السياسية التي أثرت على الأقليات غير المسلمة.</p>
             </div>
 
-            <h3>B. The Enduring Legacy of a Diverse Past</h3>
-            <p>Despite these changes and losses, the memory of Zakho's multi-ethnic and multi-religious past endures, informing its cultural landscape. The 1850-1950 period was pivotal, shaping Zakho's later demographic profile, which, while Kurdish-predominant, still bears imprints of its diverse heritage.</p>
+            <h3>ب. الإرث الدائم لماضٍ متنوع</h3>
+            <p>على الرغم من هذه التغييرات والخسائر، لا تزال ذكرى ماضي زاخو المتعدد الأعراق والأديان قائمة، وتشكل ملامح مشهدها الثقافي. كانت الفترة 1850-1950 محورية، حيث شكلت الملامح الديموغرافية اللاحقة لزاخو، والتي، على الرغم من هيمنة الأكراد، لا تزال تحمل بصمات تراثها المتنوع.</p>
 
-            <h3>C. Final Reflections on Data and Interpretation</h3>
-            <p>Reconstructing Zakho's historical demography is challenging due to varied and sometimes contradictory sources (travelers' accounts, censuses, community records). A critical approach is essential.</p>
-            <p>Zakho's demographic story illustrates how local Middle Eastern communities were affected by declining empires, rising colonialism, exclusionary nationalisms, and regional conflicts. Its fate was tied to these larger currents, underscoring the vulnerability of diverse societies to powerful external forces that could override local coexistence and lead to irreversible change.</p>
+            <h3>ج. تأملات أخيرة حول البيانات والتفسير</h3>
+            <p>تعتبر إعادة بناء التركيبة السكانية التاريخية لزاخو أمرًا صعبًا بسبب تنوع المصادر وتناقضها أحيانًا (روايات الرحالة، التعدادات، سجلات المجتمعات). من الضروري اتباع نهج نقدي.</p>
+            <p>توضح قصة زاخو الديموغرافية كيف تأثرت المجتمعات المحلية في الشرق الأوسط بتدهور الإمبراطوريات، وصعود الاستعمار، والقوميات الإقصائية، والصراعات الإقليمية. كان مصيرها مرتبطًا بهذه التيارات الأكبر، مما يؤكد ضعف المجتمعات المتنوعة أمام القوى الخارجية القوية التي يمكن أن تتجاوز التعايش المحلي وتؤدي إلى تغيير لا رجعة فيه.</p>
         </section>
         
         <section id="works-cited" class="content-section fade-in">
-            <h2>Works Cited</h2>
+            <h2>المراجع والمصادر</h2>
             <ul class="works-cited-list">
                 <li>Zaken, M. (2015). <em>The Jews of Kurdistan and Their Tribal Chieftains: A Study in Survival</em>. Jewish Identities in a Changing World, Vol. 25. Brill.</li>
                 <li>Gavish, H. (2010). <em>Unwitting Zionists: The Jewish Community of Zakho in Iraqi Kurdistan</em>. Wayne State University Press.</li>
@@ -953,20 +989,9 @@
     <script>
         const timelineContents = document.querySelectorAll('.timeline-content');
         const scrollToTopBtn = document.getElementById('scrollToTop');
-        const header = document.getElementById('mainHeader');
-
-        let lastScrollY = window.scrollY;
-
-        // Header hide/show on scroll
+        
+        // Scroll to top button
         window.addEventListener('scroll', () => {
-            if (window.scrollY > lastScrollY && window.scrollY > 100) {
-                header.classList.add('hidden');
-            } else {
-                header.classList.remove('hidden');
-            }
-            lastScrollY = window.scrollY;
-
-            // Scroll to top button
             if (window.pageYOffset > 400) {
                 scrollToTopBtn.classList.add('visible');
             } else {
@@ -1008,9 +1033,9 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Early 1800s\n(Campanile)', '1923\n(Brill Ref.)', '1929\n(Zaken)', 'c. 1950\n(Various)'],
+                    labels: ['أوائل القرن التاسع عشر\n(كامبانيل)', '1923\n(مرجع بريل)', '1929\n(زاكن)', 'حوالي 1950\n(متنوع)'],
                     datasets: [{
-                        label: 'Estimated Total Population',
+                        label: 'إجمالي عدد السكان المقدر',
                         data: [10000, 4000, 4000, 30000],
                         backgroundColor: 'rgba(8, 145, 178, 0.8)',
                         borderColor: 'rgba(8, 145, 178, 1)',
@@ -1025,8 +1050,8 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Zakho Town Population Estimates (Selected Years)',
-                            font: { size: 18, weight: 'bold' },
+                            text: 'تقديرات سكان مدينة زاخو (سنوات مختارة)',
+                            font: { size: 18, weight: 'bold', family: 'Cairo' },
                             color: '#0f172a',
                             padding: { bottom: 20 }
                         },
@@ -1036,9 +1061,11 @@
                             bodyColor: 'white',
                             borderColor: 'rgba(8, 145, 178, 1)',
                             borderWidth: 1,
+                            titleFont: { family: 'Cairo' },
+                            bodyFont: { family: 'Cairo' },
                             callbacks: {
                                 label: function(context) {
-                                    return `Population: ${context.parsed.y.toLocaleString()}`;
+                                    return `عدد السكان: ${context.parsed.y.toLocaleString('ar-EG')}`;
                                 }
                             }
                         },
@@ -1049,23 +1076,24 @@
                             beginAtZero: true,
                             title: { 
                                 display: true, 
-                                text: 'Population Count',
-                                font: { size: 14, weight: 'bold' },
+                                text: 'عدد السكان',
+                                font: { size: 14, weight: 'bold', family: 'Cairo' },
                                 color: '#475569'
                             },
                             grid: { color: 'rgba(71, 85, 105, 0.2)' },
-                            ticks: { color: '#64748b' }
+                            ticks: { color: '#64748b', font: { family: 'Cairo' } }
                         },
                         x: {
                             title: { 
                                 display: true, 
-                                text: 'Time Period',
-                                font: { size: 14, weight: 'bold' },
+                                text: 'الفترة الزمنية',
+                                font: { size: 14, weight: 'bold', family: 'Cairo' },
                                 color: '#475569'
                             },
                             grid: { display: false },
                             ticks: { 
                                 color: '#64748b',
+                                font: { family: 'Cairo' },
                                 maxRotation: 0
                             }
                         }
@@ -1081,7 +1109,7 @@
                 data: {
                     labels: ['1827', '1848', '1881', '1881/93', '1906', '1920', '1930', '1940/45', '1947', '1950/51'],
                     datasets: [{
-                        label: 'Jewish Population',
+                        label: 'السكان اليهود',
                         data: [600, 250, 300, 543, 2400, 1716, 1471, 2500, 1394, 1850],
                         borderColor: 'rgba(13, 148, 136, 1)',
                         backgroundColor: 'rgba(13, 148, 136, 0.1)',
@@ -1100,8 +1128,8 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Jewish Population in Zakho (Estimates)',
-                            font: { size: 18, weight: 'bold' },
+                            text: 'السكان اليهود في زاخو (تقديرات)',
+                            font: { size: 18, weight: 'bold', family: 'Cairo' },
                             color: '#0f172a',
                             padding: { bottom: 20 }
                         },
@@ -1111,11 +1139,13 @@
                             bodyColor: 'white',
                             borderColor: 'rgba(13, 148, 136, 1)',
                             borderWidth: 1,
+                            titleFont: { family: 'Cairo' },
+                            bodyFont: { family: 'Cairo' },
                             callbacks: {
                                 label: function(context) {
                                     const dataIndex = context.dataIndex;
-                                    const labels = ['Families', 'Families', 'Families', 'Males (Kaza)', 'Individuals', 'Individuals', 'Individuals', 'Individuals', 'Individuals', 'Individuals'];
-                                    return `${context.parsed.y.toLocaleString()} ${labels[dataIndex]}`;
+                                    const labels = ['عائلات', 'عائلات', 'عائلات', 'ذكور (قضاء)', 'أفراد', 'أفراد', 'أفراد', 'أفراد', 'أفراد', 'أفراد'];
+                                    return `${context.parsed.y.toLocaleString('ar-EG')} ${labels[dataIndex]}`;
                                 }
                             }
                         },
@@ -1126,23 +1156,24 @@
                             beginAtZero: true,
                             title: { 
                                 display: true, 
-                                text: 'Population Count',
-                                font: { size: 14, weight: 'bold' },
+                                text: 'عدد السكان',
+                                font: { size: 14, weight: 'bold', family: 'Cairo' },
                                 color: '#475569'
                             },
                             grid: { color: 'rgba(71, 85, 105, 0.2)' },
-                            ticks: { color: '#64748b' }
+                            ticks: { color: '#64748b', font: { family: 'Cairo' } }
                         },
                         x: {
                             title: { 
                                 display: true, 
-                                text: 'Year',
-                                font: { size: 14, weight: 'bold' },
+                                text: 'السنة',
+                                font: { size: 14, weight: 'bold', family: 'Cairo' },
                                 color: '#475569'
                             },
                             grid: { color: 'rgba(71, 85, 105, 0.1)' },
                             ticks: { 
                                 color: '#64748b',
+                                font: { family: 'Cairo' },
                                 maxRotation: 45
                             }
                         }
@@ -1156,7 +1187,7 @@
             new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Jews', 'Christians', 'Muslims'],
+                    labels: ['يهود', 'مسيحيون', 'مسلمون'],
                     datasets: [{
                         data: [2000, 1000, 1000],
                         backgroundColor: [
@@ -1178,8 +1209,8 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Zakho Town Population Composition (1923 Estimate)',
-                            font: { size: 18, weight: 'bold' },
+                            text: 'التركيبة السكانية لمدينة زاخو (تقدير 1923)',
+                            font: { size: 18, weight: 'bold', family: 'Cairo' },
                             color: '#0f172a',
                             padding: { bottom: 20 }
                         },
@@ -1187,11 +1218,13 @@
                             backgroundColor: 'rgba(15, 23, 42, 0.9)',
                             titleColor: 'white',
                             bodyColor: 'white',
+                            titleFont: { family: 'Cairo' },
+                            bodyFont: { family: 'Cairo' },
                             callbacks: {
                                 label: function(context) {
                                     const total = context.dataset.data.reduce((a, b) => a + b, 0);
                                     const percentage = ((context.parsed / total) * 100).toFixed(1);
-                                    return `${context.label}: ${context.parsed.toLocaleString()} (${percentage}%)`;
+                                    return `${context.label}: ${context.parsed.toLocaleString('ar-EG')} (${percentage}%)`;
                                 }
                             }
                         },
@@ -1199,7 +1232,7 @@
                             position: 'bottom',
                             labels: {
                                 padding: 20,
-                                font: { size: 14 },
+                                font: { size: 14, family: 'Cairo' },
                                 color: '#475569'
                             }
                         }
@@ -1210,50 +1243,45 @@
 
         // Initialize charts after DOM loads
         document.addEventListener('DOMContentLoaded', function() {
-
             // Image click to enlarge functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('.clickable-image');
-    images.forEach(img => {
-        img.addEventListener('click', function() {
-            // Create overlay
-            const overlay = document.createElement('div');
-            overlay.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.9);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-                cursor: pointer;
-            `;
-            
-            // Create enlarged image
-            const enlargedImg = document.createElement('img');
-            enlargedImg.src = this.src;
-            enlargedImg.alt = this.alt;
-            enlargedImg.style.cssText = `
-                max-width: 95%;
-                max-height: 95%;
-                object-fit: contain;
-                border-radius: 10px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            `;
-            
-            overlay.appendChild(enlargedImg);
-            document.body.appendChild(overlay);
-            
-            // Close on click
-            overlay.addEventListener('click', function() {
-                document.body.removeChild(overlay);
+            const images = document.querySelectorAll('.clickable-image');
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    const overlay = document.createElement('div');
+                    overlay.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.9);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 1000;
+                        cursor: pointer;
+                    `;
+                    
+                    const enlargedImg = document.createElement('img');
+                    enlargedImg.src = this.src;
+                    enlargedImg.alt = this.alt;
+                    enlargedImg.style.cssText = `
+                        max-width: 95%;
+                        max-height: 95%;
+                        object-fit: contain;
+                        border-radius: 10px;
+                        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    `;
+                    
+                    overlay.appendChild(enlargedImg);
+                    document.body.appendChild(overlay);
+                    
+                    overlay.addEventListener('click', function() {
+                        document.body.removeChild(overlay);
+                    });
+                });
             });
-        });
-    });
-});
+
             // Check if Chart.js is loaded
             if (typeof Chart !== 'undefined') {
                 createZakhoTotalPopulationChart();
@@ -1261,7 +1289,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 createChristianPopulationComparisonChart();
             } else {
                 console.error('Chart.js not loaded');
-                // Retry after a short delay
                 setTimeout(function() {
                     if (typeof Chart !== 'undefined') {
                         createZakhoTotalPopulationChart();

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The People of Zakho from 1850-1950</title>
+    <title>תושבי זאכו בין השנים 1850-1950</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #0891b2;
@@ -22,7 +23,7 @@
         }
         
         body { 
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Rubik', 'Inter', sans-serif; /* Added Rubik as a primary Hebrew font */
             line-height: 1.7;
             color: var(--text-primary);
             background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 30%, #f8fafc 60%, #e2e8f0 100%);
@@ -112,8 +113,9 @@
             background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
             top: 0; 
             bottom: 0; 
-            left: 50%; 
-            margin-left: -2px;
+            right: 50%; 
+            margin-right: -2px; 
+            margin-left: auto; 
             border-radius: 2px;
         }
         
@@ -124,15 +126,16 @@
             width: 50%; 
         }
         
-        .timeline-container.left { left: 0; }
-        .timeline-container.right { left: 50%; }
+        .timeline-container.left { right: 0; left:auto; } 
+        .timeline-container.right { right: 50%; left:auto; } 
         
-        .timeline-container::after { 
+        .timeline-container.left::after { 
             content: ''; 
             position: absolute; 
             width: 24px; 
             height: 24px; 
-            right: -12px; 
+            left: -12px; 
+            right: auto; 
             background: var(--background-white);
             border: 4px solid var(--primary-color); 
             top: 25px; 
@@ -141,8 +144,21 @@
             box-shadow: 0 0 0 6px rgba(8, 145, 178, 0.1);
         }
         
-        .timeline-container.right::after { left: -12px; }
-        
+        .timeline-container.right::after { 
+            content: ''; 
+            position: absolute; 
+            width: 24px; 
+            height: 24px; 
+            right: -12px; 
+            left: auto; 
+            background: var(--background-white);
+            border: 4px solid var(--primary-color); 
+            top: 25px; 
+            border-radius: 50%; 
+            z-index: 1;
+            box-shadow: 0 0 0 6px rgba(8, 145, 178, 0.1);
+        }
+                
         .timeline-container.left::before { 
             content: " "; 
             height: 0; 
@@ -150,10 +166,11 @@
             top: 32px; 
             width: 0; 
             z-index: 1; 
-            right: 30px; 
+            left: 30px; 
+            right: auto; 
             border: solid var(--primary-color);
-            border-width: 10px 0 10px 15px; 
-            border-color: transparent transparent transparent var(--primary-color); 
+            border-width: 10px 15px 10px 0; 
+            border-color: transparent var(--primary-color) transparent transparent; 
         }
         
         .timeline-container.right::before { 
@@ -163,10 +180,11 @@
             top: 32px; 
             width: 0; 
             z-index: 1; 
-            left: 30px; 
+            right: 30px; 
+            left: auto; 
             border: solid var(--primary-color);
-            border-width: 10px 15px 10px 0; 
-            border-color: transparent var(--primary-color) transparent transparent; 
+            border-width: 10px 0 10px 15px; 
+            border-color: transparent transparent transparent var(--primary-color); 
         }
         
         .timeline-content { 
@@ -176,8 +194,11 @@
             cursor: pointer;
             box-shadow: 0 10px 25px -5px var(--shadow-color);
             transition: all 0.3s ease;
-            border-left: 6px solid var(--primary-color);
-            border: 1px solid var(--border-color);
+            border-right: 6px solid var(--primary-color); 
+            border-left: none; 
+            border-top: 1px solid var(--border-color); 
+            border-bottom: 1px solid var(--border-color); 
+            border-left: 1px solid var(--border-color); 
         }
         
         .timeline-content:hover { 
@@ -191,8 +212,11 @@
             padding: 1.5rem; 
             background: linear-gradient(135deg, var(--background-light), #f1f5f9);
             border-radius: 1rem;
-            border-left: 4px solid var(--accent-color);
-            border: 1px solid var(--border-color);
+            border-right: 4px solid var(--accent-color); 
+            border-left: none; 
+            border-top: 1px solid var(--border-color); 
+            border-bottom: 1px solid var(--border-color); 
+            border-left: 1px solid var(--border-color); 
         }
         
         h1, h2, h3 { 
@@ -201,27 +225,28 @@
         }
         
         h2 { 
-    font-size: 2rem !important; 
-    color: var(--primary-color);
-    font-weight: 700;
-    margin-bottom: 2rem; 
-    margin-top: 3rem;
-    position: relative;
-    padding-bottom: 1rem;
-    scroll-margin-top: 120px;
-}
+            font-size: 2rem !important; 
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 2rem; 
+            margin-top: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+            scroll-margin-top: 120px;
+        }
 
-@media (max-width: 768px) {
-    h2 {
-        font-size: 2.5rem !important;
-    }
-}
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2.5rem !important;
+            }
+        }
         
         h2::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            right: 0; 
+            left: auto; 
             width: 80px;
             height: 4px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
@@ -243,12 +268,14 @@
         ul { 
             list-style: none;
             margin-bottom: 2rem; 
+            padding-right: 0; 
             padding-left: 0;
         }
         
         li { 
             margin-bottom: 1rem;
-            padding-left: 2rem;
+            padding-right: 2rem; 
+            padding-left: 0; 
             position: relative;
             color: var(--text-secondary);
         }
@@ -258,12 +285,13 @@
             color: var(--primary-color);
             font-weight: bold;
             position: absolute;
-            left: 0;
+            right: 0; 
+            left: auto; 
             font-size: 1.2rem;
         }
         
         .list-disc li::before {
-            content: '▶';
+            content: '◀'; 
             font-size: 1rem;
         }
         
@@ -281,7 +309,7 @@
         th, td { 
             border: none;
             padding: 1.5rem; 
-            text-align: left; 
+            text-align: right; 
         }
         
         th { 
@@ -300,20 +328,25 @@
             margin-bottom: 3rem; 
             padding: 2.5rem; 
             background: linear-gradient(135deg, rgba(8, 145, 178, 0.05), rgba(13, 148, 136, 0.05));
-            border-left: 6px solid var(--primary-color);
+            border-right: 6px solid var(--primary-color); 
+            border-left: none; 
             border-radius: 1.5rem;
             box-shadow: 0 10px 25px -5px var(--shadow-color);
-            border: 1px solid var(--border-color);
+            border-top: 1px solid var(--border-color); 
+            border-bottom: 1px solid var(--border-color); 
+            border-left: 1px solid var(--border-color); 
         }
         
         .works-cited-list { 
             list-style: none;
+            padding-right: 0; 
             padding-left: 0;
             counter-reset: item;
         }
         
         .works-cited-list li {
             counter-increment: item;
+            padding-right: 0; 
             padding-left: 0;
             margin-bottom: 1.5rem;
             position: relative;
@@ -323,7 +356,8 @@
             content: counter(item) ".";
             color: var(--primary-color);
             font-weight: 600;
-            margin-right: 1rem;
+            margin-left: 1rem; 
+            margin-right: 0; 
             position: static;
         }
         
@@ -342,8 +376,8 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
+            right: 0; 
+            left: 0; 
             height: 6px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
@@ -364,8 +398,8 @@
             content: '';
             position: absolute;
             top: 0;
+            right: 0; 
             left: 0;
-            right: 0;
             height: 4px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
@@ -399,22 +433,26 @@
             
             .timeline-container {
                 width: 100%;
-                left: 0 !important;
-                padding: 15px 40px;
+                right: 0 !important; 
+                left: auto !important; 
+                padding: 15px 40px; 
             }
             
             .timeline::after {
-                left: 20px;
+                right: 20px; 
+                left: auto; 
             }
             
-            .timeline-container::after {
-                left: 8px !important;
+            .timeline-container::after { 
+                right: 8px !important; 
+                left: auto !important; 
             }
             
-            .timeline-container::before {
-                left: 30px !important;
-                border-width: 10px 15px 10px 0 !important;
-                border-color: transparent var(--primary-color) transparent transparent !important;
+            .timeline-container::before { 
+                right: 30px !important; 
+                left: auto !important; 
+                border-width: 10px 0 10px 15px !important; 
+                border-color: transparent transparent transparent var(--primary-color) !important; 
             }
         }
         
@@ -435,18 +473,22 @@
         
         .community-highlight {
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
-            border-left: 6px solid var(--accent-color);
+            border-right: 6px solid var(--accent-color); 
+            border-left: none; 
             padding: 2rem;
             border-radius: 1.5rem;
             margin: 2rem 0;
             box-shadow: 0 5px 15px -3px rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-top: 1px solid rgba(245, 158, 11, 0.2); 
+            border-bottom: 1px solid rgba(245, 158, 11, 0.2); 
+            border-left: 1px solid rgba(245, 158, 11, 0.2); 
         }
         
         .scroll-to-top {
             position: fixed;
             bottom: 2rem;
-            right: 2rem;
+            left: 2rem; 
+            right: auto;
             background: var(--primary-color);
             color: white;
             width: 56px;
@@ -490,414 +532,407 @@
             content: '';
             position: absolute;
             top: 0;
+            right: 0; 
             left: 0;
-            right: 0;
             height: 6px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
         
         .toc-item {
-    display: block;
-    padding: 1rem 1.5rem;
-    margin: 0.5rem 0;
-    background: var(--background-light);
-    border-radius: 1rem;
-    text-decoration: none;
-    color: var(--text-primary);
-    transition: all 0.3s ease;
-    border-left: 4px solid var(--primary-color);
-    font-size: 1.0rem !important;
-    font-weight: 500;
-}
+            display: block;
+            padding: 1rem 1.5rem;
+            margin: 0.5rem 0;
+            background: var(--background-light);
+            border-radius: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            border-right: 4px solid var(--primary-color); 
+            border-left: none; 
+            font-size: 1.0rem !important;
+            font-weight: 500;
+        }
         
         .toc-item:hover {
             background: rgba(8, 145, 178, 0.1);
-            transform: translateX(10px);
+            transform: translateX(-10px); 
             box-shadow: 0 5px 15px -3px var(--shadow-color);
         }
     </style>
 </head>
 <body>
-    <header class="hero-header shadow-lg" id="mainHeader">
-        <div class="container mx-auto px-6 py-4">
-            <h1 class="text-white text-4xl font-bold text-center mb-2">The People of Zakho from 1850-1950)</h1>
-            <p class="text-white/90 text-lg font-light text-center">An Interactive Historical Exploration</p>
-        </div>
-    </header>
 
     <main class="container mx-auto px-4 py-8 max-w-7xl">
         <div class="table-of-contents fade-in">
-            <h2>Table of Contents</h2>
+            <h2>תוכן עניינים</h2>
             <nav>
-    <a href="#prelude" class="toc-item">Prelude</a>
-    <a href="#introduction" class="toc-item">I. Introduction: Zakho in the Mid-19th to Mid-20th Century</a>
-                <a href="#demographic-landscape" class="toc-item">II. The Demographic Landscape of Zakho</a>
-                <a href="#jewish-community" class="toc-item">III. The Jewish Community: "The Jerusalem of Kurdistan"</a>
-                <a href="#christian-communities" class="toc-item">IV. Christian Communities: Resilience and Transformation</a>
-                <a href="#muslim-populace" class="toc-item">V. The Muslim Populace: Kurds, "Turks," and Arabs</a>
-                <a href="#yezidi-community" class="toc-item">VI. The Yezidi Community: Presence in the Zakho Environs</a>
-                <a href="#inter-community-dynamics" class="toc-item">VII. Inter-Community Dynamics: Coexistence and Conflict</a>
-                <a href="#historical-events" class="toc-item">VIII. The Crucible of Change: Major Historical Events</a>
-                <a href="#conclusion" class="toc-item">IX. Conclusion: The Shifting Sands of Zakho's Demography</a>
-                <a href="#works-cited" class="toc-item">Works Cited</a>
+                <a href="#prelude" class="toc-item">הקדמה</a>
+                <a href="#introduction" class="toc-item">א. מבוא: זאכו מאמצע המאה ה-19 ועד אמצע המאה ה-20</a>
+                <a href="#demographic-landscape" class="toc-item">ב. הנוף הדמוגרפי של זאכו</a>
+                <a href="#jewish-community" class="toc-item">ג. הקהילה היהודית: "ירושלים של כורדיסטן"</a>
+                <a href="#christian-communities" class="toc-item">ד. הקהילות הנוצריות: חוסן ותמורה</a>
+                <a href="#muslim-populace" class="toc-item">ה. האוכלוסייה המוסלמית: כורדים, "טורקים" וערבים</a>
+                <a href="#yezidi-community" class="toc-item">ו. הקהילה היזידית: נוכחות בסביבות זאכו</a>
+                <a href="#inter-community-dynamics" class="toc-item">ז. דינמיקה בין-קהילתית: דו-קיום וסכסוך</a>
+                <a href="#historical-events" class="toc-item">ח. כור ההיתוך של השינוי: אירועים היסטוריים מרכזיים</a>
+                <a href="#conclusion" class="toc-item">ט. סיכום: חולות הנודדים של הדמוגרפיה בזאכו</a>
+                <a href="#works-cited" class="toc-item">מקורות</a>
             </nav>
         </div>
 
-        <section id="introduction" class="content-section fade-in">
-
-
-            <section id="prelude" class="content-section fade-in">
-    <h2>Prelude</h2>
-    <div class="text-center mb-8">
-        <img src="napkin_map.jpg" alt="Hand-drawn map of Zakho" class="clickable-image cursor-pointer max-w-full h-auto rounded-lg shadow-lg mx-auto" style="max-height: 600px;">
-        <p class="text-gray-600 italic mt-4">Map drawn from memory, 26.05.2025</p>
-    </div>
-    
-    <p>I've been to Iraqi-Kurdistan twice, once in 2016 and again in 2022. Both times I had plans to visit Zakho. Both times I got as far as Dohuk, and turned back. Zakho is not a city one can just go to. You have to plan thoroughly to go to Zakho. You have to research the political situation for months ahead of time, make backup plans, make escape plans, carefully monitor the situation the night before you leave, the morning before you leave, five minutes before you step into the taxi, and one minute before you step into the taxi. Most importantly, before travelling to Zakho, you have to decide if you're feeling lucky.</p><br>
-    
-    <p>In 2016 I abandoned my plans to visit Zakho because a coup happened in Turkey the night I arrived in Dohuk. Now going to a city sandwiched between ISIS and a border lined with an extremely anxious Turkish military seemed like a bad idea. On my 2022 visit, I wasn't feeling lucky. Soon after, the road to the Zakho was unexpectedly bombed by Turkey. 20 civilians were killed.</p>
-    
-    <p>Zakho itself is not a dangerous city. Like all cities in Iraqi-Kurdistan, you will be safer there than any western-European city. The danger lies in getting there, its remoteness, and its violent neighbors.</p><br>
-    
-    <p>Paradoxically, Zakho is a thriving city because of these very same factors. For example, for geographical and political reasons, ISIS could never dream of reaching Zakho, despite their ability to seize over a hundred thousand square kilometres, and despite its capital city, Mosul, being just 50 kilometres away. However, because of ISIS, hundreds of thousands of people from all over Syria and Iraq fled their homes and moved to the safety of Zakho's remoteness.</p><br>
-    
-    <p>On the borders of Syria, Iraq, and Iraqi-Kurdistan; and having the protection of the American-backed Kurdish military, Zakho's remoteness has allowed it to become a safe-haven for Syrian refugees fleeing the civil war, Yazidi refugees who either fled or survived their 74th genocide in nearby Sinjar, other Iraqi peoples escaping either ISIS or the endless poverty and turmoil in Iraq, and wealthy Turkish businessmen who flock to Zakho like prospectors in a gold rush. Here in the Middle East, safety is gold. With safety comes business, and with business, comes a future - something most people in the Middle East are desperate to obtain.</p><br>
-    
-    <p>This is present-day Zakho. I believe it shares a lot of similarities with the Zakho of 1950. It's still peaceful, it's certainly multi-cultural, and it's still a remote border city with probably more smugglers than police. However, besides its new massive size and modernity, there is one outlying difference. The Jews of Zakho are gone forever.</p><br>
-    
-    <p>Ariel Sabar's "My Father's Paradise" recalls the last days of a Zakho as its "good old days" dried up and the ultra-violent modern Middle East was born. Sabar paints a picture of a Zakho that's poor, but peaceful. The kind of place where Jews and Muslims couldn't dream of harming one another. However, I have my doubts.</p><br>
-    
-    <p>This is a common narrative people in the Middle East tend to promote. "Before the colonizers, everything worked. We were peaceful." They say. Or if they're feeling particularly brave, "Before the modern governments, everything worked." I was also taught this in my American university.</p><br>
-    
-    <p>Later, as I studied further, and as shown in this data, I learned that the Middle East was never a peaceful place. The past, just as Sabar's father discovered about life in Israel, and again about life in America, is not a perfect place. But that doesn't stop us from trying to make it one.</p>
-</section>
-            <h2>I. Introduction: Zakho in the Mid-19th to Mid-20th Century – A Demographic Crossroads</h2>
-            <p class="section-intro">Zakho's strategic importance as a border town and commercial hub set the stage for its diverse population. It highlights the multi-ethnic and multi-religious tapestry of Kurds, Jews, Christians, and Yezidis, and outlines the scope of the demographic analysis for the turbulent period of 1850-1950.</p>
-            
-            <h3>A. Zakho's Strategic and Historical Significance</h3>
-            <p>The town of Zakho, situated in present-day Iraqi Kurdistan, was strategically vital from 1850 to 1950 due to its location near Turkish and Syrian borders, making it a key nexus for Greater Kurdistan. Historically a significant trading center for commodities like gallnuts, rice, and fruits, its economic dynamism attracted diverse peoples. Ancient roots, possibly linked to the Assyrian period and Hasaniyeh, and its mention in Islamic history underscore a long, varied past, predisposing it to complex settlement patterns.</p>
-
-            <h3>B. The Multi-Ethnic and Multi-Religious Tapestry</h3>
-            <div class="community-highlight">
-                <p><strong>A Crossroads of Cultures:</strong> Zakho was characterized by a rich mosaic of Kurds, a significant Jewish population, various Christian denominations (Chaldean Catholics, Armenians, Syriac Christians, Nestorians/Assyrians), and Yezidis in the broader district.</p>
+        <section id="prelude" class="content-section fade-in">
+            <h2>הקדמה</h2>
+            <div class="text-center mb-8">
+                <img src="napkin_map.jpg" alt="מפה מצוירת ביד של זאכו" class="clickable-image cursor-pointer max-w-full h-auto rounded-lg shadow-lg mx-auto" style="max-height: 600px;">
+                <p class="text-gray-600 italic mt-4">מפה מצוירת מהזיכרון, 26.05.2025</p>
             </div>
-            <p>This diversity, typical of Historic Kurdistan, was dynamic, shaped by migrations, economic shifts, and political pressures. Ancient settlements, trade, imperial expansions (Ottoman), and refugee influxes (e.g., Armenians) all contributed to this demographic complexity, amplified by Zakho's borderland status.</p>
+            
+            <p>ביקרתי בכורדיסטן העיראקית פעמיים, פעם אחת ב-2016 ושוב ב-2022. בשתי הפעמים היו לי תוכניות לבקר בזאכו. בשתי הפעמים הגעתי עד דוהוק, וחזרתי. זאכו אינה עיר שאפשר פשוט לנסוע אליה. צריך לתכנן ביסודיות כדי להגיע לזאכו. צריך לחקור את המצב הפוליטי חודשים מראש, להכין תוכניות גיבוי, תוכניות מילוט, לעקוב בקפידה אחר המצב בלילה שלפני הנסיעה, בבוקר שלפני הנסיעה, חמש דקות לפני שנכנסים למונית, ודקה אחת לפני שנכנסים למונית. והכי חשוב, לפני הנסיעה לזאכו, צריך להחליט אם מרגישים ברי מזל.</p><br>
+            
+            <p>ב-2016 ויתרתי על התוכניות שלי לבקר בזאכו כי התרחשה הפיכה בטורקיה בלילה שהגעתי לדוהוק. כעת, לנסוע לעיר שנמצאת בין דאעש לגבול שלאורכו צבא טורקי מתוח ביותר נראה כמו רעיון גרוע. בביקורי ב-2022, לא הרגשתי בר מזל. זמן קצר לאחר מכן, הדרך לזאכו הופצצה במפתיע על ידי טורקיה. 20 אזרחים נהרגו.</p>
+            
+            <p>זאכו עצמה אינה עיר מסוכנת. כמו כל הערים בכורדיסטן העיראקית, תהיו שם בטוחים יותר מבכל עיר במערב אירופה. הסכנה טמונה בהגעה לשם, בריחוקה ובשכניה האלימים.</p><br>
+            
+            <p>באופן פרדוקסלי, זאכו היא עיר משגשגת דווקא בגלל אותם גורמים. לדוגמה, מסיבות גאוגרפיות ופוליטיות, דאעש מעולם לא יכול היה לחלום להגיע לזאכו, למרות יכולתו להשתלט על יותר ממאה אלף קילומטרים רבועים, ולמרות שבירתו, מוסול, נמצאת במרחק של 50 קילומטרים בלבד. עם זאת, בגלל דאעש, מאות אלפי אנשים מכל רחבי סוריה ועיראק נמלטו מבתיהם ועברו לביטחון שבמרחק של זאכו.</p><br>
+            
+            <p>בגבולות סוריה, עיראק וכורדיסטן העיראקית; ועם הגנת הצבא הכורדי הנתמך על ידי אמריקה, ריחוקה של זאכו אפשר לה להפוך למקלט בטוח לפליטים סורים הנמלטים ממלחמת האזרחים, לפליטים יזידים שנמלטו או שרדו את רצח העם ה-74 שלהם בסינג'אר הסמוכה, לעמים עיראקיים אחרים הנמלטים מדאעש או מהעוני והמהומות הבלתי פוסקים בעיראק, ולאנשי עסקים טורקים עשירים הנוהרים לזאכו כמו מחפשי זהב בבהלה לזהב. כאן במזרח התיכון, ביטחון הוא זהב. עם ביטחון מגיע עסקים, ועם עסקים, מגיע עתיד - משהו שרוב האנשים במזרח התיכון נואשים להשיג.</p><br>
+            
+            <p>זוהי זאכו של ימינו. אני מאמין שיש לה קווי דמיון רבים עם זאכו של 1950. היא עדיין שלווה, היא בהחלט רב-תרבותית, והיא עדיין עיר גבול מרוחקת שכנראה יש בה יותר מבריחים משוטרים. עם זאת, מלבד גודלה העצום החדש והמודרניות שלה, יש הבדל בולט אחד. יהודי זאכו נעלמו לעד.</p><br>
+            
+            <p>ספרו של אריאל סבר "גן העדן של אבי" נזכר בימיה האחרונים של זאכו כאשר "ימיה הטובים" התייבשו והמזרח התיכון המודרני האלים ביותר נולד. סבר מצייר תמונה של זאכו ענייה, אך שלווה. המקום שבו יהודים ומוסלמים לא יכלו לחלום לפגוע זה בזה. עם זאת, יש לי ספקות.</p><br>
+            
+            <p>זוהי נרטיב נפוץ שאנשים במזרח התיכון נוטים לקדם. "לפני הקולוניאליסטים, הכל עבד. היינו שלווים." הם אומרים. או אם הם מרגישים אמיצים במיוחד, "לפני הממשלות המודרניות, הכל עבד." גם את זה לימדו אותי באוניברסיטה האמריקאית שלי.</p><br>
+            
+            <p>מאוחר יותר, ככל שלמדתי יותר, וכפי שמוצג בנתונים אלה, למדתי שהמזרח התיכון מעולם לא היה מקום שליו. העבר, בדיוק כפי שאביו של סבר גילה על החיים בישראל, ושוב על החיים באמריקה, אינו מקום מושלם. אבל זה לא מונע מאיתנו לנסות להפוך אותו לכזה.</p>
+        </section>
 
-            <h3>C. Scope and Methodology of the Demographic Analysis</h3>
-            <p>This analysis covers the ethnic and religious demographics of Zakho town and district from 1850-1950, a period of transformation from late Ottoman rule to the nascent Iraqi state. It focuses on principal groups, their populations, communal structures, inter-group relations, and the impact of historical events. Reconstructing these demographics is challenging due to variable sources (travelers' accounts, missionary reports, Ottoman records, early Iraqi censuses), each with biases. A nuanced understanding of the "Muslim" category is crucial, often implying Kurds but also potentially including "Turks" (likely officials) and regional Arabs.</p>
+        <section id="introduction" class="content-section fade-in">
+            <h2>א. מבוא: זאכו מאמצע המאה ה-19 ועד אמצע המאה ה-20 – צומת דרכים דמוגרפי</h2>
+            <p class="section-intro">חשיבותה האסטרטגית של זאכו כעיירת גבול ומרכז מסחרי הכינה את הקרקע לאוכלוסייתה המגוונת. חלק זה מדגיש את המרקם הרב-אתני והרב-דתי של כורדים, יהודים, נוצרים ויזידים, ומתאר את היקף הניתוח הדמוגרפי לתקופה הסוערת של 1850-1950.</p>
+            
+            <h3>א. חשיבותה האסטרטגית וההיסטורית של זאכו</h3>
+            <p>העיירה זאכו, הממוקמת כיום בכורדיסטן העיראקית, הייתה בעלת חשיבות אסטרטגית חיונית בין השנים 1850 ל-1950 בשל מיקומה סמוך לגבולות טורקיה וסוריה, מה שהפך אותה לצומת מרכזי עבור כורדיסטן רבתי. היסטורית, היא הייתה מרכז מסחרי משמעותי לסחורות כמו עפצים, אורז ופירות, והדינמיות הכלכלית שלה משכה אליה עמים מגוונים. שורשים עתיקים, הקשורים אולי לתקופה האשורית ולחסנייה, ואזכורה בהיסטוריה האסלאמית מדגישים עבר ארוך ומגוון, שנטה אותה לדפוסי התיישבות מורכבים.</p>
+
+            <h3>ב. המרקם הרב-אתני והרב-דתי</h3>
+            <div class="community-highlight">
+                <p><strong>צומת תרבויות:</strong> זאכו התאפיינה בפסיפס עשיר של כורדים, אוכלוסייה יהודית משמעותית, עדות נוצריות שונות (כלדים קתולים, ארמנים, סורים נוצרים, נסטוריאנים/אשורים), ויזידים במחוז הרחב יותר.</p>
+            </div>
+            <p>מגוון זה, האופייני לכורדיסטן ההיסטורית, היה דינמי, ועוצב על ידי הגירות, שינויים כלכליים ולחצים פוליטיים. התיישבויות עתיקות, מסחר, התרחבויות אימפריאליות (עות'מאניות) וזרמי פליטים (למשל, ארמנים) תרמו כולם למורכבות דמוגרפית זו, שהועצמה על ידי מעמדה של זאכו כעיירת גבול.</p>
+
+            <h3>ג. היקף ומתודולוגיה של הניתוח הדמוגרפי</h3>
+            <p>ניתוח זה מכסה את הדמוגרפיה האתנית והדתית של העיירה והמחוז זאכו בין השנים 1850-1950, תקופה של מעבר משלטון עות'מאני מאוחר למדינה העיראקית המתהווה. הוא מתמקד בקבוצות העיקריות, אוכלוסיותיהן, מבנים קהילתיים, יחסים בין-קבוצתיים והשפעת אירועים היסטוריים. שחזור דמוגרפיות אלו מאתגר בשל מקורות משתנים (תיאורי נוסעים, דיווחי מיסיונרים, רישומים עות'מאניים, מפקדי אוכלוסין עיראקיים מוקדמים), שלכל אחד מהם הטיות משלו. הבנה דקדקנית של הקטגוריה "מוסלמי" חיונית, ולעיתים קרובות מרמזת על כורדים אך עשויה לכלול גם "טורקים" (ככל הנראה פקידים) וערבים אזוריים.</p>
         </section>
 
         <section id="demographic-landscape" class="content-section fade-in">
-            <h2>II. The Demographic Landscape of Zakho: An Overview (1850-1950)</h2>
-            <p class="section-intro">The complexities of reconstructing Zakho's historical demographics, discussing source variability and the challenge of distinguishing between town and district figures. It provides general population trends and estimates, highlighting significant fluctuations and the impact of events like famines and migrations. The transition from Ottoman to Iraqi administration and its effect on census-taking is also explored.</p>
+            <h2>ב. הנוף הדמוגרפי של זאכו: סקירה כללית (1850-1950)</h2>
+            <p class="section-intro">המורכבויות של שחזור הדמוגרפיה ההיסטורית של זאכו, דיון בשונות המקורות ובאתגר ההבחנה בין נתוני העיירה לנתוני המחוז. חלק זה מספק מגמות והערכות אוכלוסייה כלליות, ומדגיש תנודות משמעותיות והשפעת אירועים כמו רעב והגירות. כמו כן, נבחן המעבר מהמינהל העות'מאני למינהל העיראקי והשפעתו על עריכת מפקדי אוכלוסין.</p>
 
-            <h3>A. Challenges in Reconstructing Historical Demographics</h3>
-            <p>Reconstructing Zakho's precise 1850-1950 demographics is complex due to source limitations:</p>
+            <h3>א. אתגרים בשחזור דמוגרפיות היסטוריות</h3>
+            <p>שחזור הדמוגרפיה המדויקת של זאכו בשנים 1850-1950 מורכב בשל מגבלות המקורות:</p>
             <ul>
-                <li><strong>Source Variability:</strong> Data from travelers (often anecdotal, e.g., Campanile's ~10,000 population pre-1850), Ottoman censuses (e.g., 1881/82-1893, often undercounting, male-focused, giving 543 Jewish males for Zaku Kaza), and early Iraqi records (e.g., 1930 census: 26,835 for Zakho district) vary in methodology and bias.</li>
-                <li><strong>Town vs. Kaza/District:</strong> Sources often ambiguously refer to Zakho town or the wider Kaza. For example, the 1930 census figure of 26,835 likely refers to the district, while a 1929 estimate of 4,000 likely refers to the town.</li>
-                <li><strong>Defining Categories:</strong> Terminology for ethnic/religious groups can be inconsistent. "Turks" in early accounts likely meant Ottoman officials, not a large settled Turkoman group. "Christians" often grouped distinct denominations.</li>
+                <li><strong>שונות המקורות:</strong> נתונים ממטיילים (לרוב אנקדוטליים, למשל הערכתו של קמפניל לכ-10,000 תושבים לפני 1850), מפקדים עות'מאניים (למשל, 1881/82-1893, שלעיתים קרובות לא מנו את כולם, התמקדו בגברים, ודיווחו על 543 גברים יהודים בקאזה של זאכו), ורישומים עיראקיים מוקדמים (למשל, מפקד 1930: 26,835 למחוז זאכו) משתנים במתודולוגיה ובהטיה.</li>
+                <li><strong>עיירה מול קאזה/מחוז:</strong> מקורות מתייחסים לעיתים קרובות באופן מעורפל לעיירה זאכו או לקאזה הרחבה יותר. לדוגמה, נתון מפקד 1930 של 26,835 מתייחס ככל הנראה למחוז, בעוד שהערכה מ-1929 של 4,000 מתייחסת ככל הנראה לעיירה.</li>
+                <li><strong>הגדרת קטגוריות:</strong> המינוח לקבוצות אתניות/דתיות יכול להיות לא עקבי. "טורקים" בתיאורים מוקדמים התייחסו ככל הנראה לפקידים עות'מאניים, ולא לקבוצה טורקמנית גדולה ומיושבת. "נוצרים" קיבצו לעיתים קרובות עדות נפרדות.</li>
             </ul>
 
-            <h3>B. General Population Trends and Estimates for Zakho Town and Kaza</h3>
+            <h3>ב. מגמות אוכלוסייה כלליות והערכות לעיירה ולקאזה של זאכו</h3>
             <div class="chart-container">
                 <canvas id="zakhoTotalPopulationChart"></canvas>
             </div>
-            <p class="text-center text-gray-600 mb-6 italic">Selected population estimates for Zakho Town. Data points are indicative due to source variability.</p>
+            <p class="text-center text-gray-600 mb-6 italic">הערכות אוכלוסייה נבחרות לעיירה זאכו. נקודות הנתונים הן אינדיקטיביות בשל שונות המקורות.</p>
             
-            <p>Key population estimates and trends:</p>
+            <p>הערכות ומגמות אוכלוסייה עיקריות:</p>
             <ul>
-                <li><strong>Mid-19th Century (Town):</strong> Campanile (pre-1850) estimated ~10,000. Jewish sources suggest Jews were half to two-thirds; an 1851 account states Jews occupied 100 of 150 houses.</li>
-                <li><strong>Late 19th Century (Kaza):</strong> Ottoman census (1881/82-1893) recorded 543 Jewish males in Zaku Kaza, suggesting a total Jewish Kaza population of ~2,172-2,715.</li>
-                <li><strong>Early 20th Century (Town, pre-WWI):</strong> Jewish population estimated at 2,400 in 1906.</li>
-                <li><strong>Post-WWI & Mandate Period:</strong> Zakho town reported as 4,000 in 1929. Zakho Kaza (district) recorded 26,835 in 1930 Iraqi census.</li>
-                <li><strong>Mid-20th Century (Town, up to 1950):</strong> Population reached ~30,000 by 1950, a rapid increase from ~4,000 in 1929, suggesting significant in-migration, likely of Kurds, a trend that accelerated post-1950.</li>
+                <li><strong>אמצע המאה ה-19 (העיירה):</strong> קמפניל (לפני 1850) העריך כ-10,000. מקורות יהודיים מצביעים על כך שהיהודים היוו מחצית עד שני שלישים; דיווח מ-1851 קובע שהיהודים אכלסו 100 מתוך 150 בתים.</li>
+                <li><strong>סוף המאה ה-19 (הקאזה):</strong> המפקד העות'מאני (1881/82-1893) רשם 543 גברים יהודים בקאזה של זאכו, מה שמצביע על אוכלוסייה יהודית כוללת בקאזה של כ-2,172-2,715.</li>
+                <li><strong>תחילת המאה ה-20 (העיירה, לפני מלחמת העולם הראשונה):</strong> האוכלוסייה היהודית הוערכה ב-2,400 בשנת 1906.</li>
+                <li><strong>לאחר מלחמת העולם הראשונה ותקופת המנדט:</strong> דווח על 4,000 תושבים בעיירה זאכו בשנת 1929. קאזת זאכו (מחוז) רשמה 26,835 במפקד העיראקי של 1930.</li>
+                <li><strong>אמצע המאה ה-20 (העיירה, עד 1950):</strong> האוכלוסייה הגיעה לכ-30,000 עד 1950, גידול מהיר מכ-4,000 בשנת 1929, מה שמצביע על הגירה פנימית משמעותית, ככל הנראה של כורדים, מגמה שהתגברה לאחר 1950.</li>
             </ul>
-            <p>Variations in figures reflect data collection difficulties and genuine demographic volatility due to migration, crises (e.g., 1880 famine), and administrative changes. The shift to Iraqi administration brought more systematic but politically influenced censuses.</p>
+            <p>הבדלים בנתונים משקפים קשיי איסוף נתונים ותנודתיות דמוגרפית אמיתית עקב הגירה, משברים (למשל, רעב 1880) ושינויים מנהליים. המעבר למינהל העיראקי הביא למפקדים שיטתיים יותר אך מושפעים פוליטית.</p>
             
-            <h3>C. Comparative Population Data Summary</h3>
-            <p>The report includes detailed tables (Table 1: Comparative Estimates, Table 2: Ottoman/Iraqi Census Data) summarizing available figures. These tables highlight the numerical presence of Jewish, Christian, and Muslim communities over time, noting the challenges in consistent categorization and scope (town vs. district). For instance, Campanile's early 1800s estimate for the town was ~10,000 (6,000 Jews, 1,000 Christians, 3,000 "Turks"). The 1922-24 Mosul Vilayet enumeration showed Kurds as 64.9%, Jews 1.5%, Christians 7.7%, Yezidis 3.3%, Turks/Turkomans 4.8%, and Arabs 20.8% of the wider Vilayet.</p>
+            <h3>ג. סיכום נתוני אוכלוסייה השוואתיים</h3>
+            <p>הדוח כולל טבלאות מפורטות (טבלה 1: הערכות השוואתיות, טבלה 2: נתוני מפקד עות'מאני/עיראקי) המסכמות את הנתונים הזמינים. טבלאות אלו מדגישות את הנוכחות המספרית של קהילות יהודיות, נוצריות ומוסלמיות לאורך זמן, תוך ציון האתגרים בסיווג והיקף עקביים (עיירה מול מחוז). לדוגמה, הערכתו של קמפניל בתחילת המאה ה-19 לעיירה הייתה כ-10,000 (6,000 יהודים, 1,000 נוצרים, 3,000 "טורקים"). מפקד מחוז מוסול בשנים 1922-24 הראה שהכורדים היוו 64.9%, יהודים 1.5%, נוצרים 7.7%, יזידים 3.3%, טורקים/טורקמנים 4.8% וערבים 20.8% מהמחוז הרחב יותר.</p>
         </section>
 
         <section id="jewish-community" class="content-section fade-in">
-            <h2>III. The Jewish Community: "The Jerusalem of Kurdistan"</h2>
-            <p class="section-intro">Zakho's ancient and prominent Jewish community, tracing their historical presence and population fluctuations. It explores their rich religious and communal life, their significant socio-economic role, the periods of insecurity they faced, and the eventual mass emigration to Israel which marked the end of their millennia-long presence.</p>
+            <h2>ג. הקהילה היהודית: "ירושלים של כורדיסטן"</h2>
+            <p class="section-intro">הקהילה היהודית העתיקה והבולטת של זאכו, תוך מעקב אחר נוכחותה ההיסטורית ותנודות אוכלוסייתה. חלק זה בוחן את חייהם הדתיים והקהילתיים העשירים, את תפקידם החברתי-כלכלי המשמעותי, את תקופות חוסר הביטחון שעמדו בפניהם, ואת ההגירה ההמונית בסופו של דבר לישראל, שסימנה את קץ נוכחותם בת אלפי השנים.</p>
             
-            <h3>A. Historical Presence and Population Estimates (1850-1950)</h3>
             <div class="chart-container">
                 <canvas id="jewishPopulationChart"></canvas>
             </div>
-            <p class="text-center text-gray-600 mb-6 italic">Jewish population estimates in Zakho (Town/Kaza). Figures are approximate based on various sources.</p>
+            <p class="text-center text-gray-600 mb-6 italic">הערכות האוכלוסייה היהודית בזאכו (עיירה/קאזה). הנתונים משוערים ומבוססים על מקורות שונים.</p>
             
-            <p>Key population points:</p>
+            <p>נקודות אוכלוסייה עיקריות:</p>
             <ul>
-                <li><strong>1827:</strong> ~600 Jewish families (Rabbi David D'Beth Hillel).</li>
-                <li><strong>1848:</strong> 200-300 families (Benjamin II/Zaken).</li>
-                <li><strong>1851:</strong> Occupied 100 of 150 houses in town (Stern).</li>
-                <li><strong>1880:</strong> Half of 400-500 houses owned by Jews; famine year.</li>
-                <li><strong>1881/82-93:</strong> 543 Jewish males in Kaza (Ottoman Census).</li>
-                <li><strong>1906:</strong> Peak estimate of 2,400 individuals in town.</li>
-                <li><strong>1930:</strong> 1,471 Aramaic-speaking Jews (Iraqi Census).</li>
-                <li><strong>1947:</strong> 1,394 individuals (Iraqi Census).</li>
-                <li><strong>1950-51:</strong> ~1,800-1,900 individuals (350 families) on eve of mass exodus.</li>
+                <li><strong>1827:</strong> כ-600 משפחות יהודיות (הרב דוד ד'בית הלל).</li>
+                <li><strong>1848:</strong> 200-300 משפחות (בנימין השני/זקן).</li>
+                <li><strong>1851:</strong> אכלסו 100 מתוך 150 בתים בעיירה (שטרן).</li>
+                <li><strong>1880:</strong> מחצית מ-400-500 הבתים היו בבעלות יהודים; שנת רעב.</li>
+                <li><strong>1881/82-93:</strong> 543 גברים יהודים בקאזה (מפקד עות'מאני).</li>
+                <li><strong>1906:</strong> הערכת שיא של 2,400 נפש בעיירה.</li>
+                <li><strong>1930:</strong> 1,471 יהודים דוברי ארמית (מפקד עיראקי).</li>
+                <li><strong>1947:</strong> 1,394 נפש (מפקד עיראקי).</li>
+                <li><strong>1950-51:</strong> כ-1,800-1,900 נפש (350 משפחות) ערב היציאה ההמונית.</li>
             </ul>
             <div class="community-highlight">
-                <p><strong>Note:</strong> An anomalous figure of 15,000 Jews in "Zakho city" in 1945 is likely an outlier or refers to a wider region. Most sources suggest 1,500-2,500 for the town in the first half of the 20th century.</p>
+                <p><strong>הערה:</strong> נתון חריג של 15,000 יהודים ב"עיר זאכו" בשנת 1945 הוא ככל הנראה חריג או מתייחס לאזור רחב יותר. רוב המקורות מצביעים על 1,500-2,500 נפש בעיירה במחצית הראשונה של המאה ה-20.</p>
             </div>
 
-            <h3>B. Religious and Communal Life</h3>
+            <h3>ב. חיים דתיים וקהילתיים</h3>
             <div class="community-highlight">
-                <p><strong>"Jerusalem of Kurdistan":</strong> Zakho was a major spiritual center, training rabbis, mohalim, and shoḥaṭim for Kurdish Jewry.</p>
+                <p><strong>"ירושלים של כורדיסטן":</strong> זאכו הייתה מרכז רוחני מרכזי, שהכשיר רבנים, מוהלים ושוחטים ליהדות כורדיסטן.</p>
             </div>
             <ul>
-                <li><strong>Synagogues:</strong> Two main ones: Knishta Rabta (Great Synagogue, est. or renovated 1798, capacity ~3,000) and Knishta Zurta (Small Synagogue, with study hall and school, capacity ~1,000, destroyed in 1891 attack).</li>
-                <li><strong>Language:</strong> Spoke a Jewish Neo-Aramaic dialect and Kurmanji Kurdish.</li>
-                <li><strong>Residential Area:</strong> Lived in a Jewish quarter (*maḥallət huzaye*).</li>
-                <li><strong>Culture:</strong> Preserved ancient customs, rich oral traditions. Notably, Jews of Zakho bore arms, similar to Kurdish Muslims.</li>
+                <li><strong>בתי כנסת:</strong> שניים עיקריים: כנשתא רבתא (בית הכנסת הגדול, נוסד או שופץ ב-1798, תכולה כ-3,000 איש) וכנשתא זוטא (בית הכנסת הקטן, עם בית מדרש ובית ספר, תכולה כ-1,000 איש, נהרס בהתקפה ב-1891).</li>
+                <li><strong>שפה:</strong> דיברו ניב ארמי יהודי חדש וכורדית כורמנג'ית.</li>
+                <li><strong>אזור מגורים:</strong> התגוררו בשכונה יהודית (*מחלת חוזאי*).</li>
+                <li><strong>תרבות:</strong> שימרו מנהגים עתיקים ומסורות שבעל פה עשירות. יש לציין שיהודי זאכו נשאו נשק, בדומה למוסלמים הכורדים.</li>
             </ul>
 
-            <h3>C. Socio-Economic Role</h3>
-            <p>The Jewish community was vital to Zakho's economy, engaged in commerce, crafts (weaving, goldsmithing, jewelry, shoemaking), cattle raising, logging, and agriculture. Some achieved considerable wealth. Their trade involvement significantly contributed to Zakho's status as a commercial hub.</p>
+            <h3>ג. תפקיד חברתי-כלכלי</h3>
+            <p>הקהילה היהודית הייתה חיונית לכלכלת זאכו, ועסקה במסחר, אומנויות (אריגה, צורפות, תכשיטנות, סנדלרות), גידול בקר, כריתת עצים וחקלאות. חלקם צברו עושר ניכר. מעורבותם במסחר תרמה משמעותית למעמדה של זאכו כמרכז מסחרי.</p>
 
-            <h3>D. Periods of Insecurity and Persecution</h3>
+            <h3>ד. תקופות של חוסר ביטחון ורדיפות</h3>
             <ul>
-                <li><strong>1880:</strong> Severe famine, many deaths.</li>
-                <li><strong>1891:</strong> Attack, Knishta Zurta burned.</li>
-                <li><strong>1892:</strong> Troubles intensified, Tigris flood destroyed homes and synagogues.</li>
-                <li><strong>1920s-1930s:</strong> Deteriorating security and economic status led to emigration.</li>
-                <li><strong>1941 (Farhud):</strong> Though not directly in Zakho, the Baghdad pogrom created widespread fear among Iraqi Jews, accelerating emigration sentiment.</li>
+                <li><strong>1880:</strong> רעב קשה, מקרי מוות רבים.</li>
+                <li><strong>1891:</strong> התקפה, כנשתא זוטא נשרפה.</li>
+                <li><strong>1892:</strong> הצרות התגברו, שיטפון בחידקל הרס בתים ובתי כנסת.</li>
+                <li><strong>שנות ה-20 וה-30 של המאה ה-20:</strong> הידרדרות במצב הביטחוני והכלכלי הובילה להגירה.</li>
+                <li><strong>1941 (הפרהוד):</strong> אף על פי שלא פגע ישירות בזאכו, הפוגרום בבגדאד יצר פחד נרחב בקרב יהודי עיראק, והאיץ את רגשות ההגירה.</li>
             </ul>
 
-            <h3>E. Emigration to Palestine/Israel</h3>
-            <p>Emigration was a gradual process culminating in a mass exodus:</p>
+            <h3>ה. עלייה לארץ ישראל/ישראל</h3>
+            <p>העלייה הייתה תהליך הדרגתי שהגיע לשיאו ביציאה המונית:</p>
             <ul>
-                <li><strong>Mid-19th Century:</strong> Initial movements due to economic decline (Suez Canal impact) and religious motivations.</li>
-                <li><strong>Post-WWI (1920s-1930s):</strong> Intensified due to war consequences, British Mandate, deteriorating security, and economic decline. Zakho served as a clandestine crossing point. Between 1912-1942, ~285 families immigrated.</li>
-                <li><strong>1950-1952 (Mass Exodus):</strong> Following Israel's establishment (1948) and hostile Iraqi policies (property confiscation), almost the entire remaining community (over 1,800 people) left for Israel, ending millennia of presence. First group of 70 families left Oct 1950.</li>
+                <li><strong>אמצע המאה ה-19:</strong> תנועות ראשוניות עקב שפל כלכלי (השפעת תעלת סואץ) ומניעים דתיים.</li>
+                <li><strong>לאחר מלחמת העולם הראשונה (שנות ה-20 וה-30):</strong> התגברה עקב השלכות המלחמה, המנדט הבריטי, הידרדרות ביטחונית ושפל כלכली. זאכו שימשה כנקודת מעבר חשאית. בין השנים 1912-1942 עלו כ-285 משפחות.</li>
+                <li><strong>1950-1952 (יציאה המונית):</strong> בעקבות הקמת מדינת ישראל (1948) ומדיניות עיראקית עוינת (הפקעת רכוש), כמעט כל הקהילה הנותרת (מעל 1,800 איש) עזבה לישראל, ובכך הסתיימה נוכחות בת אלפי שנים. הקבוצה הראשונה של 70 משפחות עזבה באוקטובר 1950.</li>
             </ul>
         </section>
 
         <section id="christian-communities" class="content-section fade-in">
-            <h2>IV. Christian Communities: Resilience and Transformation</h2>
-            <p class="section-intro">The ancient Christian presence in Zakho, including Chaldean Catholics, Syriac Catholics and Orthodox, Armenians, and Nestorians/Assyrians. It covers their distinct quarters, languages, key religious institutions, population estimates, and the profound impact of crises like the Seyfo and Armenian Genocide, as well as their resilience in rebuilding communities.</p>
+            <h2>ד. הקהילות הנוצריות: חוסן ותמורה</h2>
+            <p class="section-intro">הנוכחות הנוצרית העתיקה בזאכו, כולל כלדים קתולים, סורים קתולים ואורתודוקסים, ארמנים ונסטוריאנים/אשורים. חלק זה מכסה את שכונותיהם הנפרדות, שפותיהם, מוסדות הדת המרכזיים שלהם, הערכות אוכלוסייה, וההשפעה העמוקה של משברים כמו הסייפו ורצח העם הארמני, וכן את חוסנם בשיקום קהילותיהם.</p>
             
             <div class="chart-container">
                 <canvas id="christianPopulationComparisonChart"></canvas>
             </div>
-            <p class="text-center text-gray-600 mb-6 italic">Population composition estimate for Zakho Town in 1923 (Source: Brill Reference [7]). Christian denominations are grouped.</p>
+            <p class="text-center text-gray-600 mb-6 italic">הערכת הרכב האוכלוסייה בעיירה זאכו בשנת 1923 (מקור: בריל [7]). העדות הנוצריות מקובצות.</p>
 
-            <h3>A. Chaldean Catholics</h3>
+            <h3>א. כלדים קתולים</h3>
             <div class="community-highlight">
-                <p><strong>Ecclesiastical Significance:</strong> Zakho became a separate Chaldean archdiocese around 1850.</p>
+                <p><strong>משמעות כנסייתית:</strong> זאכו הפכה לארכידיוקסיה כלדנית נפרדת בסביבות 1850.</p>
             </div>
             <ul>
-                <li><strong>Churches:</strong> Mar Gorgis (St. George) Cathedral (built 1911), Mariam al Adra (Abassia), Sacred Heart (Bidar).</li>
-                <li><strong>Population:</strong> 50 Chaldeans in Zakho town in 1914. Campanile (early 19th C) included them in his 1,000 "Catholics & Jacobites."</li>
+                <li><strong>כנסיות:</strong> קתדרלת מאר גורגיס (ג'ורג' הקדוש) (נבנתה ב-1911), מרים אל-עזרא (עבאסיה), הלב הקדוש (בידאר).</li>
+                <li><strong>אוכלוסייה:</strong> 50 כלדים בעיירה זאכו ב-1914. קמפניל (תחילת המאה ה-19) כלל אותם ב-1,000 ה"קתולים והיעקוביטים" שלו.</li>
             </ul>
 
-            <h3>B. Syriac Catholics</h3>
-            <p>Maintained a presence. Mariam Al Adra Church (Nassara quarter, attested 1850) originally Syriac Orthodox, transitioned to Syriac Catholicism, influenced by Catholic missions (e.g., Léopold Soldini, d.1779 in Zakho). Campanile's 1,000 Christians included "Catholic and Jacobite."</p>
+            <h3>ב. סורים קתולים</h3>
+            <p>שמרו על נוכחות. כנסיית מרים אל-עזרא (שכונת נצרה, מתועדת ב-1850) הייתה במקור סורית אורתודוקסית, עברה לקתוליות סורית, בהשפעת משלחות קתוליות (למשל, לאופולד סולדיני, נפטר ב-1779 בזאכו). 1,000 הנוצרים של קמפניל כללו "קתולים ויעקוביטים".</p>
 
-            <h3>C. Armenians</h3>
+            <h3>ג. ארמנים</h3>
             <div class="community-highlight">
-                <p><strong>Refuge and Rebuilding:</strong> Community largely formed post-Armenian Genocide (1915). Refugees fled persecution near Turkey-Iraq border.</p>
+                <p><strong>מקלט ושיקום:</strong> הקהילה התגבשה ברובה לאחר רצח העם הארמני (1915). פליטים נמלטו מרדיפות סמוך לגבול טורקיה-עיראק.</p>
             </div>
             <ul>
-                <li><strong>Protection:</strong> Sheltered by Kurdish notable Mohammed Beg Shemdin Agha, who provided land for a church.</li>
-                <li><strong>Church:</strong> First Armenian church formally established in 1923. Some references to an older church being rebuilt.</li>
-                <li><strong>Population:</strong> Grew significantly after 1915. Post-1950 data indicates 1,500 during Iran-Iraq war; contemporary estimates suggest ~1,000 with historical roots.</li>
-                <li><strong>Economy:</strong> Contributed as sheepherders, farmers, craftsmen (traditional Kurdish clothing *Shal u Shepk*).</li>
+                <li><strong>הגנה:</strong> מצאו מחסה אצל הנכבד הכורדי מוחמד בג שמדין אגא, שסיפק קרקע לכנסייה.</li>
+                <li><strong>כנסייה:</strong> כנסייה ארמנית ראשונה הוקמה רשמית ב-1923. יש אזכורים לבנייה מחדש של כנסייה ישנה יותר.</li>
+                <li><strong>אוכלוסייה:</strong> גדלה משמעותית לאחר 1915. נתונים לאחר 1950 מצביעים על 1,500 במהלך מלחמת איראן-עיראק; הערכות עכשוויות מצביעות על כ-1,000 עם שורשים היסטוריים.</li>
+                <li><strong>כלכלה:</strong> תרמו כרועי צאן, חקלאים ואומנים (לבוש כורדי מסורתי *שאל או שפכ*).</li>
             </ul>
 
-            <h3>D. Nestorians/Assyrians (Church of the East)</h3>
-            <p>Historical presence in the broader region. Devastated by the Seyfo (Assyrian Genocide, 1915-1918).</p>
+            <h3>ד. נסטוריאנים/אשורים (כנסיית המזרח)</h3>
+            <p>נוכחות היסטורית באזור הרחב יותר. נהרסו על ידי הסייפו (רצח העם האשורי, 1915-1918).</p>
             <ul>
-                <li><strong>Presence:</strong> Mark Sykes (c.1908) noted Nestorians in Hakkiari, Amadia, and Zakho.</li>
-                <li><strong>Conversions:</strong> From 17th/18th C, many converted to Chaldean Catholicism due to missionary efforts, reducing Nestorian numbers.</li>
+                <li><strong>נוכחות:</strong> מארק סייקס (בערך 1908) ציין נסטוריאנים בהקארי, עמאדיה וזאכו.</li>
+                <li><strong>המרות דת:</strong> מהמאות ה-17/18, רבים המירו דתם לקתוליות כלדנית עקב מאמצי מיסיונרים, מה שהפחית את מספרי הנסטוריאנים.</li>
             </ul>
 
-            <h3>E. Overall Christian Population and Inter-Community Dynamics</h3>
-            <p>Early 19th C (Campanile): 1,000 Christians (Catholic & Jacobite) of ~10,000 total. Brill Reference: 1,000 Christians in 1800 and again in 1923 (with 2,000 Jews, 1,000 Muslims).</p>
-            <p>Christians generally resided in the "Nassara" quarter and spoke Neo-Aramaic dialects.</p>
-            <p>Late 19th/early 20th C was a period of crisis: raids by some Kurdish tribes, and the Genocides (Seyfo, Armenian) led to a "collapse of community and denominational unity." Despite hardships, communities showed resilience, rebuilding churches. The arrival of Armenians added a new dimension. Establishment of separate ecclesiastical structures (Chaldean, Armenian) showed vitality and formalization of identities.</p>
+            <h3>ה. כלל האוכלוסייה הנוצרית ודינמיקה בין-קהילתית</h3>
+            <p>תחילת המאה ה-19 (קמפניל): 1,000 נוצרים (קתולים ויעקוביטים) מתוך כ-10,000 סך הכל. מקור בריל: 1,000 נוצרים ב-1800 ושוב ב-1923 (עם 2,000 יהודים ו-1,000 מוסלמים).</p>
+            <p>נוצרים התגוררו בדרך כלל בשכונת "נצרה" ודיברו ניבים ארמיים חדשים.</p>
+            <p>סוף המאה ה-19/תחילת המאה ה-20 הייתה תקופת משבר: פשיטות של כמה שבטים כורדים, ורציחות העם (סייפו, ארמני) הובילו ל"קריסת הקהילה והאחדות העדתית". למרות הקשיים, הקהילות הפגינו חוסן, ובנו מחדש כנסיות. הגעת הארמנים הוסיפה מימד חדש. הקמת מבנים כנסייתיים נפרדים (כלדניים, ארמניים) הראתה חיוניות ופורמליזציה של זהויות.</p>
         </section>
 
         <section id="muslim-populace" class="content-section fade-in">
-            <h2>V. The Muslim Populace: Kurds, "Turks," and Arabs</h2>
-            <p class="section-intro">The Muslim population, predominantly Kurdish, constituted the majority in Zakho and its region. The Kurds as the dominant ethnic group, the interpretation of historical mentions of "Turks" (likely Ottoman officials), and the limited Arab presence within Zakho town during the 1850-1950 period.</p>
+            <h2>ה. האוכלוסייה המוסלמית: כורדים, "טורקים" וערבים</h2>
+            <p class="section-intro">האוכלוסייה המוסלמית, ברובה כורדית, היוותה את הרוב בזאכו ובאזורה. הכורדים כקבוצה האתנית הדומיננטית, פרשנות לאזכורים היסטוריים של "טורקים" (ככל הנראה פקידים עות'מאניים), והנוכחות הערבית המצומצמת בתוך העיירה זאכו בתקופה 1850-1950.</p>
 
-            <h3>A. Kurds: The Dominant Ethnic Group</h3>
+            <h3>א. כורדים: הקבוצה האתנית הדומיננטית</h3>
             <div class="community-highlight">
-                <p><strong>Regional Dominance:</strong> Kurds were the principal ethnic group, largely Sunni Muslims organized along tribal lines, speaking Kurdish.</p>
+                <p><strong>דומיננטיות אזורית:</strong> הכורדים היו הקבוצה האתנית העיקרית, ברובם מוסלמים סונים מאורגנים בקווים שבטיים, דוברי כורדית.</p>
             </div>
             <ul>
-                <li><strong>Local Leadership:</strong> The Shamdin Agha family (Slivani tribe) was prominent, reportedly "ruled all the Muslims, Jews and Christians of Zakho and its surroundings" from the late 19th century. Hazim Beg, a powerful figure from this family, served in Iraqi parliament/senate. This leadership mediated relations within the Ottoman/Iraqi state framework.</li>
-                <li><strong>Regional Majority:</strong> British intelligence (early 20th C) and the 1922-24 Iraqi enumeration (64.9% of Mosul Vilayet) confirmed Kurdish predominance.</li>
-                <li><strong>Urban Consolidation:</strong> Zakho's population growth to ~30,000 by 1950 was largely due to Kurdish influx from rural areas, a trend starting in the early 20th century due to instability and economic factors.</li>
+                <li><strong>הנהגה מקומית:</strong> משפחת שמדין אגא (שבט סליבאני) הייתה בולטת, ולפי הדיווחים "שלטה בכל המוסלמים, היהודים והנוצרים של זאכו וסביבותיה" מסוף המאה ה-19. חאזם בג, דמות חזקה ממשפחה זו, כיהן בפרלמנט/סנאט העיראקי. הנהגה זו תיווכה ביחסים במסגרת המדינה העות'מאנית/עיראקית.</li>
+                <li><strong>רוב אזורי:</strong> המודיעין הבריטי (תחילת המאה ה-20) והמפקד העיראקי 1922-24 (64.9% ממחוז מוסול) אישרו את הדומיננטיות הכורדית.</li>
+                <li><strong>גיבוש עירוני:</strong> גידול אוכלוסיית זאכו לכ-30,000 עד 1950 נבע במידה רבה מזרימת כורדים מאזורים כפריים, מגמה שהחלה בתחילת המאה ה-20 עקב חוסר יציבות וגורמים כלכליים.</li>
             </ul>
 
-            <h3>B. The "Turks" of Zakho: Interpretation of Historical Mentions</h3>
-            <p>Campanile (early 19th C) mentioned "three thousand Turks." This term in 19th C Ottoman Kurdistan likely referred to:</p>
+            <h3>ב. ה"טורקים" של זאכו: פרשנות לאזכורים היסטוריים</h3>
+            <p>קמפניל (תחילת המאה ה-19) הזכיר "שלושת אלפים טורקים". מונח זה בכורדיסטן העות'מאנית במאה ה-19 התייחס ככל הנראה ל:</p>
             <ul>
-                <li>Ottoman officials, military personnel, or state functionaries (most probable).</li>
-                <li>Turkish-speaking Muslims, not necessarily a large settled ethnic Turkoman group (Turkomans were 4.8% in Mosul Vilayet, concentrated elsewhere like Kirkuk).</li>
+                <li>פקידים עות'מאניים, אנשי צבא או פקידי מדינה (הסביר ביותר).</li>
+                <li>מוסלמים דוברי טורקית, לא בהכרח קבוצה אתנית טורקמנית גדולה ומיושבת (טורקמנים היוו 4.8% במחוז מוסול, מרוכזים במקומות אחרים כמו כירכוכ).</li>
             </ul>
-            <p>The withdrawal of Ottoman forces in Nov 1918 ended this official Turkish presence. Consistent references to a large, permanent Turkoman community *in Zakho town* are lacking.</p>
+            <p>נסיגת הכוחות העות'מאניים בנובמבר 1918 סיימה נוכחות טורקית רשמית זו. חסרים אזכורים עקביים לקהילה טורקמנית גדולה וקבועה *בעיירה זאכו*.</p>
 
-            <h3>C. Arab Presence</h3>
-            <p>The 1922-24 Iraqi enumeration showed Arabs as 20.8% of Mosul Vilayet. While Zakho town was predominantly Kurdish, its proximity to Arab regions (Syria/Iraq) and trade role implied some Arab presence (transient traders, intermarriage, small settlements in the district). Specific demographic data for a settled Arab community *within Zakho town* (1850-1950) is sparse. Faysh Khabur (Zakho District) had Arabs settled much later (post-1950); earlier it was Assyrian/Chaldean.</p>
+            <h3>ג. נוכחות ערבית</h3>
+            <p>המפקד העיראקי 1922-24 הראה שערבים מהווים 20.8% ממחוז מוסול. בעוד שהעיירה זאכו הייתה ברובה כורדית, קרבתה לאזורים ערביים (סוריה/עיראק) ותפקידה המסחרי רמזו על נוכחות ערבית מסוימת (סוחרים חולפים, נישואי תערובת, יישובים קטנים במחוז). נתונים דמוגרפיים ספציפיים לקהילה ערבית מיושבת *בתוך העיירה זאכו* (1850-1950) הם דלילים. פייש ח'אבור (מחוז זאכו) יושבה על ידי ערבים הרבה יותר מאוחר (לאחר 1950); קודם לכן היא הייתה אשורית/כלדנית.</p>
         </section>
 
         <section id="yezidi-community" class="content-section fade-in">
-            <h2>VI. The Yezidi Community: Presence in the Zakho Environs</h2>
-            <p class="section-intro">The Yezidi religious minority, historically present in northern Iraq, including the Zakho district. However, their demographic footprint within Zakho town itself appears less prominent compared to their presence in surrounding rural areas and traditional heartlands like Sinjar and Sheikhan.</p>
+            <h2>ו. הקהילה היזידית: נוכחות בסביבות זאכו</h2>
+            <p class="section-intro">המיעוט הדתי היזידי, נוכח היסטורית בצפון עיראק, כולל מחוז זאכו. עם זאת, נראה כי טביעת הרגל הדמוגרפית שלהם בתוך העיירה זאכו עצמה פחות בולטת בהשוואה לנוכחותם באזורים הכפריים הסובבים ובמעוזיהם המסורתיים כמו סינג'אר ושייח'אן.</p>
 
-            <h3>A. Demographic Presence and Location</h3>
+            <h3>א. נוכחות דמוגרפית ומיקום</h3>
             <div class="community-highlight">
-                <p><strong>Traditional Heartlands:</strong> Yezidis are concentrated in Sinjar and Sheikhan, with their main shrine at Lalish. The Zakho district is also an area of Yezidi habitation.</p>
+                <p><strong>מעוזים מסורתיים:</strong> היזידים מרוכזים בסינג'אר ובשייח'אן, עם מקדשם הראשי בלאלש. מחוז זאכו הוא גם אזור מגורים יזידי.</p>
             </div>
             <ul>
-                <li><strong>Regional Presence:</strong> Evliya Çelebi (17th C) mentioned Yezidis in nearby regions (Amedi, Cizre, Duhok).</li>
-                <li><strong>Mosul Vilayet Data:</strong> The 1922-24 Iraqi enumeration listed 26,257 Yezidis (3.3% of Vilayet). General Iraqi Yezidi population (1920-1947) was 26,000-30,000.</li>
-                <li><strong>Zakho Town:</strong> Specific figures for a significant, settled Yezidi community *within Zakho town* (1850-1950) are scarce. They likely interacted with Zakho as a market/administrative center but primarily resided rurally.</li>
+                <li><strong>נוכחות אזורית:</strong> אווליה צ'לבי (המאה ה-17) הזכיר יזידים באזורים סמוכים (עמאדיה, ג'זירה, דוהוק).</li>
+                <li><strong>נתוני מחוז מוסול:</strong> המפקד העיראקי 1922-24 מנה 26,257 יזידים (3.3% מהמחוז). כלל האוכלוסייה היזידית בעיראק (1920-1947) הייתה 26,000-30,000.</li>
+                <li><strong>העיירה זאכו:</strong> נתונים ספציפיים לקהילה יזידית משמעותית ומיושבת *בתוך העיירה זאכו* (1850-1950) הם נדירים. סביר להניח שהם התקשרו עם זאכו כמרכז שוק/מנהלי אך התגוררו בעיקר באזורים כפריים.</li>
             </ul>
 
-            <h3>B. Social and Political Context</h3>
+            <h3>ב. הקשר חברתי ופוליטי</h3>
             <ul>
-                <li><strong>Society:</strong> Traditionally tribal, some formed confederations with Muslim/Christian tribes. Predominantly Kurmanji-speaking; identity debated (Kurds vs. distinct Yezidi ethno-religious group).</li>
-                <li><strong>19th Century Persecution:</strong> Endured devastating assaults from Ottoman troops and some Sunni Kurdish tribes (e.g., 1832 massacre by Mir Mohammed of Rawanduz). This likely led to displacement and isolation in defensible areas, possibly limiting urban presence.</li>
-                <li><strong>State Resistance:</strong> Resisted Ottoman and later Iraqi conscription attempts, leading to uprisings (e.g., 1935-1940), reflecting a desire for autonomy.</li>
+                <li><strong>חברה:</strong> מסורתית שבטית, חלקם יצרו קונפדרציות עם שבטים מוסלמים/נוצרים. דוברי כורמנג'י בעיקר; זהותם שנויה במחלוקת (כורדים לעומת קבוצה אתנו-דתית יזידית נפרדת).</li>
+                <li><strong>רדיפות במאה ה-19:</strong> סבלו מהתקפות הרסניות מצד חיילים עות'מאניים וכמה שבטים כורדים סונים (למשל, טבח 1832 על ידי מיר מוחמד מרוואנדוז). סביר להניח שהדבר הוביל לעקירה ולבידוד באזורים הניתנים להגנה, מה שאולי הגביל את הנוכחות העירונית.</li>
+                <li><strong>התנגדות למדינה:</strong> התנגדו לניסיונות גיוס עות'מאניים ומאוחר יותר עיראקיים, מה שהוביל למרידות (למשל, 1935-1940), המשקפות רצון לאוטונומיה.</li>
             </ul>
         </section>
 
         <section id="inter-community-dynamics" class="content-section fade-in">
-            <h2>VII. Inter-Community Dynamics: Coexistence and Conflict</h2>
-            <p class="section-intro">Zakho, a diverse town, mirrored the complex inter-communal relations of the Ottoman Empire and its successors. The period 1850-1950 saw both peaceful coexistence and shared civic life, alongside severe tensions and violence that significantly impacted its demographic fabric.</p>
+            <h2>ז. דינמיקה בין-קהילתית: דו-קיום וסכסוך</h2>
+            <p class="section-intro">זאכו, עיירה מגוונת, שיקפה את היחסים הבין-קהילתיים המורכבים של האימפריה העות'מאנית ויורשותיה. התקופה 1850-1950 ראתה הן דו-קיום שליו וחיים אזרחיים משותפים, והן מתחים קשים ואלימות שהשפיעו באופן משמעותי על המרקם הדמוגרפי שלה.</p>
 
             <div class="comparison-grid">
                 <div class="card-elevated bg-emerald-50 p-8 rounded-2xl">
-                    <h3 class="text-emerald-700 mb-6 text-xl font-semibold">A. Coexistence and Shared Life</h3>
+                    <h3 class="text-emerald-700 mb-6 text-xl font-semibold">א. דו-קיום וחיים משותפים</h3>
                     <ul class="list-disc space-y-3">
-                        <li><strong>Daily Interaction:</strong> Vibrant market served as a primary venue for mixing and commercial exchange among all groups (Kurds, Jews, Christians).</li>
-                        <li><strong>Residential Quarters:</strong> Distinct quarters (Jewish *maḥallət huzaye*, Christian *Nassara*), but Kurmanji Kurdish often served as a lingua franca.</li>
-                        <li><strong>Cultural Exchange:</strong> Shared myths and traditions (e.g., Jewish folklore incorporating Muslim elements).</li>
-                        <li><strong>Local Governance:</strong> Kurdish leadership (e.g., Shamdin Agha family) "ruled all communities," implying a hierarchical system. Hazim Beg showed respect to Jewish leaders.</li>
-                        <li><strong>Shared Security:</strong> Jews of Zakho bore arms, like Kurdish Muslims, suggesting integration or shared security needs.</li>
-                        <li><strong>Protection/Solidarity:</strong> Mohammed Beg Shemdin Agha sheltered Armenian refugees (1915). Local Muslims sometimes defended Jewish neighbors.</li>
-                        <li><strong>Modern Interactions:</strong> State institutions (schools, government, army under Iraqi state) provided new avenues for inter-communal friendships. Shared attendance at life events based on personal friendships.</li>
+                        <li><strong>אינטראקציה יומיומית:</strong> השוק התוסס שימש מקום מפגש עיקרי לחילופי מסחר בין כל הקבוצות (כורדים, יהודים, נוצרים).</li>
+                        <li><strong>שכונות מגורים:</strong> שכונות נפרדות (שכונת היהודים *מחלת חוזאי*, שכונת הנוצרים *נצרה*), אך הכורדית הכורמנג'ית שימשה לעיתים קרובות כשפה משותפת.</li>
+                        <li><strong>חילופי תרבות:</strong> מיתוסים ומסורות משותפים (למשל, פולקלור יהודי המשלב אלמנטים מוסלמיים).</li>
+                        <li><strong>ממשל מקומי:</strong> הנהגה כורדית (למשל, משפחת שמדין אגא) "שלטה בכל הקהילות", מה שמרמז על מערכת היררכית. חאזם בג הפגין כבוד למנהיגים יהודים.</li>
+                        <li><strong>ביטחון משותף:</strong> יהודי זאכו נשאו נשק, כמו מוסלמים כורדים, מה שמצביע על אינטגרציה או צרכים ביטחוניים משותפים.</li>
+                        <li><strong>הגנה/סולידריות:</strong> מוחמד בג שמדין אגא העניק מחסה לפליטים ארמנים (1915). מוסלמים מקומיים הגנו לעיתים על שכניהם היהודים.</li>
+                        <li><strong>אינטראקציות מודרניות:</strong> מוסדות מדינה (בתי ספר, ממשלה, צבא תחת המדינה העיראקית) סיפקו אפיקים חדשים לידידות בין-קהילתית. נוכחות משותפת באירועי חיים המבוססת על ידידות אישית.</li>
                     </ul>
                 </div>
                 <div class="card-elevated bg-red-50 p-8 rounded-2xl">
-                    <h3 class="text-red-700 mb-6 text-xl font-semibold">B. Tension, Violence, and Persecution</h3>
+                    <h3 class="text-red-700 mb-6 text-xl font-semibold">ב. מתח, אלימות ורדיפות</h3>
                     <ul class="list-disc space-y-3">
-                        <li><strong>Against Jews:</strong> 1891 attack (synagogue burned), 1892 troubles. Precarious security noted in 1881. 20th C: Rising Iraqi nationalism and anti-Zionism deteriorated their situation, leading to emigration.</li>
-                        <li><strong>Against Christians:</strong> Late 19th/early 20th C: Increased raids by some Kurdish tribes on Christian villages. Armenian Genocide (1915+) and Assyrian/Chaldean/Syriac Seyfo (1915-18) were devastating. Some Kurdish tribes cooperated with Ottomans, others offered protection. These events altered demographics and sowed distrust.</li>
-                        <li><strong>Against Yezidis:</strong> Severe assaults from Ottoman troops and some Sunni Kurdish tribes throughout the 19th century in the broader region.</li>
+                        <li><strong>נגד יהודים:</strong> התקפה ב-1891 (בית כנסת נשרף), מהומות ב-1892. ביטחון רעוע צוין ב-1881. המאה ה-20: עליית הלאומיות העיראקית והאנטי-ציונות הרעו את מצבם, והובילו להגירה.</li>
+                        <li><strong>נגד נוצרים:</strong> סוף המאה ה-19/תחילת המאה ה-20: עלייה בפשיטות של כמה שבטים כורדים על כפרים נוצריים. רצח העם הארמני (1915+) והסייפו האשורי/כלדני/סורי (1915-18) היו הרסניים. כמה שבטים כורדים שיתפו פעולה עם העות'מאנים, אחרים הציעו הגנה. אירועים אלו שינו את הדמוגרפיה וזרעו חוסר אמון.</li>
+                        <li><strong>נגד יזידים:</strong> התקפות קשות מצד חיילים עות'מאניים וכמה שבטים כורדים סונים לאורך המאה ה-19 באזור הרחב יותר.</li>
                     </ul>
                 </div>
             </div>
-             
-            <h3>C. Role of Local Leadership and Ottoman/State Policies</h3>
-            <p>Broader political contexts heavily influenced dynamics. Ottoman Tanzimat reforms (mid-19th C) aimed to centralize control, disrupting local autonomies. The Hamidiye regiments (late 19th C), composed of Kurdish tribes armed by the state, often abused power against Armenians and others, exacerbating tensions. The Ottoman collapse, rise of nationalisms (Turkish, Arab), British Mandate, and Iraqi state formation introduced new frameworks impacting minorities. These larger currents often overwhelmed local coexistence, leading to significant demographic shifts.</p>
+            
+            <h3>ג. תפקיד ההנהגה המקומית ומדיניות עות'מאנית/מדינתית</h3>
+            <p>הקשרים פוליטיים רחבים יותר השפיעו רבות על הדינמיקה. רפורמות הטנזימאט העות'מאניות (אמצע המאה ה-19) שאפו לרכז את השליטה, ושיבשו אוטונומיות מקומיות. גדודי החמידיה (סוף המאה ה-19), שהורכבו משבטים כורדים חמושים על ידי המדינה, ניצלו לעיתים קרובות את כוחם נגד ארמנים ואחרים, והחריפו את המתחים. קריסת האימפריה העות'מאנית, עליית הלאומיות (טורקית, ערבית), המנדט הבריטי והקמת המדינה העיראקית הציגו מסגרות חדשות שהשפיעו על מיעוטים. זרמים גדולים אלו הכריעו לעיתים קרובות את הדו-קיום המקומי, והובילו לשינויים דמוגרפיים משמעותיים.</p>
         </section>
 
         <section id="historical-events" class="content-section fade-in">
-            <h2>VIII. The Crucible of Change: Major Historical Events and Their Demographic Impact (1850-1950)</h2>
-            <p class="section-intro">Zakho's demography was profoundly shaped by major historical events. These pivotal moments—from Ottoman reforms and the World Wars to the rise of nationalisms and specific crises like the Armenian Genocide and the Farhud—and their transformative effects on the town's diverse communities.</p>
+            <h2>ח. כור ההיתוך של השינוי: אירועים היסטוריים מרכזיים והשפעתם הדמוגרפית (1850-1950)</h2>
+            <p class="section-intro">הדמוגרפיה של זאכו עוצבה עמוקות על ידי אירועים היסטוריים מרכזיים. רגעים מכריעים אלו – מרפורמות עות'מאניות ומלחמות עולם ועד לעליית הלאומיות ומשברים ספציפיים כמו רצח העם הארמני והפרהוד – והשפעותיהם המהפכניות על קהילות העיירה המגוונות.</p>
 
             <div class="text-center mb-6">
                 <p class="text-lg text-gray-600 bg-blue-50 px-6 py-3 rounded-full inline-block border border-blue-200">
-                    Click timeline items for more information
+                    לחצו על פריטים בציר הזמן למידע נוסף
                 </p>
             </div>
             <div class="timeline">
                 <div class="timeline-container left">
                     <div class="timeline-content" data-event="tanzimat">
-                        <h3>Mid-19th C onwards: Late Ottoman Reforms (Tanzimat) & Centralization</h3>
+                        <h3>אמצע המאה ה-19 ואילך: רפורמות עות'מאניות מאוחרות (טנזימאט) וריכוזיות</h3>
                         <div class="event-details">
-                            <p>Ottoman reforms aimed to strengthen state control, curtailing local Kurdish dynasties (e.g., Mir Bedir Khan). This created power vacuums filled by tribal leaders like the Shamdin Agha in Zakho. Increased state intervention pressured communities like Yezidis (resisting conscription/taxation).</p>
+                            <p>רפורמות עות'מאניות שאפו לחזק את שליטת המדינה, תוך צמצום שושלות כורדיות מקומיות (למשל, מיר בדר חאן). הדבר יצר ואקום כוח שמולא על ידי מנהיגי שבטים כמו משפחת שמדין אגא בזאכו. התערבות מדינתית גוברת הפעילה לחץ על קהילות כמו היזידים (שהתנגדו לגיוס/מיסוי).</p>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-container right">
                     <div class="timeline-content" data-event="hamidiye">
-                        <h3>Late 19th C: "Armenian Question" & Hamidiye Regiments</h3>
+                        <h3>סוף המאה ה-19: "השאלה הארמנית" וגדודי החמידיה</h3>
                         <div class="event-details">
-                            <p>Ottoman concern over Armenian aspirations led to Hamidiye cavalry (Kurdish tribes armed by state). These regiments often abused power, appropriating land from Armenians and others, increasing regional insecurity for Christians.</p>
+                            <p>דאגה עות'מאנית משאיפות ארמניות הובילה להקמת פרשי החמידיה (שבטים כורדים חמושים על ידי המדינה). גדודים אלו ניצלו לעיתים קרובות את כוחם, הפקיעו אדמות מארמנים ואחרים, והגבירו את חוסר הביטחון האזורי לנוצרים.</p>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-container left">
                     <div class="timeline-content" data-event="genocides">
-                        <h3>1915-1918: Armenian Genocide & Assyrian Seyfo</h3>
+                        <h3>1915-1918: רצח העם הארמני והסייפו האשורי</h3>
                         <div class="event-details">
-                            <p>Systematic extermination/deportation of Armenians by Ottoman government. Assyrians, Chaldeans, Syriacs suffered genocidal massacres (Seyfo). Some Kurdish tribes cooperated, others protected. Zakho became a refuge for Armenian survivors, forming a new community. Pre-existing Christian groups devastated, altering demographics and inter-communal relations.</p>
+                            <p>השמדה וגירוש שיטתיים של ארמנים על ידי הממשלה העות'מאנית. אשורים, כלדים וסורים סבלו מטבחי רצח עם (סייפו). כמה שבטים כורדים שיתפו פעולה, אחרים הגנו. זאכו הפכה למקלט לניצולים ארמנים, ויצרה קהילה חדשה. קבוצות נוצריות קיימות נהרסו, מה ששינה את הדמוגרפיה והיחסים הבין-קהילתיים.</p>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-container right">
                     <div class="timeline-content" data-event="ww1">
-                        <h3>1914-1918: WWI & Collapse of Ottoman Empire</h3>
+                        <h3>1914-1918: מלחמת העולם הראשונה וקריסת האימפריה העות'מאנית</h3>
                         <div class="event-details">
-                            <p>Ottoman defeat and dissolution. Nov 1918: Ottoman forces withdrew from Zakho, British took control. Kurdistan partitioned among Turkey, Iraq, Syria. Mosul Province (inc. Zakho) controversially joined British Mandate of Iraq. Fundamental shift in governance for Zakho. Temporary improvement for Jews post-WWI.</p>
+                            <p>תבוסה ופירוק האימפריה העות'מאנית. נובמבר 1918: כוחות עות'מאניים נסוגו מזאכו, הבריטים השתלטו. כורדיסטן חולקה בין טורקיה, עיראק וסוריה. מחוז מוסול (כולל זאכו) סופח באופן שנוי במחלוקת למנדט הבריטי על עיראק. שינוי מהותי בממשל זאכו. שיפור זמני ליהודים לאחר מלחמת העולם הראשונה.</p>
                         </div>
                     </div>
                 </div>
                  <div class="timeline-container left">
                     <div class="timeline-content" data-event="mandate">
-                        <h3>1920-1932: British Mandate & Establishment of Iraq</h3>
+                        <h3>1920-1932: המנדט הבריטי והקמת עיראק</h3>
                         <div class="event-details">
-                            <p>Iraq became a British Mandate. Jews granted citizenship, some economic improvement, but association with British sometimes negative socially. Rise of Arab nationalism as dominant force. Kurds struggled for rights/autonomy.</p>
+                            <p>עיראק הפכה למנדט בריטי. יהודים קיבלו אזרחות, שיפור כלכלי מסוים, אך קשר עם הבריטים היה לעיתים שלילי מבחינה חברתית. עליית הלאומיות הערבית ככוח דומיננטי. כורדים נאבקו על זכויות/אוטונומיה.</p>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-container right">
                     <div class="timeline-content" data-event="farhud">
-                        <h3>1941: The Farhud</h3>
+                        <h3>1941: הפרהוד</h3>
                         <div class="event-details">
-                            <p>Violent pogrom against Baghdad's Jews. Though Zakho not directly hit, it created pervasive fear among all Iraqi Jews, signaling a dangerous shift and accelerating emigration sentiment. Subsequent Iraqi policies (denaturalization, property confiscation) sealed community's fate.</p>
+                            <p>פוגרום אלים נגד יהודי בגדאד. אף שזאכו לא נפגעה ישירות, הוא יצר פחד נרחב בקרב כל יהודי עיראק, סימן לשינוי מסוכן והאצת רגשות ההגירה. מדיניות עיראקית מאוחרת יותר (שלילת אזרחות, הפקעת רכוש) חרצה את גורל הקהילה.</p>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-container left">
                     <div class="timeline-content" data-event="zionism">
-                        <h3>Culminating 1950-51: Rise of Zionism & Mass Jewish Emigration</h3>
+                        <h3>שיא ב-1950-51: עליית הציונות והגירה יהודית המונית</h3>
                         <div class="event-details">
-                            <p>Long-standing connection to Eretz Israel. Emigration began mid-19th C, intensified post-WWI. Mass exodus (1950-51) of ~1,800-1,900 Jews to Israel after Israel's establishment and hostile Iraqi environment. Ended ancient Jewish presence, fundamentally altering Zakho's demography.</p>
+                            <p>קשר ארוך שנים לארץ ישראל. הגירה החלה באמצע המאה ה-19, התגברה לאחר מלחמת העולם הראשונה. יציאה המונית (1950-51) של כ-1,800-1,900 יהודים לישראל לאחר הקמת מדינת ישראל והסביבה העיראקית העוינת. סיימה נוכחות יהודית עתיקה, ושינתה באופן יסודי את הדמוגרפיה של זאכו.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="community-highlight mt-8">
-                <p><strong>Historical Impact:</strong> The period 1850-1950 saw relentless external shocks: declining Ottoman power, European colonial influence, competing nationalisms (Turkish, Arab, Kurdish, Zionist), and genocidal policies converged on Zakho. These forces reshaped its demography more profoundly than internal dynamics alone, making Zakho a poignant example of the Middle East's turbulent modernization. The creation of new nation-states acutely impacted transnational groups like Kurds and Assyrians. Local agency, like Mohammed Beg Shemdin Agha's protection of Armenians, showed pockets of sanctuary amidst crises.</p>
+                <p><strong>השפעה היסטורית:</strong> התקופה 1850-1950 ראתה זעזועים חיצוניים בלתי פוסקים: שקיעת הכוח העות'מאני, השפעה קולוניאלית אירופית, לאומיות מתחרות (טורקית, ערבית, כורדית, ציונית) ומדיניות רצח עם התכנסו בזאכו. כוחות אלו עיצבו מחדש את הדמוגרפיה שלה באופן עמוק יותר מאשר דינמיקה פנימית בלבד, והפכו את זאכו לדוגמה נוקבת למודרניזציה הסוערת של המזרח התיכון. הקמת מדינות לאום חדשות השפיעה קשות על קבוצות טרנס-לאומיות כמו כורדים ואשורים. סוכנות מקומית, כמו הגנתו של מוחמד בג שמדין אגא על ארמנים, הראתה כיסי מקלט בתוך משברים.</p>
             </div>
         </section>
 
         <section id="conclusion" class="content-section fade-in">
-            <h2>IX. Conclusion: The Shifting Sands of Zakho's Demography (1850-1950)</h2>
-            <p class="section-intro">The major demographic transformations in Zakho over the century, highlighting the exodus of the Jewish community, the resilience of Christian groups, and the consolidation of the Kurdish Muslim majority. It reflects on the enduring legacy of Zakho's diverse past and the challenges in reconstructing its complex demographic history.</p>
+            <h2>ט. סיכום: חולות הנודדים של הדמוגרפיה בזאכו (1850-1950)</h2>
+            <p class="section-intro">השינויים הדמוגרפיים הגדולים בזאכו לאורך המאה, תוך הדגשת יציאתה של הקהילה היהודית, חוסנן של הקבוצות הנוצריות, והתבססות הרוב המוסלמי הכורדי. חלק זה מהרהר במורשת המתמשכת של עברה המגוון של זאכו ובאתגרים שבשחזור ההיסטוריה הדמוגרפית המורכבת שלה.</p>
 
-            <h3>A. Recapitulation of Major Demographic Transformations</h3>
-            <p>The century 1850-1950 saw profound demographic shifts in Zakho:</p>
+            <h3>א. סיכום השינויים הדמוגרפיים הגדולים</h3>
+            <p>המאה 1850-1950 ראתה שינויים דמוגרפיים עמוקים בזאכו:</p>
             <ul>
-                <li><strong>Jewish Exodus:</strong> Near-total departure of the ancient Jewish community by 1951-52, erasing a key part of Zakho's identity ("Jerusalem of Kurdistan").</li>
-                <li><strong>Christian Resilience:</strong> Chaldeans, Syriacs, Nestorians/Assyrians, and later Armenians persisted despite severe persecution (Seyfo, Armenian Genocide). Armenian refugees added a new element.</li>
-                <li><strong>Muslim Consolidation:</strong> Predominantly Kurdish Muslim population solidified its majority. Local Kurdish Aghas (e.g., Shamdin Agha family) were influential. Late-period population growth driven by Kurdish influx. "Turks" (likely Ottoman officials) waned; settled Arab presence in town was small. Yezidis were in the district, not a major town component.</li>
+                <li><strong>יציאת היהודים:</strong> עזיבה כמעט מוחלטת של הקהילה היהודית העתיקה עד 1951-52, שמחקה חלק מרכזי מזהותה של זאכו ("ירושלים של כורדיסטן").</li>
+                <li><strong>חוסן נוצרי:</strong> כלדים, סורים, נסטוריאנים/אשורים, ומאוחר יותר ארמנים, התמידו למרות רדיפות קשות (סייפו, רצח העם הארמני). פליטים ארמנים הוסיפו מרכיב חדש.</li>
+                <li><strong>התבססות מוסלמית:</strong> האוכלוסייה המוסלמית הכורדית ברובה חיזקה את רובה. לאגא הכורדים המקומיים (למשל, משפחת שמדין אגא) הייתה השפעה. גידול האוכלוסייה בתקופה המאוחרת הונע על ידי זרם כורדי. "טורקים" (ככל הנראה פקידים עות'מאניים) נחלשו; נוכחות ערבית מיושבת בעיירה הייתה קטנה. יזידים היו במחוז, לא מרכיב עיקרי בעיירה.</li>
             </ul>
             <div class="community-highlight">
-                <p><strong>Key Transformation:</strong> By 1950, Zakho was becoming more ethnically/religiously homogeneous (primarily Kurdish Muslim) due to forced displacement, persecution, and politically driven demographic engineering affecting non-Muslim minorities.</p>
+                <p><strong>שינוי מרכזי:</strong> עד 1950, זאכו הפכה להומוגנית יותר מבחינה אתנית/דתית (בעיקר כורדית מוסלמית) עקב עקירה כפויה, רדיפות והנדסה דמוגרפית מונעת פוליטית שהשפיעה על מיעוטים לא מוסלמים.</p>
             </div>
 
-            <h3>B. The Enduring Legacy of a Diverse Past</h3>
-            <p>Despite these changes and losses, the memory of Zakho's multi-ethnic and multi-religious past endures, informing its cultural landscape. The 1850-1950 period was pivotal, shaping Zakho's later demographic profile, which, while Kurdish-predominant, still bears imprints of its diverse heritage.</p>
+            <h3>ב. המורשת המתמשכת של עבר מגוון</h3>
+            <p>למרות שינויים ואובדנים אלו, זיכרון עברה הרב-אתני והרב-דתי של זאכו נמשך, ומשפיע על הנוף התרבותי שלה. התקופה 1850-1950 הייתה מכרעת, ועיצבה את הפרופיל הדמוגרפי המאוחר יותר של זאכו, שאף על פי שהוא כורדי ברובו, עדיין נושא חותמות של מורשתה המגוונת.</p>
 
-            <h3>C. Final Reflections on Data and Interpretation</h3>
-            <p>Reconstructing Zakho's historical demography is challenging due to varied and sometimes contradictory sources (travelers' accounts, censuses, community records). A critical approach is essential.</p>
-            <p>Zakho's demographic story illustrates how local Middle Eastern communities were affected by declining empires, rising colonialism, exclusionary nationalisms, and regional conflicts. Its fate was tied to these larger currents, underscoring the vulnerability of diverse societies to powerful external forces that could override local coexistence and lead to irreversible change.</p>
+            <h3>ג. הרהורים אחרונים על נתונים ופרשנות</h3>
+            <p>שחזור ההיסטוריה הדמוגרפית של זאכו מאתגר בשל מקורות מגוונים ולעיתים סותרים (תיאורי נוסעים, מפקדים, רישומי קהילה). גישה ביקורתית חיונית.</p>
+            <p>הסיפור הדמוגרפי של זאכו ממחיש כיצד קהילות מקומיות במזרח התיכון הושפעו מאימפריות שוקעות, קולוניאליזם עולה, לאומיות מדירה וסכסוכים אזוריים. גורלה היה קשור לזרמים גדולים אלו, מה שמדגיש את פגיעותן של חברות מגוונות בפני כוחות חיצוניים רבי עוצמה שיכלו לגבור על דו-קיום מקומי ולהוביל לשינוי בלתי הפיך.</p>
         </section>
         
         <section id="works-cited" class="content-section fade-in">
-            <h2>Works Cited</h2>
+            <h2>מקורות</h2>
             <ul class="works-cited-list">
                 <li>Zaken, M. (2015). <em>The Jews of Kurdistan and Their Tribal Chieftains: A Study in Survival</em>. Jewish Identities in a Changing World, Vol. 25. Brill.</li>
                 <li>Gavish, H. (2010). <em>Unwitting Zionists: The Jewish Community of Zakho in Iraqi Kurdistan</em>. Wayne State University Press.</li>
@@ -953,20 +988,8 @@
     <script>
         const timelineContents = document.querySelectorAll('.timeline-content');
         const scrollToTopBtn = document.getElementById('scrollToTop');
-        const header = document.getElementById('mainHeader');
-
-        let lastScrollY = window.scrollY;
-
-        // Header hide/show on scroll
+        
         window.addEventListener('scroll', () => {
-            if (window.scrollY > lastScrollY && window.scrollY > 100) {
-                header.classList.add('hidden');
-            } else {
-                header.classList.remove('hidden');
-            }
-            lastScrollY = window.scrollY;
-
-            // Scroll to top button
             if (window.pageYOffset > 400) {
                 scrollToTopBtn.classList.add('visible');
             } else {
@@ -974,7 +997,6 @@
             }
         });
 
-        // Timeline functionality
         timelineContents.forEach(content => {
             content.addEventListener('click', () => {
                 const detail = content.querySelector('.event-details');
@@ -984,12 +1006,10 @@
             });
         });
 
-        // Scroll to top functionality
         scrollToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1008,9 +1028,9 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Early 1800s\n(Campanile)', '1923\n(Brill Ref.)', '1929\n(Zaken)', 'c. 1950\n(Various)'],
+                    labels: ['תחילת המאה ה-19\n(קמפניל)', '1923\n(מקור: בריל)', '1929\n(זקן)', 'בערך 1950\n(מקורות שונים)'],
                     datasets: [{
-                        label: 'Estimated Total Population',
+                        label: 'סך האוכלוסייה המוערך',
                         data: [10000, 4000, 4000, 30000],
                         backgroundColor: 'rgba(8, 145, 178, 0.8)',
                         borderColor: 'rgba(8, 145, 178, 1)',
@@ -1025,8 +1045,8 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Zakho Town Population Estimates (Selected Years)',
-                            font: { size: 18, weight: 'bold' },
+                            text: 'הערכות אוכלוסיית העיירה זאכו (שנים נבחרות)',
+                            font: { size: 18, weight: 'bold', family: 'Rubik' },
                             color: '#0f172a',
                             padding: { bottom: 20 }
                         },
@@ -1036,9 +1056,11 @@
                             bodyColor: 'white',
                             borderColor: 'rgba(8, 145, 178, 1)',
                             borderWidth: 1,
+                            titleFont: { family: 'Rubik' },
+                            bodyFont: { family: 'Rubik' },
                             callbacks: {
                                 label: function(context) {
-                                    return `Population: ${context.parsed.y.toLocaleString()}`;
+                                    return `אוכלוסייה: ${context.parsed.y.toLocaleString('he-IL')}`;
                                 }
                             }
                         },
@@ -1049,23 +1071,24 @@
                             beginAtZero: true,
                             title: { 
                                 display: true, 
-                                text: 'Population Count',
-                                font: { size: 14, weight: 'bold' },
+                                text: 'ספירת אוכלוסין',
+                                font: { size: 14, weight: 'bold', family: 'Rubik' },
                                 color: '#475569'
                             },
                             grid: { color: 'rgba(71, 85, 105, 0.2)' },
-                            ticks: { color: '#64748b' }
+                            ticks: { color: '#64748b', font: { family: 'Rubik' } }
                         },
                         x: {
                             title: { 
                                 display: true, 
-                                text: 'Time Period',
-                                font: { size: 14, weight: 'bold' },
+                                text: 'תקופת זמן',
+                                font: { size: 14, weight: 'bold', family: 'Rubik' },
                                 color: '#475569'
                             },
                             grid: { display: false },
                             ticks: { 
                                 color: '#64748b',
+                                font: { family: 'Rubik' },
                                 maxRotation: 0
                             }
                         }
@@ -1081,7 +1104,7 @@
                 data: {
                     labels: ['1827', '1848', '1881', '1881/93', '1906', '1920', '1930', '1940/45', '1947', '1950/51'],
                     datasets: [{
-                        label: 'Jewish Population',
+                        label: 'אוכלוסייה יהודית',
                         data: [600, 250, 300, 543, 2400, 1716, 1471, 2500, 1394, 1850],
                         borderColor: 'rgba(13, 148, 136, 1)',
                         backgroundColor: 'rgba(13, 148, 136, 0.1)',
@@ -1100,8 +1123,8 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Jewish Population in Zakho (Estimates)',
-                            font: { size: 18, weight: 'bold' },
+                            text: 'אוכלוסייה יהודית בזאכו (הערכות)',
+                            font: { size: 18, weight: 'bold', family: 'Rubik' },
                             color: '#0f172a',
                             padding: { bottom: 20 }
                         },
@@ -1111,11 +1134,13 @@
                             bodyColor: 'white',
                             borderColor: 'rgba(13, 148, 136, 1)',
                             borderWidth: 1,
+                            titleFont: { family: 'Rubik' },
+                            bodyFont: { family: 'Rubik' },
                             callbacks: {
                                 label: function(context) {
                                     const dataIndex = context.dataIndex;
-                                    const labels = ['Families', 'Families', 'Families', 'Males (Kaza)', 'Individuals', 'Individuals', 'Individuals', 'Individuals', 'Individuals', 'Individuals'];
-                                    return `${context.parsed.y.toLocaleString()} ${labels[dataIndex]}`;
+                                    const labels = ['משפחות', 'משפחות', 'משפחות', 'גברים (קאזה)', 'פרטים', 'פרטים', 'פרטים', 'פרטים', 'פרטים', 'פרטים'];
+                                    return `${context.parsed.y.toLocaleString('he-IL')} ${labels[dataIndex]}`;
                                 }
                             }
                         },
@@ -1126,23 +1151,24 @@
                             beginAtZero: true,
                             title: { 
                                 display: true, 
-                                text: 'Population Count',
-                                font: { size: 14, weight: 'bold' },
+                                text: 'ספירת אוכלוסין',
+                                font: { size: 14, weight: 'bold', family: 'Rubik' },
                                 color: '#475569'
                             },
                             grid: { color: 'rgba(71, 85, 105, 0.2)' },
-                            ticks: { color: '#64748b' }
+                            ticks: { color: '#64748b', font: { family: 'Rubik' } }
                         },
                         x: {
                             title: { 
                                 display: true, 
-                                text: 'Year',
-                                font: { size: 14, weight: 'bold' },
+                                text: 'שנה',
+                                font: { size: 14, weight: 'bold', family: 'Rubik' },
                                 color: '#475569'
                             },
                             grid: { color: 'rgba(71, 85, 105, 0.1)' },
                             ticks: { 
                                 color: '#64748b',
+                                font: { family: 'Rubik' },
                                 maxRotation: 45
                             }
                         }
@@ -1156,7 +1182,7 @@
             new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Jews', 'Christians', 'Muslims'],
+                    labels: ['יהודים', 'נוצרים', 'מוסלמים'],
                     datasets: [{
                         data: [2000, 1000, 1000],
                         backgroundColor: [
@@ -1178,8 +1204,8 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Zakho Town Population Composition (1923 Estimate)',
-                            font: { size: 18, weight: 'bold' },
+                            text: 'הרכב האוכלוסייה בעיירה זאכו (הערכת 1923)',
+                            font: { size: 18, weight: 'bold', family: 'Rubik' },
                             color: '#0f172a',
                             padding: { bottom: 20 }
                         },
@@ -1187,11 +1213,13 @@
                             backgroundColor: 'rgba(15, 23, 42, 0.9)',
                             titleColor: 'white',
                             bodyColor: 'white',
+                            titleFont: { family: 'Rubik' },
+                            bodyFont: { family: 'Rubik' },
                             callbacks: {
                                 label: function(context) {
                                     const total = context.dataset.data.reduce((a, b) => a + b, 0);
                                     const percentage = ((context.parsed / total) * 100).toFixed(1);
-                                    return `${context.label}: ${context.parsed.toLocaleString()} (${percentage}%)`;
+                                    return `${context.label}: ${context.parsed.toLocaleString('he-IL')} (${percentage}%)`;
                                 }
                             }
                         },
@@ -1199,7 +1227,7 @@
                             position: 'bottom',
                             labels: {
                                 padding: 20,
-                                font: { size: 14 },
+                                font: { size: 14, family: 'Rubik' },
                                 color: '#475569'
                             }
                         }
@@ -1208,60 +1236,51 @@
             });
         }
 
-        // Initialize charts after DOM loads
         document.addEventListener('DOMContentLoaded', function() {
-
-            // Image click to enlarge functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('.clickable-image');
-    images.forEach(img => {
-        img.addEventListener('click', function() {
-            // Create overlay
-            const overlay = document.createElement('div');
-            overlay.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.9);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-                cursor: pointer;
-            `;
-            
-            // Create enlarged image
-            const enlargedImg = document.createElement('img');
-            enlargedImg.src = this.src;
-            enlargedImg.alt = this.alt;
-            enlargedImg.style.cssText = `
-                max-width: 95%;
-                max-height: 95%;
-                object-fit: contain;
-                border-radius: 10px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            `;
-            
-            overlay.appendChild(enlargedImg);
-            document.body.appendChild(overlay);
-            
-            // Close on click
-            overlay.addEventListener('click', function() {
-                document.body.removeChild(overlay);
+            const images = document.querySelectorAll('.clickable-image');
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    const overlay = document.createElement('div');
+                    overlay.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.9);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 1000;
+                        cursor: pointer;
+                    `;
+                    
+                    const enlargedImg = document.createElement('img');
+                    enlargedImg.src = this.src;
+                    enlargedImg.alt = this.alt;
+                    enlargedImg.style.cssText = `
+                        max-width: 95%;
+                        max-height: 95%;
+                        object-fit: contain;
+                        border-radius: 10px;
+                        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    `;
+                    
+                    overlay.appendChild(enlargedImg);
+                    document.body.appendChild(overlay);
+                    
+                    overlay.addEventListener('click', function() {
+                        document.body.removeChild(overlay);
+                    });
+                });
             });
-        });
-    });
-});
-            // Check if Chart.js is loaded
+
             if (typeof Chart !== 'undefined') {
                 createZakhoTotalPopulationChart();
                 createJewishPopulationChart();
                 createChristianPopulationComparisonChart();
             } else {
                 console.error('Chart.js not loaded');
-                // Retry after a short delay
                 setTimeout(function() {
                     if (typeof Chart !== 'undefined') {
                         createZakhoTotalPopulationChart();
