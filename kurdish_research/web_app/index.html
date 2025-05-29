@@ -173,65 +173,122 @@
             async scanForMp3Links() {
                 const foundTracks = new Map();
                 let trackId = 0;
+                let htmlFiles = [];
 
+                // Method 1: Try directory listing (works locally)
                 try {
-                    console.log('🔍 Fetching directory listing...');
+                    console.log('🔍 Attempting directory listing...');
                     const dirResponse = await fetch('../podcast_pages/');
-                    const dirHtml = await dirResponse.text();
-                    
-                    // Extract just the filenames (not full paths)
-                    const fileMatches = dirHtml.match(/href="[^"]*\.html"/g);
-                    if (fileMatches) {
-                        const fileNames = fileMatches.map(match => {
-                            const fullPath = match.slice(6, -1); // Remove href=" and "
-                            return fullPath.split('/').pop(); // Get just the filename
-                        });
-                        
-                        console.log(`📊 Found ${fileNames.length} files to scan`);
-                        console.log('📋 First few files:', fileNames.slice(0, 3));
-                        
-                        // Scan each file for MP3s
-                        for (const fileName of fileNames) {
-                            try {
-                                const pageResponse = await fetch(`../podcast_pages/${fileName}`);
-                                if (pageResponse.ok) {
-                                    const pageHtml = await pageResponse.text();
-                                    const parser = new DOMParser();
-                                    const doc = parser.parseFromString(pageHtml, 'text/html');
-                                    
-                                    // Get page title
-                                    const pageTitle = doc.title || fileName.replace('.html', '');
-                                    
-                                    // Find MP3 references - both audio sources and download links
-                                    const audioSources = doc.querySelectorAll('source[src$=".mp3"]');
-                                    const downloadLinks = doc.querySelectorAll('a[href$=".mp3"][download]');
-                                    
-                                    [...audioSources, ...downloadLinks].forEach(element => {
-                                        const url = element.src || element.href;
-                                        if (url && !foundTracks.has(url)) {
-                                            foundTracks.set(url, {
-                                                id: trackId++,
-                                                url: url,
-                                                title: pageTitle,
-                                                downloaded: false,
-                                                listened: false
-                                            });
-                                        }
-                                    });
-                                    
-                                    if (audioSources.length > 0 || downloadLinks.length > 0) {
-                                        console.log(`✅ ${fileName}: found MP3`);
-                                    }
-                                } else {
-                                    console.log(`❌ ${fileName}: HTTP ${pageResponse.status}`);
-                                }
-                            } catch (error) {
-                                console.log(`❌ ${fileName}: ${error.message}`);
-                            }
+                    if (dirResponse.ok) {
+                        const dirHtml = await dirResponse.text();
+                        const fileMatches = dirHtml.match(/href="[^"]*\.html"/g);
+                        if (fileMatches && fileMatches.length > 0) {
+                            htmlFiles = fileMatches.map(match => {
+                                const fullPath = match.slice(6, -1);
+                                return fullPath.split('/').pop();
+                            });
+                            console.log(`✅ Directory listing found ${htmlFiles.length} files`);
                         }
                     }
                 } catch (error) {
-                    console.log('💥 Directory scan failed:', error.message);
+                    console.log('❌ Directory listing failed:', error.message);
+                }
+
+                // Method 2: If directory listing failed, try sitemap approach
+                if (htmlFiles.length === 0) {
+                    try {
+                        console.log('🔍 Trying sitemap/robots approach...');
+                        // Try to fetch a known file and extract links from it
+                        const indexResponse = await fetch('../../landing_pages/kurdish_research.html');
+                        if (indexResponse.ok) {
+                            const indexHtml = await indexResponse.text();
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(indexHtml, 'text/html');
+                            
+                            // Look for links to podcast pages
+                            const links = doc.querySelectorAll('a[href*="podcast_pages/"]');
+                            htmlFiles = Array.from(links).map(link => {
+                                const href = link.getAttribute('href');
+                                return href.split('/').pop();
+                            }).filter(file => file.endsWith('.html'));
+                            
+                            console.log(`✅ Found ${htmlFiles.length} files from index page`);
+                        }
+                    } catch (error) {
+                        console.log('❌ Index page method failed:', error.message);
+                    }
+                }
+
+                // Method 3: Brute force common patterns (last resort)
+                if (htmlFiles.length === 0) {
+                    console.log('🔍 Trying brute force discovery...');
+                    const commonFiles = [
+                        'Afrin_-_Kilis_Relations.html',
+                        'Afrin_Alevis_Before_2010.html',
+                        'Afrin_and_Cyrrhestica_in_Roman_Times.html',
+                        'Afrin_Architecture.html',
+                        'Afrin_during_the_Muslim_Conquest.html'
+                    ];
+                    
+                    // Test if any exist
+                    for (const testFile of commonFiles) {
+                        try {
+                            const testResponse = await fetch(`../podcast_pages/${testFile}`, { method: 'HEAD' });
+                            if (testResponse.ok) {
+                                htmlFiles.push(testFile);
+                            }
+                        } catch (error) {
+                            // Ignore failures
+                        }
+                    }
+                    console.log(`✅ Brute force found ${htmlFiles.length} files`);
+                }
+
+                if (htmlFiles.length === 0) {
+                    console.log('🚨 NO FILES FOUND - All discovery methods failed');
+                    return;
+                }
+
+                console.log(`📊 Scanning ${htmlFiles.length} files for MP3s...`);
+                
+                // Scan each discovered file for MP3s
+                for (const fileName of htmlFiles) {
+                    try {
+                        const pageResponse = await fetch(`../podcast_pages/${fileName}`);
+                        if (pageResponse.ok) {
+                            const pageHtml = await pageResponse.text();
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(pageHtml, 'text/html');
+                            
+                            // Get page title
+                            const pageTitle = doc.title || fileName.replace('.html', '').replace(/_/g, ' ');
+                            
+                            // Find MP3 references - both audio sources and download links
+                            const audioSources = doc.querySelectorAll('source[src$=".mp3"]');
+                            const downloadLinks = doc.querySelectorAll('a[href$=".mp3"][download]');
+                            
+                            [...audioSources, ...downloadLinks].forEach(element => {
+                                const url = element.src || element.href;
+                                if (url && !foundTracks.has(url)) {
+                                    foundTracks.set(url, {
+                                        id: trackId++,
+                                        url: url,
+                                        title: pageTitle,
+                                        downloaded: false,
+                                        listened: false
+                                    });
+                                }
+                            });
+                            
+                            if (audioSources.length > 0 || downloadLinks.length > 0) {
+                                console.log(`✅ ${fileName}: found MP3`);
+                            }
+                        } else {
+                            console.log(`❌ ${fileName}: HTTP ${pageResponse.status}`);
+                        }
+                    } catch (error) {
+                        console.log(`❌ ${fileName}: ${error.message}`);
+                    }
                 }
 
                 this.tracks = Array.from(foundTracks.values());
