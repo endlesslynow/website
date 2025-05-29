@@ -161,22 +161,6 @@
             opacity: 0.8;
         }
         
-        .listened-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 18px;
-        }
-        
-        input[type="checkbox"] {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            accent-color: #4299e1;
-            background: #2d3748;
-            border: 2px solid #4a5568;
-        }
-        
         .listened-indicator {
             color: #f6ad55;
             font-weight: bold;
@@ -195,6 +179,42 @@
             color: #e1e5e9;
             padding: 20px;
         }
+        
+        .category-section {
+            margin-bottom: 50px;
+        }
+        
+        .category-title {
+            font-size: 26px;
+            color: #4299e1;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2d3748;
+        }
+        
+        .subcategory-title {
+            font-size: 22px;
+            color: #63b3ed;
+            margin: 30px 0 20px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #2d3748;
+        }
+        
+        .listened-btn {
+            background: #38a169;
+        }
+        
+        .listened-btn:hover {
+            background: #48bb78;
+        }
+        
+        .listened-btn[data-is-listened="true"] {
+            background: #e53e3e;
+        }
+        
+        .listened-btn[data-is-listened="true"]:hover {
+            background: #f56565;
+        }
     </style>
 </head>
 <body>
@@ -209,10 +229,12 @@
         class AudioPlayerApp {
             constructor() {
                 this.tracks = [];
+                this.categoryStructure = new Map();
                 this.currentTrack = null;
                 this.audio = null;
                 this.db = null;
                 this.progressInterval = null;
+                this.lastSaveTime = 0;
             }
 
             async init() {
@@ -221,7 +243,18 @@
                 await this.scanForMp3Links();
                 await this.loadStoredData();
                 this.setupUI();
+                this.setupPageUnloadHandler();
                 document.getElementById('loading').style.display = 'none';
+            }
+
+            setupPageUnloadHandler() {
+                // Save current position when user leaves the page
+                window.addEventListener('beforeunload', () => {
+                    if (this.audio && this.currentTrack && this.audio.currentTime > 0) {
+                        this.currentTrack.currentTime = this.audio.currentTime;
+                        this.saveTrackData(this.currentTrack);
+                    }
+                });
             }
 
             async initDB() {
@@ -308,6 +341,7 @@
                                     track.listened = stored.listened;
                                     track.downloaded = stored.downloaded;
                                     track.lastPlayed = stored.lastPlayed;
+                                    track.currentTime = stored.currentTime || 0;
                                 }
                             });
                             resolve();
@@ -324,84 +358,132 @@
 
             async scanForMp3Links() {
                 const foundTracks = new Map();
+                const categoryStructure = new Map();
                 let trackId = 0;
                 let htmlFiles = [];
 
-                // Method 1: Try directory listing (works locally)
+                // First, scan the main index page to get category structure
                 try {
-                    console.log('Attempting directory listing...');
-                    const dirResponse = await fetch('../podcast_pages/');
-                    if (dirResponse.ok) {
-                        const dirHtml = await dirResponse.text();
-                        const fileMatches = dirHtml.match(/href="[^"]*\.html"/g);
-                        if (fileMatches && fileMatches.length > 0) {
-                            htmlFiles = fileMatches.map(match => {
-                                const fullPath = match.slice(6, -1);
-                                return fullPath.split('/').pop();
+                    console.log('🔍 Scanning category structure from main index...');
+                    const indexResponse = await fetch('../../landing_pages/kurdish_research.html');
+                    if (indexResponse.ok) {
+                        const indexHtml = await indexResponse.text();
+                        const parser = new DOMParser();
+                        const indexDoc = parser.parseFromString(indexHtml, 'text/html');
+                        
+                        // Extract category structure
+                        const categories = indexDoc.querySelectorAll('.category');
+                        categories.forEach(category => {
+                            const categoryTitle = category.querySelector('h2')?.textContent?.trim();
+                            if (!categoryTitle) return;
+                            
+                            const subcategories = new Map();
+                            let currentSubcategory = null;
+                            
+                            // Process all children after h2
+                            const children = Array.from(category.children);
+                            children.forEach(child => {
+                                if (child.tagName === 'H4') {
+                                    currentSubcategory = child.textContent.trim();
+                                    subcategories.set(currentSubcategory, []);
+                                } else if (child.classList.contains('resource-link')) {
+                                    const href = child.getAttribute('href');
+                                    const title = child.querySelector('.link-title')?.textContent?.trim();
+                                    if (href && title) {
+                                        const fileName = href.split('/').pop();
+                                        const linkInfo = { fileName, title, href };
+                                        
+                                        if (currentSubcategory) {
+                                            subcategories.get(currentSubcategory).push(linkInfo);
+                                        } else {
+                                            // Direct category item (no subcategory)
+                                            if (!subcategories.has('_main')) {
+                                                subcategories.set('_main', []);
+                                            }
+                                            subcategories.get('_main').push(linkInfo);
+                                        }
+                                        
+                                        htmlFiles.push(fileName);
+                                    }
+                                }
                             });
-                            console.log(`Directory listing found ${htmlFiles.length} files`);
-                        }
+                            
+                            categoryStructure.set(categoryTitle, subcategories);
+                        });
+                        
+                        console.log(`✅ Found ${categoryStructure.size} categories with ${htmlFiles.length} total files`);
                     }
                 } catch (error) {
-                    console.log('Directory listing failed:', error.message);
+                    console.log('❌ Failed to load category structure:', error.message);
                 }
 
-                // Method 2: If directory listing failed, try sitemap approach
+                // Fallback discovery methods if index page fails
                 if (htmlFiles.length === 0) {
+                    // Method 1: Try directory listing (works locally)
                     try {
-                        console.log('Trying sitemap/robots approach...');
-                        // Try to fetch a known file and extract links from it
-                        const indexResponse = await fetch('../../landing_pages/kurdish_research.html');
-                        if (indexResponse.ok) {
-                            const indexHtml = await indexResponse.text();
-                            const parser = new DOMParser();
-                            const doc = parser.parseFromString(indexHtml, 'text/html');
-                            
-                            // Look for links to podcast pages
-                            const links = doc.querySelectorAll('a[href*="podcast_pages/"]');
-                            htmlFiles = Array.from(links).map(link => {
-                                const href = link.getAttribute('href');
-                                return href.split('/').pop();
-                            }).filter(file => file.endsWith('.html'));
-                            
-                            console.log(`Found ${htmlFiles.length} files from index page`);
+                        console.log('🔍 Attempting directory listing...');
+                        const dirResponse = await fetch('../podcast_pages/');
+                        if (dirResponse.ok) {
+                            const dirHtml = await dirResponse.text();
+                            const fileMatches = dirHtml.match(/href="[^"]*\.html"/g);
+                            if (fileMatches && fileMatches.length > 0) {
+                                htmlFiles = fileMatches.map(match => {
+                                    const fullPath = match.slice(6, -1);
+                                    return fullPath.split('/').pop();
+                                });
+                                console.log(`✅ Directory listing found ${htmlFiles.length} files`);
+                            }
                         }
                     } catch (error) {
-                        console.log('Index page method failed:', error.message);
+                        console.log('❌ Directory listing failed:', error.message);
                     }
-                }
 
-                // Method 3: Brute force common patterns (last resort)
-                if (htmlFiles.length === 0) {
-                    console.log('Trying brute force discovery...');
-                    const commonFiles = [
-                        'Afrin_-_Kilis_Relations.html',
-                        'Afrin_Alevis_Before_2010.html',
-                        'Afrin_and_Cyrrhestica_in_Roman_Times.html',
-                        'Afrin_Architecture.html',
-                        'Afrin_during_the_Muslim_Conquest.html'
-                    ];
-                    
-                    // Test if any exist
-                    for (const testFile of commonFiles) {
-                        try {
-                            const testResponse = await fetch(`../podcast_pages/${testFile}`, { method: 'HEAD' });
-                            if (testResponse.ok) {
-                                htmlFiles.push(testFile);
+                    // Method 2: Brute force common patterns (last resort)
+                    if (htmlFiles.length === 0) {
+                        console.log('🔍 Trying brute force discovery...');
+                        const commonFiles = [
+                            'Afrin_-_Kilis_Relations.html',
+                            'Afrin_Alevis_Before_2010.html',
+                            'Afrin_and_Cyrrhestica_in_Roman_Times.html',
+                            'Afrin_Architecture.html',
+                            'Afrin_during_the_Muslim_Conquest.html'
+                        ];
+                        
+                        // Test if any exist
+                        for (const testFile of commonFiles) {
+                            try {
+                                const testResponse = await fetch(`../podcast_pages/${testFile}`, { method: 'HEAD' });
+                                if (testResponse.ok) {
+                                    htmlFiles.push(testFile);
+                                }
+                            } catch (error) {
+                                // Ignore failures
                             }
-                        } catch (error) {
-                            // Ignore failures
                         }
+                        console.log(`✅ Brute force found ${htmlFiles.length} files`);
                     }
-                    console.log(`Brute force found ${htmlFiles.length} files`);
                 }
 
                 if (htmlFiles.length === 0) {
-                    console.log('NO FILES FOUND - All discovery methods failed');
+                    console.log('🚨 NO FILES FOUND - All discovery methods failed');
                     return;
                 }
 
-                console.log(`Scanning ${htmlFiles.length} files for MP3s...`);
+                console.log(`📊 Scanning ${htmlFiles.length} files for MP3s...`);
+                
+                // Create a reverse lookup map: fileName -> category info
+                const fileToCategory = new Map();
+                categoryStructure.forEach((subcategories, categoryName) => {
+                    subcategories.forEach((files, subcategoryName) => {
+                        files.forEach(fileInfo => {
+                            fileToCategory.set(fileInfo.fileName, {
+                                category: categoryName,
+                                subcategory: subcategoryName === '_main' ? null : subcategoryName,
+                                title: fileInfo.title
+                            });
+                        });
+                    });
+                });
                 
                 // Scan each discovered file for MP3s
                 for (const fileName of htmlFiles) {
@@ -412,39 +494,100 @@
                             const parser = new DOMParser();
                             const doc = parser.parseFromString(pageHtml, 'text/html');
                             
-                            // Get page title
-                            const pageTitle = doc.title || fileName.replace('.html', '').replace(/_/g, ' ');
+                            // Get category info for this file
+                            const categoryInfo = fileToCategory.get(fileName);
+                            let pageTitle;
+                            
+                            if (categoryInfo) {
+                                pageTitle = categoryInfo.title;
+                            } else {
+                                // Fallback to page title if not found in structure
+                                pageTitle = doc.title || fileName.replace('.html', '').replace(/_/g, ' ');
+                            }
+                            
+                            // Special handling for the 10 Historical Eras series
+                            const isHistoricalErasSeries = fileName === 'top_ten_history.html' || 
+                                                          pageTitle.includes('10 Historical Eras in the History of Afrin before 2010');
                             
                             // Find MP3 references - both audio sources and download links
                             const audioSources = doc.querySelectorAll('source[src$=".mp3"]');
                             const downloadLinks = doc.querySelectorAll('a[href$=".mp3"][download]');
                             
-                            [...audioSources, ...downloadLinks].forEach(element => {
-                                const url = element.src || element.href;
-                                if (url && !foundTracks.has(url)) {
-                                    foundTracks.set(url, {
-                                        id: trackId++,
-                                        url: url,
-                                        title: pageTitle,
-                                        downloaded: false,
-                                        listened: false
-                                    });
-                                }
-                            });
+                            if (isHistoricalErasSeries && (audioSources.length > 0 || downloadLinks.length > 0)) {
+                                // Special handling: Extract era titles from h2 elements
+                                const eraHeaders = doc.querySelectorAll('.era-section h2');
+                                const eraMapping = new Map();
+                                
+                                eraHeaders.forEach(h2 => {
+                                    const eraTitle = h2.textContent.trim();
+                                    // Find the corresponding audio in the same era section
+                                    const eraSection = h2.closest('.era-section');
+                                    if (eraSection) {
+                                        const eraAudio = eraSection.querySelector('source[src$=".mp3"]') || 
+                                                        eraSection.querySelector('a[href$=".mp3"][download]');
+                                        if (eraAudio) {
+                                            const audioUrl = eraAudio.src || eraAudio.href;
+                                            eraMapping.set(audioUrl, eraTitle);
+                                        }
+                                    }
+                                });
+                                
+                                [...audioSources, ...downloadLinks].forEach(element => {
+                                    const url = element.src || element.href;
+                                    if (url && !foundTracks.has(url)) {
+                                        const eraTitle = eraMapping.get(url) || pageTitle;
+                                        foundTracks.set(url, {
+                                            id: trackId++,
+                                            url: url,
+                                            title: eraTitle,
+                                            category: categoryInfo?.category || 'Overview Series',
+                                            subcategory: categoryInfo?.subcategory || null,
+                                            downloaded: false,
+                                            listened: false,
+                                            isHistoricalEra: true,
+                                            eraNumber: this.extractEraNumber(eraTitle),
+                                            currentTime: 0
+                                        });
+                                    }
+                                });
+                            } else {
+                                // Normal handling for all other files
+                                [...audioSources, ...downloadLinks].forEach(element => {
+                                    const url = element.src || element.href;
+                                    if (url && !foundTracks.has(url)) {
+                                        foundTracks.set(url, {
+                                            id: trackId++,
+                                            url: url,
+                                            title: pageTitle,
+                                            category: categoryInfo?.category || 'Uncategorized',
+                                            subcategory: categoryInfo?.subcategory || null,
+                                            downloaded: false,
+                                            listened: false,
+                                            currentTime: 0
+                                        });
+                                    }
+                                });
+                            }
                             
                             if (audioSources.length > 0 || downloadLinks.length > 0) {
-                                console.log(`${fileName}: found MP3`);
+                                console.log(`✅ ${fileName}: found MP3`);
                             }
                         } else {
-                            console.log(`${fileName}: HTTP ${pageResponse.status}`);
+                            console.log(`❌ ${fileName}: HTTP ${pageResponse.status}`);
                         }
                     } catch (error) {
-                        console.log(`${fileName}: ${error.message}`);
+                        console.log(`❌ ${fileName}: ${error.message}`);
                     }
                 }
 
                 this.tracks = Array.from(foundTracks.values());
-                console.log(`FINAL RESULT: ${this.tracks.length} audio tracks found`);
+                this.categoryStructure = categoryStructure;
+                console.log(`🎵 FINAL RESULT: ${this.tracks.length} audio tracks found`);
+            }
+
+            extractEraNumber(title) {
+                const match = title.match(/^(\d+)\./);
+                return match ? parseInt(match[1]) : 999;
             }
 
             setupUI() {
@@ -456,38 +599,84 @@
                     return;
                 }
 
-                container.innerHTML = this.tracks.map(track => `
-                    <div class="track-row" data-track-id="${track.id}">
-                        <div class="track-title">${track.title} <span class="listened-indicator">Listened</span></div>
-                        <div class="progress-container" data-progress-container="${track.id}">
-                            <div class="progress-bar" data-progress-bar="${track.id}">
-                                <div class="progress-fill" data-progress-fill="${track.id}"></div>
-                            </div>
-                            <div class="progress-time" data-progress-time="${track.id}">
-                                <span>0:00</span>
-                                <span>0:00</span>
-                            </div>
-                        </div>
-                        <div class="controls">
-                            <button class="play-btn" data-play="${track.id}">Play</button>
-                            <button class="pause-btn" data-pause="${track.id}" style="display: none;">⏸ Pause</button>
-                            <button data-rewind="${track.id}">-10 <<</button>
-                            <button data-forward="${track.id}">>> +10</button>
-                            <button data-download="${track.id}">Download</button>
-                            <label class="listened-container">
-                                <input type="checkbox" data-listened="${track.id}" ${track.listened ? 'checked' : ''}> 
-                                Listened
-                            </label>
-                        </div>
-                    </div>
-                `).join('');
+                // Group tracks by category and subcategory
+                const groupedTracks = new Map();
+                
+                this.tracks.forEach(track => {
+                    const categoryName = track.category || 'Uncategorized';
+                    
+                    if (!groupedTracks.has(categoryName)) {
+                        groupedTracks.set(categoryName, new Map());
+                    }
+                    
+                    const categoryMap = groupedTracks.get(categoryName);
+                    const subcategoryName = track.subcategory || '_main';
+                    
+                    if (!categoryMap.has(subcategoryName)) {
+                        categoryMap.set(subcategoryName, []);
+                    }
+                    
+                    categoryMap.get(subcategoryName).push(track);
+                });
+
+                // Generate HTML for organized categories
+                let html = '';
+                
+                groupedTracks.forEach((subcategories, categoryName) => {
+                    html += `<div class="category-section">
+                        <h2 class="category-title">${categoryName}</h2>`;
+                    
+                    subcategories.forEach((tracks, subcategoryName) => {
+                        if (subcategoryName !== '_main') {
+                            html += `<h3 class="subcategory-title">${subcategoryName}</h3>`;
+                        }
+                        
+                        // Sort historical era tracks by era number
+                        const sortedTracks = tracks.slice().sort((a, b) => {
+                            if (a.isHistoricalEra && b.isHistoricalEra) {
+                                return (a.eraNumber || 999) - (b.eraNumber || 999);
+                            }
+                            return 0; // Keep original order for non-historical era tracks
+                        });
+                        
+                        sortedTracks.forEach(track => {
+                            html += `
+                                <div class="track-row" data-track-id="${track.id}">
+                                    <div class="track-title">${track.title} <span class="listened-indicator">Listened</span></div>
+                                    <div class="progress-container" data-progress-container="${track.id}">
+                                        <div class="progress-bar" data-progress-bar="${track.id}">
+                                            <div class="progress-fill" data-progress-fill="${track.id}"></div>
+                                        </div>
+                                        <div class="progress-time" data-progress-time="${track.id}">
+                                            <span>0:00</span>
+                                            <span>0:00</span>
+                                        </div>
+                                    </div>
+                                    <div class="controls">
+                                        <button class="play-btn" data-play="${track.id}">Play</button>
+                                        <button class="pause-btn" data-pause="${track.id}" style="display: none;">⏸ Pause</button>
+                                        <button data-rewind="${track.id}">-10 <<</button>
+                                        <button data-forward="${track.id}">>> +10</button>
+                                        <button data-download="${track.id}">Download</button>
+                                        <button class="listened-btn" data-listened="${track.id}" ${track.listened ? 'data-is-listened="true"' : 'data-is-listened="false"'}>
+                                            ${track.listened ? 'Mark Unlistened' : 'Mark Listened'}
+                                        </button>
+                                    </div>
+                                </div>`;
+                        });
+                    });
+                    
+                    html += `</div>`;
+                });
+
+                container.innerHTML = html;
 
                 // Add event listeners
                 container.addEventListener('click', (e) => {
                     const playBtn = e.target.closest('[data-play]');
                     const pauseBtn = e.target.closest('[data-pause]');
                     const downloadBtn = e.target.closest('[data-download]');
-                    const listenedCheckbox = e.target.closest('[data-listened]');
+                    const listenedBtn = e.target.closest('[data-listened]');
                     const rewindBtn = e.target.closest('[data-rewind]');
                     const forwardBtn = e.target.closest('[data-forward]');
                     const progressBar = e.target.closest('[data-progress-bar]');
@@ -501,9 +690,10 @@
                     } else if (downloadBtn) {
                         const trackId = parseInt(downloadBtn.dataset.download);
                         this.downloadTrack(trackId);
-                    } else if (listenedCheckbox) {
-                        const trackId = parseInt(listenedCheckbox.dataset.listened);
-                        this.markAsListened(trackId, listenedCheckbox.checked);
+                    } else if (listenedBtn) {
+                        const trackId = parseInt(listenedBtn.dataset.listened);
+                        const isListened = listenedBtn.dataset.isListened === 'true';
+                        this.markAsListened(trackId, !isListened);
                     } else if (rewindBtn) {
                         const trackId = parseInt(rewindBtn.dataset.rewind);
                         this.rewind(trackId);
@@ -630,8 +820,29 @@
                     this.audio = new Audio(audioSrc);
                     this.currentTrack = track;
                     
+                    this.audio.addEventListener('loadedmetadata', () => {
+                        // Resume from stored position (minus 10 seconds for context)
+                        if (track.currentTime > 10) {
+                            this.audio.currentTime = Math.max(0, track.currentTime - 10);
+                        } else if (track.currentTime > 0) {
+                            this.audio.currentTime = track.currentTime;
+                        }
+                        this.updateProgress();
+                    });
+
+                    this.audio.addEventListener('timeupdate', () => {
+                        this.saveCurrentPosition();
+                    });
+
+                    this.audio.addEventListener('pause', () => {
+                        this.saveCurrentPosition();
+                    });
+
                     this.audio.addEventListener('ended', () => {
                         this.markAsListened(trackId, true);
+                        // Clear the stored position since track is finished
+                        track.currentTime = 0;
+                        this.saveTrackData(track);
                         this.resetAllButtons();
                         this.hideAllProgressBars();
                         this.stopProgressUpdate();
@@ -641,10 +852,6 @@
                         console.error('Audio playback failed:', e);
                         alert('Playback failed. File may not be downloaded for offline use.');
                         this.resetAllButtons();
-                    });
-
-                    this.audio.addEventListener('loadedmetadata', () => {
-                        this.updateProgress();
                     });
 
                     await this.audio.play();
@@ -659,9 +866,21 @@
                 }
             }
 
+            async saveCurrentPosition() {
+                if (this.audio && this.currentTrack && this.audio.currentTime > 0) {
+                    this.currentTrack.currentTime = this.audio.currentTime;
+                    // Save every 5 seconds to avoid too frequent saves
+                    if (!this.lastSaveTime || Date.now() - this.lastSaveTime > 5000) {
+                        await this.saveTrackData(this.currentTrack);
+                        this.lastSaveTime = Date.now();
+                    }
+                }
+            }
+
             pauseTrack(trackId) {
                 if (this.audio && this.currentTrack && this.currentTrack.id === trackId) {
                     this.audio.pause();
+                    this.saveCurrentPosition();
                     this.stopProgressUpdate();
                     this.resetAllButtons();
                 }
@@ -761,11 +980,20 @@
 
                 const listenedIndicator = trackElement.querySelector('.listened-indicator');
                 const downloadButton = trackElement.querySelector(`[data-download="${track.id}"]`);
-                const checkbox = trackElement.querySelector(`[data-listened="${track.id}"]`);
+                const listenedButton = trackElement.querySelector(`[data-listened="${track.id}"]`);
                 
                 if (track.listened) {
                     listenedIndicator.style.display = 'inline';
-                    checkbox.checked = true;
+                    if (listenedButton) {
+                        listenedButton.dataset.isListened = 'true';
+                        listenedButton.style.background = '#e53e3e';
+                    }
+                } else {
+                    listenedIndicator.style.display = 'none';
+                    if (listenedButton) {
+                        listenedButton.dataset.isListened = 'false';
+                        listenedButton.style.background = '#38a169';
+                    }
                 }
                 
                 if (track.downloaded) {
