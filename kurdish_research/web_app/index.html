@@ -151,6 +151,10 @@
 </head>
 <body>
     <h1>🎵 Kurdish Research Audio Player</h1>
+    <div id="install-prompt" style="background: #2c3e50; color: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; text-align: center; display: none;">
+        <p>📱 <strong>Install this app:</strong> In Firefox, tap the menu (⋯) → "Install" or "Add to Home Screen"</p>
+        <button onclick="document.getElementById('install-prompt').style.display='none'" style="background: #34495e; color: white; border: none; padding: 5px 10px; border-radius: 4px; margin-top: 10px;">Got it</button>
+    </div>
     <div id="loading" class="loading">Loading tracks...</div>
     <div id="tracks-container"></div>
     <div id="no-tracks" class="no-tracks" style="display: none;">
@@ -417,6 +421,8 @@
                         <div class="track-title">${track.title} <span class="listened-indicator">✓ Listened</span></div>
                         <div class="controls">
                             <button class="play-btn" data-play="${track.id}">▶ Play</button>
+                            <button data-rewind="${track.id}">⏪ -10s</button>
+                            <button data-forward="${track.id}">⏩ +10s</button>
                             <button data-download="${track.id}">↓ Download</button>
                             <label>
                                 <input type="checkbox" data-listened="${track.id}" ${track.listened ? 'checked' : ''}> 
@@ -431,6 +437,8 @@
                     const playBtn = e.target.closest('[data-play]');
                     const downloadBtn = e.target.closest('[data-download]');
                     const listenedCheckbox = e.target.closest('[data-listened]');
+                    const rewindBtn = e.target.closest('[data-rewind]');
+                    const forwardBtn = e.target.closest('[data-forward]');
 
                     if (playBtn) {
                         const trackId = parseInt(playBtn.dataset.play);
@@ -441,6 +449,12 @@
                     } else if (listenedCheckbox) {
                         const trackId = parseInt(listenedCheckbox.dataset.listened);
                         this.markAsListened(trackId, listenedCheckbox.checked);
+                    } else if (rewindBtn) {
+                        const trackId = parseInt(rewindBtn.dataset.rewind);
+                        this.rewind(trackId);
+                    } else if (forwardBtn) {
+                        const trackId = parseInt(forwardBtn.dataset.forward);
+                        this.fastForward(trackId);
                     }
                 });
 
@@ -537,6 +551,18 @@
                 }
             }
 
+            rewind(trackId) {
+                if (this.audio && this.currentTrack && this.currentTrack.id === trackId) {
+                    this.audio.currentTime = Math.max(0, this.audio.currentTime - 10);
+                }
+            }
+
+            fastForward(trackId) {
+                if (this.audio && this.currentTrack && this.currentTrack.id === trackId) {
+                    this.audio.currentTime = Math.min(this.audio.duration, this.audio.currentTime + 10);
+                }
+            }
+
             async markAsListened(trackId, listened) {
                 const track = this.tracks.find(t => t.id === trackId);
                 if (!track) return;
@@ -598,6 +624,13 @@
 
         // Initialize app when DOM is loaded
         document.addEventListener('DOMContentLoaded', async () => {
+            // Show install prompt on mobile
+            if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                setTimeout(() => {
+                    document.getElementById('install-prompt').style.display = 'block';
+                }, 2000);
+            }
+
             // Register service worker for offline functionality
             if ('serviceWorker' in navigator) {
                 try {
