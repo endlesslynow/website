@@ -208,44 +208,74 @@
             }
 
             async saveTrackData(track) {
-                const transaction = this.db.transaction(['tracks'], 'readwrite');
-                const store = transaction.objectStore('tracks');
-                await store.put(track);
+                return new Promise((resolve, reject) => {
+                    const transaction = this.db.transaction(['tracks'], 'readwrite');
+                    const store = transaction.objectStore('tracks');
+                    const request = store.put(track);
+                    request.onsuccess = () => resolve();
+                    request.onerror = () => reject(request.error);
+                });
             }
 
             async getTrackData(trackId) {
-                const transaction = this.db.transaction(['tracks'], 'readonly');
-                const store = transaction.objectStore('tracks');
-                return await store.get(trackId);
+                return new Promise((resolve, reject) => {
+                    const transaction = this.db.transaction(['tracks'], 'readonly');
+                    const store = transaction.objectStore('tracks');
+                    const request = store.get(trackId);
+                    request.onsuccess = () => resolve(request.result);
+                    request.onerror = () => reject(request.error);
+                });
             }
 
             async saveAudioFile(url, arrayBuffer) {
-                const transaction = this.db.transaction(['audioFiles'], 'readwrite');
-                const store = transaction.objectStore('audioFiles');
-                await store.put({ url, data: arrayBuffer, savedAt: Date.now() });
+                return new Promise((resolve, reject) => {
+                    const transaction = this.db.transaction(['audioFiles'], 'readwrite');
+                    const store = transaction.objectStore('audioFiles');
+                    const request = store.put({ url, data: arrayBuffer, savedAt: Date.now() });
+                    request.onsuccess = () => resolve();
+                    request.onerror = () => reject(request.error);
+                });
             }
 
             async getAudioFile(url) {
-                const transaction = this.db.transaction(['audioFiles'], 'readonly');
-                const store = transaction.objectStore('audioFiles');
-                const result = await store.get(url);
-                return result ? result.data : null;
+                return new Promise((resolve, reject) => {
+                    const transaction = this.db.transaction(['audioFiles'], 'readonly');
+                    const store = transaction.objectStore('audioFiles');
+                    const request = store.get(url);
+                    request.onsuccess = () => resolve(request.result ? request.result.data : null);
+                    request.onerror = () => reject(request.error);
+                });
             }
 
             async loadStoredData() {
-                const transaction = this.db.transaction(['tracks'], 'readonly');
-                const store = transaction.objectStore('tracks');
-                const allTracks = await store.getAll();
-                
-                // Update tracks with stored data
-                this.tracks.forEach(track => {
-                    const stored = allTracks.find(t => t.url === track.url);
-                    if (stored) {
-                        track.listened = stored.listened;
-                        track.downloaded = stored.downloaded;
-                        track.lastPlayed = stored.lastPlayed;
-                    }
-                });
+                try {
+                    const transaction = this.db.transaction(['tracks'], 'readonly');
+                    const store = transaction.objectStore('tracks');
+                    
+                    return new Promise((resolve, reject) => {
+                        const request = store.getAll();
+                        request.onsuccess = () => {
+                            const allTracks = request.result || [];
+                            
+                            // Update tracks with stored data
+                            this.tracks.forEach(track => {
+                                const stored = allTracks.find(t => t.url === track.url);
+                                if (stored) {
+                                    track.listened = stored.listened;
+                                    track.downloaded = stored.downloaded;
+                                    track.lastPlayed = stored.lastPlayed;
+                                }
+                            });
+                            resolve();
+                        };
+                        request.onerror = () => {
+                            console.log('Failed to load stored data, continuing anyway');
+                            resolve(); // Don't fail the whole app
+                        };
+                    });
+                } catch (error) {
+                    console.log('IndexedDB error, continuing without stored data:', error);
+                }
             }
 
             async scanForMp3Links() {
