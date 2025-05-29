@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurdish Research Audio Player</title>
+    <title>Archive Player</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2c3e50">
+    <meta name="theme-color" content="#1e2936">
     <link rel="apple-touch-icon" href="research_archive.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -18,8 +18,8 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #121212;
-            color: #ffffff;
+            background: #0f1419;
+            color: #e1e5e9;
             padding: 20px;
             line-height: 1.6;
         }
@@ -27,25 +27,62 @@
         h1 {
             margin-bottom: 30px;
             text-align: center;
-            color: #ffffff;
+            color: #e1e5e9;
         }
         
         .track-row {
-            background: #1e1e1e;
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
+            background: #1e2936;
+            border: 1px solid #2d3748;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            transition: opacity 0.3s;
+            gap: 15px;
+            transition: opacity 0.3s, background 0.2s;
+        }
+        
+        .track-row:hover {
+            background: #233142;
         }
         
         .track-title {
             font-weight: 600;
-            color: #ffffff;
+            color: #e1e5e9;
             margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .progress-container {
+            width: 100%;
+            display: none;
+            margin-bottom: 10px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #2d3748;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4299e1, #63b3ed);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.1s;
+        }
+        
+        .progress-time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #a0aec0;
+            margin-top: 5px;
         }
         
         .controls {
@@ -56,114 +93,103 @@
         }
         
         button {
-            background: #333;
-            color: #ffffff;
+            background: #2d3748;
+            color: #e1e5e9;
             border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
+            padding: 10px 16px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 14px;
-            transition: background 0.2s;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.1s;
         }
         
         button:hover {
-            background: #444;
+            background: #4a5568;
+            transform: translateY(-1px);
+        }
+        
+        button:active {
+            transform: translateY(0);
         }
         
         button:disabled {
-            background: #222;
-            color: #666;
+            background: #1a202c;
+            color: #718096;
             cursor: not-allowed;
+            transform: none;
         }
         
         .play-btn {
-            background: #4CAF50;
+            background: #38a169;
             font-weight: bold;
         }
         
         .play-btn:hover {
-            background: #45a049;
+            background: #48bb78;
+        }
+        
+        .pause-btn {
+            background: #e53e3e;
+            font-weight: bold;
+        }
+        
+        .pause-btn:hover {
+            background: #f56565;
         }
         
         .download-btn {
-            background: #2196F3;
+            background: #3182ce;
         }
         
         .download-btn:hover {
-            background: #1976D2;
+            background: #4299e1;
         }
         
         .downloaded {
-            background: #27ae60 !important;
+            background: #38a169 !important;
             opacity: 0.8;
         }
         
         .listened-container {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
         
         input[type="checkbox"] {
             width: 18px;
             height: 18px;
             cursor: pointer;
+            accent-color: #4299e1;
         }
         
         .listened-indicator {
-            color: #f39c12;
+            color: #f6ad55;
             font-weight: bold;
             display: none;
-        }
-        
-        .offline-indicator {
-            color: #27ae60;
-            font-size: 12px;
-            margin-left: 10px;
-            font-weight: bold;
-        }
-        
-        .now-playing {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #2c3e50;
-            padding: 15px;
-            display: none;
-            align-items: center;
-            gap: 10px;
         }
         
         .no-tracks {
             text-align: center;
-            color: #666;
+            color: #718096;
             padding: 40px;
             font-style: italic;
         }
         
         .loading {
             text-align: center;
-            color: #fff;
+            color: #e1e5e9;
             padding: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>🎵 Kurdish Research Audio Player</h1>
-    <div id="install-prompt" style="background: #2c3e50; color: white; padding: 15px; margin-bottom: 20px; border-radius: 8px; text-align: center; display: none;">
-        <p>📱 <strong>Install this app:</strong> In Firefox, tap the menu (⋯) → "Install" or "Add to Home Screen"</p>
-        <button onclick="document.getElementById('install-prompt').style.display='none'" style="background: #34495e; color: white; border: none; padding: 5px 10px; border-radius: 4px; margin-top: 10px;">Got it</button>
-    </div>
+    <h1>Archive Player</h1>
     <div id="loading" class="loading">Loading tracks...</div>
     <div id="tracks-container"></div>
     <div id="no-tracks" class="no-tracks" style="display: none;">
         No MP3 links found. The app will automatically discover audio files from your podcast pages.
-    </div>
-    
-    <div id="now-playing" class="now-playing">
-        <div id="now-playing-info">Now Playing: </div>
-        <button onclick="audioApp.pauseCurrentTrack()">⏸ Pause</button>
     </div>
 
     <script>
@@ -173,6 +199,7 @@
                 this.currentTrack = null;
                 this.audio = null;
                 this.db = null;
+                this.progressInterval = null;
             }
 
             async init() {
@@ -289,7 +316,7 @@
 
                 // Method 1: Try directory listing (works locally)
                 try {
-                    console.log('🔍 Attempting directory listing...');
+                    console.log('Attempting directory listing...');
                     const dirResponse = await fetch('../podcast_pages/');
                     if (dirResponse.ok) {
                         const dirHtml = await dirResponse.text();
@@ -299,17 +326,17 @@
                                 const fullPath = match.slice(6, -1);
                                 return fullPath.split('/').pop();
                             });
-                            console.log(`✅ Directory listing found ${htmlFiles.length} files`);
+                            console.log(`Directory listing found ${htmlFiles.length} files`);
                         }
                     }
                 } catch (error) {
-                    console.log('❌ Directory listing failed:', error.message);
+                    console.log('Directory listing failed:', error.message);
                 }
 
                 // Method 2: If directory listing failed, try sitemap approach
                 if (htmlFiles.length === 0) {
                     try {
-                        console.log('🔍 Trying sitemap/robots approach...');
+                        console.log('Trying sitemap/robots approach...');
                         // Try to fetch a known file and extract links from it
                         const indexResponse = await fetch('../../landing_pages/kurdish_research.html');
                         if (indexResponse.ok) {
@@ -324,16 +351,16 @@
                                 return href.split('/').pop();
                             }).filter(file => file.endsWith('.html'));
                             
-                            console.log(`✅ Found ${htmlFiles.length} files from index page`);
+                            console.log(`Found ${htmlFiles.length} files from index page`);
                         }
                     } catch (error) {
-                        console.log('❌ Index page method failed:', error.message);
+                        console.log('Index page method failed:', error.message);
                     }
                 }
 
                 // Method 3: Brute force common patterns (last resort)
                 if (htmlFiles.length === 0) {
-                    console.log('🔍 Trying brute force discovery...');
+                    console.log('Trying brute force discovery...');
                     const commonFiles = [
                         'Afrin_-_Kilis_Relations.html',
                         'Afrin_Alevis_Before_2010.html',
@@ -353,15 +380,15 @@
                             // Ignore failures
                         }
                     }
-                    console.log(`✅ Brute force found ${htmlFiles.length} files`);
+                    console.log(`Brute force found ${htmlFiles.length} files`);
                 }
 
                 if (htmlFiles.length === 0) {
-                    console.log('🚨 NO FILES FOUND - All discovery methods failed');
+                    console.log('NO FILES FOUND - All discovery methods failed');
                     return;
                 }
 
-                console.log(`📊 Scanning ${htmlFiles.length} files for MP3s...`);
+                console.log(`Scanning ${htmlFiles.length} files for MP3s...`);
                 
                 // Scan each discovered file for MP3s
                 for (const fileName of htmlFiles) {
@@ -393,18 +420,18 @@
                             });
                             
                             if (audioSources.length > 0 || downloadLinks.length > 0) {
-                                console.log(`✅ ${fileName}: found MP3`);
+                                console.log(`${fileName}: found MP3`);
                             }
                         } else {
-                            console.log(`❌ ${fileName}: HTTP ${pageResponse.status}`);
+                            console.log(`${fileName}: HTTP ${pageResponse.status}`);
                         }
                     } catch (error) {
-                        console.log(`❌ ${fileName}: ${error.message}`);
+                        console.log(`${fileName}: ${error.message}`);
                     }
                 }
 
                 this.tracks = Array.from(foundTracks.values());
-                console.log(`🎵 FINAL RESULT: ${this.tracks.length} audio tracks found`);
+                console.log(`FINAL RESULT: ${this.tracks.length} audio tracks found`);
             }
 
             setupUI() {
@@ -418,13 +445,23 @@
 
                 container.innerHTML = this.tracks.map(track => `
                     <div class="track-row" data-track-id="${track.id}">
-                        <div class="track-title">${track.title} <span class="listened-indicator">✓ Listened</span></div>
+                        <div class="track-title">${track.title} <span class="listened-indicator">Listened</span></div>
+                        <div class="progress-container" data-progress-container="${track.id}">
+                            <div class="progress-bar" data-progress-bar="${track.id}">
+                                <div class="progress-fill" data-progress-fill="${track.id}"></div>
+                            </div>
+                            <div class="progress-time" data-progress-time="${track.id}">
+                                <span>0:00</span>
+                                <span>0:00</span>
+                            </div>
+                        </div>
                         <div class="controls">
-                            <button class="play-btn" data-play="${track.id}">▶ Play</button>
-                            <button data-rewind="${track.id}">⏪ -10s</button>
-                            <button data-forward="${track.id}">⏩ +10s</button>
-                            <button data-download="${track.id}">↓ Download</button>
-                            <label>
+                            <button class="play-btn" data-play="${track.id}">Play</button>
+                            <button class="pause-btn" data-pause="${track.id}" style="display: none;">⏸ Pause</button>
+                            <button data-rewind="${track.id}">-10 <<</button>
+                            <button data-forward="${track.id}">>> +10</button>
+                            <button data-download="${track.id}">Download</button>
+                            <label class="listened-container">
                                 <input type="checkbox" data-listened="${track.id}" ${track.listened ? 'checked' : ''}> 
                                 Listened
                             </label>
@@ -435,14 +472,19 @@
                 // Add event listeners
                 container.addEventListener('click', (e) => {
                     const playBtn = e.target.closest('[data-play]');
+                    const pauseBtn = e.target.closest('[data-pause]');
                     const downloadBtn = e.target.closest('[data-download]');
                     const listenedCheckbox = e.target.closest('[data-listened]');
                     const rewindBtn = e.target.closest('[data-rewind]');
                     const forwardBtn = e.target.closest('[data-forward]');
+                    const progressBar = e.target.closest('[data-progress-bar]');
 
                     if (playBtn) {
                         const trackId = parseInt(playBtn.dataset.play);
                         this.playTrack(trackId);
+                    } else if (pauseBtn) {
+                        const trackId = parseInt(pauseBtn.dataset.pause);
+                        this.pauseTrack(trackId);
                     } else if (downloadBtn) {
                         const trackId = parseInt(downloadBtn.dataset.download);
                         this.downloadTrack(trackId);
@@ -455,6 +497,9 @@
                     } else if (forwardBtn) {
                         const trackId = parseInt(forwardBtn.dataset.forward);
                         this.fastForward(trackId);
+                    } else if (progressBar) {
+                        const trackId = parseInt(progressBar.dataset.progressBar);
+                        this.seekTo(trackId, e);
                     }
                 });
 
@@ -462,6 +507,43 @@
                 this.tracks.forEach(track => {
                     this.updateTrackDisplay(track);
                 });
+            }
+
+            seekTo(trackId, event) {
+                if (this.audio && this.currentTrack && this.currentTrack.id === trackId) {
+                    const progressBar = event.currentTarget;
+                    const rect = progressBar.getBoundingClientRect();
+                    const percentage = (event.clientX - rect.left) / rect.width;
+                    const newTime = percentage * this.audio.duration;
+                    
+                    if (!isNaN(newTime)) {
+                        this.audio.currentTime = newTime;
+                    }
+                }
+            }
+
+            updateProgress() {
+                if (!this.audio || !this.currentTrack) return;
+
+                const trackId = this.currentTrack.id;
+                const progressFill = document.querySelector(`[data-progress-fill="${trackId}"]`);
+                const progressTime = document.querySelector(`[data-progress-time="${trackId}"]`);
+                
+                if (progressFill && progressTime && this.audio.duration) {
+                    const percentage = (this.audio.currentTime / this.audio.duration) * 100;
+                    progressFill.style.width = `${percentage}%`;
+                    
+                    const currentTime = this.formatTime(this.audio.currentTime);
+                    const totalTime = this.formatTime(this.audio.duration);
+                    progressTime.innerHTML = `<span>${currentTime}</span><span>${totalTime}</span>`;
+                }
+            }
+
+            formatTime(seconds) {
+                if (!seconds || isNaN(seconds)) return '0:00';
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
             }
 
             async downloadTrack(trackId) {
@@ -478,7 +560,7 @@
                     if (cachedFile) {
                         track.downloaded = true;
                         await this.saveTrackData(track);
-                        button.textContent = '✓ Downloaded';
+                        button.textContent = 'Downloaded';
                         this.updateTrackDisplay(track);
                         return;
                     }
@@ -493,14 +575,14 @@
                     track.downloaded = true;
                     await this.saveTrackData(track);
                     
-                    button.textContent = '✓ Downloaded';
+                    button.textContent = 'Downloaded';
                     this.updateTrackDisplay(track);
                     
                 } catch (error) {
                     console.error('Download failed:', error);
                     button.textContent = 'Download Failed';
                     setTimeout(() => {
-                        button.textContent = '↓ Download';
+                        button.textContent = 'Download';
                         button.disabled = false;
                     }, 2000);
                 }
@@ -513,7 +595,9 @@
                 // Stop current audio if playing
                 if (this.audio) {
                     this.audio.pause();
-                    this.audio = null;
+                    this.stopProgressUpdate();
+                    this.hideAllProgressBars();
+                    this.resetAllButtons();
                 }
 
                 try {
@@ -535,19 +619,86 @@
                     
                     this.audio.addEventListener('ended', () => {
                         this.markAsListened(trackId, true);
+                        this.resetAllButtons();
+                        this.hideAllProgressBars();
+                        this.stopProgressUpdate();
                     });
                     
                     this.audio.addEventListener('error', (e) => {
                         console.error('Audio playback failed:', e);
                         alert('Playback failed. File may not be downloaded for offline use.');
+                        this.resetAllButtons();
+                    });
+
+                    this.audio.addEventListener('loadedmetadata', () => {
+                        this.updateProgress();
                     });
 
                     await this.audio.play();
-                    this.showNowPlaying(track);
+                    this.showProgressBar(trackId);
+                    this.updatePlayButton(trackId);
+                    this.startProgressUpdate();
                     
                 } catch (error) {
                     console.error('Playback failed:', error);
                     alert('Playback failed. Check if file is downloaded for offline use.');
+                    this.resetAllButtons();
+                }
+            }
+
+            pauseTrack(trackId) {
+                if (this.audio && this.currentTrack && this.currentTrack.id === trackId) {
+                    this.audio.pause();
+                    this.stopProgressUpdate();
+                    this.resetAllButtons();
+                }
+            }
+
+            showProgressBar(trackId) {
+                this.hideAllProgressBars();
+                const progressContainer = document.querySelector(`[data-progress-container="${trackId}"]`);
+                if (progressContainer) {
+                    progressContainer.style.display = 'block';
+                }
+            }
+
+            hideAllProgressBars() {
+                document.querySelectorAll('[data-progress-container]').forEach(container => {
+                    container.style.display = 'none';
+                });
+            }
+
+            updatePlayButton(trackId) {
+                this.resetAllButtons();
+                const playBtn = document.querySelector(`[data-play="${trackId}"]`);
+                const pauseBtn = document.querySelector(`[data-pause="${trackId}"]`);
+                
+                if (playBtn && pauseBtn) {
+                    playBtn.style.display = 'none';
+                    pauseBtn.style.display = 'inline-block';
+                }
+            }
+
+            resetAllButtons() {
+                document.querySelectorAll('[data-play]').forEach(btn => {
+                    btn.style.display = 'inline-block';
+                });
+                document.querySelectorAll('[data-pause]').forEach(btn => {
+                    btn.style.display = 'none';
+                });
+            }
+
+            startProgressUpdate() {
+                this.stopProgressUpdate();
+                this.progressInterval = setInterval(() => {
+                    this.updateProgress();
+                }, 100);
+            }
+
+            stopProgressUpdate() {
+                if (this.progressInterval) {
+                    clearInterval(this.progressInterval);
+                    this.progressInterval = null;
                 }
             }
 
@@ -591,46 +742,15 @@
                 }
                 
                 if (track.downloaded) {
-                    downloadButton.textContent = '✓ Downloaded';
+                    downloadButton.textContent = 'Downloaded';
                     downloadButton.disabled = true;
-                    downloadButton.style.background = '#27ae60';
-                    
-                    // Add offline indicator
-                    const offlineIndicator = trackElement.querySelector('.offline-indicator') || 
-                        document.createElement('span');
-                    offlineIndicator.className = 'offline-indicator';
-                    offlineIndicator.textContent = '📱 Offline Ready';
-                    
-                    if (!trackElement.querySelector('.offline-indicator')) {
-                        trackElement.appendChild(offlineIndicator);
-                    }
-                }
-            }
-
-            showNowPlaying(track) {
-                const nowPlaying = document.getElementById('now-playing');
-                const info = document.getElementById('now-playing-info');
-                info.textContent = `Now Playing: ${track.title}`;
-                nowPlaying.style.display = 'flex';
-            }
-
-            pauseCurrentTrack() {
-                if (this.audio && !this.audio.paused) {
-                    this.audio.pause();
-                    document.getElementById('now-playing').style.display = 'none';
+                    downloadButton.classList.add('downloaded');
                 }
             }
         }
 
         // Initialize app when DOM is loaded
         document.addEventListener('DOMContentLoaded', async () => {
-            // Show install prompt on mobile
-            if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                setTimeout(() => {
-                    document.getElementById('install-prompt').style.display = 'block';
-                }, 2000);
-            }
-
             // Register service worker for offline functionality
             if ('serviceWorker' in navigator) {
                 try {
