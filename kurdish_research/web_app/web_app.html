@@ -1,0 +1,65 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Archive</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body { background: #121212; color: #ffffff; font-family: sans-serif; margin: 0; padding: 1rem; }
+    .track { margin-bottom: 1.5rem; padding: .5rem; border: 1px solid #333; border-radius: 4px; }
+    button { margin-right: .5rem; padding: .5rem 1rem; background: #333; color: #fff; border: none; border-radius: 3px; }
+    .downloaded { opacity: .6; }
+    label { margin-left: .5rem; }
+  </style>
+</head>
+<body>
+  <h1>Audio Archive</h1>
+  <div id="tracks"></div>
+  <script>
+    const TRACK_SELECTOR = 'a[href$=".mp3"]';
+    const CACHE = 'audio-cache-v1';
+    const tracksEl = document.getElementById('tracks');
+    document.querySelectorAll(TRACK_SELECTOR).forEach(link => {
+      const url = link.href;
+      const title = link.textContent.trim() || url.split('/').pop();
+      const container = document.createElement('div'); container.className = 'track';
+      const audio = document.createElement('audio'); audio.preload = 'none';
+      const playBtn = document.createElement('button'); playBtn.textContent = 'Play';
+      const rewind = document.createElement('button'); rewind.textContent = '-10s';
+      const ffwd = document.createElement('button'); ffwd.textContent = '+10s';
+      const dlBtn = document.createElement('button'); dlBtn.textContent = 'Download';
+      const chk = document.createElement('input'); chk.type = 'checkbox';
+      const chkLabel = document.createElement('label'); chkLabel.textContent = 'Listened';
+      chkLabel.prepend(chk);
+      container.append(title, document.createElement('br'), audio, playBtn, rewind, ffwd, dlBtn, chkLabel);
+      tracksEl.append(container);
+      playBtn.onclick = async () => {
+        let src = audio.src;
+        if (!src) {
+          await cacheAndUpdate();
+        }
+        audio.paused ? audio.play() : audio.pause();
+        playBtn.textContent = audio.paused ? 'Play' : 'Pause';
+      };
+      rewind.onclick = () => audio.currentTime = Math.max(0, audio.currentTime - 10);
+      ffwd.onclick = () => audio.currentTime += 10;
+      dlBtn.onclick = cacheAndUpdate;
+      async function cacheAndUpdate() {
+        const cache = await caches.open(CACHE);
+        const res = await cache.match(url);
+        if (!res) {
+          const fetched = await fetch(url);
+          await cache.put(url, fetched.clone());
+        }
+        const blob = await (await cache.match(url)).blob();
+        audio.src = URL.createObjectURL(blob);
+        dlBtn.classList.add('downloaded');
+        dlBtn.textContent = 'Downloaded';
+      }
+    });
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js');
+  </script>
+</body>
+</html>
