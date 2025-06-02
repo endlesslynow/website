@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ukrainian Vocabulary Words - Lesson 5</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Ukrainian-inspired color scheme */
+        :root {
+            --ukrainian-blue: #0057B8; --ukrainian-yellow: #FFD700; --ukrainian-dark-blue: #003893;
+            --ukrainian-light-blue: #88BFFF; --ukrainian-navy: #001F54; --ukrainian-cream: #FFF8E1;
+            --ukrainian-light-yellow: #FFF2B0; --ukrainian-gold: #E8C000; --ukrainian-light-teal: #CCFCF6;
+            --body-background: #0057B8; --text-color: #003893; --text-light: #FFFFFF;
+        }
+        body { font-family: 'Nunito', Arial, sans-serif; line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 15px; background-color: var(--body-background); background-image: url('../ukrainian_background.png'); background-repeat: repeat; background-size: 300px auto; box-sizing: border-box; color: var(--ukrainian-navy); }
+        [lang="uk"], td:first-child, .ukrainian-text, .matching-item.ukrainian-text, .fill-input.ukrainian-input, .key-btn, .correct-answer-display { font-family: 'Nunito', serif; font-size: 1em; line-height: 1.5; font-weight: 500; direction: ltr; text-align: left; }
+        /* Latin text styling - Fix for oversized Latin text */
+        .latin-text { font-family: 'Nunito', Arial, sans-serif !important; font-size: 0.7em !important; font-weight: normal !important; direction: ltr !important; }
+
+        .matching-item.ukrainian-text, .key-btn { text-align: center; }
+        .fill-input.ukrainian-input { text-align: left; font-size: 1em; }
+        td:first-child, td[lang="uk"] { text-align: left !important; padding-top: 18px; padding-bottom: 18px; }
+        * { box-sizing: border-box; }
+        h1, h2, h3 { color: var(--ukrainian-navy); font-weight: 700; line-height: 1.3; }
+        h1 { text-align: left; border-bottom: 3px solid var(--ukrainian-yellow); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; color: var(--text-light); }
+        h2 { font-size: 1.5rem; margin-top: 30px; }
+        h3 { font-size: 1.2rem; margin-top: 25px; color: var(--ukrainian-blue); }
+        .section { background-color: var(--ukrainian-light-blue); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background-color: #88BFFF; }
+        .title-section { background-color: #0057B7; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border: 3px solid #FFDD00; }
+        .title-section h1 { text-align: left; border-bottom: 3px solid var(--ukrainian-yellow); padding-bottom: 15px; margin-bottom: 0; margin-top: 0; font-size: 1.8rem; color: var(--text-light); }
+        th, td { padding: 12px 15px; text-align: left; border: none; }
+        th { background-color: var(--ukrainian-blue); color: var(--text-light); font-weight: 600; }
+        tr:nth-child(even) { background-color: var(--ukrainian-light-blue); }
+        tr:nth-child(odd) { background-color: #B9DBFF; }
+        tr:hover { background-color: #B9DBFF; }
+        .note { background-color: var(--ukrainian-light-yellow); padding: 15px; border-left: 4px solid var(--ukrainian-yellow); margin: 20px 0; border-radius: 0 8px 8px 0; }
+
+        /* Navigation */
+        .nav-buttons-container { display: flex; justify-content: space-between; margin-top: 30px; margin-bottom: 40px; padding: 0 10px; }
+        .nav-button { background-color: var(--ukrainian-navy); color: var(--text-light); border: 3px solid var(--ukrainian-blue); border-radius: 12px; padding: 15px 20px; font-family: 'Nunito', Arial, sans-serif; font-weight: 600; font-size: 1.3rem; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; line-height: 1.4; }
+        .nav-button:hover { background-color: var(--ukrainian-blue); border-color: var(--ukrainian-navy); }
+        .prev-button { margin-right: auto; }
+        .next-button, .exercises-button { margin-left: 10px; }
+
+        /* Media queries */
+        @media (max-width: 600px) {
+            .section, .title-section { padding: 20px 15px; border-radius: 10px; }
+            h1 { font-size: 1.6rem; padding-bottom: 10px; } h2 { font-size: 1.3rem; } h3 { font-size: 1.1rem; }
+            table { display: block; overflow-x: auto; white-space: nowrap; } th, td { padding: 10px 12px; } th { font-size: 0.9rem; padding: 10px 8px; }
+            .nav-buttons-container { flex-direction: column; gap: 15px; } .nav-button { width: 100%; margin: 0; font-size: 1rem;}
+            body { padding: 10px; }
+        }
+         @media (max-width: 450px) {
+             .nav-button { padding: 12px 15px; }
+         }
+    </style>
+</head>
+<body>
+    <div class="title-section">
+        <h1>Most Common Ukrainian Words 251-300</h1>
+    </div>
+
+    <div class="section">
+        <h2>Vocabulary Downloads</h2>
+        <p><strong>This vocabulary list doesn't contain vocabulary connected with the lessons. It's simply general Ukrainian vocabulary.</strong></p>
+        <p>Here you can download an Anki deck that includes all the words on this page. There is also a .txt file that includes all the vocabulary of the lesson, transliterations, and translations. Both contain the same words and information.</p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; justify-content: center;"">
+            <a href="../ukrainian%20anki/Ukrainian.apkg" class="nav-button" style="background-color: var(--ukrainian-blue); padding: 12px 18px; min-width: 200px;">
+                <i class="fas fa-download" style="margin-right: 8px;"></i> Anki Deck: Most Common Ukrainian Words
+            </a>
+            <br>
+            <a href="../ukrainian%20anki/ukrainian_anki_251_300_words.txt" class="nav-button" style="background-color: var(--ukrainian-blue); padding: 12px 18px; min-width: 200px;" target="_blank">
+                <i class="fas fa-file-alt" style="margin-right: 8px;"></i> .txt Words 251-300
+            </a>
+
+        </div>
+
+        <div class="note">
+            <p><strong>Note:</strong> Anki is a popular flashcard app, and can be used on all devices. If you're new to Anki, <a href="https://apps.ankiweb.net/" target="_blank">click here</a> for more information and to ensure you download the correct app for the Anki deck :)</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Nouns (Animals)</h2>
+        <table>
+            <tr>
+                <th>Ukrainian</th>
+                <th>English</th>
+                <th>Pronunciation</th>
+            </tr>
+            <tr> <td lang="uk">риба</td> <td>fish</td> <td>ryba</td> </tr>
+            <tr> <td lang="uk">павук</td> <td>spider</td> <td>pavuk</td> </tr>
+            <tr> <td lang="uk">змія</td> <td>snake</td> <td>zmiya</td> </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Nouns (Body parts)</h2>
+        <table>
+            <tr>
+                <th>Ukrainian</th>
+                <th>English</th>
+                <th>Pronunciation</th>
+            </tr>
+            <tr> <td lang="uk">голова</td> <td>head</td> <td>holova</td> </tr>
+            <tr> <td lang="uk">ніс</td> <td>nose</td> <td>nis</td> </tr>
+            <tr> <td lang="uk">волосся</td> <td>hair</td> <td>volossya</td> </tr>
+            <tr> <td lang="uk">рот</td> <td>mouth</td> <td>rot</td> </tr>
+            <tr> <td lang="uk">вухо</td> <td>ear</td> <td>vukho</td> </tr>
+            <tr> <td lang="uk">око</td> <td>eye</td> <td>oko</td> </tr>
+            <tr> <td lang="uk">рука</td> <td>hand</td> <td>ruka</td> </tr>
+            <tr> <td lang="uk">ступня</td> <td>foot</td> <td>stupnya</td> </tr>
+            <tr> <td lang="uk">серце</td> <td>heart</td> <td>sertse</td> </tr>
+            <tr> <td lang="uk">мозок</td> <td>brain</td> <td>mozok</td> </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Adjectives (Position/Direction)</h2>
+        <table>
+            <tr>
+                <th>Ukrainian</th>
+                <th>English</th>
+                <th>Pronunciation</th>
+            </tr>
+            <tr> <td lang="uk">передній</td> <td>front</td> <td>peredniy</td> </tr>
+            <tr> <td lang="uk">задній</td> <td>back (position)</td> <td>zadniy</td> </tr>
+            <tr> <td lang="uk">далекий</td> <td>far</td> <td>dalekiy</td> </tr>
+            <tr> <td lang="uk">близький</td> <td>close</td> <td>blyz'kyy</td> </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Adjectives (Physical Properties)</h2>
+        <table>
+            <tr>
+                <th>Ukrainian</th>
+                <th>English</th>
+                <th>Pronunciation</th>
+            </tr>
+            <tr> <td lang="uk">солодкий</td> <td>sweet</td> <td>solodkyy</td> </tr>
+            <tr> <td lang="uk">кислий</td> <td>sour</td> <td>kyslyy</td> </tr>
+            <tr> <td lang="uk">м'який</td> <td>soft</td> <td>m'yakyy</td> </tr>
+            <tr> <td lang="uk">твердий</td> <td>hard</td> <td>tverdyy</td> </tr>
+            <tr> <td lang="uk">високий</td> <td>tall</td> <td>vysokyy</td> </tr>
+            <tr> <td lang="uk">низький</td> <td>short (height)</td> <td>nyz'kyy</td> </tr>
+            <tr> <td lang="uk">холодний</td> <td>cold</td> <td>kholodnyy</td> </tr>
+            <tr> <td lang="uk">спекотний</td> <td>hot (temperature)</td> <td>spekotnyy</td> </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Adjectives (Personality/Behavior)</h2>
+        <table>
+            <tr>
+                <th>Ukrainian</th>
+                <th>English</th>
+                <th>Pronunciation</th>
+            </tr>
+            <tr> <td lang="uk">милий</td> <td>cute</td> <td>mylyy</td> </tr>
+            <tr> <td lang="uk">тупий</td> <td>stupid</td> <td>tupyy</td> </tr>
+            <tr> <td lang="uk">божевільний</td> <td>crazy</td> <td>bozhevil'nyy</td> </tr>
+            <tr> <td lang="uk">зайнятий</td> <td>busy</td> <td>zaynyatyy</td> </tr>
+            <tr> <td lang="uk">стурбований</td> <td>worried</td> <td>sturbovanyy</td> </tr>
+            <tr> <td lang="uk">здивований</td> <td>surprised</td> <td>zdyvovanyy</td> </tr>
+            <tr> <td lang="uk">крутий</td> <td>cool</td> <td>krutyy</td> </tr>
+            <tr> <td lang="uk">гречний</td> <td>well-behaved</td> <td>hrechnyy</td> </tr>
+            <tr> <td lang="uk">злий</td> <td>evil</td> <td>zlyy</td> </tr>
+            <tr> <td lang="uk">розумний</td> <td>clever</td> <td>rozumnyy</td> </tr>
+            <tr> <td lang="uk">дивний</td> <td>strange</td> <td>dyvnyy</td> </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Verbs</h2>
+        <table>
+            <tr>
+                <th>Ukrainian</th>
+                <th>English</th>
+                <th>Pronunciation</th>
+            </tr>
+            <tr> <td lang="uk">тягнути</td> <td>to pull</td> <td>tyahnuty</td> </tr>
+            <tr> <td lang="uk">штовхати</td> <td>to push</td> <td>shtovkhaty</td> </tr>
+            <tr> <td lang="uk">натискати</td> <td>to press (a button)</td> <td>natyskaty</td> </tr>
+            <tr> <td lang="uk">бити</td> <td>to hit</td> <td>byty</td> </tr>
+            <tr> <td lang="uk">ловити</td> <td>to catch</td> <td>lovyty</td> </tr>
+            <tr> <td lang="uk">битися</td> <td>to fight</td> <td>bytysya</td> </tr>
+            <tr> <td lang="uk">кидати</td> <td>to throw</td> <td>kydaty</td> </tr>
+            <tr> <td lang="uk">бігати</td> <td>to run</td> <td>bihaty</td> </tr>
+            <tr> <td lang="uk">читати</td> <td>to read</td> <td>chytaty</td> </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Adverbs</h2>
+        <table>
+            <tr>
+                <th>Ukrainian</th>
+                <th>English</th>
+                <th>Pronunciation</th>
+            </tr>
+            <tr> <td lang="uk">ззовні</td> <td>outside</td> <td>zzovni</td> </tr>
+            <tr> <td lang="uk">всередині</td> <td>inside</td> <td>vseredyni</td> </tr>
+            <tr> <td lang="uk">під</td> <td>below</td> <td>pid</td> </tr>
+            <tr> <td lang="uk">над</td> <td>above</td> <td>nad</td> </tr>
+            <tr> <td lang="uk">поруч</td> <td>beside</td> <td>poruch</td> </tr>
+        </table>
+    </div>
+
+    <div class="nav-buttons-container">
+        <a href="../../landing_pages/ukrainian_lessons_en.html" class="nav-button">Back to all lessons</a>
+    </div>
+</body>
+</html>
