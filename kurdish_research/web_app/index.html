@@ -102,26 +102,25 @@
         }
         
         button {
-            background: #2d3748;
-            color: #e1e5e9;
-            border: none;
-            padding: 16px 24px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: 600;
-            transition: background 0.2s, transform 0.1s;
-            min-height: 56px;
-        }
-        
-        button:hover {
-            background: #4a5568;
-            transform: translateY(-1px);
-        }
-        
-        button:active {
-            transform: translateY(0);
-        }
+    background: #2d3748;
+    color: #e1e5e9;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background 0.2s;
+    min-height: 44px;
+}
+
+button:hover {
+    background: #4a5568;
+}
+
+button:active {
+    background: #1a202c;
+}
         
         button:disabled {
             background: #1a202c;
@@ -131,41 +130,55 @@
         }
         
         .play-btn {
-            background: #38a169;
-            font-weight: bold;
-        }
-        
-        .play-btn:hover {
-            background: #48bb78;
-        }
-        
-        .pause-btn {
-            background: #e53e3e;
-            font-weight: bold;
-        }
-        
-        .pause-btn:hover {
-            background: #f56565;
-        }
-        
-        .download-btn {
-            background: #3182ce;
-        }
-        
-        .download-btn:hover {
-            background: #4299e1;
-        }
+    background: #2f855a;
+    font-weight: 500;
+}
+
+.play-btn:hover {
+    background: #38a169;
+}
+
+.pause-btn {
+    background: #c53030;
+    font-weight: 500;
+}
+
+.pause-btn:hover {
+    background: #e53e3e;
+}
+
+.download-btn {
+    background: #2b6cb0;
+}
+
+.download-btn:hover {
+    background: #3182ce;
+}
         
         .downloaded {
             background: #38a169 !important;
             opacity: 0.8;
         }
         
-        .listened-indicator {
-            color: #f6ad55;
-            font-weight: bold;
-            display: none;
-        }
+        .status-indicator {
+    color: #f6ad55;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.status-listened {
+    color: #38a169;
+}
+
+.status-not-completed {
+    color: #f6ad55;
+}
+
+.status-unlistened {
+    color: #718096;
+}
         
         .no-tracks {
             text-align: center;
@@ -219,7 +232,11 @@
 </head>
 <body>
     <h1>Archive Player</h1>
-    <div id="loading" class="loading">Loading tracks...</div>
+<div style="text-align: center; margin-bottom: 20px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+    <button id="filter-btn" style="background: #38a169; color: #e1e5e9; border: none; padding: 16px 24px; border-radius: 12px; cursor: pointer; font-size: 18px; font-weight: 600;">Show Unlistened</button>
+    <button id="update-btn" style="background: #2b6cb0; color: #e1e5e9; border: none; padding: 16px 24px; border-radius: 12px; cursor: pointer; font-size: 18px; font-weight: 600;">Update Podcasts</button>
+</div>
+<div id="loading" class="loading">Loading tracks...</div>
     <div id="tracks-container"></div>
     <div id="no-tracks" class="no-tracks" style="display: none;">
         No MP3 links found. The app will automatically discover audio files from your podcast pages.
@@ -240,7 +257,19 @@
             async init() {
                 document.getElementById('loading').style.display = 'block';
                 await this.initDB();
-                await this.scanForMp3Links();
+                
+                // Try to load cached tracks first
+                const cachedTracks = await this.loadCachedTracks();
+                if (cachedTracks && cachedTracks.length > 0) {
+                    this.tracks = cachedTracks.tracks;
+                    this.categoryStructure = cachedTracks.categoryStructure || new Map();
+                    console.log(`📱 Loaded ${this.tracks.length} cached tracks`);
+                } else {
+                    console.log('🔍 No cached tracks found, scanning...');
+                    await this.scanForMp3Links();
+                    await this.saveCachedTracks();
+                }
+                
                 await this.loadStoredData();
                 this.setupUI();
                 this.setupPageUnloadHandler();
@@ -279,6 +308,11 @@
                         // Store actual audio file data
                         if (!db.objectStoreNames.contains('audioFiles')) {
                             db.createObjectStore('audioFiles', { keyPath: 'url' });
+                        }
+                        
+                        // Store cached track discovery results
+                        if (!db.objectStoreNames.contains('trackCache')) {
+                            db.createObjectStore('trackCache', { keyPath: 'id' });
                         }
                     };
                 });
@@ -322,6 +356,59 @@
                     request.onsuccess = () => resolve(request.result ? request.result.data : null);
                     request.onerror = () => reject(request.error);
                 });
+            }
+
+            async saveCachedTracks() {
+                return new Promise((resolve, reject) => {
+                    const transaction = this.db.transaction(['trackCache'], 'readwrite');
+                    const store = transaction.objectStore('trackCache');
+                    const cacheData = {
+                        id: 'trackDiscovery',
+                        tracks: this.tracks,
+                        categoryStructure: Array.from(this.categoryStructure.entries()),
+                        lastUpdated: Date.now()
+                    };
+                    const request = store.put(cacheData);
+                    request.onsuccess = () => resolve();
+                    request.onerror = () => reject(request.error);
+                });
+            }
+
+            async loadCachedTracks() {
+                return new Promise((resolve, reject) => {
+                    const transaction = this.db.transaction(['trackCache'], 'readonly');
+                    const store = transaction.objectStore('trackCache');
+                    const request = store.get('trackDiscovery');
+                    request.onsuccess = () => {
+                        const result = request.result;
+                        if (result) {
+                            // Convert categoryStructure back to Map
+                            result.categoryStructure = new Map(result.categoryStructure);
+                            resolve(result);
+                        } else {
+                            resolve(null);
+                        }
+                    };
+                    request.onerror = () => reject(request.error);
+                });
+            }
+
+            async updateTrackList() {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('tracks-container').innerHTML = '<div class="loading">Updating track list...</div>';
+                
+                try {
+                    await this.scanForMp3Links();
+                    await this.saveCachedTracks();
+                    await this.loadStoredData();
+                    this.setupUI();
+                    console.log('✅ Track list updated successfully');
+                } catch (error) {
+                    console.error('❌ Failed to update track list:', error);
+                    alert('Failed to update track list. Check your internet connection.');
+                }
+                
+                document.getElementById('loading').style.display = 'none';
             }
 
             async loadStoredData() {
@@ -590,6 +677,34 @@
                 return match ? parseInt(match[1]) : 999;
             }
 
+            getTrackStatus(track) {
+    if (track.listened) {
+        return 'Listened';
+    } else if (track.currentTime > 0) {
+        return 'Not Completed';
+    } else {
+        return 'Unlistened';
+    }
+}
+
+filterTracks(showOnlyIncomplete = true) {
+    const trackRows = document.querySelectorAll('.track-row');
+    trackRows.forEach(row => {
+        const trackId = parseInt(row.dataset.trackId);
+        const track = this.tracks.find(t => t.id === trackId);
+        if (track) {
+            const status = this.getTrackStatus(track);
+            if (showOnlyIncomplete) {
+                // Show only unlistened and not completed
+                row.style.display = (status === 'Unlistened' || status === 'Not Completed') ? 'flex' : 'none';
+            } else {
+                // Show all
+                row.style.display = 'flex';
+            }
+        }
+    });
+}
+
             setupUI() {
                 const container = document.getElementById('tracks-container');
                 const noTracksDiv = document.getElementById('no-tracks');
@@ -642,7 +757,8 @@
                         sortedTracks.forEach(track => {
                             html += `
                                 <div class="track-row" data-track-id="${track.id}">
-                                    <div class="track-title">${track.title} <span class="listened-indicator">Listened</span></div>
+                                    <div class="status-indicator" data-status="${track.id}"></div>
+<div class="track-title">${track.title}</div>
                                     <div class="progress-container" data-progress-container="${track.id}">
                                         <div class="progress-bar" data-progress-bar="${track.id}">
                                             <div class="progress-fill" data-progress-fill="${track.id}"></div>
@@ -672,6 +788,26 @@
                 container.innerHTML = html;
 
                 // Add event listeners
+                // Filter button functionality
+this.showingOnlyIncomplete = true; // Default state
+const filterBtn = document.getElementById('filter-btn');
+filterBtn.addEventListener('click', () => {
+    this.showingOnlyIncomplete = !this.showingOnlyIncomplete;
+    filterBtn.textContent = this.showingOnlyIncomplete ? 'Show All' : 'Show Unlistened';
+    filterBtn.style.background = this.showingOnlyIncomplete ? '#e53e3e' : '#38a169';
+    this.filterTracks(this.showingOnlyIncomplete);
+});
+
+// Update button functionality
+const updateBtn = document.getElementById('update-btn');
+updateBtn.addEventListener('click', async () => {
+    updateBtn.textContent = 'Updating...';
+    updateBtn.disabled = true;
+    await this.updateTrackList();
+    updateBtn.textContent = 'Update Podcasts';
+    updateBtn.disabled = false;
+});
+
                 container.addEventListener('click', (e) => {
                     const playBtn = e.target.closest('[data-play]');
                     const pauseBtn = e.target.closest('[data-pause]');
@@ -707,9 +843,12 @@
                 });
 
                 // Update display for already listened/downloaded tracks
-                this.tracks.forEach(track => {
-                    this.updateTrackDisplay(track);
-                });
+this.tracks.forEach(track => {
+    this.updateTrackDisplay(track);
+});
+
+// Apply initial filter
+this.filterTracks(true); // Start with filter enabled
             }
 
             seekTo(trackId, event) {
@@ -975,33 +1114,32 @@
             }
 
             updateTrackDisplay(track) {
-                const trackElement = document.querySelector(`[data-track-id="${track.id}"]`);
-                if (!trackElement) return;
+    const trackElement = document.querySelector(`[data-track-id="${track.id}"]`);
+    if (!trackElement) return;
 
-                const listenedIndicator = trackElement.querySelector('.listened-indicator');
-                const downloadButton = trackElement.querySelector(`[data-download="${track.id}"]`);
-                const listenedButton = trackElement.querySelector(`[data-listened="${track.id}"]`);
-                
-                if (track.listened) {
-                    listenedIndicator.style.display = 'inline';
-                    if (listenedButton) {
-                        listenedButton.dataset.isListened = 'true';
-                        listenedButton.style.background = '#e53e3e';
-                    }
-                } else {
-                    listenedIndicator.style.display = 'none';
-                    if (listenedButton) {
-                        listenedButton.dataset.isListened = 'false';
-                        listenedButton.style.background = '#38a169';
-                    }
-                }
-                
-                if (track.downloaded) {
-                    downloadButton.textContent = 'Downloaded';
-                    downloadButton.disabled = true;
-                    downloadButton.classList.add('downloaded');
-                }
-            }
+    const statusIndicator = trackElement.querySelector(`[data-status="${track.id}"]`);
+    const downloadButton = trackElement.querySelector(`[data-download="${track.id}"]`);
+    const listenedButton = trackElement.querySelector(`[data-listened="${track.id}"]`);
+    
+    const status = this.getTrackStatus(track);
+    
+    if (statusIndicator) {
+        statusIndicator.textContent = status;
+        statusIndicator.className = `status-indicator status-${status.toLowerCase().replace(' ', '-')}`;
+    }
+    
+    if (listenedButton) {
+        listenedButton.dataset.isListened = track.listened ? 'true' : 'false';
+        listenedButton.textContent = track.listened ? 'Unlistened' : 'Listened';
+        listenedButton.style.background = track.listened ? '#e53e3e' : '#38a169';
+    }
+    
+    if (track.downloaded) {
+        downloadButton.textContent = 'Downloaded';
+        downloadButton.disabled = true;
+        downloadButton.classList.add('downloaded');
+    }
+}
         }
 
         // Initialize app when DOM is loaded
