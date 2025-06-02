@@ -255,26 +255,37 @@ button:active {
             }
 
             async init() {
-                document.getElementById('loading').style.display = 'block';
-                await this.initDB();
-                
-                // Try to load cached tracks first
-                const cachedTracks = await this.loadCachedTracks();
-                if (cachedTracks && cachedTracks.length > 0) {
-                    this.tracks = cachedTracks.tracks;
-                    this.categoryStructure = cachedTracks.categoryStructure || new Map();
-                    console.log(`📱 Loaded ${this.tracks.length} cached tracks`);
-                } else {
-                    console.log('🔍 No cached tracks found, scanning...');
-                    await this.scanForMp3Links();
-                    await this.saveCachedTracks();
-                }
-                
-                await this.loadStoredData();
-                this.setupUI();
-                this.setupPageUnloadHandler();
-                document.getElementById('loading').style.display = 'none';
-            }
+    document.getElementById('loading').style.display = 'block';
+    
+    try {
+        await this.initDB();
+        
+        // Try to load cached tracks first
+        const cachedTracks = await this.loadCachedTracks();
+        if (cachedTracks && cachedTracks.tracks && cachedTracks.tracks.length > 0) {
+            this.tracks = cachedTracks.tracks;
+            this.categoryStructure = cachedTracks.categoryStructure || new Map();
+            console.log(`📱 Loaded ${this.tracks.length} cached tracks`);
+        } else {
+            console.log('🔍 No cached tracks found, scanning...');
+            await this.scanForMp3Links();
+            await this.saveCachedTracks();
+        }
+        
+        await this.loadStoredData();
+        this.setupUI();
+        this.setupPageUnloadHandler();
+    } catch (error) {
+        console.error('Initialization failed:', error);
+        // Fall back to original behavior
+        await this.scanForMp3Links();
+        await this.loadStoredData();
+        this.setupUI();
+        this.setupPageUnloadHandler();
+    }
+    
+    document.getElementById('loading').style.display = 'none';
+}
 
             setupPageUnloadHandler() {
                 // Save current position when user leaves the page
