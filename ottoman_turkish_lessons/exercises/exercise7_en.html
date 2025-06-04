@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Exercise: Lesson 7 Ottoman Phrases</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Ottoman-inspired color scheme (Matches Lesson 2 & 4) */
+        :root {
+            --ottoman-blue: #0081C9; --ottoman-red: #C70039; --ottoman-gold: #FFB100;
+            --ottoman-teal: #00B8A9; --ottoman-navy: #023E7D; --ottoman-cream: #FFF8E1;
+            --ottoman-light-blue: #E0F7FF; --ottoman-pink: #FFCCDF; --ottoman-light-teal: #CCFCF6;
+            --body-background: #1D2F6F; --text-color: #1A3A5A; --text-light: #FFFFFF;
+        }
+        body { font-family: 'Nunito', Arial, sans-serif; line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 15px; background-color: var(--body-background); background-image: url('../ottoman_background.png'); background-repeat: repeat; background-size: 300px auto; box-sizing: border-box; color: var(--text-color); }
+        /* Styles for Ottoman text using Noto Naskh Arabic */
+        [lang="ar"], td:first-child, .ottoman-text, .matching-item.ottoman-text, .fill-input.ottoman-input, .key-btn, .correct-answer-display { font-family: 'Noto Naskh Arabic', serif; font-size: 1.4em; line-height: 1.5; font-weight: 500; }
+        .matching-item.ottoman-text, .key-btn { text-align: center; }
+        .fill-input.ottoman-input { text-align: right; font-size: 1.6em; }
+        /* Ensure table cells with Ottoman text align correctly */
+        td:first-child, td[lang="ar"] { text-align: left !important; padding-top: 18px; padding-bottom: 18px; }
+        * { box-sizing: border-box; }
+        h1, h2, h3 { color: var(--ottoman-navy); font-weight: 700; line-height: 1.3; }
+        h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; color: var(--text-light); }
+        h2 { font-size: 1.5rem; margin-top: 30px; }
+        h3 { font-size: 1.2rem; margin-top: 25px; color: var(--ottoman-blue); }
+        .section { background-color: var(--ottoman-light-blue); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background-color: #C0E0F0; }
+        .title-section { background-color: var(--ottoman-navy); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        .title-section h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 0; margin-top: 0; font-size: 1.8rem; color: var(--text-light); }
+        th, td { padding: 12px 15px; text-align: left; border: none; }
+        th { background-color: var(--ottoman-blue); color: var(--text-light); font-weight: 600; }
+        tr:nth-child(even) { background-color: var(--ottoman-light-blue); }
+        tr:hover { background-color: #B9E7FE; }
+
+        /* Exercise styles - Matching previous lessons */
+        .exercise-list { list-style: none; padding: 0; margin: 0; }
+        .exercise-item { background-color: var(--ottoman-gold); margin-bottom: 20px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .ottoman-text-exercise { font-family: 'Noto Naskh Arabic', serif; font-size: 1.5em; line-height: 1.6; margin-bottom: 5px; text-align: right; direction: rtl; } /* Adjusted for Ottoman script */
+        .translit { font-style: italic; font-size: 0.9em; color: #555; display: block; margin-bottom: 8px; font-family: 'Nunito', Arial, sans-serif; }
+
+        /* Question styles */
+        .question { display: flex; align-items: center; margin-top: 10px; margin-bottom: 5px; flex-wrap: wrap; gap: 10px; }
+        .answer-input { padding: 8px 12px; border: 2px solid #997000; border-radius: 6px; font-size: 16px; font-family: inherit; }
+        .translation-input { width: 100%; max-width: 400px; }
+
+        /* Button styles */
+        .check-btn { padding: 8px 15px; background-color: #FFECB3; color: black; border: none; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: 600; transition: background-color 0.2s ease; }
+        .check-btn:hover { background-color: #FFE082; }
+
+        /* Feedback styles */
+        .feedback, .fill-feedback { margin-top: 8px; margin-left: 5px; font-weight: bold; }
+        .correct, .fill-feedback.correct { color: var(--ottoman-teal); }
+        .incorrect, .fill-feedback.incorrect { color: var(--ottoman-red); }
+        /* Make Ottoman text in correct answer display larger */
+        .correct-answer-display {
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 1.5em; /* Increased size */
+            font-weight: 600;
+            text-align: right; /* Align right for Ottoman */
+            direction: rtl; /* Right-to-left direction */
+            display: block;
+            margin-top: 3px;
+            color: #333;
+        }
+        /* Specific style for sentence building 'Correct' feedback */
+        .fill-feedback.correct.sentence-building {
+            color: black !important;
+            font-size: 1.5rem !important;
+            font-weight: bold !important;
+            font-family: 'Nunito', Arial, sans-serif !important;
+            background-color: var(--ottoman-gold);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        /* Navigation */
+        .nav-buttons-container { display: flex; justify-content: space-between; margin-top: 30px; margin-bottom: 40px; padding: 0 10px; }
+        .nav-button { background-color: var(--ottoman-navy); color: var(--text-light); border: 3px solid var(--ottoman-blue); border-radius: 12px; padding: 15px 20px; font-family: 'Nunito', Arial, sans-serif; font-weight: 600; font-size: 1.3rem; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; text-decoration: none; text-align: center; display: inline-block; line-height: 1.4; }
+        .nav-button:hover { background-color: var(--ottoman-blue); border-color: var(--ottoman-navy); }
+
+        /* Media queries */
+        @media (max-width: 600px) {
+            .section, .title-section { padding: 20px 15px; border-radius: 10px; }
+            h1 { font-size: 1.6rem; padding-bottom: 10px; } h2 { font-size: 1.3rem; } h3 { font-size: 1.1rem; }
+            table { display: block; overflow-x: auto; white-space: nowrap; } th, td { padding: 10px 12px; } th { font-size: 0.9rem; padding: 10px 8px; }
+            .question { flex-direction: column; align-items: stretch; }
+            .answer-input, .translation-input { margin: 0; width: 100%; max-width: none; }
+            .check-btn { margin-top: 10px; width: 100%; padding: 12px; }
+            .feedback, .fill-feedback { display: block; margin-top: 8px; text-align: center; }
+            .nav-buttons-container { flex-direction: column; gap: 15px; } .nav-button { width: 100%; margin: 0; font-size: 1rem;}
+        }
+
+        @media (max-width: 450px) {
+            body { padding: 10px; }
+        }
+
+        /* ADDED STYLES FOR CONGRATS AND NAV BUTTONS - EXACTLY FROM PREVIOUS FILES */
+         .congrats-ottoman { font-family: 'Amiri', serif; font-size: 30px; line-height: 1.4; }
+         .congrats-english { font-size: 1.2em; margin-top: 10px; }
+         .prev-button { margin-right: auto; }
+         .next-button, .exercises-button { margin-left: 10px; }
+         .nav-button.next-button {
+             padding-top: 27px; /* Add padding to the top to push text down */
+         }
+         /* End of added styles */
+
+         /* Additional styles for the dialogue table */
+         .dialogue-table {
+             width: 100%;
+             border-collapse: collapse;
+             margin: 20px 0;
+             border-radius: 8px;
+             overflow: hidden;
+             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+             background-color: #F0FAFF; /* Very light blue background */
+         }
+
+         .dialogue-table th {
+             background-color: var(--ottoman-blue);
+             color: var(--text-light);
+             padding: 12px 15px;
+             text-align: center;
+             font-weight: 600;
+         }
+
+         .dialogue-table td {
+             padding: 12px 15px;
+             text-align: left;
+             border-bottom: 1px solid #B9E7FE;
+             cursor: pointer;
+             position: relative;
+             transition: background-color 0.2s;
+             font-family: 'Nunito', Arial, sans-serif !important; /* Use Nunito for transliteration */
+             font-size: 1rem !important;
+             font-weight: 400 !important;
+             line-height: 1.7 !important;
+         }
+
+         /* Style for Ottoman text in dialogue table */
+         .dialogue-table td.ottoman-text {
+             font-family: 'Noto Naskh Arabic', serif !important;
+             font-size: 1.0em !important;
+             font-weight: 500 !important;
+             line-height: 1.5 !important;
+             text-align: right !important;
+             direction: rtl !important;
+         }
+
+         .dialogue-table td:hover {
+             background-color: #B9E7FE;
+         }
+
+         .ottoman-cell {
+             position: relative;
+         }
+
+         .translation {
+             display: block;
+             margin-top: 5px;
+             font-style: italic;
+             color: #555;
+             font-size: 0.9em;
+         }
+         /* Style for the Ottoman text within the exercise section - REMOVED as replaced by image */
+         /* .ottoman-text-container { ... } */
+
+         /* Style for the image container */
+         .ottoman-image-container {
+             text-align: center;
+             margin: 20px 0;
+         }
+         .ottoman-image-container img {
+            max-width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            background-color: var(--ottoman-cream); /* Background for placeholder */
+         }
+         .image-placeholder-note {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 10px;
+         }
+
+    </style>
+</head>
+<body>
+    <div class="title-section">
+        <h1>Exercises for Lesson 7</h1>
+    </div>
+
+    <div class="section">
+        <h2>Important Note About The Exercises</h2>
+        <p>You are under no obligation to complete these exercises. There are a lot of them and you may not need to do them all to get the point. Feel free to pick and choose whatever you'd like to do or not do.</p>
+        <div style="background-color: #FFD6E0; padding: 15px 20px; margin: 15px 0; position: relative; border-radius: 4px; overflow: hidden;">
+            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 8px; background-color: #FF4D6D;"></div>
+            <p style="margin: 0; padding-left: 10px; color: #1A3A5A;">
+                <strong>Note:</strong> You must know the Lesson 7 Vocabulary from the vocabulary section to do these exercises. Also, some exercises, especially the dialogue, will still have new vocabulary!
+            </p>
+        </div>
+
+        <div class="nav-buttons-container">
+            <a href="#dialogue-section" class="nav-button">Dialogue</a>
+            <a href="#exercise1-section" class="nav-button">Exercise 1</a>
+            <a href="#ottomantext-section" class="nav-button">Ottoman Text</a>
+            <a href="#exercise2-section" class="nav-button">Exercise 2</a>
+        </div>
+    </div>
+
+    <div class="section" id="dialogue-section">
+        <h2>Conversation</h2>
+        <p>Click on any phrase to see its English translation.</p>
+
+        <table class="dialogue-table" id="dialogue-table">
+            <thead>
+                <tr>
+                    <th style="width: 50%;">Ottoman Text</th>
+                    <th style="width: 50%;">Ottoman Text</th>
+                </tr>
+            </thead>
+            <tbody style="font-size: 1.5em;">
+                <tr>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'What is in the kitchen?')">مطبخده نه وار؟</td>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'There are some tomatoes and potatoes.')">بر آز طماطس وه پطاطس وار.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'Is anyone sleeping well?')">کمسه خوش قاقلاشنده می؟</td>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'No, my poor dear brother, all are sick.')">خیر، عزیز دآغیام، بوسی حسته در.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'Who is upstairs?')">اونک آلتی کیمده اولر؟</td>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'Father went.')">بابام گیتده در.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'Is there a good neighbor sister?')">گوزل قونش قارداشنده می؟</td>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'No, the poor thing is in prison.')">خیر، دآغلیانی قافسنده ایتیر.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'What is solid?')">قتآده نه وار؟</td>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'Someone sat down: there is a white neighbor.')">کمسه واردی اوتورماشی: بر بیآز قونش وار.</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'Is the bread with you?')">اکمک سنده می در؟</td>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'No, the bread is not with me.')">خیر، اکمک بنده دایل در.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="exercise1-section">
+        <h2>Exercise: Translate into English</h2>
+        <p>Type the English translation for each Ottoman phrase below.</p>
+
+        <ol class="exercise-list">
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">بر الما وارم؛ سنك بعض شكرلك وار؛ اونك پرتقالرى وار.</div>
+                <div class="question">
+                    <input type="text" id="fill1" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(1, ['I have an apple; thou hast some cherries; he has the oranges.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback1"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">برادرمك كوپکى وار؛ سنك عموك اتك وار.</div>
+                <div class="question">
+                    <input type="text" id="fill2" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(2, ['My brother has the dog; your uncle has a horse.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback2"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">كاج قروش پولك وار؟ — اون يتى قروشم وار.</div>
+                <div class="question">
+                    <input type="text" id="fill3" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(3, ['How much money have you? — I have seventeen piasters.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback3"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">هيچ شكرك وار می؟ — خير افندم هيچ يوق.</div>
+                <div class="question">
+                    <input type="text" id="fill4" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(4, ['Have you any sugar? — No, Sir, I have not any.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback4"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">قلمى قجرماغه وار يدم.</div>
+                <div class="question">
+                    <input type="text" id="fill5" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                     <button class="check-btn" onclick="checkFill(5, ['I had the pen.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback5"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">وار می بانه اكمک و اوزوم. — هيچ اكمک و اوزومك وار می؟</div>
+                <div class="question">
+                    <input type="text" id="fill6" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(6, ['Give me some bread and grapes. — Have you any bread and grapes?'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback6"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">قزك دو چوجوغى وار — ايكى پسرى وار.</div>
+                <div class="question">
+                    <input type="text" id="fill7" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(7, ['The girl has two children — one of them a boy; the other a girl.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback7"></div>
+            </li>
+             <li class="exercise-item">
+                <div class="ottoman-text-exercise">ابت كوپکى وار می؟ — ايوت افندم سزك كوپکنز وار و برادرمك آتى وار.</div>
+                <div class="question">
+                    <input type="text" id="fill8" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(8, ['Have I a dog? — Yes, Sir, you have a dog, and my brother has a horse.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback8"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">قلمى وار می؟ — خير افندم قلمى يوق.</div>
+                <div class="question">
+                    <input type="text" id="fill9" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(9, ['Has the pen? — No, Sir, the pen is not there.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback9"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">حكمتچى کتابنز وار می؟ — خير ولى حكمى قلمى وار.</div>
+                <div class="question">
+                    <input type="text" id="fill10" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(10, ['Has the child any book? — No, but the child has the pen.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback10"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">عموك هيچ پولى وار می؟ اولرده پولى وار می؟ پولى يوق، برادرمك ده يوق.</div>
+                <div class="question">
+                    <input type="text" id="fill11" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(11, ['Has your uncle any money? Is there any money? I have not the money, neither has my brother.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback11"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">کاغذى و قلمى وار می؟ — نه کاغذم وار نه قلمم وار؛ فقت برادرمك هر ايکيسى وار کاغذى ده قلمى ده وار.</div>
+                <div class="question">
+                    <input type="text" id="fill12" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                     <button class="check-btn" onclick="checkFill(12, ['Have you the paper and the pen? — I have neither paper nor pen; but my brother has both paper and pen.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback12"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">اكمكى وار می؟</div>
+                <div class="question">
+                    <input type="text" id="fill13" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                     <button class="check-btn" onclick="checkFill(13, ['Have you the bread?'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback13"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">چوبان نجيبك قاراكوشى وار.</div>
+                <div class="question">
+                    <input type="text" id="fill14" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                     <button class="check-btn" onclick="checkFill(14, ['Shepherd Nejib has the black sheep.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback14"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">باغچهمزده چوق آغآچلر وار: الما، آرمود، زردآلو. الما آغآجنده گوزل قرمزى الملر وار؛ آرمود آغآجنده پك آز آرمودلر وار؛ فقت زردآلو آغآجنده زردآلولر يوق.</div>
+                <div class="question">
+                    <input type="text" id="fill15" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(15, ['There are many trees in our garden: apples, pears, apricots. There are pretty red apples on the apple-tree; there are very few pears on the pear-tree; but there are no apricots on the apricot tree.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback15"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">نيلر واردر؟ — اوچ رطل اوزوملرى، دورت رطل آرمودلرى و بعض قرا گيلاسلرى وار.</div>
+                <div class="question">
+                    <input type="text" id="fill16" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(16, ['What have they got? — They have three pounds of grapes, four pounds of pears and some morella cherries.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback16"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">کستانهلر بيوك کستانهلردر. کستانه آغآجنده بيوك کستانهلر وار.</div>
+                <div class="question">
+                    <input type="text" id="fill17" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(17, ['The chestnuts are large chestnuts. There are large chestnuts on the chestnut-tree.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback17"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">علينك اون بش قروشى واريدى؛ گچن سفرده کاج قروشك وار ايدى؟</div>
+                <div class="question">
+                    <input type="text" id="fill18" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                     <button class="check-btn" onclick="checkFill(18, ['Ali had fifteen piasters; how many piasters did you have last time?'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback18"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">باغده اوزوملر وار می ايدى؟ — خير افندم اوزوملر يوق ايدى، فقت شفتآلو، پرتقال و ليمونلر وار ايدى.</div>
+                <div class="question">
+                    <input type="text" id="fill19" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(19, ['Were there any grapes in the vineyard? — No, sir, there were no grapes, but there were peaches, oranges and lemons.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback19"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">کوچوك قزك چيچگى وار. کوچوك قزك الينده چيچک واريدى.</div>
+                <div class="question">
+                    <input type="text" id="fill20" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(20, ['The little girl has a flower. There was a flower in the hand of the little girl.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback20"></div>
+            </li>
+             <li class="exercise-item">
+                <div class="ottoman-text-exercise">هيچ پولك وار می؟ — ايوت اون بش قروشم وار، فقت خدمتکارك پولى يوق ايدى.</div>
+                <div class="question">
+                    <input type="text" id="fill21" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(21, ['I have you any money? — Yes, I have fifteen piasters, but your servant had no money.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback21"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">استآدك آلتون قلمى وار، دها ايى بوله بلدك می؟ — بولدم افندم، فقت برادرك "گوزل آلتون قلمى" وار.</div>
+                <div class="question">
+                    <input type="text" id="fill22" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(22, ['The master has a gold pen, have you found anything better? — I have, sir, but your brother has a &quot;beautiful gold pen.&quot;'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback22"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise">چوجوغك هيچ کتابى وار می؟ — ايوت چوجوغك کتابى وار**.</div>
+                <div class="question">
+                    <input type="text" id="fill23" class="answer-input translation-input" placeholder="Type translation here..." style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(23, ['Has the child any book? — Yes, the child has the book**.'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback23"></div>
+            </li>
+        </ol>
+    </div>
+
+    <div class="section" id="ottomantext-section">
+        <h2>Original Ottoman Text - Exercise</h2>
+        <p>This is the original Ottoman text for the exercise above (Translate to English). Reading this provides "real" Ottoman reading practice.</p>
+        <div class="ottoman-image-container">
+            <img src="ex_7.png"
+                 alt="Original Ottoman Text - Lesson 7 Exercise"
+                 onerror="this.onerror=null; this.src='https://placehold.co/800x400/FFF8E1/1A3A5A?text=Image+ex_7.png+missing';">
+        </div>
+        
+        <p style="margin-top: 15px;">Congratulations on reading your seventh Ottoman text!</p>
+    </div>
+
+    <div class="section" id="exercise2-section">
+        <h2>Exercise: Translate into Ottoman</h2>
+        <p>Type the Ottoman translation for each English phrase below.</p>
+        <p><strong>Note:</strong> You must use a Persian or Ottoman keyboard to be able to do this exercise.</p>
+
+        <ol class="exercise-list">
+             <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">I have an apple; thou hast some cherries; he has the oranges.</div>
+                <div class="question">
+                    <input type="text" id="fill24" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(24, ['بر الما وارم؛ سنك بعض شكرلك وار؛ اونك پرتقالرى وار'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback24"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">My brother has the dog; your uncle has a horse.</div>
+                <div class="question">
+                    <input type="text" id="fill25" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(25, ['برادرمك كوپکى وار؛ سنك عموك اتك وار'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback25"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">How much money have you? — I have seventeen piasters.</div>
+                <div class="question">
+                    <input type="text" id="fill26" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(26, ['كاج قروش پولك وار؟ — اون يتى قروشم وار'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback26"></div>
+            </li>
+             <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">Have you any sugar? — No, Sir, I have not any.</div>
+                <div class="question">
+                    <input type="text" id="fill27" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(27, ['هيچ شكرك وار می؟ — خير افندم هيچ يوق'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback27"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">I had the pen.</div>
+                <div class="question">
+                    <input type="text" id="fill28" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                     <button class="check-btn" onclick="checkFill(28, ['قلمى قجرماغه وار يدم'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback28"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">Give me some bread and grapes. — Have you any bread and grapes?</div>
+                <div class="question">
+                    <input type="text" id="fill29" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(29, ['وار می بانه اكمک و اوزوم. — هيچ اكمک و اوزومك وار می؟'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback29"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">The girl has two children — one of them a boy; the other a girl.</div>
+                <div class="question">
+                    <input type="text" id="fill30" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(30, ['قزك دو چوجوغى وار — ايكى پسرى وار'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback30"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">Have I a dog? — Yes, Sir, you have a dog, and my brother has a horse.</div>
+                <div class="question">
+                    <input type="text" id="fill31" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(31, ['ابت كوپکى وار می؟ — ايوت افندم سزك كوپکنز وار و برادرمك آتى وار'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback31"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">Has the pen? — No, Sir, the pen is not there.</div>
+                <div class="question">
+                    <input type="text" id="fill32" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(32, ['قلمى وار می؟ — خير افندم قلمى يوق'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback32"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">Has the child any book? — No, but the child has the pen.</div>
+                <div class="question">
+                    <input type="text" id="fill33" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(33, ['حكمتچى کتابنز وار می؟ — خير ولى حكمى قلمى وار'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback33"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">Has your uncle any money? Is there any money? I have not the money, neither has my brother.</div>
+                <div class="question">
+                    <input type="text" id="fill34" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(34, ['عموك هيچ پولى وار می؟ اولرده پولى وار می؟ پولى يوق، برادرمك ده يوق'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback34"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">Have you the paper and the pen? — I have neither paper nor pen; but my brother has both paper and pen.</div>
+                <div class="question">
+                    <input type="text" id="fill35" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                     <button class="check-btn" onclick="checkFill(35, ['کاغذى و قلمى وار می؟ — نه کاغذم وار نه قلمم وار؛ فقت برادرمك هر ايکيسى وار کاغذى ده قلمى ده وار'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback35"></div>
+            </li>
+             <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">Have you the bread?</div>
+                <div class="question">
+                    <input type="text" id="fill36" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                     <button class="check-btn" onclick="checkFill(36, ['اكمكى وار می؟'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback36"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">Shepherd Nejib has the black sheep.</div>
+                <div class="question">
+                    <input type="text" id="fill37" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                     <button class="check-btn" onclick="checkFill(37, ['چوبان نجيبك قاراكوشى وار'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback37"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">There are many trees in our garden: apples, pears, apricots. There are pretty red apples on the apple-tree; there are very few pears on the pear-tree; but there are no apricots on the apricot tree.</div>
+                <div class="question">
+                    <input type="text" id="fill38" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(38, ['باغچهمزده چوق آغآچلر وار: الما، آرمود، زردآلو. الما آغآجنده گوزل قرمزى الملر وار؛ آرمود آغآجنده پك آز آرمودلر وار؛ فقت زردآلو آغآجنده زردآلولر يوق'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback38"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">What have they got? — They have three pounds of grapes, four pounds of pears and some morella cherries.</div>
+                <div class="question">
+                    <input type="text" id="fill39" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(39, ['نيلر واردر؟ — اوچ رطل اوزوملرى، دورت رطل آرمودلرى و بعض قرا گيلاسلرى وار'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback39"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">The chestnuts are large chestnuts. There are large chestnuts on the chestnut-tree.</div>
+                <div class="question">
+                    <input type="text" id="fill40" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(40, ['کستانهلر بيوك کستانهلردر. کستانه آغآجنده بيوك کستانهلر وار'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback40"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">Ali had fifteen piasters; how many piasters did you have last time?</div>
+                <div class="question">
+                    <input type="text" id="fill41" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                     <button class="check-btn" onclick="checkFill(41, ['علينك اون بش قروشى واريدى؛ گچن سفرده کاج قروشك وار ايدى؟'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback41"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">Were there any grapes in the vineyard? — No, sir, there were no grapes, but there were peaches, oranges and lemons.</div>
+                <div class="question">
+                    <input type="text" id="fill42" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(42, ['باغده اوزوملر وار می ايدى؟ — خير افندم اوزوملر يوق ايدى، فقت شفتآلو، پرتقال و ليمونلر وار ايدى'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback42"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">The little girl has a flower. There was a flower in the hand of the little girl.</div>
+                <div class="question">
+                    <input type="text" id="fill43" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(43, ['کوچوك قزك چيچگى وار. کوچوك قزك الينده چيچک واريدى'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback43"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">I have you any money? — Yes, I have fifteen piasters, but your servant had no money.</div>
+                <div class="question">
+                    <input type="text" id="fill44" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(44, ['هيچ پولك وار می؟ — ايوت اون بش قروشم وار، فقت خدمتکارك پولى يوق ايدى'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback44"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">The master has a gold pen, have you found anything better? — I have, sir, but your brother has a "beautiful gold pen."</div>
+                <div class="question">
+                    <input type="text" id="fill45" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(45, ['استآدك آلتون قلمى وار، دها ايى بوله بلدك می؟ — بولدم افندم، فقت برادرك &quot;گوزل آلتون قلمى&quot; وار'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback45"></div>
+            </li>
+            <li class="exercise-item">
+                <div class="ottoman-text-exercise" style="font-family: 'Nunito', Arial, sans-serif; font-size: 1.2em; text-align: left; direction: ltr;">Has the child any book? — Yes, the child has the book**.</div>
+                <div class="question">
+                    <input type="text" id="fill46" class="answer-input translation-input fill-input ottoman-input" dir="rtl" placeholder="" style="background-color: var(--ottoman-gold);">
+                    <button class="check-btn" onclick="checkFill(46, ['چوجوغك هيچ کتابى وار می؟ — ايوت چوجوغك کتابى وار**'])">Check</button>
+                </div>
+                <div class="fill-feedback" id="feedback46"></div>
+            </li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2 style="text-align: center;">
+            <span class="congrats-ottoman">تبريكات<br>درس يدنجى اكمال ايتدكز</span><br><br>
+            <span class="congrats-english" style="display: block; font-size: inherit;">Congratulations<br>You finished the exercises for Lesson 7</span>
+        </h2>
+    </div>
+
+    <div class="nav-buttons-container">
+        <a href="../../landing_pages/ottoman_lessons_en.html" class="nav-button prev-button">Back to all lessons</a>
+    </div>
+
+    <script>
+        // Function to show/hide translations when dialogue cells are clicked
+        function showTranslation(element, translation) {
+            const existingTranslation = element.querySelector('.translation');
+            if (existingTranslation) {
+                element.removeChild(existingTranslation);
+            } else {
+                const translationSpan = document.createElement('span');
+                translationSpan.className = 'translation';
+                translationSpan.textContent = translation;
+                element.appendChild(translationSpan);
+            }
+        }
+
+        // --- General Fill-in Exercise Checker ---
+        function checkFill(id, correctAnswers) {
+            const input = document.getElementById(`fill${id}`);
+            const feedback = document.getElementById(`feedback${id}`);
+            if (!input || !feedback) return;
+
+            let userAnswer = input.value.trim();
+
+            // Normalize text: lowercase, remove punctuation/diacritics, normalize spaces
+            function normalizeText(text) {
+                // Added check for null or undefined text
+                if (text == null) return '';
+                return text
+                    .toLowerCase()
+                    .replace(/[.,!?;:'"()\[\]{}\-_،؛…—–\u2013\u2014\u2012\u2015؟]/g, '') // Punctuation
+                    .replace(/[\u064B-\u065F\u0640]/g, '') // Arabic diacritics
+                    .replace(/\s+/g, ' ').trim(); // Whitespace
+            }
+
+            const normalizedUserAnswer = normalizeText(userAnswer);
+            correctAnswers = Array.isArray(correctAnswers) ? correctAnswers : [correctAnswers];
+            let correctDisplayAnswer = correctAnswers[0]; // Keep original for display
+            // Normalize correct answers, handling potential null/undefined values
+            const normalizedCorrectAnswers = correctAnswers.map(ans => normalizeText(ans));
+            const isCorrect = normalizedCorrectAnswers.includes(normalizedUserAnswer);
+
+            const correctFeedbackText = 'Correct 💯';
+            if (isCorrect) {
+                feedback.textContent = correctFeedbackText;
+                feedback.className = 'fill-feedback correct sentence-building';
+                input.style.borderColor = 'var(--ottoman-teal)';
+            } else {
+                feedback.innerHTML = `Incorrect ❌ Correct: <span class="correct-answer-display">${correctDisplayAnswer || ''}</span>`; // Handle potential null display answer
+                feedback.className = 'fill-feedback incorrect';
+                input.style.borderColor = 'var(--ottoman-red)';
+                // Do not clear input on incorrect
+            }
+        }
+
+
+        // Add event listeners for Enter key
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.answer-input');
+            inputs.forEach(input => {
+                input.addEventListener('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        const checkBtn = this.closest('.question').querySelector('.check-btn');
+                        if (checkBtn) {
+                            checkBtn.click();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
