@@ -1,0 +1,289 @@
+/* Ottoman-inspired color scheme (Matches Lesson 1) */
+:root {
+    --ottoman-blue: #0081C9; --ottoman-red: #C70039; --ottoman-gold: #FFB100;
+    --ottoman-teal: #00B8A9; --ottoman-navy: #023E7D; --ottoman-cream: #FFF8E1;
+    --ottoman-light-blue: #E0F7FF; --ottoman-pink: #FFCCDF; --ottoman-light-teal: #CCFCF6;
+    --body-background: #1D2F6F; --text-color: #1A3A5A; --text-light: #FFFFFF;
+}
+body { font-family: 'Nunito', Arial, sans-serif; line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 15px; background-color: var(--body-background); background-image: url('../ottoman_background.png'); background-repeat: repeat; background-size: 300px auto; box-sizing: border-box; color: var(--text-color); }
+[lang="ar"], td:first-child, .ottoman-text, .matching-item.ottoman-text, .fill-input.ottoman-input, .key-btn, .correct-answer-display { font-family: 'Noto Naskh Arabic', serif; font-size: 1.3em; line-height: 1.5; font-weight: 500; direction: rtl; text-align: right; }
+/* Latin text styling - Fix for oversized Latin text */
+.latin-text { font-family: 'Nunito', Arial, sans-serif !important; font-size: 1.0em !important; font-weight: normal !important; direction: ltr !important; }
+
+.matching-item.ottoman-text, .key-btn { text-align: center; }
+.fill-input.ottoman-input { text-align: right; font-size: 1.6em; }
+td:first-child, td[lang="ar"] { text-align: left !important; padding-top: 18px; padding-bottom: 18px; }
+* { box-sizing: border-box; }
+h1, h2, h3 { color: var(--ottoman-navy); font-weight: 700; line-height: 1.3; }
+h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; color: var(--text-light); }
+h2 { font-size: 1.5rem; margin-top: 30px; }
+h3 { font-size: 1.2rem; margin-top: 25px; color: var(--ottoman-blue); }
+.section { background-color: var(--ottoman-light-blue); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background-color: #C0E0F0; }
+.title-section { background-color: var(--ottoman-navy); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+.title-section h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 0; margin-top: 0; font-size: 1.8rem; color: var(--text-light); }
+th, td { padding: 12px 15px; text-align: left; border: none; }
+th { background-color: var(--ottoman-blue); color: var(--text-light); font-weight: 600; }
+tr:nth-child(even) { background-color: var(--ottoman-light-blue); }
+tr:hover { background-color: #B9E7FE; }
+.note { background-color: var(--ottoman-pink); padding: 15px; border-left: 4px solid var(--ottoman-red); margin: 20px 0; border-radius: 0 8px 8px 0; }
+
+/* Feedback Styles (Match Lesson 1) */
+.feedback, .fill-feedback { margin-top: 8px; margin-left: 5px; font-weight: bold; }
+/* Correct/Incorrect feedback text colors AND STYLE - MATCH L1 Ex2 */
+.fill-feedback.correct { color: var(--ottoman-teal); /* L1 uses teal for .correct */ }
+.fill-feedback.incorrect { color: var(--ottoman-red); /* L1 uses red for .incorrect */ }
+/* Specific style for matching game 'Correct' feedback to match L1 */
+.matching-feedback.correct { color: black !important; font-size: 1.5rem !important; }
+/* Style for sentence building feedback */
+.fill-feedback.correct.sentence-building { 
+    color: black !important; 
+    font-size: 1.5rem !important; 
+    font-weight: bold !important;
+    font-family: 'Nunito', Arial, sans-serif !important;
+    background-color: var(--ottoman-gold);
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+/* Display for showing correct answer on incorrect attempt */
+.correct-answer-display { display: inline-block; margin-left: 5px; }
+
+/* Matching Game Styles (Match Lesson 1) */
+.matching-game { background-color: var(--ottoman-gold); padding: 20px; border-radius: 8px; margin-top: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.matching-columns-container { display: flex; gap: 10px; margin-bottom: 20px; }
+.matching-column { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.matching-column h4 { text-align: center; margin-bottom: 10px; }
+.matching-item-container { display: flex; flex-direction: column; gap: 10px; }
+.matching-item { padding: 12px 15px; background-color: white; border: 2px solid var(--ottoman-blue); border-radius: 8px; cursor: pointer; transition: all 0.2s ease; text-align: center; -webkit-tap-highlight-color: transparent; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.matching-item:hover { background-color: var(--ottoman-light-blue); }
+.matching-item.selected { background-color: var(--ottoman-blue); color: var(--text-light); }
+.matching-item.matched { background-color: var(--ottoman-gold); color: black; border-color: var(--ottoman-gold); cursor: default; }
+.matching-result { text-align: center; }
+.matching-result div { font-size: 1.2rem; font-weight: bold; color: black; margin-top: 15px; }
+
+
+/* Fill-in / Sentence Building Styles (Match Lesson 1 Ex2 & Ex5) */
+.fill-exercise { margin-top: 30px; }
+/* Container for each exercise item - MATCH L1 Ex2 */
+.fill-item { background-color: var(--ottoman-gold); /* #FFB100 */ margin-bottom: 20px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+/* General row for inputs/text - MATCH L1 Ex2 */
+.exercise-row { display: flex; align-items: center; gap: 12px; /* MATCH L1 Ex2 gap */ margin-bottom: 10px; flex-wrap: wrap; color: var(--text-color); font-weight: 500; }
+/* Translation text style - MATCH L1 Ex2 placement (inside flex row) */
+.translation { color: black; font-size: 1.1em; /* Adjusted slightly from L1's 1.2em for better fit in this context */ }
+/* Input field - MATCH L1 Ex2 styles */
+.fill-input { background-color: var(--ottoman-gold); /* #FFB100 - Match L1 Ex2 internal color */ width: 120px; /* Default width like L1 Ex2 */ padding: 8px 12px; border: 2px solid #997000; /* Match L1 Ex2 border */ border-radius: 6px; font-size: 16px; font-family: inherit; }
+/* Wider input for sentence building like L1 Ex5 */
+.fill-input.long-input { width: 100%; max-width: 400px; }
+/* Ottoman Input specific font override (already present, ensure consistency) */
+.fill-input.ottoman-input { font-family: 'Noto Naskh Arabic', serif; font-size: 1.6em; direction: rtl; text-align: right; }
+/* Container for key buttons - MATCH L1 Ex2 */
+.key-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+/* Key buttons (Match L1 Ex2/Ex5) */
+.key-btn { padding: 5px 12px; background-color: #FFECB3; border: 1px solid #E6A800; border-radius: 6px; cursor: pointer; color: #333; font-size: 1.6em; font-family: 'Noto Naskh Arabic', serif; /* Explicitly set font */ text-align: center; /* Ensure centering */ }
+.key-btn:hover { background-color: #FFE082; color: black; }
+/* Check button (Match L1 Ex2/Ex5) */
+.fill-check { padding: 8px 15px; background-color: #FFECB3; color: black; border: none; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: 600; transition: background-color 0.2s ease; }
+.fill-check:hover { background-color: #FFE082; }
+
+
+/* Congratulations (Match Lesson 1 Structure/Style) */
+ /* Using standard .section */
+ .congrats-ottoman { font-family: 'Amiri', serif; font-size: 30px; /* Match L1 inline style */ line-height: 1.4; }
+ .congrats-english { font-size: 1.2em; margin-top: 10px; }
+ 
+/* Word Order Game Styles - For Duolingo-style exercise */
+.word-order-game {
+    background-color: var(--ottoman-light-blue);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.game-sentence {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.game-sentence.completed {
+    background-color: var(--ottoman-light-teal);
+    border-left: 4px solid var(--ottoman-teal);
+}
+
+.game-sentence-translation {
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.sentence-number {
+    display: inline-block;
+    min-width: 45px;
+    font-weight: 700;
+    color: var(--ottoman-red);
+}
+
+.solution-area {
+    min-height: 60px;
+    padding: 10px;
+    background-color: #e0f7ff;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+    border: 2px dashed var(--ottoman-blue);
+    direction: rtl; /* Fix for RTL language */
+    justify-content: flex-start; /* Right justify content for RTL */
+}
+
+.words-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+    background-color: var(--ottoman-cream);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    direction: rtl; /* Fix for RTL language */
+}
+
+.word-box {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: var(--ottoman-blue); /* Changed to match website blue */
+    color: white; /* Better contrast for blue background */
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    margin: 0;
+    font-weight: 500;
+    border: 2px solid transparent;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+.solution-area .word-box {
+    background-color: #c0e0f0;
+    color: var(--text-color); /* Reset color for solution box */
+    border-color: var(--ottoman-blue);
+}
+
+.word-box:active {
+    transform: scale(0.95);
+}
+
+.game-feedback {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.feedback-correct {
+    color: var(--ottoman-teal);
+}
+
+.feedback-incorrect {
+    color: var(--ottoman-red);
+}
+
+.sentence-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.check-btn, .show-answer-btn, .delete-btn {
+    flex: 1;
+    background-color: var(--ottoman-blue);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.check-btn:hover, .show-answer-btn:hover, .delete-btn:hover {
+    background-color: #006aa3; /* Darker blue on hover */
+}
+
+.check-btn:active, .show-answer-btn:active, .delete-btn:active {
+    transform: scale(0.98);
+}
+
+.show-answer-btn {
+    background-color: var(--ottoman-light-blue);
+    color: var(--text-color);
+}
+
+.show-answer-btn:hover {
+    background-color: #c0e0f0;
+}
+
+.delete-btn {
+    background-color: #ffccdf;
+    color: var(--text-color);
+}
+
+.delete-btn:hover {
+    background-color: #ffb3c6;
+}
+
+/* Navigation (Match Lesson 1) */
+.nav-buttons-container { display: flex; justify-content: space-between; margin-top: 30px; margin-bottom: 40px; padding: 0 10px; }
+.nav-button { background-color: var(--ottoman-navy); color: var(--text-light); border: 3px solid var(--ottoman-blue); border-radius: 12px; padding: 15px 20px; font-family: 'Nunito', Arial, sans-serif; font-weight: 600; font-size: 1.3rem; /* Match L1 size */ cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; text-decoration: none; text-align: center; display: inline-block; line-height: 1.4; }
+.nav-button:hover { background-color: var(--ottoman-blue); border-color: var(--ottoman-navy); }
+.prev-button { margin-right: auto; }
+.next-button, .exercises-button { margin-left: 10px; }
+.nav-button.next-button {
+padding-top: 27px;  /* Add padding to the top to push text down */
+}
+
+ /* Small Latin text (Match Lesson 1) */
+ .small-latin { font-size: 0.6em !important; font-family: 'Nunito', Arial, sans-serif !important; font-weight: normal !important; display: inline-block; vertical-align: middle; direction: ltr; text-align: left; }
+
+/* Media queries (Copied from Lesson 1 for consistency) */
+@media (max-width: 600px) {
+    .section, .title-section { padding: 20px 15px; border-radius: 10px; }
+    h1 { font-size: 1.6rem; padding-bottom: 10px; } h2 { font-size: 1.3rem; } h3 { font-size: 1.1rem; }
+    table { display: block; overflow-x: auto; white-space: nowrap; } th, td { padding: 10px 12px; } th { font-size: 0.9rem; padding: 10px 8px; }
+    .exercise { padding: 15px; }
+    .matching-columns-container { flex-direction: column; gap: 15px; } .matching-item { font-size: 1em; padding: 10px 12px; } .matching-item.ottoman-text { font-size: 1.2em; }
+    /* Fill-in exercises - Adjust layout like L1 Ex2 on mobile */
+    .exercise-row { flex-direction: row; align-items: center; gap: 8px; flex-wrap: wrap;} /* Keep row, allow wrap, smaller gap */
+    .exercise-row .ottoman-text { flex-shrink: 0; /* Prevent shrinking */ margin-right: 5px;}
+    .exercise-row .fill-input { flex-grow: 1; width: auto; min-width: 80px; margin-right: 5px;} /* Allow input to grow */
+    .exercise-row .translation { flex-basis: auto; /* Don't force full width */}
+
+    .fill-input { width: 100%; max-width: none; margin-top: 5px; } /* Override default width */
+    .key-container { justify-content: center; }
+    .fill-check { width: 100%; max-width: 300px; margin-top: 10px; }
+    /* Specific adjustments for Ex2 layout on mobile (Already present, review) */
+     .fill-item .exercise-row-ex2 { flex-direction: row; flex-wrap: wrap;} /* Allow wrap */
+     .fill-item .exercise-row-ex2 .ottoman-text { margin-left: 10px; } /* Space between name and input */
+    /* Navigation */
+    .nav-buttons-container { flex-direction: column; gap: 15px; } .nav-button { width: 100%; margin: 0; font-size: 1rem;}
+    body { padding: 10px; }
+    
+    /* Word order game mobile adjustments */
+    .sentence-buttons {
+        flex-direction: column;
+    }
+    
+    .check-btn, .show-answer-btn, .delete-btn {
+        width: 100%;
+    }
+}
+ @media (max-width: 450px) {
+     .matching-item { padding: 10px 8px; font-size: 0.9em; } .matching-item.ottoman-text { font-size: 1.1em; }
+     .key-btn { font-size: 1.4em; padding: 4px 10px;} .nav-button { padding: 12px 15px; }
+     .exercise-row {gap: 5px;} /* Further reduce gap on very small screens */
+ }

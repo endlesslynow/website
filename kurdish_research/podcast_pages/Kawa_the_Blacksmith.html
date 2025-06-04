@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kawa the Blacksmith</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kawa the Blacksmith</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Kawa the Blacksmith_ Myth of Resistance and Renewal.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Kawa the Blacksmith_ Myth of Resistance and Renewal.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>These sources comprehensively examine the legend of Kawa the Blacksmith, a pivotal heroic figure in Persian and Kurdish mythology who leads a revolt against the tyrannical King Zahhak. The texts highlight Kawa&#x27;s transformation from a humble craftsman to a symbol of justice, resistance, and freedom, contrasting his popular origin with aristocratic epic heroes. They detail how his story is prominently featured in Ferdowsi&#x27;s Shahnameh while also acknowledging variations in Kurdish tradition, where Kawa&#x27;s role in defeating the tyrant and the connection to Kurdish ancestry are often more central. The sources also explore the deep symbolic links between Kawa&#x27;s victory and the Newroz festival, particularly the symbolism of fire, and touch upon scholarly theories regarding the myth&#x27;s origins and evolution. Ultimately, Kawa is presented as a timeless icon whose legacy endures in art, literature, and contemporary struggles for self-determination.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Kawa the Blacksmith Research_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Kaveh the Blacksmith - Wikipedia, accessed June 4, 2025, <a href="https://en.wikipedia.org/wiki/Kaveh_the_Blacksmith" target="_blank">https://en.wikipedia.org/wiki/Kaveh_the_Blacksmith</a></li>
+<li>​ The Legend of Kawa by Shirzad Alkadhi - Middle East Books and More, accessed June 4, 2025, <a href="https://www.middleeastbooks.com/products/the-legend-of-kawa-by-shirzad-alk" target="_blank">https://www.middleeastbooks.com/products/the-legend-of-kawa-by-shirzad-alk</a> adhi</li>
+<li>​کاوه آهنگر - راز اساطیر, accessed June 4, 2025, <a href="https://razasatir.ir/%DA%A9%D8%A7%D9%88%D9%87-%D8%A2%D9%87%D9%8" target="_blank">https://razasatir.ir/%DA%A9%D8%A7%D9%88%D9%87-%D8%A2%D9%87%D9%8</a> 6%DA%AF%D8%B1/</li>
+<li>​ Everything about Ferdowsi&#x27;s Shahnameh - EavarTravel, accessed June 4, 2025, <a href="https://www.eavartravel.com/blog/2023/11/19/140746/shahnameh/" target="_blank">https://www.eavartravel.com/blog/2023/11/19/140746/shahnameh/</a></li>
+<li>​ Who is Kawa in Kurdish mythology? - Persian History - Quora, accessed June 4, 2025, <a href="https://persianhistory.quora.com/https-www-quora-com-Who-is-Kawa-in-Kurdis" target="_blank">https://persianhistory.quora.com/https-www-quora-com-Who-is-Kawa-in-Kurdis</a> h-mythology-answer-Mary-Louis-17</li>
+<li>​ A Comparative Research about the Origin of the Name and Personality of Kaveh Ahangar, accessed June 4, 2025, <a href="https://jcl.uk.ac.ir/article_3615.html?lang=en" target="_blank">https://jcl.uk.ac.ir/article_3615.html?lang=en</a></li>
+<li>​ Journal of Poetry Studies, accessed June 4, 2025, <a href="https://jba.shirazu.ac.ir/jufile?ar_sfile=252145" target="_blank">https://jba.shirazu.ac.ir/jufile?ar_sfile=252145</a></li>
+<li>​ Newroz and the legend of Kawa | Kurdish Lobby Australia, accessed June 4, 2025, <a href="http://www.kurdishlobbyaustralia.com/wp-content/uploads/2016/12/Newroz-and-" target="_blank">http://www.kurdishlobbyaustralia.com/wp-content/uploads/2016/12/Newroz-and-</a> the-legend-of-Kawa.pdf</li>
+<li>​ Kaveh Ahangar: An Inspiring Journey Of Triumph Over Adversity ..., accessed June 4, 2025, <a href="https://radtravel.co/kaveh-the-blacksmith/" target="_blank">https://radtravel.co/kaveh-the-blacksmith/</a></li>
+<li>​Generations of Iranians have grown up with the story of Kaveh Ahangar. Kaveh saved many people by starting a rebellion against t - Arms and Armor from Iran by Manouchehr Moshtagh Khorasani, accessed June 4, 2025, <a href="http://www.arms-and-armor-from-iran.de/PDF/Rozanehmagazine01.com.pdf" target="_blank">http://www.arms-and-armor-from-iran.de/PDF/Rozanehmagazine01.com.pdf</a></li>
+<li>​Kawa the blacksmith: Kurdish symbol of resistance - Kurdish Institute ..., accessed June 4, 2025, <a href="https://www.institutkurde.org/en/info/latest/kawa-the-blacksmith-kurdish-symbol" target="_blank">https://www.institutkurde.org/en/info/latest/kawa-the-blacksmith-kurdish-symbol</a> -of-resistance-7973/</li>
+<li>​نگاهی بر زندگی کاوه آهنگر شخصیت اسطوره ای شاهنامه فردوسی - روزانه, accessed June 4, 2025, <a href="https://roozaneh.net/art-culture/historical/%DA%A9%D8%A7%D9%88%D9%87-%" target="_blank">https://roozaneh.net/art-culture/historical/%DA%A9%D8%A7%D9%88%D9%87-%</a> D8%A2%D9%87%D9%86%DA%AF%D8%B1/</li>
+<li>​Kaveh the Blacksmith - Explore Mythology - Gods and Monsters, accessed June 4, 2025, <a href="https://godsandmonsters.info/kaveh-the-blacksmith/" target="_blank">https://godsandmonsters.info/kaveh-the-blacksmith/</a></li>
+<li>​Derafsh Kaviani - Wikipedia, accessed June 4, 2025, <a href="https://en.wikipedia.org/wiki/Derafsh_Kaviani" target="_blank">https://en.wikipedia.org/wiki/Derafsh_Kaviani</a></li>
+<li>​Derafsh - Wikipedia, accessed June 4, 2025, <a href="https://en.wikipedia.org/wiki/Derafsh" target="_blank">https://en.wikipedia.org/wiki/Derafsh</a></li>
+<li>​Kurds blend mythology, modernity during Newroz celebrations, accessed June 4, 2025, <a href="https://npasyria.com/en/95078/" target="_blank">https://npasyria.com/en/95078/</a></li>
+<li>​philarchive.org, accessed June 4, 2025, <a href="https://philarchive.org/archive/FALNAT-2" target="_blank">https://philarchive.org/archive/FALNAT-2</a></li>
+<li>​Kawa, the Blacksmith - VI-CONTROL, accessed June 4, 2025, <a href="https://vi-control.net/community/threads/kawa-the-blacksmith.69690/" target="_blank">https://vi-control.net/community/threads/kawa-the-blacksmith.69690/</a></li>
+<li>​Kaveh Genshin Impact - HoYoLAB, accessed June 4, 2025, <a href="https://www.hoyolab.com/article/20749597" target="_blank">https://www.hoyolab.com/article/20749597</a></li>
+<li>​Kaveh Ahangar - Google Arts &amp; Culture, accessed June 4, 2025, <a href="https://artsandculture.google.com/story/kaveh-ahangar-dubai-culture-arts-autho" target="_blank">https://artsandculture.google.com/story/kaveh-ahangar-dubai-culture-arts-autho</a> rity/NgVxY18jfJlw_A?hl=en</li>
+<li>​fezana journal, accessed June 4, 2025, <a href="https://fezana.org/fjissue/FEZANA_2016_01_Spring.pdf" target="_blank">https://fezana.org/fjissue/FEZANA_2016_01_Spring.pdf</a></li>
+<li>​in sidet hj sis s ue - FEZANA, accessed June 4, 2025, <a href="http://fezana.org/fjissue/FEZANA_2000_02_Summer.pdf" target="_blank">http://fezana.org/fjissue/FEZANA_2000_02_Summer.pdf</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 04, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

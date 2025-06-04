@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hannah's Coffee Shop - Interactive Dialogue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(to bottom, #fff7ed, #fef3c7);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: none;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            flex: 1;
+            max-width: 28rem;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .dialogue-history {
+            width: 320px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-left: 1px solid #e5e7eb;
+            padding: 1rem;
+            overflow-y: auto;
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            display: none;
+        }
+
+        .dialogue-history.visible {
+            display: block;
+        }
+
+        #history-content {
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .history-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 1rem;
+            text-align: center;
+            border-bottom: 2px solid #f59e0b;
+            padding-bottom: 0.5rem;
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 5;
+            margin-top: -1rem;
+            padding-top: 1rem;
+        }
+
+        .history-item {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        .history-item.character {
+            background-color: #fef3c7;
+            border-left: 3px solid #f59e0b;
+            color: #78350f;
+        }
+
+        .history-item.user {
+            background-color: #dbeafe;
+            border-left: 3px solid #3b82f6;
+            color: #1e40af;
+            margin-left: 1rem;
+        }
+
+        .history-speaker {
+            font-weight: 600;
+            font-size: 0.75rem;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .history-text {
+            margin: 0;
+        }
+
+        .clear-history {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .clear-history button {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+
+        .clear-history button:hover {
+            background-color: #dc2626;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .title {
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #d97706;
+        }
+
+        .dialogue-box {
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .dialogue-box.hannah {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            color: #78350f;
+        }
+
+        .dialogue-box.bird {
+            background-color: #dcfce7;
+            border-left: 4px solid #22c55e;
+            color: #14532d;
+        }
+
+        .speaker-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .dialogue-text {
+            font-size: 1.125rem;
+            line-height: 1.75;
+        }
+
+        .dialogue-text .spanish {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: opacity 0.5s ease-in;
+        }
+
+        .choice-button {
+            width: 100%;
+            text-align: left;
+            padding: 1rem;
+            background-color: white;
+            border: 2px solid #bfdbfe;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            color: #1e40af;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .choice-button .spanish {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .choice-button .english {
+            display: block;
+            font-size: 0.75rem;
+            opacity: 0.6;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .choice-button:hover {
+            background-color: #eff6ff;
+            border-color: #60a5fa;
+            transform: scale(1.02);
+        }
+
+        .choice-button:active {
+            transform: scale(0.98);
+        }
+
+        .atmosphere {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .atmosphere-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .atmosphere-text {
+            font-size: 0.875rem;
+            color: #d97706;
+            font-style: italic;
+        }
+
+        .level-selection {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .level-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 1rem;
+        }
+
+        .level-button {
+            display: block;
+            width: 100%;
+            margin: 0.75rem 0;
+            padding: 1.25rem;
+            background-color: white;
+            border: 3px solid #bfdbfe;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .level-button:hover {
+            background-color: #eff6ff;
+            border-color: #60a5fa;
+            transform: scale(1.02);
+        }
+
+        .level-button .level-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .level-button .level-description {
+            font-size: 0.875rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        .english-toggle {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background-color: rgba(59, 130, 246, 0.1);
+            border: 1px solid #bfdbfe;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            color: #2563eb;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .english-toggle:hover {
+            background-color: rgba(59, 130, 246, 0.2);
+            border-color: #60a5fa;
+        }
+
+        .english-translation {
+            display: none;
+            font-size: 0.875rem;
+            opacity: 0.7;
+            font-style: italic;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 0.25rem;
+        }
+
+        .english-translation.visible {
+            display: block;
+        }
+
+        .typing-input {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            border: 2px solid #bfdbfe;
+            border-radius: 0.5rem;
+            margin: 0.75rem 0;
+            background-color: white;
+            color: #1e40af;
+        }
+
+        .typing-input:focus {
+            outline: none;
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+        }
+
+        .typing-prompt {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .submit-button {
+            padding: 0.75rem 1.5rem;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .submit-button:hover {
+            background-color: #2563eb;
+        }
+
+        .submit-button:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .feedback {
+            margin: 0.75rem 0;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .feedback.correct {
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #22c55e;
+        }
+
+        .feedback.incorrect {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+
+        .word-assembly {
+            margin: 0.75rem 0;
+        }
+
+        .word-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            min-height: 3rem;
+            padding: 0.75rem;
+            border: 2px dashed #bfdbfe;
+            border-radius: 0.5rem;
+            background-color: #f8fafc;
+        }
+
+        .word-button {
+            padding: 0.5rem 0.75rem;
+            background-color: white;
+            border: 2px solid #bfdbfe;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+            color: #1e40af;
+            font-weight: 500;
+            user-select: none;
+        }
+
+        .word-button:hover {
+            background-color: #eff6ff;
+            border-color: #60a5fa;
+            transform: translateY(-1px);
+        }
+
+        .word-button.used {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .word-button.used:hover {
+            background-color: white;
+            border-color: #bfdbfe;
+            transform: none;
+        }
+
+        .assembly-area {
+            min-height: 3rem;
+            padding: 0.75rem;
+            border: 2px solid #3b82f6;
+            border-radius: 0.5rem;
+            background-color: white;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .assembly-area.empty {
+            border-style: dashed;
+            border-color: #bfdbfe;
+            color: #64748b;
+            font-style: italic;
+            justify-content: center;
+        }
+
+        .assembled-word {
+            padding: 0.5rem 0.75rem;
+            background-color: #dbeafe;
+            border: 2px solid #3b82f6;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+            color: #1e40af;
+            font-weight: 500;
+            user-select: none;
+        }
+
+        .assembled-word:hover {
+            background-color: #fca5a5;
+            border-color: #ef4444;
+        }
+
+        .assembly-prompt {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .clear-button {
+            padding: 0.5rem 1rem;
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-right: 0.5rem;
+        }
+
+        .clear-button:hover {
+            background-color: #dc2626;
+        }
+
+        .level-indicator {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .loading {
+            text-align: center;
+            color: #d97706;
+            font-size: 1.125rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 0.5rem;
+            }
+            
+            .title {
+                font-size: 1.5rem;
+            }
+            
+            .dialogue-text {
+                font-size: 1rem;
+            }
+            
+            .choice-button {
+                padding: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <!-- Level Indicator -->
+            <div id="level-indicator" class="level-indicator" style="display: none;"></div>
+
+            <!-- Header -->
+            <div class="header">
+                <h1 class="title">☕ Hannah's Coffee Shop</h1>
+                <p class="subtitle">An Interactive Spanish Learning Story</p>
+            </div>
+
+            <!-- Level Selection -->
+            <div id="level-selection" class="level-selection">
+                <h2 class="level-title">Choose Your Learning Level</h2>
+                <button class="level-button" onclick="selectLevel(1)">
+                    <div class="level-name">Level 1 - Multiple Choice</div>
+                    <div class="level-description">Choose from Spanish options with English translations available. Perfect for beginners!</div>
+                </button>
+                <button class="level-button" onclick="selectLevel(2)">
+                    <div class="level-name">Level 2 - Word Assembly</div>
+                    <div class="level-description">Click word buttons to build Spanish sentences. Duolingo-style challenge!</div>
+                </button>
+                <button class="level-button" onclick="selectLevel(3)">
+                    <div class="level-name">Level 3 - Type in Spanish</div>
+                    <div class="level-description">Type your responses in Spanish based on English prompts. Advanced challenge!</div>
+                </button>
+            </div>
+
+            <!-- Loading Message -->
+            <div id="loading" class="loading" style="display: none;">Loading dialogue...</div>
+
+            <!-- Dialogue Box -->
+            <div id="dialogue-box" class="dialogue-box" style="display: none;">
+                <div id="speaker-name" class="speaker-name"></div>
+                <p id="dialogue-text" class="dialogue-text"></p>
+            </div>
+
+            <!-- Choices -->
+            <div id="choices" class="choices"></div>
+
+            <!-- Coffee Shop Atmosphere -->
+            <div class="atmosphere">
+                <div class="atmosphere-emoji">☕🥐🧁</div>
+                <p class="atmosphere-text">Welcome to Dohuk's friendliest coffee shop!</p>
+            </div>
+        </div>
+
+        <!-- Dialogue History Panel -->
+        <div id="dialogue-history" class="dialogue-history">
+            <div id="history-content"></div>
+        </div>
+    </div>
+
+    <script>
+        let dialogueTree = null;
+        let currentNode = 'START';
+        let currentLevel = null;
+        let dialogueHistory = [];
+
+        function getSpeakerName(speaker) {
+            switch (speaker) {
+                case 'hannah':
+                    return 'Hannah';
+                case 'bird':
+                    return 'Max the Bird';
+                default:
+                    return '';
+            }
+        }
+
+        function selectLevel(level) {
+            currentLevel = level;
+            dialogueHistory = []; // Reset history when starting
+            document.getElementById('level-selection').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('level-indicator').style.display = 'block';
+            document.getElementById('level-indicator').textContent = `Level ${level}`;
+            
+            // Show history panel on desktop
+            const historyPanel = document.getElementById('dialogue-history');
+            if (window.innerWidth >= 1024) {
+                historyPanel.classList.add('visible');
+            }
+            
+            loadDialogue();
+        }
+
+        function toggleEnglishTranslation(element) {
+            const translation = element.nextElementSibling;
+            if (translation && translation.classList.contains('english-translation')) {
+                translation.classList.toggle('visible');
+                element.textContent = translation.classList.contains('visible') ? 'Hide English' : 'Show English';
+            }
+        }
+
+        function addToHistory(speaker, text, isUser = false) {
+            dialogueHistory.push({
+                speaker: speaker,
+                text: text,
+                isUser: isUser,
+                timestamp: Date.now()
+            });
+            updateHistoryDisplay();
+        }
+
+        function updateHistoryDisplay() {
+            const historyContent = document.getElementById('history-content');
+            if (!historyContent) return;
+            
+            const historyHTML = dialogueHistory.map(item => {
+                const className = item.isUser ? 'user' : 'character';
+                const speaker = item.isUser ? 'You' : item.speaker;
+                
+                return `
+                    <div class="history-item ${className}">
+                        <div class="history-speaker">${speaker}</div>
+                        <div class="history-text">${item.text}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Update content without title
+            historyContent.innerHTML = historyHTML;
+            
+            // Auto-scroll to bottom
+            setTimeout(() => {
+                historyContent.scrollTop = historyContent.scrollHeight;
+            }, 50);
+        }
+
+        function typeText(element, text, speed = 30, callback = null) {
+            element.innerHTML = '<span class="typing-cursor"></span>';
+            let i = 0;
+            
+            // Start typing after a brief pause
+            setTimeout(() => {
+                element.innerHTML = '';
+                
+                function typeCharacter() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(typeCharacter, speed);
+                    } else {
+                        // Animation complete
+                        if (callback) callback();
+                    }
+                }
+                
+                typeCharacter();
+            }, 500); // Brief pause before starting to type
+        }
+
+        function clearHistory() {
+            dialogueHistory = [];
+            updateHistoryDisplay();
+        }
+
+        function updateDialogue() {
+            if (!dialogueTree) return;
+            
+            const currentDialogue = dialogueTree[currentNode];
+            const dialogueBox = document.getElementById('dialogue-box');
+            const speakerName = document.getElementById('speaker-name');
+            const dialogueText = document.getElementById('dialogue-text');
+            const choicesContainer = document.getElementById('choices');
+
+            // Add character dialogue to history
+            const speaker = getSpeakerName(currentDialogue.speaker);
+            addToHistory(speaker, currentDialogue.text.es, false);
+
+            // Update speaker styling
+            dialogueBox.className = `dialogue-box ${currentDialogue.speaker}`;
+            
+            // Update speaker name
+            speakerName.textContent = speaker;
+            
+            // Clear choices initially
+            choicesContainer.innerHTML = '';
+            choicesContainer.style.opacity = '0';
+            
+            // Create dialogue text structure
+            dialogueText.innerHTML = `
+                <span class="spanish" id="spanish-text"></span>
+                <button class="english-toggle" onclick="toggleEnglishTranslation(this)" style="display: none;">Show English</button>
+                <div class="english-translation">${currentDialogue.text.en}</div>
+            `;
+
+            // Start typing animation
+            const spanishTextElement = document.getElementById('spanish-text');
+            typeText(spanishTextElement, currentDialogue.text.es, 35, function() {
+                // Show the English toggle button after typing is complete
+                const englishToggle = dialogueText.querySelector('.english-toggle');
+                englishToggle.style.display = 'inline-block';
+                
+                // Show choices after typing is complete
+                showChoices(currentDialogue);
+            });
+        }
+
+        function showChoices(currentDialogue) {
+            const choicesContainer = document.getElementById('choices');
+            
+            if (currentLevel === 1) {
+                // Level 1: Multiple choice with Spanish options
+                currentDialogue.choices.forEach(choice => {
+                    const button = document.createElement('button');
+                    button.className = 'choice-button';
+                    button.innerHTML = `
+                        <span class="spanish">${choice.text.es}</span>
+                        <span class="english">${choice.text.en}</span>
+                    `;
+                    button.onclick = () => {
+                        addToHistory('You', choice.text.es, true);
+                        handleChoice(choice.next);
+                    };
+                    choicesContainer.appendChild(button);
+                });
+            } else if (currentLevel === 2) {
+                // Level 2: Word assembly
+                currentDialogue.choices.forEach((choice, index) => {
+                    const choiceDiv = document.createElement('div');
+                    choiceDiv.className = 'word-assembly';
+                    
+                    const words = generateWordButtons(choice.text.es);
+                    
+                    choiceDiv.innerHTML = `
+                        <div class="assembly-prompt">Build the Spanish sentence for: "${choice.text.en}"</div>
+                        <div class="assembly-area empty" id="assembly-${index}">
+                            Click words below to build your answer...
+                        </div>
+                        <div class="word-buttons" id="words-${index}">
+                            ${words.map((word, wordIndex) => 
+                                `<button class="word-button" data-word="${word.replace(/"/g, '&quot;')}" data-word-index="${wordIndex}" data-choice-index="${index}">${word}</button>`
+                            ).join('')}
+                        </div>
+                        <div style="margin-top: 0.75rem;">
+                            <button class="clear-button" onclick="clearAssembly(${index})">Clear</button>
+                            <button class="submit-button" onclick="checkAssembly(${index}, '${choice.text.es.replace(/'/g, "\\'")}', '${choice.next}', '${choice.text.es.replace(/'/g, "\\'")}')">Submit</button>
+                        </div>
+                        <div id="feedback-${index}" class="feedback" style="display: none;"></div>
+                    `;
+                    choicesContainer.appendChild(choiceDiv);
+                    
+                    // Add event listeners to word buttons
+                    const wordButtons = choiceDiv.querySelectorAll('.word-button');
+                    wordButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const word = this.dataset.word;
+                            const wordIndex = parseInt(this.dataset.wordIndex);
+                            const choiceIndex = parseInt(this.dataset.choiceIndex);
+                            addWord(choiceIndex, wordIndex, word);
+                        });
+                    });
+                });
+            } else if (currentLevel === 3) {
+                // Level 3: Type in Spanish based on English prompts
+                currentDialogue.choices.forEach((choice, index) => {
+                    const choiceDiv = document.createElement('div');
+                    choiceDiv.innerHTML = `
+                        <div class="typing-prompt">How would you say: "${choice.text.en}"</div>
+                        <input type="text" class="typing-input" id="input-${index}" placeholder="Type your response in Spanish...">
+                        <button class="submit-button" onclick="checkAnswer(${index}, '${choice.text.es}', '${choice.next}')">Submit</button>
+                        <div id="feedback-${index}" class="feedback" style="display: none;"></div>
+                    `;
+                    choicesContainer.appendChild(choiceDiv);
+                });
+            }
+            
+            // Fade in the choices
+            setTimeout(() => {
+                choicesContainer.style.opacity = '1';
+                choicesContainer.style.transition = 'opacity 0.5s ease-in';
+            }, 200);
+        }
+
+        function generateWordButtons(correctAnswer) {
+            // Split the correct answer into words
+            const correctWords = correctAnswer.split(' ');
+            
+            // Generate some distractor words
+            const distractors = generateDistractors(correctWords);
+            
+            // Combine and shuffle
+            const allWords = [...correctWords, ...distractors];
+            return shuffleArray(allWords);
+        }
+
+        function generateDistractors(correctWords) {
+            // Common Spanish words that might be distractors
+            const commonWords = [
+                'el', 'la', 'los', 'las', 'un', 'una', 'y', 'o', 'pero', 'con', 'sin', 'para', 'por',
+                'en', 'de', 'del', 'al', 'que', 'como', 'muy', 'más', 'menos', 'bien', 'mal',
+                'sí', 'no', 'también', 'aquí', 'allí', 'donde', 'cuando', 'siempre', 'nunca',
+                'hola', 'adiós', 'gracias', 'por favor', 'disculpe', 'bueno', 'malo', 'grande', 'pequeño'
+            ];
+            
+            // Filter out words that are already in the correct answer
+            const availableDistractors = commonWords.filter(word => 
+                !correctWords.some(correctWord => 
+                    normalizeText(correctWord) === normalizeText(word)
+                )
+            );
+            
+            // Pick 3-5 random distractors
+            const numDistractors = Math.min(5, Math.max(3, Math.floor(correctWords.length * 0.6)));
+            const selectedDistractors = [];
+            
+            for (let i = 0; i < numDistractors && availableDistractors.length > 0; i++) {
+                const randomIndex = Math.floor(Math.random() * availableDistractors.length);
+                selectedDistractors.push(availableDistractors.splice(randomIndex, 1)[0]);
+            }
+            
+            return selectedDistractors;
+        }
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        let assembledSentences = {};
+
+        function addWord(choiceIndex, wordIndex, word) {
+            const wordButtons = document.querySelectorAll(`#words-${choiceIndex} .word-button`);
+            const wordButton = wordButtons[wordIndex];
+            
+            if (wordButton.classList.contains('used')) return;
+            
+            // Mark word as used
+            wordButton.classList.add('used');
+            
+            // Add to assembled sentence
+            if (!assembledSentences[choiceIndex]) {
+                assembledSentences[choiceIndex] = [];
+            }
+            assembledSentences[choiceIndex].push({word, wordIndex});
+            
+            updateAssemblyDisplay(choiceIndex);
+        }
+
+        function removeWord(choiceIndex, assemblyIndex) {
+            if (!assembledSentences[choiceIndex]) return;
+            
+            const removedWord = assembledSentences[choiceIndex][assemblyIndex];
+            
+            // Remove from assembled sentence
+            assembledSentences[choiceIndex].splice(assemblyIndex, 1);
+            
+            // Mark original word button as available again
+            const wordButtons = document.querySelectorAll(`#words-${choiceIndex} .word-button`);
+            const wordButton = wordButtons[removedWord.wordIndex];
+            if (wordButton) {
+                wordButton.classList.remove('used');
+            }
+            
+            updateAssemblyDisplay(choiceIndex);
+        }
+
+        function clearAssembly(choiceIndex) {
+            // Clear assembled sentence
+            assembledSentences[choiceIndex] = [];
+            
+            // Mark all words as available
+            const wordButtons = document.querySelectorAll(`#words-${choiceIndex} .word-button`);
+            wordButtons.forEach(button => button.classList.remove('used'));
+            
+            updateAssemblyDisplay(choiceIndex);
+        }
+
+        function updateAssemblyDisplay(choiceIndex) {
+            const assemblyArea = document.getElementById(`assembly-${choiceIndex}`);
+            
+            if (!assembledSentences[choiceIndex] || assembledSentences[choiceIndex].length === 0) {
+                assemblyArea.className = 'assembly-area empty';
+                assemblyArea.innerHTML = 'Click words below to build your answer...';
+            } else {
+                assemblyArea.className = 'assembly-area';
+                assemblyArea.innerHTML = assembledSentences[choiceIndex]
+                    .map((item, index) => 
+                        `<span class="assembled-word" onclick="removeWord(${choiceIndex}, ${index})">${item.word}</span>`
+                    ).join('');
+            }
+        }
+
+        function checkAssembly(choiceIndex, correctAnswer, nextNode, userResponseText) {
+            const feedback = document.getElementById(`feedback-${choiceIndex}`);
+            
+            if (!assembledSentences[choiceIndex] || assembledSentences[choiceIndex].length === 0) {
+                feedback.style.display = 'block';
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = 'Please build your answer by clicking the words!';
+                return;
+            }
+            
+            const userAnswer = assembledSentences[choiceIndex].map(item => item.word).join(' ');
+            const normalizedUser = normalizeText(userAnswer);
+            const normalizedCorrect = normalizeText(correctAnswer);
+            
+            feedback.style.display = 'block';
+            
+            if (normalizedUser === normalizedCorrect) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = '¡Correcto! (Correct!)';
+                
+                // Add user response to history
+                addToHistory('You', userAnswer, true);
+                
+                // Hide other choices and show continue option
+                const allAssemblies = document.querySelectorAll('.word-assembly');
+                allAssemblies.forEach((assembly, i) => {
+                    if (i !== choiceIndex) {
+                        assembly.style.display = 'none';
+                    }
+                });
+                
+                // Change submit button to continue
+                const submitButton = feedback.parentElement.querySelector('.submit-button');
+                submitButton.textContent = 'Continue';
+                submitButton.onclick = () => handleChoice(nextNode);
+                
+                // Disable word clicking and clear button
+                const wordButtons = document.querySelectorAll(`#words-${choiceIndex} .word-button`);
+                wordButtons.forEach(button => {
+                    button.style.pointerEvents = 'none';
+                    button.style.opacity = '0.5';
+                });
+                
+                const clearButton = feedback.parentElement.querySelector('.clear-button');
+                if (clearButton) {
+                    clearButton.style.display = 'none';
+                }
+                
+                // Disable assembled word clicking
+                const assemblyArea = document.getElementById(`assembly-${choiceIndex}`);
+                assemblyArea.style.pointerEvents = 'none';
+                
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = `Not quite right. Try rearranging the words. The correct answer is: "${correctAnswer}"`;
+            }
+        }
+
+        function normalizeText(text) {
+            return text.toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '') // Remove accents
+                .replace(/[¿¡]/g, '') // Remove Spanish punctuation
+                .replace(/[.,!?]/g, '') // Remove punctuation
+                .trim();
+        }
+
+        function checkAnswer(index, correctAnswer, nextNode) {
+            const input = document.getElementById(`input-${index}`);
+            const feedback = document.getElementById(`feedback-${index}`);
+            const userAnswer = input.value.trim();
+            
+            if (!userAnswer) {
+                feedback.style.display = 'block';
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = 'Please type your answer!';
+                return;
+            }
+
+            const normalizedUser = normalizeText(userAnswer);
+            const normalizedCorrect = normalizeText(correctAnswer);
+            
+            // Check for exact match or close match
+            const isCorrect = normalizedUser === normalizedCorrect || 
+                             normalizedCorrect.includes(normalizedUser) ||
+                             normalizedUser.includes(normalizedCorrect);
+            
+            feedback.style.display = 'block';
+            
+            if (isCorrect) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = '¡Correcto! (Correct!)';
+                
+                // Add user response to history
+                addToHistory('You', userAnswer, true);
+                
+                // Hide other inputs and show only the correct one
+                const allInputs = document.querySelectorAll('.typing-input');
+                const allFeedbacks = document.querySelectorAll('.feedback');
+                const allSubmitButtons = document.querySelectorAll('.submit-button');
+                
+                allInputs.forEach((inp, i) => {
+                    if (i !== index) {
+                        inp.parentElement.style.display = 'none';
+                    } else {
+                        inp.disabled = true;
+                    }
+                });
+                
+                allSubmitButtons.forEach((btn, i) => {
+                    if (i === index) {
+                        btn.textContent = 'Continue';
+                        btn.onclick = () => handleChoice(nextNode);
+                    }
+                });
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = `Not quite right. The correct answer is: "${correctAnswer}". Try again!`;
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        function handleChoice(nextNode) {
+            currentNode = nextNode;
+            // Reset assembled sentences for new dialogue
+            assembledSentences = {};
+            updateDialogue();
+        }
+
+        async function loadDialogue() {
+            try {
+                const response = await fetch('./dialogue.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                dialogueTree = await response.json();
+                
+                // Initialize assembled sentences
+                assembledSentences = {};
+                
+                // Hide loading message and show dialogue
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('dialogue-box').style.display = 'block';
+                
+                // Initialize the dialogue
+                updateDialogue();
+            } catch (error) {
+                console.error('Error loading dialogue:', error);
+                document.getElementById('loading').textContent = 'Error loading dialogue. Please make sure dialogue.json is available.';
+            }
+        }
+
+        // Handle window resize for history panel visibility
+        window.addEventListener('resize', function() {
+            const historyPanel = document.getElementById('dialogue-history');
+            if (currentLevel && historyPanel) {
+                if (window.innerWidth >= 1024) {
+                    historyPanel.classList.add('visible');
+                } else {
+                    historyPanel.classList.remove('visible');
+                }
+            }
+        });
+
+        // Don't auto-load dialogue anymore - wait for level selection
+    </script>
+</body>
+</html>

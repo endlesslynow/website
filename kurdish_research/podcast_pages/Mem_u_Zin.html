@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mem u Zin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mem u Zin</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Mem û Zîn_ Kurdish National Epic Study.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Mem û Zîn_ Kurdish National Epic Study.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>These sources collectively analyze Ehmedê Xanî&#x27;s epic poem, Mem û Zîn, a foundational work of Kurdish literature composed in 1692.  They examine its narrative as a tragic love story intertwined with Sufi mysticism and proto-nationalist sentiments, particularly Xanî&#x27;s lament for Kurdish disunity and subjugation in the 17th-century context of Ottoman and Safavid rule.  The texts discuss the poem&#x27;s origins in oral tradition, Xanî&#x27;s motivations for writing in Kurdish using the Mathnawi form, and its diverse thematic resonances including love, fate, good versus evil, and Kurdish identity.  Finally, they highlight the poem&#x27;s enduring legacy through its numerous translations, adaptations across various artistic mediums, and ongoing scholarly interpretation from nationalist, mystical, feminist, and postcolonial perspectives.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Mem u Zin_ Comprehensive Research_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Mem and Zin - Wikipedia, accessed June 4, 2025, <a href="https://en.wikipedia.org/wiki/Mem_and_Zin" target="_blank">https://en.wikipedia.org/wiki/Mem_and_Zin</a></li>
+<li>​ممو :زين: by ..., accessed June 4, 2025, <a href="https://www.goodreads.com/book/show/25661752" target="_blank">https://www.goodreads.com/book/show/25661752</a></li>
+<li>​ Ehmedê Xanî - Wikipedia, accessed June 4, 2025, <a href="https://en.wikipedia.org/wiki/Ehmed%C3%AA_Xan%C3%AE" target="_blank">https://en.wikipedia.org/wiki/Ehmed%C3%AA_Xan%C3%AE</a></li>
+<li>​ Ehmedê Xanî&#x27;s Mem û Zîn - UvA-DARE (Digital Academic Repository), accessed June 4, 2025, <a href="https://pure.uva.nl/ws/files/144591580/10.4324_9781315627427-7_chapterpdf.pdf" target="_blank">https://pure.uva.nl/ws/files/144591580/10.4324_9781315627427-7_chapterpdf.pdf</a></li>
+<li>​ Mem û Zîn by Ehmedê Xanî - Goodreads, accessed June 4, 2025, <a href="https://www.goodreads.com/ku/book/show/25661752-mem-z-n" target="_blank">https://www.goodreads.com/ku/book/show/25661752-mem-z-n</a></li>
+<li>​ The Kurdish Romeo and Juliet, the legend of Mem and Zin throughout the ages, accessed June 4, 2025, <a href="https://www.independent.co.uk/arts-entertainment/books/kurdish-literature-me" target="_blank">https://www.independent.co.uk/arts-entertainment/books/kurdish-literature-me</a> m-zin-b2305194.html</li>
+<li>​ Mem û Zîn - Vikipedi, accessed June 4, 2025, <a href="https://tr.wikipedia.org/wiki/Mem_%C3%BB_Z%C3%AEn" target="_blank">https://tr.wikipedia.org/wiki/Mem_%C3%BB_Z%C3%AEn</a></li>
+<li>​ “Mem û Zîn,” the Kurdish epic - New York Kurdish Cultural Center, accessed June 4, 2025, <a href="https://nykcc.org/mem-u-zin/" target="_blank">https://nykcc.org/mem-u-zin/</a></li>
+<li>​ Mem u Zîn – A Classic Kurdish Epic from the 17th-Century, accessed June 4, 2025, <a href="https://www.ifkurds.de/en/component/k2/item/66-eng-eng-mem-u-z%C3%AEn-" target="_blank">https://www.ifkurds.de/en/component/k2/item/66-eng-eng-mem-u-z%C3%AEn-</a> %E2%80%93-a-classical-17th-century-epic.html</li>
+<li>​www.cambridge.org, accessed June 4, 2025, <a href="https://www.cambridge.org/core/journals/international-journal-of-middle-east-st" target="_blank">https://www.cambridge.org/core/journals/international-journal-of-middle-east-st</a> udies/article/kurds-have-not-made-love-their-aim-love-sexuality-gender-and-dr ag-in-ehmede-xanis-mem-u-zin/BDDB73EEE4B047C51C39C1160425F3F4#:~:tex t=Among%20Kurdish%20nationalists%2C%20this%20tale,form%20a%20single% 2C%20independent%20state.</li>
+<li>​The Kurdish Experience - MERIP, accessed June 4, 2025, <a href="https://merip.org/1994/07/the-kurdish-experience/" target="_blank">https://merip.org/1994/07/the-kurdish-experience/</a></li>
+<li>​Mem u Zin: A Cornerstone in Kurdish Identity | Al Majalla, accessed June 4, 2025, <a href="https://en.majalla.com/node/78351/mem-u-zin-a-cornerstone-in-kurdish-identity" target="_blank">https://en.majalla.com/node/78351/mem-u-zin-a-cornerstone-in-kurdish-identity</a></li>
+<li>​The Precocious Emergence of Kurdish Nationalism and the Tragic Love Story of Mem and Zin - GeoCurrents, accessed June 4, 2025, <a href="https://www.geocurrents.info/blog/2022/12/20/the-precocious-emergence-of-ku" target="_blank">https://www.geocurrents.info/blog/2022/12/20/the-precocious-emergence-of-ku</a> rdish-nationalism-and-the-tragic-love-story-of-mem-and-zin/</li>
+<li>​Mem u Zin -, accessed June 4, 2025, <a href="https://sirnak.ktb.gov.tr/TR-56428/mem-u-zin.html" target="_blank">https://sirnak.ktb.gov.tr/TR-56428/mem-u-zin.html</a></li>
+<li>​Ehmedê Xanî&#x27;den: Mem û Zîn (1992) - Plex, accessed June 4, 2025, <a href="https://watch.plex.tv/movie/ehmede-xaniden-mem-u-zin" target="_blank">https://watch.plex.tv/movie/ehmede-xaniden-mem-u-zin</a></li>
+<li>​“The Kurds Have Not Made Love Their Aim”: Love, Sexuality ..., accessed June 4, 2025, <a href="https://www.cambridge.org/core/journals/international-journal-of-middle-east-st" target="_blank">https://www.cambridge.org/core/journals/international-journal-of-middle-east-st</a> udies/article/kurds-have-not-made-love-their-aim-love-sexuality-gender-and-dr ag-in-ehmede-xanis-mem-u-zin/BDDB73EEE4B047C51C39C1160425F3F4</li>
+<li>​Mem û Zîn: An epic of love - ANF, accessed June 4, 2025, <a href="https://anfenglishmobile.com/culture/mem-u-zin-an-epical-love-30106" target="_blank">https://anfenglishmobile.com/culture/mem-u-zin-an-epical-love-30106</a></li>
+<li>​Kürt Bilginlerin Yazdıkları Bazı Eserlerin Tanıtımı - DergiPark, accessed June 4, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/220222" target="_blank">https://dergipark.org.tr/tr/download/article-file/220222</a></li>
+<li>​احمد خانی - ،‌پدیا ویکی ٔدانشنامه آزاد, accessed June 4, 2025, <a href="https://fa.wikipedia.org/wiki/%D8%A7%D8%AD%D9%85%D8%AF_%D8%AE%D8%" target="_blank">https://fa.wikipedia.org/wiki/%D8%A7%D8%AD%D9%85%D8%AF_%D8%AE%D8%</a> A7%D9%86%DB%8C</li>
+<li>​Ehmedê Xanî; 1650/1651, Han köyü, Çukurca, Hakkâri - 1707, Doğubayazıt, Ağrı)[1],</li>
+<li>yüzyıl&#x27;da yaşamış Kürt edebiyatçı, astronom, şair, tarihçi ve İslam alimi. - VAN / ERCİŞ - Ahmed-i Hani Ortaokulu, accessed June 4, 2025, <a href="https://ahmedihaniercis.meb.k12.tr/icerikler/ahmed-i-hani_12892931.html" target="_blank">https://ahmedihaniercis.meb.k12.tr/icerikler/ahmed-i-hani_12892931.html</a></li>
+<li>​Ahmed-i Hânî - Vikipedi, accessed June 4, 2025, <a href="https://tr.wikipedia.org/wiki/Ahmed-i_H%C3%A2n%C3%AE" target="_blank">https://tr.wikipedia.org/wiki/Ahmed-i_H%C3%A2n%C3%AE</a></li>
+<li>​Ehmedê Xanî (Author of ممو زين) - Goodreads, accessed June 4, 2025, <a href="https://www.goodreads.com/author/show/3348250.Ehmed_Xan_" target="_blank">https://www.goodreads.com/author/show/3348250.Ehmed_Xan_</a></li>
+<li>​Ahmad Khani (1650 - 1701) - LibriVox, accessed June 4, 2025, <a href="https://librivox.org/author/12863" target="_blank">https://librivox.org/author/12863</a></li>
+<li>​Ehmedê Xanî - Wikipedia, accessed June 4, 2025, <a href="https://en.wikipedia.org/wiki/Ahmad_Khani" target="_blank">https://en.wikipedia.org/wiki/Ahmad_Khani</a></li>
+<li>​Ehmedê Xanî yaşamı, eserleri | occo mahabad - WordPress.com, accessed June 4, 2025, <a href="https://occomahabad.wordpress.com/2019/07/27/ehmede-xani-yasami-eserleri/" target="_blank">https://occomahabad.wordpress.com/2019/07/27/ehmede-xani-yasami-eserleri/</a></li>
+<li>​Ehmede Xani Külliyatı 2: Eqideya İmane by Ehmedê Xanî | Goodreads, accessed June 4, 2025, <a href="https://www.goodreads.com/book/show/32284396-ehmede-xani-k-lliyat-2" target="_blank">https://www.goodreads.com/book/show/32284396-ehmede-xani-k-lliyat-2</a></li>
+<li>​Mem U Zin as a Bridge to Kurdish Language Problems[v1 ..., accessed June 4, 2025, <a href="https://www.preprints.org/manuscript/202401.0623/v1" target="_blank">https://www.preprints.org/manuscript/202401.0623/v1</a></li>
+<li>​MEM Û ZÎN - Avesta Yayınları, accessed June 4, 2025, <a href="https://www.avestakitap.com/mem-u-zin" target="_blank">https://www.avestakitap.com/mem-u-zin</a></li>
+<li>​Mem û Zîn Analytical Study*: II, 2 – Khani on Mem û Zîn | The Kurdistan Tribune, accessed June 4, 2025, <a href="https://kurdistantribune.com/mem-u-zin-analytical-study-ii-2-khani-on-mem-u-z" target="_blank">https://kurdistantribune.com/mem-u-zin-analytical-study-ii-2-khani-on-mem-u-z</a> in/</li>
+<li>​Nation, Kingship, and Language: the Ambiguous Politics of Ehmedê Xanî&#x27;s Mem û Zîn in, accessed June 4, 2025, <a href="https://brill.com/view/book/9789004708488/BP000008.xml" target="_blank">https://brill.com/view/book/9789004708488/BP000008.xml</a></li>
+<li>​Destansı aşklar: Mem û Zin ve Romeo Juliet - Independent Türkçe, accessed June 4, 2025, <a href="https://www.indyturk.com/node/564826/t%C3%BCrki%CC%87yeden-sesler/desta" target="_blank">https://www.indyturk.com/node/564826/t%C3%BCrki%CC%87yeden-sesler/desta</a> ns%C4%B1-a%C5%9Fklar-mem-%C3%BB-zin-ve-romeo-juliet</li>
+<li>​Ahmed Khani-Mem and Jin-trans. by Salah Saadalla.pdf, accessed June 4, 2025, <a href="https://ia804607.us.archive.org/11/items/AhmedKhaniMemAndJinTrans.BySalahSa" target="_blank">https://ia804607.us.archive.org/11/items/AhmedKhaniMemAndJinTrans.BySalahSa</a> adalla/Ahmed%20Khani-Mem%20and%20Jin-trans.%20by%20Salah%20Saadalla .pdf</li>
+<li>​Namık Açıkgöz yazdı: &quot;Mem u Zin ideolojik bir metin midir?&quot; - Türkiye Yazarlar Birliği, accessed June 4, 2025, <a href="https://www.tyb.org.tr/namik-acikgoz-yazdi-mem-u-zin-ideolojik-bir-metin-midir-" target="_blank">https://www.tyb.org.tr/namik-acikgoz-yazdi-mem-u-zin-ideolojik-bir-metin-midir-</a> 1346h.htm</li>
+<li>​Kurdish emirates - Wikipedia, accessed June 4, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_emirates" target="_blank">https://en.wikipedia.org/wiki/Kurdish_emirates</a></li>
+<li>​Nation, Kingship, and Language: The Ambiguous Politics of Ehmedê Khânî&#x27;s Mem û Zîn - UvA-DARE (Digital Academic Repository), accessed June 4, 2025, <a href="https://pure.uva.nl/ws/files/46127725/487_606_1_PB.pdf" target="_blank">https://pure.uva.nl/ws/files/46127725/487_606_1_PB.pdf</a></li>
+<li>​Ottoman-Safavid Wars | EBSCO Research Starters, accessed June 4, 2025, <a href="https://www.ebsco.com/research-starters/history/ottoman-safavid-wars" target="_blank">https://www.ebsco.com/research-starters/history/ottoman-safavid-wars</a></li>
+<li>​Kurdish emirates - GeoCurrents, accessed June 4, 2025, <a href="https://www.geocurrents.info/blog/tag/kurdish-emirates/" target="_blank">https://www.geocurrents.info/blog/tag/kurdish-emirates/</a></li>
+<li>​Kirkuk and the Ottoman-Safavid Conflict Over Iraq in the 17th Century - Kurdish Studies, accessed June 4, 2025, <a href="https://kurdishstudies.net/menu-script/index.php/KS/article/download/2635/1691/" target="_blank">https://kurdishstudies.net/menu-script/index.php/KS/article/download/2635/1691/</a> 4947</li>
+<li>​Kurds - Summary - eHRAF World Cultures, accessed June 4, 2025, <a href="https://ehrafworldcultures.yale.edu/cultures/MA11/summary" target="_blank">https://ehrafworldcultures.yale.edu/cultures/MA11/summary</a></li>
+<li>​Kordestān | History, Culture &amp; Geography - Britannica, accessed June 4, 2025, <a href="https://www.britannica.com/place/Kordestan" target="_blank">https://www.britannica.com/place/Kordestan</a></li>
+<li>​Mem û Zîn Analytical Study*: 1.2 Khani&#x27;s life and work | The Kurdistan Tribune, accessed June 4, 2025, <a href="https://kurdistantribune.com/mem-u-zin-analytical-study-1-2-khanis-life-work/" target="_blank">https://kurdistantribune.com/mem-u-zin-analytical-study-1-2-khanis-life-work/</a></li>
+<li>​Kurdish culture - Wikipedia, accessed June 4, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_culture" target="_blank">https://en.wikipedia.org/wiki/Kurdish_culture</a></li>
+<li>​Notes from the Field - Mem U Zin: Staging a Legendary Kurdish Love Story in Canada - SciSpace, accessed June 4, 2025, <a href="https://scispace.com/pdf/notes-from-the-field-mem-u-zin-staging-a-legendary-" target="_blank">https://scispace.com/pdf/notes-from-the-field-mem-u-zin-staging-a-legendary-</a> kurdish-4paqq1guiw.pdf</li>
+<li>​The Ehmede Xani Yearbook - Kurdistan Chronicle, accessed June 4, 2025, <a href="https://kurdistanchronicle.com/b/3859" target="_blank">https://kurdistanchronicle.com/b/3859</a></li>
+<li>​(PDF) “The Kurds Have Not Made Love Their Aim”: Love, Sexuality, Gender, and Drag in Ehmedê Xanî&#x27;s Mem û Zîn - ResearchGate, accessed June 4, 2025, <a href="https://www.researchgate.net/publication/367478414_The_Kurds_Have_Not_Mad" target="_blank">https://www.researchgate.net/publication/367478414_The_Kurds_Have_Not_Mad</a> e_Love_Their_Aim_Love_Sexuality_Gender_and_Drag_in_Ehmede_Xani&#x27;s_Mem_u_ Zin</li>
+<li>​(PDF) Mem u Zin as a Bridge to Kurdish Language Problems - ResearchGate, accessed June 4, 2025, <a href="https://www.researchgate.net/publication/389532336_Mem_u_Zin_as_a_Bridge_t" target="_blank">https://www.researchgate.net/publication/389532336_Mem_u_Zin_as_a_Bridge_t</a> o_Kurdish_Language_Problems</li>
+<li>​Mem u Zin: A Reflection on History, Division, and Resilience, accessed June 4, 2025, <a href="https://kurdistanchronicle.com/b/3310" target="_blank">https://kurdistanchronicle.com/b/3310</a></li>
+<li>​“The Kurds Have Not Made Love Their Aim” Love, Sexuality, Gender, and Drag in Ehmedê Xanî&#x27;s - UvA-DARE (Digital Academic Repository), accessed June 4, 2025, <a href="https://pure.uva.nl/ws/files/137612062/the_kurds_have_not_made_love_their_aim_l" target="_blank">https://pure.uva.nl/ws/files/137612062/the_kurds_have_not_made_love_their_aim_l</a> ove_sexuality_gender_and_drag_in_ehmede_xanis_mem_u_zin.pdf</li>
+<li>​Revolution of Love: Tragedy of Mem u Zin - AuthorHouse, accessed June 4, 2025, <a href="https://www.authorhouse.com/en/bookstore/bookdetails/289993-Revolution-of-L" target="_blank">https://www.authorhouse.com/en/bookstore/bookdetails/289993-Revolution-of-L</a> ove-Tragedy-of-Mem-u-Zin</li>
+<li>​مم و زین - ،‌پدیا ویکی ٔدانشنامه آزاد, accessed June 4, 2025, <a href="https://fa.wikipedia.org/wiki/%D9%85%D9%85_%D9%88_%D8%B2%DB%8C%D9" target="_blank">https://fa.wikipedia.org/wiki/%D9%85%D9%85_%D9%88_%D8%B2%DB%8C%D9</a> %86</li>
+<li>​1) Mem û Zîn by Bewar Najm on Prezi, accessed June 4, 2025, <a href="https://prezi.com/vopeqqzjgfzx/1-mem-u-zin/" target="_blank">https://prezi.com/vopeqqzjgfzx/1-mem-u-zin/</a></li>
+<li>​Mem û Zîn Analytical Study*: 2. Ahmadi Khani as poet, thinker, philosopher and Sufist, accessed June 4, 2025, <a href="https://kurdistantribune.com/mem-u-zin-analytical-study-khani-as-poet-thinker-" target="_blank">https://kurdistantribune.com/mem-u-zin-analytical-study-khani-as-poet-thinker-</a> philosopher-sufist/</li>
+<li>​Love, Sexuality, Gender, and Drag in Ehmedê Xanî&#x27;s Mem û Zîn, accessed June 4, 2025, <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/BD" target="_blank">https://www.cambridge.org/core/services/aop-cambridge-core/content/view/BD</a> DB73EEE4B047C51C39C1160425F3F4/S0020743822000836a.pdf/the-kurds-hav e-not-made-love-their-aim-love-sexuality-gender-and-drag-in-ehmede-xanis- mem-u-zin.pdf</li>
+<li>​Mem U Zin - Kurdish Love Story, Kurdistan - A4 or A5 Print - Etsy, accessed June 4, 2025, <a href="https://www.etsy.com/listing/1588443777/mem-u-zin-kurdish-love-story-kurdista" target="_blank">https://www.etsy.com/listing/1588443777/mem-u-zin-kurdish-love-story-kurdista</a> n</li>
+<li>​SPECTERS OF KURDISH NATIONALISM: GOVERNMENTALITY AND TRANSLATION IN TURKEY - Critical Multilingualism Studies, accessed June 4, 2025, <a href="https://cms.arizona.edu/index.php/multilingual/article/download/67/102/273" target="_blank">https://cms.arizona.edu/index.php/multilingual/article/download/67/102/273</a></li>
+<li>​Mem û Zîn – Wikipedia, accessed June 4, 2025, <a href="https://de.wikipedia.org/wiki/Mem_%C3%BB_Z%C3%AEn" target="_blank">https://de.wikipedia.org/wiki/Mem_%C3%BB_Z%C3%AEn</a></li>
+<li>​Kürtlerin Nesnel Sorunu: Birlik | Demokratik Modernite, accessed June 4, 2025, <a href="https://demokratikmodernite.org/kurtlerin-nesnel-sorunu-birlik/" target="_blank">https://demokratikmodernite.org/kurtlerin-nesnel-sorunu-birlik/</a></li>
+<li>​Mem u Zin as a Bridge to Kurdish Language Problems - SvedbergOpen, accessed June 4, 2025, <a href="https://www.svedbergopen.com/files/1739359367_(2)_IJLC2024094429KR6_(p_3" target="_blank">https://www.svedbergopen.com/files/1739359367_(2)_IJLC2024094429KR6_(p_3</a> 4-44).pdf</li>
+<li>​Martin van Bruinessen, &#x27;The Kurds as objects and subjects of historiography: Turkish and Kurdish nationalists struggling over, accessed June 4, 2025, <a href="https://dspace.library.uu.nl/bitstream/handle/1874/345689/Bruinessen_Subjects_a" target="_blank">https://dspace.library.uu.nl/bitstream/handle/1874/345689/Bruinessen_Subjects_a</a> nd_objects_for_Seyder_Festschrift.pdf?sequence=1</li>
+<li>​Keynote Speech Martin van Bruinessen - fhe, accessed June 4, 2025, <a href="https://www.hennerbichler.info/keynote-speech-martin-van-bruinessen.html" target="_blank">https://www.hennerbichler.info/keynote-speech-martin-van-bruinessen.html</a></li>
+<li>​The Precocious Emergence of Kurdish Nationalism and the Tragic Love Story of Mem and Zin - GeoCurrents, accessed June 4, 2025, <a href="http://www.geocurrents.info/blog/2022/12/20/the-precocious-emergence-of-kur" target="_blank">http://www.geocurrents.info/blog/2022/12/20/the-precocious-emergence-of-kur</a> dish-nationalism-and-the-tragic-love-story-of-mem-and-zin/</li>
+<li>​Mem û Zîn: Aşk ve Toplum - Arslan Özdemir - Hemhâl, accessed June 4, 2025, <a href="https://hemhal.org/mem-u-zin-ask-ve-toplum/" target="_blank">https://hemhal.org/mem-u-zin-ask-ve-toplum/</a></li>
+<li>​(PDF) Mem U Zin as a Bridge to Kurdish Language Problems - ResearchGate, accessed June 4, 2025, <a href="https://www.researchgate.net/publication/377243023_Mem_U_Zin_as_a_Bridge_t" target="_blank">https://www.researchgate.net/publication/377243023_Mem_U_Zin_as_a_Bridge_t</a> o_Kurdish_Language_Problems</li>
+<li>​بینینی بررسی و تحلیل شکواییه در مثنوی مم و زین, accessed June 4, 2025, <a href="http://journal.kurdish-academy.dev.krd/index.php/ka/article/view/67/56" target="_blank">http://journal.kurdish-academy.dev.krd/index.php/ka/article/view/67/56</a></li>
+<li>​MEM U ZÎN MESNEVİSİ&#x27;NDE AHLAKÎ YANSIMALAR | Request PDF - ResearchGate, accessed June 4, 2025, <a href="https://www.researchgate.net/publication/348220491_MEM_U_ZIN_MESNEVISI&#x27;ND" target="_blank">https://www.researchgate.net/publication/348220491_MEM_U_ZIN_MESNEVISI&#x27;ND</a> E_AHLAKI_YANSIMALAR</li>
+<li>​Mem U Zîn: A Classic Kurdish Epic from the 17th Century - Aḥmad Ḫānī - Google Books, accessed June 4, 2025, <a href="https://books.google.com/books/about/Mem_U_Z%C3%AEn.html?id=JkTCvQEAC" target="_blank">https://books.google.com/books/about/Mem_U_Z%C3%AEn.html?id=JkTCvQEAC</a> AAJ</li>
+<li>​</li>
+<li>​mem+u+zin.pdf - NYU, accessed June 4, 2025, <a href="https://staging.entrepreneur.nyu.edu/fconstructd/mboosti/nthankr/31080311/mem" target="_blank">https://staging.entrepreneur.nyu.edu/fconstructd/mboosti/nthankr/31080311/mem</a> +u+zin.pdf</li>
+<li>​Kurdish Romeo and Juliet gets new translation | Rudaw.net, accessed June 4, 2025, <a href="https://www.rudaw.net/english/culture/05102018" target="_blank">https://www.rudaw.net/english/culture/05102018</a></li>
+<li>​103 سال پیش در چنین روزی اولین چاپ مم و زین احمد خانی به زبان کردی با حروف عربی در استانبول منتشر شد - Kurdistan TV, accessed June 4, 2025, <a href="https://kurdistantv.net/fa/news/184526" target="_blank">https://kurdistantv.net/fa/news/184526</a></li>
+<li>​خالصه داستان مم و زین - کوردیا, accessed June 4, 2025, <a href="https://www.kurdia.net/archives/7838" target="_blank">https://www.kurdia.net/archives/7838</a></li>
+<li>​Mem et Zin — Wikipédia, accessed June 4, 2025, <a href="https://fr.wikipedia.org/wiki/Mem_et_Zin" target="_blank">https://fr.wikipedia.org/wiki/Mem_et_Zin</a></li>
+<li>​Ehmede Xani ve Mem u Zin / Bir Şair Düşünür ve Mutasavvıf Olarak - Kitapyurdu.com, accessed June 4, 2025, <a href="https://www.kitapyurdu.com/kitap/ehmede-xani-ve-mem-u-zin-bir-sair-dusunur-" target="_blank">https://www.kitapyurdu.com/kitap/ehmede-xani-ve-mem-u-zin-bir-sair-dusunur-</a> ve-mutasavvif-olarak/94797.html</li>
+<li>​(PDF) MEM Û ZÎN -MESNEWIYA LI SER DIKA ŞANOYÊ - ResearchGate, accessed June 4, 2025, <a href="https://www.researchgate.net/publication/367856048_MEM_U_ZIN_-MESNEWIYA" target="_blank">https://www.researchgate.net/publication/367856048_MEM_U_ZIN_-MESNEWIYA</a> _LI_SER_DIKA_SANOYE</li>
+<li>​Theater - New York Kurdish Cultural Center, accessed June 4, 2025, <a href="https://nykcc.org/theater/" target="_blank">https://nykcc.org/theater/</a></li>
+<li>​Mem u Zin - JioSaavn, accessed June 4, 2025, <a href="https://www.jiosaavn.com/album/mem-u-zin/OfnMxBN,s5o_" target="_blank">https://www.jiosaavn.com/album/mem-u-zin/OfnMxBN,s5o_</a></li>
+<li>​Mem and Zin Painting by Derya BingöL - Saatchi Art, accessed June 4, 2025, <a href="https://www.saatchiart.com/art/Painting-Mem-and-Zin/869176/3006002/view" target="_blank">https://www.saatchiart.com/art/Painting-Mem-and-Zin/869176/3006002/view</a></li>
+<li>​Mem U Zin/Orijinal Film Müzigi – Album von Mazlum Çimen - Apple Music, accessed June 4, 2025, <a href="https://music.apple.com/de/album/mem-u-zin-orijinal-film-m%C3%BCzigi/25684" target="_blank">https://music.apple.com/de/album/mem-u-zin-orijinal-film-m%C3%BCzigi/25684</a> 6477</li>
+<li>​مم و :زين: by - Goodreads, accessed June 4, 2025, <a href="https://www.goodreads.com/book/show/56614397" target="_blank">https://www.goodreads.com/book/show/56614397</a></li>
+<li>​ممو زين Quotes by أحمد خاني - Goodreads, accessed June 4, 2025, <a href="https://www.goodreads.com/work/quotes/7247490-mem-z-n" target="_blank">https://www.goodreads.com/work/quotes/7247490-mem-z-n</a></li>
+<li>​ترجمه و انتشار شاهکار ادبی کوردی مم&quot;ز به یش ی- ان, accessed Jun e 4, 2 <a href="https://kurdistanmedia.com/fa/news/%D8%AA%D8%B1%D8%AC%D9%85%D9%8" target="_blank">https://kurdistanmedia.com/fa/news/%D8%AA%D8%B1%D8%AC%D9%85%D9%8</a> 7-%D9%88-%D8%A7%D9%86%D8%AA%D8%B4%D8%A7%D8%B1-%D8%B4%D 8%A7%D9%87%DA%A9%D8%A7%D8%B1-%D8%A7%D8%AF%D8%A8%DB%8C- %DA%A9%D9%88%D8%B1%D8%AF%DB%8C-%D9%85%D9%85-%D9%88-%D8 %B2%DB%8C%D9%86-%D8%A8%D9%87-%DA%AF%D9%88%DB%8C%D8%B4- %D9%87%D9%88%D8%B1%D8%A7%D9%85%DB%8C</li>
+<li>​Mem u Zin (Kürtçe Metin - Türkçe Çevirisi) (Ahmedi Hani) Fiyatı, Yorumları, Satın Al, accessed June 4, 2025, <a href="https://www.kitapyurdu.com/kitap/mem-u-zin-kurtce-metin-turkce-cevirisi/3488" target="_blank">https://www.kitapyurdu.com/kitap/mem-u-zin-kurtce-metin-turkce-cevirisi/3488</a></li>
+<li>html</li>
+<li>​EHMEDÊ XANÎ VE MEM Û ZÎN - Avesta Yayınları, accessed June 4, 2025, <a href="https://www.avestakitap.com/ehmede-xani-ve-mem-u-zin" target="_blank">https://www.avestakitap.com/ehmede-xani-ve-mem-u-zin</a></li>
+<li>​خرید و قیمت کتاب ترجمه به فارسی مم و زین - مه م و ،زین شاهکار ادبیات کردی کاغذ سفید احمد( ف - ر ارات وت از غرفه کتاب نده  (پ از ارش, accessed 2025, <a href="https://basalam.com/ayandehbook/product/18781682" target="_blank">https://basalam.com/ayandehbook/product/18781682</a></li>
+<li>​Mem U Zin - Amazon.de, accessed June 4, 2025, <a href="https://www.amazon.de/-/en/Mem-U-Zin/dp/9757011657" target="_blank">https://www.amazon.de/-/en/Mem-U-Zin/dp/9757011657</a></li>
+<li>​is there any where i can buy mem u zin in english? : r/kurdistan - Reddit, accessed June 4, 2025, <a href="https://www.reddit.com/r/kurdistan/comments/1jo3bml/is_there_any_where_i_can" target="_blank">https://www.reddit.com/r/kurdistan/comments/1jo3bml/is_there_any_where_i_can</a> _buy_mem_u_zin_in_english/</li>
+<li>​Mem and Zin - Ahmed Khani - 2008 Not stated. - eBay, accessed June 4, 2025, <a href="https://www.ebay.com/itm/404269468815" target="_blank">https://www.ebay.com/itm/404269468815</a></li>
+<li>​Mem et zîn - broché - Ahmedê Khanî - Achat Livre - Fnac, accessed June 4, 2025, <a href="https://www.fnac.com/a1281730/Ahmede-Khani-Mem-et-zin" target="_blank">https://www.fnac.com/a1281730/Ahmede-Khani-Mem-et-zin</a></li>
+<li>​International Journal of Middle East Studies - Wikipedia, accessed June 4, 2025, <a href="https://en.wikipedia.org/wiki/International_Journal_of_Middle_East_Studies" target="_blank">https://en.wikipedia.org/wiki/International_Journal_of_Middle_East_Studies</a></li>
+<li>​accessed January 1, 1970, <a href="https://iranicaonline.org/articles/mem-u-zin" target="_blank">https://iranicaonline.org/articles/mem-u-zin</a></li>
+<li>​Mem Û Zîn -1. Michael Chyet - Kurdipedia, accessed June 4, 2025, <a href="https://www.kurdipedia.org/default.aspx?lng=8&amp;q=20220215084003405118" target="_blank">https://www.kurdipedia.org/default.aspx?lng=8&amp;q=20220215084003405118</a></li>
+<li>​Ehmedê Xanî&#x27;s &quot;Mem û Zîn&quot;: the consecration of a Kurdish national epic - Central Washington University, accessed June 4, 2025, <a href="https://searchlib.cwu.edu/discovery/fulldisplay?docid=cdi_globaltitleindex_catalog" target="_blank">https://searchlib.cwu.edu/discovery/fulldisplay?docid=cdi_globaltitleindex_catalog</a> _377290975&amp;context=PC&amp;vid=01ALLIANCE_CWU:CWU&amp;lang=en&amp;search_scope= CWU_MORE&amp;adaptor=Primo%20Central&amp;tab=CWU_MORE&amp;query=creator%2Ce xact%2CLeezenberg%2C%20Michiel%2CAND&amp;facet=creator%2Cexact%2CLeez enberg%2C%20Michiel&amp;mode=advanced&amp;offset=40</li>
+<li>​[Draft presentation entitled “Khani&#x27;s Mem u Zin: State power, the written tradition and sovereignty in Kurdistan”, material in English] - Discover Archives - University of Toronto, accessed June 4, 2025, <a href="https://discoverarchives.library.utoronto.ca/index.php/draft-presentation-entitled-" target="_blank">https://discoverarchives.library.utoronto.ca/index.php/draft-presentation-entitled-</a> khanis-mem-u-zin-state-power-the-written-tradition-and-sovereignty-in-kurdis tan-material-in-english</li>
+<li>​[Typescript draft on Ahmad Khani&#x27;s Mem u Zin, material in Sorani] - Discover Archives, accessed June 4, 2025, <a href="https://discoverarchives.library.utoronto.ca/index.php/typescript-draft-on-ahmad" target="_blank">https://discoverarchives.library.utoronto.ca/index.php/typescript-draft-on-ahmad</a> -khanis-mem-u-zin-material-in-sorani</li>
+<li>​Farhad Shakely - UniVerse :: A United Nations of Poetry, accessed June 4, 2025, <a href="https://www.universeofpoetry.org/kurdistan.shtml" target="_blank">https://www.universeofpoetry.org/kurdistan.shtml</a></li>
+<li>​مقاالت مرتبط با مم و زین - Noor Mags, accessed June 4, 2025, <a href="https://www.noormags.ir/view/fa/keyword/%D9%85%D9%85_%D9%88_%D8%B2" target="_blank">https://www.noormags.ir/view/fa/keyword/%D9%85%D9%85_%D9%88_%D8%B2</a> %DB%8C%D9%86</li>
+<li>​From Zin the Mythical Heroine to Zilan, the First Kurdish Female Suicide Bomber: The PKK&#x27;s Creation of a New Feminist Figuration - ResearchGate, accessed June 4, 2025, <a href="https://www.researchgate.net/publication/373622603_From_Zin_the_Mythical_He" target="_blank">https://www.researchgate.net/publication/373622603_From_Zin_the_Mythical_He</a> roine_to_Zilan_the_First_Kurdish_Female_Suicide_Bomber_The_PKK&#x27;s_Creation_o f_a_New_Feminist_Figuration</li>
+<li>​Analyzing the Epic of Mem and Zin According to Vladimir Propp&#x27;s Narratology | Humanities Journal of University of Zakho, accessed June 4, 2025, <a href="https://hjuoz.uoz.edu.krd/index.php/hum/article/view/1200" target="_blank">https://hjuoz.uoz.edu.krd/index.php/hum/article/view/1200</a></li>
+<li>​Ahmadi Khani&#x27;s epic &quot;Mam u Zin&quot; based on Epic Characteristics | Twejer Journal, accessed June 4, 2025, <a href="https://journals.soran.edu.iq/index.php/Twejer/article/view/558?articlesBySameAu" target="_blank">https://journals.soran.edu.iq/index.php/Twejer/article/view/558?articlesBySameAu</a> thorPage=42</li>
+<li>​ Mem u Zin - Epic Eternal Love | Episode 17 - YouTube, accessed June 4, 2025, <a href="https://www.youtube.com/watch?v=XnwN5aezQzA" target="_blank">https://www.youtube.com/watch?v=XnwN5aezQzA</a></li>
+<li>​ Mem û Zîn (Kurdish - Turkish) - Ehmede Xanî - Pirtukakurdi.com, accessed June 4, 2025, <a href="https://www.pirtukakurdi.com/en/product/mem-u-zin-kurdish-turkish-56924" target="_blank">https://www.pirtukakurdi.com/en/product/mem-u-zin-kurdish-turkish-56924</a></li>
+<li>​دانلود کتاب :گرامافون: (قسمت یان ف-ر, accesse d June <a href="https://fidibo.com/book/124629-%DA%A9%D8%AA%D8%A7%D8%A8-%D8%B5%" target="_blank">https://fidibo.com/book/124629-%DA%A9%D8%AA%D8%A7%D8%A8-%D8%B5%</a> D9%88%D8%AA%DB%8C-%DA%AF%D8%B1%D8%A7%D9%85%D8%A7%D9%81 %D9%88%D9%86-%D9%82%D8%B3%D9%85%D8%AA-%D9%BE%D8%A7%DB% 8C%D8%A7%D9%86%DB%8C</li>
+<li>​ Dengbej, Metin Barlık - Mem U Zin - En Güzel Kürtçe Aşk Şarkısı - YouTube, accessed June 4, 2025, <a href="https://www.youtube.com/watch?v=5FBu-5Ggr_Q" target="_blank">https://www.youtube.com/watch?v=5FBu-5Ggr_Q</a></li>
+<li>​ Fate and Destiny Theme Analysis - Sundiata - LitCharts, accessed June 4, 2025, <a href="https://www.litcharts.com/lit/sundiata/themes/fate-and-destiny" target="_blank">https://www.litcharts.com/lit/sundiata/themes/fate-and-destiny</a></li>
+<li>​ Mustafa Öztürk, &#x27;Mem û Zin&#x27; çevirisini anlattı: Üç asır öncesinin Kürtçesine vakıf olmak gerekiyordu - Gazete Duvar, accessed June 4, 2025, <a href="https://www.gazeteduvar.com.tr/mustafa-ozturk-mem-u-zin-cevirisini-anlatti-uc-" target="_blank">https://www.gazeteduvar.com.tr/mustafa-ozturk-mem-u-zin-cevirisini-anlatti-uc-</a> asir-oncesinin-kurtcesine-vakif-olmak-gerekiyordu-haber-1718296</li>
+<li>​ Kurdipedia - Kürt Kimliği ve Kültürü, accessed June 4, 2025, <a href="https://kurdipedia.org/default.aspx?lng=13&amp;q=20220605073305416320" target="_blank">https://kurdipedia.org/default.aspx?lng=13&amp;q=20220605073305416320</a></li>
+<li>​معرفی و دانلود کتاب دیوان مم و زین احمد خانی به انضمام تحلیل و بررسی آن - کتابراه, accessed June 4, 2025, <a href="https://www.ketabrah.ir/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%AF%DB%8C" target="_blank">https://www.ketabrah.ir/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%AF%DB%8C</a> %D9%88%D8%A7%D9%86-%D9%85%D9%85-%D9%88-%D8%B2%DB%8C%D9 %86-%D8%A7%D8%AD%D9%85%D8%AF-%D8%AE%D8%A7%D9%86%DB%8C- %D8%A8%D9%87-%D8%A7%D9%86%D8%B6%D9%85%D8%A7%D9%85-%D8% AA%D8%AD%D9%84%DB%8C%D9%84-%D9%88-%D8%A8%D8%B1%D8%B1%D 8%B3%DB%8C-%D8%A2%D9%86/book/41221</li>
+<li>​مم و زین - کوردیپیدیا - Kurdipedia, accessed June 4, 2025, <a href="https://www.kurdipedia.org/default.aspx?q=2012081900050172258&amp;lng=12" target="_blank">https://www.kurdipedia.org/default.aspx?q=2012081900050172258&amp;lng=12</a></li>
+<li>​شورش ‌احمدخان خان اردالن در کردستان - ،‌پدیا ویکی ٔدانشنامه آزاد, accessed June 4, 2025, <a href="https://fa.wikipedia.org/wiki/%D8%B4%D9%88%D8%B1%D8%B4_%D8%AE%D8%" target="_blank">https://fa.wikipedia.org/wiki/%D8%B4%D9%88%D8%B1%D8%B4_%D8%AE%D8%</a> A7%D9%86%E2%80%8C%D8%A7%D8%AD%D9%85%D8%AF%D8%AE%D8%A7 %D9%86_%D8%A7%D8%B1%D8%AF%D9%84%D8%A7%D9%86_%D8%AF%D8% B1_%DA%A9%D8%B1%D8%AF%D8%B3%D8%AA%D8%A7%D9%86</li>
+<li>​احمد خانی )خوانی( )شا کرد رمانج رکیه- , accessed Jun <a href="https://www.aparat.com/v/pznNi" target="_blank">https://www.aparat.com/v/pznNi</a></li>
+<li>​ Şêx Ehmedé Xanî/Şeyh Ahmed El-Hânî - Müfid Yüksel, accessed June 4, 2025, <a href="https://mufity.blogspot.com/2018/10/sex-ehmede-xaniseyh-ahmed-el-hani.html" target="_blank">https://mufity.blogspot.com/2018/10/sex-ehmede-xaniseyh-ahmed-el-hani.html</a></li>
+<li>​ Mam u Zin Cultural Center in Erbil - KURDSHOP, accessed June 4, 2025, <a href="https://kurdshop.net/en/culture/2822" target="_blank">https://kurdshop.net/en/culture/2822</a></li>
+<li>​ TÜRK DİLİ VE EDEBİYATI - Meslek MEB, accessed June 4, 2025, <a href="https://meslek.meb.gov.tr/upload/dersmateryali/pdf/MEM2024TDE105.pdf" target="_blank">https://meslek.meb.gov.tr/upload/dersmateryali/pdf/MEM2024TDE105.pdf</a></li>
+<li>​ TÜRK DİLİ VE EDEBİYATI - Özalp Anadolu İmam Hatip Lisesi, accessed June 4, 2025, <a href="https://ozalpimamhatiplisesi.meb.k12.tr/meb_iys_dosyalar/65/10/973294/dosyalar/2" target="_blank">https://ozalpimamhatiplisesi.meb.k12.tr/meb_iys_dosyalar/65/10/973294/dosyalar/2</a> 020_12/09000329_9._SYnYfedebi.pdf?CHK=74448b6397cf62bb81e514d00ab73f7 5</li>
+<li>​ Mem and zin soundtrack - YouTube, accessed June 4, 2025, <a href="https://www.youtube.com/watch?v=ASImhIkoAs8" target="_blank">https://www.youtube.com/watch?v=ASImhIkoAs8</a></li>
+<li>​ Zine - Radio-Canada, accessed June 4, 2025, <a href="https://ici.radio-canada.ca/dictionnaire-urbain/lettre-z/document/nouvelles/article" target="_blank">https://ici.radio-canada.ca/dictionnaire-urbain/lettre-z/document/nouvelles/article</a> /1112417/zine</li>
+<li>​ Давно уже хотел выложить этот текст здесь, но не знал, КТО АВТОР. Теперь выкладываю… ВАЛЕРИЙ ТАТАРОВ (питерский.. 2025 | ВКонтакте, accessed June 4, 2025, <a href="https://m.vk.com/wall-211118260_16345" target="_blank">https://m.vk.com/wall-211118260_16345</a></li>
+<li>​ Г де деньги, Зин?»: Путин потребовал разобраться с зарплатами ученых | пародия, accessed June 4, 2025, <a href="https://www.youtube.com/watch?v=BqMfIMLjIc8" target="_blank">https://www.youtube.com/watch?v=BqMfIMLjIc8</a></li>
+<li>​ Authority and Submission in Some New Testament Letters: Postcolonial Feminist Reading from Myanmar - University of Birmingham, accessed June 4, 2025, <a href="https://etheses.bham.ac.uk/2981/1/Gay11PhD.pdf" target="_blank">https://etheses.bham.ac.uk/2981/1/Gay11PhD.pdf</a></li>
+<li>​هويت ايران و ايراني در اشعار استاد شهريار - موسسه تاریخ و فرهنگ دیارکهن, accessed June 4, 2025, <a href="https://www.diyarekohan.net/%D9%87%D9%88%D9%8A%D8%AA-%D8%A7%D9" target="_blank">https://www.diyarekohan.net/%D9%87%D9%88%D9%8A%D8%AA-%D8%A7%D9</a> %8A%D8%B1%D8%A7%D9%86-%D9%88-%D8%A7%D9%8A%D8%B1%D8%A7% D9%86%D9%8A-%D8%AF%D8%B1-%D8%A7%D8%B4%D8%B9%D8%A7%D8%B1 -%D8%A7%D8%B3%D8%AA%D8%A7%D8%AF-%D8%B4%D9%87%D8%B1%D9% 8A/</li>
+<li>​کیستی ایرانی – ایرانشهر, accessed June 4, 2025, <a href="https://iranshahr.org/%DA%A9%DB%8C%D8%B3%D8%AA%DB%8C-%D8%A7%D" target="_blank">https://iranshahr.org/%DA%A9%DB%8C%D8%B3%D8%AA%DB%8C-%D8%A7%D</a> B%8C%D8%B1%D8%A7%D9%86%DB%8C/</li>
+<li>​ accessed January 1, 1970, <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%BC_%D0%B8_%D0%97%D" target="_blank">https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%BC_%D0%B8_%D0%97%D</a> 0%B8%D0%BD</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 04, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
