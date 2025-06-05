@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Tico - the Kurdish Story Teller from Afrin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>El Tico - the Kurdish Story Teller from Afrin</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Mihemed Elî Tico_ Voice of Afrin&#x27;s Dengbêj Tradition.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Mihemed Elî Tico_ Voice of Afrin&#x27;s Dengbêj Tradition.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>These sources collectively provide a detailed overview of Mihemed Elî Tico, a highly influential Kurdish Dengbêj (traditional singer and storyteller) from the Afrin region of Syria.  They highlight his significance as a keeper of Kurdish oral tradition and history through epic tales and songs, often performed with his tanbur. The texts discuss his life, including his local fame in Afrin and Aleppo, key artistic relationships, and his international recognition through UNESCO recordings and performances.  Finally, they examine his diverse repertoire and discuss his enduring cultural legacy, preserved through recordings and digital platforms despite a lack of official state acknowledgment.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Kurdish Storyteller from Afrin Research_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ MECÎDÊ HEMGULÎ: JIYAN, DENGBÊJÎ Û BERNIVÎSANDINA DESTANA MIHEMED EMÎN (LEYLA Û MECRÛN) - DergiPark, accessed June 5, 2025, <a href="https://dergipark.org.tr/en/download/article-file/4238340" target="_blank">https://dergipark.org.tr/en/download/article-file/4238340</a></li>
+<li>​ Avarîn - Wîkîpediya, accessed June 5, 2025, <a href="https://ku.wikipedia.org/wiki/Avar%C3%AEn" target="_blank">https://ku.wikipedia.org/wiki/Avar%C3%AEn</a></li>
+<li>​ www.tirejafrin.com, accessed June 5, 2025, <a href="http://www.tirejafrin.com/pdf/jabal%20alkurd6.pdf" target="_blank">http://www.tirejafrin.com/pdf/jabal%20alkurd6.pdf</a></li>
+<li>​ The Dengbêj: Keepers of Kurdish Memory &amp; History, accessed June 5, 2025, <a href="https://nlka.net/eng/the-dengbej-keepers-of-kurdish-memory-and-history/" target="_blank">https://nlka.net/eng/the-dengbej-keepers-of-kurdish-memory-and-history/</a></li>
+<li>​ The Kurdish Storytellers / Turkey / Areas / Homepage - Osservatorio Balcani e Caucaso Transeuropa, accessed June 5, 2025, <a href="https://www.balcanicaucaso.org/eng/Areas/Turkey/The-Kurdish-Storytellers-1634" target="_blank">https://www.balcanicaucaso.org/eng/Areas/Turkey/The-Kurdish-Storytellers-1634</a> 57</li>
+<li>​ Şair, Dengbêj, Sazbend û Aşiq: Nêrînek li Termînolojiya Îcrakarên Edebiyata Kurdî ya - DergiPark, accessed June 5, 2025, <a href="https://dergipark.org.tr/en/download/article-file/4069206" target="_blank">https://dergipark.org.tr/en/download/article-file/4069206</a></li>
+<li>​ Strana Zênebê: A Journey Through 1980-1981 | TikTok, accessed June 5, 2025, <a href="https://www.tiktok.com/@basharmaamou0/video/7479531668706086151" target="_blank">https://www.tiktok.com/@basharmaamou0/video/7479531668706086151</a></li>
+<li>​ Kurdish Music - Smithsonian Folkways Recordings, accessed June 5, 2025, <a href="https://folkways.si.edu/kurdish-music/world/music/album/smithsonian" target="_blank">https://folkways.si.edu/kurdish-music/world/music/album/smithsonian</a></li>
+<li>​الفنان نوري إسكندر في جوار …ربه ٌ ي ي, accessed June 5, 202 <a href="https://kurd-online.com/%D8%A7%D9%84%D9%81%D9%86%D8%A7%D9%86-%" target="_blank">https://kurd-online.com/%D8%A7%D9%84%D9%81%D9%86%D8%A7%D9%86-%</a> D9%86%D9%88%D8%B1%D9%8A-%D8%A5%D8%B3%D9%83%D9%86%D8%AF %D8%B1-%D9%81%D9%8A-%D8%AC%D9%88%D8%A7%D8%B1-%D8%B1%D8% A8%D9%87-%D8%A5%D8%B1%D8%AB%D9%8C-%D8%B3/</li>
+<li>​Şair, Dengbêj, Sazbend û Aşiq: Nêrînek li Termînolojiya Îcrakarên Edebiyata Kurdî ya Devkî, accessed June 5, 2025, <a href="https://www.researchgate.net/publication/392174800_Sair_Dengbej_Sazbend_u_" target="_blank">https://www.researchgate.net/publication/392174800_Sair_Dengbej_Sazbend_u_</a> Asiq_Nerinek_li_Terminolojiya_Icrakaren_Edebiyata_Kurdi_ya_Devki</li>
+<li>​Kurdiyat » Submission » Mecîdê Hemgulî: Jiyan, Dengbêjî û Bernivîsandina Destana Mihemed Emîn (Leyla û Mecrûn) - DergiPark, accessed June 5, 2025, <a href="https://dergipark.org.tr/en/pub/kurdiyat/issue/89440/1555489" target="_blank">https://dergipark.org.tr/en/pub/kurdiyat/issue/89440/1555489</a></li>
+<li>​Kurds – Kurdish Music – Vinyl (LP, Album), 1974 [r3438868] | Discogs, accessed June 5, 2025, <a href="https://www.discogs.com/release/3438868-Kurds-Kurdish-Music" target="_blank">https://www.discogs.com/release/3438868-Kurds-Kurdish-Music</a></li>
+<li>​Apê Xelîl Osman, bi nasnav &quot;Cebeli&quot; العم خليل عثمان الملقب بـ جبلي( ) - YouTube, a June 5, 2025, <a href="https://www.youtube.com/watch?v=v1OfGfIQF4A" target="_blank">https://www.youtube.com/watch?v=v1OfGfIQF4A</a></li>
+<li>​الفنان محمد علي تجو M-Elî Tıco اغنية لي فالكة - YouTube, accessed June 5, 2025, <a href="https://m.youtube.com/watch?v=deoALc1w9o4" target="_blank">https://m.youtube.com/watch?v=deoALc1w9o4</a></li>
+<li>​الصفحة 4 من 9 - Lelun Afrin, accessed June 5, 2025, <a href="https://lelun-afrin.org/ar/page/4/" target="_blank">https://lelun-afrin.org/ar/page/4/</a></li>
+<li>​محمد علي تجو - M-Elî Tico - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=GTGnLAjobLo" target="_blank">https://www.youtube.com/watch?v=GTGnLAjobLo</a></li>
+<li>​M-Elî Tico &quot; Dinya &quot;محمد علي تجو &quot; دنـيــــــا &quot; - YouTube, accessed June 5, 2025, <a href="https://m.youtube.com/watch?v=A2LGcsrlNWg" target="_blank">https://m.youtube.com/watch?v=A2LGcsrlNWg</a></li>
+<li>​Elî Tico: Yara Milîsa-Full رائعة علي تجو يارى مليسا - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=-zne74bcMLs" target="_blank">https://www.youtube.com/watch?v=-zne74bcMLs</a></li>
+<li>​M-Elî tico _Gotinên bavê Elî ji stranê (heycanê)علتجو . هيجان - YouTube, accessed June 5, 2025, <a href="https://m.youtube.com/watch?v=9eIXxqR1P4k" target="_blank">https://m.youtube.com/watch?v=9eIXxqR1P4k</a></li>
+<li>​kurdish music, accessed June 5, 2025, <a href="https://folkways-media.si.edu/docs/folkways/artwork/UNES08023.pdf" target="_blank">https://folkways-media.si.edu/docs/folkways/artwork/UNES08023.pdf</a></li>
+<li>​UNESCO Collection of Traditional Music of the World records - siris, accessed June 5, 2025, <a href="https://sirismm.si.edu/EADpdfs/CFCH.UNES.pdf" target="_blank">https://sirismm.si.edu/EADpdfs/CFCH.UNES.pdf</a></li>
+<li>​bnk.institutkurde.org, accessed June 5, 2025, <a href="https://bnk.institutkurde.org/images/pdf/V6CPYDBGLM.pdf" target="_blank">https://bnk.institutkurde.org/images/pdf/V6CPYDBGLM.pdf</a></li>
+<li>​Musical Sources - Wikipedia, accessed June 5, 2025, <a href="https://en.wikipedia.org/wiki/Musical_Sources" target="_blank">https://en.wikipedia.org/wiki/Musical_Sources</a></li>
+<li>​Kurdish Music = Musique Kurde – CD (Album, Reissue), 1989 [r7829573] - Discogs, accessed June 5, 2025, <a href="https://www.discogs.com/release/7829573-Kurds-Kurdish-Music-Musique-Kurde" target="_blank">https://www.discogs.com/release/7829573-Kurds-Kurdish-Music-Musique-Kurde</a></li>
+<li>​Kurdish Music = クルド族の音楽 – Vinyl (LP, Reissue, Stereo), 1979 [r10976110] | Discogs, accessed June 5, 2025, <a href="https://www.discogs.com/release/10976110-Kurds-%E3%82%AF%E3%83%AB%E3" target="_blank">https://www.discogs.com/release/10976110-Kurds-%E3%82%AF%E3%83%AB%E3</a> %83%89%E6%97%8F-Kurdish-Music-%E3%82%AF%E3%83%AB%E3%83%89%E6 %97%8F%E3%81%AE%E9%9F%B3%E6%A5%BD</li>
+<li>​Lo Delal Shirin Hayat - Said Hassan, Mohammed Ali Te&#x27;djo - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=T_Cug0v_6RU" target="_blank">https://www.youtube.com/watch?v=T_Cug0v_6RU</a></li>
+<li>​Kurdish Music [Unesco] - Various Artists | Album - AllMusic, accessed June 5, 2025, <a href="https://www.allmusic.com/album/kurdish-music-unesco--mw0000068273" target="_blank">https://www.allmusic.com/album/kurdish-music-unesco--mw0000068273</a></li>
+<li>​الفنان محمد علي تجو { ارواع كلمات دموع }Bapîrê dereng - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=no71NwhDdXM" target="_blank">https://www.youtube.com/watch?v=no71NwhDdXM</a></li>
+<li>​محمد علي تجو - يارا مليسا || Mohamad Ali Tijo - Yar Milîsa - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=QgzLu__QMIc" target="_blank">https://www.youtube.com/watch?v=QgzLu__QMIc</a></li>
+<li>​Eli tico yara milisa 2 علي تجو يارا مليسا ج - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=v_rpPHVKoM8" target="_blank">https://www.youtube.com/watch?v=v_rpPHVKoM8</a></li>
+<li>​M-Ali Tico /Zênebê الفنان التراثي محمد علي /تجو/ - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=ZMHWeH8ODoE" target="_blank">https://www.youtube.com/watch?v=ZMHWeH8ODoE</a></li>
+<li>​M Ali Tico / zênebê الفنان القدير محمد علي /تجو/ - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=UmzNhGBDgKc" target="_blank">https://www.youtube.com/watch?v=UmzNhGBDgKc</a></li>
+<li>​M-Elî Tico _ Dinya (1) - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=pTqk6FMe5EQ" target="_blank">https://www.youtube.com/watch?v=pTqk6FMe5EQ</a></li>
+<li>​M-Elî Tico . Rê bidên - محمدعلتجو ره بيدن - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=M_5NhkGitFs" target="_blank">https://www.youtube.com/watch?v=M_5NhkGitFs</a></li>
+<li>​M-Elî Tico. Dinya - محمد علي تجو دنيا. - YouTube, accessed June 5 <a href="https://www.youtube.com/watch?v=uUel-oOwtfk" target="_blank">https://www.youtube.com/watch?v=uUel-oOwtfk</a></li>
+<li>​M-Elî Tico Û M-Elkûrê şevk teybetî di sala 1988 stranê lê Şawîyê wêda (2) - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=X8MV0-YNqY4" target="_blank">https://www.youtube.com/watch?v=X8MV0-YNqY4</a></li>
+<li>​Yara Milîsa - Mohamad Ali Tijo: Song Lyrics, Music Videos &amp; Concerts - Shazam, accessed June 5, 2025, <a href="https://www.shazam.com/song/1710510101/yara-mil%C3%AEsa" target="_blank">https://www.shazam.com/song/1710510101/yara-mil%C3%AEsa</a></li>
+<li>​علي تجو و نوري شيخو،شاوية- M.Elî Tico &amp; Nurî Şêxo, Şawîye - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=FaBeAgVj-14" target="_blank">https://www.youtube.com/watch?v=FaBeAgVj-14</a></li>
+<li>​Kulikê Silêmên:Dengbêj Husênî Topo كولكى سليمين حسين توبو - YouTube, accessed June 5, 2025, <a href="https://www.youtube.com/watch?v=ZaLQa9c4YaI" target="_blank">https://www.youtube.com/watch?v=ZaLQa9c4YaI</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 05, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
