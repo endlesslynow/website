@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archive Player</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#1e2936">
+    <meta name="theme-color" content="#1e40af">
     <link rel="apple-touch-icon" href="research_archive.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -17,61 +17,121 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0f1419;
-            color: #e1e5e9;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #1a202c;
+            padding: 16px;
             line-height: 1.6;
-            font-size: 18px;
+            font-size: 16px;
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding: 24px 0;
+        }
+        
+        .filter-toggle {
+            background: #1e40af;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            min-height: 48px;
+            box-shadow: 0 2px 4px rgba(30, 64, 175, 0.2);
+            transition: all 0.2s;
+        }
+        
+        .filter-toggle:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(30, 64, 175, 0.3);
+        }
+        
+        .filter-toggle:active {
+            transform: translateY(0);
         }
         
         h1 {
-            margin-bottom: 30px;
-            text-align: center;
-            color: #e1e5e9;
-            font-size: 28px;
+            color: #1a202c;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0;
         }
         
         .track-row {
-            background: #1e2936;
-            border: 2px solid #2d3748;
+            background: white;
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            transition: background 0.2s, border-color 0.2s;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
         }
         
         .track-row:hover {
-            background: #233142;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
         }
         
         .track-row.currently-playing {
-            background: #2a4365;
-            border-color: #4299e1;
-            box-shadow: 0 0 0 1px #4299e1;
+            background: #eff6ff;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 1px #3b82f6, 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+        
+        .track-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-listened {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-in-progress {
+            background: #fef3c7;
+            color: #92400e;
         }
         
         .track-title {
             font-weight: 600;
-            color: #e1e5e9;
-            margin-bottom: 10px;
-            font-size: 20px;
+            color: #1a202c;
+            margin-bottom: 16px;
+            font-size: 18px;
+            line-height: 1.4;
         }
         
         .progress-container {
             width: 100%;
             display: none;
-            margin-bottom: 10px;
+            margin-bottom: 16px;
         }
         
         .progress-bar {
             width: 100%;
-            height: 8px;
-            background: #2d3748;
-            border-radius: 4px;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
             cursor: pointer;
             position: relative;
             overflow: hidden;
@@ -79,8 +139,8 @@
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #4299e1, #63b3ed);
-            border-radius: 4px;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            border-radius: 3px;
             width: 0%;
             transition: width 0.1s;
         }
@@ -88,8 +148,8 @@
         .progress-time {
             display: flex;
             justify-content: space-between;
-            font-size: 16px;
-            color: #a0aec0;
+            font-size: 14px;
+            color: #64748b;
             margin-top: 8px;
             font-weight: 500;
         }
@@ -97,25 +157,29 @@
         .controls {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
         
         button {
-            background: #2d3748;
-            color: #e1e5e9;
-            border: none;
-            padding: 16px 24px;
-            border-radius: 12px;
+            background: #f8fafc;
+            color: #374151;
+            border: 1px solid #d1d5db;
+            padding: 12px 16px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 600;
-            transition: background 0.2s, transform 0.1s;
-            min-height: 56px;
+            transition: all 0.2s;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         button:hover {
-            background: #4a5568;
+            background: #f1f5f9;
+            border-color: #9ca3af;
             transform: translateY(-1px);
         }
         
@@ -124,101 +188,168 @@
         }
         
         button:disabled {
-            background: #1a202c;
-            color: #718096;
+            background: #f9fafb;
+            color: #9ca3af;
             cursor: not-allowed;
             transform: none;
+            border-color: #e5e7eb;
         }
         
         .play-btn {
-            background: #38a169;
-            font-weight: bold;
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
         }
         
         .play-btn:hover {
-            background: #48bb78;
+            background: #059669;
+            border-color: #059669;
         }
         
         .pause-btn {
-            background: #e53e3e;
-            font-weight: bold;
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
         }
         
         .pause-btn:hover {
-            background: #f56565;
+            background: #dc2626;
+            border-color: #dc2626;
         }
         
         .download-btn {
-            background: #3182ce;
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
         }
         
         .download-btn:hover {
-            background: #4299e1;
+            background: #2563eb;
+            border-color: #2563eb;
         }
         
         .downloaded {
-            background: #38a169 !important;
+            background: #10b981 !important;
+            border-color: #10b981 !important;
             opacity: 0.8;
         }
         
-        .listened-indicator {
-            color: #f6ad55;
-            font-weight: bold;
-            display: none;
+        .listened-btn {
+            background: #8b5cf6;
+            color: white;
+            border-color: #8b5cf6;
+        }
+        
+        .listened-btn:hover {
+            background: #7c3aed;
+            border-color: #7c3aed;
+        }
+        
+        .listened-btn[data-is-listened="true"] {
+            background: #f59e0b;
+            border-color: #f59e0b;
+        }
+        
+        .listened-btn[data-is-listened="true"]:hover {
+            background: #d97706;
+            border-color: #d97706;
         }
         
         .no-tracks {
             text-align: center;
-            color: #718096;
-            padding: 40px;
-            font-style: italic;
+            color: #64748b;
+            padding: 48px 24px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .loading {
             text-align: center;
-            color: #e1e5e9;
-            padding: 20px;
+            color: #1a202c;
+            padding: 48px 24px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .category-section {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         
         .category-title {
-            font-size: 26px;
-            color: #4299e1;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #2d3748;
+            font-size: 24px;
+            color: #1e40af;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            font-weight: 700;
         }
         
         .subcategory-title {
-            font-size: 22px;
-            color: #63b3ed;
-            margin: 30px 0 20px 0;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #2d3748;
+            font-size: 20px;
+            color: #3b82f6;
+            margin: 24px 0 16px 0;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e2e8f0;
+            font-weight: 600;
         }
         
-        .listened-btn {
-            background: #38a169;
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+                font-size: 16px;
+            }
+            
+            .header {
+                margin-bottom: 24px;
+                padding: 16px 0;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .track-row {
+                padding: 16px;
+                margin-bottom: 12px;
+            }
+            
+            .track-title {
+                font-size: 17px;
+            }
+            
+            .controls {
+                gap: 6px;
+            }
+            
+            button {
+                padding: 10px 14px;
+                font-size: 14px;
+                min-height: 44px;
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .filter-toggle {
+                width: 100%;
+                max-width: 200px;
+            }
         }
         
-        .listened-btn:hover {
-            background: #48bb78;
-        }
-        
-        .listened-btn[data-is-listened="true"] {
-            background: #e53e3e;
-        }
-        
-        .listened-btn[data-is-listened="true"]:hover {
-            background: #f56565;
+        /* Ensure hidden tracks don't take up space */
+        .track-row.hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <h1>Archive Player</h1>
+    <div class="header">
+        <button id="filter-toggle" class="filter-toggle">Show All</button>
+        <h1>Archive Player</h1>
+    </div>
+    
     <div id="loading" class="loading">Loading tracks...</div>
     <div id="tracks-container"></div>
     <div id="no-tracks" class="no-tracks" style="display: none;">
@@ -235,6 +366,7 @@
                 this.db = null;
                 this.progressInterval = null;
                 this.lastSaveTime = 0;
+                this.showUnlistenedOnly = true; // Default to showing unlistened only
             }
 
             async init() {
@@ -244,7 +376,43 @@
                 await this.loadStoredData();
                 this.setupUI();
                 this.setupPageUnloadHandler();
+                this.setupFilterToggle();
                 document.getElementById('loading').style.display = 'none';
+            }
+
+            setupFilterToggle() {
+                const filterToggle = document.getElementById('filter-toggle');
+                filterToggle.addEventListener('click', () => {
+                    this.showUnlistenedOnly = !this.showUnlistenedOnly;
+                    this.updateFilterButton();
+                    this.applyFilter();
+                });
+                this.updateFilterButton();
+            }
+
+            updateFilterButton() {
+                const filterToggle = document.getElementById('filter-toggle');
+                filterToggle.textContent = this.showUnlistenedOnly ? 'Show All' : 'Show Unlistened';
+            }
+
+            applyFilter() {
+                this.tracks.forEach(track => {
+                    const trackElement = document.querySelector(`[data-track-id="${track.id}"]`);
+                    if (trackElement) {
+                        const shouldShow = !this.showUnlistenedOnly || !track.listened;
+                        trackElement.classList.toggle('hidden', !shouldShow);
+                    }
+                });
+            }
+
+            getTrackStatus(track) {
+                if (track.listened) {
+                    return 'listened';
+                } else if (track.currentTime > 0) {
+                    return 'in-progress';
+                } else {
+                    return 'not-started';
+                }
             }
 
             setupPageUnloadHandler() {
@@ -640,9 +808,16 @@
                         });
                         
                         sortedTracks.forEach(track => {
+                            const status = this.getTrackStatus(track);
+                            const shouldShow = !this.showUnlistenedOnly || !track.listened;
+                            
                             html += `
-                                <div class="track-row" data-track-id="${track.id}">
-                                    <div class="track-title">${track.title} <span class="listened-indicator">Listened</span></div>
+                                <div class="track-row ${shouldShow ? '' : 'hidden'}" data-track-id="${track.id}">
+                                    <div class="track-status">
+                                        ${status === 'listened' ? '<span class="status-badge status-listened">Listened</span>' : ''}
+                                        ${status === 'in-progress' ? '<span class="status-badge status-in-progress">In Progress</span>' : ''}
+                                    </div>
+                                    <div class="track-title">${track.title}</div>
                                     <div class="progress-container" data-progress-container="${track.id}">
                                         <div class="progress-bar" data-progress-bar="${track.id}">
                                             <div class="progress-fill" data-progress-fill="${track.id}"></div>
@@ -654,10 +829,10 @@
                                     </div>
                                     <div class="controls">
                                         <button class="play-btn" data-play="${track.id}">Play</button>
-                                        <button class="pause-btn" data-pause="${track.id}" style="display: none;">⏸ Pause</button>
-                                        <button data-rewind="${track.id}">-10 <<</button>
-                                        <button data-forward="${track.id}">>> +10</button>
-                                        <button data-download="${track.id}">Download</button>
+                                        <button class="pause-btn" data-pause="${track.id}" style="display: none;">Pause</button>
+                                        <button data-rewind="${track.id}">-10s</button>
+                                        <button data-forward="${track.id}">+10s</button>
+                                        <button class="download-btn" data-download="${track.id}">Download</button>
                                         <button class="listened-btn" data-listened="${track.id}" ${track.listened ? 'data-is-listened="true"' : 'data-is-listened="false"'}>
                                             ${track.listened ? 'Mark Unlistened' : 'Mark Listened'}
                                         </button>
@@ -869,12 +1044,31 @@
             async saveCurrentPosition() {
                 if (this.audio && this.currentTrack && this.audio.currentTime > 0) {
                     this.currentTrack.currentTime = this.audio.currentTime;
+                    // Update status display when progress changes
+                    this.updateTrackStatusDisplay(this.currentTrack);
                     // Save every 5 seconds to avoid too frequent saves
                     if (!this.lastSaveTime || Date.now() - this.lastSaveTime > 5000) {
                         await this.saveTrackData(this.currentTrack);
                         this.lastSaveTime = Date.now();
                     }
                 }
+            }
+
+            updateTrackStatusDisplay(track) {
+                const trackElement = document.querySelector(`[data-track-id="${track.id}"]`);
+                if (!trackElement) return;
+
+                const statusContainer = trackElement.querySelector('.track-status');
+                const status = this.getTrackStatus(track);
+                
+                let statusHTML = '';
+                if (status === 'listened') {
+                    statusHTML = '<span class="status-badge status-listened">Listened</span>';
+                } else if (status === 'in-progress') {
+                    statusHTML = '<span class="status-badge status-in-progress">In Progress</span>';
+                }
+                
+                statusContainer.innerHTML = statusHTML;
             }
 
             pauseTrack(trackId) {
@@ -972,34 +1166,33 @@
                 
                 await this.saveTrackData(track);
                 this.updateTrackDisplay(track);
+                this.updateTrackStatusDisplay(track);
+                this.applyFilter(); // Reapply filter after status change
             }
 
             updateTrackDisplay(track) {
                 const trackElement = document.querySelector(`[data-track-id="${track.id}"]`);
                 if (!trackElement) return;
 
-                const listenedIndicator = trackElement.querySelector('.listened-indicator');
                 const downloadButton = trackElement.querySelector(`[data-download="${track.id}"]`);
                 const listenedButton = trackElement.querySelector(`[data-listened="${track.id}"]`);
-                
-                if (track.listened) {
-                    listenedIndicator.style.display = 'inline';
-                    if (listenedButton) {
-                        listenedButton.dataset.isListened = 'true';
-                        listenedButton.style.background = '#e53e3e';
-                    }
-                } else {
-                    listenedIndicator.style.display = 'none';
-                    if (listenedButton) {
-                        listenedButton.dataset.isListened = 'false';
-                        listenedButton.style.background = '#38a169';
-                    }
-                }
                 
                 if (track.downloaded) {
                     downloadButton.textContent = 'Downloaded';
                     downloadButton.disabled = true;
                     downloadButton.classList.add('downloaded');
+                }
+                
+                if (track.listened) {
+                    if (listenedButton) {
+                        listenedButton.dataset.isListened = 'true';
+                        listenedButton.textContent = 'Mark Unlistened';
+                    }
+                } else {
+                    if (listenedButton) {
+                        listenedButton.dataset.isListened = 'false';
+                        listenedButton.textContent = 'Mark Listened';
+                    }
                 }
             }
         }
