@@ -266,18 +266,7 @@
                     if (cachedTracks && cachedTracks.tracks && cachedTracks.tracks.length > 0) {
                         this.tracks = cachedTracks.tracks;
                         this.categoryStructure = cachedTracks.categoryStructure || new Map();
-                        console.log(`📱 Loaded ${this.tracks.length} cached tracks`);
-                        
-                        // Load listening progress for each track
-                        for (let track of this.tracks) {
-                            const stored = await this.getTrackData(track.id);
-                            if (stored) {
-                                track.listened = stored.listened || false;
-                                track.currentTime = stored.currentTime || 0;
-                                track.downloaded = stored.downloaded || false;
-                                track.audioData = stored.audioData || null;
-                            }
-                        }
+                        console.log(`📱 Loaded ${this.tracks.length} cached tracks with saved listening progress`);
                     } else {
                         console.log('🔍 No cached tracks found, scanning...');
                         await this.scanForMp3Links();
@@ -300,7 +289,7 @@
                 window.addEventListener('beforeunload', () => {
                     if (this.audio && this.currentTrack && this.audio.currentTime > 0) {
                         this.currentTrack.currentTime = this.audio.currentTime;
-                        this.saveTrackData(this.currentTrack);
+                        this.saveCachedTracks(); // Save current progress to cache
                     }
                 });
             }
@@ -318,45 +307,11 @@
                     request.onupgradeneeded = (event) => {
                         const db = event.target.result;
                         
-                        if (!db.objectStoreNames.contains('tracks')) {
-                            const trackStore = db.createObjectStore('tracks', { keyPath: 'id' });
-                            trackStore.createIndex('url', 'url', { unique: true });
-                        }
-                        
                         if (!db.objectStoreNames.contains('trackCache')) {
                             db.createObjectStore('trackCache', { keyPath: 'id' });
                         }
                     };
                 });
-            }
-
-            async saveTrackData(track) {
-                try {
-                    const transaction = this.db.transaction(['tracks'], 'readwrite');
-                    const store = transaction.objectStore('tracks');
-                    await new Promise((resolve, reject) => {
-                        const request = store.put(track);
-                        request.onsuccess = () => resolve();
-                        request.onerror = () => reject(request.error);
-                    });
-                } catch (error) {
-                    console.error('Failed to save track:', error);
-                }
-            }
-
-            async getTrackData(trackId) {
-                try {
-                    const transaction = this.db.transaction(['tracks'], 'readonly');
-                    const store = transaction.objectStore('tracks');
-                    return await new Promise((resolve, reject) => {
-                        const request = store.get(trackId);
-                        request.onsuccess = () => resolve(request.result);
-                        request.onerror = () => reject(request.error);
-                    });
-                } catch (error) {
-                    console.error('Failed to get track:', error);
-                    return null;
-                }
             }
 
             async saveCachedTracks() {
@@ -374,6 +329,7 @@
                         request.onsuccess = () => resolve();
                         request.onerror = () => reject(request.error);
                     });
+                    console.log('Cache saved with listened status');
                 } catch (error) {
                     console.error('Failed to save cache:', error);
                 }
@@ -767,8 +723,8 @@
 
                 track.listened = !track.listened;
                 
-                // Save immediately
-                await this.saveTrackData(track);
+                // Save the entire cache immediately so it persists
+                await this.saveCachedTracks();
                 
                 // Update UI immediately
                 const listenedBtn = document.querySelector(`[data-listened="${trackId}"]`);
@@ -838,7 +794,7 @@
                     
                     track.downloaded = true;
                     track.audioData = arrayBuffer;
-                    await this.saveTrackData(track);
+                    await this.saveCachedTracks();
                     
                     button.textContent = 'Downloaded';
                     button.classList.add('downloaded');
@@ -889,12 +845,23 @@
                     });
 
                     this.audio.addEventListener('ended', () => {
-                        this.toggleListened(trackId);
+                        track.listened = true;
                         track.currentTime = 0;
-                        this.saveTrackData(track);
+                        this.saveCachedTracks(); // Save listened status to cache
                         this.resetAllButtons();
                         this.hideAllProgressBars();
                         this.stopProgressUpdate();
+                        // Update the UI to show listened status
+                        const listenedBtn = document.querySelector(`[data-listened="${trackId}"]`);
+                        const statusIndicator = document.querySelector(`[data-track-id="${trackId}"] .status-indicator`);
+                        if (listenedBtn) {
+                            listenedBtn.textContent = 'Mark Unlistened';
+                            listenedBtn.className = 'listened-btn is-listened';
+                        }
+                        if (statusIndicator) {
+                            statusIndicator.textContent = 'Listened';
+                            statusIndicator.className = 'status-indicator status-listened';
+                        }
                     });
                     
                     this.audio.addEventListener('error', (e) => {
@@ -919,7 +886,7 @@
                 if (this.audio && this.currentTrack && this.currentTrack.id === trackId) {
                     this.audio.pause();
                     this.currentTrack.currentTime = this.audio.currentTime;
-                    this.saveTrackData(this.currentTrack);
+                    this.saveCachedTracks(); // Don't await, just fire and forget
                     this.stopProgressUpdate();
                     this.resetAllButtons();
                 }
