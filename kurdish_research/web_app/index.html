@@ -58,6 +58,26 @@
             background: #4a5568;
             cursor: not-allowed;
         }
+
+        .category-section {
+            margin-bottom: 50px;
+        }
+        
+        .category-title {
+            font-size: 26px;
+            color: #4299e1;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2d3748;
+        }
+        
+        .subcategory-title {
+            font-size: 22px;
+            color: #63b3ed;
+            margin: 30px 0 20px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #2d3748;
+        }
         
         .track-item {
             background: #1e2936;
@@ -93,6 +113,10 @@
 
         .track-status.listened {
             color: #38a169;
+        }
+
+        .track-status.not-completed {
+            color: #f6ad55;
         }
 
         .track-status.unlistened {
@@ -228,7 +252,7 @@
     
     <div class="controls-header">
         <button id="update-btn">Update Podcasts</button>
-        <button id="filter-btn">Show All</button>
+        <button id="filter-btn">Show Unlistened Only</button>
     </div>
 
     <div id="loading" class="loading" style="display: none;">Loading...</div>
@@ -238,6 +262,7 @@
         class AudioPlayer {
             constructor() {
                 this.tracks = [];
+                this.categoryStructure = new Map();
                 this.currentTrack = null;
                 this.audio = null;
                 this.db = null;
@@ -268,48 +293,79 @@
                         if (!db.objectStoreNames.contains('tracks')) {
                             db.createObjectStore('tracks', { keyPath: 'id' });
                         }
+                        if (!db.objectStoreNames.contains('categories')) {
+                            db.createObjectStore('categories', { keyPath: 'id' });
+                        }
                     };
                 });
             }
 
             async loadTracks() {
                 try {
-                    const transaction = this.db.transaction(['tracks'], 'readonly');
-                    const store = transaction.objectStore('tracks');
+                    const tracksTransaction = this.db.transaction(['tracks'], 'readonly');
+                    const tracksStore = tracksTransaction.objectStore('tracks');
                     
-                    return new Promise((resolve) => {
-                        const request = store.getAll();
-                        request.onsuccess = () => {
-                            this.tracks = request.result || [];
-                            console.log(`Loaded ${this.tracks.length} tracks from cache`);
-                            resolve();
-                        };
-                        request.onerror = () => {
-                            console.log('Failed to load tracks, starting fresh');
-                            this.tracks = [];
-                            resolve();
-                        };
+                    const categoryTransaction = this.db.transaction(['categories'], 'readonly');
+                    const categoryStore = categoryTransaction.objectStore('categories');
+                    
+                    const tracksPromise = new Promise((resolve) => {
+                        const request = tracksStore.getAll();
+                        request.onsuccess = () => resolve(request.result || []);
+                        request.onerror = () => resolve([]);
                     });
+
+                    const categoryPromise = new Promise((resolve) => {
+                        const request = categoryStore.get('structure');
+                        request.onsuccess = () => {
+                            if (request.result && request.result.data) {
+                                resolve(new Map(request.result.data));
+                            } else {
+                                resolve(new Map());
+                            }
+                        };
+                        request.onerror = () => resolve(new Map());
+                    });
+                    
+                    const [tracks, categories] = await Promise.all([tracksPromise, categoryPromise]);
+                    this.tracks = tracks;
+                    this.categoryStructure = categories;
+                    
+                    console.log(`Loaded ${this.tracks.length} tracks and ${this.categoryStructure.size} categories from cache`);
                 } catch (error) {
                     console.log('Database error, starting fresh:', error);
                     this.tracks = [];
+                    this.categoryStructure = new Map();
                 }
             }
 
             async saveTracks() {
                 try {
-                    const transaction = this.db.transaction(['tracks'], 'readwrite');
-                    const store = transaction.objectStore('tracks');
+                    const tracksTransaction = this.db.transaction(['tracks'], 'readwrite');
+                    const tracksStore = tracksTransaction.objectStore('tracks');
                     
                     // Save all tracks
                     for (const track of this.tracks) {
                         await new Promise((resolve, reject) => {
-                            const request = store.put(track);
+                            const request = tracksStore.put(track);
                             request.onsuccess = () => resolve();
                             request.onerror = () => reject(request.error);
                         });
                     }
-                    console.log('Tracks saved to database');
+
+                    // Save category structure
+                    const categoryTransaction = this.db.transaction(['categories'], 'readwrite');
+                    const categoryStore = categoryTransaction.objectStore('categories');
+                    
+                    await new Promise((resolve, reject) => {
+                        const request = categoryStore.put({
+                            id: 'structure',
+                            data: Array.from(this.categoryStructure.entries())
+                        });
+                        request.onsuccess = () => resolve();
+                        request.onerror = () => reject(request.error);
+                    });
+                    
+                    console.log('Tracks and categories saved to database');
                 } catch (error) {
                     console.error('Failed to save tracks:', error);
                 }
@@ -341,82 +397,109 @@
             async scanForTracks() {
                 const newTracks = [];
                 const existingUrls = new Set(this.tracks.map(t => t.id));
+                const categoryStructure = new Map();
                 
                 try {
-                    // Try to scan the main index page
+                    // Scan the main index page for category structure
                     const response = await fetch('../../landing_pages/kurdish_research.html');
                     if (response.ok) {
                         const html = await response.text();
                         const parser = new DOMParser();
                         const doc = parser.parseFromString(html, 'text/html');
                         
-                        const links = doc.querySelectorAll('.resource-link');
-                        const htmlFiles = Array.from(links).map(link => {
-                            const href = link.getAttribute('href');
-                            const title = link.querySelector('.link-title')?.textContent?.trim() || 'Unknown';
-                            return { file: href.split('/').pop(), title };
+                        // Build category structure
+                        const categories = doc.querySelectorAll('.category');
+                        const htmlFiles = [];
+                        
+                        categories.forEach(category => {
+                            const categoryTitle = category.querySelector('h2')?.textContent?.trim();
+                            if (!categoryTitle) return;
+                            
+                            const subcategories = new Map();
+                            let currentSubcategory = null;
+                            
+                            const children = Array.from(category.children);
+                            children.forEach(child => {
+                                if (child.tagName === 'H4') {
+                                    currentSubcategory = child.textContent.trim();
+                                    subcategories.set(currentSubcategory, []);
+                                } else if (child.classList.contains('resource-link')) {
+                                    const href = child.getAttribute('href');
+                                    const title = child.querySelector('.link-title')?.textContent?.trim();
+                                    if (href && title) {
+                                        const fileName = href.split('/').pop();
+                                        const linkInfo = { fileName, title, href };
+                                        
+                                        if (currentSubcategory) {
+                                            subcategories.get(currentSubcategory).push(linkInfo);
+                                        } else {
+                                            if (!subcategories.has('_main')) {
+                                                subcategories.set('_main', []);
+                                            }
+                                            subcategories.get('_main').push(linkInfo);
+                                        }
+                                        
+                                        htmlFiles.push({ file: fileName, title, category: categoryTitle, subcategory: currentSubcategory });
+                                    }
+                                }
+                            });
+                            
+                            categoryStructure.set(categoryTitle, subcategories);
                         });
                         
-                        console.log(`Found ${htmlFiles.length} HTML files to scan`);
+                        console.log(`Found ${categoryStructure.size} categories with ${htmlFiles.length} total files`);
                         
                         // Scan each HTML file for MP3s
-                        for (const {file, title} of htmlFiles) {
+                        for (const {file, title, category, subcategory} of htmlFiles) {
                             try {
                                 const pageResponse = await fetch(`../podcast_pages/${file}`);
                                 if (pageResponse.ok) {
                                     const pageHtml = await pageResponse.text();
                                     const pageDoc = parser.parseFromString(pageHtml, 'text/html');
                                     
-                                    // Find MP3 files
+                                    // Special handling for 10 Historical Eras series
+                                    const isHistoricalSeries = file === 'top_ten_history.html' || 
+                                                              title.includes('10 Historical Eras');
+                                    
                                     const audioElements = pageDoc.querySelectorAll('source[src$=".mp3"], a[href$=".mp3"]');
                                     
-                                    audioElements.forEach(element => {
-                                        const url = element.src || element.href;
-                                        if (url && !existingUrls.has(url)) {
-                                            const track = this.createTrack(url, title);
-                                            newTracks.push(track);
-                                            existingUrls.add(url);
-                                        }
-                                    });
+                                    if (isHistoricalSeries && audioElements.length > 0) {
+                                        // Extract individual era titles
+                                        const eraHeaders = pageDoc.querySelectorAll('.era-section h2');
+                                        audioElements.forEach((element, index) => {
+                                            const url = element.src || element.href;
+                                            if (url && !existingUrls.has(url)) {
+                                                const eraTitle = eraHeaders[index]?.textContent?.trim() || `${title} - Part ${index + 1}`;
+                                                const eraNumber = this.extractEraNumber(eraTitle);
+                                                
+                                                newTracks.push(this.createTrack(url, eraTitle, category, subcategory, { isHistoricalEra: true, eraNumber }));
+                                                existingUrls.add(url);
+                                            }
+                                        });
+                                    } else {
+                                        // Regular handling
+                                        audioElements.forEach(element => {
+                                            const url = element.src || element.href;
+                                            if (url && !existingUrls.has(url)) {
+                                                newTracks.push(this.createTrack(url, title, category, subcategory));
+                                                existingUrls.add(url);
+                                            }
+                                        });
+                                    }
                                 }
                             } catch (error) {
                                 console.log(`Failed to scan ${file}:`, error.message);
                             }
                         }
+                        
+                        this.categoryStructure = categoryStructure;
                     } else {
                         throw new Error('Main index not accessible');
                     }
                 } catch (error) {
                     console.log('Main scan failed, using fallback:', error.message);
-                    
-                    // Fallback: try common files
-                    const commonFiles = [
-                        'Afrin_-_Kilis_Relations.html',
-                        'Afrin_Alevis_Before_2010.html',
-                        'Afrin_and_Cyrrhestica_in_Roman_Times.html'
-                    ];
-                    
-                    for (const file of commonFiles) {
-                        try {
-                            const response = await fetch(`../podcast_pages/${file}`);
-                            if (response.ok) {
-                                const html = await response.text();
-                                const doc = parser.parseFromString(html, 'text/html');
-                                const title = doc.title || file.replace('.html', '').replace(/_/g, ' ');
-                                
-                                const audioElements = doc.querySelectorAll('source[src$=".mp3"], a[href$=".mp3"]');
-                                audioElements.forEach(element => {
-                                    const url = element.src || element.href;
-                                    if (url && !existingUrls.has(url)) {
-                                        newTracks.push(this.createTrack(url, title));
-                                        existingUrls.add(url);
-                                    }
-                                });
-                            }
-                        } catch (error) {
-                            // Ignore individual failures
-                        }
-                    }
+                    // Fallback scanning (simplified)
+                    await this.fallbackScan(newTracks, existingUrls);
                 }
                 
                 // Add new tracks to the list
@@ -424,15 +507,64 @@
                 console.log(`Scan completed. Found ${newTracks.length} new tracks. Total: ${this.tracks.length}`);
             }
 
-            createTrack(url, title) {
+            async fallbackScan(newTracks, existingUrls) {
+                const commonFiles = [
+                    'Afrin_-_Kilis_Relations.html',
+                    'Afrin_Alevis_Before_2010.html',
+                    'Afrin_and_Cyrrhestica_in_Roman_Times.html'
+                ];
+                
+                const parser = new DOMParser();
+                for (const file of commonFiles) {
+                    try {
+                        const response = await fetch(`../podcast_pages/${file}`);
+                        if (response.ok) {
+                            const html = await response.text();
+                            const doc = parser.parseFromString(html, 'text/html');
+                            const title = doc.title || file.replace('.html', '').replace(/_/g, ' ');
+                            
+                            const audioElements = doc.querySelectorAll('source[src$=".mp3"], a[href$=".mp3"]');
+                            audioElements.forEach(element => {
+                                const url = element.src || element.href;
+                                if (url && !existingUrls.has(url)) {
+                                    newTracks.push(this.createTrack(url, title, 'Uncategorized'));
+                                    existingUrls.add(url);
+                                }
+                            });
+                        }
+                    } catch (error) {
+                        // Ignore individual failures
+                    }
+                }
+            }
+
+            createTrack(url, title, category = 'Uncategorized', subcategory = null, extra = {}) {
                 return {
                     id: url,
                     url: url,
                     title: title,
+                    category: category,
+                    subcategory: subcategory,
                     listened: false,
                     currentTime: 0,
-                    audioData: null
+                    audioData: null,
+                    ...extra
                 };
+            }
+
+            extractEraNumber(title) {
+                const match = title.match(/^(\d+)\./);
+                return match ? parseInt(match[1]) : 999;
+            }
+
+            getTrackStatus(track) {
+                if (track.listened) {
+                    return 'listened';
+                } else if (track.currentTime > 0) {
+                    return 'not-completed';
+                } else {
+                    return 'unlistened';
+                }
             }
 
             setupEventListeners() {
@@ -472,25 +604,85 @@
                     return;
                 }
 
-                // Filter tracks if needed
-                const filteredTracks = this.showOnlyUnlistened 
-                    ? this.tracks.filter(track => !track.listened || track.currentTime > 0)
-                    : this.tracks;
+                // Group tracks by category and subcategory
+                const groupedTracks = new Map();
+                
+                this.tracks.forEach(track => {
+                    const categoryName = track.category || 'Uncategorized';
+                    
+                    if (!groupedTracks.has(categoryName)) {
+                        groupedTracks.set(categoryName, new Map());
+                    }
+                    
+                    const categoryMap = groupedTracks.get(categoryName);
+                    const subcategoryName = track.subcategory || '_main';
+                    
+                    if (!categoryMap.has(subcategoryName)) {
+                        categoryMap.set(subcategoryName, []);
+                    }
+                    
+                    categoryMap.get(subcategoryName).push(track);
+                });
 
-                const html = filteredTracks.map(track => this.renderTrack(track)).join('');
+                // Apply filter
+                if (this.showOnlyUnlistened) {
+                    groupedTracks.forEach((subcategories, categoryName) => {
+                        subcategories.forEach((tracks, subcategoryName) => {
+                            const filtered = tracks.filter(track => !track.listened || track.currentTime > 0);
+                            if (filtered.length === 0) {
+                                subcategories.delete(subcategoryName);
+                            } else {
+                                subcategories.set(subcategoryName, filtered);
+                            }
+                        });
+                        if (subcategories.size === 0) {
+                            groupedTracks.delete(categoryName);
+                        }
+                    });
+                }
+
+                // Generate HTML
+                let html = '';
+                
+                groupedTracks.forEach((subcategories, categoryName) => {
+                    html += `<div class="category-section">
+                        <h2 class="category-title">${categoryName}</h2>`;
+                    
+                    subcategories.forEach((tracks, subcategoryName) => {
+                        if (subcategoryName !== '_main') {
+                            html += `<h3 class="subcategory-title">${subcategoryName}</h3>`;
+                        }
+                        
+                        // Sort historical era tracks by era number
+                        const sortedTracks = tracks.slice().sort((a, b) => {
+                            if (a.isHistoricalEra && b.isHistoricalEra) {
+                                return (a.eraNumber || 999) - (b.eraNumber || 999);
+                            }
+                            return 0;
+                        });
+                        
+                        sortedTracks.forEach(track => {
+                            html += this.renderTrack(track);
+                        });
+                    });
+                    
+                    html += `</div>`;
+                });
+
                 container.innerHTML = html;
             }
 
             renderTrack(track) {
                 const isPlaying = this.currentTrack && this.currentTrack.id === track.id;
-                const statusText = track.listened ? 'Listened' : 'Unlistened';
-                const statusClass = track.listened ? 'listened' : 'unlistened';
+                const status = this.getTrackStatus(track);
+                const statusText = status === 'listened' ? 'Listened' : 
+                                 status === 'not-completed' ? 'Not Completed' : 'Unlistened';
                 const hasAudio = track.audioData !== null;
 
                 return `
                     <div class="track-item ${isPlaying ? 'playing' : ''}" data-track-id="${track.id}">
                         <div class="track-title">${track.title}</div>
-                        <div class="track-status ${statusClass}">${statusText}</div>
+                        <div class="track-status ${status}">${statusText}</div>
                         
                         <div class="progress-container" style="display: ${isPlaying ? 'block' : 'none'}">
                             <div class="progress-bar" data-action="seek">
@@ -504,7 +696,7 @@
                         
                         <div class="track-controls">
                             <button class="btn-play ${isPlaying ? 'btn-pause' : ''}" data-action="play">
-                                ${isPlaying ? 'Pause' : 'Play'}
+                                ${isPlaying ? '⏸ Pause' : '▶ Play'}
                             </button>
                             <button data-action="rewind">-10s</button>
                             <button data-action="forward">+10s</button>
@@ -521,16 +713,25 @@
 
             handleTrackAction(event) {
                 const button = event.target.closest('button');
-                if (!button) return;
+                const progressBar = event.target.closest('.progress-bar');
+                
+                if (!button && !progressBar) return;
 
-                const trackItem = button.closest('.track-item');
+                const trackItem = (button || progressBar).closest('.track-item');
                 if (!trackItem) return;
 
                 const trackId = trackItem.dataset.trackId;
-                const action = button.dataset.action;
                 const track = this.tracks.find(t => t.id === trackId);
                 
                 if (!track) return;
+
+                if (progressBar && !button) {
+                    // Progress bar clicked for seeking
+                    this.seekToPosition(track, event);
+                    return;
+                }
+
+                const action = button.dataset.action;
 
                 switch (action) {
                     case 'play':
@@ -551,9 +752,6 @@
                         break;
                     case 'toggle-listened':
                         this.toggleListened(track);
-                        break;
-                    case 'seek':
-                        this.seekToPosition(track, event);
                         break;
                 }
             }
@@ -583,6 +781,11 @@
                         if (track.currentTime > 0) {
                             this.audio.currentTime = track.currentTime;
                         }
+                        this.updateProgress();
+                    });
+
+                    this.audio.addEventListener('timeupdate', () => {
+                        this.updateProgress();
                     });
 
                     this.audio.addEventListener('ended', () => {
@@ -621,7 +824,11 @@
                     const progressBar = event.currentTarget;
                     const rect = progressBar.getBoundingClientRect();
                     const percentage = (event.clientX - rect.left) / rect.width;
-                    this.audio.currentTime = percentage * this.audio.duration;
+                    const newTime = percentage * this.audio.duration;
+                    
+                    if (!isNaN(newTime)) {
+                        this.audio.currentTime = newTime;
+                    }
                 }
             }
 
@@ -650,6 +857,9 @@
 
             async toggleListened(track) {
                 track.listened = !track.listened;
+                if (track.listened) {
+                    track.currentTime = 0; // Reset progress when marking as listened
+                }
                 await this.saveTracks();
                 this.renderUI();
                 console.log(`Marked "${track.title}" as ${track.listened ? 'listened' : 'unlistened'}`);
@@ -677,7 +887,7 @@
                 this.stopProgressUpdate();
                 this.progressInterval = setInterval(() => {
                     this.updateProgress();
-                }, 500);
+                }, 200);
             }
 
             stopProgressUpdate() {
