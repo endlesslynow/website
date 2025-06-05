@@ -67,7 +67,6 @@
             font-size: 14px;
             font-weight: 600;
             min-height: 44px;
-            box-shadow: 0 4px 14px rgba(102, 126, 234, 0.3);
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -75,7 +74,6 @@
         
         .filter-toggle:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
         
         .filter-toggle:active {
@@ -198,6 +196,19 @@
         
         .controls {
             display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .secondary-controls {
+            display: flex;
             align-items: center;
             gap: 12px;
             flex-wrap: wrap;
@@ -244,6 +255,7 @@
             background: linear-gradient(135deg, #10b981, #059669);
             border-color: #10b981;
             color: white;
+            padding: 12px 32px;
         }
         
         .play-btn:hover {
@@ -255,6 +267,7 @@
             background: linear-gradient(135deg, #ef4444, #dc2626);
             border-color: #ef4444;
             color: white;
+            padding: 12px 32px;
         }
         
         .pause-btn:hover {
@@ -375,6 +388,14 @@
             }
             
             .controls {
+                gap: 8px;
+            }
+            
+            .audio-controls {
+                gap: 8px;
+            }
+            
+            .secondary-controls {
                 gap: 8px;
             }
             
@@ -898,14 +919,18 @@
                                         </div>
                                     </div>
                                     <div class="controls">
-                                        <button class="play-btn" data-play="${track.id}">Play</button>
-                                        <button class="pause-btn" data-pause="${track.id}" style="display: none;">Pause</button>
-                                        <button data-rewind="${track.id}">-10s</button>
-                                        <button data-forward="${track.id}">+10s</button>
-                                        <button class="download-btn" data-download="${track.id}">Download</button>
-                                        <button class="listened-btn" data-listened="${track.id}" ${track.listened ? 'data-is-listened="true"' : 'data-is-listened="false"'}>
-                                            ${track.listened ? 'Mark Unlistened' : 'Mark Listened'}
-                                        </button>
+                                        <div class="audio-controls">
+                                            <button class="play-btn" data-play="${track.id}">Play</button>
+                                            <button class="pause-btn" data-pause="${track.id}" style="display: none;">Pause</button>
+                                            <button data-rewind="${track.id}">-10s</button>
+                                            <button data-forward="${track.id}">+10s</button>
+                                        </div>
+                                        <div class="secondary-controls">
+                                            <button class="download-btn" data-download="${track.id}">Download</button>
+                                            <button class="listened-btn" data-listened="${track.id}" ${track.listened ? 'data-is-listened="true"' : 'data-is-listened="false"'}>
+                                                ${track.listened ? 'Mark Unlistened' : 'Mark Listened'}
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>`;
                         });
