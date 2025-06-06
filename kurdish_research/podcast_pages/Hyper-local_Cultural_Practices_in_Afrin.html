@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyper-local Cultural Practices in Afrin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hyper-local Cultural Practices in Afrin</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Kurdish Traditional Clothing_ An Ethnographic Study.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Kurdish Traditional Clothing_ An Ethnographic Study.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>C:\Users\zacah\Desktop\programs I made\python programs\auto_prompt\output\auto_deep_research\audios</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Afrin Pre-2010 Cultural Practices_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Afrin District - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Afrin_District" target="_blank">https://en.wikipedia.org/wiki/Afrin_District</a></li>
+<li>​عفرين - ويكيبيديا, accessed June 6, 2025, <a href="https://ar.wikipedia.org/wiki/%D8%B9%D9%81%D8%B1%D9%8A%D9%86" target="_blank">https://ar.wikipedia.org/wiki/%D8%B9%D9%81%D8%B1%D9%8A%D9%86</a></li>
+<li>​ Rêveberiya Xweser a Bakur û Rojhilatê Sûriyeyê - Wîkîpediya, accessed June 6, 2025, <a href="https://ku.wikipedia.org/wiki/R%C3%AAveberiya_Xweser_a_Bakur_%C3%BB_Rojhil" target="_blank">https://ku.wikipedia.org/wiki/R%C3%AAveberiya_Xweser_a_Bakur_%C3%BB_Rojhil</a> at%C3%AA_S%C3%BBriyey%C3%AA</li>
+<li>​ A Tale of Afrin - Youth4Nature, accessed June 6, 2025, <a href="https://www.youth4nature.org/stories/tale-afrin" target="_blank">https://www.youth4nature.org/stories/tale-afrin</a></li>
+<li>​ Withering Branch_ The Story of Afrin and its Peoples, Pre &amp; Post Operation Olive Branch - Washington Kurdish Institute, accessed June 6, 2025, <a href="https://dckurd.org/wp-content/uploads/2022/03/Withering-Branch_-The-Story-of" target="_blank">https://dckurd.org/wp-content/uploads/2022/03/Withering-Branch_-The-Story-of</a> -Afrin-and-its-Peoples-Pre-Post-Operation-Olive-Branch-_-Dominic-Brunaccion i.docx-3.pdf</li>
+<li>​الوجود الكردي في سوريا ًتاريخيا ًواجتماعيا, accessed June 6, 2025, <a href="https://www.medaratkurd.com/2018/01/08/2294/" target="_blank">https://www.medaratkurd.com/2018/01/08/2294/</a></li>
+<li>​ Barış Pınarı Harekâtı - Suriye&#x27;nin kuzeyindeki demografik yapı son 100 yılda nasıl değişti? Harekât &#x27;yeni bir Arap Kemeri&#x27; projesi mi? - BBC, accessed June 6, 2025, <a href="https://www.bbc.com/turkce/haberler-dunya-50000614" target="_blank">https://www.bbc.com/turkce/haberler-dunya-50000614</a></li>
+<li>​ Turkey&#x27;s Demographic Engineering in Syria&#x27;s Afrin Region: A Closer Look, accessed June 6, 2025, <a href="https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin" target="_blank">https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin</a> -region-a-closer-look</li>
+<li>​ Crimes in Syria: The neglected atrocities of Afrin - ECCHR, accessed June 6, 2025, <a href="https://www.ecchr.eu/en/case/crimes-in-syria-the-neglected-atrocities-of-afrin/" target="_blank">https://www.ecchr.eu/en/case/crimes-in-syria-the-neglected-atrocities-of-afrin/</a></li>
+<li>​Lêkolînên stratejîk, accessed June 6, 2025, <a href="https://nrls.net/ku/wp-content/uploads/2022/09/Kovara-Lekolinen-Stratejik_Hejm" target="_blank">https://nrls.net/ku/wp-content/uploads/2022/09/Kovara-Lekolinen-Stratejik_Hejm</a> ar-0.pdf</li>
+<li>​Afrin - Vikipedi, accessed June 6, 2025, <a href="https://tr.wikipedia.org/wiki/Afrin" target="_blank">https://tr.wikipedia.org/wiki/Afrin</a></li>
+<li>​Afrin celebrate Newroz after Eight Years of Demographic Change - Kurdistan24, accessed June 6, 2025, <a href="https://www.kurdistan24.net/en/story/831399/afrin-celebrate-newroz-after-eight-" target="_blank">https://www.kurdistan24.net/en/story/831399/afrin-celebrate-newroz-after-eight-</a> years-of-demographic-change</li>
+<li>​كيف أثر النزوح على التركيبة السكانية في عفرين السورية؟ | سياسة - الجزيرة نت, accessed June 6, 2025, <a href="https://www.aljazeera.net/politics/2025/1/21/%D9%83%D9%8A%D9%81-%D8%A3" target="_blank">https://www.aljazeera.net/politics/2025/1/21/%D9%83%D9%8A%D9%81-%D8%A3</a> %D8%AB%D8%B1-%D8%A7%D9%84%D9%86%D8%B2%D9%88%D8%AD-%D8% B9%D9%84%D9%89-%D8%A7%D9%84%D8%AA%D8%B1%D9%83%D9%8A%D8 %A8%D8%A9-%D8%A7%D9%84%D8%B3%D9%83%D8%A7%D9%86%D9%8A% D8%A9</li>
+<li>​Syrian Arab Republic: Alevis and Yazidis in Afrin threatened ... - GfbV, accessed June 6, 2025, <a href="https://www.gfbv.de/fileadmin/redaktion/UN-statements/2020_2/Syrian_Arab_Re" target="_blank">https://www.gfbv.de/fileadmin/redaktion/UN-statements/2020_2/Syrian_Arab_Re</a> public_Alevis_and_Yazidis_in_Afrin_threatened_with_extinction.pdf</li>
+<li>​Suriye Türkmenlerinin Mevcut Durumu Ve Suriye&#x27;nin Geleceğindeki Rolü - OMRAN STRATEJİK ARAŞTIRMALAR MERKEZİ, accessed June 6, 2025, <a href="https://tr.omrandirasat.org/yay%C4%B1nlar%C4%B1m%C4%B1z/raporlar/suriye-t" target="_blank">https://tr.omrandirasat.org/yay%C4%B1nlar%C4%B1m%C4%B1z/raporlar/suriye-t</a> urkmenlerinin-mevcut-durumu-ve-suriye%E2%80%99nin-gelecegindeki-rolu.ht ml</li>
+<li>​Yazidi | History, Culture, &amp; Religion | Britannica, accessed June 6, 2025, <a href="https://www.britannica.com/topic/Yazidi" target="_blank">https://www.britannica.com/topic/Yazidi</a></li>
+<li>​Kurds - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Kurds" target="_blank">https://en.wikipedia.org/wiki/Kurds</a></li>
+<li>​Afrin, Syria - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Afrin,_Syria" target="_blank">https://en.wikipedia.org/wiki/Afrin,_Syria</a></li>
+<li>​أجواء عيد االيزيدية من مدينة عفرين في الشمال السوري المحرر - YouTube, accessed June 6, 2025, <a href="https://www.youtube.com/watch?v=6lHMtQPq6aM" target="_blank">https://www.youtube.com/watch?v=6lHMtQPq6aM</a></li>
+<li>​Kurd | Syria, Language, Map, Women, Turkey, Iraq, Iran, History ..., accessed June 6, 2025, <a href="https://www.britannica.com/topic/Kurd" target="_blank">https://www.britannica.com/topic/Kurd</a></li>
+<li>​Kurdish Sufi Spaces of Rural-Urban. Connection in Northern Syria, accessed June 6, 2025, <a href="https://journals.openedition.org/etudesrurales/9290" target="_blank">https://journals.openedition.org/etudesrurales/9290</a></li>
+<li>​Kurdistan on the global stage : kinship, land, and community in Iraq - Air University, accessed June 6, 2025, <a href="https://aul.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma9957469390" target="_blank">https://aul.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma9957469390</a> 06836&amp;context=L&amp;vid=01AUL_INST:AUL&amp;lang=en&amp;search_scope=MyInst_and_CI &amp;adaptor=Local%20Search%20Engine&amp;tab=Everything&amp;query=sub%2Cexact%2 C%20Honor%20killings%20%2CAND&amp;mode=advanced&amp;offset=0</li>
+<li>​النظام االبوي وتأثيره على العائلة والمجتمع والسلطة - Elaph, accessed June 6, 2025, <a href="https://elaph.com/Web/opinion/2010/10/607072.html" target="_blank">https://elaph.com/Web/opinion/2010/10/607072.html</a></li>
+<li>​Yazidis - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Yazidis" target="_blank">https://en.wikipedia.org/wiki/Yazidis</a></li>
+<li>​Yezidis Holidays &amp; Festivals - Yezidis International, accessed June 6, 2025, <a href="http://www.yezidisinternational.org/abouttheyezidipeople/holidays/" target="_blank">http://www.yezidisinternational.org/abouttheyezidipeople/holidays/</a></li>
+<li>​Cejna Cemayê - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Cejna_Cemay%C3%AA" target="_blank">https://en.wikipedia.org/wiki/Cejna_Cemay%C3%AA</a></li>
+<li>​“This is the first time, after thousands of years, that our identity has been accepted and valued” – Eisha Sido, Yazidi Women&#x27;s Union of Afrin, accessed June 6, 2025, <a href="https://rojavainformationcenter.org/2020/09/this-is-the-first-time-after-thousand" target="_blank">https://rojavainformationcenter.org/2020/09/this-is-the-first-time-after-thousand</a> s-of-years-that-our-identity-has-been-accepted-and-valued-eisha-sido-yazidi- womens-union-of-afrin/</li>
+<li>​Feast of Ezid - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Feast_of_Ezid" target="_blank">https://en.wikipedia.org/wiki/Feast_of_Ezid</a></li>
+<li>​Alevism - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Alevism" target="_blank">https://en.wikipedia.org/wiki/Alevism</a></li>
+<li>​Alevi-Bektaşi Gelenekte Cemevlerinin Tarihi Kökeni - Akademik Araştırma Enstitüsü, accessed June 6, 2025, <a href="https://akademikarastirma.org/alevi-bektasi-gelenekte-cemevlerinin-tarihi-kokeni" target="_blank">https://akademikarastirma.org/alevi-bektasi-gelenekte-cemevlerinin-tarihi-kokeni</a> /</li>
+<li>​A spring festival attributed to holiness in Turkish culture: Hıdırellez – Near East University, accessed June 6, 2025, <a href="https://neu.edu.tr/a-spring-festival-attributed-to-holiness-in-turkish-culture-hidir" target="_blank">https://neu.edu.tr/a-spring-festival-attributed-to-holiness-in-turkish-culture-hidir</a> ellez/?lang=en</li>
+<li>​Newroz from Kurdish and Persian Perspectives – A Comparative Study, accessed June 6, 2025, <a href="https://www.ejecs.org/index.php/JECS/article/download/318/pdf/1618" target="_blank">https://www.ejecs.org/index.php/JECS/article/download/318/pdf/1618</a></li>
+<li>​السوريون الكرد يحتفلون بعيد ..النوروز. .لواد حيا جديد | صو | -تلف س, accessed June 6 <a href="https://www.syria.tv/%D8%A7%D9%84%D8%B3%D9%88%D8%B1%D9%8A%D9%" target="_blank">https://www.syria.tv/%D8%A7%D9%84%D8%B3%D9%88%D8%B1%D9%8A%D9%</a> 88%D9%86-%D8%A7%D9%84%D9%83%D8%B1%D8%AF-%D9%8A%D8%AD%D 8%AA%D9%81%D9%84%D9%88%D9%86-%D8%A8%D8%B9%D9%8A%D8%AF- %D8%A7%D9%84%D9%86%D9%88%D8%B1%D9%88%D8%B2-%D9%88%D9%8 4%D8%A7%D8%AF%D8%A9-%D8%AD%D9%8A%D8%A7%D8%A9-%D8%AC%D 8%AF%D9%8A%D8%AF%D8%A9-%D8%B5%D9%88%D8%B1</li>
+<li>​احتفاالت &quot;النوروز&quot;روز &quot;ت منا الائ هنئ ون كرد عبيدهم| June 6, 2025, <a href="https://shaam.org/3BccRa" target="_blank">https://shaam.org/3BccRa</a></li>
+<li>​Greetings from Afrin, Syria, where Kurds danced their hearts out to celebrate spring - NEPM, accessed June 6, 2025, <a href="https://www.nepm.org/national-world-news/2025-05-21/greetings-from-afrin-sy" target="_blank">https://www.nepm.org/national-world-news/2025-05-21/greetings-from-afrin-sy</a> ria-where-kurds-danced-their-hearts-out-to-celebrate-spring</li>
+<li>​Kurdish Transnational Indigeneity - White Rose Research Online, accessed June 6, 2025, <a href="https://eprints.whiterose.ac.uk/id/eprint/173714/1/Kurdish" target="_blank">https://eprints.whiterose.ac.uk/id/eprint/173714/1/Kurdish</a></li>
+<li>​Nowruz - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Nowruz" target="_blank">https://en.wikipedia.org/wiki/Nowruz</a></li>
+<li>​An olive branch in Gaza: An ancient tradition brings joy to Palestinians, accessed June 6, 2025, <a href="https://www.trtworld.com/magazine/an-olive-branch-in-gaza-an-ancient-traditio" target="_blank">https://www.trtworld.com/magazine/an-olive-branch-in-gaza-an-ancient-traditio</a> n-brings-joy-to-palestinians-52250</li>
+<li>​A Latter-day Saint Palestinian remembers the Olive Harvest - Meridian Magazine, accessed June 6, 2025, <a href="https://latterdaysaintmag.com/a-latter-day-saint-palestinian-remembers-the-oliv" target="_blank">https://latterdaysaintmag.com/a-latter-day-saint-palestinian-remembers-the-oliv</a> e-harvest/</li>
+<li>​The Syrian Sowing Festival: Its contribution to early civilization - SYRIAWISE, accessed June 6, 2025, <a href="https://www.syriawise.com/the-syrian-sowing-festival-its-contribution-to-early-c" target="_blank">https://www.syriawise.com/the-syrian-sowing-festival-its-contribution-to-early-c</a> ivilization/</li>
+<li>​Voices That Matter - dokumen.pub, accessed June 6, 2025, <a href="https://dokumen.pub/download/voices-that-matter-kurdish-women-at-the-limits" target="_blank">https://dokumen.pub/download/voices-that-matter-kurdish-women-at-the-limits</a> -of-representation-in-contemporary-turkey-9780226823034.html</li>
+<li>​Commoning the Komal: The Toronto Kurdish Community Centre - Journal of Ethnic and Cultural Studies, accessed June 6, 2025, <a href="https://www.ejecs.org/index.php/JECS/article/download/276/pdf/1220" target="_blank">https://www.ejecs.org/index.php/JECS/article/download/276/pdf/1220</a></li>
+<li>​Kurdish dance: origins and step-by-step guide - Decibel danse, accessed June 6, 2025, <a href="https://www.decibel-danse.com/en/advice/kurdish-dance/" target="_blank">https://www.decibel-danse.com/en/advice/kurdish-dance/</a></li>
+<li>​5 Things You Didn&#x27;t Know About Afreen and Our ... - Mint + Laurel, accessed June 6, 2025, <a href="https://www.mintandlaurel.com/craft-blog/2020/8/22/5-things-you-didnt-know-a" target="_blank">https://www.mintandlaurel.com/craft-blog/2020/8/22/5-things-you-didnt-know-a</a> bout-afreen-and-our-aleppo-soaps-2</li>
+<li>​Rite of passage - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Rite_of_passage" target="_blank">https://en.wikipedia.org/wiki/Rite_of_passage</a></li>
+<li>​RITES OF PASSAGE AFRICAN TRADITIONAL REGION - International Journal of Education and Research, accessed June 6, 2025, <a href="https://ijern.com/journal/2016/September-2016/04.pdf" target="_blank">https://ijern.com/journal/2016/September-2016/04.pdf</a></li>
+<li>​طقوس العبور عند قبائل زيان بالمغرب - الثقافة الشعبية, accessed June 6, 2025, <a href="https://folkculturebh.org/ar/index.php?issue=67&amp;page=article&amp;id=973" target="_blank">https://folkculturebh.org/ar/index.php?issue=67&amp;page=article&amp;id=973</a></li>
+<li>​(PDF) RITES OF PASSAGE AFRICAN TRADITIONAL REGION - ResearchGate, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/381691552_RITES_OF_PASSAGE_AFRIC" target="_blank">https://www.researchgate.net/publication/381691552_RITES_OF_PASSAGE_AFRIC</a> AN_TRADITIONAL_REGION</li>
+<li>​JASO-online Journal of the Anthropological Society of Oxford, accessed June 6, 2025, <a href="https://www.anthro.ox.ac.uk/sites/default/files/anthro/documents/media/jaso10_2_" target="_blank">https://www.anthro.ox.ac.uk/sites/default/files/anthro/documents/media/jaso10_2_</a></li>
+<li>pdf</li>
+<li>​الحياة الدينية والثقافية لإليزيديين الكرد السوريين, accessed June 6, 2025, <a href="https://harmoon.org/wp-content/uploads/2019/10/%D8%A7%D9%84%D8%AD%D" target="_blank">https://harmoon.org/wp-content/uploads/2019/10/%D8%A7%D9%84%D8%AD%D</a> 9%8A%D8%A7%D8%A9-%D8%A7%D9%84%D8%AF%D9%8A%D9%86%D9%8A %D8%A9-%D9%88%D8%A7%D9%84%D8%AB%D9%82%D8%A7%D9%81%D9%8 A%D8%A9-%D9%84%D9%84%D8%A5%D9%8A%D8%B2%D9%8A%D8%AF%D9 %8A%D9%8A%D9%86-%D8%A7%D9%84%D9%83%D8%B1%D8%AF-%D8%A7% D9%84%D8%B3%D9%88%D8%B1%D9%8A%D9%8A%D9%86.pdf</li>
+<li>​الفنون الشعبية في منطقة عفرين - لقمان عفرين, accessed June 6, 2025, <a href="http://www.lokmanafrin.com/fanon%20alshabia.htm" target="_blank">http://www.lokmanafrin.com/fanon%20alshabia.htm</a></li>
+<li>​Stran A K - Calaméo, accessed June 6, 2025, <a href="https://www.calameo.com/books/00507151526a5300a3bfa" target="_blank">https://www.calameo.com/books/00507151526a5300a3bfa</a></li>
+<li>​DENGBÊJ RESOYÊ GOPALA - GCRIS - Mardin Artuklu Üniversitesi, accessed June 6, 2025, <a href="https://gcris.artuklu.edu.tr/bitstreams/98a136b4-9871-482e-a490-227c8c29c44c/" target="_blank">https://gcris.artuklu.edu.tr/bitstreams/98a136b4-9871-482e-a490-227c8c29c44c/</a> download</li>
+<li>​کرديبيديا - التراث و الفلكلور الكردي, accessed June 6, 2025, <a href="https://www.kurdipedia.org/Default.aspx?q=20230325151727477500&amp;lng=11" target="_blank">https://www.kurdipedia.org/Default.aspx?q=20230325151727477500&amp;lng=11</a></li>
+<li>​The Essence of Folklore to foster Identity of Rongmei Community - ResearchGate, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/371609964_The_Essence_of_Folklore_t" target="_blank">https://www.researchgate.net/publication/371609964_The_Essence_of_Folklore_t</a> o_foster_Identity_of_Rongmei_Community</li>
+<li>​Kurdish tanbur - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_tanbur" target="_blank">https://en.wikipedia.org/wiki/Kurdish_tanbur</a></li>
+<li>​Kurdish Instrumental Music and Fascinating Nature of Afrin - YouTube, accessed June 6, 2025, <a href="https://www.youtube.com/watch?v=W0UsPy6Vvm0" target="_blank">https://www.youtube.com/watch?v=W0UsPy6Vvm0</a></li>
+<li>​اجمل رقص من الفلكلور الكردي في عفرين - YouTube, accessed June 6, 2025, <a href="https://www.youtube.com/watch?v=srs-IxM9scg" target="_blank">https://www.youtube.com/watch?v=srs-IxM9scg</a></li>
+<li>​Kilim motifs - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Kilim_motifs" target="_blank">https://en.wikipedia.org/wiki/Kilim_motifs</a></li>
+<li>​The secret language of kilim weaves - Weaver Green, accessed June 6, 2025, <a href="https://www.weavergreen.com/blogs/news/the-secret-language-of-kilim" target="_blank">https://www.weavergreen.com/blogs/news/the-secret-language-of-kilim</a></li>
+<li>​Türk Kültüründe Kilim Motifleri ve Anlamları - Doğtaş, accessed June 6, 2025, <a href="https://www.dogtas.com/blog-kilim-motifleri" target="_blank">https://www.dogtas.com/blog-kilim-motifleri</a></li>
+<li>​صناعة صابون الغار مهنة تراثية ما زالت قائمة في مدينة عفرين - YouTube, accessed June 6, 2025, <a href="https://m.youtube.com/watch?v=9BfuRK2lS50" target="_blank">https://m.youtube.com/watch?v=9BfuRK2lS50</a></li>
+<li>​Kurdish traditional clothing - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_traditional_clothing" target="_blank">https://en.wikipedia.org/wiki/Kurdish_traditional_clothing</a></li>
+<li>​Kurdish Clothes Day - Duhok Province, accessed June 6, 2025, <a href="http://duhokprovince.com/kurdish-clothes-day/" target="_blank">http://duhokprovince.com/kurdish-clothes-day/</a></li>
+<li>​(PDF) Pottery Production and Exchange in Late Antique Syria (Fourth–Eighth Century A.D.). A Study of Some Imported and Local Wares - ResearchGate, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/270687523_Pottery_Production_and_Ex" target="_blank">https://www.researchgate.net/publication/270687523_Pottery_Production_and_Ex</a> change_in_Late_Antique_Syria_Fourth-Eighth_Century_AD_A_Study_of_Some_Im ported_and_Local_Wares</li>
+<li>​صناعة الفخار والخزف في :سوريا: - , accessed June 6, 2025, <a href="https://syrianpedia.com/fharhzf/" target="_blank">https://syrianpedia.com/fharhzf/</a></li>
+<li>​ACKNOWLEDGEMENT This is the first mammoth exercise of its kind which sought the involvement of all export related trade bodies, - DCMSME, accessed June 6, 2025, <a href="https://dcmsme.gov.in/Export_Analysis_and_Exports_Vision_2021-26_Punjab_18.0" target="_blank">https://dcmsme.gov.in/Export_Analysis_and_Exports_Vision_2021-26_Punjab_18.0</a></li>
+<li>21.pdf</li>
+<li>​من أساتذة النجارة في منطقة القطيف – بقلم أحمد بن جواد السويكت, accessed June 6, 2025, <a href="https://www.qatifscience.com/?p=29088" target="_blank">https://www.qatifscience.com/?p=29088</a></li>
+<li>​Collective memories on the 2010 European debt crisis - MADOC, accessed June 6, 2025, <a href="https://madoc.bib.uni-mannheim.de/60954/1/14651165211009972.pdf" target="_blank">https://madoc.bib.uni-mannheim.de/60954/1/14651165211009972.pdf</a></li>
+<li>​GELENEKSEL TÜRK EL SANATLARI:ÇÖMLEKÇİLİK - Melek Sultan Anaokulu, accessed June 6, 2025, <a href="https://caymeleksultan.meb.k12.tr/icerikler/geleneksel-turk-el-sanatlaricomlekcilik" target="_blank">https://caymeleksultan.meb.k12.tr/icerikler/geleneksel-turk-el-sanatlaricomlekcilik</a> _14324371.html</li>
+<li>​(PDF) Morphological Characterization and Analysis of the Oil Chemical Properties of Various Olive Varieties Introduced to the Northwestern Region of Syria, Compared with the Local Sorani Variety - ResearchGate, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/385789056_Morphological_Characteriz" target="_blank">https://www.researchgate.net/publication/385789056_Morphological_Characteriz</a> ation_and_Analysis_of_the_Oil_Chemical_Properties_of_Various_Olive_Varieties_I ntroduced_to_the_Northwestern_Region_of_Syria_Compared_with_the_Local_So rani_Variety</li>
+<li>​مداخل إىل تراث اإلنتاج الفالحي ـ البدوي وتقاليد الغذاء يف األردن - Nahed Hattar, accessed June 6, 2025, <a href="https://www.nahedhattar.net/wp-content/uploads/2018/02/%D8%A7%D9%84%D" target="_blank">https://www.nahedhattar.net/wp-content/uploads/2018/02/%D8%A7%D9%84%D</a> 9%85%D8%B9%D8%B2%D8%A8-%D8%B1%D8%A8%D8%A7%D8%AD.pdf</li>
+<li>​Ottoman cuisine from the 14th to the 19th centuries from travellers perspectives - Özgür Yayınları, accessed June 6, 2025, <a href="https://www.ozguryayinlari.com/site/catalog/download/484/2250/5219" target="_blank">https://www.ozguryayinlari.com/site/catalog/download/484/2250/5219</a></li>
+<li>​African Cuisine — Healthy Recipe Ideas &amp; Nutrition Blog - Diet Assassinista, accessed June 6, 2025, <a href="https://www.dietassassinista.com/blog/tag/African+Cuisine" target="_blank">https://www.dietassassinista.com/blog/tag/African+Cuisine</a></li>
+<li>​10 Dishes Our Editors Are Saving To MyRecipes Right Now - Southern Living, accessed June 6, 2025, <a href="https://www.southernliving.com/editors-top-saved-recipes-11701467" target="_blank">https://www.southernliving.com/editors-top-saved-recipes-11701467</a></li>
+<li>​Afyon Yemekleri: Lezzetine Doyulmaz 18 Tarif - Nefis Yemek Tarifleri, accessed June 6, 2025, <a href="https://www.nefisyemektarifleri.com/liste/afyon-yemekleri/" target="_blank">https://www.nefisyemektarifleri.com/liste/afyon-yemekleri/</a></li>
+<li>​African cuisine - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/African_cuisine" target="_blank">https://en.wikipedia.org/wiki/African_cuisine</a></li>
+<li>​A Taste of Africa: Traditional African Food Recipes - Afrenet, accessed June 6, 2025, <a href="https://afrenet.org/traditional-african-food-recipes/" target="_blank">https://afrenet.org/traditional-african-food-recipes/</a></li>
+<li>​GELENEKSEL GIDA MUHAFAZA YÖNTEMLERİ, accessed June 6, 2025, <a href="https://www.ayk.gov.tr/wp-content/uploads/2015/01/MEM%C4%B0%C5%9E-Eme" target="_blank">https://www.ayk.gov.tr/wp-content/uploads/2015/01/MEM%C4%B0%C5%9E-Eme</a> l-ERSOY-Yasemin-GELENEKSEL-GIDA-MUHAFAZA-Y%C3%96NTEMLER%C4%B0. pdf</li>
+<li>​Traditional Foods: History, Preparation, Processing and Safety [1st ed. 2019] 978-3-030 ... - dokumen.pub, accessed June 6, 2025, <a href="https://dokumen.pub/traditional-foods-history-preparation-processing-and-safe" target="_blank">https://dokumen.pub/traditional-foods-history-preparation-processing-and-safe</a> ty-1st-ed-2019-978-3-030-24619-8-978-3-030-24620-4.html</li>
+<li>​Food preservation methods and use of nanomaterials as a preservative - ResearchGate, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/366528712_Food_preservation_method" target="_blank">https://www.researchgate.net/publication/366528712_Food_preservation_method</a> s_and_use_of_nanomaterials_as_a_preservative</li>
+<li>​HospitaliTEA - Kurdish Hospitality Knows No Limits, Also, Lots of Tea, accessed June 6, 2025, <a href="https://servantgroup.org/hospitalitea-kurdish-hospitality-knows-no-limits-also-lo" target="_blank">https://servantgroup.org/hospitalitea-kurdish-hospitality-knows-no-limits-also-lo</a> ts-of-tea/</li>
+<li>​A Revolution Within the Revolution - VICE, accessed June 6, 2025, <a href="https://www.vice.com/en/article/syrias-kurdish-spring-turkish-boader/" target="_blank">https://www.vice.com/en/article/syrias-kurdish-spring-turkish-boader/</a></li>
+<li>​Kurdish Dress Traditional Kaftan Abaya, Kras Fistan Newroz Wedding Outfit Standart Size - Etsy, accessed June 6, 2025, <a href="https://www.etsy.com/listing/1831027795/kurdish-dress-traditional-authentic" target="_blank">https://www.etsy.com/listing/1831027795/kurdish-dress-traditional-authentic</a></li>
+<li>​Afrin and the Rojava Revolution - Socialist Project, accessed June 6, 2025, <a href="https://socialistproject.ca/2018/01/afrin-and-rojava-revolution/" target="_blank">https://socialistproject.ca/2018/01/afrin-and-rojava-revolution/</a></li>
+<li>​عملية غصن الزيتون - ويكيبيديا, accessed June 6, 2025, <a href="https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D9%8A%D8%A9_%D8%" target="_blank">https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D9%8A%D8%A9_%D8%</a> BA%D8%B5%D9%86_%D8%A7%D9%84%D8%B2%D9%8A%D8%AA%D9%88%D 9%86</li>
+<li>​Naveroka hejmara 12 | Zimannas, accessed June 6, 2025, <a href="https://zimannas.wordpress.com/wp-content/uploads/2017/05/hejmar121.pdf" target="_blank">https://zimannas.wordpress.com/wp-content/uploads/2017/05/hejmar121.pdf</a></li>
+<li>​KÊŞEYA KURDÎ YA HERÊMÎ - Hakikat Adalet Hafıza Merkezi, accessed June 6, 2025, <a href="https://hakikatadalethafiza.org/sites/default/files/2023-06/keseya-kurdi-ya-heremi" target="_blank">https://hakikatadalethafiza.org/sites/default/files/2023-06/keseya-kurdi-ya-heremi</a> -ya-dinyaya-kurewi-zehniyet-siyaset-u-dinamiken-jeopolitik.pdf</li>
+<li>​Suriye - Vikipedi, accessed June 6, 2025, <a href="https://tr.wikipedia.org/wiki/Suriye" target="_blank">https://tr.wikipedia.org/wiki/Suriye</a></li>
+<li>​Harekâtlar Ekseninde Türkiye&#x27;nin Suriye&#x27;de Terörle Mücadelesi - DergiPark, accessed June 6, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/1217006" target="_blank">https://dergipark.org.tr/tr/download/article-file/1217006</a></li>
+<li>​Zeytin Dalı Harekâtı - Vikipedi, accessed June 6, 2025, <a href="https://tr.wikipedia.org/wiki/Zeytin_Dal%C4%B1_Harek%C3%A2t%C4%B1" target="_blank">https://tr.wikipedia.org/wiki/Zeytin_Dal%C4%B1_Harek%C3%A2t%C4%B1</a></li>
+<li>​THE KURDS | Ecoi.net, accessed June 6, 2025, <a href="https://www.ecoi.net/en/file/local/1262738/90_1447760239_bfa-regiones-et-res-p" target="_blank">https://www.ecoi.net/en/file/local/1262738/90_1447760239_bfa-regiones-et-res-p</a> ublicae-the-kurds-2015.pdf</li>
+<li>​Social structures and kinship systems | History of Africa – Before 1800 Class Notes, accessed June 6, 2025, <a href="https://library.fiveable.me/africa-before-1800/unit-14/social-structures-kinship-sy" target="_blank">https://library.fiveable.me/africa-before-1800/unit-14/social-structures-kinship-sy</a> stems/study-guide/izUwVuBFuB8imtbp</li>
+<li>​كرد - ويكيبيديا, accessed June 6, 2025, <a href="https://ar.wikipedia.org/wiki/%D9%83%D8%B1%D8%AF" target="_blank">https://ar.wikipedia.org/wiki/%D9%83%D8%B1%D8%AF</a></li>
+<li>​حكم روجافا - Chatham House, accessed June 6, 2025, <a href="https://www.chathamhouse.org/sites/default/files/publications/research/2016-12-" target="_blank">https://www.chathamhouse.org/sites/default/files/publications/research/2016-12-</a> 08-governing-rojava-khalaf-arabic.pdf</li>
+<li>​بناء الدولة السورية في زمن الحرب | Carnegie Endowment for International Peace, accessed June 6, 2025, <a href="https://carnegieendowment.org/sada/51658" target="_blank">https://carnegieendowment.org/sada/51658</a></li>
+<li>​مآدب المآتم في مطبخ&quot;:تونس:ا * -- , accessed Ju <a href="https://www.anfasse.online/%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%" target="_blank">https://www.anfasse.online/%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%</a> B9-%D9%88-%D9%86%D9%81%D8%B3/37-%D8%B9%D9%84%D9%85-%D8%A7 %D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9/12151-%D9%85 %D8%A2%D8%AF%D8%A8-%D8%A7%D9%84%D9%85%D8%A2%D8%AA%D9% 85-%D9%81%D9%8A-%D8%AA%D9%88%D9%86%D8%B3-%D9%85%D8%B7%D 8%A8%D8%AE-%D8%A7%D9%84%D9%85%D8%B9%D9%86%D9%89-%D8%A7 %D9%84%D8%AD%D8%A8%D9%8A%D8%A8-%D8%A7%D9%84%D9%86%D9% 87%D8%AF%D9%8A</li>
+<li>​ملف العدد: - German Institute of Development and Sustainability (IDOS), accessed June 6, 2025, <a href="https://www.idos-research.de/uploads/media/Elhiwar-80_Abedtalas.pdf" target="_blank">https://www.idos-research.de/uploads/media/Elhiwar-80_Abedtalas.pdf</a></li>
+<li>​Pirs û Mijarên Zimanê Kurdî, accessed June 6, 2025, <a href="https://zanistvan.wordpress.com/wp-content/uploads/2018/06/helwesta-netewi.p" target="_blank">https://zanistvan.wordpress.com/wp-content/uploads/2018/06/helwesta-netewi.p</a> df</li>
+<li>​ Lêkolî Li ser Êzdîyatiyê 1 LÊKOLÎN Li ser Êzdiyatiyê Weşanên Instîtûta Kurdî ji bo Lêkolîn û Zanist Lêkolîn, accessed June 6, 2025, <a href="https://institutakurdi.com/sites/default/files/content/lekolin/kovara-lekolin/kovar/Le" target="_blank">https://institutakurdi.com/sites/default/files/content/lekolin/kovara-lekolin/kovar/Le</a> %CC%82koli%CC%82n-19.pdf</li>
+<li>​ Uluslararası Çalışmalar Dergisi - Ulisa - DergiPark, accessed June 6, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/336270" target="_blank">https://dergipark.org.tr/tr/download/article-file/336270</a></li>
+<li>​ PYD-YPG | SETA, accessed June 6, 2025, <a href="https://www.setav.org/assets/uploads/2017/05/PYD_YPG_Tr.pdf" target="_blank">https://www.setav.org/assets/uploads/2017/05/PYD_YPG_Tr.pdf</a></li>
+<li>​ VEKİLLİKTEN ÇATIŞMAYA, ÇATIŞMADAN ORTAKLIĞA:PKK-SURİYE İLİŞKİLERİNİN DEĞİŞEN KARAKTERİSTİĞİ - DergiPark, accessed June 6, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/711860" target="_blank">https://dergipark.org.tr/tr/download/article-file/711860</a></li>
+<li>​ TIVA TÜRKLERİNDE GEÇİŞ DÖNEMİ RİTÜELLERİ: DOĞUM, DÜĞÜN, ÖLÜM* Ferah TÜRKER** Vildan KOÇOĞLU GÜNDOĞDU*** - DergiPark, accessed June 6, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/991082" target="_blank">https://dergipark.org.tr/tr/download/article-file/991082</a></li>
+<li>​ Toplumsal Hafıza Bağlamında Hatay/Reyhanlı Çerkeslerinde Halkbilimi Unsurları - Özgür Yayınları, accessed June 6, 2025, <a href="https://www.ozguryayinlari.com/site/catalog/download/467/2216/5724" target="_blank">https://www.ozguryayinlari.com/site/catalog/download/467/2216/5724</a></li>
+<li>​ KÜRTLER - TDV İslâm Ansiklopedisi, accessed June 6, 2025, <a href="https://islamansiklopedisi.org.tr/kurtler" target="_blank">https://islamansiklopedisi.org.tr/kurtler</a></li>
+<li>​ Die Stimme der Aleviten in Europa BRİTANYA ABF Genel Kurulu... 20 Yaşında... - Almanya Alevi Birlikleri Federasyonu Kurumsal Arşivi, accessed June 6, 2025, <a href="https://www.aabfhistory.com/sites/default/files/2024-02/as.223_subat%202018.pd" target="_blank">https://www.aabfhistory.com/sites/default/files/2024-02/as.223_subat%202018.pd</a> f</li>
+<li>​ Cutting and Connecting: &#x27;Afrinesian&#x27; Perspectives on Networks, Exchange, and Relationality, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/310544977_Cutting_and_Connecting_&#x27;" target="_blank">https://www.researchgate.net/publication/310544977_Cutting_and_Connecting_&#x27;</a> Afrinesian&#x27;_Perspectives_on_Networks_Exchange_and_Relationality</li>
+<li>​ Syrian refugees and the politics of waiting in a Turkish border town - Berghahn Journals, accessed June 6, 2025, <a href="https://www.berghahnjournals.com/view/journals/saas/29/3/soca13081.pdf" target="_blank">https://www.berghahnjournals.com/view/journals/saas/29/3/soca13081.pdf</a></li>
+<li>​ Health, Kinship, and Lay Epidemiology among Bangladeshi Immigrants in Birmingham, UK: A Case for Medical Anthropology - ResearchGate, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/338819073_Health_Kinship_and_Lay_Ep" target="_blank">https://www.researchgate.net/publication/338819073_Health_Kinship_and_Lay_Ep</a> idemiology_among_Bangladeshi_Immigrants_in_Birmingham_UK_A_Case_for_Me dical_Anthropology</li>
+<li>​ How my village has changed over a decade | Daily Star, accessed June 6, 2025, <a href="https://www.thedailystar.net/opinion/views/news/how-my-village-has-changed-o" target="_blank">https://www.thedailystar.net/opinion/views/news/how-my-village-has-changed-o</a> ver-decade-3539176</li>
+<li>​ Photo project in remote east African village provided impressions for a lifetime - Army.mil, accessed June 6, 2025, <a href="https://www.army.mil/article/38978/photo_project_in_remote_east_african_village" target="_blank">https://www.army.mil/article/38978/photo_project_in_remote_east_african_village</a> _provided_impressions_for_a_lifetime</li>
+<li>​نوروز - ويكيبيديا, accessed June 6, 2025, <a href="https://ar.wikipedia.org/wiki/%D9%86%D9%88%D8%B1%D9%88%D8%B2" target="_blank">https://ar.wikipedia.org/wiki/%D9%86%D9%88%D8%B1%D9%88%D8%B2</a></li>
+<li>​ﺍﺕ ﻭﺍﻟﺘﻘﺎﻟﻴﺪ ﺑﻤﻨﻄﻘﺔ ﺗﻮﺍﺕ ﺃﻃﻠﺲ ﺍﻟﻌﺎﺩ - جامعة تلمسان, accessed June 6, 2025, <a href="http://dspace.univ-tlemcen.dz/bitstream/112/12767/1/DJAFRI.pdf" target="_blank">http://dspace.univ-tlemcen.dz/bitstream/112/12767/1/DJAFRI.pdf</a></li>
+<li>​ The Nusayrian Alawites: Study On Belief And History — العلويّون :النّصيريّون: - Muhammadanism, accessed June 6, 2025, <a href="https://www.muhammadanism.org/Arabic/book/hariri/nusayrian_alawites_book.p" target="_blank">https://www.muhammadanism.org/Arabic/book/hariri/nusayrian_alawites_book.p</a> df</li>
+<li>​الطوائف والعرقيات في سورية إعداد الباحث طارق إسماعيل كاخيا 3502 - 50 , accessed June 6, 2025, <a href="https://tarek.kakhia.org/books_misc/Sects_and_ethnicities_in_Syria.Tarek_Kakhia." target="_blank">https://tarek.kakhia.org/books_misc/Sects_and_ethnicities_in_Syria.Tarek_Kakhia.</a> pdf</li>
+<li>​إقامــة مهرجــان ألفــالم حقــوق - Movies that Matter, accessed June 6, 2025, <a href="https://moviesthatmatter.nl/content/uploads/2020/12/Handbook_Arabic.pdf" target="_blank">https://moviesthatmatter.nl/content/uploads/2020/12/Handbook_Arabic.pdf</a></li>
+<li>​ Lêkolînên stratejîk, accessed June 6, 2025, <a href="https://nrls.net/ku/wp-content/uploads/2022/09/Lekolinen-stratejik_Hejmara-01.p" target="_blank">https://nrls.net/ku/wp-content/uploads/2022/09/Lekolinen-stratejik_Hejmara-01.p</a> df</li>
+<li>​ Full text of &quot;DIBISTAN A ROJAVA&quot; - Internet Archive, accessed June 6, 2025, <a href="https://archive.org/stream/minhac_a_dibistane_li_rojava/MINHAC%20A%20DIBIST" target="_blank">https://archive.org/stream/minhac_a_dibistane_li_rojava/MINHAC%20A%20DIBIST</a> ANA%20ROJAVA/Amedey%C3%AE/Amedey%C3%AE%20%E2%80%93%20Due m%C3%AEn/ERDN%C3%8EGAR%C3%8E011_djvu.txt</li>
+<li>​ A VRUPA &#x27;D A PKK YAPILANMASI - SETA, accessed June 6, 2025, <a href="https://www.setav.org/assets/uploads/2019/06/kitap-avrupada-pkk-yapilanmasi.p" target="_blank">https://www.setav.org/assets/uploads/2019/06/kitap-avrupada-pkk-yapilanmasi.p</a> df</li>
+<li>​ 2015 39[1], accessed June 6, 2025, <a href="https://mulkiyedergi.info/wp-content/uploads/2021/02/MD-2015-391.pdf" target="_blank">https://mulkiyedergi.info/wp-content/uploads/2021/02/MD-2015-391.pdf</a></li>
+<li>​ ŞEHRİMİZ OSMANİYE, accessed June 6, 2025, <a href="https://osmaniye.meb.gov.tr/meb_iys_dosyalar/2020_02/11101447_SehrimizOsma" target="_blank">https://osmaniye.meb.gov.tr/meb_iys_dosyalar/2020_02/11101447_SehrimizOsma</a> niye.pdf</li>
+<li>​ Şehrimiz Hatay Ders Kitabı - Hatay Meb, accessed June 6, 2025, <a href="https://hatay.meb.gov.tr/meb_iys_dosyalar/2021_06/03105058_SehrimizHatay2.pd" target="_blank">https://hatay.meb.gov.tr/meb_iys_dosyalar/2021_06/03105058_SehrimizHatay2.pd</a> f</li>
+<li>​ Şİİ JEOPOLİTİĞİNDE TÜRKİYE İLE İRAN&#x27;IN GÜÇ MÜCADELESİ* - DergiPark, accessed June 6, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/643003" target="_blank">https://dergipark.org.tr/tr/download/article-file/643003</a></li>
+<li>​ SOSYAL BİLİMLER ENSTİTÜSÜ ORTAÇAĞ&#x27;DA HALEP VE TÜRKLER (944-1117), accessed June 6, 2025, <a href="https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/264375/yokAcikBilim_1" target="_blank">https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/264375/yokAcikBilim_1</a></li>
+<li>pdf?sequence=-1&amp;isAllowed=y</li>
+<li>​ indir - Kamuda Stratejik Yönetim |, accessed June 6, 2025, <a href="http://www.sp.gov.tr/upload/xSPRapor/files/B5Zey+Catalca_18_FR.pdf" target="_blank">http://www.sp.gov.tr/upload/xSPRapor/files/B5Zey+Catalca_18_FR.pdf</a></li>
+<li>​ Kurdish Diaspora - ResearchGate, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/225218451_Kurdish_Diaspora" target="_blank">https://www.researchgate.net/publication/225218451_Kurdish_Diaspora</a></li>
+<li>​ Afrin: Incidents Of Desecration And Destruction Of Cultural Sites - bellingcat, accessed June 6, 2025, <a href="https://www.bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration" target="_blank">https://www.bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration</a> -and-destruction-of-cultural-sites/</li>
+<li>​ (PDF) The governance structure of Turkish-controlled Afrin - ResearchGate, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/371482361_The_governance_structure_" target="_blank">https://www.researchgate.net/publication/371482361_The_governance_structure_</a> of_Turkish-controlled_Afrin</li>
+<li>​ African Ancestor Beliefs and the Catholic Communion of Saints: Concord or Conflict?, accessed June 6, 2025, <a href="https://www.scross.co.za/2010/07/african-ancestor-beliefs/" target="_blank">https://www.scross.co.za/2010/07/african-ancestor-beliefs/</a></li>
+<li>​ ATS 2024 Final Program - ATS 2025, accessed June 6, 2025, <a href="https://conference.thoracic.org/program/resources/2024/final-program.pdf" target="_blank">https://conference.thoracic.org/program/resources/2024/final-program.pdf</a></li>
+<li>​ Musics of the Black Atlantic: Highlife, Rumba, and Afrobeat | Oxford Research Encyclopedia of African History, accessed June 6, 2025, <a href="https://oxfordre.com/africanhistory/display/10.1093/acrefore/9780190277734.001." target="_blank">https://oxfordre.com/africanhistory/display/10.1093/acrefore/9780190277734.001.</a> 0001/acrefore-9780190277734-e-781?p=emailAWdMW48KajOTo&amp;d=/10.1093/acr efore/9780190277734.001.0001/acrefore-9780190277734-e-781</li>
+<li>​ Music of Africa - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Music_of_Africa" target="_blank">https://en.wikipedia.org/wiki/Music_of_Africa</a></li>
+<li>​ ISTANBUL TECHNICAL UNIVERSITY GRADUATE SCHOOL OF ARTS AND SOCIAL SCIENCES M.A. THESIS JUNE 2018 TRANSFORMATIONS OF KURDISH - Polen, accessed June 6, 2025, <a href="https://polen.itu.edu.tr/bitstream/11527/18141/1/513167.pdf" target="_blank">https://polen.itu.edu.tr/bitstream/11527/18141/1/513167.pdf</a></li>
+<li>​ African Clothing, accessed June 6, 2025, <a href="https://www.contemporary-african-art.com/african-clothing.html" target="_blank">https://www.contemporary-african-art.com/african-clothing.html</a></li>
+<li>​ African textiles - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/African_textiles" target="_blank">https://en.wikipedia.org/wiki/African_textiles</a></li>
+<li>​ Traditional healthcare practices of Manipur, North-East India – Its genesis and sciences, accessed June 6, 2025, <a href="https://nopr.niscpr.res.in/jinfo/ijtk/IJTK_23(07)(2024)675-686_SupplData.pdf" target="_blank">https://nopr.niscpr.res.in/jinfo/ijtk/IJTK_23(07)(2024)675-686_SupplData.pdf</a></li>
+<li>​الرواية الصحيحة حول &quot; نوروز &quot; عادات(وت ا ال), accesse 2025, <a href="https://www.geo-strategic.com/2021/03/blog-post_20.html" target="_blank">https://www.geo-strategic.com/2021/03/blog-post_20.html</a></li>
+<li>​ﻓﺮﺣﺔاﻷﻏﺎين اﻟﺸﻌﺒﻴﺔ اﻟﻔﻠﺴﻄﻴﻨﻴﺔ • .د. 2010 - Academia Arab accessed June 6, 2025, <a href="https://academia-arabia.com/files/1/397" target="_blank">https://academia-arabia.com/files/1/397</a></li>
+<li>​ Full text of &quot;مراجع ومصادر عن تاريخ العلويين في العراق وبالد الشام&quot; - Internet Archive, accessed June 6, 2025, <a href="https://archive.org/stream/Alawite_books_sy_iq/%D9%85%D9%86%20%D8%A7%" target="_blank">https://archive.org/stream/Alawite_books_sy_iq/%D9%85%D9%86%20%D8%A7%</a> D9%84%D8%AC%D8%A8%D9%84%20%D8%A7%D9%84%D8%B9%D9%84%D9 %88%D9%8A%20%D8%A5%D9%84%D9%89%20%D8%B9%D8%A7%D8%B5%D 9%85%D8%A9%20%D8%A8%D9%86%D9%8A%20%D8%A3%D9%85%D9%8A% D8%A9%20-%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D9%84%D9 %87%20%D8%AD%D9%86%D8%A7_djvu.txt</li>
+<li>​كتاب الغذاء في القرآن والسنة مسودة مطبعة جامعة الملك سعود 0 - ResearchGate, accessed June 6, 2025, <a href="https://www.researchgate.net/profile/Moezalislam_Faris/publication/348563929_k" target="_blank">https://www.researchgate.net/profile/Moezalislam_Faris/publication/348563929_k</a> tab_alghdha_fy_alqran_alkrym_mn_mnzwr_lm_altghdhyt_alhdyth/links/600510a0 92851c13fe1be131/ktab-alghdha-fy-alqran-alkrym-mn-mnzwr-lm-altghdhyt-alhd yth.pdf</li>
+<li>​حل ا اارتاث ااشعيب باارمس اجلهود ااف سط ن ااشعل ااضف ااغرب بقطاع غ, accessed June 6, 2025, <a href="https://refugeeacademy.org/upload/library/%D8%A7%D9%84%D8%AC%D9%87%" target="_blank">https://refugeeacademy.org/upload/library/%D8%A7%D9%84%D8%AC%D9%87%</a> D9%88%D8%AF_%D8%A7%D8%A7%D9%81%D9%84%D8%B3%D8%B7%D9%8A %D9%86%D9%8A%D8%A9_%D9%84%D8%AD%D9%85%D8%A7%D9%8A%D8% A9_%D8%A7%D9%84%D8%AA%D8%B1%D8%A7%D8%AB.pdf</li>
+<li>​حسان عباس - الموسيقى التقليدية في سوريا.pdf, accessed June 6, 2025, <a href="https://archive.org/download/20220103_20220103_1456/%D8%AD%D8%B3%D8" target="_blank">https://archive.org/download/20220103_20220103_1456/%D8%AD%D8%B3%D8</a> %A7%D9%86%20%D8%B9%D8%A8%D8%A7%D8%B3%20-%20%D8%A7%D9%8 4%D9%85%D9%88%D8%B3%D9%8A%D9%82%D9%89%20%D8%A7%D9%84%D 8%AA%D9%82%D9%84%D9%8A%D8%AF%D9%8A%D8%A9%20%D9%81%D9% 8A%20%D8%B3%D9%88%D8%B1%D9%8A%D8%A7.pdf</li>
+<li>​الموسيقى ُالع مانية - مركز السلطان قابوس العالي للثقافة والعلوم, accessed June 6, 2025, <a href="https://sqhccs.gov.om/10.pdf" target="_blank">https://sqhccs.gov.om/10.pdf</a></li>
+<li>​لباس تقليدي مغربي - ويكيبيديا, accessed June 6, 2025, <a href="https://ar.wikipedia.org/wiki/%D9%84%D8%A8%D8%A7%D8%B3_%D8%AA%D9%" target="_blank">https://ar.wikipedia.org/wiki/%D9%84%D8%A8%D8%A7%D8%B3_%D8%AA%D9%</a> 82%D9%84%D9%8A%D8%AF%D9%8A_%D9%85%D8%BA%D8%B1%D8%A8%D9 %8A</li>
+<li>​ 442 - كانون الثاني 2024 - الثقافة الجديدة, accessed June 6, 2025, <a href="https://althakafaaljadeda.net/images/pdf-magazine/442.pdf" target="_blank">https://althakafaaljadeda.net/images/pdf-magazine/442.pdf</a></li>
+<li>​ RÊBERA HÎNKIRINA KURDÎ - zimanekurdi.ch, accessed June 6, 2025, <a href="https://zimanekurdi.ch/wp-content/uploads/2024/02/Rebera_Hinkirine_2024_HSK" target="_blank">https://zimanekurdi.ch/wp-content/uploads/2024/02/Rebera_Hinkirine_2024_HSK</a> _KURDISCH.pdf</li>
+<li>​ Omitê Mistefê Bêndera ramanan (2010-2023) - KURDSHOP, accessed June 6, 2025, <a href="https://kurdshop.net/content/upload/1/shehab-xalidi/bndera-ramanan-2010-2023." target="_blank">https://kurdshop.net/content/upload/1/shehab-xalidi/bndera-ramanan-2010-2023.</a> pdf</li>
+<li>​ Pêngava serxwebûnê li Hewlêrê, accessed June 6, 2025, <a href="https://portal.arsivakurd.org/wp-content/uploads/2021/08/bas_03.pdf" target="_blank">https://portal.arsivakurd.org/wp-content/uploads/2021/08/bas_03.pdf</a></li>
+<li>​ Türkiye Türkmenleri - Vikipedi, accessed June 6, 2025, <a href="https://tr.wikipedia.org/wiki/T%C3%BCrkiye_T%C3%BCrkmenleri" target="_blank">https://tr.wikipedia.org/wiki/T%C3%BCrkiye_T%C3%BCrkmenleri</a></li>
+<li>​ FAS&#x27;IN GELENEKSEL MÜZİK ALETLERİ İLGİ GÖRÜYOR, accessed June 6, 2025, <a href="https://trtmuzik.net.tr/haber/fasin-geleneksel-muzik-aletleri-ilgi-goruyor_369" target="_blank">https://trtmuzik.net.tr/haber/fasin-geleneksel-muzik-aletleri-ilgi-goruyor_369</a></li>
+<li>​ D ergisi - Kürd Araştırmaları, accessed June 6, 2025, <a href="https://kurdarastirmalari.com/uploads/kurd_sinemas/Kurd_Arastirmalari_Sayi_7_Ta" target="_blank">https://kurdarastirmalari.com/uploads/kurd_sinemas/Kurd_Arastirmalari_Sayi_7_Ta</a> m_Sayi.pdf</li>
+<li>​ RojavaDevrimi+full+75dpi.pdf - we.Riseup.net, accessed June 6, 2025, <a href="https://we.riseup.net/assets/571697/RojavaDevrimi+full+75dpi.pdf" target="_blank">https://we.riseup.net/assets/571697/RojavaDevrimi+full+75dpi.pdf</a></li>
+<li>​</li>
+<li>Orta Çağ ve Türk Dönemi Kazıları ve Sanat Tarihi Araştırmaları Kitabı, accessed June 6, 2025, <a href="https://akmb.gov.tr/yayinlar/bildiri-kitaplari/26-orta-cag-ve-turk-donemi-kazilari-v" target="_blank">https://akmb.gov.tr/yayinlar/bildiri-kitaplari/26-orta-cag-ve-turk-donemi-kazilari-v</a> e-sanat-tarihi-arastirmalari-kitabi-2/</li>
+<li>​ TEKSTIL SEKTÖRÜ 12&#x27;DEN VURACAK - İHKİB, accessed June 6, 2025, <a href="https://www.ihkib.org.tr/content/files/uploads/4231/293-hedef-k-20181210183550" target="_blank">https://www.ihkib.org.tr/content/files/uploads/4231/293-hedef-k-20181210183550</a> 0937-4251D.pdf</li>
+<li>​ Rivers and Mountains - SIL International, accessed June 6, 2025, <a href="https://www.sil.org/system/files/reapdata/14/51/04/1451048488912962334063853" target="_blank">https://www.sil.org/system/files/reapdata/14/51/04/1451048488912962334063853</a> 79116832916897/The_Rivers_An_anthropological_study_Eberhard_Werner_07_No vember_2017.pdf</li>
+<li>​ Mourning of Muharram - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Mourning_of_Muharram" target="_blank">https://en.wikipedia.org/wiki/Mourning_of_Muharram</a></li>
+<li>​ Kurds - ROOTSHUNT, accessed June 6, 2025, <a href="https://rootshunt.com/aryans/indiairanandaryans/iranianpeople/kurds/kurds.htm" target="_blank">https://rootshunt.com/aryans/indiairanandaryans/iranianpeople/kurds/kurds.htm</a></li>
+<li>​ Traditional dances from Benin - Numeridanse, accessed June 6, 2025, <a href="https://numeridanse.com/en/publication/traditional-dances-from-benin/" target="_blank">https://numeridanse.com/en/publication/traditional-dances-from-benin/</a></li>
+<li>​ Kurdish Men&#x27;s Traditional Wedding Outfit Shal U Shepik - Etsy, accessed June 6, 2025, <a href="https://www.etsy.com/listing/1836441601/kurdish-mens-traditional-wedding-outfi" target="_blank">https://www.etsy.com/listing/1836441601/kurdish-mens-traditional-wedding-outfi</a> t</li>
+<li>​ How to Make Olive Oil Soap and the Chemistry Behind It - Instructables, accessed June 6, 2025, <a href="https://www.instructables.com/How-to-Make-Olive-Oil-Soap/" target="_blank">https://www.instructables.com/How-to-Make-Olive-Oil-Soap/</a></li>
+<li>​ West African mythology - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/West_African_mythology" target="_blank">https://en.wikipedia.org/wiki/West_African_mythology</a></li>
+<li>​ INSTRUMENTALIZATION OF RELIGIOUS NATIONALIST SECURITY DISCOURSE IN THE CASE OF THE AFRIN OPERATION: PERSPECTIVES OF MUSLIM CONSC, accessed June 6, 2025, <a href="https://research.sabanciuniv.edu/39107/1/HaticeEsraOney_10219648.pdf" target="_blank">https://research.sabanciuniv.edu/39107/1/HaticeEsraOney_10219648.pdf</a></li>
+<li>​ (PDF) &#x27;Operation Olive Branch&#x27; in Syria&#x27;s Afrin District: towards a new interpretation of the right of self-defence? - ResearchGate, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/361869504_&#x27;Operation_Olive_Branch&#x27;_i" target="_blank">https://www.researchgate.net/publication/361869504_&#x27;Operation_Olive_Branch&#x27;_i</a> n_Syria&#x27;s_Afrin_District_towards_a_new_interpretation_of_the_right_of_self-defen ce</li>
+<li>​ Memory Dishes | Brown University, accessed June 6, 2025, <a href="https://sites.brown.edu/memorydishes/files/2021/02/xMemoryDishes_DRAFT_190" target="_blank">https://sites.brown.edu/memorydishes/files/2021/02/xMemoryDishes_DRAFT_190</a></li>
+<li>pdf</li>
+<li>​محرم في العراق - ويكيبيديا, accessed June 6, 2025, <a href="https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%B1%D9%85_%D9%81%D9%8" target="_blank">https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D8%B1%D9%85_%D9%81%D9%8</a> A_%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82</li>
+<li>​أثر البيئةيف النَّقد األدبي عند العرب, accessed June 6, 2025, <a href="https://journals.ekb.eg/article_154972_d4eb5b8c4ae5811ee421df50ae891c61.pdf" target="_blank">https://journals.ekb.eg/article_154972_d4eb5b8c4ae5811ee421df50ae891c61.pdf</a></li>
+<li>​أستاذ الفيزياء بكلية العلوم وأستاذ الموسيقى بالمعهد الدار البيضاء - Music Acoustics by Serge DONVAL, accessed June 6, 2025, <a href="https://donvalmusicalacoustics.org/indexAR.html" target="_blank">https://donvalmusicalacoustics.org/indexAR.html</a></li>
+<li>​سردم, accessed June 6, 2025, <a href="http://www.hewalname.com/ku/wp-content/uploads/2019/03/028-1.pdf" target="_blank">http://www.hewalname.com/ku/wp-content/uploads/2019/03/028-1.pdf</a></li>
+<li>​ﻝﻐﺔ ﺍﻷﻝﻐﺎﺯ ﻓﻲ ﺸﻌﺭ ﺍﻝﻌﺼﺭ ﺍﻝﻤﻤﻠﻭﻜﻲ ﺍﻷﻭل ـﻫ - An-Najah Repository, accessed June 6, 2025, <a href="https://repository.najah.edu/bitstreams/774a43fa-2b1c-4b50-9bb9-269cfc13a26f/" target="_blank">https://repository.najah.edu/bitstreams/774a43fa-2b1c-4b50-9bb9-269cfc13a26f/</a> download</li>
+<li>​رحلت النبيلة ذات الهمة - الثقافة الشعبية, accessed June 6, 2025, <a href="https://www.folkculturebh.org/ar/index.php?issue=24&amp;page=article&amp;id=711" target="_blank">https://www.folkculturebh.org/ar/index.php?issue=24&amp;page=article&amp;id=711</a></li>
+<li>​قائمة مقابالت التاريخ الشفوي للنكبة الفلسطينية - Palestine Remembered, accessed June 6, 2025, <a href="https://www.palestineremembered.com/OralHistory/Interviews-Listing/ar/Story11" target="_blank">https://www.palestineremembered.com/OralHistory/Interviews-Listing/ar/Story11</a></li>
+<li>html</li>
+<li>​ال إنت ج الحيواني والتصنيع الغذائي نظري)و(, accessed June 6 <a href="https://moe.edu.ps/storage/app/gaza/ProfessionalBranchesGuidancePackages/ag" target="_blank">https://moe.edu.ps/storage/app/gaza/ProfessionalBranchesGuidancePackages/ag</a> ricultural/%D8%A7%D9%86%D8%AA%D8%A7%D8%AC%20%D8%AD%D9%8A% D9%88%D8%A7%D9%86%D9%8A.pdf</li>
+<li>​العادات الغذائية في المجتمع السعودي وعالقتها بالتحوالت االجتماعية ال, accessed June 6, 2025, <a href="https://www.ajrsp.com/vol/issue57/%D8%A7%D9%84%D8%B9%D8%A7%D8%AF" target="_blank">https://www.ajrsp.com/vol/issue57/%D8%A7%D9%84%D8%B9%D8%A7%D8%AF</a> %D8%A7%D8%AA%20%D8%A7%D9%84%D8%BA%D8%B0%D8%A7%D8%A6% D9%8A%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D8%AC %D8%AA%D9%85%D8%B9%20%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D 8%AF%D9%8A%20%D9%88%D8%B9%D9%84%D8%A7%D9%82%D8%AA%D9% 87%D8%A7%20%D8%A8%D8%A7%D9%84%D8%AA%D8%AD%D9%88%D9%84 %D8%A7%D8%AA%20%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85% D8%A7%D8%B9%D9%8A%D8%A9%20%D8%A7%D9%84%D8%AD%D8%AF%D9 %8A%D8%AB%D8%A9.pdf</li>
+<li>​ Description: The Religionization in Alevi Culture :: IxTheo, accessed June 6, 2025, <a href="https://ixtheo.de/Record/1865699950" target="_blank">https://ixtheo.de/Record/1865699950</a></li>
+<li>​ African Costumes and Textiles: From the Berbers to the Zulus - Amazon.com, accessed June 6, 2025, <a href="https://www.amazon.com/African-Costumes-Textiles-Berbers-Zulus/dp/88743947" target="_blank">https://www.amazon.com/African-Costumes-Textiles-Berbers-Zulus/dp/88743947</a> 64</li>
+<li>​ Central Themes of the Collection - Staatliches Institut für Musikforschung, accessed June 6, 2025, <a href="https://www.simpk.de/en/museum/collection/central-themes-of-the-collection.ht" target="_blank">https://www.simpk.de/en/museum/collection/central-themes-of-the-collection.ht</a> ml</li>
+<li>​ Historic Native American Pottery - James Compton Gallery, accessed June 6, 2025, <a href="https://jamescomptongallery.com/item/pottery/historic/" target="_blank">https://jamescomptongallery.com/item/pottery/historic/</a></li>
+<li>​ African Myths &amp; Legends: Tales of Heroes, Gods &amp; Monsters (Flame Tree Collector&#x27;s Editions) | Politics and Prose Bookstore, accessed June 6, 2025, <a href="https://politics-prose.com/book/9781839648885" target="_blank">https://politics-prose.com/book/9781839648885</a></li>
+<li>​ Indigenous Culinary Claims and Cultural Heritage Preservation: A Viewpoint, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/375866395_Indigenous_Culinary_Claim" target="_blank">https://www.researchgate.net/publication/375866395_Indigenous_Culinary_Claim</a> s_and_Cultural_Heritage_Preservation_A_Viewpoint</li>
+<li>​ Ruesink, JL et al. (2015): Growth and carbon and nitrogen content and isotope ratios of Eelgrass (Zostera marina) - pangaea, accessed June 6, 2025, <a href="https://doi.pangaea.de/10.1594/PANGAEA.869832" target="_blank">https://doi.pangaea.de/10.1594/PANGAEA.869832</a></li>
+<li>​ Efrînî dixwazin herêma wan bibe parêzgeh: Dê ji Ehmed Şer re nameyekê bişînin - Rudaw, accessed June 6, 2025, <a href="https://www.rudaw.net/kurmanci/kurdistan/0206202512" target="_blank">https://www.rudaw.net/kurmanci/kurdistan/0206202512</a></li>
+<li>​ The effect of Indian jujube leaves extract in inhibiting the growth of Porphyromonas gingivalis - ResearchGate, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/359854959_The_effect_of_Indian_jujub" target="_blank">https://www.researchgate.net/publication/359854959_The_effect_of_Indian_jujub</a> e_leaves_extract_in_inhibiting_the_growth_of_Porphyromonas_gingivalis/fulltext/ 637fd3587b0e356feb7cf2ad/The-effect-of-Indian-jujube-leaves-extract-in-inhibi ting-the-growth-of-Porphyromonas-gingivalis.pdf</li>
+<li>​ INTRODUCTION Vernal keratoconjunctivitis (VKC) is a common type of allergic conjunctivitis, which causes inflammation of the con - The Professional Medical Journal, accessed June 6, 2025, <a href="https://theprofesional.com/index.php/tpmj/article/download/8004/5446/26874" target="_blank">https://theprofesional.com/index.php/tpmj/article/download/8004/5446/26874</a></li>
+<li>​ YouTube, accessed June 6, 2025, <a href="https://www.youtube.com/watch?v=UEVV6weG50s" target="_blank">https://www.youtube.com/watch?v=UEVV6weG50s</a></li>
+<li>​ Relation between Energy Reserves Content and Infectivity of the Heterorhabditid and Steinernematid Entomopathogenic Nematodes under Low Soil Moisture - ResearchGate, accessed June 6, 2025, <a href="https://www.researchgate.net/publication/281238152_Relation_between_Energy_R" target="_blank">https://www.researchgate.net/publication/281238152_Relation_between_Energy_R</a> eserves_Content_and_Infectivity_of_the_Heterorhabditid_and_Steinernematid_En tomopathogenic_Nematodes_under_Low_Soil_Moisture</li>
+<li>​ Gotinên Pêşiyan Çîrokên Dawiyan | Weşanxane Nûbiharê, accessed June 6, 2025, <a href="https://www.nubihar.com/detail/93-gotinen-pesiyan-ciroken-dawiyan" target="_blank">https://www.nubihar.com/detail/93-gotinen-pesiyan-ciroken-dawiyan</a></li>
+<li>​ Dîrok - 10 | PDF - Scribd, accessed June 6, 2025, <a href="https://www.scribd.com/document/757294839/Dirok-10-1" target="_blank">https://www.scribd.com/document/757294839/Dirok-10-1</a></li>
+<li>​ Pêjgeha kurdî - Wîkîpediya, accessed June 6, 2025, <a href="https://ku.wikipedia.org/wiki/P%C3%AAjgeha_kurd%C3%AE" target="_blank">https://ku.wikipedia.org/wiki/P%C3%AAjgeha_kurd%C3%AE</a></li>
+<li>​ a systematic review The effectiveness of parasacral transcutaneous electrical nerve stimulation in the treatment of monosymptomatic enuresis in children and adolescents - SciELO, accessed June 6, 2025, <a href="https://www.scielo.br/j/ibju/a/bbDPjHmKmz3YPTvfy8wGfBS/abstract/?lang=en" target="_blank">https://www.scielo.br/j/ibju/a/bbDPjHmKmz3YPTvfy8wGfBS/abstract/?lang=en</a></li>
+<li>​ TÜRK KÜLTÜRÜNDE NEVRUZ - Mete Han&#x27;dan Atatürk&#x27;e- “Neuruz in the Turkısh Culture - Sosyal Bilimler Dergisi - Afyon Kocatepe Üniversitesi, accessed June 6, 2025, <a href="https://sbd.aku.edu.tr/VIII3/asengul.pdf" target="_blank">https://sbd.aku.edu.tr/VIII3/asengul.pdf</a></li>
+<li>​ Ezidiler Türkiye&#x27;de ilk kez Kırmızı Çarşamba Bayramı&#x27;nı kutladı - VOA Türkçe, accessed June 6, 2025, <a href="https://www.voaturkce.com/a/ezidiler-turkiye-ilk-kez-kirmizi-carsamba-bayrami-k" target="_blank">https://www.voaturkce.com/a/ezidiler-turkiye-ilk-kez-kirmizi-carsamba-bayrami-k</a> utladi/7574197.html</li>
+<li>​ Afrin: Zeytin Dalı Öncesi ve Sonrası - Bianet, accessed June 6, 2025, <a href="https://bianet.org/haber/afrin-zeytin-dali-oncesi-ve-sonrasi-195298" target="_blank">https://bianet.org/haber/afrin-zeytin-dali-oncesi-ve-sonrasi-195298</a></li>
+<li>​ Zeytin Dalı Harekâtı kronolojisi - Vikipedi, accessed June 6, 2025, <a href="https://tr.wikipedia.org/wiki/Zeytin_Dal%C4%B1_Harek%C3%A2t%C4%B1_kronolo" target="_blank">https://tr.wikipedia.org/wiki/Zeytin_Dal%C4%B1_Harek%C3%A2t%C4%B1_kronolo</a> jisi</li>
+<li>​ Geleneksel Giysi - - AFYONKARAHİSAR İL KÜLTÜR VE TURİZM MÜDÜRLÜĞÜ, accessed June 6, 2025, <a href="https://afyon.ktb.gov.tr/TR-63454/geleneksel-giysi.html" target="_blank">https://afyon.ktb.gov.tr/TR-63454/geleneksel-giysi.html</a></li>
+<li>​ Geçmişten Bugüne Bilinçaltımızın Derinliklerine Nüfuz Etmiş 16 Popüler Dans - Onedio, accessed June 6, 2025, <a href="https://onedio.com/haber/gecmisten-bugune-bilincaltimizin-derinliklerine-nufuz-" target="_blank">https://onedio.com/haber/gecmisten-bugune-bilincaltimizin-derinliklerine-nufuz-</a> etmis-16-populer-dans-731974</li>
+<li>​ Türk Atasözü ve Deyimlerinde Halk ve Topluluk İsimleri - DergiPark, accessed June 6, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/234605" target="_blank">https://dergipark.org.tr/tr/download/article-file/234605</a></li>
+<li>​ Afrin Harekâtı&#x27;nın Güncel ve Potansiyel Stratejik Sonuçları - TASAM, accessed June 6, 2025, <a href="https://tasam.org/tr-TR/Icerik/50198/afrin_harekatinin_guncel_ve_potansiyel_strat" target="_blank">https://tasam.org/tr-TR/Icerik/50198/afrin_harekatinin_guncel_ve_potansiyel_strat</a> ejik_sonuclari</li>
+<li>​ Yazidis (Also Written As Yezidis (/J | PDF - Scribd, accessed June 6, 2025, <a href="https://www.scribd.com/document/538927235/Yazidis" target="_blank">https://www.scribd.com/document/538927235/Yazidis</a></li>
+<li>​ Democratic Autonomous Administration of North and East Syria - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Democratic_Autonomous_Administration_of_North_" target="_blank">https://en.wikipedia.org/wiki/Democratic_Autonomous_Administration_of_North_</a> and_East_Syria</li>
+<li>​ Archive and Repertoire of the Esala Perahera Performance in Sri Lanka - ScholarWorks@UARK, accessed June 6, 2025, <a href="https://scholarworks.uark.edu/context/etd/article/4869/viewcontent/Jayasinghe_u" target="_blank">https://scholarworks.uark.edu/context/etd/article/4869/viewcontent/Jayasinghe_u</a> ark_0011A_13540.pdf</li>
+<li>​ Events - LA County Library, accessed June 6, 2025, <a href="https://visit.lacountylibrary.org/events?r=days&amp;n=75" target="_blank">https://visit.lacountylibrary.org/events?r=days&amp;n=75</a></li>
+<li>​ accessed January 1, 1970, <a href="https://www.jstor.org/action/doBasicSearch?Query=Afrin+Kurds+culture+pre-201" target="_blank">https://www.jstor.org/action/doBasicSearch?Query=Afrin+Kurds+culture+pre-201</a> 0</li>
+<li>​ accessed January 1, 1970, <a href="https://www.academia.edu/Documents/in/Afrin_Kurds_Culture_Ethnography" target="_blank">https://www.academia.edu/Documents/in/Afrin_Kurds_Culture_Ethnography</a></li>
+<li>​ accessed January 1, 1970, <a href="https://search.proquest.com/pqdtglobal/results?searchType=AdvancedSearchFor" target="_blank">https://search.proquest.com/pqdtglobal/results?searchType=AdvancedSearchFor</a> m&amp;queryField=titleAbstractKeyword&amp;queryTerm%5B0%5D=Afrin+Kurdish+cultur e&amp;queryTerm%5B1%5D=&amp;queryTerm%5B2%5D=&amp;queryTerm%5B3%5D=&amp;queryT erm%5B4%5D=&amp;queryTerm%5B5%5D=&amp;queryTerm%5B6%5D=&amp;queryTerm%5B7 %5D=&amp;queryTerm%5B8%5D=&amp;queryTerm%5B9%5D=&amp;dateRange=all&amp;yearFrom =&amp;yearTo=2010&amp;selectTitle=false&amp;language=Any&amp;documentType=Any&amp;dissertati onAdvisor=&amp;dissertationCommittee=&amp;dissertationDepartment=&amp;dissertationSch ool=&amp;dissertationSubject=&amp;dissertationUniversity=</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 06, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gertrude Bell</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gertrude Bell</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Gertrude Bell_ Architect of Modern Iraq.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Gertrude Bell_ Architect of Modern Iraq.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>These texts describe the life and influence of Gertrude Bell, highlighting her journey from a Victorian Englishwoman of significant wealth and intellect to a central figure in the British Empire&#x27;s reshaping of the Middle East. The sources emphasize her diverse talents as an explorer, archaeologist, linguist, and writer, whose deep knowledge of the Arab world made her an indispensable intelligence officer and political architect during and after World War I.  While acknowledging her positive contributions, such as founding the Iraq Museum and advocating for the preservation of Iraqi antiquities, the texts also critically analyze her contentious political role in drawing borders and installing leadership, emphasizing the lasting, and often negative, consequences of her actions within a colonial context.  Ultimately, the sources present Bell as a complex historical figure whose legacy in the formation of modern Iraq remains deeply debated.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Gertrude Bell_ Comprehensive Research Plan_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Gertrude Bell: Queen of the Desert, Shaper of Nations (First ..., accessed June 6, 2025, <a href="https://www.amazon.com/Gertrude-Bell-Desert-Nations-American/dp/037416162" target="_blank">https://www.amazon.com/Gertrude-Bell-Desert-Nations-American/dp/037416162</a> 3</li>
+<li>​ Gertrude Bell: Queen of the Desert, Shaper of Nations: Howell ..., accessed June 6, 2025, <a href="https://www.amazon.com/Gertrude-Bell-Desert-Shaper-Nations/dp/0374531358" target="_blank">https://www.amazon.com/Gertrude-Bell-Desert-Shaper-Nations/dp/0374531358</a></li>
+<li>​ Gertrude Bell | EBSCO Research Starters, accessed June 6, 2025, <a href="https://www.ebsco.com/research-starters/history/gertrude-bell" target="_blank">https://www.ebsco.com/research-starters/history/gertrude-bell</a></li>
+<li>​ Gertrude Bell - Timeline - Women in Exploration, accessed June 6, 2025, <a href="https://womeninexploration.org/timeline/gertrude-bell" target="_blank">https://womeninexploration.org/timeline/gertrude-bell</a></li>
+<li>​ Gertrude Bell | Traveller, Archaeologist and Diplomat | Blue Plaques - English Heritage, accessed June 6, 2025, <a href="https://www.english-heritage.org.uk/visit/blue-plaques/gertrude-bell/" target="_blank">https://www.english-heritage.org.uk/visit/blue-plaques/gertrude-bell/</a></li>
+<li>​ Gertrude Bell - Historic UK, accessed June 6, 2025, <a href="https://www.historic-uk.com/HistoryUK/HistoryofBritain/Gertrude-Bell/" target="_blank">https://www.historic-uk.com/HistoryUK/HistoryofBritain/Gertrude-Bell/</a></li>
+<li>​ The Extraordinary Gertrude Bell - Newcastle University, accessed June 6, 2025, <a href="https://research.ncl.ac.uk/media/sites/researchwebsites/gertrudebell/Gertrude%2" target="_blank">https://research.ncl.ac.uk/media/sites/researchwebsites/gertrudebell/Gertrude%2</a> 0Bell%20Online%20Version%20(003)%20Content%20page%20edit.pdf</li>
+<li>​ On “The Grand Strategy of Gertrude Bell”: From the Arab Bureau to ..., accessed June 6, 2025, <a href="https://ssi.armywarcollege.edu/SSI-Media/Recent-Publications/Article/3945004/o" target="_blank">https://ssi.armywarcollege.edu/SSI-Media/Recent-Publications/Article/3945004/o</a> n-the-grand-strategy-of-gertrude-bell-from-the-arab-bureau-to-the-creation- of/</li>
+<li>​ Gertrude Bell: Wüstenkönigin und die Mutter des Irak - DER SPIEGEL, accessed June 6, 2025, <a href="https://www.spiegel.de/geschichte/gertrude-bell-wuestenkoenigin-und-die-mutt" target="_blank">https://www.spiegel.de/geschichte/gertrude-bell-wuestenkoenigin-und-die-mutt</a> er-des-irak-a-1012569.html</li>
+<li>​Gertrude Bell in Mesopotamia: Archaeologist, Arabist, Diplomat, Spy, accessed June 6, 2025, <a href="https://whc.yale.edu/gallery-whitney/exhibit/gertrude-bell" target="_blank">https://whc.yale.edu/gallery-whitney/exhibit/gertrude-bell</a></li>
+<li>​Gertrude Bell - Royal Society of Literature, accessed June 6, 2025, <a href="https://rsliterature.org/anthologies/gertrude-bell/" target="_blank">https://rsliterature.org/anthologies/gertrude-bell/</a></li>
+<li>​The Matron of Mesopotamian Antiquities | Worlds Revealed - Library of Congress Blogs, accessed June 6, 2025, <a href="https://blogs.loc.gov/maps/2022/03/gertrude-bell/" target="_blank">https://blogs.loc.gov/maps/2022/03/gertrude-bell/</a></li>
+<li>​Queen of the Desert - International Churchill Society, accessed June 6, 2025, <a href="https://winstonchurchill.org/publications/churchill-bulletin/bulletin-168-june-2022/" target="_blank">https://winstonchurchill.org/publications/churchill-bulletin/bulletin-168-june-2022/</a> queen-of-the-desert/</li>
+<li>​Gertrude Bell - Die Britin, die dem Irak Grenzen setzte - Kultur - SRF, accessed June 6, 2025, <a href="https://www.srf.ch/kultur/gesellschaft-religion/gertrude-bell-die-britin-die-dem-ir" target="_blank">https://www.srf.ch/kultur/gesellschaft-religion/gertrude-bell-die-britin-die-dem-ir</a> ak-grenzen-setzte</li>
+<li>​From the Desert to Diplomacy: Gertrude Bell&#x27;s Role in Iraq&#x27;s Formation, accessed June 6, 2025, <a href="https://www.istitutoeuroarabo.it/DM/from-the-desert-to-diplomacy-gertrude-be" target="_blank">https://www.istitutoeuroarabo.it/DM/from-the-desert-to-diplomacy-gertrude-be</a> lls-role-in-iraqs-formation/</li>
+<li>​WW1; Gertrude Bell; Newcastle University, accessed June 6, 2025, <a href="https://research.ncl.ac.uk/gertrudebell/anextraordinarywoman/ww1/" target="_blank">https://research.ncl.ac.uk/gertrudebell/anextraordinarywoman/ww1/</a></li>
+<li>​Gertrude Bell - The Explorer Society, accessed June 6, 2025, <a href="https://www.theexplorersociety.com/blog/entries/gertrude-bell" target="_blank">https://www.theexplorersociety.com/blog/entries/gertrude-bell</a></li>
+<li>​The Grand Strategy of Gertrude Bell: From the Arab Bureau to the Creation of Iraq - USAWC Press, accessed June 6, 2025, <a href="https://press.armywarcollege.edu/cgi/viewcontent.cgi?article=1946&amp;context=mon" target="_blank">https://press.armywarcollege.edu/cgi/viewcontent.cgi?article=1946&amp;context=mon</a> ographs</li>
+<li>​Gertrude Bell - Citizendium, accessed June 6, 2025, <a href="https://citizendium.org/wiki/Gertrude_Bell" target="_blank">https://citizendium.org/wiki/Gertrude_Bell</a></li>
+<li>​Gertrude Bell - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Gertrude_Bell" target="_blank">https://en.wikipedia.org/wiki/Gertrude_Bell</a></li>
+<li>​Women in the UK Civil Service - Gertrude Bell, accessed June 6, 2025, <a href="https://www.civilservant.org.uk/women-gertrude_bell.html" target="_blank">https://www.civilservant.org.uk/women-gertrude_bell.html</a></li>
+<li>​The Anti-Suffrage Anomaly: - Newcastle University, accessed June 6, 2025, <a href="https://speccollstories.ncl.ac.uk/the-anti-suffrage-anomaly-gertrude-bell-and-th" target="_blank">https://speccollstories.ncl.ac.uk/the-anti-suffrage-anomaly-gertrude-bell-and-th</a> e-question-of-privilege/index.html</li>
+<li>​Gertrude Bell and Iraq: Deja Vu All Over Again, accessed June 6, 2025, <a href="https://ciaotest.cc.columbia.edu/olj/ad/ad_v10_1/fub01.html" target="_blank">https://ciaotest.cc.columbia.edu/olj/ad/ad_v10_1/fub01.html</a></li>
+<li>​Gertrude Bell - Person - National Portrait Gallery, accessed June 6, 2025, <a href="https://www.npg.org.uk/collections/search/person/mp00361/gertrude-bell" target="_blank">https://www.npg.org.uk/collections/search/person/mp00361/gertrude-bell</a></li>
+<li>​Gertrude the explorer; Gertrude Bell; Newcastle University, accessed June 6, 2025, <a href="https://research.ncl.ac.uk/gertrudebell/schools/teachingpacks/ks1-2teachingpack" target="_blank">https://research.ncl.ac.uk/gertrudebell/schools/teachingpacks/ks1-2teachingpack</a> s/gertrudetheexplorer/</li>
+<li>​Miss Gertrude Margaret Lowthian Bell, CBE | British Museum, accessed June 6, 2025, <a href="https://www.britishmuseum.org/collection/term/BIOG8373" target="_blank">https://www.britishmuseum.org/collection/term/BIOG8373</a></li>
+<li>​The Desert and the Sown: The Syrian Adventures of the Female Lawrence of Arabia - Amazon.com, accessed June 6, 2025, <a href="https://www.amazon.com/Desert-Sown-Syrian-Adventures-Lawrence/dp/0815411" target="_blank">https://www.amazon.com/Desert-Sown-Syrian-Adventures-Lawrence/dp/0815411</a> 359</li>
+<li>​Amurath to Amurath - Cambridge University Press &amp; Assessment, accessed June 6, 2025, <a href="https://www.cambridge.org/core_title/gb/450134" target="_blank">https://www.cambridge.org/core_title/gb/450134</a></li>
+<li>​Iraq; Gertrude Bell; Newcastle University, accessed June 6, 2025, <a href="https://research.ncl.ac.uk/gertrudebell/anextraordinarywoman/iraq/" target="_blank">https://research.ncl.ac.uk/gertrudebell/anextraordinarywoman/iraq/</a></li>
+<li>​صانعة الملوك و ملكة |الصحراء|أة تي مت دا وسط ال - YouTube, accessed <a href="https://www.youtube.com/watch?v=sOhQjZR1D0M" target="_blank">https://www.youtube.com/watch?v=sOhQjZR1D0M</a></li>
+<li>​Gertrude Bell — Wikipédia, accessed June 6, 2025, <a href="https://fr.wikipedia.org/wiki/Gertrude_Bell" target="_blank">https://fr.wikipedia.org/wiki/Gertrude_Bell</a></li>
+<li>​Bell, Gertrude - 1914-1918 Online, accessed June 6, 2025, <a href="https://encyclopedia.1914-1918-online.net/article/bell-gertrude/" target="_blank">https://encyclopedia.1914-1918-online.net/article/bell-gertrude/</a></li>
+<li>​Gertrude Bell and Iraq: A life and legacy - The British Academy, accessed June 6, 2025, <a href="https://www.thebritishacademy.ac.uk/documents/673/BAR24-09-Collins.pdf" target="_blank">https://www.thebritishacademy.ac.uk/documents/673/BAR24-09-Collins.pdf</a></li>
+<li>​Bell, Gertrude. Review Of The Civil Administration Of Mesopotamia ..., accessed June 6, 2025, <a href="https://inlibris.com/item/bn60818/" target="_blank">https://inlibris.com/item/bn60818/</a></li>
+<li>​Gertrude Bell: &#x27;Daughter of the Desert&#x27; | The Royal Scottish Geographical Society, accessed June 6, 2025, <a href="https://www.rsgs.org/blog/gertrude-bell-daughter-of-the-desert" target="_blank">https://www.rsgs.org/blog/gertrude-bell-daughter-of-the-desert</a></li>
+<li>​NPG 4385; Gertrude Bell - Portrait Extended, accessed June 6, 2025, <a href="https://www.npg.org.uk/collections/search/portraitExtended/mw00488/Gertrude-" target="_blank">https://www.npg.org.uk/collections/search/portraitExtended/mw00488/Gertrude-</a> Bell</li>
+<li>​Bell, Gertrude - 1914-1918 Online, accessed June 6, 2025, <a href="https://encyclopedia.1914-1918-online.net/article/bell_gertrude/" target="_blank">https://encyclopedia.1914-1918-online.net/article/bell_gertrude/</a></li>
+<li>​Gertrude Bell archive preserves lost culture of the Ottoman Empire - From Blog, accessed June 6, 2025, <a href="https://from.ncl.ac.uk/gertrude-bell-archive-preserves-lost-culture-of-the-ottom" target="_blank">https://from.ncl.ac.uk/gertrude-bell-archive-preserves-lost-culture-of-the-ottom</a> an-empire</li>
+<li>​Owning the Past: Gertrude Bell and the Making of the Middle East - Ertegun House, accessed June 6, 2025, <a href="https://www.ertegun.ox.ac.uk/article/owning-past-gertrude-bell-and-making-mid" target="_blank">https://www.ertegun.ox.ac.uk/article/owning-past-gertrude-bell-and-making-mid</a> dle-east</li>
+<li>​Gertrude Bell and Hatra, Iraq • V&amp;A Blog, accessed June 6, 2025, <a href="https://www.vam.ac.uk/blog/caring-for-our-collections/gertrude-bell-and-hatra-i" target="_blank">https://www.vam.ac.uk/blog/caring-for-our-collections/gertrude-bell-and-hatra-i</a> raq</li>
+<li>​Gertrude Bell - Wikipedia, accessed June 6, 2025, <a href="https://de.wikipedia.org/wiki/Gertrude_Bell" target="_blank">https://de.wikipedia.org/wiki/Gertrude_Bell</a></li>
+<li>​Forschungsreisende Gertrude Bell - Von Mesopotamien bis Bagdad - Deutschlandfunk, accessed June 6, 2025, <a href="https://www.deutschlandfunk.de/forschungsreisende-gertrude-bell-von-mesopo" target="_blank">https://www.deutschlandfunk.de/forschungsreisende-gertrude-bell-von-mesopo</a> tamien-bis-bagdad-100.html</li>
+<li>​جيرترود بيل ، ملكة الصحراء وصانعة األمم - Al Bayan, accessed June 6, 2025, <a href="https://www.albayan.ae/paths/books/2007-06-25-1.775091" target="_blank">https://www.albayan.ae/paths/books/2007-06-25-1.775091</a></li>
+<li>​Gertrude Bell | English Politician, Archaeologist &amp; Writer | Britannica, accessed June 6, 2025, <a href="https://www.britannica.com/biography/Gertrude-Bell" target="_blank">https://www.britannica.com/biography/Gertrude-Bell</a></li>
+<li>​Gertrude Bell - More Than A &#x27;Free Booting Scholar&#x27; - ELEANOR SCOTT ARCHAEOLOGY, accessed June 6, 2025, <a href="https://eleanorscottarchaeology.com/gertrude-bell-paperlecture-from-1990s" target="_blank">https://eleanorscottarchaeology.com/gertrude-bell-paperlecture-from-1990s</a></li>
+<li>​ALN No. 35: Excerpt: Gertrude Bell, accessed June 6, 2025, <a href="https://cales.arizona.edu/oals/ALN/aln35/Bell.html" target="_blank">https://cales.arizona.edu/oals/ALN/aln35/Bell.html</a></li>
+<li>​Gertrude Bell in Mesopotamia | Yale Macmillan Center Newsletters, accessed June 6, 2025, <a href="https://newsletter.macmillan.yale.edu/newsletter/fall-2011/gertrude-bell-mesopot" target="_blank">https://newsletter.macmillan.yale.edu/newsletter/fall-2011/gertrude-bell-mesopot</a> amia</li>
+<li>​Bell (Gertrude) Archive - Newcastle University Special Collections ..., accessed June 6, 2025, <a href="https://specialcollections.ncl.ac.uk/index.php/gb" target="_blank">https://specialcollections.ncl.ac.uk/index.php/gb</a></li>
+<li>​“Mr. Churchill Was Admirable” - International Churchill Society, accessed June 6, 2025, <a href="https://winstonchurchill.org/publications/finest-hour/finest-hour-196/mr-churchill-" target="_blank">https://winstonchurchill.org/publications/finest-hour/finest-hour-196/mr-churchill-</a> was-admirable/</li>
+<li>​Bell (Gertrude) Archive - Archives Hub - Jisc, accessed June 6, 2025, <a href="https://archiveshub.jisc.ac.uk/data/gb186-" target="_blank">https://archiveshub.jisc.ac.uk/data/gb186-</a></li>
+<li>​Palace and Mosque at Ukhaidir: A Study in Early Mohammadan Architecture. by BELL (Gertrude).: (1914) | Maggs Bros. Ltd ABA, ILAB, PBFA - AbeBooks, accessed June 6, 2025, <a href="https://www.abebooks.com/first-edition/Palace-Mosque-Ukhaidir-Study-Early-M" target="_blank">https://www.abebooks.com/first-edition/Palace-Mosque-Ukhaidir-Study-Early-M</a> ohammadan/31306910323/bd</li>
+<li>​Gertrude Bell&#x27;s Mesopotamian Archaeological Photographs | Near Eastern Archaeology: Vol 81, No 2 - The University of Chicago Press: Journals, accessed June 6, 2025, <a href="https://www.journals.uchicago.edu/doi/abs/10.5615/neareastarch.81.2.0108" target="_blank">https://www.journals.uchicago.edu/doi/abs/10.5615/neareastarch.81.2.0108</a></li>
+<li>​Binbirkilise - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Binbirkilise" target="_blank">https://en.wikipedia.org/wiki/Binbirkilise</a></li>
+<li>​Binbirkilise | Turkish Archaeological News, accessed June 6, 2025, <a href="https://turkisharchaeonews.net/site/binbirkilise" target="_blank">https://turkisharchaeonews.net/site/binbirkilise</a></li>
+<li>​The Desert and the Sown: The Syrian Adventures of the Female Lawrence of Arabia by Gertrude Bell | Goodreads, accessed June 6, 2025, <a href="https://www.goodreads.com/book/show/164977.The_Desert_and_the_Sown" target="_blank">https://www.goodreads.com/book/show/164977.The_Desert_and_the_Sown</a></li>
+<li>​The Thousand and One Churches - Ramsay, William M.; Bell, Gertrude L.: 9781934536056 - AbeBooks, accessed June 6, 2025, <a href="https://www.abebooks.com/9781934536056/Thousand-Churches-Ramsay-Willia" target="_blank">https://www.abebooks.com/9781934536056/Thousand-Churches-Ramsay-Willia</a> m-Bell-1934536059/plp</li>
+<li>​The Thousand and One Churches - Amazon.com, accessed June 6, 2025, <a href="https://www.amazon.com/Thousand-One-Churches-William-Ramsay/dp/1934536" target="_blank">https://www.amazon.com/Thousand-One-Churches-William-Ramsay/dp/1934536</a> 059</li>
+<li>​A Visit to Babylon - WETA, accessed June 6, 2025, <a href="https://weta.org/watch/shows/letters-baghdad/visit-babylon-ouhk45" target="_blank">https://weta.org/watch/shows/letters-baghdad/visit-babylon-ouhk45</a></li>
+<li>​British Spy Archeologist Gertrude Lowthian Bell&#x27;s Archeological Activities In 1909 And 1911 Travel To Northern Mesopotamia, accessed June 6, 2025, <a href="https://www.historystudies.net/eng/british-spy-archeologist-gertrude-lowthian-b" target="_blank">https://www.historystudies.net/eng/british-spy-archeologist-gertrude-lowthian-b</a> ells-archeological-activities-in-1909-and-1911-travel-to-northern-mesopotamia_ 2264</li>
+<li>​تقفي أثر الملوك ..والغزاة. .حيا المستشرق والجاسوس لاإنجليزي جيرترو غيرترو  -الجزير ن, accesse d June 6, 2025 <a href="https://www.aljazeera.net/culture/2024/4/21/%D8%AA%D9%82%D9%81%D9%8A-" target="_blank">https://www.aljazeera.net/culture/2024/4/21/%D8%AA%D9%82%D9%81%D9%8A-</a> %D8%A3%D8%AB%D8%B1-%D8%A7%D9%84%D9%85%D9%84%D9%88%D9%8 3-%D9%88%D8%A7%D9%84%D8%BA%D8%B2%D8%A7%D8%A9-%D8%AD%D9 %8A%D8%A7%D8%A9</li>
+<li>​تقفي أثر الملوك ..والغزاة. .حيا المستشرق والجاسوس لاإنجليزي جيرترو غيرترو  -الجزير ن, accesse d June 6, 2025 <a href="https://www.ajnet.me/culture/2024/4/21/%D8%AA%D9%82%D9%81%D9%8A-%D" target="_blank">https://www.ajnet.me/culture/2024/4/21/%D8%AA%D9%82%D9%81%D9%8A-%D</a> 8%A3%D8%AB%D8%B1-%D8%A7%D9%84%D9%85%D9%84%D9%88%D9%83- %D9%88%D8%A7%D9%84%D8%BA%D8%B2%D8%A7%D8%A9-%D8%AD%D9% 8A%D8%A7%D8%A9</li>
+<li>​Lawrence and Bell - The National Archives blog, accessed June 6, 2025, <a href="https://blog.nationalarchives.gov.uk/on-the-record-lawrence-and-bell/" target="_blank">https://blog.nationalarchives.gov.uk/on-the-record-lawrence-and-bell/</a></li>
+<li>​The Gertrude Bell Collection - Discovery | The National Archives, accessed June 6, 2025, <a href="https://discovery.nationalarchives.gov.uk/details/r/3d6e2679-d39e-4434-b94e-241" target="_blank">https://discovery.nationalarchives.gov.uk/details/r/3d6e2679-d39e-4434-b94e-241</a> 494c6a76d</li>
+<li>​Gertrude Bell: Traveller Extraordinaire - Timeless Travels, accessed June 6, 2025, <a href="https://www.timeless-travels.co.uk/post/gertrude-bell-traveler-extraordinaire" target="_blank">https://www.timeless-travels.co.uk/post/gertrude-bell-traveler-extraordinaire</a></li>
+<li>​A British Museum touring exhibition Ancient Iraq: new discoveries, accessed June 6, 2025, <a href="https://www.northeastmuseums.org.uk/greatnorthmuseum/visit-us/virtual-tours-" target="_blank">https://www.northeastmuseums.org.uk/greatnorthmuseum/visit-us/virtual-tours-</a> ancient-iraq</li>
+<li>​The Letters of Gertrude Bell ; v.1 / selected and edited by Lady Bell ..., accessed June 6, 2025, <a href="https://www.rct.uk/collection/1081064/the-letters-of-gertrude-bell-v-1-selected-" target="_blank">https://www.rct.uk/collection/1081064/the-letters-of-gertrude-bell-v-1-selected-</a> and-edited-by-lady-bell</li>
+<li>​The Legacy of Western Involvement in Iraqi Archeology · A&amp;S 325: Museums Studies, accessed June 6, 2025, <a href="https://exhibits.lafayette.edu/s/museumstudies/page/votive-cone" target="_blank">https://exhibits.lafayette.edu/s/museumstudies/page/votive-cone</a></li>
+<li>​Traveller; Gertrude Bell - Newcastle University, accessed June 6, 2025, <a href="https://research.ncl.ac.uk/gertrudebell/anextraordinarywoman/traveller/" target="_blank">https://research.ncl.ac.uk/gertrudebell/anextraordinarywoman/traveller/</a></li>
+<li>​Gertrude Bell – traveller, archaeologist and king maker, accessed June 6, 2025, <a href="https://wshc.org.uk/gertrude-bell-traveller-archaeologist-and-king-maker/" target="_blank">https://wshc.org.uk/gertrude-bell-traveller-archaeologist-and-king-maker/</a></li>
+<li>​The Gertrude Bell Archive - Memory of the World - UNESCO, accessed June 6, 2025, <a href="https://www.unesco.org/en/memory-world/gertrude-bell-archive" target="_blank">https://www.unesco.org/en/memory-world/gertrude-bell-archive</a></li>
+<li>​research.ncl.ac.uk, accessed June 6, 2025, <a href="https://research.ncl.ac.uk/gertrudebell/anextraordinarywoman/archaeologist/#:~:t" target="_blank">https://research.ncl.ac.uk/gertrudebell/anextraordinarywoman/archaeologist/#:~:t</a> ext=Gertrude%20took%20important%20photographs%20during,in%20the%20j ournal%20Revue%20Arch%C3%A9ologique.</li>
+<li>​The Extraordinary Gertrude Bell – showcasing a historical gem – Q&amp;A with Andrew Parkin, accessed June 6, 2025, <a href="https://museumsandheritage.com/advisor/posts/the-extraordinary-gertrude-bell-" target="_blank">https://museumsandheritage.com/advisor/posts/the-extraordinary-gertrude-bell-</a> qa-with-andrew-parkin/</li>
+<li>​Gertrude Bell | Special Collections - Newcastle University Blogging Service, accessed June 6, 2025, <a href="https://blogs.ncl.ac.uk/speccoll/tag/gertrude-bell/" target="_blank">https://blogs.ncl.ac.uk/speccoll/tag/gertrude-bell/</a></li>
+<li>​Orientalism in British Policymaking: Gertrude Bell and the Iraq Mandate, 1921-1932 - ShareOK, accessed June 6, 2025, <a href="https://shareok.org/bitstreams/ea62a2c0-697d-4847-969d-a92e45b2210e/downl" target="_blank">https://shareok.org/bitstreams/ea62a2c0-697d-4847-969d-a92e45b2210e/downl</a> oad</li>
+<li>​The Gertrude Bell Archive | UNESCO in the UK, accessed June 6, 2025, <a href="https://unesco.org.uk/our-sites/memory-of-the-world/the-gertrude-bell-archive" target="_blank">https://unesco.org.uk/our-sites/memory-of-the-world/the-gertrude-bell-archive</a></li>
+<li>​Gertrude Bell&#x27;s Persian Pictures through the Lens of Orientalism: A Critical Analysis, accessed June 6, 2025, <a href="https://multijournals.org/index.php/excellencia-imje/article/view/3483?articlesBySa" target="_blank">https://multijournals.org/index.php/excellencia-imje/article/view/3483?articlesBySa</a> meAuthorPage=210</li>
+<li>​The Literary Remediation of Gertrude Bell in Iraqi Novelist Šākir Nūrī&#x27;s Ḫātūn Baġdād - cejsh, accessed June 6, 2025, <a href="https://cejsh.icm.edu.pl/cejsh/element/bwmeta1.element.ojs-doi-10_24425_ro_20" target="_blank">https://cejsh.icm.edu.pl/cejsh/element/bwmeta1.element.ojs-doi-10_24425_ro_20</a> 24_150676/c/articles-58315532.pdf.pdf</li>
+<li>​Amurath to Amurath: Bell, Gertrude Lowthian: 9780971598690 - Amazon.com, accessed June 6, 2025, <a href="https://www.amazon.com/Amurath-Journey-Along-Banks-Euphrates/dp/0971598" target="_blank">https://www.amazon.com/Amurath-Journey-Along-Banks-Euphrates/dp/0971598</a> 69X</li>
+<li>​research.ncl.ac.uk, accessed June 6, 2025, <a href="https://research.ncl.ac.uk/gertrudebell/anextraordinarywoman/ww1/#:~:text=In%2" target="_blank">https://research.ncl.ac.uk/gertrudebell/anextraordinarywoman/ww1/#:~:text=In%2</a> 01915%20Gertrude%20was%20invited,and%20encourage%20an%20Arab%20u prising.</li>
+<li>​Gertrude Bell - Hudson Valley One, accessed June 6, 2025, <a href="https://hudsonvalleyone.com/2020/07/27/gertrude-bell/" target="_blank">https://hudsonvalleyone.com/2020/07/27/gertrude-bell/</a></li>
+<li>​The Grand Strategy of Gertrude Bell: From the Arab Bureau to the Creation of Iraq - Department of Defense, accessed June 6, 2025, <a href="https://media.defense.gov/2023/Mar/03/2003172278/-1/-1/0/THE%20GRAND%20" target="_blank">https://media.defense.gov/2023/Mar/03/2003172278/-1/-1/0/THE%20GRAND%20</a> STRATEGY%20OF%20GERTRUDE%20BELL%20-%20FROM%20THE%20ARAB%2 0BUREAU%20TO%20THE%20CREATION%20OF%20IRAQ.PDF</li>
+<li>​Across the Heart of Arabia (1): St John Philby&#x27;s Mission to Najd - Untold lives blog, accessed June 6, 2025, <a href="https://blogs.bl.uk/untoldlives/2023/01/across-the-heart-of-arabia-i-st-john-philb" target="_blank">https://blogs.bl.uk/untoldlives/2023/01/across-the-heart-of-arabia-i-st-john-philb</a> ys-mission-to-najd.html</li>
+<li>​Gertrude Bell&#x27;s Role in Establishment of Iraq Mandate (GERTRUDE BELL&#x27;İN IRAK MANDASININ KURULMASINDAKİ ROLÜ) - Mustafa Celalettin HOCAOĞLU - | Journal of History School, accessed June 6, 2025, <a href="https://johschool.com/?mod=makale_ing_ozet&amp;makale_id=38619" target="_blank">https://johschool.com/?mod=makale_ing_ozet&amp;makale_id=38619</a></li>
+<li>​غيرترود ملكة..بيل.ال وم ا - PUKmedia, accessed June <a href="https://www.pukmedia.com/AR_Direje.aspx?Jimare=75128" target="_blank">https://www.pukmedia.com/AR_Direje.aspx?Jimare=75128</a></li>
+<li>​www.dangerrangerbear.com, accessed June 6, 2025, <a href="https://www.dangerrangerbear.com/gertrude-bell/#:~:text=With%20her%20close" target="_blank">https://www.dangerrangerbear.com/gertrude-bell/#:~:text=With%20her%20close</a> %20relationships%20with,for%20High%20Commissioner%20of%20Iraq.</li>
+<li>​How West Spawned Conflict In Middle East For Favourable Geopolitical Order - MyPluralist, accessed June 6, 2025, <a href="https://mypluralist.com/2023/03/25/gertrude-bell-iraq/" target="_blank">https://mypluralist.com/2023/03/25/gertrude-bell-iraq/</a></li>
+<li>​Mark Sykes, the British Arabists and the Enduring Consequences of the Sykes-Picot Agreement - Scholar Commons, accessed June 6, 2025, <a href="https://scholarcommons.scu.edu/cgi/viewcontent.cgi?article=1025&amp;context=histo" target="_blank">https://scholarcommons.scu.edu/cgi/viewcontent.cgi?article=1025&amp;context=histo</a> rical-perspectives</li>
+<li>​Great Iraqi Revolt | EBSCO Research Starters, accessed June 6, 2025, <a href="https://www.ebsco.com/research-starters/history/great-iraqi-revolt" target="_blank">https://www.ebsco.com/research-starters/history/great-iraqi-revolt</a></li>
+<li>​Iraqi Revolt - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Iraqi_Revolt" target="_blank">https://en.wikipedia.org/wiki/Iraqi_Revolt</a></li>
+<li>​الجاسوسة التي لقبها العرب أم&quot;المؤمن ! -الجز , accessed June 6, <a href="https://www.aljazeera.net/blogs/2019/1/1/%D8%A7%D9%84%D8%AC%D8%A7%D" target="_blank">https://www.aljazeera.net/blogs/2019/1/1/%D8%A7%D9%84%D8%AC%D8%A7%D</a> 8%B3%D9%88%D8%B3%D8%A9-%D8%A7%D9%84%D8%AA%D9%8A-%D9%84 %D9%82%D8%A8%D9%87%D8%A7-%D8%A7%D9%84%D8%B9%D8%B1%D8%A 8-%D8%A3%D9%85-%D8%A7%D9%84%D9%85%D8%A4%D9%85%D9%86%D9 %8A%D9%86</li>
+<li>​غيرترود ..بِيل. .الجاسوس الت سلّم العر للإنجلي  |سياس  -الجزير ن, accessed June 6, 2025 <a href="https://www.aljazeera.net/politics/2024/12/21/%D8%BA%D9%8A%D8%B1%D8%A" target="_blank">https://www.aljazeera.net/politics/2024/12/21/%D8%BA%D9%8A%D8%B1%D8%A</a> A%D8%B1%D9%88%D8%AF-%D8%A8%D9%8A%D9%84-%D8%A7%D9%84%D8 %AC%D8%A7%D8%B3%D9%88%D8%B3%D8%A9-%D8%A7%D9%84%D8%AA% D9%8A-%D8%B3%D9%84%D9%85%D8%AA</li>
+<li>​www.britannica.com, accessed June 6, 2025, <a href="https://www.britannica.com/biography/Gertrude-Bell#:~:text=Gertrude%20Bell%" target="_blank">https://www.britannica.com/biography/Gertrude-Bell#:~:text=Gertrude%20Bell%</a> 20(born%20July%2014,Baghdad%20of%20the%20H%C4%81shimite%20dynast y.</li>
+<li>​The Letters Of Gertrude Bell Vol-ii : Bell Lady : Free Download, Borrow, and Streaming - Internet Archive, accessed June 6, 2025, <a href="https://archive.org/details/in.ernet.dli.2015.210996/page/n117/mode/2up?q=Cox" target="_blank">https://archive.org/details/in.ernet.dli.2015.210996/page/n117/mode/2up?q=Cox</a></li>
+<li>​en.wikipedia.org, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/Gertrude_Bell#:~:text=In%201905%2C%20she%20re" target="_blank">https://en.wikipedia.org/wiki/Gertrude_Bell#:~:text=In%201905%2C%20she%20re</a> turned%20to,Asia%20Minor%20and%20visiting%20Constantinople.</li>
+<li>​The women behind Sykes-Picot | ISIL/ISIS - Al Jazeera, accessed June 6, 2025, <a href="https://www.aljazeera.com/opinions/2016/5/22/the-women-behind-sykes-picot" target="_blank">https://www.aljazeera.com/opinions/2016/5/22/the-women-behind-sykes-picot</a></li>
+<li>​Daughter of the Desert. The Remarkable Life of Gertrude Bell by Georgina Howell, accessed June 6, 2025, <a href="http://www1.dragonet.es/users/markbcki/howell.htm" target="_blank">http://www1.dragonet.es/users/markbcki/howell.htm</a></li>
+<li>​History of Iraq part I: the British legacy - The World from PRX, accessed June 6, 2025, <a href="https://theworld.org/stories/2014/01/17/history-iraq-british-legacy" target="_blank">https://theworld.org/stories/2014/01/17/history-iraq-british-legacy</a></li>
+<li>​St John Philby - Wikipedia, accessed June 6, 2025, <a href="https://en.wikipedia.org/wiki/St_John_Philby" target="_blank">https://en.wikipedia.org/wiki/St_John_Philby</a></li>
+<li>​accessed January 1, 1970, https.aljazeera.net/politics/2024/12/21/%D8%BA%D9%8A%D8%B1%D8%AA%D8% B1%D9%88%D8%AF-%D8%A8%D9%8A%D9%84-%D8%A7%D9%84%D8%AC%D 8%A7%D8%B3%D9%88%D8%B3%D8%A9-%D8%A7%D9%84%D8%AA%D9%8A- %D8%B3%D9%84%D9%85%D8%AA</li>
+<li>​ List of books by author Gertrude Bell - ThriftBooks, accessed June 6, 2025, <a href="https://www.thriftbooks.com/a/gertrude-bell/392326/" target="_blank">https://www.thriftbooks.com/a/gertrude-bell/392326/</a></li>
+<li>​ Gertrude Bell: Books - Amazon.com, accessed June 6, 2025, <a href="https://www.amazon.com/Books-Gertrude-Bell/s?rh=n%3A283155%2Cp_27%3A" target="_blank">https://www.amazon.com/Books-Gertrude-Bell/s?rh=n%3A283155%2Cp_27%3A</a> Gertrude%2BBell</li>
+<li>​ Books By Gertrude Bell - Author - LoveReading UK, accessed June 6, 2025, <a href="https://www.lovereading.co.uk/author/6472/Gertrude-Bell.html" target="_blank">https://www.lovereading.co.uk/author/6472/Gertrude-Bell.html</a></li>
+<li>​ Gertrude Bell&#x27;s Persian Pictures through the Lens of Orientalism: A Critical Analysis | Excellencia: International Multi-disciplinary Journal of Education (2994-9521), accessed June 6, 2025, <a href="https://multijournals.org/index.php/excellencia-imje/article/view/3483?articlesBySa" target="_blank">https://multijournals.org/index.php/excellencia-imje/article/view/3483?articlesBySa</a> meAuthorPage=9</li>
+<li>​ accessed January 1, 1970, <a href="https://research.ncl.ac.uk/gertrudebell/archive/" target="_blank">https://research.ncl.ac.uk/gertrudebell/archive/</a></li>
+<li>​عالمة اآلثار جيرترود بيل | شركة تورك توريزم, accessed June 6, 2025, <a href="https://turk-tourism.com/%D8%AC%D9%8A%D8%B1%D8%AA%D8%B1%D9%88" target="_blank">https://turk-tourism.com/%D8%AC%D9%8A%D8%B1%D8%AA%D8%B1%D9%88</a> %D8%AF-%D8%A8%D9%8A%D9%84/</li>
+<li>​ The Damascus Fragments, accessed June 6, 2025, <a href="https://www.opendata.uni-halle.de/bitstream/1981185920/110586/1/BTS_140_Dam" target="_blank">https://www.opendata.uni-halle.de/bitstream/1981185920/110586/1/BTS_140_Dam</a> ascus_Fragments.pdf</li>
+<li>​ Saudi Arabia - EWA A. ŁUKASZYK, accessed June 6, 2025, <a href="https://www.ewalukaszyk.com/saudi-arabia.html" target="_blank">https://www.ewalukaszyk.com/saudi-arabia.html</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 06, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
