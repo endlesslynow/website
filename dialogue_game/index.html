@@ -256,6 +256,25 @@
             display: none;
         }
 
+        .back-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 140, 0, 0.8);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: #8b4513;
+    transition: all 0.3s;
+}
+
+.back-button:hover {
+    background: rgba(255, 228, 181, 0.98);
+    transform: translateY(-2px);
+}
+
         /* DIALOGUE BOX - UPDATED STYLING */
         .dialogue-box {
             backdrop-filter: blur(10px);
@@ -994,22 +1013,50 @@
 </head>
 <body>
     <div class="container">
-        <!-- Level Selection -->
-        <div id="level-selection" class="level-selection">
-            <h2 class="level-title">Hannah's Cafe</h2>
-            <button class="level-button" onclick="selectLevel(1)">
-                <div class="level-number">Level 1</div>
-                <div class="level-name">Multiple Choice</div>
-            </button>
-            <button class="level-button" onclick="selectLevel(2)">
-                <div class="level-number">Level 2</div>
-                <div class="level-name">Word Assembly</div>
-            </button>
-            <button class="level-button" onclick="selectLevel(3)">
-                <div class="level-number">Level 3</div>
-                <div class="level-name">Type Answers</div>
-            </button>
-        </div>
+        <!-- Native Language Selection -->
+<div id="native-language-selection" class="level-selection">
+    <h2 class="level-title">Hannah's Cafe</h2>
+    <button class="level-button" onclick="selectNativeLanguage('english')">
+        <div class="level-name">I speak English</div>
+    </button>
+    <button class="level-button" onclick="selectNativeLanguage('spanish')">
+        <div class="level-name">Hablo español</div>
+    </button>
+    <button class="level-button" onclick="selectNativeLanguage('arabic')">
+        <div class="level-name">أتحدث العربية</div>
+    </button>
+    <button class="level-button" onclick="selectNativeLanguage('kurmanji')">
+        <div class="level-name">Ez kurdî dipeyivim</div>
+    </button>
+    <button class="level-button" onclick="selectNativeLanguage('ukrainian')">
+        <div class="level-name">Я розмовляю українською</div>
+    </button>
+</div>
+
+<!-- Learning Language Selection -->
+<div id="learning-language-selection" class="level-selection" style="display: none;">
+    <button class="back-button" onclick="goBackToNative()">← Back</button>
+    <h2 class="level-title" id="learning-title">I want to learn</h2>
+    <div id="learning-options"></div>
+</div>
+
+<!-- Level Selection -->
+<div id="level-selection" class="level-selection" style="display: none;">
+    <button class="back-button" onclick="goBackToLearning()">← Back</button>
+    <h2 class="level-title">Hannah's Cafe</h2>
+    <button class="level-button" onclick="selectLevel(1)">
+        <div class="level-number">Level 1</div>
+        <div class="level-name">Multiple Choice</div>
+    </button>
+    <button class="level-button" onclick="selectLevel(2)">
+        <div class="level-number">Level 2</div>
+        <div class="level-name">Word Assembly</div>
+    </button>
+    <button class="level-button" onclick="selectLevel(3)">
+        <div class="level-number">Level 3</div>
+        <div class="level-name">Type Answers</div>
+    </button>
+</div>
 
         <!-- Home Button -->
         <div id="home-button" class="home-button" onclick="goHome()">
@@ -1050,10 +1097,22 @@
 
     <script>
         // Language Configuration
-        const LANGUAGE_CONFIG = {
-            primary: 'spanish',     // Learning from (Spanish)
-            translation: 'english' // Learning to (English)
-        };
+let LANGUAGE_CONFIG = {
+    primary: 'spanish',     // Learning from (Spanish)
+    translation: 'english' // Learning to (English)
+};
+
+// Language names in their native scripts
+const LANGUAGE_NAMES = {
+    english: "English",
+    spanish: "Español", 
+    arabic: "العربية",
+    kurmanji: "Kurdî",
+    ukrainian: "Українська"
+};
+
+let selectedNativeLanguage = null;
+let selectedLearningLanguage = null;
 
         let dialogueTree = null;
         let currentNode = 'START';
@@ -1071,7 +1130,110 @@
             }
         }
 
+        function selectNativeLanguage(language) {
+            selectedNativeLanguage = language;
+            document.getElementById('native-language-selection').style.display = 'none';
+            showLearningLanguageSelection();
+        }
+
+        function showLearningLanguageSelection() {
+            const learningDiv = document.getElementById('learning-language-selection');
+            const optionsDiv = document.getElementById('learning-options');
+            const titleDiv = document.getElementById('learning-title');
+            
+            const titles = {
+                english: "I want to learn",
+                spanish: "Quiero aprender",
+                arabic: "أريد أن أتعلم",
+                kurmanji: "Ez dixwazim fêr bibim",
+                ukrainian: "Я хочу вивчити"
+            };
+            titleDiv.textContent = titles[selectedNativeLanguage];
+            
+            const availableLanguages = Object.keys(LANGUAGE_NAMES).filter(lang => lang !== selectedNativeLanguage);
+            
+            optionsDiv.innerHTML = availableLanguages.map(lang => 
+                `<button class="level-button" onclick="selectLearningLanguage('${lang}')">
+                    <div class="level-name">${LANGUAGE_NAMES[lang]}</div>
+                </button>`
+            ).join('');
+            
+            learningDiv.style.display = 'block';
+        }
+
+        function selectLearningLanguage(language) {
+            selectedLearningLanguage = language;
+            LANGUAGE_CONFIG.primary = language;
+            LANGUAGE_CONFIG.translation = selectedNativeLanguage;
+            
+            document.getElementById('learning-language-selection').style.display = 'none';
+            document.getElementById('level-selection').style.display = 'block';
+        }
+
+        function goBackToNative() {
+            document.getElementById('learning-language-selection').style.display = 'none';
+            document.getElementById('native-language-selection').style.display = 'block';
+        }
+
+        function goBackToLearning() {
+            document.getElementById('level-selection').style.display = 'none';
+            document.getElementById('learning-language-selection').style.display = 'block';
+        }
+
         function goHome() {
+
+
+            function selectNativeLanguage(language) {
+    selectedNativeLanguage = language;
+    document.getElementById('native-language-selection').style.display = 'none';
+    showLearningLanguageSelection();
+}
+
+function showLearningLanguageSelection() {
+    const learningDiv = document.getElementById('learning-language-selection');
+    const optionsDiv = document.getElementById('learning-options');
+    const titleDiv = document.getElementById('learning-title');
+    
+    // Set title in user's native language
+    const titles = {
+        english: "I want to learn",
+        spanish: "Quiero aprender",
+        arabic: "أريد أن أتعلم",
+        kurmanji: "Ez dixwazim fêr bibim",
+        ukrainian: "Я хочу вивчити"
+    };
+    titleDiv.textContent = titles[selectedNativeLanguage];
+    
+    // Show available learning languages (exclude native language)
+    const availableLanguages = Object.keys(LANGUAGE_NAMES).filter(lang => lang !== selectedNativeLanguage);
+    
+    optionsDiv.innerHTML = availableLanguages.map(lang => 
+        `<button class="level-button" onclick="selectLearningLanguage('${lang}')">
+            <div class="level-name">${LANGUAGE_NAMES[lang]}</div>
+        </button>`
+    ).join('');
+    
+    learningDiv.style.display = 'block';
+}
+
+function selectLearningLanguage(language) {
+    selectedLearningLanguage = language;
+    LANGUAGE_CONFIG.primary = language;
+    LANGUAGE_CONFIG.translation = selectedNativeLanguage;
+    
+    document.getElementById('learning-language-selection').style.display = 'none';
+    document.getElementById('level-selection').style.display = 'block';
+}
+
+function goBackToNative() {
+    document.getElementById('learning-language-selection').style.display = 'none';
+    document.getElementById('native-language-selection').style.display = 'block';
+}
+
+function goBackToLearning() {
+    document.getElementById('level-selection').style.display = 'none';
+    document.getElementById('learning-language-selection').style.display = 'block';
+}
             // Reset everything and go back to level selection
             currentLevel = null;
             currentNode = 'START';
@@ -1103,7 +1265,9 @@
             }
             
             // Show level selection
-            document.getElementById('level-selection').style.display = 'block';
+            selectedNativeLanguage = null;
+selectedLearningLanguage = null;
+document.getElementById('native-language-selection').style.display = 'block';
         }
 
         function selectLevel(level) {

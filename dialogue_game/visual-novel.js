@@ -8,10 +8,22 @@ const IMAGES = {
         grandmas_kitchen: './images/grandmas_kitchen.jpeg'
     },
     hannah: {
-        welcoming: './images/h_ku_welcoming.png',
-        excited: './images/h_ku_excited.png',
-        frustrated: './images/h_ku_frustrated.png',
-        worried: './images/h_ku_worried.png'
+        get welcoming() { 
+            const prefix = LANGUAGE_CONFIG.primary === 'ukrainian' ? 'h_ua_' : 'h_ku_';
+            return `./images/${prefix}welcoming.png`;
+        },
+        get excited() { 
+            const prefix = LANGUAGE_CONFIG.primary === 'ukrainian' ? 'h_ua_' : 'h_ku_';
+            return `./images/${prefix}excited.png`;
+        },
+        get frustrated() { 
+            const prefix = LANGUAGE_CONFIG.primary === 'ukrainian' ? 'h_ua_' : 'h_ku_';
+            return `./images/${prefix}frustrated.png`;
+        },
+        get worried() { 
+            const prefix = LANGUAGE_CONFIG.primary === 'ukrainian' ? 'h_ua_' : 'h_ku_';
+            return `./images/${prefix}worried.png`;
+        }
     },
     max: {
         cheeky: './images/m_cheeky.png',
