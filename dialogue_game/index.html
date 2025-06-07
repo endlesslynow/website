@@ -96,6 +96,42 @@ body {
             transform: scale(1.1);
         }
 
+        /* AUDIO TOGGLE BUTTON - NEXT TO HOME BUTTON */
+.audio-button {
+    position: fixed;
+    top: 1rem;
+    left: 4.5rem;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 20;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.audio-button.visible {
+    display: flex;
+}
+
+.audio-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+.audio-button.muted {
+    opacity: 0.6;
+}
+
         /* DIALOGUE HISTORY - UNDER HOME BUTTON */
         .dialogue-history {
             width: 280px;
@@ -938,6 +974,15 @@ body {
                 z-index: 30 !important; /* Above visual container */
             }
 
+            .audio-button {
+    top: 0.5rem !important;
+    left: 3rem !important;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1.5rem !important;
+    z-index: 30 !important;
+}
+
             /* MOBILE ACTION BUTTONS - CLEANER LAYOUT */
             .exercise-actions {
                 display: flex !important;
@@ -1103,6 +1148,11 @@ body {
             ⌂
         </div>
 
+        <!-- Audio Toggle Button -->
+<div id="audio-button" class="audio-button" onclick="toggleAudio()">
+    ♪
+</div>
+
         <!-- Loading Message -->
         <div id="loading" class="loading" style="display: none;">Loading dialogue...</div>
 
@@ -1244,6 +1294,7 @@ function showBanner() {
             document.getElementById('dialogue-history').classList.remove('visible');
             document.getElementById('choices-panel').classList.remove('visible');
             document.getElementById('home-button').classList.remove('visible');
+document.getElementById('audio-button').classList.remove('visible');
             document.getElementById('loading').style.display = 'none';
             document.getElementById('exercise-container').style.display = 'none';
             
@@ -1273,6 +1324,22 @@ function showBanner() {
             currentLevel = level;
             hideBanner();
             dialogueHistory = [];
+            
+            // --- START: CRITICAL AUDIO UNLOCK ---
+            // This MUST happen immediately after the user click to unlock the browser.
+            // We use the main player to play a silent sound.
+            if (mainAudioPlayer.paused) {
+                mainAudioPlayer.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA'; // Embedded silent audio clip
+                mainAudioPlayer.volume = 0.01; // Make it inaudible
+                mainAudioPlayer.play().then(() => {
+                    console.log("🔊 Audio context unlocked by user action.");
+                    mainAudioPlayer.volume = 0.7; // Restore default volume for the game
+                }).catch(() => {
+                    console.warn("❌ Audio unlock failed on first attempt. The browser will try again on the next user interaction.");
+                });
+            }
+            // --- END: CRITICAL AUDIO UNLOCK ---
+            
             document.getElementById('level-selection').style.display = 'none';
             document.getElementById('loading').style.display = 'block';
             
@@ -1287,6 +1354,7 @@ function showBanner() {
                 }
             }
             homeButton.classList.add('visible');
+document.getElementById('audio-button').classList.add('visible');
             
             if (window.VisualNovel) {
                 window.VisualNovel.initialize();
@@ -1379,62 +1447,129 @@ function showBanner() {
             }, 500);
         }
 
-        function updateDialogue() {
-            if (!dialogueTree) return;
+        // Audio playback system
+        // Create a single, reusable Audio object.
+        const mainAudioPlayer = new Audio();
+        mainAudioPlayer.volume = 0.7; // Set a default volume
+
+        mainAudioPlayer.onerror = function(e) {
+            console.error("❌ Audio Player Error:", mainAudioPlayer.src, e.target.error);
+        };
+        console.log("🔊 Main audio player initialized and ready for user interaction.");
+
+// --- START OF NEW PRELOADING CODE ---
+const preloadedAudio = {};
+
+function preloadAudio(audioFile) {
+    // Don't preload if there's no file or we've already started preloading it
+    if (!audioFile || preloadedAudio[audioFile]) {
+        return;
+    }
+
+    console.log(`🔊 Preloading audio: ${audioFile}`);
+    const audio = new Audio(`./audio/ua_1/${audioFile}`);
+    preloadedAudio[audioFile] = true; // Mark it so we don't load it again
+}
+// --- END OF NEW PRELOADING CODE ---
+
+
+        function playDialogueAudio(audioFile) {
+            console.log("▶️ Preparing to play dialogue audio:", audioFile);
             
-            const currentDialogue = dialogueTree[currentNode];
-            const dialogueBox = document.getElementById('dialogue-box');
-            const speakerName = document.getElementById('speaker-name');
-            const dialogueText = document.getElementById('dialogue-text');
-            const choicesContainer = document.getElementById('choices');
-            const exerciseContainer = document.getElementById('exercise-container');
-
-            if (window.VisualNovel && currentDialogue.visual) {
-                window.VisualNovel.updateScene(currentDialogue.visual);
+            // Stop any currently playing audio on the main player
+            if (!mainAudioPlayer.paused) {
+                mainAudioPlayer.pause();
+                mainAudioPlayer.currentTime = 0;
             }
-
-            const speaker = getSpeakerName(currentDialogue.speaker);
-            addToHistory(speaker, currentDialogue.text.es, false);
-
-            // Reset containers
-            exerciseContainer.classList.remove('visible');
-            exerciseContainer.style.opacity = '0';
-            exerciseContainer.innerHTML = '';
-            choicesContainer.innerHTML = '';
-
-            // Update dialogue box styling based on level
-            if (currentLevel === 1) {
-                dialogueBox.classList.remove('full-width');
-                exerciseContainer.style.display = 'none';
-                exerciseContainer.classList.remove('level-3');
-            } else {
-                dialogueBox.classList.add('full-width');
-                exerciseContainer.style.display = 'block';
-                // Add level-3 class for shorter height
-                if (currentLevel === 3) {
-                    exerciseContainer.classList.add('level-3');
-                } else {
-                    exerciseContainer.classList.remove('level-3');
-                }
-                // Don't create content yet - just reserve the space
-            }
-
-            speakerName.textContent = speaker;
             
-            dialogueText.innerHTML = `
-                <span class="spanish" id="spanish-text"></span>
-                <div class="english-translation">${currentDialogue.text.en}</div>
-            `;
-
-            const spanishTextElement = document.getElementById('spanish-text');
-            typeText(spanishTextElement, currentDialogue.text.es, 35, function() {
-                spanishTextElement.onclick = function() {
-                    toggleEnglishTranslation(spanishTextElement);
-                };
+            if (audioFile) {
+                const audioPath = `./audio/ua_1/${audioFile}`;
+                console.log("🎵 Setting audio path:", audioPath);
                 
-                showChoices(currentDialogue);
-            });
+                mainAudioPlayer.src = audioPath;
+                
+                // This delay syncs the audio start with the text typing animation.
+                const playPromise = mainAudioPlayer.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log("✅ Audio playback started successfully.");
+                    }).catch(error => {
+                        console.error("❌ Playback failed.", error);
+                    });
+                }
+            }
         }
+        function updateDialogue() {
+    if (!dialogueTree) return;
+
+    const currentDialogue = dialogueTree[currentNode];
+
+    // --- PRELOAD NEXT AUDIO ---
+    // Look ahead and start loading the audio for the next choices.
+    if (currentDialogue.choices) {
+        for (const choice of currentDialogue.choices) {
+            const nextNode = dialogueTree[choice.next];
+            if (nextNode && nextNode.audio) {
+                preloadAudio(nextNode.audio);
+            }
+        }
+    }
+    // --- END OF PRELOADING ---
+
+    const dialogueBox = document.getElementById('dialogue-box');
+    const speakerName = document.getElementById('speaker-name');
+    const dialogueText = document.getElementById('dialogue-text');
+    const choicesContainer = document.getElementById('choices');
+    const exerciseContainer = document.getElementById('exercise-container');
+
+    if (window.VisualNovel && currentDialogue.visual) {
+        window.VisualNovel.updateScene(currentDialogue.visual);
+    }
+
+    const speaker = getSpeakerName(currentDialogue.speaker);
+    addToHistory(speaker, currentDialogue.text.es, false);
+
+    // Reset containers
+    exerciseContainer.classList.remove('visible');
+    exerciseContainer.style.opacity = '0';
+    exerciseContainer.innerHTML = '';
+    choicesContainer.innerHTML = '';
+
+    // Update dialogue box styling based on level
+    if (currentLevel === 1) {
+        dialogueBox.classList.remove('full-width');
+        exerciseContainer.style.display = 'none';
+        exerciseContainer.classList.remove('level-3');
+    } else {
+        dialogueBox.classList.add('full-width');
+        exerciseContainer.style.display = 'block';
+        if (currentLevel === 3) {
+            exerciseContainer.classList.add('level-3');
+        } else {
+            exerciseContainer.classList.remove('level-3');
+        }
+    }
+
+    speakerName.textContent = speaker;
+    
+    dialogueText.innerHTML = `
+        <span class="spanish" id="spanish-text"></span>
+        <div class="english-translation">${currentDialogue.text.en}</div>
+    `;
+
+    const spanishTextElement = document.getElementById('spanish-text');
+    
+    playDialogueAudio(currentDialogue.audio);
+    
+    typeText(spanishTextElement, currentDialogue.text.es, 35, function() {
+        spanishTextElement.onclick = function() {
+            toggleEnglishTranslation(spanishTextElement);
+        };
+        
+        showChoices(currentDialogue);
+    });
+}
 
         function createExerciseContent(currentDialogue) {
             const exerciseContainer = document.getElementById('exercise-container');
@@ -1789,6 +1924,7 @@ function showBanner() {
                         en: translationNode.text || primaryNode.text // Fallback to primary if translation missing
                     },
                     speaker: primaryNode.speaker,
+                    audio: primaryNode.audio,
                     visual: primaryNode.visual, // Visual data only comes from primary
                     choices: []
                 };
@@ -1855,6 +1991,43 @@ function showBanner() {
                 }
             }
         });
+
+        // Test audio function
+        function testAudio() {
+            console.log("🔊 Testing audio...");
+            const audio = new Audio('./audio/ua_1/ua-01.mp3');
+            audio.volume = 0.5;
+            
+            audio.play().then(() => {
+                console.log("✅ Audio playing!");
+            }).catch(error => {
+                console.error("❌ Play failed:", error);
+            });
+        }
+
+        // Make it globally accessible
+        window.testAudio = testAudio;
+
+        let isAudioMuted = false;
+
+function toggleAudio() {
+    isAudioMuted = !isAudioMuted;
+    const audioButton = document.getElementById('audio-button');
+    
+    if (isAudioMuted) {
+        // Mute audio
+        mainAudioPlayer.volume = 0;
+        audioButton.textContent = '⊘';
+        audioButton.classList.add('muted');
+        console.log('🔇 Audio muted');
+    } else {
+        // Unmute audio
+        mainAudioPlayer.volume = 0.7;
+        audioButton.textContent = '♪';
+        audioButton.classList.remove('muted');
+        console.log('🔊 Audio unmuted');
+    }
+}
     </script>
 </body>
 </html>
