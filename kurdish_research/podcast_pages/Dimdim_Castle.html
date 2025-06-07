@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimdim Castle</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dimdim Castle</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Dimdim Castle_ Kurdish History and Identity.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Dimdim Castle_ Kurdish History and Identity.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>These sources provide an overview of Dimdim Castle, a historical Kurdish fortress in Iran significant for the Battle of Dimdim (1609-1610) against the Safavid Empire. They explore the castle&#x27;s strategic location, architecture, and varied accounts of its origins, from ancient folklore to its 17th-century rebuilding by Emîr Xan Lepzêrîn. The texts highlight the contested narratives surrounding the battle, contrasting the Safavid view of it as a rebellion with the Kurdish perspective of heroic resistance, particularly captured in the oral epic Beytî Dimdim and later literary works. Ultimately, the sources emphasize Dimdim&#x27;s enduring role as a powerful symbol of Kurdish identity, resilience, and the struggle for autonomy, despite its current state as ruins.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Dimdim Castle Historical Research Plan_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Dimdim Castle - Wikipedia, accessed June 7, 2025, <a href="https://en.wikipedia.org/wiki/Dimdim_Castle" target="_blank">https://en.wikipedia.org/wiki/Dimdim_Castle</a></li>
+<li>​ Dimdim Castle - Wikiwand, accessed June 7, 2025, <a href="https://www.wikiwand.com/en/articles/Castle_of_Dimdim" target="_blank">https://www.wikiwand.com/en/articles/Castle_of_Dimdim</a></li>
+<li>​ Siege of Dimdim - Wikipedia, accessed June 7, 2025, <a href="https://en.wikipedia.org/wiki/Siege_of_Dimdim" target="_blank">https://en.wikipedia.org/wiki/Siege_of_Dimdim</a></li>
+<li>​ Emîr Xan Lepzêrîn - Wikipedia, accessed June 7, 2025, <a href="https://en.wikipedia.org/wiki/Em%C3%AEr_Xan_Lepz%C3%AAr%C3%AEn" target="_blank">https://en.wikipedia.org/wiki/Em%C3%AEr_Xan_Lepz%C3%AAr%C3%AEn</a></li>
+<li>​بحث عن قلعة دمدم واألمير الكوردي البرادوستي - آزادي بوست, accessed June 7, 2025, <a href="https://azadiposts.com/2023-10-06-12-57-11/100-2023-10-05-18-37-16.html" target="_blank">https://azadiposts.com/2023-10-06-12-57-11/100-2023-10-05-18-37-16.html</a></li>
+<li>​ Rojhilat - KurdishPeople.Org, accessed June 7, 2025, <a href="https://kurdishpeople.org/rojhilat/" target="_blank">https://kurdishpeople.org/rojhilat/</a></li>
+<li>​ Dum Dum Castle - Kurdipedia, accessed June 7, 2025, <a href="https://www.kurdipedia.org/default.aspx?q=20231219172818538510&amp;lng=7" target="_blank">https://www.kurdipedia.org/default.aspx?q=20231219172818538510&amp;lng=7</a></li>
+<li>​نبرد قلعه ‌دم دم - ،‌پدیا ویکی ٔدانشنامه آزاد, accessed June 7, 2025, <a href="https://fa.wikipedia.org/wiki/%D9%86%D8%A8%D8%B1%D8%AF_%D9%82%D9%8" target="_blank">https://fa.wikipedia.org/wiki/%D9%86%D8%A8%D8%B1%D8%AF_%D9%82%D9%8</a> 4%D8%B9%D9%87_%D8%AF%D9%85%E2%80%8C%D8%AF%D9%85</li>
+<li>​ Kurdish Bildungsroman and Its Historical and Social Concerns: The Case of Sayyed Qadir Hedayati | Iranian Studies - Cambridge University Press, accessed June 7, 2025, <a href="https://www.cambridge.org/core/journals/iranian-studies/article/kurdish-bildungsr" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/kurdish-bildungsr</a> oman-and-its-historical-and-social-concerns-the-case-of-sayyed-qadir-hedaya ti/4834A349999CA43D4FC9FDF42ACA928E</li>
+<li>​&quot;دم ؛&quot;دم&quot;؛ ه ی ه ر ه ر -, accessed June 7, 202 <a href="https://www.isna.ir/news/1402090402006/%D8%AF%D9%85-%D8%AF%D9%85-" target="_blank">https://www.isna.ir/news/1402090402006/%D8%AF%D9%85-%D8%AF%D9%85-</a> %D9%82%D9%84%D8%B9%D9%87-%D9%86%D8%B8%D8%A7%D9%85%DB%8 C-%D8%B3%D9%87-%D9%87%D8%B2%D8%A7%D8%B1-%D8%B3%D8%A7%D9 %84%D9%87-%D8%AF%D8%B1-%D8%A7%D8%B1%D9%88%D9%85%DB%8C% D9%87</li>
+<li>​A 17th Century Historical Novel in Kurdistan, a Kurdish Tribe Built a Castle, Fought Back the Persian Safavid and Ottom book by Yasin Aziz: 9781500692513, accessed June 7, 2025, <a href="https://www.betterworldbooks.com/product/detail/dum-dum-castle-by-yasin-azi" target="_blank">https://www.betterworldbooks.com/product/detail/dum-dum-castle-by-yasin-azi</a> z-a-17th-century-historical-novel-in-kurdistan-a-kurdish-tribe-built-a-97815006 92513</li>
+<li>​Dim Dim Castle and Kurds Uprising - KURDSHOP, accessed June 7, 2025, <a href="https://kurdshop.net/en/history/1439" target="_blank">https://kurdshop.net/en/history/1439</a></li>
+<li>​قلعة دمدم عرب شمّو الترجمة عن :الكردية: - - , accessed June 7, 2025, <a href="https://shiler.info/?p=2157" target="_blank">https://shiler.info/?p=2157</a></li>
+<li>​The Safavid Empire, 1501-1736 - Brewminate: A Bold Blend of News and Ideas, accessed June 7, 2025, <a href="https://brewminate.com/the-safavid-empire-1501-1736/" target="_blank">https://brewminate.com/the-safavid-empire-1501-1736/</a></li>
+<li>​Dum Dum Castle by Yasin Aziz: A 17Th Century Historical Novel In Kurdistan, A Kurdish Tribe Built A Castle, Fought Back The Persian Safavid And ... Month, Did Not Give In &amp; Belw Themselves Up., accessed June 7, 2025, <a href="https://www.amazon.in/Dum-Castle-Yasin-Aziz-Historical/dp/1500692514" target="_blank">https://www.amazon.in/Dum-Castle-Yasin-Aziz-Historical/dp/1500692514</a></li>
+<li>​قلعه دم دم ارومیه - انجمن رمان نویسی پاتوق رمان, accessed June 7, 2025, <a href="https://forum.patoghroman.top/threads/4360/" target="_blank">https://forum.patoghroman.top/threads/4360/</a></li>
+<li>​Kurdish Folklore, accessed June 7, 2025, <a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore</a> /</li>
+<li>​History of the Kurds, accessed June 7, 2025, <a href="http://www.fransamaltingvongeusau.com/documents/news/72.pdf" target="_blank">http://www.fransamaltingvongeusau.com/documents/news/72.pdf</a></li>
+<li>​Arab Shamilov - Wikipedia, accessed June 7, 2025, <a href="https://en.wikipedia.org/wiki/Arab_Shamilov" target="_blank">https://en.wikipedia.org/wiki/Arab_Shamilov</a></li>
+<li>​Kurdish Voices in Diaspora: An Overview on Kurdish Diasporic Literature - Allegra Lab, accessed June 7, 2025, <a href="https://allegralaboratory.net/kurdish-voices-in-diaspora-an-overview-on-kurdish-" target="_blank">https://allegralaboratory.net/kurdish-voices-in-diaspora-an-overview-on-kurdish-</a> diasporic-literature/</li>
+<li>​Resurrecting Silent Histories: A Journey through the Historical Novels of Kurdish Author Jan Dost - DiVA portal, accessed June 7, 2025, <a href="https://www.diva-portal.org/smash/get/diva2:1926451/FULLTEXT01.pdf" target="_blank">https://www.diva-portal.org/smash/get/diva2:1926451/FULLTEXT01.pdf</a></li>
+<li>​From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Tradition and Revitalization of the Kurdish Language in the Works of Mehmed Uzun and Mehmet Dicle, accessed June 7, 2025, <a href="https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/" target="_blank">https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/</a> view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_ dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revi talization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehm et_dicle.pdf</li>
+<li>​From the Wandering Poets to the Stateless Novelists (Chapter 27) - The Cambridge History of the Kurds, accessed June 7, 2025, <a href="https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/from-th" target="_blank">https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/from-th</a> e-wandering-poets-to-the-stateless-novelists/4391592FAE6992F72CEABB0E56D F8FF6</li>
+<li>​Kurdistan: A Land of Longing and Struggle Analysis of &#x27;Home-land&#x27; and &#x27;Identity&#x27; in the Kurdish Novelistic Discourse, accessed June 7, 2025, <a href="https://ore.exeter.ac.uk/repository/bitstream/handle/10036/4518/GalipO.pdf?sequ" target="_blank">https://ore.exeter.ac.uk/repository/bitstream/handle/10036/4518/GalipO.pdf?sequ</a> ence=1&amp;isAllowed=y</li>
+<li>​Kurdish Literature. Between Borders, Past and Modernity - Kurdishstudies, accessed June 7, 2025, <a href="https://www.kurdishstudies.pl/?en_kurdish-literature.-between-borders-past-and" target="_blank">https://www.kurdishstudies.pl/?en_kurdish-literature.-between-borders-past-and</a> -modernity,88</li>
+<li>​PKK executive: Iraqi army is helping Turks occupy Iraqi land - Medya News, accessed June 7, 2025, <a href="https://medyanews.net/pkk-leader-iraqi-army-is-helping-turks-occupy-iraqi-land" target="_blank">https://medyanews.net/pkk-leader-iraqi-army-is-helping-turks-occupy-iraqi-land</a> /</li>
+<li>​Sur - MERIP, accessed June 7, 2025, <a href="https://merip.org/2018/10/sur/" target="_blank">https://merip.org/2018/10/sur/</a></li>
+<li>​چەند وێنەیەکی نوێی شوێنەواری دێرینی قەاڵی دمدم - Basnews, accessed June 7, 2025, <a href="https://www.basnews.com/so/babat/624718" target="_blank">https://www.basnews.com/so/babat/624718</a></li>
+<li>​File:Behestan Castle By Hamid Reza Bazargani (Custom).jpg - Wikipedia, accessed June 7, 2025, <a href="https://en.m.wikipedia.org/wiki/File:Behestan_Castle_By_Hamid_Reza_Bazargani_(" target="_blank">https://en.m.wikipedia.org/wiki/File:Behestan_Castle_By_Hamid_Reza_Bazargani_(</a> Custom).jpg</li>
+<li>​Dimdim Castle, accessed June 7, 2025, <a href="https://wikipedia.nucleos.com/viewer/wikipedia_en_all/A/Dimdim_Castle" target="_blank">https://wikipedia.nucleos.com/viewer/wikipedia_en_all/A/Dimdim_Castle</a></li>
+<li>​Iran Tourism Attraction - West Azerbaijan Province - Shabahang Parvaz, accessed June 7, 2025, <a href="http://shabahangparvaz.com/en/user/temp.php?irantech_parvaz=1034&amp;detail=27" target="_blank">http://shabahangparvaz.com/en/user/temp.php?irantech_parvaz=1034&amp;detail=27</a> &amp;cityname=West%20Azerbaijan%20Province</li>
+<li>​Why We Travel: For Fun and Excitement - urmia هیجان -سفر- -ارومی accessed June 7, 2025, <a href="https://www.youtube.com/watch?v=1SgB_dGZeVU" target="_blank">https://www.youtube.com/watch?v=1SgB_dGZeVU</a></li>
+<li>​List of castles in Iran - Wikipedia, accessed June 7, 2025, <a href="https://en.wikipedia.org/wiki/List_of_castles_in_Iran" target="_blank">https://en.wikipedia.org/wiki/List_of_castles_in_Iran</a></li>
+<li>​Page 3 of 3 for History - KURDSHOP, accessed June 7, 2025, <a href="https://kurdshop.net/Culture/Set?current=en&amp;target=en&amp;preferredUrl=en/history" target="_blank">https://kurdshop.net/Culture/Set?current=en&amp;target=en&amp;preferredUrl=en/history</a> &amp;query=%3Fpage%3D3%26Category%3D116%26Tag%3D%26Term%3D%26Highli ght%3D%26Month%3D%26Year%3D</li>
+<li>​en.wikipedia.org, accessed June 7, 2025, <a href="https://en.wikipedia.org/wiki/Siege_of_Dimdim#:~:text=There%20are%20well%20" target="_blank">https://en.wikipedia.org/wiki/Siege_of_Dimdim#:~:text=There%20are%20well%20</a> documented%20historical,and%20massacred%20the%20Kurdish%20garrison.</li>
+<li>​Dum Dum Castle - Kurdipedia, accessed June 7, 2025, <a href="https://www.kurdipedia.org/Default.aspx?q=20231219172818538510&amp;lng=8" target="_blank">https://www.kurdipedia.org/Default.aspx?q=20231219172818538510&amp;lng=8</a></li>
+<li>​Iranian Kurdistan - Wikipedia, accessed June 7, 2025, <a href="https://en.wikipedia.org/wiki/Iranian_Kurdistan" target="_blank">https://en.wikipedia.org/wiki/Iranian_Kurdistan</a></li>
+<li>​Dum Dum Castle by Yasin Aziz: A 17th Century Historical Novel in Kurdistan, A Kurdish tribe built a castle, fought back the Persian Safavid and ... month, did not give in &amp; belw themselves up., accessed June 7, 2025, <a href="https://www.amazon.com/Dum-Castle-Yasin-Aziz-Historical/dp/1500692514" target="_blank">https://www.amazon.com/Dum-Castle-Yasin-Aziz-Historical/dp/1500692514</a></li>
+<li>​&#x27;Dum Dum Castle&#x27;: Story of an epic 17th century Kurdish battle | The Kurdistan Tribune, accessed June 7, 2025, <a href="https://kurdistantribune.com/dum-dum-castle-story-of-epic-17th-century-kurdis" target="_blank">https://kurdistantribune.com/dum-dum-castle-story-of-epic-17th-century-kurdis</a> h-battle/</li>
+<li>​The (Re)production of Patriarchy in the Kurdish Language1 Amir Hassanpour - University of Toronto, accessed June 7, 2025, <a href="http://sites.utoronto.ca/wwdl/publications/english/hassanpour_11.pdf" target="_blank">http://sites.utoronto.ca/wwdl/publications/english/hassanpour_11.pdf</a></li>
+<li>​Kurdish Autobiography, Memoir and Novel: &#x27;Ereb ¥emo and His successors - Brill, accessed June 7, 2025, <a href="https://brill.com/display/book/9789004732735/BP000005.pdf" target="_blank">https://brill.com/display/book/9789004732735/BP000005.pdf</a></li>
+<li>​A Brief Bibliography of Kurdistan and the Kurds - Kurdipedia, accessed June 7, 2025, <a href="https://www.kurdipedia.org/docviewer.aspx?lng=8&amp;book=2022120215004044871" target="_blank">https://www.kurdipedia.org/docviewer.aspx?lng=8&amp;book=2022120215004044871</a> 0</li>
+<li>​Kurdish Artistic Expression, Resistance, and the State: Literature - myMESA, accessed June 7, 2025, <a href="https://my-mesa.org/program/sessions/view/eyJpdiI6IitWaXdhVi8wZW5CZCt1c3h" target="_blank">https://my-mesa.org/program/sessions/view/eyJpdiI6IitWaXdhVi8wZW5CZCt1c3h</a> OTzVuZFE9PSIsInZhbHVlIjoidyt0UDNsaXpzTC9RdjhzZUhzd3h3QT09IiwibWFjIjoiN mQ2M2UxMTk5MWUwMzdhYmZiNWIxNDJkOTUwMGUyMjQ0YTk4MTdmODJm MDkyNGQ0NTQyMzgxNmNkMzVkYWE4NSIsInRhZyI6IiJ9</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 07, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

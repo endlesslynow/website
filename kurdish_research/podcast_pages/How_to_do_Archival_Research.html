@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to do Archival Research</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>How to do Archival Research</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Guide to Archival Research Methodology.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Guide to Archival Research Methodology.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This text serves as a comprehensive guide to conducting archival research, defining it as a systematic investigation using primary source materials housed in repositories like archives and special collections. It outlines the value and purpose of archival inquiry across various disciplines, highlighting the unique insights gained from direct engagement with historical records and acknowledging the concept of archival silences and biases. The guide details the types of archival institutions and the diverse formats of materials researchers may encounter, from traditional documents to digital media. It provides a step-by-step process covering planning (formulating questions, locating archives), on-site work (deciphering finding aids, handling materials, taking notes), and post-visit analysis (organizing data, synthesizing findings). Finally, it addresses crucial ethical and legal considerations like copyright, fair use, and respecting privacy, concluding with guidance on accurately citing unique archival sources using common styles.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Archival Research_ Global Methodology Guide_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ research.library.gsu.edu, accessed June 7, 2025, <a href="https://research.library.gsu.edu/archivalresearch#:~:text=Archival%20research%2" target="_blank">https://research.library.gsu.edu/archivalresearch#:~:text=Archival%20research%2</a> 0is%20research%20involving,audiovisual%20materials%2C%20or%20other%20 materials.</li>
+<li>​ Why Archival Research? - Archival Research - GSU Library ..., accessed June 7, 2025, <a href="https://research.library.gsu.edu/archivalresearch" target="_blank">https://research.library.gsu.edu/archivalresearch</a></li>
+<li>​ Methodological Framework of Archival Research | limbd.org, accessed June 7, 2025, <a href="https://limbd.org/methodological-framework-of-archival-research/" target="_blank">https://limbd.org/methodological-framework-of-archival-research/</a></li>
+<li>​ 4. La Recherche en archivistique et les sciences de l&#x27;information ..., accessed June 7, 2025, <a href="https://aedaa.fr/2015/01/4-la-recherche-en-archivistique-et-les-sciences-de-linfo" target="_blank">https://aedaa.fr/2015/01/4-la-recherche-en-archivistique-et-les-sciences-de-linfo</a> rmation/</li>
+<li>​ La recherche en archivistique : un état de la question - Association des archivistes du Québec, accessed June 7, 2025, <a href="https://cora.archivistes.qc.ca/revuearchives/vol30_3-4/30-3-4-ducharme-couture" target="_blank">https://cora.archivistes.qc.ca/revuearchives/vol30_3-4/30-3-4-ducharme-couture</a> .pdf</li>
+<li>​ library.shu.edu, accessed June 7, 2025, <a href="https://library.shu.edu/primarysources#:~:text=A%20primary%20source%20is%2" target="_blank">https://library.shu.edu/primarysources#:~:text=A%20primary%20source%20is%2</a> 0a,not%20been%20modified%20by%20interpretation.</li>
+<li>​ nobles.libguides.com, accessed June 7, 2025, <a href="https://nobles.libguides.com/c.php?g=1351585#:~:text=Researchers%20use%20ar" target="_blank">https://nobles.libguides.com/c.php?g=1351585#:~:text=Researchers%20use%20ar</a> chival%20materials%20to,in%20which%20historical%20events%20occurred.</li>
+<li>​ Archival Research - Othering &amp; Belonging Institute, accessed June 7, 2025, <a href="https://belonging.berkeley.edu/archival-research" target="_blank">https://belonging.berkeley.edu/archival-research</a></li>
+<li>​ Archivforschung: Ein für allemal Forscher? - Forschung &amp; Lehre, accessed June 7, 2025, <a href="https://www.forschung-und-lehre.de/forschung/ein-fuer-allemal-forscher-6832" target="_blank">https://www.forschung-und-lehre.de/forschung/ein-fuer-allemal-forscher-6832</a></li>
+<li>​Types and Formats | Primary Sources at Yale, accessed June 7, 2025, <a href="https://primarysources.yale.edu/types-formats" target="_blank">https://primarysources.yale.edu/types-formats</a></li>
+<li>​Scope and Content Note | National Archives, accessed June 7, 2025, <a href="https://www.archives.gov/research/catalog/lcdrg/elements/scope-and-content-n" target="_blank">https://www.archives.gov/research/catalog/lcdrg/elements/scope-and-content-n</a> ote</li>
+<li>​The Archival Research Process Part 1: Before you visit the archives - A Guide to Archival Research, accessed June 7, 2025, <a href="https://libguides.mcmaster.ca/guide-to-archival-research/archival-research-proc" target="_blank">https://libguides.mcmaster.ca/guide-to-archival-research/archival-research-proc</a> ess-part-one</li>
+<li>​libguides.charleston.edu, accessed June 7, 2025, <a href="https://libguides.charleston.edu/c.php?g=562859&amp;p=3875408#:~:text=Formulate" target="_blank">https://libguides.charleston.edu/c.php?g=562859&amp;p=3875408#:~:text=Formulate</a> %20questions%20about%20the%20topic,be%20relevant%20to%20your%20topi c.</li>
+<li>​Finding and Evaluating Archives - Society of American Archivists, accessed June 7, 2025, <a href="https://www2.archivists.org/usingarchives/findingandevaluating" target="_blank">https://www2.archivists.org/usingarchives/findingandevaluating</a></li>
+<li>​How to Obtain Copies of Records | National Archives, accessed June 7, 2025, <a href="https://www.archives.gov/research/order" target="_blank">https://www.archives.gov/research/order</a></li>
+<li>​Finding Aid Type | National Archives, accessed June 7, 2025, <a href="https://www.archives.gov/research/catalog/lcdrg/elements/finding-aid-type" target="_blank">https://www.archives.gov/research/catalog/lcdrg/elements/finding-aid-type</a></li>
+<li>​guides.uflib.ufl.edu, accessed June 7, 2025, <a href="https://guides.uflib.ufl.edu/archivalprocessing/notes#:~:text=Overview,detailing%" target="_blank">https://guides.uflib.ufl.edu/archivalprocessing/notes#:~:text=Overview,detailing%</a> 20its%20importance%20and%20uniqueness.</li>
+<li>​Statement on Harmful and Bias Language in Archival Description - Portland.gov, accessed June 7, 2025, <a href="https://www.portland.gov/auditor/archives/harmful-and-bias-language-statement" target="_blank">https://www.portland.gov/auditor/archives/harmful-and-bias-language-statement</a></li>
+<li>​Handling Archival Documents And Manuscripts - National Park Service, accessed June 7, 2025, <a href="https://www.nps.gov/subjects/museums/upload/19-17_508.pdf" target="_blank">https://www.nps.gov/subjects/museums/upload/19-17_508.pdf</a></li>
+<li>​How to Preserve Family Archives (papers and photographs), accessed June 7, 2025, <a href="https://www.archives.gov/preservation/family-archives/storing" target="_blank">https://www.archives.gov/preservation/family-archives/storing</a></li>
+<li>​Using the Reading Room - Guide to Archival Research - LibGuides at Dalhousie University, accessed June 7, 2025, <a href="https://dal.ca.libguides.com/c.php?g=257178&amp;p=1717152" target="_blank">https://dal.ca.libguides.com/c.php?g=257178&amp;p=1717152</a></li>
+<li>​Research Strategies: Notetaking - History - Trent University, accessed June 7, 2025, <a href="https://www.trentu.ca/history/programs/undergraduate/history-online-workbook/" target="_blank">https://www.trentu.ca/history/programs/undergraduate/history-online-workbook/</a> research-strategies-taking-notes-and-organizing-0</li>
+<li>​Photography Policy | National Archives Museum, accessed June 7, 2025, <a href="https://visit.archives.gov/visit/tips-guidelines/photography-policy" target="_blank">https://visit.archives.gov/visit/tips-guidelines/photography-policy</a></li>
+<li>​Research room photography rules - Archives and Special Collections, accessed June 7, 2025, <a href="https://archives.consortiumlibrary.org/services/research-support/research-room-" target="_blank">https://archives.consortiumlibrary.org/services/research-support/research-room-</a> photograph-rules/</li>
+<li>​Transcription Tips - National Archives, accessed June 7, 2025, <a href="https://www.archives.gov/citizen-archivist/transcribe/tips" target="_blank">https://www.archives.gov/citizen-archivist/transcribe/tips</a></li>
+<li>​How Archival Transcription Can Help Your Archives - Ditto, accessed June 7, 2025, <a href="https://www.dittotranscripts.com/blog/how-archival-transcription-can-help-your" target="_blank">https://www.dittotranscripts.com/blog/how-archival-transcription-can-help-your</a> -archives/</li>
+<li>​Synthesizing Research | University of Illinois Springfield, accessed June 7, 2025, <a href="https://www.uis.edu/learning-hub/writing-resources/handouts/learning-hub/synth" target="_blank">https://www.uis.edu/learning-hub/writing-resources/handouts/learning-hub/synth</a> esizing-research</li>
+<li>​Step-by-Step Synthesis - Inside Higher Ed, accessed June 7, 2025, <a href="https://www.insidehighered.com/blogs/gradhacker/step-step-synthesis" target="_blank">https://www.insidehighered.com/blogs/gradhacker/step-step-synthesis</a></li>
+<li>​Analzying Historical Documents - People | College of Humanities and Social Sciences, accessed June 7, 2025, <a href="https://faculty.chass.ncsu.edu/slatta/hi216/HI598/evidence.htm" target="_blank">https://faculty.chass.ncsu.edu/slatta/hi216/HI598/evidence.htm</a></li>
+<li>​Evaluating primary and secondary sources - History Subject Resource Guide - LibGuides, accessed June 7, 2025, <a href="https://libguides.hofstra.edu/c.php?g=323882&amp;p=2171901" target="_blank">https://libguides.hofstra.edu/c.php?g=323882&amp;p=2171901</a></li>
+<li>​Interpreting Archival Records - Archival Research at Barnard and Beyond, accessed June 7, 2025, <a href="https://guides.library.barnard.edu/archivalresearch/interpreting" target="_blank">https://guides.library.barnard.edu/archivalresearch/interpreting</a></li>
+<li>​Evaluating Sources - Using Archives &amp; Manuscripts - Research Guides at New York University, accessed June 7, 2025, <a href="https://guides.nyu.edu/using_archives/evaluating-sources" target="_blank">https://guides.nyu.edu/using_archives/evaluating-sources</a></li>
+<li>​Silence and Bias in Archives - Archives and Special Collections - Research Guides, accessed June 7, 2025, <a href="https://learn.library.torontomu.ca/asc/silence-and-bias" target="_blank">https://learn.library.torontomu.ca/asc/silence-and-bias</a></li>
+<li>​Copyright Basics: Libraries &amp; Archives - Research Guides - University of Michigan, accessed June 7, 2025, <a href="https://guides.lib.umich.edu/c.php?g=283105&amp;p=6687926" target="_blank">https://guides.lib.umich.edu/c.php?g=283105&amp;p=6687926</a></li>
+<li>​Exceptions for Libraries and Archives - Copyright and Fair Use, accessed June 7, 2025, <a href="https://guides.library.oregonstate.edu/copyright/libraries" target="_blank">https://guides.library.oregonstate.edu/copyright/libraries</a></li>
+<li>​www.historyassociates.com, accessed June 7, 2025, <a href="https://www.historyassociates.com/privacy-the-archivists-dilemma/#:~:text=One" target="_blank">https://www.historyassociates.com/privacy-the-archivists-dilemma/#:~:text=One</a> %20way%20that%20archivists%20make,if%20so%2C%20for%20how%20long.</li>
+<li>​Privacy and Use Policies | National Archives, accessed June 7, 2025, <a href="https://www.archives.gov/global-pages/privacy.html" target="_blank">https://www.archives.gov/global-pages/privacy.html</a></li>
+<li>​How Do I Cite Archival Material Guide: Chicago - Archer Library - University of Regina, accessed June 7, 2025, <a href="https://library.uregina.ca/citing_archival_material/chicago" target="_blank">https://library.uregina.ca/citing_archival_material/chicago</a></li>
+<li>​Citations for Archival Materials: Chicago - LibGuides - California State University Dominguez Hills, accessed June 7, 2025, <a href="https://libguides.csudh.edu/archives-citation/chicago" target="_blank">https://libguides.csudh.edu/archives-citation/chicago</a></li>
+<li>​How Do I Cite Archival Material Guide: MLA - Archer Library - University of Regina, accessed June 7, 2025, <a href="https://library.uregina.ca/citing_archival_material/mla" target="_blank">https://library.uregina.ca/citing_archival_material/mla</a></li>
+<li>​Citations for Archival Materials: MLA - LibGuides - California State University Dominguez Hills, accessed June 7, 2025, <a href="https://libguides.csudh.edu/archives-citation/mla" target="_blank">https://libguides.csudh.edu/archives-citation/mla</a></li>
+<li>​Subject Guides: APA citation style: Archival materials - Memorial University of Newfoundland, accessed June 7, 2025, <a href="https://guides.library.mun.ca/c.php?g=731741&amp;p=5316458" target="_blank">https://guides.library.mun.ca/c.php?g=731741&amp;p=5316458</a></li>
+<li>​How Do I Cite Archival Material Guide: APA - Archer Library - University of Regina, accessed June 7, 2025, <a href="https://library.uregina.ca/citing_archival_material/apa" target="_blank">https://library.uregina.ca/citing_archival_material/apa</a></li>
+<li>​Archivforschung - Historische Bauforschung, accessed June 7, 2025, <a href="https://historischebauforschung.de/archivforschung/" target="_blank">https://historischebauforschung.de/archivforschung/</a></li>
+<li>​Our Favorite Online Archives and Databases - Taylor Research Group, accessed June 7, 2025, <a href="https://taylorresearchgroup.com/news/our-favorite-online-archives-and-databas" target="_blank">https://taylorresearchgroup.com/news/our-favorite-online-archives-and-databas</a> es/</li>
+<li>​Union catalog - Wikipedia, accessed June 7, 2025, <a href="https://en.wikipedia.org/wiki/Union_catalog" target="_blank">https://en.wikipedia.org/wiki/Union_catalog</a></li>
+<li>​NUCMC Home Page, accessed June 7, 2025, <a href="https://home.uncg.edu/~lixlpurc/CIMP/BookWebHeader_files/NUCMCHomePage." target="_blank">https://home.uncg.edu/~lixlpurc/CIMP/BookWebHeader_files/NUCMCHomePage.</a> htm</li>
+<li>​National Archives | Home, accessed June 7, 2025, <a href="https://www.archives.gov/" target="_blank">https://www.archives.gov/</a></li>
+<li>​National Archives and Records Administration (NARA) | USAGov, accessed June 7, 2025, <a href="https://www.usa.gov/agencies/national-archives-and-records-administration" target="_blank">https://www.usa.gov/agencies/national-archives-and-records-administration</a></li>
+<li>​www2.archivists.org, accessed June 7, 2025, <a href="https://www2.archivists.org/usingarchives/findingandevaluating#:~:text=Look%20" target="_blank">https://www2.archivists.org/usingarchives/findingandevaluating#:~:text=Look%20</a> for%20websites%20dedicated%20to,.com%2Fhome.do.</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 07, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stanbej</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stanbej</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/The Kurdish Stranbêj_ Song, Identity, and Resilience.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/The Kurdish Stranbêj_ Song, Identity, and Resilience.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This report focuses on the Stranbêj, a significant figure in Kurdish oral tradition and musical heritage. It clarifies that the correct term is Stranbêj, literally meaning &quot;singer of songs,&quot; and distinguishes this role from other Kurdish oral performers like dengbêj (bards) and çîrokbêj (storytellers). The document examines the cultural importance of the Stranbêj, detailing their function as preservers of language and memory, their diverse musical repertoire and performance contexts, and their historical evolution through challenging periods of political adversity and censorship. Finally, it explores the scholarly perspectives on the Stranbêj and their place within broader comparative oral traditions.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Stanbej_ Multilingual Research and Analysis_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Stan Siyah Cilt Sandalet - KaliteMall, accessed June 7, 2025, <a href="https://www.kalitemall.com/en/stan-siyah-cilt-sandalet-151079" target="_blank">https://www.kalitemall.com/en/stan-siyah-cilt-sandalet-151079</a></li>
+<li>​ Full text of &quot;Sulla storia, teoria e pratica del magnetismo animale e sopra vari altri temi relativi al medesimo trattato del prof. Lisimaco Verati&quot; - Internet Archive, accessed June 7, 2025, <a href="https://archive.org/stream/bub_gb_pVnlGHfs3f4C/bub_gb_pVnlGHfs3f4C_djvu.tx" target="_blank">https://archive.org/stream/bub_gb_pVnlGHfs3f4C/bub_gb_pVnlGHfs3f4C_djvu.tx</a> t</li>
+<li>​ Women&#x27;s Turkish Sandals - Atlantis Handmade Shoes, accessed June 7, 2025, <a href="https://www.atlantishandmade.com/collections/sandals" target="_blank">https://www.atlantishandmade.com/collections/sandals</a></li>
+<li>​ Turkish Sandals - Durable, Stylish, and Comfortable - Alibaba.com, accessed June 7, 2025, <a href="https://www.alibaba.com/showroom/turkish-sandals.html" target="_blank">https://www.alibaba.com/showroom/turkish-sandals.html</a></li>
+<li>​ Learn About Kurdish Dance, accessed June 7, 2025, <a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-dance/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-dance/</a></li>
+<li>​ stranbêj - Wiktionary, the free dictionary, accessed June 7, 2025, <a href="https://en.wiktionary.org/wiki/stranb%C3%AAj" target="_blank">https://en.wiktionary.org/wiki/stranb%C3%AAj</a></li>
+<li>​ Kurdish Dance, accessed June 7, 2025, <a href="https://kurdishlessons.com/kurdish-dance/" target="_blank">https://kurdishlessons.com/kurdish-dance/</a></li>
+<li>​ Learn About Kurdish Music, accessed June 7, 2025, <a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-music/" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-music/</a></li>
+<li>​ “Acting” under Turkey&#x27;s State of Emergency: A Conversation with Kurdish Artists about Theatre, the Dengbêj Tradition, and - Performance Matters, accessed June 7, 2025, <a href="https://performancematters-thejournal.com/index.php/pm/article/download/155/2" target="_blank">https://performancematters-thejournal.com/index.php/pm/article/download/155/2</a> 16/929</li>
+<li>​Kurdish music overcame harsh oppression - Kurdistan24, accessed June 7, 2025, <a href="https://www.kurdistan24.net/en/story/385740/Kurdish-music-overcame-harsh-op" target="_blank">https://www.kurdistan24.net/en/story/385740/Kurdish-music-overcame-harsh-op</a> pression</li>
+<li>​kurdish folk wiki | Last.fm, accessed June 7, 2025, <a href="https://www.last.fm/tag/kurdish+folk/wiki" target="_blank">https://www.last.fm/tag/kurdish+folk/wiki</a></li>
+<li>​From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Tradition and Revitalization of the Kurdish Language in the Works of Mehmed Uzun and Mehmet Dicle - ResearchGate, accessed June 7, 2025, <a href="https://www.researchgate.net/publication/360279865_From_Dengbej_to_Modern" target="_blank">https://www.researchgate.net/publication/360279865_From_Dengbej_to_Modern</a> _Writer_Heritagization_of_the_Kurdish_Oral_Tradition_and_Revitalization_of_the_ Kurdish_Language_in_the_Works_of_Mehmed_Uzun_and_Mehmet_Dicle</li>
+<li>​From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Tradition and Revitalization of the Kurdish Language in the Works of Mehmed Uzun and Mehmet Dicle, accessed June 7, 2025, <a href="https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/" target="_blank">https://core-cms.cambridgecore.org/core/services/aop-cambridge-core/content/</a> view/0F3BA0717D881D70DE8923CF6CAE4099/S0021086222000019a.pdf/from_ dengbej_to_modern_writer_heritagization_of_the_kurdish_oral_tradition_and_revi talization_of_the_kurdish_language_in_the_works_of_mehmed_uzun_and_mehm et_dicle.pdf</li>
+<li>​Oral Tradition to Written Language - Kurdish Academy, accessed June 7, 2025, <a href="https://kurdishacademy.org/wp/oral-tradition-to-written-language/" target="_blank">https://kurdishacademy.org/wp/oral-tradition-to-written-language/</a></li>
+<li>​Dengbêj - Wikipedia, accessed June 7, 2025, <a href="https://en.wikipedia.org/wiki/Dengb%C3%AAj" target="_blank">https://en.wikipedia.org/wiki/Dengb%C3%AAj</a></li>
+<li>​kurdish traditional wiki | Last.fm, accessed June 7, 2025, <a href="https://www.last.fm/tag/kurdish+traditional/wiki" target="_blank">https://www.last.fm/tag/kurdish+traditional/wiki</a></li>
+<li>​Kurdish music - Wikipedia, accessed June 7, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_music" target="_blank">https://en.wikipedia.org/wiki/Kurdish_music</a></li>
+<li>​Tu Cani - JioSaavn, accessed June 7, 2025, <a href="https://www.jiosaavn.com/song/tu-cani/RSsjCCtkXB4" target="_blank">https://www.jiosaavn.com/song/tu-cani/RSsjCCtkXB4</a></li>
+<li>​NEHATİ - Other Albums by Stranbêj Yusuf - TIDAL, accessed June 7, 2025, <a href="https://tidal.com/browse/album/395288803" target="_blank">https://tidal.com/browse/album/395288803</a></li>
+<li>​Stranbej Yusuf - Songs, Concert tickets &amp; Videos, accessed June 7, 2025, <a href="https://www.shazam.com/artist/stranbej-yusuf/598180745" target="_blank">https://www.shazam.com/artist/stranbej-yusuf/598180745</a></li>
+<li>​Aynur Doğan - YouTube, accessed June 7, 2025, <a href="https://www.youtube.com/channel/UCsZWdw_sGBRBr3oIV40GQKw" target="_blank">https://www.youtube.com/channel/UCsZWdw_sGBRBr3oIV40GQKw</a></li>
+<li>​Aynur Doğan - YouTube, accessed June 7, 2025, <a href="https://www.youtube.com/channel/UCsZWdw_sGBRBr3oIV40GQKw/about" target="_blank">https://www.youtube.com/channel/UCsZWdw_sGBRBr3oIV40GQKw/about</a></li>
+<li>​Ciwan Haco - AI-powered profile by Favikon, accessed June 7, 2025, <a href="https://app.favikon.com/profile/639e57958a52f4279a4f794d/" target="_blank">https://app.favikon.com/profile/639e57958a52f4279a4f794d/</a></li>
+<li>​Voice of Afrin&#x27;s Displaced Silenced with Death of Kurdish Musician Hassan - Kurdistan24, accessed June 7, 2025, <a href="https://www.kurdistan24.net/en/story/841748/voice-of-afrins-displaced-silenced-" target="_blank">https://www.kurdistan24.net/en/story/841748/voice-of-afrins-displaced-silenced-</a> with-death-of-kurdish-musician-hassan</li>
+<li>​Imprisoned Kurdish singer Nudem Durak at risk of losing her voice - Medya News, accessed June 7, 2025, <a href="https://medyanews.net/imprisoned-kurdish-singer-nudem-durak-at-risk-of-losin" target="_blank">https://medyanews.net/imprisoned-kurdish-singer-nudem-durak-at-risk-of-losin</a> g-her-voice/</li>
+<li>​Kurdish Music-Making in Istanbul: Music, Sentiment ... - Harvard DASH, accessed June 7, 2025, <a href="https://dash.harvard.edu/bitstreams/54e54300-68eb-4303-973b-d37b0644fc0f/" target="_blank">https://dash.harvard.edu/bitstreams/54e54300-68eb-4303-973b-d37b0644fc0f/</a> download</li>
+<li>​CONSTRUCTING KURDISH NATIONALIST IDENTITY THROUGH LYRICAL NARRATIVES IN POPULAR MUSIC - Alternatif Politika, accessed June 7, 2025, <a href="https://alternatifpolitika.com/eng/site/dosyalar/arsiv/12-Kasim-2012/4.rasim-ozgur-" target="_blank">https://alternatifpolitika.com/eng/site/dosyalar/arsiv/12-Kasim-2012/4.rasim-ozgur-</a> donmez.pdf</li>
+<li>​Being sick of politics: The production of dengbêjî as Kurdish cultural ..., accessed June 7, 2025, <a href="https://journals.openedition.org/ejts/5200" target="_blank">https://journals.openedition.org/ejts/5200</a></li>
+<li>​ISTANBUL TECHNICAL UNIVERSITY GRADUATE SCHOOL OF ARTS AND SOCIAL SCIENCES M.A. THESIS JUNE 2018 TRANSFORMATIONS OF KURDISH - Polen, accessed June 7, 2025, <a href="https://polen.itu.edu.tr/bitstream/11527/18141/1/513167.pdf" target="_blank">https://polen.itu.edu.tr/bitstream/11527/18141/1/513167.pdf</a></li>
+<li>​Why is much of African history were preserved by oral (a.k.a hearsay) rather than written tradition ? : r/AskHistorians - Reddit, accessed June 7, 2025, <a href="https://www.reddit.com/r/AskHistorians/comments/en6o9q/why_is_much_of_afric" target="_blank">https://www.reddit.com/r/AskHistorians/comments/en6o9q/why_is_much_of_afric</a> an_history_were_preserved_by/</li>
+<li>​15.1 Introduction 15.2 West African Oral and Written Traditions, accessed June 7, 2025, <a href="https://mt01001940.schoolwires.net/cms/lib/MT01001940/Centricity/Domain/203" target="_blank">https://mt01001940.schoolwires.net/cms/lib/MT01001940/Centricity/Domain/203</a> 4/Ch.%2015%20text.pdf</li>
+<li>​FolkWorld #69: Turkey, accessed June 7, 2025, <a href="http://www.folkworld.eu/69/e/turkey.html" target="_blank">http://www.folkworld.eu/69/e/turkey.html</a></li>
+<li>​Kermanshah is a center for Kurdish Music - Infowelat, accessed June 7, 2025, <a href="https://infowelat.com/kermanshah-is-a-center-for-kurdish-music.html" target="_blank">https://infowelat.com/kermanshah-is-a-center-for-kurdish-music.html</a></li>
+<li>​Kurdish Artists‌ندان ‌رمه هونه - kurdistanart, accessed June 7, 2025, <a href="http://kurdistanart.blogspot.com/p/kurdish-artists_22.html" target="_blank">http://kurdistanart.blogspot.com/p/kurdish-artists_22.html</a></li>
+<li>​“Ego Sum”: Kurdish Female Artists Shine on European Stage - Kurdistan24, accessed June 7, 2025, <a href="https://www.kurdistan24.net/en/story/833287/ego-sum-kurdish-female-artists-shi" target="_blank">https://www.kurdistan24.net/en/story/833287/ego-sum-kurdish-female-artists-shi</a> ne-on-european-stage</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 07, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
