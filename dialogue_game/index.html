@@ -6,21 +6,45 @@
     <title>Hannah's Coffee Shop - Interactive Dialogue</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            background: #2c1810;
-            background-image: url('./images/coffee_shop.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding-top: 40px;
+    overflow-x: hidden;
+    background: #2c1810;
+    background-image: url('./images/coffee_shop.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+        .nav-banner {
+            width: 100%;
+            height: 40px;
+            background-color: #8c4c2b;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+        }
+        .nav-link:hover {
+            opacity: 0.8;
         }
 
         .container {
@@ -620,6 +644,17 @@
         }
 
         @media (max-width: 768px) {
+
+            .nav-banner {
+                height: 40px;
+                padding: 0 15px;
+            }
+            .nav-link {
+                font-size: 1rem;
+            }
+            body {
+                padding-top: 40px !important;
+            }
             body {
                 background: #2c1810;
                 background-image: url('./images/coffee_shop.jpeg');
@@ -637,14 +672,14 @@
             }
 
             /* MOBILE VISUAL CONTAINER - SQUARE AT TOP */
-            .visual-container {
-                position: relative !important;
-                width: 100vw !important;
-                height: 100vw !important; /* Square aspect ratio */
-                max-height: 45vh !important; /* Don't take up more than 45% of screen */
-                z-index: 1 !important;
-                flex-shrink: 0 !important;
-            }
+.visual-container {
+    position: relative !important;
+    width: 100vw !important;
+    height: 100vw !important; /* Square aspect ratio */
+    max-height: 55vh !important; /* Give more space for character */
+    z-index: 1 !important;
+    flex-shrink: 0 !important;
+}
 
             .visual-background {
                 position: absolute !important;
@@ -1012,6 +1047,11 @@
     </style>
 </head>
 <body>
+    <nav class="nav-banner">
+    <a href="https://www.zachariahhopkins.com" target="_blank" rel="noopener noreferrer" class="nav-link">
+        Created by Zachariah Hopkins
+    </a>
+</nav>
     <div class="container">
         <!-- Native Language Selection -->
 <div id="native-language-selection" class="level-selection">
@@ -1180,60 +1220,19 @@ let selectedLearningLanguage = null;
             document.getElementById('learning-language-selection').style.display = 'block';
         }
 
+        function hideBanner() {
+    document.querySelector('.nav-banner').style.display = 'none';
+    document.body.style.paddingTop = '0px';
+}
+
+function showBanner() {
+    document.querySelector('.nav-banner').style.display = 'flex';
+    document.body.style.paddingTop = '40px';
+}
+
         function goHome() {
-
-
-            function selectNativeLanguage(language) {
-    selectedNativeLanguage = language;
-    document.getElementById('native-language-selection').style.display = 'none';
-    showLearningLanguageSelection();
-}
-
-function showLearningLanguageSelection() {
-    const learningDiv = document.getElementById('learning-language-selection');
-    const optionsDiv = document.getElementById('learning-options');
-    const titleDiv = document.getElementById('learning-title');
-    
-    // Set title in user's native language
-    const titles = {
-        english: "I want to learn",
-        spanish: "Quiero aprender",
-        arabic: "أريد أن أتعلم",
-        kurmanji: "Ez dixwazim fêr bibim",
-        ukrainian: "Я хочу вивчити"
-    };
-    titleDiv.textContent = titles[selectedNativeLanguage];
-    
-    // Show available learning languages (exclude native language)
-    const availableLanguages = Object.keys(LANGUAGE_NAMES).filter(lang => lang !== selectedNativeLanguage);
-    
-    optionsDiv.innerHTML = availableLanguages.map(lang => 
-        `<button class="level-button" onclick="selectLearningLanguage('${lang}')">
-            <div class="level-name">${LANGUAGE_NAMES[lang]}</div>
-        </button>`
-    ).join('');
-    
-    learningDiv.style.display = 'block';
-}
-
-function selectLearningLanguage(language) {
-    selectedLearningLanguage = language;
-    LANGUAGE_CONFIG.primary = language;
-    LANGUAGE_CONFIG.translation = selectedNativeLanguage;
-    
-    document.getElementById('learning-language-selection').style.display = 'none';
-    document.getElementById('level-selection').style.display = 'block';
-}
-
-function goBackToNative() {
-    document.getElementById('learning-language-selection').style.display = 'none';
-    document.getElementById('native-language-selection').style.display = 'block';
-}
-
-function goBackToLearning() {
-    document.getElementById('level-selection').style.display = 'none';
-    document.getElementById('learning-language-selection').style.display = 'block';
-}
+            showBanner();
+            
             // Reset everything and go back to level selection
             currentLevel = null;
             currentNode = 'START';
@@ -1266,12 +1265,13 @@ function goBackToLearning() {
             
             // Show level selection
             selectedNativeLanguage = null;
-selectedLearningLanguage = null;
-document.getElementById('native-language-selection').style.display = 'block';
+            selectedLearningLanguage = null;
+            document.getElementById('native-language-selection').style.display = 'block';
         }
 
         function selectLevel(level) {
             currentLevel = level;
+            hideBanner();
             dialogueHistory = [];
             document.getElementById('level-selection').style.display = 'none';
             document.getElementById('loading').style.display = 'block';
