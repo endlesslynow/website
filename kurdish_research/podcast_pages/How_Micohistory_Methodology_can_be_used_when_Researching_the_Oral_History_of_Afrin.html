@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Micohistory Methodology can be used when Researching the Oral History of Afrin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>How Micohistory Methodology can be used when Researching the Oral History of Afrin</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Afrin_ Microhistory and Oral History.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Afrin_ Microhistory and Oral History.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>The source proposes a research methodology combining microhistory and oral history to understand the recent transformations in Afrin, Syria, particularly after 2018. It argues that focusing on individual experiences and personal narratives through oral testimonies, while connecting them to broader societal patterns, can effectively document the impact of displacement, human rights abuses, and cultural suppression. The text highlights the ethical considerations crucial when researching a traumatized population and suggests specific areas of focus, like the experiences of displaced families or changes in cultural practices, to provide a more nuanced and human-centered historical record that challenges dominant accounts and preserves memory.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Afrin Oral History Microhistory_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Afrin District - Wikipedia, accessed June 8, 2025, <a href="https://en.wikipedia.org/wiki/Afrin_District" target="_blank">https://en.wikipedia.org/wiki/Afrin_District</a></li>
+<li>​ Crimes in Syria: The neglected atrocities of Afrin - ECCHR, accessed June 8, 2025, <a href="https://www.ecchr.eu/en/case/crimes-in-syria-the-neglected-atrocities-of-afrin/" target="_blank">https://www.ecchr.eu/en/case/crimes-in-syria-the-neglected-atrocities-of-afrin/</a></li>
+<li>​ Afrin&#x27;in nüfus yapısı 2018&#x27;den bu yana nasıl değişti(rildi)? - Bianet, accessed June 8, 2025, <a href="https://bianet.org/haber/afrin-in-nufus-yapisi-2018-den-bu-yana-nasil-degisti-rild" target="_blank">https://bianet.org/haber/afrin-in-nufus-yapisi-2018-den-bu-yana-nasil-degisti-rild</a> i-263061</li>
+<li>​ Politics of memory - Wikipedia, accessed June 8, 2025, <a href="https://en.wikipedia.org/wiki/Politics_of_memory" target="_blank">https://en.wikipedia.org/wiki/Politics_of_memory</a></li>
+<li>​ Turkey&#x27;s Demographic Engineering in Syria&#x27;s Afrin Region: A Closer ..., accessed June 8, 2025, <a href="https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin" target="_blank">https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin</a> -region-a-closer-look</li>
+<li>​ Afrin - Vikipedi, accessed June 8, 2025, <a href="https://tr.wikipedia.org/wiki/Afrin" target="_blank">https://tr.wikipedia.org/wiki/Afrin</a></li>
+<li>​ www.tandfonline.com, accessed June 8, 2025, <a href="https://www.tandfonline.com/doi/full/10.1080/13569783.2023.2184250#:~:text=Or" target="_blank">https://www.tandfonline.com/doi/full/10.1080/13569783.2023.2184250#:~:text=Or</a> al%20history%20performance%20for%20transitional%20justice%20focuses%20 the%20attention%20of,or%20educators%20decide%20to%20centre.</li>
+<li>​ Oral History &amp; Transitional Justice - Amsterdam School for Heritage, Memory and Material Culture (AHM), accessed June 8, 2025, <a href="https://ahm.uva.nl/content/research-groups/oral-history/oral-history.html" target="_blank">https://ahm.uva.nl/content/research-groups/oral-history/oral-history.html</a></li>
+<li>​ Truth and Memory | International Center for Transitional Justice, accessed June 8, 2025, <a href="https://www.ictj.org/truth-and-memory" target="_blank">https://www.ictj.org/truth-and-memory</a></li>
+<li>​Microhistory - Metahistory, accessed June 8, 2025, <a href="https://unm-historiography.github.io/metahistory/essays/postmodern/Microhistor" target="_blank">https://unm-historiography.github.io/metahistory/essays/postmodern/Microhistor</a> y.html</li>
+<li>​Microhistory: Home - Research Guides - University at Buffalo, accessed June 8, 2025, <a href="https://research.lib.buffalo.edu/microhistory" target="_blank">https://research.lib.buffalo.edu/microhistory</a></li>
+<li>​Microhistory - Wikipedia, accessed June 8, 2025, <a href="https://en.wikipedia.org/wiki/Microhistory" target="_blank">https://en.wikipedia.org/wiki/Microhistory</a></li>
+<li>​The Power of Microhistory: A New Perspective - Number Analytics, accessed June 8, 2025, <a href="https://www.numberanalytics.com/blog/power-microhistory-new-perspective" target="_blank">https://www.numberanalytics.com/blog/power-microhistory-new-perspective</a></li>
+<li>​oralhistory.org, accessed June 8, 2025, <a href="https://oralhistory.org/oha-core-principles/#:~:text=Guiding%20Principles,-5.&amp;tex" target="_blank">https://oralhistory.org/oha-core-principles/#:~:text=Guiding%20Principles,-5.&amp;tex</a> t=The%20oral%20history%20process%2C%20from,ways%20of%20knowing%2C %20and%20perspectives.</li>
+<li>​Methodology and Practice - Oral History - Research Guides at James Madison University, accessed June 8, 2025, <a href="https://guides.lib.jmu.edu/c.php?g=321982&amp;p=8551131" target="_blank">https://guides.lib.jmu.edu/c.php?g=321982&amp;p=8551131</a></li>
+<li>​OHA Core Principles - Oral History Association, accessed June 8, 2025, <a href="https://oralhistory.org/oha-core-principles/" target="_blank">https://oralhistory.org/oha-core-principles/</a></li>
+<li>​OHA Statement on Ethics - Oral History Association, accessed June 8, 2025, <a href="https://oralhistory.org/oha-statement-on-ethics/" target="_blank">https://oralhistory.org/oha-statement-on-ethics/</a></li>
+<li>​What is Microhistory? - Social studies, accessed June 8, 2025, <a href="https://www.sociostudies.org/upload/sociostudies.org/journal/seh/2018_2/064-08" target="_blank">https://www.sociostudies.org/upload/sociostudies.org/journal/seh/2018_2/064-08</a></li>
+<li>pdf</li>
+<li>​Escalating human rights violations in Syria&#x27;s Afrin: 2024 update, accessed June 8, 2025, <a href="https://www.ceasefire.org/wp-content/uploads/2024/05/Ceasefire-report-Afrin-2" target="_blank">https://www.ceasefire.org/wp-content/uploads/2024/05/Ceasefire-report-Afrin-2</a> 024-update.pdf</li>
+<li>​The Cheese and the Worms | Hopkins Press, accessed June 8, 2025, <a href="https://www.press.jhu.edu/books/title/10626/cheese-and-worms" target="_blank">https://www.press.jhu.edu/books/title/10626/cheese-and-worms</a></li>
+<li>​Microhistory, Biography, Fiction - OpenEdition Journals, accessed June 8, 2025, <a href="https://journals.openedition.org/transatlantica/6184" target="_blank">https://journals.openedition.org/transatlantica/6184</a></li>
+<li>​Global Microhistory (BIPOC Edition) - Research Guides at University of British Columbia, accessed June 8, 2025, <a href="https://guides.library.ubc.ca/c.php?g=716063&amp;p=5106374" target="_blank">https://guides.library.ubc.ca/c.php?g=716063&amp;p=5106374</a></li>
+<li>​The Cheese And The Worms Summary and Study Guide - SuperSummary, accessed June 8, 2025, <a href="https://www.supersummary.com/the-cheese-and-the-worms/summary/" target="_blank">https://www.supersummary.com/the-cheese-and-the-worms/summary/</a></li>
+<li>​The Best Books on Microhistory - Five Books Expert ..., accessed June 8, 2025, <a href="https://fivebooks.com/best-books/micro-history-jonathan-healey/" target="_blank">https://fivebooks.com/best-books/micro-history-jonathan-healey/</a></li>
+<li>​Microhistory and the Picaresque Novel: A First Exploration into Commensurable Perspectives - Amazon.com, accessed June 8, 2025, <a href="https://www.amazon.com/Microhistory-Picaresque-Novel-Commensurable-Pers" target="_blank">https://www.amazon.com/Microhistory-Picaresque-Novel-Commensurable-Pers</a> pectives/dp/1443859893</li>
+<li>​BIOGRAPHY AND MICROHISTORY. ABSTRACT. Giovanni Levi The theme of Biography and Microhistory poses a fundamental problem: how to, accessed June 8, 2025, <a href="https://www.uv.es/retpb/docs/Florencia/Giovanni%20Levi.pdf" target="_blank">https://www.uv.es/retpb/docs/Florencia/Giovanni%20Levi.pdf</a></li>
+<li>​التاريخ من ..أسفل. .الهام والمُهَمّ ودمقرط التاري  -مرك لاأم للدراسا والتطوي, accessed June 8 2025, <a href="https://alummacenter.com/?p=3445" target="_blank">https://alummacenter.com/?p=3445</a></li>
+<li>​Устная история - Википедия, accessed June 8, 2025, <a href="https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D1%82%D0%BD%D0%B0%D1%8" target="_blank">https://ru.wikipedia.org/wiki/%D0%A3%D1%81%D1%82%D0%BD%D0%B0%D1%8</a> F_%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F</li>
+<li>​مبادئ توجيهية إلجراء مقابالت التاريخ الشفوي - National History Day, accessed June 8, 2025, <a href="https://nhd.org/ar/resources/guidelines-for-conducting-oral-history-interviews/" target="_blank">https://nhd.org/ar/resources/guidelines-for-conducting-oral-history-interviews/</a></li>
+<li>​OHA Principles and Best Practices - Oral History Association, accessed June 8, 2025, <a href="https://oralhistory.org/principles-and-best-practices-revised-2018/" target="_blank">https://oralhistory.org/principles-and-best-practices-revised-2018/</a></li>
+<li>​Sample Procedural Approach: Undocumented and Asylum-Seeking ..., accessed June 8, 2025, <a href="https://oralhistory.org/sample-procedural-approach-undocumented-and-asylum" target="_blank">https://oralhistory.org/sample-procedural-approach-undocumented-and-asylum</a> -seeking-narrators/</li>
+<li>​Ethical Considerations: Research with People in Situations of Forced Migration - Canadian Council for Refugees, accessed June 8, 2025, <a href="https://ccrweb.ca/sites/ccrweb.ca/files/ethical-considerations-en.pdf" target="_blank">https://ccrweb.ca/sites/ccrweb.ca/files/ethical-considerations-en.pdf</a></li>
+<li>​www.cambridge.org, accessed June 8, 2025, <a href="https://www.cambridge.org/core/books/research-methods-in-conflict-settings/re" target="_blank">https://www.cambridge.org/core/books/research-methods-in-conflict-settings/re</a> flections-on-the-challenges-dilemmas-and-rewards-of-research-in-conflict-zon es/6F4058CD3DE09A61A6626AC4ADFE3F2E#:~:text=Yet%20many%20such%20 ethnographic%20practices,at%20least%20discord%20and%20polarization.</li>
+<li>​VOW&#x27;s Trauma-Informed Storytelling Practices - Voice of Witness, accessed June 8, 2025, <a href="https://voiceofwitness.org/resources/trauma-informed-storytelling-practices/" target="_blank">https://voiceofwitness.org/resources/trauma-informed-storytelling-practices/</a></li>
+<li>​Trauma-Informed Care for Narrators &amp; Historians | NPHM, accessed June 8, 2025, <a href="https://nphm.org/listen/oral-history-resources/trauma-informed-care-for-narrato" target="_blank">https://nphm.org/listen/oral-history-resources/trauma-informed-care-for-narrato</a> rs-oral-historians/</li>
+<li>​“Everything is by the Power of the Weapon”: Abuses and Impunity in ..., accessed June 8, 2025, <a href="https://www.hrw.org/report/2024/02/29/everything-power-weapon/abuses-and-i" target="_blank">https://www.hrw.org/report/2024/02/29/everything-power-weapon/abuses-and-i</a> mpunity-turkish-occupied-northern-syria</li>
+<li>​Afrin Syria | The Kurdish Project, accessed June 8, 2025, <a href="https://thekurdishproject.org/kurdistan-map/syrian-kurdistan/afrin-syria/" target="_blank">https://thekurdishproject.org/kurdistan-map/syrian-kurdistan/afrin-syria/</a></li>
+<li>​Afrin Region - Wikipedia, accessed June 8, 2025, <a href="https://en.wikipedia.org/wiki/Afrin_Region" target="_blank">https://en.wikipedia.org/wiki/Afrin_Region</a></li>
+<li>​Yazidi | History, Culture, &amp; Religion | Britannica, accessed June 8, 2025, <a href="https://www.britannica.com/topic/Yazidi" target="_blank">https://www.britannica.com/topic/Yazidi</a></li>
+<li>​Yazidism in Syria - Wikipedia, accessed June 8, 2025, <a href="https://en.wikipedia.org/wiki/Yazidism_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Yazidism_in_Syria</a></li>
+<li>​ :عفرين: - ANF, accessed June 8, 2025, <a href="https://anfarabic.com/%D9%83%D8%B1%D8%AF%D8%B3%D8%AA%D8%A7%D9" target="_blank">https://anfarabic.com/%D9%83%D8%B1%D8%AF%D8%B3%D8%AA%D8%A7%D9</a> %86/%D9%84%D9%85%D8%AD%D8%A9-%D8%B5%D8%BA%D9%8A%D8%B1% D8%A9-%D8%B9%D9%86-%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D9%8 2%D8%A8%D9%84-%D8%A7%D8%AD%D8%AA%D9%84%D8%A7%D9%84%D9 %87%D8%A7-%D9%85%D9%86-%D9%82%D8%A8%D9%84-%D8%AA%D8%B1 %D9%83%D9%8A%D8%A7-50483</li>
+<li>​How historical Afrin became a prize worth a war - BBC, accessed June 8, 2025, <a href="https://www.bbc.com/news/world-middle-east-42788179" target="_blank">https://www.bbc.com/news/world-middle-east-42788179</a></li>
+<li>​&#x27;We do not exist without the olive tree&#x27;: Afrin groves still under the axe - Rudaw, accessed June 8, 2025, <a href="https://www.rudaw.net/english/middleeast/syria/05042025" target="_blank">https://www.rudaw.net/english/middleeast/syria/05042025</a></li>
+<li>​Destroying Afrin: The Historical Roots of Turkey&#x27;s Occupation - The Kurdish Center for Studies, accessed June 8, 2025, <a href="https://nlka.net/eng/destroying-afrin-the-historical-roots-of-turkeys-occupation/" target="_blank">https://nlka.net/eng/destroying-afrin-the-historical-roots-of-turkeys-occupation/</a></li>
+<li>​Afrin celebrate Newroz after Eight Years of Demographic Change - Kurdistan24, accessed June 8, 2025, <a href="https://www.kurdistan24.net/en/story/831399/afrin-celebrate-newroz-after-eight-" target="_blank">https://www.kurdistan24.net/en/story/831399/afrin-celebrate-newroz-after-eight-</a> years-of-demographic-change</li>
+<li>​Afrin, Syria - Wikipedia, accessed June 8, 2025, <a href="https://en.wikipedia.org/wiki/Afrin,_Syria" target="_blank">https://en.wikipedia.org/wiki/Afrin,_Syria</a></li>
+<li>​Operation Olive Branch - Wikipedia, accessed June 8, 2025, <a href="https://en.wikipedia.org/wiki/Operation_Olive_Branch" target="_blank">https://en.wikipedia.org/wiki/Operation_Olive_Branch</a></li>
+<li>​The Turkish Operation in Afrin (Syria) and the Silence of the Lambs - EJIL: Talk!, accessed June 8, 2025, <a href="https://www.ejiltalk.org/the-turkish-operation-in-afrin-syria-and-the-silence-of-t" target="_blank">https://www.ejiltalk.org/the-turkish-operation-in-afrin-syria-and-the-silence-of-t</a> he-lambs/</li>
+<li>​Zeytin Dalı Harekatı MSB | T.C. Millî Savunma Bakanlığı, accessed June 8, 2025, <a href="https://www.msb.gov.tr/ZeytinDaliHarekati" target="_blank">https://www.msb.gov.tr/ZeytinDaliHarekati</a></li>
+<li>​A Timeline of Turkey&#x27;s Operation Olive Branch - YouTube, accessed June 8, 2025, <a href="https://www.youtube.com/watch?v=S6txs64gJ2Y" target="_blank">https://www.youtube.com/watch?v=S6txs64gJ2Y</a></li>
+<li>​&quot;Olive Branch and Spring of Peace&quot; War Crimes and Systematic Violations in Light of International Law - UN Treaty Body Database, accessed June 8, 2025, <a href="https://tbinternet.ohchr.org/_layouts/15/TreatyBodyExternal/DownloadDraft.aspx?" target="_blank">https://tbinternet.ohchr.org/_layouts/15/TreatyBodyExternal/DownloadDraft.aspx?</a> key=0u6e4LTV8AjCRItNqFwoxDXGxVOG1WShOkyiiGXgLO3h7yBHFEjwVAaqCPz sfnDc</li>
+<li>​Afrin returnees decry ruined livelihoods after years of displacement - Rudaw, accessed June 8, 2025, <a href="https://www.rudaw.net/english/middleeast/syria/250320251" target="_blank">https://www.rudaw.net/english/middleeast/syria/250320251</a></li>
+<li>​Three years after &#x27;Olive Branch&#x27;: A militarized Afrin and continued violations against its residents - Syria Direct, accessed June 8, 2025, <a href="https://syriadirect.org/three-years-after-olive-branch-a-militarized-afrin-and-con" target="_blank">https://syriadirect.org/three-years-after-olive-branch-a-militarized-afrin-and-con</a> tinued-violations-against-its-residents/</li>
+<li>​2018 Country Reports on Human Rights Practices: Syria - State Department, accessed June 8, 2025, <a href="https://www.state.gov/reports/2018-country-reports-on-human-rights-practices/" target="_blank">https://www.state.gov/reports/2018-country-reports-on-human-rights-practices/</a> syria/</li>
+<li>​2018 Country Reports on Human Rights Practices: Turkey - State Department, accessed June 8, 2025, <a href="https://www.state.gov/reports/2018-country-reports-on-human-rights-practices/" target="_blank">https://www.state.gov/reports/2018-country-reports-on-human-rights-practices/</a> turkey/</li>
+<li>​Explainer: Afrin, 5 years under Turkish occupation - Rojava Information Center, accessed June 8, 2025, <a href="https://rojavainformationcenter.org/2023/01/explainer-afrin-5-years-under-turkis" target="_blank">https://rojavainformationcenter.org/2023/01/explainer-afrin-5-years-under-turkis</a> h-occupation/</li>
+<li>​Syria: Humanitarian needs in Afrin - ACAPS, accessed June 8, 2025, <a href="https://www.acaps.org/fileadmin/Data_Product/Main_media/20200302_acaps_sh" target="_blank">https://www.acaps.org/fileadmin/Data_Product/Main_media/20200302_acaps_sh</a> ort_note_syria_huamitarian_needs_in_afrin.pdf</li>
+<li>​Syria: 70,000 Kurds return to Afrin since fall of Assad - The New Arab, accessed June 8, 2025, <a href="https://www.newarab.com/news/syria-70000-kurds-return-afrin-fall-assad" target="_blank">https://www.newarab.com/news/syria-70000-kurds-return-afrin-fall-assad</a></li>
+<li>​A Kurdish wedding celebration in Iraq. - - 2 PEOPLE 1 LIFE - The 2people1life Story, accessed June 8, 2025, <a href="http://2people1life.com/destination-wedding-64-iraq/" target="_blank">http://2people1life.com/destination-wedding-64-iraq/</a></li>
+<li>​UNIT 9 LOCAL, ORAL AND MICRO HISTORIES* - eGyanKosh, accessed June 8, 2025, <a href="https://egyankosh.ac.in/bitstream/123456789/109329/1/Unit-9.pdf" target="_blank">https://egyankosh.ac.in/bitstream/123456789/109329/1/Unit-9.pdf</a></li>
+<li>​Uncovering the Past: Microhistory in Depth - Number Analytics, accessed June 8, 2025, <a href="https://www.numberanalytics.com/blog/ultimate-guide-microhistory-historical-a" target="_blank">https://www.numberanalytics.com/blog/ultimate-guide-microhistory-historical-a</a> nalysis</li>
+<li>​Localising Memory in Transitional Justice: The Dynamics and Informal Practices of Memorialisation after Mass Violence and Dictatorship - Routledge, accessed June 8, 2025, <a href="https://www.routledge.com/Localising-Memory-in-Transitional-Justice-The-Dyna" target="_blank">https://www.routledge.com/Localising-Memory-in-Transitional-Justice-The-Dyna</a> mics-and-Informal-Practices-of-Memorialisation-after-Mass-Violence-and-Dicta torship/Rauschenbach-Viebach-Parmentier/p/book/9781032254074</li>
+<li>​The Power of Personal Stories in Shaping History - Number Analytics, accessed June 8, 2025, <a href="https://www.numberanalytics.com/blog/using-personal-narratives-in-historical-re" target="_blank">https://www.numberanalytics.com/blog/using-personal-narratives-in-historical-re</a> search</li>
+<li>​The Power of Personal Narratives, accessed June 8, 2025, <a href="https://www.numberanalytics.com/blog/power-personal-narratives-oral-history" target="_blank">https://www.numberanalytics.com/blog/power-personal-narratives-oral-history</a></li>
+<li>​Documenting Cultural and Historical Memory: Oral History in the National Park Service, accessed June 8, 2025, <a href="https://www.nps.gov/subjects/oralhistory/upload/McDonnell-oralhistoryreview.pdf" target="_blank">https://www.nps.gov/subjects/oralhistory/upload/McDonnell-oralhistoryreview.pdf</a></li>
+<li>​Микроистория - Википедия, accessed June 8, 2025, <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BA%D1%80%D0%BE%D0%" target="_blank">https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BA%D1%80%D0%BE%D0%</a> B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F</li>
+<li>​www.neh.gov, accessed June 8, 2025, <a href="https://www.neh.gov/blog/preserving-resilience-through-oral-histories-snapshot" target="_blank">https://www.neh.gov/blog/preserving-resilience-through-oral-histories-snapshot</a> -nehs-cultural-and-community-resilience#:~:text=Oral%20histories%20provide %20an%20avenue,for%20understanding%20history%20and%20culture.</li>
+<li>​عفرين التاريخ والحضارة ومقاومة العصر - ANF, accessed June 8, 2025, <a href="https://anfarabic.com/lmr-wlhy/fryn-altarykh-walhdart-wmqawmt-alsr-88770" target="_blank">https://anfarabic.com/lmr-wlhy/fryn-altarykh-walhdart-wmqawmt-alsr-88770</a></li>
+<li>​МИКРОИСТОРИЯ, accessed June 8, 2025, <a href="https://igiti.hse.ru/data/426/313/1234/4_3_3Medick.pdf" target="_blank">https://igiti.hse.ru/data/426/313/1234/4_3_3Medick.pdf</a></li>
+<li>​Устная история, accessed June 8, 2025, <a href="https://oralhistory.ru/" target="_blank">https://oralhistory.ru/</a></li>
+<li>​Afrin Tarihi ve Zeytin Dalı Harekatı (Enes Demir) - Fiyat &amp; Satın Al | D&amp;R, accessed June 8, 2025, <a href="https://www.dr.com.tr/kitap/afrin-tarihi-ve-zeytin-dali-harekati/arastirma-tarih/poli" target="_blank">https://www.dr.com.tr/kitap/afrin-tarihi-ve-zeytin-dali-harekati/arastirma-tarih/poli</a> tikaarastirma/turkiye-politika/urunno=0001756713001</li>
+<li>​www.tandfonline.com, accessed June 8, 2025, <a href="https://www.tandfonline.com/doi/full/10.1080/02665433.2021.1994180#:~:text=Or" target="_blank">https://www.tandfonline.com/doi/full/10.1080/02665433.2021.1994180#:~:text=Or</a> al%20testimonies%20are%20a%20rich,to%20share%20with%20the%20intervie wer.</li>
+<li>​Journal of Microhistory (2006), accessed June 8, 2025, <a href="https://www.microhistory.org/?w=journal-of-microhistory-2006" target="_blank">https://www.microhistory.org/?w=journal-of-microhistory-2006</a></li>
+<li>​(PDF) Microhistory: In General - ResearchGate, accessed June 8, 2025, <a href="https://www.researchgate.net/publication/281389224_Microhistory_In_General" target="_blank">https://www.researchgate.net/publication/281389224_Microhistory_In_General</a></li>
+<li>​Challenges in Accessing the Oral History Collection among Researchers in Malaysia, accessed June 8, 2025, <a href="https://rsisinternational.org/journals/ijriss/articles/challenges-in-accessing-the-ora" target="_blank">https://rsisinternational.org/journals/ijriss/articles/challenges-in-accessing-the-ora</a> l-history-collection-among-researchers-in-malaysia/</li>
+<li>​The Battle for Afrin: Turkey&#x27;s Greatest Challenge in Syria - Atlantic Council, accessed June 8, 2025, <a href="https://www.atlanticcouncil.org/blogs/syriasource/the-battle-for-afrin-turkey-s-g" target="_blank">https://www.atlanticcouncil.org/blogs/syriasource/the-battle-for-afrin-turkey-s-g</a> reatest-challenge-in-syria/</li>
+<li>​Reflections on the Challenges, Dilemmas, and Rewards of ..., accessed June 8, 2025, <a href="https://www.cambridge.org/core/books/research-methods-in-conflict-settings/re" target="_blank">https://www.cambridge.org/core/books/research-methods-in-conflict-settings/re</a> flections-on-the-challenges-dilemmas-and-rewards-of-research-in-conflict-zon es/6F4058CD3DE09A61A6626AC4ADFE3F2E</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 08, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
