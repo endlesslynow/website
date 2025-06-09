@@ -128,6 +128,17 @@ body {
     transform: scale(1.1);
 }
 
+#repeat-audio-button {
+    left: 8rem; /* Positions it to the right of the mute button */
+}
+
+/* --- Mobile Positioning --- */
+@media (max-width: 768px) {
+    #repeat-audio-button {
+        left: 5.5rem !important; /* Positions it to the right on mobile */
+    }
+}
+
 .audio-button.muted {
     opacity: 0.6;
 }
@@ -1153,6 +1164,10 @@ body {
     ♪
 </div>
 
+<div id="repeat-audio-button" class="audio-button" onclick="repeatLastAudio()">
+    ⟳
+</div>
+
         <!-- Loading Message -->
         <div id="loading" class="loading" style="display: none;">Loading dialogue...</div>
 
@@ -1201,8 +1216,17 @@ const LANGUAGE_NAMES = {
     ukrainian: "Українська"
 };
 
+const LANGUAGE_FOLDER_CODES = {
+    english: 'en',
+    spanish: 'es',
+    arabic: 'ar',
+    kurmanji: 'ku',
+    ukrainian: 'ua'
+};
+
 let selectedNativeLanguage = null;
 let selectedLearningLanguage = null;
+let lastPlayedAudioSrc = null;
 
         let dialogueTree = null;
         let currentNode = 'START';
@@ -1281,88 +1305,90 @@ function showBanner() {
 }
 
         function goHome() {
-            showBanner();
-            
-            // Reset everything and go back to level selection
-            currentLevel = null;
-            currentNode = 'START';
-            dialogueHistory = [];
-            assembledSentences = {};
-            
-            // Hide game interface elements
-            document.getElementById('game-interface').style.display = 'none';
-            document.getElementById('dialogue-history').classList.remove('visible');
-            document.getElementById('choices-panel').classList.remove('visible');
-            document.getElementById('home-button').classList.remove('visible');
-document.getElementById('audio-button').classList.remove('visible');
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('exercise-container').style.display = 'none';
-            
-            // Reset dialogue box
-            const dialogueBox = document.getElementById('dialogue-box');
-            dialogueBox.style.display = 'block';
-            dialogueBox.classList.remove('full-width');
-            
-            // COMPLETELY REMOVE VISUAL CONTAINER TO PREVENT DUPLICATES
-            const existingVisualContainer = document.getElementById('visual-container');
-            if (existingVisualContainer) {
-                existingVisualContainer.remove();
-            }
-            
-            // Reset visual novel state
-            if (window.VisualNovel) {
-                window.VisualNovel.resetVisualState();
-            }
-            
-            // Show level selection
-            selectedNativeLanguage = null;
-            selectedLearningLanguage = null;
-            document.getElementById('native-language-selection').style.display = 'block';
-        }
+    showBanner();
+
+    // Reset everything and go back to level selection
+    currentLevel = null;
+    currentNode = 'START';
+    dialogueHistory = [];
+    assembledSentences = {};
+
+    // Hide game interface elements
+    document.getElementById('game-interface').style.display = 'none';
+    document.getElementById('dialogue-history').classList.remove('visible');
+    document.getElementById('choices-panel').classList.remove('visible');
+    document.getElementById('home-button').classList.remove('visible');
+    document.getElementById('audio-button').classList.remove('visible');
+    document.getElementById('repeat-audio-button').classList.remove('visible'); // <-- THIS IS THE NEW LINE
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('exercise-container').style.display = 'none';
+
+    // Reset dialogue box
+    const dialogueBox = document.getElementById('dialogue-box');
+    dialogueBox.style.display = 'block';
+    dialogueBox.classList.remove('full-width');
+
+    // COMPLETELY REMOVE VISUAL CONTAINER TO PREVENT DUPLICATES
+    const existingVisualContainer = document.getElementById('visual-container');
+    if (existingVisualContainer) {
+        existingVisualContainer.remove();
+    }
+
+    // Reset visual novel state
+    if (window.VisualNovel) {
+        window.VisualNovel.resetVisualState();
+    }
+
+    // Show level selection
+    selectedNativeLanguage = null;
+    selectedLearningLanguage = null;
+    document.getElementById('native-language-selection').style.display = 'block';
+}
 
         function selectLevel(level) {
-            currentLevel = level;
-            hideBanner();
-            dialogueHistory = [];
-            
-            // --- START: CRITICAL AUDIO UNLOCK ---
-            // This MUST happen immediately after the user click to unlock the browser.
-            // We use the main player to play a silent sound.
-            if (mainAudioPlayer.paused) {
-                mainAudioPlayer.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA'; // Embedded silent audio clip
-                mainAudioPlayer.volume = 0.01; // Make it inaudible
-                mainAudioPlayer.play().then(() => {
-                    console.log("🔊 Audio context unlocked by user action.");
-                    mainAudioPlayer.volume = 0.7; // Restore default volume for the game
-                }).catch(() => {
-                    console.warn("❌ Audio unlock failed on first attempt. The browser will try again on the next user interaction.");
-                });
-            }
-            // --- END: CRITICAL AUDIO UNLOCK ---
-            
-            document.getElementById('level-selection').style.display = 'none';
-            document.getElementById('loading').style.display = 'block';
-            
-            const historyPanel = document.getElementById('dialogue-history');
-            const choicesPanel = document.getElementById('choices-panel');
-            const homeButton = document.getElementById('home-button');
-            
-            if (window.innerWidth >= 800) {
-                historyPanel.classList.add('visible');
-                if (level === 1) {
-                    choicesPanel.classList.add('visible');
-                }
-            }
-            homeButton.classList.add('visible');
-document.getElementById('audio-button').classList.add('visible');
-            
-            if (window.VisualNovel) {
-                window.VisualNovel.initialize();
-                window.VisualNovel.resetVisualState();
-            }
-            
-            loadDialogue();
+    currentLevel = level;
+    hideBanner();
+    dialogueHistory = [];
+
+    // --- START: CRITICAL AUDIO UNLOCK ---
+    // This MUST happen immediately after the user click to unlock the browser.
+    // We use the main player to play a silent sound.
+    if (mainAudioPlayer.paused) {
+        mainAudioPlayer.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA'; // Embedded silent audio clip
+        mainAudioPlayer.volume = 0.01; // Make it inaudible
+        mainAudioPlayer.play().then(() => {
+            console.log("🔊 Audio context unlocked by user action.");
+            mainAudioPlayer.volume = 0.7; // Restore default volume for the game
+        }).catch(() => {
+            console.warn("❌ Audio unlock failed on first attempt. The browser will try again on the next user interaction.");
+        });
+    }
+    // --- END: CRITICAL AUDIO UNLOCK ---
+
+    document.getElementById('level-selection').style.display = 'none';
+    document.getElementById('loading').style.display = 'block';
+
+    const historyPanel = document.getElementById('dialogue-history');
+    const choicesPanel = document.getElementById('choices-panel');
+    const homeButton = document.getElementById('home-button');
+
+    if (window.innerWidth >= 800) {
+        historyPanel.classList.add('visible');
+        if (level === 1) {
+            choicesPanel.classList.add('visible');
         }
+    }
+    homeButton.classList.add('visible');
+    document.getElementById('audio-button').classList.add('visible');
+    document.getElementById('repeat-audio-button').classList.add('visible'); // <-- THIS IS THE NEW LINE
+
+    if (window.VisualNovel) {
+        window.VisualNovel.initialize();
+        window.VisualNovel.resetVisualState();
+    }
+
+    loadDialogue();
+}
 
         function toggleEnglishTranslation(element) {
             const translation = element.nextElementSibling;
@@ -1466,8 +1492,12 @@ function preloadAudio(audioFile) {
         return;
     }
 
-    console.log(`🔊 Preloading audio: ${audioFile}`);
-    const audio = new Audio(`./audio/ua_1/${audioFile}`);
+    // Get the correct two-letter code for the path
+    const langCode = LANGUAGE_FOLDER_CODES[LANGUAGE_CONFIG.primary];
+    const audioPath = `./audio/${langCode}_1/${audioFile}`;
+
+    console.log(`🔊 Preloading audio: ${audioPath}`);
+    const audio = new Audio(audioPath);
     preloadedAudio[audioFile] = true; // Mark it so we don't load it again
 }
 // --- END OF NEW PRELOADING CODE ---
@@ -1475,27 +1505,30 @@ function preloadAudio(audioFile) {
 
         function playDialogueAudio(audioFile) {
             console.log("▶️ Preparing to play dialogue audio:", audioFile);
-            
+
             // Stop any currently playing audio on the main player
             if (!mainAudioPlayer.paused) {
                 mainAudioPlayer.pause();
                 mainAudioPlayer.currentTime = 0;
             }
-            
+
             if (audioFile) {
-                const audioPath = `./audio/ua_1/${audioFile}`;
+                const langCode = LANGUAGE_FOLDER_CODES[LANGUAGE_CONFIG.primary];
+                const audioPath = `./audio/${langCode}_1/${audioFile}`;
+                
+                lastPlayedAudioSrc = audioPath; // <-- THIS IS THE NEW LINE
+                
                 console.log("🎵 Setting audio path:", audioPath);
-                
+
                 mainAudioPlayer.src = audioPath;
-                
-                // This delay syncs the audio start with the text typing animation.
+
                 const playPromise = mainAudioPlayer.play();
 
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
                         console.log("✅ Audio playback started successfully.");
                     }).catch(error => {
-                        console.error("❌ Playback failed.", error);
+                        console.error("❌ Playback failed for " + audioPath, error);
                     });
                 }
             }
@@ -2028,6 +2061,18 @@ function toggleAudio() {
         console.log('🔊 Audio unmuted');
     }
 }
+
+function repeatLastAudio() {
+            if (lastPlayedAudioSrc && !isAudioMuted) {
+                console.log("🔁 Repeating audio:", lastPlayedAudioSrc);
+                mainAudioPlayer.src = lastPlayedAudioSrc;
+                mainAudioPlayer.play().catch(error => {
+                    console.error("❌ Repeat playback failed.", error);
+                });
+            } else {
+                console.log("🔁 Cannot repeat audio. Source is empty or audio is muted.");
+            }
+        }
     </script>
 </body>
 </html>
