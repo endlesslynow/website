@@ -1514,9 +1514,18 @@ function preloadAudio(audioFile) {
 
             if (audioFile) {
                 const langCode = LANGUAGE_FOLDER_CODES[LANGUAGE_CONFIG.primary];
-                const audioPath = `./audio/${langCode}_1/${audioFile}`;
+                let audioPath; // Declare audioPath variable
+
+                // Check if the audio file is for the parrot (Max)
+                if (audioFile.includes('_p-')) {
+                    // If yes, use the parrot's folder structure
+                    audioPath = `./audio/${langCode}_1_p/${audioFile}`;
+                } else {
+                    // Otherwise, use the default folder structure for Hannah
+                    audioPath = `./audio/${langCode}_1/${audioFile}`;
+                }
                 
-                lastPlayedAudioSrc = audioPath; // <-- THIS IS THE NEW LINE
+                lastPlayedAudioSrc = audioPath;
                 
                 console.log("🎵 Setting audio path:", audioPath);
 
