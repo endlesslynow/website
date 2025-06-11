@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Kurdish Epic of Dimdim Castle</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Kurdish Epic of Dimdim Castle</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/The Kurdish Epic of Dimdim Castle.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/The Kurdish Epic of Dimdim Castle.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This report provides a detailed analysis of the Kurdish Epic of Dimdim Castle, known as Beytî Dimdim, a significant narrative in Kurdish culture second only to Mem û Zîn. It explores the epic&#x27;s origins in the historical Battle of Dimdim (1609-1610) between Kurdish forces led by Emîr Xan Lepzêrîn and the Safavid Empire under Shah Abbas I. The analysis covers the epic&#x27;s narrative structure, key characters, literary themes (including heroism, sacrifice, and resistance), and its enduring cultural and political importance as a symbol of Kurdish identity and aspiration for freedom. The text highlights how the epic serves as a counter-narrative to official historical accounts and details its transmission through oral tradition and literary works, along with significant scholarly efforts to preserve and interpret it.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Kurdish Epic of Dimdim Castle_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Dum Dum Castle by Yasin Aziz: A 17th Century Historical Novel in Kurdistan, A Kurdish tribe built a castle, fought back the Persian Safavid and ... month, did not give in &amp; belw themselves up., accessed June 11, 2025, <a href="https://www.amazon.com/Dum-Castle-Yasin-Aziz-Historical/dp/1500692514" target="_blank">https://www.amazon.com/Dum-Castle-Yasin-Aziz-Historical/dp/1500692514</a></li>
+<li>​ Iranian Kurdistan - Wikipedia, accessed June 11, 2025, <a href="https://en.wikipedia.org/wiki/Iranian_Kurdistan" target="_blank">https://en.wikipedia.org/wiki/Iranian_Kurdistan</a></li>
+<li>​ en.wikipedia.org, accessed June 11, 2025, <a href="https://en.wikipedia.org/wiki/Siege_of_Dimdim#:~:text=The%20siege%20of%20Di" target="_blank">https://en.wikipedia.org/wiki/Siege_of_Dimdim#:~:text=The%20siege%20of%20Di</a> mdim%20was,to%20the%20summer%20of%201610.</li>
+<li>​ Siege of Dimdim - Wikipedia, accessed June 11, 2025, <a href="https://en.wikipedia.org/wiki/Siege_of_Dimdim" target="_blank">https://en.wikipedia.org/wiki/Siege_of_Dimdim</a></li>
+<li>​ Kurdish Folklore, accessed June 11, 2025, <a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/kurdish-folklore</a> /</li>
+<li>​ A 17th Century Historical Novel in Kurdistan, A Kurdish tribe built a castle, fought back the Persian Safavid and Otto (9781500692513) by Yasin Aziz | atlanticbooks.com, accessed June 11, 2025, <a href="https://atlanticbooks.com/products/dum-dum-castle-by-yasin-aziz-a-17th-centur" target="_blank">https://atlanticbooks.com/products/dum-dum-castle-by-yasin-aziz-a-17th-centur</a> y-historical-novel-in-kurdistan-a-kurdish-tribe-built-a-castle-fought-back-the-p ersian-safavid-and-otto-9781500692513</li>
+<li>​ Dum Dum Castle by Yasin Aziz - Books-A-Million, accessed June 11, 2025, <a href="https://www.booksamillion.com/p/Dum-Castle-Yasin-Aziz/Yasin-Aziz/9781500692" target="_blank">https://www.booksamillion.com/p/Dum-Castle-Yasin-Aziz/Yasin-Aziz/9781500692</a> 513?id=9257710918183</li>
+<li>​ Emîr Xan Lepzêrîn - Wikipedia, accessed June 11, 2025, <a href="https://en.wikipedia.org/wiki/Em%C3%AEr_Xan_Lepz%C3%AAr%C3%AEn" target="_blank">https://en.wikipedia.org/wiki/Em%C3%AEr_Xan_Lepz%C3%AAr%C3%AEn</a></li>
+<li>​ Breathing New Life into Kurdish History - Kurdistan Chronicle, accessed June 11, 2025, <a href="https://kurdistanchronicle.com/b/2845" target="_blank">https://kurdistanchronicle.com/b/2845</a></li>
+<li>​Shah &#x27;Abbas – Ruling an empire (article) - Khan Academy, accessed June 11, 2025, <a href="https://www.khanacademy.org/humanities/art-islam/chronological-periods-islami" target="_blank">https://www.khanacademy.org/humanities/art-islam/chronological-periods-islami</a> c/islamic-art-late-period/a/shah-abbas-ruling-an-empire</li>
+<li>​Our Home - KCK-Info, accessed June 11, 2025, <a href="https://kck-info.com/ourhome/" target="_blank">https://kck-info.com/ourhome/</a></li>
+<li>​Dum Dum Castle by Yasin Aziz: A 17th Century Historical Novel in by Aziz, Yasin - eBay, accessed June 11, 2025, <a href="https://www.ebay.com.au/itm/154988576631" target="_blank">https://www.ebay.com.au/itm/154988576631</a></li>
+<li>​Dimdim Castle - Wikipedia, accessed June 11, 2025, <a href="https://en.wikipedia.org/wiki/Dimdim_Castle" target="_blank">https://en.wikipedia.org/wiki/Dimdim_Castle</a></li>
+<li>​A 17th Century Historical Novel in Kurdistan, a Kurdish Tribe Built a Castle, Fought Back the Persian Safavid and Ottom book by Yasin Aziz: 9781500692513, accessed June 11, 2025, <a href="https://www.betterworldbooks.com/product/detail/dum-dum-castle-by-yasin-azi" target="_blank">https://www.betterworldbooks.com/product/detail/dum-dum-castle-by-yasin-azi</a> z-a-17th-century-historical-novel-in-kurdistan-a-kurdish-tribe-built-a-97815006 92513</li>
+<li>​Dim Dim Castle and Kurds Uprising - KURDSHOP, accessed June 11, 2025, <a href="https://kurdshop.net/en/history/1439" target="_blank">https://kurdshop.net/en/history/1439</a></li>
+<li>​Sur - MERIP, accessed June 11, 2025, <a href="https://merip.org/2018/10/sur/" target="_blank">https://merip.org/2018/10/sur/</a></li>
+<li>​Kurdish literature - Wikipedia, accessed June 11, 2025, <a href="https://en.wikipedia.org/wiki/Kurdish_literature" target="_blank">https://en.wikipedia.org/wiki/Kurdish_literature</a></li>
+<li>​Ordîxanê Celîl - Wikipedia, accessed June 11, 2025, <a href="https://en.wikipedia.org/wiki/Ord%C3%AExan%C3%AA_Cel%C3%AEl" target="_blank">https://en.wikipedia.org/wiki/Ord%C3%AExan%C3%AA_Cel%C3%AEl</a></li>
+<li>​KELA DIMDIMÊ - Wardoz, accessed June 11, 2025, <a href="https://wardoz.com/uploads/products/pdf/products-1744288867.pdf" target="_blank">https://wardoz.com/uploads/products/pdf/products-1744288867.pdf</a></li>
+<li>​Jan Dost - Wikipedia, accessed June 11, 2025, <a href="https://en.wikipedia.org/wiki/Jan_Dost" target="_blank">https://en.wikipedia.org/wiki/Jan_Dost</a></li>
+<li>​Music as weapon: Heroic lyrical epics as tools in the PKK&#x27;s struggle - Clingendael Institute, accessed June 11, 2025, <a href="https://www.clingendael.org/sites/default/files/2023-09/PB_CRU_Music_as_weapo" target="_blank">https://www.clingendael.org/sites/default/files/2023-09/PB_CRU_Music_as_weapo</a> n.pdf</li>
+<li>​Chapter 2 The Nature of Heroes, accessed June 11, 2025, <a href="https://www1.chapman.edu/~babbie/YCMAD/Ch02.html" target="_blank">https://www1.chapman.edu/~babbie/YCMAD/Ch02.html</a></li>
+<li>​(PDF) Redemption through Martyrdom: Depiction of Christ Hero Archetype in Eliot&#x27;s “Murder in the Cathedral” - ResearchGate, accessed June 11, 2025, <a href="https://www.researchgate.net/publication/358837500_Redemption_through_Mart" target="_blank">https://www.researchgate.net/publication/358837500_Redemption_through_Mart</a> yrdom_Depiction_of_Christ_Hero_Archetype_in_Eliot&#x27;s_Murder_in_the_Cathedral</li>
+<li>​Themes of loyalty, betrayal, and revenge | Epic and Saga Class Notes - Fiveable, accessed June 11, 2025, <a href="https://library.fiveable.me/epic-and-saga/unit-9/themes-loyalty-betrayal-revenge" target="_blank">https://library.fiveable.me/epic-and-saga/unit-9/themes-loyalty-betrayal-revenge</a> /study-guide/LiXQoOV2Ii7KeYy6</li>
+<li>​Epic and Saga Unit 11 – Epic Themes: Honor, Loyalty, and Fate - Fiveable, accessed June 11, 2025, <a href="https://library.fiveable.me/epic-and-saga/unit-11" target="_blank">https://library.fiveable.me/epic-and-saga/unit-11</a></li>
+<li>​Part II: Femininity in the EpicII.1. Women in the Epic - The Center for Hellenic Studies, accessed June 11, 2025, <a href="https://chs.harvard.edu/chapter/part-ii-femininity-in-the-epicii-1-women-in-the-e" target="_blank">https://chs.harvard.edu/chapter/part-ii-femininity-in-the-epicii-1-women-in-the-e</a> pic/</li>
+<li>​The World of Kurdish Women&#x27;s Novels | Iranian Studies | Cambridge Core, accessed June 11, 2025, <a href="https://www.cambridge.org/core/journals/iranian-studies/article/world-of-kurdish" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/world-of-kurdish</a> -womens-novels/916DCC2EE8F371DB351522D1F5F4D4B3</li>
+<li>​Kurdish Women: Redefining Freedom through Resilience - Washington Kurdish Institute, accessed June 11, 2025, <a href="https://dckurd.org/2025/02/11/kurdish-women-freedom/" target="_blank">https://dckurd.org/2025/02/11/kurdish-women-freedom/</a></li>
+<li>​The Role of Women in Epic Narratives: A Comparative Study of the Iliad and the Mahābhārata - UNITesi, accessed June 11, 2025, <a href="https://unitesi.unive.it/bitstream/20.500.14247/24612/1/The%20Role%20of%20Wo" target="_blank">https://unitesi.unive.it/bitstream/20.500.14247/24612/1/The%20Role%20of%20Wo</a> men%20in%20Epic%20Narratives%20-%20Nilasha%20Das.pdf</li>
+<li>​Women Influence in Indian Epics - International Journal of History, accessed June 11, 2025, <a href="https://www.historyjournal.net/article/170/4-2-25-239.pdf" target="_blank">https://www.historyjournal.net/article/170/4-2-25-239.pdf</a></li>
+<li>​thekurdishproject.org, accessed June 11, 2025, <a href="https://thekurdishproject.org/history-and-culture/kurdish-culture/#:~:text=Kurdis" target="_blank">https://thekurdishproject.org/history-and-culture/kurdish-culture/#:~:text=Kurdis</a> h%20culture%20has%20a%20rich,in%20Persian%20called%20the%20Sharafna ma.</li>
+<li>​Culture and Customs - Česko-kurdská obchodní komora, accessed June 11, 2025, <a href="https://ckcc.cz/en/culture-and-habits/" target="_blank">https://ckcc.cz/en/culture-and-habits/</a></li>
+<li>​Automatic meter classification of Kurdish poems - PMC - PubMed Central, accessed June 11, 2025, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9891497/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC9891497/</a></li>
+<li>​The Kurdish Shahnama and its Literary and Religious Implications - ResearchGate, accessed June 11, 2025, <a href="https://www.researchgate.net/publication/277007971_The_Kurdish_Shahnama_an" target="_blank">https://www.researchgate.net/publication/277007971_The_Kurdish_Shahnama_an</a> d_its_Literary_and_Religious_Implications</li>
+<li>​Automatic meter classification of Kurdish poems - PLOS, accessed June 11, 2025, <a href="https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0280263&amp;typ" target="_blank">https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0280263&amp;typ</a> e=printable</li>
+<li>​A Thousand Years of the Persian Book The Epic of Shahnameh - The Library of Congress, accessed June 11, 2025, <a href="https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/epic-of-shahn" target="_blank">https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/epic-of-shahn</a> ameh.html</li>
+<li>​Amazon.com: The Kurdish Shahnama and its Literary and Religious Implications, accessed June 11, 2025, <a href="https://www.amazon.com/Kurdish-Shahnama-Literary-Religious-Implications/dp/1" target="_blank">https://www.amazon.com/Kurdish-Shahnama-Literary-Religious-Implications/dp/1</a> 511523492</li>
+<li>​www.researchgate.net, accessed June 11, 2025, <a href="https://www.researchgate.net/publication/277007971_The_Kurdish_Shahnama_an" target="_blank">https://www.researchgate.net/publication/277007971_The_Kurdish_Shahnama_an</a> d_its_Literary_and_Religious_Implications#:~:text=In%20this%20work%2C%20au thor%20draws,other%20works%20of%20the%20Sistani</li>
+<li>​Dimdim Khan Lepzerin Castle - Makpirtuk, accessed June 11, 2025, <a href="https://makpirtuk.de/en/product/Dimdime-Castle--Lepzerin/" target="_blank">https://makpirtuk.de/en/product/Dimdime-Castle--Lepzerin/</a></li>
+<li>​Dimdim Castle, accessed June 11, 2025, <a href="https://wikipedia.nucleos.com/viewer/wikipedia_en_all/A/Dimdim_Castle" target="_blank">https://wikipedia.nucleos.com/viewer/wikipedia_en_all/A/Dimdim_Castle</a></li>
+<li>​International Journal of Kurdish Studies » Submission » Kurdish ..., accessed June 11, 2025, <a href="https://dergipark.org.tr/en/pub/ijoks/article/1595895" target="_blank">https://dergipark.org.tr/en/pub/ijoks/article/1595895</a></li>
+<li>​Siege of Dimdim - Wikiwand, accessed June 11, 2025, <a href="https://www.wikiwand.com/en/map/Siege_of_Dimdim" target="_blank">https://www.wikiwand.com/en/map/Siege_of_Dimdim</a></li>
+<li>​Behrooz CHAMANARA | Professor (Assistant) | MPhil | University of Kurdistan, Sanandaj | UoK | Department of Kurdish Language and Literature | Research profile - ResearchGate, accessed June 11, 2025, <a href="https://www.researchgate.net/profile/Behrooz-Chamanara" target="_blank">https://www.researchgate.net/profile/Behrooz-Chamanara</a></li>
+<li>​Role Of Women In The Epic Of Gilgamesh - 713 Words - Bartleby.com, accessed June 11, 2025, <a href="https://www.bartleby.com/essay/Role-Of-Women-In-The-Epic-Of-PK46S9QVAR" target="_blank">https://www.bartleby.com/essay/Role-Of-Women-In-The-Epic-Of-PK46S9QVAR</a></li>
+<li>​Performance Traditions of Kurdistan: Towards a More ..., accessed June 11, 2025, <a href="https://www.cambridge.org/core/journals/iranian-studies/article/performance-tra" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/performance-tra</a> ditions-of-kurdistan-towards-a-more-comprehensive-theatre-history/8D4A28D 67A62F14038A7245557B2F618</li>
+<li>​(PDF) EPIC OF DERWÊŞÊ EVDÎ AND EDÛLÊ FORM THE PERSPECTIVE OF ETHNIC AND RELLIGOUS ATTITUDES - ResearchGate, accessed June 11, 2025, <a href="https://www.researchgate.net/publication/361809086_EPIC_OF_DERWESE_EVDI_" target="_blank">https://www.researchgate.net/publication/361809086_EPIC_OF_DERWESE_EVDI_</a> AND_EDULE_FORM_THE_PERSPECTIVE_OF_ETHNIC_AND_RELLIGOUS_ATTITUDE S</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 11, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
