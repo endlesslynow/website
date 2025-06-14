@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Arameans in Afrin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Arameans in Afrin</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Arameans of Afrin_ A Deep History, A Fragile Presence.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Arameans of Afrin_ A Deep History, A Fragile Presence.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>The provided text explores the historical presence and evolving identity of Arameans in Syria&#x27;s Afrin District, particularly up to 2010, highlighting a paradox between their deep historical legacy and their minimal modern demographic presence. It traces the Arameans&#x27; ancient origins as a prominent Semitic people whose Aramaic language became the Near East&#x27;s lingua franca, even as they lacked a unified empire. The text then details their transformation into &quot;Syriac&quot; Christians, explaining how this exonym became an accepted self-identifier and acknowledging the complex modern identity debate among Aramean, Syriac, and Assyrian groups. Furthermore, it showcases the region&#x27;s rich archaeological sites, like the Ain Dara temple and various early Christian &quot;Dead Cities,&quot; as irrefutable evidence of Afrin&#x27;s significance to Aramean and Syriac Christian civilization. Despite this profound history, the district was overwhelmingly Kurdish by 2010, with a small Christian population comprising both historic denominations and recent Kurdish converts, coexisting peacefully under the Ba&#x27;athist regime&#x27;s anti-minority policies.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Arameans in Afrin Before 2010_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Afrin District - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Afrin_District" target="_blank">https://en.wikipedia.org/wiki/Afrin_District</a></li>
+<li>​ Afrin Canton - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Afrin_Canton" target="_blank">https://en.wikipedia.org/wiki/Afrin_Canton</a></li>
+<li>​ Turkey&#x27;s Demographic Engineering in Syria&#x27;s Afrin Region: A Closer ..., accessed June 14, 2025, <a href="https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin" target="_blank">https://www.meforum.org/meq/turkeys-demographic-engineering-in-syrias-afrin</a> -region-a-closer-look</li>
+<li>​ Ain Dara (archaeological site) - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Ain_Dara_(archaeological_site)" target="_blank">https://en.wikipedia.org/wiki/Ain_Dara_(archaeological_site)</a></li>
+<li>​عفرين بال سكانها من األقليات االيزيديين..الدينية. ..., ac <a href="https://vdc-nsy.com/archives/15338" target="_blank">https://vdc-nsy.com/archives/15338</a></li>
+<li>​ Barad, Syria - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Barad,_Syria" target="_blank">https://en.wikipedia.org/wiki/Barad,_Syria</a></li>
+<li>​قصّة أقدم الكنائس األثريّة الكبرى في عفرين - آسي مينا, accessed June 14, 2025, <a href="https://www.acimena.com/news/1089/ksw-akdm-alknays-alathryw-alkbr-fy-aafry" target="_blank">https://www.acimena.com/news/1089/ksw-akdm-alknays-alathryw-alkbr-fy-aafry</a> n</li>
+<li>​ Explainer: Afrin, 5 years under Turkish occupation - Rojava Information Center, accessed June 14, 2025, <a href="https://rojavainformationcenter.org/2023/01/explainer-afrin-5-years-under-turkis" target="_blank">https://rojavainformationcenter.org/2023/01/explainer-afrin-5-years-under-turkis</a> h-occupation/</li>
+<li>​ Crimes in Syria: The neglected atrocities of Afrin - ECCHR, accessed June 14, 2025, <a href="https://www.ecchr.eu/en/case/crimes-in-syria-the-neglected-atrocities-of-afrin/" target="_blank">https://www.ecchr.eu/en/case/crimes-in-syria-the-neglected-atrocities-of-afrin/</a></li>
+<li>​Kingdoms of Syria - Aramaeans (Syria) - The History Files, accessed June 14, 2025, <a href="https://www.historyfiles.co.uk/KingListsMiddEast/SyriaAramaeans.htm" target="_blank">https://www.historyfiles.co.uk/KingListsMiddEast/SyriaAramaeans.htm</a></li>
+<li>​Evidences of our Aramean origin - Aramean-Dem.Org, accessed June 14, 2025, <a href="https://aramean-dem.org/English/History/Evidences_of_our_Aramean_origin/Evid" target="_blank">https://aramean-dem.org/English/History/Evidences_of_our_Aramean_origin/Evid</a> ences_of_our_Aramean_origin.htm</li>
+<li>​The Aramean (Syriac) People, accessed June 14, 2025, <a href="https://www.wca-ngo.org/heritage/102-people" target="_blank">https://www.wca-ngo.org/heritage/102-people</a></li>
+<li>​اللغة اآلرامية - ويكيبيديا, accessed June 14, 2025, <a href="https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%84%D8%BA%D8%A9_%D8%" target="_blank">https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%84%D8%BA%D8%A9_%D8%</a> A7%D9%84%D8%A2%D8%B1%D8%A7%D9%85%D9%8A%D8%A9</li>
+<li>​assyrians.n.nu, accessed June 14, 2025, <a href="https://assyrians.n.nu/10#:~:text=The%20Assyrians%20(Syriacs)%20of%20today," target="_blank">https://assyrians.n.nu/10#:~:text=The%20Assyrians%20(Syriacs)%20of%20today,</a> unique%20language%2C%20culture%20and%20heritage.</li>
+<li>​كلدان/سريان/آشوريون/ريان - , ac <a href="https://ar.wikipedia.org/wiki/%D8%A2%D8%B4%D9%88%D8%B1%D9%8A%D9%8" target="_blank">https://ar.wikipedia.org/wiki/%D8%A2%D8%B4%D9%88%D8%B1%D9%8A%D9%8</a> 8%D9%86/%D8%B3%D8%B1%D9%8A%D8%A7%D9%86/%D9%83%D9%84%D8% AF%D8%A7%D9%86</li>
+<li>​History of Arameans - Timeline - Historydraft, accessed June 14, 2025, <a href="https://historydraft.com/story/arameans/timeline/843" target="_blank">https://historydraft.com/story/arameans/timeline/843</a></li>
+<li>​Aramaean | Ancient Middle Eastern Culture | Britannica, accessed June 14, 2025, <a href="https://www.britannica.com/topic/Aramaean" target="_blank">https://www.britannica.com/topic/Aramaean</a></li>
+<li>​آرام ..واآلراميون. .محاول فه تاريخه ووجوده الحضار ف الشر لاأوس  -جريد الصبا, accesse June 14, 2025, <a href="https://alsabaah.iq/82014-.html" target="_blank">https://alsabaah.iq/82014-.html</a></li>
+<li>​سوريا عبر العصور .. الحلقة الثالثة : الممالك اآلرامية السورية - دنيا الوطن, accessed June 14, 2025, <a href="https://www.alwatanvoice.com/arabic/news/2013/09/05/432451.html" target="_blank">https://www.alwatanvoice.com/arabic/news/2013/09/05/432451.html</a></li>
+<li>​Syriac Orthodox Church - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Syriac_Orthodox_Church" target="_blank">https://en.wikipedia.org/wiki/Syriac_Orthodox_Church</a></li>
+<li>​Syriac Catholic Church - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Syriac_Catholic_Church" target="_blank">https://en.wikipedia.org/wiki/Syriac_Catholic_Church</a></li>
+<li>​تاريخ اآلراميين - تسلسل زمني - Historydraft, accessed June 14, 2025, <a href="https://historydraft.com/ar/story/%D8%A7%D9%84%D8%A2%D8%B1%D8%A7%D" target="_blank">https://historydraft.com/ar/story/%D8%A7%D9%84%D8%A2%D8%B1%D8%A7%D</a> 9%85%D9%8A%D9%8A%D9%86/timeline/843</li>
+<li>​Aramaic - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Aramaic" target="_blank">https://en.wikipedia.org/wiki/Aramaic</a></li>
+<li>​What is Aramaic and Syriac? - Ad Fontes - WordPress.com, accessed June 14, 2025, <a href="https://christhum.wordpress.com/2012/09/03/what-is-aramaic-and-syriac/" target="_blank">https://christhum.wordpress.com/2012/09/03/what-is-aramaic-and-syriac/</a></li>
+<li>​سريان وآشوريو شمال شرقي ..سوريا. .واق متأزّ ومستقب غام - North ..., accessed June 14, 2025 <a href="https://npasyria.com/4335/" target="_blank">https://npasyria.com/4335/</a></li>
+<li>​Historical summary of the Assyrian (Syriac) People, accessed June 14, 2025, <a href="https://assyrians.n.nu/10" target="_blank">https://assyrians.n.nu/10</a></li>
+<li>​Afrin, Syria - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Afrin,_Syria" target="_blank">https://en.wikipedia.org/wiki/Afrin,_Syria</a></li>
+<li>​Kurds: Turkish Airstrikes Damaging Historic, Civilian Sites - VOA, accessed June 14, 2025, <a href="https://www.voanews.com/a/kurds-say-turkish-airstrikes-damage-historic-templ" target="_blank">https://www.voanews.com/a/kurds-say-turkish-airstrikes-damage-historic-templ</a> e-dam/4230262.html</li>
+<li>​The Archaeological Evidence and its Implications 17 - Brill, accessed June 14, 2025, <a href="https://brill.com/display/book/9789004231849/B9789004231849_003.pdf" target="_blank">https://brill.com/display/book/9789004231849/B9789004231849_003.pdf</a></li>
+<li>​كفر نبو - ويكيبيديا, accessed June 14, 2025, <a href="https://ar.wikipedia.org/wiki/%D9%83%D9%81%D8%B1_%D9%86%D8%A8%D9%8" target="_blank">https://ar.wikipedia.org/wiki/%D9%83%D9%81%D8%B1_%D9%86%D8%A8%D9%8</a> 8</li>
+<li>​ :عفرين: - ANF, accessed June 14, 2025, <a href="https://anfarabic.com/%D9%83%D8%B1%D8%AF%D8%B3%D8%AA%D8%A7%D9" target="_blank">https://anfarabic.com/%D9%83%D8%B1%D8%AF%D8%B3%D8%AA%D8%A7%D9</a> %86/%D9%84%D9%85%D8%AD%D8%A9-%D8%B5%D8%BA%D9%8A%D8%B1% D8%A9-%D8%B9%D9%86-%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D9%8 2%D8%A8%D9%84-%D8%A7%D8%AD%D8%AA%D9%84%D8%A7%D9%84%D9 %87%D8%A7-%D9%85%D9%86-%D9%82%D8%A8%D9%84-%D8%AA%D8%B1 %D9%83%D9%8A%D8%A7-50483</li>
+<li>​قرية براد األثرية في حلب وضريح مار مارون الموجود في هذه القرية - YouTube, accessed June 14, 2025, <a href="https://www.youtube.com/watch?v=DdGTTVaEvsY" target="_blank">https://www.youtube.com/watch?v=DdGTTVaEvsY</a></li>
+<li>​ :عفرين: - , accessed June 14, 2025, <a href="https://vdc-nsy.com/archives/3696" target="_blank">https://vdc-nsy.com/archives/3696</a></li>
+<li>​مار :مارون: - BBC News ..., accessed June 14, 2025, <a href="https://www.bbc.com/arabic/middleeast-51422170" target="_blank">https://www.bbc.com/arabic/middleeast-51422170</a></li>
+<li>​A Brief History of the Maronites - Maronite Foundation, accessed June 14, 2025, <a href="https://maronitefoundation.org/MaroniteFoundation/en/MaronitesHistory/66" target="_blank">https://maronitefoundation.org/MaroniteFoundation/en/MaronitesHistory/66</a></li>
+<li>​في ديار مار مارون - قصة اكتشاف مرقد مار مارون قرب حلب Mar Maroun Aleppo - YouTube, accessed June 14, 2025, <a href="https://www.youtube.com/watch?v=PtrFagUL-yg" target="_blank">https://www.youtube.com/watch?v=PtrFagUL-yg</a></li>
+<li>​قرانا الجميلة ( قرى ناحية شران - ايكي ) - تيريج عفرين, accessed June 14, 2025, <a href="http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20eke%20dam." target="_blank">http://www.tirejafrin.com/site/kura%20afrin%20%20sheran%20-%20eke%20dam.</a> htm</li>
+<li>​Afrin: Incidents Of Desecration And Destruction Of Cultural Sites ..., accessed June 14, 2025, <a href="https://www.bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration" target="_blank">https://www.bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration</a> -and-destruction-of-cultural-sites/</li>
+<li>​Afrin&#x27;s Yazidis: An Ancient Culture Edges Toward the Precipice - The Kurdish Center for Studies, accessed June 14, 2025, <a href="https://nlka.net/eng/afrins-rich-and-millennia-old-yazidi-culture-edges-to-the-pr" target="_blank">https://nlka.net/eng/afrins-rich-and-millennia-old-yazidi-culture-edges-to-the-pr</a> ecipice/</li>
+<li>​Syrian Arab Republic: Alevis and Yazidis in Afrin threatened with extinction, accessed June 14, 2025, <a href="https://www.gfbv.de/fileadmin/redaktion/UN-statements/2020_2/Syrian_Arab_Re" target="_blank">https://www.gfbv.de/fileadmin/redaktion/UN-statements/2020_2/Syrian_Arab_Re</a> public_Alevis_and_Yazidis_in_Afrin_threatened_with_extinction.pdf</li>
+<li>​عفرين على طريق التعريب واتهامات بالتغيير الديموغرافي الممنهج | حكاية ما انحكت | SyriaUntold, accessed June 14, 2025, <a href="https://syriauntold.com/2018/08/04/%D8%B9%D9%81%D8%B1%D9%8A%D9%86-" target="_blank">https://syriauntold.com/2018/08/04/%D8%B9%D9%81%D8%B1%D9%8A%D9%86-</a> %D8%B9%D9%84%D9%89-%D8%B7%D8%B1%D9%8A%D9%82-%D8%A7%D9% 84%D8%AA%D8%B9%D8%B1%D9%8A%D8%A8-%D9%88%D8%A7%D8%AA%D 9%87%D8%A7%D9%85%D8%A7%D8%AA-%D8%A8%D8%A7%D9%84%D8%AA %D8%BA/</li>
+<li>​SYRIA: Country&#x27;s Churches under fire - Aid to the Church in Need, accessed June 14, 2025, <a href="https://acnuk.org/news/syria-countrys-churches-under-fire/" target="_blank">https://acnuk.org/news/syria-countrys-churches-under-fire/</a></li>
+<li>​Explainer: Christian Communities in North and East Syria - Rojava Information Center, accessed June 14, 2025, <a href="https://rojavainformationcenter.org/2020/09/explainer-christian-communities-in-" target="_blank">https://rojavainformationcenter.org/2020/09/explainer-christian-communities-in-</a> north-and-east-syria/</li>
+<li>​Kurdish Christian IDPs of Afrin are fearful of reprisals and pray to ..., accessed June 14, 2025, <a href="https://npasyria.com/en/38548/" target="_blank">https://npasyria.com/en/38548/</a></li>
+<li>​Kurds in Syria - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Kurds_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Kurds_in_Syria</a></li>
+<li>​Democratic Autonomous Administration of North and East Syria - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Democratic_Autonomous_Administration_of_North_" target="_blank">https://en.wikipedia.org/wiki/Democratic_Autonomous_Administration_of_North_</a> and_East_Syria</li>
+<li>​The Complex Relations Between Kurds and Christians in Northern Iraq - GeoCurrents, accessed June 14, 2025, <a href="http://www.geocurrents.info/blog/2010/11/05/the-complex-relations-between-ku" target="_blank">http://www.geocurrents.info/blog/2010/11/05/the-complex-relations-between-ku</a> rds-and-christians-in-northern-iraq/</li>
+<li>​Wherever Syriac Is spoken | National Endowment for the Humanities, accessed June 14, 2025, <a href="https://www.neh.gov/humanities/2014/novemberdecember/curio/wherever-syriac" target="_blank">https://www.neh.gov/humanities/2014/novemberdecember/curio/wherever-syriac</a> -spoken</li>
+<li>​أهمية تاريخ اآلراميين في سوريا - Aramean-Dem.Org, accessed June 14, 2025, <a href="http://aramean-dem.org/Henri_Kifa/Aramean_Identity/27.htm" target="_blank">http://aramean-dem.org/Henri_Kifa/Aramean_Identity/27.htm</a></li>
+<li>​اآلشوريون والسريان والكلدان في سوريا - ويكيبيديا, accessed June 14, 2025, <a href="https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A2%D8%B4%D9%88%D8%B" target="_blank">https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D8%A2%D8%B4%D9%88%D8%B</a> 1%D9%8A%D9%88%D9%86_%D9%88%D8%A7%D9%84%D8%B3%D8%B1%D9% 8A%D8%A7%D9%86_%D9%88%D8%A7%D9%84%D9%83%D9%84%D8%AF%D8 %A7%D9%86_%D9%81%D9%8A_%D8%B3%D9%88%D8%B1%D9%8A%D8%A7</li>
+<li>​رؤية السريان لمستقبل سوريا بعد سقوط األسد - YouTube, accessed June 14, 2025, <a href="https://www.youtube.com/watch?v=AZna1JAtg2o" target="_blank">https://www.youtube.com/watch?v=AZna1JAtg2o</a></li>
+<li>​الكنيسة السريانية األرثوذكسية - كنيسة مار سويريوس, accessed June 14, 2025, <a href="https://syrisch-orthodox-leipzig.de/ar/%D8%AF%D8%B1%D8%A7%D8%B3%D8%" target="_blank">https://syrisch-orthodox-leipzig.de/ar/%D8%AF%D8%B1%D8%A7%D8%B3%D8%</a> A7%D8%AA/%D8%A7%D9%84%D9%83%D9%86%D9%8A%D8%B3%D8%A9-%D 8%A7%D9%84%D8%B3%D8%B1%D9%8A%D8%A7%D9%86%D9%8A%D8%A9-% D8%A7%D9%84%D8%A3%D8%B1%D8%AB%D9%88%D8%B0%D9%83%D8%B3 %D9%8A%D8%A9/</li>
+<li>​أكثر من 200 عائلة ...هربت... ص ي ن د ل ا ر ل -2 2, accessed June 14, 202 <a href="https://raseef22.net/article/1079643-%D8%A3%D9%83%D8%AB%D8%B1-%D9%8" target="_blank">https://raseef22.net/article/1079643-%D8%A3%D9%83%D8%AB%D8%B1-%D9%8</a> 5%D9%86-200-%D8%B9%D8%A7%D8%A6%D9%84%D8%A9-%D9%87%D8%B1 %D8%A8%D8%AA-%D9%82%D8%B5%D8%B5-%D9%85%D8%B3%D9%8A%D8% AD%D9%8A%D9%8A-%D8%B9%D9%81%D8%B1%D9%8A%D9%86-%D8%A8%D 8%B9%D8%AF-%D8%AA%D8%AF%D8%AE%D9%84-%D8%AA%D8%B1%D9%83 %D9%8A%D8%A7-%D8%B9%D8%A8%D8%B1-%D9%81%D8%B5%D8%A7%D8% A6%D9%84-%D9%85%D8%AA%D8%B4%D8%AF%D8%AF%D8%A9</li>
+<li>​المسيحية في سوريا - ويكيبيديا, accessed June 14, 2025, <a href="https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%85%D8%B3%D9%8A%D8%A" target="_blank">https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%85%D8%B3%D9%8A%D8%A</a> D%D9%8A%D8%A9_%D9%81%D9%8A_%D8%B3%D9%88%D8%B1%D9%8A%D8 %A7</li>
+<li>​Syriac Military Council - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Syriac_Military_Council" target="_blank">https://en.wikipedia.org/wiki/Syriac_Military_Council</a></li>
+<li>​The International Community Cannot Turn Its Back on the People of Afrin, accessed June 14, 2025, <a href="https://armenianweekly.com/2018/02/02/international-community-cannot-turn-b" target="_blank">https://armenianweekly.com/2018/02/02/international-community-cannot-turn-b</a> ack-people-afrin/</li>
+<li>​Withering Branch: The Story of Afrin and its Peoples, Pre &amp; Post “Operation Olive Branch&quot; | Washington Kurdish Institute, accessed June 14, 2025, <a href="https://dckurd.org/2022/03/09/withering-branch-the-story-of-afrin-and-its-peop" target="_blank">https://dckurd.org/2022/03/09/withering-branch-the-story-of-afrin-and-its-peop</a> les-pre-post-operation-olive-branch/</li>
+<li>​Electoral dynamics, new nationalisms, and party positions on Syrian refugees in Turkey, accessed June 14, 2025, <a href="https://www.tandfonline.com/doi/full/10.1080/14683849.2024.2310850" target="_blank">https://www.tandfonline.com/doi/full/10.1080/14683849.2024.2310850</a></li>
+<li>​Turkish involvement in the Syrian civil war - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Turkish_involvement_in_the_Syrian_civil_war" target="_blank">https://en.wikipedia.org/wiki/Turkish_involvement_in_the_Syrian_civil_war</a></li>
+<li>​2010 Human Rights Reports: Ethiopia - U.S. Department of State, accessed June 14, 2025, <a href="https://2009-2017.state.gov/j/drl/rls/hrrpt/2010/af/154346.htm" target="_blank">https://2009-2017.state.gov/j/drl/rls/hrrpt/2010/af/154346.htm</a></li>
+<li>​Syria&#x27;s Afrin welcomes new church opening - YouTube, accessed June 14, 2025, <a href="https://www.youtube.com/watch?v=Zx7dqFBvE0U" target="_blank">https://www.youtube.com/watch?v=Zx7dqFBvE0U</a></li>
+<li>​Syrian Orthodox Patriarchate of Antioch, accessed June 14, 2025, <a href="https://syriacpatriarchate.org/" target="_blank">https://syriacpatriarchate.org/</a></li>
+<li>​Syria&#x27;s Afrin welcomes new church opening, accessed June 14, 2025, <a href="https://www.trtworld.com/video/news/syrias-afrin-welcomes-new-church-openi" target="_blank">https://www.trtworld.com/video/news/syrias-afrin-welcomes-new-church-openi</a> ng-18248366</li>
+<li>​Mercy, prayer and faith sustain Syrian Christians who fled terrorist persecution - Catholic Saskatoon News, accessed June 14, 2025, <a href="https://news.rcdos.ca/2019/04/05/mercy-prayer-and-faith-sustain-syrian-christia" target="_blank">https://news.rcdos.ca/2019/04/05/mercy-prayer-and-faith-sustain-syrian-christia</a> ns-who-fled-terrorist-persecution/</li>
+<li>​Christianity in the Roman Africa province - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Christianity_in_the_Roman_Africa_province" target="_blank">https://en.wikipedia.org/wiki/Christianity_in_the_Roman_Africa_province</a></li>
+<li>​&#x27;Strangers in our own homes&#x27;: A waning Assyrian community holds on in northeastern Syria, accessed June 14, 2025, <a href="https://syriadirect.org/strangers-in-our-own-homes-a-waning-assyrian-communi" target="_blank">https://syriadirect.org/strangers-in-our-own-homes-a-waning-assyrian-communi</a> ty-holds-on-in-northeastern-syria/</li>
+<li>​Religion in Syria - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Religion_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Religion_in_Syria</a></li>
+<li>​Afrin Region - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Afrin_Region" target="_blank">https://en.wikipedia.org/wiki/Afrin_Region</a></li>
+<li>​Rojava - KurdishPeople.Org, accessed June 14, 2025, <a href="https://kurdishpeople.org/rojava/" target="_blank">https://kurdishpeople.org/rojava/</a></li>
+<li>​Many cities in Northern Syria and Southern Turkiye do not have Arabic or Turkish names. What is the Kurdish definition of names of many of these cities in Kurdistan? I know Afrin is &quot;Good job&quot; but that is Afarin, no? - Reddit, accessed June 14, 2025, <a href="https://www.reddit.com/r/kurdistan/comments/1iah0dr/many_cities_in_northern_s" target="_blank">https://www.reddit.com/r/kurdistan/comments/1iah0dr/many_cities_in_northern_s</a> yria_and_southern/</li>
+<li>​(PDF) 2025 February 9-A Parisian Mystery in Metal-Tracing Saint Maron&#x27;s Reliquary-Guita Hourani-MARI-FINAL - ResearchGate, accessed June 14, 2025, <a href="https://www.researchgate.net/publication/388808685_2025_February_9-A_Parisia" target="_blank">https://www.researchgate.net/publication/388808685_2025_February_9-A_Parisia</a> n_Mystery_in_Metal-Tracing_Saint_Maron&#x27;s_Reliquary-Guita_Hourani-MARI-FINA L</li>
+<li>​Sectarianism and minorities in the Syrian civil war - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Sectarianism_and_minorities_in_the_Syrian_civil_war" target="_blank">https://en.wikipedia.org/wiki/Sectarianism_and_minorities_in_the_Syrian_civil_war</a></li>
+<li>​مسيحيو عفرين المهجرون يقيمون صالة وصوم وتراتيل دينية ألهالي شرق الفرات - وكالة نورث برس, accessed June 14, 2025, <a href="https://npasyria.com/13074/" target="_blank">https://npasyria.com/13074/</a></li>
+<li>​النبي هوري أهم معالم منطقة عفرين - ANF, accessed June 14, 2025, <a href="https://anfarabic.com/%D8%AB%D9%82%D8%A7%D9%81%D8%A9-%D9%88%D" target="_blank">https://anfarabic.com/%D8%AB%D9%82%D8%A7%D9%81%D8%A9-%D9%88%D</a> 9%85%D8%AC%D8%AA%D9%85%D8%B9/lnby-hwry-hm-m-lm-mntq-fryn-7101</li>
+<li>​الوجود الكردي في شمال سوريا : منطقة جبل األكراد )عفرين( ) 1, accessed June <a href="https://www.medaratkurd.com/2016/12/04/1778/" target="_blank">https://www.medaratkurd.com/2016/12/04/1778/</a></li>
+<li>​األسماء السريانية لقرى وبلدات سوريا - The Syrian Nation | األمة السورية, accessed June 14, 2025, <a href="https://www.syriannation.net/2020/10/blog-post_23.html" target="_blank">https://www.syriannation.net/2020/10/blog-post_23.html</a></li>
+<li>​اللغة اآلرامية :السريانية: - TikTok, accessed June 14, 2025, <a href="https://www.tiktok.com/@this_is_ziena/video/7333966813283274016" target="_blank">https://www.tiktok.com/@this_is_ziena/video/7333966813283274016</a></li>
+<li>​القرى التي مر بها مار مارون أبو الطائفة المارونية - تيريج عفرين, accessed June 14, 2025, <a href="http://tirejafrin.com/index.php?page=category&amp;category_id=93&amp;lang=ar" target="_blank">http://tirejafrin.com/index.php?page=category&amp;category_id=93&amp;lang=ar</a></li>
+<li>​وسط وعود بتوفير األمن&quot;والاس .&quot; .عدوة عائلات مسي إ إدل -ار , acces 2025, <a href="https://www.irfaasawtak.com/minorities/2024/07/26/%D9%88%D8%B9%D9%88%" target="_blank">https://www.irfaasawtak.com/minorities/2024/07/26/%D9%88%D8%B9%D9%88%</a> D8%AF-%D8%A8%D8%AA%D9%88%D9%81%D9%8A%D8%B1-%D8%A7%D9%8 4%D8%A3%D9%85%D9%86-%D9%88%D8%A7%D9%84%D8%A7%D8%B3%D8% AA%D9%82%D8%B1%D8%A7%D8%B1-%D8%B9%D9%88%D8%AF%D8%A9-%D 8%B9%D8%A7%D8%A6%D9%84%D8%A7%D8%AA-%D9%85%D8%B3%D9%8A %D8%AD%D9%8A%D8%A9-%D8%A5%D8%AF%D9%84%D8%A8?_wrapper_for mat=html&amp;page=182</li>
+<li>​HTS looks to Idlib&#x27;s Christians and Druze to whitewash violations (map) - Syria Direct, accessed June 14, 2025, <a href="https://syriadirect.org/hts-looks-to-idlibs-christians-and-druze-to-whitewash-vio" target="_blank">https://syriadirect.org/hts-looks-to-idlibs-christians-and-druze-to-whitewash-vio</a> lations/</li>
+<li>​(PDF) Christianity in the Middle East | Report no.1 - ResearchGate, accessed June 14, 2025, <a href="https://www.researchgate.net/publication/348606881_Christianity_in_the_Middle_" target="_blank">https://www.researchgate.net/publication/348606881_Christianity_in_the_Middle_</a> East_Report_no1</li>
+<li>​Kurdish Sufi Spaces of Rural-Urban. Connection in Northern Syria - OpenEdition Journals, accessed June 14, 2025, <a href="https://journals.openedition.org/etudesrurales/9290?lang=en" target="_blank">https://journals.openedition.org/etudesrurales/9290?lang=en</a></li>
+<li>​Christians continue to suffer as President Erdoğan expands reach, power, accessed June 14, 2025, <a href="https://www.catholicworldreport.com/2018/03/19/christians-continue-to-suffer-a" target="_blank">https://www.catholicworldreport.com/2018/03/19/christians-continue-to-suffer-a</a> s-president-erdogan-expands-reach-power/</li>
+<li>​TURKISH NATIONALISM, THE KURDISH FIGHT FOR FREEDOM, AND THE COMPLICATIONS OF U.S. INVOLVEMENT: IS RECONCILIATION POSSIBLE? by Katherine Bennett &#x27;21 - Soka University, accessed June 14, 2025, <a href="https://www.soka.edu/about/20th-anniversary-anthology/pacifism/turkish-nation" target="_blank">https://www.soka.edu/about/20th-anniversary-anthology/pacifism/turkish-nation</a> alism-kurdish-fight-freedom-and</li>
+<li>​Afrin on the Road to Arabization | SyriaUntold - حكاية ما انحكت, accessed June 14, 2025, <a href="https://syriauntold.com/2018/08/13/afrin-on-the-road-to-arabization/" target="_blank">https://syriauntold.com/2018/08/13/afrin-on-the-road-to-arabization/</a></li>
+<li>​Afrin and the Rojava Revolution - Socialist Project, accessed June 14, 2025, <a href="https://socialistproject.ca/2018/01/afrin-and-rojava-revolution/" target="_blank">https://socialistproject.ca/2018/01/afrin-and-rojava-revolution/</a></li>
+<li>​The Kurdish Question in the Middle East: Regional Dynamics and Return to National Control - IEMed, accessed June 14, 2025, <a href="https://www.iemed.org/publication/the-kurdish-question-in-the-middle-east-regi" target="_blank">https://www.iemed.org/publication/the-kurdish-question-in-the-middle-east-regi</a> onal-dynamics-and-return-to-national-control/</li>
+<li>​Suret language - Wikipedia, accessed June 14, 2025, <a href="https://en.wikipedia.org/wiki/Suret_language" target="_blank">https://en.wikipedia.org/wiki/Suret_language</a></li>
+<li>​The Aramaeans in Ancient Syria - Assyrian International News Agency, accessed June 14, 2025, <a href="http://www.aina.org/books/taias.pdf" target="_blank">http://www.aina.org/books/taias.pdf</a></li>
+<li>​(PDF) Languages of the Middle East and North Africa - ResearchGate, accessed June 14, 2025, <a href="https://www.researchgate.net/publication/334207836_Languages_of_the_Middle_" target="_blank">https://www.researchgate.net/publication/334207836_Languages_of_the_Middle_</a> East_and_North_Africa</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 14, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
