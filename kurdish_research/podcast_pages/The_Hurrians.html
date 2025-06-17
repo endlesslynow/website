@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hurrians</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Hurrians</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/The Hurrians_ Bronze Age Enigma Revealed.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/The Hurrians_ Bronze Age Enigma Revealed.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>The provided source offers a detailed overview of the Hurrian civilization, a significant but often overlooked Bronze Age people in the ancient Near East. It explores their unique linguistic identity, highlighting that Hurrian is an isolate language related only to Urartian, and addresses the &quot;Hurrian Problem&quot;—the challenge of reconstructing their history due to limited self-generated records. The text then traces their political trajectory, from early city-states like Urkesh to the powerful, though ultimately transient, Mitanni kingdom, which profoundly influenced major contemporary empires like the Hittites and Egyptians. Finally, it examines their societal structures, rich religious beliefs, notably the &quot;Kingship in Heaven&quot; myth, and distinctive material culture, including the oldest known notated music. The source emphasizes that Hurritology remains a dynamic field, continuously evolving with new archaeological discoveries and textual analyses.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Hurrian Civilization_ A Detailed Overview_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ 4</li>
+<li>​ 2</li>
+<li>​ 5</li>
+<li>​ 6</li>
+<li>​ 7</li>
+<li>​ 8</li>
+<li>​ 9</li>
+<li>​ 10</li>
+<li>​ 11</li>
+<li>​3</li>
+<li>​12</li>
+<li>​13</li>
+<li>​14</li>
+<li>​15</li>
+<li>​16</li>
+<li>​17</li>
+<li>​18</li>
+<li>​19</li>
+<li>​20</li>
+<li>​21</li>
+<li>​22</li>
+<li>​23</li>
+<li>​24</li>
+<li>​25</li>
+<li>​26</li>
+<li>​27</li>
+<li>​28</li>
+<li>​29</li>
+<li>​30</li>
+<li>​31</li>
+<li>​32</li>
+<li>​33</li>
+<li>​34</li>
+<li>​35</li>
+<li>​36</li>
+<li>​37</li>
+<li>​38</li>
+<li>​1</li>
+<li>​39</li>
+<li>​40</li>
+<li>​41</li>
+<li>​18</li>
+<li>​18</li>
+<li>​19</li>
+<li>​20</li>
+<li>​42</li>
+<li>​43</li>
+<li>​44</li>
+<li>​30</li>
+<li>​45</li>
+<li>​46</li>
+<li>​47</li>
+<li>​48</li>
+<li>​49</li>
+<li>​33</li>
+<li>​50</li>
+<li>​39</li>
+<li>​4</li>
+<li>​51</li>
+<li>​52</li>
+<li>​53</li>
+<li>​54</li>
+<li>​55</li>
+<li>​56</li>
+<li>​57</li>
+<li>​37</li>
+<li>​58</li>
+<li>​59</li>
+<li>​60</li>
+<li>​36</li>
+<li>​11</li>
+<li>​61</li>
+<li>​62</li>
+<li>​63</li>
+<li>​64</li>
+<li>​65</li>
+<li>​66</li>
+<li>​67</li>
+<li>​68</li>
+<li>​69</li>
+<li>​70</li>
+<li>​71</li>
+<li>​72</li>
+<li>​73</li>
+<li>​74</li>
+<li>​75</li>
+<li>​76</li>
+<li>​77</li>
+<li>​78</li>
+<li>​79</li>
+<li>​80</li>
+<li>​81</li>
+<li>​82</li>
+<li>​83</li>
+<li>​84</li>
+<li>​85</li>
+<li>​86</li>
+<li>​87</li>
+<li>​88</li>
+<li>​ 89</li>
+<li>​ 1</li>
+<li>​ 2</li>
+<li>​ 5</li>
+<li>​ 6</li>
+<li>​ 10</li>
+<li>​ 3</li>
+<li>​ 13</li>
+<li>​ 15</li>
+<li>​ 90</li>
+<li>​ 21</li>
+<li>​ 23</li>
+<li>​ 25</li>
+<li>​ 29</li>
+<li>​ 32</li>
+<li>​ 33</li>
+<li>​ 36</li>
+<li>​ 1</li>
+<li>​ 42</li>
+<li>​ 20</li>
+<li>​ 43</li>
+<li>​ 30</li>
+<li>​ 50</li>
+<li>​ 61 Works cited</li>
+<li>​ Hurrian | Encyclopedia.com, accessed June 17, 2025, <a href="https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and" target="_blank">https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and</a> -maps/hurrian</li>
+<li>​ Hurrians - World History Encyclopedia, accessed June 17, 2025, <a href="https://www.worldhistory.org/Hurrians/" target="_blank">https://www.worldhistory.org/Hurrians/</a></li>
+<li>​ Kumarbi - Wikipedia, accessed June 17, 2025, <a href="https://en.wikipedia.org/wiki/Kumarbi" target="_blank">https://en.wikipedia.org/wiki/Kumarbi</a></li>
+<li>​ Hurrians - Wikipedia, accessed June 17, 2025, <a href="https://en.wikipedia.org/wiki/Hurrians" target="_blank">https://en.wikipedia.org/wiki/Hurrians</a></li>
+<li>​ Urkesh and the Hurrians - Urkesh.org, accessed June 17, 2025, <a href="https://urkesh.org/pages/013k.htm" target="_blank">https://urkesh.org/pages/013k.htm</a></li>
+<li>​ Hurrian language - Wikipedia, accessed June 17, 2025, <a href="https://en.wikipedia.org/wiki/Hurrian_language" target="_blank">https://en.wikipedia.org/wiki/Hurrian_language</a></li>
+<li>​ Lexical Matches between Sumerian and Hurro-Urartian: Possible Historical Scenarios, accessed June 17, 2025, <a href="https://cdli.earth/articles/cdlj/2014-4" target="_blank">https://cdli.earth/articles/cdlj/2014-4</a></li>
+<li>​ Hurrian and Urartian – Whispers Of Extinct Languages, accessed June 17, 2025, <a href="https://kayipdiller.com/en/exhibition/urartuca/" target="_blank">https://kayipdiller.com/en/exhibition/urartuca/</a></li>
+<li>​ Hebat - Brill Reference Works, accessed June 17, 2025, <a href="https://referenceworks.brill.com/display/entries/DDDO/DDDO-Hebat.xml" target="_blank">https://referenceworks.brill.com/display/entries/DDDO/DDDO-Hebat.xml</a></li>
+<li>​Hebat | Mesopotamian, Mother Goddess, Storm Goddess | Britannica, accessed June 17, 2025, <a href="https://www.britannica.com/topic/Hebat" target="_blank">https://www.britannica.com/topic/Hebat</a></li>
+<li>​Hurrian Mythology | Mythosphere, accessed June 17, 2025, <a href="https://www.folklore.earth/culture/hurrian/" target="_blank">https://www.folklore.earth/culture/hurrian/</a></li>
+<li>​Kumarbi myth and Hesiod (1) - The Melammu Project, accessed June 17, 2025, <a href="http://www.melammu-project.eu/database/gen_html/a0001230.html" target="_blank">http://www.melammu-project.eu/database/gen_html/a0001230.html</a></li>
+<li>​Nuzi ware - Wikipedia, accessed June 17, 2025, <a href="https://en.wikipedia.org/wiki/Nuzi_ware" target="_blank">https://en.wikipedia.org/wiki/Nuzi_ware</a></li>
+<li>​Khabur Ware and Nuzi Ware (Assur): Stein, D: 9780890039700 - Amazon.com, accessed June 17, 2025, <a href="https://www.amazon.com/Khabur-Ware-Nuzi-Assur/dp/0890039704" target="_blank">https://www.amazon.com/Khabur-Ware-Nuzi-Assur/dp/0890039704</a></li>
+<li>​Hurrian songs - Wikipedia, accessed June 17, 2025, <a href="https://en.wikipedia.org/wiki/Hurrian_songs" target="_blank">https://en.wikipedia.org/wiki/Hurrian_songs</a></li>
+<li>​The Oldest Song in the World from the Institute for the Study of the Ancient World -...CIRCLE THROUGH NEW YORK, accessed June 17, 2025, <a href="https://www.circlethroughnewyork.com/the-oldest-song-in-the-world-from-the-" target="_blank">https://www.circlethroughnewyork.com/the-oldest-song-in-the-world-from-the-</a> institute-for-the-study-of-the-ancient-world</li>
+<li>​“Hurrian Hymns”: Music from 1400 BC - The Listeners&#x27; Club, accessed June 17, 2025, <a href="https://thelistenersclub.com/2021/01/01/hurrian-hymns-music-from-1400-bc/" target="_blank">https://thelistenersclub.com/2021/01/01/hurrian-hymns-music-from-1400-bc/</a></li>
+<li>​Mitanni Kingdom | EBSCO Research Starters, accessed June 17, 2025, <a href="https://www.ebsco.com/research-starters/history/mitanni-kingdom" target="_blank">https://www.ebsco.com/research-starters/history/mitanni-kingdom</a></li>
+<li>​Mitanni | EBSCO Research Starters, accessed June 17, 2025, <a href="https://www.ebsco.com/research-starters/political-science/mitanni" target="_blank">https://www.ebsco.com/research-starters/political-science/mitanni</a></li>
+<li>​Blog Post #16: Forgotten Kingdom: The Mitanni, with Mara Horowitz ..., accessed June 17, 2025, <a href="https://peoplingthepast.com/2021/02/26/blog-post-16-forgotten-kingdom-the-m" target="_blank">https://peoplingthepast.com/2021/02/26/blog-post-16-forgotten-kingdom-the-m</a> itanni-with-mara-horowitz/</li>
+<li>​Lessons Plans from Ancient Mesopotamia: The Hittite-Mitanni ..., accessed June 17, 2025, <a href="https://www.historicalconquest.com/single-post/lessons-plans-from-ancient-me" target="_blank">https://www.historicalconquest.com/single-post/lessons-plans-from-ancient-me</a> sopotamia-the-hittite-mitanni-conflict-circa-1600-bc</li>
+<li>​Mitanni- Hittite Treaty – a proof of Aryan Invasion / Migration? (Part 1) - Jayasree Saranathan, accessed June 17, 2025, <a href="https://jayasreesaranathan.blogspot.com/2017/12/mitanni-hittite-treaty-proof-of-" target="_blank">https://jayasreesaranathan.blogspot.com/2017/12/mitanni-hittite-treaty-proof-of-</a> aryan.html</li>
+<li>​A strategic marriage between Mitanni and Egypt and the fall and rise ..., accessed June 17, 2025, <a href="https://nuttersworld.com/civilisations-that-collapsed/1387-1360/" target="_blank">https://nuttersworld.com/civilisations-that-collapsed/1387-1360/</a></li>
+<li>​Relations between the Great Powers During the Amarna Period | Teen Ink, accessed June 17, 2025, <a href="https://www.teenink.com/nonfiction/academic/article/1164628/Relations-Between" target="_blank">https://www.teenink.com/nonfiction/academic/article/1164628/Relations-Between</a> -The-Great-Powers-During-The-Amarna-Period</li>
+<li>​Mitanni - KurdishPeople.Org, accessed June 17, 2025, <a href="https://kurdishpeople.org/mitanni/" target="_blank">https://kurdishpeople.org/mitanni/</a></li>
+<li>​Assyria - Wikipedia, accessed June 17, 2025, <a href="https://en.wikipedia.org/wiki/Assyria" target="_blank">https://en.wikipedia.org/wiki/Assyria</a></li>
+<li>​Tell Mozan | Universität Tübingen, accessed June 17, 2025, <a href="https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakult" target="_blank">https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakult</a> aet/fachbereiche/geowissenschaften/arbeitsgruppen/urgeschichte-naturwissens chaftliche-archaeologie/ina/archaeobotanik/forschung/tell-mozan/</li>
+<li>​Urkesh - Wikipedia, accessed June 17, 2025, <a href="https://en.wikipedia.org/wiki/Urkesh" target="_blank">https://en.wikipedia.org/wiki/Urkesh</a></li>
+<li>​Museum Bulletin | Nuzi, accessed June 17, 2025, <a href="https://www.penn.museum/sites/bulletin/2705/" target="_blank">https://www.penn.museum/sites/bulletin/2705/</a></li>
+<li>​The Nuzi Tablets: Insights on Genesis - The Bible Seminary, accessed June 17, 2025, <a href="https://www.thebibleseminary.edu/post/thenuzitabletsinsightsongenesis" target="_blank">https://www.thebibleseminary.edu/post/thenuzitabletsinsightsongenesis</a></li>
+<li>​The Alalakh Expedition | Institute for the Study of Ancient Cultures, accessed June 17, 2025, <a href="https://isac.uchicago.edu/research/projects/alalakh-expedition" target="_blank">https://isac.uchicago.edu/research/projects/alalakh-expedition</a></li>
+<li>​Alalakh - Wikipedia, accessed June 17, 2025, <a href="https://en.wikipedia.org/wiki/Alalakh" target="_blank">https://en.wikipedia.org/wiki/Alalakh</a></li>
+<li>​Hurrian religion - Wikipedia, accessed June 17, 2025, <a href="https://en.wikipedia.org/wiki/Hurrian_religion" target="_blank">https://en.wikipedia.org/wiki/Hurrian_religion</a></li>
+<li>​Hittite and Hurrian Religions - Encyclopedia.com, accessed June 17, 2025, <a href="https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and" target="_blank">https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and</a> -maps/hittite-and-hurrian-religions</li>
+<li>​(VII) The ancient inhibitants of Anatolia - EBRULI TOURISM- IZMIR-TURKEY, accessed June 17, 2025, <a href="http://www.ebruliturizm.com/anatolian-civilizations/the-ancient-inhibitants-of-an" target="_blank">http://www.ebruliturizm.com/anatolian-civilizations/the-ancient-inhibitants-of-an</a> atolia/</li>
+<li>​18-Vita-Hurrian in Ugarit socie...+p - Digital CSIC, accessed June 17, 2025, <a href="https://digital.csic.es/bitstream/10261/254860/1/Hurrian_living_language_Ugaritic_" target="_blank">https://digital.csic.es/bitstream/10261/254860/1/Hurrian_living_language_Ugaritic_</a> society.pdf</li>
+<li>​Hurrian Phonemic Inventory and Syllable Structure - Dallas International University, accessed June 17, 2025, <a href="https://www.diu.edu/documents/theses/Hutchens_Christopher-thesis.pdf" target="_blank">https://www.diu.edu/documents/theses/Hutchens_Christopher-thesis.pdf</a></li>
+<li>​The Three Skies of the Indo-Europeans, accessed June 17, 2025, <a href="https://aaatec.org/documents/article/fournetar1.pdf" target="_blank">https://aaatec.org/documents/article/fournetar1.pdf</a></li>
+<li>​hurrians and indo-europeans in their historical and, accessed June 17, 2025, <a href="https://kokushikan.repo.nii.ac.jp/record/7394/files/0285_4406_018_16.pdf" target="_blank">https://kokushikan.repo.nii.ac.jp/record/7394/files/0285_4406_018_16.pdf</a></li>
+<li>​The Hurrians of Bronze Age Mesopotamia - Brewminate: A Bold Blend of News and Ideas, accessed June 17, 2025, <a href="https://brewminate.com/the-hurrians-of-bronze-age-mesopotamia/" target="_blank">https://brewminate.com/the-hurrians-of-bronze-age-mesopotamia/</a></li>
+<li>​www.ebsco.com, accessed June 17, 2025, <a href="https://www.ebsco.com/research-starters/history/mitanni-kingdom#:~:text=Mitan" target="_blank">https://www.ebsco.com/research-starters/history/mitanni-kingdom#:~:text=Mitan</a> ni%20was%20a%20kingdom%20in,its%20neighbors%20by%20several%20name s</li>
+<li>​Mitanni - World History Encyclopedia, accessed June 17, 2025, <a href="https://www.worldhistory.org/Mitanni/" target="_blank">https://www.worldhistory.org/Mitanni/</a></li>
+<li>​Nuzi - Search results provided by BiblicalTraining, accessed June 17, 2025, <a href="https://www.biblicaltraining.org/library/nuzi" target="_blank">https://www.biblicaltraining.org/library/nuzi</a></li>
+<li>​ANE Tablets Discovered in Nuzi: Close to the Time of Abraham | Answers in Genesis, accessed June 17, 2025, <a href="https://answersingenesis.org/archaeology/ane-tablets-discovered-nuzi/" target="_blank">https://answersingenesis.org/archaeology/ane-tablets-discovered-nuzi/</a></li>
+<li>​The Nuzi Tablets - Biblical Archaeology Society, accessed June 17, 2025, <a href="https://www.biblicalarchaeology.org/daily/biblical-artifacts/artifacts-and-the-bible" target="_blank">https://www.biblicalarchaeology.org/daily/biblical-artifacts/artifacts-and-the-bible</a> /the-nuzi-tablets/</li>
+<li>​Nuzi Tablets -- By: Louis Katzoff | Galaxie Software, accessed June 17, 2025, <a href="https://www.galaxie.com/article/bspade01-2-09" target="_blank">https://www.galaxie.com/article/bspade01-2-09</a></li>
+<li>​Nuzi Tablet Recreation, IBSS Gift Shop, accessed June 17, 2025, <a href="https://www.bibleandscience.com/store/catalog/product_info.php?products_id=8" target="_blank">https://www.bibleandscience.com/store/catalog/product_info.php?products_id=8</a> 19</li>
+<li>​HURRIANS AND SUBARIANS - Institute for the Study of Ancient Cultures, accessed June 17, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/saoc22.pdf" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/saoc22.pdf</a></li>
+<li>​Hurrian | Anatolia, Mesopotamia, Mitanni - Britannica, accessed June 17, 2025, <a href="https://www.britannica.com/topic/Hurrian" target="_blank">https://www.britannica.com/topic/Hurrian</a></li>
+<li>​I. M. Diakonoff, The Hittite and the Hurrian Social Structure, The ..., accessed June 17, 2025, <a href="https://www.attalus.org/armenian/diakph3.htm" target="_blank">https://www.attalus.org/armenian/diakph3.htm</a></li>
+<li>​Hurrian, Mitanni, Kingdoms - History of Mesopotamia - Britannica, accessed June 17, 2025, <a href="https://www.britannica.com/place/Mesopotamia-historical-region-Asia/The-Hurri" target="_blank">https://www.britannica.com/place/Mesopotamia-historical-region-Asia/The-Hurri</a> an-and-Mitanni-kingdoms</li>
+<li>​The Kingdom of Mitanni: The Mysterious History of the Short-Lived Mesopotamian Civilization during the Late Bronze Age - Amazon.com, accessed June 17, 2025, <a href="https://www.amazon.com/Kingdom-Mitanni-Short-Lived-Mesopotamian-Civilizati" target="_blank">https://www.amazon.com/Kingdom-Mitanni-Short-Lived-Mesopotamian-Civilizati</a> on/dp/B08735HVL4</li>
+<li>​Mitanni - Wikipedia, accessed June 17, 2025, <a href="https://en.wikipedia.org/wiki/Mitanni" target="_blank">https://en.wikipedia.org/wiki/Mitanni</a></li>
+<li>​The Rise of the Mitanni - FutureLearn, accessed June 17, 2025, <a href="https://www.futurelearn.com/info/courses/superpowers-near-east/0/steps/19017" target="_blank">https://www.futurelearn.com/info/courses/superpowers-near-east/0/steps/19017</a></li>
+<li>​MITTANI - Universität Bern, accessed June 17, 2025, <a href="https://www.iaw.unibe.ch/e39448/e39449/e1270709/e1270715/Abstracts_ger.pdf" target="_blank">https://www.iaw.unibe.ch/e39448/e39449/e1270709/e1270715/Abstracts_ger.pdf</a></li>
+<li>​The Mitanni…The Greatest Ancient Empire you have never heard of - YouTube, accessed June 17, 2025, <a href="https://www.youtube.com/watch?v=Cj95jF7Rpvc&amp;pp=0gcJCdgAo7VqN5tD" target="_blank">https://www.youtube.com/watch?v=Cj95jF7Rpvc&amp;pp=0gcJCdgAo7VqN5tD</a></li>
+<li>​Publications | Ukrainian Research Institute, accessed June 17, 2025, <a href="https://www.huri.harvard.edu/huri-publications" target="_blank">https://www.huri.harvard.edu/huri-publications</a></li>
+<li>​Geschichte Der Hethitischen Religion (HANDBOOK OF ORIENTAL STUDIES/HANDBUCH DER ORIENTALISTIK) (German Edition): 9789004097995: Haas, Volkert - Amazon.com, accessed June 17, 2025, <a href="https://www.amazon.com/Geschichte-Hethitischen-Religion-Handbook-Orientali" target="_blank">https://www.amazon.com/Geschichte-Hethitischen-Religion-Handbook-Orientali</a> stik/dp/9004097996</li>
+<li>​Mood and Modality in Hurrian 9781575067148 - DOKUMEN.PUB, accessed June 17, 2025, <a href="https://dokumen.pub/mood-and-modality-in-hurrian-9781575067148.html" target="_blank">https://dokumen.pub/mood-and-modality-in-hurrian-9781575067148.html</a></li>
+<li>​Gasparyan-2020-Armenian-LP-email.pdf - University of Connecticut, accessed June 17, 2025, <a href="https://armenia.media.uconn.edu/wp-content/uploads/sites/208/2022/04/Gaspar" target="_blank">https://armenia.media.uconn.edu/wp-content/uploads/sites/208/2022/04/Gaspar</a> yan-2020-Armenian-LP-email.pdf</li>
+<li>​Urkish Heritage: A Timeless Blend of Ancient Civilization and ..., accessed June 17, 2025, <a href="https://sareltours.com/article/urkish" target="_blank">https://sareltours.com/article/urkish</a></li>
+<li>​Daily Life in Ancient Mesopotamia - World History Encyclopedia, accessed June 17, 2025, <a href="https://www.worldhistory.org/article/680/daily-life-in-ancient-mesopotamia/" target="_blank">https://www.worldhistory.org/article/680/daily-life-in-ancient-mesopotamia/</a></li>
+<li>​Hurrian Religion | Encyclopedia.com, accessed June 17, 2025, <a href="https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts" target="_blank">https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts</a> -and-maps/hurrian-religion</li>
+<li>​Hurrians - Armeniapedia, accessed June 17, 2025, <a href="https://www.armeniapedia.org/wiki/Hurrians" target="_blank">https://www.armeniapedia.org/wiki/Hurrians</a></li>
+<li>​Hurrians, Amorites, And Horitesː The Beginnings Of Akans/Hebrews₋Aramaic, accessed June 17, 2025, <a href="https://www.modernghana.com/news/1319417/hurrians-amorites-and-horites-the" target="_blank">https://www.modernghana.com/news/1319417/hurrians-amorites-and-horites-the</a> -beginnings.html</li>
+<li>​THE HURRIAN LANGUAGE - Cracking lost scripts, accessed June 17, 2025, <a href="https://lostscripts.hypotheses.org/1851" target="_blank">https://lostscripts.hypotheses.org/1851</a></li>
+<li>​ANDIRONS AT URKESH: NEW EVIDENCE FOR THE HURRIAN IDENTITY OF THE EARLY TRANS-CAUCASIAN CULTURE, accessed June 17, 2025, <a href="https://urkesh.org/EL-MZ/Kelly-Buccellati_2004_Andirons_at_Urkesh.pdf" target="_blank">https://urkesh.org/EL-MZ/Kelly-Buccellati_2004_Andirons_at_Urkesh.pdf</a></li>
+<li>​Hurrian Mythology in Hittite Tradition | TORCH, accessed June 17, 2025, <a href="https://www.torch.ox.ac.uk/event/hurrian-mythology-in-hittite-literature" target="_blank">https://www.torch.ox.ac.uk/event/hurrian-mythology-in-hittite-literature</a></li>
+<li>​Studies on the Hurrian Language and Culture - Mimesis Journals, accessed June 17, 2025, <a href="https://mimesisjournals.com/magazines/NewsFromTheLandsOfTheHittites/01-201" target="_blank">https://mimesisjournals.com/magazines/NewsFromTheLandsOfTheHittites/01-201</a> 7/articles/NewsFromTheLandsOfTheHittites_01-2017_Mauro-Giorgieri_StudiesOn TheHurrian_pp.140-141.pdf</li>
+<li>​The Hurrian Emar Texts • Altorientalistik - Freie Universität Berlin, accessed June 17, 2025, <a href="https://www.geschkult.fu-berlin.de/en/e/altorient/forschungsprojekte/forschung/a" target="_blank">https://www.geschkult.fu-berlin.de/en/e/altorient/forschungsprojekte/forschung/a</a> bgeschlossen_Hurritische-Emar-Texte---Fischer/index.html</li>
+<li>​SAOC 22. Hurrians and Subarians | Institute for the Study of Ancient Cultures, accessed June 17, 2025, <a href="https://isac.uchicago.edu/research/publications/saoc/saoc-22-hurrians-and-subar" target="_blank">https://isac.uchicago.edu/research/publications/saoc/saoc-22-hurrians-and-subar</a> ians</li>
+<li>​Journal of Near Eastern Studies - Wikipedia, accessed June 17, 2025, <a href="https://en.wikipedia.org/wiki/Journal_of_Near_Eastern_Studies" target="_blank">https://en.wikipedia.org/wiki/Journal_of_Near_Eastern_Studies</a></li>
+<li>​Hurrian in a Tablet from Tigunanum - SOAS Research Online, accessed June 17, 2025, <a href="https://soas-repository.worktribe.com/output/434113/hurrian-in-a-tablet-from-tig" target="_blank">https://soas-repository.worktribe.com/output/434113/hurrian-in-a-tablet-from-tig</a> unanum</li>
+<li>​Gernot Wilhelm - THE HURRIANS, accessed June 17, 2025, <a href="https://archive.org/download/WilhelmHurrians/Wilhelm_Hurrians.pdf" target="_blank">https://archive.org/download/WilhelmHurrians/Wilhelm_Hurrians.pdf</a></li>
+<li>​About eni, the Hurrian Word for &#x27;God&#x27; | Journal of Near Eastern Studies: Vol 71, No 1, accessed June 17, 2025, <a href="https://www.journals.uchicago.edu/doi/abs/10.1086/664455" target="_blank">https://www.journals.uchicago.edu/doi/abs/10.1086/664455</a></li>
+<li>​Hurrian šug=am (“to unite”) and Its Context in ChS I/1 41 | Journal of Near Eastern Studies, accessed June 17, 2025, <a href="http://www.journals.uchicago.edu/doi/abs/10.1086/687352" target="_blank">http://www.journals.uchicago.edu/doi/abs/10.1086/687352</a></li>
+<li>​(PDF) &#x27;Silver&#x27;: A Hurrian Phaethon - ResearchGate, accessed June 17, 2025, <a href="https://www.researchgate.net/publication/274336666_&#x27;Silver&#x27;_A_Hurrian_Phaetho" target="_blank">https://www.researchgate.net/publication/274336666_&#x27;Silver&#x27;_A_Hurrian_Phaetho</a> n</li>
+<li>​Ugaritic prln and Hurrian furullinni &quot;haruspex&quot; - Zenodo, accessed June 17, 2025, <a href="https://zenodo.org/records/14677547" target="_blank">https://zenodo.org/records/14677547</a></li>
+<li>​Journal of Cuneiform Studies: Vol 76, accessed June 17, 2025, <a href="https://www.journals.uchicago.edu/toc/jcs/current" target="_blank">https://www.journals.uchicago.edu/toc/jcs/current</a></li>
+<li>​The Hittite Gilgamesh (Journal of Cuneiform Studies Supplemental) - Amazon.com, accessed June 17, 2025, <a href="https://www.amazon.com/Hittite-Gilgamesh-Journal-Cuneiform-Supplemental/d" target="_blank">https://www.amazon.com/Hittite-Gilgamesh-Journal-Cuneiform-Supplemental/d</a> p/194848806X</li>
+<li>​JOURNAL OF CUNEIFORM STUDIES (JCS) - American Society of Overseas Research (ASOR), accessed June 17, 2025, <a href="https://www.asor.org/asor-publications/jcs/" target="_blank">https://www.asor.org/asor-publications/jcs/</a></li>
+<li>​Hurrians and Their Gods in Canaan, accessed June 17, 2025, <a href="https://journals.pan.pl/Content/82350/mainfile.pdf?handler=pdf" target="_blank">https://journals.pan.pl/Content/82350/mainfile.pdf?handler=pdf</a></li>
+<li>​Journal of Cuneiform Studies | Vol 6, No 1, accessed June 17, 2025, <a href="https://www.journals.uchicago.edu/toc/jcs/1952/6/1" target="_blank">https://www.journals.uchicago.edu/toc/jcs/1952/6/1</a></li>
+<li>​Previously Unidentified Hurrian Words in Nuzi Texts / Planelles, Albert (Rights reserved) - Digitale Landesbibliothek Berlin, accessed June 17, 2025, <a href="https://digital.zlb.de/viewer/metadata/1353921875/" target="_blank">https://digital.zlb.de/viewer/metadata/1353921875/</a></li>
+<li>​Hurrian Theophoric Names in the Documents from the Hittite Kingdom, accessed June 17, 2025, <a href="https://books.fupress.it/chapter/hurrian-theophoric-names-in-the-documents-fr" target="_blank">https://books.fupress.it/chapter/hurrian-theophoric-names-in-the-documents-fr</a> om-the-hittite-kingdom/13741</li>
+<li>​(PDF) Previously Unidentified Hurrian Words in Nuzi Texts - ResearchGate, accessed June 17, 2025, <a href="https://www.researchgate.net/publication/388217108_Previously_Unidentified_Hu" target="_blank">https://www.researchgate.net/publication/388217108_Previously_Unidentified_Hu</a> rrian_Words_in_Nuzi_Texts</li>
+<li>​Altorientalische Forschungen: Impact Factor, Ranking, H-Index, ISSN, CiteScore, SJR and Other Key Journal Metrics | Researcher.Life, accessed June 17, 2025, <a href="https://researcher.life/ja/journal/altorientalische-forschungen/35366" target="_blank">https://researcher.life/ja/journal/altorientalische-forschungen/35366</a></li>
+<li>​Parallel Hurrian and Hittite šumma izbu Omens from Hattuša and Corresponding Akkadian Omens | Request PDF - ResearchGate, accessed June 17, 2025, <a href="https://www.researchgate.net/publication/318304292_Parallel_Hurrian_and_Hittite" target="_blank">https://www.researchgate.net/publication/318304292_Parallel_Hurrian_and_Hittite</a> _summa_izbu_Omens_from_Hattusa_and_Corresponding_Akkadian_Omens</li>
+<li>​The Hurrian Language in Anatolia in the Late Bronze Age - OpenEdition Books, accessed June 17, 2025, <a href="https://books.openedition.org/ifeagd/3512" target="_blank">https://books.openedition.org/ifeagd/3512</a></li>
+<li>​accessed January 1, 1970, https<a href="https://www.ebsco.com/research-starters/history/mitanni-kingdom" target="_blank">https://www.ebsco.com/research-starters/history/mitanni-kingdom</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 17, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
