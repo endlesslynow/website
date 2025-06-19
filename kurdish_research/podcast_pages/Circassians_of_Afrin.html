@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circassians of Afrin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; 
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+            position: relative; z-index: 2; 
+        }
+
+        h2 {
+            color: #6b553f;
+            position: relative; z-index: 2; 
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2; 
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+            position: relative; z-index: 2;
+        }
+        .description p { 
+            position: relative; z-index: 2;
+            white-space: pre-wrap; 
+            margin: 0;
+        }
+
+        .download-section {
+            margin: 25px 0;
+            position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; 
+            margin: 0; 
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; 
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; 
+            margin-bottom: 20px; 
+            position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 1px solid #e0d7c0; 
+            border-radius: 2px;
+            color: #333; 
+            position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+            position: relative; z-index: 2;
+        }
+        .last-updated p { 
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; 
+            }
+        }
+
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; 
+            border-radius: 3px; 
+        }
+
+        #audioPlayer { 
+            flex-grow: 1;
+        }
+
+        .rewind-button {
+            height: 34px; 
+            width: 40px; 
+            background-color: #444; 
+            color: white;
+            border: none;
+            font-size: 20px; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Circassians of Afrin</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Circassians of Syria_ Displacement, Resilience, and Precarious Future.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Circassians of Syria_ Displacement, Resilience, and Precarious Future.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>This research plan provides a comprehensive overview of the Circassian community in Syria, tracing their history from their forced displacement from the Caucasus in 1864, a period widely considered the Circassian Genocide, to their strategic resettlement within the Ottoman Empire. It highlights their repeated experiences of uprooting, including the loss of communities in the Golan Heights in 1967 and the scattering caused by the Syrian Civil War since 2011. The document clarifies that the Circassian presence in Afrin is a result of recent administrative changes rather than historical settlement, with their established northern communities primarily located in Manbij and Shahba. Finally, it examines their precarious position within the multi-ethnic Autonomous Administration of North and East Syria (AANES), emphasizing their cultural resilience through the Adyghe Khabze and outlining recommendations for protecting their rights and addressing their uncertain future in a post-Assad Syria.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Circassians in Afrin_ Research Plan_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Circassians - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Circassians" target="_blank">https://en.wikipedia.org/wiki/Circassians</a></li>
+<li>​ The Circassian Genocide - ResearchGate, accessed June 19, 2025, <a href="https://www.researchgate.net/publication/287243632_The_Circassian_Genocide" target="_blank">https://www.researchgate.net/publication/287243632_The_Circassian_Genocide</a></li>
+<li>​ Untitled - DoA Publication, accessed June 19, 2025, <a href="https://publication.doa.gov.jo/uploads/publications/19/SHAJ_4-417-421.pdf" target="_blank">https://publication.doa.gov.jo/uploads/publications/19/SHAJ_4-417-421.pdf</a></li>
+<li>​ THE CIRCASSIAN HERITAGE IN SYRIA WITHIN THE CONTEXT OF MULTIPLE DISPLACEMENTS - The Aleppo Project, accessed June 19, 2025, <a href="https://www.thealeppoproject.com/wp-content/uploads/2019/06/TheCircassianH" target="_blank">https://www.thealeppoproject.com/wp-content/uploads/2019/06/TheCircassianH</a> eritageInSyriaWithinTheContextOfMultipleDisplacementsDimaMeiqari2019.pdf</li>
+<li>​ (PDF) THE CIRCASSIAN HERITAGE IN SYRIA WITHIN THE CONTEXT OF MULTIPLE DISPLACEMENTS - ResearchGate, accessed June 19, 2025, <a href="https://www.researchgate.net/publication/348751608_THE_CIRCASSIAN_HERITAG" target="_blank">https://www.researchgate.net/publication/348751608_THE_CIRCASSIAN_HERITAG</a> E_IN_SYRIA_WITHIN_THE_CONTEXT_OF_MULTIPLE_DISPLACEMENTS</li>
+<li>​ Adyghe Xabze - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Adyghe_Xabze" target="_blank">https://en.wikipedia.org/wiki/Adyghe_Xabze</a></li>
+<li>​ Circassian Religion and Beliefs - jaimoukha, accessed June 19, 2025, <a href="http://jaimoukha.synthasite.com/resources/Circassian%20Religion.pdf" target="_blank">http://jaimoukha.synthasite.com/resources/Circassian%20Religion.pdf</a></li>
+<li>​ Circassian genocide - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Circassian_genocide" target="_blank">https://en.wikipedia.org/wiki/Circassian_genocide</a></li>
+<li>​ CIRCASSIAN PRIDE AND PAIN - ICEJ, accessed June 19, 2025, <a href="https://www.icej.org/blog/circassian-pride-and-pain/" target="_blank">https://www.icej.org/blog/circassian-pride-and-pain/</a></li>
+<li>​شركس - ويكيبيديا, accessed June 19, 2025, <a href="https://ar.wikipedia.org/wiki/%D8%B4%D8%B1%D9%83%D8%B3" target="_blank">https://ar.wikipedia.org/wiki/%D8%B4%D8%B1%D9%83%D8%B3</a></li>
+<li>​Circassians in Syria - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Circassians_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Circassians_in_Syria</a></li>
+<li>​How Syria&#x27;s Circassians preserved their cultural heritage - Enab Baladi, accessed June 19, 2025, <a href="https://english.enabbaladi.net/archives/2020/08/how-syrias-circassians-preserve" target="_blank">https://english.enabbaladi.net/archives/2020/08/how-syrias-circassians-preserve</a> d-their-cultural-heritage/</li>
+<li>​6 سنوات على سقوط ..عفرين. .ماذ حد للأكراد, accessed June 19, 2025 <a href="https://www.irfaasawtak.com/minorities/2024/03/22/6-%D8%B3%D9%86%D9%88" target="_blank">https://www.irfaasawtak.com/minorities/2024/03/22/6-%D8%B3%D9%86%D9%88</a> %D8%A7%D8%AA-%D8%B3%D9%82%D9%88%D8%B7-%D8%B9%D9%81%D8% B1%D9%8A%D9%86-%D8%AD%D8%AF%D8%AB-%D9%84%D9%84%D8%A3%D 9%83%D8%B1%D8%A7%D8%AF%D8%9F?ocid=Nabd_App&amp;_wrapper_format=ht ml&amp;page=64</li>
+<li>​List of ethnic cleansing campaigns - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/List_of_ethnic_cleansing_campaigns" target="_blank">https://en.wikipedia.org/wiki/List_of_ethnic_cleansing_campaigns</a></li>
+<li>​Syria&#x27;s Circassians mark genocide for first time in Damascus - The New Arab, accessed June 19, 2025, <a href="https://www.newarab.com/news/syrias-circassians-mark-genocide-first-time-da" target="_blank">https://www.newarab.com/news/syrias-circassians-mark-genocide-first-time-da</a> mascus</li>
+<li>​syria | bluebirdmaps, accessed June 19, 2025, <a href="https://bluebirdmaps.com/tag/syria/" target="_blank">https://bluebirdmaps.com/tag/syria/</a></li>
+<li>​Empire of Refugees: Introduction | Stanford University Press, accessed June 19, 2025, <a href="https://www.sup.org/books/middle-east-studies/empire-refugees/excerpt/introdu" target="_blank">https://www.sup.org/books/middle-east-studies/empire-refugees/excerpt/introdu</a> ction</li>
+<li>​SYRIAN CIRCASSIANS, accessed June 19, 2025, <a href="https://www.croworld.org/wp-content/uploads/2014/05/Syrian-Circassians.pdf" target="_blank">https://www.croworld.org/wp-content/uploads/2014/05/Syrian-Circassians.pdf</a></li>
+<li>​Circassians of Syria: A History of Migration - Fanack, accessed June 19, 2025, <a href="https://fanack.com/syria/society-of-syria/circassians-of-syria-a-history-of-migrati" target="_blank">https://fanack.com/syria/society-of-syria/circassians-of-syria-a-history-of-migrati</a> on/</li>
+<li>​Circassian Community in Syria Safe Amid Power Transition, Says Adyghe Khase, accessed June 19, 2025, <a href="https://abkhazworld.com/aw/current-affairs/2904-circassian-community-in-syria-" target="_blank">https://abkhazworld.com/aw/current-affairs/2904-circassian-community-in-syria-</a> safe-amid-power-transition-says-adyghe-khase</li>
+<li>​Changing Borders and Women as the Narrator: The Case of Syrian Circassians, accessed June 19, 2025, <a href="https://iccsor.com/index.php/jatss/article/view/212" target="_blank">https://iccsor.com/index.php/jatss/article/view/212</a></li>
+<li>​Afrin Region - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Afrin_Region" target="_blank">https://en.wikipedia.org/wiki/Afrin_Region</a></li>
+<li>​عفرين - ويكيبيديا, accessed June 19, 2025, <a href="https://ar.wikipedia.org/wiki/%D8%B9%D9%81%D8%B1%D9%8A%D9%86" target="_blank">https://ar.wikipedia.org/wiki/%D8%B9%D9%81%D8%B1%D9%8A%D9%86</a></li>
+<li>​Demographic map of Afrin District - Soar.Earth, accessed June 19, 2025, <a href="https://soar.earth/maps/demographic-map-of-afrin-district-135190" target="_blank">https://soar.earth/maps/demographic-map-of-afrin-district-135190</a></li>
+<li>​Category:Maps of Afrin District - Wikimedia Commons, accessed June 19, 2025, <a href="https://commons.wikimedia.org/wiki/Category:Maps_of_Afrin_District" target="_blank">https://commons.wikimedia.org/wiki/Category:Maps_of_Afrin_District</a></li>
+<li>​Черкесы в Сирии - Википедия, accessed June 19, 2025, <a href="https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D1%80%D0%BA%D0%B5%D1%" target="_blank">https://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D1%80%D0%BA%D0%B5%D1%</a> 81%D1%8B_%D0%B2_%D0%A1%D0%B8%D1%80%D0%B8%D0%B8</li>
+<li>​Suriye Çerkesleri - Vikipedi, accessed June 19, 2025, <a href="https://tr.wikipedia.org/wiki/Suriye_%C3%87erkesleri" target="_blank">https://tr.wikipedia.org/wiki/Suriye_%C3%87erkesleri</a></li>
+<li>​Suriye Çerkesleri – KAFFED, accessed June 19, 2025, <a href="https://kaffed.org/2005/06/15/suriye-cerkesleri/" target="_blank">https://kaffed.org/2005/06/15/suriye-cerkesleri/</a></li>
+<li>​Syria - Minority Rights Group, accessed June 19, 2025, <a href="https://minorityrights.org/country/syria/" target="_blank">https://minorityrights.org/country/syria/</a></li>
+<li>​Syria&#x27;s Kurdish Northeast Ratifies a New Constitution - New Lines Magazine, accessed June 19, 2025, <a href="https://newlinesmag.com/argument/syrias-kurdish-northeast-ratifies-a-new-con" target="_blank">https://newlinesmag.com/argument/syrias-kurdish-northeast-ratifies-a-new-con</a> stitution/</li>
+<li>​Kuzey ve Doğu Suriye Demokratik Özerk Yönetimi Bölgesi - Vikipedi, accessed June 19, 2025, <a href="https://tr.wikipedia.org/wiki/Kuzey_ve_Do%C4%9Fu_Suriye_Demokratik_%C3%96" target="_blank">https://tr.wikipedia.org/wiki/Kuzey_ve_Do%C4%9Fu_Suriye_Demokratik_%C3%96</a> zerk_Y%C3%B6netimi_B%C3%B6lgesi</li>
+<li>​Shahba / Shehba – Co-operation in Mesopotamia, accessed June 19, 2025, <a href="https://mesopotamia.coop/cities/shahba/" target="_blank">https://mesopotamia.coop/cities/shahba/</a></li>
+<li>​en.wikipedia.org, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Manbij#:~:text=The%20Ottoman%20government%2" target="_blank">https://en.wikipedia.org/wiki/Manbij#:~:text=The%20Ottoman%20government%2</a> 0resettled%20the,Manbij%20during%20the%20Armenian%20genocide.</li>
+<li>​Is This the End of the Road for Circassians in Syria? By Fehim Tastekin - AbkhazWorld, accessed June 19, 2025, <a href="https://abkhazworld.com/aw/analysis/2931-is-this-the-end-of-the-road-for-circas" target="_blank">https://abkhazworld.com/aw/analysis/2931-is-this-the-end-of-the-road-for-circas</a> sians-in-syria-by-fehim-tastekin</li>
+<li>​Manbij - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Manbij" target="_blank">https://en.wikipedia.org/wiki/Manbij</a></li>
+<li>​Manbij (Minbic / Mumbuj) - Co-operation in Mesopotamia, accessed June 19, 2025, <a href="https://mesopotamia.coop/cities/manbij/" target="_blank">https://mesopotamia.coop/cities/manbij/</a></li>
+<li>​Manbij - Brill Reference Works, accessed June 19, 2025, <a href="https://referenceworks.brill.com/display/entries/EI3O/COM-36154.xml" target="_blank">https://referenceworks.brill.com/display/entries/EI3O/COM-36154.xml</a></li>
+<li>​Manbij Military Council - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Manbij_Military_Council" target="_blank">https://en.wikipedia.org/wiki/Manbij_Military_Council</a></li>
+<li>​Manbij: A model for the future Syria - ANF, accessed June 19, 2025, <a href="https://anfenglishmobile.com/culture/manbij-a-model-for-the-future-syria-37533" target="_blank">https://anfenglishmobile.com/culture/manbij-a-model-for-the-future-syria-37533</a></li>
+<li>​Circassian Remembrance Day &amp; The Long Legacy of Circassians in Syria - Wanabqa, accessed June 19, 2025, <a href="https://www.wanabqa.com/circassian-remembrance-day-the-long-legacy-of-cir" target="_blank">https://www.wanabqa.com/circassian-remembrance-day-the-long-legacy-of-cir</a> cassians-in-syria/</li>
+<li>​Syrian Regime Loses Support from Circassian Community - The Jamestown Foundation, accessed June 19, 2025, <a href="https://jamestown.org/program/syrian-regime-loses-support-from-circassian-co" target="_blank">https://jamestown.org/program/syrian-regime-loses-support-from-circassian-co</a> mmunity-2/</li>
+<li>​Operation Olive Branch - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Operation_Olive_Branch" target="_blank">https://en.wikipedia.org/wiki/Operation_Olive_Branch</a></li>
+<li>​Cultivating Chaos: Afrin after Operation Olive Branch, accessed June 19, 2025, <a href="https://www.ceasefire.org/wp-content/uploads/2020/07/CFR_Syria_EN_July20.pd" target="_blank">https://www.ceasefire.org/wp-content/uploads/2020/07/CFR_Syria_EN_July20.pd</a> f</li>
+<li>​ما بعد عمليات غصن&quot;الزي &quot;في ين- ير , accessed June 19, <a href="https://www.aljazeera.net/blogs/2018/3/27/%D9%85%D8%A7-%D8%A8%D8%B9" target="_blank">https://www.aljazeera.net/blogs/2018/3/27/%D9%85%D8%A7-%D8%A8%D8%B9</a> %D8%AF-%D8%B9%D9%85%D9%84%D9%8A%D8%A7%D8%AA-%D8%BA%D8 %B5%D9%86-%D8%A7%D9%84%D8%B2%D9%8A%D8%AA%D9%88%D9%86-% D9%81%D9%8A-%D8%B9%D9%81%D8%B1%D9%8A%D9%86</li>
+<li>​The Needs and Priorities of the Victims in Northern Syria and Ways to Seek Justice for Them, accessed June 19, 2025, <a href="https://stj-sy.org/en/the-needs-and-priorities-of-the-victims-in-northern-syria-a" target="_blank">https://stj-sy.org/en/the-needs-and-priorities-of-the-victims-in-northern-syria-a</a> nd-ways-to-seek-justice-for-them/</li>
+<li>​Escalating human rights violations in Syria&#x27;s Afrin: 2024 update, accessed June 19, 2025, <a href="https://www.ceasefire.org/wp-content/uploads/2024/05/Ceasefire-report-Afrin-2" target="_blank">https://www.ceasefire.org/wp-content/uploads/2024/05/Ceasefire-report-Afrin-2</a> 024-update.pdf</li>
+<li>​International Crimes in Afrin in northern Syria: Federal Public Prosecutor&#x27;s Office must investigate - ECCHR, accessed June 19, 2025, <a href="https://www.ecchr.eu/en/press-release/international-crimes-in-afrin-in-northern-" target="_blank">https://www.ecchr.eu/en/press-release/international-crimes-in-afrin-in-northern-</a> syria-federal-public-prosecutors-office-must-investigate/</li>
+<li>​The Impact of Conflicts on Women&#x27;s Rights in Syria - Capire, accessed June 19, 2025, <a href="https://capiremov.org/en/analysis/the-impact-of-conflicts-on-womens-rights-in-" target="_blank">https://capiremov.org/en/analysis/the-impact-of-conflicts-on-womens-rights-in-</a> syria/</li>
+<li>​SDF urges joining mobilization as Turkey-backed groups escalate attacks - Rudaw, accessed June 19, 2025, <a href="https://www.rudaw.net/english/middleeast/syria/011220243" target="_blank">https://www.rudaw.net/english/middleeast/syria/011220243</a></li>
+<li>​Suriye arşivleri - Jineps Gazetesi, accessed June 19, 2025, <a href="https://jinepsgazetesi.com/category/cografya/diaspora/ortadogu/suriye/" target="_blank">https://jinepsgazetesi.com/category/cografya/diaspora/ortadogu/suriye/</a></li>
+<li>​Escalating violations in Syria&#x27;s Afrin – 2024 update - Syrian Arab Republic | ReliefWeb, accessed June 19, 2025, <a href="https://reliefweb.int/report/syrian-arab-republic/escalating-violations-syrias-afrin-" target="_blank">https://reliefweb.int/report/syrian-arab-republic/escalating-violations-syrias-afrin-</a> 2024-update</li>
+<li>​Syria: Türkiye-backed Armed Groups Detain, Extort Civilians | Human Rights Watch, accessed June 19, 2025, <a href="https://www.hrw.org/news/2025/05/14/syria-turkiye-backed-armed-groups-detai" target="_blank">https://www.hrw.org/news/2025/05/14/syria-turkiye-backed-armed-groups-detai</a> n-extort-civilians</li>
+<li>​Adyghe in Syria Profile - Joshua Project, accessed June 19, 2025, <a href="https://joshuaproject.net/people_groups/print/10161/SY" target="_blank">https://joshuaproject.net/people_groups/print/10161/SY</a></li>
+<li>​Circassian Customs &amp; Traditions, accessed June 19, 2025, <a href="https://www.circassianworld.com/pdf/Circassian_Customs_and_Traditions.pdf" target="_blank">https://www.circassianworld.com/pdf/Circassian_Customs_and_Traditions.pdf</a></li>
+<li>​شركس سوريا - ويكيبيديا, accessed June 19, 2025, <a href="https://ar.wikipedia.org/wiki/%D8%B4%D8%B1%D9%83%D8%B3_%D8%B3%D9%8" target="_blank">https://ar.wikipedia.org/wiki/%D8%B4%D8%B1%D9%83%D8%B3_%D8%B3%D9%8</a> 8%D8%B1%D9%8A%D8%A7</li>
+<li>​An Exploration into the Formations of a Ghost: Gendered Terrains of Circassian Diaspora Nationalism in Turkey - DergiPark, accessed June 19, 2025, <a href="https://dergipark.org.tr/en/download/article-file/2046858" target="_blank">https://dergipark.org.tr/en/download/article-file/2046858</a></li>
+<li>​Changing Borders and Women as the Narrator: The Case of Syrian Circassians, accessed June 19, 2025, <a href="https://www.iccsor.com/index.php/jatss/article/view/212" target="_blank">https://www.iccsor.com/index.php/jatss/article/view/212</a></li>
+<li>​Women in NE Syria play great role in shaping AANES structure - North press agency, accessed June 19, 2025, <a href="https://npasyria.com/en/110736/" target="_blank">https://npasyria.com/en/110736/</a></li>
+<li>​Circassians from North Caucasus to Syria mark anniversary of Circassian Genocide - OC Media, accessed June 19, 2025, <a href="https://oc-media.org/circassians-from-north-caucasus-to-syria-mark-anniversar" target="_blank">https://oc-media.org/circassians-from-north-caucasus-to-syria-mark-anniversar</a> y-of-circassian-genocide/</li>
+<li>​Damascus Hosts First Circassian Day of Mourning Event in Decades - The Media Line, accessed June 19, 2025, <a href="https://themedialine.org/headlines/damascus-hosts-first-circassian-day-of-mour" target="_blank">https://themedialine.org/headlines/damascus-hosts-first-circassian-day-of-mour</a> ning-event-in-decades/</li>
+<li>​Statement of the Circassian Community in Syria Regarding the Claims of the Zionist Entity Offering Aid to Syrian Circassians and Coordinating with Them for Separation from Syria. Full translation to English in the comments. - Reddit, accessed June 19, 2025, <a href="https://www.reddit.com/r/Syria/comments/1j8qsnx/statement_of_the_circassian_c" target="_blank">https://www.reddit.com/r/Syria/comments/1j8qsnx/statement_of_the_circassian_c</a> ommunity_in_syria/</li>
+<li>​The threat minorities face in Syria - Index on Censorship, accessed June 19, 2025, <a href="https://www.indexoncensorship.org/2025/06/threat-minorities-syria-alawite-com" target="_blank">https://www.indexoncensorship.org/2025/06/threat-minorities-syria-alawite-com</a> munity/</li>
+<li>​The future of minorities in post-Assad Syria: Steering a fragile path - The Armenian Weekly, accessed June 19, 2025, <a href="https://armenianweekly.com/2025/01/14/the-future-of-minorities-in-post-assad-" target="_blank">https://armenianweekly.com/2025/01/14/the-future-of-minorities-in-post-assad-</a> syria-steering-a-fragile-path/</li>
+<li>​Circassian diaspora - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Circassian_diaspora" target="_blank">https://en.wikipedia.org/wiki/Circassian_diaspora</a></li>
+<li>​Circassians in Jordan - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Circassians_in_Jordan" target="_blank">https://en.wikipedia.org/wiki/Circassians_in_Jordan</a></li>
+<li>​The unwanted: Syrian Circassians in their historic homeland - OC Media, accessed June 19, 2025, <a href="https://oc-media.org/the-unwanted-syrian-circassians-in-their-historic-homelan" target="_blank">https://oc-media.org/the-unwanted-syrian-circassians-in-their-historic-homelan</a> d/</li>
+<li>​A Troubled Return to the Homeland: Syrian Circassians in Southern Russia - ResearchGate, accessed June 19, 2025, <a href="https://www.researchgate.net/publication/366537008_A_Troubled_Return_to_the" target="_blank">https://www.researchgate.net/publication/366537008_A_Troubled_Return_to_the</a> _Homeland_Syrian_Circassians_in_Southern_Russia</li>
+<li>​Post-Assad Era and the Circassians, by Omer Aytek Kurmel - AbkhazWorld, accessed June 19, 2025, <a href="https://abkhazworld.com/aw/diaspora/2917-post-assad-era-and-the-circassians-" target="_blank">https://abkhazworld.com/aw/diaspora/2917-post-assad-era-and-the-circassians-</a> by-omer-aytek-kurmel</li>
+<li>​استشهاد رفيقنا المقاتل برخدان&quot; &quot;بحاد ع س ي - YouTube, acces 2025, <a href="https://www.youtube.com/watch?v=OWrUJeO06QY" target="_blank">https://www.youtube.com/watch?v=OWrUJeO06QY</a></li>
+<li>​اعتقاالت بالعشرات في تركيا إلخماد الغضب من معركة عفرين - سكاي نيوز عربية, accessed June 19, 2025, <a href="https://www.skynewsarabia.com/world/1015483-%D8%A7%D8%B9%D8%AA%D9" target="_blank">https://www.skynewsarabia.com/world/1015483-%D8%A7%D8%B9%D8%AA%D9</a> %82%D8%A7%D9%84%D8%A7%D8%AA-%D8%A8%D8%A7%D9%84%D8%B9% D8%B4%D8%B1%D8%A7%D8%AA-%D8%AA%D8%B1%D9%83%D9%8A%D8%A7 -%D9%84%D8%A7%D9%95%D8%AE%D9%85%D8%A7%D8%AF-%D8%A7%D9% 84%D8%BA%D8%B6%D8%A8-%D9%85%D8%B9%D8%B1%D9%83%D8%A9-%D 8%B9%D9%81%D8%B1%D9%8A%D9%86</li>
+<li>​الشَّهيد ّاألممي /هوكور&quot; شاه ى عاً - YouTube, access 2025, <a href="https://www.youtube.com/watch?v=InT36PwgJkA" target="_blank">https://www.youtube.com/watch?v=InT36PwgJkA</a></li>
+<li>​أكاديمية الشهيد دلكش عفرين لقوات الكوماندوس تخرج دورة جديدة في ديرالزور - YouTube, accessed June 19, 2025, <a href="https://www.youtube.com/watch?v=PF4BNVOIuCM" target="_blank">https://www.youtube.com/watch?v=PF4BNVOIuCM</a></li>
+<li>​TÜRKİYE&#x27;DEKİ ÇERKES KÖYLERİ - CircassianCenter, accessed June 19, 2025, <a href="https://www.circassiancenter.com/tr/turkiyedeki-cerkes-koyleri/" target="_blank">https://www.circassiancenter.com/tr/turkiyedeki-cerkes-koyleri/</a></li>
+<li>​Zeytin Dalı Harekatı: Güncel Afrin Son Durum Haritası - Stratejik Ortak, accessed June 19, 2025, <a href="https://stratejikortak.com/2020/01/zeytin-dali-harekati-harita.html" target="_blank">https://stratejikortak.com/2020/01/zeytin-dali-harekati-harita.html</a></li>
+<li>​30 Dairelik bir Çerkes &#x27;Köyü&#x27; - Jineps Gazetesi, accessed June 19, 2025, <a href="https://jinepsgazetesi.com/2011/10/30-dairelik-bir-cerkes-koyu/" target="_blank">https://jinepsgazetesi.com/2011/10/30-dairelik-bir-cerkes-koyu/</a></li>
+<li>​Afrin&#x27;de köy ve meydan isimleri değiştiriliyor - Kurdistan24, accessed June 19, 2025, <a href="https://www.kurdistan24.net/tr/story/493520" target="_blank">https://www.kurdistan24.net/tr/story/493520</a></li>
+<li>​Fundraiser by Operation Olive Branch - GoFundMe, accessed June 19, 2025, <a href="https://www.gofundme.com/f/operationolivebranch" target="_blank">https://www.gofundme.com/f/operationolivebranch</a></li>
+<li>​عملية غصن الزيتون - ويكيبيديا, accessed June 19, 2025, <a href="https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D9%8A%D8%A9_%D8%" target="_blank">https://ar.wikipedia.org/wiki/%D8%B9%D9%85%D9%84%D9%8A%D8%A9_%D8%</a> BA%D8%B5%D9%86_%D8%A7%D9%84%D8%B2%D9%8A%D8%AA%D9%88%D 9%86</li>
+<li>​ :تركيا: , accessed June 19, 2025, <a href="https://aawsat.com/home/article/1152961/%D8%AA%D8%B1%D9%83%D9%8A%D" target="_blank">https://aawsat.com/home/article/1152961/%D8%AA%D8%B1%D9%83%D9%8A%D</a> 8%A7-%D8%A7%D8%B3%D8%AA%D9%85%D8%B1%D8%A7%D8%B1-%D8%B9 %D9%85%D9%84%D9%8A%D8%A9-%D8%B9%D9%81%D8%B1%D9%8A%D9%8 6-%D8%AD%D8%AA%D9%89-%D8%B9%D9%88%D8%AF%D8%A9-%D8%A7%D 9%84%D9%84%D8%A7%D8%AC%D8%A6%D9%8A%D9%86-%D8%A7%D9%84 %D8%B3%D9%88%D8%B1%D9%8A%D9%8A%D9%86</li>
+<li>​Çerkeslerin (Adigelerin) içki kültürü: Фадэ (Fade) İçki - Jineps Gazetesi, accessed June 19, 2025, <a href="https://jinepsgazetesi.com/2018/02/cerkeslerin-adigelerin-icki-kulturu/" target="_blank">https://jinepsgazetesi.com/2018/02/cerkeslerin-adigelerin-icki-kulturu/</a></li>
+<li>​Koçyiğit: Suriye&#x27;deki anlaşma devam eden Alevi kıyımını durdurmak açısından da çok önemli bir adımdır | DEM Parti, accessed June 19, 2025, <a href="https://www.demparti.org.tr/tr/kocyigit-suriyedeki-anlasma-devam-eden-alevi-ki" target="_blank">https://www.demparti.org.tr/tr/kocyigit-suriyedeki-anlasma-devam-eden-alevi-ki</a> yimini-durdurmak-acisindan-da-cok-onemli-bir-adimdir/21791</li>
+<li>​Suriye&#x27;de din - Vikipedi, accessed June 19, 2025, <a href="https://tr.wikipedia.org/wiki/Suriye%27de_din" target="_blank">https://tr.wikipedia.org/wiki/Suriye%27de_din</a></li>
+<li>​Human rights in the DAANES - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Human_rights_in_the_DAANES" target="_blank">https://en.wikipedia.org/wiki/Human_rights_in_the_DAANES</a></li>
+<li>​2022 Country Reports on Human Rights Practices: Turkey (Türkiye) - State Department, accessed June 19, 2025, <a href="https://www.state.gov/reports/2022-country-reports-on-human-rights-practices/" target="_blank">https://www.state.gov/reports/2022-country-reports-on-human-rights-practices/</a> turkey/</li>
+<li>​Afrin, Syria - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Afrin,_Syria" target="_blank">https://en.wikipedia.org/wiki/Afrin,_Syria</a></li>
+<li>​Athr: A new voice reviving culture in Syria., accessed June 19, 2025, <a href="https://theglobalcoalition.org/en/athr-a-new-voice-reviving-culture-in-syria/" target="_blank">https://theglobalcoalition.org/en/athr-a-new-voice-reviving-culture-in-syria/</a></li>
+<li>​Рожава - Википедия, accessed June 19, 2025, <a href="https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D0%B6%D0%B0%D0%B2%D0%" target="_blank">https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D0%B6%D0%B0%D0%B2%D0%</a> B0</li>
+<li>​Черкесская мечеть на границе Сирии и Израиля - Puerrtto - LiveJournal, accessed June 19, 2025, <a href="https://puerrtto.livejournal.com/1142538.html" target="_blank">https://puerrtto.livejournal.com/1142538.html</a></li>
+<li>​Африн – город, ставший домом для многих конфессий. -ANHA, accessed June 19, 2025, <a href="https://hawarnews.com/ru/1521191220446" target="_blank">https://hawarnews.com/ru/1521191220446</a></li>
+<li>​Afrin offensive map : r/MapPorn - Reddit, accessed June 19, 2025, <a href="https://www.reddit.com/r/MapPorn/comments/1bpppuo/afrin_offensive_map/" target="_blank">https://www.reddit.com/r/MapPorn/comments/1bpppuo/afrin_offensive_map/</a></li>
+<li>​2023 Country Reports on Human Rights Practices: Jordan - State Department, accessed June 19, 2025, <a href="https://www.state.gov/reports/2023-country-reports-on-human-rights-practices/" target="_blank">https://www.state.gov/reports/2023-country-reports-on-human-rights-practices/</a> jordan/</li>
+<li>​Syria - Human Rights Watch, accessed June 19, 2025, <a href="https://www.hrw.org/reports/1996/Syria.htm" target="_blank">https://www.hrw.org/reports/1996/Syria.htm</a></li>
+<li>​Minorities Protection Barriers Assessment in North-West Syria (May ..., accessed June 19, 2025, <a href="https://reliefweb.int/report/syrian-arab-republic/minorities-protection-barriers-as" target="_blank">https://reliefweb.int/report/syrian-arab-republic/minorities-protection-barriers-as</a> sessment-north-west-syria-may-2025</li>
+<li>​2022 Country Reports on Human Rights Practices: Syria - State Department, accessed June 19, 2025, <a href="https://www.state.gov/reports/2022-country-reports-on-human-rights-practices/" target="_blank">https://www.state.gov/reports/2022-country-reports-on-human-rights-practices/</a> syria/</li>
+<li>​An uncertain future for Syrian refugees in Lebanon – New report highlights challenges of life in exile and barriers to return - Minority Rights Group, accessed June 19, 2025, <a href="https://minorityrights.org/an-uncertain-future-for-syrian-refugees-in-lebanon-ne" target="_blank">https://minorityrights.org/an-uncertain-future-for-syrian-refugees-in-lebanon-ne</a> w-report-highlights-challenges-of-life-in-exile-and-barriers-to-return/</li>
+<li>​Full article: Autonomising Conflict: Conflict Transportation in Online Activity among Kurdish and Turkish Diasporas in Denmark, accessed June 19, 2025, <a href="https://www.tandfonline.com/doi/full/10.1080/17449057.2023.2199604" target="_blank">https://www.tandfonline.com/doi/full/10.1080/17449057.2023.2199604</a></li>
+<li>​Towards definitive management of allergic rhinitis: best use of new and established therapies, accessed June 19, 2025, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7251701/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC7251701/</a></li>
+<li>​Talk:Shahba Canton - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/en:Talk:Shahba_region" target="_blank">https://en.wikipedia.org/wiki/en:Talk:Shahba_region</a></li>
+<li>​Security situation in North and East Syria before the downfall of the Assad government, accessed June 19, 2025, <a href="https://us.dk/media/14pkvx2b/thematic-report-feb-2025_security-situation-in-n-" target="_blank">https://us.dk/media/14pkvx2b/thematic-report-feb-2025_security-situation-in-n-</a> and-e-syria-before-the-downfall-of-assad-government.pdf</li>
+<li>​ Part 1- CaucasTalk Podcast Interview Circassian 101 - YouTube, accessed June 19, 2025, <a href="https://www.youtube.com/watch?v=0LbW70dQs7E" target="_blank">https://www.youtube.com/watch?v=0LbW70dQs7E</a></li>
+<li>​ Circling the Circassian Identity - Futuress, accessed June 19, 2025, <a href="https://futuress.org/stories/circling-the-circassian-identity/" target="_blank">https://futuress.org/stories/circling-the-circassian-identity/</a></li>
+<li>​ Diasporic representations: A study of Circassian and Armenian identities in Greater Syria., accessed June 19, 2025, <a href="https://deepblue.lib.umich.edu/handle/2027.42/127025" target="_blank">https://deepblue.lib.umich.edu/handle/2027.42/127025</a></li>
+<li>​ Syria&#x27;s Circassian leaders reject foreign interference - YouTube, accessed June 19, 2025, <a href="https://www.youtube.com/watch?v=ge-3bqadZN0" target="_blank">https://www.youtube.com/watch?v=ge-3bqadZN0</a></li>
+<li>​ Syria&#x27;s Circassian leaders reject foreign interference, accessed June 19, 2025, <a href="https://www.trtworld.com/video/news/syrias-circassian-leaders-reject-foreign-int" target="_blank">https://www.trtworld.com/video/news/syrias-circassian-leaders-reject-foreign-int</a> erference-18270773</li>
+<li>​ SNHR&#x27;s 14th Annual Report on the State of Human Rights in Syria for the Year 2024, accessed June 19, 2025, <a href="https://snhr.org/blog/2025/05/21/snhrs-14th-annual-report-on-the-state-of-huma" target="_blank">https://snhr.org/blog/2025/05/21/snhrs-14th-annual-report-on-the-state-of-huma</a> n-rights-in-syria-for-the-year-2024/</li>
+<li>​ Cabinet okays NIS 4 billion plan to boost country&#x27;s Druze, Circassians over 5 years, accessed June 19, 2025, <a href="https://www.timesofisrael.com/cabinet-okays-nis-4-billion-plan-to-boost-countr" target="_blank">https://www.timesofisrael.com/cabinet-okays-nis-4-billion-plan-to-boost-countr</a> ys-druze-circassians-over-5-years/</li>
+<li>​ Israeli gov&#x27;t approved five year plan for Druze, Circassian communities | The Jerusalem Post, accessed June 19, 2025, <a href="https://www.jpost.com/israel-news/article-845359" target="_blank">https://www.jpost.com/israel-news/article-845359</a></li>
+<li>​ STJ&#x27;s Contribution to the Call for Inputs: What are Minority Issues?, accessed June 19, 2025, <a href="https://stj-sy.org/en/stjs-contribution-to-the-call-for-inputs-what-are-minority-is" target="_blank">https://stj-sy.org/en/stjs-contribution-to-the-call-for-inputs-what-are-minority-is</a> sues/</li>
+<li>​ Circassian beauty - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Circassian_beauty" target="_blank">https://en.wikipedia.org/wiki/Circassian_beauty</a></li>
+<li>​ What do Circassians and Armenians have in common and what do they think about each other? - Quora, accessed June 19, 2025, <a href="https://www.quora.com/What-do-Circassians-and-Armenians-have-in-common-" target="_blank">https://www.quora.com/What-do-Circassians-and-Armenians-have-in-common-</a> and-what-do-they-think-about-each-other</li>
+<li>​ Afrin&#x27;s Yazidis: An Ancient Culture Edges Toward the Precipice - The Kurdish Center for Studies, accessed June 19, 2025, <a href="https://nlka.net/eng/afrins-rich-and-millennia-old-yazidi-culture-edges-to-the-pr" target="_blank">https://nlka.net/eng/afrins-rich-and-millennia-old-yazidi-culture-edges-to-the-pr</a> ecipice/</li>
+<li>​ Who are the Circassians and How Did They End Up in the Middle East? | Alia Azouqa, accessed June 19, 2025, <a href="https://m.youtube.com/watch?v=X_ATG74AuxM" target="_blank">https://m.youtube.com/watch?v=X_ATG74AuxM</a></li>
+<li>​ How Circassians are reclaiming their roots after 100 years of suppression, accessed June 19, 2025, <a href="https://www.trtworld.com/perspectives/how-circassians-are-reclaiming-their-roo" target="_blank">https://www.trtworld.com/perspectives/how-circassians-are-reclaiming-their-roo</a> ts-after-100-years-of-suppression-28103</li>
+<li>​ Circassians Archives - GeoCurrents, accessed June 19, 2025, <a href="https://www.geocurrents.info/blog/tag/circassians/" target="_blank">https://www.geocurrents.info/blog/tag/circassians/</a></li>
+<li>​ Circassian Nationalism | PDF | Caucasus - Scribd, accessed June 19, 2025, <a href="https://www.scribd.com/document/538908668/Circassian-nationalism-1" target="_blank">https://www.scribd.com/document/538908668/Circassian-nationalism-1</a></li>
+<li>​ New Syria and the Kurdish Dilemma: A New Chapter or the Same Old Story? | IIEA, accessed June 19, 2025, <a href="https://www.iiea.com/blog/new-syria-and-the-kurdish-dilemma-a-new-chapter-" target="_blank">https://www.iiea.com/blog/new-syria-and-the-kurdish-dilemma-a-new-chapter-</a> or-the-same-old-story</li>
+<li>​ Democratic Autonomous Administration of North and East Syria - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Democratic_Autonomous_Administration_of_North_" target="_blank">https://en.wikipedia.org/wiki/Democratic_Autonomous_Administration_of_North_</a> and_East_Syria</li>
+<li>​ To help build the new Syria, the US needs to better understand the Kurds and Arabs of the northeast - Atlantic Council, accessed June 19, 2025, <a href="https://www.atlanticcouncil.org/blogs/menasource/syria-northeast-kurds-and-ar" target="_blank">https://www.atlanticcouncil.org/blogs/menasource/syria-northeast-kurds-and-ar</a> abs/</li>
+<li>​ Kurds in Syria - Wikipedia, accessed June 19, 2025, <a href="https://en.wikipedia.org/wiki/Kurds_in_Syria" target="_blank">https://en.wikipedia.org/wiki/Kurds_in_Syria</a></li>
+<li>​ After a Century, the Question of the Kurds&#x27; Place in Syria Remains Unresolved, accessed June 19, 2025, <a href="https://newlinesmag.com/essays/after-a-century-the-question-of-the-kurds-plac" target="_blank">https://newlinesmag.com/essays/after-a-century-the-question-of-the-kurds-plac</a> e-in-syria-remains-unresolved/</li>
+<li>​ For the first time in Syria, the Circassian community of Syrian citizens commemorated the Circassian Day of Mourning in Umayyad Square in the capital, Damascus, marking the 161st anniversary of the forced displacement of Circassians from their ancestral homeland in the Caucasus. - Reddit, accessed June 19, 2025, <a href="https://www.reddit.com/r/Syria/comments/1ks72x4/for_the_first_time_in_syria_the" target="_blank">https://www.reddit.com/r/Syria/comments/1ks72x4/for_the_first_time_in_syria_the</a> _circassian/</li>
+<li>​ The Return to Circassia - New Lines Magazine, accessed June 19, 2025, <a href="https://newlinesmag.com/spotlight/the-return-to-circassia/" target="_blank">https://newlinesmag.com/spotlight/the-return-to-circassia/</a></li>
+<li>​ Model Arab League - Annotated Bibliography for Syria, accessed June 19, 2025, <a href="https://modelarableague.ncusar.org/wp-content/uploads/2025/02/Annotated-Bibl" target="_blank">https://modelarableague.ncusar.org/wp-content/uploads/2025/02/Annotated-Bibl</a> iography-Syria.pdf</li>
+<li>​ Syria: Looking Beyond the Kurdish Crisis to Long Term Instability and a Near Certain Future of Civil Violence - CSIS, accessed June 19, 2025, <a href="https://www.csis.org/analysis/syria-looking-beyond-kurdish-crisis-long-term-inst" target="_blank">https://www.csis.org/analysis/syria-looking-beyond-kurdish-crisis-long-term-inst</a> ability-and-near-certain-future-civil</li>
+<li>​ The Kurds in Ethno-Religious Conflicts and Their Relations with Regional and International Powers: A Comparative Analysis of Iraq and Syria, 2003-2020 - ResearchGate, accessed June 19, 2025, <a href="https://www.researchgate.net/publication/357680290_The_Kurds_in_Ethno-Religi" target="_blank">https://www.researchgate.net/publication/357680290_The_Kurds_in_Ethno-Religi</a> ous_Conflicts_and_Their_Relations_with_Regional_and_International_Powers_A_C omparative_Analysis_of_Iraq_and_Syria_2003-2020</li>
+<li>​ The Last Ottoman Rogues: The Kurdish–Armenian Alliance in Syria and the New State System in the Interwar Middle East - Edinburgh University Press, accessed June 19, 2025, <a href="https://edinburghuniversitypress.com/pub/media/resources/9781474462624_Chap" target="_blank">https://edinburghuniversitypress.com/pub/media/resources/9781474462624_Chap</a> ter_12.pdf</li>
+<li>​ Full article: Ethnopolitics to geopolitics: the Turkish State and the Kurdish question since 2015 - Taylor &amp; Francis Online: Peer-reviewed Journals, accessed June 19, 2025, <a href="https://www.tandfonline.com/doi/full/10.1080/13530194.2022.2043146" target="_blank">https://www.tandfonline.com/doi/full/10.1080/13530194.2022.2043146</a></li>
+<li>​ Gender Roles In Syria - ArcGIS StoryMaps, accessed June 19, 2025, <a href="https://storymaps.arcgis.com/stories/dfa570fd87074dac80e0ae1dabf2b040" target="_blank">https://storymaps.arcgis.com/stories/dfa570fd87074dac80e0ae1dabf2b040</a></li>
+<li>​ What do Arabs from Jordan think of Circassians? - Quora, accessed June 19, 2025, <a href="https://www.quora.com/What-do-Arabs-from-Jordan-think-of-Circassians" target="_blank">https://www.quora.com/What-do-Arabs-from-Jordan-think-of-Circassians</a></li>
+<li>​ From Refugees to Founders: studying legacy of Circassians, Chechens in Jordan&#x27;s history, accessed June 19, 2025, <a href="https://jordantimes.com/news/local/refugees-founders-studying-legacy-circassia" target="_blank">https://jordantimes.com/news/local/refugees-founders-studying-legacy-circassia</a> ns-chechens-jordans-history</li>
+<li>​ Exile from the Caucasus - Google Sites, accessed June 19, 2025, <a href="https://sites.google.com/view/circassianexile/home" target="_blank">https://sites.google.com/view/circassianexile/home</a></li>
+<li>​ accessed January 1, 1970, https.www.researchgate.net/publication/287243632_The_Circassian_Genocide</li>
+<li>​ accessed January 1, 1970, https.www.ecchr.eu/en/press-release/international-crimes-in-afrin-in-northern-s yria-federal-public-prosecutors-office-must-investigate/</li>
+<li>​ accessed January 1, 1970, https.www.hrw.org/news/2025/05/14/syria-turkiye-backed-armed-groups-detain -extort-civilians</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: June 19, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
