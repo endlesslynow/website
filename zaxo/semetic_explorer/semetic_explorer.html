@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Semitic Language Family Tree with Gemini AI</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #front-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #001f3f, #003366);
+            color: #f8f9fa;
+        }
+
+        #front-page h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 700px;
+            text-align: left;
+            margin-bottom: 3.5rem;
+        }
+        
+        .explanation-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.2s;
+        }
+        
+        .explanation-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .explanation-card h3 {
+            font-size: 1.3em;
+            color: #58a6ff;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+        
+        .explanation-card p {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: #adb5bd;
+            margin: 0;
+        }
+
+        #enter-btn {
+            padding: 16px 48px;
+            font-size: 1.4em;
+            font-weight: 700;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            box-shadow: 0 4px 20px rgba(0, 123, 255, 0.3);
+        }
+        #enter-btn:hover {
+            background-color: #0069d9;
+            transform: scale(1.05);
+        }
+
+        #main-app {
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 15px 25px;
+            border-bottom: 1px solid #dee2e6;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        
+        #toggle-expand-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        #toggle-expand-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .main-container {
+            display: flex;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        #tree-container {
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #info-panel {
+            width: 380px;
+            min-width: 300px;
+            background-color: #ffffff;
+            border-left: 1px solid #dee2e6;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+            padding: 20px;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+        
+        #info-panel h2 {
+            margin-top: 0;
+            font-size: 1.2em;
+            color: #0056b3;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        #info-panel p {
+            margin: 0 0 15px 0;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        #info-panel strong {
+            color: #495057;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        #info-panel .placeholder {
+            color: #6c757d;
+            font-style: italic;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .node circle { cursor: pointer; stroke-width: 2px; }
+        .node text {
+            font-size: 11px;
+            font-weight: 500;
+            paint-order: stroke;
+            stroke: #f8f9fa;
+            stroke-width: 3px;
+            stroke-linecap: butt;
+            stroke-linejoin: round;
+            cursor: pointer;
+        }
+        .link { fill: none; stroke: #ced4da; stroke-width: 1.5px; }
+        
+        .ai-warning {
+            font-size: 0.8em;
+            color: #856404;
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin: 20px 0 15px 0;
+        }
+        
+        .gemini-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .gemini-btn {
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            background: linear-gradient(145deg, #868e96, #5a6268);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s ease-in-out, transform 0.1s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        .gemini-btn:hover {
+            background: linear-gradient(145deg, #6c757d, #495057);
+            transform: translateY(-1px);
+        }
+        .gemini-btn:disabled {
+            background: #adb5bd;
+            cursor: not-allowed;
+            transform: translateY(0);
+        }
+
+        #gemini-output {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f1f3f5;
+            border-radius: 5px;
+            border: 1px solid #e9ecef;
+            min-height: 50px;
+            font-size: 0.85em;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+        
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div id="front-page">
+        <h1>Semitic Language Family Explorer</h1>
+        
+        <div class="explanation-grid">
+            <div class="explanation-card">
+                <h3>Explore the Tree</h3>
+                <p>Navigate the language family by clicking on nodes to expand or collapse branches. Pan and zoom to focus on different areas.</p>
+            </div>
+             <div class="explanation-card">
+                <h3>View Details</h3>
+                <p>Hover over any language or dialect to see its key information in the side panel on the right.</p>
+            </div>
+             <div class="explanation-card">
+                <h3>See Everything</h3>
+                <p>Use the "Expand All" button in the top right to reveal the entire language family tree at once.</p>
+            </div>
+             <div class="explanation-card">
+                <h3>Discover with AI</h3>
+                <p>Use the Gemini-powered buttons to generate fun facts or see a sample text with translation.</p>
+            </div>
+        </div>
+
+        <button id="enter-btn">Start</button>
+    </div>
+
+    <div id="main-app">
+        <div class="header">
+            <h1>Interactive Semitic Language Family Tree</h1>
+            <button id="toggle-expand-btn">Expand All</button>
+        </div>
+
+        <div class="main-container">
+            <div id="tree-container"></div>
+            <div id="info-panel">
+                <div id="info-content">
+                    <h2>Details</h2>
+                    <p class="placeholder">Hover over a language or dialect to see its details here.</p>
+                </div>
+                <div id="gemini-area" style="display: none;">
+                    <p class="ai-warning">Warning: Responses are generated by AI and may not be factual!</p>
+                    <div class="gemini-controls">
+                         <button id="fun-facts-btn" class="gemini-btn">✨ Fun Facts</button>
+                         <button id="sample-text-btn" class="gemini-btn">✨ Sample Text</button>
+                    </div>
+                    <div id="gemini-output" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const treeData = { /* The large JSON data object remains unchanged here */
+          "name": "Proto-Afroasiatic",
+          "children": [
+            {
+              "name": "Proto-Semitic",
+              "attributes": { "Urheimat": "Levant (c. 3750 BC)", "Info": "Common ancestor of all Semitic languages. Characterized by triconsonantal roots." },
+              "children": [
+                {
+                  "name": "East Semitic",
+                  "status": "extinct",
+                  "attributes": { "Location": "Ancient Mesopotamia", "Key Feature": "Subject-Object-Verb word order from Sumerian influence." },
+                  "children": [
+                    {
+                      "name": "Akkadian †", "status": "extinct",
+                      "attributes": { "Period": "c. 2500 BC – 100 AD", "Info": "Earliest attested Semitic language. Used cuneiform script." },
+                      "children": [
+                        {"name": "Assyrian", "status": "extinct", "attributes": {"Location":"North Mesopotamia"}},
+                        {"name": "Babylonian", "status": "extinct", "attributes": {"Location":"South Mesopotamia"}}
+                      ]
+                    },
+                    { "name": "Eblaite †", "status": "extinct", "attributes": { "Period": "c. 2400 BC", "Location": "Ebla (Syria)", "Note": "Classification debated; shows both East and West Semitic features." } }
+                  ]
+                },
+                {
+                  "name": "West Semitic",
+                  "children": [
+                    {
+                      "name": "Central Semitic",
+                      "attributes": {"Key Innovation": "Imperfect verb form 'ya-qtulu', distinguishing it from South Semitic."},
+                      "children": [
+                        {
+                          "name": "Arabic & Sayhadic",
+                          "children": [
+                            {
+                              "name": "Ancient South Arabian †",
+                              "status": "extinct",
+                              "attributes": {"AKA": "Sayhadic", "Location": "Ancient Yemen (kingdoms of Sheba, etc.)", "Note": "NOT the ancestor of Modern South Arabian languages."},
+                              "children": [
+                                {"name": "Sabaean †", "status": "extinct"},
+                                {"name": "Minaean †", "status": "extinct"},
+                                {"name": "Qatabanian †", "status": "extinct"},
+                                {"name": "Hadramitic †", "status": "extinct"}
+                              ]
+                            },
+                            {
+                              "name": "Arabic",
+                              "children": [
+                                {"name": "Old Arabic †", "status": "extinct", "attributes": {"Note": "Attested in Safaitic and Hismaic inscriptions."}},
+                                {"name": "Classical Arabic", "status": "extinct", "attributes": {"Info": "Language of the Qur'an; basis for Modern Standard Arabic."}},
+                                {"name": "Modern Standard Arabic (MSA)", "attributes": {"Usage": "Formal, literary, and media language across the Arab world."}},
+                                {
+                                    "name": "Modern Dialects",
+                                    "children": [
+                                        {"name": "Levantine (Shami)"},
+                                        {"name": "Egyptian & Sudanese"},
+                                        {"name": "Mesopotamian"},
+                                        {"name": "Maghrebi (Darija)"},
+                                        {"name": "Peninsular"},
+                                        {"name": "Maltese", "attributes": {"Note": "The only Semitic language written in the Latin alphabet."}}
+                                    ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Northwest Semitic",
+                          "attributes": {"Location": "Ancient Levant"},
+                          "children": [
+                            { "name": "Ugaritic †", "status": "extinct", "attributes": {"Period": "c. 14th-12th c. BC", "Location": "Ugarit (Syria)", "Script": "Alphabetic cuneiform"} },
+                            {
+                              "name": "Canaanite",
+                              "children": [
+                                { "name": "Phoenician †", "status": "extinct", "children": [{"name": "Punic †", "status": "extinct", "Location": "Carthage"}] },
+                                { 
+                                  "name": "Hebrew", 
+                                  "children": [
+                                    {"name": "Biblical Hebrew †", "status": "extinct"},
+                                    {"name": "Mishnaic Hebrew †", "status": "extinct"},
+                                    {"name": "Modern Hebrew", "attributes": {"Note": "Successfully revived as a spoken language."}}
+                                  ]
+                                },
+                                { "name": "Moabite †", "status": "extinct" },
+                                { "name": "Ammonite †", "status": "extinct" },
+                                { "name": "Edomite †", "status": "extinct" }
+                              ]
+                            },
+                            {
+                              "name": "Aramoid",
+                              "children": [
+                                {
+                                  "name": "Proto-Aramaic",
+                                  "attributes": { "Info": "The common ancestor of all attested Aramaic languages" },
+                                  "children": [
+                                    { "name": "I. Old Aramaic", "status": "extinct", "attributes": { "Period": "ca. 900 – 600 BC" },
+                                      "children": [
+                                        {"name": "Sam'alian (Ya'udic)", "status": "extinct", "attributes": {"Geographic Location":"Shamʾal (Zincirli), NW Syria","Period":"ca. 9th-8th c. BC"}},
+                                        {"name": "Early Western Syrian", "status": "extinct", "attributes": {"Geographic Location":"Aleppo to Damascus, Syria","Period":"ca. 900–700 BC"}},
+                                        {"name": "Tell Fakhariyya Aramaic", "status": "extinct", "attributes": {"Geographic Location":"Tell Fekheriye, NE Syria","Period":"ca. 9th c. BC", "Notes":"Oldest substantial text; Akkadian influence"}}
+                                      ]
+                                    },
+                                    { "name": "II. Imperial Aramaic", "status": "extinct", "attributes": { "Period": "ca. 600 – 200 BC" },
+                                      "children": [{"name": "Official/Standard Literary Aramaic", "status": "extinct", "attributes": {"Geographic Location":"Near East (Achaemenid Empire)","Period":"ca. 600–200 BC","Notes":"Language of Elephantine Papyri, biblical Ezra & Daniel."}}]
+                                    },
+                                    { "name": "III. Middle Aramaic", "attributes": { "Period": "ca. 200 BC – 250/300 AD", "Notes": "Definitive split into Western and Eastern branches" },
+                                      "children": [
+                                        { "name": "A. Western Branch", "status": "extinct", "children": [
+                                            {"name": "Nabataean Aramaic †", "status": "extinct", "attributes": {"Geographic Location":"Petra (Jordan)","Period":"ca. 1st c. BC–4th c. AD"}},
+                                            {"name": "Early Jewish Palestinian", "status": "extinct", "attributes": {"Geographic Location":"Judea (Palestine)","Period":"ca. 200 BC–250 AD"}},
+                                            {"name": "Early Samaritan", "status": "extinct", "attributes": {"Geographic Location":"Samaria","Period":"ca. 200 BC–250 AD"}}
+                                          ]
+                                        },
+                                        { "name": "B. Eastern & Transitional", "status": "extinct", "children": [
+                                            {"name": "Palmyrene Aramaic †", "status": "extinct", "attributes": {"Geographic Location":"Palmyra, Syrian Desert","Period":"ca. 44 BC–274 AD"}},
+                                            {"name": "Hatran Aramaic †", "status": "extinct", "attributes": {"Geographic Location":"Hatra, N. Mesopotamia","Period":"ca. 1st–3rd c. AD"}},
+                                            {"name": "Edessan (Proto-Syriac)", "status": "extinct", "attributes": {"Geographic Location":"Edessa (Urfa), SE Turkey","Period":"From 6 AD"}},
+                                            {"name": "Early Jewish Babylonian", "status": "extinct", "attributes": {"Geographic Location":"Babylonia (Iraq)","Period":"ca. 200 BC–250 AD"}}
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    { "name": "IV. Late Aramaic", "attributes": { "Period": "ca. 250 – 700/1200 AD" },
+                                      "children": [
+                                        { "name": "A. Western Branch", "status": "extinct", "children": [
+                                            {"name": "Jewish Palestinian (Galilean)", "status": "extinct", "attributes": {"Geographic Location":"Palestine (Galilee)","Period":"ca. 250–1000 AD", "Notes":"Language of Jerusalem Talmud"}},
+                                            {"name": "Samaritan Aramaic", "status": "extinct", "attributes": {"Geographic Location":"Samaria","Period":"ca. 250–1200 AD"}},
+                                            {"name": "Christian Palestinian Aramaic †", "status": "extinct", "attributes": {"Geographic Location":"Palestine, Transjordan","Period":"ca. 5th–13th c. AD"}}
+                                          ]
+                                        },
+                                        { "name": "B. Eastern Branch", "status": "extinct", "children": [
+                                            {"name": "Classical Syriac", "status": "extinct", "attributes": {"Geographic Location":"Mesopotamia, Persia, Syria","Period":"ca. 3rd–13th c. AD"}, "children":[
+                                                {"name": "Western Syriac (Serto)", "status": "extinct", "attributes": {"Notes": "Used by Syriac Orthodox & Maronite Churches"}},
+                                                {"name": "Eastern Syriac (Madnhāyā)", "status": "extinct", "attributes": {"Notes": "Used by the Church of the East"}}
+                                            ]},
+                                            {"name": "Jewish Babylonian Aramaic", "status": "extinct", "attributes": {"Geographic Location":"Babylonia (Iraq)","Period":"ca. 3rd–11th c. AD","Notes":"Language of Babylonian Talmud"}},
+                                            {"name": "Classical Mandaic", "status": "extinct", "attributes": {"Geographic Location":"S. Mesopotamia, Khuzestan (Iran)","Period":"From 3rd c. AD"}}
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    { "name": "V. Neo-Aramaic (Modern)", "attributes": { "Period": "ca. 700/1200 AD – Present" },
+                                      "children": [
+                                        { "name": "A. Western Neo-Aramaic (WNA)", "children": [{"name": "Maaloula dialect", "attributes": {"Geographic Location":"Anti-Lebanon Mtns, Syria","Period":"ca. 1200 AD–Present","Speakers":"Christian & Muslim Arameans", "Status":"Highly Endangered"}}] },
+                                        { "name": "B. Eastern Neo-Aramaic", "children": [
+                                            { "name": "Central (CNA)", "children": [
+                                                {"name": "Turoyo (Surayt)", "attributes": {"Geographic Location":"Tur Abdin, Turkey & Diaspora","Period":"ca. 1200 AD–Present","Speakers":"Syriac Orthodox Christians", "Status":"Endangered"}},
+                                                {"name": "Mlahsô †", "status":"extinct", "attributes": {"Geographic Location":"Diyarbakır, Turkey","Period":"Extinct 1998"}}
+                                            ]},
+                                            { "name": "Northeastern (NENA)", "attributes": {"Notes": "Highly diverse cluster of ~150 dialects"}, "children": [
+                                                {"name": "Christian NENA", "children": [
+                                                    {"name": "Assyrian Neo-Aramaic", "attributes": {"Geographic Location":"Urmia (Iran), Hakkari (Turkey), Iraq & Diaspora", "Status":"Endangered"}},
+                                                    {"name": "Chaldean Neo-Aramaic", "attributes": {"Geographic Location":"Nineveh Plains (Iraq) & Diaspora", "Status":"Endangered"}},
+                                                    {"name": "Senaya", "attributes": {"Geographic Location":"Sanandaj (Iran) & Diaspora", "Status":"Endangered"}}
+                                                ]},
+                                                {"name": "Jewish NENA", "children": [
+                                                    {"name": "Lishana Deni (Zakho)", "attributes": {"Geographic Location":"Zakho (Iraq), now Israel","Period":"ca. 1200 AD–Present","Speakers":"Jews from Zakho", "Status":"Critically Endangered"}},
+                                                    {"name": "Lishanid Noshan (Erbil)", "attributes": {"Geographic Location":"Erbil (Iraq), now Israel", "Status":"Critically Endangered"}}
+                                                ]}
+                                            ]},
+                                            {"name": "Neo-Mandaic", "attributes": {"Geographic Location":"Khuzestan (Iran)","Period":"ca. 1200 AD–Present","Speakers":"Mandaeans","Status":"Critically Endangered"}}
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "South Semitic",
+                      "attributes": {"Key Feature": "Retained archaic 'ya-qattal' imperfect verb.", "Note": "Comprises two geographically separate groups."},
+                      "children": [
+                        {
+                          "name": "Modern South Arabian",
+                          "attributes": {"Location": "S. Arabian Peninsula (Yemen, Oman)", "Note": "Highly archaic; preserves Proto-Semitic sounds lost elsewhere."},
+                          "children": [
+                            {"name": "Mehri", "attributes": {"Status": "Endangered"}},
+                            {"name": "Soqotri", "attributes": {"Status": "Endangered"}},
+                            {"name": "Shehri (Jibbali)", "attributes": {"Status": "Endangered"}},
+                            {"name": "Harsusi", "attributes": {"Status": "Critically Endangered"}},
+                            {"name": "Bathari", "attributes": {"Status": "Critically Endangered"}},
+                            {"name": "Hobyot", "attributes": {"Status": "Critically Endangered"}}
+                          ]
+                        },
+                        {
+                          "name": "Ethio-Semitic",
+                          "attributes": {"Origin": "Migration from South Arabia to Horn of Africa (c. 800 BC)", "Influence": "Strong contact with Cushitic languages."},
+                          "children": [
+                            {
+                              "name": "North Ethiopic",
+                              "children": [
+                                {"name": "Ge'ez †", "status": "extinct", "attributes": {"Info": "Liturgical language of Ethiopian & Eritrean Orthodox Churches."}},
+                                {"name": "Tigre"},
+                                {"name": "Tigrinya"},
+                                {"name": "Dahalik"}
+                              ]
+                            },
+                            {
+                              "name": "South Ethiopic",
+                              "children": [
+                                { "name": "Amharic", "attributes": {"Note": "Official language of Ethiopia; adopted SOV word order from Cushitic."} },
+                                { "name": "Harari" },
+                                { "name": "Gurage languages" }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        };
+
+        const svg = d3.select("#tree-container").append("svg");
+        const g = svg.append("g");
+        
+        const tree = d3.tree().nodeSize([30, 220]);
+        const root = d3.hierarchy(treeData);
+        let i = 0;
+        
+        root.eachAfter(node => {
+            if (node.children) node.data.isAlive = node.children.some(child => child.data.isAlive);
+            else node.data.isAlive = node.data.status !== 'extinct';
+        });
+
+        root.eachBefore(d => {
+            d.id = ++i;
+            d.x0 = 0;
+            d.y0 = 0;
+            if(d.children) d._children = d.children;
+        });
+
+        function update(source) {
+            tree(root);
+            const nodes = root.descendants().reverse();
+            const links = root.links();
+            const transition = svg.transition().duration(350);
+
+            g.selectAll("path.link").data(links, d => d.target.id).join(
+                enter => enter.append("path").attr("class", "link").attr("d", d3.linkHorizontal().x(d => source.y0).y(d => source.x0)),
+                update => update,
+                exit => exit.transition(transition).remove().attr("d", d3.linkHorizontal().x(d => source.y).y(d => source.x))
+            ).transition(transition).attr("d", d3.linkHorizontal().x(d => d.y).y(d => d.x));
+
+            const node = g.selectAll("g.node").data(nodes, d => d.id);
+
+            const nodeEnter = node.enter().append("g")
+                .attr("class", "node")
+                .attr("transform", `translate(${source.y0 || root.y},${source.x0 || root.x})`)
+                .style("opacity", 0)
+                .on("click", (event, d) => {
+                    d.children = d.children ? null : d._children;
+                    update(d);
+                })
+                .on("mouseover", (event, d) => updateInfoPanel(d));
+
+            nodeEnter.append("circle").attr("r", 6);
+            nodeEnter.append("text").attr("dy", ".35em").text(d => d.data.name.replace(' †', '')).clone(true).lower().attr("stroke-linejoin", "round").attr("stroke-width", 3).attr("stroke", "#f8f9fa");
+            
+            const nodeUpdate = node.merge(nodeEnter).transition(transition)
+                .attr("transform", d => `translate(${d.y},${d.x})`).style("opacity", 1);
+            
+            nodeUpdate.select('circle').attr("r", d => d._children ? 8 : 6)
+                .style("fill", d => d._children ? "#007bff" : getNodeColor(d))
+                .style("stroke", d => d3.color(getNodeColor(d)).darker(1));
+
+            nodeUpdate.select('text').attr("x", d => d.children || d._children ? -12 : 12)
+                .attr("text-anchor", d => d.children || d._children ? "end" : "start");
+
+            node.exit().transition(transition).attr("transform", `translate(${source.y},${source.x})`).style("opacity", 0).remove();
+                
+            root.each(d => { d.x0 = d.x; d.y0 = d.y; });
+        }
+        
+        const toggleBtn = document.getElementById('toggle-expand-btn');
+        let isExpanded = false;
+
+        function collapse(d) {
+            if (d.children) { d._children = d.children; d._children.forEach(collapse); d.children = null; }
+        }
+        function expand(d) {
+            if (d._children) { d.children = d._children; }
+            if (d.children) { d.children.forEach(expand); }
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            isExpanded = !isExpanded;
+            isExpanded ? expand(root) : collapse(root);
+            toggleBtn.textContent = isExpanded ? 'Collapse All' : 'Expand All';
+            update(root);
+        });
+
+        if(root.children) root.children.forEach(collapse);
+        update(root);
+        
+        function getNodeColor(d) {
+             return d.data.isAlive === false ? "#6c757d" : "#28a745";
+        }
+        
+        const infoContent = document.getElementById("info-content");
+        const geminiArea = document.getElementById("gemini-area");
+        const geminiOutput = document.getElementById("gemini-output");
+        const funFactsBtn = document.getElementById("fun-facts-btn");
+        const sampleTextBtn = document.getElementById("sample-text-btn");
+        let currentLanguage = '';
+
+        function updateInfoPanel(d) {
+            infoContent.innerHTML = "";
+            currentLanguage = d.data.name.replace(' †', '');
+            infoContent.insertAdjacentHTML('beforeend', `<h2>${currentLanguage}</h2>`);
+            
+            const statusText = d.data.isAlive ? "Living Branch" : "Extinct Branch";
+            const statusColor = d.data.isAlive ? "#28a745" : "#6c757d";
+            infoContent.insertAdjacentHTML('beforeend', `<p><strong>Status:</strong> <span style="color: ${statusColor}; font-weight: bold;">${statusText}</span></p>`);
+
+            if (d.data.attributes) {
+                Object.entries(d.data.attributes).forEach(([key, value]) => {
+                    infoContent.insertAdjacentHTML('beforeend', `<p><strong>${key}:</strong> ${value}</p>`);
+                });
+                geminiArea.style.display = "block";
+                geminiOutput.style.display = "none";
+                geminiOutput.innerHTML = "";
+            } else if (!d.children && !d._children) {
+                 infoContent.insertAdjacentHTML('beforeend', `<p class="placeholder">No detailed attributes available for this entry.</p>`);
+                 geminiArea.style.display = "none";
+            } else {
+                 infoContent.insertAdjacentHTML('beforeend', `<p class="placeholder">This is a category node. Expand it by clicking to see specific languages and dialects.</p>`);
+                 geminiArea.style.display = "none";
+            }
+        }
+        
+        async function callGemini(prompt) {
+            geminiOutput.style.display = "block";
+            geminiOutput.innerHTML = '<div class="loader"></div>';
+            funFactsBtn.disabled = true;
+            sampleTextBtn.disabled = true;
+            
+            const apiKey = "AIzaSyDFNdNJZ9oThIWfL406DLW57zbzaBAoTG4"; // Provided by environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+
+            try {
+                const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                if (!response.ok) throw new Error(`API request failed with status ${response.status}`);
+                const result = await response.json();
+                
+                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                    geminiOutput.innerHTML = result.candidates[0].content.parts[0].text.replace(/\*/g, '');
+                } else {
+                    throw new Error("Invalid response structure from API.");
+                }
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                geminiOutput.innerHTML = `<p style="color: red;">Sorry, couldn't fetch details. ${error.message}</p>`;
+            } finally {
+                funFactsBtn.disabled = false;
+                sampleTextBtn.disabled = false;
+            }
+        }
+
+        funFactsBtn.addEventListener('click', () => {
+            const prompt = `Tell me 3-4 interesting and fun facts about the ${currentLanguage} language. Keep it concise and present as a simple, un-numbered list, with each fact starting with a hyphen.`;
+            callGemini(prompt);
+        });
+
+        sampleTextBtn.addEventListener('click', () => {
+            const prompt = `Provide a short sample text (1-2 sentences) in ${currentLanguage}. Include the text in its native script (if available and not Latin), a simple Roman transliteration, and an English translation. Format it clearly with "Native:", "Transliteration:", and "Translation:" labels. If it's an ancient language like Akkadian or Ugaritic, a well-known short phrase or reconstructed example is acceptable.`;
+            callGemini(prompt);
+        });
+        
+        const frontPage = document.getElementById('front-page');
+        const mainApp = document.getElementById('main-app');
+        const enterBtn = document.getElementById('enter-btn');
+        const treeContainer = document.getElementById('tree-container');
+
+        enterBtn.addEventListener('click', () => {
+            frontPage.style.display = 'none';
+            mainApp.style.display = 'flex';
+            
+            const newWidth = treeContainer.offsetWidth;
+            const newHeight = treeContainer.offsetHeight;
+            svg.attr("width", newWidth).attr("height", newHeight);
+            
+            const zoomBehavior = d3.zoom().scaleExtent([0.1, 5]).on("zoom", (event) => g.attr("transform", event.transform));
+            svg.call(zoomBehavior);
+            
+            const initialTransform = d3.zoomIdentity.translate(50, newHeight / 2).scale(0.7);
+            svg.call(zoomBehavior.transform, initialTransform);
+        });
+
+        window.addEventListener('resize', () => {
+            if (mainApp.style.display !== 'none') {
+                 const newWidth = treeContainer.offsetWidth;
+                 const newHeight = treeContainer.offsetHeight;
+                 svg.attr("width", newWidth).attr("height", newHeight);
+            }
+        });
+
+    </script>
+</body>
+</html>
