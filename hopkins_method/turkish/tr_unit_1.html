@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hopkins Method Arabic: Unit 1: the basics</title>
+    <title>Hopkins Method Turkish: Unit 1: the basics</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* Light mode with reverted button/active colors */
         :root {
@@ -40,7 +40,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: background-color 0.3s, color 0.3s;
-            background-image: url('../hm_arabic_background.png');
+            background-image: url('../hm_arabic_background.png'); /* Note: Background image path kept same */
             background-repeat: repeat;
             background-size: auto;
             background-attachment: fixed;
@@ -49,9 +49,6 @@
         /* Revert dark mode background to solid color */
         html.dark body {
             background-image: none;
-        }
-        .font-arabic {
-            font-family: 'Noto Sans Arabic', sans-serif;
         }
         /* Make title black in light mode */
         html:not(.dark) h1 {
@@ -108,16 +105,13 @@
             opacity: 0.4;
             cursor: not-allowed;
         }
-        /* Make Arabic numbers black in light mode */
+        /* Make numbers black in light mode */
         html:not(.dark) .sentence-block > span {
             color: black;
         }
         /* Style for the theme toggle button circle in light mode */
         html:not(.dark) #theme-toggle {
             background-color: var(--card-bg);
-        }
-        [dir="rtl"] {
-            direction: rtl;
         }
 
         /* --- Completion Screen Styles --- */
@@ -167,7 +161,7 @@
         <header class="text-center mb-6 flex justify-between items-center">
             <div></div> <!-- Spacer -->
             <div>
-                <h1 class="text-3xl font-bold">Hopkins Method Arabic: Unit 1: the basics</h1>
+                <h1 class="text-3xl font-bold">Hopkins Method Turkish: Unit 1: the basics</h1>
             </div>
             <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                 <svg id="theme-icon-sun" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
@@ -179,7 +173,7 @@
 
         <main id="app-container">
             <div id="reader-view">
-                <div id="reader-content" class="text-2xl leading-loose font-arabic"></div>
+                <div id="reader-content" class="text-2xl leading-loose"></div>
                 <div class="text-center mt-8">
                     <button id="start-quiz-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg">Practice this Section</button>
                 </div>
@@ -192,7 +186,7 @@
                     </div>
                     <p id="quiz-prompt" class="text-xl font-semibold my-2 text-center"></p>
                     <div id="quiz-feedback" class="mb-4 text-center h-8 font-bold text-xl"></div>
-                    <div id="quiz-answer-area" class="min-h-[6rem] bg-[var(--bg-color)] p-4 rounded-lg flex flex-wrap-reverse gap-2 justify-start items-center font-arabic text-2xl border-2 border-transparent transition-all" dir="rtl"></div>
+                    <div id="quiz-answer-area" class="min-h-[6rem] bg-[var(--bg-color)] p-4 rounded-lg flex flex-wrap gap-2 justify-start items-center text-2xl border-2 border-transparent transition-all"></div>
                     <div id="quiz-word-bank" class="mt-6 flex flex-wrap gap-2 justify-center"></div>
                     <div id="quiz-button-container" class="mt-6 flex justify-center">
                         <button id="quiz-action-btn" class="text-white font-bold py-3 px-8 text-xl rounded-lg"></button>
@@ -201,7 +195,7 @@
                 <div id="completion-screen" class="hidden text-center p-8">
                     <div class="completion-text-container">
                         <span id="completion-en" class="completion-text">Congratulations!</span>
-                        <span id="completion-ar" class="completion-text hidden-lang font-arabic">مبروك!</span>
+                        <span id="completion-tr" class="completion-text hidden-lang">Tebrikler!</span>
                     </div>
                     <div class="flex justify-center gap-4 mt-4">
                         <button id="review-unit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg">Review Unit 1</button>
@@ -214,15 +208,15 @@
 
     <script>
         const UNIT_NUMBER = 1;
-        const LANGUAGE = "arabic"; // Define the language key used in the sentences array
+        const LANGUAGE = "turkish"; // Define the language key used in the sentences array
 
         // --- DATA ---
         const sentences = [
-            { arabic: "هذا بيت.", english: "This is a house." }, { arabic: "هذا رجل.", english: "This is a man." }, { arabic: "الرجل هنا.", english: "The man is here." }, { arabic: "الرجل في البيت.", english: "The man is in the house." }, { arabic: "هذه امرأة.", english: "This is a woman." }, { arabic: "هذا كتاب.", english: "This is a book." }, { arabic: "الرجل في البيت والمرأة هنا.", english: "The man is in the house and the woman is here." }, { arabic: "هذه سيارة.", english: "This is a car." }, { arabic: "هذا بيت كبير.", english: "This is a big house." }, { arabic: "هذا بيت صغير.", english: "This is a small house." },
-            { arabic: "هذا ولد.", english: "This is a boy." }, { arabic: "هذه بنت.", english: "This is a girl." }, { arabic: "الولد في السيارة الكبيرة.", english: "The boy is in the big car." }, { arabic: "البنت في البيت الصغير.", english: "The girl is in the small house." }, { arabic: "الولد الصغير هنا.", english: "The small boy is here." }, { arabic: "هذا قلم.", english: "This is a pen." }, { arabic: "القلم على الكتاب.", english: "The pen is on the book." }, { arabic: "هذا باب.", english: "This is a door." }, { arabic: "الباب كبير.", english: "The door is big." }, { arabic: "السيارة كبيرة.", english: "The car is big." },
-            { arabic: "هذه بنت صغيرة.", english: "This is a small girl." }, { arabic: "هذا ماء.", english: "This is water." }, { arabic: "الرجل ليس هنا.", english: "The man is not here." }, { arabic: "المرأة ليست هنا.", english: "The woman is not here." }, { arabic: "القلم ليس في البيت.", english: "The pen is not in the house." }, { arabic: "هذه طاولة.", english: "This is a table." }, { arabic: "الكتاب على الطاولة.", english: "The book is on the table." }, { arabic: "هذا كتاب جديد.", english: "This is a new book." }, { arabic: "هذا بيت قديم.", english: "This is an old house." }, { arabic: "هذه سيارة جديدة.", english: "This is a new car." },
-            { arabic: "هذه طاولة قديمة.", english: "This is an old table." }, { arabic: "هذه مدينة.", english: "This is a city." }, { arabic: "هذا شارع كبير.", english: "This is a big street." }, { arabic: "أين الرجل؟", english: "Where is the man?" }, { arabic: "الرجل في الشارع.", english: "The man is in the street." }, { arabic: "من هذا؟", english: "Who is this?" }, { arabic: "هذا طالب.", english: "This is a student." }, { arabic: "أنا طالب.", english: "I am a student." }, { arabic: "هذه طالبة.", english: "This is a student (f.)." }, { arabic: "هذا اسم.", english: "This is a name." },
-            { arabic: "هذا بيتي.", english: "This is my house." }, { arabic: "سيارتي صغيرة.", english: "My car is small." }, { arabic: "أنت ولد.", english: "You are a boy." }, { arabic: "هذا كتابكَ.", english: "This is your book." }, { arabic: "أين قلمكَ؟", english: "Where is your pen?" }, { arabic: "أنتِ بنت.", english: "You are a girl." }, { arabic: "هذا بيتكِ.", english: "This is your house." }, { arabic: "سيارتكِ ليست قديمة.", english: "Your car is not old." }, { arabic: "ما اسمكَ؟", english: "What is your name?" }, { arabic: "أنا طالب جديد وبيتي في المدينة.", english: "I am a new student and my house is in the city." }
+            { turkish: "Bu bir ev.", english: "This is a house." }, { turkish: "Bu bir adam.", english: "This is a man." }, { turkish: "Adam burada.", english: "The man is here." }, { turkish: "Adam evin içinde.", english: "The man is in the house." }, { turkish: "Bu bir kadın.", english: "This is a woman." }, { turkish: "Bu bir kitap.", english: "This is a book." }, { turkish: "Adam evde ve kadın burada.", english: "The man is in the house and the woman is here." }, { turkish: "Bu bir araba.", english: "This is a car." }, { turkish: "Bu büyük bir ev.", english: "This is a big house." }, { turkish: "Bu küçük bir ev.", english: "This is a small house." },
+            { turkish: "Bu bir erkek çocuk.", english: "This is a boy." }, { turkish: "Bu bir kız.", english: "This is a girl." }, { turkish: "Erkek çocuk büyük arabanın içinde.", english: "The boy is in the big car." }, { turkish: "Kız küçük evin içinde.", english: "The girl is in the small house." }, { turkish: "Küçük erkek çocuk burada.", english: "The small boy is here." }, { turkish: "Bu bir kalem.", english: "This is a pen." }, { turkish: "Kalem kitabın üstünde.", english: "The pen is on the book." }, { turkish: "Bu bir kapı.", english: "This is a door." }, { turkish: "Kapı büyük.", english: "The door is big." }, { turkish: "Araba büyük.", english: "The car is big." },
+            { turkish: "Bu küçük bir kız.", english: "This is a small girl." }, { turkish: "Bu su.", english: "This is water." }, { turkish: "Adam burada değil.", english: "The man is not here." }, { turkish: "Kadın burada değil.", english: "The woman is not here." }, { turkish: "Kalem evin içinde değil.", english: "The pen is not in the house." }, { turkish: "Bu bir masa.", english: "This is a table." }, { turkish: "Kitap masanın üstünde.", english: "The book is on the table." }, { turkish: "Bu yeni bir kitap.", english: "This is a new book." }, { turkish: "Bu eski bir ev.", english: "This is an old house." }, { turkish: "Bu yeni bir araba.", english: "This is a new car." },
+            { turkish: "Bu eski bir masa.", english: "This is an old table." }, { turkish: "Bu bir şehir.", english: "This is a city." }, { turkish: "Bu büyük bir cadde.", english: "This is a big street." }, { turkish: "Adam nerede?", english: "Where is the man?" }, { turkish: "Adam caddede.", english: "The man is in the street." }, { turkish: "Bu kim?", english: "Who is this?" }, { turkish: "Bu bir öğrenci.", english: "This is a student." }, { turkish: "Ben bir öğrenciyim.", english: "I am a student." }, { turkish: "Bu bir kız öğrenci.", english: "This is a student (f.)." }, { turkish: "Bu bir isim.", english: "This is a name." },
+            { turkish: "Bu benim evim.", english: "This is my house." }, { turkish: "Benim arabam küçük.", english: "My car is small." }, { turkish: "Sen bir erkek çocuksun.", english: "You are a boy." }, { turkish: "Bu senin kitabın.", english: "This is your book." }, { turkish: "Senin kalemin nerede?", english: "Where is your pen?" }, { turkish: "Sen bir kızsın.", english: "You are a girl." }, { turkish: "Bu senin evin.", english: "This is your house." }, { turkish: "Senin araban eski değil.", english: "Your car is not old." }, { turkish: "Senin adın ne?", english: "What is your name?" }, { turkish: "Ben yeni bir öğrenciyim ve evim şehirde.", english: "I am a new student and my house is in the city." }
         ];
 
         // --- STATE ---
@@ -253,10 +247,6 @@
         const sentencePlayer = document.getElementById('sentence-player');
 
         // --- UTILITY FUNCTIONS ---
-        const toArabicNumerals = (num) => {
-            const arabic = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-            return String(num).split('').map(i => arabic[i]).join('');
-        };
         const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
         // --- THEME ---
@@ -279,6 +269,8 @@
 
         // --- AUDIO FUNCTION ---
         function playSentenceAudio(globalIndex) {
+            // Assumes audio files are named like 'sentence_1.mp3', 'sentence_2.mp3', etc.
+            // and are located in a folder like 'turkish_audio/unit_1/'
             const audioPath = `${LANGUAGE}_audio/unit_${UNIT_NUMBER}/sentence_${globalIndex + 1}.mp3`;
             sentencePlayer.src = audioPath;
             sentencePlayer.play().catch(error => {
@@ -305,13 +297,12 @@
                 interactiveArea.classList.add('interactive-area');
                 interactiveArea.dataset.index = globalIndex;
                 interactiveArea.textContent = sentence[LANGUAGE];
-                interactiveArea.setAttribute('dir', 'rtl');
-
+                
                 const infoBox = document.createElement('div');
                 infoBox.classList.add('info-box');
-                infoBox.innerHTML = `<p class="text-xl font-semibold text-right">${sentence.english}</p>`;
+                infoBox.innerHTML = `<p class="text-xl font-semibold">${sentence.english}</p>`;
 
-                // FIX: Final working logic for hover/click
+                // Logic for hover/click to show translation and play audio
                 if (isTouchDevice) {
                     interactiveArea.addEventListener('click', () => {
                         playSentenceAudio(globalIndex);
@@ -331,11 +322,11 @@
                 interactiveContainer.appendChild(infoBox);
                 
                 const numberEl = document.createElement('span');
-                numberEl.textContent = toArabicNumerals(globalIndex + 1);
-                numberEl.classList.add('font-arabic', 'text-2xl', 'pt-3');
+                numberEl.textContent = globalIndex + 1; // Use regular numbers
+                numberEl.classList.add('text-2xl', 'pt-3', 'font-semibold');
                 
-                blockContainer.appendChild(interactiveContainer);
                 blockContainer.appendChild(numberEl);
+                blockContainer.appendChild(interactiveContainer);
                 readerContent.appendChild(blockContainer);
             });
             updateNavButtons();
@@ -353,9 +344,11 @@
 
         function toggleInfo(interactiveAreaEl) {
             const wasActive = interactiveAreaEl.classList.contains('active');
+            // Hide any other open info boxes
             document.querySelectorAll('.interactive-area.active').forEach(activeEl => {
                 hideInfo(activeEl);
             });
+            // If the clicked one wasn't the one that was open, open it
             if (!wasActive) {
                 showInfo(interactiveAreaEl);
             }
@@ -373,6 +366,7 @@
             const start = currentSection * 10;
             const end = start + 10;
             
+            // Get 5 random questions from the current section
             quizQuestions = sentences.slice(start, end).map((sentence, index) => ({
                 ...sentence,
                 originalIndex: start + index
@@ -396,13 +390,14 @@
             const question = quizQuestions[currentQuizIndex];
             quizPrompt.textContent = question.english;
 
-            const words = question[LANGUAGE].replace(/[.؟]/g, '').split(' ').filter(w => w);
+            // Create word bank from the Turkish sentence
+            const words = question[LANGUAGE].replace(/[.,?]/g, '').split(' ').filter(w => w);
             const shuffledWords = words.sort(() => 0.5 - Math.random());
             
             shuffledWords.forEach(word => {
                 const btn = document.createElement('button');
                 btn.textContent = word;
-                btn.className = 'word-bank-btn font-arabic text-2xl p-3 px-5 rounded-lg bg-[var(--card-bg-light)] transition-colors';
+                btn.className = 'word-bank-btn text-2xl p-3 px-5 rounded-lg bg-[var(--card-bg-light)] transition-colors';
                 btn.onclick = () => selectWord(btn);
                 quizWordBank.appendChild(btn);
             });
@@ -412,7 +407,7 @@
             btn.disabled = true;
             const answerBtn = document.createElement('button');
             answerBtn.textContent = btn.textContent;
-            answerBtn.className = 'answer-word-btn font-arabic text-2xl p-3 px-5 rounded-lg bg-[var(--active-color)] text-white';
+            answerBtn.className = 'answer-word-btn text-2xl p-3 px-5 rounded-lg bg-[var(--active-color)] text-white';
             answerBtn.onclick = () => deselectWord(answerBtn, btn);
             quizAnswerArea.appendChild(answerBtn);
             liveCheckAnswer();
@@ -428,7 +423,7 @@
             const answerWords = Array.from(quizAnswerArea.children).map(btn => btn.textContent);
             const constructedAnswer = answerWords.join(' ');
             const currentQuestion = quizQuestions[currentQuizIndex];
-            const correctAnswerText = currentQuestion[LANGUAGE].slice(0, -1);
+            const correctAnswerText = currentQuestion[LANGUAGE].replace(/[.,?]/g, '');
 
             quizFeedback.textContent = '';
             quizActionBtn.style.display = 'none';
@@ -445,6 +440,7 @@
                 quizActionBtn.className = 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
                 quizActionBtn.onclick = nextQuestion;
 
+                // Disable all buttons after correct answer
                 Array.from(quizWordBank.children).forEach(btn => btn.disabled = true);
                 Array.from(quizAnswerArea.children).forEach(btn => btn.onclick = null);
             }
@@ -460,6 +456,7 @@
                 if (currentSection >= numSections) {
                     showCompletionScreen();
                 } else {
+                    // Go to the next section's reader view
                     returnToReader(currentSection);
                 }
             }
@@ -469,15 +466,17 @@
             quizContent.classList.add('hidden');
             completionScreen.classList.remove('hidden');
             
+            // Confetti effect
             for (let i = 0; i < 100; i++) {
                 createConfetti();
             }
 
+            // Toggle between English and Turkish completion message
             const enText = document.getElementById('completion-en');
-            const arText = document.getElementById('completion-ar');
+            const trText = document.getElementById('completion-tr');
             langInterval = setInterval(() => {
                 enText.classList.toggle('hidden-lang');
-                arText.classList.toggle('hidden-lang');
+                trText.classList.toggle('hidden-lang');
             }, 2000);
         }
 
@@ -489,12 +488,12 @@
             confetti.style.left = Math.random() * 100 + 'vw';
             confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
             document.body.appendChild(confetti);
-            setTimeout(() => confetti.remove(), 5000);
+            setTimeout(() => confetti.remove(), 5000); // Clean up confetti elements
         }
 
         function reviewCurrentUnit() {
             if (langInterval) clearInterval(langInterval);
-            currentSection = 0; 
+            currentSection = 0; // Reset to the first section
             returnToReader(currentSection);
         }
 
@@ -512,7 +511,7 @@
             for (let i = 0; i < numSections; i++) {
                 const btn = document.createElement('button');
                 const start = i * 10 + 1;
-                const end = start + 9;
+                const end = Math.min(start + 9, sentences.length);
                 btn.textContent = `${start}-${end}`;
                 btn.className = 'nav-btn px-4 py-2 rounded-md font-semibold bg-[var(--card-bg-light)] transition-colors';
                 btn.onclick = () => {
@@ -539,8 +538,8 @@
         if (savedTheme) {
             setAndApplyTheme(savedTheme);
         } else {
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            setAndApplyTheme(systemPrefersDark ? 'dark' : 'light');
+            // Default to dark mode if no preference is set
+            setAndApplyTheme('dark');
         }
         
         populateNav();
