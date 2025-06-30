@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hopkins Method Arabic: Unit 1: the basics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Light mode with reverted button/active colors */
+        :root {
+            --bg-color: #CDE0BE;
+            --text-color: #2A623D;
+            --card-bg: #F0EAD6;
+            --card-bg-light: #f9fafb; /* Reverted from #FAF7ED */
+            --accent-color: #0D8A52;
+            --hover-color: #0f766e; /* Reverted from #2A623D */
+            --active-color: #115e59; /* Reverted from #1D4D8E */
+            --correct-color: #0D8A52;
+            --incorrect-color: #8C1C13;
+            --border-correct-color: #C9AD5B;
+        }
+        /* Original dark mode values */
+        html.dark {
+            --bg-color: #111827; /* gray-900 */
+            --text-color: #f9fafb; /* gray-50 */
+            --card-bg: #1f2937; /* gray-800 */
+            --card-bg-light: #374151; /* gray-700 */
+            --accent-color: #2dd4bf; /* teal-400 */
+            --hover-color: #14b8a6; /* teal-500 */
+            --active-color: #0d9488; /* teal-600 */
+            --correct-color: #34d399; /* green-400 */
+            --incorrect-color: #f87171; /* red-400 */
+            --border-correct-color: #fde047; /* yellow-300 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            background-image: url('../hm_arabic_background.png');
+            background-repeat: repeat;
+            background-size: auto;
+            background-attachment: fixed;
+            overflow-x: hidden; /* Prevent horizontal scroll from confetti */
+        }
+        /* Revert dark mode background to solid color */
+        html.dark body {
+            background-image: none;
+        }
+        .font-arabic {
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        /* Make title black in light mode */
+        html:not(.dark) h1 {
+            color: black;
+        }
+        .sentence-block {
+            margin-bottom: 1rem;
+        }
+        .interactive-area {
+            background-color: var(--card-bg-light);
+            transition: background-color 0.2s, color 0.2s;
+            cursor: pointer;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem 0.5rem 0 0;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+        }
+        /* Hover effect for dark mode */
+        html.dark .interactive-area:hover {
+            background-color: var(--hover-color);
+            color: white;
+        }
+        /* No hover effect for light mode */
+        html:not(.dark) .interactive-area:hover {
+            background-color: var(--card-bg-light);
+            color: var(--text-color);
+        }
+        /* Active (clicked) style ONLY for dark mode */
+        html.dark .interactive-area.active {
+            background-color: var(--active-color);
+            color: white; 
+        }
+        .info-box {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background-color: var(--card-bg);
+            border-radius: 0 0 0.5rem 0.5rem;
+            padding: 0 1.25rem;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+        }
+        .info-box.visible {
+            max-height: 200px;
+            padding: 1rem 1.25rem 1.25rem;
+        }
+        .nav-btn.active {
+            background-color: var(--active-color);
+            color: white;
+        }
+        /* Make quiz word bank button text black in light mode */
+        html:not(.dark) .word-bank-btn {
+            color: black;
+        }
+        .word-bank-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        /* Make Arabic numbers black in light mode */
+        html:not(.dark) .sentence-block > span {
+            color: black;
+        }
+        /* Style for the theme toggle button circle in light mode */
+        html:not(.dark) #theme-toggle {
+            background-color: var(--card-bg);
+        }
+        [dir="rtl"] {
+            direction: rtl;
+        }
+
+        /* --- Completion Screen Styles --- */
+        .completion-text-container {
+            position: relative;
+            height: 50px; /* Give it a fixed height to prevent layout shifts */
+            margin-bottom: 2rem;
+        }
+        .completion-text {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: bold;
+            transition: opacity 0.5s ease-in-out;
+        }
+        html:not(.dark) .completion-text {
+            color: black;
+        }
+        .completion-text.hidden-lang {
+            opacity: 0;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 3s linear forwards;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="w-full max-w-3xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-6 flex justify-between items-center">
+            <div></div> <!-- Spacer -->
+            <div>
+                <h1 class="text-3xl font-bold">Hopkins Method Arabic: Unit 1: the basics</h1>
+            </div>
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                <svg id="theme-icon-sun" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                <svg id="theme-icon-moon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+            </button>
+        </header>
+        
+        <!-- Section Navigation -->
+        <nav id="section-nav" class="flex flex-wrap justify-center gap-2 mb-8"></nav>
+
+        <!-- Main Content Area -->
+        <main id="app-container">
+            <!-- Reader View -->
+            <div id="reader-view">
+                <div id="reader-content" class="text-2xl leading-loose font-arabic"></div>
+                <div class="text-center mt-8">
+                    <button id="start-quiz-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg">Practice this Section</button>
+                </div>
+            </div>
+
+            <!-- Quiz View -->
+            <div id="quiz-view" class="hidden">
+                 <div id="quiz-content" class="bg-[var(--card-bg)] p-4 rounded-lg shadow-lg">
+                    <div class="flex justify-end items-baseline">
+                        <p id="quiz-progress" class="text-sm font-semibold text-gray-500 dark:text-gray-400"></p>
+                    </div>
+                    <p id="quiz-prompt" class="text-xl font-semibold my-2 text-center"></p>
+                    <div id="quiz-feedback" class="mb-4 text-center h-8 font-bold text-xl"></div>
+                    <div id="quiz-answer-area" class="min-h-[6rem] bg-[var(--bg-color)] p-4 rounded-lg flex flex-wrap-reverse gap-2 justify-start items-center font-arabic text-2xl border-2 border-transparent transition-all" dir="rtl"></div>
+                    <div id="quiz-word-bank" class="mt-6 flex flex-wrap gap-2 justify-center"></div>
+                    <div id="quiz-button-container" class="mt-6 flex justify-center">
+                        <button id="quiz-action-btn" class="text-white font-bold py-3 px-8 text-xl rounded-lg"></button>
+                    </div>
+                </div>
+                <!-- Completion Screen (Initially Hidden) -->
+                <div id="completion-screen" class="hidden text-center p-8">
+                    <div class="completion-text-container">
+                        <span id="completion-en" class="completion-text">Congratulations!</span>
+                        <span id="completion-ar" class="completion-text hidden-lang font-arabic">مبروك!</span>
+                    </div>
+                    <div class="flex justify-center gap-4 mt-4">
+                        <button id="review-unit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg">Review Unit 1</button>
+                        <button id="next-unit-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg text-lg" disabled>Next Unit</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- DATA ---
+        const sentences = [
+            { arabic: "هذا بيت.", english: "This is a house." }, { arabic: "هذا رجل.", english: "This is a man." }, { arabic: "الرجل هنا.", english: "The man is here." }, { arabic: "الرجل في البيت.", english: "The man is in the house." }, { arabic: "هذه امرأة.", english: "This is a woman." }, { arabic: "هذا كتاب.", english: "This is a book." }, { arabic: "الرجل في البيت والمرأة هنا.", english: "The man is in the house and the woman is here." }, { arabic: "هذه سيارة.", english: "This is a car." }, { arabic: "هذا بيت كبير.", english: "This is a big house." }, { arabic: "هذا بيت صغير.", english: "This is a small house." },
+            { arabic: "هذا ولد.", english: "This is a boy." }, { arabic: "هذه بنت.", english: "This is a girl." }, { arabic: "الولد في السيارة الكبيرة.", english: "The boy is in the big car." }, { arabic: "البنت في البيت الصغير.", english: "The girl is in the small house." }, { arabic: "الولد الصغير هنا.", english: "The small boy is here." }, { arabic: "هذا قلم.", english: "This is a pen." }, { arabic: "القلم على الكتاب.", english: "The pen is on the book." }, { arabic: "هذا باب.", english: "This is a door." }, { arabic: "الباب كبير.", english: "The door is big." }, { arabic: "السيارة كبيرة.", english: "The car is big." },
+            { arabic: "هذه بنت صغيرة.", english: "This is a small girl." }, { arabic: "هذا ماء.", english: "This is water." }, { arabic: "الرجل ليس هنا.", english: "The man is not here." }, { arabic: "المرأة ليست هنا.", english: "The woman is not here." }, { arabic: "القلم ليس في البيت.", english: "The pen is not in the house." }, { arabic: "هذه طاولة.", english: "This is a table." }, { arabic: "الكتاب على الطاولة.", english: "The book is on the table." }, { arabic: "هذا كتاب جديد.", english: "This is a new book." }, { arabic: "هذا بيت قديم.", english: "This is an old house." }, { arabic: "هذه سيارة جديدة.", english: "This is a new car." },
+            { arabic: "هذه طاولة قديمة.", english: "This is an old table." }, { arabic: "هذه مدينة.", english: "This is a city." }, { arabic: "هذا شارع كبير.", english: "This is a big street." }, { arabic: "أين الرجل؟", english: "Where is the man?" }, { arabic: "الرجل في الشارع.", english: "The man is in the street." }, { arabic: "من هذا؟", english: "Who is this?" }, { arabic: "هذا طالب.", english: "This is a student." }, { arabic: "أنا طالب.", english: "I am a student." }, { arabic: "هذه طالبة.", english: "This is a student (f.)." }, { arabic: "هذا اسم.", english: "This is a name." },
+            { arabic: "هذا بيتي.", english: "This is my house." }, { arabic: "سيارتي صغيرة.", english: "My car is small." }, { arabic: "أنت ولد.", english: "You are a boy." }, { arabic: "هذا كتابكَ.", english: "This is your book." }, { arabic: "أين قلمكَ؟", english: "Where is your pen?" }, { arabic: "أنتِ بنت.", english: "You are a girl." }, { arabic: "هذا بيتكِ.", english: "This is your house." }, { arabic: "سيارتكِ ليست قديمة.", english: "Your car is not old." }, { arabic: "ما اسمكَ؟", english: "What is your name?" }, { arabic: "أنا طالب جديد وبيتي في المدينة.", english: "I am a new student and my house is in the city." }
+        ];
+
+        // --- STATE ---
+        let currentSection = 0;
+        let quizQuestions = [];
+        let currentQuizIndex = 0;
+        let answerTimeout = null;
+        let langInterval = null;
+
+        // --- DOM ELEMENTS ---
+        const readerView = document.getElementById('reader-view');
+        const quizView = document.getElementById('quiz-view');
+        const quizContent = document.getElementById('quiz-content');
+        const completionScreen = document.getElementById('completion-screen');
+        const readerContent = document.getElementById('reader-content');
+        const sectionNav = document.getElementById('section-nav');
+        const startQuizBtn = document.getElementById('start-quiz-btn');
+        const quizPrompt = document.getElementById('quiz-prompt');
+        const quizProgress = document.getElementById('quiz-progress');
+        const quizAnswerArea = document.getElementById('quiz-answer-area');
+        const quizWordBank = document.getElementById('quiz-word-bank');
+        const quizFeedback = document.getElementById('quiz-feedback');
+        const quizActionBtn = document.getElementById('quiz-action-btn');
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('theme-icon-sun');
+        const moonIcon = document.getElementById('theme-icon-moon');
+        const reviewUnitBtn = document.getElementById('review-unit-btn');
+
+        // --- UTILITY FUNCTIONS ---
+        const toArabicNumerals = (num) => {
+            const arabic = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+            return String(num).split('').map(i => arabic[i]).join('');
+        };
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        // --- THEME ---
+        function setAndApplyTheme(theme) {
+            localStorage.setItem('theme', theme);
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            setAndApplyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        // --- READER FUNCTIONS ---
+        function populateReader(sectionIndex) {
+            readerContent.innerHTML = '';
+            const start = sectionIndex * 10;
+            const end = start + 10;
+            const sectionSentences = sentences.slice(start, end);
+
+            sectionSentences.forEach((sentence, index) => {
+                const globalIndex = start + index;
+                const blockContainer = document.createElement('div');
+                blockContainer.classList.add('sentence-block', 'flex', 'items-start', 'gap-4');
+
+                const interactiveContainer = document.createElement('div');
+                interactiveContainer.classList.add('flex-grow');
+
+                const interactiveArea = document.createElement('div');
+                interactiveArea.classList.add('interactive-area');
+                interactiveArea.dataset.index = globalIndex;
+                interactiveArea.textContent = sentence.arabic;
+                interactiveArea.setAttribute('dir', 'rtl');
+
+                const infoBox = document.createElement('div');
+                infoBox.classList.add('info-box');
+                infoBox.innerHTML = `<p class="text-xl font-semibold text-right">${sentence.english}</p>`;
+
+                interactiveContainer.appendChild(interactiveArea);
+                interactiveContainer.appendChild(infoBox);
+                
+                const numberEl = document.createElement('span');
+                numberEl.textContent = toArabicNumerals(globalIndex + 1);
+                numberEl.classList.add('font-arabic', 'text-2xl', 'pt-3');
+                
+                blockContainer.appendChild(interactiveContainer);
+                blockContainer.appendChild(numberEl);
+                readerContent.appendChild(blockContainer);
+            });
+            updateNavButtons();
+        }
+        
+        function toggleInfo(interactiveAreaEl) {
+            const infoBox = interactiveAreaEl.nextElementSibling;
+            const wasActive = interactiveAreaEl.classList.contains('active');
+            document.querySelectorAll('.interactive-area.active').forEach(activeEl => {
+                if (activeEl !== interactiveAreaEl) {
+                    activeEl.classList.remove('active');
+                    activeEl.nextElementSibling.classList.remove('visible');
+                }
+            });
+            interactiveAreaEl.classList.toggle('active', !wasActive);
+            infoBox.classList.toggle('visible', !wasActive);
+        }
+
+        // --- QUIZ FUNCTIONS ---
+        function startQuiz() {
+            readerView.classList.add('hidden');
+            quizView.classList.remove('hidden');
+            quizContent.classList.remove('hidden');
+            completionScreen.classList.add('hidden');
+            sectionNav.classList.add('hidden');
+            if (langInterval) clearInterval(langInterval);
+
+            const start = currentSection * 10;
+            const end = start + 10;
+            const sectionSentences = sentences.slice(start, end);
+            quizQuestions = sectionSentences.sort(() => 0.5 - Math.random()).slice(0, 5);
+            currentQuizIndex = 0;
+            loadQuizQuestion();
+        }
+
+        function loadQuizQuestion() {
+            quizAnswerArea.innerHTML = '';
+            quizWordBank.innerHTML = '';
+            quizFeedback.innerHTML = '';
+            quizAnswerArea.style.borderColor = 'transparent';
+            if(answerTimeout) clearTimeout(answerTimeout);
+
+            quizProgress.textContent = `${currentQuizIndex + 1} / ${quizQuestions.length}`;
+            
+            quizActionBtn.textContent = 'Answer';
+            quizActionBtn.className = 'bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+            quizActionBtn.onclick = showAnswer;
+
+            const question = quizQuestions[currentQuizIndex];
+            quizPrompt.textContent = question.english;
+
+            const words = question.arabic.replace(/[.؟]/g, '').split(' ').filter(w => w);
+            const shuffledWords = words.sort(() => 0.5 - Math.random());
+            
+            shuffledWords.forEach(word => {
+                const btn = document.createElement('button');
+                btn.textContent = word;
+                btn.className = 'word-bank-btn font-arabic text-2xl p-3 px-5 rounded-lg bg-[var(--card-bg-light)] transition-colors';
+                btn.onclick = () => selectWord(btn);
+                quizWordBank.appendChild(btn);
+            });
+        }
+
+        function selectWord(btn) {
+            btn.disabled = true;
+            const answerBtn = document.createElement('button');
+            answerBtn.textContent = btn.textContent;
+            answerBtn.className = 'answer-word-btn font-arabic text-2xl p-3 px-5 rounded-lg bg-[var(--active-color)] text-white';
+            answerBtn.onclick = () => deselectWord(answerBtn, btn);
+            quizAnswerArea.appendChild(answerBtn);
+            liveCheckAnswer();
+        }
+
+        function deselectWord(answerBtn, originalBtn) {
+            originalBtn.disabled = false;
+            answerBtn.remove();
+            liveCheckAnswer();
+        }
+
+        function liveCheckAnswer() {
+            const answerWords = Array.from(quizAnswerArea.children).map(btn => btn.textContent);
+            const constructedAnswer = answerWords.join(' ');
+            const correctAnswerText = quizQuestions[currentQuizIndex].arabic.slice(0, -1);
+
+            if (constructedAnswer === correctAnswerText) {
+                quizAnswerArea.style.borderColor = 'var(--border-correct-color)';
+                quizFeedback.textContent = 'Correct!';
+                quizFeedback.style.color = 'var(--correct-color)';
+                
+                quizActionBtn.textContent = 'Continue';
+                quizActionBtn.className = 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+                quizActionBtn.onclick = nextQuestion;
+
+                Array.from(quizWordBank.children).forEach(btn => btn.disabled = true);
+                Array.from(quizAnswerArea.children).forEach(btn => btn.onclick = null);
+
+            } else {
+                quizAnswerArea.style.borderColor = 'transparent';
+                quizFeedback.textContent = '';
+                
+                if (quizActionBtn.textContent === 'Continue') {
+                    quizActionBtn.textContent = 'Answer';
+                    quizActionBtn.className = 'bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+                    quizActionBtn.onclick = showAnswer;
+                }
+            }
+        }
+
+        function showAnswer() {
+            quizFeedback.textContent = `Answer: ${quizQuestions[currentQuizIndex].arabic}`;
+            quizFeedback.style.color = 'var(--text-color)';
+            if(answerTimeout) clearTimeout(answerTimeout);
+            answerTimeout = setTimeout(() => {
+                quizFeedback.textContent = '';
+            }, 3000);
+        }
+        
+        function nextQuestion() {
+            currentQuizIndex++;
+            if (currentQuizIndex < quizQuestions.length) {
+                loadQuizQuestion();
+            } else {
+                currentSection++;
+                showCompletionScreen();
+            }
+        }
+
+        // --- COMPLETION & NAVIGATION ---
+        function showCompletionScreen() {
+            quizContent.classList.add('hidden');
+            completionScreen.classList.remove('hidden');
+            
+            // Start confetti
+            for (let i = 0; i < 100; i++) {
+                createConfetti();
+            }
+
+            // Start alternating language text
+            const enText = document.getElementById('completion-en');
+            const arText = document.getElementById('completion-ar');
+            langInterval = setInterval(() => {
+                enText.classList.toggle('hidden-lang');
+                arText.classList.toggle('hidden-lang');
+            }, 2000);
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            const colors = ['#fde047', '#ff7f50', '#2dd4bf', '#8a2be2', '#00ff7f'];
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        function reviewCurrentUnit() {
+            if (langInterval) clearInterval(langInterval);
+            quizView.classList.add('hidden');
+            readerView.classList.remove('hidden');
+            sectionNav.classList.remove('hidden');
+            // We are already on the correct section, so just populate reader
+            populateReader(currentSection - 1); // -1 because we incremented it before showing completion
+        }
+        
+        // --- NAVIGATION ---
+        function populateNav() {
+            const numSections = Math.ceil(sentences.length / 10);
+            for (let i = 0; i < numSections; i++) {
+                const btn = document.createElement('button');
+                const start = i * 10 + 1;
+                const end = start + 9;
+                btn.textContent = `${start}-${end}`;
+                btn.className = 'nav-btn px-4 py-2 rounded-md font-semibold bg-[var(--card-bg-light)] transition-colors';
+                btn.onclick = () => {
+                    currentSection = i;
+                    populateReader(i);
+                };
+                sectionNav.appendChild(btn);
+            }
+        }
+
+        function updateNavButtons() {
+            const buttons = sectionNav.querySelectorAll('.nav-btn');
+            buttons.forEach((btn, index) => {
+                btn.classList.toggle('active', index === currentSection);
+            });
+        }
+
+        // --- EVENT LISTENERS ---
+        readerContent.addEventListener('click', (e) => {
+            const interactiveArea = e.target.closest('.interactive-area');
+            if (interactiveArea) toggleInfo(interactiveArea);
+        });
+        
+        if (!isTouchDevice) {
+            readerContent.addEventListener('mouseover', (e) => {
+                const currentBlock = e.target.closest('.sentence-block');
+                if (!currentBlock) return;
+                const allBlocks = readerContent.querySelectorAll('.sentence-block');
+                allBlocks.forEach(block => {
+                    const interactiveArea = block.querySelector('.interactive-area');
+                    const infoBox = block.querySelector('.info-box');
+                    if (block === currentBlock) {
+                        interactiveArea?.classList.add('active');
+                        infoBox?.classList.add('visible');
+                    } else {
+                        interactiveArea?.classList.remove('active');
+                        infoBox?.classList.remove('visible');
+                    }
+                });
+            });
+            readerContent.addEventListener('mouseleave', () => {
+                const allBlocks = readerContent.querySelectorAll('.sentence-block');
+                allBlocks.forEach(block => {
+                    block.querySelector('.interactive-area')?.classList.remove('active');
+                    block.querySelector('.info-box')?.classList.remove('visible');
+                });
+            });
+        }
+        
+        startQuizBtn.addEventListener('click', startQuiz);
+        reviewUnitBtn.addEventListener('click', reviewCurrentUnit);
+
+        // --- INITIALIZATION ---
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setAndApplyTheme(savedTheme);
+        } else {
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setAndApplyTheme(systemPrefersDark ? 'dark' : 'light');
+        }
+        
+        populateNav();
+        populateReader(currentSection);
+    </script>
+</body>
+</html>
