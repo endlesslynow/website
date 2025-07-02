@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString
 
 # --- Configuration ---
 # 1. Define the full paths to your landing page files.
@@ -122,14 +122,88 @@ def update_landing_pages(unit_number, unit_subtitle):
     print("\n--- All files processed. ---")
 
 
+def delete_landing_page_buttons(unit_number_to_delete):
+    """
+    Finds and deletes a specific lesson button from all landing pages.
+    """
+    print(f"\nStarting to delete buttons for Unit {unit_number_to_delete}...\n")
+
+    # --- File Processing Loop ---
+    for file_path in FILE_PATHS:
+        try:
+            if not os.path.exists(file_path):
+                print(f"⚠️  WARNING: File not found, skipping: {file_path}")
+                continue
+
+            # Open and read the file with UTF-8 encoding
+            with open(file_path, 'r', encoding='utf-8') as f:
+                soup = BeautifulSoup(f, 'html.parser')
+
+            # Find the grid where the buttons are located
+            lesson_grid = soup.find('div', class_='lesson-grid')
+            if not lesson_grid:
+                print(f"ERROR: Could not find '<div class=\"lesson-grid\">' in {file_path}. Skipping.")
+                continue
+
+            # Find the specific button to remove
+            button_found = False
+            for button in lesson_grid.find_all('a', class_='lesson-button'):
+                unit_span = button.find('span', class_='line1')
+                # Check if the span exists and its text matches the target unit
+                if unit_span and unit_span.get_text(strip=True) == f"Unit {unit_number_to_delete}":
+                    # Remove the whitespace/newline text node before the button for cleaner HTML
+                    previous_sibling = button.previous_sibling
+                    if previous_sibling and isinstance(previous_sibling, NavigableString) and previous_sibling.strip() == '':
+                        previous_sibling.decompose()
+                    
+                    button.decompose() # This removes the button tag and its contents
+                    button_found = True
+                    break # Exit the loop once the button is found and removed
+
+            if button_found:
+                # Write the modified HTML back to the file
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    f.write(str(soup.prettify()))
+                print(f"✅ Successfully deleted Unit {unit_number_to_delete} button from: {os.path.basename(file_path)}")
+            else:
+                print(f"ℹ️  Button for Unit {unit_number_to_delete} not found in: {os.path.basename(file_path)}")
+
+        except Exception as e:
+            print(f"❌ FAILED to update {file_path}. Error: {e}")
+
+    print("\n--- All files processed. ---")
+
+
 if __name__ == "__main__":
     # --- User Input ---
-    print("--- Hopkins Method Button Creator ---")
-    unit_num_input = input("Enter the new Unit Number (e.g., 2): ")
-    unit_subtitle_input = input("Enter the new Unit Subtitle (e.g., Core Vocabulary): ")
+    print("--- Hopkins Method Button Manager ---")
     
-    # --- Run the main process ---
-    if unit_num_input and unit_subtitle_input:
-        update_landing_pages(unit_num_input, unit_subtitle_input)
+    # Ask the user if they want to add or delete
+    choice = input("Do you want to [A]dd or [D]elete a button? ").strip().upper()
+
+    if choice == 'A':
+        print("\n--- Create New Button ---")
+        unit_num_input = input("Enter the new Unit Number (e.g., 2): ")
+        unit_subtitle_input = input("Enter the new Unit Subtitle (e.g., Core Vocabulary): ")
+        
+        if unit_num_input and unit_subtitle_input:
+            update_landing_pages(unit_num_input, unit_subtitle_input)
+        else:
+            print("Both unit number and subtitle are required. Exiting.")
+
+    elif choice == 'D':
+        print("\n--- Delete Existing Button ---")
+        unit_num_to_delete = input("Enter the Unit Number to delete (e.g., 3): ")
+
+        if unit_num_to_delete:
+            # Confirm deletion to prevent accidents
+            confirm = input(f"Are you sure you want to delete all 'Unit {unit_num_to_delete}' buttons? [y/n]: ").strip().lower()
+            if confirm == 'y':
+                delete_landing_page_buttons(unit_num_to_delete)
+            else:
+                print("Deletion cancelled. Exiting.")
+        else:
+            print("Unit number is required. Exiting.")
+    
     else:
-        print("Both unit number and subtitle are required. Exiting.")
+        print("Invalid choice. Please enter 'A' or 'D'. Exiting.")

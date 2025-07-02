@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hopkins Method Kurmanji Kurdish: Unit 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Light mode with reverted button/active colors */
+        :root {
+            --bg-color: #CDE0BE;
+            --text-color: #2A623D;
+            --card-bg: #F0EAD6;
+            --card-bg-light: #f9fafb; /* Reverted from #FAF7ED */
+            --accent-color: #0D8A52;
+            --hover-color: #0f766e; /* Reverted from #2A623D */
+            --active-color: #115e59; /* Reverted from #1D4D8E */
+            --correct-color: #0D8A52;
+            --incorrect-color: #8C1C13;
+            --border-correct-color: #C9AD5B;
+        }
+        /* Original dark mode values */
+        html.dark {
+            --bg-color: #111827; /* gray-900 */
+            --text-color: #f9fafb; /* gray-50 */
+            --card-bg: #1f2937; /* gray-800 */
+            --card-bg-light: #374151; /* gray-700 */
+            --accent-color: #2dd4bf; /* teal-400 */
+            --hover-color: #14b8a6; /* teal-500 */
+            --active-color: #0d9488; /* teal-600 */
+            --correct-color: #34d399; /* green-400 */
+            --incorrect-color: #f87171; /* red-400 */
+            --border-correct-color: #fde047; /* yellow-300 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            background-image: url('../hm_arabic_background.png'); /* Note: Background image path kept same */
+            background-repeat: repeat;
+            background-size: auto;
+            background-attachment: fixed;
+            overflow-x: hidden; /* Prevent horizontal scroll from confetti */
+        }
+        /* Revert dark mode background to solid color */
+        html.dark body {
+            background-image: none;
+        }
+        /* Make title black in light mode */
+        html:not(.dark) h1 {
+            color: black;
+        }
+        .sentence-block {
+            margin-bottom: 1rem;
+        }
+        .interactive-area {
+            background-color: var(--card-bg-light);
+            transition: background-color 0.2s, color 0.2s;
+            cursor: pointer;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem 0.5rem 0 0;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+        }
+        /* Hover effect for dark mode */
+        html.dark .interactive-area:hover {
+            background-color: var(--hover-color);
+            color: white;
+        }
+        /* No hover effect for light mode */
+        html:not(.dark) .interactive-area:hover {
+            background-color: var(--card-bg-light);
+            color: var(--text-color);
+        }
+        /* Active (clicked) style ONLY for dark mode */
+        html.dark .interactive-area.active {
+            background-color: var(--active-color);
+            color: white; 
+        }
+        .info-box {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background-color: var(--card-bg);
+            border-radius: 0 0 0.5rem 0.5rem;
+            padding: 0 1.25rem;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+        }
+        .info-box.visible {
+            max-height: 200px;
+            padding: 1rem 1.25rem 1.25rem;
+        }
+        .nav-btn.active {
+            background-color: var(--active-color);
+            color: white;
+        }
+        /* Make quiz word bank button text black in light mode */
+        html:not(.dark) .word-bank-btn {
+            color: black;
+        }
+        .word-bank-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        /* Make numbers black in light mode */
+        html:not(.dark) .sentence-block > span {
+            color: black;
+        }
+        /* Style for the theme toggle button circle in light mode */
+        html:not(.dark) #theme-toggle {
+            background-color: var(--card-bg);
+        }
+
+        /* --- Completion Screen Styles --- */
+        .completion-text-container {
+            position: relative;
+            height: 50px; /* Give it a fixed height to prevent layout shifts */
+            margin-bottom: 2rem;
+        }
+        .completion-text {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: bold;
+            transition: opacity 0.5s ease-in-out;
+        }
+        html:not(.dark) .completion-text {
+            color: black;
+        }
+        .completion-text.hidden-lang {
+            opacity: 0;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 3s linear forwards;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <audio id="sentence-player" preload="auto"></audio>
+
+    <div class="w-full max-w-3xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-6 flex justify-between items-center">
+            <div></div> <!-- Spacer -->
+            <div>
+                <h1 class="text-3xl font-bold">Hopkins Method Kurmanji Kurdish: Unit 3</h1>
+            </div>
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                <svg id="theme-icon-sun" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                <svg id="theme-icon-moon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+            </button>
+        </header>
+        
+        <nav id="section-nav" class="flex flex-wrap justify-center gap-2 mb-8"></nav>
+
+        <main id="app-container">
+            <div id="reader-view">
+                <div id="reader-content" class="text-2xl leading-loose"></div>
+                <div class="text-center mt-8">
+                    <button id="start-quiz-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg">Practice this Section</button>
+                </div>
+            </div>
+
+            <div id="quiz-view" class="hidden">
+                 <div id="quiz-content" class="bg-[var(--card-bg)] p-4 rounded-lg shadow-lg">
+                    <div class="flex justify-end items-baseline">
+                        <p id="quiz-progress" class="text-sm font-semibold text-gray-500 dark:text-gray-400"></p>
+                    </div>
+                    <p id="quiz-prompt" class="text-xl font-semibold my-2 text-center"></p>
+                    <div id="quiz-feedback" class="mb-4 text-center h-8 font-bold text-xl"></div>
+                    <div id="quiz-answer-area" class="min-h-[6rem] bg-[var(--bg-color)] p-4 rounded-lg flex flex-wrap gap-2 justify-start items-center text-2xl border-2 border-transparent transition-all"></div>
+                    <div id="quiz-word-bank" class="mt-6 flex flex-wrap gap-2 justify-center"></div>
+                    <div id="quiz-button-container" class="mt-6 flex justify-center">
+                        <button id="quiz-action-btn" class="text-white font-bold py-3 px-8 text-xl rounded-lg"></button>
+                    </div>
+                </div>
+                <div id="completion-screen" class="hidden text-center p-8">
+                    <div class="completion-text-container">
+                        <span id="completion-en" class="completion-text">Congratulations!</span>
+                        <span id="completion-kmr" class="completion-text hidden-lang">Pîroz be!</span>
+                    </div>
+                    <div class="flex justify-center gap-4 mt-4">
+                        <button id="review-unit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg">Review Unit 3</button>
+                        <button id="next-unit-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg text-lg" disabled>Next Unit</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    
+<script>
+    const UNIT_NUMBER = 3;
+    const LANGUAGE = "kurdish";
+    const SENTENCE_OFFSET = (UNIT_NUMBER - 1) * 50;
+
+    const sentences = [
+                    { "kurdish": "Xwendekar li bajêr in.", "english": "The students are in the city." },
+            { "kurdish": "Mêr li vir in.", "english": "The men are here." },
+            { "kurdish": "Em mêr û xwendekar in.", "english": "We are men and students." },
+            { "kurdish": "Em diçin bajarî.", "english": "We are going to the city." },
+            { "kurdish": "Em pirtûkekê dixwazin.", "english": "We want a book." },
+            { "kurdish": "Ev pirtûk in.", "english": "These are books." },
+            { "kurdish": "Em pirtûkên nû dixwazin.", "english": "We want new books." },
+            { "kurdish": "Ev mala me ye.", "english": "This is our house." },
+            { "kurdish": "Maleke me ya mezin heye.", "english": "We have a big house." },
+            { "kurdish": "Em mêran li kolanê dibînin.", "english": "We see the men in the street." },
+            { "kurdish": "Hûn xwendekar in.", "english": "You all are students." },
+            { "kurdish": "Hûn diçin ku?", "english": "Where are you all going?" },
+            { "kurdish": "Mala we li ku ye?", "english": "Where is your (pl.) house?" },
+            { "kurdish": "Tirimbêla we heye?", "english": "Do you all have a car?" },
+            { "kurdish": "Hûn çi dixwazin?", "english": "What do you all want?" },
+            { "kurdish": "Hûn di mala xwe de çi dibînin?", "english": "What do you all see in your house?" },
+            { "kurdish": "Ew mêr in.", "english": "They are men." },
+            { "kurdish": "Ew diçin bajarî.", "english": "They are going to the city." },
+            { "kurdish": "Ev mala wan e.", "english": "This is their house." },
+            { "kurdish": "Maleke wan a mezin heye.", "english": "They have a big house." },
+            { "kurdish": "Ew tirimbêleke nû dixwazin.", "english": "They want a new car." },
+            { "kurdish": "Ew mala me li bajêr dibînin.", "english": "They see our house in the city." },
+            { "kurdish": "Ew hevalê min e.", "english": "He is my friend." },
+            { "kurdish": "Ew hevalên min in.", "english": "They are my friends." },
+            { "kurdish": "Hevalên me xwendekar in.", "english": "Our friends are students." },
+            { "kurdish": "Em bi hevalên xwe re diçin.", "english": "We are going with our friends." },
+            { "kurdish": "Ev mal in.", "english": "These are houses." },
+            { "kurdish": "Malên xwendekaran li bajêr in.", "english": "The students' houses are in the city." },
+            { "kurdish": "Ev tirimbêl in.", "english": "These are cars." },
+            { "kurdish": "Tirimbêlên wan nû ne.", "english": "Their cars are new." },
+            { "kurdish": "Ev pênûs in.", "english": "These are pens." },
+            { "kurdish": "Em pênûsên xwe dixwazin.", "english": "We want our pens." },
+            { "kurdish": "Deriyên malan mezin in.", "english": "The doors of the houses are big." },
+            { "kurdish": "Kur li malê ne.", "english": "The boys are in the house." },
+            { "kurdish": "Keç li vir in.", "english": "The girls are here." },
+            { "kurdish": "Jin li kolanê ne.", "english": "The women are in the street." },
+            { "kurdish": "Jin xwendekar in.", "english": "The women are students." },
+            { "kurdish": "Xwendekar di maleke mezin de ne.", "english": "The students are in a big house." },
+            { "kurdish": "Ev bajarên mezin in.", "english": "These are big cities." },
+            { "kurdish": "Kolanên bajarî ne piçûk in.", "english": "The streets of the city are not small." },
+            { "kurdish": "Ew mêrên mezin in.", "english": "They are big/old men." },
+            { "kurdish": "Em xwendekarên nû ne.", "english": "We are new students." },
+            { "kurdish": "Mêr û jin diçin bajarî.", "english": "The men and women are going to the city." },
+            { "kurdish": "Malên wan mezin û nû ne.", "english": "Their houses are big and new." },
+            { "kurdish": "Kur û keç di mala wan de ne.", "english": "The boys and girls are in their house." },
+            { "kurdish": "Hûn çima diçin bajarî? Ji ber ku malên hevalên me li bajêr in.", "english": "Why are you all going to the city? Because our friends' houses are in the city." },
+            { "kurdish": "Ew tirimbêla me nabînin, ji ber ku ew di kolaneke piçûk de ye.", "english": "They do not see our car, because it is on a small street." },
+            { "kurdish": "Pênûsên me li ba we ne? Na, lê pênûsên we li ba me ne.", "english": "Do you all have our pens? No, but we have your pens." },
+            { "kurdish": "Xwendekarên nû pirtûkên xwe dixwazin, lê pirtûk di maleke kevin de ne.", "english": "The new students want their books, but the books are in an old house." },
+            { "kurdish": "Em di malên xwe de ne û hevalên me di malên wan de ne, ji ber ku ew xwendekarên li bajêr in.", "english": "We are in our houses, and our friends are in their houses, because they are students in the city." }
+    ];
+
+    // --- STATE ---
+    let currentSection = 0;
+    let quizQuestions = [];
+    let currentQuizIndex = 0;
+    let langInterval = null;
+    let hoverTimeout = null; 
+
+    // --- DOM ELEMENTS ---
+    const readerView = document.getElementById('reader-view');
+    const quizView = document.getElementById('quiz-view');
+    const quizContent = document.getElementById('quiz-content');
+    const completionScreen = document.getElementById('completion-screen');
+    const readerContent = document.getElementById('reader-content');
+    const sectionNav = document.getElementById('section-nav');
+    const startQuizBtn = document.getElementById('start-quiz-btn');
+    const quizPrompt = document.getElementById('quiz-prompt');
+    const quizProgress = document.getElementById('quiz-progress');
+    const quizAnswerArea = document.getElementById('quiz-answer-area');
+    const quizWordBank = document.getElementById('quiz-word-bank');
+    const quizFeedback = document.getElementById('quiz-feedback');
+    const quizActionBtn = document.getElementById('quiz-action-btn');
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-icon-sun');
+    const moonIcon = document.getElementById('theme-icon-moon');
+    const reviewUnitBtn = document.getElementById('review-unit-btn');
+    const sentencePlayer = document.getElementById('sentence-player');
+
+    // --- UTILITY FUNCTIONS ---
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // --- THEME ---
+    function setAndApplyTheme(theme) {
+        localStorage.setItem('theme', theme);
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        }
+    }
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        setAndApplyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // --- AUDIO FUNCTION ---
+    function playSentenceAudio(globalIndex) {
+        const audioSentenceNumber = globalIndex + 1 + SENTENCE_OFFSET;
+        // FIX: Reverted to the correct, working relative path.
+        const audioPath = `${LANGUAGE}_audio/unit_${UNIT_NUMBER}/sentence_${audioSentenceNumber}.mp3`;
+        sentencePlayer.src = audioPath;
+        sentencePlayer.play().catch(error => {
+            console.error(`Could not play audio for sentence ${audioSentenceNumber}:`, error);
+        });
+    }
+
+    // --- READER FUNCTIONS ---
+    function populateReader(sectionIndex) {
+        readerContent.innerHTML = '';
+        const start = sectionIndex * 10;
+        const end = start + 10;
+        const sectionSentences = sentences.slice(start, end);
+
+        sectionSentences.forEach((sentence, index) => {
+            const globalIndex = start + index;
+            const displayIndex = globalIndex + 1 + SENTENCE_OFFSET;
+
+            const blockContainer = document.createElement('div');
+            blockContainer.classList.add('sentence-block', 'flex', 'items-start', 'gap-4');
+
+            const interactiveContainer = document.createElement('div');
+            interactiveContainer.classList.add('flex-grow');
+
+            const interactiveArea = document.createElement('div');
+            interactiveArea.classList.add('interactive-area');
+            interactiveArea.dataset.index = globalIndex;
+            interactiveArea.textContent = sentence[LANGUAGE];
+            
+            const infoBox = document.createElement('div');
+            infoBox.classList.add('info-box');
+            infoBox.innerHTML = `<p class="text-xl font-semibold">${sentence.english}</p>`;
+
+            if (isTouchDevice) {
+                interactiveArea.addEventListener('click', () => {
+                    playSentenceAudio(globalIndex);
+                    toggleInfo(interactiveArea);
+                });
+            } else {
+                interactiveArea.addEventListener('mouseenter', () => {
+                    playSentenceAudio(globalIndex);
+                    showInfo(interactiveArea);
+                });
+                interactiveArea.addEventListener('mouseleave', () => {
+                    hideInfo(interactiveArea);
+                });
+            }
+
+            interactiveContainer.appendChild(interactiveArea);
+            interactiveContainer.appendChild(infoBox);
+            
+            const numberEl = document.createElement('span');
+            numberEl.textContent = displayIndex;
+            numberEl.classList.add('text-2xl', 'pt-3', 'font-semibold');
+            
+            blockContainer.appendChild(numberEl);
+            blockContainer.appendChild(interactiveContainer);
+            readerContent.appendChild(blockContainer);
+        });
+        updateNavButtons();
+    }
+    
+    function showInfo(interactiveAreaEl) {
+        interactiveAreaEl.classList.add('active');
+        interactiveAreaEl.nextElementSibling.classList.add('visible');
+    }
+
+    function hideInfo(interactiveAreaEl) {
+        interactiveAreaEl.classList.remove('active');
+        interactiveAreaEl.nextElementSibling.classList.remove('visible');
+    }
+
+    function toggleInfo(interactiveAreaEl) {
+        const wasActive = interactiveAreaEl.classList.contains('active');
+        document.querySelectorAll('.interactive-area.active').forEach(activeEl => {
+            hideInfo(activeEl);
+        });
+        if (!wasActive) {
+            showInfo(interactiveAreaEl);
+        }
+    }
+
+    // --- QUIZ FUNCTIONS ---
+    function startQuiz() {
+        readerView.classList.add('hidden');
+        quizView.classList.remove('hidden');
+        quizContent.classList.remove('hidden');
+        completionScreen.classList.add('hidden');
+        sectionNav.classList.add('hidden');
+        if (langInterval) clearInterval(langInterval);
+
+        const start = currentSection * 10;
+        const end = start + 10;
+        
+        quizQuestions = sentences.slice(start, end).map((sentence, index) => ({
+            ...sentence,
+            originalIndex: start + index
+        })).sort(() => 0.5 - Math.random()).slice(0, 5);
+
+        currentQuizIndex = 0;
+        loadQuizQuestion();
+    }
+
+    function loadQuizQuestion() {
+        quizAnswerArea.innerHTML = '';
+        quizWordBank.innerHTML = '';
+        quizFeedback.innerHTML = '';
+        quizAnswerArea.style.borderColor = 'transparent';
+
+        quizProgress.textContent = `${currentQuizIndex + 1} / ${quizQuestions.length}`;
+        
+        quizActionBtn.style.display = 'none';
+        quizActionBtn.onclick = null;
+
+        const question = quizQuestions[currentQuizIndex];
+        quizPrompt.textContent = question.english;
+
+        const words = question[LANGUAGE].replace(/[.,?]/g, '').split(' ').filter(w => w);
+        const shuffledWords = words.sort(() => 0.5 - Math.random());
+        
+        shuffledWords.forEach(word => {
+            const btn = document.createElement('button');
+            btn.textContent = word;
+            btn.className = 'word-bank-btn text-2xl p-3 px-5 rounded-lg bg-[var(--card-bg-light)] transition-colors';
+            btn.onclick = () => selectWord(btn);
+            quizWordBank.appendChild(btn);
+        });
+    }
+
+    function selectWord(btn) {
+        btn.disabled = true;
+        const answerBtn = document.createElement('button');
+        answerBtn.textContent = btn.textContent;
+        answerBtn.className = 'answer-word-btn text-2xl p-3 px-5 rounded-lg bg-[var(--active-color)] text-white';
+        answerBtn.onclick = () => deselectWord(answerBtn, btn);
+        quizAnswerArea.appendChild(answerBtn);
+        liveCheckAnswer();
+    }
+
+    function deselectWord(answerBtn, originalBtn) {
+        originalBtn.disabled = false;
+        answerBtn.remove();
+        liveCheckAnswer();
+    }
+
+    function liveCheckAnswer() {
+        const answerWords = Array.from(quizAnswerArea.children).map(btn => btn.textContent);
+        const constructedAnswer = answerWords.join(' ');
+        const currentQuestion = quizQuestions[currentQuizIndex];
+        const correctAnswerText = currentQuestion[LANGUAGE].replace(/[.,?]/g, '');
+
+        quizFeedback.textContent = '';
+        quizActionBtn.style.display = 'none';
+
+        if (constructedAnswer === correctAnswerText) {
+            quizAnswerArea.style.borderColor = 'var(--border-correct-color)';
+            quizFeedback.textContent = 'Correct!';
+            quizFeedback.style.color = 'var(--correct-color)';
+            
+            playSentenceAudio(currentQuestion.originalIndex);
+
+            quizActionBtn.style.display = 'block';
+            quizActionBtn.textContent = 'Continue';
+            quizActionBtn.className = 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+            quizActionBtn.onclick = nextQuestion;
+
+            Array.from(quizWordBank.children).forEach(btn => btn.disabled = true);
+            Array.from(quizAnswerArea.children).forEach(btn => btn.onclick = null);
+        }
+    }
+    
+    function nextQuestion() {
+        currentQuizIndex++;
+        if (currentQuizIndex < quizQuestions.length) {
+            loadQuizQuestion();
+        } else {
+            currentSection++;
+            const numSections = Math.ceil(sentences.length / 10);
+            if (currentSection >= numSections) {
+                showCompletionScreen();
+            } else {
+                returnToReader(currentSection);
+            }
+        }
+    }
+
+    function showCompletionScreen() {
+        quizContent.classList.add('hidden');
+        completionScreen.classList.remove('hidden');
+        
+        for (let i = 0; i < 100; i++) {
+            createConfetti();
+        }
+
+        const enText = document.getElementById('completion-en');
+        const langText = document.getElementById('completion-' + LANGUAGE.substring(0,2));
+        langInterval = setInterval(() => {
+            enText.classList.toggle('hidden-lang');
+            if(langText) langText.classList.toggle('hidden-lang');
+        }, 2000);
+    }
+
+    function createConfetti() {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        const colors = ['#fde047', '#ff7f50', '#2dd4bf', '#8a2be2', '#00ff7f'];
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+    }
+
+    function reviewCurrentUnit() {
+        if (langInterval) clearInterval(langInterval);
+        currentSection = 0; 
+        returnToReader(currentSection);
+    }
+
+    function returnToReader(sectionIndex) {
+        if (langInterval) clearInterval(langInterval);
+        quizView.classList.add('hidden');
+        readerView.classList.remove('hidden');
+        sectionNav.classList.remove('hidden');
+        currentSection = sectionIndex;
+        populateReader(currentSection);
+    }
+    
+    function populateNav() {
+        const numSections = Math.ceil(sentences.length / 10);
+        for (let i = 0; i < numSections; i++) {
+            const btn = document.createElement('button');
+            const start = i * 10 + 1 + SENTENCE_OFFSET;
+            const end = Math.min(start + 9, sentences.length + SENTENCE_OFFSET);
+            btn.textContent = `${start}-${end}`;
+            btn.className = 'nav-btn px-4 py-2 rounded-md font-semibold bg-[var(--card-bg-light)] transition-colors';
+            btn.onclick = () => {
+                currentSection = i;
+                populateReader(i);
+            };
+            sectionNav.appendChild(btn);
+        }
+    }
+
+    function updateNavButtons() {
+        const buttons = sectionNav.querySelectorAll('.nav-btn');
+        buttons.forEach((btn, index) => {
+            btn.classList.toggle('active', index === currentSection);
+        });
+    }
+
+    // --- EVENT LISTENERS ---
+    startQuizBtn.addEventListener('click', startQuiz);
+    reviewUnitBtn.addEventListener('click', reviewCurrentUnit);
+
+    // --- INITIALIZATION ---
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setAndApplyTheme(savedTheme);
+    } else {
+        setAndApplyTheme('dark');
+    }
+    
+    populateNav();
+    populateReader(currentSection);
+</script>
+
+</body>
+</html>

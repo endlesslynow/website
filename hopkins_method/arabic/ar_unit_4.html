@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hopkins Method Arabic: Unit 4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Light mode with reverted button/active colors */
+        :root {
+            --bg-color: #CDE0BE;
+            --text-color: #2A623D;
+            --card-bg: #F0EAD6;
+            --card-bg-light: #f9fafb; /* Reverted from #FAF7ED */
+            --accent-color: #0D8A52;
+            --hover-color: #0f766e; /* Reverted from #2A623D */
+            --active-color: #115e59; /* Reverted from #1D4D8E */
+            --correct-color: #0D8A52;
+            --incorrect-color: #8C1C13;
+            --border-correct-color: #C9AD5B;
+        }
+        /* Original dark mode values */
+        html.dark {
+            --bg-color: #111827; /* gray-900 */
+            --text-color: #f9fafb; /* gray-50 */
+            --card-bg: #1f2937; /* gray-800 */
+            --card-bg-light: #374151; /* gray-700 */
+            --accent-color: #2dd4bf; /* teal-400 */
+            --hover-color: #14b8a6; /* teal-500 */
+            --active-color: #0d9488; /* teal-600 */
+            --correct-color: #34d399; /* green-400 */
+            --incorrect-color: #f87171; /* red-400 */
+            --border-correct-color: #fde047; /* yellow-300 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            background-image: url('../hm_arabic_background.png');
+            background-repeat: repeat;
+            background-size: auto;
+            background-attachment: fixed;
+            overflow-x: hidden; /* Prevent horizontal scroll from confetti */
+        }
+        h1 {
+            font-family: 'Raleway', sans-serif;
+        }
+        /* Revert dark mode background to solid color */
+        html.dark body {
+            background-image: none;
+        }
+        .font-arabic {
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        /* Make title black in light mode */
+        html:not(.dark) h1 {
+            color: black;
+        }
+        .sentence-block {
+            margin-bottom: 1rem;
+        }
+        .interactive-area {
+            background-color: var(--card-bg-light);
+            transition: background-color 0.2s, color 0.2s;
+            cursor: pointer;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem 0.5rem 0 0;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+        }
+        /* Hover effect for dark mode */
+        html.dark .interactive-area:hover {
+            background-color: var(--hover-color);
+            color: white;
+        }
+        /* No hover effect for light mode */
+        html:not(.dark) .interactive-area:hover {
+            background-color: var(--card-bg-light);
+            color: var(--text-color);
+        }
+        /* Active (clicked) style ONLY for dark mode */
+        html.dark .interactive-area.active {
+            background-color: var(--active-color);
+            color: white; 
+        }
+        .info-box {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background-color: var(--card-bg);
+            border-radius: 0 0 0.5rem 0.5rem;
+            padding: 0 1.25rem;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+        }
+        .info-box.visible {
+            max-height: 200px;
+            padding: 1rem 1.25rem 1.25rem;
+        }
+        .nav-btn.active {
+            background-color: var(--active-color);
+            color: white;
+        }
+        /* Make quiz word bank button text black in light mode */
+        html:not(.dark) .word-bank-btn {
+            color: black;
+        }
+        .word-bank-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        /* Make Arabic numbers black in light mode */
+        html:not(.dark) .sentence-block > span {
+            color: black;
+        }
+        /* Style for the theme toggle button circle in light mode */
+        html:not(.dark) #theme-toggle, html:not(.dark) #reverse-toggle {
+            background-color: var(--card-bg);
+        }
+        [dir="rtl"] {
+            direction: rtl;
+        }
+        [dir="ltr"] {
+            direction: ltr;
+        }
+
+        /* --- Completion Screen Styles --- */
+        .completion-text-container {
+            position: relative;
+            height: 50px; /* Give it a fixed height to prevent layout shifts */
+            margin-bottom: 2rem;
+        }
+        .completion-text {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: bold;
+            transition: opacity 0.5s ease-in-out;
+        }
+        html:not(.dark) .completion-text {
+            color: black;
+        }
+        .completion-text.hidden-lang {
+            opacity: 0;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 3s linear forwards;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <audio id="sentence-player" preload="auto"></audio>
+
+    <div class="w-full max-w-3xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold">Hopkins Method Arabic: Unit 4</h1>
+            <div class="flex justify-center items-center gap-2 mt-3"> <!-- Container for buttons, centered -->
+                 <button id="reverse-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Reverse Languages">
+                    <svg class="h-6 w-6" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 168v-16c0-13.255 10.745-24 24-24h360v-48c0-21.382 25.851-32.09 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.851 304.09 384 293.382 384 272v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.382-25.851-32.09-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.149 464.09 128 453.382 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"/>
+                    </svg>
+                 </button>
+                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Toggle Theme">
+                    <svg id="theme-icon-sun" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    <svg id="theme-icon-moon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                 </button>
+            </div>
+        </header>
+        
+        <nav id="section-nav" class="flex flex-wrap justify-center gap-2 mb-8"></nav>
+
+        <main id="app-container">
+            <div id="reader-view">
+                <div id="reader-content" class="text-2xl leading-loose"></div>
+                <div class="text-center mt-8">
+                    <button id="start-quiz-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg">Practice this Section</button>
+                </div>
+            </div>
+
+            <div id="quiz-view" class="hidden">
+                 <div id="quiz-content" class="bg-[var(--card-bg)] p-4 rounded-lg shadow-lg">
+                    <div class="flex justify-end items-baseline">
+                        <p id="quiz-progress" class="text-sm font-semibold text-gray-500 dark:text-gray-400"></p>
+                    </div>
+                    <p id="quiz-prompt" class="text-xl font-semibold my-2 text-center"></p>
+                    <div id="quiz-feedback" class="mb-4 text-center h-8 font-bold text-xl"></div>
+                    <div id="quiz-answer-area" class="min-h-[6rem] bg-[var(--bg-color)] p-4 rounded-lg flex flex-wrap-reverse gap-2 justify-start items-center font-arabic text-2xl border-2 border-transparent transition-all" dir="rtl"></div>
+                    <div id="quiz-word-bank" class="mt-6 flex flex-wrap gap-2 justify-center"></div>
+                    <div id="quiz-button-container" class="mt-6 flex justify-center gap-4">
+                        <button id="quiz-action-btn" class="text-white font-bold py-3 px-8 text-xl rounded-lg"></button>
+                    </div>
+                </div>
+                <div id="completion-screen" class="hidden text-center p-8">
+                    <div class="completion-text-container">
+                        <span id="completion-en" class="completion-text">Congratulations!</span>
+                        <span id="completion-ar" class="completion-text hidden-lang font-arabic">مبروك!</span>
+                    </div>
+                    <div class="flex justify-center gap-4 mt-4">
+                        <button id="review-unit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg">Review Unit 4</button>
+                        <button id="next-unit-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg text-lg" disabled>Next Unit</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    
+<script>
+    const UNIT_NUMBER = 4;
+    const LANGUAGE = "arabic";
+    const SENTENCE_OFFSET = (UNIT_NUMBER - 1) * 50;
+
+    const sentences = [
+                    { "arabic": "الرجل كان في بيته.", "english": "The man was in his house." },
+            { "arabic": "أنا كنتُ طالب في المدينة.", "english": "I was a student in the city." },
+            { "arabic": "هل كنتَ هنا؟", "english": "Were you here? (to a male)" },
+            { "arabic": "أين كنتِ يا طالبة؟", "english": "Where were you, female student?" },
+            { "arabic": "هي كانت في سيارتها.", "english": "She was in her car." },
+            { "arabic": "نحن كنا أصدقاء.", "english": "We were friends." },
+            { "arabic": "أنتم كنتم طلاب جدد.", "english": "You all were new students." },
+            { "arabic": "هم كانوا رجال كبار.", "english": "They were big/old men." },
+            { "arabic": "كانوا في المدينة، لكن نحن كنا في بيتنا.", "english": "They were in the city, but we were in our house." },
+            { "arabic": "أنا ذهبتُ إلى الشارع.", "english": "I went to the street." },
+            { "arabic": "إلى أين ذهبتَ؟", "english": "Where did you go? (to a male)" },
+            { "arabic": "مع من ذهبتِ؟", "english": "Who did you go with? (to a female)" },
+            { "arabic": "الطالب ذهب إلى المدينة.", "english": "The student went to the city." },
+            { "arabic": "هي ذهبت مع البنت الصغيرة.", "english": "She went with the small girl." },
+            { "arabic": "نحن ذهبنا إلى بيتكم.", "english": "We went to your (pl.) house." },
+            { "arabic": "هل ذهبتم إلى المدينة؟", "english": "Did you all go to the city?" },
+            { "arabic": "الرجال ذهبوا إلى بيوتهم.", "english": "The men went to their houses." },
+            { "arabic": "ذهبوا إلى المدينة لأن بيتهم هناك.", "english": "They went to the city because their house is there." },
+            { "arabic": "أنا رأيتُ سيارتكَ في الشارع.", "english": "I saw your car in the street." },
+            { "arabic": "ماذا رأيتَ في البيت القديم؟", "english": "What did you see in the old house?" },
+            { "arabic": "هل رأيتِ كتابي الجديد؟", "english": "Did you see my new book?" },
+            { "arabic": "هو رأى صديقي في المدينة.", "english": "He saw my friend in the city." },
+            { "arabic": "هي رأت النساء في الشارع.", "english": "She saw the women in the street." },
+            { "arabic": "نحن رأينا بيتكم الجديد.", "english": "We saw your new house." },
+            { "arabic": "ماذا رأيتم يا أولاد؟", "english": "What did you all see, boys?" },
+            { "arabic": "هم رأوا الطلاب في المدينة.", "english": "They saw the students in the city." },
+            { "arabic": "ذهبتُ إلى بيتكَ لكن أنتَ كنتَ في المدينة.", "english": "I went to your house but you were in the city." },
+            { "arabic": "أنا أردتُ كتاب جديد.", "english": "I wanted a new book." },
+            { "arabic": "لماذا أردتَ أن تذهب؟", "english": "Why did you want to go?" },
+            { "arabic": "هل أردتِ هذا الكتاب؟", "english": "Did you want this book? (to a female)" },
+            { "arabic": "هو أراد أن يرى بيتنا.", "english": "He wanted to see our house." },
+            { "arabic": "هي أرادت أن تذهب مع الطالبات.", "english": "She wanted to go with the female students." },
+            { "arabic": "نحن أردنا أن نرى بيتكم.", "english": "We wanted to see your house." },
+            { "arabic": "ماذا أردتم يا طلاب؟", "english": "What did you want, students?" },
+            { "arabic": "هم أرادوا كتبهم الجديدة.", "english": "They wanted their new books." },
+            { "arabic": "أردتُ أن أذهب، لكن كنتُ في البيت.", "english": "I wanted to go, but I was in the house." },
+            { "arabic": "أين كنتَ أمس؟", "english": "Where were you yesterday?" },
+            { "arabic": "ذهبنا إلى المدينة أمس.", "english": "We went to the city yesterday." },
+            { "arabic": "هو كان هنا قبل الرجل.", "english": "He was here before the man." },
+            { "arabic": "ذهبتُ إلى بيتي قبل صديقي.", "english": "I went to my house before my friend." },
+            { "arabic": "هي ذهبت إلى بيتها بعد الرجل.", "english": "She went to her house after the man." },
+            { "arabic": "ذهبنا إلى المدينة بعد الطلاب.", "english": "We went to the city after the students." },
+            { "arabic": "أمس كنا في المدينة، ورأينا أصدقاءنا هناك.", "english": "Yesterday we were in the city, and we saw our friends there." },
+            { "arabic": "هم أرادوا أن يذهبون إلى المدينة، لكن سيارتهم كانت قديمة.", "english": "They wanted to go to the city, but their car was old." },
+            { "arabic": "لماذا ذهبتَ إلى بيته أمس؟ لأني أردتُ أن أرى كتابه الجديد.", "english": "Why did you go to his house yesterday? Because I wanted to see his new book." },
+            { "arabic": "كانوا في الشارع الكبير ورأوا سيارتنا الجديدة.", "english": "They were in the big street and saw our new car." },
+            { "arabic": "رأيتُ الأولاد في بيتهم.", "english": "I saw the boys in their house." },
+            { "arabic": "الطالبة أرادت أن تذهب، لكن الطالب كان في بيتها.", "english": "The female student wanted to go, but the male student was in her house." },
+            { "arabic": "هل رأيتم بيوتنا الجديدة؟ نعم، رأينا البيوت أمس.", "english": "Did you all see our new houses? Yes, we saw the houses yesterday." },
+            { "arabic": "ذهبنا إلى المدينة. أردنا كتب جديدة. لكن الكتب كانت في بيت قديم.", "english": "We went to the city. We wanted new books. But the books were in an old house." }
+    ];
+
+    // --- STATE ---
+    let currentSection = 0;
+    let isReversed = false;
+    let quizQuestions = [];
+    let currentQuizIndex = 0;
+    let wrongAttempts = 0;
+    let isAnswerShown = false;
+    let langInterval = null;
+
+    // --- DOM ELEMENTS ---
+    const readerView = document.getElementById('reader-view');
+    const quizView = document.getElementById('quiz-view');
+    const quizContent = document.getElementById('quiz-content');
+    const completionScreen = document.getElementById('completion-screen');
+    const readerContent = document.getElementById('reader-content');
+    const sectionNav = document.getElementById('section-nav');
+    const startQuizBtn = document.getElementById('start-quiz-btn');
+    const quizPrompt = document.getElementById('quiz-prompt');
+    const quizProgress = document.getElementById('quiz-progress');
+    const quizAnswerArea = document.getElementById('quiz-answer-area');
+    const quizWordBank = document.getElementById('quiz-word-bank');
+    const quizFeedback = document.getElementById('quiz-feedback');
+    const quizActionBtn = document.getElementById('quiz-action-btn');
+    const quizButtonContainer = document.getElementById('quiz-button-container');
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-icon-sun');
+    const moonIcon = document.getElementById('theme-icon-moon');
+    const reverseToggle = document.getElementById('reverse-toggle');
+    const reviewUnitBtn = document.getElementById('review-unit-btn');
+    const sentencePlayer = document.getElementById('sentence-player');
+
+    // --- UTILITY FUNCTIONS ---
+    const toArabicNumerals = (num) => {
+        const arabic = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+        return String(num).split('').map(i => arabic[i]).join('');
+    };
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // --- THEME ---
+    function setAndApplyTheme(theme) {
+        localStorage.setItem('theme', theme);
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        }
+    }
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        setAndApplyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // --- REVERSE LANGUAGE ---
+    reverseToggle.addEventListener('click', () => {
+        isReversed = !isReversed;
+        localStorage.setItem('languageReversed', isReversed);
+        populateReader(currentSection);
+    });
+
+    // --- AUDIO FUNCTION ---
+    function playSentenceAudio(globalIndex) {
+        const audioSentenceNumber = globalIndex + 1 + SENTENCE_OFFSET;
+        const audioPath = `${LANGUAGE}_audio/unit_${UNIT_NUMBER}/sentence_${audioSentenceNumber}.mp3`;
+        sentencePlayer.src = audioPath;
+        sentencePlayer.play().catch(error => {
+            console.error(`Could not play audio for sentence ${audioSentenceNumber}:`, error);
+        });
+    }
+
+    // --- READER FUNCTIONS ---
+    function populateReader(sectionIndex) {
+        readerContent.innerHTML = '';
+        const start = sectionIndex * 10;
+        const end = start + 10;
+        const sectionSentences = sentences.slice(start, end);
+
+        sectionSentences.forEach((sentence, index) => {
+            const globalIndex = start + index;
+            const displayIndex = globalIndex + 1 + SENTENCE_OFFSET;
+            const blockContainer = document.createElement('div');
+            blockContainer.classList.add('sentence-block', 'flex', 'items-start', 'gap-4');
+
+            const interactiveContainer = document.createElement('div');
+            interactiveContainer.classList.add('flex-grow');
+
+            const interactiveArea = document.createElement('div');
+            interactiveArea.classList.add('interactive-area');
+            interactiveArea.dataset.index = globalIndex;
+            
+            const infoBox = document.createElement('div');
+            infoBox.classList.add('info-box');
+            
+            const mainText = isReversed ? sentence.english : sentence[LANGUAGE];
+            const hoverText = isReversed ? sentence[LANGUAGE] : sentence.english;
+            const mainLangIsArabic = isReversed ? false : true;
+
+            interactiveArea.textContent = mainText;
+            interactiveArea.setAttribute('dir', mainLangIsArabic ? 'rtl' : 'ltr');
+            interactiveArea.classList.toggle('font-arabic', mainLangIsArabic);
+            
+            infoBox.innerHTML = `<p class="text-xl font-semibold text-right ${mainLangIsArabic ? '' : 'font-arabic'}" dir="${mainLangIsArabic ? 'ltr' : 'rtl'}">${hoverText}</p>`;
+
+
+            if (isTouchDevice) {
+                interactiveArea.addEventListener('click', () => {
+                    playSentenceAudio(globalIndex);
+                    toggleInfo(interactiveArea);
+                });
+            } else {
+                interactiveArea.addEventListener('mouseenter', () => {
+                    playSentenceAudio(globalIndex);
+                    showInfo(interactiveArea);
+                });
+                interactiveArea.addEventListener('mouseleave', () => {
+                    hideInfo(interactiveArea);
+                });
+            }
+
+            interactiveContainer.appendChild(interactiveArea);
+            interactiveContainer.appendChild(infoBox);
+            
+            const numberEl = document.createElement('span');
+            numberEl.textContent = toArabicNumerals(displayIndex);
+            numberEl.classList.add('font-arabic', 'text-2xl', 'pt-3');
+            
+            if (mainLangIsArabic) {
+                blockContainer.appendChild(interactiveContainer);
+                blockContainer.appendChild(numberEl);
+            } else {
+                blockContainer.appendChild(numberEl);
+                blockContainer.appendChild(interactiveContainer);
+            }
+            
+            readerContent.appendChild(blockContainer);
+        });
+        updateNavButtons();
+    }
+    
+    function showInfo(interactiveAreaEl) {
+        interactiveAreaEl.classList.add('active');
+        interactiveAreaEl.nextElementSibling.classList.add('visible');
+    }
+
+    function hideInfo(interactiveAreaEl) {
+        interactiveAreaEl.classList.remove('active');
+        interactiveAreaEl.nextElementSibling.classList.remove('visible');
+    }
+
+    function toggleInfo(interactiveAreaEl) {
+        const wasActive = interactiveAreaEl.classList.contains('active');
+        document.querySelectorAll('.interactive-area.active').forEach(activeEl => {
+            hideInfo(activeEl);
+        });
+        if (!wasActive) {
+            showInfo(interactiveAreaEl);
+        }
+    }
+
+    // --- QUIZ FUNCTIONS ---
+    function startQuiz() {
+        readerView.classList.add('hidden');
+        quizView.classList.remove('hidden');
+        quizContent.classList.remove('hidden');
+        completionScreen.classList.add('hidden');
+        sectionNav.classList.add('hidden');
+        if (langInterval) clearInterval(langInterval);
+
+        const start = currentSection * 10;
+        const end = start + 10;
+        
+        quizQuestions = sentences.slice(start, end).map((sentence, index) => ({
+            ...sentence,
+            originalIndex: start + index
+        })).sort(() => 0.5 - Math.random()).slice(0, 5);
+
+        currentQuizIndex = 0;
+        loadQuizQuestion();
+    }
+
+    function loadQuizQuestion() {
+        wrongAttempts = 0;
+        isAnswerShown = false;
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.remove();
+
+        quizAnswerArea.innerHTML = '';
+        quizWordBank.innerHTML = '';
+        quizFeedback.innerHTML = '';
+        quizAnswerArea.style.borderColor = 'transparent';
+
+        quizProgress.textContent = `${currentQuizIndex + 1} / ${quizQuestions.length}`;
+        
+        quizActionBtn.style.display = 'none';
+        quizActionBtn.onclick = null;
+
+        const question = quizQuestions[currentQuizIndex];
+        quizPrompt.textContent = question.english;
+
+        const words = question[LANGUAGE].replace(/[.؟]/g, '').split(' ').filter(w => w);
+        const shuffledWords = words.sort(() => 0.5 - Math.random());
+        
+        shuffledWords.forEach(word => {
+            const btn = document.createElement('button');
+            btn.textContent = word;
+            btn.className = 'word-bank-btn font-arabic text-2xl p-3 px-5 rounded-lg bg-[var(--card-bg-light)] transition-colors';
+            btn.onclick = () => selectWord(btn);
+            quizWordBank.appendChild(btn);
+        });
+    }
+
+    function selectWord(btn) {
+        btn.disabled = true;
+        const answerBtn = document.createElement('button');
+        answerBtn.textContent = btn.textContent;
+        answerBtn.className = 'answer-word-btn font-arabic text-2xl p-3 px-5 rounded-lg bg-[var(--active-color)] text-white';
+        answerBtn.onclick = () => deselectWord(answerBtn, btn);
+        quizAnswerArea.appendChild(answerBtn);
+        liveCheckAnswer();
+    }
+
+    function deselectWord(answerBtn, originalBtn) {
+        originalBtn.disabled = false;
+        answerBtn.remove();
+        liveCheckAnswer();
+    }
+
+    function liveCheckAnswer() {
+        const answerWords = Array.from(quizAnswerArea.children).map(btn => btn.textContent);
+        const constructedAnswer = answerWords.join(' ');
+        const currentQuestion = quizQuestions[currentQuizIndex];
+        const correctAnswerText = currentQuestion[LANGUAGE].replace(/[.؟]/g, '');
+        const correctWords = correctAnswerText.split(' ').filter(w => w);
+
+        if (!isAnswerShown) {
+            quizFeedback.textContent = '';
+        }
+        quizActionBtn.style.display = 'none';
+        quizAnswerArea.style.borderColor = 'transparent';
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.style.display = 'none';
+
+        if (constructedAnswer === correctAnswerText) {
+            quizAnswerArea.style.borderColor = 'var(--border-correct-color)';
+            quizFeedback.textContent = 'Correct!';
+            quizFeedback.style.color = 'var(--correct-color)';
+            
+            playSentenceAudio(currentQuestion.originalIndex);
+
+            quizActionBtn.style.display = 'block';
+            quizActionBtn.textContent = 'Continue';
+            quizActionBtn.className = 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+            quizActionBtn.onclick = nextQuestion;
+
+            Array.from(quizWordBank.children).forEach(btn => btn.disabled = true);
+            Array.from(quizAnswerArea.children).forEach(btn => btn.onclick = null);
+            wrongAttempts = 0;
+        } else if (answerWords.length === correctWords.length) {
+            wrongAttempts++;
+            if (!isAnswerShown) {
+                quizFeedback.textContent = 'Incorrect. Try again!';
+                quizFeedback.style.color = 'var(--incorrect-color)';
+            }
+            quizAnswerArea.style.borderColor = 'var(--incorrect-color)';
+
+            if (wrongAttempts >= 3) {
+                let giveUpBtn = document.getElementById('give-up-btn');
+                if (!giveUpBtn) {
+                    giveUpBtn = document.createElement('button');
+                    giveUpBtn.id = 'give-up-btn';
+                    giveUpBtn.textContent = 'Give Answer';
+                    giveUpBtn.className = 'bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+                    giveUpBtn.onclick = showCorrectAnswer;
+                    quizButtonContainer.appendChild(giveUpBtn);
+                }
+                giveUpBtn.style.display = 'block';
+            }
+        }
+    }
+    
+    function showCorrectAnswer() {
+        isAnswerShown = true;
+        const currentQuestion = quizQuestions[currentQuizIndex];
+        const correctAnswerText = currentQuestion[LANGUAGE];
+
+        quizFeedback.innerHTML = `<div dir="rtl">Correct answer: <strong class="font-semibold font-arabic">${correctAnswerText}</strong></div>`;
+        quizFeedback.style.color = 'var(--text-color)';
+
+        quizAnswerArea.innerHTML = '';
+        Array.from(quizWordBank.children).forEach(btn => {
+            btn.disabled = false;
+        });
+        
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.remove();
+    }
+
+    function nextQuestion() {
+        currentQuizIndex++;
+        if (currentQuizIndex < quizQuestions.length) {
+            loadQuizQuestion();
+        } else {
+            currentSection++;
+            const numSections = Math.ceil(sentences.length / 10);
+            if (currentSection >= numSections) {
+                showCompletionScreen();
+            } else {
+                returnToReader(currentSection);
+            }
+        }
+    }
+
+    function showCompletionScreen() {
+        quizContent.classList.add('hidden');
+        completionScreen.classList.remove('hidden');
+        
+        for (let i = 0; i < 100; i++) {
+            createConfetti();
+        }
+
+        const enText = document.getElementById('completion-en');
+        const arText = document.getElementById('completion-ar');
+        langInterval = setInterval(() => {
+            enText.classList.toggle('hidden-lang');
+            arText.classList.toggle('hidden-lang');
+        }, 2000);
+    }
+
+    function createConfetti() {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        const colors = ['#fde047', '#ff7f50', '#2dd4bf', '#8a2be2', '#00ff7f'];
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+    }
+
+    function reviewCurrentUnit() {
+        if (langInterval) clearInterval(langInterval);
+        currentSection = 0; 
+        returnToReader(currentSection);
+    }
+
+    function returnToReader(sectionIndex) {
+        if (langInterval) clearInterval(langInterval);
+        quizView.classList.add('hidden');
+        readerView.classList.remove('hidden');
+        sectionNav.classList.remove('hidden');
+        currentSection = sectionIndex;
+        populateReader(currentSection);
+    }
+    
+    function populateNav() {
+        const numSections = Math.ceil(sentences.length / 10);
+        for (let i = 0; i < numSections; i++) {
+            const btn = document.createElement('button');
+            const start = i * 10 + 1 + SENTENCE_OFFSET;
+            const end = Math.min(start + 9, sentences.length + SENTENCE_OFFSET);
+            btn.textContent = `${toArabicNumerals(start)}-${toArabicNumerals(end)}`;
+            btn.className = 'nav-btn px-4 py-2 rounded-md font-semibold bg-[var(--card-bg-light)] transition-colors font-arabic';
+            btn.onclick = () => {
+                currentSection = i;
+                populateReader(i);
+            };
+            sectionNav.appendChild(btn);
+        }
+    }
+
+    function updateNavButtons() {
+        const buttons = sectionNav.querySelectorAll('.nav-btn');
+        buttons.forEach((btn, index) => {
+            btn.classList.toggle('active', index === currentSection);
+        });
+    }
+
+    // --- EVENT LISTENERS ---
+    startQuizBtn.addEventListener('click', startQuiz);
+    reviewUnitBtn.addEventListener('click', reviewCurrentUnit);
+
+    // --- INITIALIZATION ---
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setAndApplyTheme(savedTheme);
+    } else {
+        setAndApplyTheme('dark');
+    }
+    
+    const savedReverse = localStorage.getItem('languageReversed');
+    if (savedReverse) {
+        isReversed = JSON.parse(savedReverse);
+    }
+    
+    populateNav();
+    populateReader(currentSection);
+</script>
+
+</body>
+</html>
