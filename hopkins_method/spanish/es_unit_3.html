@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
     <style>
         /* Light mode with reverted button/active colors */
         :root {
@@ -45,6 +45,9 @@
             background-size: auto;
             background-attachment: fixed;
             overflow-x: hidden; /* Prevent horizontal scroll from confetti */
+        }
+        h1 {
+            font-family: 'Raleway', sans-serif;
         }
         /* Revert dark mode background to solid color */
         html.dark body {
@@ -110,7 +113,7 @@
             color: black;
         }
         /* Style for the theme toggle button circle in light mode */
-        html:not(.dark) #theme-toggle {
+        html:not(.dark) #theme-toggle, html:not(.dark) #reverse-toggle {
             background-color: var(--card-bg);
         }
 
@@ -158,15 +161,19 @@
 
     <div class="w-full max-w-3xl mx-auto">
         <!-- Header -->
-        <header class="text-center mb-6 flex justify-between items-center">
-            <div></div> <!-- Spacer -->
-            <div>
-                <h1 class="text-3xl font-bold">Hopkins Method Spanish: Unit 3</h1>
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold">Hopkins Method Spanish: Unit 3</h1>
+            <div class="flex justify-center items-center gap-2 mt-3"> <!-- Container for buttons, centered -->
+                 <button id="reverse-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Reverse Languages">
+                    <svg class="h-6 w-6" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 168v-16c0-13.255 10.745-24 24-24h360v-48c0-21.382 25.851-32.09 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.851 304.09 384 293.382 384 272v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.382-25.851-32.09-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.149 464.09 128 453.382 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"/>
+                    </svg>
+                 </button>
+                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Toggle Theme">
+                    <svg id="theme-icon-sun" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    <svg id="theme-icon-moon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 718.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                 </button>
             </div>
-            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                <svg id="theme-icon-sun" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                <svg id="theme-icon-moon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
-            </button>
         </header>
         
         <nav id="section-nav" class="flex flex-wrap justify-center gap-2 mb-8"></nav>
@@ -188,7 +195,7 @@
                     <div id="quiz-feedback" class="mb-4 text-center h-8 font-bold text-xl"></div>
                     <div id="quiz-answer-area" class="min-h-[6rem] bg-[var(--bg-color)] p-4 rounded-lg flex flex-wrap gap-2 justify-start items-center text-2xl border-2 border-transparent transition-all"></div>
                     <div id="quiz-word-bank" class="mt-6 flex flex-wrap gap-2 justify-center"></div>
-                    <div id="quiz-button-container" class="mt-6 flex justify-center">
+                    <div id="quiz-button-container" class="mt-6 flex justify-center gap-4">
                         <button id="quiz-action-btn" class="text-white font-bold py-3 px-8 text-xl rounded-lg"></button>
                     </div>
                 </div>
@@ -199,7 +206,7 @@
                     </div>
                     <div class="flex justify-center gap-4 mt-4">
                         <button id="review-unit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg">Review Unit 3</button>
-                        <button id="next-unit-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg text-lg" disabled>Next Unit</button>
+                        
                     </div>
                 </div>
             </div>
@@ -213,62 +220,65 @@
     const SENTENCE_OFFSET = (UNIT_NUMBER - 1) * 50;
 
     const sentences = [
-                    { "spanish": "Los estudiantes están en la ciudad.", "english": "The students are in the city." },
-            { "spanish": "Los hombres están aquí.", "english": "The men are here." },
-            { "spanish": "Nosotros somos hombres y estudiantes.", "english": "We are men and students." },
-            { "spanish": "Nosotros vamos a la ciudad.", "english": "We are going to the city." },
-            { "spanish": "Nosotros queremos un libro.", "english": "We want a book." },
-            { "spanish": "Estos son libros.", "english": "These are books." },
-            { "spanish": "Nosotros queremos libros nuevos.", "english": "We want new books." },
-            { "spanish": "Esta es nuestra casa.", "english": "This is our house." },
-            { "spanish": "Nosotros tenemos una casa grande.", "english": "We have a big house." },
-            { "spanish": "Nosotros vemos a los hombres en la calle.", "english": "We see the men in the street." },
-            { "spanish": "Vosotros sois estudiantes.", "english": "You all are students." },
-            { "spanish": "¿A dónde vais?", "english": "Where are you all going?" },
-            { "spanish": "¿Dónde está vuestra casa?", "english": "Where is your (pl.) house?" },
-            { "spanish": "¿Vosotros tenéis un coche?", "english": "Do you all have a car?" },
-            { "spanish": "¿Qué queréis?", "english": "What do you all want?" },
-            { "spanish": "¿Qué veis en vuestra casa?", "english": "What do you all see in your house?" },
-            { "spanish": "Ellos son hombres.", "english": "They are men." },
-            { "spanish": "Ellos van a la ciudad.", "english": "They are going to the city." },
-            { "spanish": "Esta es su casa.", "english": "This is their house." },
-            { "spanish": "Ellos tienen una casa grande.", "english": "They have a big house." },
-            { "spanish": "Ellos quieren un coche nuevo.", "english": "They want a new car." },
-            { "spanish": "Ellos ven nuestra casa en la ciudad.", "english": "They see our house in the city." },
-            { "spanish": "Él es mi amigo.", "english": "He is my friend." },
-            { "spanish": "Ellos son mis amigos.", "english": "They are my friends." },
-            { "spanish": "Nuestros amigos son estudiantes.", "english": "Our friends are students." },
-            { "spanish": "Nosotros vamos con nuestros amigos.", "english": "We are going with our friends." },
-            { "spanish": "Estas son casas.", "english": "These are houses." },
-            { "spanish": "Las casas de los estudiantes están en la ciudad.", "english": "The students' houses are in the city." },
-            { "spanish": "Estos son coches.", "english": "These are cars." },
-            { "spanish": "Sus coches son nuevos.", "english": "Their cars are new." },
-            { "spanish": "Estos son bolígrafos.", "english": "These are pens." },
-            { "spanish": "Nosotros queremos nuestros bolígrafos.", "english": "We want our pens." },
-            { "spanish": "Las puertas de las casas son grandes.", "english": "The doors of the houses are big." },
-            { "spanish": "Los chicos están en la casa.", "english": "The boys are in the house." },
-            { "spanish": "Las chicas están aquí.", "english": "The girls are here." },
-            { "spanish": "Las mujeres están en la calle.", "english": "The women are in the street." },
-            { "spanish": "Las mujeres son estudiantes.", "english": "The women are students." },
-            { "spanish": "Las estudiantes están en una casa grande.", "english": "The female students are in a big house." },
-            { "spanish": "Estas son ciudades grandes.", "english": "These are big cities." },
-            { "spanish": "Las calles de la ciudad no son pequeñas.", "english": "The streets of the city are not small." },
-            { "spanish": "Ellos son hombres mayores.", "english": "They are big/old men." },
-            { "spanish": "Nosotros somos estudiantes nuevos.", "english": "We are new students." },
-            { "spanish": "Los hombres y las mujeres van a la ciudad.", "english": "The men and women are going to the city." },
-            { "spanish": "Sus casas son grandes y nuevas.", "english": "Their houses are big and new." },
-            { "spanish": "Los chicos y las chicas están en su casa.", "english": "The boys and girls are in their house." },
-            { "spanish": "¿Por qué vais a la ciudad? Porque las casas de nuestros amigos están en la ciudad.", "english": "Why are you all going to the city? Because our friends' houses are in the city." },
-            { "spanish": "Ellos no ven nuestro coche porque está en una calle pequeña.", "english": "They do not see our car because it is on a small street." },
-            { "spanish": "¿Tenéis nuestros bolígrafos? No, pero tenemos vuestros bolígrafos.", "english": "Do you all have our pens? No, but we have your pens." },
-            { "spanish": "Los estudiantes nuevos quieren sus libros, pero los libros están en una casa vieja.", "english": "The new students want their books, but the books are in an old house." },
-            { "spanish": "Nosotros estamos en nuestra casa y nuestros amigos están in su casa, porque son estudiantes en la ciudad.", "english": "We are in our house, and our friends are in their house, because they are students in the city." }
+        { "spanish": "Hola, ¿cómo estás?", "english": "Hello, how are you?" },
+        { "spanish": "Estoy bien, gracias.", "english": "I am fine, thank you." },
+        { "spanish": "¿Cómo te llamas?", "english": "What is your name?" },
+        { "spanish": "Me llamo María.", "english": "My name is María." },
+        { "spanish": "Mucho gusto.", "english": "Nice to meet you." },
+        { "spanish": "El gusto es mío.", "english": "The pleasure is mine." },
+        { "spanish": "¿De dónde eres?", "english": "Where are you from?" },
+        { "spanish": "Soy de España.", "english": "I am from Spain." },
+        { "spanish": "¿Cuántos años tienes?", "english": "How old are you?" },
+        { "spanish": "Tengo veinticinco años.", "english": "I am twenty-five years old." },
+        { "spanish": "¿Hablas inglés?", "english": "Do you speak English?" },
+        { "spanish": "Sí, hablo un poco de inglés.", "english": "Yes, I speak a little English." },
+        { "spanish": "¿Dónde vives?", "english": "Where do you live?" },
+        { "spanish": "Vivo en Madrid.", "english": "I live in Madrid." },
+        { "spanish": "¿A qué te dedicas?", "english": "What do you do for work?" },
+        { "spanish": "Soy profesora.", "english": "I am a teacher." },
+        { "spanish": "¿Tienes hermanos?", "english": "Do you have siblings?" },
+        { "spanish": "Sí, tengo un hermano y una hermana.", "english": "Yes, I have a brother and a sister." },
+        { "spanish": "Mi hermano es médico.", "english": "My brother is a doctor." },
+        { "spanish": "Mi hermana es estudiante.", "english": "My sister is a student." },
+        { "spanish": "¿Estás casado?", "english": "Are you married?" },
+        { "spanish": "No, estoy soltero.", "english": "No, I am single." },
+        { "spanish": "¿Tienes hijos?", "english": "Do you have children?" },
+        { "spanish": "No, no tengo hijos.", "english": "No, I don't have children." },
+        { "spanish": "¿Cuál es tu comida favorita?", "english": "What is your favorite food?" },
+        { "spanish": "Me gusta la paella.", "english": "I like paella." },
+        { "spanish": "¿Te gusta el fútbol?", "english": "Do you like soccer?" },
+        { "spanish": "Sí, me encanta el fútbol.", "english": "Yes, I love soccer." },
+        { "spanish": "¿Practicas algún deporte?", "english": "Do you practice any sport?" },
+        { "spanish": "Sí, juego al tenis.", "english": "Yes, I play tennis." },
+        { "spanish": "¿Qué tiempo hace hoy?", "english": "What's the weather like today?" },
+        { "spanish": "Hace sol y calor.", "english": "It's sunny and hot." },
+        { "spanish": "¿Qué hora es?", "english": "What time is it?" },
+        { "spanish": "Son las tres de la tarde.", "english": "It's three in the afternoon." },
+        { "spanish": "¿A qué hora comes?", "english": "What time do you eat?" },
+        { "spanish": "Como a las dos.", "english": "I eat at two o'clock." },
+        { "spanish": "¿Dónde está el baño?", "english": "Where is the bathroom?" },
+        { "spanish": "Está al final del pasillo.", "english": "It's at the end of the hallway." },
+        { "spanish": "¿Cuánto cuesta esto?", "english": "How much does this cost?" },
+        { "spanish": "Cuesta diez euros.", "english": "It costs ten euros." },
+        { "spanish": "¿Puedes ayudarme?", "english": "Can you help me?" },
+        { "spanish": "Por supuesto, ¿en qué puedo ayudarte?", "english": "Of course, how can I help you?" },
+        { "spanish": "No entiendo.", "english": "I don't understand." },
+        { "spanish": "¿Puedes repetir, por favor?", "english": "Can you repeat, please?" },
+        { "spanish": "Habla más despacio, por favor.", "english": "Speak more slowly, please." },
+        { "spanish": "¿Cómo se dice esto en español?", "english": "How do you say this in Spanish?" },
+        { "spanish": "Lo siento, no sé.", "english": "I'm sorry, I don't know." },
+        { "spanish": "¡Hasta luego!", "english": "See you later!" },
+        { "spanish": "¡Adiós!", "english": "Goodbye!" },
+        { "spanish": "¡Que tengas un buen día!", "english": "Have a good day!" }
     ];
 
     // --- STATE ---
     let currentSection = 0;
+    let isReversed = false;
     let quizQuestions = [];
     let currentQuizIndex = 0;
+    let wrongAttempts = 0;
+    let isAnswerShown = false;
     let langInterval = null;
     let hoverTimeout = null; 
 
@@ -286,9 +296,11 @@
     const quizWordBank = document.getElementById('quiz-word-bank');
     const quizFeedback = document.getElementById('quiz-feedback');
     const quizActionBtn = document.getElementById('quiz-action-btn');
+    const quizButtonContainer = document.getElementById('quiz-button-container');
     const themeToggle = document.getElementById('theme-toggle');
     const sunIcon = document.getElementById('theme-icon-sun');
     const moonIcon = document.getElementById('theme-icon-moon');
+    const reverseToggle = document.getElementById('reverse-toggle');
     const reviewUnitBtn = document.getElementById('review-unit-btn');
     const sentencePlayer = document.getElementById('sentence-player');
 
@@ -311,6 +323,13 @@
     themeToggle.addEventListener('click', () => {
         const currentTheme = localStorage.getItem('theme') || 'dark';
         setAndApplyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // --- REVERSE LANGUAGE ---
+    reverseToggle.addEventListener('click', () => {
+        isReversed = !isReversed;
+        localStorage.setItem('languageReversed', isReversed);
+        populateReader(currentSection);
     });
 
     // --- AUDIO FUNCTION ---
@@ -344,11 +363,15 @@
             const interactiveArea = document.createElement('div');
             interactiveArea.classList.add('interactive-area');
             interactiveArea.dataset.index = globalIndex;
-            interactiveArea.textContent = sentence[LANGUAGE];
             
             const infoBox = document.createElement('div');
             infoBox.classList.add('info-box');
-            infoBox.innerHTML = `<p class="text-xl font-semibold">${sentence.english}</p>`;
+            
+            const mainText = isReversed ? sentence.english : sentence[LANGUAGE];
+            const hoverText = isReversed ? sentence[LANGUAGE] : sentence.english;
+
+            interactiveArea.textContent = mainText;
+            infoBox.innerHTML = `<p class="text-xl font-semibold">${hoverText}</p>`;
 
             if (isTouchDevice) {
                 interactiveArea.addEventListener('click', () => {
@@ -421,6 +444,11 @@
     }
 
     function loadQuizQuestion() {
+        wrongAttempts = 0;
+        isAnswerShown = false;
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.remove();
+
         quizAnswerArea.innerHTML = '';
         quizWordBank.innerHTML = '';
         quizFeedback.innerHTML = '';
@@ -434,7 +462,7 @@
         const question = quizQuestions[currentQuizIndex];
         quizPrompt.textContent = question.english;
 
-        const words = question[LANGUAGE].replace(/[.,?]/g, '').split(' ').filter(w => w);
+        const words = question[LANGUAGE].split(' ').filter(w => w);
         const shuffledWords = words.sort(() => 0.5 - Math.random());
         
         shuffledWords.forEach(word => {
@@ -466,10 +494,16 @@
         const answerWords = Array.from(quizAnswerArea.children).map(btn => btn.textContent);
         const constructedAnswer = answerWords.join(' ');
         const currentQuestion = quizQuestions[currentQuizIndex];
-        const correctAnswerText = currentQuestion[LANGUAGE].replace(/[.,?]/g, '');
+        const correctAnswerText = currentQuestion[LANGUAGE];
+        const correctWords = correctAnswerText.split(' ').filter(w => w);
 
-        quizFeedback.textContent = '';
+        if (!isAnswerShown) {
+            quizFeedback.textContent = '';
+        }
         quizActionBtn.style.display = 'none';
+        quizAnswerArea.style.borderColor = 'transparent';
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.style.display = 'none';
 
         if (constructedAnswer === correctAnswerText) {
             quizAnswerArea.style.borderColor = 'var(--border-correct-color)';
@@ -485,7 +519,45 @@
 
             Array.from(quizWordBank.children).forEach(btn => btn.disabled = true);
             Array.from(quizAnswerArea.children).forEach(btn => btn.onclick = null);
+            wrongAttempts = 0;
+        } else if (answerWords.length === correctWords.length) {
+            wrongAttempts++;
+            if (!isAnswerShown) {
+                quizFeedback.textContent = 'Incorrect. Try again!';
+                quizFeedback.style.color = 'var(--incorrect-color)';
+            }
+            quizAnswerArea.style.borderColor = 'var(--incorrect-color)';
+
+            if (wrongAttempts >= 3) {
+                let giveUpBtn = document.getElementById('give-up-btn');
+                if (!giveUpBtn) {
+                    giveUpBtn = document.createElement('button');
+                    giveUpBtn.id = 'give-up-btn';
+                    giveUpBtn.textContent = 'Give Answer';
+                    giveUpBtn.className = 'bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+                    giveUpBtn.onclick = showCorrectAnswer;
+                    quizButtonContainer.appendChild(giveUpBtn);
+                }
+                giveUpBtn.style.display = 'block';
+            }
         }
+    }
+    
+    function showCorrectAnswer() {
+        isAnswerShown = true;
+        const currentQuestion = quizQuestions[currentQuizIndex];
+        const correctAnswerText = currentQuestion[LANGUAGE];
+
+        quizFeedback.innerHTML = `Correct answer: <strong class="font-semibold">${correctAnswerText}</strong>`;
+        quizFeedback.style.color = 'var(--text-color)';
+
+        quizAnswerArea.innerHTML = '';
+        Array.from(quizWordBank.children).forEach(btn => {
+            btn.disabled = false;
+        });
+        
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.remove();
     }
     
     function nextQuestion() {
@@ -578,6 +650,11 @@
         setAndApplyTheme(savedTheme);
     } else {
         setAndApplyTheme('dark');
+    }
+    
+    const savedReverse = localStorage.getItem('languageReversed');
+    if (savedReverse) {
+        isReversed = JSON.parse(savedReverse);
     }
     
     populateNav();

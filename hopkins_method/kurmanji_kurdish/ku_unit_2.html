@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
     <style>
         /* Light mode with reverted button/active colors */
         :root {
@@ -45,6 +45,9 @@
             background-size: auto;
             background-attachment: fixed;
             overflow-x: hidden; /* Prevent horizontal scroll from confetti */
+        }
+        h1 {
+            font-family: 'Raleway', sans-serif;
         }
         /* Revert dark mode background to solid color */
         html.dark body {
@@ -110,7 +113,7 @@
             color: black;
         }
         /* Style for the theme toggle button circle in light mode */
-        html:not(.dark) #theme-toggle {
+        html:not(.dark) #theme-toggle, html:not(.dark) #reverse-toggle {
             background-color: var(--card-bg);
         }
 
@@ -158,15 +161,19 @@
 
     <div class="w-full max-w-3xl mx-auto">
         <!-- Header -->
-        <header class="text-center mb-6 flex justify-between items-center">
-            <div></div> <!-- Spacer -->
-            <div>
-                <h1 class="text-3xl font-bold">Hopkins Method Kurmanji Kurdish: Unit 2</h1>
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold">Hopkins Method Kurmanji Kurdish: Unit 2</h1>
+            <div class="flex justify-center items-center gap-2 mt-3"> <!-- Container for buttons, centered -->
+                 <button id="reverse-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Reverse Languages">
+                    <svg class="h-6 w-6" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 168v-16c0-13.255 10.745-24 24-24h360v-48c0-21.382 25.851-32.09 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.851 304.09 384 293.382 384 272v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.382-25.851-32.09-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.149 464.09 128 453.382 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"/>
+                    </svg>
+                 </button>
+                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Toggle Theme">
+                    <svg id="theme-icon-sun" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    <svg id="theme-icon-moon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                 </button>
             </div>
-            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                <svg id="theme-icon-sun" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                <svg id="theme-icon-moon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
-            </button>
         </header>
         
         <nav id="section-nav" class="flex flex-wrap justify-center gap-2 mb-8"></nav>
@@ -188,7 +195,7 @@
                     <div id="quiz-feedback" class="mb-4 text-center h-8 font-bold text-xl"></div>
                     <div id="quiz-answer-area" class="min-h-[6rem] bg-[var(--bg-color)] p-4 rounded-lg flex flex-wrap gap-2 justify-start items-center text-2xl border-2 border-transparent transition-all"></div>
                     <div id="quiz-word-bank" class="mt-6 flex flex-wrap gap-2 justify-center"></div>
-                    <div id="quiz-button-container" class="mt-6 flex justify-center">
+                    <div id="quiz-button-container" class="mt-6 flex justify-center gap-4">
                         <button id="quiz-action-btn" class="text-white font-bold py-3 px-8 text-xl rounded-lg"></button>
                     </div>
                 </div>
@@ -199,7 +206,7 @@
                     </div>
                     <div class="flex justify-center gap-4 mt-4">
                         <button id="review-unit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg">Review Unit 2</button>
-                        <button id="next-unit-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg text-lg" disabled>Next Unit</button>
+                        
                     </div>
                 </div>
             </div>
@@ -267,8 +274,11 @@
 
     // --- STATE ---
     let currentSection = 0;
+    let isReversed = false;
     let quizQuestions = [];
     let currentQuizIndex = 0;
+    let wrongAttempts = 0;
+    let isAnswerShown = false;
     let langInterval = null;
     let hoverTimeout = null; 
 
@@ -286,9 +296,11 @@
     const quizWordBank = document.getElementById('quiz-word-bank');
     const quizFeedback = document.getElementById('quiz-feedback');
     const quizActionBtn = document.getElementById('quiz-action-btn');
+    const quizButtonContainer = document.getElementById('quiz-button-container');
     const themeToggle = document.getElementById('theme-toggle');
     const sunIcon = document.getElementById('theme-icon-sun');
     const moonIcon = document.getElementById('theme-icon-moon');
+    const reverseToggle = document.getElementById('reverse-toggle');
     const reviewUnitBtn = document.getElementById('review-unit-btn');
     const sentencePlayer = document.getElementById('sentence-player');
 
@@ -311,6 +323,13 @@
     themeToggle.addEventListener('click', () => {
         const currentTheme = localStorage.getItem('theme') || 'dark';
         setAndApplyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // --- REVERSE LANGUAGE ---
+    reverseToggle.addEventListener('click', () => {
+        isReversed = !isReversed;
+        localStorage.setItem('languageReversed', isReversed);
+        populateReader(currentSection);
     });
 
     // --- AUDIO FUNCTION ---
@@ -344,11 +363,15 @@
             const interactiveArea = document.createElement('div');
             interactiveArea.classList.add('interactive-area');
             interactiveArea.dataset.index = globalIndex;
-            interactiveArea.textContent = sentence[LANGUAGE];
             
             const infoBox = document.createElement('div');
             infoBox.classList.add('info-box');
-            infoBox.innerHTML = `<p class="text-xl font-semibold">${sentence.english}</p>`;
+            
+            const mainText = isReversed ? sentence.english : sentence[LANGUAGE];
+            const hoverText = isReversed ? sentence[LANGUAGE] : sentence.english;
+
+            interactiveArea.textContent = mainText;
+            infoBox.innerHTML = `<p class="text-xl font-semibold">${hoverText}</p>`;
 
             if (isTouchDevice) {
                 interactiveArea.addEventListener('click', () => {
@@ -421,6 +444,11 @@
     }
 
     function loadQuizQuestion() {
+        wrongAttempts = 0;
+        isAnswerShown = false;
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.remove();
+
         quizAnswerArea.innerHTML = '';
         quizWordBank.innerHTML = '';
         quizFeedback.innerHTML = '';
@@ -467,9 +495,15 @@
         const constructedAnswer = answerWords.join(' ');
         const currentQuestion = quizQuestions[currentQuizIndex];
         const correctAnswerText = currentQuestion[LANGUAGE].replace(/[.,?]/g, '');
+        const correctWords = correctAnswerText.split(' ').filter(w => w);
 
-        quizFeedback.textContent = '';
+        if (!isAnswerShown) {
+            quizFeedback.textContent = '';
+        }
         quizActionBtn.style.display = 'none';
+        quizAnswerArea.style.borderColor = 'transparent';
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.style.display = 'none';
 
         if (constructedAnswer === correctAnswerText) {
             quizAnswerArea.style.borderColor = 'var(--border-correct-color)';
@@ -485,7 +519,45 @@
 
             Array.from(quizWordBank.children).forEach(btn => btn.disabled = true);
             Array.from(quizAnswerArea.children).forEach(btn => btn.onclick = null);
+            wrongAttempts = 0;
+        } else if (answerWords.length === correctWords.length) {
+            wrongAttempts++;
+            if (!isAnswerShown) {
+                quizFeedback.textContent = 'Incorrect. Try again!';
+                quizFeedback.style.color = 'var(--incorrect-color)';
+            }
+            quizAnswerArea.style.borderColor = 'var(--incorrect-color)';
+
+            if (wrongAttempts >= 3) {
+                let giveUpBtn = document.getElementById('give-up-btn');
+                if (!giveUpBtn) {
+                    giveUpBtn = document.createElement('button');
+                    giveUpBtn.id = 'give-up-btn';
+                    giveUpBtn.textContent = 'Give Answer';
+                    giveUpBtn.className = 'bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+                    giveUpBtn.onclick = showCorrectAnswer;
+                    quizButtonContainer.appendChild(giveUpBtn);
+                }
+                giveUpBtn.style.display = 'block';
+            }
         }
+    }
+    
+    function showCorrectAnswer() {
+        isAnswerShown = true;
+        const currentQuestion = quizQuestions[currentQuizIndex];
+        const correctAnswerText = currentQuestion[LANGUAGE];
+
+        quizFeedback.innerHTML = `Correct answer: <strong class="font-semibold">${correctAnswerText}</strong>`;
+        quizFeedback.style.color = 'var(--text-color)';
+
+        quizAnswerArea.innerHTML = '';
+        Array.from(quizWordBank.children).forEach(btn => {
+            btn.disabled = false;
+        });
+        
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.remove();
     }
     
     function nextQuestion() {
@@ -578,6 +650,11 @@
         setAndApplyTheme(savedTheme);
     } else {
         setAndApplyTheme('dark');
+    }
+    
+    const savedReverse = localStorage.getItem('languageReversed');
+    if (savedReverse) {
+        isReversed = JSON.parse(savedReverse);
     }
     
     populateNav();
