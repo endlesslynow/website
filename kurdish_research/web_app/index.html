@@ -489,7 +489,6 @@
                 document.getElementById('loading').style.display = 'block';
                 await this.initDB();
 
-                // --- OPTIMIZATION: Load from cache first ---
                 const cachedTracks = await this.getAppState('cachedTrackList');
                 if (cachedTracks && cachedTracks.length > 0) {
                     console.log('🚀 Loading tracks from local cache...');
@@ -504,7 +503,7 @@
                 this.setupUI();
                 this.setupPageUnloadHandler();
                 this.setupFilterToggle();
-                this.setupUpdateButton(); // Setup the new update button
+                this.setupUpdateButton();
                 document.getElementById('loading').style.display = 'none';
             }
 
@@ -533,7 +532,6 @@
                         if(shouldShow) hasVisibleTracks = true;
                     }
                 });
-                // Optionally, show a message if the filter hides everything
                 const noTracksDiv = document.getElementById('no-tracks');
                 if (!hasVisibleTracks && this.tracks.length > 0) {
                     noTracksDiv.textContent = 'All tracks are marked as listened. Change the filter to "Show All" to see them.';
@@ -575,7 +573,7 @@
 
                 loadingDiv.textContent = 'Updating track list...';
                 loadingDiv.style.display = 'block';
-                document.getElementById('tracks-container').innerHTML = ''; // Clear old view
+                document.getElementById('tracks-container').innerHTML = '';
                 if(updateBtn) {
                     updateBtn.disabled = true;
                     updateBtn.textContent = 'Updating...';
@@ -583,10 +581,20 @@
 
                 console.log('🔄 Forcing update. Re-scanning for all tracks...');
                 await this.scanForMp3Links();
-                await this.setAppState('cachedTrackList', this.tracks);
-                console.log('✅ New track list cached.');
+                
+                await this.loadStoredData(); 
+                console.log('🧐 Checking for updated audio files...');
+                loadingDiv.textContent = 'Checking for updated audio files...';
+                
+                for (const track of this.tracks) {
+                    if (track.downloaded) {
+                        await this.checkForStaleAudio(track);
+                    }
+                }
 
-                await this.loadStoredData();
+                console.log('✅ Update check complete. Caching new list.');
+                await this.setAppState('cachedTrackList', this.tracks);
+                
                 this.setupUI();
                 this.applyFilter();
 
@@ -597,10 +605,40 @@
                     updateBtn.textContent = 'Update Tracks';
                 }
             }
+            
+            /**
+             * NEW: Checks if a downloaded audio file is stale and re-downloads it if necessary.
+             */
+            async checkForStaleAudio(track) {
+                try {
+                    const storedFileMeta = await this.getAudioFile(track.url);
+                    if (!storedFileMeta || !storedFileMeta.lastModified) {
+                        console.log(`Skipping stale check for ${track.title}: no local last-modified date.`);
+                        return;
+                    }
+
+                    const response = await fetch(track.url, { method: 'HEAD' });
+                    if (!response.ok) {
+                        console.warn(`HEAD request failed for ${track.url}. Cannot check for update.`);
+                        return;
+                    }
+
+                    const serverLastModified = response.headers.get('Last-Modified');
+                    if (serverLastModified && serverLastModified !== storedFileMeta.lastModified) {
+                        console.log(`- STALE DETECTED: ${track.title}`);
+                        console.log(`  Local: ${storedFileMeta.lastModified}`);
+                        console.log(`  Server: ${serverLastModified}`);
+                        await this.downloadTrack(track.id, true); // force=true
+                    } else {
+                        console.log(`- OK: ${track.title} is up to date.`);
+                    }
+                } catch (error) {
+                    console.error(`Error checking for stale audio for ${track.title}:`, error);
+                }
+            }
 
             async initDB() {
                 return new Promise((resolve, reject) => {
-                    // --- DB VERSION BUMPED TO 2 ---
                     const request = indexedDB.open('KurdishAudioDB', 2);
                     
                     request.onerror = () => reject(request.error);
@@ -611,17 +649,13 @@
                     
                     request.onupgradeneeded = (event) => {
                         const db = event.target.result;
-                        
                         if (!db.objectStoreNames.contains('tracks')) {
                             const trackStore = db.createObjectStore('tracks', { keyPath: 'id' });
                             trackStore.createIndex('url', 'url', { unique: true });
                         }
-                        
                         if (!db.objectStoreNames.contains('audioFiles')) {
                             db.createObjectStore('audioFiles', { keyPath: 'url' });
                         }
-
-                        // --- NEW: Store for caching the track list ---
                         if (!db.objectStoreNames.contains('appState')) {
                             db.createObjectStore('appState', { keyPath: 'key' });
                         }
@@ -629,7 +663,6 @@
                 });
             }
             
-            // --- NEW: Helper functions for the appState store ---
             async getAppState(key) {
                 return new Promise((resolve, reject) => {
                     if (!this.db) return reject("DB not initialized");
@@ -671,23 +704,29 @@
                     request.onerror = () => reject(request.error);
                 });
             }
-
-            async saveAudioFile(url, arrayBuffer) {
+            
+            /**
+             * MODIFIED: Now saves the Last-Modified header with the audio file.
+             */
+            async saveAudioFile(url, arrayBuffer, lastModified) {
                 return new Promise((resolve, reject) => {
                     const transaction = this.db.transaction(['audioFiles'], 'readwrite');
                     const store = transaction.objectStore('audioFiles');
-                    const request = store.put({ url, data: arrayBuffer, savedAt: Date.now() });
+                    const request = store.put({ url, data: arrayBuffer, savedAt: Date.now(), lastModified });
                     request.onsuccess = () => resolve();
                     request.onerror = () => reject(request.error);
                 });
             }
 
+            /**
+             * MODIFIED: Returns the full stored object, including metadata.
+             */
             async getAudioFile(url) {
                 return new Promise((resolve, reject) => {
                     const transaction = this.db.transaction(['audioFiles'], 'readonly');
                     const store = transaction.objectStore('audioFiles');
                     const request = store.get(url);
-                    request.onsuccess = () => resolve(request.result ? request.result.data : null);
+                    request.onsuccess = () => resolve(request.result || null);
                     request.onerror = () => reject(request.error);
                 });
             }
@@ -732,7 +771,6 @@
                 let htmlFiles = [];
 
                 try {
-                    console.log('🔍 Scanning category structure from main index...');
                     const indexResponse = await fetch('../../landing_pages/kurdish_research.html');
                     if (indexResponse.ok) {
                         const indexHtml = await indexResponse.text();
@@ -762,21 +800,15 @@
                                         if (currentSubcategory) {
                                             subcategories.get(currentSubcategory).push(linkInfo);
                                         } else {
-                                            if (!subcategories.has('_main')) {
-                                                subcategories.set('_main', []);
-                                            }
+                                            if (!subcategories.has('_main')) subcategories.set('_main', []);
                                             subcategories.get('_main').push(linkInfo);
                                         }
-                                        
                                         htmlFiles.push(fileName);
                                     }
                                 }
                             });
-                            
                             categoryStructure.set(categoryTitle, subcategories);
                         });
-                        
-                        console.log(`✅ Found ${categoryStructure.size} categories with ${htmlFiles.length} total files`);
                     }
                 } catch (error) {
                     console.log('❌ Failed to load category structure:', error.message);
@@ -786,8 +818,6 @@
                     console.log('🚨 NO FILES FOUND - All discovery methods failed');
                     return;
                 }
-
-                console.log(`📊 Scanning ${htmlFiles.length} files for MP3s...`);
                 
                 const fileToCategory = new Map();
                 categoryStructure.forEach((subcategories, categoryName) => {
@@ -815,15 +845,11 @@
                             
                             const isHistoricalErasSeries = fileName === 'top_ten_history.html' || pageTitle.includes('10 Historical Eras');
                             
-                            const audioSources = doc.querySelectorAll('source[src$=".mp3"]');
-                            const downloadLinks = doc.querySelectorAll('a[href$=".mp3"][download]');
-                            
-                            const allElements = [...audioSources, ...downloadLinks];
+                            const allElements = [...doc.querySelectorAll('source[src$=".mp3"], a[href$=".mp3"][download]')];
 
                             if (isHistoricalErasSeries && allElements.length > 0) {
                                 const eraHeaders = doc.querySelectorAll('.era-section h2');
                                 const eraMapping = new Map();
-                                
                                 eraHeaders.forEach(h2 => {
                                     const eraTitle = h2.textContent.trim();
                                     const eraSection = h2.closest('.era-section');
@@ -870,7 +896,6 @@
 
                 this.tracks = Array.from(foundTracks.values());
                 this.categoryStructure = categoryStructure;
-                console.log(`🎵 FINAL RESULT: ${this.tracks.length} audio tracks found`);
             }
 
             extractEraNumber(title) {
@@ -881,7 +906,7 @@
             setupUI() {
                 const container = document.getElementById('tracks-container');
                 const noTracksDiv = document.getElementById('no-tracks');
-                container.innerHTML = ''; // Clear previous UI
+                container.innerHTML = '';
                 
                 if (this.tracks.length === 0) {
                     noTracksDiv.textContent = 'No MP3 links found. Click "Update Tracks" to scan for audio files.';
@@ -944,10 +969,8 @@
                 container.addEventListener('click', (e) => {
                     const target = e.target.closest('button, [data-progress-bar]');
                     if (!target) return;
-
                     const id = target.closest('[data-track-id]').dataset.trackId;
                     if (!id) return;
-
                     const trackId = parseInt(id);
                     if (target.matches('[data-play]')) this.playTrack(trackId);
                     else if (target.matches('[data-pause]')) this.pauseTrack(trackId);
@@ -959,6 +982,7 @@
                 });
 
                 this.tracks.forEach(track => this.updateTrackDisplay(track));
+                this.applyFilter();
             }
 
             seekTo(trackId, event) {
@@ -989,28 +1013,37 @@
                 return `${mins}:${secs.toString().padStart(2, '0')}`;
             }
 
-            async downloadTrack(trackId) {
+            /**
+             * MODIFIED: Now accepts a `force` parameter to re-download.
+             */
+            async downloadTrack(trackId, force = false) {
                 const track = this.tracks.find(t => t.id === trackId);
                 if (!track) return;
 
                 const button = document.querySelector(`[data-download="${trackId}"]`);
-                button.textContent = 'Downloading...';
+                
+                if (track.downloaded && !force) {
+                    console.log(`${track.title} is already downloaded.`);
+                    return;
+                }
+
+                button.textContent = force ? 'Updating...' : 'Downloading...';
                 button.disabled = true;
 
                 try {
-                    if (await this.getAudioFile(track.url)) {
-                        track.downloaded = true;
-                        await this.saveTrackData(track);
-                        this.updateTrackDisplay(track);
-                        return;
-                    }
-
                     const response = await fetch(track.url);
+                    if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                    const lastModified = response.headers.get('Last-Modified');
                     const arrayBuffer = await response.arrayBuffer();
-                    await this.saveAudioFile(track.url, arrayBuffer);
+                    
+                    await this.saveAudioFile(track.url, arrayBuffer, lastModified);
+                    
                     track.downloaded = true;
                     await this.saveTrackData(track);
+                    
                     this.updateTrackDisplay(track);
+                    
                 } catch (error) {
                     console.error('Download failed:', error);
                     button.textContent = 'Download Failed';
@@ -1033,8 +1066,8 @@
                 }
 
                 try {
-                    const cachedFile = await this.getAudioFile(track.url);
-                    const audioSrc = cachedFile ? URL.createObjectURL(new Blob([cachedFile], { type: 'audio/mpeg' })) : track.url;
+                    const cachedFileObject = await this.getAudioFile(track.url);
+                    const audioSrc = cachedFileObject ? URL.createObjectURL(new Blob([cachedFileObject.data], { type: 'audio/mpeg' })) : track.url;
 
                     this.audio = new Audio(audioSrc);
                     this.currentTrack = track;
@@ -1176,6 +1209,10 @@
                     downloadButton.textContent = 'Downloaded';
                     downloadButton.disabled = true;
                     downloadButton.classList.add('downloaded');
+                } else {
+                    downloadButton.textContent = 'Download';
+                    downloadButton.disabled = false;
+                    downloadButton.classList.remove('downloaded');
                 }
                 
                 if (listenedButton) {
