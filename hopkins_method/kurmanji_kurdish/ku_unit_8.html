@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hopkins Method Kurmanji Kurdish: Unit 8</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Light mode with reverted button/active colors */
+        :root {
+            --bg-color: #CDE0BE;
+            --text-color: #2A623D;
+            --card-bg: #F0EAD6;
+            --card-bg-light: #f9fafb; /* Reverted from #FAF7ED */
+            --accent-color: #0D8A52;
+            --hover-color: #0f766e; /* Reverted from #2A623D */
+            --active-color: #115e59; /* Reverted from #1D4D8E */
+            --correct-color: #0D8A52;
+            --incorrect-color: #8C1C13;
+            --border-correct-color: #C9AD5B;
+        }
+        /* Original dark mode values */
+        html.dark {
+            --bg-color: #111827; /* gray-900 */
+            --text-color: #f9fafb; /* gray-50 */
+            --card-bg: #1f2937; /* gray-800 */
+            --card-bg-light: #374151; /* gray-700 */
+            --accent-color: #2dd4bf; /* teal-400 */
+            --hover-color: #14b8a6; /* teal-500 */
+            --active-color: #0d9488; /* teal-600 */
+            --correct-color: #34d399; /* green-400 */
+            --incorrect-color: #f87171; /* red-400 */
+            --border-correct-color: #fde047; /* yellow-300 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            background-image: url('../hm_arabic_background.png'); /* Note: Background image path kept same */
+            background-repeat: repeat;
+            background-size: auto;
+            background-attachment: fixed;
+            overflow-x: hidden; /* Prevent horizontal scroll from confetti */
+        }
+        h1 {
+            font-family: 'Raleway', sans-serif;
+        }
+        /* Revert dark mode background to solid color */
+        html.dark body {
+            background-image: none;
+        }
+        /* Make title black in light mode */
+        html:not(.dark) h1 {
+            color: black;
+        }
+        .sentence-block {
+            margin-bottom: 1rem;
+        }
+        .interactive-area {
+            background-color: var(--card-bg-light);
+            transition: background-color 0.2s, color 0.2s;
+            cursor: pointer;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem 0.5rem 0 0;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+        }
+        /* Hover effect for dark mode */
+        html.dark .interactive-area:hover {
+            background-color: var(--hover-color);
+            color: white;
+        }
+        /* No hover effect for light mode */
+        html:not(.dark) .interactive-area:hover {
+            background-color: var(--card-bg-light);
+            color: var(--text-color);
+        }
+        /* Active (clicked) style ONLY for dark mode */
+        html.dark .interactive-area.active {
+            background-color: var(--active-color);
+            color: white; 
+        }
+        .info-box {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background-color: var(--card-bg);
+            border-radius: 0 0 0.5rem 0.5rem;
+            padding: 0 1.25rem;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+        }
+        .info-box.visible {
+            max-height: 200px;
+            padding: 1rem 1.25rem 1.25rem;
+        }
+        .nav-btn.active {
+            background-color: var(--active-color);
+            color: white;
+        }
+        /* Make quiz word bank button text black in light mode */
+        html:not(.dark) .word-bank-btn {
+            color: black;
+        }
+        .word-bank-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        /* Make numbers black in light mode */
+        html:not(.dark) .sentence-block > span {
+            color: black;
+        }
+        /* Style for the theme toggle button circle in light mode */
+        html:not(.dark) #theme-toggle, html:not(.dark) #reverse-toggle {
+            background-color: var(--card-bg);
+        }
+
+        /* --- Completion Screen Styles --- */
+        .completion-text-container {
+            position: relative;
+            height: 50px; /* Give it a fixed height to prevent layout shifts */
+            margin-bottom: 2rem;
+        }
+        .completion-text {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: bold;
+            transition: opacity 0.5s ease-in-out;
+        }
+        html:not(.dark) .completion-text {
+            color: black;
+        }
+        .completion-text.hidden-lang {
+            opacity: 0;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 3s linear forwards;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <audio id="sentence-player" preload="auto"></audio>
+
+    <div class="w-full max-w-3xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold">Hopkins Method Kurmanji Kurdish: Unit 8</h1>
+            <div class="flex justify-center items-center gap-2 mt-3"> <!-- Container for buttons, centered -->
+                 <button id="reverse-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Reverse Languages">
+                    <svg class="h-6 w-6" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 168v-16c0-13.255 10.745-24 24-24h360v-48c0-21.382 25.851-32.09 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.851 304.09 384 293.382 384 272v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.382-25.851-32.09-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.149 464.09 128 453.382 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"/>
+                    </svg>
+                 </button>
+                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Toggle Theme">
+                    <svg id="theme-icon-sun" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    <svg id="theme-icon-moon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                 </button>
+            </div>
+        </header>
+        
+        <nav id="section-nav" class="flex flex-wrap justify-center gap-2 mb-8"></nav>
+
+        <main id="app-container">
+            <div id="reader-view">
+                <div id="reader-content" class="text-2xl leading-loose"></div>
+                <div class="text-center mt-8">
+                    <button id="start-quiz-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg">Practice this Section</button>
+                </div>
+            </div>
+
+            <div id="quiz-view" class="hidden">
+                 <div id="quiz-content" class="bg-[var(--card-bg)] p-4 rounded-lg shadow-lg">
+                    <div class="flex justify-end items-baseline">
+                        <p id="quiz-progress" class="text-sm font-semibold text-gray-500 dark:text-gray-400"></p>
+                    </div>
+                    <p id="quiz-prompt" class="text-xl font-semibold my-2 text-center"></p>
+                    <div id="quiz-feedback" class="mb-4 text-center h-8 font-bold text-xl"></div>
+                    <div id="quiz-answer-area" class="min-h-[6rem] bg-[var(--bg-color)] p-4 rounded-lg flex flex-wrap gap-2 justify-start items-center text-2xl border-2 border-transparent transition-all"></div>
+                    <div id="quiz-word-bank" class="mt-6 flex flex-wrap gap-2 justify-center"></div>
+                    <div id="quiz-button-container" class="mt-6 flex justify-center gap-4">
+                        <button id="quiz-action-btn" class="text-white font-bold py-3 px-8 text-xl rounded-lg"></button>
+                    </div>
+                </div>
+                <div id="completion-screen" class="hidden text-center p-8">
+                    <div class="completion-text-container">
+                        <span id="completion-en" class="completion-text">Congratulations!</span>
+                        <span id="completion-kmr" class="completion-text hidden-lang">Pîroz be!</span>
+                    </div>
+                    <div class="flex justify-center gap-4 mt-4">
+                        <button id="review-unit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg">Review Unit 8</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    
+<script>
+    const UNIT_NUMBER = 8;
+    const LANGUAGE = "kurdish";
+    const SENTENCE_OFFSET = (UNIT_NUMBER - 1) * 50;
+
+    // --- DATA ---
+    const sentences = [
+                    { "kurdish": "Her roj, ev sibe ye.", "english": "Every day, this is the morning." },
+            { "kurdish": "Lê ev jin, Lîna, dereng şiyar dibe.", "english": "But this woman, Lina, wakes up late." },
+            { "kurdish": "Saetek di odeya wê de heye.", "english": "She has a clock in her room." },
+            { "kurdish": "Ew li saetê dinêre.", "english": "She looks at the clock." },
+            { "kurdish": "Saet heşt e. Kar di saet heştan de ye!", "english": "The time is eight o'clock. Work is at eight o'clock!" },
+            { "kurdish": "Ew dixwaze bi lez biçe.", "english": "She wants to go quickly." },
+            { "kurdish": "Ew qehwê dixwaze, lê wextê wê tune.", "english": "She wants coffee, but she doesn't have time." },
+            { "kurdish": "Cilên wê li ku ne?", "english": "Where are her clothes?" },
+            { "kurdish": "Ew cilên xwe pir bi lez li xwe dike.", "english": "She puts on her clothes very quickly." },
+            { "kurdish": "Ew paltoyê xwe digire.", "english": "She takes her coat." },
+            { "kurdish": "Ew çenteyê xwe ji bo kar dixwaze.", "english": "She wants her bag for work." },
+            { "kurdish": "Ew ji malê derdikeve û derî digire.", "english": "She leaves the house and closes the door." },
+            { "kurdish": "Ew niha li ser rê ye.", "english": "She is now on the road." },
+            { "kurdish": "Ew di kuçeyê de dibeze.", "english": "She runs in the street." },
+            { "kurdish": "Ew otobusê dibîne.", "english": "She sees the bus." },
+            { "kurdish": "Ew li benda otobusê namîne, otobus li benda wê dimîne!", "english": "She doesn't wait for the bus, the bus waits for her!" },
+            { "kurdish": "Ew ber bi otobusê ve dibeze.", "english": "She runs to the bus." },
+            { "kurdish": "Ew niha di otobusê de ye, lê pirsgirêkek wê heye.", "english": "She is on the bus now, but she has a problem." },
+            { "kurdish": "Çenteyê wê li ku ye?", "english": "Where is her bag?" },
+            { "kurdish": "Wê çente li malê ji bîr kiriye!", "english": "She forgot the bag in the house!" },
+            { "kurdish": "Ji ber vê yekê, ew ji otobusê derdikeve.", "english": "Therefore, she gets off the bus." },
+            { "kurdish": "Ew careke din ber bi mala xwe ve dibeze.", "english": "She runs to her house again." },
+            { "kurdish": "Ew çenteyê xwe digire û ji malê derdikeve.", "english": "She takes the bag and leaves the house." },
+            { "kurdish": "Ew digihîje kar, lê pir dereng e.", "english": "She arrives at work, but she is very late." },
+            { "kurdish": "Ew hevala xwe, Leylayê, nas dike.", "english": "She knows her friend, Layla." },
+            { "kurdish": "Ew bi Leylayê re diaxive.", "english": "She speaks with Layla." },
+            { "kurdish": "Leyla her tim zû li kar e.", "english": "Layla is always at work early." },
+            { "kurdish": "Leyla hêdî dixebite û qehweya xwe vedixwe.", "english": "Layla works slowly and drinks her coffee." },
+            { "kurdish": "Leyla li Lînayê dinêre û dibêje: \"Tu pir dereng î!\"", "english": "Layla looks at Lina and says: \"You are very late!\"" },
+            { "kurdish": "Lîna dibêje: \"Ez dizanim. Otobus li benda min nema.\"", "english": "Lina says: \"I know. The bus didn't wait for me.\"" },
+            { "kurdish": "Leyla dibêje: \"Ez te her roj dibînim, Cemîl, û tu her tim zû yî.\"", "english": "Layla says: \"I see you every day, Jamil, and you are always early.\"" },
+            { "kurdish": "Cemîl dibêje: \"Ji ber ku ez te nas dikim, Leyla, û tu ji bendêmanê hez nakî!\"", "english": "Jamil says: \"Because I know you, Layla, and you do not like to wait!\"" },
+            { "kurdish": "\"Ez di saet şeşan de şiyar dibim.\"", "english": "\"I wake up at six o'clock.\"" },
+            { "kurdish": "\"Ez li lîsteya xwe ya kar dinêrim.\"", "english": "\"I look at my list for work.\"" },
+            { "kurdish": "\"Ez cilên xwe li xwe dikim û diçim sûkê.\"", "english": "\"I put on my clothes and go to the market.\"" },
+            { "kurdish": "Lîna tenê li wan dinêre.", "english": "Lina just looks at them." },
+            { "kurdish": "Ew ne deqîqeyek an du deqîqe dereng e.", "english": "She isn't a minute or two late." },
+            { "kurdish": "Ew saetekê temam dereng e.", "english": "She is a full hour late." },
+            { "kurdish": "Ew tenê dixwaze li ser kursiya xwe rûne.", "english": "She just wants to sit on her chair." },
+            { "kurdish": "Ew pir birçî ye ji ber ku wê nexwariye.", "english": "She is very hungry because she did not eat." },
+            { "kurdish": "Di çenteyê wê de xwarin tune, tenê pirtûk û pênûs hene.", "english": "In her bag, there is no food, only books and pens." },
+            { "kurdish": "Ew serê xwe datîne ser masê.", "english": "She puts her head on the table." },
+            { "kurdish": "Ew difikire: \"Gelo îro betlane ye?\"", "english": "She thinks: \"Is today a holiday?\"" },
+            { "kurdish": "Na, ne betlane ye.", "english": "No, it is not a holiday." },
+            { "kurdish": "Lê sibe dawiya hefteyê ye.", "english": "But tomorrow is the weekend." },
+            { "kurdish": "Ew dixwaze vê sibê ji bîr bike.", "english": "She wants to forget this morning." },
+            { "kurdish": "Hevalê wê Cemîl qehweyekê datîne ser maseya wê.", "english": "Her friend Jamil puts a coffee on her table." },
+            { "kurdish": "Ew dibêje: \"Eva ji bo te ye.\"", "english": "He says: \"This is for you.\"" },
+            { "kurdish": "Ew li qehwê dinêre û dibêje: \"Spas, hevalê min.\"", "english": "She looks at the coffee and says: \"Thank you, my friend.\"" },
+            { "kurdish": "Niha, sibeya wê dikare dest pê bike.", "english": "Now, her morning can begin." }
+    ];
+
+    // --- STATE ---
+    let currentSection = 0;
+    let isReversed = false;
+    let quizQuestions = [];
+    let currentQuizIndex = 0;
+    let wrongAttempts = 0;
+    let isAnswerShown = false;
+    let langInterval = null;
+
+    // --- DOM ELEMENTS ---
+    const readerView = document.getElementById('reader-view');
+    const quizView = document.getElementById('quiz-view');
+    const quizContent = document.getElementById('quiz-content');
+    const completionScreen = document.getElementById('completion-screen');
+    const readerContent = document.getElementById('reader-content');
+    const sectionNav = document.getElementById('section-nav');
+    const startQuizBtn = document.getElementById('start-quiz-btn');
+    const quizPrompt = document.getElementById('quiz-prompt');
+    const quizProgress = document.getElementById('quiz-progress');
+    const quizAnswerArea = document.getElementById('quiz-answer-area');
+    const quizWordBank = document.getElementById('quiz-word-bank');
+    const quizFeedback = document.getElementById('quiz-feedback');
+    const quizActionBtn = document.getElementById('quiz-action-btn');
+    const quizButtonContainer = document.getElementById('quiz-button-container');
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-icon-sun');
+    const moonIcon = document.getElementById('theme-icon-moon');
+    const reverseToggle = document.getElementById('reverse-toggle');
+    const reviewUnitBtn = document.getElementById('review-unit-btn');
+    const sentencePlayer = document.getElementById('sentence-player');
+
+    // --- UTILITY FUNCTIONS ---
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // --- THEME ---
+    function setAndApplyTheme(theme) {
+        localStorage.setItem('theme', theme);
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        }
+    }
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        setAndApplyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // --- REVERSE LANGUAGE ---
+    reverseToggle.addEventListener('click', () => {
+        isReversed = !isReversed;
+        localStorage.setItem('languageReversed', isReversed);
+        populateReader(currentSection);
+    });
+
+    // --- AUDIO FUNCTION ---
+    function playSentenceAudio(globalIndex) {
+        const audioSentenceNumber = globalIndex + 1 + SENTENCE_OFFSET;
+        const audioPath = `${LANGUAGE}_audio/unit_${UNIT_NUMBER}/sentence_${audioSentenceNumber}.mp3`;
+        sentencePlayer.src = audioPath;
+        sentencePlayer.play().catch(error => {
+            console.error(`Could not play audio for sentence ${audioSentenceNumber}:`, error);
+        });
+    }
+
+    // --- READER FUNCTIONS ---
+    function populateReader(sectionIndex) {
+        readerContent.innerHTML = '';
+        const start = sectionIndex * 10;
+        const end = start + 10;
+        const sectionSentences = sentences.slice(start, end);
+
+        sectionSentences.forEach((sentence, index) => {
+            const globalIndex = start + index;
+            const displayIndex = globalIndex + 1 + SENTENCE_OFFSET;
+            const blockContainer = document.createElement('div');
+            blockContainer.classList.add('sentence-block', 'flex', 'items-start', 'gap-4');
+
+            const interactiveContainer = document.createElement('div');
+            interactiveContainer.classList.add('flex-grow');
+
+            const interactiveArea = document.createElement('div');
+            interactiveArea.classList.add('interactive-area');
+            interactiveArea.dataset.index = globalIndex;
+            
+            const infoBox = document.createElement('div');
+            infoBox.classList.add('info-box');
+            
+            const mainText = isReversed ? sentence.english : sentence[LANGUAGE];
+            const hoverText = isReversed ? sentence[LANGUAGE] : sentence.english;
+
+            interactiveArea.textContent = mainText;
+            infoBox.innerHTML = `<p class="text-xl font-semibold">${hoverText}</p>`;
+
+            if (isTouchDevice) {
+                interactiveArea.addEventListener('click', () => {
+                    playSentenceAudio(globalIndex);
+                    toggleInfo(interactiveArea);
+                });
+            } else {
+                interactiveArea.addEventListener('mouseenter', () => {
+                    playSentenceAudio(globalIndex);
+                    showInfo(interactiveArea);
+                });
+                interactiveArea.addEventListener('mouseleave', () => {
+                    hideInfo(interactiveArea);
+                });
+            }
+
+            interactiveContainer.appendChild(interactiveArea);
+            interactiveContainer.appendChild(infoBox);
+            
+            const numberEl = document.createElement('span');
+            numberEl.textContent = displayIndex;
+            numberEl.classList.add('text-2xl', 'pt-3', 'font-semibold');
+            
+            blockContainer.appendChild(numberEl);
+            blockContainer.appendChild(interactiveContainer);
+            readerContent.appendChild(blockContainer);
+        });
+        updateNavButtons();
+    }
+    
+    function showInfo(interactiveAreaEl) {
+        interactiveAreaEl.classList.add('active');
+        interactiveAreaEl.nextElementSibling.classList.add('visible');
+    }
+
+    function hideInfo(interactiveAreaEl) {
+        interactiveAreaEl.classList.remove('active');
+        interactiveAreaEl.nextElementSibling.classList.remove('visible');
+    }
+
+    function toggleInfo(interactiveAreaEl) {
+        const wasActive = interactiveAreaEl.classList.contains('active');
+        document.querySelectorAll('.interactive-area.active').forEach(activeEl => {
+            hideInfo(activeEl);
+        });
+        if (!wasActive) {
+            showInfo(interactiveAreaEl);
+        }
+    }
+
+    // --- QUIZ FUNCTIONS ---
+    function startQuiz() {
+        readerView.classList.add('hidden');
+        quizView.classList.remove('hidden');
+        quizContent.classList.remove('hidden');
+        completionScreen.classList.add('hidden');
+        sectionNav.classList.add('hidden');
+        if (langInterval) clearInterval(langInterval);
+
+        const start = currentSection * 10;
+        const end = start + 10;
+        
+        quizQuestions = sentences.slice(start, end).map((sentence, index) => ({
+            ...sentence,
+            originalIndex: start + index
+        })).sort(() => 0.5 - Math.random()).slice(0, 5);
+
+        currentQuizIndex = 0;
+        loadQuizQuestion();
+    }
+
+    function loadQuizQuestion() {
+        wrongAttempts = 0;
+        isAnswerShown = false;
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.remove();
+
+        quizAnswerArea.innerHTML = '';
+        quizWordBank.innerHTML = '';
+        quizFeedback.innerHTML = '';
+        quizAnswerArea.style.borderColor = 'transparent';
+
+        quizProgress.textContent = `${currentQuizIndex + 1} / ${quizQuestions.length}`;
+        
+        quizActionBtn.style.display = 'none';
+        quizActionBtn.onclick = null;
+
+        const question = quizQuestions[currentQuizIndex];
+        quizPrompt.textContent = question.english;
+
+        // Create word bank from the Spanish sentence, keeping punctuation attached to words.
+        const words = question[LANGUAGE].split(' ').filter(w => w);
+        const shuffledWords = words.sort(() => 0.5 - Math.random());
+        
+        shuffledWords.forEach(word => {
+            const btn = document.createElement('button');
+            btn.textContent = word;
+            btn.className = 'word-bank-btn text-2xl p-3 px-5 rounded-lg bg-[var(--card-bg-light)] transition-colors';
+            btn.onclick = () => selectWord(btn);
+            quizWordBank.appendChild(btn);
+        });
+    }
+
+    function selectWord(btn) {
+        btn.disabled = true;
+        const answerBtn = document.createElement('button');
+        answerBtn.textContent = btn.textContent;
+        answerBtn.className = 'answer-word-btn text-2xl p-3 px-5 rounded-lg bg-[var(--active-color)] text-white';
+        answerBtn.onclick = () => deselectWord(answerBtn, btn);
+        quizAnswerArea.appendChild(answerBtn);
+        liveCheckAnswer();
+    }
+
+    function deselectWord(answerBtn, originalBtn) {
+        originalBtn.disabled = false;
+        answerBtn.remove();
+        liveCheckAnswer();
+    }
+
+    function liveCheckAnswer() {
+        const answerWords = Array.from(quizAnswerArea.children).map(btn => btn.textContent);
+        const constructedAnswer = answerWords.join(' ');
+        const currentQuestion = quizQuestions[currentQuizIndex];
+        // Compare against the full, original sentence with punctuation.
+        const correctAnswerText = currentQuestion[LANGUAGE];
+        const correctWords = correctAnswerText.split(' ').filter(w => w);
+
+        if (!isAnswerShown) {
+            quizFeedback.textContent = '';
+        }
+        quizActionBtn.style.display = 'none';
+        quizAnswerArea.style.borderColor = 'transparent';
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.style.display = 'none';
+
+        if (constructedAnswer === correctAnswerText) {
+            quizAnswerArea.style.borderColor = 'var(--border-correct-color)';
+            quizFeedback.textContent = 'Correct!';
+            quizFeedback.style.color = 'var(--correct-color)';
+            
+            playSentenceAudio(currentQuestion.originalIndex);
+
+            quizActionBtn.style.display = 'block';
+            quizActionBtn.textContent = 'Continue';
+            quizActionBtn.className = 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+            quizActionBtn.onclick = nextQuestion;
+
+            Array.from(quizWordBank.children).forEach(btn => btn.disabled = true);
+            Array.from(quizAnswerArea.children).forEach(btn => btn.onclick = null);
+            wrongAttempts = 0;
+        } else if (answerWords.length === correctWords.length) {
+            wrongAttempts++;
+            if (!isAnswerShown) {
+                quizFeedback.textContent = 'Incorrect. Try again!';
+                quizFeedback.style.color = 'var(--incorrect-color)';
+            }
+            quizAnswerArea.style.borderColor = 'var(--incorrect-color)';
+
+            if (wrongAttempts >= 3) {
+                let giveUpBtn = document.getElementById('give-up-btn');
+                if (!giveUpBtn) {
+                    giveUpBtn = document.createElement('button');
+                    giveUpBtn.id = 'give-up-btn';
+                    giveUpBtn.textContent = 'Give Answer';
+                    giveUpBtn.className = 'bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+                    giveUpBtn.onclick = showCorrectAnswer;
+                    quizButtonContainer.appendChild(giveUpBtn);
+                }
+                giveUpBtn.style.display = 'block';
+            }
+        }
+    }
+    
+    function showCorrectAnswer() {
+        isAnswerShown = true;
+        const currentQuestion = quizQuestions[currentQuizIndex];
+        const correctAnswerText = currentQuestion[LANGUAGE];
+
+        quizFeedback.innerHTML = `Correct answer: <strong class="font-semibold">${correctAnswerText}</strong>`;
+        quizFeedback.style.color = 'var(--text-color)';
+
+        quizAnswerArea.innerHTML = '';
+        Array.from(quizWordBank.children).forEach(btn => {
+            btn.disabled = false;
+        });
+        
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.remove();
+    }
+
+    function nextQuestion() {
+        currentQuizIndex++;
+        if (currentQuizIndex < quizQuestions.length) {
+            loadQuizQuestion();
+        } else {
+            currentSection++;
+            const numSections = Math.ceil(sentences.length / 10);
+            if (currentSection >= numSections) {
+                showCompletionScreen();
+            } else {
+                returnToReader(currentSection);
+            }
+        }
+    }
+
+    function showCompletionScreen() {
+        quizContent.classList.add('hidden');
+        completionScreen.classList.remove('hidden');
+        
+        for (let i = 0; i < 100; i++) {
+            createConfetti();
+        }
+
+        const enText = document.getElementById('completion-en');
+        const langText = document.getElementById('completion-' + LANGUAGE.substring(0,2));
+        langInterval = setInterval(() => {
+            enText.classList.toggle('hidden-lang');
+            if(langText) langText.classList.toggle('hidden-lang');
+        }, 2000);
+    }
+
+    function createConfetti() {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        const colors = ['#fde047', '#ff7f50', '#2dd4bf', '#8a2be2', '#00ff7f'];
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+    }
+
+    function reviewCurrentUnit() {
+        if (langInterval) clearInterval(langInterval);
+        currentSection = 0;
+        returnToReader(currentSection);
+    }
+
+    function returnToReader(sectionIndex) {
+        if (langInterval) clearInterval(langInterval);
+        quizView.classList.add('hidden');
+        readerView.classList.remove('hidden');
+        sectionNav.classList.remove('hidden');
+        currentSection = sectionIndex;
+        populateReader(currentSection);
+    }
+    
+    function populateNav() {
+        const numSections = Math.ceil(sentences.length / 10);
+        for (let i = 0; i < numSections; i++) {
+            const btn = document.createElement('button');
+            const start = i * 10 + 1 + SENTENCE_OFFSET;
+            const end = Math.min(start + 9, sentences.length + SENTENCE_OFFSET);
+            btn.textContent = `${start}-${end}`;
+            btn.className = 'nav-btn px-4 py-2 rounded-md font-semibold bg-[var(--card-bg-light)] transition-colors';
+            btn.onclick = () => {
+                currentSection = i;
+                populateReader(i);
+            };
+            sectionNav.appendChild(btn);
+        }
+    }
+
+    function updateNavButtons() {
+        const buttons = sectionNav.querySelectorAll('.nav-btn');
+        buttons.forEach((btn, index) => {
+            btn.classList.toggle('active', index === currentSection);
+        });
+    }
+
+    // --- EVENT LISTENERS ---
+    startQuizBtn.addEventListener('click', startQuiz);
+    reviewUnitBtn.addEventListener('click', reviewCurrentUnit);
+
+    // --- INITIALIZATION ---
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setAndApplyTheme(savedTheme);
+    } else {
+        setAndApplyTheme('dark');
+    }
+    
+    const savedReverse = localStorage.getItem('languageReversed');
+    if (savedReverse) {
+        isReversed = JSON.parse(savedReverse);
+    }
+
+    populateNav();
+    populateReader(currentSection);
+</script>
+
+</body>
+</html>
