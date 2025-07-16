@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hopkins Method Latin: Unit 1: fundamenta</title>
+    <title>Hopkins Method Latin: Unit 10</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,7 +163,7 @@
     <div class="w-full max-w-3xl mx-auto">
         <!-- Header -->
         <header class="text-center mb-6">
-            <h1 class="text-3xl font-bold">Hopkins Method Latin: Unit 1: fundamenta</h1>
+            <h1 class="text-3xl font-bold">Hopkins Method Latin: Unit 10</h1>
             <div class="flex justify-center items-center gap-2 mt-3"> <!-- Container for buttons, centered -->
                  <button id="reverse-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Linguam Converte">
                     <svg class="h-6 w-6" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -206,458 +206,486 @@
                         <span id="completion-la" class="completion-text hidden-lang">Optime!</span>
                     </div>
                     <div class="flex justify-center gap-4 mt-4">
-                        <button id="review-unit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg">Unitatem I Repete</button>
-                        
+                        <button id="review-unit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg">Unitatem X Repete</button>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <script>
-        const UNIT_NUMBER = 1;
-        const LANGUAGE = "latin"; // Define the language key used in the sentences array
+    
+<script>
+    const UNIT_NUMBER = 10;
+    const LANGUAGE = "latin";
+    const SENTENCE_OFFSET = (UNIT_NUMBER - 1) * 50;
 
-        // --- DATA ---
-        const sentences = [
-            { latin: "Haec domus est.", english: "This is a house." }, 
-            { latin: "Hic vir est.", english: "This is a man." }, 
-            { latin: "Vir hic est.", english: "The man is here." }, 
-            { latin: "Vir in domo est.", english: "The man is in the house." }, 
-            { latin: "Haec femina est.", english: "This is a woman." }, 
-            { latin: "Hic liber est.", english: "This is a book." }, 
-            { latin: "Vir in domo est et femina hic est.", english: "The man is in the house and the woman is here." }, 
-            { latin: "Haec raeda est.", english: "This is a car." }, 
-            { latin: "Haec domus magna est.", english: "This is a big house." }, 
-            { latin: "Haec domus parva est.", english: "This is a small house." },
-            { latin: "Hic puer est.", english: "This is a boy." }, 
-            { latin: "Haec puella est.", english: "This is a girl." }, 
-            { latin: "Puer in raeda magna est.", english: "The boy is in the big car." }, 
-            { latin: "Puella in domo parva est.", english: "The girl is in the small house." }, 
-            { latin: "Puer parvus hic est.", english: "The small boy is here." }, 
-            { latin: "Hic stilus est.", english: "This is a pen." }, 
-            { latin: "Stilus super librum est.", english: "The pen is on the book." }, 
-            { latin: "Haec ianua est.", english: "This is a door." }, 
-            { latin: "Ianua magna est.", english: "The door is big." }, 
-            { latin: "Raeda magna est.", english: "The car is big." },
-            { latin: "Haec puella parva est.", english: "This is a small girl." }, 
-            { latin: "Haec aqua est.", english: "This is water." }, 
-            { latin: "Vir hic non est.", english: "The man is not here." }, 
-            { latin: "Femina hic non est.", english: "The woman is not here." }, 
-            { latin: "Stilus in domo non est.", english: "The pen is not in the house." }, 
-            { latin: "Haec mensa est.", english: "This is a table." }, 
-            { latin: "Liber super mensam est.", english: "The book is on the table." }, 
-            { latin: "Hic liber novus est.", english: "This is a new book." }, 
-            { latin: "Haec domus vetus est.", english: "This is an old house." }, 
-            { latin: "Haec raeda nova est.", english: "This is a new car." },
-            { latin: "Haec mensa vetus est.", english: "This is an old table." }, 
-            { latin: "Haec urbs est.", english: "This is a city." }, 
-            { latin: "Haec via magna est.", english: "This is a big street." }, 
-            { latin: "Ubi est vir?", english: "Where is the man?" }, 
-            { latin: "Vir in via est.", english: "The man is in the street." }, 
-            { latin: "Quis est hic?", english: "Who is this?" }, 
-            { latin: "Hic discipulus est.", english: "This is a student." }, 
-            { latin: "Ego discipulus sum.", english: "I am a student." }, 
-            { latin: "Haec discipula est.", english: "This is a student (f.)." }, 
-            { latin: "Hoc nomen est.", english: "This is a name." },
-            { latin: "Haec domus mea est.", english: "This is my house." }, 
-            { latin: "Raeda mea parva est.", english: "My car is small." }, 
-            { latin: "Tu puer es.", english: "You are a boy." }, 
-            { latin: "Hic liber tuus est.", english: "This is your book." }, 
-            { latin: "Ubi est stilus tuus?", english: "Where is your pen?" }, 
-            { latin: "Tu puella es.", english: "You are a girl." }, 
-            { latin: "Haec domus tua est.", english: "This is your house." }, 
-            { latin: "Raeda tua vetus non est.", english: "Your car is not old." }, 
-            { latin: "Quid est nomen tuum?", english: "What is your name?" }, 
-            { latin: "Ego discipulus novus sum et domus mea in urbe est.", english: "I am a new student and my house is in the city." }
+    // --- DATA ---
+    const sentences = [
+        { latin: "Nadia in urbe est.", english: "Nadia is in the city." },
+        { latin: "In via magna it.", english: "She is going on a big street." },
+        { latin: "Aliquid in via vidit.", english: "She saw something on the road." },
+        { latin: "Quid est haec res?", english: "What is this thing?" },
+        { latin: "Hic est sacculus magnus.", english: "This is a big bag." },
+        { latin: "Nadia viam spectavit, sed virum ibi non vidit.", english: "Nadia looked at the road, but did not see a man there." },
+        { latin: "Nadia sacculum accipit.", english: "Nadia takes the bag." },
+        { latin: "In sacculum spectat.", english: "She looks in the bag." },
+        { latin: "Quid videt?", english: "What does she see?" },
+        { latin: "Librum et stilum videt.", english: "She sees a book and a pen." },
+        { latin: "Liber valde vetus est.", english: "The book is very old." },
+        { latin: "Cuius liber sit nescit.", english: "She does not know whose book it is." },
+        { latin: "In sacculum quoque spectat.", english: "She looks in the bag also." },
+        { latin: "Nunc indicem ad forum invenit.", english: "Now she finds a list for the market." },
+        { latin: "In indice: panis, caseus, et lycopersica.", english: "On the list: bread, cheese, and tomatoes." },
+        { latin: "Nadia scit Lailam semper esurire.", english: "Nadia knows that Layla is always hungry." },
+        { latin: "Estne hic sacculus eius?", english: "Is this her bag?" },
+        { latin: "Sed sacculum quoque videt.", english: "But she also sees a wallet." },
+        { latin: "In sacculo est multa pecunia.", english: "In the wallet is a lot of money." },
+        { latin: "Nadia scit Camillum semper sacculi sui oblivisci.", english: "Nadia knows that Jamil always forgets his wallet." },
+        { latin: "Itaque, estne hic sacculus eius?", english: "Therefore, is this his bag?" },
+        { latin: "Deinde consilium ad finem septimanae videt.", english: "Then she sees a plan for the weekend." },
+        { latin: "In consilio: \"Cras cubiculum meum purgabo.\"", english: "In the plan: \"Tomorrow I will clean my room.\"" },
+        { latin: "Nadia scit cubiculum Danielis semper mundum esse.", english: "Nadia knows that Daniel's room is always clean." },
+        { latin: "Et ordinatissimum.", english: "And it is very organized." },
+        { latin: "Cur cubiculum mundum purgabit?", english: "Why will he clean a clean room?" },
+        { latin: "In sacculo est cibus Lailae, sacculus quem Camillus oblivisci posset, et consilium Danieli.", english: "In the bag is food for Layla, a wallet that Jamil could forget, and a plan for Daniel." },
+        { latin: "Nadia nunc nescit.", english: "Nadia does not know now." },
+        { latin: "Cum amica sua Laila loquitur.", english: "She speaks with her friend Layla." },
+        { latin: "Nadia: \"Laila, estne hic sacculus tuus?\"", english: "Nadia: \"Layla, is this your bag?\"" },
+        { latin: "Laila: \"Minime, hic non est sacculus meus.\"", english: "Layla: \"No, this is not my bag.\"" },
+        { latin: "\"Et hodie ad forum non ii.\"", english: "\"And I did not go to the market today.\"" },
+        { latin: "Deinde Nadia cum Camillo loquitur.", english: "Then Nadia speaks with Jamil." },
+        { latin: "Nadia: \"Camille, oblitusne es sacculi tui?\"", english: "Nadia: \"Jamil, did you forget your wallet?\"" },
+        { latin: "Camillus sinum suum spectat.", english: "Jamil looks in his pocket." },
+        { latin: "Sacculum suum in sinu invenit.", english: "He finds his wallet in his pocket." },
+        { latin: "Is: \"Minime, sacculi mei non sum oblitus. Hic est.\"", english: "He: \"No, I did not forget my wallet. It is here.\"" },
+        { latin: "Itaque, cum Daniele loquetur.", english: "Therefore, she will speak with Daniel." },
+        { latin: "Ad domum eius it.", english: "She goes to his house." },
+        { latin: "Cum ad domum eius advenit, is in via est.", english: "When she arrives at his house, he is in the street." },
+        { latin: "Raedam suam purgat.", english: "He is cleaning his car." },
+        { latin: "Raeda eius mundissima est, sed eam cotidie purgat.", english: "His car is very clean, but he cleans it every day." },
+        { latin: "Nadia: \"Daniel, hunc sacculum in via inveni.\"", english: "Nadia: \"Daniel, I found this bag on the road.\"" },
+        { latin: "Daniel sacculum spectat.", english: "Daniel looks at the bag." },
+        { latin: "Daniel: \"Hic est sacculus ordinatissimus. Sed non est meus.\"", english: "Daniel: \"This is a very organized bag. But it is not mine.\"" },
+        { latin: "\"Sacculus meus in cubiculo meo est. Semper in cubiculo meo est.\"", english: "\"My bag is in my room. It is always in my room.\"" },
+        { latin: "Camillus, qui omnia audivit, redit et rogat: \"Licetne mihi sacculum videre?\"", english: "Jamil, who heard everything, comes back and asks: \"Is it possible for me to see the bag?\"" },
+        { latin: "Sacculum accipit et intus spectat. Sacculum veterem videt.", english: "He takes the bag and looks inside it. He sees an old wallet." },
+        { latin: "Camillus: \"Sacculi mei non sum oblitus, sed sacculi mei oblitus sum! Et oblitus sum me duos sacculos habere.\"", english: "Jamil: \"I didn't forget my wallet, but I forgot my bag! And I forgot that I have two wallets.\"" },
+        { latin: "\"Duos sacculos habeo quia semper sacculi mei obliviscor!\"", english: "\"I have two wallets because I always forget my wallet!\"" }
+    ];
+
+    // --- STATE ---
+    let currentSection = 0;
+    let isReversed = false;
+    let quizQuestions = [];
+    let currentQuizIndex = 0;
+    let wrongAttempts = 0;
+    let isAnswerShown = false;
+    let langInterval = null;
+    let hoverTimeout = null; 
+
+    // --- DOM ELEMENTS ---
+    const readerView = document.getElementById('reader-view');
+    const quizView = document.getElementById('quiz-view');
+    const quizContent = document.getElementById('quiz-content');
+    const completionScreen = document.getElementById('completion-screen');
+    const readerContent = document.getElementById('reader-content');
+    const sectionNav = document.getElementById('section-nav');
+    const startQuizBtn = document.getElementById('start-quiz-btn');
+    const quizPrompt = document.getElementById('quiz-prompt');
+    const quizProgress = document.getElementById('quiz-progress');
+    const quizAnswerArea = document.getElementById('quiz-answer-area');
+    const quizWordBank = document.getElementById('quiz-word-bank');
+    const quizFeedback = document.getElementById('quiz-feedback');
+    const quizActionBtn = document.getElementById('quiz-action-btn');
+    const quizButtonContainer = document.getElementById('quiz-button-container');
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-icon-sun');
+    const moonIcon = document.getElementById('theme-icon-moon');
+    const reverseToggle = document.getElementById('reverse-toggle');
+    const reviewUnitBtn = document.getElementById('review-unit-btn');
+    const sentencePlayer = document.getElementById('sentence-player');
+
+    // --- UTILITY FUNCTIONS ---
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    function toRoman(num) {
+        if (isNaN(num) || num <= 0) return num;
+        const romanNumerals = [
+            { value: 1000, symbol: 'M' },
+            { value: 900, symbol: 'CM' },
+            { value: 500, symbol: 'D' },
+            { value: 400, symbol: 'CD' },
+            { value: 100, symbol: 'C' },
+            { value: 90, symbol: 'XC' },
+            { value: 50, symbol: 'L' },
+            { value: 40, symbol: 'XL' },
+            { value: 10, symbol: 'X' },
+            { value: 9, symbol: 'IX' },
+            { value: 5, symbol: 'V' },
+            { value: 4, symbol: 'IV' },
+            { value: 1, symbol: 'I' }
         ];
-
-        // --- STATE ---
-        let currentSection = 0;
-        let isReversed = false;
-        let quizQuestions = [];
-        let currentQuizIndex = 0;
-        let wrongAttempts = 0;
-        let isAnswerShown = false;
-        let langInterval = null;
-        let hoverTimeout = null; 
-
-        // --- DOM ELEMENTS ---
-        const readerView = document.getElementById('reader-view');
-        const quizView = document.getElementById('quiz-view');
-        const quizContent = document.getElementById('quiz-content');
-        const completionScreen = document.getElementById('completion-screen');
-        const readerContent = document.getElementById('reader-content');
-        const sectionNav = document.getElementById('section-nav');
-        const startQuizBtn = document.getElementById('start-quiz-btn');
-        const quizPrompt = document.getElementById('quiz-prompt');
-        const quizProgress = document.getElementById('quiz-progress');
-        const quizAnswerArea = document.getElementById('quiz-answer-area');
-        const quizWordBank = document.getElementById('quiz-word-bank');
-        const quizFeedback = document.getElementById('quiz-feedback');
-        const quizActionBtn = document.getElementById('quiz-action-btn');
-        const quizButtonContainer = document.getElementById('quiz-button-container');
-        const themeToggle = document.getElementById('theme-toggle');
-        const sunIcon = document.getElementById('theme-icon-sun');
-        const moonIcon = document.getElementById('theme-icon-moon');
-        const reverseToggle = document.getElementById('reverse-toggle');
-        const reviewUnitBtn = document.getElementById('review-unit-btn');
-        const sentencePlayer = document.getElementById('sentence-player');
-
-        // --- UTILITY FUNCTIONS ---
-        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-        // --- THEME ---
-        function setAndApplyTheme(theme) {
-            localStorage.setItem('theme', theme);
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            } else {
-                document.documentElement.classList.remove('dark');
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
+        let result = '';
+        for (const numeral of romanNumerals) {
+            while (num >= numeral.value) {
+                result += numeral.symbol;
+                num -= numeral.value;
             }
         }
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = localStorage.getItem('theme') || 'dark';
-            setAndApplyTheme(currentTheme === 'dark' ? 'light' : 'dark');
-        });
+        return result;
+    }
 
-        // --- REVERSE LANGUAGE ---
-        reverseToggle.addEventListener('click', () => {
-            isReversed = !isReversed;
-            localStorage.setItem('languageReversed', isReversed);
-            populateReader(currentSection);
-        });
-
-        // --- AUDIO FUNCTION ---
-        function playSentenceAudio(globalIndex) {
-            const audioPath = `${LANGUAGE}_audio/unit_${UNIT_NUMBER}/sentence_${globalIndex + 1}.mp3`;
-            sentencePlayer.src = audioPath;
-            sentencePlayer.play().catch(error => {
-                console.error(`Could not play audio for sentence ${globalIndex + 1}:`, error);
-            });
-        }
-
-        // --- READER FUNCTIONS ---
-        function populateReader(sectionIndex) {
-            readerContent.innerHTML = '';
-            const start = sectionIndex * 10;
-            const end = start + 10;
-            const sectionSentences = sentences.slice(start, end);
-
-            sectionSentences.forEach((sentence, index) => {
-                const globalIndex = start + index;
-                const blockContainer = document.createElement('div');
-                blockContainer.classList.add('sentence-block', 'flex', 'items-start', 'gap-4');
-
-                const interactiveContainer = document.createElement('div');
-                interactiveContainer.classList.add('flex-grow');
-
-                const interactiveArea = document.createElement('div');
-                interactiveArea.classList.add('interactive-area');
-                interactiveArea.dataset.index = globalIndex;
-                
-                const infoBox = document.createElement('div');
-                infoBox.classList.add('info-box');
-                
-                // Determine which language to show based on the isReversed flag
-                const mainText = isReversed ? sentence.english : sentence[LANGUAGE];
-                const hoverText = isReversed ? sentence[LANGUAGE] : sentence.english;
-
-                interactiveArea.textContent = mainText;
-                infoBox.innerHTML = `<p class="text-xl font-semibold">${hoverText}</p>`;
-
-                if (isTouchDevice) {
-                    interactiveArea.addEventListener('click', () => {
-                        playSentenceAudio(globalIndex);
-                        toggleInfo(interactiveArea);
-                    });
-                } else {
-                    interactiveArea.addEventListener('mouseenter', () => {
-                        playSentenceAudio(globalIndex);
-                        showInfo(interactiveArea);
-                    });
-                    interactiveArea.addEventListener('mouseleave', () => {
-                        hideInfo(interactiveArea);
-                    });
-                }
-
-                interactiveContainer.appendChild(interactiveArea);
-                interactiveContainer.appendChild(infoBox);
-                
-                const numberEl = document.createElement('span');
-                numberEl.textContent = globalIndex + 1;
-                numberEl.classList.add('text-2xl', 'pt-3', 'font-semibold');
-                
-                blockContainer.appendChild(numberEl);
-                blockContainer.appendChild(interactiveContainer);
-                readerContent.appendChild(blockContainer);
-            });
-            updateNavButtons();
-        }
-        
-        function showInfo(interactiveAreaEl) {
-            interactiveAreaEl.classList.add('active');
-            interactiveAreaEl.nextElementSibling.classList.add('visible');
-        }
-
-        function hideInfo(interactiveAreaEl) {
-            interactiveAreaEl.classList.remove('active');
-            interactiveAreaEl.nextElementSibling.classList.remove('visible');
-        }
-
-        function toggleInfo(interactiveAreaEl) {
-            const wasActive = interactiveAreaEl.classList.contains('active');
-            document.querySelectorAll('.interactive-area.active').forEach(activeEl => {
-                hideInfo(activeEl);
-            });
-            if (!wasActive) {
-                showInfo(interactiveAreaEl);
-            }
-        }
-
-        // --- QUIZ FUNCTIONS (UNCHANGED) ---
-        function startQuiz() {
-            readerView.classList.add('hidden');
-            quizView.classList.remove('hidden');
-            quizContent.classList.remove('hidden');
-            completionScreen.classList.add('hidden');
-            sectionNav.classList.add('hidden');
-            if (langInterval) clearInterval(langInterval);
-
-            const start = currentSection * 10;
-            const end = start + 10;
-            
-            quizQuestions = sentences.slice(start, end).map((sentence, index) => ({
-                ...sentence,
-                originalIndex: start + index
-            })).sort(() => 0.5 - Math.random()).slice(0, 5);
-
-            currentQuizIndex = 0;
-            loadQuizQuestion();
-        }
-
-        function loadQuizQuestion() {
-            wrongAttempts = 0; 
-            isAnswerShown = false; 
-            const giveUpBtn = document.getElementById('give-up-btn');
-            if (giveUpBtn) giveUpBtn.remove(); 
-
-            quizAnswerArea.innerHTML = '';
-            quizWordBank.innerHTML = '';
-            quizFeedback.innerHTML = '';
-            quizAnswerArea.style.borderColor = 'transparent';
-
-            quizProgress.textContent = `${currentQuizIndex + 1} / ${quizQuestions.length}`;
-            
-            quizActionBtn.style.display = 'none';
-            quizActionBtn.onclick = null;
-
-            const question = quizQuestions[currentQuizIndex];
-            quizPrompt.textContent = question.english;
-
-            const words = question[LANGUAGE].replace(/[.,?]/g, '').split(' ').filter(w => w);
-            const shuffledWords = words.sort(() => 0.5 - Math.random());
-            
-            shuffledWords.forEach(word => {
-                const btn = document.createElement('button');
-                btn.textContent = word;
-                btn.className = 'word-bank-btn text-2xl p-3 px-5 rounded-lg bg-[var(--card-bg-light)] transition-colors';
-                btn.onclick = () => selectWord(btn);
-                quizWordBank.appendChild(btn);
-            });
-        }
-
-        function selectWord(btn) {
-            btn.disabled = true;
-            const answerBtn = document.createElement('button');
-            answerBtn.textContent = btn.textContent;
-            answerBtn.className = 'answer-word-btn text-2xl p-3 px-5 rounded-lg bg-[var(--active-color)] text-white';
-            answerBtn.onclick = () => deselectWord(answerBtn, btn);
-            quizAnswerArea.appendChild(answerBtn);
-            liveCheckAnswer();
-        }
-
-        function deselectWord(answerBtn, originalBtn) {
-            originalBtn.disabled = false;
-            answerBtn.remove();
-            liveCheckAnswer();
-        }
-
-        function liveCheckAnswer() {
-            const answerWords = Array.from(quizAnswerArea.children).map(btn => btn.textContent);
-            const constructedAnswer = answerWords.join(' ');
-            const currentQuestion = quizQuestions[currentQuizIndex];
-            const correctAnswerText = currentQuestion[LANGUAGE].replace(/[.,?]/g, '');
-            const correctWords = correctAnswerText.split(' ').filter(w => w);
-
-            if (!isAnswerShown) {
-                quizFeedback.textContent = '';
-            }
-            quizActionBtn.style.display = 'none';
-            quizAnswerArea.style.borderColor = 'transparent';
-            const giveUpBtn = document.getElementById('give-up-btn');
-            if (giveUpBtn) giveUpBtn.style.display = 'none';
-
-            if (constructedAnswer === correctAnswerText) {
-                quizAnswerArea.style.borderColor = 'var(--border-correct-color)';
-                quizFeedback.textContent = 'Recte!';
-                quizFeedback.style.color = 'var(--correct-color)';
-                
-                playSentenceAudio(currentQuestion.originalIndex);
-
-                quizActionBtn.style.display = 'block';
-                quizActionBtn.textContent = 'Procede';
-                quizActionBtn.className = 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
-                quizActionBtn.onclick = nextQuestion;
-
-                Array.from(quizWordBank.children).forEach(btn => btn.disabled = true);
-                Array.from(quizAnswerArea.children).forEach(btn => btn.onclick = null);
-                wrongAttempts = 0; 
-            } else if (answerWords.length === correctWords.length) {
-                wrongAttempts++;
-                if (!isAnswerShown) {
-                    quizFeedback.textContent = 'Falsum. Iterum tempta!';
-                    quizFeedback.style.color = 'var(--incorrect-color)';
-                }
-                quizAnswerArea.style.borderColor = 'var(--incorrect-color)';
-
-                if (wrongAttempts >= 3) {
-                    let giveUpBtn = document.getElementById('give-up-btn');
-                    if (!giveUpBtn) {
-                        giveUpBtn = document.createElement('button');
-                        giveUpBtn.id = 'give-up-btn';
-                        giveUpBtn.textContent = 'Responsum Da';
-                        giveUpBtn.className = 'bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
-                        giveUpBtn.onclick = showCorrectAnswer;
-                        quizButtonContainer.appendChild(giveUpBtn);
-                    }
-                    giveUpBtn.style.display = 'block';
-                }
-            }
-        }
-        
-        function showCorrectAnswer() {
-            isAnswerShown = true;
-            const currentQuestion = quizQuestions[currentQuizIndex];
-            const correctAnswerText = currentQuestion[LANGUAGE];
-
-            quizFeedback.innerHTML = `Responsum rectum: <strong class="font-semibold">${correctAnswerText}</strong>`;
-            quizFeedback.style.color = 'var(--text-color)';
-
-            quizAnswerArea.innerHTML = '';
-            Array.from(quizWordBank.children).forEach(btn => {
-                btn.disabled = false;
-            });
-            
-            const giveUpBtn = document.getElementById('give-up-btn');
-            if (giveUpBtn) giveUpBtn.remove();
-        }
-
-        function nextQuestion() {
-            currentQuizIndex++;
-            if (currentQuizIndex < quizQuestions.length) {
-                loadQuizQuestion();
-            } else {
-                currentSection++;
-                const numSections = Math.ceil(sentences.length / 10);
-                if (currentSection >= numSections) {
-                    showCompletionScreen();
-                } else {
-                    returnToReader(currentSection);
-                }
-            }
-        }
-
-        function showCompletionScreen() {
-            quizContent.classList.add('hidden');
-            completionScreen.classList.remove('hidden');
-            
-            for (let i = 0; i < 100; i++) {
-                createConfetti();
-            }
-
-            const enText = document.getElementById('completion-en');
-            const laText = document.getElementById('completion-la');
-            langInterval = setInterval(() => {
-                enText.classList.toggle('hidden-lang');
-                laText.classList.toggle('hidden-lang');
-            }, 2000);
-        }
-
-        function createConfetti() {
-            const confetti = document.createElement('div');
-            confetti.classList.add('confetti');
-            const colors = ['#fde047', '#ff7f50', '#2dd4bf', '#8a2be2', '#00ff7f'];
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
-            document.body.appendChild(confetti);
-            setTimeout(() => confetti.remove(), 5000);
-        }
-
-        function reviewCurrentUnit() {
-            if (langInterval) clearInterval(langInterval);
-            currentSection = 0;
-            returnToReader(currentSection);
-        }
-
-        function returnToReader(sectionIndex) {
-            if (langInterval) clearInterval(langInterval);
-            quizView.classList.add('hidden');
-            readerView.classList.remove('hidden');
-            sectionNav.classList.remove('hidden');
-            currentSection = sectionIndex;
-            populateReader(currentSection);
-        }
-        
-        function populateNav() {
-            const numSections = Math.ceil(sentences.length / 10);
-            for (let i = 0; i < numSections; i++) {
-                const btn = document.createElement('button');
-                const start = i * 10 + 1;
-                const end = Math.min(start + 9, sentences.length);
-                btn.textContent = `${start}-${end}`;
-                btn.className = 'nav-btn px-4 py-2 rounded-md font-semibold bg-[var(--card-bg-light)] transition-colors';
-                btn.onclick = () => {
-                    currentSection = i;
-                    populateReader(i);
-                };
-                sectionNav.appendChild(btn);
-            }
-        }
-
-        function updateNavButtons() {
-            const buttons = sectionNav.querySelectorAll('.nav-btn');
-            buttons.forEach((btn, index) => {
-                btn.classList.toggle('active', index === currentSection);
-            });
-        }
-
-        // --- EVENT LISTENERS ---
-        startQuizBtn.addEventListener('click', startQuiz);
-        reviewUnitBtn.addEventListener('click', reviewCurrentUnit);
-
-        // --- INITIALIZATION ---
-        // Theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            setAndApplyTheme(savedTheme);
+    // --- THEME ---
+    function setAndApplyTheme(theme) {
+        localStorage.setItem('theme', theme);
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
         } else {
-            setAndApplyTheme('dark');
+            document.documentElement.classList.remove('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
         }
+    }
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        setAndApplyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // --- REVERSE LANGUAGE ---
+    reverseToggle.addEventListener('click', () => {
+        isReversed = !isReversed;
+        localStorage.setItem('languageReversed', isReversed);
+        populateReader(currentSection);
+    });
+
+    // --- AUDIO FUNCTION ---
+    function playSentenceAudio(globalIndex) {
+        const audioSentenceNumber = globalIndex + 1 + SENTENCE_OFFSET;
+        const audioPath = `${LANGUAGE}_audio/unit_${UNIT_NUMBER}/sentence_${audioSentenceNumber}.mp3`;
+        sentencePlayer.src = audioPath;
+        sentencePlayer.play().catch(error => {
+            console.error(`Could not play audio for sentence ${audioSentenceNumber}:`, error);
+        });
+    }
+
+    // --- READER FUNCTIONS ---
+    function populateReader(sectionIndex) {
+        readerContent.innerHTML = '';
+        const start = sectionIndex * 10;
+        const end = start + 10;
+        const sectionSentences = sentences.slice(start, end);
+
+        sectionSentences.forEach((sentence, index) => {
+            const globalIndex = start + index;
+            const displayIndex = globalIndex + 1 + SENTENCE_OFFSET;
+            const blockContainer = document.createElement('div');
+            blockContainer.classList.add('sentence-block', 'flex', 'items-start', 'gap-4');
+
+            const interactiveContainer = document.createElement('div');
+            interactiveContainer.classList.add('flex-grow');
+
+            const interactiveArea = document.createElement('div');
+            interactiveArea.classList.add('interactive-area');
+            interactiveArea.dataset.index = globalIndex;
+            
+            const infoBox = document.createElement('div');
+            infoBox.classList.add('info-box');
+            
+            const mainText = isReversed ? sentence.english : sentence[LANGUAGE];
+            const hoverText = isReversed ? sentence[LANGUAGE] : sentence.english;
+
+            interactiveArea.textContent = mainText;
+            infoBox.innerHTML = `<p class="text-xl font-semibold">${hoverText}</p>`;
+
+            if (isTouchDevice) {
+                interactiveArea.addEventListener('click', () => {
+                    playSentenceAudio(globalIndex);
+                    toggleInfo(interactiveArea);
+                });
+            } else {
+                interactiveArea.addEventListener('mouseenter', () => {
+                    playSentenceAudio(globalIndex);
+                    showInfo(interactiveArea);
+                });
+                interactiveArea.addEventListener('mouseleave', () => {
+                    hideInfo(interactiveArea);
+                });
+            }
+
+            interactiveContainer.appendChild(interactiveArea);
+            interactiveContainer.appendChild(infoBox);
+            
+            const numberEl = document.createElement('span');
+            numberEl.textContent = toRoman(displayIndex);
+            numberEl.classList.add('text-2xl', 'pt-3', 'font-semibold');
+            
+            blockContainer.appendChild(numberEl);
+            blockContainer.appendChild(interactiveContainer);
+            readerContent.appendChild(blockContainer);
+        });
+        updateNavButtons();
+    }
+    
+    function showInfo(interactiveAreaEl) {
+        interactiveAreaEl.classList.add('active');
+        interactiveAreaEl.nextElementSibling.classList.add('visible');
+    }
+
+    function hideInfo(interactiveAreaEl) {
+        interactiveAreaEl.classList.remove('active');
+        interactiveAreaEl.nextElementSibling.classList.remove('visible');
+    }
+
+    function toggleInfo(interactiveAreaEl) {
+        const wasActive = interactiveAreaEl.classList.contains('active');
+        document.querySelectorAll('.interactive-area.active').forEach(activeEl => {
+            hideInfo(activeEl);
+        });
+        if (!wasActive) {
+            showInfo(interactiveAreaEl);
+        }
+    }
+
+    // --- QUIZ FUNCTIONS ---
+    function startQuiz() {
+        readerView.classList.add('hidden');
+        quizView.classList.remove('hidden');
+        quizContent.classList.remove('hidden');
+        completionScreen.classList.add('hidden');
+        sectionNav.classList.add('hidden');
+        if (langInterval) clearInterval(langInterval);
+
+        const start = currentSection * 10;
+        const end = start + 10;
         
-        // Reverse Language
-        const savedReverse = localStorage.getItem('languageReversed');
-        if (savedReverse) {
-            isReversed = JSON.parse(savedReverse);
+        quizQuestions = sentences.slice(start, end).map((sentence, index) => ({
+            ...sentence,
+            originalIndex: start + index
+        })).sort(() => 0.5 - Math.random()).slice(0, 5);
+
+        currentQuizIndex = 0;
+        loadQuizQuestion();
+    }
+
+    function loadQuizQuestion() {
+        wrongAttempts = 0; 
+        isAnswerShown = false; 
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.remove(); 
+
+        quizAnswerArea.innerHTML = '';
+        quizWordBank.innerHTML = '';
+        quizFeedback.innerHTML = '';
+        quizAnswerArea.style.borderColor = 'transparent';
+
+        quizProgress.textContent = `${toRoman(currentQuizIndex + 1)} / ${toRoman(quizQuestions.length)}`;
+        
+        quizActionBtn.style.display = 'none';
+        quizActionBtn.onclick = null;
+
+        const question = quizQuestions[currentQuizIndex];
+        quizPrompt.textContent = question.english;
+
+        const words = question[LANGUAGE].replace(/[.,?"]/g, '').split(' ').filter(w => w);
+        const shuffledWords = words.sort(() => 0.5 - Math.random());
+        
+        shuffledWords.forEach(word => {
+            const btn = document.createElement('button');
+            btn.textContent = word;
+            btn.className = 'word-bank-btn text-2xl p-3 px-5 rounded-lg bg-[var(--card-bg-light)] transition-colors';
+            btn.onclick = () => selectWord(btn);
+            quizWordBank.appendChild(btn);
+        });
+    }
+
+    function selectWord(btn) {
+        btn.disabled = true;
+        const answerBtn = document.createElement('button');
+        answerBtn.textContent = btn.textContent;
+        answerBtn.className = 'answer-word-btn text-2xl p-3 px-5 rounded-lg bg-[var(--active-color)] text-white';
+        answerBtn.onclick = () => deselectWord(answerBtn, btn);
+        quizAnswerArea.appendChild(answerBtn);
+        liveCheckAnswer();
+    }
+
+    function deselectWord(answerBtn, originalBtn) {
+        originalBtn.disabled = false;
+        answerBtn.remove();
+        liveCheckAnswer();
+    }
+
+    function liveCheckAnswer() {
+        const answerWords = Array.from(quizAnswerArea.children).map(btn => btn.textContent);
+        const constructedAnswer = answerWords.join(' ');
+        const currentQuestion = quizQuestions[currentQuizIndex];
+        const correctAnswerText = currentQuestion[LANGUAGE].replace(/[.,?"]/g, '');
+        const correctWords = correctAnswerText.split(' ').filter(w => w);
+
+        if (!isAnswerShown) {
+            quizFeedback.textContent = '';
+        }
+        quizActionBtn.style.display = 'none';
+        quizAnswerArea.style.borderColor = 'transparent';
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.style.display = 'none';
+
+        if (constructedAnswer === correctAnswerText) {
+            quizAnswerArea.style.borderColor = 'var(--border-correct-color)';
+            quizFeedback.textContent = 'Recte!';
+            quizFeedback.style.color = 'var(--correct-color)';
+            
+            playSentenceAudio(currentQuestion.originalIndex);
+
+            quizActionBtn.style.display = 'block';
+            quizActionBtn.textContent = 'Procede';
+            quizActionBtn.className = 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+            quizActionBtn.onclick = nextQuestion;
+
+            Array.from(quizWordBank.children).forEach(btn => btn.disabled = true);
+            Array.from(quizAnswerArea.children).forEach(btn => btn.onclick = null);
+            wrongAttempts = 0; 
+        } else if (answerWords.length === correctWords.length) {
+            wrongAttempts++;
+            if (!isAnswerShown) {
+                quizFeedback.textContent = 'Falsum. Iterum tempta!';
+                quizFeedback.style.color = 'var(--incorrect-color)';
+            }
+            quizAnswerArea.style.borderColor = 'var(--incorrect-color)';
+
+            if (wrongAttempts >= 3) {
+                let giveUpBtn = document.getElementById('give-up-btn');
+                if (!giveUpBtn) {
+                    giveUpBtn = document.createElement('button');
+                    giveUpBtn.id = 'give-up-btn';
+                    giveUpBtn.textContent = 'Responsum Da';
+                    giveUpBtn.className = 'bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+                    giveUpBtn.onclick = showCorrectAnswer;
+                    quizButtonContainer.appendChild(giveUpBtn);
+                }
+                giveUpBtn.style.display = 'block';
+            }
+        }
+    }
+    
+    function showCorrectAnswer() {
+        isAnswerShown = true;
+        const currentQuestion = quizQuestions[currentQuizIndex];
+        const correctAnswerText = currentQuestion[LANGUAGE];
+
+        quizFeedback.innerHTML = `Responsum rectum: <strong class="font-semibold">${correctAnswerText}</strong>`;
+        quizFeedback.style.color = 'var(--text-color)';
+
+        quizAnswerArea.innerHTML = '';
+        Array.from(quizWordBank.children).forEach(btn => {
+            btn.disabled = false;
+        });
+        
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.remove();
+    }
+
+    function nextQuestion() {
+        currentQuizIndex++;
+        if (currentQuizIndex < quizQuestions.length) {
+            loadQuizQuestion();
+        } else {
+            currentSection++;
+            const numSections = Math.ceil(sentences.length / 10);
+            if (currentSection >= numSections) {
+                showCompletionScreen();
+            } else {
+                returnToReader(currentSection);
+            }
+        }
+    }
+
+    function showCompletionScreen() {
+        quizContent.classList.add('hidden');
+        completionScreen.classList.remove('hidden');
+        
+        for (let i = 0; i < 100; i++) {
+            createConfetti();
         }
 
-        populateNav();
+        const enText = document.getElementById('completion-en');
+        const laText = document.getElementById('completion-la');
+        langInterval = setInterval(() => {
+            enText.classList.toggle('hidden-lang');
+            laText.classList.toggle('hidden-lang');
+        }, 2000);
+    }
+
+    function createConfetti() {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        const colors = ['#fde047', '#ff7f50', '#2dd4bf', '#8a2be2', '#00ff7f'];
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+    }
+
+    function reviewCurrentUnit() {
+        if (langInterval) clearInterval(langInterval);
+        currentSection = 0;
+        returnToReader(currentSection);
+    }
+
+    function returnToReader(sectionIndex) {
+        if (langInterval) clearInterval(langInterval);
+        quizView.classList.add('hidden');
+        readerView.classList.remove('hidden');
+        sectionNav.classList.remove('hidden');
+        currentSection = sectionIndex;
         populateReader(currentSection);
-    </script>
+    }
+    
+    function populateNav() {
+        const numSections = Math.ceil(sentences.length / 10);
+        for (let i = 0; i < numSections; i++) {
+            const btn = document.createElement('button');
+            const start = i * 10 + 1 + SENTENCE_OFFSET;
+            const end = Math.min(start + 9, sentences.length + SENTENCE_OFFSET);
+            btn.textContent = `${toRoman(start)}-${toRoman(end)}`;
+            btn.className = 'nav-btn px-4 py-2 rounded-md font-semibold bg-[var(--card-bg-light)] transition-colors';
+            btn.onclick = () => {
+                currentSection = i;
+                populateReader(i);
+            };
+            sectionNav.appendChild(btn);
+        }
+    }
+
+    function updateNavButtons() {
+        const buttons = sectionNav.querySelectorAll('.nav-btn');
+        buttons.forEach((btn, index) => {
+            btn.classList.toggle('active', index === currentSection);
+        });
+    }
+
+    // --- EVENT LISTENERS ---
+    startQuizBtn.addEventListener('click', startQuiz);
+    reviewUnitBtn.addEventListener('click', reviewCurrentUnit);
+
+    // --- INITIALIZATION ---
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setAndApplyTheme(savedTheme);
+    } else {
+        setAndApplyTheme('dark');
+    }
+    
+    const savedReverse = localStorage.getItem('languageReversed');
+    if (savedReverse) {
+        isReversed = JSON.parse(savedReverse);
+    }
+
+    populateNav();
+    populateReader(currentSection);
+</script>
+
 </body>
 </html>
