@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hopkins Method Latin: Unit 1: fundamenta</title>
+    <title>Hopkins Method Latin: Unit 2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,7 +163,7 @@
     <div class="w-full max-w-3xl mx-auto">
         <!-- Header -->
         <header class="text-center mb-6">
-            <h1 class="text-3xl font-bold">Hopkins Method Latin: Unit 1: fundamenta</h1>
+            <h1 class="text-3xl font-bold">Hopkins Method Latin: Unit 2</h1>
             <div class="flex justify-center items-center gap-2 mt-3"> <!-- Container for buttons, centered -->
                  <button id="reverse-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Linguam Converte">
                     <svg class="h-6 w-6" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -206,7 +206,7 @@
                         <span id="completion-la" class="completion-text hidden-lang">Optime!</span>
                     </div>
                     <div class="flex justify-center gap-4 mt-4">
-                        <button id="review-unit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg">Unitatem I Repete</button>
+                        <button id="review-unit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg">Unitatem II Repete</button>
                         
                     </div>
                 </div>
@@ -215,61 +215,62 @@
     </div>
 
     <script>
-        const UNIT_NUMBER = 1;
+        const UNIT_NUMBER = 2;
         const LANGUAGE = "latin"; // Define the language key used in the sentences array
+        const SENTENCE_OFFSET = (UNIT_NUMBER - 1) * 50; // Calculate offset for sentence numbers
 
         // --- DATA ---
         const sentences = [
-            { latin: "Haec domus est.", english: "This is a house." }, 
-            { latin: "Hic vir est.", english: "This is a man." }, 
-            { latin: "Vir hic est.", english: "The man is here." }, 
-            { latin: "Vir in domo est.", english: "The man is in the house." }, 
-            { latin: "Haec femina est.", english: "This is a woman." }, 
-            { latin: "Hic liber est.", english: "This is a book." }, 
-            { latin: "Vir in domo est et femina hic est.", english: "The man is in the house and the woman is here." }, 
-            { latin: "Haec raeda est.", english: "This is a car." }, 
-            { latin: "Haec domus magna est.", english: "This is a big house." }, 
-            { latin: "Haec domus parva est.", english: "This is a small house." },
-            { latin: "Hic puer est.", english: "This is a boy." }, 
-            { latin: "Haec puella est.", english: "This is a girl." }, 
-            { latin: "Puer in raeda magna est.", english: "The boy is in the big car." }, 
-            { latin: "Puella in domo parva est.", english: "The girl is in the small house." }, 
-            { latin: "Puer parvus hic est.", english: "The small boy is here." }, 
-            { latin: "Hic stilus est.", english: "This is a pen." }, 
-            { latin: "Stilus super librum est.", english: "The pen is on the book." }, 
-            { latin: "Haec ianua est.", english: "This is a door." }, 
-            { latin: "Ianua magna est.", english: "The door is big." }, 
-            { latin: "Raeda magna est.", english: "The car is big." },
-            { latin: "Haec puella parva est.", english: "This is a small girl." }, 
-            { latin: "Haec aqua est.", english: "This is water." }, 
-            { latin: "Vir hic non est.", english: "The man is not here." }, 
-            { latin: "Femina hic non est.", english: "The woman is not here." }, 
-            { latin: "Stilus in domo non est.", english: "The pen is not in the house." }, 
-            { latin: "Haec mensa est.", english: "This is a table." }, 
-            { latin: "Liber super mensam est.", english: "The book is on the table." }, 
-            { latin: "Hic liber novus est.", english: "This is a new book." }, 
-            { latin: "Haec domus vetus est.", english: "This is an old house." }, 
-            { latin: "Haec raeda nova est.", english: "This is a new car." },
-            { latin: "Haec mensa vetus est.", english: "This is an old table." }, 
-            { latin: "Haec urbs est.", english: "This is a city." }, 
-            { latin: "Haec via magna est.", english: "This is a big street." }, 
-            { latin: "Ubi est vir?", english: "Where is the man?" }, 
-            { latin: "Vir in via est.", english: "The man is in the street." }, 
-            { latin: "Quis est hic?", english: "Who is this?" }, 
-            { latin: "Hic discipulus est.", english: "This is a student." }, 
-            { latin: "Ego discipulus sum.", english: "I am a student." }, 
-            { latin: "Haec discipula est.", english: "This is a student (f.)." }, 
-            { latin: "Hoc nomen est.", english: "This is a name." },
-            { latin: "Haec domus mea est.", english: "This is my house." }, 
-            { latin: "Raeda mea parva est.", english: "My car is small." }, 
-            { latin: "Tu puer es.", english: "You are a boy." }, 
-            { latin: "Hic liber tuus est.", english: "This is your book." }, 
-            { latin: "Ubi est stilus tuus?", english: "Where is your pen?" }, 
-            { latin: "Tu puella es.", english: "You are a girl." }, 
-            { latin: "Haec domus tua est.", english: "This is your house." }, 
-            { latin: "Raeda tua vetus non est.", english: "Your car is not old." }, 
-            { latin: "Quid est nomen tuum?", english: "What is your name?" }, 
-            { latin: "Ego discipulus novus sum et domus mea in urbe est.", english: "I am a new student and my house is in the city." }
+            { latin: "Librum volo.", english: "I want a book." },
+            { latin: "Raedam novam volo.", english: "I want a new car." },
+            { latin: "Domum parvam vis.", english: "You want a small house." },
+            { latin: "Quid vis?", english: "What do you want?" },
+            { latin: "Stilum volo.", english: "I want a pen." },
+            { latin: "Quid vis, puella?", english: "What do you want, girl?" },
+            { latin: "Librum veterem volo.", english: "I want the old book." },
+            { latin: "Habeo librum.", english: "I have a book." },
+            { latin: "Habeo domum magnam in urbe.", english: "I have a big house in the city." },
+            { latin: "Habes raedam novam.", english: "You have a new car." },
+            { latin: "Habesne stilum?", english: "Do you have a pen?" },
+            { latin: "Ita, stilum habeo.", english: "Yes, I have a pen." },
+            { latin: "Minime, stilum non habeo.", english: "No, I do not have a pen." },
+            { latin: "Hunc librum nolo, habeo librum novum.", english: "I do not want this book, I have a new book." },
+            { latin: "Habesne aquam?", english: "Do you have water?" },
+            { latin: "Ita, habeo aquam super mensam.", english: "Yes, I have water on the table." },
+            { latin: "Virum video.", english: "I see a man." },
+            { latin: "Raedam tuam in via video.", english: "I see your car in the street." },
+            { latin: "Quid in domo vides?", english: "What do you see in the house?" },
+            { latin: "Mensam, ianuam, et stilum video.", english: "I see a table, a door, and a pen." },
+            { latin: "Quid vides, mea discipula?", english: "What do you see, my student (f.)?" },
+            { latin: "Quis est? Is est discipulus novus.", english: "Who is he? He is a new student." },
+            { latin: "Raedam magnam vult.", english: "He wants a big car." },
+            { latin: "Habetne domum?", english: "Does he have a house?" },
+            { latin: "Ea hic non est.", english: "She is not here." },
+            { latin: "Librum meum habet.", english: "She has my book." },
+            { latin: "Puella stilum parvum vult.", english: "The girl wants the small pen." },
+            { latin: "Eo.", english: "I go. / I am going." },
+            { latin: "Domum eo.", english: "I am going to the house." },
+            { latin: "Domum meam in urbe eo.", english: "I am going to my house in the city." },
+            { latin: "Quo is?", english: "Where are you going?" },
+            { latin: "Ad viam magnam eo.", english: "I am going to the big street." },
+            { latin: "Isne domum tuam?", english: "Are you going to your house?" },
+            { latin: "Discipulus urbem it.", english: "The student is going to the city." },
+            { latin: "Discipula domum magnam it.", english: "The female student is going to the big house." },
+            { latin: "Cum viro eo.", english: "I am going with the man." },
+            { latin: "Cum puero parvo it.", english: "She is going with the small boy." },
+            { latin: "Tecum ire volo.", english: "I want to go with you." },
+            { latin: "Hunc librum nolo.", english: "I do not want this book." },
+            { latin: "Is urbem non it.", english: "He does not go to the city." },
+            { latin: "Is raedam habet, sed ego domum habeo.", english: "He has a car, but I have a house." },
+            { latin: "Librum video, sed librum nolo.", english: "I see the book, but I do not want the book." },
+            { latin: "Cur urbem is?", english: "Why are you going to the city?" },
+            { latin: "Quia domum tuam novam videre volo.", english: "Because I want to see your new house." },
+            { latin: "Cur ea hic est? Quia domus eius hic est.", english: "Why is she here? Because her house is here." },
+            { latin: "Vir cum femina ad raedam ire vult.", english: "The man wants to go with the woman to the car." },
+            { latin: "Aquam non habeo, ad viam ire volo.", english: "I don't have water, I want to go to the street." },
+            { latin: "Puer puellam non videt, quia ea in domo sua est.", english: "The boy does not see the girl because she is in her house." },
+            { latin: "Stilum novum habeo, sed liber meus vetus est.", english: "I have a new pen, but my book is old." },
+            { latin: "Discipulus sum et urbem eo quia librum novum volo.", english: "I am a student and I go to the city because I want a new book." }
         ];
 
         // --- STATE ---
@@ -361,10 +362,11 @@
 
         // --- AUDIO FUNCTION ---
         function playSentenceAudio(globalIndex) {
-            const audioPath = `${LANGUAGE}_audio/unit_${UNIT_NUMBER}/sentence_${globalIndex + 1}.mp3`;
+            const audioSentenceNumber = globalIndex + 1 + SENTENCE_OFFSET;
+            const audioPath = `${LANGUAGE}_audio/unit_${UNIT_NUMBER}/sentence_${audioSentenceNumber}.mp3`;
             sentencePlayer.src = audioPath;
             sentencePlayer.play().catch(error => {
-                console.error(`Could not play audio for sentence ${globalIndex + 1}:`, error);
+                console.error(`Could not play audio for sentence ${audioSentenceNumber}:`, error);
             });
         }
 
@@ -377,6 +379,8 @@
 
             sectionSentences.forEach((sentence, index) => {
                 const globalIndex = start + index;
+                const displayIndex = globalIndex + 1 + SENTENCE_OFFSET;
+
                 const blockContainer = document.createElement('div');
                 blockContainer.classList.add('sentence-block', 'flex', 'items-start', 'gap-4');
 
@@ -415,7 +419,7 @@
                 interactiveContainer.appendChild(infoBox);
                 
                 const numberEl = document.createElement('span');
-                numberEl.textContent = toRoman(globalIndex + 1);
+                numberEl.textContent = toRoman(displayIndex);
                 numberEl.classList.add('text-2xl', 'pt-3', 'font-semibold');
                 
                 blockContainer.appendChild(numberEl);
@@ -644,8 +648,8 @@
             const numSections = Math.ceil(sentences.length / 10);
             for (let i = 0; i < numSections; i++) {
                 const btn = document.createElement('button');
-                const start = i * 10 + 1;
-                const end = Math.min(start + 9, sentences.length);
+                const start = i * 10 + 1 + SENTENCE_OFFSET;
+                const end = Math.min(start + 9, sentences.length + SENTENCE_OFFSET);
                 btn.textContent = `${toRoman(start)}-${toRoman(end)}`;
                 btn.className = 'nav-btn px-4 py-2 rounded-md font-semibold bg-[var(--card-bg-light)] transition-colors';
                 btn.onclick = () => {

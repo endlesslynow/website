@@ -307,33 +307,6 @@
         // --- UTILITY FUNCTIONS ---
         const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-        function toRoman(num) {
-            if (isNaN(num) || num <= 0) return num;
-            const romanNumerals = [
-                { value: 1000, symbol: 'M' },
-                { value: 900, symbol: 'CM' },
-                { value: 500, symbol: 'D' },
-                { value: 400, symbol: 'CD' },
-                { value: 100, symbol: 'C' },
-                { value: 90, symbol: 'XC' },
-                { value: 50, symbol: 'L' },
-                { value: 40, symbol: 'XL' },
-                { value: 10, symbol: 'X' },
-                { value: 9, symbol: 'IX' },
-                { value: 5, symbol: 'V' },
-                { value: 4, symbol: 'IV' },
-                { value: 1, symbol: 'I' }
-            ];
-            let result = '';
-            for (const numeral of romanNumerals) {
-                while (num >= numeral.value) {
-                    result += numeral.symbol;
-                    num -= numeral.value;
-                }
-            }
-            return result;
-        }
-
         // --- THEME ---
         function setAndApplyTheme(theme) {
             localStorage.setItem('theme', theme);
@@ -390,6 +363,7 @@
                 const infoBox = document.createElement('div');
                 infoBox.classList.add('info-box');
                 
+                // Determine which language to show based on the isReversed flag
                 const mainText = isReversed ? sentence.english : sentence[LANGUAGE];
                 const hoverText = isReversed ? sentence[LANGUAGE] : sentence.english;
 
@@ -415,7 +389,7 @@
                 interactiveContainer.appendChild(infoBox);
                 
                 const numberEl = document.createElement('span');
-                numberEl.textContent = toRoman(globalIndex + 1);
+                numberEl.textContent = globalIndex + 1;
                 numberEl.classList.add('text-2xl', 'pt-3', 'font-semibold');
                 
                 blockContainer.appendChild(numberEl);
@@ -445,7 +419,7 @@
             }
         }
 
-        // --- QUIZ FUNCTIONS ---
+        // --- QUIZ FUNCTIONS (UNCHANGED) ---
         function startQuiz() {
             readerView.classList.add('hidden');
             quizView.classList.remove('hidden');
@@ -477,7 +451,7 @@
             quizFeedback.innerHTML = '';
             quizAnswerArea.style.borderColor = 'transparent';
 
-            quizProgress.textContent = `${toRoman(currentQuizIndex + 1)} / ${toRoman(quizQuestions.length)}`;
+            quizProgress.textContent = `${currentQuizIndex + 1} / ${quizQuestions.length}`;
             
             quizActionBtn.style.display = 'none';
             quizActionBtn.onclick = null;
@@ -646,7 +620,7 @@
                 const btn = document.createElement('button');
                 const start = i * 10 + 1;
                 const end = Math.min(start + 9, sentences.length);
-                btn.textContent = `${toRoman(start)}-${toRoman(end)}`;
+                btn.textContent = `${start}-${end}`;
                 btn.className = 'nav-btn px-4 py-2 rounded-md font-semibold bg-[var(--card-bg-light)] transition-colors';
                 btn.onclick = () => {
                     currentSection = i;
