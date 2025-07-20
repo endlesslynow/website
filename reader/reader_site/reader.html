@@ -6,488 +6,121 @@
     <title>Dual-Language PDF Reader</title>
     <style>
         :root {
-            /* Light mode variables - updated with book-like colors */
-            --light-bg: #513526; /* Dark wood color */
-            --light-container-bg: #f5f1e6; /* Old book page color */
-            --light-text: #2a2116; /* Dark brown text */
-            --light-header-bg: #bab6aa; /* Darker version of beige/gray from image 1 */
-            --light-header-text: #2a2116; /* Dark text for better contrast */
-            --light-button-bg: #a19e93; /* Slightly darker than header for buttons */
-            --light-button-hover: #87847a; /* Even darker for button hover */
-            --light-border: #d3c6a6; /* Aged paper border */
-            --light-shadow: rgba(0, 0, 0, 0.2);
-            --light-input-bg: #f5f1e6; /* Same as container */
-            --light-input-border: #d3c6a6;
-            
-            /* Dark mode variables - unchanged */
-            --dark-bg: #2f3542;
-            --dark-container-bg: #1e272e;
-            --dark-text: #dfe4ea;
-            --dark-header-bg: #1e272e;
-            --dark-header-text: #f1f2f6;
-            --dark-button-bg: #0097e6;
-            --dark-button-hover: #00a8ff;
-            --dark-border: #57606f;
-            --dark-shadow: rgba(0, 0, 0, 0.3);
-            --dark-input-bg: #353b48;
-            --dark-input-border: #57606f;
+            /* Light mode variables */
+            --light-bg: #513526; --light-container-bg: #f5f1e6; --light-text: #2a2116; --light-header-bg: #bab6aa; --light-header-text: #2a2116; --light-button-bg: #a19e93; --light-button-hover: #87847a; --light-border: #d3c6a6; --light-shadow: rgba(0, 0, 0, 0.2); --light-input-bg: #f5f1e6; --light-input-border: #d3c6a6;
+            /* Dark mode variables */
+            --dark-bg: #2f3542; --dark-container-bg: #1e272e; --dark-text: #dfe4ea; --dark-header-bg: #1e272e; --dark-header-text: #f1f2f6; --dark-button-bg: #0097e6; --dark-button-hover: #00a8ff; --dark-border: #57606f; --dark-shadow: rgba(0, 0, 0, 0.3); --dark-input-bg: #353b48; --dark-input-border: #57606f;
         }
-        
-        .light-mode {
-            --bg: var(--light-bg);
-            --container-bg: var(--light-container-bg);
-            --text: var(--light-text);
-            --header-bg: var(--light-header-bg);
-            --header-text: var(--light-header-text);
-            --button-bg: var(--light-button-bg);
-            --button-hover: var(--light-button-hover);
-            --border: var(--light-border);
-            --shadow: var(--light-shadow);
-            --input-bg: var(--light-input-bg);
-            --input-border: var(--light-input-border);
-            --revealer-blur-color: rgba(245, 241, 230, 0.6);
-        }
-        
-        .dark-mode {
-            --bg: var(--dark-bg);
-            --container-bg: var(--dark-container-bg);
-            --text: var(--dark-text);
-            --header-bg: var(--dark-header-bg);
-            --header-text: var(--dark-header-text);
-            --button-bg: var(--dark-button-bg);
-            --button-hover: var(--dark-button-hover);
-            --border: var(--dark-border);
-            --shadow: var(--dark-shadow);
-            --input-bg: var(--dark-input-bg);
-            --input-border: var(--dark-input-border);
-            --revealer-blur-color: rgba(30, 39, 46, 0.6);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        .light-mode { --bg: var(--light-bg); --container-bg: var(--light-container-bg); --text: var(--light-text); --header-bg: var(--light-header-bg); --header-text: var(--light-header-text); --button-bg: var(--light-button-bg); --button-hover: var(--light-button-hover); --border: var(--light-border); --shadow: var(--light-shadow); --input-bg: var(--light-input-bg); --input-border: var(--light-input-border); --revealer-blur-color: rgba(245, 241, 230, 0.6); }
+        .dark-mode { --bg: var(--dark-bg); --container-bg: var(--dark-container-bg); --text: var(--dark-text); --header-bg: var(--dark-header-bg); --header-text: var(--dark-header-text); --button-bg: var(--dark-button-bg); --button-hover: var(--dark-button-hover); --border: var(--dark-border); --shadow: var(--dark-shadow); --input-bg: var(--dark-input-bg); --input-border: var(--dark-input-border); --revealer-blur-color: rgba(30, 39, 46, 0.6); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; background-color: var(--bg); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; transition: background-color 0.3s, color 0.3s; }
+        header { background-color: var(--header-bg); color: var(--header-text); padding: 1rem; text-align: center; box-shadow: 0 2px 4px var(--shadow); }
+        .title-container { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+        #book-title { font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; font-weight: normal; letter-spacing: 1px; }
+        .controls { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap; }
+        button { background-color: var(--button-bg); color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; transition: background-color 0.3s; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        button:hover { background-color: var(--button-hover); }
+        button:disabled { background-color: #95a5a6; cursor: not-allowed; }
+        .zoom-controls { display: flex; gap: 0.5rem; align-items: center; }
+        .zoom-btn { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; padding: 0; }
+        input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+        #page-input { width: 60px; padding: 0.5rem; border: 1px solid var(--input-border); border-radius: 4px; text-align: center; background-color: var(--input-bg); color: var(--text); }
+        .reader-container { display: flex; flex: 1; height: calc(100vh - 120px); gap: 1rem; padding: 1rem; }
+        .pdf-container, .translation-container { flex: 1; overflow: auto; padding: 1.5rem; background-color: var(--container-bg); box-shadow: 0 0 10px var(--shadow); margin: 0; border-radius: 8px; border: 1px solid var(--border); position: relative; display: flex; flex-direction: column; }
+        .translation-container { overflow-x: hidden; }
+        .pdf-container::after, .translation-container::after { content: ''; position: absolute; top: 10px; bottom: 10px; width: 1px; right: -5px; background-color: var(--border); box-shadow: 1px 0 3px var(--shadow); }
+        .pdf-container { background-image: linear-gradient(to right, rgba(0,0,0,0.01) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.01) 1px, transparent 1px); background-size: 20px 20px; touch-action: pan-x pan-y pinch-zoom; position: relative; display: flex; flex-direction: column; }
+        .light-mode .pdf-container, .light-mode .translation-container { background-image: url('data:image/png;base64,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'); }
+        .content-area { flex: 1; overflow: auto; display: flex; flex-direction: column; align-items: center; min-width: 0; }
+        #pdf-render { display: block; margin: 0 auto; border: 1px solid var(--border); box-shadow: 0 2px 10px var(--shadow); height: auto; }
+        #txt-content { display: none; white-space: pre-wrap; padding: 1rem; width: 100%; font-size: 1.1rem; }
+        .dark-mode #pdf-render { filter: invert(1); }
+        #translation-content { padding: 1rem; white-space: pre-line; font-size: 1.1rem; line-height: 1.8; color: var(--text); flex: 1; position: relative; }
+        .bottom-nav { display: flex; justify-content: space-between; margin-top: 1rem; padding-top: 0.5rem; border-top: 1px solid var(--border); position: relative; z-index: 10; }
+        .mode-toggle { position: absolute; top: 1rem; right: 1rem; display: flex; align-items: center; }
+        .toggle-switch { position: relative; display: inline-block; width: 50px; height: 24px; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #7f8c8d; transition: .4s; border-radius: 24px; }
+        .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: #0097e6; }
+        input:checked + .slider:before { transform: translateX(26px); }
+        .mode-icon { margin: 0 0.5rem; font-size: 1.2rem; }
+        .text-revealer { position: absolute; top: 0; left: 0; right: 0; height: 100%; background-color: transparent; z-index: 5; pointer-events: none; }
+        .clear-section { position: absolute; top: 0; left: 0; right: 0; height: 40px; background-color: transparent; }
+        .blur-section { position: absolute; top: 40px; left: 0; right: 0; bottom: 0; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); background-color: rgba(245, 241, 230, 0.3); border-top: 2px solid rgba(100, 80, 60, 0.4); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); }
+        .dark-mode .blur-section { background-color: rgba(30, 39, 46, 0.3); border-top: 2px solid rgba(200, 210, 220, 0.4); }
+        .revealer-handle { position: absolute; top: 40px; left: 0; right: 0; height: 20px; background-color: rgba(0, 0, 0, 0.15); border-radius: 5px; cursor: grab; display: flex; justify-content: center; align-items: center; z-index: 6; pointer-events: auto; transition: background-color 0.2s ease; }
+        .revealer-handle.grabbed { background-color: rgba(0, 0, 0, 0.3); cursor: grabbing; }
+        .handle-icon { width: 40px; height: 5px; background-color: rgba(0, 0, 0, 0.4); border-radius: 3px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); }
+        .dark-mode .handle-icon { background-color: rgba(255, 255, 255, 0.5); }
+        .mirror-scroll { height: 10px; width: 100%; overflow-x: scroll; margin-bottom: 8px; }
+        .mirror-scroll-content { height: 1px; }
 
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            line-height: 1.6;
-            background-color: var(--bg);
-            color: var(--text);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        header {
-            background-color: var(--header-bg);
-            color: var(--header-text);
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 2px 4px var(--shadow);
-        }
-
-        #book-title {
-            margin-bottom: 0.5rem;
-            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-            font-weight: normal;
-            letter-spacing: 1px;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        button {
-            background-color: var(--button-bg);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        button:hover {
-            background-color: var(--button-hover);
-        }
-
-        /* Zoom buttons */
-        .zoom-controls {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .zoom-btn {
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            padding: 0;
-        }
-
-        /* Remove spinner arrows from number input */
-        input[type="number"]::-webkit-outer-spin-button,
-        input[type="number"]::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        input[type="number"] {
-            -moz-appearance: textfield;
-            appearance: textfield; /* Standard property for compatibility */
-        }
-
-        #page-input {
-            width: 60px;
-            padding: 0.5rem;
-            border: 1px solid var(--input-border);
-            border-radius: 4px;
-            text-align: center;
-            background-color: var(--input-bg);
-            color: var(--text);
-        }
-
-        .reader-container {
-            display: flex;
-            flex: 1;
-            height: calc(100vh - 100px);
-            gap: 1rem;
-            padding: 1rem;
-        }
-
-        .pdf-container, .translation-container {
-            flex: 1;
-            overflow: auto;
-            padding: 1.5rem;
-            background-color: var(--container-bg);
-            box-shadow: 0 0 10px var(--shadow);
-            margin: 0;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .translation-container {
-            overflow-x: hidden; /* Remove horizontal scrolling */
-            position: relative; /* For the text revealer positioning */
-        }
-
-        .pdf-container::after, .translation-container::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            bottom: 10px;
-            width: 1px;
-            right: -5px;
-            background-color: var(--border);
-            box-shadow: 1px 0 3px var(--shadow);
-        }
-
-        .pdf-container {
-            /* Add a subtle paper texture for the PDF panel */
-            background-image: linear-gradient(to right, rgba(0,0,0,0.01) 1px, transparent 1px),
-                             linear-gradient(to bottom, rgba(0,0,0,0.01) 1px, transparent 1px);
-            background-size: 20px 20px;
-            /* Enable touch gestures */
-            touch-action: pan-x pan-y pinch-zoom;
-            position: relative; /* For positioning mirror scrollbar */
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Mirror scrollbar at top */
-        .mirror-scroll {
-            height: 10px;
-            width: 100%;
-            overflow-x: scroll;
-            margin-bottom: 8px;
-        }
-        
-        .mirror-scroll-content {
-            height: 1px;
-        }
-
-        .light-mode .pdf-container, .light-mode .translation-container {
-            /* Additional texture for light mode book pages */
-            background-image: url('data:image/png;base64,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');
-        }
-
-        .content-area {
-            flex: 1;
-            overflow: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 0; /* Allow content to shrink */
-        }
-
-        #pdf-render {
-            display: block;
-            margin: 0 auto;
-            border: 1px solid var(--border);
-            box-shadow: 0 2px 10px var(--shadow);
-            height: auto;
-        }
-        
-        /* PDF invert for dark mode */
-        .dark-mode #pdf-render {
-            filter: invert(1);
-        }
-
-        #translation-content {
-            padding: 1rem;
-            white-space: pre-line;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text);
-            flex: 1;
-            position: relative; /* For the text revealer */
-        }
-
-        /* Bottom navigation buttons */
-        .bottom-nav {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1rem;
-            padding-top: 0.5rem;
-            border-top: 1px solid var(--border);
-            position: relative;
-            z-index: 10; /* Ensure buttons stay above the revealer */
-        }
-
-        /* Dark mode toggle */
-        .mode-toggle {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #7f8c8d;
-            transition: .4s;
-            border-radius: 24px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: #0097e6;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        .mode-icon {
-            margin: 0 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        /* Text Revealer Styles - Enhanced for better visibility */
-        .text-revealer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            background-color: transparent;
-            z-index: 5;
-            pointer-events: none;
-        }
-
-        .clear-section {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 40px; /* Initial height, will be updated via JS */
-            background-color: transparent;
-        }
-        
-        .blur-section {
-            position: absolute;
-            top: 40px; /* Initial position, will be updated via JS */
-            left: 0;
-            right: 0;
-            bottom: 0;
-            backdrop-filter: blur(8px); /* Increased blur intensity */
-            -webkit-backdrop-filter: blur(8px);
-            background-color: rgba(245, 241, 230, 0.3); /* Slightly visible overlay */
-            border-top: 2px solid rgba(100, 80, 60, 0.4); /* Brown border in light mode */
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-        }
-        
-        .dark-mode .blur-section {
-            background-color: rgba(30, 39, 46, 0.3); /* Dark overlay for dark mode */
-            border-top: 2px solid rgba(200, 210, 220, 0.4); /* Light border in dark mode */
-        }
-
-        .revealer-handle {
-            position: absolute;
-            top: 40px; /* Initial position */
-            left: 0;
-            right: 0;
-            height: 20px;
-            background-color: rgba(0, 0, 0, 0.15);
-            border-radius: 5px;
-            cursor: grab;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 6;
-            pointer-events: auto;
-            transition: background-color 0.2s ease;
-        }
-        
-        .revealer-handle.grabbed {
-            background-color: rgba(0, 0, 0, 0.3);
-            cursor: grabbing;
-        }
-
-        .handle-icon {
-            width: 40px;
-            height: 5px;
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 3px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Add more visual contrast in dark mode */
-        .dark-mode .handle-icon {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Remove the revealer-toggle class since we moved the button */
-        .revealer-toggle {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 10;
-            background-color: var(--button-bg);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 4px 8px;
-            font-size: 0.8rem;
-            cursor: pointer;
-        }
+        /* Modal Styles */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+        .modal-content { background-color: var(--container-bg); color: var(--text); padding: 2rem; border: 1px solid var(--border); width: 90%; max-width: 800px; border-radius: 8px; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .modal-body { display: flex; gap: 1rem; }
+        .file-list-container { flex: 1; }
+        .file-list-container h3 { text-align: center; margin-bottom: 1rem; }
+        .file-list { list-style: none; padding: 0; max-height: 300px; overflow-y: auto; border: 1px solid var(--border); border-radius: 4px; }
+        .file-list li { padding: 0.75rem; cursor: pointer; border-bottom: 1px solid var(--border); }
+        .file-list li:last-child { border-bottom: none; }
+        .file-list li:hover { background-color: var(--button-hover); color: white; }
+        .file-list li.selected { background-color: var(--dark-button-bg); color: white; }
+        .modal-footer { text-align: right; margin-top: 1.5rem; }
+        .close-button { font-size: 24px; font-weight: bold; cursor: pointer; }
 
         @media (max-width: 768px) {
-            .reader-container {
-                flex-direction: column;
-                height: auto;
-            }
-            
-            .pdf-container, .translation-container {
-                flex: none;
-                width: 100%;
-                height: 50vh;
-                overflow-x: hidden;
-            }
-            
-            .pdf-container {
-                display: flex;
-                justify-content: center;
-                align-items: flex-start;
-            }
-            
-            #pdf-render {
-                max-width: 100%;
-                height: auto;
-            }
-            
-            .pdf-container::after {
-                display: none;
-            }
-            
-            .mode-toggle {
-                position: static;
-                margin: 0.5rem auto;
-            }
-            
-            .controls {
-                gap: 0.5rem;
-            }
-            
-            button {
-                padding: 0.4rem 0.7rem;
-                font-size: 0.9rem;
-            }
+            .reader-container { flex-direction: column; height: auto; }
+            .pdf-container, .translation-container { flex: none; width: 100%; height: 50vh; overflow-x: hidden; }
+            .pdf-container { display: flex; justify-content: center; align-items: flex-start; }
+            #pdf-render { max-width: 100%; height: auto; }
+            .pdf-container::after { display: none; }
+            .mode-toggle { position: static; margin: 0.5rem auto; }
+            .controls { gap: 0.5rem; }
+            button { padding: 0.4rem 0.7rem; font-size: 0.9rem; }
+            .modal-body { flex-direction: column; }
         }
     </style>
-    <!-- PDF.js library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
     <script>
-        // Set worker path for PDF.js
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
     </script>
 </head>
 <body>
-    <header>
-        <div class="mode-toggle">
-            <span class="mode-icon">☀️</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="mode-toggle" checked>
-                <span class="slider"></span>
-            </label>
-            <span class="mode-icon">🌙</span>
-        </div>
-        <h1 id="book-title">Dual-Language Reader</h1>
-        <div class="controls">
-            <button id="prev-page">Previous Page</button>
-            <span id="page-num">Page: 1</span> / <span id="page-count">?</span>
-            <button id="next-page">Next Page</button>
-            <div class="page-jump">
-                <input type="number" id="page-input" min="1" value="1" aria-label="Go to page">
-                <button id="go-to-page">Go</button>
+    <div id="book-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"> <h2>Choose Files</h2> <span class="close-button">&times;</span> </div>
+            <div class="modal-body">
+                <div class="file-list-container"> <h3>Original File (PDF or TXT)</h3> <ul id="original-file-list" class="file-list"></ul> </div>
+                <div class="file-list-container"> <h3>Translation File (JSON)</h3> <ul id="translation-file-list" class="file-list"></ul> </div>
             </div>
-            <div class="zoom-controls">
-                <button id="zoom-out" class="zoom-btn" title="Zoom Out">-</button>
-                <button id="zoom-in" class="zoom-btn" title="Zoom In">+</button>
+            <div class="modal-footer"> <button id="load-files-btn" disabled>Load Files</button> </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="mode-toggle"> <span class="mode-icon">☀️</span> <label class="toggle-switch"> <input type="checkbox" id="mode-toggle" checked> <span class="slider"></span> </label> <span class="mode-icon">🌙</span> </div>
+        <div class="title-container">
+             <h1 id="book-title">Dual-Language Reader</h1>
+             <button id="choose-book-btn">Choose Book</button>
+        </div>
+        <div class="controls">
+            <div id="pdf-controls" style="display: inline-flex; gap: 1rem; align-items: center;">
+                <button id="prev-page">Previous Page</button>
+                <span id="page-num">Page: 1</span> / <span id="page-count">?</span>
+                <button id="next-page">Next Page</button>
+                <div class="page-jump">
+                    <input type="number" id="page-input" min="1" value="1" aria-label="Go to page">
+                    <button id="go-to-page">Go</button>
+                </div>
+                <div class="zoom-controls">
+                    <button id="zoom-out" class="zoom-btn" title="Zoom Out">-</button>
+                    <button id="zoom-in" class="zoom-btn" title="Zoom In">+</button>
+                </div>
             </div>
             <button id="toggle-revealer">Toggle Revealer</button>
         </div>
@@ -495,502 +128,245 @@
     
     <main class="reader-container">
         <div class="pdf-container">
-            <div class="mirror-scroll">
-                <div class="mirror-scroll-content"></div>
-            </div>
+            <div class="mirror-scroll"> <div class="mirror-scroll-content"></div> </div>
             <div class="content-area">
                 <canvas id="pdf-render"></canvas>
+                <div id="txt-content"></div>
             </div>
         </div>
         <div class="translation-container">
-            <div id="translation-content">
-                <!-- Translation will be displayed here -->
-            </div>
-            <div class="text-revealer">
-                <div class="clear-section"></div>
-                <div class="blur-section"></div>
-                <div class="revealer-handle">
-                    <div class="handle-icon"></div>
-                </div>
-            </div>
-            <div class="bottom-nav">
-                <button id="prev-page-bottom-trans" class="nav-btn">Previous Page</button>
-                <button id="next-page-bottom-trans" class="nav-btn">Next Page</button>
-            </div>
+            <div id="translation-content"></div>
+            <div class="text-revealer"> <div class="clear-section"></div> <div class="blur-section"></div> <div class="revealer-handle"><div class="handle-icon"></div></div> </div>
+            <div class="bottom-nav"> <button id="prev-page-bottom-trans" class="nav-btn">Previous Page</button> <button id="next-page-bottom-trans" class="nav-btn">Next Page</button> </div>
         </div>
     </main>
 
     <script>
-        // Variables
-        let pdfDoc = null;
-        let pageNum = 1;
-        let pageRendering = false;
-        let pageNumPending = null;
-        let scale = 1.6; // INCREASED initial scale (equivalent to clicking + twice)
-        let canvas = document.getElementById('pdf-render');
-        let ctx = canvas.getContext('2d');
-        let translations = null;
-        let currentBook = "Sîya Evînê";
-        let isHandleGrabbed = false; // New variable to track if handle is grabbed
+        // --- CONFIGURATION ---
+        const originalFiles = [ "Sîya Evînê.pdf", "sample.txt" ]; // Add your PDF and TXT files here
+        const translationFiles = [ "Sîya Evînê_translation.json", "sample_translation.json" ]; // Add your JSON files here
 
-        // CORRECT PATHS for your specific folder structure
-        const pdfPath = `../pdfs/${currentBook}.pdf`;
-        const translationPath = `../reader_translations/${currentBook}_translation.json`;
+        // --- GLOBAL VARIABLES ---
+        let pdfDoc = null, pageNum = 1, pageRendering = false, pageNumPending = null, scale = 1.6;
+        let canvas = document.getElementById('pdf-render'), ctx = canvas.getContext('2d');
+        let translations = null, isHandleGrabbed = false;
+        let selectedOriginalFile = null, selectedTranslationFile = null;
 
-        // Text Revealer functionality
-        const textRevealer = document.querySelector('.text-revealer');
-        const revealerHandle = document.querySelector('.revealer-handle');
-        const translationContainer = document.querySelector('.translation-container');
-        const toggleRevealerButton = document.getElementById('toggle-revealer');
-        
-        let isDragging = false;
-        let initialY = 0;
-        let initialRevealerY = 0;
-        let revealerVisible = true;
-        // isHandleGrabbed is already declared in the variables section
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load default book on start
+            if (originalFiles.length > 0 && translationFiles.length > 0) {
+                loadFiles(originalFiles[0], translationFiles[0]);
+            } else {
+                 document.getElementById('book-title').textContent = "No books configured";
+                 document.getElementById('translation-content').textContent = "Please add files to the configuration arrays in the script.";
+            }
+            setupEventListeners();
+            populateFileLists();
+            initializeRevealer();
+            setupScrollSync();
+        });
 
-        // Initialize revealer position to just show a small part of text at the top
-        function initializeRevealer() {
-            revealerHandle.style.top = '40px'; // Show a bit of text at the top
-            updateRevealerPosition();
+        // --- FILE LOADING & DISPLAY ---
+        function loadFiles(originalFile, translationFile) {
+            const originalPath = `../pdfs/${originalFile}`;
+            const translationPath = `../reader_translations/${translationFile}`;
+            
+            // Load translation
+            fetch(translationPath).then(res => res.json()).then(data => {
+                translations = data;
+                document.getElementById('book-title').textContent = translations.metadata?.title || originalFile.split('.')[0];
+                displayTranslation(1);
+            }).catch(err => {
+                console.error('Translation Error:', err);
+                translations = null; // Clear old translations
+                document.getElementById('translation-content').textContent = 'Could not load translation file.';
+            });
+
+            // Load original file (PDF or TXT)
+            if (originalFile.endsWith('.pdf')) {
+                document.getElementById('pdf-controls').style.display = 'inline-flex';
+                document.getElementById('prev-page-bottom-trans').style.display = 'inline-block';
+                document.getElementById('next-page-bottom-trans').style.display = 'inline-block';
+                document.getElementById('txt-content').style.display = 'none';
+                canvas.style.display = 'block';
+                pdfjsLib.getDocument(originalPath).promise.then(pdfDoc_ => {
+                    pdfDoc = pdfDoc_;
+                    document.getElementById('page-count').textContent = pdfDoc.numPages;
+                    document.getElementById('page-input').max = pdfDoc.numPages;
+                    pageNum = 1;
+                    renderPage(pageNum);
+                }).catch(err => {
+                    console.error('PDF Error:', err);
+                    canvas.style.display = 'none';
+                    document.getElementById('book-title').textContent = 'Error Loading File';
+                });
+            } else if (originalFile.endsWith('.txt')) {
+                pdfDoc = null; // Ensure no PDF is active
+                document.getElementById('pdf-controls').style.display = 'none';
+                document.getElementById('prev-page-bottom-trans').style.display = 'none';
+                document.getElementById('next-page-bottom-trans').style.display = 'none';
+                canvas.style.display = 'none';
+                document.getElementById('txt-content').style.display = 'block';
+                fetch(originalPath).then(res => res.text()).then(text => {
+                    document.getElementById('txt-content').textContent = text;
+                }).catch(err => {
+                    console.error('TXT Error:', err);
+                    document.getElementById('txt-content').textContent = 'Could not load text file.';
+                });
+            }
         }
 
-        // Toggle revealer visibility
+        // --- PDF & TRANSLATION RENDERING ---
+        function renderPage(num) {
+            if (!pdfDoc) return;
+            pageRendering = true;
+            const currentScale = isMobile() ? (document.querySelector('.pdf-container').clientWidth - 40) / page.getViewport({scale: 1.0}).width : scale;
+            
+            pdfDoc.getPage(num).then(page => {
+                const viewport = page.getViewport({ scale: currentScale });
+                canvas.height = viewport.height; canvas.width = viewport.width;
+                canvas.style.maxWidth = "none";
+                const renderTask = page.render({ canvasContext: ctx, viewport: viewport });
+                renderTask.promise.then(() => {
+                    pageRendering = false;
+                    if (pageNumPending !== null) { renderPage(pageNumPending); pageNumPending = null; }
+                });
+            });
+            document.getElementById('page-num').textContent = `Page: ${num}`;
+            document.getElementById('page-input').value = num;
+            displayTranslation(num);
+        }
+
+        function displayTranslation(pageNumber) {
+            const translationElement = document.getElementById('translation-content');
+            if (!translations || !translations.translations) {
+                translationElement.textContent = 'Translation data not available';
+                return;
+            }
+            const pageText = translations.translations[pageNumber.toString()];
+            translationElement.textContent = pageText || 'Translation not available for this page.';
+            initializeRevealer();
+        }
+
+        function queueRenderPage(num) {
+            if (pageRendering) { pageNumPending = num; } else { renderPage(num); }
+        }
+
+        // --- ORIGINAL FEATURE PRESERVATION: TEXT REVEALER ---
+        const textRevealer = document.querySelector('.text-revealer'), revealerHandle = document.querySelector('.revealer-handle'), translationContainer = document.querySelector('.translation-container'), toggleRevealerButton = document.getElementById('toggle-revealer');
+        let revealerVisible = true;
+        function initializeRevealer() { revealerHandle.style.top = '40px'; updateRevealerPosition(); }
         function toggleRevealer() {
             if (revealerVisible) {
                 document.querySelector('.blur-section').style.display = 'none';
-                document.querySelector('.revealer-handle').style.display = 'none';
+                revealerHandle.style.display = 'none';
                 revealerVisible = false;
                 toggleRevealerButton.textContent = 'Show Revealer';
-                
-                // Make sure to release grab mode when hiding
-                isHandleGrabbed = false;
-                revealerHandle.classList.remove('grabbed');
-                document.body.style.cursor = '';
+                isHandleGrabbed = false; revealerHandle.classList.remove('grabbed'); document.body.style.cursor = '';
             } else {
                 document.querySelector('.blur-section').style.display = 'block';
-                document.querySelector('.revealer-handle').style.display = 'flex';
+                revealerHandle.style.display = 'flex';
                 revealerVisible = true;
                 toggleRevealerButton.textContent = 'Hide Revealer';
                 updateRevealerPosition();
             }
         }
-
-        // Update the revealer's position based on handle position
         function updateRevealerPosition() {
             const handleTop = parseInt(revealerHandle.style.top, 10) || 40;
-            
-            // Update the clear section to match the handle position
             document.querySelector('.clear-section').style.height = handleTop + 'px';
-            
-            // Update the blur section to start at the handle position
-            const blurSection = document.querySelector('.blur-section');
-            blurSection.style.top = handleTop + 'px';
+            document.querySelector('.blur-section').style.top = handleTop + 'px';
         }
-
-        // Handle mouse/touch events for dragging with grab functionality
         function startDrag(e) {
             if (!revealerVisible) return;
-            
-            if (!isHandleGrabbed) {
-                // First click - start grab mode
-                isHandleGrabbed = true;
-                revealerHandle.classList.add('grabbed');
-                document.body.style.cursor = 'grabbing';
-                
-                // Don't start drag immediately, just enable grabbed state
-                e.preventDefault();
-                return;
-            } else {
-                // Second click - end grab mode
-                isHandleGrabbed = false;
-                revealerHandle.classList.remove('grabbed');
-                document.body.style.cursor = '';
-                e.preventDefault();
-                return;
-            }
+            isHandleGrabbed = !isHandleGrabbed;
+            if (isHandleGrabbed) { revealerHandle.classList.add('grabbed'); document.body.style.cursor = 'grabbing'; } 
+            else { revealerHandle.classList.remove('grabbed'); document.body.style.cursor = ''; }
+            e.preventDefault();
         }
-
         function handleMouseMove(e) {
             if (!revealerVisible || !isHandleGrabbed) return;
-            
-            // Get current mouse Y position
-            const mouseY = e.clientY;
             const containerRect = translationContainer.getBoundingClientRect();
-            
-            // Calculate position relative to the container
-            let newTop = mouseY - containerRect.top - 10; // 10px offset for handle height center
-            
-            // Constrain to container bounds
+            let newTop = e.clientY - containerRect.top - 10;
             newTop = Math.max(0, Math.min(newTop, containerRect.height - 50));
-            
-            // Update handle position
             revealerHandle.style.top = `${newTop}px`;
-            
-            // Update revealer effect
             updateRevealerPosition();
         }
-
-        // Handle touch events separately
         function handleTouchMove(e) {
             if (!revealerVisible || !isHandleGrabbed) return;
-            
             const touch = e.touches[0];
-            const mouseY = touch.clientY;
             const containerRect = translationContainer.getBoundingClientRect();
-            
-            // Calculate position relative to the container
-            let newTop = mouseY - containerRect.top - 10;
-            
-            // Constrain to container bounds
+            let newTop = touch.clientY - containerRect.top - 10;
             newTop = Math.max(0, Math.min(newTop, containerRect.height - 50));
-            
-            // Update handle position
             revealerHandle.style.top = `${newTop}px`;
-            
-            // Update revealer effect
             updateRevealerPosition();
-            
-            e.preventDefault(); // Prevent scrolling while dragging
-        }
-
-        // Add click event for grab toggle
-        revealerHandle.addEventListener('click', startDrag);
-        
-        // Mouse move event for handle repositioning
-        document.addEventListener('mousemove', handleMouseMove);
-        
-        // Touch events for mobile
-        revealerHandle.addEventListener('touchstart', function(e) {
-            if (!revealerVisible) return;
-            
-            isHandleGrabbed = !isHandleGrabbed;
-            
-            if (isHandleGrabbed) {
-                revealerHandle.classList.add('grabbed');
-            } else {
-                revealerHandle.classList.remove('grabbed');
-            }
-            
             e.preventDefault();
-        });
-        
-        document.addEventListener('touchmove', handleTouchMove, { passive: false });
+        }
 
-        // Add document click event to release grab when clicking elsewhere
-        document.addEventListener('click', function(e) {
-            // If clicking outside the handle and handle is grabbed, release it
-            if (isHandleGrabbed && e.target !== revealerHandle && !revealerHandle.contains(e.target)) {
-                isHandleGrabbed = false;
-                revealerHandle.classList.remove('grabbed');
-                document.body.style.cursor = '';
-            }
-        });
-
-        // Toggle revealer button
-        toggleRevealerButton.addEventListener('click', toggleRevealer);
-
-        // Mirror scrollbar logic
+        // --- ORIGINAL FEATURE PRESERVATION: SCROLL & UI ---
         function setupScrollSync() {
-            const contentArea = document.querySelector('.content-area');
-            const mirrorScroll = document.querySelector('.mirror-scroll');
-            const mirrorContent = document.querySelector('.mirror-scroll-content');
-            
-            // Update mirror scrollbar width when content width changes
-            function updateMirrorWidth() {
-                // Set the width of the mirror content to match the actual content width
-                if (canvas.width > contentArea.clientWidth) {
-                    mirrorContent.style.width = canvas.width + 'px';
-                } else {
-                    mirrorContent.style.width = '100%';
-                }
-            }
-            
-            // Sync scroll positions between content and mirror scrollbar
-            contentArea.addEventListener('scroll', () => {
-                mirrorScroll.scrollLeft = contentArea.scrollLeft;
-            });
-            
-            mirrorScroll.addEventListener('scroll', () => {
-                contentArea.scrollLeft = mirrorScroll.scrollLeft;
-            });
-            
-            // Call initially and when window resizes
-            updateMirrorWidth();
+            const contentArea = document.querySelector('.content-area'), mirrorScroll = document.querySelector('.mirror-scroll'), mirrorContent = document.querySelector('.mirror-scroll-content');
+            function updateMirrorWidth() { mirrorContent.style.width = canvas.width > contentArea.clientWidth ? canvas.width + 'px' : '100%'; }
+            contentArea.addEventListener('scroll', () => { mirrorScroll.scrollLeft = contentArea.scrollLeft; });
+            mirrorScroll.addEventListener('scroll', () => { contentArea.scrollLeft = mirrorScroll.scrollLeft; });
             window.addEventListener('resize', updateMirrorWidth);
-            
-            // Update when page renders
-            const observer = new MutationObserver(updateMirrorWidth);
-            observer.observe(canvas, { attributes: true });
-            
-            return updateMirrorWidth; // Return function for later use
+            new MutationObserver(updateMirrorWidth).observe(canvas, { attributes: true });
         }
+        function isMobile() { return window.innerWidth <= 768; }
+        function zoomIn() { if(pdfDoc) { scale += 0.2; queueRenderPage(pageNum); } }
+        function zoomOut() { if(pdfDoc && scale > 0.4) { scale -= 0.2; queueRenderPage(pageNum); } }
+        function showPrevPage() { if (pdfDoc && pageNum > 1) { pageNum--; queueRenderPage(pageNum); } }
+        function showNextPage() { if (pdfDoc && pageNum < pdfDoc.numPages) { pageNum++; queueRenderPage(pageNum); } }
+        function goToPage() { const num = parseInt(document.getElementById('page-input').value); if (pdfDoc && num >= 1 && num <= pdfDoc.numPages) { pageNum = num; queueRenderPage(pageNum); } }
         
-        const updateMirrorWidth = setupScrollSync();
+        // --- EVENT LISTENERS ---
+        function setupEventListeners() {
+            // Modal
+            const bookModal = document.getElementById('book-modal');
+            document.getElementById('choose-book-btn').addEventListener('click', () => bookModal.style.display = 'flex');
+            document.querySelector('.close-button').addEventListener('click', () => bookModal.style.display = 'none');
+            window.addEventListener('click', e => { if (e.target == bookModal) bookModal.style.display = 'none'; });
+            document.getElementById('load-files-btn').addEventListener('click', () => { loadFiles(selectedOriginalFile, selectedTranslationFile); bookModal.style.display = 'none'; });
+            
+            // Revealer
+            revealerHandle.addEventListener('click', startDrag);
+            document.addEventListener('mousemove', handleMouseMove);
+            revealerHandle.addEventListener('touchstart', startDrag, { passive: false });
+            document.addEventListener('touchmove', handleTouchMove, { passive: false });
+            document.addEventListener('click', (e) => { if (isHandleGrabbed && e.target !== revealerHandle && !revealerHandle.contains(e.target)) { isHandleGrabbed = false; revealerHandle.classList.remove('grabbed'); document.body.style.cursor = ''; } });
+            toggleRevealerButton.addEventListener('click', toggleRevealer);
 
-        // Function to determine if we're on mobile
-        function isMobile() {
-            return window.innerWidth <= 768;
+            // Nav
+            document.getElementById('prev-page').addEventListener('click', showPrevPage);
+            document.getElementById('next-page').addEventListener('click', showNextPage);
+            document.getElementById('go-to-page').addEventListener('click', goToPage);
+            document.getElementById('zoom-in').addEventListener('click', zoomIn);
+            document.getElementById('zoom-out').addEventListener('click', zoomOut);
+            document.getElementById('prev-page-bottom-trans').addEventListener('click', showPrevPage);
+            document.getElementById('next-page-bottom-trans').addEventListener('click', showNextPage);
+            document.getElementById('page-input').addEventListener('keyup', e => { if (e.key === 'Enter') goToPage(); });
+            document.addEventListener('keydown', e => { if (document.activeElement.tagName === 'INPUT') return; if (e.key === 'ArrowLeft') showPrevPage(); else if (e.key === 'ArrowRight') showNextPage(); else if (e.key === '+' || e.key === '=') zoomIn(); else if (e.key === '-' || e.key === '_') zoomOut(); });
+
+            // Dark Mode
+            const toggleSwitch = document.getElementById('mode-toggle');
+            if (localStorage.getItem('colorMode') === 'light') { document.documentElement.className = 'light-mode'; toggleSwitch.checked = false; }
+            toggleSwitch.addEventListener('change', function() { document.documentElement.className = this.checked ? 'dark-mode' : 'light-mode'; localStorage.setItem('colorMode', this.checked ? 'dark' : 'light'); updateRevealerPosition(); });
         }
 
-        // Adjust scale based on device
-        function getScale() {
-            if (isMobile()) {
-                // On mobile, fit to container width
-                return 0.8; // Smaller scale for mobile
-            } else {
-                return scale; // Use current scale value for desktop
-            }
+        // --- MODAL & FILE SELECTION ---
+        function populateFileLists() {
+            const originalList = document.getElementById('original-file-list'), translationList = document.getElementById('translation-file-list');
+            originalList.innerHTML = ''; translationList.innerHTML = '';
+            originalFiles.forEach(file => { const li = document.createElement('li'); li.textContent = file; li.dataset.filename = file; li.addEventListener('click', (e) => handleSelection(e, originalList, 'original')); originalList.appendChild(li); });
+            translationFiles.forEach(file => { const li = document.createElement('li'); li.textContent = file; li.dataset.filename = file; li.addEventListener('click', (e) => handleSelection(e, translationList, 'translation')); translationList.appendChild(li); });
         }
-
-        // Zoom functions
-        function zoomIn() {
-            scale += 0.2;
-            queueRenderPage(pageNum);
+        function handleSelection(event, listElement, type) {
+            Array.from(listElement.children).forEach(child => child.classList.remove('selected'));
+            const selectedLi = event.currentTarget;
+            selectedLi.classList.add('selected');
+            if (type === 'original') { selectedOriginalFile = selectedLi.dataset.filename; } else if (type === 'translation') { selectedTranslationFile = selectedLi.dataset.filename; }
+            document.getElementById('load-files-btn').disabled = !(selectedOriginalFile && selectedTranslationFile);
         }
-
-        function zoomOut() {
-            if (scale > 0.4) {  // Prevent zooming out too much
-                scale -= 0.2;
-                queueRenderPage(pageNum);
-            }
-        }
-
-        // Dark mode toggle functionality
-        const toggleSwitch = document.getElementById('mode-toggle');
-        
-        // Check for saved user preference
-        if (localStorage.getItem('colorMode') === 'light') {
-            document.documentElement.className = 'light-mode';
-            toggleSwitch.checked = false;
-        }
-        
-        // Toggle between modes
-        toggleSwitch.addEventListener('change', function() {
-            if (this.checked) {
-                document.documentElement.className = 'dark-mode';
-                localStorage.setItem('colorMode', 'dark');
-            } else {
-                document.documentElement.className = 'light-mode';
-                localStorage.setItem('colorMode', 'light');
-            }
-            
-            // Update revealer gradient after mode change
-            updateRevealerPosition();
-        });
-
-        // Load translations
-        function loadTranslations() {
-            fetch(translationPath)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Translation file not found');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    translations = data;
-                    
-                    // Update UI with book info
-                    if (translations.metadata) {
-                        document.getElementById('book-title').textContent = translations.metadata.title;
-                    }
-                    
-                    // Display first page translation
-                    displayTranslation(pageNum);
-                })
-                .catch(error => {
-                    console.error('Error loading translations:', error);
-                    document.getElementById('translation-content').textContent = 
-                        'Translation not available. Please check if the translation file exists.';
-                });
-        }
-
-        // Display translation for current page
-        function displayTranslation(pageNumber) {
-            const translationElement = document.getElementById('translation-content');
-            
-            if (!translations || !translations.translations) {
-                translationElement.textContent = 'Translation data not available';
-                return;
-            }
-            
-            const pageText = translations.translations[pageNumber.toString()];
-            
-            if (pageText) {
-                translationElement.textContent = pageText;
-                // Reset revealer position when page changes
-                initializeRevealer();
-            } else {
-                translationElement.textContent = 'Translation not available for this page';
-            }
-        }
-
-        // Render the page
-        function renderPage(num) {
-            pageRendering = true;
-            
-            // Set base scale based on device
-            const currentScale = getScale();
-            
-            // Using promise to fetch the page
-            pdfDoc.getPage(num).then(function(page) {
-                // Calculate scale to fit width if on mobile
-                let useScale = currentScale;
-                if (isMobile()) {
-                    const pdfContainer = document.querySelector('.pdf-container');
-                    const containerWidth = pdfContainer.clientWidth - 40; // Account for padding
-                    const viewport = page.getViewport({ scale: 1.0 });
-                    useScale = containerWidth / viewport.width;
-                }
-                
-                const viewport = page.getViewport({ scale: useScale });
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-                
-                // Allow the canvas to be larger than its container (for zooming)
-                canvas.style.maxWidth = "none";
-                
-                // Update mirror scrollbar width
-                if (typeof updateMirrorWidth === 'function') {
-                    setTimeout(updateMirrorWidth, 100); // Small delay to ensure canvas is rendered
-                }
-                
-                // Render PDF page into canvas context
-                const renderContext = {
-                    canvasContext: ctx,
-                    viewport: viewport
-                };
-                
-                const renderTask = page.render(renderContext);
-                
-                // Wait for rendering to finish
-                renderTask.promise.then(function() {
-                    pageRendering = false;
-                    
-                    if (pageNumPending !== null) {
-                        // New page rendering is pending
-                        renderPage(pageNumPending);
-                        pageNumPending = null;
-                    }
-                });
-            });
-            
-            // Update page counters
-            document.getElementById('page-num').textContent = `Page: ${num}`;
-            document.getElementById('page-input').value = num;
-            
-            // Display translation for this page
-            displayTranslation(num);
-        }
-
-        // Queue rendering of the page
-        function queueRenderPage(num) {
-            if (pageRendering) {
-                pageNumPending = num;
-            } else {
-                renderPage(num);
-            }
-        }
-
-        // Show previous page
-        function showPrevPage() {
-            if (pageNum <= 1) {
-                return;
-            }
-            pageNum--;
-            queueRenderPage(pageNum);
-        }
-
-        // Show next page
-        function showNextPage() {
-            if (pageNum >= pdfDoc.numPages) {
-                return;
-            }
-            pageNum++;
-            queueRenderPage(pageNum);
-        }
-
-        // Go to specific page
-        function goToPage() {
-            const input = document.getElementById('page-input');
-            const pageRequested = parseInt(input.value);
-            
-            if (isNaN(pageRequested)) {
-                alert('Please enter a valid page number');
-                return;
-            }
-            
-            // Validate page number
-            if (pageRequested < 1) {
-                pageNum = 1;
-            } else if (pageRequested > pdfDoc.numPages) {
-                pageNum = pdfDoc.numPages;
-            } else {
-                pageNum = pageRequested;
-            }
-            
-            input.value = pageNum;
-            queueRenderPage(pageNum);
-        }
-
-        // Handle window resize (important for mobile responsiveness)
-        window.addEventListener('resize', function() {
-            if (!pdfDoc) return;
-            // Re-render with adjusted scale
-            queueRenderPage(pageNum);
-        });
-
-        // Initialize text revealer
-        initializeRevealer();
-
-        // Load PDF
-        pdfjsLib.getDocument(pdfPath).promise.then(function(pdfDoc_) {
-            pdfDoc = pdfDoc_;
-            document.getElementById('page-count').textContent = pdfDoc.numPages;
-            document.getElementById('page-input').max = pdfDoc.numPages;
-            
-            // Initial page render
-            renderPage(pageNum);
-        }).catch(function(error) {
-            console.error('Error loading PDF:', error);
-            document.getElementById('pdf-render').insertAdjacentHTML('afterend', 
-                `<div class="error">Error loading PDF. Please check if the file exists at ${pdfPath}</div>`);
-        });
-
-        // Load translations
-        loadTranslations();
-
-        // Event listeners for top navigation
-        document.getElementById('prev-page').addEventListener('click', showPrevPage);
-        document.getElementById('next-page').addEventListener('click', showNextPage);
-        document.getElementById('go-to-page').addEventListener('click', goToPage);
-        document.getElementById('zoom-in').addEventListener('click', zoomIn);
-        document.getElementById('zoom-out').addEventListener('click', zoomOut);
-        
-        // Event listeners for bottom navigation
-        document.getElementById('prev-page-bottom-trans').addEventListener('click', showPrevPage);
-        document.getElementById('next-page-bottom-trans').addEventListener('click', showNextPage);
-        
-        // Allow hitting Enter on the input field
-        document.getElementById('page-input').addEventListener('keyup', function(e) {
-            if (e.key === 'Enter') {
-                goToPage();
-            }
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowLeft') {
-                showPrevPage();
-            } else if (e.key === 'ArrowRight') {
-                showNextPage();
-            } else if (e.key === '+' || e.key === '=') {
-                zoomIn();
-            } else if (e.key === '-' || e.key === '_') {
-                zoomOut();
-            }
-        });
     </script>
 </body>
 </html>
