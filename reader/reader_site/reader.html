@@ -109,7 +109,7 @@
              <button id="choose-book-btn">Choose Book</button>
         </div>
         <div class="controls">
-            <div id="pdf-controls" style="display: inline-flex; gap: 1rem; align-items: center;">
+            <div id="pdf-controls" style="display: none; gap: 1rem; align-items: center;">
                 <button id="prev-page">Previous Page</button>
                 <span id="page-num">Page: 1</span> / <span id="page-count">?</span>
                 <button id="next-page">Next Page</button>
@@ -143,8 +143,8 @@
 
     <script>
         // --- CONFIGURATION ---
-        const originalFiles = [ "Sîya Evînê.pdf", "sample.txt" ]; // Add your PDF and TXT files here
-        const translationFiles = [ "Sîya Evînê_translation.json", "sample_translation.json" ]; // Add your JSON files here
+        const originalFiles = [ "Sîya Evînê.pdf" ]; // Add your PDF and TXT files here
+        const translationFiles = [ "Sîya Evînê_translation.json" ]; // Add your JSON files here
 
         // --- GLOBAL VARIABLES ---
         let pdfDoc = null, pageNum = 1, pageRendering = false, pageNumPending = null, scale = 1.6;
@@ -154,21 +154,26 @@
 
         // --- INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Load default book on start
-            if (originalFiles.length > 0 && translationFiles.length > 0) {
-                loadFiles(originalFiles[0], translationFiles[0]);
-            } else {
-                 document.getElementById('book-title').textContent = "No books configured";
-                 document.getElementById('translation-content').textContent = "Please add files to the configuration arrays in the script.";
-            }
+            setInitialState();
             setupEventListeners();
             populateFileLists();
             initializeRevealer();
             setupScrollSync();
         });
+        
+        function setInitialState() {
+            document.getElementById('book-title').textContent = "Dual-Language Reader";
+            document.getElementById('translation-content').textContent = "Please choose a book to start reading.";
+            document.getElementById('pdf-controls').style.display = 'none';
+            document.getElementById('prev-page-bottom-trans').style.display = 'none';
+            document.getElementById('next-page-bottom-trans').style.display = 'none';
+            canvas.style.display = 'none';
+            document.getElementById('txt-content').style.display = 'none';
+        }
 
         // --- FILE LOADING & DISPLAY ---
         function loadFiles(originalFile, translationFile) {
+            // The path for originals (PDF or TXT) is the same folder
             const originalPath = `../pdfs/${originalFile}`;
             const translationPath = `../reader_translations/${translationFile}`;
             
@@ -176,11 +181,12 @@
             fetch(translationPath).then(res => res.json()).then(data => {
                 translations = data;
                 document.getElementById('book-title').textContent = translations.metadata?.title || originalFile.split('.')[0];
-                displayTranslation(1);
+                displayTranslation(1); // Reset to page 1 for new book
             }).catch(err => {
                 console.error('Translation Error:', err);
                 translations = null; // Clear old translations
                 document.getElementById('translation-content').textContent = 'Could not load translation file.';
+                document.getElementById('book-title').textContent = originalFile.split('.')[0]; // Show filename as title on error
             });
 
             // Load original file (PDF or TXT)
@@ -198,8 +204,8 @@
                     renderPage(pageNum);
                 }).catch(err => {
                     console.error('PDF Error:', err);
-                    canvas.style.display = 'none';
-                    document.getElementById('book-title').textContent = 'Error Loading File';
+                    setInitialState(); // Reset UI on error
+                    document.getElementById('book-title').textContent = 'Error Loading PDF';
                 });
             } else if (originalFile.endsWith('.txt')) {
                 pdfDoc = null; // Ensure no PDF is active
@@ -207,12 +213,14 @@
                 document.getElementById('prev-page-bottom-trans').style.display = 'none';
                 document.getElementById('next-page-bottom-trans').style.display = 'none';
                 canvas.style.display = 'none';
-                document.getElementById('txt-content').style.display = 'block';
+                const txtContentEl = document.getElementById('txt-content');
+                txtContentEl.style.display = 'block';
+                txtContentEl.textContent = 'Loading...'; // Provide loading feedback
                 fetch(originalPath).then(res => res.text()).then(text => {
-                    document.getElementById('txt-content').textContent = text;
+                    txtContentEl.textContent = text;
                 }).catch(err => {
                     console.error('TXT Error:', err);
-                    document.getElementById('txt-content').textContent = 'Could not load text file.';
+                    txtContentEl.textContent = 'Could not load text file.';
                 });
             }
         }
@@ -221,9 +229,9 @@
         function renderPage(num) {
             if (!pdfDoc) return;
             pageRendering = true;
-            const currentScale = isMobile() ? (document.querySelector('.pdf-container').clientWidth - 40) / page.getViewport({scale: 1.0}).width : scale;
             
             pdfDoc.getPage(num).then(page => {
+                const currentScale = isMobile() ? (document.querySelector('.pdf-container').clientWidth - 40) / page.getViewport({scale: 1.0}).width : scale;
                 const viewport = page.getViewport({ scale: currentScale });
                 canvas.height = viewport.height; canvas.width = viewport.width;
                 canvas.style.maxWidth = "none";
@@ -244,7 +252,9 @@
                 translationElement.textContent = 'Translation data not available';
                 return;
             }
-            const pageText = translations.translations[pageNumber.toString()];
+            // For TXT files, there's only one "page" of translation
+            const pageKey = pdfDoc ? pageNumber.toString() : "1";
+            const pageText = translations.translations[pageKey];
             translationElement.textContent = pageText || 'Translation not available for this page.';
             initializeRevealer();
         }
