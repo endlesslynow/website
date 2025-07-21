@@ -143,8 +143,14 @@
 
     <script>
         // --- CONFIGURATION ---
-        const originalFiles = [ "Sîya Evînê.pdf" ]; // Add your PDF and TXT files here
-        const translationFiles = [ "Sîya Evînê_translation.json" ]; // Add your JSON files here
+        const originalFiles = [
+            "Sîya Evînê.pdf",
+            "L'épopée de Gilgamesh_FR_Chapter1.txt"
+        ];
+        const translationFiles = [
+            "Sîya Evînê_translation.json",
+            "L'épopée de Gilgamesh_FR_Chapter1_translation.txt"
+        ];
 
         // --- GLOBAL VARIABLES ---
         let pdfDoc = null, pageNum = 1, pageRendering = false, pageNumPending = null, scale = 1.6;
@@ -173,23 +179,43 @@
 
         // --- FILE LOADING & DISPLAY ---
         function loadFiles(originalFile, translationFile) {
-            // The path for originals (PDF or TXT) is the same folder
             const originalPath = `../pdfs/${originalFile}`;
             const translationPath = `../reader_translations/${translationFile}`;
             
-            // Load translation
-            fetch(translationPath).then(res => res.json()).then(data => {
-                translations = data;
-                document.getElementById('book-title').textContent = translations.metadata?.title || originalFile.split('.')[0];
-                displayTranslation(1); // Reset to page 1 for new book
-            }).catch(err => {
-                console.error('Translation Error:', err);
-                translations = null; // Clear old translations
-                document.getElementById('translation-content').textContent = 'Could not load translation file.';
-                document.getElementById('book-title').textContent = originalFile.split('.')[0]; // Show filename as title on error
-            });
+            if (translationFile.endsWith('.json')) {
+    fetch(translationPath).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+    }).then(data => {
+        translations = data;
+        document.getElementById('book-title').textContent = translations.metadata?.title || originalFile.split('.')[0];
+        displayTranslation(1);
+    }).catch(err => {
+        console.error('Translation Error:', err);
+        translations = null;
+        document.getElementById('translation-content').textContent = `Could not load or parse translation file: ${translationFile}. Please check the file for syntax errors.`;
+        document.getElementById('book-title').textContent = originalFile.split('.')[0];
+    });
+} else {
+    fetch(translationPath).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.text();
+    }).then(text => {
+        const pages = text.split('\n\n\n');
+        translations = { translations: {} };
+        pages.forEach((page, index) => {
+            translations.translations[(index + 1).toString()] = page.trim();
+        });
+        document.getElementById('book-title').textContent = originalFile.split('.')[0];
+        displayTranslation(1);
+    }).catch(err => {
+        console.error('Translation Error:', err);
+        translations = null;
+        document.getElementById('translation-content').textContent = `Could not load translation file: ${translationFile}`;
+        document.getElementById('book-title').textContent = originalFile.split('.')[0];
+    });
+}
 
-            // Load original file (PDF or TXT)
             if (originalFile.endsWith('.pdf')) {
                 document.getElementById('pdf-controls').style.display = 'inline-flex';
                 document.getElementById('prev-page-bottom-trans').style.display = 'inline-block';
@@ -204,35 +230,44 @@
                     renderPage(pageNum);
                 }).catch(err => {
                     console.error('PDF Error:', err);
-                    setInitialState(); // Reset UI on error
+                    setInitialState();
                     document.getElementById('book-title').textContent = 'Error Loading PDF';
                 });
             } else if (originalFile.endsWith('.txt')) {
-                pdfDoc = null; // Ensure no PDF is active
-                document.getElementById('pdf-controls').style.display = 'none';
-                document.getElementById('prev-page-bottom-trans').style.display = 'none';
-                document.getElementById('next-page-bottom-trans').style.display = 'none';
-                canvas.style.display = 'none';
-                const txtContentEl = document.getElementById('txt-content');
-                txtContentEl.style.display = 'block';
-                txtContentEl.textContent = 'Loading...'; // Provide loading feedback
-                fetch(originalPath).then(res => res.text()).then(text => {
-                    txtContentEl.textContent = text;
-                }).catch(err => {
-                    console.error('TXT Error:', err);
-                    txtContentEl.textContent = 'Could not load text file.';
-                });
-            }
+    fetch(originalPath).then(res => res.text()).then(text => {
+        const pages = text.split('\n\n\n');
+        pdfDoc = { numPages: pages.length, pages: pages };
+        document.getElementById('pdf-controls').style.display = 'inline-flex';
+        document.getElementById('prev-page-bottom-trans').style.display = 'inline-block';
+        document.getElementById('next-page-bottom-trans').style.display = 'inline-block';
+        document.getElementById('page-count').textContent = pages.length;
+        document.getElementById('page-input').max = pages.length;
+        canvas.style.display = 'none';
+        const txtContentEl = document.getElementById('txt-content');
+        txtContentEl.style.display = 'block';
+        pageNum = 1;
+        txtContentEl.textContent = pages[0] || 'No content available';
+    }).catch(err => {
+        console.error('TXT Error:', err);
+        document.getElementById('txt-content').textContent = 'Could not load text file.';
+    });
+}
         }
 
         // --- PDF & TRANSLATION RENDERING ---
         function renderPage(num) {
-            if (!pdfDoc) return;
-            pageRendering = true;
-            
-            pdfDoc.getPage(num).then(page => {
-                const currentScale = isMobile() ? (document.querySelector('.pdf-container').clientWidth - 40) / page.getViewport({scale: 1.0}).width : scale;
-                const viewport = page.getViewport({ scale: currentScale });
+    if (!pdfDoc) return;
+    if (pdfDoc.pages) {
+        document.getElementById('txt-content').textContent = pdfDoc.pages[num - 1] || 'No content available';
+        document.getElementById('page-num').textContent = `Page: ${num}`;
+        document.getElementById('page-input').value = num;
+        displayTranslation(num);
+        return;
+    }
+    pageRendering = true;
+    
+    pdfDoc.getPage(num).then(page => {
+                const viewport = page.getViewport({ scale: scale });
                 canvas.height = viewport.height; canvas.width = viewport.width;
                 canvas.style.maxWidth = "none";
                 const renderTask = page.render({ canvasContext: ctx, viewport: viewport });
@@ -246,22 +281,28 @@
             displayTranslation(num);
         }
 
+        // --- SIMPLIFIED LOGIC ---
         function displayTranslation(pageNumber) {
             const translationElement = document.getElementById('translation-content');
             if (!translations || !translations.translations) {
                 translationElement.textContent = 'Translation data not available';
                 return;
             }
-            // For TXT files, there's only one "page" of translation
-            const pageKey = pdfDoc ? pageNumber.toString() : "1";
-            const pageText = translations.translations[pageKey];
+
+            let pageText = '';
+            if (pdfDoc) {
+                // For PDFs, get the specific page number
+                pageText = translations.translations[pageNumber.toString()];
+            } else {
+                // For TXTs, get ALL values from the translations and join them
+                pageText = Object.values(translations.translations).join('\n\n');
+            }
+            
             translationElement.textContent = pageText || 'Translation not available for this page.';
             initializeRevealer();
         }
 
-        function queueRenderPage(num) {
-            if (pageRendering) { pageNumPending = num; } else { renderPage(num); }
-        }
+        function queueRenderPage(num) { if (pageRendering) { pageNumPending = num; } else { renderPage(num); } }
 
         // --- ORIGINAL FEATURE PRESERVATION: TEXT REVEALER ---
         const textRevealer = document.querySelector('.text-revealer'), revealerHandle = document.querySelector('.revealer-handle'), translationContainer = document.querySelector('.translation-container'), toggleRevealerButton = document.getElementById('toggle-revealer');
@@ -322,7 +363,6 @@
             window.addEventListener('resize', updateMirrorWidth);
             new MutationObserver(updateMirrorWidth).observe(canvas, { attributes: true });
         }
-        function isMobile() { return window.innerWidth <= 768; }
         function zoomIn() { if(pdfDoc) { scale += 0.2; queueRenderPage(pageNum); } }
         function zoomOut() { if(pdfDoc && scale > 0.4) { scale -= 0.2; queueRenderPage(pageNum); } }
         function showPrevPage() { if (pdfDoc && pageNum > 1) { pageNum--; queueRenderPage(pageNum); } }
@@ -331,22 +371,17 @@
         
         // --- EVENT LISTENERS ---
         function setupEventListeners() {
-            // Modal
             const bookModal = document.getElementById('book-modal');
             document.getElementById('choose-book-btn').addEventListener('click', () => bookModal.style.display = 'flex');
             document.querySelector('.close-button').addEventListener('click', () => bookModal.style.display = 'none');
             window.addEventListener('click', e => { if (e.target == bookModal) bookModal.style.display = 'none'; });
             document.getElementById('load-files-btn').addEventListener('click', () => { loadFiles(selectedOriginalFile, selectedTranslationFile); bookModal.style.display = 'none'; });
-            
-            // Revealer
             revealerHandle.addEventListener('click', startDrag);
             document.addEventListener('mousemove', handleMouseMove);
             revealerHandle.addEventListener('touchstart', startDrag, { passive: false });
             document.addEventListener('touchmove', handleTouchMove, { passive: false });
             document.addEventListener('click', (e) => { if (isHandleGrabbed && e.target !== revealerHandle && !revealerHandle.contains(e.target)) { isHandleGrabbed = false; revealerHandle.classList.remove('grabbed'); document.body.style.cursor = ''; } });
             toggleRevealerButton.addEventListener('click', toggleRevealer);
-
-            // Nav
             document.getElementById('prev-page').addEventListener('click', showPrevPage);
             document.getElementById('next-page').addEventListener('click', showNextPage);
             document.getElementById('go-to-page').addEventListener('click', goToPage);
@@ -356,8 +391,6 @@
             document.getElementById('next-page-bottom-trans').addEventListener('click', showNextPage);
             document.getElementById('page-input').addEventListener('keyup', e => { if (e.key === 'Enter') goToPage(); });
             document.addEventListener('keydown', e => { if (document.activeElement.tagName === 'INPUT') return; if (e.key === 'ArrowLeft') showPrevPage(); else if (e.key === 'ArrowRight') showNextPage(); else if (e.key === '+' || e.key === '=') zoomIn(); else if (e.key === '-' || e.key === '_') zoomOut(); });
-
-            // Dark Mode
             const toggleSwitch = document.getElementById('mode-toggle');
             if (localStorage.getItem('colorMode') === 'light') { document.documentElement.className = 'light-mode'; toggleSwitch.checked = false; }
             toggleSwitch.addEventListener('change', function() { document.documentElement.className = this.checked ? 'dark-mode' : 'light-mode'; localStorage.setItem('colorMode', this.checked ? 'dark' : 'light'); updateRevealerPosition(); });
