@@ -24,6 +24,13 @@ LANGUAGES_CONFIG = {
         "json_key": "kurdish",
         "direction": "ltr"
     },
+    "Latin": {
+        "folder_name": "latin",
+        "file_prefix": "la",
+        "gtts_code": "la",
+        "json_key": "latin",
+        "direction": "ltr"
+    },
     "Spanish": {
         "folder_name": "spanish",
         "file_prefix": "es",
@@ -52,6 +59,7 @@ BASE_PROJECT_PATH = r"C:\Users\Zachar\Desktop\The Website\hopkins_method"
 LANDING_PAGE_CONFIG = {
     "arabic": r"C:\Users\Zachar\Desktop\The Website\hopkins_method\arabic\00_arabic_landing.html",
     "kurmanji_kurdish": r"C:\Users\Zachar\Desktop\The Website\hopkins_method\kurmanji_kurdish\00_kurmanji_landing.html",
+    "latin": r"C:\Users\Zachar\Desktop\The Website\hopkins_method\latin\00_latin_landing.html",
     "spanish": r"C:\Users\Zachar\Desktop\The Website\hopkins_method\spanish\00_spanish_landing.html",
     "turkish": r"C:\Users\Zachar\Desktop\The Website\hopkins_method\turkish\00_turkish_landing.html",
     "ukrainian": r"C:\Users\Zachar\Desktop\The Website\hopkins_method\ukrainian\00_ukrainian_landing.html",
@@ -263,7 +271,7 @@ JS_TEMPLATE_RTL = """
         quizFeedback.innerHTML = '';
         quizAnswerArea.style.borderColor = 'transparent';
 
-        quizProgress.textContent = `${{currentQuizIndex + 1}} / ${{quizQuestions.length}}`;
+        quizProgress.textContent = `${{toArabicNumerals(currentQuizIndex + 1)}} / ${{toArabicNumerals(quizQuestions.length)}}`;
         
         quizActionBtn.style.display = 'none';
         quizActionBtn.onclick = null;

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hopkins Method Spanish: Unit 12</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Light mode with reverted button/active colors */
+        :root {
+            --bg-color: #CDE0BE;
+            --text-color: #2A623D;
+            --card-bg: #F0EAD6;
+            --card-bg-light: #f9fafb; /* Reverted from #FAF7ED */
+            --accent-color: #0D8A52;
+            --hover-color: #0f766e; /* Reverted from #2A623D */
+            --active-color: #115e59; /* Reverted from #1D4D8E */
+            --correct-color: #0D8A52;
+            --incorrect-color: #8C1C13;
+            --border-correct-color: #C9AD5B;
+        }
+        /* Original dark mode values */
+        html.dark {
+            --bg-color: #111827; /* gray-900 */
+            --text-color: #f9fafb; /* gray-50 */
+            --card-bg: #1f2937; /* gray-800 */
+            --card-bg-light: #374151; /* gray-700 */
+            --accent-color: #2dd4bf; /* teal-400 */
+            --hover-color: #14b8a6; /* teal-500 */
+            --active-color: #0d9488; /* teal-600 */
+            --correct-color: #34d399; /* green-400 */
+            --incorrect-color: #f87171; /* red-400 */
+            --border-correct-color: #fde047; /* yellow-300 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            background-image: url('../hm_arabic_background.png'); /* Note: Background image path kept same */
+            background-repeat: repeat;
+            background-size: auto;
+            background-attachment: fixed;
+            overflow-x: hidden; /* Prevent horizontal scroll from confetti */
+        }
+        h1 {
+            font-family: 'Raleway', sans-serif;
+        }
+        /* Revert dark mode background to solid color */
+        html.dark body {
+            background-image: none;
+        }
+        /* Make title black in light mode */
+        html:not(.dark) h1 {
+            color: black;
+        }
+        .sentence-block {
+            margin-bottom: 1rem;
+        }
+        .interactive-area {
+            background-color: var(--card-bg-light);
+            transition: background-color 0.2s, color 0.2s;
+            cursor: pointer;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem 0.5rem 0 0;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+        }
+        /* Hover effect for dark mode */
+        html.dark .interactive-area:hover {
+            background-color: var(--hover-color);
+            color: white;
+        }
+        /* No hover effect for light mode */
+        html:not(.dark) .interactive-area:hover {
+            background-color: var(--card-bg-light);
+            color: var(--text-color);
+        }
+        /* Active (clicked) style ONLY for dark mode */
+        html.dark .interactive-area.active {
+            background-color: var(--active-color);
+            color: white; 
+        }
+        .info-box {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background-color: var(--card-bg);
+            border-radius: 0 0 0.5rem 0.5rem;
+            padding: 0 1.25rem;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+        }
+        .info-box.visible {
+            max-height: 200px;
+            padding: 1rem 1.25rem 1.25rem;
+        }
+        .nav-btn.active {
+            background-color: var(--active-color);
+            color: white;
+        }
+        /* Make quiz word bank button text black in light mode */
+        html:not(.dark) .word-bank-btn {
+            color: black;
+        }
+        .word-bank-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        /* Make numbers black in light mode */
+        html:not(.dark) .sentence-block > span {
+            color: black;
+        }
+        /* Style for the theme toggle button circle in light mode */
+        html:not(.dark) #theme-toggle, html:not(.dark) #reverse-toggle {
+            background-color: var(--card-bg);
+        }
+
+        /* --- Completion Screen Styles --- */
+        .completion-text-container {
+            position: relative;
+            height: 50px; /* Give it a fixed height to prevent layout shifts */
+            margin-bottom: 2rem;
+        }
+        .completion-text {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: bold;
+            transition: opacity 0.5s ease-in-out;
+        }
+        html:not(.dark) .completion-text {
+            color: black;
+        }
+        .completion-text.hidden-lang {
+            opacity: 0;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 3s linear forwards;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <audio id="sentence-player" preload="auto"></audio>
+
+    <div class="w-full max-w-3xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold">Hopkins Method Spanish: Unit 12</h1>
+            <div class="flex justify-center items-center gap-2 mt-3"> <!-- Container for buttons, centered -->
+                 <button id="reverse-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Reverse Languages">
+                    <svg class="h-6 w-6" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 168v-16c0-13.255 10.745-24 24-24h360v-48c0-21.382 25.851-32.09 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.851 304.09 384 293.382 384 272v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.382-25.851-32.09-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.149 464.09 128 453.382 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"/>
+                    </svg>
+                 </button>
+                 <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="Toggle Theme">
+                    <svg id="theme-icon-sun" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    <svg id="theme-icon-moon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                 </button>
+            </div>
+        </header>
+        
+        <nav id="section-nav" class="flex flex-wrap justify-center gap-2 mb-8"></nav>
+
+        <main id="app-container">
+            <div id="reader-view">
+                <div id="reader-content" class="text-2xl leading-loose"></div>
+                <div class="text-center mt-8">
+                    <button id="start-quiz-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-8 rounded-lg text-lg">Practice this Section</button>
+                </div>
+            </div>
+
+            <div id="quiz-view" class="hidden">
+                 <div id="quiz-content" class="bg-[var(--card-bg)] p-4 rounded-lg shadow-lg">
+                    <div class="flex justify-end items-baseline">
+                        <p id="quiz-progress" class="text-sm font-semibold text-gray-500 dark:text-gray-400"></p>
+                    </div>
+                    <p id="quiz-prompt" class="text-xl font-semibold my-2 text-center"></p>
+                    <div id="quiz-feedback" class="mb-4 text-center h-8 font-bold text-xl"></div>
+                    <div id="quiz-answer-area" class="min-h-[6rem] bg-[var(--bg-color)] p-4 rounded-lg flex flex-wrap gap-2 justify-start items-center text-2xl border-2 border-transparent transition-all"></div>
+                    <div id="quiz-word-bank" class="mt-6 flex flex-wrap gap-2 justify-center"></div>
+                    <div id="quiz-button-container" class="mt-6 flex justify-center gap-4">
+                        <button id="quiz-action-btn" class="text-white font-bold py-3 px-8 text-xl rounded-lg"></button>
+                    </div>
+                </div>
+                <div id="completion-screen" class="hidden text-center p-8">
+                    <div class="completion-text-container">
+                        <span id="completion-en" class="completion-text">Congratulations!</span>
+                        <span id="completion-es" class="completion-text hidden-lang">¡Felicidades!</span>
+                    </div>
+                    <div class="flex justify-center gap-4 mt-4">
+                        <button id="review-unit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg">Review Unit 12</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    
+<script>
+    const UNIT_NUMBER = 12;
+    const LANGUAGE = "spanish";
+    const SENTENCE_OFFSET = (UNIT_NUMBER - 1) * 50;
+
+    // --- DATA ---
+    const sentences = [
+                    { "spanish": "Esta es Layla. Es amiga de Daniel.", "english": "This is Layla. She is Daniel's friend." },
+            { "spanish": "Layla siempre tiene frío.", "english": "Layla is always feeling cold." },
+            { "spanish": "Hoy, visita a Daniel en su casa. El tiempo es bueno.", "english": "Today, she is visiting Daniel at his house. The weather is beautiful." },
+            { "spanish": "Daniel piensa que el tiempo es excelente.", "english": "Daniel thinks that the weather is excellent." },
+            { "spanish": "No es caluroso ni frío, es templado.", "english": "It is not hot and not cold, it is mild." },
+            { "spanish": "Pero Layla siente frío.", "english": "But Layla feels the cold." },
+            { "spanish": "Ella piensa que el tiempo es un poco frío.", "english": "She thinks that the weather is a little cold." },
+            { "spanish": "Layla pregunta: \"¿Por qué está la ventana abierta?\"", "english": "Layla asks: \"Why is the window open?\"" },
+            { "spanish": "Daniel dice: \"Porque el tiempo es muy bueno.\"", "english": "Daniel says: \"Because the weather is very beautiful.\"" },
+            { "spanish": "Le pide que cierre la ventana.", "english": "She asks him to close the window." },
+            { "spanish": "Daniel es un hombre amable, cierra la ventana.", "english": "Daniel is a kind man, he closes the window." },
+            { "spanish": "Él dice: \"Tienes frío. ¿Por qué no bebes algo caliente?\"", "english": "He says: \"You are cold. Why don't you drink something warm?\"" },
+            { "spanish": "\"¿Quieres té o café?\"", "english": "\"Do you want tea or coffee?\"" },
+            { "spanish": "Layla prefiere el té.", "english": "Layla prefers tea." },
+            { "spanish": "Daniel va a la cocina y trae el té.", "english": "Daniel goes to the kitchen and brings the tea." },
+            { "spanish": "Layla se pone un suéter porque todavía tiene frío.", "english": "Layla wears a sweater because she is still feeling cold." },
+            { "spanish": "Daniel dice: \"Esto es extraño. El tiempo hoy es más bonito que ayer.\"", "english": "Daniel says: \"This is strange. The weather today is more beautiful than yesterday.\"" },
+            { "spanish": "\"Me gusta este tiempo. No es como el verano.\"", "english": "I like this weather. It is not like the summer." },
+            { "spanish": "El verano es muy caluroso.", "english": "The summer is very hot." },
+            { "spanish": "El verano siempre es más caluroso que hoy.", "english": "The summer is always hotter than today." },
+            { "spanish": "Layla dice: \"Yo prefiero el invierno.\"", "english": "Layla says: \"I prefer the winter.\"" },
+            { "spanish": "A Daniel no le gusta el invierno.", "english": "Daniel does not like the winter." },
+            { "spanish": "El invierno es más frío que este día.", "english": "The winter is colder than this day." },
+            { "spanish": "Layla dice: \"Quizás, pero me gusta el frío.\"", "english": "Layla says: \"Perhaps, but I like the cold.\"" },
+            { "spanish": "\"En mi ciudad, el invierno es la estación más fría.\"", "english": "\"In my city, winter is the coldest season.\"" },
+            { "spanish": "\"Y el verano es la estación más calurosa.\"", "english": "\"And summer is the hottest season.\"" },
+            { "spanish": "Daniel dice: \"Parece que te gustan los suéteres.\"", "english": "Daniel says: \"It seems you like sweaters.\"" },
+            { "spanish": "Ella dice: \"¡Por supuesto! Tengo muchos suéteres.\"", "english": "She says: \"Of course! I have many sweaters.\"" },
+            { "spanish": "\"Este es mi suéter favorito.\"", "english": "\"This is my favorite sweater.\"" },
+            { "spanish": "Beben té juntos en la sala de estar.", "english": "They drink tea together in the living room." },
+            { "spanish": "La habitación ahora está cálida porque la ventana está cerrada.", "english": "The room is now warm because the window is closed." },
+            { "spanish": "Layla dice: \"Esto es mejor.\"", "english": "Layla says: \"This is better.\"" },
+            { "spanish": "Pero después de un rato, todavía siente frío.", "english": "But after a little while, she still feels the cold." },
+            { "spanish": "Daniel la mira. No entiende.", "english": "Daniel looks at her. He does not understand." },
+            { "spanish": "Él pregunta: \"¿Quieres una manta?\"", "english": "He asks: \"Do you want a blanket?\"" },
+            { "spanish": "Ella dice: \"Sí, por favor. Una idea excelente.\"", "english": "She says: \"Yes, please. An excellent idea.\"" },
+            { "spanish": "Daniel trae una manta grande y cálida.", "english": "Daniel brings a big and warm blanket." },
+            { "spanish": "Layla toma la manta. Ahora está muy feliz.", "english": "Layla takes the blanket. She is now very happy." },
+            { "spanish": "Se sienta en la silla con el té, el suéter y la manta.", "english": "She sits on the chair with the tea, the sweater, and the blanket." },
+            { "spanish": "Ella dice: \"Ahora, no tengo frío.\"", "english": "She says: \"Now, I am not feeling cold.\"" },
+            { "spanish": "\"Estoy muy abrigada.\"", "english": "\"I am very warm.\"" },
+            { "spanish": "\"¡Este es el mejor día!\"", "english": "\"This is the best day!\"" },
+            { "spanish": "Daniel se ríe. \"¿Solo porque tienes una manta?\"", "english": "Daniel laughs. \"Only because you have a blanket?\"" },
+            { "spanish": "\"Sí, la manta es la cosa más bonita del mundo.\"", "english": "\"Yes, the blanket is the most beautiful thing in the world.\"" },
+            { "spanish": "Él abre su libro. Ella bebe su té.", "english": "He opens his book. She drinks her tea." },
+            { "spanish": "Él leerá y ella estará abrigada.", "english": "He will read and she will be warm." },
+            { "spanish": "Son muy buenos amigos.", "english": "They are very good friends." },
+            { "spanish": "Él es organizado y ella siempre tiene frío.", "english": "He is organized, and she is always feeling cold." },
+            { "spanish": "Él entiende que ella necesita una manta.", "english": "He understands that she needs a blanket." },
+            { "spanish": "Y ella entiende que a él le gustan las ventanas abiertas.", "english": "And she understands that he likes open windows." }
+    ];
+
+    // --- STATE ---
+    let currentSection = 0;
+    let isReversed = false;
+    let quizQuestions = [];
+    let currentQuizIndex = 0;
+    let wrongAttempts = 0;
+    let isAnswerShown = false;
+    let langInterval = null;
+
+    // --- DOM ELEMENTS ---
+    const readerView = document.getElementById('reader-view');
+    const quizView = document.getElementById('quiz-view');
+    const quizContent = document.getElementById('quiz-content');
+    const completionScreen = document.getElementById('completion-screen');
+    const readerContent = document.getElementById('reader-content');
+    const sectionNav = document.getElementById('section-nav');
+    const startQuizBtn = document.getElementById('start-quiz-btn');
+    const quizPrompt = document.getElementById('quiz-prompt');
+    const quizProgress = document.getElementById('quiz-progress');
+    const quizAnswerArea = document.getElementById('quiz-answer-area');
+    const quizWordBank = document.getElementById('quiz-word-bank');
+    const quizFeedback = document.getElementById('quiz-feedback');
+    const quizActionBtn = document.getElementById('quiz-action-btn');
+    const quizButtonContainer = document.getElementById('quiz-button-container');
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-icon-sun');
+    const moonIcon = document.getElementById('theme-icon-moon');
+    const reverseToggle = document.getElementById('reverse-toggle');
+    const reviewUnitBtn = document.getElementById('review-unit-btn');
+    const sentencePlayer = document.getElementById('sentence-player');
+
+    // --- UTILITY FUNCTIONS ---
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // --- THEME ---
+    function setAndApplyTheme(theme) {
+        localStorage.setItem('theme', theme);
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        }
+    }
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        setAndApplyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // --- REVERSE LANGUAGE ---
+    reverseToggle.addEventListener('click', () => {
+        isReversed = !isReversed;
+        localStorage.setItem('languageReversed', isReversed);
+        populateReader(currentSection);
+    });
+
+    // --- AUDIO FUNCTION ---
+    function playSentenceAudio(globalIndex) {
+        const audioSentenceNumber = globalIndex + 1 + SENTENCE_OFFSET;
+        const audioPath = `${LANGUAGE}_audio/unit_${UNIT_NUMBER}/sentence_${audioSentenceNumber}.mp3`;
+        sentencePlayer.src = audioPath;
+        sentencePlayer.play().catch(error => {
+            console.error(`Could not play audio for sentence ${audioSentenceNumber}:`, error);
+        });
+    }
+
+    // --- READER FUNCTIONS ---
+    function populateReader(sectionIndex) {
+        readerContent.innerHTML = '';
+        const start = sectionIndex * 10;
+        const end = start + 10;
+        const sectionSentences = sentences.slice(start, end);
+
+        sectionSentences.forEach((sentence, index) => {
+            const globalIndex = start + index;
+            const displayIndex = globalIndex + 1 + SENTENCE_OFFSET;
+            const blockContainer = document.createElement('div');
+            blockContainer.classList.add('sentence-block', 'flex', 'items-start', 'gap-4');
+
+            const interactiveContainer = document.createElement('div');
+            interactiveContainer.classList.add('flex-grow');
+
+            const interactiveArea = document.createElement('div');
+            interactiveArea.classList.add('interactive-area');
+            interactiveArea.dataset.index = globalIndex;
+            
+            const infoBox = document.createElement('div');
+            infoBox.classList.add('info-box');
+            
+            const mainText = isReversed ? sentence.english : sentence[LANGUAGE];
+            const hoverText = isReversed ? sentence[LANGUAGE] : sentence.english;
+
+            interactiveArea.textContent = mainText;
+            infoBox.innerHTML = `<p class="text-xl font-semibold">${hoverText}</p>`;
+
+            if (isTouchDevice) {
+                interactiveArea.addEventListener('click', () => {
+                    playSentenceAudio(globalIndex);
+                    toggleInfo(interactiveArea);
+                });
+            } else {
+                interactiveArea.addEventListener('mouseenter', () => {
+                    playSentenceAudio(globalIndex);
+                    showInfo(interactiveArea);
+                });
+                interactiveArea.addEventListener('mouseleave', () => {
+                    hideInfo(interactiveArea);
+                });
+            }
+
+            interactiveContainer.appendChild(interactiveArea);
+            interactiveContainer.appendChild(infoBox);
+            
+            const numberEl = document.createElement('span');
+            numberEl.textContent = displayIndex;
+            numberEl.classList.add('text-2xl', 'pt-3', 'font-semibold');
+            
+            blockContainer.appendChild(numberEl);
+            blockContainer.appendChild(interactiveContainer);
+            readerContent.appendChild(blockContainer);
+        });
+        updateNavButtons();
+    }
+    
+    function showInfo(interactiveAreaEl) {
+        interactiveAreaEl.classList.add('active');
+        interactiveAreaEl.nextElementSibling.classList.add('visible');
+    }
+
+    function hideInfo(interactiveAreaEl) {
+        interactiveAreaEl.classList.remove('active');
+        interactiveAreaEl.nextElementSibling.classList.remove('visible');
+    }
+
+    function toggleInfo(interactiveAreaEl) {
+        const wasActive = interactiveAreaEl.classList.contains('active');
+        document.querySelectorAll('.interactive-area.active').forEach(activeEl => {
+            hideInfo(activeEl);
+        });
+        if (!wasActive) {
+            showInfo(interactiveAreaEl);
+        }
+    }
+
+    // --- QUIZ FUNCTIONS ---
+    function startQuiz() {
+        readerView.classList.add('hidden');
+        quizView.classList.remove('hidden');
+        quizContent.classList.remove('hidden');
+        completionScreen.classList.add('hidden');
+        sectionNav.classList.add('hidden');
+        if (langInterval) clearInterval(langInterval);
+
+        const start = currentSection * 10;
+        const end = start + 10;
+        
+        quizQuestions = sentences.slice(start, end).map((sentence, index) => ({
+            ...sentence,
+            originalIndex: start + index
+        })).sort(() => 0.5 - Math.random()).slice(0, 5);
+
+        currentQuizIndex = 0;
+        loadQuizQuestion();
+    }
+
+    function loadQuizQuestion() {
+        wrongAttempts = 0;
+        isAnswerShown = false;
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.remove();
+
+        quizAnswerArea.innerHTML = '';
+        quizWordBank.innerHTML = '';
+        quizFeedback.innerHTML = '';
+        quizAnswerArea.style.borderColor = 'transparent';
+
+        quizProgress.textContent = `${currentQuizIndex + 1} / ${quizQuestions.length}`;
+        
+        quizActionBtn.style.display = 'none';
+        quizActionBtn.onclick = null;
+
+        const question = quizQuestions[currentQuizIndex];
+        quizPrompt.textContent = question.english;
+
+        // Create word bank from the Spanish sentence, keeping punctuation attached to words.
+        const words = question[LANGUAGE].split(' ').filter(w => w);
+        const shuffledWords = words.sort(() => 0.5 - Math.random());
+        
+        shuffledWords.forEach(word => {
+            const btn = document.createElement('button');
+            btn.textContent = word;
+            btn.className = 'word-bank-btn text-2xl p-3 px-5 rounded-lg bg-[var(--card-bg-light)] transition-colors';
+            btn.onclick = () => selectWord(btn);
+            quizWordBank.appendChild(btn);
+        });
+    }
+
+    function selectWord(btn) {
+        btn.disabled = true;
+        const answerBtn = document.createElement('button');
+        answerBtn.textContent = btn.textContent;
+        answerBtn.className = 'answer-word-btn text-2xl p-3 px-5 rounded-lg bg-[var(--active-color)] text-white';
+        answerBtn.onclick = () => deselectWord(answerBtn, btn);
+        quizAnswerArea.appendChild(answerBtn);
+        liveCheckAnswer();
+    }
+
+    function deselectWord(answerBtn, originalBtn) {
+        originalBtn.disabled = false;
+        answerBtn.remove();
+        liveCheckAnswer();
+    }
+
+    function liveCheckAnswer() {
+        const answerWords = Array.from(quizAnswerArea.children).map(btn => btn.textContent);
+        const constructedAnswer = answerWords.join(' ');
+        const currentQuestion = quizQuestions[currentQuizIndex];
+        // Compare against the full, original sentence with punctuation.
+        const correctAnswerText = currentQuestion[LANGUAGE];
+        const correctWords = correctAnswerText.split(' ').filter(w => w);
+
+        if (!isAnswerShown) {
+            quizFeedback.textContent = '';
+        }
+        quizActionBtn.style.display = 'none';
+        quizAnswerArea.style.borderColor = 'transparent';
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.style.display = 'none';
+
+        if (constructedAnswer === correctAnswerText) {
+            quizAnswerArea.style.borderColor = 'var(--border-correct-color)';
+            quizFeedback.textContent = 'Correct!';
+            quizFeedback.style.color = 'var(--correct-color)';
+            
+            playSentenceAudio(currentQuestion.originalIndex);
+
+            quizActionBtn.style.display = 'block';
+            quizActionBtn.textContent = 'Continue';
+            quizActionBtn.className = 'bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+            quizActionBtn.onclick = nextQuestion;
+
+            Array.from(quizWordBank.children).forEach(btn => btn.disabled = true);
+            Array.from(quizAnswerArea.children).forEach(btn => btn.onclick = null);
+            wrongAttempts = 0;
+        } else if (answerWords.length === correctWords.length) {
+            wrongAttempts++;
+            if (!isAnswerShown) {
+                quizFeedback.textContent = 'Incorrect. Try again!';
+                quizFeedback.style.color = 'var(--incorrect-color)';
+            }
+            quizAnswerArea.style.borderColor = 'var(--incorrect-color)';
+
+            if (wrongAttempts >= 3) {
+                let giveUpBtn = document.getElementById('give-up-btn');
+                if (!giveUpBtn) {
+                    giveUpBtn = document.createElement('button');
+                    giveUpBtn.id = 'give-up-btn';
+                    giveUpBtn.textContent = 'Give Answer';
+                    giveUpBtn.className = 'bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-8 text-xl rounded-lg';
+                    giveUpBtn.onclick = showCorrectAnswer;
+                    quizButtonContainer.appendChild(giveUpBtn);
+                }
+                giveUpBtn.style.display = 'block';
+            }
+        }
+    }
+    
+    function showCorrectAnswer() {
+        isAnswerShown = true;
+        const currentQuestion = quizQuestions[currentQuizIndex];
+        const correctAnswerText = currentQuestion[LANGUAGE];
+
+        quizFeedback.innerHTML = `Correct answer: <strong class="font-semibold">${correctAnswerText}</strong>`;
+        quizFeedback.style.color = 'var(--text-color)';
+
+        quizAnswerArea.innerHTML = '';
+        Array.from(quizWordBank.children).forEach(btn => {
+            btn.disabled = false;
+        });
+        
+        const giveUpBtn = document.getElementById('give-up-btn');
+        if (giveUpBtn) giveUpBtn.remove();
+    }
+
+    function nextQuestion() {
+        currentQuizIndex++;
+        if (currentQuizIndex < quizQuestions.length) {
+            loadQuizQuestion();
+        } else {
+            currentSection++;
+            const numSections = Math.ceil(sentences.length / 10);
+            if (currentSection >= numSections) {
+                showCompletionScreen();
+            } else {
+                returnToReader(currentSection);
+            }
+        }
+    }
+
+    function showCompletionScreen() {
+        quizContent.classList.add('hidden');
+        completionScreen.classList.remove('hidden');
+        
+        for (let i = 0; i < 100; i++) {
+            createConfetti();
+        }
+
+        const enText = document.getElementById('completion-en');
+        const langText = document.getElementById('completion-' + LANGUAGE.substring(0,2));
+        langInterval = setInterval(() => {
+            enText.classList.toggle('hidden-lang');
+            if(langText) langText.classList.toggle('hidden-lang');
+        }, 2000);
+    }
+
+    function createConfetti() {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        const colors = ['#fde047', '#ff7f50', '#2dd4bf', '#8a2be2', '#00ff7f'];
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+    }
+
+    function reviewCurrentUnit() {
+        if (langInterval) clearInterval(langInterval);
+        currentSection = 0;
+        returnToReader(currentSection);
+    }
+
+    function returnToReader(sectionIndex) {
+        if (langInterval) clearInterval(langInterval);
+        quizView.classList.add('hidden');
+        readerView.classList.remove('hidden');
+        sectionNav.classList.remove('hidden');
+        currentSection = sectionIndex;
+        populateReader(currentSection);
+    }
+    
+    function populateNav() {
+        const numSections = Math.ceil(sentences.length / 10);
+        for (let i = 0; i < numSections; i++) {
+            const btn = document.createElement('button');
+            const start = i * 10 + 1 + SENTENCE_OFFSET;
+            const end = Math.min(start + 9, sentences.length + SENTENCE_OFFSET);
+            btn.textContent = `${start}-${end}`;
+            btn.className = 'nav-btn px-4 py-2 rounded-md font-semibold bg-[var(--card-bg-light)] transition-colors';
+            btn.onclick = () => {
+                currentSection = i;
+                populateReader(i);
+            };
+            sectionNav.appendChild(btn);
+        }
+    }
+
+    function updateNavButtons() {
+        const buttons = sectionNav.querySelectorAll('.nav-btn');
+        buttons.forEach((btn, index) => {
+            btn.classList.toggle('active', index === currentSection);
+        });
+    }
+
+    // --- EVENT LISTENERS ---
+    startQuizBtn.addEventListener('click', startQuiz);
+    reviewUnitBtn.addEventListener('click', reviewCurrentUnit);
+
+    // --- INITIALIZATION ---
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setAndApplyTheme(savedTheme);
+    } else {
+        setAndApplyTheme('dark');
+    }
+    
+    const savedReverse = localStorage.getItem('languageReversed');
+    if (savedReverse) {
+        isReversed = JSON.parse(savedReverse);
+    }
+
+    populateNav();
+    populateReader(currentSection);
+</script>
+
+</body>
+</html>
