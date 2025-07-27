@@ -1,4 +1,54 @@
 // Add the function here, before any component definitions
+
+const getClimateEraColor = (date) => {
+    // Extract year from date string
+    const yearMatch = date.match(/-?\d+/);
+    if (!yearMatch) return null;
+    
+    const year = parseInt(yearMatch[0]);
+    
+    // Younger Dryas (Cold, Dry)
+    if (year <= -9750 && year >= -10950) return '#e0f2fe'; // sky-100
+    
+    // Early Holocene (Warm, Wet)
+    if (year <= -6250 && year > -9750) return '#d1fae5'; // emerald-100
+    
+    // 8.2 ka Event (Abrupt Cooling)
+    if (year <= -6150 && year > -6250) return '#bae6fd'; // sky-200
+    
+    // Mid-Holocene Optimum (Warm, Humid, Stable)
+    if (year <= -2550 && year > -6050) return '#a7f3d0'; // emerald-200
+    
+    // 4.2 ka 'Megadrought' Event (Severe Drought)
+    if (year <= -1900 && year >= -2200) return '#fed7aa'; // orange-200
+    
+    // Late Bronze Age Collapse (Severe Drought)
+    if (year <= -1100 && year >= -1200) return '#fdba74'; // orange-300
+    
+    // Roman Warm Period (Warm, Stable, Wet)
+    if (year <= 400 && year >= -200) return '#fde68a'; // amber-200
+    
+    // Late Antique Little Ice Age (Volcanic Cooling)
+    if (year <= 660 && year >= 536) return '#cbd5e1'; // slate-300
+    
+    // Medieval Climate Anomaly (Drought Phase)
+    if (year <= 1100 && year >= 900) return '#fb923c'; // orange-400
+    
+    // Medieval Climate Anomaly (Wet Phase/Recovery)
+    if (year <= 1300 && year > 1100) return '#ccfbf1'; // teal-100
+    
+    // Little Ice Age (Cool, Dry)
+    if (year <= 1850 && year >= 1550) return '#7dd3fc'; // sky-300
+    
+    // Modern Warming Trend (Increasing Aridity)
+    if (year <= 2010 && year >= 1900) return '#fca5a5'; // red-300
+    
+    // Severe Syrian Drought (Amplified by Warming)
+    if (year <= 2010 && year >= 2006) return '#ef4444'; // red-500
+    
+    return null; // Default color
+};
+
 const getHistoricalEraColor = (date) => {
     // Extract year from date string
     const yearMatch = date.match(/-?\d+/);

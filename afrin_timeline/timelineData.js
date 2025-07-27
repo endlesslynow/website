@@ -1478,19 +1478,36 @@ const timelineData = {
             ]
         },
         {
-            title: "Historical Eras",
+            title: "Climate in Afrin",
             color: "#E9D8FD", // light purple
+            // events: [
+            //     { startDate: "-2700", endDate: "-2200", mainEvent: "Early Bronze Age", additionalInfo: "" },
+            //     { startDate: "-2200", endDate: "-2100", mainEvent: "100 year Drought", additionalInfo: "" },
+            //     { startDate: "-2100", endDate: "-1200", mainEvent: "Bronze Age", additionalInfo: "" },
+            //     { startDate: "-1100", endDate: "-750", mainEvent: "Greek Dark Ages", additionalInfo: "" },
+            //     { startDate: "-1100", endDate: "-1200", mainEvent: "Bronze Age Collapse", additionalInfo: "" },
+            //     { startDate: "-1200", endDate: "-550", mainEvent: "Iron Age", additionalInfo: "" },
+            //     { startDate: "-550", endDate: "500", mainEvent: "Classical Antiquity", additionalInfo: "" },
+            //     { startDate: "500", endDate: "1500", mainEvent: "Middle Ages", additionalInfo: "" },
+            //     { startDate: "1500", endDate: "2020", mainEvent: "Modern", additionalInfo: "" },
+            // ]
             events: [
-                { startDate: "-2700", endDate: "-2200", mainEvent: "Early Bronze Age", additionalInfo: "" },
-                { startDate: "-2200", endDate: "-2100", mainEvent: "100 year Drought", additionalInfo: "" },
-                { startDate: "-2100", endDate: "-1200", mainEvent: "Bronze Age", additionalInfo: "" },
-                { startDate: "-1100", endDate: "-750", mainEvent: "Greek Dark Ages", additionalInfo: "" },
-                { startDate: "-1100", endDate: "-1200", mainEvent: "Bronze Age Collapse", additionalInfo: "" },
-                { startDate: "-1200", endDate: "-550", mainEvent: "Iron Age", additionalInfo: "" },
-                { startDate: "-550", endDate: "500", mainEvent: "Classical Antiquity", additionalInfo: "" },
-                { startDate: "500", endDate: "1500", mainEvent: "Middle Ages", additionalInfo: "" },
-                { startDate: "1500", endDate: "2020", mainEvent: "Modern", additionalInfo: "" },
-            ]
+    { startDate: "-10950", endDate: "-9750", mainEvent: "Younger Dryas", additionalInfo: "A period of intense cold and aridity with steppe vegetation." },
+    { startDate: "-9750", endDate: "-6250", mainEvent: "Early Holocene", additionalInfo: "Abrupt warming to a significantly wetter climate, enabling the Neolithic Revolution and the start of agriculture." },
+    { startDate: "-6250", endDate: "-6150", mainEvent: "8.2 ka Event", additionalInfo: "An abrupt, sharp cooling and drying event." },
+    { startDate: "-6050", endDate: "-2550", mainEvent: "Mid-Holocene Optimum", additionalInfo: "A long period of warm, humid, and stable climate, fostering the rise of early urban civilizations." },
+    { startDate: "-3600", endDate: "-2500", mainEvent: "Early Bronze Age Olive Cultivation Boom", additionalInfo: "Mass production of olives began during a particularly wet and stable climatic phase." },
+    { startDate: "-2200", endDate: "-1900", mainEvent: "4.2 ka 'Megadrought' Event", additionalInfo: "A severe, multi-century drought linked to the collapse of the Akkadian Empire." },
+    { startDate: "-1600", endDate: "-1200", mainEvent: "Late Bronze Age (Stable Period)", additionalInfo: "Relatively wet and stable conditions allowed for flourishing palatial economies." },
+    { startDate: "-1200", endDate: "-1100", mainEvent: "Late Bronze Age Collapse", additionalInfo: "A severe, abrupt drought devastated olive groves and is linked to the collapse of major civilizations." },
+    { startDate: "-200", endDate: "400", mainEvent: "Roman Warm Period", additionalInfo: "A stable, warm, and relatively wet period that supported the agricultural and demographic peak of the Roman/Byzantine era." },
+    { startDate: "536", endDate: "660", mainEvent: "Late Antique Little Ice Age", additionalInfo: "An abrupt period of volcanic cooling that disrupted agriculture and coincided with the Plague of Justinian." },
+    { startDate: "900", endDate: "1100", mainEvent: "Medieval Climate Anomaly (Drought Phase)", additionalInfo: "A period of severe and prolonged drought, leading to widespread famine and conflict." },
+    { startDate: "1100", endDate: "1300", mainEvent: "Medieval Climate Anomaly (Wet Phase)", additionalInfo: "The climate shifted to significantly wetter conditions, allowing for agricultural recovery." },
+    { startDate: "1550", endDate: "1850", mainEvent: "Little Ice Age", additionalInfo: "A cooler and significantly drier period, leading to Ottoman-era famines and social unrest." },
+    { startDate: "1900", endDate: "2010", mainEvent: "Modern Warming Trend", additionalInfo: "A period of accelerating warming (~0.8°C) and increasing aridity driven by anthropogenic factors." },
+    { startDate: "2006", endDate: "2010", mainEvent: "Severe Syrian Drought", additionalInfo: "The most severe drought in the instrumental record, leading to agricultural collapse and mass migration." }
+]
         }
     ]
 };

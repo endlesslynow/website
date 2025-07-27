@@ -6,7 +6,8 @@
     <title>Cuneiform Matching Game</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Cuneiform&display=swap');
-        
+
+        /* General Body and Layout Styles */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -16,36 +17,84 @@
             margin: 0;
             background-color: #F4E1C1;
             color: #4A2B0F;
+            padding-top: 60px; /* Add padding for the fixed nav bar */
+            padding-bottom: 20px;
         }
+
+        /* Main Containers */
         #game-container, #completion-screen, #selection-screen {
             text-align: center;
             background-color: #E8C39E;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 0 20px rgba(74, 43, 15, 0.3);
             border: 2px solid #8B4B2B;
+            width: 90%;
+            max-width: 800px;
+            box-sizing: border-box;
         }
+
         #game-container, #completion-screen {
             display: none;
         }
-        #clay-tablet 
-        {
+
+        /* Navigation Banner */
+        .nav-banner {
+            width: 100%;
+            height: 40px;
+            background-color: #8B4B2B;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Game Elements */
+        #clay-tablet, #full-cuneiform {
             background-color: #D2B48C;
             color: #8B4B2B;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 0 auto 20px auto;
             min-height: 50px;
-            text-align: left;
-            line-height: 1.5;
+            width: 100%;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            overflow-x: auto;
+            gap: 10px;
         }
+
+        .cuneiform-line {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px 10px;
+            width: 100%;
+        }
+
+        .cuneiform-symbol {
+            display: inline-block;
+        }
+
         #word-list {
             background-color: #D2B48C;
             color: #8B4B2B;
@@ -53,173 +102,164 @@
             border-radius: 5px;
             margin-top: 20px;
             min-height: 50px;
-            text-align: left;
+            text-align: center;
             line-height: 1.5;
-            font-size: 18px;
+            font-size: 1rem;
+            word-wrap: break-word;
         }
+
         #word-display {
-            font-size: 24px;
-            margin-bottom: 5px;
+            font-size: 1.5rem;
             font-weight: bold;
+            margin-bottom: 5px;
         }
+
         #translation-display {
-            font-size: 16px;
+            font-size: 1rem;
             margin-bottom: 20px;
-            color: #8B4B2B;
+            color: #6A3921;
         }
+
         #cuneiform-display {
-            font-size: 36px;
+            font-size: 2.25rem;
             margin-bottom: 20px;
             min-height: 50px;
-            max-height: 150px;
-            overflow-y: auto;
             background-color: #D2B48C;
             padding: 10px;
             border-radius: 5px;
+            word-break: break-all;
+            transition: opacity 0.5s ease-in-out;
         }
-        #options {
+
+        /* Buttons and Options */
+        #options, #selection-screen {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
             margin-bottom: 20px;
         }
+
         button {
-            font-size: 24px;
-            padding: 10px 20px;
+            font-size: 1.25rem;
+            padding: 12px 20px;
             cursor: pointer;
             background-color: #8B4B2B;
             color: #F4E1C1;
             border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
         }
+        
         button:hover {
             background-color: #6A3921;
         }
-        #press-button, #wipe-button {
-            background-color: #4A2B0F;
-            margin: 0 10px;
+
+        button:active {
+            transform: scale(0.95);
         }
-        #press-button:hover, #wipe-button:hover {
+
+        #press-button, #wipe-button, #answer-button {
+            background-color: #4A2B0F;
+            margin: 0 5px;
+        }
+
+        #answer-button {
+            background-color: #a07e4d;
+        }
+
+        #press-button:hover, #wipe-button:hover, #answer-button:hover {
             background-color: #2E1A09;
         }
+
+        /* Messaging and Completion Screen */
         #message {
-            font-size: 18px;
+            font-size: 1.1rem;
             margin-top: 20px;
             font-weight: bold;
-            color: #8B4B2B;
+            min-height: 24px;
         }
+
         .cuneiform {
             font-family: 'Noto Sans Cuneiform', sans-serif;
-            font-size: 36px;
+            font-size: 2.25rem;
             line-height: 1.2;
         }
-        .correct {
-            color: black;
-        }
-        .incorrect {
-            color: white;
-        }
-        #full-cuneiform, #full-transliteration, #summary-translation {
+
+        .correct { color: black; }
+        .incorrect { color: #d9534f; } /* Reddish color for incorrect symbols */
+
+        #full-transliteration, #summary-translation {
             margin-bottom: 20px;
             padding: 10px;
             background-color: #D2B48C;
             border-radius: 5px;
         }
+
         #full-transliteration {
-            font-size: 18px;
-            line-height: 1.5;
+            font-size: 1rem;
+            line-height: 1.6;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
         }
+
+        .word-container {
+            text-align: center;
+        }
+
         .translation-word {
-            font-size: 14px;
+            font-size: 0.85rem;
             color: #4A2B0F;
             display: block;
         }
-        .word-container {
-            display: inline-block;
-            margin-right: 10px;
-            text-align: center;
-        }
-        .cuneiform-line {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        .cuneiform-symbol {
-            flex-grow: 1;
-            text-align: center;
-        }
-        #clay-tablet, #full-cuneiform {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 90%;
-            margin: 0 auto;
-        }
-        .cuneiform-line {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            width: 100%;
-        }
-        .cuneiform-symbol {
-            display: inline-block;
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 50px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            #game-container, #completion-screen, #selection-screen {
+                padding: 15px;
+            }
+
+            #word-display {
+                font-size: 1.2rem;
+            }
+
+            #translation-display {
+                font-size: 0.9rem;
+            }
+
+            .cuneiform, #cuneiform-display {
+                font-size: 2rem;
+            }
+
+            button {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+
+            #options button {
+                font-size: 1.5rem; /* Make symbol options bigger for tapping */
+            }
         }
     </style>
 </head>
 <body>
+
     <nav class="nav-banner">
         <a href="https://www.zachariahhopkins.com" target="_blank" rel="noopener noreferrer" class="nav-link">
             Created by Zachariah Hopkins
         </a>
-        </nav>
-        <style>
-        /* Nav banner styling */
-        .nav-banner {
-        width: 100%;
-        height: 40px;
-        background-color: #8c4c2b;
-        display: flex;
-        align-items: center;
-        padding: 0 20px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for visual separation */
-        }
-        .nav-link {
-        color: white;
-        text-decoration: none;
-        font-size: 1.2rem;
-        font-weight: 500;
-        transition: opacity 0.2s ease;
-        }
-        .nav-link:hover {
-        opacity: 0.8;
-        }
-        /* Add padding to body to prevent content from being covered */
-        body {
-        padding-top: 80px; /* Increased from 60px to 80px for extra safety margin */
-        min-height: 100vh; /* Ensures full height */
-        margin: 0; /* Reset default margin */
-        }
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-        .nav-banner {
-            height: 40px;
-            padding: 0 15px;
-            background-color: #8c4c2b;
-        }
-        .nav-link {
-            font-size: 1rem;
-        }
-        body {
-            padding-top: 70px; /* Increased from 50px to 70px for mobile */
-        }
-        }
-        </style>
+    </nav>
+
     <div id="selection-screen">
         <h2>Choose something to Inscribe</h2>
         <button id="law1-button">§ 1</button>
@@ -237,25 +277,33 @@
         <div id="translation-display"></div>
         <div id="cuneiform-display"></div>
         <div id="options"></div>
-        <button id="press-button">Press</button>
-        <button id="wipe-button">Wipe Tablet</button>
+        <div>
+            <button id="press-button">Press</button>
+            <button id="wipe-button">Wipe</button>
+            <button id="answer-button">Show Answer</button>
+        </div>
         <div id="message"></div>
-        <div id="word-list"></div>
+        <div id="word-list-container">
+            <strong>Completed Words:</strong>
+            <div id="word-list"></div>
+        </div>
     </div>
 
     <div id="completion-screen">
         <h3>You have completed the tablet.</h3>
         <div id="full-cuneiform"></div>
+        <h4>Transliteration & Translation</h4>
         <div id="full-transliteration"></div>
+        <h4>Summary</h4>
         <div id="summary-translation"></div>
         <button id="restart-button">Start New Tablet</button>
     </div>
 
     <script>
-
+        // --- DATA FOR INSCRIPTIONS ---
         const nebuchadnezzarInscription = {
             words: [
-                { normalized: "Nabu-kudurri-uṣur", transliteration: "DINGIR-Nabu-ku-dur-ri-u-ṣur", cuneiform: ["𒀭", "𒀝", "𒆪", "𒁺", "𒌫", "𒊑", "𒌶"], translation: "Nebuchadnezzar" },
+                { normalized: "Nabu-kudurri-uṣur", transliteration: "DINGIR-Nabu-ku-dur-ri-u-ṣur", cuneiform: ["𒀭", "𒀝", "𒆪", "𒁺", "𒊑", "𒌑", "<y_bin_46>"], translation: "Nebuchadnezzar" },
                 { normalized: "šar", transliteration: "šar", cuneiform: ["𒈗"], translation: "king of" },
                 { normalized: "Bābili", transliteration: "Babili", cuneiform: ["𒆍", "𒀭", "𒊏", "𒆠"], translation: "Babylon" },
                 { normalized: "zānin", transliteration: "za-ni-in", cuneiform: ["𒍝", "𒉌", "𒅔"], translation: "who provides for" },
@@ -264,30 +312,21 @@
                 { normalized: "Ezida", transliteration: "É-zi-da", cuneiform: ["𒂍", "𒍣", "𒁕"], translation: "the E-zida" },
                 { normalized: "aplu ašarēdu", transliteration: "apla a-ša-re-du", cuneiform: ["𒌉", "𒀀", "𒊭", "𒊑", "𒁺"], translation: "eldest son" },
                 { normalized: "ša", transliteration: "ša", cuneiform: ["𒊭"], translation: "of" },
-                { normalized: "Nabû-apla-uṣur", transliteration: "DINGIR-Nabu-apla-u-ṣur", cuneiform: ["𒀭", "𒀝", "𒌉", "𒍑", "𒌶"], translation: "Nabopolassar" },
-                { normalized: "šar", transliteration: "šar", cuneiform: ["𒈗"], translation: "king of" },
-                { normalized: "Bābili", transliteration: "Babili", cuneiform: ["𒆍", "𒀭", "𒊏", "𒆠"], translation: "Babylon" },
+                { normalized: "Nabû-apla-uṣur", transliteration: "DINGIR-Nabu-apla-u-ṣur", cuneiform: ["𒀭", "𒀝", "𒌉", "𒍑", "<y_bin_46>"], translation: "Nabopolassar" },
+                { normalized: "šar", transliteration: "šar-2", cuneiform: ["𒈗"], translation: "king of" },
+                { normalized: "Bābili", transliteration: "Babili-2", cuneiform: ["𒆍", "𒀭", "𒊏", "𒆠"], translation: "Babylon" },
                 { normalized: "anāku", transliteration: "ana-ku", cuneiform: ["𒁹", "𒆪"], translation: "I am" }
             ],
             layout: [
-                ["DINGIR-Nabu-ku-dur-ri-u-ṣur"],
-                ["šar", "Babili"],
-                ["za-ni-in"],
-                ["É-sag-íl", "ù", "É-zi-da"],
-                ["apla a-ša-re-du"],
-                ["ša"],
-                ["DINGIR-Nabu-apla-u-ṣur"],
-                ["šar", "Babili"],
-                ["ana-ku"]
+                ["DINGIR-Nabu-ku-dur-ri-u-ṣur"],["šar", "Babili"],["za-ni-in"],["É-sag-íl", "ù", "É-zi-da"],["apla a-ša-re-du"],["ša"],["DINGIR-Nabu-apla-u-ṣur"],["šar-2", "Babili-2"],["ana-ku"]
             ],
             summary: "Nebuchadnezzar, king of Babylon, who provides for Esagila and Ezida, eldest son of Nabopolassar, king of Babylon, I am."
         };
-
         const law1 = {
             words: [
-                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["𒋳", "𒈠"], translation: "if" },
+                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["폼", "𒈠"], translation: "if" },
                 { normalized: "awīlum", transliteration: "a-wi-lum", cuneiform: ["𒀀", "𒉿", "𒈝"], translation: "a man" },
-                { normalized: "awīlam", transliteration: "a-wi-lam", cuneiform: ["𒀀", "𒉿", "𒇴"], translation: "(another) man" },
+                { normalized: "awīlam", transliteration: "a-wi-lam", cuneiform: ["𒀀", "𒉿", " lam"], translation: "(another) man" },
                 { normalized: "ubbir-ma", transliteration: "ú-ub-bi-ir-ma", cuneiform: ["𒌑", "𒌒", "𒁉", "𒅕", "𒈠"], translation: "accused and" },
                 { normalized: "nērtam", transliteration: "ne-er-tam", cuneiform: ["𒉈", "𒅕", "𒌓"], translation: "(a charge of) murder" },
                 { normalized: "elīšu", transliteration: "e-li-šu", cuneiform: ["𒂊", "𒇷", "𒋗"], translation: "against him" },
@@ -297,22 +336,12 @@
                 { normalized: "mubbiršu", transliteration: "mu-ub-bi-ir-šu", cuneiform: ["𒈬", "𒌒", "𒁉", "𒅕", "𒋗"], translation: "his accuser" },
                 { normalized: "iddâk", transliteration: "id-da-ak", cuneiform: ["𒀉", "𒁕", "𒀝"], translation: "will be executed" }
             ],
-            layout: [
-                ["šum-ma", "a-wi-lum"],
-                ["a-wi-lam"],
-                ["ú-ub-bi-ir-ma"],
-                ["ne-er-tam", "e-li-šu"],
-                ["id-di-ma"],
-                ["la", "uk-ti-in-šu"],
-                ["mu-ub-bi-ir-šu"],
-                ["id-da-ak"]
-            ],
+            layout: [["šum-ma", "a-wi-lum"],["a-wi-lam"],["ú-ub-bi-ir-ma"],["ne-er-tam", "e-li-šu"],["id-di-ma"],["la", "uk-ti-in-šu"],["mu-ub-bi-ir-šu"],["id-da-ak"]],
             summary: "The punishment for a false murder charge is execution."
         };
-
         const law2a = {
             words: [
-                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["𒋳", "𒈠"], translation: "if" },
+                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["폼", "𒈠"], translation: "if" },
                 { normalized: "awīlum", transliteration: "a-wi-lum", cuneiform: ["𒀀", "𒉿", "𒈝"], translation: "a man" },
                 { normalized: "kišpī", transliteration: "ki-iš-pí", cuneiform: ["𒆠", "𒅖", "𒁉"], translation: "witchcraft" },
                 { normalized: "eli", transliteration: "e-li", cuneiform: ["𒂊", "𒇷"], translation: "against" },
@@ -328,62 +357,38 @@
                 { normalized: "Id", transliteration: "DINGIR ÍD", cuneiform: ["𒀭", "𒀀𒇉"], translation: "the River god" },
                 { normalized: "illak", transliteration: "i-il-la-ak", cuneiform: ["𒄿", "𒅋", "𒆷", "𒀝"], translation: "shall go" }
             ],
-            layout: [
-                ["šum-ma", "a-wi-lum"],
-                ["ki-iš-pí", "e-li"],
-                ["a-wi-lim", "id-di-ma"],
-                ["la", "uk-ti-in-šu"],
-                ["ša", "e-li-šu"],
-                ["ki-iš-pu", "na-du-ú"],
-                ["a-na", "DINGIR ÍD"],
-                ["i-il-la-ak"]
-            ],
+            layout: [["šum-ma", "a-wi-lum"],["ki-iš-pí", "e-li"],["a-wi-lim", "id-di-ma"],["la", "uk-ti-in-šu"],["ša", "e-li-šu"],["ki-iš-pu", "na-du-ú"],["a-na", "DINGIR ÍD"],["i-il-la-ak"]],
             summary: "If a man laid a charge of witchcraft against a man but has not convicted him, the one against whom the witchcraft charge was laid will go to the River"
         };
-
         const law3 = {
             words: [
-                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["𒋳", "𒈠"], translation: "if" },
+                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["폼", "𒈠"], translation: "if" },
                 { normalized: "awīlum", transliteration: "a-wi-lum", cuneiform: ["𒀀", "𒉿", "𒈝"], translation: "a man" },
                 { normalized: "ina", transliteration: "i-na", cuneiform: ["𒄿", "𒈾"], translation: "in" },
-                { normalized: "dīnim", transliteration: "di-nim", cuneiform: ["𒁲", "𒉏"], translation: "a legal case" },
+                { normalized: "dīnim", transliteration: "di-nim", cuneiform: ["𒁲", "ニム"], translation: "a legal case" },
                 { normalized: "ana", transliteration: "a-na", cuneiform: ["𒀀", "𒈾"], translation: "for" },
                 { normalized: "šībūt", transliteration: "ši-bu-ut", cuneiform: ["𒅆", "𒁍", "𒌓"], translation: "testimony" },
-                { normalized: "sarrātim", transliteration: "sà-ar-ra-tim", cuneiform: ["𒍝", "𒅈", "𒊏", "𒁴"], translation: "of falsehoods" },
+                { normalized: "sarrātim", transliteration: "sà-ar-ra-tim", cuneiform: ["𒍝", "𒅈", "𒊏", " tim"], translation: "of falsehoods" },
                 { normalized: "uṣiam-ma", transliteration: "ú-ṣí-a-am-ma", cuneiform: ["𒌑", "𒍣", "𒀀", "𒄠", "𒈠"], translation: "came forth and" },
                 { normalized: "awāt", transliteration: "a-wa-at", cuneiform: ["𒀀", "𒉿", "𒀜"], translation: "the word" },
                 { normalized: "iqbû", transliteration: "iq-bu-ú", cuneiform: ["𒅅", "𒁍", "𒌑"], translation: "he spoke" },
                 { normalized: "lā", transliteration: "la", cuneiform: ["𒆷"], translation: "not" },
                 { normalized: "uktīn", transliteration: "uk-ti-in", cuneiform: ["𒊌", "𒋾", "𒅔"], translation: "has proved" },
-                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["𒋳", "𒈠"], translation: "if" },
+                { normalized: "šumma", transliteration: "šum-ma-2", cuneiform: ["폼", "𒈠"], translation: "if" },
                 { normalized: "dīnum", transliteration: "di-nu-um", cuneiform: ["𒁲", "𒉡", "𒌝"], translation: "case" },
                 { normalized: "šū", transliteration: "šu-ú", cuneiform: ["𒋗", "𒌑"], translation: "that" },
                 { normalized: "dīn", transliteration: "di-in", cuneiform: ["𒁲", "𒅔"], translation: "a case of" },
-                { normalized: "napištim", transliteration: "na-pí-iš-tim", cuneiform: ["𒈾", "𒁉", "𒅖", "𒁴"], translation: "life (capital)" },
-                { normalized: "awīlum", transliteration: "a-wi-lum", cuneiform: ["𒀀", "𒉿", "𒈝"], translation: "man" },
-                { normalized: "šū", transliteration: "šu-ú", cuneiform: ["𒋗", "𒌑"], translation: "that" },
+                { normalized: "napištim", transliteration: "na-pí-iš-tim", cuneiform: ["𒈾", "𒁉", "𒅖", " tim"], translation: "life (capital)" },
+                { normalized: "awīlum", transliteration: "a-wi-lum-2", cuneiform: ["𒀀", "𒉿", "𒈝"], translation: "man" },
+                { normalized: "šū", transliteration: "šu-ú-2", cuneiform: ["𒋗", "𒌑"], translation: "that" },
                 { normalized: "iddâk", transliteration: "id-da-ak", cuneiform: ["𒀉", "𒁕", "𒀝"], translation: "will be executed" }
             ],
-            layout: [
-                ["šum-ma", "a-wi-lum"],
-                ["i-na", "di-nim"],
-                ["a-na", "ši-bu-ut"],
-                ["sà-ar-ra-tim"],
-                ["ú-ṣí-a-am-ma"],
-                ["a-wa-at", "iq-bu-ú"],
-                ["la", "uk-ti-in"],
-                ["šum-ma", "di-nu-um"],
-                ["šu-ú"],
-                ["di-in", "na-pí-iš-tim"],
-                ["a-wi-lum", "šu-ú"],
-                ["id-da-ak"]
-            ],
+            layout: [["šum-ma", "a-wi-lum"],["i-na", "di-nim"],["a-na", "ši-bu-ut"],["sà-ar-ra-tim"],["ú-ṣí-a-am-ma"],["a-wa-at", "iq-bu-ú"],["la", "uk-ti-in"],["šum-ma-2", "di-nu-um"],["šu-ú"],["di-in", "na-pí-iš-tim"],["a-wi-lum-2", "šu-ú-2"],["id-da-ak"]],
             summary: "If a man bears false witness in a capital case, he shall be put to death."
         };
-
         const law4 = {
             words: [
-                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["𒋳", "𒈠"], translation: "if" },
+                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["폼", "𒈠"], translation: "if" },
                 { normalized: "ana", transliteration: "a-na", cuneiform: ["𒀀", "𒈾"], translation: "for" },
                 { normalized: "šībūt", transliteration: "ši-bu-ut", cuneiform: ["𒅆", "𒁍", "𒌓"], translation: "testimony" },
                 { normalized: "êm", transliteration: "ŠE", cuneiform: ["𒊺"], translation: "grain" },
@@ -391,92 +396,56 @@
                 { normalized: "kaspim", transliteration: "KUG.BABBAR", cuneiform: ["𒆬", "𒌓"], translation: "silver" },
                 { normalized: "uṣiam", transliteration: "ú-ṣí-a-am", cuneiform: ["𒌑", "𒍣", "𒀀", "𒄠"], translation: "he came forth" },
                 { normalized: "aran", transliteration: "a-ra-an", cuneiform: ["𒀀", "𒊏", "𒀭"], translation: "penalty" },
-                { normalized: "dīnim", transliteration: "di-nim", cuneiform: ["𒁲", "𒉏"], translation: "of the case" },
+                { normalized: "dīnim", transliteration: "di-nim", cuneiform: ["𒁲", "ニム"], translation: "of the case" },
                 { normalized: "šuāti", transliteration: "šu-a-ti", cuneiform: ["𒋗", "𒀀", "𒋾"], translation: "that" },
                 { normalized: "ittanašši", transliteration: "it-ta-na-aš-ši", cuneiform: ["𒀉", "𒋫", "𒈾", "𒀸", "𒅆"], translation: "he will bear" }
             ],
-            layout: [
-                ["šum-ma", "a-na", "ši-bu-ut"],
-                ["ŠE", "ù", "KUG.BABBAR"],
-                ["ú-ṣí-a-am"],
-                ["a-ra-an"],
-                ["di-nim", "šu-a-ti"],
-                ["it-ta-na-aš-ši"]
-            ],
+            layout: [["šum-ma", "a-na", "ši-bu-ut"],["ŠE", "ù", "KUG.BABBAR"],["ú-ṣí-a-am"],["a-ra-an"],["di-nim", "šu-a-ti"],["it-ta-na-aš-ši"]],
             summary: "The punishment for unfounded allegations involving grain or silver cannot be avoided."
-                };
-
-                const law6 = {
+        };
+        const law6 = {
             words: [
-                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["𒋳", "𒈠"], translation: "if" },
+                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["폼", "𒈠"], translation: "if" },
                 { normalized: "awīlum", transliteration: "a-wi-lum", cuneiform: ["𒀀", "𒉿", "𒈝"], translation: "a man" },
                 { normalized: "makkūr", transliteration: "NÍG.GA", cuneiform: ["𒃻", "𒂵"], translation: "property" },
                 { normalized: "ilim", transliteration: "DINGIR", cuneiform: ["𒀭"], translation: "of a god" },
                 { normalized: "ū", transliteration: "ù", cuneiform: ["𒅇"], translation: "and" },
                 { normalized: "ekallim", transliteration: "É.GAL", cuneiform: ["𒂍", "𒃲"], translation: "palace" },
                 { normalized: "išriq", transliteration: "iš-ri-iq", cuneiform: ["𒅖", "𒊑", "𒅅"], translation: "stole" },
-                { normalized: "awīlum", transliteration: "a-wi-lum", cuneiform: ["𒀀", "𒉿", "𒈝"], translation: "man" },
+                { normalized: "awīlum", transliteration: "a-wi-lum-2", cuneiform: ["𒀀", "𒉿", "𒈝"], translation: "man" },
                 { normalized: "šū", transliteration: "šu-ú", cuneiform: ["𒋗", "𒌑"], translation: "that" },
                 { normalized: "iddâk", transliteration: "id-da-ak", cuneiform: ["𒀉", "𒁕", "𒀝"], translation: "will be executed" },
-                { normalized: "u", transliteration: "ù", cuneiform: ["𒅇"], translation: "moreover" },
+                { normalized: "u", transliteration: "ù-2", cuneiform: ["𒅇"], translation: "moreover" },
                 { normalized: "ša", transliteration: "ša", cuneiform: ["𒊭"], translation: "whoever" },
-                { normalized: "šurqam", transliteration: "šu-úr-qá-am", cuneiform: ["𒋗", "𒌫", "𒂵", "𒄠"], translation: "stolen property" },
+                { normalized: "šurqam", transliteration: "šu-úr-qá-am", cuneiform: ["𒋗", "<y_bin_365>", "𒂵", "𒄠"], translation: "stolen property" },
                 { normalized: "ina", transliteration: "i-na", cuneiform: ["𒄿", "𒈾"], translation: "from" },
                 { normalized: "qātīšu", transliteration: "qá-ti-šu", cuneiform: ["𒂵", "𒋾", "𒋗"], translation: "his hand" },
                 { normalized: "imḫuru", transliteration: "im-ḫu-ru", cuneiform: ["𒅎", "𒄷", "𒊒"], translation: "received" },
-                { normalized: "iddâk", transliteration: "id-da-ak", cuneiform: ["𒀉", "𒁕", "𒀝"], translation: "will be executed" }
+                { normalized: "iddâk", transliteration: "id-da-ak-2", cuneiform: ["𒀉", "𒁕", "𒀝"], translation: "will be executed" }
             ],
-            layout: [
-                ["šum-ma", "a-wi-lum"],
-                ["NÍG.GA", "DINGIR"],
-                ["ù", "É.GAL"],
-                ["iš-ri-iq"],
-                ["a-wi-lum", "šu-ú"],
-                ["id-da-ak"],
-                ["ù", "ša"],
-                ["šu-úr-qá-am"],
-                ["i-na", "qá-ti-šu"],
-                ["im-ḫu-ru"],
-                ["id-da-ak"]
-            ],
+            layout: [["šum-ma", "a-wi-lum"],["NÍG.GA", "DINGIR"],["ù", "É.GAL"],["iš-ri-iq"],["a-wi-lum-2", "šu-ú"],["id-da-ak"],["ù-2", "ša"],["šu-úr-qá-am"],["i-na", "qá-ti-šu"],["im-ḫu-ru"],["id-da-ak-2"]],
             summary: "If a man stole property of a god or the palace, that man will be executed; moreover, whoever received stolen property from him will be executed."
-                };
-
-                const law11 = {
+        };
+        const law11 = {
             words: [
-                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["𒋳", "𒈠"], translation: "if" },
-                { normalized: "bēl", transliteration: "be-el", cuneiform: ["𒁁", "𒂖"], translation: "owner of" },
+                { normalized: "šumma", transliteration: "šum-ma", cuneiform: ["폼", "𒈠"], translation: "if" },
+                { normalized: "bēl", transliteration: "be-el", cuneiform: ["𒁁", " el"], translation: "owner of" },
                 { normalized: "ḫulqim", transliteration: "ḫu-ul-qí-im", cuneiform: ["𒄷", "𒌌", "𒆠", "𒅎"], translation: "the property" },
                 { normalized: "šībī", transliteration: "ši-bi", cuneiform: ["𒅆", "𒁉"], translation: "witnesses" },
                 { normalized: "mūde", transliteration: "mu-de", cuneiform: ["𒈬", "𒁲"], translation: "who recognize" },
                 { normalized: "ḫulqīšu", transliteration: "ḫu-ul-qí-šu", cuneiform: ["𒄷", "𒌌", "𒆠", "𒋗"], translation: "his stolen property" },
                 { normalized: "lā", transliteration: "la", cuneiform: ["𒆷"], translation: "not" },
-                { normalized: "itbalam", transliteration: "it-ba-lam", cuneiform: ["𒀉", "𒁀", "𒇴"], translation: "has produced" },
+                { normalized: "itbalam", transliteration: "it-ba-lam", cuneiform: ["𒀉", "𒁀", " lam"], translation: "has produced" },
                 { normalized: "sar", transliteration: "sà-ar", cuneiform: ["𒍝", "𒅈"], translation: "liar" },
                 { normalized: "tuššam-ma", transliteration: "tu-uš-ša-am-ma", cuneiform: ["𒌅", "𒍑", "𒊭", "𒄠", "𒈠"], translation: "slander" },
                 { normalized: "idke", transliteration: "id-ke", cuneiform: ["𒀉", "𒆠"], translation: "he raised" },
                 { normalized: "iddâk", transliteration: "id-da-ak", cuneiform: ["𒀉", "𒁕", "𒀝"], translation: "he will be executed" }
             ],
-            layout: [
-                ["šum-ma", "be-el"],
-                ["ḫu-ul-qí-im"],
-                ["ši-bi", "mu-de"],
-                ["ḫu-ul-qí-šu"],
-                ["la", "it-ba-lam"],
-                ["sà-ar"],
-                ["tu-uš-ša-am-ma"],
-                ["id-ke"],
-                ["id-da-ak"]
-            ],
+            layout: [["šum-ma", "be-el"],["ḫu-ul-qí-im"],["ši-bi", "mu-de"],["ḫu-ul-qí-šu"],["la", "it-ba-lam"],["sà-ar"],["tu-uš-ša-am-ma"],["id-ke"],["id-da-ak"]],
             summary: "for property owners, the punishment for accusing someone of holding stolen property without witnesses is execution."
         };
 
-        let currentLaw;
-        let currentWordIndex = 0;
-        let currentWord;
-        let selectedCuneiform = [];
-        let correctSymbolsCount = 0;
-
+        // --- DOM ELEMENTS ---
         const selectionScreen = document.getElementById("selection-screen");
         const gameContainer = document.getElementById("game-container");
         const clayTablet = document.getElementById("clay-tablet");
@@ -486,6 +455,7 @@
         const optionsContainer = document.getElementById("options");
         const pressButton = document.getElementById("press-button");
         const wipeButton = document.getElementById("wipe-button");
+        const answerButton = document.getElementById("answer-button");
         const messageDisplay = document.getElementById("message");
         const wordList = document.getElementById("word-list");
         const completionScreen = document.getElementById("completion-screen");
@@ -494,6 +464,14 @@
         const summaryTranslation = document.getElementById("summary-translation");
         const restartButton = document.getElementById("restart-button");
 
+        // --- GAME STATE ---
+        let currentLaw;
+        let currentWordIndex = 0;
+        let currentWord;
+        let selectedCuneiform = [];
+        let correctSymbolsCount = 0;
+
+        // --- EVENT LISTENERS ---
         document.getElementById("nebuchadnezzarInscription").addEventListener("click", () => startGame(nebuchadnezzarInscription));
         document.getElementById("law1-button").addEventListener("click", () => startGame(law1));
         document.getElementById("law2a-button").addEventListener("click", () => startGame(law2a));
@@ -501,40 +479,57 @@
         document.getElementById("law4-button").addEventListener("click", () => startGame(law4));
         document.getElementById("law6-button").addEventListener("click", () => startGame(law6));
         document.getElementById("law11-button").addEventListener("click", () => startGame(law11));
+        pressButton.addEventListener("click", checkAnswer);
+        wipeButton.addEventListener("click", wipeTablet);
+        answerButton.addEventListener("click", showAnswer);
+        restartButton.addEventListener("click", restartGame);
 
+        // --- GAME LOGIC ---
         function startGame(law) {
+            if (!law || !law.words || law.words.length === 0) {
+                console.error("Selected law has no data.");
+                return;
+            }
             currentLaw = law;
             currentWordIndex = 0;
-            currentWord = currentLaw.words[currentWordIndex];
-            selectionScreen.style.display = "none";
-            gameContainer.style.display = "block";
-            clayTablet.innerHTML = "";
-            wordList.innerHTML = "";
-            displayWord();
-        }
-
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
-        function displayWord() {
-            wordDisplay.textContent = `${currentWord.normalized} (${currentWord.transliteration})`;
-            translationDisplay.textContent = currentWord.translation;
-            cuneiformDisplay.innerHTML = "";
-            selectedCuneiform = [];
             correctSymbolsCount = 0;
-            messageDisplay.textContent = "";
 
+            selectionScreen.style.display = "none";
+            completionScreen.style.display = "none";
+            gameContainer.style.display = "block";
+            
+            clayTablet.innerHTML = "";
+            wordList.innerHTML = "No words completed yet.";
+            
+            displayNextWord();
+        }
+
+        function displayNextWord() {
+            if (currentWordIndex >= currentLaw.words.length) {
+                showCompletionScreen();
+                return;
+            }
+            currentWord = currentLaw.words[currentWordIndex];
+            wordDisplay.textContent = `${currentWord.normalized} (${currentWord.transliteration})`;
+            translationDisplay.textContent = `"${currentWord.translation}"`;
+            
+            wipeTablet(); 
+            generateOptions();
+        }
+
+        function generateOptions() {
             const correctSymbols = currentWord.cuneiform;
             const allSymbols = currentLaw.words.flatMap(word => word.cuneiform);
-            const options = new Set([...correctSymbols, ...shuffleArray(allSymbols).slice(0, 6 - correctSymbols.length)]);
+            const uniqueSymbols = [...new Set(allSymbols)];
+            const incorrectSymbols = uniqueSymbols.filter(s => !correctSymbols.includes(s));
+            
+            const shuffledIncorrect = shuffleArray(incorrectSymbols);
+            const distractors = shuffledIncorrect.slice(0, 8 - correctSymbols.length);
+
+            const options = shuffleArray([...correctSymbols, ...distractors]);
             
             optionsContainer.innerHTML = "";
-            shuffleArray([...options]).forEach(symbol => {
+            options.forEach(symbol => {
                 const button = document.createElement("button");
                 button.innerHTML = `<span class="cuneiform">${symbol}</span>`;
                 button.addEventListener("click", () => selectSymbol(symbol));
@@ -543,32 +538,36 @@
         }
 
         function selectSymbol(symbol) {
+            if (!currentWord) return;
             const isCorrect = symbol === currentWord.cuneiform[correctSymbolsCount];
-            const spanClass = isCorrect ? "correct" : "incorrect";
-            selectedCuneiform.push(symbol);
-            cuneiformDisplay.innerHTML += `<span class="cuneiform ${spanClass}">${symbol}</span>`;
+            const span = document.createElement('span');
+            span.className = `cuneiform ${isCorrect ? 'correct' : 'incorrect'}`;
+            span.textContent = symbol;
+            cuneiformDisplay.appendChild(span);
+
             if (isCorrect) {
                 correctSymbolsCount++;
             }
         }
 
         function checkAnswer() {
-            const cuneiformSymbols = cuneiformDisplay.querySelectorAll('.cuneiform');
-            const allBlack = Array.from(cuneiformSymbols).every(symbol => getComputedStyle(symbol).color === 'rgb(0, 0, 0)');
-            
-            if (correctSymbolsCount === currentWord.cuneiform.length && allBlack) {
+            if (!currentWord) return;
+            const allCorrect = correctSymbolsCount === currentWord.cuneiform.length && cuneiformDisplay.innerText.length === currentWord.cuneiform.join('').length;
+
+            if (allCorrect) {
                 messageDisplay.textContent = "Correct! Well done!";
+                messageDisplay.style.color = "#28a745"; // Green
                 addToClay(currentWord);
                 addToWordList(currentWord);
+                
                 currentWordIndex++;
-                if (currentWordIndex < currentLaw.words.length) {
-                    currentWord = currentLaw.words[currentWordIndex];
-                    setTimeout(displayWord, 1500);
-                } else {
-                    setTimeout(showCompletionScreen, 1500);
-                }
+                correctSymbolsCount = 0;
+                
+                setTimeout(displayNextWord, 1500);
             } else {
-                messageDisplay.textContent = "Incorrect. The gods demand precision. Try again!";
+                messageDisplay.textContent = "Incorrect. The gods demand precision!";
+                messageDisplay.style.color = "#dc3545"; // Red
+                setTimeout(() => wipeTablet(), 1500);
             }
         }
 
@@ -576,22 +575,36 @@
             const lineIndex = currentLaw.layout.findIndex(line => line.includes(word.transliteration));
             if (lineIndex === -1) return;
 
-            let lineElement = clayTablet.children[lineIndex];
+            let lineElement = document.getElementById(`line-${lineIndex}`);
             if (!lineElement) {
                 lineElement = document.createElement('div');
                 lineElement.className = 'cuneiform-line';
-                clayTablet.appendChild(lineElement);
+                lineElement.id = `line-${lineIndex}`;
+                const existingLines = Array.from(clayTablet.children);
+                const insertBefore = existingLines.find(el => parseInt(el.id.split('-')[1]) > lineIndex);
+                if (insertBefore) {
+                    clayTablet.insertBefore(lineElement, insertBefore);
+                } else {
+                    clayTablet.appendChild(lineElement);
+                }
             }
-
+            
+            const wordSpan = document.createElement('span');
+            wordSpan.className = 'cuneiform-word';
             word.cuneiform.forEach(symbol => {
                 const symbolElement = document.createElement('span');
                 symbolElement.className = 'cuneiform-symbol';
                 symbolElement.innerHTML = `<span class="cuneiform">${symbol}</span>`;
-                lineElement.appendChild(symbolElement);
+                wordSpan.appendChild(symbolElement);
             });
+            lineElement.appendChild(wordSpan);
         }
 
+
         function addToWordList(word) {
+            if (wordList.textContent === "No words completed yet.") {
+                wordList.innerHTML = "";
+            }
             wordList.innerHTML += `${word.normalized} `;
         }
 
@@ -602,12 +615,32 @@
             messageDisplay.textContent = "";
         }
 
+        function showAnswer() {
+            if (!currentWord) return;
+            wipeTablet(); // Clear any existing input
+
+            // Display the correct answer
+            cuneiformDisplay.innerHTML = currentWord.cuneiform.map(symbol => `<span class="cuneiform correct">${symbol}</span>`).join('');
+            
+            // After a delay, fade it out and then clear it
+            setTimeout(() => {
+                cuneiformDisplay.style.opacity = '0';
+                
+                // After the fade-out transition ends, wipe the tablet
+                setTimeout(() => {
+                    wipeTablet();
+                    cuneiformDisplay.style.opacity = '1'; // Reset opacity for next use
+                }, 500); // This duration must match the CSS transition duration
+
+            }, 1500); // Show the answer for 1.5 seconds before starting to fade
+        }
+
         function showCompletionScreen() {
             gameContainer.style.display = "none";
             completionScreen.style.display = "block";
 
             fullCuneiform.innerHTML = '';
-            currentLaw.layout.forEach(line => {
+            currentLaw.layout.forEach((line, index) => {
                 const lineElement = document.createElement('div');
                 lineElement.className = 'cuneiform-line';
                 line.forEach(transliteration => {
@@ -629,7 +662,7 @@
                     <span>${word.normalized}</span>
                     <span class="translation-word">${word.translation}</span>
                 </div>
-            `).join(' ');
+            `).join('');
 
             summaryTranslation.innerHTML = `<p>"${currentLaw.summary}"</p>`;
         }
@@ -637,13 +670,16 @@
         function restartGame() {
             completionScreen.style.display = "none";
             selectionScreen.style.display = "block";
-            clayTablet.innerHTML = "";
-            wordList.innerHTML = "";
         }
 
-        pressButton.addEventListener("click", checkAnswer);
-        wipeButton.addEventListener("click", wipeTablet);
-        restartButton.addEventListener("click", restartGame);
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
     </script>
 </body>
 </html>
