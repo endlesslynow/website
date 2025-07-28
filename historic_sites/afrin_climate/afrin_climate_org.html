@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="main-title-tag">Afrin Climate History</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base Styles (Unchanged) --- */
+        body { font-family: 'Lato', sans-serif; background-color: #F8F7F2; color: #2c3e50; }
+        section { scroll-margin-top: 70px; }
+        h1, h2, h3, h4 { font-family: 'Lora', serif; color: #2F4F4F; font-weight: 600; }
+        .nav-link { position: relative; transition: color 0.3s; color: #2F4F4F; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 50%; transform: translateX(-50%); background-color: #BDB76B; transition: width 0.3s; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .hero-bg { background-image: linear-gradient(rgba(248, 247, 242, 0.6), rgba(248, 247, 242, 1)), url('https://placehold.co/1920x1080/8F9D8F/FFFFFF?text=Afrin+River+Valley'); background-size: cover; background-position: center; }
+        .section-fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .section-fade-in.visible { opacity: 1; transform: translateY(0); }
+        .content-text p { margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; }
+        .source-link { color: #BDB76B; font-weight: bold; text-decoration: none; transition: color 0.2s; }
+        .source-link:hover { color: #8B8970; }
+        .image-figure figcaption { margin-top: 0.5rem; font-size: 0.9rem; color: #6b7280; text-align: center; }
+
+        /* --- REDESIGNED LAYOUT: Float-based Text Wrapping --- */
+        
+        /* 1. The Float Property: Pushes the image to the side and allows text to wrap. */
+        .image-float-right {
+            float: right;
+            margin-left: 1.5rem; /* Space between text and image */
+            margin-bottom: 1rem;  /* Space below image */
+        }
+        .image-float-left {
+            float: left;
+            margin-right: 1.5rem; /* Space between text and image */
+            margin-bottom: 1rem;   /* Space below image */
+        }
+
+        /* 2. The Clearfix: Ensures the container expands to hold the floated image. */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* 3. Responsive Handling: On small screens, disable float so images stack vertically. */
+        @media screen and (max-width: 768px) {
+            .image-float-left,
+            .image-float-right {
+                float: none;
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* --- Other Styles (Unchanged) --- */
+        .climate-chart { display: flex; justify-content: space-around; align-items: flex-end; height: 300px; padding: 40px 10px 20px 10px; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e0e0e0; }
+        .chart-bar-group { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; width: 8%; height: 100%; position: relative; }
+        .bar-container { display: flex; align-items: flex-end; height: 100%; width: 100%; gap: 10%; }
+        .chart-bar { width: 50%; position: relative; border-radius: 3px 3px 0 0; }
+        .temp-bar { background-color: #ff9a8b; background-image: linear-gradient(0deg, #ff9a8b 0%, #ff6a88 100%); }
+        .rain-bar { background-color: #8BC6EC; background-image: linear-gradient(180deg, #8BC6EC 0%, #9599E2 100%); }
+        .bar-value { position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: bold; color: #333; }
+        .month-label { margin-top: 10px; font-size: 0.8rem; font-weight: bold; }
+        .scroll-timeline-container { position: relative; max-width: 1000px; margin: 0 auto; }
+        .scroll-timeline-container::after { content: ''; position: absolute; width: 6px; background-color: #BDB76B; top: 0; bottom: 0; left: 50%; margin-left: -3px; }
+        .timeline-entry { padding: 10px 40px; position: relative; background-color: inherit; width: 50%; opacity: 0; transform: translateY(50px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .timeline-entry.is-visible { opacity: 1; transform: translateY(0); }
+        .timeline-entry::after { content: ''; position: absolute; width: 25px; height: 25px; right: -17px; background-color: white; border: 4px solid #BDB76B; top: 15px; border-radius: 50%; z-index: 1; }
+        .timeline-entry.left { left: 0; }
+        .timeline-entry.right { left: 50%; }
+        .timeline-entry.left::before { content: " "; height: 0; position: absolute; top: 22px; width: 0; z-index: 1; right: 30px; border: medium solid white; border-width: 10px 0 10px 10px; border-color: transparent transparent transparent white; }
+        .timeline-entry.right::before { content: " "; height: 0; position: absolute; top: 22px; width: 0; z-index: 1; left: 30px; border: medium solid white; border-width: 10px 10px 10px 0; border-color: transparent white transparent transparent; }
+        .timeline-entry.right::after { left: -16px; }
+        .timeline-content { padding: 20px 30px; background-color: white; position: relative; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-[#F8F7F2]/90 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-700">Afrin's Climate</h1>
+            <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                <a href="#introduction-section" class="nav-link active">Introduction</a>
+                <a href="#part1" class="nav-link">Modern Era</a>
+                <a href="#part2" class="nav-link">Ottoman Era</a>
+                <a href="#part3" class="nav-link">Antiquity</a>
+                <a href="#part4" class="nav-link">Deep Past</a>
+                <a href="#conclusion" class="nav-link">Conclusion</a>
+            </nav>
+            <button id="mobile-menu-btn" class="md:hidden text-gray-800"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-[#F8F7F2]"><a href="#introduction-section" class="block py-2 nav-link">Introduction</a><a href="#part1" class="block py-2 nav-link">Modern Era</a><a href="#part2" class="block py-2 nav-link">Ottoman Era</a><a href="#part3" class="block py-2 nav-link">Antiquity</a><a href="#part4" class="block py-2 nav-link">Deep Past</a><a href="#conclusion" class="block py-2 nav-link">Conclusion</a></div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="introduction" class="hero-bg min-h-screen flex items-center pt-16 md:pt-0">
+            <div class="container mx-auto px-6">
+                <div class="max-w-3xl">
+                    <h1 id="main-title" class="text-4xl md:text-6xl font-bold leading-tight"></h1>
+                    <p id="main-subtitle" class="mt-4 text-lg md:text-xl text-gray-700"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Content -->
+        <section id="introduction-section" class="py-20 md:py-28 bg-[#F8F7F2] section-fade-in">
+            <div class="container mx-auto px-6 max-w-4xl content-text">
+                <div id="introduction-content"></div>
+            </div>
+        </section>
+
+        <!-- Part I: Modern Climate -->
+        <section id="part1" class="py-20 md:py-28 bg-white section-fade-in">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-16">
+                    <h2 id="part1-heading" class="text-3xl md:text-4xl"></h2>
+                    <p id="part1-subheading" class="mt-4 text-lg text-gray-600"></p>
+                </div>
+                <div class="content-text">
+                    <div id="part1-content"></div>
+                    <h4 class="text-xl mt-8 mb-4 font-semibold">Climate Averages (Proxy: Aleppo)</h4>
+                    <div class="climate-chart" id="climate-chart-container"></div>
+                    <div class="flex justify-center mt-4 space-x-6 text-sm">
+                        <div class="flex items-center"><span class="w-4 h-4 rounded-full mr-2" style="background-color: #ff6a88;"></span>Avg. High Temp (°C)</div>
+                        <div class="flex items-center"><span class="w-4 h-4 rounded-full mr-2" style="background-color: #8BC6EC;"></span>Avg. Rainfall (mm)</div>
+                    </div>
+                    <div id="part1-content-continued" class="mt-12"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part II: Ottoman Era (REDESIGNED WITH FLOAT) -->
+        <section id="part2" class="py-20 md:py-28 bg-[#F8F7F2] section-fade-in">
+             <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-16">
+                    <h2 id="part2-heading" class="text-3xl md:text-4xl"></h2>
+                    <p id="part2-subheading" class="mt-4 text-lg text-gray-600"></p>
+                </div>
+                <div class="content-text clearfix">
+                    <figure class="image-figure w-full md:w-1/2 lg:w-5/12 image-float-right">
+                        <img src="https://placehold.co/600x400/CDBA96/FFFFFF?text=Ottoman+Era+Manuscript" alt="Placeholder for an Ottoman era illustration" id="ottoman-era-image" class="w-full h-auto rounded-lg shadow-lg">
+                        <figcaption id="ottoman-era-image-caption">The LIA created immense environmental challenges for the agrarian-based Ottoman Empire.</figcaption>
+                    </figure>
+                    <div id="part2-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part III: Antiquity (REDESIGNED WITH FLOAT) -->
+        <section id="part3" class="py-20 md:py-28 bg-white section-fade-in">
+             <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-16">
+                    <h2 id="part3-heading" class="text-3xl md:text-4xl"></h2>
+                    <p id="part3-subheading" class="mt-4 text-lg text-gray-600"></p>
+                </div>
+                 <div class="content-text clearfix">
+                    <figure class="image-figure w-full md:w-1/2 lg:w-5/12 image-float-left">
+                        <img src="https://placehold.co/600x450/B4A090/FFFFFF?text=Roman+Ruins+in+Syria" alt="Placeholder for Roman ruins" id="roman-era-image" class="w-full h-auto rounded-lg shadow-lg">
+                        <figcaption id="roman-era-image-caption">Roman-era ruins, such as those at Cyrrhus near Afrin, attest to the region's prosperity during the Roman Warm Period.</figcaption>
+                    </figure>
+                    <div id="part3-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part IV: Paleoclimate (REDESIGNED WITH FLOAT) -->
+        <section id="part4" class="py-20 md:py-28 bg-[#F8F7F2] section-fade-in">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 max-w-4xl mx-auto">
+                    <h2 id="part4-heading" class="text-3xl md:text-4xl"></h2>
+                     <p id="part4-subheading" class="mt-4 text-lg text-gray-600"></p>
+                </div>
+                
+                <div class="scroll-timeline-container" id="scroll-timeline-container"></div>
+
+                <div class="container mx-auto px-6 max-w-4xl mt-16 content-text clearfix">
+                    <figure class="image-figure w-full md:w-1/2 lg:w-5/12 image-float-right">
+                        <img src="https://placehold.co/600x400/6B8E23/FFFFFF?text=Ancient+Olive+Press" alt="Placeholder for an ancient olive press" id="olive-press-image" class="w-full h-auto rounded-lg shadow-lg">
+                        <figcaption id="olive-press-image-caption">The expansion of olive cultivation in the Bronze Age marked a new phase of agricultural development.</figcaption>
+                    </figure>
+                    <div id="part4-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion (REDESIGNED WITH FLOAT) -->
+        <section id="conclusion" class="py-20 md:py-28 bg-white section-fade-in">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-12">
+                     <h2 id="conclusion-heading" class="text-3xl md:text-4xl"></h2>
+                </div>
+                <div class="content-text clearfix">
+                    <figure class="image-figure w-full md:w-1/2 lg:w-5/12 image-float-right">
+                        <img src="https://placehold.co/600x500/556B2F/FFFFFF?text=Drought+in+Syria" alt="Placeholder for a drought-affected landscape" id="drought-image" class="w-full h-auto rounded-lg shadow-lg">
+                        <figcaption id="drought-image-caption">The 2006-2010 drought highlighted the region's modern vulnerability to climate stress amplified by human factors.</figcaption>
+                    </figure>
+                    <div id="conclusion-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer / Works Cited -->
+        <footer class="py-16 bg-gray-800 text-gray-300">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h2 id="works-cited-heading" class="text-3xl text-white"></h2>
+                <ol class="list-decimal list-inside mt-8 space-y-2 text-sm text-gray-400" id="works-cited-content"></ol>
+                
+                <p class="mt-12 text-center text-gray-400">
+                    Created by Zachariah Hopkins : <a href="https://www.zachariahhopkins.com" target="_blank" class="text-blue-400 hover:text-blue-300 underline">www.zachariahhopkins.com</a>
+                </p>
+            </div>
+        </footer>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- Mobile Menu ---
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    }
+
+    // --- Section Fade-in on Scroll ---
+    const sections = document.querySelectorAll('.section-fade-in');
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+
+    // --- Nav Link Highlighting on Scroll ---
+    const navLinks = document.querySelectorAll('.nav-link');
+    const contentSections = document.querySelectorAll('main > section');
+    const activateNavLink = (id) => {
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const linkHref = link.getAttribute('href');
+            if(linkHref === '#' + id) {
+                link.classList.add('active');
+            }
+        });
+    };
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                activateNavLink(entry.target.id);
+            }
+        });
+    }, { rootMargin: '-40% 0px -60% 0px' });
+    contentSections.forEach(section => {
+        if(section.id) navObserver.observe(section);
+    });
+
+    // --- PRESERVED: Climate Chart with Always-Visible Values ---
+    const climateData = [
+        { month: 'Jan', temp: 10, rain: 64 }, { month: 'Feb', temp: 12, rain: 52 },
+        { month: 'Mar', temp: 17, rain: 46 }, { month: 'Apr', temp: 23, rain: 34 },
+        { month: 'May', temp: 29, rain: 18 }, { month: 'Jun', temp: 34, rain: 3 },
+        { month: 'Jul', temp: 36, rain: 1 }, { month: 'Aug', temp: 36, rain: 1 },
+        { month: 'Sep', temp: 32, rain: 3 }, { month: 'Oct', temp: 26, rain: 27 },
+        { month: 'Nov', temp: 18, rain: 36 }, { month: 'Dec', temp: 12, rain: 57 }
+    ];
+    const chartContainer = document.getElementById('climate-chart-container');
+    const maxTemp = 50; 
+    const maxRain = 70;
+
+    climateData.forEach(data => {
+        const group = document.createElement('div');
+        group.className = 'chart-bar-group';
+        
+        const barContainer = document.createElement('div');
+        barContainer.className = 'bar-container';
+
+        const tempBar = document.createElement('div');
+        tempBar.className = 'chart-bar temp-bar';
+        tempBar.style.height = `${(data.temp / maxTemp) * 100}%`;
+        tempBar.innerHTML = `<span class="bar-value">${data.temp}°</span>`;
+
+        const rainBar = document.createElement('div');
+        rainBar.className = 'chart-bar rain-bar';
+        rainBar.style.height = `${(data.rain / maxRain) * 100}%`;
+        rainBar.innerHTML = `<span class="bar-value">${data.rain}</span>`;
+        
+        barContainer.appendChild(tempBar);
+        barContainer.appendChild(rainBar);
+
+        const monthLabel = document.createElement('div');
+        monthLabel.className = 'month-label';
+        monthLabel.textContent = data.month;
+        
+        group.appendChild(barContainer);
+        group.appendChild(monthLabel);
+        if (chartContainer) {
+            chartContainer.appendChild(group);
+        }
+    });
+
+    // --- PRESERVED: Scroll-based Timeline ---
+    const timelineEventsData = [
+        { date: "c. 12,900-11,700 BP", title: "Younger Dryas", content: "A period of intense cold and aridity with steppe vegetation dominating the landscape. Human societies were primarily late hunter-gatherers (Natufian)." },
+        { date: "c. 11,700-8,200 BP", title: "Early Holocene", content: "An abrupt shift to a much warmer and wetter climate. This climatic amelioration was the fundamental enabling condition for the Neolithic Revolution and the origins of agriculture, with oak forests expanding across the region." },
+        { date: "c. 8,200 BP", title: "8.2 ka Event", content: "An abrupt, sharp cooling and drying event, recorded in global climate proxies. It is associated with significant cultural changes in early Neolithic settlements." },
+        { date: "c. 8,000-4,500 BP", title: "Mid-Holocene Optimum", content: "A long period of generally warm, humid, and stable climate. This era saw the rise of early urban civilizations during the Bronze Age, supported by reliable agricultural conditions." },
+        { date: "c. 4,200 BP", title: "4.2 ka 'Megadrought'", content: "A severe, multi-century global drought event. It is famously linked to the collapse of the Akkadian Empire in Mesopotamia and widespread societal crisis across the Near East." },
+        { date: "c. 1200 BCE", title: "Late Bronze Age Collapse", content: "Marked by a severe, abrupt drought. Pollen records show a dramatic decrease in tree cover, indicating both aridification and the collapse of complex palatial economies like the Hittite and Ugaritic civilizations." },
+        { date: "c. 200 BCE - 400 CE", title: "Roman Warm Period", content: "An era of warm, stable, and relatively wet conditions that underwrote the agricultural and demographic peak of the Roman and early Byzantine Empires in the Levant." },
+        { date: "c. 536-660 CE", "title": "Late Antique Little Ice Age", content: "An abrupt and severe cooling event, triggered by major volcanic eruptions. This period of climate stress coincided with the Plague of Justinian, contributing to societal decline in marginal areas of the Byzantine Empire." },
+        { date: "c. 900-1300 CE", title: "Medieval Climate Anomaly", content: "A complex period starting with one of the driest epochs of the last two millennia (900-1100 CE), causing famine and conflict, followed by a much wetter phase that allowed for agricultural recovery." },
+        { date: "c. 1550-1850 CE", title: "Little Ice Age", content: "A period that was cooler and, in the Levant, significantly drier. It is linked to severe droughts, Ottoman-era famines, and major social unrest like the Celâlî Rebellions." },
+        { date: "c. 1900-2010 CE", title: "Modern Warming Trend", content: "A period of instrumentally-recorded warming and increasing aridity, culminating in the 2006-2010 drought, a hybrid disaster amplified by anthropogenic climate change." }
+    ];
+    const scrollTimelineContainer = document.getElementById('scroll-timeline-container');
+
+    if (scrollTimelineContainer) {
+        timelineEventsData.forEach((event, index) => {
+            const side = index % 2 === 0 ? 'left' : 'right';
+            const entry = document.createElement('div');
+            entry.className = `timeline-entry ${side}`;
+            entry.innerHTML = `
+                <div class="timeline-content">
+                    <h3 class="text-xl font-bold">${event.title}</h3>
+                    <p class="text-sm text-gray-500 mb-2">${event.date}</p>
+                    <p>${event.content}</p>
+                </div>
+            `;
+            scrollTimelineContainer.appendChild(entry);
+        });
+
+        const timelineEntries = document.querySelectorAll('.timeline-entry');
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        timelineEntries.forEach(entry => {
+            timelineObserver.observe(entry);
+        });
+    }
+});
+</script>
+
+</body>
+</html>

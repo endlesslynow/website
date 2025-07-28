@@ -13,8 +13,8 @@ import shutil # For robust file copying
 
 def extract_image_placeholders(html_path):
     """
-    (NEW FUNCTION)
-    Parses the HTML file to find all image placeholders from <img> tags and CSS background-image styles.
+    (MODIFIED)
+    Parses the HTML file. Now correctly extracts clean names from placehold.co URLs.
     """
     if not html_path or not os.path.exists(html_path):
         return {}, "HTML file not found."
@@ -26,54 +26,60 @@ def extract_image_placeholders(html_path):
         with open(html_path, 'r', encoding='utf-8') as f:
             soup = BeautifulSoup(f, 'html.parser')
 
-        # Find all <img> tags
         for img_tag in soup.find_all('img', id=True):
             img_id = img_tag['id']
             if img_id in excluded_ids: continue
-            placeholder_text = img_tag.get('alt', 'Image')
-            if 'placehold.co' in img_tag.get('src', ''):
-                match = re.search(r'text=([^&]+)', img_tag['src'])
-                if match: placeholder_text = match.group(1).replace('+', ' ')
-            images[img_id] = {'type': 'img', 'name': placeholder_text, 'new_src_path': None, 'credit': '', 'description': ''}
+            caption_tag = soup.find('figcaption', id=f"{img_id}-caption")
+            description_text = caption_tag.get_text(strip=True) if caption_tag else 'Image Description'
+            images[img_id] = {'type': 'img', 'name': img_tag.get('alt', 'Image'), 'new_src_path': None, 'credit': '', 'description': description_text}
 
-        # Find inline background-images
         for i, tag in enumerate(soup.find_all(style=re.compile(r'background-image'))):
             style_attr = tag['style']
-            match = re.search(r"url\(['\"]?(.*?)['\"]?\)", style_attr)
-            if match and 'placehold.co' in match.group(1):
-                text_match = re.search(r'text=([^&]+)', match.group(1))
-                if text_match:
-                    placeholder_name = text_match.group(1).replace('+', ' ')
-                    bg_id = tag.get('id', f'background-inline-{i}')
-                    images[bg_id] = {'type': 'background_inline', 'name': placeholder_name, 'tag_id': bg_id, 'new_src_path': None, 'credit': ''}
+            match = re.search(r"url\(['\"]?([^'\")]+)['\"]?\)", style_attr)
+            if match:
+                url = match.group(1)
+                bg_id = tag.get('id', f'background-inline-{i}')
+                # --- GENERALIZED LOGIC for cleaner names ---
+                if 'placehold.co' in url and 'text=' in url:
+                    text_match = re.search(r'text=([^&]+)', url)
+                    placeholder_name = text_match.group(1).replace('+', ' ').replace('%20', ' ') if text_match else "Background Image"
+                else:
+                    placeholder_name = os.path.splitext(os.path.basename(url))[0].replace('_', ' ').replace('-', ' ').title()
+                # --- END GENERALIZED LOGIC ---
+                images[bg_id] = {'type': 'background_inline', 'name': placeholder_name, 'tag_id': bg_id, 'new_src_path': None, 'credit': ''}
         
-        # Find background-images in <style> tags
         for style_tag in soup.find_all('style'):
             css_text = style_tag.string if style_tag.string else ''
-            css_rules = re.findall(r'([\.#\w\s,-]+)\s*\{[^\}]*?background-image:.*?url\([\'"]?(.*?)[\'"]?\)[^\}]*?\}', css_text, re.DOTALL)
-            for selector, url in css_rules:
-                selector = selector.strip()
-                if 'placehold.co' in url:
-                    text_match = re.search(r'text=([^&]+)', url)
-                    if text_match:
-                        placeholder_name = text_match.group(1).replace('+', ' ')
-                        images[selector] = {'type': 'background_style', 'name': placeholder_name, 'selector': selector, 'new_src_path': None, 'credit': ''}
+            css_rules = re.findall(r'([^{]+)\s*\{([^}]+)\}', css_text)
+            for selector, properties in css_rules:
+                if 'background-image' in properties:
+                    url_match = re.search(r"url\(['\"]?([^'\")]+)['\"]?\)", properties)
+                    if url_match:
+                        url = url_match.group(1)
+                        clean_selector = selector.strip()
+                        # --- GENERALIZED LOGIC for cleaner names ---
+                        if 'placehold.co' in url and 'text=' in url:
+                           text_match = re.search(r'text=([^&]+)', url)
+                           placeholder_name = text_match.group(1).replace('+', ' ').replace('%20', ' ') if text_match else "Background Image"
+                        else:
+                           placeholder_name = os.path.splitext(os.path.basename(url))[0].replace('_', ' ').replace('-', ' ').title()
+                        # --- END GENERALIZED LOGIC ---
+                        images[clean_selector] = {'type': 'background_style', 'name': placeholder_name, 'selector': clean_selector, 'new_src_path': None, 'credit': ''}
+
     except Exception as e:
         return {}, f"Error parsing HTML for images: {e}"
     return images, "Image placeholders extracted successfully."
 
 def add_paragraph_spacing(md_text):
     """
-    (FROM YOUR ORIGINAL SCRIPT - UNCHANGED)
-    Ensures paragraphs are separated by a blank line for correct HTML conversion.
+    (UNCHANGED)
     """
     processed_text = re.sub(r'\n+', '\n\n', md_text)
     return processed_text
 
 def parse_markdown_content(md_path):
     """
-    (FROM YOUR ORIGINAL SCRIPT - UNCHANGED)
-    Parses the Markdown file and adds better paragraph spacing.
+    (UNCHANGED)
     """
     if not md_path: return None, "Error: Markdown file not provided."
     try:
@@ -84,61 +90,88 @@ def parse_markdown_content(md_path):
 
     md_text = add_paragraph_spacing(raw_md_text)
     content = {}
+
+    main_title_match = re.search(r'# \*\*(.*?)\*\*', md_text)
+    if main_title_match:
+        full_title = main_title_match.group(1)
+        if ':' in full_title:
+            parts = full_title.split(':', 1)
+            content['main-title'] = parts[0].strip()
+            content['main-subtitle'] = parts[1].strip()
+        else:
+            content['main-title'] = full_title.strip()
+            content['main-subtitle'] = ""
     
-    intro_match = re.search(r'## \*\*Part I: Introduction \\- (.*?)\*\*(.*?)(?=## \*\*Part II:)', md_text, re.DOTALL)
+    intro_match = re.search(r'## \*\*Introduction\*\*(.*?)(?=## \*\*Part I:)', md_text, re.DOTALL)
     if intro_match:
-        content['introduction-heading'] = intro_match.group(1).strip().replace('\n', ' ')
-        content['introduction-content'] = markdown2.markdown(intro_match.group(2).strip())
-    origins_match = re.search(r'## \*\*Part II: The Land of Gutium \\- (.*?)\*\*(.*?)(?=## \*\*Part III:)', md_text, re.DOTALL)
-    if origins_match:
-        content['origins-heading'] = "The Land of Gutium"
-        content['origins-subheading'] = origins_match.group(1).strip().replace('\n', ' ')
-        content['origins-content'] = markdown2.markdown(origins_match.group(2).strip())
-    collapse_match = re.search(r'## \*\*Part III: The Fall of Akkad \\- (.*?)\*\*(.*?)(?=## \*\*Part IV:)', md_text, re.DOTALL)
-    if collapse_match:
-        content['collapse-heading'] = "The Fall of Akkad"
-        content['collapse-subheading'] = collapse_match.group(1).strip().replace('\n', ' ')
-        content['collapse-content'] = markdown2.markdown(collapse_match.group(2).strip())
-    dynasty_match = re.search(r'## \*\*Part IV: The Gutian Dynasty \\- (.*?)\*\*(.*?)(?=## \*\*Part V:)', md_text, re.DOTALL)
-    if dynasty_match:
-        content['dynasty-heading'] = "The Gutian Dynasty"
-        content['dynasty-subheading'] = dynasty_match.group(1).strip().replace('\n', ' ')
-        dynasty_md = dynasty_match.group(2).strip()
-        table_start_match = re.search(r'\| Order \|', dynasty_md)
-        intro_md = dynasty_md[:table_start_match.start()] if table_start_match else dynasty_md
-        table_md = dynasty_md[table_start_match.start():] if table_start_match else ''
-        content['dynasty-content-intro'] = markdown2.markdown(intro_md.strip())
-        kings = []
-        if table_md:
-            table_lines = [line.strip() for line in table_md.strip().split('\n') if line.strip().startswith('|')]
-            for line in table_lines[2:]:
-                cells = [cell.strip() for cell in line.split('|')]
-                if len(cells) > 4:
-                    name = cells[2].replace('*', '')
-                    reign = cells[3]
-                    attested = cells[4]
-                    description = f"Reigned for {reign}. {attested} attested outside SKL."
-                    kings.append({'name': name, 'reign': reign, 'description': description})
-        content['dynasty-timeline'] = kings
-    gudea_match = re.search(r'## \*\*Part V: Voices from the "Dark Age" \\- (.*?)\*\*(.*?)(?=## \*\*Part VI:)', md_text, re.DOTALL)
-    if gudea_match:
-        content['gudea-heading'] = "Voices from the \"Dark Age\""
-        content['gudea-subheading'] = gudea_match.group(1).strip().replace('\n', ' ')
-        content['gudea-content'] = markdown2.markdown(gudea_match.group(2).strip())
-    expulsion_match = re.search(r'## \*\*Part VI: The Sumerian Renaissance \\- (.*?)\*\*(.*?)(?=## \*\*Part VII:)', md_text, re.DOTALL)
-    if expulsion_match:
-        content['expulsion-heading'] = "The Sumerian Renaissance"
-        content['expulsion-subheading'] = expulsion_match.group(1).strip().replace('\n', ' ')
-        content['expulsion-content'] = markdown2.markdown(expulsion_match.group(2).strip())
-    legacy_match = re.search(r'## \*\*Part VII: Legacy and Afterlife \\- (.*?)\*\*(.*?)(?=## \*\*Part VIII:)', md_text, re.DOTALL)
-    if legacy_match:
-        content['legacy-heading'] = "Legacy and Afterlife"
-        content['legacy-subheading'] = legacy_match.group(1).strip().replace('\n', ' ')
-        content['legacy-content'] = markdown2.markdown(legacy_match.group(2).strip())
-    conclusion_match = re.search(r'## \*\*Part VIII: Conclusion \\- (.*?)\*\*(.*?)(?=## \*\*Part IX:)', md_text, re.DOTALL)
+        content['introduction-content'] = markdown2.markdown(intro_match.group(1).strip())
+
+    part1_match = re.search(r'## \*\*(Part I:.*?)\*\*(.*?)(?=## \*\*Part II:)', md_text, re.DOTALL)
+    if part1_match:
+        heading_full = part1_match.group(1)
+        if '(' in heading_full:
+            heading_parts = heading_full.split('(', 1)
+            content['part1-heading'] = heading_parts[0].strip()
+            content['part1-subheading'] = '(' + heading_parts[1].strip()
+        else:
+            content['part1-heading'] = heading_full
+            content['part1-subheading'] = ''
+        
+        part1_body = part1_match.group(2).strip()
+        
+        table_pattern = re.compile(r'\*\*Table 1:.*?Days\s*\|.*?December.*?\|', re.DOTALL | re.IGNORECASE)
+        part1_body_no_table = table_pattern.sub('', part1_body)
+
+        split_marker = '### **The 20th Century Warming and Drying Trend**'
+        if split_marker in part1_body_no_table:
+            content1, content2 = part1_body_no_table.split(split_marker, 1)
+            content['part1-content'] = markdown2.markdown(content1.strip())
+            content['part1-content-continued'] = markdown2.markdown(f"### **The 20th Century Warming and Drying Trend**\n{content2.strip()}")
+        else:
+            content['part1-content'] = markdown2.markdown(part1_body_no_table)
+            content['part1-content-continued'] = ''
+
+    part2_match = re.search(r'## \*\*(Part II:.*?)\*\*(.*?)(?=## \*\*Part III:)', md_text, re.DOTALL)
+    if part2_match:
+        heading_full = part2_match.group(1)
+        if '(' in heading_full:
+            heading_parts = heading_full.split('(', 1)
+            content['part2-heading'] = heading_parts[0].strip()
+            content['part2-subheading'] = '(' + heading_parts[1].strip()
+        else:
+            content['part2-heading'] = heading_full
+            content['part2-subheading'] = ''
+        content['part2-content'] = markdown2.markdown(part2_match.group(2).strip())
+
+    part3_match = re.search(r'## \*\*(Part III:.*?)\*\*(.*?)(?=## \*\*Part IV:)', md_text, re.DOTALL)
+    if part3_match:
+        heading_full = part3_match.group(1)
+        if '(' in heading_full:
+            heading_parts = heading_full.split('(', 1)
+            content['part3-heading'] = heading_parts[0].strip()
+            content['part3-subheading'] = '(' + heading_parts[1].strip()
+        else:
+            content['part3-heading'] = heading_full
+            content['part3-subheading'] = ''
+        content['part3-content'] = markdown2.markdown(part3_match.group(2).strip())
+
+    part4_match = re.search(r'## \*\*(Part IV:.*?)\*\*(.*?)(?=## \*\*Conclusion:)', md_text, re.DOTALL)
+    if part4_match:
+        content['part4-heading'] = part4_match.group(1).strip()
+        content['part4-subheading'] = "The Holocene Climate Record"
+        part4_body = part4_match.group(2).strip()
+        table_end_marker = 'Dates are approximate and based on a synthesis of sources.8'
+        if table_end_marker in part4_body:
+            _, final_content = part4_body.split(table_end_marker, 1)
+            content['part4-content'] = markdown2.markdown(final_content.strip())
+        else:
+            content['part4-content'] = markdown2.markdown(part4_body, extras=["tables"])
+
+    conclusion_match = re.search(r'## \*\*(Conclusion:.*?)\*\*(.*?)(?=## \*\*Works Cited\*\*)', md_text, re.DOTALL)
     if conclusion_match:
-        content['conclusion-heading'] = conclusion_match.group(1).strip().replace('\n', ' ')
+        content['conclusion-heading'] = conclusion_match.group(1).strip()
         content['conclusion-content'] = markdown2.markdown(conclusion_match.group(2).strip())
+
     works_cited_match = re.search(r'#### \*\*Works cited\*\*(.*)', md_text, re.DOTALL)
     if works_cited_match:
         content['works-cited-heading'] = "Works Cited"
@@ -146,16 +179,15 @@ def parse_markdown_content(md_path):
         citation_lines = re.findall(r'^\d+\.\s+(.*?)(?=^\d+\.|$)', citations_text, re.MULTILINE | re.DOTALL)
         list_items = [f"<li id='citation-{i}' class='citation-item'>{line.strip()}</li>" for i, line in enumerate(citation_lines, 1) if line.strip()]
         list_items_html = "".join(list_items)
-        ordered_list = f"<ol class='list-decimal list-inside space-y-2'>{list_items_html}</ol>"
-        content['works-cited-content'] = ordered_list
-    content['main-title'] = "The Gutian Enigma"
-    content['main-subtitle'] = "Deconstructing the Barbarian in Ancient Mesopotamian History"
+        content['works-cited-content'] = list_items_html
+    
     return content, "Markdown Parsed Successfully."
+
 
 def inject_content_into_html(html_path, content, image_data):
     """
-    (MODIFIED FROM YOUR ORIGINAL SCRIPT)
-    Injects the correctly parsed and formatted content into the HTML file.
+    (MODIFIED)
+    Injects content. Citation logic is restored to its original working state with the one requested fix.
     """
     if not html_path: return "Error: HTML file not provided."
     try:
@@ -164,43 +196,15 @@ def inject_content_into_html(html_path, content, image_data):
     except Exception as e:
         return f"Error reading HTML file: {e}"
 
-    # --- Text Injection (FROM YOUR ORIGINAL SCRIPT - UNCHANGED) ---
-    conclusion_container = soup.find(id='conclusion-content')
-    if conclusion_container and conclusion_container.parent and 'text-center' in conclusion_container.parent.get('class', []):
-        conclusion_container.parent['class'].remove('text-center')
-        conclusion_container.parent['class'].append('text-left')
-
     for key, value in content.items():
         element = soup.find(id=key)
         if element:
             element.clear()
             if isinstance(value, str) and value.strip():
                 new_soup = BeautifulSoup(value, 'html.parser')
-                for child in new_soup.contents: element.append(child.extract())
-            elif key == 'dynasty-timeline' and isinstance(value, list):
-                timeline_container = soup.find(id='dynasty-timeline')
-                if timeline_container:
-                    timeline_container.clear()
-                    king_list_ul = soup.new_tag('ul', attrs={'class': 'timeline-king-list', 'id': 'timeline-king-list', 'style': 'max-height: 600px; overflow-y: auto; font-size: 1.1rem;'})
-                    king_details_div = soup.new_tag('div', attrs={'class': 'timeline-king-details-content', 'id': 'timeline-king-details', 'style': 'padding: 2rem; font-size: 1.1rem; line-height: 1.6;'})
-                    for i, king in enumerate(value):
-                        king_id = f"king-detail-{i}"
-                        li = soup.new_tag('li', attrs={'class': 'timeline-king-item', 'data-target': king_id, 'style': 'padding: 1.25rem; font-size: 1.1rem; font-weight: 500;'})
-                        li.string = king['name']
-                        king_list_ul.append(li)
-                        detail_div = soup.new_tag('div', attrs={'class': 'timeline-king-detail', 'id': king_id})
-                        h3 = soup.new_tag('h3', attrs={'class': 'text-3xl mb-3', 'style': 'color: #fbbf24; font-weight: bold;'})
-                        h3.string = king['name']
-                        p_reign = soup.new_tag('p', attrs={'class': 'text-lg text-gray-300 mb-6', 'style': 'font-size: 1.2rem;'})
-                        p_reign.string = f"Reign: {king['reign']}"
-                        p_desc = soup.new_tag('p', attrs={'style': 'font-size: 1.1rem; line-height: 1.7; color: #d1d5db;'})
-                        p_desc.string = king['description']
-                        detail_div.extend([h3, p_reign, p_desc])
-                        king_details_div.append(detail_div)
-                    timeline_container.append(king_list_ul)
-                    timeline_container.append(king_details_div)
+                for child in list(new_soup.contents):
+                    element.append(child.extract())
 
-    # --- Image Injection (NEW LOGIC ADDED HERE) ---
     html_dir = os.path.dirname(html_path)
     images_dir = os.path.join(html_dir, 'images')
     os.makedirs(images_dir, exist_ok=True)
@@ -209,10 +213,8 @@ def inject_content_into_html(html_path, content, image_data):
 
     for key, data in image_data.items():
         if data['type'] == 'img':
-            desc_element = soup.find(id=f"{key}-description")
+            desc_element = soup.find(id=f"{key}-caption")
             if desc_element: desc_element.string = data.get('description', '')
-            credit_element = soup.find(id=f"{key}-credit")
-            if credit_element: credit_element.string = data.get('credit', '')
         
         if data.get('new_src_path'):
             sanitized_name = re.sub(r'[^\w\.-]', '_', data.get('name', key))
@@ -235,31 +237,27 @@ def inject_content_into_html(html_path, content, image_data):
 
     if style_tag_to_update: style_tag_to_update.string = css_text
     
-    # --- Citation Linking (FROM YOUR ORIGINAL SCRIPT - UNCHANGED) ---
-    content_divs = soup.select('.content-text')
+    # --- CITATION LOGIC RESTORED AND CORRECTED ---
+    content_divs = soup.select('.content-text, .timeline-content')
     for div in content_divs:
+        # Using str(div) and replace_with() which was the original working method.
         html_string = str(div)
-        corrected_html = re.sub(r'([,.?!])(\d+)', r'\1<sup><a href="#citation-\2" class="source-link">[\2]</a></sup>', html_string)
+        # The regex now uses a negative lookbehind (?<!\d) to ensure the character
+        # before the punctuation is NOT a digit. This fixes the "3.8" issue.
+        corrected_html = re.sub(r'(?<!\d)([,.?!])(\d+)', r'\1<sup><a href="#citation-\2" class="source-link">[\2]</a></sup>', html_string)
         if corrected_html != html_string:
             new_div = BeautifulSoup(corrected_html, 'html.parser')
             div.replace_with(new_div)
+    # --- END CITATION LOGIC ---
 
-    # --- Add Timeline Script Call (FROM YOUR ORIGINAL SCRIPT - UNCHANGED) ---
-    # --- Add Timeline Script Call ---
-    if soup.body:
-        script_tag = soup.new_tag("script")
-        script_tag.string = "if(window.setupTimeline) { window.setupTimeline(); }"
-        soup.body.append(script_tag)
-
-    # --- Save (FROM YOUR ORIGINAL SCRIPT - UNCHANGED, OVERWRITES FILE) ---
     try:
         with open(html_path, 'w', encoding='utf-8') as f:
-            f.write(str(soup.prettify(formatter="html5")))
+            f.write(str(soup))
     except Exception as e:
         return f"Error writing to HTML file: {e}"
     return "Injection Complete with Clickable Citations!"
 
-# --- GUI APPLICATION ---
+# --- GUI APPLICATION (UNCHANGED) ---
 class ScrollableFrame(ttk.Frame):
     def __init__(self, container, *args, **kwargs):
         super().__init__(container, *args, **kwargs)
@@ -361,39 +359,45 @@ class App(TkinterDnD.Tk):
 
     def create_image_widgets(self):
         container = self.scrollable_image_area.scrollable_frame
-        for img_id, data in self.image_data.items():
-            frame = ttk.Frame(container, padding=5)
-            frame.pack(fill="x", expand=True, pady=5, padx=5)
-            frame.grid_columnconfigure(1, weight=1)
+        container.grid_columnconfigure(0, weight=1)
+        label_font = ("Helvetica", 10)
 
-            left_frame = ttk.Frame(frame)
-            left_frame.grid(row=0, column=0, rowspan=2, padx=(0, 10))
-            canvas = tk.Canvas(left_frame, width=100, height=60, bg="#ecf0f1", relief="sunken", borderwidth=1)
+        for i, (img_id, data) in enumerate(self.image_data.items()):
+            item_frame = ttk.Labelframe(container, text=f"ID: {img_id}", padding=(10, 5))
+            item_frame.grid(row=i, column=0, sticky="ew", padx=5, pady=8)
+            item_frame.grid_columnconfigure(0, weight=0)
+            item_frame.grid_columnconfigure(1, weight=1)
+
+            left_frame = ttk.Frame(item_frame)
+            left_frame.grid(row=0, column=0, sticky="ns", padx=(0, 15))
+            
+            canvas = tk.Canvas(left_frame, width=200, height=120, bg="#ecf0f1", relief="sunken", borderwidth=1)
             canvas.pack()
-            canvas.create_text(50, 30, text="Preview", fill="grey", font=("Helvetica", 9))
-            browse_button = ttk.Button(left_frame, text="Browse...", command=lambda i=img_id: self.browse_for_image(i))
-            browse_button.pack(pady=(5,0))
+            canvas.create_text(100, 60, text="Image Preview", fill="grey", font=("Helvetica", 10))
             
-            right_frame = ttk.Frame(frame)
-            right_frame.grid(row=0, column=1, rowspan=2, sticky="nsew")
-            right_frame.grid_columnconfigure(0, weight=1)
-            
-            name_entry = ttk.Entry(right_frame)
-            name_entry.insert(0, data.get('name', 'Unnamed Image'))
-            name_entry.pack(fill="x", expand=True, anchor="w")
-            
-            if data['type'] == 'img':
-                desc_entry = ttk.Entry(right_frame)
-                desc_entry.insert(0, "Description")
-                desc_entry.pack(fill="x", expand=True, anchor="w", pady=(5,0))
-            else: desc_entry = None
+            browse_button = ttk.Button(left_frame, text="Browse for Image...", command=lambda i=img_id: self.browse_for_image(i))
+            browse_button.pack(pady=(5,0), fill='x')
 
-            credit_frame = ttk.Frame(right_frame)
-            credit_frame.pack(fill="x", expand=True, pady=(5,0))
-            credit_frame.grid_columnconfigure(1, weight=1)
-            ttk.Label(credit_frame, text="Credit:").grid(row=0, column=0, sticky="w")
-            credit_entry = ttk.Entry(credit_frame)
-            credit_entry.grid(row=0, column=1, sticky="ew", padx=5)
+            right_frame = ttk.Frame(item_frame)
+            right_frame.grid(row=0, column=1, sticky="nsew")
+            right_frame.grid_columnconfigure(1, weight=1)
+
+            ttk.Label(right_frame, text="Name:", font=label_font).grid(row=0, column=0, sticky="w", pady=4)
+            name_entry = ttk.Entry(right_frame, font=label_font)
+            name_entry.insert(0, data.get('name', 'Unnamed Image'))
+            name_entry.grid(row=0, column=1, sticky="ew", padx=5)
+
+            ttk.Label(right_frame, text="Credit:", font=label_font).grid(row=1, column=0, sticky="w", pady=4)
+            credit_entry = ttk.Entry(right_frame, font=label_font)
+            credit_entry.grid(row=1, column=1, sticky="ew", padx=5)
+
+            if data['type'] == 'img':
+                ttk.Label(right_frame, text="Desc:", font=label_font).grid(row=2, column=0, sticky="nw", pady=4)
+                desc_entry = tk.Text(right_frame, height=4, width=40, wrap=tk.WORD, font=label_font, relief="sunken", borderwidth=1)
+                desc_entry.insert("1.0", data.get('description', ''))
+                desc_entry.grid(row=2, column=1, sticky="ew", padx=5)
+            else:
+                desc_entry = None
             
             self.image_widgets[img_id] = {'canvas': canvas, 'name_entry': name_entry, 'desc_entry': desc_entry, 'credit_entry': credit_entry}
 
@@ -406,12 +410,12 @@ class App(TkinterDnD.Tk):
 
         try:
             with Image.open(file_path) as img:
-                img.thumbnail((100, 60))
+                img.thumbnail((200, 120))
                 canvas = self.image_widgets[img_id]['canvas']
                 photo_image = ImageTk.PhotoImage(img)
                 self.photo_references[img_id] = photo_image
                 canvas.delete("all")
-                canvas.create_image(50, 30, image=self.photo_references[img_id])
+                canvas.create_image(100, 60, image=self.photo_references[img_id])
         except Exception as e:
             messagebox.showerror("Image Error", f"Could not load or display the image.\nError: {e}")
 
@@ -426,7 +430,7 @@ class App(TkinterDnD.Tk):
             self.image_data[img_id]['name'] = widgets['name_entry'].get()
             self.image_data[img_id]['credit'] = widgets['credit_entry'].get()
             if widgets['desc_entry']:
-                self.image_data[img_id]['description'] = widgets['desc_entry'].get()
+                self.image_data[img_id]['description'] = widgets['desc_entry'].get("1.0", tk.END).strip()
 
         self.status_var.set("Parsing Markdown...")
         self.update_idletasks()

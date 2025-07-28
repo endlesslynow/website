@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title id="main-title-tag">
+   Afrin Climate History
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+   /* --- Base Styles (Unchanged) --- */
+        body { font-family: 'Lato', sans-serif; background-color: #F8F7F2; color: #2c3e50; }
+        section { scroll-margin-top: 70px; }
+        h1, h2, h3, h4 { font-family: 'Lora', serif; color: #2F4F4F; font-weight: 600; }
+        .nav-link { position: relative; transition: color 0.3s; color: #2F4F4F; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 50%; transform: translateX(-50%); background-color: #BDB76B; transition: width 0.3s; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .hero-bg { background-image: linear-gradient(rgba(248, 247, 242, 0.6), rgba(248, 247, 242, 1)), url('images/Afrin_River_Valley.jpg'); background-size: cover; background-position: center; }
+        .section-fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .section-fade-in.visible { opacity: 1; transform: translateY(0); }
+        .content-text p { margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; }
+        .source-link { color: #BDB76B; font-weight: bold; text-decoration: none; transition: color 0.2s; }
+        .source-link:hover { color: #8B8970; }
+        .image-figure figcaption { margin-top: 0.5rem; font-size: 0.9rem; color: #6b7280; text-align: center; }
+
+        /* --- REDESIGNED LAYOUT: Float-based Text Wrapping --- */
+        
+        /* 1. The Float Property: Pushes the image to the side and allows text to wrap. */
+        .image-float-right {
+            float: right;
+            margin-left: 1.5rem; /* Space between text and image */
+            margin-bottom: 1rem;  /* Space below image */
+        }
+        .image-float-left {
+            float: left;
+            margin-right: 1.5rem; /* Space between text and image */
+            margin-bottom: 1rem;   /* Space below image */
+        }
+
+        /* 2. The Clearfix: Ensures the container expands to hold the floated image. */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* 3. Responsive Handling: On small screens, disable float so images stack vertically. */
+        @media screen and (max-width: 768px) {
+            .image-float-left,
+            .image-float-right {
+                float: none;
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* --- Other Styles (Unchanged) --- */
+        .climate-chart { display: flex; justify-content: space-around; align-items: flex-end; height: 300px; padding: 40px 10px 20px 10px; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e0e0e0; }
+        .chart-bar-group { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; width: 8%; height: 100%; position: relative; }
+        .bar-container { display: flex; align-items: flex-end; height: 100%; width: 100%; gap: 10%; }
+        .chart-bar { width: 50%; position: relative; border-radius: 3px 3px 0 0; }
+        .temp-bar { background-color: #ff9a8b; background-image: linear-gradient(0deg, #ff9a8b 0%, #ff6a88 100%); }
+        .rain-bar { background-color: #8BC6EC; background-image: linear-gradient(180deg, #8BC6EC 0%, #9599E2 100%); }
+        .bar-value { position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: bold; color: #333; }
+        .month-label { margin-top: 10px; font-size: 0.8rem; font-weight: bold; }
+        .scroll-timeline-container { position: relative; max-width: 1000px; margin: 0 auto; }
+        .scroll-timeline-container::after { content: ''; position: absolute; width: 6px; background-color: #BDB76B; top: 0; bottom: 0; left: 50%; margin-left: -3px; }
+        .timeline-entry { padding: 10px 40px; position: relative; background-color: inherit; width: 50%; opacity: 0; transform: translateY(50px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .timeline-entry.is-visible { opacity: 1; transform: translateY(0); }
+        .timeline-entry::after { content: ''; position: absolute; width: 25px; height: 25px; right: -17px; background-color: white; border: 4px solid #BDB76B; top: 15px; border-radius: 50%; z-index: 1; }
+        .timeline-entry.left { left: 0; }
+        .timeline-entry.right { left: 50%; }
+        .timeline-entry.left::before { content: " "; height: 0; position: absolute; top: 22px; width: 0; z-index: 1; right: 30px; border: medium solid white; border-width: 10px 0 10px 10px; border-color: transparent transparent transparent white; }
+        .timeline-entry.right::before { content: " "; height: 0; position: absolute; top: 22px; width: 0; z-index: 1; left: 30px; border: medium solid white; border-width: 10px 10px 10px 0; border-color: transparent white transparent transparent; }
+        .timeline-entry.right::after { left: -16px; }
+        .timeline-content { padding: 20px 30px; background-color: white; position: relative; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+  </style>
+ </head>
+ <body>
+  <!-- Header -->
+  <header class="bg-[#F8F7F2]/90 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm">
+   <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-slate-700">
+     Afrin's Climate
+    </h1>
+    <nav class="hidden md:flex space-x-6 lg:space-x-8">
+     <a class="nav-link active" href="#introduction-section">
+      Introduction
+     </a>
+     <a class="nav-link" href="#part1">
+      Modern Era
+     </a>
+     <a class="nav-link" href="#part2">
+      Ottoman Era
+     </a>
+     <a class="nav-link" href="#part3">
+      Antiquity
+     </a>
+     <a class="nav-link" href="#part4">
+      Deep Past
+     </a>
+     <a class="nav-link" href="#conclusion">
+      Conclusion
+     </a>
+    </nav>
+    <button class="md:hidden text-gray-800" id="mobile-menu-btn">
+     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+      </path>
+     </svg>
+    </button>
+   </div>
+   <div class="hidden md:hidden px-6 pb-4 bg-[#F8F7F2]" id="mobile-menu">
+    <a class="block py-2 nav-link" href="#introduction-section">
+     Introduction
+    </a>
+    <a class="block py-2 nav-link" href="#part1">
+     Modern Era
+    </a>
+    <a class="block py-2 nav-link" href="#part2">
+     Ottoman Era
+    </a>
+    <a class="block py-2 nav-link" href="#part3">
+     Antiquity
+    </a>
+    <a class="block py-2 nav-link" href="#part4">
+     Deep Past
+    </a>
+    <a class="block py-2 nav-link" href="#conclusion">
+     Conclusion
+    </a>
+   </div>
+  </header>
+  <main>
+   <!-- Hero Section -->
+   <section class="hero-bg min-h-screen flex items-center pt-16 md:pt-0" id="introduction">
+    <div class="container mx-auto px-6">
+     <div class="max-w-3xl">
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight" id="main-title">
+       A Multi-Millennial Climate History of Afrin, Syria
+      </h1>
+      <p class="mt-4 text-lg md:text-xl text-gray-700" id="main-subtitle">
+       From the Pleistocene to the Anthropocene Threshold (2010)
+      </p>
+     </div>
+    </div>
+   </section>
+   <!-- Introduction Content -->
+   <section class="py-20 md:py-28 bg-[#F8F7F2] section-fade-in" id="introduction-section">
+    <div class="container mx-auto px-6 max-w-4xl content-text">
+     <div id="introduction-content">
+      <p>
+       The Afrin District (Kurdish:
+       <em>
+        Her&ecirc;ma Efr&icirc;n&ecirc;
+       </em>
+       ), known historically as the Kurd-Dagh or "Mountain of the Kurds," occupies a unique and critical space in the landscape of human history and climate.
+       <sup>
+        <a class="source-link" href="#citation-1">
+         [1]
+        </a>
+       </sup>
+       Situated in the northwestern corner of Syria's Aleppo Governorate, the region is defined by the fertile valley of the Afrin River, which flows from the Taurus Mountains, bisects the district, and carves a path through its hilly, mountainous terrain before re-entering Turkey.
+       <sup>
+        <a class="source-link" href="#citation-4">
+         [4]
+        </a>
+       </sup>
+       This geography places Afrin at a climatic and ecological crossroads, a verdant bridge between the humid coast of the Mediterranean Sea to the west and the vast, arid steppes of the Syrian interior to the east.
+       <sup>
+        <a class="source-link" href="#citation-6">
+         [6]
+        </a>
+       </sup>
+       As a core component of the Fertile Crescent, this region was a cradle of the Neolithic Revolution, witnessing the profound transition from nomadic foraging to settled agriculture that would reshape the course of civilization.
+       <sup>
+        <a class="source-link" href="#citation-4">
+         [4]
+        </a>
+       </sup>
+      </p>
+      <p>
+       Central to the identity, economy, and ecological story of Afrin is the olive tree (
+       <em>
+        Olea europaea
+       </em>
+       ).
+       <sup>
+        <a class="source-link" href="#citation-4">
+         [4]
+        </a>
+       </sup>
+       More than just a crop, the olive is a cultural keystone and a living bio-indicator of the region's long-term climatic patterns. Archaeological and historical evidence suggests that intensive olive cultivation has been a feature of this landscape for at least 4,000 to 6,000 years, a testament to a climate uniquely suited to its needs.
+       <sup>
+        <a class="source-link" href="#citation-9">
+         [9]
+        </a>
+       </sup>
+       The enduring presence of these ancient groves provides a tangible link between the deep past and the present, their cycles of prosperity and decline mirroring the climatic fluctuations that have defined the region for millennia.
+      </p>
+      <p>
+       This report aims to construct an exhaustive, multi-millennial climate history of the Afrin region, from the transformative environmental shifts of the Late Pleistocene to the instrumentally recorded modern era, culminating at the 2010 threshold of a new, more volatile period. Given the absence of direct, long-term paleoclimatic archives from Afrin itself, this analysis employs a multi-proxy approach, synthesizing data from the broader Northern Levant. This includes high-resolution pollen records from locations such as the Ghab Valley in northwestern Syria, which reveal past vegetation changes; sediment cores from the Dead Sea and Lake Van, which act as powerful indicators of regional hydroclimate and drought cycles; and isotopic data from speleothems (cave formations), which provide detailed information on past rainfall and environmental conditions.
+       <sup>
+        <a class="source-link" href="#citation-12">
+         [12]
+        </a>
+       </sup>
+       By integrating these scientific archives with archaeological findings and historical accounts, this report will trace the intricate and often dramatic interplay between climate, environment, and human society in Afrin. The narrative will proceed chronologically, beginning with an analysis of the modern climate to establish a baseline, then moving backward through the historical periods of the Ottoman Empire, the Middle Ages, and Classical Antiquity, before delving into the deep Holocene past to uncover the climatic foundations upon which Afrin's unique agricultural landscape was first built.
+      </p>
+     </div>
+    </div>
+   </section>
+   <!-- Part I: Modern Climate -->
+   <section class="py-20 md:py-28 bg-white section-fade-in" id="part1">
+    <div class="container mx-auto px-6 max-w-4xl">
+     <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl" id="part1-heading">
+       Part I: The Modern Climate and its Recent Historical Context
+      </h2>
+      <p class="mt-4 text-lg text-gray-600" id="part1-subheading">
+       (c. 1900-2010)
+      </p>
+     </div>
+     <div class="content-text">
+      <div id="part1-content">
+       <p>
+        To comprehend the scale and impact of past climatic shifts, it is essential first to establish a detailed baseline of the region's modern climate. This section characterizes the contemporary climate of Afrin up to 2010 using instrumental data and the K&ouml;ppen classification system. It then examines the significant warming and drying trends of the 20th century, culminating in the severe drought of 2006-2010, an event that serves as a critical modern analogue for understanding the societal consequences of climate stress.
+       </p>
+       <h3>
+        <strong>
+         Characterizing the Contemporary Climate (up to 2010)
+        </strong>
+       </h3>
+       <p>
+        The climate of Afrin is definitively classified under the K&ouml;ppen system as
+        <strong>
+         Csa
+        </strong>
+        , or a
+        <strong>
+         hot-summer Mediterranean climate
+        </strong>
+        .
+        <sup>
+         <a class="source-link" href="#citation-16">
+          [16]
+         </a>
+        </sup>
+        This classification is not merely a label but a precise description of a climatic regime that has profoundly shaped the region's ecology, agricultural potential, and rhythm of life for millennia. The Csa type is defined by a distinct set of characteristics: temperate, mild, and wet winters where the coldest month's average temperature remains above freezing (0&deg;C); hot and dry summers, with at least one month's average temperature exceeding 22&deg;C; and a pronounced seasonal precipitation pattern, with the vast majority of rainfall occurring during the winter months.
+        <sup>
+         <a class="source-link" href="#citation-19">
+          [19]
+         </a>
+        </sup>
+        This cycle of winter moisture and summer drought is the defining feature of the Mediterranean biome and dictates the success of its native flora, most notably the drought-resistant olive and grape cultivars that are central to Afrin's economy.
+        <sup>
+         <a class="source-link" href="#citation-6">
+          [6]
+         </a>
+        </sup>
+       </p>
+       <p>
+        While specific, long-term meteorological records for Afrin city are limited, data from the major nearby city of Aleppo provides a robust and widely used proxy for the region's general climatic conditions.
+        <sup>
+         <a class="source-link" href="#citation-22">
+          [22]
+         </a>
+        </sup>
+        Analysis of this data up to 2010 paints a clear picture of the Csa climate in practice.
+       </p>
+       <ul>
+        <li>
+         <p>
+          <strong>
+           Temperature:
+          </strong>
+          Summers in the region are described as "sweltering, dry, and clear".
+          <sup>
+           <a class="source-link" href="#citation-22">
+            [22]
+           </a>
+          </sup>
+          The hot season typically lasts for nearly four months, from early June to late September, with average daily high temperatures consistently above 31&deg;C (89&deg;F).
+          <sup>
+           <a class="source-link" href="#citation-25">
+            [25]
+           </a>
+          </sup>
+          July is the hottest month, with average highs reaching 36&deg;C (97&deg;F) and average lows around 24&deg;C (75&deg;F).
+          <sup>
+           <a class="source-link" href="#citation-22">
+            [22]
+           </a>
+          </sup>
+          Conversely, the cool season lasts from late November to early March. Winters are cool and partly cloudy, with January being the coldest month, featuring average high temperatures of around 10&deg;C (50-52&deg;F) and average lows near 2-3&deg;C (36-37&deg;F).
+          <sup>
+           <a class="source-link" href="#citation-16">
+            [16]
+           </a>
+          </sup>
+          Snowfall is occasional but not uncommon in the winter months.
+          <sup>
+           <a class="source-link" href="#citation-16">
+            [16]
+           </a>
+          </sup>
+         </p>
+        </li>
+        <li>
+         <p>
+          <strong>
+           Precipitation:
+          </strong>
+          The region's precipitation regime displays the dramatic seasonality characteristic of a Mediterranean climate. The wet season spans from mid-October to late April, during which there is a significant chance of rainfall.
+          <sup>
+           <a class="source-link" href="#citation-25">
+            [25]
+           </a>
+          </sup>
+          Precipitation peaks in the winter months of December, January, and February, with each month receiving an average of 50-65 mm (2.0-2.5 inches) of rain.
+          <sup>
+           <a class="source-link" href="#citation-22">
+            [22]
+           </a>
+          </sup>
+          The period from late May through September constitutes a prolonged dry season, with the summer months of June, July, and August being virtually rainless, often receiving less than 2 mm of precipitation combined.
+          <sup>
+           <a class="source-link" href="#citation-22">
+            [22]
+           </a>
+          </sup>
+          This pattern means that all traditional, rain-fed agriculture must be adapted to survive the intense summer drought.
+         </p>
+        </li>
+        <li>
+         <p>
+          <strong>
+           Cloud Cover and Sunshine:
+          </strong>
+          The seasonal patterns of temperature and precipitation are mirrored by cloud cover. The clearer part of the year begins in mid-May and lasts for nearly five months, with July and August being almost perfectly clear on average.
+          <sup>
+           <a class="source-link" href="#citation-22">
+            [22]
+           </a>
+          </sup>
+          This maximizes solar radiation during the hottest part of the year. The cloudier part of the year aligns with the wet season, from October to May, with January being the cloudiest month, where the sky is overcast or mostly cloudy nearly half the time.
+          <sup>
+           <a class="source-link" href="#citation-25">
+            [25]
+           </a>
+          </sup>
+         </p>
+        </li>
+       </ul>
+       <p>
+        The following table, compiled from proxy data for Aleppo, provides a quantitative summary of the average climatic conditions for the region in the late 20th and early 21st centuries, establishing a crucial baseline for historical comparison.
+       </p>
+       <p>
+        Data compiled and averaged from sources.
+        <sup>
+         <a class="source-link" href="#citation-22">
+          [22]
+         </a>
+        </sup>
+        Note: "Rainy Days" defined as days with at least 1 mm (0.04 inches) of precipitation. Values are rounded for clarity.
+       </p>
+      </div>
+      <h4 class="text-xl mt-8 mb-4 font-semibold">
+       Climate Averages (Proxy: Aleppo)
+      </h4>
+      <div class="climate-chart" id="climate-chart-container">
+      </div>
+      <div class="flex justify-center mt-4 space-x-6 text-sm">
+       <div class="flex items-center">
+        <span class="w-4 h-4 rounded-full mr-2" style="background-color: #ff6a88;">
+        </span>
+        Avg. High Temp (&deg;C)
+       </div>
+       <div class="flex items-center">
+        <span class="w-4 h-4 rounded-full mr-2" style="background-color: #8BC6EC;">
+        </span>
+        Avg. Rainfall (mm)
+       </div>
+      </div>
+      <div class="mt-12" id="part1-content-continued">
+       <h3>
+        <strong>
+         The 20th Century Warming and Drying Trend
+        </strong>
+       </h3>
+       <p>
+        The climate of the 20th century was not static. Instrumental records for Syria reveal a clear and persistent trend toward warmer and drier conditions, a pattern that accelerated toward the end of the century.
+        <sup>
+         <a class="source-link" href="#citation-26">
+          [26]
+         </a>
+        </sup>
+        By 2010, the country was, on average, approximately 0.8&deg;C hotter than it was a century earlier.
+        <sup>
+         <a class="source-link" href="#citation-26">
+          [26]
+         </a>
+        </sup>
+        This long-term trend, driven by anthropogenic global warming, began to significantly alter the baseline conditions, increasing the frequency and intensity of extreme weather events. While the overall trajectory was toward aridification, it was also marked by increased variability, including occasional seasons of extreme rainfall and flooding.
+        <sup>
+         <a class="source-link" href="#citation-26">
+          [26]
+         </a>
+        </sup>
+        The most consequential manifestation of this trend in the period leading up to 2010 was the severe, multi-year drought that gripped the entire Fertile Crescent.
+       </p>
+       <p>
+        The drought from the winter of 2006-2007 through 2010 was the most severe in the region's instrumental record.
+        <sup>
+         <a class="source-link" href="#citation-27">
+          [27]
+         </a>
+        </sup>
+        This was not merely a random, albeit extreme, natural event. Scientific analysis demonstrates that the long-term, human-forced drying trend made a drought of this intensity two to three times more likely than it would have been under natural conditions alone.
+        <sup>
+         <a class="source-link" href="#citation-26">
+          [26]
+         </a>
+        </sup>
+        This event thus represents a critical historical inflection point: a hybrid catastrophe where natural climate variability was dangerously amplified by a century of anthropogenic warming, creating a crisis that exceeded the coping capacity of the society and its government.
+       </p>
+       <p>
+        The impact of this drought was catastrophic, particularly for Syria's agricultural sector. The country's "breadbasket" in the northeast, which historically produced over two-thirds of its crops, collapsed.
+        <sup>
+         <a class="source-link" href="#citation-27">
+          [27]
+         </a>
+        </sup>
+        Wheat production failed, forcing Syria to become a major importer of grain for the first time in decades, and the agricultural sector's contribution to the national GDP plummeted.
+        <sup>
+         <a class="source-link" href="#citation-27">
+          [27]
+         </a>
+        </sup>
+        This agricultural collapse was compounded by decades of unsustainable state policies that had created profound underlying vulnerabilities. Aggressive government-led projects had encouraged the unsustainable exploitation of groundwater for irrigation, leading to a dramatic drop in the water table and the complete drying up of vital tributaries like the Khabur River.
+        <sup>
+         <a class="source-link" href="#citation-26">
+          [26]
+         </a>
+        </sup>
+        When the rains failed for multiple years, the groundwater reserves that might have served as a buffer in past droughts were already depleted, leaving farmers with no recourse.
+        <sup>
+         <a class="source-link" href="#citation-26">
+          [26]
+         </a>
+        </sup>
+       </p>
+       <p>
+        The socio-economic consequences were devastating and far-reaching. The collapse of the rural economy triggered a massive internal migration, with as many as 1.5 million people&mdash;mostly farming families and herders who had lost their entire livelihoods&mdash;fleeing the desiccated countryside for the peripheries of Syria's major cities.
+        <sup>
+         <a class="source-link" href="#citation-27">
+          [27]
+         </a>
+        </sup>
+        These urban centers were already strained by rapid population growth and a large influx of refugees from the war in Iraq.
+        <sup>
+         <a class="source-link" href="#citation-28">
+          [28]
+         </a>
+        </sup>
+        The arrival of these internally displaced "climate refugees" created vast, impoverished shantytowns, placing immense pressure on scarce resources like water, housing, and employment, and fostering the conditions of desperation and discontent that would contribute to the outbreak of widespread civil unrest in 2011.27 The 2006-2010 drought, therefore, serves as a powerful modern illustration of how climate change acts as a "threat multiplier." The event itself did not single-handedly cause the subsequent crisis, but it interacted with and catastrophically exacerbated pre-existing vulnerabilities created by poor governance and unsustainable environmental management, ultimately pushing a stressed society past its breaking point.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Part II: Ottoman Era (REDESIGNED WITH FLOAT) -->
+   <section class="py-20 md:py-28 bg-[#F8F7F2] section-fade-in" id="part2">
+    <div class="container mx-auto px-6 max-w-4xl">
+     <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl" id="part2-heading">
+       Part II: Historical Climate Fluctuations and Societal Impact
+      </h2>
+      <p class="mt-4 text-lg text-gray-600" id="part2-subheading">
+       (c. 1500-1900)
+      </p>
+     </div>
+     <div class="content-text clearfix">
+      <figure class="image-figure w-full md:w-1/2 lg:w-5/12 image-float-right">
+       <img alt="Placeholder for an Ottoman era illustration" class="w-full h-auto rounded-lg shadow-lg" id="ottoman-era-image" src="images/Ottoman_Farming.jpeg">
+       <figcaption id="ottoman-era-image-caption">
+        The LIA created immense environmental challenges for the agrarian-based Ottoman Empire. (Burning thorns at the Maidens' Farm, 1912)
+       </figcaption>
+      </figure>
+      <div id="part2-content">
+       <p>
+        Moving back from the instrumentally recorded era, this section examines the climate of the Ottoman period. By using paleoclimatic proxies like tree rings and historical records, it is possible to reconstruct the significant climatic variability of this era and analyze its profound impact on the agrarian society of the Ottoman Levant, including the region of Afrin. This period was notably shaped by the global climatic downturn known as the Little Ice Age, which manifested in the Eastern Mediterranean not just as cooling, but as a period of intense and disruptive aridity.
+       </p>
+       <h3>
+        <strong>
+         Climate of the Ottoman Era
+        </strong>
+       </h3>
+       <p>
+        The Little Ice Age (LIA), a period of global climatic cooling and instability lasting roughly from the 16th to the mid-19th century, had a distinct and severe expression in the Ottoman Empire.
+        <sup>
+         <a class="source-link" href="#citation-30">
+          [30]
+         </a>
+        </sup>
+        While often characterized by glacier advances in Europe, its impact in Anatolia and Syria was primarily felt through its effect on precipitation. High-resolution pollen records from Syria and extensive tree-ring data from Anatolia converge to show that the LIA was significantly cooler and, more critically for this semi-arid region, substantially drier than both the preceding Medieval Climate Anomaly and the modern climate.
+        <sup>
+         <a class="source-link" href="#citation-30">
+          [30]
+         </a>
+        </sup>
+        The Ottoman heartland, which had expanded from the temperate Balkans into the arid zones of the Middle East, was thus faced with a formidable environmental challenge.
+        <sup>
+         <a class="source-link" href="#citation-21">
+          [21]
+         </a>
+        </sup>
+       </p>
+       <p>
+        This period was not one of uniform dryness but was punctuated by episodes of extreme, multi-year drought that were among the most severe in the last millennium. Paleoclimatological reconstructions have identified the two decades surrounding the year 1600 as particularly harsh, experiencing some of the coldest and driest conditions in the region's recorded history.
+        <sup>
+         <a class="source-link" href="#citation-30">
+          [30]
+         </a>
+        </sup>
+        Tree-ring chronologies pinpoint an exceptionally prolonged and severe drought lasting from 1591 to 1595, the longest such dry spell in a 600-year record.
+        <sup>
+         <a class="source-link" href="#citation-32">
+          [32]
+         </a>
+        </sup>
+        These extreme climatic events were not isolated incidents but part of a larger pattern of instability that included frequent frosts and floods, which further destabilized agricultural production.
+        <sup>
+         <a class="source-link" href="#citation-30">
+          [30]
+         </a>
+        </sup>
+       </p>
+       <p>
+        The severe climatic stress of the LIA acted as a powerful catalyst for some of the most significant crises of the Ottoman era. The timing of the most extreme droughts aligns remarkably with periods of widespread social and political upheaval. The devastating droughts of the late 16th and early 17th centuries, for instance, coincided directly with the Cel&acirc;l&icirc; Rebellions, a series of revolts that convulsed the Anatolian countryside.
+        <sup>
+         <a class="source-link" href="#citation-32">
+          [32]
+         </a>
+        </sup>
+        The link was not coincidental but causal. The prolonged poor harvests and resulting famines, directly attributable to the climatic downturn, created widespread desperation among the rural populace. This environmental crisis was fatally compounded by the actions of the state. The Ottoman government, engaged in costly wars in Europe, continued its policies of oppressive taxation and requisitioning grain and meat from the already starving peasantry.
+        <sup>
+         <a class="source-link" href="#citation-30">
+          [30]
+         </a>
+        </sup>
+        This combination of environmental shock and institutional pressure exposed the critical failings of the Ottoman provisioning system, turning a natural hazard into a full-blown societal catastrophe and fueling the flames of rebellion.
+        <sup>
+         <a class="source-link" href="#citation-30">
+          [30]
+         </a>
+        </sup>
+       </p>
+       <p>
+        The consequences of this convergence of climate stress and political failure were dire and long-lasting. Historical sources describe a landscape ravaged by famine, disease, and bloodshed.
+        <sup>
+         <a class="source-link" href="#citation-30">
+          [30]
+         </a>
+        </sup>
+        Faced with starvation and violence, vast numbers of people abandoned their farms and villages, fleeing the Anatolian and Syrian countryside in search of safety and sustenance. This led to a massive wave of depopulation, leaving large swathes of formerly productive agricultural land deserted. The demographic and economic impact was so profound that some regions did not recover to their pre-crisis population levels for centuries.
+        <sup>
+         <a class="source-link" href="#citation-30">
+          [30]
+         </a>
+        </sup>
+        This pattern of climate-induced hardship persisted through the Ottoman period. The great famine of the 1870s, for example, has also been linked to a combination of severe drought and exceptionally cold, snowy winters, which once again imposed unequal and devastating hardships on the population, demonstrating the recurring vulnerability of the region's agrarian society to climatic extremes.
+        <sup>
+         <a class="source-link" href="#citation-34">
+          [34]
+         </a>
+        </sup>
+        The history of the Ottoman period in the Levant is thus inseparable from its climate. The LIA was not merely a background condition but an active agent of change, repeatedly testing the resilience of the empire's institutions and its people, and demonstrating how the combination of climatic stress and poor governance can lead to cycles of crisis and collapse.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Part III: Antiquity (REDESIGNED WITH FLOAT) -->
+   <section class="py-20 md:py-28 bg-white section-fade-in" id="part3">
+    <div class="container mx-auto px-6 max-w-4xl">
+     <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl" id="part3-heading">
+       Part III: Climate of Antiquity and the Early Middle Ages
+      </h2>
+      <p class="mt-4 text-lg text-gray-600" id="part3-subheading">
+       (c. 500 BCE \- 1500 CE)
+      </p>
+     </div>
+     <div class="content-text clearfix">
+      <figure class="image-figure w-full md:w-1/2 lg:w-5/12 image-float-left">
+       <img alt="Placeholder for Roman ruins" class="w-full h-auto rounded-lg shadow-lg" id="roman-era-image" src="images/Cyrrhus.jpg">
+       <figcaption id="roman-era-image-caption">
+        Roman-era ruins, such as those at Cyrrhus near Afrin, attest to the region's prosperity during the Roman Warm Period.
+       </figcaption>
+      </figure>
+      <div id="part3-content">
+       <p>
+        This part delves further into the past, exploring the major climatic epochs that coincided with the rise and fall of the great civilizations that controlled the Levant, from the Roman Empire to the early Islamic Caliphates. This long span of history witnessed dramatic swings in climate, from the stable optimum that supported Roman prosperity to periods of severe turmoil that profoundly reshaped the region's agricultural capacity and influenced the course of history.
+       </p>
+       <h3>
+        <strong>
+         The Roman and Early Byzantine Climate Optimum (c. 200 BCE - 400 CE)
+        </strong>
+       </h3>
+       <p>
+        The establishment and consolidation of Roman rule in the Near East coincided with a period of remarkable climatic stability known as the Roman Warm Period (RWP).
+        <sup>
+         <a class="source-link" href="#citation-35">
+          [35]
+         </a>
+        </sup>
+        Lasting for several centuries, this era was characterized by relatively warm, stable, and likely wetter conditions across much of the Mediterranean basin. This climatic optimum was a crucial enabling factor for the unprecedented prosperity and demographic expansion of the Roman Empire, and its effects were particularly pronounced in the fertile provinces of the Levant.
+        <sup>
+         <a class="source-link" href="#citation-35">
+          [35]
+         </a>
+        </sup>
+       </p>
+       <p>
+        During this period, Roman Syria, which encompassed the Afrin region, flourished as a vital agricultural and economic hub.
+        <sup>
+         <a class="source-link" href="#citation-8">
+          [8]
+         </a>
+        </sup>
+        The region's productivity was so legendary that the fertile Houran plain in the south became known as the "granary of Rome," supplying essential grain to the heart of the empire.
+        <sup>
+         <a class="source-link" href="#citation-38">
+          [38]
+         </a>
+        </sup>
+        This agricultural abundance supported a demographic peak that was not to be seen again until the 19th century, with the population of the Levant estimated to be between 3.5 and 6 million people.
+        <sup>
+         <a class="source-link" href="#citation-8">
+          [8]
+         </a>
+        </sup>
+        Great urban centers like Antioch (near modern Antakya, just across the border from Afrin) and Palmyra reached populations of up to 250,000, sustained by the surplus generated from the intensively cultivated hinterlands.
+        <sup>
+         <a class="source-link" href="#citation-8">
+          [8]
+         </a>
+        </sup>
+       </p>
+       <p>
+        The foundation of this prosperity was the quintessential Mediterranean agricultural triad: grains, grapes, and olives.
+        <sup>
+         <a class="source-link" href="#citation-36">
+          [36]
+         </a>
+        </sup>
+        The favorable and reliable climate of the RWP was ideal for the expansion of these crops. Olive cultivation, in particular, saw a massive expansion. Archaeological evidence from the limestone hills of northwestern Syria&mdash;the very region that includes Afrin&mdash;reveals a boom in the construction of sophisticated olive and grape presses during Late Antiquity (roughly 4th-6th centuries CE).
+        <sup>
+         <a class="source-link" href="#citation-39">
+          [39]
+         </a>
+        </sup>
+        Villages like D&eacute;h&egrave;s saw the construction of dozens of new presses employing advanced screw-weight technology, indicating a highly organized, large-scale, and profitable industry.
+        <sup>
+         <a class="source-link" href="#citation-39">
+          [39]
+         </a>
+        </sup>
+        The presence of significant Roman-era ruins in the Afrin district itself, including well-built bridges and the tomb complex at Nebi Huri (ancient Cyrrhus), attests to the region's wealth and its full integration into this thriving imperial economic system.
+        <sup>
+         <a class="source-link" href="#citation-2">
+          [2]
+         </a>
+        </sup>
+        This era represents the apex of agricultural development in the ancient Levant, underwritten by a climate that was both benevolent and predictable.
+       </p>
+       <h3>
+        <strong>
+         Climatic Turmoil and Transition (c. 400 - 1200 CE)
+        </strong>
+       </h3>
+       <p>
+        The stability of the Roman Warm Period did not last. The transition from Late Antiquity to the Early Middle Ages was marked by two distinct and severe climatic downturns that fundamentally reshaped the environmental and political landscape of the Levant. These events acted as a "one-two punch," delivering shocks that stressed civilizations to their limits and contributed to the broad historical realignments of the period.
+       </p>
+       <p>
+        The first major shock was the
+        <strong>
+         Late Antique Little Ice Age (LALIA)
+        </strong>
+        , an abrupt and severe cooling event that affected the entire Northern Hemisphere from approximately 536 to 660 CE.
+        <sup>
+         <a class="source-link" href="#citation-41">
+          [41]
+         </a>
+        </sup>
+        This climatic downturn was not a gradual change but a rapid onset event, triggered by a series of massive volcanic eruptions between 536 and 547 CE that ejected vast quantities of sun-blocking aerosols into the atmosphere, leading to a "volcanic winter".
+        <sup>
+         <a class="source-link" href="#citation-41">
+          [41]
+         </a>
+        </sup>
+        The impact on the Byzantine Empire, the successor to Rome in the East, was profound. This period of dramatic cooling coincided almost exactly with the outbreak of the devastating Plague of Justinian, which began in 541 CE.
+        <sup>
+         <a class="source-link" href="#citation-42">
+          [42]
+         </a>
+        </sup>
+        While a direct causal link between cooling and plague is debated, the climatic stress, which would have disrupted agriculture and weakened populations through malnutrition, almost certainly increased societal vulnerability to the pandemic.
+        <sup>
+         <a class="source-link" href="#citation-42">
+          [42]
+         </a>
+        </sup>
+        Archaeological evidence provides a stark picture of the consequences. In the Negev Desert, a marginal arid zone of the empire, studies of ancient trash mounds reveal an abrupt cessation of organized waste disposal and a collapse of the urban and agricultural systems around the mid-6th century, precisely when LALIA began.
+        <sup>
+         <a class="source-link" href="#citation-43">
+          [43]
+         </a>
+        </sup>
+        While core agricultural areas of the Levant may have shown more resilience, the LALIA was a severe environmental shock that contributed to a complex matrix of decline, particularly in the empire's frontier zones, and helped set the stage for the geopolitical shifts to come.
+        <sup>
+         <a class="source-link" href="#citation-44">
+          [44]
+         </a>
+        </sup>
+       </p>
+       <p>
+        Following a period of relative climatic recovery, the region was struck by a second, and in some ways more severe, climatic crisis during the
+        <strong>
+         Medieval Climate Anomaly (MCA)
+        </strong>
+        , which spanned from roughly 950 to 1300 CE. This period was not monolithic but was characterized by two sharply contrasting hydroclimatic phases in the Levant.
+        <sup>
+         <a class="source-link" href="#citation-45">
+          [45]
+         </a>
+        </sup>
+        The first phase, from approximately 900 to 1100 CE, was a period of intense and prolonged drought. Paleoclimate archives, including critically low water levels in the Dead Sea, salt deposits in sediment cores, and pollen data from Syria indicating arid-adapted vegetation, all point to one of the driest epochs of the last two millennia.
+        <sup>
+         <a class="source-link" href="#citation-45">
+          [45]
+         </a>
+        </sup>
+        This period of extreme aridity, which appears to coincide with a phase of low solar activity known as the Oort Grand Solar Minimum, is well-documented in historical chronicles, which describe widespread famine, pestilence, and conflict across the region as a direct result of the persistent droughts.
+        <sup>
+         <a class="source-link" href="#citation-45">
+          [45]
+         </a>
+        </sup>
+        Around 1100 CE, the climate regime shifted dramatically. The second phase of the MCA, lasting until about 1300 CE, was marked by significantly wetter conditions, which would have allowed for a substantial recovery in the region's agricultural capacity.
+        <sup>
+         <a class="source-link" href="#citation-45">
+          [45]
+         </a>
+        </sup>
+       </p>
+       <p>
+        The historical narrative of this era&mdash;encompassing the decline of Byzantine power in the Levant and the rise of the Islamic Caliphates&mdash;cannot be fully understood without this climatic context. The transition was not simply a matter of battles and conquests. It occurred across a landscape whose fundamental carrying capacity was being radically altered by forces beyond human control. The weakening of the Byzantine system during the LALIA, followed by the societal crises spurred by the devastating early MCA droughts, created conditions of instability and opportunity that shaped the political and social transformations of the Early Middle Ages. The continuity of agrarian life noted by some scholars must be seen not as a sign of climatic irrelevance, but as a testament to the remarkable resilience of Levantine societies in the face of immense environmental challenges.
+        <sup>
+         <a class="source-link" href="#citation-44">
+          [44]
+         </a>
+        </sup>
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Part IV: Paleoclimate (REDESIGNED WITH FLOAT) -->
+   <section class="py-20 md:py-28 bg-[#F8F7F2] section-fade-in" id="part4">
+    <div class="container mx-auto px-6">
+     <div class="text-center mb-16 max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl" id="part4-heading">
+       Part IV: Paleoclimate of Afrin and the Origins of its Agricultural Landscape
+      </h2>
+      <p class="mt-4 text-lg text-gray-600" id="part4-subheading">
+       The Holocene Climate Record
+      </p>
+     </div>
+     <div class="scroll-timeline-container" id="scroll-timeline-container">
+     </div>
+     <div class="container mx-auto px-6 max-w-4xl mt-16 content-text clearfix">
+      <figure class="image-figure w-full md:w-1/2 lg:w-5/12 image-float-right">
+       <img alt="Placeholder for an ancient olive press" class="w-full h-auto rounded-lg shadow-lg" id="olive-press-image" src="images/Ancient_olive_press.jpg">
+       <figcaption id="olive-press-image-caption">
+        The expansion of olive cultivation in the Bronze Age marked a new phase of agricultural development.
+       </figcaption>
+      </figure>
+      <div id="part4-content">
+       <h3>
+        <strong>
+         The Deep History of Agriculture in the Afrin Region
+        </strong>
+       </h3>
+       <p>
+        The climatic shifts of the Holocene did not just form a backdrop to human history; they were the very engine of its most fundamental transformation. The warmer, wetter, and more climatically stable conditions of the Early Holocene were the essential permissive factor for the development of agriculture. In northern Syria, this transition is clearly visible in the archaeobotanical record. Sites from this period show a marked shift in plant use, away from the wild rye and floodplain seeds that dominated hunter-gatherer diets during the colder Younger Dryas, and toward the systematic cultivation of new staples: barley, emmer wheat, lentils, and peas.
+        <sup>
+         <a class="source-link" href="#citation-54">
+          [54]
+         </a>
+        </sup>
+        This was not a simple choice but a profound adaptation to a new world of environmental possibility, a move from chasing resources to producing them in one place.
+        <sup>
+         <a class="source-link" href="#citation-50">
+          [50]
+         </a>
+        </sup>
+       </p>
+       <p>
+        However, the iconic agricultural landscape of Afrin&mdash;the land of olives&mdash;was the product of a second, later agricultural revolution. The olive tree, a long-lived species requiring a specific Mediterranean climate, was not among the initial suite of Neolithic founder crops.
+        <sup>
+         <a class="source-link" href="#citation-9">
+          [9]
+         </a>
+        </sup>
+        Its widespread cultivation represents a more mature phase of agricultural development, one that required not just favorable conditions but also long-term social and climatic stability. The investment in an olive grove is a multi-generational commitment, as trees grow slowly and only become fully productive after decades.
+        <sup>
+         <a class="source-link" href="#citation-9">
+          [9]
+         </a>
+        </sup>
+       </p>
+       <p>
+        Palynological and archaeological evidence from sites in the region, such as Tell Mastuma in the nearby Idlib province, provides a clear timeline for this development. The mass production of olives appears to have begun during the Early Bronze Age (c. 3600-2500 BCE), a period that corresponds to a particularly wet and stable climatic phase in the Levant.
+        <sup>
+         <a class="source-link" href="#citation-11">
+          [11]
+         </a>
+        </sup>
+        This new form of arboriculture brought immense economic prosperity to the region, underpinning the growth of complex, urbanized societies.
+        <sup>
+         <a class="source-link" href="#citation-11">
+          [11]
+         </a>
+        </sup>
+       </p>
+       <p>
+        This olive-based economy, however, was acutely vulnerable to climatic shifts. The same archaeological record from Tell Mastuma shows that this prosperity was shattered at the end of the Late Bronze Age (c. 1200 BCE), when a severe and prolonged drought devastated the olive groves. The site was catastrophically destroyed and abandoned for over 700 years, a stark testament to the fragility of this specialized agricultural system in the face of major aridification.
+        <sup>
+         <a class="source-link" href="#citation-11">
+          [11]
+         </a>
+        </sup>
+        The site was only reoccupied, and olive cultivation revived, when the climate shifted back to wetter conditions during the subsequent Iron Age.
+        <sup>
+         <a class="source-link" href="#citation-11">
+          [11]
+         </a>
+        </sup>
+        This recurring cycle of climate-driven expansion and collapse of olive cultivation is a microcosm of Afrin's deep history. It reveals that the region's identity as "the land of olives" is not an ancient, unchanging fact, but the result of a specific climatic window that opened in the Bronze Age and has been sustained, with major interruptions, by the region's characteristic Csa Mediterranean climate ever since.
+        <sup>
+         <a class="source-link" href="#citation-4">
+          [4]
+         </a>
+        </sup>
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Conclusion (REDESIGNED WITH FLOAT) -->
+   <section class="py-20 md:py-28 bg-white section-fade-in" id="conclusion">
+    <div class="container mx-auto px-6 max-w-4xl">
+     <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl" id="conclusion-heading">
+       Conclusion: A Synthesis of Climate, History, and Resilience in Afrin
+      </h2>
+     </div>
+     <div class="content-text clearfix">
+      <figure class="image-figure w-full md:w-1/2 lg:w-5/12 image-float-right">
+       <img alt="Placeholder for a drought-affected landscape" class="w-full h-auto rounded-lg shadow-lg" id="drought-image" src="images/Drought-affected_landscape.jpg">
+       <figcaption id="drought-image-caption">
+        The 2006-2010 drought highlighted the region's modern vulnerability to climate stress amplified by human factors.
+       </figcaption>
+      </figure>
+      <div id="conclusion-content">
+       <p>
+        The multi-millennial climatic journey of the Afrin region is a story of profound transformation, resilience, and the intricate, unbreakable bond between human society and its environment. From the post-glacial genesis of a habitable world to the human-amplified challenges of the modern era, the region's climate has been the primary variable shaping the possibilities and limits of life. The paleoclimatic record, read through the proxies of ancient pollen, lake sediments, and cave formations, reveals a history not of stasis, but of dramatic fluctuation. The abrupt warming and wetting at the dawn of the Holocene, some 11,700 years ago, was the pivotal event that unlocked the potential for agriculture, allowing the region's inhabitants to transition from foraging to farming and lay the foundations of civilization.
+       </p>
+       <p>
+        Subsequent millennia were defined by a rhythm of climatic optima and crises. The stable, humid conditions of the Bronze Age and the Roman Warm Period underwrote eras of unprecedented agricultural productivity, demographic expansion, and urban prosperity. It was during these benevolent windows that Afrin's signature agricultural identity, centered on the capital-intensive and long-term investment of olive cultivation, was forged and flourished. Conversely, periods of severe climatic stress&mdash;the megadroughts of the 4.2 ka and Late Bronze Age events, the volcanic winter of the Late Antique Little Ice Age, and the arid phases of the Medieval and Little Ice Ages&mdash;repeatedly brought famine, social upheaval, and collapse. These events were not mere background noise; they were powerful agents of change that toppled empires, triggered mass migrations, and reset the course of history.
+       </p>
+       <p>
+        Throughout this long history, the fundamental character of Afrin's climate&mdash;the Csa, or hot-summer Mediterranean regime&mdash;has been both a unique resource and a defining boundary. It enabled a highly specialized and resilient form of agriculture perfectly adapted to its cycle of wet winters and dry summers, which in turn shaped the region's culture and economy for thousands of years. Yet, the inherent variability of this climate, with its recurring, often severe droughts, has perpetually tested the adaptive capacity of its inhabitants and the institutions they built.
+       </p>
+       <p>
+        Ultimately, the climate history of Afrin reveals a complex, non-deterministic relationship between nature and society. For most of its history, societal success and failure were intimately tied to the ability to navigate and adapt to natural climatic fluctuations. The period ending in 2010, however, marks the dawn of a new and more precarious paradigm. The severe drought of 2006-2010 was not a purely natural disaster but a hybrid catastrophe, where natural variability was amplified by a century of anthropogenic warming and decades of unsustainable state policies. This illustrates a critical shift: human activity has transitioned from being a force that adapts to the environment to a primary driver of its vulnerability. The long and rich history of climate and society in Afrin thus offers a profound lesson, demonstrating that while the climate sets the stage, it is the resilience of social and political structures that ultimately determines whether a society can weather the inevitable storm.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Footer / Works Cited -->
+   <footer class="py-16 bg-gray-800 text-gray-300">
+    <div class="container mx-auto px-6 max-w-4xl">
+     <h2 class="text-3xl text-white" id="works-cited-heading">
+      Works Cited
+     </h2>
+     <ol class="list-decimal list-inside mt-8 space-y-2 text-sm text-gray-400" id="works-cited-content">
+      <li class="citation-item" id="citation-1">
+       Afrin District \- Wikipedia, accessed July 8, 2025, [https://en.wikipedia.org/wiki/Afrin\_District](https://en.wikipedia.org/wiki/Afrin_District)
+      </li>
+      <li class="citation-item" id="citation-2">
+       Afrin Region \- Wikipedia, accessed July 8, 2025, [https://en.wikipedia.org/wiki/Afrin\_Region](https://en.wikipedia.org/wiki/Afrin_Region)
+      </li>
+      <li class="citation-item" id="citation-3">
+       World Directory of Minorities and Indigenous Peoples \- Syria : Kurds \- Refworld, accessed July 8, 2025, [https://www.refworld.org/country,,,,SYR,,49749ca0c,0.html](https://www.refworld.org/country,,,,SYR,,49749ca0c,0.html)
+      </li>
+      <li class="citation-item" id="citation-4">
+       Afrin (Afr&icirc;n / Efr&icirc;n&lrm;) \- Co-operation in Mesopotamia, accessed July 8, 2025, [https://mesopotamia.coop/cities/afrin/](https://mesopotamia.coop/cities/afrin/)
+      </li>
+      <li class="citation-item" id="citation-5">
+       Farmers 'ruined' as earthquake and climate change leave Afrin River dry \- Syria Direct, accessed July 8, 2025, [https://syriadirect.org/earthquake-and-climate-change-afrin-river-dries-farmers-lose-out/](https://syriadirect.org/earthquake-and-climate-change-afrin-river-dries-farmers-lose-out/)
+      </li>
+      <li class="citation-item" id="citation-6">
+       Syria \- Climate, Deserts, Winds | Britannica, accessed July 8, 2025, [https://www.britannica.com/place/Syria/The-winds](https://www.britannica.com/place/Syria/The-winds)
+      </li>
+      <li class="citation-item" id="citation-7">
+       Geography of Syria \- Wikipedia, accessed July 8, 2025, [https://en.wikipedia.org/wiki/Geography\_of\_Syria](https://en.wikipedia.org/wiki/Geography_of_Syria)
+      </li>
+      <li class="citation-item" id="citation-8">
+       History of the ancient Levant \- Wikipedia, accessed July 8, 2025, [https://en.wikipedia.org/wiki/History\_of\_the\_ancient\_Levant](https://en.wikipedia.org/wiki/History_of_the_ancient_Levant)
+      </li>
+      <li class="citation-item" id="citation-9">
+       Olives of Afrin exported to other countries by Turkey &ndash; Co-operation ..., accessed July 8, 2025, [https://mesopotamia.coop/olives-of-afrin-exported-to-other-countries-by-turkey/](https://mesopotamia.coop/olives-of-afrin-exported-to-other-countries-by-turkey/)
+      </li>
+      <li class="citation-item" id="citation-10">
+       Withering Branch: The Story of Afrin and its Peoples, Pre & Post &ldquo;Operation Olive Branch" | Washington Kurdish Institute, accessed July 8, 2025, [https://dckurd.org/2022/03/09/withering-branch-the-story-of-afrin-and-its-peoples-pre-post-operation-olive-branch/](https://dckurd.org/2022/03/09/withering-branch-the-story-of-afrin-and-its-peoples-pre-post-operation-olive-branch/)
+      </li>
+      <li class="citation-item" id="citation-11">
+       251-273 \- THE RISE AND FALL OF OLIVE CULTIVATION IN \- NORTHWESTERN SYRIA, accessed July 8, 2025, [https://nichibun.repo.nii.ac.jp/record/350/files/IJ0817.pdf](https://nichibun.repo.nii.ac.jp/record/350/files/IJ0817.pdf)
+      </li>
+      <li class="citation-item" id="citation-12">
+       The last glacial cycle of the southern Levant: Paleoenvironment and chronology of modern humans \- PubMed, accessed July 8, 2025, [https://pubmed.ncbi.nlm.nih.gov/31142433/](https://pubmed.ncbi.nlm.nih.gov/31142433/)
+      </li>
+      <li class="citation-item" id="citation-13">
+       Hydroclimatic variability in the Levant during the early last glacial ( &sim;117&ndash;75 ka) derived from micro-faci \- CP, accessed July 8, 2025, [https://cp.copernicus.org/articles/12/75/2016/cp-12-75-2016.pdf](https://cp.copernicus.org/articles/12/75/2016/cp-12-75-2016.pdf)
+      </li>
+      <li class="citation-item" id="citation-14">
+       The earliest record of major anthropogenic deforestation in the Ghab Valley, northwest Syria: A palynological study | Request PDF \- ResearchGate, accessed July 8, 2025, [https://www.researchgate.net/publication/223515674\_The\_earliest\_record\_of\_major\_anthropogenic\_deforestation\_in\_the\_Ghab\_Valley\_northwest\_Syria\_A\_palynological\_study](https://www.researchgate.net/publication/223515674_The_earliest_record_of_major_anthropogenic_deforestation_in_the_Ghab_Valley_northwest_Syria_A_palynological_study)
+      </li>
+      <li class="citation-item" id="citation-15">
+       (PDF) Evidence of Lateglacial and Holocene climatic change and human impact in eastern Anatolia: High-resolution pollen, charcoal, isotopic and geochemical records from the laminated sediments of Lake Van, Turkey \- ResearchGate, accessed July 8, 2025, [https://www.researchgate.net/publication/200033718\_Evidence\_of\_Lateglacial\_and\_Holocene\_climatic\_change\_and\_human\_impact\_in\_eastern\_Anatolia\_High-resolution\_pollen\_charcoal\_isotopic\_and\_geochemical\_records\_from\_the\_laminated\_sediments\_of\_Lake\_Van\_Turk](https://www.researchgate.net/publication/200033718_Evidence_of_Lateglacial_and_Holocene_climatic_change_and_human_impact_in_eastern_Anatolia_High-resolution_pollen_charcoal_isotopic_and_geochemical_records_from_the_laminated_sediments_of_Lake_Van_Turk)
+      </li>
+      <li class="citation-item" id="citation-16">
+       Afrin, Syria \- Wikipedia, accessed July 8, 2025, [https://en.wikipedia.org/wiki/Afrin,\_Syria\#:\~:text=is%20re%2Destablished.-,Climate,in%20January%2C%20February%20or%20December.](https://en.wikipedia.org/wiki/Afrin,_Syria#:~:text=is%20re%2Destablished.-,Climate,in%20January%2C%20February%20or%20December.)
+      </li>
+      <li class="citation-item" id="citation-17">
+       The K&ouml;ppen Climate Classification \- Mindat, accessed July 8, 2025, [https://www.mindat.org/climate.php](https://www.mindat.org/climate.php)
+      </li>
+      <li class="citation-item" id="citation-18">
+       K&ouml;ppen Climate Classification: Auxiliary Programs &mdash; EnergyPlus 8.9 \- Big Ladder Software, accessed July 8, 2025, [https://bigladdersoftware.com/epx/docs/8-9/auxiliary-programs/k-ppen-climate-classification.html](https://bigladdersoftware.com/epx/docs/8-9/auxiliary-programs/k-ppen-climate-classification.html)
+      </li>
+      <li class="citation-item" id="citation-19">
+       K&ouml;ppen climate classification \- Wikipedia, accessed July 8, 2025, [https://en.wikipedia.org/wiki/K%C3%B6ppen\_climate\_classification](https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification)
+      </li>
+      <li class="citation-item" id="citation-20">
+       A topography map of northwestern Aleppo Governorate showing Afrin area with the orchard locations (red dots). \- ResearchGate, accessed July 8, 2025, [https://www.researchgate.net/figure/A-topography-map-of-northwestern-Aleppo-Governorate-showing-Afrin-area-with-the-orchard\_fig7\_267097004](https://www.researchgate.net/figure/A-topography-map-of-northwestern-Aleppo-Governorate-showing-Afrin-area-with-the-orchard_fig7_267097004)
+      </li>
+      <li class="citation-item" id="citation-21">
+       explorations in Ottoman environmental history \- The White Horse Press, accessed July 8, 2025, [https://www.whpress.co.uk/Books/Inal%20extract.pdf](https://www.whpress.co.uk/Books/Inal%20extract.pdf)
+      </li>
+      <li class="citation-item" id="citation-22">
+       Aleppo Climate, Weather By Month, Average Temperature (Syria ..., accessed July 8, 2025, [https://weatherspark.com/y/100214/Average-Weather-in-Aleppo-Syria](https://weatherspark.com/y/100214/Average-Weather-in-Aleppo-Syria)
+      </li>
+      <li class="citation-item" id="citation-23">
+       Aleppo (Syria) weather \- Met Office, accessed July 8, 2025, [https://weather.metoffice.gov.uk/forecast/sy6myfqgb](https://weather.metoffice.gov.uk/forecast/sy6myfqgb)
+      </li>
+      <li class="citation-item" id="citation-24">
+       Aleppo weather by month: monthly climate averages | Syria \- Weather2Travel.com, accessed July 8, 2025, [https://www.weather2travel.com/syria/aleppo/climate/](https://www.weather2travel.com/syria/aleppo/climate/)
+      </li>
+      <li class="citation-item" id="citation-25">
+       'Afr&imacr;n Climate, Weather By Month, Average Temperature (Syria) \- Weather Spark, accessed July 8, 2025, [https://weatherspark.com/y/99838/Average-Weather-in-%E2%80%98Afr%C4%ABn-Syria-Year-Round](https://weatherspark.com/y/99838/Average-Weather-in-%E2%80%98Afr%C4%ABn-Syria-Year-Round)
+      </li>
+      <li class="citation-item" id="citation-26">
+       1\. Country overview \- Red Cross Red Crescent Climate Centre, accessed July 8, 2025, [https://www.climatecentre.org/wp-content/uploads/RCCC-ICRC-Country-profiles-Syria.pdf](https://www.climatecentre.org/wp-content/uploads/RCCC-ICRC-Country-profiles-Syria.pdf)
+      </li>
+      <li class="citation-item" id="citation-27">
+       Climate change in the Fertile Crescent and implications of the recent ..., accessed July 8, 2025, [https://www.pnas.org/doi/10.1073/pnas.1421533112](https://www.pnas.org/doi/10.1073/pnas.1421533112)
+      </li>
+      <li class="citation-item" id="citation-28">
+       The Drought That Felled Assad \- FPIF \- Foreign Policy in Focus, accessed July 8, 2025, [https://fpif.org/the-drought-that-fell-assad/](https://fpif.org/the-drought-that-fell-assad/)
+      </li>
+      <li class="citation-item" id="citation-29">
+       Did Drought Trigger The Crisis In Syria? \- Footnote, accessed July 8, 2025, [https://footnote.co/did-drought-trigger-the-crisis-in-syria](https://footnote.co/did-drought-trigger-the-crisis-in-syria)
+      </li>
+      <li class="citation-item" id="citation-30">
+       Climate Change Lessons from the Ottoman Empire \- International Studies, accessed July 8, 2025, [https://inst.colostate.edu/news/what-the-ottoman-empire-can-tell-us-about-climate-change/](https://inst.colostate.edu/news/what-the-ottoman-empire-can-tell-us-about-climate-change/)
+      </li>
+      <li class="citation-item" id="citation-31">
+       Pollen-inferred palaeoclimatic patterns in Syria during the Little Ice Age, accessed July 8, 2025, [https://journals.openedition.org/mediterranee/7220](https://journals.openedition.org/mediterranee/7220)
+      </li>
+      <li class="citation-item" id="citation-32">
+       CLIMATE CHANGE AND CRISIS IN OTTOMAN TURKEY AND THE BALKANS, 1590-1710 Sam A. White \- Koechy, accessed July 8, 2025, [http://sci.martinkoechy.de/Climate\_Change\_and\_the\_Middle\_East\_2006\_Proceedings/07\_the\_past\_as\_a\_key\_for\_the\_future.pdf](http://sci.martinkoechy.de/Climate_Change_and_the_Middle_East_2006_Proceedings/07_the_past_as_a_key_for_the_future.pdf)
+      </li>
+      <li class="citation-item" id="citation-33">
+       An Environmental History of the Ottoman Arid Frontier, 1500&ndash;1700 ..., accessed July 8, 2025, [https://www.carsoncenter.uni-muenchen.de/download/staff\_and\_fellows/projects/project\_husain.pdf](https://www.carsoncenter.uni-muenchen.de/download/staff_and_fellows/projects/project_husain.pdf)
+      </li>
+      <li class="citation-item" id="citation-34">
+       A Climate of Confessionalization: Famine and Difference in the Late Ottoman Empire \- Smith Scholarworks, accessed July 8, 2025, [https://scholarworks.smith.edu/cgi/viewcontent.cgi?article=1016\&context=env\_facpubs](https://scholarworks.smith.edu/cgi/viewcontent.cgi?article=1016&context=env_facpubs)
+      </li>
+      <li class="citation-item" id="citation-35">
+       Ancient temperatures | Ancient Ports \- Ports Antiques, accessed July 8, 2025, [https://www.ancientportsantiques.com/ancient-climate/temperature/](https://www.ancientportsantiques.com/ancient-climate/temperature/)
+      </li>
+      <li class="citation-item" id="citation-36">
+       Agriculture in ancient Rome \- Wikipedia, accessed July 8, 2025, [https://en.wikipedia.org/wiki/Agriculture\_in\_ancient\_Rome](https://en.wikipedia.org/wiki/Agriculture_in_ancient_Rome)
+      </li>
+      <li class="citation-item" id="citation-37">
+       Roman Syria and the Near East \- Getty Museum Store, accessed July 8, 2025, [https://shop.getty.edu/products/roman-syria-and-the-near-east-978-0892367153](https://shop.getty.edu/products/roman-syria-and-the-near-east-978-0892367153)
+      </li>
+      <li class="citation-item" id="citation-38">
+       'Granary of Rome': Can the Houran's wheat survive climate change and war? \- Syria Direct, accessed July 8, 2025, [https://syriadirect.org/granary-of-rome-can-the-hourans-wheat-survive-climate-change-and-war/](https://syriadirect.org/granary-of-rome-can-the-hourans-wheat-survive-climate-change-and-war/)
+      </li>
+      <li class="citation-item" id="citation-39">
+       Elaion. Olive Oil Production in Roman and Byzantine Syria-Palestine. \- ResearchGate, accessed July 8, 2025, [https://www.researchgate.net/publication/332576575\_Elaion\_Olive\_Oil\_Production\_in\_Roman\_and\_Byzantine\_Syria-Palestine](https://www.researchgate.net/publication/332576575_Elaion_Olive_Oil_Production_in_Roman_and_Byzantine_Syria-Palestine)
+      </li>
+      <li class="citation-item" id="citation-40">
+       Afrin Syria: a visit to the land of olives (2025) \- Travelling The Unknown., accessed July 8, 2025, [https://travelingtheunknown.com/afrin-syria-a-visit-to-the-land-of-olives-2025/](https://travelingtheunknown.com/afrin-syria-a-visit-to-the-land-of-olives-2025/)
+      </li>
+      <li class="citation-item" id="citation-41">
+       Long-ago freeze carries into the present \- Harvard Gazette, accessed July 8, 2025, [https://news.harvard.edu/gazette/story/2016/02/long-ago-freeze-carries-into-the-present/](https://news.harvard.edu/gazette/story/2016/02/long-ago-freeze-carries-into-the-present/)
+      </li>
+      <li class="citation-item" id="citation-42">
+       Late Antique Little Ice Age \- Wikipedia, accessed July 8, 2025, [https://en.wikipedia.org/wiki/Late\_Antique\_Little\_Ice\_Age](https://en.wikipedia.org/wiki/Late_Antique_Little_Ice_Age)
+      </li>
+      <li class="citation-item" id="citation-43">
+       Ancient trash mounds unravel urban collapse a century before the end of Byzantine hegemony in the southern Levant | PNAS, accessed July 8, 2025, [https://www.pnas.org/doi/10.1073/pnas.1900233116](https://www.pnas.org/doi/10.1073/pnas.1900233116)
+      </li>
+      <li class="citation-item" id="citation-44">
+       Chapter 9 Continuities and Discontinuities in the Agriculture of the Levant in the Late Antique and Early Islamic Period in \- Brill, accessed July 8, 2025, [https://brill.com/abstract/book/9789004689350/BP000018.xml](https://brill.com/abstract/book/9789004689350/BP000018.xml)
+      </li>
+      <li class="citation-item" id="citation-45">
+       Medieval Climate in the Eastern Mediterranean: Instability and ..., accessed July 8, 2025, [https://www.mdpi.com/2073-4433/10/1/29](https://www.mdpi.com/2073-4433/10/1/29)
+      </li>
+      <li class="citation-item" id="citation-46">
+       Vegetation and Climate Changes during the Bronze and Iron Ages (&sim;3600&ndash;600 BCE) in the Southern Levant Based on Palynological Records | Radiocarbon | Cambridge Core, accessed July 8, 2025, [https://www.cambridge.org/core/journals/radiocarbon/article/vegetation-and-climate-changes-during-the-bronze-and-iron-ages-3600600-bce-in-the-southern-levant-based-on-palynological-records/BDE82D9216327EA34C71CF9F64FF3C46](https://www.cambridge.org/core/journals/radiocarbon/article/vegetation-and-climate-changes-during-the-bronze-and-iron-ages-3600600-bce-in-the-southern-levant-based-on-palynological-records/BDE82D9216327EA34C71CF9F64FF3C46)
+      </li>
+      <li class="citation-item" id="citation-47">
+       Hydroclimatic variability in the Levant during the early last ... \- CP, accessed July 8, 2025, [https://cp.copernicus.org/articles/12/75/2016/](https://cp.copernicus.org/articles/12/75/2016/)
+      </li>
+      <li class="citation-item" id="citation-48">
+       Climatically induced Lake level changes at Lake Van, Turkey, during the Pleistocene/Holocene transition \- ResearchGate, accessed July 8, 2025, [https://www.researchgate.net/publication/248816880\_Climatically\_induced\_Lake\_level\_changes\_at\_Lake\_Van\_Turkey\_during\_the\_PleistoceneHolocene\_transition](https://www.researchgate.net/publication/248816880_Climatically_induced_Lake_level_changes_at_Lake_Van_Turkey_during_the_PleistoceneHolocene_transition)
+      </li>
+      <li class="citation-item" id="citation-49">
+       Speleothem-based climate proxy records Research \- Geological Sciences \- University of Florida, accessed July 8, 2025, [https://geology.ufl.edu/people/faculty/dr-oana-alexandra-dumitru/research/speleothem-based-climate-proxy-records-research/](https://geology.ufl.edu/people/faculty/dr-oana-alexandra-dumitru/research/speleothem-based-climate-proxy-records-research/)
+      </li>
+      <li class="citation-item" id="citation-50">
+       Climate change, adaptive cycles, and the persistence of foraging economies during the late Pleistocene/Holocene transition in the Levant | PNAS, accessed July 8, 2025, [https://www.pnas.org/doi/10.1073/pnas.1113931109](https://www.pnas.org/doi/10.1073/pnas.1113931109)
+      </li>
+      <li class="citation-item" id="citation-51">
+       The 4.2 ka BP event in the Levant \- CP, accessed July 8, 2025, [https://cp.copernicus.org/articles/14/1529/2018/](https://cp.copernicus.org/articles/14/1529/2018/)
+      </li>
+      <li class="citation-item" id="citation-52">
+       Beyond megadrought and collapse in the Northern Levant: The chronology of Tell Tayinat and two historical inflection episodes, around 4.2ka BP, and following 3.2ka BP \- PubMed Central, accessed July 8, 2025, [https://pmc.ncbi.nlm.nih.gov/articles/PMC7595433/](https://pmc.ncbi.nlm.nih.gov/articles/PMC7595433/)
+      </li>
+      <li class="citation-item" id="citation-53">
+       8.2-kiloyear event \- Wikipedia, accessed July 8, 2025, [https://en.wikipedia.org/wiki/8.2-kiloyear\_event](https://en.wikipedia.org/wiki/8.2-kiloyear_event)
+      </li>
+      <li class="citation-item" id="citation-54">
+       (PDF) Late Pleistocene and Early Holocene climate and the beginnings of cultivation in northern Syria \- ResearchGate, accessed July 8, 2025, [https://www.researchgate.net/publication/258138612\_Late\_Pleistocene\_and\_Early\_Holocene\_climate\_and\_the\_beginnings\_of\_cultivation\_in\_northern\_Syria](https://www.researchgate.net/publication/258138612_Late_Pleistocene_and_Early_Holocene_climate_and_the_beginnings_of_cultivation_in_northern_Syria)
+      </li>
+      <li class="citation-item" id="citation-55">
+       The Origins of Agriculture in the Near East | Current Anthropology: Vol 52, No S4, accessed July 8, 2025, [https://www.journals.uchicago.edu/doi/10.1086/659307](https://www.journals.uchicago.edu/doi/10.1086/659307)
+      </li>
+      <li class="citation-item" id="citation-56">
+       A prehistoric cosmic airburst preceded the advent of agriculture in the Levant | The Current, accessed July 8, 2025, [https://news.ucsb.edu/2023/021215/prehistoric-cosmic-airburst-preceded-advent-agriculture-levant](https://news.ucsb.edu/2023/021215/prehistoric-cosmic-airburst-preceded-advent-agriculture-levant)
+      </li>
+      <li class="citation-item" id="citation-57">
+       Ancient Climate Change Transformed Us from Nomadic Hunters to Settled Farmers | Tel Aviv University, accessed July 8, 2025, [https://english.tau.ac.il/news/ancient\_climate\_crisis](https://english.tau.ac.il/news/ancient_climate_crisis)
+      </li>
+      <li class="citation-item" id="citation-58">
+       The history of olive cultivation in the southern Levant \- Frontiers, accessed July 8, 2025, [https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2023.1131557/full](https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2023.1131557/full)
+      </li>
+      <li class="citation-item" id="citation-59">
+       A Tale of Afrin \- Youth4Nature, accessed July 8, 2025, [https://www.youth4nature.org/stories/tale-afrin](https://www.youth4nature.org/stories/tale-afrin)
+      </li>
+      <li class="citation-item" id="citation-60">
+       Syria's Environmental Crisis Is Its Achilles Heel \- The Century Foundation, accessed July 8, 2025, [https://tcf.org/content/commentary/syrias-environmental-crisis-is-its-achilles-heel/](https://tcf.org/content/commentary/syrias-environmental-crisis-is-its-achilles-heel/)
+      </li>
+      <li class="citation-item" id="citation-61">
+       Byzantine economy \- Wikipedia, accessed July 8, 2025, [https://en.wikipedia.org/wiki/Byzantine\_economy](https://en.wikipedia.org/wiki/Byzantine_economy)
+      </li>
+      <li class="citation-item" id="citation-62">
+       Syria: Olive Cultivation on Hilly Land in the Northwestern Part of the ..., accessed July 8, 2025, [https://satoyamainitiative.org/case\_studies/syria-olive-cultivation-on-hilly-land-in-the-northwestern-part-of-the-country-and-along-its-mediterranean-coast/](https://satoyamainitiative.org/case_studies/syria-olive-cultivation-on-hilly-land-in-the-northwestern-part-of-the-country-and-along-its-mediterranean-coast/)
+      </li>
+     </ol>
+     <p class="mt-12 text-center text-gray-400">
+      Created by Zachariah Hopkins :
+      <a class="text-blue-400 hover:text-blue-300 underline" href="https://www.zachariahhopkins.com" target="_blank">
+       www.zachariahhopkins.com
+      </a>
+     </p>
+    </div>
+   </footer>
+  </main>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- Mobile Menu ---
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    }
+
+    // --- Section Fade-in on Scroll ---
+    const sections = document.querySelectorAll('.section-fade-in');
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+
+    // --- Nav Link Highlighting on Scroll ---
+    const navLinks = document.querySelectorAll('.nav-link');
+    const contentSections = document.querySelectorAll('main > section');
+    const activateNavLink = (id) => {
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const linkHref = link.getAttribute('href');
+            if(linkHref === '#' + id) {
+                link.classList.add('active');
+            }
+        });
+    };
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                activateNavLink(entry.target.id);
+            }
+        });
+    }, { rootMargin: '-40% 0px -60% 0px' });
+    contentSections.forEach(section => {
+        if(section.id) navObserver.observe(section);
+    });
+
+    // --- PRESERVED: Climate Chart with Always-Visible Values ---
+    const climateData = [
+        { month: 'Jan', temp: 10, rain: 64 }, { month: 'Feb', temp: 12, rain: 52 },
+        { month: 'Mar', temp: 17, rain: 46 }, { month: 'Apr', temp: 23, rain: 34 },
+        { month: 'May', temp: 29, rain: 18 }, { month: 'Jun', temp: 34, rain: 3 },
+        { month: 'Jul', temp: 36, rain: 1 }, { month: 'Aug', temp: 36, rain: 1 },
+        { month: 'Sep', temp: 32, rain: 3 }, { month: 'Oct', temp: 26, rain: 27 },
+        { month: 'Nov', temp: 18, rain: 36 }, { month: 'Dec', temp: 12, rain: 57 }
+    ];
+    const chartContainer = document.getElementById('climate-chart-container');
+    const maxTemp = 50; 
+    const maxRain = 70;
+
+    climateData.forEach(data => {
+        const group = document.createElement('div');
+        group.className = 'chart-bar-group';
+        
+        const barContainer = document.createElement('div');
+        barContainer.className = 'bar-container';
+
+        const tempBar = document.createElement('div');
+        tempBar.className = 'chart-bar temp-bar';
+        tempBar.style.height = `${(data.temp / maxTemp) * 100}%`;
+        tempBar.innerHTML = `<span class="bar-value">${data.temp}°</span>`;
+
+        const rainBar = document.createElement('div');
+        rainBar.className = 'chart-bar rain-bar';
+        rainBar.style.height = `${(data.rain / maxRain) * 100}%`;
+        rainBar.innerHTML = `<span class="bar-value">${data.rain}</span>`;
+        
+        barContainer.appendChild(tempBar);
+        barContainer.appendChild(rainBar);
+
+        const monthLabel = document.createElement('div');
+        monthLabel.className = 'month-label';
+        monthLabel.textContent = data.month;
+        
+        group.appendChild(barContainer);
+        group.appendChild(monthLabel);
+        if (chartContainer) {
+            chartContainer.appendChild(group);
+        }
+    });
+
+    // --- PRESERVED: Scroll-based Timeline ---
+    const timelineEventsData = [
+        { date: "c. 12,900-11,700 BP", title: "Younger Dryas", content: "A period of intense cold and aridity with steppe vegetation dominating the landscape. Human societies were primarily late hunter-gatherers (Natufian)." },
+        { date: "c. 11,700-8,200 BP", title: "Early Holocene", content: "An abrupt shift to a much warmer and wetter climate. This climatic amelioration was the fundamental enabling condition for the Neolithic Revolution and the origins of agriculture, with oak forests expanding across the region." },
+        { date: "c. 8,200 BP", title: "8.2 ka Event", content: "An abrupt, sharp cooling and drying event, recorded in global climate proxies. It is associated with significant cultural changes in early Neolithic settlements." },
+        { date: "c. 8,000-4,500 BP", title: "Mid-Holocene Optimum", content: "A long period of generally warm, humid, and stable climate. This era saw the rise of early urban civilizations during the Bronze Age, supported by reliable agricultural conditions." },
+        { date: "c. 4,200 BP", title: "4.2 ka 'Megadrought'", content: "A severe, multi-century global drought event. It is famously linked to the collapse of the Akkadian Empire in Mesopotamia and widespread societal crisis across the Near East." },
+        { date: "c. 1200 BCE", title: "Late Bronze Age Collapse", content: "Marked by a severe, abrupt drought. Pollen records show a dramatic decrease in tree cover, indicating both aridification and the collapse of complex palatial economies like the Hittite and Ugaritic civilizations." },
+        { date: "c. 200 BCE - 400 CE", title: "Roman Warm Period", content: "An era of warm, stable, and relatively wet conditions that underwrote the agricultural and demographic peak of the Roman and early Byzantine Empires in the Levant." },
+        { date: "c. 536-660 CE", "title": "Late Antique Little Ice Age", content: "An abrupt and severe cooling event, triggered by major volcanic eruptions. This period of climate stress coincided with the Plague of Justinian, contributing to societal decline in marginal areas of the Byzantine Empire." },
+        { date: "c. 900-1300 CE", title: "Medieval Climate Anomaly", content: "A complex period starting with one of the driest epochs of the last two millennia (900-1100 CE), causing famine and conflict, followed by a much wetter phase that allowed for agricultural recovery." },
+        { date: "c. 1550-1850 CE", title: "Little Ice Age", content: "A period that was cooler and, in the Levant, significantly drier. It is linked to severe droughts, Ottoman-era famines, and major social unrest like the Celâlî Rebellions." },
+        { date: "c. 1900-2010 CE", title: "Modern Warming Trend", content: "A period of instrumentally-recorded warming and increasing aridity, culminating in the 2006-2010 drought, a hybrid disaster amplified by anthropogenic climate change." }
+    ];
+    const scrollTimelineContainer = document.getElementById('scroll-timeline-container');
+
+    if (scrollTimelineContainer) {
+        timelineEventsData.forEach((event, index) => {
+            const side = index % 2 === 0 ? 'left' : 'right';
+            const entry = document.createElement('div');
+            entry.className = `timeline-entry ${side}`;
+            entry.innerHTML = `
+                <div class="timeline-content">
+                    <h3 class="text-xl font-bold">${event.title}</h3>
+                    <p class="text-sm text-gray-500 mb-2">${event.date}</p>
+                    <p>${event.content}</p>
+                </div>
+            `;
+            scrollTimelineContainer.appendChild(entry);
+        });
+
+        const timelineEntries = document.querySelectorAll('.timeline-entry');
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        timelineEntries.forEach(entry => {
+            timelineObserver.observe(entry);
+        });
+    }
+});
+  </script>
+ </body>
+</html>
