@@ -265,19 +265,14 @@
     <script>
         class AudioPlayerApp {
             constructor() {
-                // In-memory representation of the database tracks.
                 this.tracks = []; 
                 this.currentTrack = null;
                 this.audio = null;
                 this.db = null;
                 this.progressInterval = null;
-                // Flag for filtering UI
                 this.showUnlistenedOnly = true;
             }
 
-            /**
-             * Main initialization function. Sets up DB, loads data, and renders UI.
-             */
             async init() {
                 document.getElementById('loading').style.display = 'block';
                 await this.initDB();
@@ -287,12 +282,9 @@
                 document.getElementById('loading').style.display = 'none';
             }
 
-            /**
-             * Initializes the IndexedDB database and its object stores.
-             */
             async initDB() {
                 return new Promise((resolve, reject) => {
-                    const request = indexedDB.open('ArchivePlayerDB', 3); // Version 3 for new structure
+                    const request = indexedDB.open('ArchivePlayerDB', 4); // Version 4 for category fields
                     
                     request.onerror = (e) => reject(`Database error: ${e.target.errorCode}`);
                     request.onsuccess = (e) => {
@@ -301,15 +293,12 @@
                         resolve();
                     };
                     
-                    // This runs only if the version number changes.
                     request.onupgradeneeded = (e) => {
                         const db = e.target.result;
                         console.log('Upgrading database...');
-                        // The 'tracks' store is the single source of truth for all track info.
                         if (!db.objectStoreNames.contains('tracks')) {
                             db.createObjectStore('tracks', { keyPath: 'url' });
                         }
-                        // 'audioFiles' stores downloaded MP3 data.
                         if (!db.objectStoreNames.contains('audioFiles')) {
                             db.createObjectStore('audioFiles', { keyPath: 'url' });
                         }
@@ -317,9 +306,6 @@
                 });
             }
 
-            /**
-             * Loads all track records from the database into the in-memory this.tracks array.
-             */
             async loadTracksFromDB() {
                 return new Promise((resolve, reject) => {
                     const transaction = this.db.transaction(['tracks'], 'readonly');
@@ -335,22 +321,17 @@
                 });
             }
 
-            /**
-             * Centralized event listener setup.
-             */
             setupEventListeners() {
                 document.getElementById('filter-toggle').addEventListener('click', () => this.toggleFilter());
                 document.getElementById('update-tracks-btn').addEventListener('click', () => this.updateTracks());
                 document.getElementById('wipe-data-btn').addEventListener('click', () => this.showWipeConfirmModal(true));
                 
-                // Modal listeners
                 document.getElementById('modal-cancel-btn').addEventListener('click', () => this.showWipeConfirmModal(false));
                 document.getElementById('modal-confirm-btn').addEventListener('click', () => this.wipeAllData());
                 document.getElementById('confirm-modal').addEventListener('click', (e) => {
                     if (e.target.id === 'confirm-modal') this.showWipeConfirmModal(false);
                 });
 
-                // Event delegation for all track-related buttons
                 document.getElementById('tracks-container').addEventListener('click', (e) => {
                     const target = e.target.closest('button, [data-progress-bar]');
                     if (!target) return;
@@ -370,13 +351,9 @@
                     else if (target.matches('[data-progress-bar]')) this.seekTo(e);
                 });
 
-                // Save progress before the user leaves the page
                 window.addEventListener('beforeunload', () => this.saveCurrentPosition());
             }
 
-            /**
-             * Scans source files, discovers MP3s, and adds *only new* tracks to the database.
-             */
             async updateTracks() {
                 const updateBtn = document.getElementById('update-tracks-btn');
                 updateBtn.disabled = true;
@@ -394,7 +371,7 @@
 
                     for (const track of discoveredTracks) {
                         if (!existingTracks.has(track.url)) {
-                            store.add(track); // Add only new tracks
+                            store.add(track);
                             newTracksAdded++;
                         }
                     }
@@ -403,7 +380,6 @@
 
                     console.log(`Update complete. Added ${newTracksAdded} new tracks.`);
                     
-                    // Reload everything from the DB to refresh the app state
                     await this.loadTracksFromDB();
                     this.renderUI();
 
@@ -417,35 +393,47 @@
             }
 
             /**
-             * Fetches and parses source HTML to find all MP3 links.
-             * This is the discovery mechanism.
+             * Fetches and parses source HTML to find all MP3 links and their categories.
+             * This is the core discovery mechanism.
              */
             async scanForMp3Links() {
                 const foundTracks = new Map();
-                let htmlFiles = [];
+                const fileToCategoryMap = new Map();
 
-                // Phase 1: Discover all content pages from the main index.
+                // Phase 1: Build a map of filenames to their category/subcategory.
                 try {
                     const indexResponse = await fetch('../../landing_pages/kurdish_research.html');
                     const indexHtml = await indexResponse.text();
                     const parser = new DOMParser();
                     const indexDoc = parser.parseFromString(indexHtml, 'text/html');
                     
-                    indexDoc.querySelectorAll('.resource-link').forEach(link => {
-                        const href = link.getAttribute('href');
-                        if (href) htmlFiles.push(href.split('/').pop());
+                    indexDoc.querySelectorAll('.category').forEach(categoryEl => {
+                        const categoryName = categoryEl.querySelector('h2')?.textContent?.trim() || 'Uncategorized';
+                        let currentSubcategory = null;
+
+                        Array.from(categoryEl.children).forEach(child => {
+                            if (child.tagName === 'H4') {
+                                currentSubcategory = child.textContent.trim();
+                            } else if (child.classList.contains('resource-link')) {
+                                const href = child.getAttribute('href');
+                                if (href) {
+                                    const fileName = href.split('/').pop();
+                                    fileToCategoryMap.set(fileName, { category: categoryName, subcategory: currentSubcategory });
+                                }
+                            }
+                        });
                     });
                 } catch (error) {
-                    console.error("Could not fetch or parse the main index file.", error);
-                    // Fallback or error handling can be added here.
+                    console.error("Could not fetch or parse the main index file for categorization.", error);
                 }
 
+                const htmlFiles = Array.from(fileToCategoryMap.keys());
                 if (htmlFiles.length === 0) {
                     console.warn("No HTML files found to scan.");
                     return [];
                 }
 
-                // Phase 2: Scan each content page for MP3s.
+                // Phase 2: Scan each content page for MP3s and apply the category info.
                 for (const fileName of htmlFiles) {
                     try {
                         const pageResponse = await fetch(`../podcast_pages/${fileName}`);
@@ -454,14 +442,16 @@
                         const pageHtml = await pageResponse.text();
                         const doc = new DOMParser().parseFromString(pageHtml, 'text/html');
                         const pageTitle = doc.title || fileName.replace('.html', '').replace(/_/g, ' ');
+                        const categoryInfo = fileToCategoryMap.get(fileName) || { category: 'Uncategorized', subcategory: null };
 
                         doc.querySelectorAll('source[src$=".mp3"], a[href$=".mp3"][download]').forEach(el => {
                             const url = new URL(el.src || el.href, pageResponse.url).href;
                             if (url && !foundTracks.has(url)) {
-                                // This is a new track, create a default record for it.
                                 foundTracks.set(url, {
                                     url: url,
                                     title: pageTitle,
+                                    category: categoryInfo.category,
+                                    subcategory: categoryInfo.subcategory,
                                     downloaded: false,
                                     listened: false,
                                     currentTime: 0,
@@ -479,7 +469,7 @@
             }
 
             /**
-             * Renders the entire track list UI from the in-memory this.tracks array.
+             * Renders the entire track list UI, grouped by category and subcategory.
              */
             renderUI() {
                 const container = document.getElementById('tracks-container');
@@ -503,17 +493,51 @@
                     noTracksDiv.style.display = 'none';
                 }
 
-                let html = '';
-                // Simple, ungrouped list for now. Can be extended with categories later.
-                tracksToRender.sort((a, b) => a.title.localeCompare(b.title)).forEach(track => {
-                    html += this.getTrackHTML(track);
+                // Group tracks for rendering
+                const groupedTracks = new Map();
+                tracksToRender.forEach(track => {
+                    const categoryName = track.category || 'Uncategorized';
+                    if (!groupedTracks.has(categoryName)) {
+                        groupedTracks.set(categoryName, new Map());
+                    }
+                    const subcategoryName = track.subcategory || '_main'; // Use a special key for tracks without a subcategory
+                    if (!groupedTracks.get(categoryName).has(subcategoryName)) {
+                        groupedTracks.get(categoryName).set(subcategoryName, []);
+                    }
+                    groupedTracks.get(categoryName).get(subcategoryName).push(track);
                 });
+
+
+                let html = '';
+                // Sort categories alphabetically
+                const sortedCategories = Array.from(groupedTracks.keys()).sort();
+
+                for (const categoryName of sortedCategories) {
+                    html += `<div class="category-section"><h2 class="category-title">${categoryName}</h2>`;
+                    const subcategories = groupedTracks.get(categoryName);
+                    
+                    // Sort subcategories alphabetically, with '_main' first
+                    const sortedSubcategories = Array.from(subcategories.keys()).sort((a, b) => {
+                        if (a === '_main') return -1;
+                        if (b === '_main') return 1;
+                        return a.localeCompare(b);
+                    });
+
+                    for (const subcategoryName of sortedSubcategories) {
+                        if (subcategoryName !== '_main') {
+                            html += `<h3 class="subcategory-title">${subcategoryName}</h3>`;
+                        }
+                        const tracks = subcategories.get(subcategoryName);
+                        tracks.sort((a, b) => a.title.localeCompare(b.title)).forEach(track => {
+                            html += this.getTrackHTML(track);
+                        });
+                    }
+                    html += `</div>`;
+                }
                 container.innerHTML = html;
             }
 
-            /**
-             * Generates the HTML for a single track row.
-             */
+
             getTrackHTML(track) {
                 const status = track.listened ? 'listened' : (track.currentTime > 0 ? 'in-progress' : 'not-started');
                 const isPlaying = this.currentTrack && this.currentTrack.url === track.url;
@@ -544,12 +568,9 @@
                     </div>`;
             }
 
-            /**
-             * Handles playing a track.
-             */
             async playTrack(track) {
                 if (this.audio) {
-                    this.pauseTrack(); // Pause any currently playing track
+                    this.pauseTrack();
                 }
 
                 this.currentTrack = track;
@@ -562,7 +583,7 @@
                     
                     this.audio.addEventListener('loadedmetadata', () => {
                         track.duration = this.audio.duration;
-                        this.saveTrackData(track); // Save duration to DB
+                        this.saveTrackData(track);
                     });
                     this.audio.addEventListener('timeupdate', () => this.handleTimeUpdate());
                     this.audio.addEventListener('ended', () => this.handleTrackEnd());
@@ -573,82 +594,55 @@
 
                 } catch (error) {
                     console.error('Playback failed:', error);
-                    alert(`Error playing track: ${error.message}`);
                     this.currentTrack = null;
                 }
             }
 
-            /**
-             * Pauses the currently playing track.
-             */
             pauseTrack() {
                 if (this.audio) {
                     this.audio.pause();
                     this.saveCurrentPosition();
                     this.stopProgressUpdate();
-                    this.currentTrack = null; // Clear current track
+                    this.currentTrack = null;
                     this.updateUIAfterAction();
                 }
             }
 
-            /**
-             * Toggles a track's listened status and saves it.
-             */
             async toggleListenedStatus(track) {
                 track.listened = !track.listened;
                 if (track.listened) {
-                    track.currentTime = 0; // Reset progress if marked listened
+                    track.currentTime = 0;
                 }
                 await this.saveTrackData(track);
                 this.updateUIAfterAction();
             }
 
-            /**
-             * Saves the current playback position to the in-memory object.
-             * The actual DB save is throttled.
-             */
             saveCurrentPosition() {
                 if (this.audio && this.currentTrack) {
                     this.currentTrack.currentTime = this.audio.currentTime;
                 }
             }
 
-            /**
-             * Commits the current track's data to the database.
-             */
             async saveTrackData(track) {
-                return new Promise((resolve, reject) => {
-                    const transaction = this.db.transaction(['tracks'], 'readwrite');
-                    const store = transaction.objectStore('tracks');
-                    const request = store.put(track);
-                    request.onsuccess = resolve;
-                    request.onerror = (e) => reject(`Failed to save track: ${e.target.errorCode}`);
-                });
+                const transaction = this.db.transaction(['tracks'], 'readwrite');
+                const store = transaction.objectStore('tracks');
+                store.put(track);
+                return new Promise(resolve => transaction.oncomplete = resolve);
             }
 
-            /**
-             * Handles the 'timeupdate' event from the audio element.
-             */
             handleTimeUpdate() {
                 this.saveCurrentPosition();
-                // Throttled save to DB happens in the progress interval
             }
 
-            /**
-             * Handles the 'ended' event from the audio element.
-             */
             handleTrackEnd() {
                 if (this.currentTrack) {
                     this.currentTrack.listened = true;
                     this.currentTrack.currentTime = 0;
                     this.saveTrackData(this.currentTrack);
-                    this.pauseTrack(); // This will also update the UI
+                    this.pauseTrack();
                 }
             }
             
-            /**
-             * Downloads a track and saves it to the 'audioFiles' store.
-             */
             async downloadTrack(track) {
                 const button = document.querySelector(`[data-track-url="${track.url}"] [data-download]`);
                 button.textContent = 'Downloading...';
@@ -675,11 +669,8 @@
                 }
             }
 
-            /**
-             * Gets the audio source URL, preferring the downloaded version.
-             */
             async getAudioSource(track) {
-                return new Promise((resolve, reject) => {
+                return new Promise((resolve) => {
                     const transaction = this.db.transaction(['audioFiles'], 'readonly');
                     const store = transaction.objectStore('audioFiles');
                     const request = store.get(track.url);
@@ -694,13 +685,10 @@
                             resolve(track.url);
                         }
                     };
-                    request.onerror = () => resolve(track.url); // Fallback to network on error
+                    request.onerror = () => resolve(track.url);
                 });
             }
 
-            /**
-             * Starts the interval to update the progress bar and save to DB.
-             */
             startProgressUpdate() {
                 this.stopProgressUpdate();
                 this.progressInterval = setInterval(() => {
@@ -713,7 +701,6 @@
                             fill.style.width = `${percentage}%`;
                             time.innerHTML = `<span>${this.formatTime(this.audio.currentTime)}</span><span>${this.formatTime(this.currentTrack.duration)}</span>`;
                         }
-                        // Save to DB every 5 seconds
                         if (Math.floor(this.audio.currentTime) % 5 === 0) {
                             this.saveTrackData(this.currentTrack);
                         }
@@ -726,15 +713,9 @@
                 this.progressInterval = null;
             }
 
-            /**
-             * Re-renders the UI after any state change.
-             */
             updateUIAfterAction() {
-                // A full re-render is simple and avoids complex state-syncing bugs.
                 this.renderUI();
             }
-
-            // --- UI Helpers & Utilities ---
 
             toggleFilter() {
                 this.showUnlistenedOnly = !this.showUnlistenedOnly;
@@ -769,8 +750,6 @@
                 return `${mins}:${secs.toString().padStart(2, '0')}`;
             }
 
-            // --- Wipe Functionality ---
-
             showWipeConfirmModal(visible) {
                 document.getElementById('confirm-modal').classList.toggle('visible', visible);
             }
@@ -785,7 +764,6 @@
                 if (this.audio) this.audio.pause();
                 
                 try {
-                    // Unregister service workers
                     if ('serviceWorker' in navigator) {
                         const registrations = await navigator.serviceWorker.getRegistrations();
                         for (const registration of registrations) {
@@ -793,12 +771,10 @@
                             console.log(`Service Worker unregistered.`);
                         }
                     }
-                    // Delete caches
                     const cacheKeys = await caches.keys();
                     await Promise.all(cacheKeys.map(key => caches.delete(key)));
                     console.log('All caches deleted.');
 
-                    // Delete IndexedDB
                     if (this.db) this.db.close();
                     await new Promise((resolve, reject) => {
                         const deleteRequest = indexedDB.deleteDatabase('ArchivePlayerDB');
@@ -818,12 +794,9 @@
             }
         }
 
-        // --- App Entry Point ---
         document.addEventListener('DOMContentLoaded', async () => {
             if ('serviceWorker' in navigator) {
                 try {
-                    // Note: The service-worker.js file is not provided here, but is assumed to exist.
-                    // A simple pass-through service worker is fine for basic offline capability.
                     await navigator.serviceWorker.register('service-worker.js');
                     console.log('Service Worker registered.');
                 } catch (error) {
