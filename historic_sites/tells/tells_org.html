@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountains of Time</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Professional Night Mode Theme */
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #111827; /* Dark Slate Blue */
+            color: #E5E7EB; /* Light Gray */
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #FBBF24; /* Amber/Gold */
+            font-weight: 700;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            color: #D1D5DB; /* Lighter gray for nav links */
+            padding-bottom: 8px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FBBF24; /* Amber/Gold */
+            transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .nav-link:hover, .nav-link.active {
+             color: #FBBF24;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to top, rgba(17, 24, 39, 1) 15%, rgba(17, 24, 39, 0.4) 70%), url('https://placehold.co/1920x1080/2A3447/FFFFFF?text=Tell+at+Night');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .section-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .content-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-size: 1.1rem;
+            color: #D1D5DB;
+        }
+        .icon-svg {
+            width: 4rem;
+            height: 4rem;
+            stroke-width: 1;
+            color: #FBBF24;
+        }
+
+        /* Interactive Dig Site */
+        #dig-site-container {
+            position: relative;
+            min-height: 600px;
+            background-color: #1F2937;
+            border-radius: 0.5rem;
+        }
+        .dig-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+            background-size: cover;
+            background-position: center;
+            border-radius: 0.5rem;
+        }
+        .dig-layer.active {
+            opacity: 1;
+        }
+        .dig-info-card {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(5px);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            display: none; /* Hidden by default */
+        }
+        .dig-info-card.active {
+            display: block; /* Shown when active */
+        }
+        
+        /* Interactive Timeline & Image Modals */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: #1F2937;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s;
+        }
+        .modal-overlay.open .modal-content {
+            transform: scale(1);
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: #9CA3AF;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .modal-close-btn:hover {
+            color: #FBBF24;
+        }
+        #image-modal-content {
+             background-color: transparent;
+             width: 90%;
+             max-width: 1200px;
+             padding: 0;
+        }
+        #modal-img {
+            max-height: 90vh;
+            width: auto;
+            border-radius: 0.5rem;
+            margin: auto;
+        }
+        
+        /* Timeline */
+        .timeline-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 2rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: #FBBF24 #1F2937;
+        }
+        .timeline {
+            display: inline-flex;
+            position: relative;
+            padding: 2rem;
+        }
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #374151;
+            transform: translateY(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 4rem;
+            cursor: pointer;
+        }
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background-color: #111827;
+            border: 4px solid #FBBF24;
+            border-radius: 50%;
+            z-index: 1;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.3);
+            background-color: #FBBF24;
+        }
+        .timeline-content {
+            text-align: center;
+            margin-top: 1.5rem;
+            white-space: normal;
+            width: 200px;
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            margin-top: 2rem;
+            border-collapse: collapse;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #374151;
+            padding: 1rem;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #1F2937;
+            color: #FBBF24;
+        }
+        .comparison-table td {
+            background-color: #111827;
+        }
+        
+        .expandable-image {
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .expandable-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-[#111827]/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-lg shadow-black/10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-amber-400">Mountains of Time</h1>
+            <nav class="hidden md:flex space-x-6 lg:space-x-8 text-sm">
+                <a href="#intro" class="nav-link active">What is a Tell?</a>
+                <a href="#anatomy" class="nav-link">Anatomy</a>
+                <a href="#dig-site" class="nav-link">The Dig Site</a>
+                <a href="#human-element" class="nav-link">Human Element</a>
+                <a href="#comparison" class="nav-link">Comparisons</a>
+                <a href="#science" class="nav-link">Science</a>
+                <a href="#journey" class="nav-link">Sites</a>
+            </nav>
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-[#111827]">
+            <a href="#intro" class="block py-2 nav-link">What is a Tell?</a>
+            <a href="#anatomy" class="block py-2 nav-link">Anatomy</a>
+            <a href="#dig-site" class="block py-2 nav-link">The Dig Site</a>
+            <a href="#human-element" class="block py-2 nav-link">Human Element</a>
+            <a href="#comparison" class="block py-2 nav-link">Comparisons</a>
+            <a href="#science" class="block py-2 nav-link">Science</a>
+            <a href="#journey" class="block py-2 nav-link">Sites</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg min-h-screen flex items-center justify-center text-center pt-16">
+            <div class="max-w-4xl px-6">
+                <h1 class="text-5xl md:text-8xl font-bold leading-tight drop-shadow-lg">Mountains of Time</h1>
+                <p class="mt-4 text-xl md:text-2xl text-gray-200 font-semibold drop-shadow-md">Unearthing the Artificial Mountains of Ancient Civilizations</p>
+            </div>
+        </section>
+
+        <!-- Introduction -->
+        <section id="intro" class="py-20 md:py-28 bg-[#111827] section-fade-in">
+            <div class="container mx-auto px-6 max-w-4xl content-text text-center">
+                <h2 class="text-4xl md:text-5xl mb-8">What is a Tell?</h2>
+                <p>Across the landscapes of the Near East, enigmatic hills rise from the plains. These are not natural formations. They are <strong class="text-amber-400">tells</strong>—artificial mountains built from the debris of forgotten cities. Known by various names—<strong class="text-amber-400">*höyük*</strong> in Turkey, <strong class="text-amber-400">*tepe*</strong> in Persia, or simply *mound* in West Africa—each tell is a vertical archive of history, a layer-cake of civilization, preserving millennia of human life in its stratified depths.</p>
+                <p>They are the product of generations building their homes, living their lives, and discarding their refuse on the same spot. As old structures collapsed, new ones were built upon the leveled ruins, causing the ground to rise steadily, creating the mounds we see today—some reaching over 40 meters (130 feet) high.</p>
+            </div>
+        </section>
+
+        <!-- Anatomy of a Tell -->
+        <section id="anatomy" class="py-20 md:py-28 bg-[#1F2937] section-fade-in">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl">The Anatomy of a Tell</h2>
+                    <p class="mt-4 text-lg text-gray-400">A tell is a complex, structured archive. Understanding its composition is key to reading its stories.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                    <div class="content-text">
+                        <h3 class="text-3xl mb-4">Stratigraphy: The Layer-Cake of History</h3>
+                        <p>The fundamental concept for reading a tell is <strong class="text-amber-400">stratigraphy</strong>. Based on the geological Law of Superposition, it states that in an undisturbed sequence, the oldest layers (*strata*) are at the bottom and the youngest are at the top. Archaeologists excavate layer by layer, preserving the context of each artifact found *in situ* (in its original place).</p>
+                        <h3 class="text-3xl mt-8 mb-4">The Substance of Settlement</h3>
+                        <p>A tell's bulk comes from decayed <strong class="text-amber-400">mudbrick</strong>, the primary building material. Interspersed within this matrix are layers of ash from hearths, organic waste, and dense concentrations of cultural material known as <strong class="text-amber-400">midden</strong>—the rubbish of past lives. This includes pottery sherds, tools, and animal bones, offering a direct window into the diet, craft, and culture of the inhabitants.</p>
+                    </div>
+                    <figure>
+                        <img src="https://placehold.co/600x700/374151/FBBF24?text=Stratigraphy+Diagram" alt="Diagram illustrating archaeological stratigraphy" class="w-full h-auto object-cover rounded-lg shadow-lg expandable-image">
+                        <figcaption class="mt-4 text-sm text-gray-400 text-center">A diagram showing the layers (strata) of a tell. Click to expand.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Dig Site Section -->
+        <section id="dig-site" class="py-20 md:py-28 bg-[#111827] section-fade-in">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl">The Dig Site</h2>
+                    <p class="mt-4 text-lg text-gray-400">A tell is a layer-cake of history. Click the button to excavate deeper into the mound and reveal artifacts from different eras.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div id="dig-site-container" class="relative w-full h-96 md:h-[600px]">
+                        <!-- Layers will be populated by JS -->
+                    </div>
+                    <div class="flex flex-col items-center md:items-start">
+                        <div id="dig-info-display" class="w-full space-y-4">
+                           <!-- Info cards will be populated by JS -->
+                        </div>
+                        <button id="dig-btn" class="mt-8 bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-amber-400 transition-colors duration-300 shadow-lg">
+                            Dig Deeper
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Human Element -->
+        <section id="human-element" class="py-20 md:py-28 bg-[#1F2937] section-fade-in">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl">The Human Element</h2>
+                    <p class="mt-4 text-lg text-gray-400">Why did people stay in one place for thousands of years?</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                     <figure>
+                        <img src="https://placehold.co/600x450/374151/FBBF24?text=Ancient+Dwelling+Reconstruction" alt="Reconstruction of an ancient mudbrick house" class="w-full h-auto object-cover rounded-lg shadow-lg expandable-image">
+                        <figcaption class="mt-4 text-sm text-gray-400 text-center">Reconstruction of an ancient dwelling. Click to expand.</figcaption>
+                    </figure>
+                    <div class="content-text">
+                        <h3 class="text-3xl mb-4">Strategic Location</h3>
+                        <p>The initial choice was always practical: access to a reliable water source, fertile land for agriculture, or control over critical trade routes. Sites like <strong class="text-amber-400">Jericho</strong> grew around a perennial spring, an oasis in an arid landscape.</p>
+                        <h3 class="text-3xl mt-8 mb-4">Cultural & Ritual Anchors</h3>
+                        <p>More than resources, it was culture that created the "glue." The widespread practice of <strong class="text-amber-400">intramural burial</strong>—burying the dead beneath the house floors—transformed the home into a family mausoleum. To leave was to abandon one's ancestors. The tell itself became a monument, a physical embodiment of a community's history, lineage, and identity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tells vs. Other Mounds -->
+        <section id="comparison" class="py-20 md:py-28 bg-[#111827] section-fade-in">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl">Tells vs. Other Mounds</h2>
+                    <p class="mt-4 text-lg text-gray-400">Not all mounds are created equal. Tells are unique in their formation and function.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div>
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Mound Type</th>
+                                    <th>Primary Function</th>
+                                    <th>Formation Process</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Habitation (Tell)</strong></td>
+                                    <td>Long-term settlement</td>
+                                    <td>Gradual accumulation of debris</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Burial (Tumulus)</strong></td>
+                                    <td>Funerary monument</td>
+                                    <td>Purpose-built over tombs</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Platform Mound</strong></td>
+                                    <td>Ceremonial foundation</td>
+                                    <td>Engineered construction</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Effigy Mound</strong></td>
+                                    <td>Symbolic/Ritual shape</td>
+                                    <td>Sculpted earthwork</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <figure>
+                         <img src="https://placehold.co/600x400/374151/FBBF24?text=Serpent+Mound,+Ohio" alt="Example of an effigy mound" class="w-full h-auto object-cover rounded-lg shadow-lg expandable-image">
+                        <figcaption class="mt-4 text-sm text-gray-400 text-center">The Great Serpent Mound in Ohio, an effigy mound. Click to expand.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modern Science -->
+        <section id="science" class="py-20 md:py-28 bg-[#1F2937] section-fade-in">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl">Modern Science & Ancient Mounds</h2>
+                    <p class="mt-4 text-lg text-gray-400">Cutting-edge technology allows us to investigate tells in non-invasive ways.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="content-text">
+                        <h3 class="text-3xl mb-4">Remote Sensing</h3>
+                        <p>Technologies like satellite imagery, <strong class="text-amber-400">LiDAR</strong> (Light Detection and Ranging), and <strong class="text-amber-400">GPR</strong> (Ground-Penetrating Radar) allow archaeologists to map buried structures and ancient landscapes before ever breaking ground. This provides a "big picture" view and helps formulate more precise research questions.</p>
+                        <h3 class="text-3xl mt-8 mb-4">Unlocking the Past</h3>
+                        <p>The study of tells has been central to understanding the <strong class="text-amber-400">Neolithic Revolution</strong> and the rise of <strong class="text-amber-400">urbanism</strong>. By analyzing paleoenvironmental data (pollen, seeds) alongside cultural artifacts, scientists can reconstruct past climates and study how societies adapted to long-term change, offering lessons for our own time.</p>
+                    </div>
+                    <figure>
+                        <img src="https://placehold.co/600x450/374151/FBBF24?text=LiDAR+Scan+of+Ruins" alt="A LiDAR scan revealing hidden archaeological features" class="w-full h-auto object-cover rounded-lg shadow-lg expandable-image">
+                        <figcaption class="mt-4 text-sm text-gray-400 text-center">A LiDAR scan revealing hidden structures. Click to expand.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Through Time - Horizontal Timeline -->
+        <section id="journey" class="py-20 md:py-28 bg-[#111827] section-fade-in">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-8 max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl">A Journey Through Time</h2>
+                    <p class="mt-4 text-lg text-gray-400">Click on a site to explore some of the most famous tells and the unique stories they hold.</p>
+                </div>
+                <div class="timeline-container">
+                    <div class="timeline" id="timeline-interactive">
+                        <!-- Timeline items will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legacy Section -->
+        <section id="legacy" class="py-20 md:py-28 bg-[#1F2937] section-fade-in">
+            <div class="container mx-auto px-6 max-w-4xl content-text">
+                <div class="text-center mb-12">
+                     <h2 class="text-4xl md:text-5xl">The Enduring Legacy</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <p>Tells are more than just archaeological sites; they are irreplaceable archives of the human journey. They provide a continuous record of the great transformations in our history: the dawn of agriculture, the rise of cities, and the complex relationship between societies and their environment.</p>
+                        <p>Today, these monuments face unprecedented threats from conflict, looting, and modern development. Protecting them is a critical task, for in their layers of earth and debris lies not just the story of our past, but a deep well of knowledge for understanding our present and future.</p>
+                    </div>
+                    <figure>
+                        <img src="https://placehold.co/600x450/374151/FBBF24?text=Archaeological+Dig" alt="Placeholder for an archaeological dig" class="w-full h-auto object-cover rounded-lg shadow-lg expandable-image">
+                        <figcaption class="mt-4 text-sm text-gray-400 text-center">An archaeological dig in progress. Click to expand.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-16 bg-[#111827] text-gray-400">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl text-amber-400">Mountains of Time</h2>
+                <p class="mt-2">An interactive exploration of archaeological tells.</p>
+                <p class="mt-8 text-sm text-gray-500">Content adapted from "The Genesis of Giants: A Comprehensive Analysis of the Formation of Archaeological Tells."</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Timeline Modal -->
+    <div id="timeline-modal" class="modal-overlay">
+        <div class="modal-content" id="modal-inner-content">
+            <!-- Modal content will be injected by JS -->
+        </div>
+    </div>
+    
+    <!-- Image Modal -->
+    <div id="image-modal" class="modal-overlay">
+        <div id="image-modal-content" class="relative">
+             <button class="modal-close-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            <img id="modal-img" src="" alt="Expanded view">
+        </div>
+    </div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- Mobile Menu ---
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            // Smooth scroll for mobile links
+            const targetId = link.getAttribute('href');
+            document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // --- Section Fade-in on Scroll ---
+    const sections = document.querySelectorAll('.section-fade-in');
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // --- Nav Link Highlighting on Scroll ---
+    const navLinks = document.querySelectorAll('header .nav-link');
+    const contentSections = document.querySelectorAll('main section');
+    const activateNavLink = (id) => {
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+            }
+        });
+    };
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) activateNavLink(entry.target.id);
+        });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    contentSections.forEach(section => navObserver.observe(section));
+
+    // --- Interactive Dig Site Logic ---
+    const digSiteContainer = document.getElementById('dig-site-container');
+    const digInfoDisplay = document.getElementById('dig-info-display');
+    const digBtn = document.getElementById('dig-btn');
+
+    const layers = [
+        { era: 'Roman/Byzantine', date: '~400 CE', desc: 'The uppermost layers often contain remnants from later empires, showing evidence of advanced trade networks and artistry.', artifacts: 'Glass beads, coins, sophisticated pottery.', bg: 'https://placehold.co/800x600/4a5568/e2e8f0?text=Surface' },
+        { era: 'Iron Age', date: '~500 BCE', desc: 'This era reveals the rise of powerful kingdoms and increased conflict. Metallurgy becomes more common.', artifacts: 'Iron arrowheads, tools, fortifications.', bg: 'https://placehold.co/800x600/5a6578/d2d8e0?text=Layer+2' },
+        { era: 'Bronze Age', date: '~1500 BCE', desc: 'A time of early cities and complex societies. The domestication of animals is well-established.', artifacts: 'Bronze tools, animal bones, early writing tablets.', bg: 'https://placehold.co/800x600/6a7588/c2c8d0?text=Layer+3' },
+        { era: 'Neolithic Period', date: '~3000 BCE', desc: 'The deepest, oldest layers show the beginnings of settled life and the agricultural revolution.', artifacts: 'Early pottery shards, grinding stones, obsidian tools.', bg: 'https://placehold.co/800x600/7a8598/b2b8c0?text=Bedrock' }
+    ];
+
+    let currentLayer = 0;
+
+    function setupDigSite() {
+        if (!digSiteContainer || !digInfoDisplay || !digBtn) return;
+        digSiteContainer.innerHTML = '';
+        digInfoDisplay.innerHTML = '';
+
+        layers.forEach((layer, index) => {
+            const layerEl = document.createElement('div');
+            layerEl.className = 'dig-layer';
+            layerEl.id = `layer-${index}`;
+            layerEl.style.backgroundImage = `url('${layer.bg}')`;
+            digSiteContainer.appendChild(layerEl);
+
+            const infoEl = document.createElement('div');
+            infoEl.className = 'dig-info-card';
+            infoEl.id = `info-${index}`;
+            infoEl.innerHTML = `
+                <h3 class="text-2xl mb-2">${layer.era}</h3>
+                <p class="font-bold text-amber-400 mb-2">${layer.date}</p>
+                <p class="text-gray-300 mb-3">${layer.desc}</p>
+                <p class="text-sm text-gray-400"><strong class="text-gray-300">Key Finds:</strong> ${layer.artifacts}</p>
+            `;
+            digInfoDisplay.appendChild(infoEl);
+        });
+        
+        document.getElementById('layer-0').classList.add('active');
+        document.getElementById('info-0').classList.add('active');
+        digBtn.textContent = "Dig Deeper";
+        currentLayer = 0;
+    }
+
+    if (digBtn) {
+        digBtn.addEventListener('click', () => {
+            document.getElementById(`layer-${currentLayer}`).classList.remove('active');
+            document.getElementById(`info-${currentLayer}`).classList.remove('active');
+
+            currentLayer = (currentLayer + 1) % layers.length;
+
+            document.getElementById(`layer-${currentLayer}`).classList.add('active');
+            document.getElementById(`info-${currentLayer}`).classList.add('active');
+            
+            digBtn.textContent = (currentLayer === layers.length - 1) ? "Start Over" : "Dig Deeper";
+        });
+    }
+    
+    setupDigSite();
+
+    // --- Modal Logic (Timeline and Image) ---
+    const timelineContainer = document.getElementById('timeline-interactive');
+    const timelineModal = document.getElementById('timeline-modal');
+    const modalContent = document.getElementById('modal-inner-content');
+    const imageModal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+
+    const timelineData = [
+        { id: 'gobekli', name: 'Göbekli Tepe', date: 'c. 9500 BCE', desc: 'A "proto-tell" built for ritual, not habitation. Its massive T-shaped stone pillars predate widespread agriculture, challenging our understanding of early human social organization and the capacity for monumental construction.', image: 'https://placehold.co/500x300/FBBF24/111827?text=Photo+of+Actual+Göbekli+Tepe' },
+        { id: 'jericho', name: 'Jericho', date: 'c. 9500 BCE - Iron Age', desc: 'One of the oldest continuously inhabited cities on Earth. Its deep tell reveals over 20 successive settlements, including the world\'s first known fortifications—a massive stone wall and tower dating to the Neolithic period.', image: 'https://placehold.co/500x300/FBBF24/111827?text=Photo+of+Actual+Tell+es-Sultan' },
+        { id: 'catalhoyuk', name: 'Çatalhöyük', date: 'c. 7400 BCE', desc: 'A vast and dense proto-city of mudbrick houses with no streets. Inhabitants entered their homes through openings in the flat roofs. It is a classic example of a tell formed almost entirely from domestic accretion and intramural burials.', image: 'https://placehold.co/500x300/FBBF24/111827?text=Photo+of+Actual+Çatalhöyük' },
+        { id: 'brak', name: 'Tell Brak', date: 'c. 6000 BCE', desc: 'A massive urban center in Syria that developed independently of the southern Mesopotamian cities. Its growth demonstrates that the path to urbanism was not a single invention but had multiple, independent origins across the Near East.', image: 'https://placehold.co/500x300/FBBF24/111827?text=Photo+of+Actual+Tell+Brak' }
+    ];
+
+    if (timelineContainer) {
+        timelineContainer.innerHTML = `
+            <div class="timeline-line"></div>
+            ${timelineData.map(item => `
+                <div class="timeline-item" data-id="${item.id}">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="text-xl">${item.name}</h3>
+                        <p class="timeline-date">${item.date}</p>
+                    </div>
+                </div>
+            `).join('')}
+        `;
+
+        timelineContainer.addEventListener('click', (e) => {
+            const item = e.target.closest('.timeline-item');
+            if (item) {
+                const itemData = timelineData.find(d => d.id === item.dataset.id);
+                if (itemData) {
+                    modalContent.innerHTML = `
+                        <button class="modal-close-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                        <img src="${itemData.image}" alt="${itemData.name}" class="w-full h-48 object-cover rounded-md mb-4">
+                        <h2 class="text-3xl mb-2">${itemData.name}</h2>
+                        <p class="font-bold text-amber-400 mb-4">${itemData.date}</p>
+                        <p class="text-gray-300">${itemData.desc}</p>
+                    `;
+                    timelineModal.classList.add('open');
+                }
+            }
+        });
+    }
+
+    // --- Expandable Image Logic ---
+    const expandableImages = document.querySelectorAll('.expandable-image');
+    expandableImages.forEach(img => {
+        img.addEventListener('click', () => {
+            modalImg.src = img.src;
+            imageModal.classList.add('open');
+        });
+    });
+
+    // --- General Modal Closing ---
+    document.querySelectorAll('.modal-overlay').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target.closest('.modal-close-btn')) {
+                modal.classList.remove('open');
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

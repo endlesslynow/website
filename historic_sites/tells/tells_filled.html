@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>
+   Mountains of Time
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+   /* Professional Night Mode Theme */
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #111827; /* Dark Slate Blue */
+            color: #E5E7EB; /* Light Gray */
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #FBBF24; /* Amber/Gold */
+            font-weight: 700;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            color: #D1D5DB; /* Lighter gray for nav links */
+            padding-bottom: 8px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FBBF24; /* Amber/Gold */
+            transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .nav-link:hover, .nav-link.active {
+             color: #FBBF24;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to top, rgba(17, 24, 39, 1) 15%, rgba(17, 24, 39, 0.4) 70%), url('images/Tell_at_Night.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .section-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .content-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-size: 1.1rem;
+            color: #D1D5DB;
+        }
+        .icon-svg {
+            width: 4rem;
+            height: 4rem;
+            stroke-width: 1;
+            color: #FBBF24;
+        }
+
+        /* Interactive Dig Site */
+        #dig-site-container {
+            position: relative;
+            min-height: 600px;
+            background-color: #1F2937;
+            border-radius: 0.5rem;
+        }
+        .dig-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+            background-size: cover;
+            background-position: center;
+            border-radius: 0.5rem;
+        }
+        .dig-layer.active {
+            opacity: 1;
+        }
+        .dig-info-card {
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(5px);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            display: none; /* Hidden by default */
+        }
+        .dig-info-card.active {
+            display: block; /* Shown when active */
+        }
+        
+        /* Interactive Timeline & Image Modals */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: #1F2937;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s;
+        }
+        .modal-overlay.open .modal-content {
+            transform: scale(1);
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: #9CA3AF;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .modal-close-btn:hover {
+            color: #FBBF24;
+        }
+        #image-modal-content {
+             background-color: transparent;
+             width: 90%;
+             max-width: 1200px;
+             padding: 0;
+        }
+        #modal-img {
+            max-height: 90vh;
+            width: auto;
+            border-radius: 0.5rem;
+            margin: auto;
+        }
+        
+        /* Timeline */
+        .timeline-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 2rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: #FBBF24 #1F2937;
+        }
+        .timeline {
+            display: inline-flex;
+            position: relative;
+            padding: 2rem;
+        }
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #374151;
+            transform: translateY(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 4rem;
+            cursor: pointer;
+        }
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background-color: #111827;
+            border: 4px solid #FBBF24;
+            border-radius: 50%;
+            z-index: 1;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.3);
+            background-color: #FBBF24;
+        }
+        .timeline-content {
+            text-align: center;
+            margin-top: 1.5rem;
+            white-space: normal;
+            width: 200px;
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            margin-top: 2rem;
+            border-collapse: collapse;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #374151;
+            padding: 1rem;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #1F2937;
+            color: #FBBF24;
+        }
+        .comparison-table td {
+            background-color: #111827;
+        }
+        
+        .expandable-image {
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .expandable-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+  </style>
+ </head>
+ <body>
+  <!-- Header -->
+  <header class="bg-[#111827]/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 shadow-lg shadow-black/10">
+   <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-amber-400">
+     Mountains of Time
+    </h1>
+    <nav class="hidden md:flex space-x-6 lg:space-x-8 text-sm">
+     <a class="nav-link active" href="#intro">
+      What is a Tell?
+     </a>
+     <a class="nav-link" href="#anatomy">
+      Anatomy
+     </a>
+     <a class="nav-link" href="#dig-site">
+      The Dig Site
+     </a>
+     <a class="nav-link" href="#human-element">
+      Human Element
+     </a>
+     <a class="nav-link" href="#comparison">
+      Comparisons
+     </a>
+     <a class="nav-link" href="#science">
+      Science
+     </a>
+     <a class="nav-link" href="#journey">
+      Sites
+     </a>
+    </nav>
+    <button class="md:hidden text-gray-300" id="mobile-menu-btn">
+     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+      <path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+      </path>
+     </svg>
+    </button>
+   </div>
+   <div class="hidden md:hidden px-6 pb-4 bg-[#111827]" id="mobile-menu">
+    <a class="block py-2 nav-link" href="#intro">
+     What is a Tell?
+    </a>
+    <a class="block py-2 nav-link" href="#anatomy">
+     Anatomy
+    </a>
+    <a class="block py-2 nav-link" href="#dig-site">
+     The Dig Site
+    </a>
+    <a class="block py-2 nav-link" href="#human-element">
+     Human Element
+    </a>
+    <a class="block py-2 nav-link" href="#comparison">
+     Comparisons
+    </a>
+    <a class="block py-2 nav-link" href="#science">
+     Science
+    </a>
+    <a class="block py-2 nav-link" href="#journey">
+     Sites
+    </a>
+   </div>
+  </header>
+  <main>
+   <!-- Hero Section -->
+   <section class="hero-bg min-h-screen flex items-center justify-center text-center pt-16">
+    <div class="max-w-4xl px-6">
+     <h1 class="text-5xl md:text-8xl font-bold leading-tight drop-shadow-lg">
+      Mountains of Time
+     </h1>
+     <p class="mt-4 text-xl md:text-2xl text-gray-200 font-semibold drop-shadow-md">
+      Unearthing the Artificial Mountains of Ancient Civilizations
+     </p>
+    </div>
+   </section>
+   <!-- Introduction -->
+   <section class="py-20 md:py-28 bg-[#111827] section-fade-in" id="intro">
+    <div class="container mx-auto px-6 max-w-4xl content-text text-left">
+     <p>
+      Across the vast, sun-drenched landscapes of the Near East, the Balkans, and parts of Africa and Asia, the terrain is punctuated by enigmatic, man-made hills. These are not natural geological formations but are instead the accumulated remnants of ancient human endeavor, artificial mountains built layer by layer from the debris of forgotten cities and towns. Known to archaeologists as tells, these mounds represent one of the most significant and information-rich types of archaeological sites in the world. They are, in essence, vertical archives of history, preserving in their stratified depths the story of human settlement, societal evolution, and the profound, multi-millennial relationship between people and place. Understanding the formation of these city mounds requires a multidisciplinary approach, delving into geology, architecture, cultural anthropology, and environmental science to unravel the complex interplay of factors that allowed these unique features to grow. This report provides an exhaustive analysis of the genesis of tells, exploring their definition and distribution, their physical composition and the stratigraphic principles used to interpret them, the architectural and cultural drivers of their formation, and their unparalleled importance as a scientific resource for understanding the human past.
+     </p>
+     <h3 class="text-3xl mb-4">
+      <strong>
+       Defining the Tell: An Artificial Mountain of History
+      </strong>
+     </h3>
+     <p>
+      In the lexicon of archaeology, a tell is defined as an artificial topographical feature, a mound composed of the accumulated and stratified debris from a succession of settlements constructed on the same site over extended periods.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-1">
+        [1]
+       </a>
+      </sup>
+      These mounds are the product of generations of human life; they are built from the refuse of peoples who inhabited them, the remnants of their homes, the objects they lost or discarded, and the natural sediments that became incorporated over time.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-1">
+        [1]
+       </a>
+      </sup>
+      The process is one of gradual accretion. As old structures, often made of earth-based materials, collapsed or were demolished, new ones were built upon the leveled ruins. This cycle, repeated over centuries or even millennia, caused the ground level of the settlement to rise steadily, creating a prominent mound that stands in relief against the surrounding landscape.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-2">
+        [2]
+       </a>
+      </sup>
+     </p>
+     <p>
+      The scale of these mounds can be immense, attesting to the longevity and density of the settlements they contain. For instance, the tell of &Ccedil;atalh&ouml;y&uuml;k in Turkey, a proto-city occupied during the Neolithic period, rose approximately 20 meters (66 feet) above the Konya Plain.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-4">
+        [4]
+       </a>
+      </sup>
+      Even more imposing is Tell Brak in northeastern Syria, an early urban center whose main mound reaches a height of over 40 meters (130 feet).
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-3">
+        [3]
+       </a>
+      </sup>
+      The horizontal extent of these sites is equally variable, ranging from small mounds just five meters in diameter to vast settlement complexes, like that of Tell Brak, that can span a kilometer or more when their surrounding &ldquo;suburbs&rdquo; are included.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-2">
+        [2]
+       </a>
+      </sup>
+      These dimensions are a direct physical manifestation of the duration and intensity of human occupation, a testament to the forces that anchored communities to a single location for thousands of years.
+     </p>
+     <h3 class="text-3xl mb-4">
+      <strong>
+       A Global Lexicon: Naming the Mounds
+      </strong>
+     </h3>
+     <p>
+      While the archaeological phenomenon is broadly consistent, the terminology used to describe these mounds varies by region, reflecting the diverse linguistic and cultural landscapes in which they are found. The word
+      <em>
+       tell
+      </em>
+      itself is of Arabic origin and is the standard term used throughout the Levant and Mesopotamia, regions where these sites are particularly abundant.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-7">
+        [7]
+       </a>
+      </sup>
+      Consequently, it is often incorporated into the names of famous sites, such as Tell es-Sultan, the ancient mound of Jericho 8, or Tell Abu Hureyra in Syria.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-9">
+        [9]
+       </a>
+      </sup>
+     </p>
+     <p>
+      Moving northward into Anatolia and Persia, different terms prevail. In Turkey, the word
+      <em>
+       h&ouml;y&uuml;k
+      </em>
+      is synonymous with tell, appearing in the names of some of the most significant archaeological sites in the country, including &Ccedil;atalh&ouml;y&uuml;k ("Fork Mound") and &Ccedil;ad&inodot;r H&ouml;y&uuml;k.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-4">
+        [4]
+       </a>
+      </sup>
+      Similarly, the term
+     </p>
+     <p>
+      <em>
+       tepe
+      </em>
+      , of Persian origin, is used for mounds in Turkey and Iran, most famously at G&ouml;bekli Tepe ("Potbelly Hill").
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-2">
+        [2]
+       </a>
+      </sup>
+      In the academic literature concerning West Africa, where tell sites are also a significant feature of the archaeological landscape, the more general English term
+     </p>
+     <p>
+      <em>
+       mound
+      </em>
+      is commonly employed. This term is used to refer not only to habitation tells but also to other anthropogenic mounded features like burial mounds, necessitating careful contextual definition in comparative analyses.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-13">
+        [13]
+       </a>
+      </sup>
+      This regional variation in nomenclature underscores a critical point: while the underlying process of formation is similar, the cultural context in which these mounds were created was distinct and localized.
+     </p>
+     <h3 class="text-3xl mb-4">
+      <strong>
+       Geographic Distribution: From the Fertile Crescent to the World
+      </strong>
+     </h3>
+     <p>
+      The geographical heartland of tell formation is the Middle and Near East, a vast region stretching from the Balkans in the west to northwestern India in the east.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-2">
+        [2]
+       </a>
+      </sup>
+      This area, and particularly the Fertile Crescent within it, was the cradle of the Neolithic Revolution, where humanity first transitioned from nomadic hunting and gathering to sedentary agriculture and, eventually, to urban living. It is in this context of long-term, permanent settlement that the conditions for tell formation were perfected. Famous examples like Troy in northwestern Turkey, with its nine distinct layers of occupation spanning from approximately 3000 BCE to 450 CE, epitomize the deep, stratified history these sites contain.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-2">
+        [2]
+       </a>
+      </sup>
+     </p>
+     <p>
+      However, the phenomenon is by no means restricted to the Near East. In southeastern Europe, Neolithic communities on the Great Hungarian Plain began to coalesce into larger, more durable villages around 5200 BCE. Some of these evolved into settlement mounds, or tells, as a result of hundreds of years of continuous habitation, mirroring the process seen further east.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-14">
+        [14]
+       </a>
+      </sup>
+      Furthermore, extensive archaeological research has identified large numbers of tell sites across West Africa, from the inland Niger Delta to Burkina Faso, in a wide variety of environmental and cultural zones.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-13">
+        [13]
+       </a>
+      </sup>
+      The origins of these West African tells date back to the second millennium BCE, and they became increasingly common throughout the first millennia BCE and CE.
+     </p>
+     <p>
+      This widespread geographical distribution points to a powerful case of convergent cultural evolution. The appearance of tells in disparate regions, inhabited by distinct cultural groups with different languages and traditions, suggests that tell formation is not the result of a single idea spreading from a single origin point. Rather, it appears to be a common solution that different societies independently arrived at when faced with a similar set of circumstances: a commitment to a sedentary lifestyle, a reliance on earth-based materials for construction, and a cultural or practical desire to remain anchored to a specific location over many generations. The tell is a physical manifestation of a successful, long-term adaptation to a settled way of life, an adaptation that was discovered and replicated in various corners of the ancient world. The very form of the tell, rising from the surrounding plains, made it a dominant feature of the landscape. This was not merely an accidental byproduct of settlement; it became an active part of the site&rsquo;s function. Early sites like G&ouml;bekli Tepe were intentionally built on high points to command a view of the landscape.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-11">
+        [11]
+       </a>
+      </sup>
+      As tells grew organically, they created their own artificial high ground, which conferred both practical and symbolic advantages. The elevation offered better visibility for defense, a clear vantage point over agricultural lands, and a powerful physical statement of a community&rsquo;s permanence, territory, and historical legacy. The mound, therefore, was not a passive record but an active participant in shaping the human experience of the landscape, projecting power and identity across the generations.
+     </p>
+    </div>
+   </section>
+   <!-- Anatomy of a Tell -->
+   <section class="py-20 md:py-28 bg-[#1F2937] section-fade-in" id="anatomy">
+    <div class="container mx-auto px-6">
+     <div class="text-center mb-16 max-w-4xl mx-auto">
+      <h2 class="text-4xl md:text-5xl">
+       The Anatomy of a Tell
+      </h2>
+      <p class="mt-4 text-lg text-gray-400">
+       A tell is a complex, structured archive. Understanding its composition is key to reading its stories.
+      </p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+      <div class="content-text">
+       <p>
+        To the untrained eye, a tell may appear as a simple hill of earth. To an archaeologist, however, it is a complex, structured archive, a &ldquo;layer-cake of history&rdquo; that can be meticulously deconstructed to reveal the story of its creation. The science of reading these layers is known as stratigraphy, and the substance of the layers themselves&mdash;the composition of the tell&mdash;provides the raw data for understanding the lives of its former inhabitants. Deconstructing the tell&rsquo;s anatomy reveals it to be a product of both passive accumulation and active, culturally mediated deposition, a curated archive as much as an accidental one.
+       </p>
+       <h3 class="text-3xl mb-4">
+        <strong>
+         The Layer-Cake of History: The Principle of Stratigraphy
+        </strong>
+       </h3>
+       <p>
+        Stratigraphy is one of the most fundamental concepts in archaeology. It is the study and interpretation of the stratified layers, or
+        <em>
+         strata
+        </em>
+        , of soil, sediment, and debris that accumulate on top of one another over time.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-15">
+          [15]
+         </a>
+        </sup>
+        The guiding principle of stratigraphy is the geological Law of Superposition, which states that if a sequence of layers is undisturbed, the oldest layers will be at the bottom and the youngest, most recent layers will be at the top.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-16">
+          [16]
+         </a>
+        </sup>
+        An intuitive analogy is a laundry basket: the clothes worn on Monday are at the bottom, while those worn on Friday are on top, creating a relative chronological sequence from oldest to most recent.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-16">
+          [16]
+         </a>
+        </sup>
+       </p>
+       <p>
+        Archaeologists apply this law to the excavation of tells. Each individual stratum, which can be differentiated by factors such as soil color, texture, or composition, represents a distinct period of time or a specific event in the site&rsquo;s history.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-16">
+          [16]
+         </a>
+        </sup>
+        To preserve the integrity of this record, excavation proceeds stratigraphically&mdash;that is, each layer is carefully removed and documented as a separate unit before proceeding to the layer below it.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-17">
+          [17]
+         </a>
+        </sup>
+        This painstaking process involves a specialized vocabulary. A single discernible layer of occupation is a
+       </p>
+       <p>
+        <em>
+         stratum
+        </em>
+        .
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-15">
+          [15]
+         </a>
+        </sup>
+        To preserve a visible record of the layers, archaeologists often leave a
+       </p>
+       <p>
+        <em>
+         balk
+        </em>
+        , a vertical, unexcavated wall of earth between excavation squares, which displays the site&rsquo;s stratigraphy in profile.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-15">
+          [15]
+         </a>
+        </sup>
+        The ultimate goal is to find artifacts
+       </p>
+       <p>
+        <em>
+         in situ
+        </em>
+        , a Latin term meaning &ldquo;in its original place,&rdquo; as their position within a specific stratum is what gives them their scientific value.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-15">
+          [15]
+         </a>
+        </sup>
+       </p>
+       <p>
+        The precise three-dimensional location of an artifact is known as its
+        <em>
+         provenience
+        </em>
+        . Recording provenience is paramount because it establishes an artifact&rsquo;s
+        <em>
+         context
+        </em>
+        &mdash;its relationship to the soil layer it was found in and to the other artifacts and features around it.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-16">
+          [16]
+         </a>
+        </sup>
+        An artifact removed from a tell without its provenience being recorded is an object stripped of its story. It loses its ability to help date a layer or to inform our understanding of the site&rsquo;s function. For example, a bone awl found in a lower stratum (Stratum E) is demonstrably older than a horseshoe found in an upper stratum (Stratum B).
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-16">
+          [16]
+         </a>
+        </sup>
+        This relative dating, based on the sequence of layers, can be anchored with absolute dates through methods like radiocarbon dating of organic materials found within the strata, allowing for the creation of a robust chronological framework for the entire history of the settlement.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-13">
+          [13]
+         </a>
+        </sup>
+       </p>
+       <h3 class="text-3xl mb-4">
+        <strong>
+         The Substance of Settlement: Composition of a Tell
+        </strong>
+       </h3>
+       <p>
+        The material that constitutes a tell is, quite literally, the substance of past lives. Tells are massive accumulations of the debris generated by human activity, piled up over the course of a settlement&rsquo;s existence.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-1">
+          [1]
+         </a>
+        </sup>
+        This debris is a heterogeneous mixture of collapsed house materials, refuse from daily life, lost or broken objects, and sediments deposited by natural forces like wind and water.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-9">
+          [9]
+         </a>
+        </sup>
+       </p>
+       <p>
+        A primary component of this accumulation is
+        <em>
+         midden
+        </em>
+        , the archaeological term for the deposits of rubbish, domestic waste, and other by-products of human occupation.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-19">
+          [19]
+         </a>
+        </sup>
+        Midden layers are archaeological treasure troves, providing a direct window into past diets (through animal bones and plant remains), craft activities (through manufacturing debris), and consumption patterns (through broken pottery). At the Ness of Brodgar, a Neolithic site in Orkney, midden deposits were not just refuse piles but grew into monumental mounds that came to act as territorial markers or memorials.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-19">
+          [19]
+         </a>
+        </sup>
+       </p>
+       <p>
+        The overall matrix of a tell is a complex amalgam. It consists primarily of decayed and collapsed mudbrick, which forms the bulk of the soil.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-3">
+          [3]
+         </a>
+        </sup>
+        Interspersed within this matrix are lenses of ash from hearths and fires, layers of organic waste, and a dense concentration of cultural materials: countless pottery sherds, fragments of stone tools, animal bones, and, in many cases, the remains of the dead themselves, who were often buried within the settlement.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-4">
+          [4]
+         </a>
+        </sup>
+        Each of these components tells a part of the story, and their careful excavation and analysis allow archaeologists to reconstruct the environment, economy, and social world of the people who built the mound.
+       </p>
+       <p>
+        While some of this accumulation is the result of passive processes like wind-blown sand or the simple discarding of trash, a deeper analysis reveals that tell formation is often a highly active and culturally mediated process. The mound is not merely an accidental garbage dump that grows over time. Evidence from sites around the world indicates that the inhabitants were active agents in the creation of their own landscape. At Neolithic sites in Orkney, for example, midden material was not simply thrown away; it was purposefully used as a construction material, spread out to create level platforms for new buildings.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-19">
+          [19]
+         </a>
+        </sup>
+        This was a deliberate act of landscape engineering using the by-products of daily life. Similarly, the deposition of very fine, polished stone artifacts within the midden layers at the Ness of Brodgar suggests that these &ldquo;rubbish&rdquo; areas were also considered appropriate places for the ritual &ldquo;burial&rdquo; of important objects at the end of their use-lives, transcending their function as mere dumps.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-19">
+          [19]
+         </a>
+        </sup>
+       </p>
+       <p>
+        Research at Kirikongo in Burkina Faso provides an even more profound example of active, ritualized deposition. Here, the evidence suggests that architectural remnants were intentionally created and preserved through rituals associated with the veneration of ancestors. The slow, deliberate process of stratification was tied to cycles of social memory, with new construction only taking place after the memory of a specific ancestor had faded from the living community.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-13">
+          [13]
+         </a>
+        </sup>
+        These examples demonstrate that a tell is a complex feature shaped by both mundane discard and purposeful, often ritualized, construction and deposition. It is a curated archive, not just an accumulated one, reflecting the conscious choices and worldview of its creators.
+       </p>
+      </div>
+      <figure>
+       <img alt="Diagram illustrating archaeological stratigraphy" class="w-full h-auto object-cover rounded-lg shadow-lg expandable-image" src="images/Diagram_illustrating_archaeological_stratigraphy.jpg">
+       <figcaption class="mt-4 text-sm text-gray-400 text-center">
+        Professor Jonathan Mark Kenoyer explaining stratigraphy of site - Harappa
+        <br>
+        <em class="text-gray-400">
+         Credit: Muhammad Bin Naveed
+        </em>
+       </figcaption>
+      </figure>
+     </div>
+    </div>
+   </section>
+   <!-- Interactive Dig Site Section -->
+   <section class="py-20 md:py-28 bg-[#111827] section-fade-in" id="dig-site">
+    <div class="container mx-auto px-6">
+     <div class="text-center mb-12 max-w-4xl mx-auto">
+      <h2 class="text-4xl md:text-5xl">
+       The Dig Site
+      </h2>
+      <p class="mt-4 text-lg text-gray-400">
+       A tell is a layer-cake of history. Click the button to excavate deeper into the mound and reveal artifacts from different eras.
+      </p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div class="relative w-full h-96 md:h-[600px]" id="dig-site-container">
+       <!-- Layers will be populated by JS -->
+      </div>
+      <div class="flex flex-col items-center md:items-start">
+       <div class="w-full space-y-4" id="dig-info-display">
+        <!-- Info cards will be populated by JS -->
+       </div>
+       <button class="mt-8 bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-amber-400 transition-colors duration-300 shadow-lg" id="dig-btn">
+        Dig Deeper
+       </button>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- The Human Element -->
+   <section class="py-20 md:py-28 bg-[#1F2937] section-fade-in" id="human-element">
+    <div class="container mx-auto px-6">
+     <div class="text-center mb-16 max-w-4xl mx-auto">
+      <h2 class="text-4xl md:text-5xl">
+       The Human Element
+      </h2>
+      <p class="mt-4 text-lg text-gray-400">
+       Why did people stay in one place for thousands of years?
+      </p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+      <figure>
+       <img alt="Reconstruction of an ancient mudbrick house" class="w-full h-auto object-cover rounded-lg shadow-lg expandable-image" src="images/Reconstruction_of_an_ancient_mudbrick_house.jpg">
+       <figcaption class="mt-4 text-sm text-gray-400 text-center">
+        Old mud house and dome - in Kashmar
+        <br>
+        <em class="text-gray-400">
+         Credit: Sonia Sevilla
+        </em>
+       </figcaption>
+      </figure>
+      <div class="content-text">
+       <p>
+        The physical process of accretion through mudbrick decay explains
+        <em>
+         how
+        </em>
+        tells grew vertically, but it does not explain
+        <em>
+         why
+        </em>
+        communities chose to remain rooted to a single spot for millennia, allowing this process to unfold. The answer lies in a complex interplay between the practical advantages of a location and the powerful cultural forces that forged an unbreakable bond between a people and their place. Tell formation was not simply a passive response to geography; it was driven by active human agency, strategic decision-making, and deep-seated ritual and social attachments that transformed a settlement into an ancestral home.
+       </p>
+       <h3 class="text-3xl mb-4">
+        <strong>
+         The Power of Place: Strategic and Resource-Rich Locations
+        </strong>
+       </h3>
+       <p>
+        The initial decision to establish a settlement was almost always grounded in sound environmental and strategic logic. Access to critical resources was a primary factor. A reliable, perennial water source, in particular, was a powerful magnet for settlement in the often-arid landscapes of the Near East. The site of Jericho, which would become one of the world&rsquo;s oldest continuously inhabited cities, first emerged around the &lsquo;Ain es-Sultan spring, a natural oasis that attracted human habitation for thousands of years.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-7">
+          [7]
+         </a>
+        </sup>
+        This spring was the lifeblood of the community, making its location exceptionally valuable and worthy of long-term investment and defense.
+       </p>
+       <p>
+        Proximity to fertile land suitable for agriculture was another crucial consideration, especially with the onset of the Neolithic Revolution. The settlement of &Ccedil;atalh&ouml;y&uuml;k, for example, was established on alluvial clay soils that were likely favorable for early farming, providing the subsistence base necessary to support a large, sedentary population.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-4">
+          [4]
+         </a>
+        </sup>
+        The surrounding environment, which at the time was a rich wetland, also offered a wide range of resources, including fish, waterfowl, and wild game, further enhancing the location&rsquo;s appeal.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-28">
+          [28]
+         </a>
+        </sup>
+       </p>
+       <p>
+        Beyond subsistence resources, strategic control over transportation and trade routes was a major factor in the long-term success and growth of many settlements. Tell Brak&rsquo;s rise to prominence as an early urban center was intrinsically linked to its strategic position on a major overland route that connected the resource-rich mountains of Anatolia with the populous cities of southern Mesopotamia, while also controlling north-south traffic between the Euphrates Valley and the Levant.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-3">
+          [3]
+         </a>
+        </sup>
+        Such a location would have been a hub of economic activity and cultural exchange, providing a strong incentive for continuous occupation and investment in the site&rsquo;s infrastructure and defense.
+       </p>
+       <h3 class="text-3xl mb-4">
+        <strong>
+         The Agency of Inhabitants: Cultural and Ritual Anchors
+        </strong>
+       </h3>
+       <p>
+        While geography and resources provided the initial rationale for settlement, it was culture and ritual that provided the &ldquo;glue&rdquo; holding communities to these locations for thousands of years. Tell formation cannot be understood without appreciating the active cultural choices and beliefs that created a profound, multi-generational attachment to place.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-13">
+          [13]
+         </a>
+        </sup>
+       </p>
+       <p>
+        One of the most powerful of these cultural anchors was the widespread practice of intramural burial&mdash;the burying of the dead within the confines of the settlement, often directly beneath the floors of occupied houses. This practice is well-documented at numerous key sites. At &Ccedil;atalh&ouml;y&uuml;k, human remains have been found in pits beneath the floors, platforms, and hearths of the mudbrick houses.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-4">
+          [4]
+         </a>
+        </sup>
+        Similarly, at Neolithic Jericho, the dead were buried under the floors of their circular dwellings.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-7">
+          [7]
+         </a>
+        </sup>
+        This act fundamentally transformed the nature of the house. It was no longer merely a shelter for the living; it became a family mausoleum, a sacred space that physically united the current generation with their deceased ancestors. Abandoning such a house would mean abandoning the family&rsquo;s tomb and severing a tangible link to its lineage.
+       </p>
+       <p>
+        This practice points to a deeper worldview, one in which the living and the dead were not strictly separated. Archaeological research in West Africa explicitly suggests that some tells formed through a deeply held cultural belief in the co-residence of the living and ancestral communities.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-13">
+          [13]
+         </a>
+        </sup>
+        Rebuilding on the exact same spot was a way of maintaining this sacred connection, of keeping the community physically and spiritually whole. At the site of Kirikongo, it has been argued that the mound&rsquo;s growth was directly tied to cycles of social memory; new houses, often with foundation ritual deposits, were constructed over older ones only after the active memory of the individuals buried below had faded from the living community, a process that could take 80 to 100 years.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-13">
+          [13]
+         </a>
+        </sup>
+        This ritualized cycle of construction and remembrance provides a powerful cultural logic for the slow, steady accretion of the tell.
+       </p>
+       <p>
+        Over time, the tell itself becomes a monument. As it grows in height and prominence, it becomes a physical embodiment of the community&rsquo;s history, lineage, and endurance. It stands as a testament to their ancestors and their continuous presence in the landscape. To abandon such a monument would be a profound cultural and symbolic rupture, a break with the past that many societies were unwilling to make. The mound becomes an ancestral locus, a sacred center of the world for its inhabitants.
+       </p>
+       <p>
+        This dynamic reveals that human-environment interaction in the context of tell formation is a complex, two-way street. Initially, human settlement is an act of adaptation to the natural environment; a community chooses a location based on its favorable characteristics, such as a spring or fertile soil.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-30">
+          [30]
+         </a>
+        </sup>
+        However, over centuries of occupation, the cumulative effect of their activities&mdash;building with mudbrick, discarding waste, burying their dead&mdash;creates a massive artificial landform: the tell. This new topography fundamentally modifies the local environment. It creates a new high ground, alters drainage patterns, and becomes the most dominant feature in the landscape. Subsequent generations are no longer simply interacting with the original, natural environment. They are interacting with the anthropogenic environment created by their ancestors. The tell itself becomes the primary environmental feature to which they must adapt, a reality vividly illustrated at Iron Age Jericho, where inhabitants had to cut staircases directly into the steep sides of the mound their predecessors had built in order to access their homes on top.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-31">
+          [31]
+         </a>
+        </sup>
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Tells vs. Other Mounds -->
+   <section class="py-20 md:py-28 bg-[#111827] section-fade-in" id="comparison">
+    <div class="container mx-auto px-6 max-w-5xl">
+     <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl">
+       Tells vs. Other Mounds
+      </h2>
+      <p class="mt-4 text-lg text-gray-400">
+       Not all mounds are created equal. Tells are unique in their formation and function.
+      </p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8 items-start">
+      <div>
+       <p>
+        The term &ldquo;mound&rdquo; is a broad descriptor for a heaped pile of earth or debris, and in archaeology, it encompasses a variety of man-made features created for different purposes.42 While tells are a type of mound, it is crucial to distinguish them from other forms, such as burial, platform, and effigy mounds. This distinction is not merely semantic; it is fundamental to understanding the unique formation process and scientific significance of tells. The primary difference lies in their function and method of creation: tells are the incidental byproducts of long-term habitation, while other mounds are typically purpose-built structures created in a relatively short period for specific funerary or ceremonial functions.
+       </p>
+       <h3>
+        <strong>
+         Habitation Mounds (Tells)
+        </strong>
+       </h3>
+       <p>
+        As has been established, tells are unique in that their formation is primarily the result of continuous or near-continuous settlement. They are archaeological sites
+        <em>
+         and
+        </em>
+        landforms simultaneously. Their composition is a deep, stratified sequence of domestic and architectural debris, including decayed mudbrick, midden, ash, and countless artifacts, all accumulated over centuries or millennia.1 Their growth is organic and gradual, a direct consequence of the lifecycle of the settlement itself.2 While tells often contain human burials as part of the practice of intramural burial, their primary function was as a place for the living, and their formation process is one of accretion, not singular construction.4
+       </p>
+       <h3>
+        <strong>
+         Burial Mounds (Tumuli, Barrows)
+        </strong>
+       </h3>
+       <p>
+        In stark contrast to tells, burial mounds&mdash;known by various names such as tumuli or barrows&mdash;are structures built for a single, specific purpose: to house and memorialize the dead.42 Their primary function is funerary. These mounds are constructed intentionally, often in a single, massive effort, by heaping earth and/or stone over one or more tombs.44 Their internal structure is not one of stratified occupation layers but is instead organized around the burial chamber(s). They may contain elaborate grave goods intended for the deceased in the afterlife, a feature that can indicate the social status of the individuals interred within.46 Examples are found worldwide, from the conical mounds of the Adena and Hopewell cultures in North America to the Neolithic long barrows of Europe and the Kofun of Japan.42 Their construction is an event, not a process of slow accumulation.
+       </p>
+       <h3>
+        <strong>
+         Ceremonial and Platform Mounds
+        </strong>
+       </h3>
+       <p>
+        Platform mounds are another category of purpose-built earthworks. These are typically large, engineered structures, often with flat tops and rectangular or pyramidal shapes, constructed to serve as foundations for other important buildings.45 Their function was ceremonial or political, elevating temples, elite residences, or public gathering spaces above the surrounding populace, both literally and symbolically.44 The Mississippian culture of North America was a prolific builder of platform mounds, with the most famous example being the monumental Monks Mound at the city of Cahokia, which served as the base for the residence of the paramount chief.44 Like burial mounds, their construction was a deliberate act of engineering designed to achieve a specific architectural form, not the result of accumulated domestic refuse.
+       </p>
+       <h3>
+        <strong>
+         Effigy Mounds
+        </strong>
+       </h3>
+       <p>
+        Effigy mounds represent a fourth distinct category, defined by their unique form. These are earthworks that have been sculpted into the shape of animals (such as birds, bears, or serpents), humanoid figures, or other symbolic beings.43 Their purpose is believed to be primarily ritualistic or spiritual. The American Midwest is the global center for this type of mound, with the most famous example being the Great Serpent Mound in Ohio, an undulating earthen embankment stretching over 400 meters in length.44 These are works of landscape art, their meaning tied to their form and their relationship to the cosmos or the spiritual world. Their formation is one of deliberate sculpting, entirely different from the layered growth of a habitation tell.
+       </p>
+      </div>
+      <figure>
+       <img alt="Example of an effigy mound" class="w-full h-auto object-cover rounded-lg shadow-lg expandable-image" src="images/Example_of_an_effigy_mound.jpg">
+       <figcaption class="mt-4 text-sm text-gray-400 text-center">
+        The Great Serpent Mound in Ohio, an effigy mound. Click to expand.
+        <br>
+        <em class="text-gray-400">
+         Credit: Krista Backs
+        </em>
+       </figcaption>
+      </figure>
+     </div>
+    </div>
+   </section>
+   <!-- Modern Science -->
+   <section class="py-20 md:py-28 bg-[#1F2937] section-fade-in" id="science">
+    <div class="container mx-auto px-6 max-w-6xl">
+     <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl">
+       Modern Science & Ancient Mounds
+      </h2>
+      <p class="mt-4 text-lg text-gray-400">
+       Cutting-edge technology allows us to investigate tells in non-invasive ways.
+      </p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="content-text">
+       <p>
+        Archaeological tells are more than just impressive landforms; they are unparalleled scientific resources. Their deep, stratified deposits act as high-resolution archives of the past, preserving a continuous record of human activity and environmental change over vast timescales. The development of sophisticated investigative methodologies, from traditional excavation techniques to advanced remote sensing, has unlocked the potential of these archives. The study of tells has, in turn, made fundamental contributions to our understanding of some of the most critical transformations in human history, including the origins of agriculture, the rise of cities, and the long-term dynamics of human-environment interaction.
+       </p>
+       <h3 class="text-3xl mb-4">
+        <strong>
+         Reading the Mound: Methodologies of Investigation
+        </strong>
+       </h3>
+       <p>
+        The investigation of a tell is a complex undertaking that combines time-honored fieldwork with cutting-edge technology. The foundation of tell archaeology remains the meticulous, stratigraphic excavation. Archaeologists use hand tools, most notably the trowel, to carefully scrape away thin layers of soil, ensuring that artifacts from different strata are kept separate to maintain their contextual integrity.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-47">
+          [47]
+         </a>
+        </sup>
+        This process is supplemented by specialized techniques designed to recover even the most fragile evidence. For example, the method of
+       </p>
+       <p>
+        <em>
+         flotation
+        </em>
+        , used to great effect at sites like Tell Abu Hureyra, involves taking soil samples and using water to separate light organic materials (like seeds and charcoal) from the heavier soil matrix. This technique has been instrumental in recovering direct evidence of the earliest cultivated plants, providing crucial data on the origins of agriculture.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-9">
+          [9]
+         </a>
+        </sup>
+       </p>
+       <p>
+        In recent decades, this traditional approach has been revolutionized by a suite of non-invasive, remote-sensing technologies that allow archaeologists to study tells at a landscape scale before a single trench is dug.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-48">
+          [48]
+         </a>
+        </sup>
+        This methodological shift represents a new paradigm in the field. Where early archaeology was often limited to the localized view from a single excavation pit, modern research begins with a &ldquo;big picture&rdquo; perspective. High-resolution satellite imagery, including declassified Cold War-era CORONA photographs and modern commercial satellite data, enables the identification and mapping of tells and their associated features&mdash;such as ancient roads, canals, or field systems&mdash;over vast areas.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-2">
+          [2]
+         </a>
+        </sup>
+       </p>
+       <p>
+        This satellite data can be integrated into a Geographic Information System (GIS) for more sophisticated analysis. For instance, a Topographic Position Index (TPI) is a computational tool that can automatically identify potential tell sites across a landscape by searching for pixels that are significantly higher in elevation than their immediate surroundings.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-2">
+          [2]
+         </a>
+        </sup>
+        For higher-resolution mapping, LiDAR (Light Detection and Ranging) technology, often deployed from aircraft or drones, uses laser pulses to create incredibly detailed digital elevation models of the ground surface. LiDAR can effectively &ldquo;see&rdquo; through vegetation cover, revealing subtle archaeological features like buried walls or earthworks that are invisible to the naked eye.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-49">
+          [49]
+         </a>
+        </sup>
+        On the ground, geophysical techniques like ground-penetrating radar (GPR) and electrical resistivity surveys can be used to map subsurface anomalies, giving archaeologists a virtual picture of buried architecture before they begin to excavate.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-50">
+          [50]
+         </a>
+        </sup>
+        This integrated, multi-scalar approach is more efficient, less destructive, and allows researchers to formulate more precise research questions, shifting the focus from the single artifact to the entire settlement system.
+       </p>
+       <h3 class="text-3xl mb-4">
+        <strong>
+         Archives of Civilization: Contributions to Understanding the Past
+        </strong>
+       </h3>
+       <p>
+        The unique structure of tells makes them invaluable archives for studying long-term, or
+        <em>
+         diachronic
+        </em>
+        , change. Because they contain a more-or-less continuous sequence of occupation at a single location, they allow archaeologists to observe major historical processes as they unfolded over centuries or millennia.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-13">
+          [13]
+         </a>
+        </sup>
+        This diachronic perspective has yielded profound insights into pivotal moments in human history.
+       </p>
+       <p>
+        The study of tells has been central to understanding the Neolithic Revolution. Sites like Tell Abu Hureyra in Syria provide a nearly continuous record spanning the transition from the Epipaleolithic to the Neolithic. The layers of this tell document a community shifting from a reliance on hunting and gathering to the systematic cultivation of cereals like rye, providing some of the earliest direct evidence for the origins of farming in the world.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-9">
+          [9]
+         </a>
+        </sup>
+       </p>
+       <p>
+        Tells are also at the heart of the archaeology of early urbanism.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-51">
+          [51]
+         </a>
+        </sup>
+        The traditional narrative of urban origins, centered on southern Mesopotamia, has been fundamentally revised by evidence from northern Mesopotamian tells like Tell Brak. The deep stratigraphy at Brak demonstrates that a complex, urban-scale society developed there indigenously, challenging the model of urbanism as a concept that simply diffused from the south.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-6">
+          [6]
+         </a>
+        </sup>
+        By excavating the layers of these ancient cities, archaeologists can trace the development of urban planning, the emergence of social stratification, the construction of monumental architecture, and the formation of the complex social and political institutions that define urban life.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-53">
+          [53]
+         </a>
+        </sup>
+       </p>
+       <p>
+        The scientific contribution of tells extends beyond archaeology and history into the broader social and environmental sciences. Because their layers contain a wealth of paleoenvironmental data&mdash;such as pollen, seeds, and animal bones&mdash;they serve as detailed records of past climates and landscapes.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-41">
+          [41]
+         </a>
+        </sup>
+        By correlating this environmental data with the cultural material from the same layers, archaeologists can study how human societies were affected by and adapted to long-term climate change. In this sense, tells function as unique, long-running societal experiments. They provide datasets spanning millennia, allowing researchers to test theories from fields like sociology, economics, and sustainability science about what makes societies resilient, how inequality develops over time, and why civilizations ultimately collapse or transform.
+        <sup>
+         <a class="text-amber-400 hover:underline" href="#citation-51">
+          [51]
+         </a>
+        </sup>
+        Tells are thus not just records of the past; they are laboratories for understanding the deep historical roots of the challenges facing human societies today.
+       </p>
+      </div>
+      <figure>
+       <img alt="A LiDAR scan revealing hidden archaeological features" class="w-full h-auto object-cover rounded-lg shadow-lg expandable-image" src="images/A_LiDAR_scan_revealing_hidden_archaeological_features.jpg">
+       <figcaption class="mt-4 text-sm text-gray-400 text-center">
+        A LiDAR scan revealing hidden structures.
+        <br>
+        <em class="text-gray-400">
+         Credit: Carlos R. Chiriboga/PAET
+        </em>
+       </figcaption>
+      </figure>
+     </div>
+    </div>
+   </section>
+   <!-- Journey Through Time - Horizontal Timeline -->
+   <section class="py-20 md:py-28 bg-[#111827] section-fade-in" id="journey">
+    <div class="container mx-auto px-6">
+     <div class="text-center mb-8 max-w-4xl mx-auto">
+      <h2 class="text-4xl md:text-5xl">
+       A Journey Through Time
+      </h2>
+      <p class="mt-4 text-lg text-gray-400">
+       Click on a site to explore some of the most famous tells and the unique stories they hold.
+      </p>
+     </div>
+     <div class="timeline-container">
+      <div class="timeline" id="timeline-interactive">
+       <!-- Timeline items will be populated by JS -->
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Legacy Section -->
+   <section class="py-20 md:py-28 bg-[#1F2937] section-fade-in" id="legacy">
+    <div class="container mx-auto px-6 max-w-4xl content-text">
+     <p>
+      The formation of archaeological tells is a remarkable and complex phenomenon, an emergent property arising from the dynamic and sustained interplay of material technology, environmental opportunity, and cultural choice. These artificial mounds are not simple accumulations of dirt but are instead structured, stratified archives of human history, built by the very act of living. The process begins with a specific technological choice&mdash;the reliance on sun-dried mudbrick, an economical but impermanent building material. This choice sets in motion a relentless cycle of construction, decay, and rebuilding that serves as the physical engine of the tell&rsquo;s vertical growth.
+     </p>
+     <p>
+      However, this mechanical process was only able to unfold because of powerful forces that anchored communities to a single location for millennia. These anchors were both practical and profound. Settlers were drawn to strategic locations with access to vital resources like water, fertile land, and trade routes. Yet, it was the intangible bonds of culture and ritual that truly cemented their place. The practice of burying the dead within the home transformed a simple dwelling into a sacred ancestral locus, making abandonment a profound spiritual rupture. Over time, the growing mound itself became a monument to a community&rsquo;s lineage and endurance, a physical manifestation of their history and identity written upon the landscape.
+     </p>
+     <p>
+      The study of these city mounds, through a combination of meticulous excavation and advanced remote sensing, has yielded some of the most important insights in modern archaeology. Tells have provided an unparalleled record of the great transformations of human society, from the dawn of agriculture and the first stirrings of settled life to the complex processes of urbanization and the rise of the world&rsquo;s first cities. They are unique laboratories for studying long-term social dynamics and the intricate relationship between human societies and their environments over thousands of years.
+     </p>
+     <p>
+      Today, these irreplaceable archives of the human journey face unprecedented threats. In regions like Syria and Iraq, the decade-long civil war and the actions of groups like ISIL have led to the catastrophic destruction of countless sites through deliberate demolition, military encroachment, and industrial-scale looting.
+      <sup>
+       <a class="text-amber-400 hover:underline" href="#citation-2">
+        [2]
+       </a>
+      </sup>
+      Elsewhere, rapid agricultural development and urban sprawl continue to level these ancient mounds, erasing their records forever. The enduring legacy of tells is therefore a dual one. They are monuments to the resilience and ingenuity of past civilizations, and they are a stark reminder of the fragility of cultural heritage in the modern world. Their ongoing study and preservation remain a critical task, for in their layers of earth and debris lies the story of who we were, and a deep well of knowledge for understanding who we are today.
+     </p>
+    </div>
+   </section>
+   <!-- Footer -->
+   <section class="py-20 md:py-28 bg-[#1F2937]" id="works-cited">
+    <div class="container mx-auto px-6 max-w-4xl content-text text-left">
+     <h2 class="text-4xl md:text-5xl mb-8">
+      Works Cited
+     </h2>
+     <ol class="list-decimal list-inside">
+      <li class="citation-item mb-2" id="citation-1">
+       Tell (archaeology) \- Wikipedia, accessed July 29, 2025, [https://en.wikipedia.org/wiki/Tell\_(archaeology)](https://en.wikipedia.org/wiki/Tell_\(archaeology\))
+      </li>
+      <li class="citation-item mb-2" id="citation-2">
+       Tells, Mounds, H&ouml;y&uuml;ks, and Tepes \- ArcGIS StoryMaps, accessed July 29, 2025, [https://storymaps.arcgis.com/stories/02347ecb00d34a32a6fba5167ce91981](https://storymaps.arcgis.com/stories/02347ecb00d34a32a6fba5167ce91981)
+      </li>
+      <li class="citation-item mb-2" id="citation-3">
+       Archaeology in Mesopotamia: Digging Deeper at Tell Brak \- The British Academy, accessed July 29, 2025, [https://www.thebritishacademy.ac.uk/documents/2009/pba131p001.pdf](https://www.thebritishacademy.ac.uk/documents/2009/pba131p001.pdf)
+      </li>
+      <li class="citation-item mb-2" id="citation-4">
+       &Ccedil;atalh&ouml;y&uuml;k \- Wikipedia, accessed July 29, 2025, [https://en.wikipedia.org/wiki/%C3%87atalh%C3%B6y%C3%BCk](https://en.wikipedia.org/wiki/%C3%87atalh%C3%B6y%C3%BCk)
+      </li>
+      <li class="citation-item mb-2" id="citation-5">
+       Tell Brak \- Wikipedia, accessed July 29, 2025, [https://en.wikipedia.org/wiki/Tell\_Brak](https://en.wikipedia.org/wiki/Tell_Brak)
+      </li>
+      <li class="citation-item mb-2" id="citation-6">
+       Tell Brak (Syria) | Jason Ur, accessed July 29, 2025, [https://jasonur.scholars.harvard.edu/pages/tell-brak](https://jasonur.scholars.harvard.edu/pages/tell-brak)
+      </li>
+      <li class="citation-item mb-2" id="citation-7">
+       Jericho \- Wikipedia, accessed July 29, 2025, [https://en.wikipedia.org/wiki/Jericho](https://en.wikipedia.org/wiki/Jericho)
+      </li>
+      <li class="citation-item mb-2" id="citation-8">
+       Ancient Jericho/Tell es-Sultan \- UNESCO World Heritage Centre, accessed July 29, 2025, [https://whc.unesco.org/en/list/1687/](https://whc.unesco.org/en/list/1687/)
+      </li>
+      <li class="citation-item mb-2" id="citation-9">
+       Tell Abu Hureyra \- Wikipedia, accessed July 29, 2025, [https://en.wikipedia.org/wiki/Tell\_Abu\_Hureyra](https://en.wikipedia.org/wiki/Tell_Abu_Hureyra)
+      </li>
+      <li class="citation-item mb-2" id="citation-10">
+       &Ccedil;ad&inodot;r H&ouml;y&uuml;k \- Wikipedia, accessed July 29, 2025, [https://en.wikipedia.org/wiki/%C3%87ad%C4%B1r\_H%C3%B6y%C3%BCk](https://en.wikipedia.org/wiki/%C3%87ad%C4%B1r_H%C3%B6y%C3%BCk)
+      </li>
+      <li class="citation-item mb-2" id="citation-11">
+       G&ouml;bekli Tepe \- Wikipedia, accessed July 29, 2025, [https://en.wikipedia.org/wiki/G%C3%B6bekli\_Tepe](https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe)
+      </li>
+      <li class="citation-item mb-2" id="citation-12">
+       G&ouml;bekli Tepe: The Mysterious Site Older Than Stonehenge \- History.com, accessed July 29, 2025, [https://www.history.com/articles/gobekli-tepe](https://www.history.com/articles/gobekli-tepe)
+      </li>
+      <li class="citation-item mb-2" id="citation-13">
+       Understanding Archaeological Tells: Circulating Memories and ..., accessed July 29, 2025, [https://www.cambridge.org/core/journals/cambridge-archaeological-journal/article/understanding-archaeological-tells-circulating-memories-and-engaging-with-ancestors-through-material-attachments/CE85D6CCFA8607F41E99E152FBC88518](https://www.cambridge.org/core/journals/cambridge-archaeological-journal/article/understanding-archaeological-tells-circulating-memories-and-engaging-with-ancestors-through-material-attachments/CE85D6CCFA8607F41E99E152FBC88518)
+      </li>
+      <li class="citation-item mb-2" id="citation-14">
+       Neolithic Tells \- K&ouml;r&ouml;s Regional Archaeological Project \- University of Illinois Chicago, accessed July 29, 2025, [https://koros.uic.edu/our-research/neolithic-tells/](https://koros.uic.edu/our-research/neolithic-tells/)
+      </li>
+      <li class="citation-item mb-2" id="citation-15">
+       tel, accessed July 29, 2025, [http://www1.chapman.edu/\~bidmead/G-tel.htm](http://www1.chapman.edu/~bidmead/G-tel.htm)
+      </li>
+      <li class="citation-item mb-2" id="citation-16">
+       The Archaeologist's Toolkit: What is Stratigraphy? | Center for ..., accessed July 29, 2025, [https://www.southalabama.edu/org/archaeology/news/stratigraphy.html](https://www.southalabama.edu/org/archaeology/news/stratigraphy.html)
+      </li>
+      <li class="citation-item mb-2" id="citation-17">
+       Stratigraphy and The Pine Alley \- James Madison's Montpelier, accessed July 29, 2025, [https://www.montpelier.org/stratigraphy-and-the-pine-alley/](https://www.montpelier.org/stratigraphy-and-the-pine-alley/)
+      </li>
+      <li class="citation-item mb-2" id="citation-18">
+       Tel Gezer is an accumulation of the debris of human activity on a... \- ResearchGate, accessed July 29, 2025, [https://www.researchgate.net/figure/Tel-Gezer-is-an-accumulation-of-the-debris-of-human-activity-on-a-natural-hill-with\_fig4\_301324749](https://www.researchgate.net/figure/Tel-Gezer-is-an-accumulation-of-the-debris-of-human-activity-on-a-natural-hill-with_fig4_301324749)
+      </li>
+      <li class="citation-item mb-2" id="citation-19">
+       Midden \- The Ness of Brodgar Project, accessed July 29, 2025, [https://www.nessofbrodgar.co.uk/about/midden/](https://www.nessofbrodgar.co.uk/about/midden/)
+      </li>
+      <li class="citation-item mb-2" id="citation-20">
+       How are tells formed? (large mounds of debris from successive occupations and buildings) : r/AskAnthropology \- Reddit, accessed July 29, 2025, [https://www.reddit.com/r/AskAnthropology/comments/fbnmhp/how\_are\_tells\_formed\_large\_mounds\_of\_debris\_from/](https://www.reddit.com/r/AskAnthropology/comments/fbnmhp/how_are_tells_formed_large_mounds_of_debris_from/)
+      </li>
+      <li class="citation-item mb-2" id="citation-21">
+       Mud-Brick Architecture \- eScholarship.org, accessed July 29, 2025, [https://escholarship.org/uc/item/4983w678](https://escholarship.org/uc/item/4983w678)
+      </li>
+      <li class="citation-item mb-2" id="citation-22">
+       Mudbrick \- Wikipedia, accessed July 29, 2025, [https://en.wikipedia.org/wiki/Mudbrick](https://en.wikipedia.org/wiki/Mudbrick)
+      </li>
+      <li class="citation-item mb-2" id="citation-23">
+       Mud-Brick Architecture \- eScholarship.org, accessed July 29, 2025, [https://escholarship.org/content/qt4983w678/qt4983w678\_noSplash\_1d997407f6e69ab48f6c105e2790893c.pdf](https://escholarship.org/content/qt4983w678/qt4983w678_noSplash_1d997407f6e69ab48f6c105e2790893c.pdf)
+      </li>
+      <li class="citation-item mb-2" id="citation-24">
+       Mud Bricks \- BibleWalks 500+ sites, accessed July 29, 2025, [https://www.biblewalks.com/mudbricks/](https://www.biblewalks.com/mudbricks/)
+      </li>
+      <li class="citation-item mb-2" id="citation-25">
+       How to Make a Mudbrick \- Biblical Archaeology Society, accessed July 29, 2025, [https://www.biblicalarchaeology.org/daily/ancient-cultures/daily-life-and-practice/how-to-make-a-mudbrick/](https://www.biblicalarchaeology.org/daily/ancient-cultures/daily-life-and-practice/how-to-make-a-mudbrick/)
+      </li>
+      <li class="citation-item mb-2" id="citation-26">
+       Mud: All You Need To Know Fact File | CityChangers.org, accessed July 29, 2025, [https://citychangers.org/mud-fact-file/](https://citychangers.org/mud-fact-file/)
+      </li>
+      <li class="citation-item mb-2" id="citation-27">
+       Jericho (article) | Neolithic sites | Khan Academy, accessed July 29, 2025, [https://www.khanacademy.org/humanities/prehistoric-art/neolithicart/neolithic-sites/a/jericho](https://www.khanacademy.org/humanities/prehistoric-art/neolithicart/neolithic-sites/a/jericho)
+      </li>
+      <li class="citation-item mb-2" id="citation-28">
+       The Rise and Fall of a Neolithic Town | &Ccedil;atalh&ouml;y&uuml;k Research Project, accessed July 29, 2025, [https://www.catalhoyuk.com/site/rise\_and\_fall\_of\_a\_neolithic\_town](https://www.catalhoyuk.com/site/rise_and_fall_of_a_neolithic_town)
+      </li>
+      <li class="citation-item mb-2" id="citation-29">
+       Tell Brak Home, accessed July 29, 2025, [https://www.tellbrak.mcdonald.cam.ac.uk/](https://www.tellbrak.mcdonald.cam.ac.uk/)
+      </li>
+      <li class="citation-item mb-2" id="citation-30">
+       5 Themes of Geography Flashcards \- Quizlet, accessed July 29, 2025, [https://quizlet.com/522821574/5-themes-of-geography-flash-cards/](https://quizlet.com/522821574/5-themes-of-geography-flash-cards/)
+      </li>
+      <li class="citation-item mb-2" id="citation-31">
+       Jericho: An Ancient City Revealed \- Durham University, accessed July 29, 2025, [https://stories.durham.ac.uk/jericho/](https://stories.durham.ac.uk/jericho/)
+      </li>
+      <li class="citation-item mb-2" id="citation-32">
+       Neolithic Site of &Ccedil;atalh&ouml;y&uuml;k \- UNESCO World Heritage Centre, accessed July 29, 2025, [https://whc.unesco.org/en/list/1405/](https://whc.unesco.org/en/list/1405/)
+      </li>
+      <li class="citation-item mb-2" id="citation-33">
+       &Ccedil;atalh&ouml;y&uuml;k \- Smarthistory, accessed July 29, 2025, [https://smarthistory.org/catalhoyuk/](https://smarthistory.org/catalhoyuk/)
+      </li>
+      <li class="citation-item mb-2" id="citation-34">
+       Tell Brak Homepage \- Learning Sites, accessed July 29, 2025, [https://www.learningsites.com/Brak/Tell-Brak\_home\_2016.php](https://www.learningsites.com/Brak/Tell-Brak_home_2016.php)
+      </li>
+      <li class="citation-item mb-2" id="citation-35">
+       G&ouml;bekli tepe \- (Intro to Archaeology) \- Vocab, Definition, Explanations | Fiveable, accessed July 29, 2025, [https://library.fiveable.me/key-terms/introduction-archaeology/gobekli-tepe](https://library.fiveable.me/key-terms/introduction-archaeology/gobekli-tepe)
+      </li>
+      <li class="citation-item mb-2" id="citation-36">
+       Catalhoyuk \- History and Facts, accessed July 29, 2025, [https://www.historyhit.com/locations/catalhoyuk/](https://www.historyhit.com/locations/catalhoyuk/)
+      </li>
+      <li class="citation-item mb-2" id="citation-37">
+       The Spatial Dimensions of Early Mesopotamian ... \- DASH (Harvard), accessed July 29, 2025, [https://dash.harvard.edu/bitstreams/7312037c-9044-6bd4-e053-0100007fdf3b/download](https://dash.harvard.edu/bitstreams/7312037c-9044-6bd4-e053-0100007fdf3b/download)
+      </li>
+      <li class="citation-item mb-2" id="citation-38">
+       Catalhoyuk: Urban Life in Neolithic Anatolia \- ThoughtCo, accessed July 29, 2025, [https://www.thoughtco.com/catalhoyuk-turkey-167405](https://www.thoughtco.com/catalhoyuk-turkey-167405)
+      </li>
+      <li class="citation-item mb-2" id="citation-39">
+       The Site \- &Ccedil;atalh&ouml;y&uuml;k Research Project, accessed July 29, 2025, [https://www.catalhoyuk.com/book/export/html/54](https://www.catalhoyuk.com/book/export/html/54)
+      </li>
+      <li class="citation-item mb-2" id="citation-40">
+       Walls of Jericho | Archaeology, History, & Significance | Britannica, accessed July 29, 2025, [https://www.britannica.com/place/walls-of-Jericho](https://www.britannica.com/place/walls-of-Jericho)
+      </li>
+      <li class="citation-item mb-2" id="citation-41">
+       Tell Brak \- Mesopotamian Capital in Syria \- ThoughtCo, accessed July 29, 2025, [https://www.thoughtco.com/tell-brak-mesopotamian-capital-syria-170274](https://www.thoughtco.com/tell-brak-mesopotamian-capital-syria-170274)
+      </li>
+      <li class="citation-item mb-2" id="citation-42">
+       Mound \- Wikipedia, accessed July 29, 2025, [https://en.wikipedia.org/wiki/Mound](https://en.wikipedia.org/wiki/Mound)
+      </li>
+      <li class="citation-item mb-2" id="citation-43">
+       Burial Mounds \- Wisconsin DNR, accessed July 29, 2025, [https://dnr.wisconsin.gov/topic/Lands/CulturalRes/mounds](https://dnr.wisconsin.gov/topic/Lands/CulturalRes/mounds)
+      </li>
+      <li class="citation-item mb-2" id="citation-44">
+       Mound Builders \- Wikipedia, accessed July 29, 2025, [https://en.wikipedia.org/wiki/Mound\_Builders](https://en.wikipedia.org/wiki/Mound_Builders)
+      </li>
+      <li class="citation-item mb-2" id="citation-45">
+       Earthworks (archaeology) \- Wikipedia, accessed July 29, 2025, [https://en.wikipedia.org/wiki/Earthworks\_(archaeology)](https://en.wikipedia.org/wiki/Earthworks_\(archaeology\))
+      </li>
+      <li class="citation-item mb-2" id="citation-46">
+       What is Known About the Indian Mounds? \- Saint Paul Historical, accessed July 29, 2025, [https://saintpaulhistorical.com/items/show/184](https://saintpaulhistorical.com/items/show/184)
+      </li>
+      <li class="citation-item mb-2" id="citation-47">
+       What do Archaeologists do \- Society for American Archaeology, accessed July 29, 2025, [https://www.saa.org/about-archaeology/what-do-archaeologists-do](https://www.saa.org/about-archaeology/what-do-archaeologists-do)
+      </li>
+      <li class="citation-item mb-2" id="citation-48">
+       Space Archaeology: A New Frontier of Exploration | National Geographic \- YouTube, accessed July 29, 2025, [https://www.youtube.com/watch?v=gxD32LRC1QE](https://www.youtube.com/watch?v=gxD32LRC1QE)
+      </li>
+      <li class="citation-item mb-2" id="citation-49">
+       Investigating an Ancient Temple | Lost Cities with Albert Lin \- YouTube, accessed July 29, 2025, [https://www.youtube.com/watch?v=dGD06Mpi45M](https://www.youtube.com/watch?v=dGD06Mpi45M)
+      </li>
+      <li class="citation-item mb-2" id="citation-50">
+       Locating Sites \- Process of Archaeology \- UW-La Crosse, accessed July 29, 2025, [https://www.uwlax.edu/mvac/process-of-archaeology/fieldwork/locating-sites/](https://www.uwlax.edu/mvac/process-of-archaeology/fieldwork/locating-sites/)
+      </li>
+      <li class="citation-item mb-2" id="citation-51">
+       The Archaeology of Early Cities: &ldquo;What Is the City but the People?&rdquo; \- Annual Reviews, accessed July 29, 2025, [https://www.annualreviews.org/content/journals/10.1146/annurev-anthro-041222-094823?crawler=true\&mimetype=application/pdf](https://www.annualreviews.org/content/journals/10.1146/annurev-anthro-041222-094823?crawler=true&mimetype=application/pdf)
+      </li>
+      <li class="citation-item mb-2" id="citation-52">
+       The Archaeology of Early Cities: &ldquo;What Is the City but the People?&rdquo; \- ResearchGate, accessed July 29, 2025, [https://www.researchgate.net/publication/385105861\_The\_Archaeology\_of\_Early\_Cities\_What\_Is\_the\_City\_but\_the\_People](https://www.researchgate.net/publication/385105861_The_Archaeology_of_Early_Cities_What_Is_the_City_but_the_People)
+      </li>
+      <li class="citation-item mb-2" id="citation-53">
+       (PDF) How do archaeologists study early urban life? Institutions, generative processes, and urban order \- ResearchGate, accessed July 29, 2025, [https://www.researchgate.net/publication/386002338\_How\_do\_archaeologists\_study\_early\_urban\_life\_Institutions\_generative\_processes\_and\_urban\_order](https://www.researchgate.net/publication/386002338_How_do_archaeologists_study_early_urban_life_Institutions_generative_processes_and_urban_order)
+      </li>
+      <li class="citation-item mb-2" id="citation-54">
+       ORIGINS AND DEVELOPMENT OF URBANISM: Archaeological ..., accessed July 29, 2025, [https://faculty.washington.edu/plape/citiesaut11/readings/Cowgill%20annurev%252Eanthro%252E32%252E061002%252E093248.pdf](https://faculty.washington.edu/plape/citiesaut11/readings/Cowgill%20annurev%252Eanthro%252E32%252E061002%252E093248.pdf)
+      </li>
+      <li class="citation-item mb-2" id="citation-55">
+       The Boncuklu Project | Department of Archaeology, Classics and Egyptology | University of Liverpool, accessed July 29, 2025, [https://www.liverpool.ac.uk/archaeology-classics-and-egyptology/research/impact/boncuklu-project/](https://www.liverpool.ac.uk/archaeology-classics-and-egyptology/research/impact/boncuklu-project/)
+      </li>
+      <li class="citation-item mb-2" id="citation-56">
+       Top 10 Archaeological Sites in the World \- Far Horizons, accessed July 29, 2025, [https://www.farhorizons.com/the-top-10-archaeological-sites-in-the-world/](https://www.farhorizons.com/the-top-10-archaeological-sites-in-the-world/)
+      </li>
+      <li class="citation-item mb-2" id="citation-57">
+       UNDERSTANDING ET-TELL AS HERITAGE IN A PAST AND PRESENT URBAN LANDSCAPE \- YouTube, accessed July 29, 2025, [https://www.youtube.com/watch?v=Mh8iO1L9OHQ](https://www.youtube.com/watch?v=Mh8iO1L9OHQ)
+      </li>
+      <li class="citation-item mb-2" id="citation-58">
+       The Mud Brick Manual \- EastEast, accessed July 29, 2025, [https://easteast.world/posts/453](https://easteast.world/posts/453)
+      </li>
+      <li class="citation-item mb-2" id="citation-59">
+       Uncovering the Bible's Buried Cities: Jericho | ArmstrongInstitute.org, accessed July 29, 2025, [https://armstronginstitute.org/309-uncovering-the-bibles-buried-cities-jericho](https://armstronginstitute.org/309-uncovering-the-bibles-buried-cities-jericho)
+      </li>
+      <li class="citation-item mb-2" id="citation-60">
+       Lost Treasures of Egypt: Unearthing Ancient Secrets | MEGA EPISODE \- YouTube, accessed July 29, 2025, [https://www.youtube.com/watch?v=imyUnXoz538](https://www.youtube.com/watch?v=imyUnXoz538)
+      </li>
+      <li class="citation-item mb-2" id="citation-61">
+       How 3-D Imaging Helps Archaeologists Preserve the Past | National Geographic \- YouTube, accessed July 29, 2025, [https://www.youtube.com/watch?v=aVB6ocNBhTM](https://www.youtube.com/watch?v=aVB6ocNBhTM)
+      </li>
+      <li class="citation-item mb-2" id="citation-62">
+       Childhood growth in the Neolithic: a detailed case study of &Ccedil;atalh&ouml;y&uuml;k \- UCL Discovery, accessed July 29, 2025, [https://discovery.ucl.ac.uk/1465837/6/PhD-Emmy-27-03-2015.pdf](https://discovery.ucl.ac.uk/1465837/6/PhD-Emmy-27-03-2015.pdf)
+      </li>
+     </ol>
+    </div>
+   </section>
+   <footer class="py-16 bg-[#111827] text-gray-400">
+    <div class="container mx-auto px-6 text-center">
+     <h2 class="text-3xl text-amber-400">
+      Mountains of Time
+     </h2>
+     <p class="mt-2">
+      An interactive exploration of archaeological tells.
+     </p>
+     <p class="mt-8 text-sm text-gray-500">
+      Content adapted from "The Genesis of Giants: A Comprehensive Analysis of the Formation of Archaeological Tells."
+     </p>
+    </div>
+   </footer>
+  </main>
+  <!-- Timeline Modal -->
+  <div class="modal-overlay" id="timeline-modal">
+   <div class="modal-content" id="modal-inner-content">
+    <!-- Modal content will be injected by JS -->
+   </div>
+  </div>
+  <!-- Image Modal -->
+  <div class="modal-overlay" id="image-modal">
+   <div class="relative" id="image-modal-content">
+    <button class="modal-close-btn">
+     <svg class="h-10 w-10" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+      </path>
+     </svg>
+    </button>
+    <img alt="Expanded view" id="modal-img" src>
+   </div>
+  </div>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- Mobile Menu ---
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            // Smooth scroll for mobile links
+            const targetId = link.getAttribute('href');
+            document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // --- Section Fade-in on Scroll ---
+    const sections = document.querySelectorAll('.section-fade-in');
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // --- Nav Link Highlighting on Scroll ---
+    const navLinks = document.querySelectorAll('header .nav-link');
+    const contentSections = document.querySelectorAll('main section');
+    const activateNavLink = (id) => {
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+            }
+        });
+    };
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) activateNavLink(entry.target.id);
+        });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    contentSections.forEach(section => navObserver.observe(section));
+
+    // --- Interactive Dig Site Logic ---
+    const digSiteContainer = document.getElementById('dig-site-container');
+    const digInfoDisplay = document.getElementById('dig-info-display');
+    const digBtn = document.getElementById('dig-btn');
+
+    const layers = [
+        { era: 'Roman/Byzantine', date: '~400 CE', desc: 'The uppermost layers often contain remnants from later empires, showing evidence of advanced trade networks and artistry.', artifacts: 'Glass beads, coins, sophisticated pottery.', bg: 'images/Roman_Byzantine.jpg' },
+{ era: 'Iron Age', date: '~500 BCE', desc: 'This era reveals the rise of powerful kingdoms and increased conflict. Metallurgy becomes more common.', artifacts: 'Iron arrowheads, tools, fortifications.', bg: 'images/Iron_Age.jpg' },
+{ era: 'Bronze Age', date: '~1500 BCE', desc: 'A time of early cities and complex societies. The domestication of animals is well-established.', artifacts: 'Bronze tools, animal bones, early writing tablets.', bg: 'images/Bronze_Age.jpg' },
+{ era: 'Neolithic Period', date: '~3000 BCE', desc: 'The deepest, oldest layers show the beginnings of settled life and the agricultural revolution.', artifacts: 'Early pottery shards, grinding stones, obsidian tools.', bg: 'images/Neolithic_Period.jpg' }
+    ];
+
+    let currentLayer = 0;
+
+    function setupDigSite() {
+        if (!digSiteContainer || !digInfoDisplay || !digBtn) return;
+        digSiteContainer.innerHTML = '';
+        digInfoDisplay.innerHTML = '';
+
+        layers.forEach((layer, index) => {
+            const layerEl = document.createElement('div');
+            layerEl.className = 'dig-layer';
+            layerEl.id = `layer-${index}`;
+            layerEl.style.backgroundImage = `url('${layer.bg}')`;
+            digSiteContainer.appendChild(layerEl);
+
+            const infoEl = document.createElement('div');
+            infoEl.className = 'dig-info-card';
+            infoEl.id = `info-${index}`;
+            infoEl.innerHTML = `
+                <h3 class="text-2xl mb-2">${layer.era}</h3>
+                <p class="font-bold text-amber-400 mb-2">${layer.date}</p>
+                <p class="text-gray-300 mb-3">${layer.desc}</p>
+                <p class="text-sm text-gray-400"><strong class="text-gray-300">Key Finds:</strong> ${layer.artifacts}</p>
+            `;
+            digInfoDisplay.appendChild(infoEl);
+        });
+        
+        document.getElementById('layer-0').classList.add('active');
+        document.getElementById('info-0').classList.add('active');
+        digBtn.textContent = "Dig Deeper";
+        currentLayer = 0;
+    }
+
+    if (digBtn) {
+        digBtn.addEventListener('click', () => {
+            document.getElementById(`layer-${currentLayer}`).classList.remove('active');
+            document.getElementById(`info-${currentLayer}`).classList.remove('active');
+
+            currentLayer = (currentLayer + 1) % layers.length;
+
+            document.getElementById(`layer-${currentLayer}`).classList.add('active');
+            document.getElementById(`info-${currentLayer}`).classList.add('active');
+            
+            digBtn.textContent = (currentLayer === layers.length - 1) ? "Start Over" : "Dig Deeper";
+        });
+    }
+    
+    setupDigSite();
+
+    // --- Modal Logic (Timeline and Image) ---
+    const timelineContainer = document.getElementById('timeline-interactive');
+    const timelineModal = document.getElementById('timeline-modal');
+    const modalContent = document.getElementById('modal-inner-content');
+    const imageModal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+
+    const timelineData = [
+        { id: 'gobekli', name: 'Göbekli Tepe', date: 'c. 9500 BCE', desc: 'A "proto-tell" built for ritual, not habitation. Its massive T-shaped stone pillars predate widespread agriculture, challenging our understanding of early human social organization and the capacity for monumental construction.', image: 'images/Göbekli_Tepe.jpg' },
+        { id: 'jericho', name: 'Jericho', date: 'c. 9500 BCE - Iron Age', desc: 'One of the oldest continuously inhabited cities on Earth. Its deep tell reveals over 20 successive settlements, including the world\'s first known fortifications—a massive stone wall and tower dating to the Neolithic period.', image: 'images/Jericho.jpg' },
+{ id: 'catalhoyuk', name: 'Çatalhöyük', date: 'c. 7400 BCE', desc: 'A vast and dense proto-city of mudbrick houses with no streets. Inhabitants entered their homes through openings in the flat roofs. It is a classic example of a tell formed almost entirely from domestic accretion and intramural burials.', image: 'images/Çatalhöyük.jpg' },
+{ id: 'brak', name: 'Tell Brak', date: 'c. 6000 BCE', desc: 'A massive urban center in Syria that developed independently of the southern Mesopotamian cities. Its growth demonstrates that the path to urbanism was not a single invention but had multiple, independent origins across the Near East.', image: 'images/Tell_Brak.jpg' }
+    ];
+
+    if (timelineContainer) {
+        timelineContainer.innerHTML = `
+            <div class="timeline-line"></div>
+            ${timelineData.map(item => `
+                <div class="timeline-item" data-id="${item.id}">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="text-xl">${item.name}</h3>
+                        <p class="timeline-date">${item.date}</p>
+                    </div>
+                </div>
+            `).join('')}
+        `;
+
+        timelineContainer.addEventListener('click', (e) => {
+            const item = e.target.closest('.timeline-item');
+            if (item) {
+                const itemData = timelineData.find(d => d.id === item.dataset.id);
+                if (itemData) {
+                    modalContent.innerHTML = `
+                        <button class="modal-close-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                        <img src="${itemData.image}" alt="${itemData.name}" class="w-full h-48 object-cover rounded-md mb-4">
+                        <h2 class="text-3xl mb-2">${itemData.name}</h2>
+                        <p class="font-bold text-amber-400 mb-4">${itemData.date}</p>
+                        <p class="text-gray-300">${itemData.desc}</p>
+                    `;
+                    timelineModal.classList.add('open');
+                }
+            }
+        });
+    }
+
+    // --- Expandable Image Logic ---
+    const expandableImages = document.querySelectorAll('.expandable-image');
+    expandableImages.forEach(img => {
+        img.addEventListener('click', () => {
+            modalImg.src = img.src;
+            imageModal.classList.add('open');
+        });
+    });
+
+    // --- General Modal Closing ---
+    document.querySelectorAll('.modal-overlay').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target.closest('.modal-close-btn')) {
+                modal.classList.remove('open');
+            }
+        });
+    });
+});
+  </script>
+ </body>
+</html>
