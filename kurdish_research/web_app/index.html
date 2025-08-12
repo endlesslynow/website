@@ -68,7 +68,7 @@
         }
         
         /* --- Buttons --- */
-        .filter-toggle, .update-btn, .wipe-btn {
+        .filter-toggle, .update-btn, .wipe-btn, .new-filter-btn {
             color: white;
             border: none;
             padding: 12px 24px;
@@ -83,11 +83,12 @@
         }
 
         .filter-toggle { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .new-filter-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         .update-btn { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
         .wipe-btn { background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); }
         
-        .filter-toggle:hover, .update-btn:hover, .wipe-btn:hover { transform: translateY(-2px); }
-        .filter-toggle:active, .update-btn:active, .wipe-btn:active { transform: translateY(0); }
+        .filter-toggle:hover, .update-btn:hover, .wipe-btn:hover, .new-filter-btn:hover { transform: translateY(-2px); }
+        .filter-toggle:active, .update-btn:active, .wipe-btn:active, .new-filter-btn:active { transform: translateY(0); }
         .update-btn:disabled { background: #555; cursor: not-allowed; transform: none; opacity: 0.7; }
         
         /* --- Track Display --- */
@@ -213,7 +214,7 @@
             .header { padding: 20px 0; margin-bottom: 24px; }
             .header-content { flex-direction: column; text-align: center; }
             .header-controls { width: 100%; justify-content: center; }
-            .filter-toggle, .update-btn, .wipe-btn { flex-grow: 1; max-width: 200px; }
+            .filter-toggle, .update-btn, .wipe-btn, .new-filter-btn { flex-grow: 1; max-width: 200px; }
             h1 { font-size: 24px; }
             .track-row { padding: 20px; margin-bottom: 12px; }
             .track-title { font-size: 17px; margin-bottom: 16px; }
@@ -236,6 +237,7 @@
                 <h1>Archive Player</h1>
                 <div class="header-controls">
                     <button id="filter-toggle" class="filter-toggle">Show All</button>
+                    <button id="filter-new-btn" class="new-filter-btn">Show Only New</button>
                     <button id="update-tracks-btn" class="update-btn">Update Tracks</button>
                     <button id="wipe-data-btn" class="wipe-btn">Wipe Data</button>
                 </div>
@@ -271,6 +273,7 @@
                 this.db = null;
                 this.progressInterval = null;
                 this.showUnlistenedOnly = true;
+                this.showNewOnly = false; // State for the new filter
             }
 
             async init() {
@@ -323,6 +326,7 @@
 
             setupEventListeners() {
                 document.getElementById('filter-toggle').addEventListener('click', () => this.toggleFilter());
+                document.getElementById('filter-new-btn').addEventListener('click', () => this.toggleNewFilter()); // Listener for the new button
                 document.getElementById('update-tracks-btn').addEventListener('click', () => this.updateTracks());
                 document.getElementById('wipe-data-btn').addEventListener('click', () => this.showWipeConfirmModal(true));
                 
@@ -477,8 +481,20 @@
                 container.innerHTML = '';
 
                 this.updateFilterButtonText();
+                this.updateNewFilterButtonText(); // Update the new button's text
 
-                const tracksToRender = this.showUnlistenedOnly ? this.tracks.filter(t => !t.listened) : this.tracks;
+                let tracksToRender = this.tracks;
+
+                // Apply "New Only" filter
+                if (this.showNewOnly) {
+                    tracksToRender = tracksToRender.filter(t => t.subcategory === 'New');
+                }
+
+                // Apply "Unlistened Only" filter
+                if (this.showUnlistenedOnly) {
+                    tracksToRender = tracksToRender.filter(t => !t.listened);
+                }
+
 
                 if (this.tracks.length === 0) {
                     noTracksDiv.textContent = 'No tracks found. Click "Update Tracks" to scan for audio files.';
@@ -487,7 +503,13 @@
                 }
                 
                 if (tracksToRender.length === 0) {
-                    noTracksDiv.textContent = 'All tracks are marked as listened. Change the filter to "Show All" to see them.';
+                    if (this.showNewOnly) {
+                        noTracksDiv.textContent = 'No new tracks found. Try changing the filters.';
+                    } else if (this.showUnlistenedOnly) {
+                        noTracksDiv.textContent = 'All tracks are marked as listened. Change the filter to "Show All" to see them.';
+                    } else {
+                        noTracksDiv.textContent = 'No tracks match the current filters.';
+                    }
                     noTracksDiv.style.display = 'block';
                 } else {
                     noTracksDiv.style.display = 'none';
@@ -513,8 +535,10 @@
                 const sortedCategories = Array.from(groupedTracks.keys()).sort();
 
                 for (const categoryName of sortedCategories) {
-                    html += `<div class="category-section"><h2 class="category-title">${categoryName}</h2>`;
                     const subcategories = groupedTracks.get(categoryName);
+                    if (subcategories.size === 0) continue; // Don't render category if all its tracks are filtered out
+
+                    html += `<div class="category-section"><h2 class="category-title">${categoryName}</h2>`;
                     
                     // Sort subcategories alphabetically, with '_main' first
                     const sortedSubcategories = Array.from(subcategories.keys()).sort((a, b) => {
@@ -721,9 +745,18 @@
                 this.showUnlistenedOnly = !this.showUnlistenedOnly;
                 this.renderUI();
             }
+            
+            toggleNewFilter() {
+                this.showNewOnly = !this.showNewOnly;
+                this.renderUI();
+            }
 
             updateFilterButtonText() {
                 document.getElementById('filter-toggle').textContent = this.showUnlistenedOnly ? 'Show All' : 'Show Unlistened';
+            }
+
+            updateNewFilterButtonText() {
+                document.getElementById('filter-new-btn').textContent = this.showNewOnly ? 'Show All Tracks' : 'Show Only New';
             }
 
             seek(seconds) {

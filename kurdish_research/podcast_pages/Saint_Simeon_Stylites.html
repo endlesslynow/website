@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saint Simeon Stylites</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Saint Simeon Stylites</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/St.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/St.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>The provided sources offer a comprehensive overview of St. Simeon Stylites the Elder, a prominent 5th-century Syrian ascetic. They explore his extraordinary life atop a pillar, detailing his radical ascetic practices and their motivations, such as seeking solitude and expressing profound piety. The texts further illuminate the historical and geographical context of his influence, including the development of the pilgrimage complex at Qal&#x27;at Sim&#x27;an. Crucially, the sources emphasize Simeon&#x27;s role as a significant political and theological figure within the Eastern Roman Empire, particularly his unwavering support for the Chalcedonian Definition amidst the Christological controversies that fractured the Christian church.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/St. Simeon, Pre-2010 Context_.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Simeon Stylites - Wikipedia, accessed August 12, 2025,<a href="https://en.wikipedia.org/wiki/Simeon_Stylites" target="_blank">https://en.wikipedia.org/wiki/Simeon_Stylites</a></li>
+            <li>​ Saint Simeon Stylites | EBSCO Research Starters, accessed August 12, 2025,<a href="https://www.ebsco.com/research-starters/biography/saint-simeon-stylites" target="_blank">https://www.ebsco.com/research-starters/biography/saint-simeon-stylites</a></li>
+            <li>​ Saint Symeon Stylite the Elder | St. Barbara Greek Orthodox Church, accessedAugust 12, 2025,<a href="https://www.saintbarbara.org/our_faith/iconography/saint_symeon_stylite_the_elder" target="_blank">https://www.saintbarbara.org/our_faith/iconography/saint_symeon_stylite_the_elder</a></li>
+            <li>​ Shemʿun the Stylite - Gorgias Encyclopedic Dictionary of the Syriac Heritage,accessed August 12, 2025, <a href="https://gedsh.bethmardutho.org/Shemun-the-Stylite" target="_blank">https://gedsh.bethmardutho.org/Shemun-the-Stylite</a></li>
+            <li>​ Qal&#x27;at Sem&#x27;an: Historical accounts - Art and Architecture of the Middle Ages,accessed August 12, 2025, <a href="https://artofthemiddleages.com/s/main/item/4396" target="_blank">https://artofthemiddleages.com/s/main/item/4396</a></li>
+            <li>​ St. Simeon Stylites - P A N M O D E R N . C O M, accessed August 12, 2025,<a href="http://www.panmodern.com/simeon.html" target="_blank">http://www.panmodern.com/simeon.html</a></li>
+            <li>​ Stylite/Stylitism - Brill - Reference Works, accessed August 12, 2025,<a href="https://referenceworks.brill.com/display/entries/EECO/SIM-00003279.xml" target="_blank">https://referenceworks.brill.com/display/entries/EECO/SIM-00003279.xml</a></li>
+            <li>​ Extreme fasting - St Simeon the Stylite - The History Girls, accessed August 12,2025,<a href="http://the-history-girls.blogspot.com/2019/01/extreme-fasting-st-simeon-stylite.html" target="_blank">http://the-history-girls.blogspot.com/2019/01/extreme-fasting-st-simeon-stylite.html</a></li>
+            <li>​ CATHOLIC ENCYCLOPEDIA: Neo-Platonism - New Advent, accessed August 12,2025, <a href="https://www.newadvent.org/cathen/10742b.htm" target="_blank">https://www.newadvent.org/cathen/10742b.htm</a></li>
+            <li>​Archnet &gt; Site &gt; Qal&#x27;a Sim&#x27;an, accessed August 12, 2025,<a href="https://www.archnet.org/sites/4325" target="_blank">https://www.archnet.org/sites/4325</a></li>
+            <li>​Symeon the Stylite - OrthodoxWiki, accessed August 12, 2025,<a href="https://orthodoxwiki.org/Symeon_the_Stylite" target="_blank">https://orthodoxwiki.org/Symeon_the_Stylite</a></li>
+            <li>​Symeon Stylites: His three Lives as versions of history – Archive, accessed August12, 2025, <a href="https://archive.gr/?p=1279" target="_blank">https://archive.gr/?p=1279</a></li>
+            <li>​Saint Simeon Stylites, the Elder - Orthodox Church in America, accessed August12, 2025,<a href="https://www.oca.org/saints/lives/2000/09/01/102448-saint-simeon-stylites-the-elder" target="_blank">https://www.oca.org/saints/lives/2000/09/01/102448-saint-simeon-stylites-the-elder</a></li>
+            <li>​St. Simeon the Stylite and Living “Under Law” - Sam Storms, accessed August 12,2025,<a href="https://www.samstorms.org/enjoying-god-blog/post/st-simeon-the-stylite-and-living--under-law-" target="_blank">https://www.samstorms.org/enjoying-god-blog/post/st-simeon-the-stylite-and-living--under-law-</a></li>
+            <li>​The Lives of Simeon Stylites - Eighth Day Institute, accessed August 12, 2025,<a href="https://www.eighthdayinstitute.org/the-lives-of-simeon-stylites" target="_blank">https://www.eighthdayinstitute.org/the-lives-of-simeon-stylites</a></li>
+            <li>​Syrian Churches - Search results provided by BiblicalTraining, accessed August 12,2025, <a href="https://www.biblicaltraining.org/library/syrian-churches" target="_blank">https://www.biblicaltraining.org/library/syrian-churches</a></li>
+            <li>​Stylites | Encyclopedia.com, accessed August 12, 2025,<a href="https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/stylites" target="_blank">https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/stylites</a></li>
+            <li>​Qal&#x27;at Sem&#x27;an · Art and Architecture of the Middle Ages: Exploring a ConnectedWorld, accessed August 12, 2025,<a href="https://artofthemiddleages.com/s/main/item/2958" target="_blank">https://artofthemiddleages.com/s/main/item/2958</a></li>
+            <li>​Traveling stylites? Rethinking the pillar saint&#x27;s stasis in the Christian East, accessedAugust 12, 2025, <a href="https://books.openedition.org/efr/4305" target="_blank">https://books.openedition.org/efr/4305</a></li>
+            <li>​Stylite - Wikipedia, accessed August 12, 2025, <a href="https://en.wikipedia.org/wiki/Stylite" target="_blank">https://en.wikipedia.org/wiki/Stylite</a></li>
+            <li>​Neoplatonism and Christianity - Wikipedia, accessed August 12, 2025,<a href="https://en.wikipedia.org/wiki/Neoplatonism_and_Christianity" target="_blank">https://en.wikipedia.org/wiki/Neoplatonism_and_Christianity</a></li>
+            <li>​Neoplatonism - Stanford Encyclopedia of Philosophy, accessed August 12, 2025,<a href="https://plato.stanford.edu/entries/neoplatonism/" target="_blank">https://plato.stanford.edu/entries/neoplatonism/</a></li>
+            <li>​1 UNIT 4 NEOPLATONISM Contents 4. 0. Objectives 4. 1. Introduction 4. 2. The Lifeand Writings of Plotinus 4. 3. The Philoso - eGyanKosh, accessed August 12, 2025,<a href="https://egyankosh.ac.in/bitstream/123456789/38091/1/Unit-4.pdf" target="_blank">https://egyankosh.ac.in/bitstream/123456789/38091/1/Unit-4.pdf</a></li>
+            <li>​Neoplatonism - Wikipedia, accessed August 12, 2025,<a href="https://en.wikipedia.org/wiki/Neoplatonism" target="_blank">https://en.wikipedia.org/wiki/Neoplatonism</a></li>
+            <li>​The Permanent Influence of Neoplatonism upon Christianity - The University ofChicago Press: Journals, accessed August 12, 2025,<a href="https://www.journals.uchicago.edu/doi/pdf/10.1086/477376" target="_blank">https://www.journals.uchicago.edu/doi/pdf/10.1086/477376</a></li>
+            <li>​Asceticism | Self-Discipline, Renunciation &amp; Spiritual Growth | Britannica,accessed August 12, 2025, <a href="https://www.britannica.com/topic/asceticism" target="_blank">https://www.britannica.com/topic/asceticism</a></li>
+            <li>​20th WCP: The Neoplatonist Roots of Sufi Philosophy, accessed August 12, 2025,<a href="https://www.bu.edu/wcp/Papers/Comp/CompGode.htm" target="_blank">https://www.bu.edu/wcp/Papers/Comp/CompGode.htm</a></li>
+            <li>​Reports - Syrians for Heritage (SIMAT), accessed August 12, 2025,<a href="https://syriansforheritage.org/?page_id=403" target="_blank">https://syriansforheritage.org/?page_id=403</a></li>
+            <li>​Mount Simeon - Wikipedia, accessed August 12, 2025,<a href="https://en.wikipedia.org/wiki/Mount_Simeon" target="_blank">https://en.wikipedia.org/wiki/Mount_Simeon</a></li>
+            <li>​The file of Religions and nationalities in Afrin - Peace in Kurdistan, accessedAugust 12, 2025,<a href="https://www.peaceinkurdistancampaign.com/the-file-of-religions-and-nationalities-in-afrin/" target="_blank">https://www.peaceinkurdistancampaign.com/the-file-of-religions-and-nationalities-in-afrin/</a></li>
+            <li>​The Byzantine Empire (Chapter 1) - Medieval Syria and the Onset of ..., accessedAugust 12, 2025,<a href="https://www.cambridge.org/core/books/medieval-syria-and-the-onset-of-the-crusades/byzantine-empire/0DFA2604E3C10240139F087925579AC3" target="_blank">https://www.cambridge.org/core/books/medieval-syria-and-the-onset-of-the-crusades/byzantine-empire/0DFA2604E3C10240139F087925579AC3</a></li>
+            <li>​Church of Saint Simeon Stylites - Wikipedia, accessed August 12, 2025,<a href="https://en.wikipedia.org/wiki/Church_of_Saint_Simeon_Stylites" target="_blank">https://en.wikipedia.org/wiki/Church_of_Saint_Simeon_Stylites</a></li>
+            <li>​Qal&#x27;at Seman - Architecture and Asceticism - University of Exeter, accessedAugust 12, 2025, <a href="https://architectureandasceticism.exeter.ac.uk/items/show/144" target="_blank">https://architectureandasceticism.exeter.ac.uk/items/show/144</a></li>
+            <li>​Deir Semaan (Telanissos) ناعمس ريد - United Nations Satellite Centre UNOSAT,accessed August 12, 2025,<a href="https://unosat.web.cern.ch/unitar/downloads/chs/Deir_Semaan.pdf" target="_blank">https://unosat.web.cern.ch/unitar/downloads/chs/Deir_Semaan.pdf</a></li>
+            <li>​Simeon Stylites | Heritage of the Middle East - Archeologie.culture.fr, accessedAugust 12, 2025,<a href="https://archeologie.culture.gouv.fr/proche-orient/en/simeon-stylites" target="_blank">https://archeologie.culture.gouv.fr/proche-orient/en/simeon-stylites</a></li>
+            <li>​Church of St. Simeon - Syria - Sacred Destinations, accessed August 12, 2025,<a href="https://www.sacred-destinations.com/syria/st-simeon-church" target="_blank">https://www.sacred-destinations.com/syria/st-simeon-church</a></li>
+            <li>​The Early Fifth Century, 395–455 (Chapter 5) - The Roman Empire in LateAntiquity, accessed August 12, 2025,<a href="https://www.cambridge.org/core/books/roman-empire-in-late-antiquity/early-fifth-century-395455/6212FF897B68BB3AF29228F08ECFD4D1" target="_blank">https://www.cambridge.org/core/books/roman-empire-in-late-antiquity/early-fifth-century-395455/6212FF897B68BB3AF29228F08ECFD4D1</a></li>
+            <li>​Byzantine bureaucracy and aristocracy - Wikipedia, accessed August 12, 2025,<a href="https://en.wikipedia.org/wiki/Byzantine_bureaucracy_and_aristocracy" target="_blank">https://en.wikipedia.org/wiki/Byzantine_bureaucracy_and_aristocracy</a></li>
+            <li>​POLITICS AND SOCIETY IN THE EARLY BYZANTINE CAPITAL (330-565) | History ofIstanbul, accessed August 12, 2025,<a href="https://istanbultarihi.ist/405-politics-and-society-in-the-early-byzantine-capital-330-565" target="_blank">https://istanbultarihi.ist/405-politics-and-society-in-the-early-byzantine-capital-330-565</a></li>
+            <li>​comes Orientis - Εγκυκλοπαίδεια Μείζονος Ελληνισμού, Κωνσταντινούπολη,accessed August 12, 2025,<a href="http://constantinople.ehw.gr/Forms/fLemmaBody.aspx?lemmaid=7241" target="_blank">http://constantinople.ehw.gr/Forms/fLemmaBody.aspx?lemmaid=7241</a></li>
+            <li>​Syria - Hellenistic, Roman, Empire | Britannica, accessed August 12, 2025,<a href="https://www.britannica.com/place/Syria/Hellenistic-and-Roman-periods" target="_blank">https://www.britannica.com/place/Syria/Hellenistic-and-Roman-periods</a></li>
+            <li>​Part II: Organising Space and Time - University of Warwick, accessed August 12,2025,<a href="https://warwick.ac.uk/fac/arts/classics/intranets/students/modules/romanneareast/bibliog/roman_syria_02.rtf" target="_blank">https://warwick.ac.uk/fac/arts/classics/intranets/students/modules/romanneareast/bibliog/roman_syria_02.rtf</a></li>
+            <li>​Syria (region) - Wikiwand, accessed August 12, 2025,<a href="https://www.wikiwand.com/en/articles/Syria_(region)" target="_blank">https://www.wikiwand.com/en/articles/Syria_(region)</a></li>
+            <li>​Guided practice: continuity and change in the Byzantine Empire - Khan Academy,accessed August 12, 2025,<a href="https://www.khanacademy.org/humanities/world-history/medieval-times/byzantine-empire/a/the-rise-of-the-byzantine-empire" target="_blank">https://www.khanacademy.org/humanities/world-history/medieval-times/byzantine-empire/a/the-rise-of-the-byzantine-empire</a></li>
+            <li>​General History - Syriac Orthodox Church of Antioch, accessed August 12, 2025,<a href="https://syrianorthodoxchurch.org/general-history/" target="_blank">https://syrianorthodoxchurch.org/general-history/</a></li>
+            <li>​Council of Chalcedon 451 ad - The Orthodox Path, accessed August 12, 2025,<a href="https://www.orthodoxpath.org/catechisms-and-articles/council-of-chalcedon-451ad/" target="_blank">https://www.orthodoxpath.org/catechisms-and-articles/council-of-chalcedon-451ad/</a></li>
+            <li>​Council of Chalcedon | EBSCO Research Starters, accessed August 12, 2025,<a href="https://www.ebsco.com/research-starters/religion-and-philosophy/council-chalcedon" target="_blank">https://www.ebsco.com/research-starters/religion-and-philosophy/council-chalcedon</a></li>
+            <li>​Council of Chalcedon | Catholic Answers Encyclopedia, accessed August 12,2025, <a href="https://www.catholic.com/encyclopedia/council-of-chalcedon" target="_blank">https://www.catholic.com/encyclopedia/council-of-chalcedon</a></li>
+            <li>​Nestorianism | Definition, Natures of Christ, History, Councils, &amp; Churches |Britannica, accessed August 12, 2025,<a href="https://www.britannica.com/topic/Nestorianism" target="_blank">https://www.britannica.com/topic/Nestorianism</a></li>
+            <li>​Nestorianism - Wikipedia, accessed August 12, 2025,<a href="https://en.wikipedia.org/wiki/Nestorianism" target="_blank">https://en.wikipedia.org/wiki/Nestorianism</a></li>
+            <li>​The Fifth-Century Christological Controversy Between Cyril of Alexandria andNestorius of Constantinople: The Mariology Controversy as an Example - JosephLouis Blog - Pastoral Care Teacher and Pastor&#x27;s Blog, accessed August 12, 2025,<a href="https://josephlouis.net/the-fifth-century-christological-controversy-between-cyril-of-alexandria-and-nestorius-of-constantinople-the-mariology-controversy-as-an-example/" target="_blank">https://josephlouis.net/the-fifth-century-christological-controversy-between-cyril-of-alexandria-and-nestorius-of-constantinople-the-mariology-controversy-as-an-example/</a></li>
+            <li>​Council of Chalcedon - Wikipedia, accessed August 12, 2025,<a href="https://en.wikipedia.org/wiki/Council_of_Chalcedon" target="_blank">https://en.wikipedia.org/wiki/Council_of_Chalcedon</a></li>
+            <li>​Christianity in the 5th century - Wikipedia, accessed August 12, 2025,<a href="https://en.wikipedia.org/wiki/Christianity_in_the_5th_century" target="_blank">https://en.wikipedia.org/wiki/Christianity_in_the_5th_century</a></li>
+            <li>​What brought about divisions in the early Christian Church in 451? - CopticOrthodox Diocese of the Southern United States - Q&amp;A, accessed August 12,2025, <a href="https://www.suscopts.org/q&amp;a/index.php?qid=719&amp;catid=428" target="_blank">https://www.suscopts.org/q&amp;a/index.php?qid=719&amp;catid=428</a></li>
+            <li>​THE MONOPHYSITE RESPONSE TO THE ARAB INVASIONS - Almuslih, accessedAugust 12, 2025,<a href="https://almuslih.org/wp-content/uploads/2024/11/Moorhead-J-The-Monophysite-Response-.pdf" target="_blank">https://almuslih.org/wp-content/uploads/2024/11/Moorhead-J-The-Monophysite-Response-.pdf</a></li>
+            <li>​Book Review: The Rise of the Monophysite Movement - Orthodox ChristianTheology, accessed August 12, 2025,<a href="https://orthodoxchristiantheology.com/2020/02/02/book-review-the-rise-of-the-monophysite-movement/" target="_blank">https://orthodoxchristiantheology.com/2020/02/02/book-review-the-rise-of-the-monophysite-movement/</a></li>
+            <li>​Nestorianism and Monophysitism, accessed August 12, 2025,<a href="https://berchmans.tripod.com/heresy.html" target="_blank">https://berchmans.tripod.com/heresy.html</a></li>
+            <li>​Sixty Feet Above: The Difficult Sanctity of Simeon Stylites, accessed August 12,2025,<a href="https://friendsabove.com/sixty-feet-above-the-difficult-sanctity-of-simeon-stylites/" target="_blank">https://friendsabove.com/sixty-feet-above-the-difficult-sanctity-of-simeon-stylites/</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: August 12, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
