@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Settlement of Kurd-Dagh: A Digital Tell</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --parchment: #f5f1e8;
+            --charcoal-text: #3d352a;
+            --terracotta: #b85c38;
+            --sage-green: #708238;
+            --stone-gray: #a9a299;
+        }
+
+        body {
+            font-family: 'Source Serif Pro', serif;
+            background-color: var(--parchment);
+            color: var(--charcoal-text);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Roboto Slab', serif;
+            font-weight: 700;
+            color: var(--terracotta);
+        }
+
+        /* Main two-panel layout */
+        .explorer-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        /* Left Panel: Sticky Timeline */
+        .timeline-panel {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #e0dace;
+        }
+        
+        /* The SVG Timeline itself */
+        .timeline-svg { flex-grow: 1; width: 100%; }
+        .timeline-strata { cursor: pointer; transition: opacity 0.3s ease; }
+        .timeline-strata .strata-text-wrapper {
+            color: var(--charcoal-text);
+            font-family: 'Roboto Slab', serif;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 8px;
+        }
+        .timeline-strata .strata-bg {
+            stroke: var(--charcoal-text);
+            stroke-width: 1px;
+            transition: fill 0.3s ease, stroke-width 0.3s ease;
+        }
+        .timeline-strata:not(.active) { opacity: 0.6; }
+        .timeline-strata.active .strata-bg { stroke-width: 2.5px; }
+        .timeline-strata:hover:not(.active) { opacity: 1; }
+
+        /* Right Panel: Scrollable Content */
+        .content-panel { padding: 0 2rem; } /* Removed top padding for hero */
+        
+        .content-section {
+            padding: 5rem 0;
+            border-bottom: 2px dashed var(--stone-gray);
+            margin: 0 auto;
+            max-width: 45rem;
+        }
+        .content-section:last-child { border-bottom: none; }
+
+        .content-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        .content-text p { margin-bottom: 1.5rem; }
+        
+        .content-text blockquote {
+            border-left: 3px solid var(--sage-green);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #5c544a;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .content-text blockquote.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Interactive Factor Flashcards */
+        .factor-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        .factor-card {
+            background-color: #fff;
+            border: 1px solid #e0dace;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            cursor: pointer;
+            perspective: 1000px;
+        }
+        .factor-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            min-height: 180px;
+        }
+        .factor-card.is-flipped .factor-card-inner { transform: rotateY(180deg); }
+        .factor-card-front, .factor-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .factor-card-back {
+            background-color: var(--sage-green);
+            color: var(--parchment);
+            transform: rotateY(180deg);
+            border-radius: 0.5rem;
+        }
+        .factor-card .icon { margin: 0 auto 1rem auto; width: 48px; height: 48px; color: var(--sage-green); }
+        .factor-card h4 { color: var(--terracotta); font-size: 1.1rem; }
+        .factor-card-back h4 { color: var(--parchment); }
+        .factor-card-back p { font-family: 'Source Serif Pro', serif; font-size: 0.9rem; line-height: 1.5; }
+        
+        /* Image styling */
+        .image-figure { margin: 3rem 0; text-align: center; }
+        .image-figure img {
+            max-width: 100%;
+            border-radius: 0.5rem;
+            border: 1px solid #e0dace;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .image-figure figcaption { margin-top: 1rem; font-size: 0.9rem; color: #6a6258; }
+        .image-credit { margin-top: 0.25rem; font-style: italic; font-size: 0.8rem; }
+
+        /* Then & Now Slider */
+        .then-now-slider { position: relative; max-width: 100%; margin: 3rem auto; }
+        .then-now-slider img { display: none; }
+        .then-now-slider img.active { display: block; }
+        .then-now-buttons {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            background-color: rgba(0,0,0,0.5);
+            padding: 0.5rem;
+            border-radius: 999px;
+        }
+        .then-now-buttons button {
+            background-color: var(--parchment);
+            color: var(--charcoal-text);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-family: 'Roboto Slab', serif;
+            transition: background-color 0.2s;
+        }
+        .then-now-buttons button.active {
+            background-color: var(--terracotta);
+            color: var(--parchment);
+        }
+        
+        /* NEW: Hero Section Style */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 5rem;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(245, 241, 232, 0.7); /* translucent parchment overlay */
+            backdrop-filter: blur(2px);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 50rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto explorer-layout">
+        
+        <!-- LEFT STICKY PANEL: The Timeline -->
+        <aside class="timeline-panel">
+            <div class="mb-8">
+                <h1 class="text-3xl" id="main-title">The Settlement of Kurd-Dagh</h1>
+                <p class="text-sm mt-1" id="main-subtitle">A Diachronic Analysis</p>
+            </div>
+            <svg id="timeline-nav" class="timeline-svg" viewBox="0 0 100 600" preserveAspectRatio="xMidYMin meet">
+                 <g id="nav-hero" class="timeline-strata active" data-section="hero"><rect class="strata-bg" x="5" y="0" width="90" height="60" fill="#d1c7b8" /><foreignObject x="5" y="0" width="90" height="60"><div class="strata-text-wrapper">Title</div></foreignObject></g>
+                 <g id="nav-introduction" class="timeline-strata" data-section="introduction"><rect class="strata-bg" x="5" y="60" width="90" height="80" fill="#cbbfae" /><foreignObject x="5" y="60" width="90" height="80"><div class="strata-text-wrapper">Introduction</div></foreignObject></g>
+                 <g id="nav-foundations" class="timeline-strata" data-section="foundations"><rect class="strata-bg" x="5" y="140" width="90" height="80" fill="#c4b8a5" /><foreignObject x="5" y="140" width="90" height="80"><div class="strata-text-wrapper">Foundations</div></foreignObject></g>
+                 <g id="nav-classical-apex" class="timeline-strata" data-section="classical-apex"><rect class="strata-bg" x="5" y="220" width="90" height="90" fill="#b8a992" /><foreignObject x="5" y="220" width="90" height="90"><div class="strata-text-wrapper">Classical Apex</div></foreignObject></g>
+                 <g id="nav-medieval-transition" class="timeline-strata" data-section="medieval-transition"><rect class="strata-bg" x="5" y="310" width="90" height="80" fill="#ac9b80" /><foreignObject x="5" y="310" width="90" height="80"><div class="strata-text-wrapper">Medieval Era</div></foreignObject></g>
+                 <g id="nav-ayyubid-mamluk" class="timeline-strata" data-section="ayyubid-mamluk"><rect class="strata-bg" x="5" y="390" width="90" height="90" fill="#a08c6e" /><foreignObject x="5" y="390" width="90" height="90"><div class="strata-text-wrapper">Ayyubid-Mamluk</div></foreignObject></g>
+                 <g id="nav-chronological-matrix" class="timeline-strata" data-section="chronological-matrix"><rect class="strata-bg" x="5" y="480" width="90" height="60" fill="#9a8568" /><foreignObject x="5" y="480" width="90" height="60"><div class="strata-text-wrapper">Matrix</div></foreignObject></g>
+                 <g id="nav-conclusion" class="timeline-strata" data-section="conclusion"><rect class="strata-bg" x="5" y="540" width="90" height="60" fill="#947d5c" /><foreignObject x="5" y="540" width="90" height="60"><div class="strata-text-wrapper">Conclusion</div></foreignObject></g>
+            </svg>
+            <div class="mt-auto text-xs text-center text-gray-500">
+                <p>Scroll to explore the layers of history. Click a layer to navigate.</p>
+            </div>
+        </aside>
+
+        <!-- RIGHT SCROLLABLE PANEL: The Content -->
+        <main class="content-panel">
+            
+            <!-- NEW "FRONT PART": HERO SECTION -->
+            <section id="hero" class="hero-section" style="background-image: url('images/placeholder_hero_landscape.png');">
+                <div class="hero-content">
+                    <h1 class="text-5xl md:text-6xl" id="document-title"><!-- INJECTED: Main Document Title from MD file --></h1>
+                    <p class="text-xl md:text-2xl mt-4 text-gray-700" id="document-subtitle"><!-- INJECTED: Subtitle can be extracted or set manually --></p>
+                </div>
+            </section>
+
+            <!-- SECTION I: INTRODUCTION -->
+            <section id="introduction" class="content-section">
+                <h2 class="text-4xl mb-6" id="introduction-heading"><!-- INJECTED: From "I. Introduction..." --></h2>
+                <div class="content-text" id="introduction-content"><!-- INJECTED --></div>
+                <figure class="image-figure">
+                    <img alt="A geographical map showing the Kurd-Dagh highlands and Afrin river valley" id="map-image" src="images/placeholder_map.png">
+                    <figcaption>
+                        <span id="map-image-description"><!-- INJECTED --></span>
+                        <div class="image-credit" id="map-image-credit"><!-- INJECTED --></div>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <!-- SECTION II: FOUNDATIONS -->
+            <section id="foundations" class="content-section">
+                <h2 class="text-4xl mb-2" id="foundations-heading"><!-- INJECTED: From "II. Foundations..." --></h2>
+                <p class="text-lg text-gray-500 mb-6" id="foundations-subheading"><!-- Subheadings can be extracted if present --></p>
+                <div class="content-text" id="foundations-content"><!-- INJECTED --></div>
+                <div class="then-now-slider" id="ain-dara-slider">
+                    <img alt="A historical reconstruction of the Ain Dara temple" id="ain-dara-image-then" src="images/placeholder_ain_dara_reconstruction.png" class="active">
+                    <img alt="A modern photograph of the Ain Dara temple ruins" id="ain-dara-image-now" src="images/placeholder_ain_dara_ruins.png">
+                    <div class="then-now-buttons">
+                        <button data-target="ain-dara-image-then" class="active">Then</button>
+                        <button data-target="ain-dara-image-now">Now</button>
+                    </div>
+                    <figcaption class="mt-4">
+                        <span id="ain-dara-slider-description"><!-- INJECTED --></span>
+                        <div class="image-credit" id="ain-dara-slider-credit"><!-- INJECTED --></div>
+                    </figcaption>
+                </div>
+            </section>
+
+            <!-- SECTION III: CLASSICAL APEX -->
+            <section id="classical-apex" class="content-section">
+                <h2 class="text-4xl mb-2" id="classical-apex-heading"><!-- INJECTED: From "III. The Classical Apex..." --></h2>
+                <div class="content-text" id="classical-apex-content"><!-- INJECTED --></div>
+                <div class="factor-card-grid" id="classical-apex-cards"><!-- INJECTED --></div>
+                <figure class="image-figure">
+                    <img alt="Weathered Roman columns standing in a field in Syria" id="roman-ruins-image" src="images/placeholder_roman_ruins.png">
+                    <figcaption>
+                        <span id="roman-ruins-image-description"><!-- INJECTED --></span>
+                        <div class="image-credit" id="roman-ruins-image-credit"><!-- INJECTED --></div>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <!-- SECTION IV: MEDIEVAL TRANSITION -->
+            <section id="medieval-transition" class="content-section">
+                 <h2 class="text-4xl mb-2" id="medieval-transition-heading"><!-- INJECTED: From "IV. The Medieval Transition..." --></h2>
+                <div class="content-text" id="medieval-transition-content"><!-- INJECTED --></div>
+                <figure class="image-figure">
+                    <img alt="Ruins of a Crusader-era castle in the Syrian landscape" id="crusader-castle-image" src="images/placeholder_crusader_castle.png">
+                    <figcaption>
+                        <span id="crusader-castle-image-description"><!-- INJECTED --></span>
+                        <div class="image-credit" id="crusader-castle-image-credit"><!-- INJECTED --></div>
+                    </figcaption>
+                </figure>
+            </section>
+            
+            <!-- SECTION V: AYYUBID-MAMLUK -->
+            <section id="ayyubid-mamluk" class="content-section">
+                <h2 class="text-4xl mb-2" id="ayyubid-mamluk-heading"><!-- INJECTED: From "V. The Era of Military Elites..." --></h2>
+                <div class="content-text" id="ayyubid-mamluk-content"><!-- INJECTED --></div>
+                <figure class="image-figure">
+                    <img alt="A wide-angle view of the Citadel of Aleppo" id="aleppo-citadel-image" src="images/placeholder_aleppo_citadel.png">
+                    <figcaption>
+                        <span id="aleppo-citadel-image-description"><!-- INJECTED --></span>
+                        <div class="image-credit" id="aleppo-citadel-image-credit"><!-- INJECTED --></div>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <!-- NEW SECTION: CHRONOLOGICAL MATRIX -->
+            <section id="chronological-matrix" class="content-section">
+                <h2 class="text-4xl mb-6" id="chronological-matrix-heading">Chronological Matrix of Settlement Factors</h2>
+                <div id="chronological-matrix-content">
+                    <!-- The Python script will inject the interactive table/matrix here -->
+                </div>
+            </section>
+            
+            <!-- SECTION VI: CONCLUSION & WORKS CITED -->
+            <section id="conclusion" class="content-section">
+                <h2 class="text-4xl mb-6" id="conclusion-heading"><!-- INJECTED: From "VI. Conclusion..." --></h2>
+                <div class="content-text" id="conclusion-content"><!-- INJECTED --></div>
+                <figure class="image-figure">
+                    <img alt="An ancient, gnarled olive grove in the Mediterranean" id="olive-grove-image" src="images/placeholder_olive_grove.png">
+                    <figcaption>
+                        <span id="olive-grove-image-description">The enduring olive groves, a constant throughout the region's history.</span>
+                        <div class="image-credit" id="olive-grove-image-credit"></div>
+                    </figcaption>
+                </figure>
+                <div class="mt-12 border-t border-gray-300 pt-8">
+                    <h3 class="text-3xl" id="works-cited-heading">Works Cited</h3>
+                    <div class="text-sm mt-4 space-y-2" id="works-cited-content"><!-- INJECTED --></div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- TIMELINE NAVIGATION ---
+            const timelineNav = document.getElementById('timeline-nav');
+            const strata = timelineNav.querySelectorAll('.timeline-strata');
+            const sections = document.querySelectorAll('.content-panel > section');
+
+            function scrollToSection(sectionId) {
+                document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            strata.forEach(item => item.addEventListener('click', () => scrollToSection(item.dataset.section)));
+
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionId = entry.target.id;
+                        strata.forEach(s => s.classList.toggle('active', s.dataset.section === sectionId));
+                    }
+                });
+            }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+            sections.forEach(section => timelineObserver.observe(section));
+
+            // --- FACTOR CARD INTERACTIVITY ---
+            // Use event delegation for dynamically added cards
+            document.querySelector('.content-panel').addEventListener('click', function(e) {
+                const card = e.target.closest('.factor-card');
+                if (card) {
+                    card.classList.toggle('is-flipped');
+                }
+            });
+
+            // --- THEN & NOW SLIDER ---
+            const sliders = document.querySelectorAll('.then-now-slider');
+            sliders.forEach(slider => {
+                const buttons = slider.querySelectorAll('.then-now-buttons button');
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        buttons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        
+                        const targetId = button.dataset.target;
+                        slider.querySelectorAll('img').forEach(img => {
+                            img.classList.toggle('active', img.id === targetId);
+                        });
+                    });
+                });
+            });
+
+            // --- QUOTE SPOTLIGHT ---
+            const quotes = document.querySelectorAll('.content-text blockquote');
+            const quoteObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.5 });
+            quotes.forEach(quote => quoteObserver.observe(quote));
+        });
+    </script>
+
+</body>
+</html>

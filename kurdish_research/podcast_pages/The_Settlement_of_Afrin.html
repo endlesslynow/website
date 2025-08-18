@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Settlement of Afrin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Settlement of Afrin</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Afrin_s_Enduring_Villages__A_Millennium_of_Settlement,_Empires,_and_Kurdish_Roots.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Afrin_s_Enduring_Villages__A_Millennium_of_Settlement,_Empires,_and_Kurdish_Roots.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>The provided text, &quot;The Diachronic Establishment of Rural Settlements in the Afrin Region (Kurd-Dagh): A Historical Analysis from Antiquity to the Pre-Mandate Era,&quot; offers a comprehensive overview of how villages in Syria&#x27;s Afrin region were founded and evolved from the Neolithic period through the Mamluk era. It emphasizes that the region&#x27;s geography and ecology provided a constant foundation for settlement, but that imperial strategies, economic shifts, and administrative systems of land tenure profoundly shaped the character and density of its rural communities. The analysis highlights the Classical era&#x27;s olive oil boom as a period of significant prosperity and the Ayyubid and Mamluk periods as crucial for the establishment of a Kurdish ruling class through the iqta&#x27; system, transforming the social and political landscape. Ultimately, the text demonstrates a complex interplay of forces that created the region&#x27;s enduring rural tapestry.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Afrin Village Settlement History.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Kurd Mountain - Wikipedia, accessed August 17, 2025,<a href="https://en.wikipedia.org/wiki/Kurd_Mountain" target="_blank">https://en.wikipedia.org/wiki/Kurd_Mountain</a></li>
+            <li>​ The plain of Antioch and the Amuq Valley (Chapter Three) - Cambridge UniversityPress, accessed August 17, 2025,<a href="https://www.cambridge.org/core/books/ancient-antioch/plain-of-antioch-and-the-amuq-valley/ED72CBEDA5CC45955FEFEF9B525E5CA8" target="_blank">https://www.cambridge.org/core/books/ancient-antioch/plain-of-antioch-and-the-amuq-valley/ED72CBEDA5CC45955FEFEF9B525E5CA8</a></li>
+            <li>​ Afrin Region - Wikipedia, accessed August 17, 2025,<a href="https://en.wikipedia.org/wiki/Afrin_Region" target="_blank">https://en.wikipedia.org/wiki/Afrin_Region</a></li>
+            <li>​ Syria: Olive Cultivation on Hilly Land in the Northwestern Part of the ..., accessedAugust 17, 2025,<a href="https://satoyamainitiative.org/case_studies/syria-olive-cultivation-on-hilly-land-in-the-northwestern-part-of-the-country-and-along-its-mediterranean-coast/" target="_blank">https://satoyamainitiative.org/case_studies/syria-olive-cultivation-on-hilly-land-in-the-northwestern-part-of-the-country-and-along-its-mediterranean-coast/</a></li>
+            <li>​ Afrin, Syria - Wikipedia, accessed August 17, 2025,<a href="https://en.wikipedia.org/wiki/Afrin,_Syria" target="_blank">https://en.wikipedia.org/wiki/Afrin,_Syria</a></li>
+            <li>​ CHALCOLITHIC SETTLEMENT PATTERNS IN SYRIA - Universidad de Granada,accessed August 17, 2025,<a href="https://www.ugr.es/~arqueologyterritorio/PDF12/2-Watfa.pdf" target="_blank">https://www.ugr.es/~arqueologyterritorio/PDF12/2-Watfa.pdf</a></li>
+            <li>​ Syrian qanat Romani: history, ecology, abandonment - Conflict Urbanism: Aleppo,accessed August 17, 2025,<a href="http://aleppo.c4sr.columbia.edu/seminar/Case-Studies/Water-as-a-War-Weapon/Syrian_Qanat_Romani.pdf" target="_blank">http://aleppo.c4sr.columbia.edu/seminar/Case-Studies/Water-as-a-War-Weapon/Syrian_Qanat_Romani.pdf</a></li>
+            <li>​ The Euphrates States and Elbistan: Archaeology - Brill, accessed August 17, 2025,<a href="https://brill.com/display/book/edcoll/9789004349391/B9789004349391_s016.pdf" target="_blank">https://brill.com/display/book/edcoll/9789004349391/B9789004349391_s016.pdf</a></li>
+            <li>​ Ain Dara (archaeological site) - Wikipedia, accessed August 17, 2025,<a href="https://en.wikipedia.org/wiki/Ain_Dara_(archaeological_site)" target="_blank">https://en.wikipedia.org/wiki/Ain_Dara_(archaeological_site)</a></li>
+            <li>​Archaeology of the Rouj Basin: A Regional Study of the Transition from Village toCity in Northwest Syria Vol. 1 - ResearchGate, accessed August 17, 2025,<a href="https://www.researchgate.net/publication/348482005_Archaeology_of_the_Rouj_Basin_A_Regional_Study_of_the_Transition_from_Village_to_City_in_Northwest_Syria_Vol_1" target="_blank">https://www.researchgate.net/publication/348482005_Archaeology_of_the_Rouj_Basin_A_Regional_Study_of_the_Transition_from_Village_to_City_in_Northwest_Syria_Vol_1</a></li>
+            <li>​The Early History of the Western Palmyra Desert region. The Change in theSettlement patterns and the Adaptation of subsistence Strategies to encroachingAridity - OpenEdition Journals, accessed August 17, 2025,<a href="https://journals.openedition.org/syria/1496" target="_blank">https://journals.openedition.org/syria/1496</a></li>
+            <li>​Exploring the lower settlements of Iron Age capitals in Anatolia and Syria |Antiquity, accessed August 17, 2025,<a href="https://www.cambridge.org/core/journals/antiquity/article/exploring-the-lower-settlements-of-iron-age-capitals-in-anatolia-and-syria/EE969C5E60D9772EB23687B81CB97660" target="_blank">https://www.cambridge.org/core/journals/antiquity/article/exploring-the-lower-settlements-of-iron-age-capitals-in-anatolia-and-syria/EE969C5E60D9772EB23687B81CB97660</a></li>
+            <li>​The Iron Age Settlement at ʻAin Dara, Syria: Survey and Soundings - ElizabethCaecilia Stone, Paul E. Zimansky - Google Books, accessed August 17, 2025,<a href="https://books.google.com/books/about/The_Iron_Age_Settlement_at_%CA%BBAin_Dara_Sy.html?id=xgs-AQAAIAAJ" target="_blank">https://books.google.com/books/about/The_Iron_Age_Settlement_at_%CA%BBAin_Dara_Sy.html?id=xgs-AQAAIAAJ</a></li>
+            <li>​Afrin, Syria - Wikiwand, accessed August 17, 2025,<a href="https://www.wikiwand.com/en/articles/Afrin,_Syria" target="_blank">https://www.wikiwand.com/en/articles/Afrin,_Syria</a></li>
+            <li>​Roman Syria - Wikipedia, accessed August 17, 2025,<a href="https://en.wikipedia.org/wiki/Roman_Syria" target="_blank">https://en.wikipedia.org/wiki/Roman_Syria</a></li>
+            <li>​(PDF) S3 Fig - ResearchGate, accessed August 17, 2025,<a href="https://www.researchgate.net/publication/306533099_S3_Fig" target="_blank">https://www.researchgate.net/publication/306533099_S3_Fig</a></li>
+            <li>​Ancient villages of Northern Syria - World Heritage Site, accessed August 17,2025, <a href="https://worldheritagesite.org/list/ancient-villages-of-northern-syria/" target="_blank">https://worldheritagesite.org/list/ancient-villages-of-northern-syria/</a></li>
+            <li>​Ancient villages, Syria - Med-O-Med, accessed August 17, 2025,<a href="https://medomed.org/featured_item/ancient-vilages-of-northern-syria-syrian/" target="_blank">https://medomed.org/featured_item/ancient-vilages-of-northern-syria-syrian/</a></li>
+            <li>​Trade and Transport in Late Roman Syria - ScholarWorks@UARK, accessedAugust 17, 2025,<a href="https://scholarworks.uark.edu/context/etd/article/3133/viewcontent/Fletcher_uark_0011O_12154.pdf" target="_blank">https://scholarworks.uark.edu/context/etd/article/3133/viewcontent/Fletcher_uark_0011O_12154.pdf</a></li>
+            <li>​Who are the Kurds ? - Institut kurde de Paris, accessed August 17, 2025,<a href="https://www.institutkurde.org/en/info/who-are-the-kurds-s-1232550927" target="_blank">https://www.institutkurde.org/en/info/who-are-the-kurds-s-1232550927</a></li>
+            <li>​en.wikipedia.org, accessed August 17, 2025,<a href="https://en.wikipedia.org/wiki/History_of_the_Kurds#:~:text=From%20Islamic%20conquest%20up%20until,and%20formed%20their%20own%20states." target="_blank">https://en.wikipedia.org/wiki/History_of_the_Kurds#:~:text=From%20Islamic%20conquest%20up%20until,and%20formed%20their%20own%20states.</a></li>
+            <li>​Limes Arabicus - Wikipedia, accessed August 17, 2025,<a href="https://en.wikipedia.org/wiki/Limes_Arabicus" target="_blank">https://en.wikipedia.org/wiki/Limes_Arabicus</a></li>
+            <li>​Limes Arabicus and Saracen Foederati: The Roman-Byzantine Desert Frontier inLate Antiquity | Ballandalus, accessed August 17, 2025,<a href="https://ballandalus.wordpress.com/2015/04/19/limes-arabicus-and-saracen-foederati-the-roman-byzantine-desert-frontier-in-late-antiquity/" target="_blank">https://ballandalus.wordpress.com/2015/04/19/limes-arabicus-and-saracen-foederati-the-roman-byzantine-desert-frontier-in-late-antiquity/</a></li>
+            <li>​Remote Sensing Roman and Byzantine Eastern Frontier Zone in Landscape: CaseStudies from Syria and Turkey, accessed August 17, 2025,<a href="http://www.dl.edi-info.ir/Remote%20Sensing%20Roman%20and%20Byzantine%20Eastern%20Frontier%20Zone%20in%20Landscape.pdf" target="_blank">http://www.dl.edi-info.ir/Remote%20Sensing%20Roman%20and%20Byzantine%20Eastern%20Frontier%20Zone%20in%20Landscape.pdf</a></li>
+            <li>​Early Muslim conquests - Wikipedia, accessed August 17, 2025,<a href="https://en.wikipedia.org/wiki/Early_Muslim_conquests" target="_blank">https://en.wikipedia.org/wiki/Early_Muslim_conquests</a></li>
+            <li>​Syria - Umayyad Dynasty, Damascus, Middle East | Britannica, accessed August 17,2025, <a href="https://www.britannica.com/place/Syria/The-Umayyads" target="_blank">https://www.britannica.com/place/Syria/The-Umayyads</a></li>
+            <li>​Early Islamic Settlement, accessed August 17, 2025,<a href="https://www.brown.edu/Departments/Joukowsky_Institute/courses/islamiccivilizations/files/7195823.pdf" target="_blank">https://www.brown.edu/Departments/Joukowsky_Institute/courses/islamiccivilizations/files/7195823.pdf</a></li>
+            <li>​Early Islamic Settlement, accessed August 17, 2025,<a href="https://www.brown.edu/Departments/Joukowsky_Institute/courses/islamicarch2011/files/15355107.pdf" target="_blank">https://www.brown.edu/Departments/Joukowsky_Institute/courses/islamicarch2011/files/15355107.pdf</a></li>
+            <li>​Aleppo | History, Map, Citadel, Civil War, Population, &amp; Facts - Britannica,accessed August 17, 2025, <a href="https://www.britannica.com/place/Aleppo" target="_blank">https://www.britannica.com/place/Aleppo</a></li>
+            <li>​Hamdanid dynasty - Wikipedia, accessed August 17, 2025,<a href="https://en.wikipedia.org/wiki/Hamdanid_dynasty" target="_blank">https://en.wikipedia.org/wiki/Hamdanid_dynasty</a></li>
+            <li>​History of Aleppo, between Anatolia and Mesopotamia - Medio Oriente e Dintorni-, accessed August 17, 2025,<a href="https://mediorientedintorni.com/index.php/2020/07/08/aleppo-between-anatolia-and-mesopotamia/?lang=en" target="_blank">https://mediorientedintorni.com/index.php/2020/07/08/aleppo-between-anatolia-and-mesopotamia/?lang=en</a></li>
+            <li>​The Byzantine conquest of Cilicia and the Hamdanids of Aleppo, 959-965 -ResearchGate, accessed August 17, 2025,<a href="https://www.researchgate.net/publication/291070390_The_Byzantine_conquest_of_Cilicia_and_the_Hamdanids_of_Aleppo_959-965" target="_blank">https://www.researchgate.net/publication/291070390_The_Byzantine_conquest_of_Cilicia_and_the_Hamdanids_of_Aleppo_959-965</a></li>
+            <li>​Afrin Syria - The Kurdish Project, accessed August 17, 2025,<a href="https://thekurdishproject.org/kurdistan-map/syrian-kurdistan/afrin-syria/" target="_blank">https://thekurdishproject.org/kurdistan-map/syrian-kurdistan/afrin-syria/</a></li>
+            <li>​A Brief History of the Ayyubid Dynasty - Riwaya, accessed August 17, 2025,<a href="https://riwaya.co.uk/riwaya-blog/a-brief-history-of-the-ayyubid-dynasty/" target="_blank">https://riwaya.co.uk/riwaya-blog/a-brief-history-of-the-ayyubid-dynasty/</a></li>
+            <li>​Ayyubid dynasty - Islamic History, accessed August 17, 2025,<a href="https://islamichistory.org/ayyubid-dynasty/" target="_blank">https://islamichistory.org/ayyubid-dynasty/</a></li>
+            <li>​Aleppo | Silk Roads Programme - UNESCO, accessed August 17, 2025,<a href="https://en.unesco.org/silkroad/content/aleppo" target="_blank">https://en.unesco.org/silkroad/content/aleppo</a></li>
+            <li>​Ancient City of Aleppo - UNESCO World Heritage Centre, accessed August 17,2025, <a href="https://whc.unesco.org/en/list/21/" target="_blank">https://whc.unesco.org/en/list/21/</a></li>
+            <li>​STATE AND CIVILIZATION UNDER THE SYRO-EGYPTIAN AYYUBIDS (1171-1250)ottor of piiilo^aplip - CORE, accessed August 17, 2025,<a href="https://core.ac.uk/download/pdf/144516393.pdf" target="_blank">https://core.ac.uk/download/pdf/144516393.pdf</a></li>
+            <li>​The Evolution of the Iqta&#x27; System under the - Mamluks-An Analysis of al-Rawkal-Husāmī and al-Rawk al-Nāṣirī, accessed August 17, 2025,<a href="https://toyo-bunko.repo.nii.ac.jp/record/3186/files/Memoirs37_05_SATO.pdf" target="_blank">https://toyo-bunko.repo.nii.ac.jp/record/3186/files/Memoirs37_05_SATO.pdf</a></li>
+            <li>​Untitled, accessed August 17, 2025,<a href="https://journals.ku.edu.kw/ajh/index.php/ajh/article/download/1317/751/6817" target="_blank">https://journals.ku.edu.kw/ajh/index.php/ajh/article/download/1317/751/6817</a></li>
+            <li>​THE IQT A&#x27; SYSTEM IN EGYPT AND SYRIA UNDER THE AYYUBIDS The amirs andhigh officials in Egypt had held the iqfa&#x27;s since the Fati - Brill, accessed August 17,2025, <a href="https://brill.com/display/book/9789004493186/B9789004493186_s008.pdf" target="_blank">https://brill.com/display/book/9789004493186/B9789004493186_s008.pdf</a></li>
+            <li>​Mamluk | History, Significance, Leaders, &amp; Decline | Britannica, accessed August17, 2025, <a href="https://www.britannica.com/topic/Mamluk-soldier" target="_blank">https://www.britannica.com/topic/Mamluk-soldier</a></li>
+            <li>​Mamluk Sultanate - Wikipedia, accessed August 17, 2025,<a href="https://en.wikipedia.org/wiki/Mamluk_Sultanate" target="_blank">https://en.wikipedia.org/wiki/Mamluk_Sultanate</a></li>
+            <li>​Who Were the Mamluks? - History Today, accessed August 17, 2025,<a href="https://www.historytoday.com/miscellanies/who-were-mamluks" target="_blank">https://www.historytoday.com/miscellanies/who-were-mamluks</a></li>
+            <li>​Mamluks, Property Rights, and Economic ... - Lisa Blaydes, accessed August 17,2025,<a href="https://blaydes.people.stanford.edu/sites/g/files/sbiybj24621/files/media/file/land1.pdf" target="_blank">https://blaydes.people.stanford.edu/sites/g/files/sbiybj24621/files/media/file/land1.pdf</a></li>
+            <li>​Land tenure policies in the Near East, accessed August 17, 2025,<a href="https://www.fao.org/4/y8999t/y8999t0f.htm" target="_blank">https://www.fao.org/4/y8999t/y8999t0f.htm</a></li>
+            <li>​The Political Economy (Chapter 5) - The Mamluk Sultanate - Cambridge UniversityPress, accessed August 17, 2025,<a href="https://www.cambridge.org/core/books/mamluk-sultanate/political-economy/70D92BF2A17F61D002E02CB8BA71D94F" target="_blank">https://www.cambridge.org/core/books/mamluk-sultanate/political-economy/70D92BF2A17F61D002E02CB8BA71D94F</a></li>
+            <li>​Popular responses to mamluk fiscal reforms in Syria - OpenEdition Journals,accessed August 17, 2025, <a href="https://journals.openedition.org/beo/60?lang=en" target="_blank">https://journals.openedition.org/beo/60?lang=en</a></li>
+            <li>​History of the Kurds - The Kurdistan Memory Programme, accessed August 17,2025, <a href="https://kurdistanmemoryprogramme.com/history-of-the-kurds/" target="_blank">https://kurdistanmemoryprogramme.com/history-of-the-kurds/</a></li>
+            <li>​Al-Hasakah Governorate - Wikipedia, accessed August 17, 2025,<a href="https://en.wikipedia.org/wiki/Al-Hasakah_Governorate" target="_blank">https://en.wikipedia.org/wiki/Al-Hasakah_Governorate</a></li>
+            <li>​KURDS | Washington Kurdish Institute, accessed August 17, 2025,<a href="https://dckurd.org/kurds/" target="_blank">https://dckurd.org/kurds/</a></li>
+            <li>​Archaeological survey at Balama Byzantine Castle in Pisidia (southwest Turkey): apreliminary report - publisherspanel.com, accessed August 17, 2025,<a href="https://publisherspanel.com/api/files/view/2689266.pdf" target="_blank">https://publisherspanel.com/api/files/view/2689266.pdf</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: August 17, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
