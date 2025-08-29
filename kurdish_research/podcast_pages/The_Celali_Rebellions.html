@@ -5,286 +5,622 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Celali Rebellions</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #e8e1d1; background-image: url("https://www.transparenttextures.com/patterns/paper.png"); }
-        .container { background-color: #f8f4e8; border: 1px solid #d3c9a5; padding: 25px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); position: relative; margin-top: 20px; }
-        h1 { font-size: 34px; margin-top: 0; color: #5a4a2e; border-bottom: 2px solid #d3c9a5; padding-bottom: 10px; }
-        .audio-player { width: 100%; margin: 20px 0; }
-        audio { width: 100%; filter: sepia(20%); }
-        .description p { white-space: pre-wrap; margin: 0; }
-        .download-btn { display: inline-flex; align-items: center; background-color: #8b7355; color: white; padding: 10px 15px; text-decoration: none; font-weight: 500; }
-        .sources ul { padding-left: 20px; list-style-type: decimal; margin: 0; }
-        .sources li { margin-bottom: 8px; word-break: break-word; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h1>The Celali Rebellions</h1>
+
         <div class="audio-player">
-            <audio controls><source src="../audio/The_Celali_Rebellions__How_a_Century_of_Uprisings_Transformed_the_Ottoman_Empire.mp3" type="audio/mpeg"></audio>
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/The_Celali_Rebellions__How_a_Century_of_Uprisings_Transformed_the_Ottoman_Empire.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/The_Celali_Rebellions__How_a_Century_of_Uprisings_Transformed_the_Ottoman_Empire.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
         </div>
-        <div class="description"><h2>Description</h2><p>The provided text offers a comprehensive overview of the Celali Rebellions, a series of widespread uprisings that significantly impacted the Ottoman Empire from the late 16th to mid-17th centuries. It explains how these revolts, initially labeled after the Shi&#x27;ite preacher Bozoklu Celal, evolved from religious motivations to encompass diverse socio-economic grievances, including the decay of the timar system, unemployment among soldiers, and severe fiscal pressure leading to predatory taxation. The text also highlights the critical role of environmental factors, particularly the Little Ice Age, as a catalyst for widespread famine and societal collapse, forcing the Ottoman state to adapt through both brutal military suppression and strategic co-optation of rebel leaders. Ultimately, the rebellions led to a profound transformation of the empire, leaving a legacy of demographic decline, economic shifts, and a more centralized yet fragile state, a period that contemporary scholarship now interprets as a crisis and transformation rather than simple decline.</p></div>
-        <a href="../docs/Celali Rebellions_ Ottoman Empire Analysis_.pdf" class="download-btn" download>Download PDF</a>
-        <div class="sources"><h2>Sources</h2><ul><li>​ &quot;Celali rebellions.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Celali_rebellions." target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions.</a></li>
-<li>​ &quot;Jelālī Revolts.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/event/Jelali-Revolts." target="_blank">https://www.britannica.com/event/Jelali-Revolts.</a></li>
-<li>​ &quot;Great Jelālī Revolts.&quot; EBSCO Research Starters. <a href="https://www.ebsco.com/research-starters/history/great-jelali-revolts." target="_blank">https://www.ebsco.com/research-starters/history/great-jelali-revolts.</a></li>
-<li>​ White, Sam. &quot;The Celali Rebellion.&quot; In The Climate of Rebellion in the Early Modern Ottoman Empire. Cambridge University Press, 2011. <a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottom" target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottom</a> an-empire/celali-rebellion/42F6F1CBFA4DF43FBF8C00B5D3CFD14D.</li>
-<li>​ &quot;The reign of violence: the celalis, c.1550-1700.&quot; Bilkent University Institutional Repository. <a href="https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a." target="_blank">https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a.</a></li>
-<li>​ Polat, Süleyman. &quot;The economic consequences of the Celali revolts: the destruction and re-establishment of the state&#x27;s taxation organisation.&quot; Turkish Historical Review 4, no. 1 (2013). <a href="https://brill.com/view/journals/thr/4/1/article-p57_3.xml." target="_blank">https://brill.com/view/journals/thr/4/1/article-p57_3.xml.</a></li>
-<li>​ Not used in final report.</li>
-<li>​ &quot;Celâlî isyanları.&quot; Wikipedia (Turkish). <a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1.</a></li>
-<li>​ &quot;Celâlî İsyanları.&quot; TÜBİTAK Ansiklopedi. <a href="https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari." target="_blank">https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari.</a></li>
-<li>​&quot;Celali İsyanları Nedir, Sebepleri Nelerdir? Celali İsyanlarını Kim Bastırdı?&quot; Hürriyet. <a href="https://www.hurriyet.com.tr/egitim/celali-isyanlari-nedir-sebepleri-nelerdir-celali-isyanla" target="_blank">https://www.hurriyet.com.tr/egitim/celali-isyanlari-nedir-sebepleri-nelerdir-celali-isyanla</a> rini-kim-bastirdi-41940885.</li>
-<li>​&quot;Celali İsyanları Adlandırması.&quot; DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/1537550." target="_blank">https://dergipark.org.tr/tr/download/article-file/1537550.</a></li>
-<li>​&quot;Celali İsyanları.&quot; Osmanlı.org.tr. <a href="https://osmanli.org.tr/celali-isyanlari/." target="_blank">https://osmanli.org.tr/celali-isyanlari/.</a></li>
-<li>​&quot;Origin of the term Celali in Ottoman history.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Celali_rebellions#:~:text=The%20word%20Celali%20means" target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions#:~:text=The%20word%20Celali%20means</a> %20%22belonging,of%20Jel%C4%81l%C4%AB%20is%20also%20used.</li>
-<li>​Orbay, Kayhan, et al. Various theses and articles on the Celali Rebellions. METU Open Access. <a href="https://open.metu.edu.tr/handle/11511/71152." target="_blank">https://open.metu.edu.tr/handle/11511/71152.</a></li>
-<li>​&quot;The Celali effect in 17th century - Ottoman transformation.&quot; METU Open Access. <a href="https://open.metu.edu.tr/handle/11511/27362." target="_blank">https://open.metu.edu.tr/handle/11511/27362.</a></li>
-<li>​&quot;Ottoman Empire.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Ottoman_Empire." target="_blank">https://en.wikipedia.org/wiki/Ottoman_Empire.</a></li>
-<li>​Gökbunar, A.R. &quot;Celali Ayaklanmalarının Maliye Tarihi Açısından Değerlendirilmesi.&quot; DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/145935." target="_blank">https://dergipark.org.tr/tr/download/article-file/145935.</a></li>
-<li>​&quot;Alternatif Tarih Okumaları - Celali İsyanları: Osmanlı Tımar Sisteminin &#x27;Bozulması&#x27; ve 1550-1650 Köylü Ayaklanmaları.&quot; Marksist Teori. <a href="https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2" target="_blank">https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2</a> 010/517-alternatif-tarih-okumalari-celali-isyanlari-osmanli-timar-sisteminin-bozulmasi- ve-1550-1650-koylu-ayaklanmalari.html.</li>
-<li>​&quot;Celali İsyanları.&quot; TurkTarihim.com. <a href="https://turktarihim.com/celali_isyanlari.html." target="_blank">https://turktarihim.com/celali_isyanlari.html.</a></li>
-<li>​&quot;Jelālī Revolts | Ottoman Empire, Anatolia, Peasants | Britannica.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20rebellions%20were%2" target="_blank">https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20rebellions%20were%2</a> 0not%20attempts,and%20an%20increase%20in%20the.</li>
-<li>​&quot;Jelālī Revolts.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/event/Jelali-Revolts." target="_blank">https://www.britannica.com/event/Jelali-Revolts.</a></li>
-<li>​&quot;The Impact of the Celâli Rebellions on the Socio-Economic Structure of Erzurum in the Early 17th Century.&quot; Journal of Management and Social Sciences. <a href="https://jomiss.com.tr/makale_indir/4953." target="_blank">https://jomiss.com.tr/makale_indir/4953.</a></li>
-<li>​&quot;Great Jelālī Revolts.&quot; EBSCO Research Starters. <a href="https://www.ebsco.com/research-starters/history/great-jelali-revolts." target="_blank">https://www.ebsco.com/research-starters/history/great-jelali-revolts.</a></li>
-<li>​&quot;The reign of violence: the celalis, c.1550-1700.&quot; Bilkent University Institutional Repository. <a href="https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a." target="_blank">https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a.</a></li>
-<li>​White, Sam. The Climate of Rebellion in the Early Modern Ottoman Empire. Cambridge University Press, 2011. <a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottom" target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottom</a> an-empire/C022031EDC39F862EA87DBC88D66B888.</li>
-<li>​&quot;Siege of Kayseri (1651).&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Siege_of_Kayseri_(1651." target="_blank">https://en.wikipedia.org/wiki/Siege_of_Kayseri_(1651.</a></li>
-<li>​&quot;The post-Ottoman world in 1678 (The Celali).&quot; Reddit. <a href="https://www.reddit.com/r/imaginarymaps/comments/u2ab14/the_postottoman_world_in_" target="_blank">https://www.reddit.com/r/imaginarymaps/comments/u2ab14/the_postottoman_world_in_</a> 1678_the_celali/.</li>
-<li>​&quot;The Peasant War in Turkey.&quot; D-NB. <a href="https://d-nb.info/1123427461/34." target="_blank">https://d-nb.info/1123427461/34.</a></li>
-<li>​&quot;Pugachev&#x27;s Rebellion.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Pugachev%27s_Rebellion." target="_blank">https://en.wikipedia.org/wiki/Pugachev%27s_Rebellion.</a></li>
-<li>​&quot;Turks, Trubar, and Tabori.&quot; Princeton Historical Review. <a href="https://history.princeton.edu/undergraduate/princeton-historical-review/summer-2024-i" target="_blank">https://history.princeton.edu/undergraduate/princeton-historical-review/summer-2024-i</a> ssue/turks-trubar-and-tabori.</li>
-<li>​Serim, Nilgün. &quot;The Financial Crisis in the Ottoman Empire.&quot; DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/46291." target="_blank">https://dergipark.org.tr/tr/download/article-file/46291.</a></li>
-<li>​&quot;Decline of the Ottoman Empire, 1566–1807.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672." target="_blank">https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672.</a></li>
-<li>​&quot;Çift-Hane.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/%C3%87ift-Hane." target="_blank">https://en.wikipedia.org/wiki/%C3%87ift-Hane.</a></li>
-<li>​&quot;The Rebellion of 1526-27.&quot; Sabancı University Research Database. <a href="https://research.sabanciuniv.edu/50995/1/10473560.pdf." target="_blank">https://research.sabanciuniv.edu/50995/1/10473560.pdf.</a></li>
-<li>​&quot;The Celali Revolts of Anatolia.&quot; Ottoman History Podcast. <a href="https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html." target="_blank">https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html.</a></li>
-<li>​&quot;Decline of the Ottoman Empire | Reasons, Collapse, &amp; Maps.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672#:~:text=Th" target="_blank">https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672#:~:text=Th</a> e%20central%20government%20became%20weaker,armies%20still%20guarding%20t he%20frontiers.</li>
-<li>​Hussain, Muzamil. &quot;The Downfall of the Ottoman Empire: Causes, Consequences, and Legacy.&quot; Medium. <a href="https://medium.com/@iammuzamil1999/the-downfall-of-the-ottoman-empire-causes-c" target="_blank">https://medium.com/@iammuzamil1999/the-downfall-of-the-ottoman-empire-causes-c</a> onsequences-and-legacy-452e976b4fbf.</li>
-<li>​&quot;The Siege of Vienna in 1683.&quot; Journal of Strategic Research. <a href="https://www.jsr.org/index.php/path/article/viewFile/503/229." target="_blank">https://www.jsr.org/index.php/path/article/viewFile/503/229.</a></li>
-<li>​&quot;The Economic Decline of the Ottoman Empire.&quot; CUNY Academic Works. <a href="https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=6389&amp;context=gc_etds." target="_blank">https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=6389&amp;context=gc_etds.</a></li>
-<li>​&quot;Developments and Decline of the Ottoman Empire.&quot; Resources for History Teachers. <a href="http://resourcesforhistoryteachers.pbworks.com/w/page/126065036/Developments%20" target="_blank">http://resourcesforhistoryteachers.pbworks.com/w/page/126065036/Developments%20</a> and%20Decline%20of%20the%20Ottoman%20Empire.</li>
-<li>​&quot;Ottoman Empire.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Ottoman_Empire." target="_blank">https://en.wikipedia.org/wiki/Ottoman_Empire.</a></li>
-<li>​&quot;The Stagnation of the Ottoman State and the Reforms of the 17th Century.&quot; Die Welt der Türken. <a href="https://www.dieweltdertuerken.org/admin/files/issues/47-273-1-PB.pdf." target="_blank">https://www.dieweltdertuerken.org/admin/files/issues/47-273-1-PB.pdf.</a></li>
-<li>​&quot;Crime, Punishment, and Law Enforcement in the Ottoman Empire.&quot; University of Connecticut Economics Working Papers. <a href="https://media.economics.uconn.edu/working/2011-18.pdf." target="_blank">https://media.economics.uconn.edu/working/2011-18.pdf.</a></li>
-<li>​&quot;Crime and Punishment in Ottoman Times.&quot; The Journal of Interdisciplinary History. <a href="https://direct.mit.edu/jinh/article/43/3/353/50164/Crime-and-Punishment-in-Ottoman-Ti" target="_blank">https://direct.mit.edu/jinh/article/43/3/353/50164/Crime-and-Punishment-in-Ottoman-Ti</a> mes-Corruption.</li>
-<li>​&quot;Ottoman Empire&#x27;s Brief Recovery.&quot; EBSCO Research Starters. <a href="https://www.ebsco.com/research-starters/history/ottoman-empires-brief-recovery." target="_blank">https://www.ebsco.com/research-starters/history/ottoman-empires-brief-recovery.</a></li>
-<li>​&quot;Decline of the Ottoman Empire.&quot; Facts and Details. <a href="https://factsanddetails.com/asian/cat65/sub424/entry-5882.html." target="_blank">https://factsanddetails.com/asian/cat65/sub424/entry-5882.html.</a></li>
-<li>​&quot;The decline of the Ottoman Empire, 1566–1807.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/place/Ottoman-Empire/The-decline-of-the-Ottoman-Empir" target="_blank">https://www.britannica.com/place/Ottoman-Empire/The-decline-of-the-Ottoman-Empir</a> e-1566-1807.</li>
-<li>​&quot;Celali İsyanlarının Vergisel Nedenleri.&quot; Vergi Sorunları Dergisi. <a href="https://www.vergisorunlari.com.tr/makale/celali-isyanlarinin-vergisel-nedenleri/8898." target="_blank">https://www.vergisorunlari.com.tr/makale/celali-isyanlarinin-vergisel-nedenleri/8898.</a></li>
-<li>​&quot;Celali İsyanları.&quot; Osmanlı.org.tr. <a href="https://osmanli.org.tr/celali-isyanlari/." target="_blank">https://osmanli.org.tr/celali-isyanlari/.</a></li>
-<li>​&quot;Celali Ayaklanmalarının Ortaya Çıkışı.&quot; Belleten. <a href="https://belleten.gov.tr/tam-metin/2387/tur." target="_blank">https://belleten.gov.tr/tam-metin/2387/tur.</a></li>
-<li>​&quot;Celâlî isyanları.&quot; Wikipedia (Turkish). <a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1.</a></li>
-<li>​&quot;Osmanlı Devletinde Celali İsyanları.&quot; Aydınlar Ocağı. <a href="https://aydinlarocagi.org/osmanli-devletinde-celali-isyanlari/." target="_blank">https://aydinlarocagi.org/osmanli-devletinde-celali-isyanlari/.</a></li>
-<li>​&quot;Celali İsyanları: Nedenleri, Dönemi ve Sonuçları.&quot; Sözcü. <a href="https://www.sozcu.com.tr/celali-isyanlari-nedenleri-donemi-ve-sonuclari-wp983587." target="_blank">https://www.sozcu.com.tr/celali-isyanlari-nedenleri-donemi-ve-sonuclari-wp983587.</a></li>
-<li>​&quot;Celali İsyanları Nedir, Sebepleri Nelerdir?&quot; Hürriyet. <a href="https://www.hurriyet.com.tr/egitim/celali-isyanlari-nedir-sebepleri-nelerdir-celali-isyanla" target="_blank">https://www.hurriyet.com.tr/egitim/celali-isyanlari-nedir-sebepleri-nelerdir-celali-isyanla</a> rini-kim-bastirdi-41940885.</li>
-<li>​&quot;Suhte ve Levent Hareketleri.&quot; DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/620397." target="_blank">https://dergipark.org.tr/tr/download/article-file/620397.</a></li>
-<li>​&quot;Şahkulu İsyanı.&quot; Wikipedia (Turkish). <a href="https://tr.wikipedia.org/wiki/%C5%9Eahkulu_%C4%B0syan%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/%C5%9Eahkulu_%C4%B0syan%C4%B1.</a></li>
-<li>​&quot;Jelālī Revolts.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20first%20revolt%20occu" target="_blank">https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20first%20revolt%20occu</a> rred%20in,cavalrymen%20maintained%20by%20land%20grants).</li>
-<li>​&quot;Jelālī Revolts.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/event/Jelali-Revolts." target="_blank">https://www.britannica.com/event/Jelali-Revolts.</a></li>
-<li>​&quot;Celali rebellions.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Celali_rebellions." target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions.</a></li>
-<li>​&quot;Great Jelālī Revolts.&quot; EBSCO Research Starters. <a href="https://www.ebsco.com/research-starters/history/great-jelali-revolts." target="_blank">https://www.ebsco.com/research-starters/history/great-jelali-revolts.</a></li>
-<li>​&quot;The reign of violence: the celalis, c.1550-1700.&quot; Bilkent University Institutional Repository. <a href="https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a." target="_blank">https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a.</a></li>
-<li>​&quot;Karayazıcı Rebellion.&quot; Eskişehir Osmangazi Üniversitesi Sosyal Bilimler Dergisi. <a href="https://www.acarindex.com/eskisehir-osmangazi-universitesi-sosyal-bilimler-dergisi/kar" target="_blank">https://www.acarindex.com/eskisehir-osmangazi-universitesi-sosyal-bilimler-dergisi/kar</a> ayazici-rebellion-645116.</li>
-<li>​&quot;Eşkıyalık ve Terör.&quot; History Studies. <a href="https://www.historystudies.net/source/eskiyal%C4%B1k-ve-teror.pdf." target="_blank">https://www.historystudies.net/source/eskiyal%C4%B1k-ve-teror.pdf.</a></li>
-<li>​&quot;Karayazıcı İsyanı.&quot; DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/112963." target="_blank">https://dergipark.org.tr/tr/download/article-file/112963.</a></li>
-<li>​&quot;Osmanlı&#x27;da İsyan İklimi.&quot; Aksaray Üniversitesi Tarih Bölümü. <a href="https://tarih.aksaray.edu.tr/indir/3ef9c5ab-9fcb-4e99-b224-6ef09b38b4ad.pdf." target="_blank">https://tarih.aksaray.edu.tr/indir/3ef9c5ab-9fcb-4e99-b224-6ef09b38b4ad.pdf.</a></li>
-<li>​&quot;Deli Hasan.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Deli_Hasan." target="_blank">https://en.wikipedia.org/wiki/Deli_Hasan.</a></li>
-<li>​&quot;Deli Hasan.&quot; Wikiwand. <a href="https://www.wikiwand.com/en/articles/Deli_Hasan." target="_blank">https://www.wikiwand.com/en/articles/Deli_Hasan.</a></li>
-<li>​&quot;Deli Hasan.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/biography/Deli-Hasan." target="_blank">https://www.britannica.com/biography/Deli-Hasan.</a></li>
-<li>​&quot;Koroglu and Deli Hasan.&quot; DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/3441940." target="_blank">https://dergipark.org.tr/tr/download/article-file/3441940.</a></li>
-<li>​&quot;The Morea Rebellion.&quot; University of Toronto T-Space. <a href="https://utoronto.scholaris.ca/server/api/core/bitstreams/6a17be9f-f5b1-4430-a5af-088e" target="_blank">https://utoronto.scholaris.ca/server/api/core/bitstreams/6a17be9f-f5b1-4430-a5af-088e</a> a3947762/content.</li>
-<li>​&quot;Kalender Çelebi rebellion.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Kalender_%C3%87elebi_rebellion." target="_blank">https://en.wikipedia.org/wiki/Kalender_%C3%87elebi_rebellion.</a></li>
-<li>​&quot;Kalender Çelebi&#x27;s Rebellion, Karaçayir.&quot; Warfare. <a href="https://warfare.x10host.com/Ottoman/Suleymanname/1527-Kalender_Celebi_Rebellion-S" target="_blank">https://warfare.x10host.com/Ottoman/Suleymanname/1527-Kalender_Celebi_Rebellion-S</a> uleymanname-large.htm.</li>
-<li>​&quot;İçel&#x27;de Bir Celali: Muslu Çavuş İsyanı (1606-1610).&quot; Tarih İncelemeleri Dergisi. <a href="http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1" target="_blank">http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1</a> 606-1610.</li>
-<li>​&quot;Kalenderoğlu Ali İsyanı.&quot; DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/4134029." target="_blank">https://dergipark.org.tr/tr/download/article-file/4134029.</a></li>
-<li>​&quot;Rebels and Renegades on Ottoman-Iranian Borderlands.&quot; ResearchGate. <a href="https://www.researchgate.net/publication/304788858_Rebels_and_Renegades_on_Otto" target="_blank">https://www.researchgate.net/publication/304788858_Rebels_and_Renegades_on_Otto</a> man-Iranian_Borderlands.</li>
-<li>​&quot;The Celali Revolt and Köprülü Reforms.&quot; In Worlds Together, Worlds Apart. W.W. Norton. <a href="https://nerd.wwnorton.com/ebooks/epub/worldstogether7/EPUB/content/13.4-chapter13." target="_blank">https://nerd.wwnorton.com/ebooks/epub/worldstogether7/EPUB/content/13.4-chapter13.</a> xhtml.</li>
-<li>​&quot;What was the bloodiest rebellion in the history of the Ottoman Empire?&quot; Quora. <a href="https://www.quora.com/What-was-the-bloodiest-rebellion-in-the-history-of-the-Ottom" target="_blank">https://www.quora.com/What-was-the-bloodiest-rebellion-in-the-history-of-the-Ottom</a> an-Empire.</li>
-<li>​&quot;The Rebellion of 1526-27.&quot; Sabancı University Research Database. <a href="https://research.sabanciuniv.edu/50995/1/10473560.pdf." target="_blank">https://research.sabanciuniv.edu/50995/1/10473560.pdf.</a></li>
-<li>​&quot;Celâlî isyanları.&quot; Wikipedia (Turkish). <a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1.</a></li>
-<li>​&quot;Celâlî İsyanları.&quot; TÜBİTAK Ansiklopedi. <a href="https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari." target="_blank">https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari.</a></li>
-<li>​&quot;Alternatif Tarih Okumaları - Celali İsyanları.&quot; Marksist Teori. <a href="https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2" target="_blank">https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2</a> 010/517-alternatif-tarih-okumalari-celali-isyanlari-osmanli-timar-sisteminin-bozulmasi- ve-1550-1650-koylu-ayaklanmalari.html.</li>
-<li>​&quot;Celali İsyanları.&quot; Osmanlı.org.tr. <a href="https://osmanli.org.tr/celali-isyanlari/." target="_blank">https://osmanli.org.tr/celali-isyanlari/.</a></li>
-<li>​&quot;Celâli İsyanlarının Değişik Özellikleri.&quot; Aydınlar Ocağı. <a href="https://aydinlarocagi.org/osmanli-devletinde-celali-isyanlari/." target="_blank">https://aydinlarocagi.org/osmanli-devletinde-celali-isyanlari/.</a></li>
-<li>​&quot;Karayazıcı Rebellion.&quot; Eskişehir Osmangazi Üniversitesi Sosyal Bilimler Dergisi. <a href="https://www.acarindex.com/eskisehir-osmangazi-universitesi-sosyal-bilimler-dergisi/kar" target="_blank">https://www.acarindex.com/eskisehir-osmangazi-universitesi-sosyal-bilimler-dergisi/kar</a> ayazici-rebellion-645116.</li>
-<li>​&quot;Karayazıcı İsyanı.&quot; Hacettepe Üniversitesi Kaynakça. <a href="http://kaynakca.hacettepe.edu.tr/eser/9164235/karayazici-isyani." target="_blank">http://kaynakca.hacettepe.edu.tr/eser/9164235/karayazici-isyani.</a></li>
-<li>​&quot;Karayazıcı İsyanı.&quot; Devlet-i Aliyye. <a href="https://www.devletialiyyei.com/Zaman-Tuneli/karayazici-isyani." target="_blank">https://www.devletialiyyei.com/Zaman-Tuneli/karayazici-isyani.</a></li>
-<li>​&quot;Karayazıcı Abdülhalim.&quot; TDV İslâm Ansiklopedisi. <a href="https://islamansiklopedisi.org.tr/karayazici-abdulhalim." target="_blank">https://islamansiklopedisi.org.tr/karayazici-abdulhalim.</a></li>
-<li>​&quot;Deli Hasan.&quot; Wikipedia (Turkish). <a href="https://tr.wikipedia.org/wiki/Deli_Hasan." target="_blank">https://tr.wikipedia.org/wiki/Deli_Hasan.</a></li>
-<li>​Tveritinova, Anna S. Türkiye&#x27;de Karayazıcı-Deli Hasan İsyanı. Aya Kitap. <a href="https://www.babil.com/turkiyede-karayazici-deli-hasan-isyani-kitabi-anna-s-tveritinova" target="_blank">https://www.babil.com/turkiyede-karayazici-deli-hasan-isyani-kitabi-anna-s-tveritinova</a> -aya-kitap.</li>
-<li>​&quot;Türkiye&#x27;de Karayazıcı Deli Hasan İsyanı.&quot; 1000Kitap. <a href="https://1000kitap.com/turkiyede-karayazici-deli-hasan-isyani--1634119." target="_blank">https://1000kitap.com/turkiyede-karayazici-deli-hasan-isyani--1634119.</a></li>
-<li>​&quot;Celâlî İsyanları.&quot; TDV İslâm Ansiklopedisi. <a href="https://islamansiklopedisi.org.tr/celali-isyanlari." target="_blank">https://islamansiklopedisi.org.tr/celali-isyanlari.</a></li>
-<li>​Not used in final report.</li>
-<li>​&quot;Kalender Çelebi İsyanı ya da Kalender Şah İsyanı.&quot; Mavi Didim. <a href="https://www.mavididim.com.tr/kalender-celebi-isyani-ya-da-kalender-sah-isyani." target="_blank">https://www.mavididim.com.tr/kalender-celebi-isyani-ya-da-kalender-sah-isyani.</a></li>
-<li>​&quot;Kalender Çelebi İsyanı.&quot; Mavi Didim. <a href="https://www.mavididim.com.tr/kalender-celebi-isyani-ya-da-kalender-sah-isyani." target="_blank">https://www.mavididim.com.tr/kalender-celebi-isyani-ya-da-kalender-sah-isyani.</a></li>
-<li>​&quot;Kalenderoğlu.&quot; Wikipedia (Turkish). <a href="https://tr.wikipedia.org/wiki/Kalendero%C4%9Flu." target="_blank">https://tr.wikipedia.org/wiki/Kalendero%C4%9Flu.</a></li>
-<li>​&quot;Kalenderoğlu İsyanı.&quot; Kazan Postası. <a href="https://kazanpostasi.com/2025/01/17/17388/." target="_blank">https://kazanpostasi.com/2025/01/17/17388/.</a></li>
-<li>​White, Sam. &quot;The Celali Rebellion.&quot; In The Climate of Rebellion in the Early Modern Ottoman Empire. Cambridge University Press, 2011. <a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottom" target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottom</a> an-empire/celali-rebellion/42F6F1CBFA4DF43FBF8C00B5D3CFD14D.</li>
-<li>​White, Sam. &quot;In the Wake of the Celalis.&quot; In The Climate of Rebellion in the Early Modern Ottoman Empire. Cambridge University Press, 2011. <a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottom" target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottom</a> an-empire/in-the-wake-of-the-celalis/57B1FE05FE3ECEF5267B9D1119138448.</li>
-<li>​&quot;Celali rebellions.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Celali_rebellions." target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions.</a></li>
-<li>​ &quot;Jelālī Revolts.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/event/Jelali-Revolts." target="_blank">https://www.britannica.com/event/Jelali-Revolts.</a></li>
-<li>​ &quot;Ottoman Rebellions: A Historiographical Overview.&quot; DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/761679." target="_blank">https://dergipark.org.tr/tr/download/article-file/761679.</a></li>
-<li>​ &quot;İçel&#x27;de Bir Celali: Muslu Çavuş İsyanı (1606-1610).&quot; Tarih İncelemeleri Dergisi. <a href="http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1" target="_blank">http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1</a> 606-1610.</li>
-<li>​ &quot;Kuyucu Murad Pasha.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Kuyucu_Murad_Pasha." target="_blank">https://en.wikipedia.org/wiki/Kuyucu_Murad_Pasha.</a></li>
-<li>​ &quot;Kuyucu Murad Paşa.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/biography/Kuyucu-Murad-Pasa." target="_blank">https://www.britannica.com/biography/Kuyucu-Murad-Pasa.</a></li>
-<li>​ &quot;The Impact of the Celâli Rebellions on the Socio-Economic Structure of Erzurum.&quot; Journal of Management and Social Sciences. <a href="https://jomiss.com.tr/makale_indir/4953." target="_blank">https://jomiss.com.tr/makale_indir/4953.</a></li>
-<li>​ &quot;Kuyucu Murad Paşa&#x27;nın Anadolu&#x27;da Celâlilerle Mücadelesine Dair Bir Osmanlı Kaynağı.&quot; Uluslararası Sosyal Araştırmalar Dergisi. <a href="https://www.sosyalarastirmalar.com/articles/an-ottoman-source-about-kuyucu-murad-" target="_blank">https://www.sosyalarastirmalar.com/articles/an-ottoman-source-about-kuyucu-murad-</a> pashas-struggle-against-jelalis.pdf.</li>
-<li>​ &quot;Transformation of the Ottoman Empire.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Transformation_of_the_Ottoman_Empire." target="_blank">https://en.wikipedia.org/wiki/Transformation_of_the_Ottoman_Empire.</a></li>
-<li>​ &quot;What was the bloodiest rebellion in the history of the Ottoman Empire?&quot; Quora. <a href="https://www.quora.com/What-was-the-bloodiest-rebellion-in-the-history-of-the-Ottom" target="_blank">https://www.quora.com/What-was-the-bloodiest-rebellion-in-the-history-of-the-Ottom</a> an-Empire.</li>
-<li>​ Orbay, Kayhan, et al. Various theses and articles on the Celali Rebellions. METU Open Access. <a href="https://open.metu.edu.tr/handle/11511/71152." target="_blank">https://open.metu.edu.tr/handle/11511/71152.</a></li>
-<li>​ &quot;The Celali effect in 17th century - Ottoman transformation.&quot; METU Open Access. <a href="https://open.metu.edu.tr/handle/11511/27362." target="_blank">https://open.metu.edu.tr/handle/11511/27362.</a></li>
-<li>​ &quot;The Celali Revolts of Anatolia.&quot; Ottoman History Podcast. <a href="https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html." target="_blank">https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html.</a></li>
-<li>​ &quot;What the Ottoman Empire Can Teach Us About the Consequences of Climate Change.&quot; The Wire Science. <a href="https://science.thewire.in/society/history/what-the-ottoman-empire-can-teach-us-abou" target="_blank">https://science.thewire.in/society/history/what-the-ottoman-empire-can-teach-us-abou</a> t-the-consequences-of-climate-change/.</li>
-<li>​ &quot;The &#x27;Great Armenian Flight&#x27;: The Celali Revolts and the Rise of Western Armenian Society.&quot; Journal of Early Modern History. <a href="https://brill.com/view/journals/jemh/23/1/article-p67_3.xml." target="_blank">https://brill.com/view/journals/jemh/23/1/article-p67_3.xml.</a></li>
-<li>​ &quot;The legend of Hezarfen.&quot; Pera Property. <a href="https://www.peraproperty.com/the-legend-of-hezarfen-2_6318/." target="_blank">https://www.peraproperty.com/the-legend-of-hezarfen-2_6318/.</a></li>
-<li>​ Popova, Maria. &quot;Hezârfen: The Story of the First Human Flight, Animated.&quot; The Marginalian. <a href="https://www.themarginalian.org/2011/01/21/hezarfen/." target="_blank">https://www.themarginalian.org/2011/01/21/hezarfen/.</a></li>
-<li>​ &quot;Hezarfen Ahmed Çelebi.&quot; YouTube. <a href="https://www.youtube.com/watch?v=i839ryU35FQ&amp;pp=0gcJCfwAo7VqN5tD." target="_blank">https://www.youtube.com/watch?v=i839ryU35FQ&amp;pp=0gcJCfwAo7VqN5tD.</a></li>
-<li>​ &quot;Ottoman Empire.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Ottoman_Empire." target="_blank">https://en.wikipedia.org/wiki/Ottoman_Empire.</a></li>
-<li>​ &quot;Büyük Kaçgun.&quot; DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/1123677." target="_blank">https://dergipark.org.tr/tr/download/article-file/1123677.</a></li>
-<li>​ &quot;Büyük Kaçgun.&quot; Wikipedia (Turkish). <a href="https://tr.wikipedia.org/wiki/B%C3%BCy%C3%BCk_Ka%C3%A7gun." target="_blank">https://tr.wikipedia.org/wiki/B%C3%BCy%C3%BCk_Ka%C3%A7gun.</a></li>
-<li>​ &quot;Büyük Kaçgun&#x27;un Nedenleri.&quot; International Journal of Management, Economics and Business. <a href="https://dergipark.org.tr/tr/pub/ijmeb/issue/54595/744268." target="_blank">https://dergipark.org.tr/tr/pub/ijmeb/issue/54595/744268.</a></li>
-<li>​ &quot;Celâlî isyanları.&quot; Wikipedia (Turkish). <a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1.</a></li>
-<li>​ &quot;Celâlî İsyanları.&quot; TÜBİTAK Ansiklopedi. <a href="https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari." target="_blank">https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari.</a></li>
-<li>​ &quot;Celâlî İsyanları.&quot; Istanbul University E-Journal. <a href="https://nek.istanbul.edu.tr/ekos/TEZ/38610.pdf." target="_blank">https://nek.istanbul.edu.tr/ekos/TEZ/38610.pdf.</a></li>
-<li>​ Polat, Süleyman. &quot;The economic consequences of the Celali revolts.&quot; Turkish Historical Review. <a href="https://brill.com/view/journals/thr/4/1/article-p57_3.pdf." target="_blank">https://brill.com/view/journals/thr/4/1/article-p57_3.pdf.</a></li>
-<li>​ White, Sam. The Climate of Rebellion in the Early Modern Ottoman Empire. Cambridge University Press, 2011. <a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottom" target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottom</a> an-empire/C022031EDC39F862EA87DBC88D66B888.</li>
-<li>​ Polat, Süleyman. &quot;Marks of a Jelali Destruction in the Ottoman Province: The raid of Tavil Halil in Kütahya.&quot; Journal of Gazi Academic View. <a href="https://www.gaziakademikbakis.com/en/article/gab-T-2018-156#!." target="_blank">https://www.gaziakademikbakis.com/en/article/gab-T-2018-156#!.</a></li>
-<li>​ &quot;The empire from 1807 to 1920.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/place/Ottoman-Empire/The-empire-from-1807-to-1920." target="_blank">https://www.britannica.com/place/Ottoman-Empire/The-empire-from-1807-to-1920.</a></li>
-<li>​ &quot;Ottoman events.&quot; EU4 Paradox Wiki. <a href="https://eu4.paradoxwikis.com/Ottoman_events." target="_blank">https://eu4.paradoxwikis.com/Ottoman_events.</a></li>
-<li>​ &quot;The Rebellion of 1526-27.&quot; Sabancı University Research Database. <a href="https://research.sabanciuniv.edu/50995/1/10473560.pdf." target="_blank">https://research.sabanciuniv.edu/50995/1/10473560.pdf.</a></li>
-<li>​ &quot;Narratives of Reform in the Ottoman Empire.&quot; DergiPark. <a href="https://dergipark.org.tr/en/download/article-file/2849552." target="_blank">https://dergipark.org.tr/en/download/article-file/2849552.</a></li>
-<li>​ &quot;Resistance to change.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/place/Ottoman-Empire/Resistance-to-change." target="_blank">https://www.britannica.com/place/Ottoman-Empire/Resistance-to-change.</a></li>
-<li>​ &quot;Ottoman Military Reform Attempts Prior to the Nizam-ı Cedid Army.&quot; CiteSeerX. <a href="https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=71e7ba9f9df317a4215" target="_blank">https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=71e7ba9f9df317a4215</a> 5cf88c3ac6e40babeb986.</li>
-<li>​ &quot;Ottoman military reforms.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Ottoman_military_reforms." target="_blank">https://en.wikipedia.org/wiki/Ottoman_military_reforms.</a></li>
-<li>​ &quot;Banditry and Notables in the Ottoman Balkans.&quot; Columbia Academic Commons. <a href="https://academiccommons.columbia.edu/doi/10.7916/D88S4X78/download." target="_blank">https://academiccommons.columbia.edu/doi/10.7916/D88S4X78/download.</a></li>
-<li>​ &quot;How did the Ottoman army go from being the terror of Europe to the &#x27;sick man of Europe&#x27;?&quot; Reddit r/AskHistorians. <a href="https://www.reddit.com/r/AskHistorians/comments/ph0yzm/how_did_the_ottoman_army_" target="_blank">https://www.reddit.com/r/AskHistorians/comments/ph0yzm/how_did_the_ottoman_army_</a> go_from_being_the_terror/.</li>
-<li>​ &quot;11. Sınıf Tarih Dersi Çalışma Notları.&quot; MEB. <a href="https://hbeml.meb.k12.tr/meb_iys_dosyalar/41/09/967514/dosyalar/2020_11/12214036_11." target="_blank">https://hbeml.meb.k12.tr/meb_iys_dosyalar/41/09/967514/dosyalar/2020_11/12214036_11.</a> _SINIF_TARYH_DERSY_CALIYMA_NOTLARI.pdf.</li>
-<li>​ &quot;Celali rebellions.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Celali_rebellions." target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions.</a></li>
-<li>​ &quot;The reign of violence: the celalis, c.1550-1700.&quot; Bilkent University Institutional Repository. <a href="https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a." target="_blank">https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a.</a></li>
-<li>​ White, Sam. &quot;The Celali Rebellion.&quot; In The Climate of Rebellion in the Early Modern Ottoman Empire. Cambridge University Press, 2011. <a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottom" target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottom</a> an-empire/celali-rebellion/42F6F1CBFA4DF43FBF8C00B5D3CFD14D.</li>
-<li>​ &quot;The Celali effect in 17th century - Ottoman transformation.&quot; METU Open Access. <a href="https://open.metu.edu.tr/handle/11511/27362." target="_blank">https://open.metu.edu.tr/handle/11511/27362.</a></li>
-<li>​ &quot;Jelālī Revolts.&quot; Encyclopædia Britannica. <a href="https://www.britannica.com/event/Jelali-Revolts." target="_blank">https://www.britannica.com/event/Jelali-Revolts.</a></li>
-<li>​ &quot;The Celali Revolts of Anatolia.&quot; Ottoman History Podcast. <a href="https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html." target="_blank">https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html.</a></li>
-<li>​ &quot;İçel&#x27;de Bir Celali: Muslu Çavuş İsyanı (1606-1610).&quot; Tarih İncelemeleri Dergisi. <a href="http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1" target="_blank">http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1</a> 606-1610.</li>
-<li>​ Akdağ, Mustafa. &quot;Celâlî Fetreti.&quot; Ankara Üniversitesi Dil ve Tarih-Coğrafya Fakültesi Dergisi. <a href="https://etd.lib.metu.edu.tr/upload/12622173/index.pdf." target="_blank">https://etd.lib.metu.edu.tr/upload/12622173/index.pdf.</a></li>
-<li>​ &quot;The Rebellion of 1526-27.&quot; Sabancı University Research Database. <a href="https://research.sabanciuniv.edu/50995/1/10473560.pdf." target="_blank">https://research.sabanciuniv.edu/50995/1/10473560.pdf.</a></li>
-<li>​ &quot;The Morea Rebellion.&quot; University of Toronto T-Space. <a href="https://utoronto.scholaris.ca/server/api/core/bitstreams/6a17be9f-f5b1-4430-a5af-088e" target="_blank">https://utoronto.scholaris.ca/server/api/core/bitstreams/6a17be9f-f5b1-4430-a5af-088e</a> a3947762/content.</li>
-<li>​ &quot;Population Changes in Ottoman Anatolia During the 16th and 17th Centuries.&quot; International Journal of Middle East Studies. <a href="https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/a" target="_blank">https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/a</a> rticle/population-changes-in-ottoman-anatolia-during-the-16th-and-17th-centuries-th e-demographic-crisis-reconsidered/6C31B15E42837F9AE1196D2C01742E2C.</li>
-<li>​ Faroqhi, Suraiya. &quot;Seeking Wisdom in China: an Attempt to Make Sense of the Celâli Rebellions.&quot; Brill. <a href="https://brill.com/display/book/9789004311244/B9789004311244_006.pdf." target="_blank">https://brill.com/display/book/9789004311244/B9789004311244_006.pdf.</a></li>
-<li>​ Barkey, Karen. Bandits and Bureaucrats: The Ottoman Route to State Centralization. Cornell University Press. <a href="https://books.google.com/books/about/Bandits_and_Bureaucrats.html?id=wijlgELdgKQ" target="_blank">https://books.google.com/books/about/Bandits_and_Bureaucrats.html?id=wijlgELdgKQ</a> C.</li>
-<li>​ Barkey, Karen. Bandits and Bureaucrats. Scribd. <a href="https://www.scribd.com/document/307890407/Bandits-and-Bureaucrats-Karen-Barkey." target="_blank">https://www.scribd.com/document/307890407/Bandits-and-Bureaucrats-Karen-Barkey.</a></li>
-<li>​ White, Sam. The Climate of Rebellion in the Early Modern Ottoman Empire. Dokumen.pub. <a href="https://dokumen.pub/the-climate-of-rebellion-in-the-early-modern-ottoman-empire-97" target="_blank">https://dokumen.pub/the-climate-of-rebellion-in-the-early-modern-ottoman-empire-97</a> 81139120012-1139120018.html.</li>
-<li>​ Barkey, Karen. Empire of Difference: The Ottomans in Comparative Perspective. Cambridge University Press. <a href="http://ndl.ethernet.edu.et/bitstream/123456789/50959/1/22.pdf." target="_blank">http://ndl.ethernet.edu.et/bitstream/123456789/50959/1/22.pdf.</a></li>
-<li>​ Stanton, Andrea. Review of Empire of Difference by Karen Barkey. ResearchGate. <a href="https://www.researchgate.net/profile/Andrea-Stanton/publication/249505081_Empire_of" target="_blank">https://www.researchgate.net/profile/Andrea-Stanton/publication/249505081_Empire_of</a> _Difference_the_Ottomans_in_Comparative_Perspective_Karen_Barkey/links/59de87fc45 8515376b29e4a2/Empire-of-Difference-the-Ottomans-in-Comparative-Perspective-Kar en-Barkey.pdf.</li>
-<li>​ Göçek, Fatma Müge. Review of Bandits and Bureaucrats by Karen Barkey. University of Michigan. <a href="https://sites.lsa.umich.edu/gocek/wp-content/uploads/sites/352/2016/01/GocekMuge.br" target="_blank">https://sites.lsa.umich.edu/gocek/wp-content/uploads/sites/352/2016/01/GocekMuge.br</a> _.review-of-Barkey-book-1996.pdf.</li>
-<li>​ &quot;Contemporary Ottoman Observers and Western Chronicles.&quot; METU Open Access. <a href="https://etd.lib.metu.edu.tr/upload/12622173/index.pdf." target="_blank">https://etd.lib.metu.edu.tr/upload/12622173/index.pdf.</a></li>
-<li>​ &quot;Celâlî isyanları.&quot; Wikipedia (Turkish). <a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1.</a></li>
-<li>​ &quot;Alternatif Tarih Okumaları - Celali İsyanları.&quot; Marksist Teori. <a href="https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2" target="_blank">https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2</a> 010/517-alternatif-tarih-okumalari-celali-isyanlari-osmanli-timar-sisteminin-bozulmasi- ve-1550-1650-koylu-ayaklanmalari.html.</li>
-<li>​ &quot;Celâlî isyanları.&quot; Wikipedia (Turkish). <a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1.</a></li>
-<li>​ &quot;Celali İsyanları.&quot; Osmanlı.org.tr. <a href="https://osmanli.org.tr/celali-isyanlari/." target="_blank">https://osmanli.org.tr/celali-isyanlari/.</a></li>
-<li>​ &quot;Celâlî İsyanları.&quot; TDV İslâm Ansiklopedisi. <a href="https://islamansiklopedisi.org.tr/celali-isyanlari." target="_blank">https://islamansiklopedisi.org.tr/celali-isyanlari.</a></li>
-<li>​ Gümüş, Ercan. Tarihçi ve Asi: 16. Yüzyıl Celali İsyanları&#x27;nın Osmanlı Tarih Yazımına Yansıması. Libra Kitap. <a href="https://www.librakitap.com.tr/index.php?option=com_content&amp;view=article&amp;id=500:tari" target="_blank">https://www.librakitap.com.tr/index.php?option=com_content&amp;view=article&amp;id=500:tari</a> hci-ve-asi-16-yuzyil-anadolu-celali-isyanlari-nin-osmanli-tarih-yazimina-yansimasi&amp;cati d=10&amp;Itemid=105.</li>
-<li>​ Akdağ, Mustafa. &quot;Celali İsyanlarının Başlaması.&quot; Ankara Üniversitesi Dil ve Tarih-Coğrafya Fakültesi Dergisi. <a href="https://isamveri.org/pdfsbv/D00226/1945_4_1/1945_4_1_AKDAGM.pdf." target="_blank">https://isamveri.org/pdfsbv/D00226/1945_4_1/1945_4_1_AKDAGM.pdf.</a></li>
-<li>​ &quot;Mustafa Akdağ.&quot; 1000Kitap. <a href="https://1000kitap.com/yazar/mustafa-akdag/incelemeler." target="_blank">https://1000kitap.com/yazar/mustafa-akdag/incelemeler.</a></li>
-<li>​ &quot;Dirlik ve Düzenlik Kavgası.&quot; Akademik Tarih. <a href="https://www.akademiktarihtr.com/dirlikveduzenlikkavgasi/." target="_blank">https://www.akademiktarihtr.com/dirlikveduzenlikkavgasi/.</a></li>
-<li>​ Timur, Taner. &quot;Akdağ, Mustafa.&quot; Taner Timur personal website. <a href="https://tanertimur.org/akdag-mustafa/." target="_blank">https://tanertimur.org/akdag-mustafa/.</a></li>
-<li>​ Akdağ, Mustafa. Türk Halkının Dirlik ve Düzenlik Kavgası: Celali İsyanları. Scribd. <a href="https://www.scribd.com/document/731146031/Mustafa-Akda%C4%9F-Turk-Halk%C4%B" target="_blank">https://www.scribd.com/document/731146031/Mustafa-Akda%C4%9F-Turk-Halk%C4%B</a> 1n%C4%B1n-Dirlik-Ve-Duzenlik-Kavgas%C4%B1-Celali-%C4%B0syanlar%C4%B1-%D0 %B0%D0%BD%D0%9E%D0%BC1%D1%87.</li>
-<li>​ &quot;Kalabalıkların Sosyolojisi.&quot; Belleten. <a href="https://belleten.gov.tr/eng/full-text/2387/tur." target="_blank">https://belleten.gov.tr/eng/full-text/2387/tur.</a></li>
-<li>​ Aksoy, Doğan. &quot;Karen Barkey&#x27;in Eşkıyaları.&quot; Kebikeç. <a href="https://kebikecdergi.wordpress.com/wp-content/uploads/2012/07/06_aksoy.pdf." target="_blank">https://kebikecdergi.wordpress.com/wp-content/uploads/2012/07/06_aksoy.pdf.</a></li>
-<li>​ &quot;Heronları Kim Düşürdü veya Celaliler ile PKK.&quot; Haksoz Haber. <a href="https://www.haksozhaber.net/heronlari-kim-dusurdu-veya-celaliler-ile-pkk-17252yy.htm." target="_blank">https://www.haksozhaber.net/heronlari-kim-dusurdu-veya-celaliler-ile-pkk-17252yy.htm.</a></li>
-<li>​ Eşkıyalar ve Devlet. 1000Kitap. <a href="https://1000kitap.com/kitap/eskiyalar-ve-devlet--39711." target="_blank">https://1000kitap.com/kitap/eskiyalar-ve-devlet--39711.</a></li>
-<li>​ White, Sam. The Climate of Rebellion in the Early Modern Ottoman Empire. Cambridge University Press, 2011. (Book-level reference)</li>
-<li>​ &quot;Major phases of the Celali rebellions and key rebel leaders.&quot; Wikipedia. (Summary of Celali Rebellions page).</li>
-<li>​ &quot;Celali isyanları ve liderleri.&quot; Osmanlı.org.tr. (Summary of Celali İsyanları page).</li>
-<li>​ &quot;Consequences of the Celali Rebellions.&quot; Wikipedia. (Summary of Celali Rebellions page).</li>
-<li>​ &quot;Long-term impact of Celali revolts on Ottoman Empire.&quot; Brill. <a href="https://brill.com/view/journals/thr/4/1/article-p57_3.xml." target="_blank">https://brill.com/view/journals/thr/4/1/article-p57_3.xml.</a></li>
-<li>​ &quot;Historiography of the Celali Rebellions.&quot; Bilkent University Institutional Repository. (General reference).</li>
-<li>​ &quot;Historiography of the Celali Rebellions.&quot; Cambridge University Press. (General reference).</li>
-<li>​ Gündoğdu, Birol. &quot;A Restricted Approach to the Study of Ottoman Rebellions.&quot; DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/761679." target="_blank">https://dergipark.org.tr/tr/download/article-file/761679.</a> Works cited</li>
-<li>​ Celali rebellions - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Celali_rebellions" target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions</a></li>
-<li>​ en.wikipedia.org, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Celali_rebellions#:~:text=The%20word%20Celali%20" target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions#:~:text=The%20word%20Celali%20</a> means%20%22belonging,of%20Jel%C4%81l%C4%AB%20is%20also%20used.</li>
-<li>​ Jelālī Revolts | Ottoman Empire, Anatolia, Peasants | Britannica, accessed August 11, 2025, <a href="https://www.britannica.com/event/Jelali-Revolts" target="_blank">https://www.britannica.com/event/Jelali-Revolts</a></li>
-<li>​ Celali isyanları nedir, sebepleri nelerdir? Celali isyanlarını kim bastırdı? - Haberler - Hürriyet, accessed August 11, 2025, <a href="https://www.hurriyet.com.tr/egitim/celali-isyanlari-nedir-sebepleri-nelerdir-celali-i" target="_blank">https://www.hurriyet.com.tr/egitim/celali-isyanlari-nedir-sebepleri-nelerdir-celali-i</a> syanlarini-kim-bastirdi-41940885</li>
-<li>​ Celâlî İsyanları - Osmanlı Araştırmaları Vakfı, accessed August 11, 2025, <a href="https://osmanli.org.tr/celali-isyanlari/" target="_blank">https://osmanli.org.tr/celali-isyanlari/</a></li>
-<li>​ www.britannica.com, accessed August 11, 2025, <a href="https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20first%20revolt%2" target="_blank">https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20first%20revolt%2</a> 0occurred%20in,cavalrymen%20maintained%20by%20land%20grants).</li>
-<li>​ Celali isyanları nedenleri, dönemi ve sonuçları - Sözcü, accessed August 11, 2025, <a href="https://www.sozcu.com.tr/celali-isyanlari-nedenleri-donemi-ve-sonuclari-wp9835" target="_blank">https://www.sozcu.com.tr/celali-isyanlari-nedenleri-donemi-ve-sonuclari-wp9835</a> 87</li>
-<li>​ 38610.pdf - İstanbul Üniversitesi, accessed August 11, 2025, <a href="https://nek.istanbul.edu.tr/ekos/TEZ/38610.pdf" target="_blank">https://nek.istanbul.edu.tr/ekos/TEZ/38610.pdf</a></li>
-<li>​ Heronları kim düşürdü veya Celaliler ile PKK - Mustafa Armağan - HAKSÖZ HABER, accessed August 11, 2025, <a href="https://www.haksozhaber.net/heronlari-kim-dusurdu-veya-celaliler-ile-pkk-17252" target="_blank">https://www.haksozhaber.net/heronlari-kim-dusurdu-veya-celaliler-ile-pkk-17252</a> yy.htm</li>
-<li>​Celali İsyanları - Türk Tarihi, accessed August 11, 2025, <a href="https://turktarihim.com/celali_isyanlari.html" target="_blank">https://turktarihim.com/celali_isyanlari.html</a></li>
-<li>​tr.wikipedia.org, accessed August 11, 2025, <a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1" target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1</a></li>
-<li>​CELÂLÎ İSYANLARI Ansiklopediler - Tübitak - Ansiklopedi, accessed August 11, 2025, <a href="https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari" target="_blank">https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari</a></li>
-<li>​The reign of violence: the celalis, c.1550-1700 - Bilkent BUIR, accessed August 11, 2025, <a href="https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a" target="_blank">https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a</a></li>
-<li>​Great Jelālī Revolts | EBSCO Research Starters, accessed August 11, 2025, <a href="https://www.ebsco.com/research-starters/history/great-jelali-revolts" target="_blank">https://www.ebsco.com/research-starters/history/great-jelali-revolts</a></li>
-<li>​www.britannica.com, accessed August 11, 2025, <a href="https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20rebellions%20we" target="_blank">https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20rebellions%20we</a> re%20not%20attempts,and%20an%20increase%20in%20the</li>
-<li>​Transformation of the Ottoman Empire - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Transformation_of_the_Ottoman_Empire" target="_blank">https://en.wikipedia.org/wiki/Transformation_of_the_Ottoman_Empire</a></li>
-<li>​The Celali effect in 17th century - Ottoman transformation - Open METU, accessed August 11, 2025, <a href="https://open.metu.edu.tr/handle/11511/27362" target="_blank">https://open.metu.edu.tr/handle/11511/27362</a></li>
-<li>​THE CELALI EFFECT IN 17TH CENTURY-OTTOMAN TRANSFORMATION A THESIS SUBMITTED TO THE GRADUATE SCHOOL OF SOCIAL SCIENCES OF MIDDLE, accessed August 11, 2025, <a href="https://etd.lib.metu.edu.tr/upload/12622173/index.pdf" target="_blank">https://etd.lib.metu.edu.tr/upload/12622173/index.pdf</a></li>
-<li>​Problems in the Interpretations of Ottoman Rebellions in ... - DergiPark, accessed August 11, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/761679" target="_blank">https://dergipark.org.tr/tr/download/article-file/761679</a></li>
-<li>​Tedirgin Anadolu | Taylan Akyıldırım - Ottoman History Podcast, accessed August 11, 2025, <a href="https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html" target="_blank">https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html</a></li>
-<li>​OSMANLI DEVLETİNDE CELALİ İSYANLARI - Aydınlar Ocağı, accessed August 11, 2025, <a href="https://aydinlarocagi.org/osmanli-devletinde-celali-isyanlari/" target="_blank">https://aydinlarocagi.org/osmanli-devletinde-celali-isyanlari/</a></li>
-<li>​Ottoman Empire - Decline, Reforms, Fall | Britannica, accessed August 11, 2025, <a href="https://www.britannica.com/place/Ottoman-Empire/The-decline-of-the-Ottoman" target="_blank">https://www.britannica.com/place/Ottoman-Empire/The-decline-of-the-Ottoman</a> -Empire-1566-1807</li>
-<li>​Comparative Perspectives on Climate Change: The Ottoman Empire and Ming China, accessed August 11, 2025, <a href="https://nerd.wwnorton.com/ebooks/epub/worldstogether7/EPUB/content/13.4-ch" target="_blank">https://nerd.wwnorton.com/ebooks/epub/worldstogether7/EPUB/content/13.4-ch</a> apter13.xhtml</li>
-<li>​The Celali Rebellion (Chapter 7) - The Climate of Rebellion in the Early Modern Ottoman Empire - Cambridge University Press, accessed August 11, 2025, <a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern" target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern</a> -ottoman-empire/celali-rebellion/42F6F1CBFA4DF43FBF8C00B5D3CFD14D</li>
-<li>​Decline of the Ottoman Empire | Reasons, Collapse, &amp; Maps - Britannica, accessed August 11, 2025, <a href="https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672" target="_blank">https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672</a></li>
-<li>​ZfWT Zeitschrift für die Welt der Türken CORRUPTION OF THE OTTOMAN INHERITANCE SYSTEM AND REFORM STUDIES CARRIED OUT IN THE 17, accessed August 11, 2025, <a href="https://www.dieweltdertuerken.org/admin/files/issues/47-273-1-PB.pdf" target="_blank">https://www.dieweltdertuerken.org/admin/files/issues/47-273-1-PB.pdf</a></li>
-<li>​Social Movements and Rebellions in the Ottoman Empire in the Period of Crisis and Change: Erzurum Province 1600-1630, accessed August 11, 2025, <a href="https://jomiss.com.tr/makale_indir/4953" target="_blank">https://jomiss.com.tr/makale_indir/4953</a></li>
-<li>​The Causes of the Financial Crisis That Began in the 16th Century and Continued until the Tanzimat Era in the Ottoman Empire - DergiPark, accessed August 11, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/46291" target="_blank">https://dergipark.org.tr/tr/download/article-file/46291</a></li>
-<li>​celali isyanları&#x27;nın vergisel nedenleri - Vergi Sorunları Dergisi, accessed August 11, 2025, <a href="https://www.vergisorunlari.com.tr/makale/celali-isyanlarinin-vergisel-nedenleri/889" target="_blank">https://www.vergisorunlari.com.tr/makale/celali-isyanlarinin-vergisel-nedenleri/889</a> 8</li>
-<li>​The economic consequences of the Celali revolts: the destruction and re-establishment of the state&#x27;s taxation organisation - Brill, accessed August 11, 2025, <a href="https://brill.com/view/journals/thr/4/1/article-p57_3.pdf" target="_blank">https://brill.com/view/journals/thr/4/1/article-p57_3.pdf</a></li>
-<li>​XVI. YÜZYIL ORTALARINDA OSMANLI İMPARATORLUĞU&#x27;NDA SUHTE OLAYLARI Yunus KOÇ - DergiPark, accessed August 11, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/620397" target="_blank">https://dergipark.org.tr/tr/download/article-file/620397</a></li>
-<li>​www.britannica.com, accessed August 11, 2025, <a href="https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672#:~:t" target="_blank">https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672#:~:t</a> ext=The%20central%20government%20became%20weaker,armies%20still%20g uarding%20the%20frontiers.</li>
-<li>​The Downfall of the Ottoman Empire: Causes, Consequences, and Legacy - Medium, accessed August 11, 2025, <a href="https://medium.com/@iammuzamil1999/the-downfall-of-the-ottoman-empire-ca" target="_blank">https://medium.com/@iammuzamil1999/the-downfall-of-the-ottoman-empire-ca</a> uses-consequences-and-legacy-452e976b4fbf</li>
-<li>​Developments and Decline of the Ottoman Empire - Resourcesforhistoryteachers, accessed August 11, 2025, <a href="http://resourcesforhistoryteachers.pbworks.com/w/page/126065036/Developme" target="_blank">http://resourcesforhistoryteachers.pbworks.com/w/page/126065036/Developme</a> nts%20and%20Decline%20of%20the%20Ottoman%20Empire</li>
-<li>​Controlling Corruption in Law Enforcement: Incentives, Safeguards, and Institutional Change in the Ottoman Empire - University of Connecticut, accessed August 11, 2025, <a href="https://media.economics.uconn.edu/working/2011-18.pdf" target="_blank">https://media.economics.uconn.edu/working/2011-18.pdf</a></li>
-<li>​Crime and Punishment in Ottoman Times: Corruption and Fines - MIT Press Direct, accessed August 11, 2025, <a href="https://direct.mit.edu/jinh/article/43/3/353/50164/Crime-and-Punishment-in-Otto" target="_blank">https://direct.mit.edu/jinh/article/43/3/353/50164/Crime-and-Punishment-in-Otto</a> man-Times-Corruption</li>
-<li>​Celali Ayaklanmalarının Maliye Tarihi Açısından Değerlendirilmesi - DergiPark, accessed August 11, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/145935" target="_blank">https://dergipark.org.tr/tr/download/article-file/145935</a></li>
-<li>​The Climate of Rebellion in the Early Modern Ottoman Empire - Cambridge University Press, accessed August 11, 2025, <a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern" target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern</a> -ottoman-empire/C022031EDC39F862EA87DBC88D66B888</li>
-<li>​The Climate of Rebellion in the Early Modern Ottoman Empire 9781139120012, 1139120018 - DOKUMEN.PUB, accessed August 11, 2025, <a href="https://dokumen.pub/the-climate-of-rebellion-in-the-early-modern-ottoman-em" target="_blank">https://dokumen.pub/the-climate-of-rebellion-in-the-early-modern-ottoman-em</a> pire-9781139120012-1139120018.html</li>
-<li>​What the Ottoman Empire Can Teach Us About the Consequences of Climate Change, accessed August 11, 2025, <a href="https://science.thewire.in/society/history/what-the-ottoman-empire-can-teach-u" target="_blank">https://science.thewire.in/society/history/what-the-ottoman-empire-can-teach-u</a> s-about-the-consequences-of-climate-change/</li>
-<li>​Kalender Çelebi rebellion - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Kalender_%C3%87elebi_rebellion" target="_blank">https://en.wikipedia.org/wiki/Kalender_%C3%87elebi_rebellion</a></li>
-<li>​Kalender Çelebi&#x27;s Rebellion, Karaçayir. Süleymanname of 1558, Topkapi Saray Museum ms Hazine 1517., accessed August 11, 2025, <a href="https://warfare.x10host.com/Ottoman/Suleymanname/1527-Kalender_Celebi_Reb" target="_blank">https://warfare.x10host.com/Ottoman/Suleymanname/1527-Kalender_Celebi_Reb</a> ellion-Suleymanname-large.htm</li>
-<li>​Karayazıcı İsyanı - Devlet-i Aliyye-i, accessed August 11, 2025, <a href="https://www.devletialiyyei.com/Zaman-Tuneli/karayazici-isyani" target="_blank">https://www.devletialiyyei.com/Zaman-Tuneli/karayazici-isyani</a></li>
-<li>​[PDF] Karayazıcı Rebellion - ACARINDEX, accessed August 11, 2025, <a href="https://www.acarindex.com/eskisehir-osmangazi-universitesi-sosyal-bilimler-der" target="_blank">https://www.acarindex.com/eskisehir-osmangazi-universitesi-sosyal-bilimler-der</a> gisi/karayazici-rebellion-645116</li>
-<li>​Alternatif Tarih Okumaları - Celali İsyanları: Osmanlı Tımar Sisteminin “Bozulması” ve 1550-1650 Köylü Ayaklanmaları - Marksist Teori, accessed August 11, 2025, <a href="https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-ha" target="_blank">https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-ha</a> ziran-2010/517-alternatif-tarih-okumalari-celali-isyanlari-osmanli-timar-sistemini n-bozulmasi-ve-1550-1650-koylu-ayaklanmalari.html</li>
-<li>​The economic consequences of the Celali revolts: the destruction ..., accessed August 11, 2025, <a href="https://brill.com/view/journals/thr/4/1/article-p57_3.xml" target="_blank">https://brill.com/view/journals/thr/4/1/article-p57_3.xml</a></li>
-<li>​Deli Hasan - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Deli_Hasan" target="_blank">https://en.wikipedia.org/wiki/Deli_Hasan</a></li>
-<li>​Kuyucu Murad Pasha - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Kuyucu_Murad_Pasha" target="_blank">https://en.wikipedia.org/wiki/Kuyucu_Murad_Pasha</a></li>
-<li>​Kalenderoğlu - Vikipedi, accessed August 11, 2025, <a href="https://tr.wikipedia.org/wiki/Kalendero%C4%9Flu" target="_blank">https://tr.wikipedia.org/wiki/Kalendero%C4%9Flu</a></li>
-<li>​KALENDER ÇELEBİ İSYANI YA DA KALENDER ŞAH İSYANI - Mavi Didim, accessed August 11, 2025, <a href="https://www.mavididim.com.tr/kalender-celebi-isyani-ya-da-kalender-sah-isyani" target="_blank">https://www.mavididim.com.tr/kalender-celebi-isyani-ya-da-kalender-sah-isyani</a></li>
-<li>​RURAL ORDER, REVOLT AND MESSIANISM IN THE EARLY SIXTEENTH CENTURY ANATOLIA: THE REBELLION OF 1526-27 by CAN GÖRTAN Submitted to, accessed August 11, 2025, <a href="https://research.sabanciuniv.edu/50995/1/10473560.pdf" target="_blank">https://research.sabanciuniv.edu/50995/1/10473560.pdf</a></li>
-<li>​Şahkulu İsyanı - Vikipedi, accessed August 11, 2025, <a href="https://tr.wikipedia.org/wiki/%C5%9Eahkulu_%C4%B0syan%C4%B1" target="_blank">https://tr.wikipedia.org/wiki/%C5%9Eahkulu_%C4%B0syan%C4%B1</a></li>
-<li>​A CELÂLÎ IN İÇEL: MUSLU ÇAVUŞ REBELLION (1606-1610) - Istanbul University Press, accessed August 11, 2025, <a href="http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-is" target="_blank">http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-is</a> yani-1606-1610</li>
-<li>​Osmanlı&#x27;dan Günümüze - EŞKIYALIK VE TERÖR, accessed August 11, 2025, <a href="https://www.historystudies.net/source/eskiyal%C4%B1k-ve-teror.pdf" target="_blank">https://www.historystudies.net/source/eskiyal%C4%B1k-ve-teror.pdf</a></li>
-<li>​karayazıcı isyanı - KARAYAZICI İSYANI - DergiPark, accessed August 11, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/112963" target="_blank">https://dergipark.org.tr/tr/download/article-file/112963</a></li>
-<li>​Karayazıcı İsyanı - Türkiye Kaynakçası, accessed August 11, 2025, <a href="http://kaynakca.hacettepe.edu.tr/eser/9164235/karayazici-isyani" target="_blank">http://kaynakca.hacettepe.edu.tr/eser/9164235/karayazici-isyani</a></li>
-<li>​Deli Hasan - Wikiwand, accessed August 11, 2025, <a href="https://www.wikiwand.com/en/articles/Deli_Hasan" target="_blank">https://www.wikiwand.com/en/articles/Deli_Hasan</a></li>
-<li>​Deli Hasan - Vikipedi, accessed August 11, 2025, <a href="https://tr.wikipedia.org/wiki/Deli_Hasan" target="_blank">https://tr.wikipedia.org/wiki/Deli_Hasan</a></li>
-<li>​Deli Hasan | Turkish rebel - Britannica, accessed August 11, 2025, <a href="https://www.britannica.com/biography/Deli-Hasan" target="_blank">https://www.britannica.com/biography/Deli-Hasan</a></li>
-<li>​CELÂLÎ İSYANLARI - TDV İslâm Ansiklopedisi, accessed August 11, 2025, <a href="https://islamansiklopedisi.org.tr/celali-isyanlari" target="_blank">https://islamansiklopedisi.org.tr/celali-isyanlari</a></li>
-<li>​KARAYAZICI ABDÜLHALİM - TDV İslâm Ansiklopedisi, accessed August 11, 2025, <a href="https://islamansiklopedisi.org.tr/karayazici-abdulhalim" target="_blank">https://islamansiklopedisi.org.tr/karayazici-abdulhalim</a></li>
-<li>​Kuyucu Murad Paşa | Ottoman vizier - Britannica, accessed August 11, 2025, <a href="https://www.britannica.com/biography/Kuyucu-Murad-Pasa" target="_blank">https://www.britannica.com/biography/Kuyucu-Murad-Pasa</a></li>
-<li>​KUYUCU MURAD PAŞA&#x27;NIN ANADOLU&#x27;DA CELÂLİLERLE MÜCADELESİNE DAİR BİR OSMANLI KAYNAĞI “AN OTTOMAN SOURCE ABOUT KUYU - The Journal of International Social Research, accessed August 11, 2025, <a href="https://www.sosyalarastirmalar.com/articles/an-ottoman-source-about-kuyucu-" target="_blank">https://www.sosyalarastirmalar.com/articles/an-ottoman-source-about-kuyucu-</a> murad-pashas-struggle-against-jelalis.pdf</li>
-<li>​Bandits and Bureaucrats: The Ottoman Route to State Centralization - Google Books, accessed August 11, 2025, <a href="https://books.google.com/books/about/Bandits_and_Bureaucrats.html?id=wijlgEL" target="_blank">https://books.google.com/books/about/Bandits_and_Bureaucrats.html?id=wijlgEL</a> dgKQC</li>
-<li>​Bandits and Bureaucrats Karen Barkey | PDF | Ottoman Empire | Rebellions - Scribd, accessed August 11, 2025, <a href="https://www.scribd.com/document/307890407/Bandits-and-Bureaucrats-Karen-" target="_blank">https://www.scribd.com/document/307890407/Bandits-and-Bureaucrats-Karen-</a> Barkey</li>
-<li>​What was the bloodiest rebellion in the history of the Ottoman Empire? - Quora, accessed August 11, 2025, <a href="https://www.quora.com/What-was-the-bloodiest-rebellion-in-the-history-of-the" target="_blank">https://www.quora.com/What-was-the-bloodiest-rebellion-in-the-history-of-the</a> -Ottoman-Empire</li>
-<li>​Celalis Recorded in the Account Books - OpenMETU, accessed August 11, 2025, <a href="https://open.metu.edu.tr/handle/11511/71152" target="_blank">https://open.metu.edu.tr/handle/11511/71152</a></li>
-<li>​17. YÜZYILDA OSMANLI DEVLETİ&#x27;NDEKİ BÜYÜK KAÇGUN, accessed August 11, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/1123677" target="_blank">https://dergipark.org.tr/tr/download/article-file/1123677</a></li>
-<li>​Büyük Kaçgun - Vikipedi, accessed August 11, 2025, <a href="https://tr.wikipedia.org/wiki/B%C3%BCy%C3%BCk_Ka%C3%A7gun" target="_blank">https://tr.wikipedia.org/wiki/B%C3%BCy%C3%BCk_Ka%C3%A7gun</a></li>
-<li>​17.YÜZYILDA OSMANLI DEVLETİ&#x27;NDEKİ BÜYÜK KAÇGUN&#x27;UN NEDEN VE SONUÇLARI, accessed August 11, 2025, <a href="https://dergipark.org.tr/tr/pub/ijmeb/issue/54595/744268" target="_blank">https://dergipark.org.tr/tr/pub/ijmeb/issue/54595/744268</a></li>
-<li>​The Great Armenian Flight: Migration and Cultural Change in the Seventeenth-Century Ottoman Empire in - Brill, accessed August 11, 2025, <a href="https://brill.com/view/journals/jemh/23/1/article-p67_3.xml" target="_blank">https://brill.com/view/journals/jemh/23/1/article-p67_3.xml</a></li>
-<li>​Marks of a Jelali Destruction in the Ottoman Province: The raid of Tavil Halil in Kütahya (Provinces) and the Socio-Economic Reflections of it - Gazi Akademik Bakış, accessed August 11, 2025, <a href="https://www.gaziakademikbakis.com/en/article/gab-T-2018-156#!" target="_blank">https://www.gaziakademikbakis.com/en/article/gab-T-2018-156#!</a></li>
-<li>​Mustafa Akdağ - Türk Halkının Dirlik Ve Düzenlik Kavgası- Celali İsyanları - - анОм1ч | PDF, accessed August 11, 2025, <a href="https://www.scribd.com/document/731146031/Mustafa-Akda%C4%9F-Turk-Halk" target="_blank">https://www.scribd.com/document/731146031/Mustafa-Akda%C4%9F-Turk-Halk</a> %C4%B1n%C4%B1n-Dirlik-Ve-Duzenlik-Kavgas%C4%B1-Celali-%C4%B0syanlar %C4%B1-%D0%B0%D0%BD%D0%9E%D0%BC1%D1%87</li>
-<li>​Empire of Difference: the Ottomans in Comparative Perspective: Karen Barkey - ResearchGate, accessed August 11, 2025, <a href="https://www.researchgate.net/profile/Andrea-Stanton/publication/249505081_Em" target="_blank">https://www.researchgate.net/profile/Andrea-Stanton/publication/249505081_Em</a> pire_of_Difference_the_Ottomans_in_Comparative_Perspective_Karen_Barkey/lin ks/59de87fc458515376b29e4a2/Empire-of-Difference-the-Ottomans-in-Compar ative-Perspective-Karen-Barkey.pdf</li>
-<li>​CELALI İSY ANLARININ BAŞLAMASı - Yazan: Dr. MUSTAFA AKDAG Umumi tarih kültürümüzde, mahiyeti açık bir şekilde bilinmiyen büyük tarih olaylanndan birisi de Celali isyanlarıdır. Bu mesele, esa - isamveri.org, accessed August 11, 2025, <a href="https://isamveri.org/pdfsbv/D00226/1945_4_1/1945_4_1_AKDAGM.pdf" target="_blank">https://isamveri.org/pdfsbv/D00226/1945_4_1/1945_4_1_AKDAGM.pdf</a></li>
-<li>​Mustafa Akdağ Yorumları ve İncelemeleri - 1000Kitap, accessed August 11, 2025, <a href="https://1000kitap.com/yazar/mustafa-akdag/incelemeler" target="_blank">https://1000kitap.com/yazar/mustafa-akdag/incelemeler</a></li>
-<li>​AKDAĞ, MUSTAFA - TANER TİMUR TARİH, accessed August 11, 2025, <a href="https://tanertimur.org/akdag-mustafa/" target="_blank">https://tanertimur.org/akdag-mustafa/</a></li>
-<li>​POPULATION CHANGES IN OTTOMAN ANATOLIA DURING THE 16TH AND 17TH CENTURIES: THE “DEMOGRAPHIC CRISIS” RECONSIDERED | International Journal of Middle East Studies - Cambridge University Press, accessed August 11, 2025, <a href="https://www.cambridge.org/core/journals/international-journal-of-middle-east-st" target="_blank">https://www.cambridge.org/core/journals/international-journal-of-middle-east-st</a> udies/article/population-changes-in-ottoman-anatolia-during-the-16th-and-17th -centuries-the-demographic-crisis-reconsidered/6C31B15E42837F9AE1196D2C0 1742E2C</li>
-<li>​Empire of Difference: The Ottomans in Comparative Perspective - National Academic Digital Library of Ethiopia, accessed August 11, 2025, <a href="http://ndl.ethernet.edu.et/bitstream/123456789/50959/1/22.pdf" target="_blank">http://ndl.ethernet.edu.et/bitstream/123456789/50959/1/22.pdf</a></li>
-<li>​Untitled - University of Michigan, accessed August 11, 2025, <a href="https://sites.lsa.umich.edu/gocek/wp-content/uploads/sites/352/2016/01/GocekM" target="_blank">https://sites.lsa.umich.edu/gocek/wp-content/uploads/sites/352/2016/01/GocekM</a> uge.br_.review-of-Barkey-book-1996.pdf</li>
-<li>​Celaliler / Eşkıyalar: Gayesiz Asiler miyiz ki Hepimiz Biz?* - Kebikeç Dergi, accessed August 11, 2025, <a href="https://kebikecdergi.wordpress.com/wp-content/uploads/2012/07/06_aksoy.pdf" target="_blank">https://kebikecdergi.wordpress.com/wp-content/uploads/2012/07/06_aksoy.pdf</a></li>
-<li>​Eşkiyalar ve Devlet - Karen Barkey - 1000Kitap, accessed August 11, 2025, <a href="https://1000kitap.com/kitap/eskiyalar-ve-devlet--39711" target="_blank">https://1000kitap.com/kitap/eskiyalar-ve-devlet--39711</a></li></ul></div>
-        <div class="last-updated"><p>This page was created on: August 11, 2025</p></div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>The provided text offers a comprehensive analysis of the Celali Rebellions, a series of widespread uprisings that significantly impacted the Ottoman Empire from the late 16th to mid-17th centuries. It explores the multifaceted origins of these revolts, including the decay of the timar system, severe fiscal crises, demographic pressures, and the destabilizing effects of military modernization. Crucially, the text highlights the environmental catalyst of the Little Ice Age, which exacerbated existing tensions through famine and disease. It also details the Ottoman state&#x27;s dual response of brutal military suppression under figures like Kuyucu Murad Pasha and strategic co-optation of rebel leaders. Finally, the source discusses the profound aftermath of the rebellions, marked by the &quot;Büyük Kaçgun&quot; (Great Flight) and the permanent transformation of Anatolia and the empire&#x27;s administrative structure, moving from a classical to a more centralized and crisis-ridden state.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Celali Rebellions_ Ottoman Empire Analysis_-1.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ &quot;Celali rebellions.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Celali_rebellions." target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions.</a></li>
+            <li>​ &quot;Jelālī Revolts.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/event/Jelali-Revolts." target="_blank">https://www.britannica.com/event/Jelali-Revolts.</a></li>
+            <li>​ &quot;Great Jelālī Revolts.&quot; EBSCO Research Starters.<a href="https://www.ebsco.com/research-starters/history/great-jelali-revolts." target="_blank">https://www.ebsco.com/research-starters/history/great-jelali-revolts.</a></li>
+            <li>​ White, Sam. &quot;The Celali Rebellion.&quot; In The Climate of Rebellion in the Early ModernOttoman Empire. Cambridge University Press, 2011.<a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/celali-rebellion/42F6F1CBFA4DF43FBF8C00B5D3CFD14D." target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/celali-rebellion/42F6F1CBFA4DF43FBF8C00B5D3CFD14D.</a></li>
+            <li>​ &quot;The reign of violence: the celalis, c.1550-1700.&quot; Bilkent University InstitutionalRepository.<a href="https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a." target="_blank">https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a.</a></li>
+            <li>​ Polat, Süleyman. &quot;The economic consequences of the Celali revolts: the destruction andre-establishment of the state&#x27;s taxation organisation.&quot; Turkish Historical Review 4, no. 1(2013). <a href="https://brill.com/view/journals/thr/4/1/article-p57_3.xml." target="_blank">https://brill.com/view/journals/thr/4/1/article-p57_3.xml.</a></li>
+            <li>​ Not used in final report.</li>
+            <li>​ &quot;Celâlî isyanları.&quot; Wikipedia (Turkish).<a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1.</a></li>
+            <li>​ &quot;Celâlî İsyanları.&quot; TÜBİTAK Ansiklopedi.<a href="https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari." target="_blank">https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari.</a></li>
+            <li>​&quot;Celali İsyanları Nedir, Sebepleri Nelerdir? Celali İsyanlarını Kim Bastırdı?&quot; Hürriyet.<a href="https://www.hurriyet.com.tr/egitim/celali-isyanlari-nedir-sebepleri-nelerdir-celali-isyanlarini-kim-bastirdi-41940885." target="_blank">https://www.hurriyet.com.tr/egitim/celali-isyanlari-nedir-sebepleri-nelerdir-celali-isyanlarini-kim-bastirdi-41940885.</a></li>
+            <li>​&quot;Celali İsyanları Adlandırması.&quot; DergiPark.<a href="https://dergipark.org.tr/tr/download/article-file/1537550." target="_blank">https://dergipark.org.tr/tr/download/article-file/1537550.</a></li>
+            <li>​&quot;Celali İsyanları.&quot; Osmanlı.org.tr. <a href="https://osmanli.org.tr/celali-isyanlari/." target="_blank">https://osmanli.org.tr/celali-isyanlari/.</a></li>
+            <li>​&quot;Origin of the term Celali in Ottoman history.&quot; Wikipedia.<a href="https://en.wikipedia.org/wiki/Celali_rebellions#:~:text=The%20word%20Celali%20means%20%22belonging,of%20Jel%C4%81l%C4%AB%20is%20also%20used." target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions#:~:text=The%20word%20Celali%20means%20%22belonging,of%20Jel%C4%81l%C4%AB%20is%20also%20used.</a></li>
+            <li>​Orbay, Kayhan, et al. Various theses and articles on the Celali Rebellions. METU OpenAccess. <a href="https://open.metu.edu.tr/handle/11511/71152." target="_blank">https://open.metu.edu.tr/handle/11511/71152.</a></li>
+            <li>​&quot;The Celali effect in 17th century - Ottoman transformation.&quot; METU Open Access.<a href="https://open.metu.edu.tr/handle/11511/27362." target="_blank">https://open.metu.edu.tr/handle/11511/27362.</a></li>
+            <li>​&quot;Ottoman Empire.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Ottoman_Empire." target="_blank">https://en.wikipedia.org/wiki/Ottoman_Empire.</a></li>
+            <li>​Gökbunar, A.R. &quot;Celali Ayaklanmalarının Maliye Tarihi Açısından Değerlendirilmesi.&quot;DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/145935." target="_blank">https://dergipark.org.tr/tr/download/article-file/145935.</a></li>
+            <li>​&quot;Alternatif Tarih Okumaları - Celali İsyanları: Osmanlı Tımar Sisteminin &#x27;Bozulması&#x27; ve1550-1650 Köylü Ayaklanmaları.&quot; Marksist Teori.<a href="https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2010/517-alternatif-tarih-okumalari-celali-isyanlari-osmanli-timar-sisteminin-bozulmasi-ve-1550-1650-koylu-ayaklanmalari.html." target="_blank">https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2010/517-alternatif-tarih-okumalari-celali-isyanlari-osmanli-timar-sisteminin-bozulmasi-ve-1550-1650-koylu-ayaklanmalari.html.</a></li>
+            <li>​&quot;Celali İsyanları.&quot; TurkTarihim.com. <a href="https://turktarihim.com/celali_isyanlari.html." target="_blank">https://turktarihim.com/celali_isyanlari.html.</a></li>
+            <li>​&quot;Jelālī Revolts | Ottoman Empire, Anatolia, Peasants | Britannica.&quot; EncyclopædiaBritannica.<a href="https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20rebellions%20were%20not%20attempts,and%20an%20increase%20in%20the." target="_blank">https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20rebellions%20were%20not%20attempts,and%20an%20increase%20in%20the.</a></li>
+            <li>​&quot;Jelālī Revolts.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/event/Jelali-Revolts." target="_blank">https://www.britannica.com/event/Jelali-Revolts.</a></li>
+            <li>​&quot;The Impact of the Celâli Rebellions on the Socio-Economic Structure of Erzurum in theEarly 17th Century.&quot; Journal of Management and Social Sciences.<a href="https://jomiss.com.tr/makale_indir/4953." target="_blank">https://jomiss.com.tr/makale_indir/4953.</a></li>
+            <li>​&quot;Great Jelālī Revolts.&quot; EBSCO Research Starters.<a href="https://www.ebsco.com/research-starters/history/great-jelali-revolts." target="_blank">https://www.ebsco.com/research-starters/history/great-jelali-revolts.</a></li>
+            <li>​&quot;The reign of violence: the celalis, c.1550-1700.&quot; Bilkent University InstitutionalRepository.<a href="https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a." target="_blank">https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a.</a></li>
+            <li>​White, Sam. The Climate of Rebellion in the Early Modern Ottoman Empire. CambridgeUniversity Press, 2011.<a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/C022031EDC39F862EA87DBC88D66B888." target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/C022031EDC39F862EA87DBC88D66B888.</a></li>
+            <li>​&quot;Siege of Kayseri (1651).&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Siege_of_Kayseri_(1651." target="_blank">https://en.wikipedia.org/wiki/Siege_of_Kayseri_(1651.</a></li>
+            <li>​&quot;The post-Ottoman world in 1678 (The Celali).&quot; Reddit.<a href="https://www.reddit.com/r/imaginarymaps/comments/u2ab14/the_postottoman_world_in_1678_the_celali/." target="_blank">https://www.reddit.com/r/imaginarymaps/comments/u2ab14/the_postottoman_world_in_1678_the_celali/.</a></li>
+            <li>​&quot;The Peasant War in Turkey.&quot; D-NB. <a href="https://d-nb.info/1123427461/34." target="_blank">https://d-nb.info/1123427461/34.</a></li>
+            <li>​&quot;Pugachev&#x27;s Rebellion.&quot; Wikipedia.<a href="https://en.wikipedia.org/wiki/Pugachev%27s_Rebellion." target="_blank">https://en.wikipedia.org/wiki/Pugachev%27s_Rebellion.</a></li>
+            <li>​&quot;Turks, Trubar, and Tabori.&quot; Princeton Historical Review.<a href="https://history.princeton.edu/undergraduate/princeton-historical-review/summer-2024-issue/turks-trubar-and-tabori." target="_blank">https://history.princeton.edu/undergraduate/princeton-historical-review/summer-2024-issue/turks-trubar-and-tabori.</a></li>
+            <li>​Serim, Nilgün. &quot;The Financial Crisis in the Ottoman Empire.&quot; DergiPark.<a href="https://dergipark.org.tr/tr/download/article-file/46291." target="_blank">https://dergipark.org.tr/tr/download/article-file/46291.</a></li>
+            <li>​&quot;Decline of the Ottoman Empire, 1566–1807.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672." target="_blank">https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672.</a></li>
+            <li>​&quot;Çift-Hane.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/%C3%87ift-Hane." target="_blank">https://en.wikipedia.org/wiki/%C3%87ift-Hane.</a></li>
+            <li>​&quot;The Rebellion of 1526-27.&quot; Sabancı University Research Database.<a href="https://research.sabanciuniv.edu/50995/1/10473560.pdf." target="_blank">https://research.sabanciuniv.edu/50995/1/10473560.pdf.</a></li>
+            <li>​&quot;The Celali Revolts of Anatolia.&quot; Ottoman History Podcast.<a href="https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html." target="_blank">https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html.</a></li>
+            <li>​&quot;Decline of the Ottoman Empire | Reasons, Collapse, &amp; Maps.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672#:~:text=The%20central%20government%20became%20weaker,armies%20still%20guarding%20the%20frontiers." target="_blank">https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672#:~:text=The%20central%20government%20became%20weaker,armies%20still%20guarding%20the%20frontiers.</a></li>
+            <li>​Hussain, Muzamil. &quot;The Downfall of the Ottoman Empire: Causes, Consequences, andLegacy.&quot; Medium.<a href="https://medium.com/@iammuzamil1999/the-downfall-of-the-ottoman-empire-causes-consequences-and-legacy-452e976b4fbf." target="_blank">https://medium.com/@iammuzamil1999/the-downfall-of-the-ottoman-empire-causes-consequences-and-legacy-452e976b4fbf.</a></li>
+            <li>​&quot;The Siege of Vienna in 1683.&quot; Journal of Strategic Research.<a href="https://www.jsr.org/index.php/path/article/viewFile/503/229." target="_blank">https://www.jsr.org/index.php/path/article/viewFile/503/229.</a></li>
+            <li>​&quot;The Economic Decline of the Ottoman Empire.&quot; CUNY Academic Works.<a href="https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=6389&amp;context=gc_etds." target="_blank">https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=6389&amp;context=gc_etds.</a></li>
+            <li>​&quot;Developments and Decline of the Ottoman Empire.&quot; Resources for History Teachers.<a href="http://resourcesforhistoryteachers.pbworks.com/w/page/126065036/Developments%20and%20Decline%20of%20the%20Ottoman%20Empire." target="_blank">http://resourcesforhistoryteachers.pbworks.com/w/page/126065036/Developments%20and%20Decline%20of%20the%20Ottoman%20Empire.</a></li>
+            <li>​&quot;Ottoman Empire.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Ottoman_Empire." target="_blank">https://en.wikipedia.org/wiki/Ottoman_Empire.</a></li>
+            <li>​&quot;The Stagnation of the Ottoman State and the Reforms of the 17th Century.&quot; Die Weltder Türken. <a href="https://www.dieweltdertuerken.org/admin/files/issues/47-273-1-PB.pdf." target="_blank">https://www.dieweltdertuerken.org/admin/files/issues/47-273-1-PB.pdf.</a></li>
+            <li>​&quot;Crime, Punishment, and Law Enforcement in the Ottoman Empire.&quot; University ofConnecticut Economics Working Papers.<a href="https://media.economics.uconn.edu/working/2011-18.pdf." target="_blank">https://media.economics.uconn.edu/working/2011-18.pdf.</a></li>
+            <li>​&quot;Crime and Punishment in Ottoman Times.&quot; The Journal of Interdisciplinary History.<a href="https://direct.mit.edu/jinh/article/43/3/353/50164/Crime-and-Punishment-in-Ottoman-Times-Corruption." target="_blank">https://direct.mit.edu/jinh/article/43/3/353/50164/Crime-and-Punishment-in-Ottoman-Times-Corruption.</a></li>
+            <li>​&quot;Ottoman Empire&#x27;s Brief Recovery.&quot; EBSCO Research Starters.<a href="https://www.ebsco.com/research-starters/history/ottoman-empires-brief-recovery." target="_blank">https://www.ebsco.com/research-starters/history/ottoman-empires-brief-recovery.</a></li>
+            <li>​&quot;Decline of the Ottoman Empire.&quot; Facts and Details.<a href="https://factsanddetails.com/asian/cat65/sub424/entry-5882.html." target="_blank">https://factsanddetails.com/asian/cat65/sub424/entry-5882.html.</a></li>
+            <li>​&quot;The decline of the Ottoman Empire, 1566–1807.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/place/Ottoman-Empire/The-decline-of-the-Ottoman-Empire-1566-1807." target="_blank">https://www.britannica.com/place/Ottoman-Empire/The-decline-of-the-Ottoman-Empire-1566-1807.</a></li>
+            <li>​&quot;Celali İsyanlarının Vergisel Nedenleri.&quot; Vergi Sorunları Dergisi.<a href="https://www.vergisorunlari.com.tr/makale/celali-isyanlarinin-vergisel-nedenleri/8898." target="_blank">https://www.vergisorunlari.com.tr/makale/celali-isyanlarinin-vergisel-nedenleri/8898.</a></li>
+            <li>​&quot;Celali İsyanları.&quot; Osmanlı.org.tr. <a href="https://osmanli.org.tr/celali-isyanlari/." target="_blank">https://osmanli.org.tr/celali-isyanlari/.</a></li>
+            <li>​&quot;Celali Ayaklanmalarının Ortaya Çıkışı.&quot; Belleten.<a href="https://belleten.gov.tr/tam-metin/2387/tur." target="_blank">https://belleten.gov.tr/tam-metin/2387/tur.</a></li>
+            <li>​&quot;Celâlî isyanları.&quot; Wikipedia (Turkish).<a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1.</a></li>
+            <li>​&quot;Osmanlı Devletinde Celali İsyanları.&quot; Aydınlar Ocağı.<a href="https://aydinlarocagi.org/osmanli-devletinde-celali-isyanlari/." target="_blank">https://aydinlarocagi.org/osmanli-devletinde-celali-isyanlari/.</a></li>
+            <li>​&quot;Celali İsyanları: Nedenleri, Dönemi ve Sonuçları.&quot; Sözcü.<a href="https://www.sozcu.com.tr/celali-isyanlari-nedenleri-donemi-ve-sonuclari-wp983587." target="_blank">https://www.sozcu.com.tr/celali-isyanlari-nedenleri-donemi-ve-sonuclari-wp983587.</a></li>
+            <li>​&quot;Celali İsyanları Nedir, Sebepleri Nelerdir?&quot; Hürriyet.<a href="https://www.hurriyet.com.tr/egitim/celali-isyanlari-nedir-sebepleri-nelerdir-celali-isyanlarini-kim-bastirdi-41940885." target="_blank">https://www.hurriyet.com.tr/egitim/celali-isyanlari-nedir-sebepleri-nelerdir-celali-isyanlarini-kim-bastirdi-41940885.</a></li>
+            <li>​&quot;Suhte ve Levent Hareketleri.&quot; DergiPark.<a href="https://dergipark.org.tr/tr/download/article-file/620397." target="_blank">https://dergipark.org.tr/tr/download/article-file/620397.</a></li>
+            <li>​&quot;Şahkulu İsyanı.&quot; Wikipedia (Turkish).<a href="https://tr.wikipedia.org/wiki/%C5%9Eahkulu_%C4%B0syan%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/%C5%9Eahkulu_%C4%B0syan%C4%B1.</a></li>
+            <li>​&quot;Jelālī Revolts.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20first%20revolt%20occurred%20in,cavalrymen%20maintained%20by%20land%20grants)." target="_blank">https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20first%20revolt%20occurred%20in,cavalrymen%20maintained%20by%20land%20grants).</a></li>
+            <li>​&quot;Jelālī Revolts.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/event/Jelali-Revolts." target="_blank">https://www.britannica.com/event/Jelali-Revolts.</a></li>
+            <li>​&quot;Celali rebellions.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Celali_rebellions." target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions.</a></li>
+            <li>​&quot;Great Jelālī Revolts.&quot; EBSCO Research Starters.<a href="https://www.ebsco.com/research-starters/history/great-jelali-revolts." target="_blank">https://www.ebsco.com/research-starters/history/great-jelali-revolts.</a></li>
+            <li>​&quot;The reign of violence: the celalis, c.1550-1700.&quot; Bilkent University InstitutionalRepository.<a href="https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a." target="_blank">https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a.</a></li>
+            <li>​&quot;Karayazıcı Rebellion.&quot; Eskişehir Osmangazi Üniversitesi Sosyal Bilimler Dergisi.<a href="https://www.acarindex.com/eskisehir-osmangazi-universitesi-sosyal-bilimler-dergisi/karayazici-rebellion-645116." target="_blank">https://www.acarindex.com/eskisehir-osmangazi-universitesi-sosyal-bilimler-dergisi/karayazici-rebellion-645116.</a></li>
+            <li>​&quot;Eşkıyalık ve Terör.&quot; History Studies.<a href="https://www.historystudies.net/source/eskiyal%C4%B1k-ve-teror.pdf." target="_blank">https://www.historystudies.net/source/eskiyal%C4%B1k-ve-teror.pdf.</a></li>
+            <li>​&quot;Karayazıcı İsyanı.&quot; DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/112963." target="_blank">https://dergipark.org.tr/tr/download/article-file/112963.</a></li>
+            <li>​&quot;Osmanlı&#x27;da İsyan İklimi.&quot; Aksaray Üniversitesi Tarih Bölümü.<a href="https://tarih.aksaray.edu.tr/indir/3ef9c5ab-9fcb-4e99-b224-6ef09b38b4ad.pdf." target="_blank">https://tarih.aksaray.edu.tr/indir/3ef9c5ab-9fcb-4e99-b224-6ef09b38b4ad.pdf.</a></li>
+            <li>​&quot;Deli Hasan.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Deli_Hasan." target="_blank">https://en.wikipedia.org/wiki/Deli_Hasan.</a></li>
+            <li>​&quot;Deli Hasan.&quot; Wikiwand. <a href="https://www.wikiwand.com/en/articles/Deli_Hasan." target="_blank">https://www.wikiwand.com/en/articles/Deli_Hasan.</a></li>
+            <li>​&quot;Deli Hasan.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/biography/Deli-Hasan." target="_blank">https://www.britannica.com/biography/Deli-Hasan.</a></li>
+            <li>​&quot;Koroglu and Deli Hasan.&quot; DergiPark.<a href="https://dergipark.org.tr/tr/download/article-file/3441940." target="_blank">https://dergipark.org.tr/tr/download/article-file/3441940.</a></li>
+            <li>​&quot;The Morea Rebellion.&quot; University of Toronto T-Space.<a href="https://utoronto.scholaris.ca/server/api/core/bitstreams/6a17be9f-f5b1-4430-a5af-088ea3947762/content." target="_blank">https://utoronto.scholaris.ca/server/api/core/bitstreams/6a17be9f-f5b1-4430-a5af-088ea3947762/content.</a></li>
+            <li>​&quot;Kalender Çelebi rebellion.&quot; Wikipedia.<a href="https://en.wikipedia.org/wiki/Kalender_%C3%87elebi_rebellion." target="_blank">https://en.wikipedia.org/wiki/Kalender_%C3%87elebi_rebellion.</a></li>
+            <li>​&quot;Kalender Çelebi&#x27;s Rebellion, Karaçayir.&quot; Warfare.<a href="https://warfare.x10host.com/Ottoman/Suleymanname/1527-Kalender_Celebi_Rebellion-Suleymanname-large.htm." target="_blank">https://warfare.x10host.com/Ottoman/Suleymanname/1527-Kalender_Celebi_Rebellion-Suleymanname-large.htm.</a></li>
+            <li>​&quot;İçel&#x27;de Bir Celali: Muslu Çavuş İsyanı (1606-1610).&quot; Tarih İncelemeleri Dergisi.<a href="http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1606-1610." target="_blank">http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1606-1610.</a></li>
+            <li>​&quot;Kalenderoğlu Ali İsyanı.&quot; DergiPark.<a href="https://dergipark.org.tr/tr/download/article-file/4134029." target="_blank">https://dergipark.org.tr/tr/download/article-file/4134029.</a></li>
+            <li>​&quot;Rebels and Renegades on Ottoman-Iranian Borderlands.&quot; ResearchGate.<a href="https://www.researchgate.net/publication/304788858_Rebels_and_Renegades_on_Ottoman-Iranian_Borderlands." target="_blank">https://www.researchgate.net/publication/304788858_Rebels_and_Renegades_on_Ottoman-Iranian_Borderlands.</a></li>
+            <li>​&quot;The Celali Revolt and Köprülü Reforms.&quot; In Worlds Together, Worlds Apart. W.W. Norton.<a href="https://nerd.wwnorton.com/ebooks/epub/worldstogether7/EPUB/content/13.4-chapter13.xhtml." target="_blank">https://nerd.wwnorton.com/ebooks/epub/worldstogether7/EPUB/content/13.4-chapter13.xhtml.</a></li>
+            <li>​&quot;What was the bloodiest rebellion in the history of the Ottoman Empire?&quot; Quora.<a href="https://www.quora.com/What-was-the-bloodiest-rebellion-in-the-history-of-the-Ottoman-Empire." target="_blank">https://www.quora.com/What-was-the-bloodiest-rebellion-in-the-history-of-the-Ottoman-Empire.</a></li>
+            <li>​&quot;The Rebellion of 1526-27.&quot; Sabancı University Research Database.<a href="https://research.sabanciuniv.edu/50995/1/10473560.pdf." target="_blank">https://research.sabanciuniv.edu/50995/1/10473560.pdf.</a></li>
+            <li>​&quot;Celâlî isyanları.&quot; Wikipedia (Turkish).<a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1.</a></li>
+            <li>​&quot;Celâlî İsyanları.&quot; TÜBİTAK Ansiklopedi.<a href="https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari." target="_blank">https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari.</a></li>
+            <li>​&quot;Alternatif Tarih Okumaları - Celali İsyanları.&quot; Marksist Teori.<a href="https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2010/517-alternatif-tarih-okumalari-celali-isyanlari-osmanli-timar-sisteminin-bozulmasi-ve-1550-1650-koylu-ayaklanmalari.html." target="_blank">https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2010/517-alternatif-tarih-okumalari-celali-isyanlari-osmanli-timar-sisteminin-bozulmasi-ve-1550-1650-koylu-ayaklanmalari.html.</a></li>
+            <li>​&quot;Celali İsyanları.&quot; Osmanlı.org.tr. <a href="https://osmanli.org.tr/celali-isyanlari/." target="_blank">https://osmanli.org.tr/celali-isyanlari/.</a></li>
+            <li>​&quot;Celâli İsyanlarının Değişik Özellikleri.&quot; Aydınlar Ocağı.<a href="https://aydinlarocagi.org/osmanli-devletinde-celali-isyanlari/." target="_blank">https://aydinlarocagi.org/osmanli-devletinde-celali-isyanlari/.</a></li>
+            <li>​&quot;Karayazıcı Rebellion.&quot; Eskişehir Osmangazi Üniversitesi Sosyal Bilimler Dergisi.<a href="https://www.acarindex.com/eskisehir-osmangazi-universitesi-sosyal-bilimler-dergisi/karayazici-rebellion-645116." target="_blank">https://www.acarindex.com/eskisehir-osmangazi-universitesi-sosyal-bilimler-dergisi/karayazici-rebellion-645116.</a></li>
+            <li>​&quot;Karayazıcı İsyanı.&quot; Hacettepe Üniversitesi Kaynakça.<a href="http://kaynakca.hacettepe.edu.tr/eser/9164235/karayazici-isyani." target="_blank">http://kaynakca.hacettepe.edu.tr/eser/9164235/karayazici-isyani.</a></li>
+            <li>​&quot;Karayazıcı İsyanı.&quot; Devlet-i Aliyye.<a href="https://www.devletialiyyei.com/Zaman-Tuneli/karayazici-isyani." target="_blank">https://www.devletialiyyei.com/Zaman-Tuneli/karayazici-isyani.</a></li>
+            <li>​&quot;Karayazıcı Abdülhalim.&quot; TDV İslâm Ansiklopedisi.<a href="https://islamansiklopedisi.org.tr/karayazici-abdulhalim." target="_blank">https://islamansiklopedisi.org.tr/karayazici-abdulhalim.</a></li>
+            <li>​&quot;Deli Hasan.&quot; Wikipedia (Turkish). <a href="https://tr.wikipedia.org/wiki/Deli_Hasan." target="_blank">https://tr.wikipedia.org/wiki/Deli_Hasan.</a></li>
+            <li>​Tveritinova, Anna S. Türkiye&#x27;de Karayazıcı-Deli Hasan İsyanı. Aya Kitap.<a href="https://www.babil.com/turkiyede-karayazici-deli-hasan-isyani-kitabi-anna-s-tveritinova-aya-kitap." target="_blank">https://www.babil.com/turkiyede-karayazici-deli-hasan-isyani-kitabi-anna-s-tveritinova-aya-kitap.</a></li>
+            <li>​&quot;Türkiye&#x27;de Karayazıcı Deli Hasan İsyanı.&quot; 1000Kitap.<a href="https://1000kitap.com/turkiyede-karayazici-deli-hasan-isyani--1634119." target="_blank">https://1000kitap.com/turkiyede-karayazici-deli-hasan-isyani--1634119.</a></li>
+            <li>​&quot;Celâlî İsyanları.&quot; TDV İslâm Ansiklopedisi.<a href="https://islamansiklopedisi.org.tr/celali-isyanlari." target="_blank">https://islamansiklopedisi.org.tr/celali-isyanlari.</a></li>
+            <li>​Not used in final report.</li>
+            <li>​&quot;Kalender Çelebi İsyanı ya da Kalender Şah İsyanı.&quot; Mavi Didim.<a href="https://www.mavididim.com.tr/kalender-celebi-isyani-ya-da-kalender-sah-isyani." target="_blank">https://www.mavididim.com.tr/kalender-celebi-isyani-ya-da-kalender-sah-isyani.</a></li>
+            <li>​&quot;Kalender Çelebi İsyanı.&quot; Mavi Didim.<a href="https://www.mavididim.com.tr/kalender-celebi-isyani-ya-da-kalender-sah-isyani." target="_blank">https://www.mavididim.com.tr/kalender-celebi-isyani-ya-da-kalender-sah-isyani.</a></li>
+            <li>​&quot;Kalenderoğlu.&quot; Wikipedia (Turkish). <a href="https://tr.wikipedia.org/wiki/Kalendero%C4%9Flu." target="_blank">https://tr.wikipedia.org/wiki/Kalendero%C4%9Flu.</a></li>
+            <li>​&quot;Kalenderoğlu İsyanı.&quot; Kazan Postası. <a href="https://kazanpostasi.com/2025/01/17/17388/." target="_blank">https://kazanpostasi.com/2025/01/17/17388/.</a></li>
+            <li>​White, Sam. &quot;The Celali Rebellion.&quot; In The Climate of Rebellion in the Early ModernOttoman Empire. Cambridge University Press, 2011.<a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/celali-rebellion/42F6F1CBFA4DF43FBF8C00B5D3CFD14D." target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/celali-rebellion/42F6F1CBFA4DF43FBF8C00B5D3CFD14D.</a></li>
+            <li>​White, Sam. &quot;In the Wake of the Celalis.&quot; In The Climate of Rebellion in the Early ModernOttoman Empire. Cambridge University Press, 2011.<a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/in-the-wake-of-the-celalis/57B1FE05FE3ECEF5267B9D1119138448." target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/in-the-wake-of-the-celalis/57B1FE05FE3ECEF5267B9D1119138448.</a></li>
+            <li>​&quot;Celali rebellions.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Celali_rebellions." target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions.</a></li>
+            <li>​&quot;Jelālī Revolts.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/event/Jelali-Revolts." target="_blank">https://www.britannica.com/event/Jelali-Revolts.</a></li>
+            <li>​&quot;Ottoman Rebellions: A Historiographical Overview.&quot; DergiPark.<a href="https://dergipark.org.tr/tr/download/article-file/761679." target="_blank">https://dergipark.org.tr/tr/download/article-file/761679.</a></li>
+            <li>​&quot;İçel&#x27;de Bir Celali: Muslu Çavuş İsyanı (1606-1610).&quot; Tarih İncelemeleri Dergisi.<a href="http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1606-1610." target="_blank">http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1606-1610.</a></li>
+            <li>​&quot;Kuyucu Murad Pasha.&quot; Wikipedia.<a href="https://en.wikipedia.org/wiki/Kuyucu_Murad_Pasha." target="_blank">https://en.wikipedia.org/wiki/Kuyucu_Murad_Pasha.</a></li>
+            <li>​&quot;Kuyucu Murad Paşa.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/biography/Kuyucu-Murad-Pasa." target="_blank">https://www.britannica.com/biography/Kuyucu-Murad-Pasa.</a></li>
+            <li>​&quot;The Impact of the Celâli Rebellions on the Socio-Economic Structure of Erzurum.&quot;Journal of Management and Social Sciences. <a href="https://jomiss.com.tr/makale_indir/4953." target="_blank">https://jomiss.com.tr/makale_indir/4953.</a></li>
+            <li>​&quot;Kuyucu Murad Paşa&#x27;nın Anadolu&#x27;da Celâlilerle Mücadelesine Dair Bir OsmanlıKaynağı.&quot; Uluslararası Sosyal Araştırmalar Dergisi.<a href="https://www.sosyalarastirmalar.com/articles/an-ottoman-source-about-kuyucu-murad-pashas-struggle-against-jelalis.pdf." target="_blank">https://www.sosyalarastirmalar.com/articles/an-ottoman-source-about-kuyucu-murad-pashas-struggle-against-jelalis.pdf.</a></li>
+            <li>​&quot;Transformation of the Ottoman Empire.&quot; Wikipedia.<a href="https://en.wikipedia.org/wiki/Transformation_of_the_Ottoman_Empire." target="_blank">https://en.wikipedia.org/wiki/Transformation_of_the_Ottoman_Empire.</a></li>
+            <li>​&quot;What was the bloodiest rebellion in the history of the Ottoman Empire?&quot; Quora.<a href="https://www.quora.com/What-was-the-bloodiest-rebellion-in-the-history-of-the-Ottoman-Empire." target="_blank">https://www.quora.com/What-was-the-bloodiest-rebellion-in-the-history-of-the-Ottoman-Empire.</a></li>
+            <li>​Orbay, Kayhan, et al. Various theses and articles on the Celali Rebellions. METUOpen Access. <a href="https://open.metu.edu.tr/handle/11511/71152." target="_blank">https://open.metu.edu.tr/handle/11511/71152.</a></li>
+            <li>​&quot;The Celali effect in 17th century - Ottoman transformation.&quot; METU Open Access.<a href="https://open.metu.edu.tr/handle/11511/27362." target="_blank">https://open.metu.edu.tr/handle/11511/27362.</a></li>
+            <li>​&quot;The Celali Revolts of Anatolia.&quot; Ottoman History Podcast.<a href="https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html." target="_blank">https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html.</a></li>
+            <li>​&quot;What the Ottoman Empire Can Teach Us About the Consequences of ClimateChange.&quot; The Wire Science.<a href="https://science.thewire.in/society/history/what-the-ottoman-empire-can-teach-us-about-the-consequences-of-climate-change/." target="_blank">https://science.thewire.in/society/history/what-the-ottoman-empire-can-teach-us-about-the-consequences-of-climate-change/.</a></li>
+            <li>​&quot;The &#x27;Great Armenian Flight&#x27;: The Celali Revolts and the Rise of Western ArmenianSociety.&quot; Journal of Early Modern History.<a href="https://brill.com/view/journals/jemh/23/1/article-p67_3.xml." target="_blank">https://brill.com/view/journals/jemh/23/1/article-p67_3.xml.</a></li>
+            <li>​&quot;The legend of Hezarfen.&quot; Pera Property.<a href="https://www.peraproperty.com/the-legend-of-hezarfen-2_6318/." target="_blank">https://www.peraproperty.com/the-legend-of-hezarfen-2_6318/.</a></li>
+            <li>​Popova, Maria. &quot;Hezârfen: The Story of the First Human Flight, Animated.&quot; TheMarginalian. <a href="https://www.themarginalian.org/2011/01/21/hezarfen/." target="_blank">https://www.themarginalian.org/2011/01/21/hezarfen/.</a></li>
+            <li>​&quot;Hezarfen Ahmed Çelebi.&quot; YouTube.<a href="https://www.youtube.com/watch?v=i839ryU35FQ&amp;pp=0gcJCfwAo7VqN5tD." target="_blank">https://www.youtube.com/watch?v=i839ryU35FQ&amp;pp=0gcJCfwAo7VqN5tD.</a></li>
+            <li>​&quot;Ottoman Empire.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Ottoman_Empire." target="_blank">https://en.wikipedia.org/wiki/Ottoman_Empire.</a></li>
+            <li>​&quot;Büyük Kaçgun.&quot; DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/1123677." target="_blank">https://dergipark.org.tr/tr/download/article-file/1123677.</a></li>
+            <li>​&quot;Büyük Kaçgun.&quot; Wikipedia (Turkish).<a href="https://tr.wikipedia.org/wiki/B%C3%BCy%C3%BCk_Ka%C3%A7gun." target="_blank">https://tr.wikipedia.org/wiki/B%C3%BCy%C3%BCk_Ka%C3%A7gun.</a></li>
+            <li>​&quot;Büyük Kaçgun&#x27;un Nedenleri.&quot; International Journal of Management, Economics andBusiness. <a href="https://dergipark.org.tr/tr/pub/ijmeb/issue/54595/744268." target="_blank">https://dergipark.org.tr/tr/pub/ijmeb/issue/54595/744268.</a></li>
+            <li>​&quot;Celâlî isyanları.&quot; Wikipedia (Turkish).<a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1.</a></li>
+            <li>​&quot;Celâlî İsyanları.&quot; TÜBİTAK Ansiklopedi.<a href="https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari." target="_blank">https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari.</a></li>
+            <li>​&quot;Celâlî İsyanları.&quot; Istanbul University E-Journal.<a href="https://nek.istanbul.edu.tr/ekos/TEZ/38610.pdf." target="_blank">https://nek.istanbul.edu.tr/ekos/TEZ/38610.pdf.</a></li>
+            <li>​Polat, Süleyman. &quot;The economic consequences of the Celali revolts.&quot; TurkishHistorical Review. <a href="https://brill.com/view/journals/thr/4/1/article-p57_3.pdf." target="_blank">https://brill.com/view/journals/thr/4/1/article-p57_3.pdf.</a></li>
+            <li>​White, Sam. The Climate of Rebellion in the Early Modern Ottoman Empire.Cambridge University Press, 2011.<a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/C022031EDC39F862EA87DBC88D66B888." target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/C022031EDC39F862EA87DBC88D66B888.</a></li>
+            <li>​Polat, Süleyman. &quot;Marks of a Jelali Destruction in the Ottoman Province: The raid ofTavil Halil in Kütahya.&quot; Journal of Gazi Academic View.<a href="https://www.gaziakademikbakis.com/en/article/gab-T-2018-156#!." target="_blank">https://www.gaziakademikbakis.com/en/article/gab-T-2018-156#!.</a></li>
+            <li>​&quot;The empire from 1807 to 1920.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/place/Ottoman-Empire/The-empire-from-1807-to-1920." target="_blank">https://www.britannica.com/place/Ottoman-Empire/The-empire-from-1807-to-1920.</a></li>
+            <li>​&quot;Ottoman events.&quot; EU4 Paradox Wiki. <a href="https://eu4.paradoxwikis.com/Ottoman_events." target="_blank">https://eu4.paradoxwikis.com/Ottoman_events.</a></li>
+            <li>​&quot;The Rebellion of 1526-27.&quot; Sabancı University Research Database.<a href="https://research.sabanciuniv.edu/50995/1/10473560.pdf." target="_blank">https://research.sabanciuniv.edu/50995/1/10473560.pdf.</a></li>
+            <li>​&quot;Narratives of Reform in the Ottoman Empire.&quot; DergiPark.<a href="https://dergipark.org.tr/en/download/article-file/2849552." target="_blank">https://dergipark.org.tr/en/download/article-file/2849552.</a></li>
+            <li>​&quot;Resistance to change.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/place/Ottoman-Empire/Resistance-to-change." target="_blank">https://www.britannica.com/place/Ottoman-Empire/Resistance-to-change.</a></li>
+            <li>​&quot;Ottoman Military Reform Attempts Prior to the Nizam-ı Cedid Army.&quot; CiteSeerX.<a href="https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=71e7ba9f9df317a42155cf88c3ac6e40babeb986." target="_blank">https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=71e7ba9f9df317a42155cf88c3ac6e40babeb986.</a></li>
+            <li>​&quot;Ottoman military reforms.&quot; Wikipedia.<a href="https://en.wikipedia.org/wiki/Ottoman_military_reforms." target="_blank">https://en.wikipedia.org/wiki/Ottoman_military_reforms.</a></li>
+            <li>​&quot;Banditry and Notables in the Ottoman Balkans.&quot; Columbia Academic Commons.<a href="https://academiccommons.columbia.edu/doi/10.7916/D88S4X78/download." target="_blank">https://academiccommons.columbia.edu/doi/10.7916/D88S4X78/download.</a></li>
+            <li>​&quot;How did the Ottoman army go from being the terror of Europe to the &#x27;sick man ofEurope&#x27;?&quot; Reddit r/AskHistorians.<a href="https://www.reddit.com/r/AskHistorians/comments/ph0yzm/how_did_the_ottoman_army_go_from_being_the_terror/." target="_blank">https://www.reddit.com/r/AskHistorians/comments/ph0yzm/how_did_the_ottoman_army_go_from_being_the_terror/.</a></li>
+            <li>​&quot;11. Sınıf Tarih Dersi Çalışma Notları.&quot; MEB.<a href="https://hbeml.meb.k12.tr/meb_iys_dosyalar/41/09/967514/dosyalar/2020_11/12214036_11._SINIF_TARYH_DERSY_CALIYMA_NOTLARI.pdf." target="_blank">https://hbeml.meb.k12.tr/meb_iys_dosyalar/41/09/967514/dosyalar/2020_11/12214036_11._SINIF_TARYH_DERSY_CALIYMA_NOTLARI.pdf.</a></li>
+            <li>​&quot;Celali rebellions.&quot; Wikipedia. <a href="https://en.wikipedia.org/wiki/Celali_rebellions." target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions.</a></li>
+            <li>​&quot;The reign of violence: the celalis, c.1550-1700.&quot; Bilkent University InstitutionalRepository.<a href="https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a." target="_blank">https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a.</a></li>
+            <li>​White, Sam. &quot;The Celali Rebellion.&quot; In The Climate of Rebellion in the Early ModernOttoman Empire. Cambridge University Press, 2011.<a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/celali-rebellion/42F6F1CBFA4DF43FBF8C00B5D3CFD14D." target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/celali-rebellion/42F6F1CBFA4DF43FBF8C00B5D3CFD14D.</a></li>
+            <li>​&quot;The Celali effect in 17th century - Ottoman transformation.&quot; METU Open Access.<a href="https://open.metu.edu.tr/handle/11511/27362." target="_blank">https://open.metu.edu.tr/handle/11511/27362.</a></li>
+            <li>​&quot;Jelālī Revolts.&quot; Encyclopædia Britannica.<a href="https://www.britannica.com/event/Jelali-Revolts." target="_blank">https://www.britannica.com/event/Jelali-Revolts.</a></li>
+            <li>​&quot;The Celali Revolts of Anatolia.&quot; Ottoman History Podcast.<a href="https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html." target="_blank">https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html.</a></li>
+            <li>​&quot;İçel&#x27;de Bir Celali: Muslu Çavuş İsyanı (1606-1610).&quot; Tarih İncelemeleri Dergisi.<a href="http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1606-1610." target="_blank">http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1606-1610.</a></li>
+            <li>​Akdağ, Mustafa. &quot;Celâlî Fetreti.&quot; Ankara Üniversitesi Dil ve Tarih-Coğrafya FakültesiDergisi. <a href="https://etd.lib.metu.edu.tr/upload/12622173/index.pdf." target="_blank">https://etd.lib.metu.edu.tr/upload/12622173/index.pdf.</a></li>
+            <li>​&quot;The Rebellion of 1526-27.&quot; Sabancı University Research Database.<a href="https://research.sabanciuniv.edu/50995/1/10473560.pdf." target="_blank">https://research.sabanciuniv.edu/50995/1/10473560.pdf.</a></li>
+            <li>​&quot;The Morea Rebellion.&quot; University of Toronto T-Space.<a href="https://utoronto.scholaris.ca/server/api/core/bitstreams/6a17be9f-f5b1-4430-a5af-088ea3947762/content." target="_blank">https://utoronto.scholaris.ca/server/api/core/bitstreams/6a17be9f-f5b1-4430-a5af-088ea3947762/content.</a></li>
+            <li>​&quot;Population Changes in Ottoman Anatolia During the 16th and 17th Centuries.&quot;International Journal of Middle East Studies.<a href="https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/population-changes-in-ottoman-anatolia-during-the-16th-and-17th-centuries-the-demographic-crisis-reconsidered/6C31B15E42837F9AE1196D2C01742E2C." target="_blank">https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/population-changes-in-ottoman-anatolia-during-the-16th-and-17th-centuries-the-demographic-crisis-reconsidered/6C31B15E42837F9AE1196D2C01742E2C.</a></li>
+            <li>​Faroqhi, Suraiya. &quot;Seeking Wisdom in China: an Attempt to Make Sense of the CelâliRebellions.&quot; Brill.<a href="https://brill.com/display/book/9789004311244/B9789004311244_006.pdf." target="_blank">https://brill.com/display/book/9789004311244/B9789004311244_006.pdf.</a></li>
+            <li>​Barkey, Karen. Bandits and Bureaucrats: The Ottoman Route to State Centralization.Cornell University Press.<a href="https://books.google.com/books/about/Bandits_and_Bureaucrats.html?id=wijlgELdgKQC." target="_blank">https://books.google.com/books/about/Bandits_and_Bureaucrats.html?id=wijlgELdgKQC.</a></li>
+            <li>​Barkey, Karen. Bandits and Bureaucrats. Scribd.<a href="https://www.scribd.com/document/307890407/Bandits-and-Bureaucrats-Karen-Barkey." target="_blank">https://www.scribd.com/document/307890407/Bandits-and-Bureaucrats-Karen-Barkey.</a></li>
+            <li>​White, Sam. The Climate of Rebellion in the Early Modern Ottoman Empire.Dokumen.pub.<a href="https://dokumen.pub/the-climate-of-rebellion-in-the-early-modern-ottoman-empire-9781139120012-1139120018.html." target="_blank">https://dokumen.pub/the-climate-of-rebellion-in-the-early-modern-ottoman-empire-9781139120012-1139120018.html.</a></li>
+            <li>​Barkey, Karen. Empire of Difference: The Ottomans in Comparative Perspective.Cambridge University Press.<a href="http://ndl.ethernet.edu.et/bitstream/123456789/50959/1/22.pdf." target="_blank">http://ndl.ethernet.edu.et/bitstream/123456789/50959/1/22.pdf.</a></li>
+            <li>​Stanton, Andrea. Review of Empire of Difference by Karen Barkey. ResearchGate.<a href="https://www.researchgate.net/profile/Andrea-Stanton/publication/249505081_Empire_of_Difference_the_Ottomans_in_Comparative_Perspective_Karen_Barkey/links/59de87fc458515376b29e4a2/Empire-of-Difference-the-Ottomans-in-Comparative-Perspective-Karen-Barkey.pdf." target="_blank">https://www.researchgate.net/profile/Andrea-Stanton/publication/249505081_Empire_of_Difference_the_Ottomans_in_Comparative_Perspective_Karen_Barkey/links/59de87fc458515376b29e4a2/Empire-of-Difference-the-Ottomans-in-Comparative-Perspective-Karen-Barkey.pdf.</a></li>
+            <li>​Göçek, Fatma Müge. Review of Bandits and Bureaucrats by Karen Barkey. Universityof Michigan.<a href="https://sites.lsa.umich.edu/gocek/wp-content/uploads/sites/352/2016/01/GocekMuge.br_.review-of-Barkey-book-1996.pdf." target="_blank">https://sites.lsa.umich.edu/gocek/wp-content/uploads/sites/352/2016/01/GocekMuge.br_.review-of-Barkey-book-1996.pdf.</a></li>
+            <li>​&quot;Contemporary Ottoman Observers and Western Chronicles.&quot; METU Open Access.<a href="https://etd.lib.metu.edu.tr/upload/12622173/index.pdf." target="_blank">https://etd.lib.metu.edu.tr/upload/12622173/index.pdf.</a></li>
+            <li>​&quot;Celâlî isyanları.&quot; Wikipedia (Turkish).<a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1.</a></li>
+            <li>​&quot;Alternatif Tarih Okumaları - Celali İsyanları.&quot; Marksist Teori.<a href="https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2010/517-alternatif-tarih-okumalari-celali-isyanlari-osmanli-timar-sisteminin-bozulmasi-ve-1550-1650-koylu-ayaklanmalari.html." target="_blank">https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2010/517-alternatif-tarih-okumalari-celali-isyanlari-osmanli-timar-sisteminin-bozulmasi-ve-1550-1650-koylu-ayaklanmalari.html.</a></li>
+            <li>​&quot;Celâlî isyanları.&quot; Wikipedia (Turkish).<a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1." target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1.</a></li>
+            <li>​&quot;Celali İsyanları.&quot; Osmanlı.org.tr. <a href="https://osmanli.org.tr/celali-isyanlari/." target="_blank">https://osmanli.org.tr/celali-isyanlari/.</a></li>
+            <li>​&quot;Celâlî İsyanları.&quot; TDV İslâm Ansiklopedisi.<a href="https://islamansiklopedisi.org.tr/celali-isyanlari." target="_blank">https://islamansiklopedisi.org.tr/celali-isyanlari.</a></li>
+            <li>​Gümüş, Ercan. Tarihçi ve Asi: 16. Yüzyıl Celali İsyanları&#x27;nın Osmanlı Tarih YazımınaYansıması. Libra Kitap.<a href="https://www.librakitap.com.tr/index.php?option=com_content&amp;view=article&amp;id=500:tarihci-ve-asi-16-yuzyil-anadolu-celali-isyanlari-nin-osmanli-tarih-yazimina-yansimasi&amp;catid=10&amp;Itemid=105." target="_blank">https://www.librakitap.com.tr/index.php?option=com_content&amp;view=article&amp;id=500:tarihci-ve-asi-16-yuzyil-anadolu-celali-isyanlari-nin-osmanli-tarih-yazimina-yansimasi&amp;catid=10&amp;Itemid=105.</a></li>
+            <li>​Akdağ, Mustafa. &quot;Celali İsyanlarının Başlaması.&quot; Ankara Üniversitesi Dil veTarih-Coğrafya Fakültesi Dergisi.<a href="https://isamveri.org/pdfsbv/D00226/1945_4_1/1945_4_1_AKDAGM.pdf." target="_blank">https://isamveri.org/pdfsbv/D00226/1945_4_1/1945_4_1_AKDAGM.pdf.</a></li>
+            <li>​&quot;Mustafa Akdağ.&quot; 1000Kitap.<a href="https://1000kitap.com/yazar/mustafa-akdag/incelemeler." target="_blank">https://1000kitap.com/yazar/mustafa-akdag/incelemeler.</a></li>
+            <li>​&quot;Dirlik ve Düzenlik Kavgası.&quot; Akademik Tarih.<a href="https://www.akademiktarihtr.com/dirlikveduzenlikkavgasi/." target="_blank">https://www.akademiktarihtr.com/dirlikveduzenlikkavgasi/.</a></li>
+            <li>​Timur, Taner. &quot;Akdağ, Mustafa.&quot; Taner Timur personal website.<a href="https://tanertimur.org/akdag-mustafa/." target="_blank">https://tanertimur.org/akdag-mustafa/.</a></li>
+            <li>​Akdağ, Mustafa. Türk Halkının Dirlik ve Düzenlik Kavgası: Celali İsyanları. Scribd.<a href="https://www.scribd.com/document/731146031/Mustafa-Akda%C4%9F-Turk-Halk%C4%B1n%C4%B1n-Dirlik-Ve-Duzenlik-Kavgas%C4%B1-Celali-%C4%B0syanlar%C4%B1-%D0%B0%D0%BD%D0%9E%D0%BC1%D1%87." target="_blank">https://www.scribd.com/document/731146031/Mustafa-Akda%C4%9F-Turk-Halk%C4%B1n%C4%B1n-Dirlik-Ve-Duzenlik-Kavgas%C4%B1-Celali-%C4%B0syanlar%C4%B1-%D0%B0%D0%BD%D0%9E%D0%BC1%D1%87.</a></li>
+            <li>​&quot;Kalabalıkların Sosyolojisi.&quot; Belleten. <a href="https://belleten.gov.tr/eng/full-text/2387/tur." target="_blank">https://belleten.gov.tr/eng/full-text/2387/tur.</a></li>
+            <li>​Aksoy, Doğan. &quot;Karen Barkey&#x27;in Eşkıyaları.&quot; Kebikeç.<a href="https://kebikecdergi.wordpress.com/wp-content/uploads/2012/07/06_aksoy.pdf." target="_blank">https://kebikecdergi.wordpress.com/wp-content/uploads/2012/07/06_aksoy.pdf.</a></li>
+            <li>​&quot;Heronları Kim Düşürdü veya Celaliler ile PKK.&quot; Haksoz Haber.<a href="https://www.haksozhaber.net/heronlari-kim-dusurdu-veya-celaliler-ile-pkk-17252yy.htm." target="_blank">https://www.haksozhaber.net/heronlari-kim-dusurdu-veya-celaliler-ile-pkk-17252yy.htm.</a></li>
+            <li>​Eşkıyalar ve Devlet. 1000Kitap.<a href="https://1000kitap.com/kitap/eskiyalar-ve-devlet--39711." target="_blank">https://1000kitap.com/kitap/eskiyalar-ve-devlet--39711.</a></li>
+            <li>​White, Sam. The Climate of Rebellion in the Early Modern Ottoman Empire.Cambridge University Press, 2011. (Book-level reference)</li>
+            <li>​&quot;Major phases of the Celali rebellions and key rebel leaders.&quot; Wikipedia. (Summaryof Celali Rebellions page).</li>
+            <li>​&quot;Celali isyanları ve liderleri.&quot; Osmanlı.org.tr. (Summary of Celali İsyanları page).</li>
+            <li>​&quot;Consequences of the Celali Rebellions.&quot; Wikipedia. (Summary of Celali Rebellionspage).</li>
+            <li>​&quot;Long-term impact of Celali revolts on Ottoman Empire.&quot; Brill.<a href="https://brill.com/view/journals/thr/4/1/article-p57_3.xml." target="_blank">https://brill.com/view/journals/thr/4/1/article-p57_3.xml.</a></li>
+            <li>​&quot;Historiography of the Celali Rebellions.&quot; Bilkent University Institutional Repository.(General reference).</li>
+            <li>​&quot;Historiography of the Celali Rebellions.&quot; Cambridge University Press. (Generalreference).</li>
+            <li>​Gündoğdu, Birol. &quot;A Restricted Approach to the Study of Ottoman Rebellions.&quot;DergiPark. <a href="https://dergipark.org.tr/tr/download/article-file/761679.Works" target="_blank">https://dergipark.org.tr/tr/download/article-file/761679.Works</a> cited</li>
+            <li>​ Celali rebellions - Wikipedia, accessed August 11, 2025,<a href="https://en.wikipedia.org/wiki/Celali_rebellions" target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions</a></li>
+            <li>​ en.wikipedia.org, accessed August 11, 2025,<a href="https://en.wikipedia.org/wiki/Celali_rebellions#:~:text=The%20word%20Celali%20means%20%22belonging,of%20Jel%C4%81l%C4%AB%20is%20also%20used." target="_blank">https://en.wikipedia.org/wiki/Celali_rebellions#:~:text=The%20word%20Celali%20means%20%22belonging,of%20Jel%C4%81l%C4%AB%20is%20also%20used.</a></li>
+            <li>​ Jelālī Revolts | Ottoman Empire, Anatolia, Peasants | Britannica, accessed August11, 2025, <a href="https://www.britannica.com/event/Jelali-Revolts" target="_blank">https://www.britannica.com/event/Jelali-Revolts</a></li>
+            <li>​ Celali isyanları nedir, sebepleri nelerdir? Celali isyanlarını kim bastırdı? - Haberler -Hürriyet, accessed August 11, 2025,<a href="https://www.hurriyet.com.tr/egitim/celali-isyanlari-nedir-sebepleri-nelerdir-celali-isyanlarini-kim-bastirdi-41940885" target="_blank">https://www.hurriyet.com.tr/egitim/celali-isyanlari-nedir-sebepleri-nelerdir-celali-isyanlarini-kim-bastirdi-41940885</a></li>
+            <li>​ Celâlî İsyanları - Osmanlı Araştırmaları Vakfı, accessed August 11, 2025,<a href="https://osmanli.org.tr/celali-isyanlari/" target="_blank">https://osmanli.org.tr/celali-isyanlari/</a></li>
+            <li>​ www.britannica.com, accessed August 11, 2025,<a href="https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20first%20revolt%20occurred%20in,cavalrymen%20maintained%20by%20land%20grants)." target="_blank">https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20first%20revolt%20occurred%20in,cavalrymen%20maintained%20by%20land%20grants).</a></li>
+            <li>​ Celali isyanları nedenleri, dönemi ve sonuçları - Sözcü, accessed August 11, 2025,<a href="https://www.sozcu.com.tr/celali-isyanlari-nedenleri-donemi-ve-sonuclari-wp983587" target="_blank">https://www.sozcu.com.tr/celali-isyanlari-nedenleri-donemi-ve-sonuclari-wp983587</a></li>
+            <li>​ 38610.pdf - İstanbul Üniversitesi, accessed August 11, 2025,<a href="https://nek.istanbul.edu.tr/ekos/TEZ/38610.pdf" target="_blank">https://nek.istanbul.edu.tr/ekos/TEZ/38610.pdf</a></li>
+            <li>​ Heronları kim düşürdü veya Celaliler ile PKK - Mustafa Armağan - HAKSÖZHABER, accessed August 11, 2025,<a href="https://www.haksozhaber.net/heronlari-kim-dusurdu-veya-celaliler-ile-pkk-17252yy.htm" target="_blank">https://www.haksozhaber.net/heronlari-kim-dusurdu-veya-celaliler-ile-pkk-17252yy.htm</a></li>
+            <li>​Celali İsyanları - Türk Tarihi, accessed August 11, 2025,<a href="https://turktarihim.com/celali_isyanlari.html" target="_blank">https://turktarihim.com/celali_isyanlari.html</a></li>
+            <li>​tr.wikipedia.org, accessed August 11, 2025,<a href="https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1" target="_blank">https://tr.wikipedia.org/wiki/Cel%C3%A2l%C3%AE_isyanlar%C4%B1</a></li>
+            <li>​CELÂLÎ İSYANLARI Ansiklopediler - Tübitak - Ansiklopedi, accessed August 11,2025, <a href="https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari" target="_blank">https://ansiklopedi.tubitak.gov.tr/ansiklopedi/celali_isyanlari</a></li>
+            <li>​The reign of violence: the celalis, c.1550-1700 - Bilkent BUIR, accessed August 11,2025,<a href="https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a" target="_blank">https://repository.bilkent.edu.tr/items/c9d1bbe4-4ada-468a-a346-088d5f795b5a</a></li>
+            <li>​Great Jelālī Revolts | EBSCO Research Starters, accessed August 11, 2025,<a href="https://www.ebsco.com/research-starters/history/great-jelali-revolts" target="_blank">https://www.ebsco.com/research-starters/history/great-jelali-revolts</a></li>
+            <li>​www.britannica.com, accessed August 11, 2025,<a href="https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20rebellions%20were%20not%20attempts,and%20an%20increase%20in%20the" target="_blank">https://www.britannica.com/event/Jelali-Revolts#:~:text=The%20rebellions%20were%20not%20attempts,and%20an%20increase%20in%20the</a></li>
+            <li>​Transformation of the Ottoman Empire - Wikipedia, accessed August 11, 2025,<a href="https://en.wikipedia.org/wiki/Transformation_of_the_Ottoman_Empire" target="_blank">https://en.wikipedia.org/wiki/Transformation_of_the_Ottoman_Empire</a></li>
+            <li>​The Celali effect in 17th century - Ottoman transformation - Open METU,accessed August 11, 2025, <a href="https://open.metu.edu.tr/handle/11511/27362" target="_blank">https://open.metu.edu.tr/handle/11511/27362</a></li>
+            <li>​THE CELALI EFFECT IN 17TH CENTURY-OTTOMAN TRANSFORMATION A THESISSUBMITTED TO THE GRADUATE SCHOOL OF SOCIAL SCIENCES OF MIDDLE,accessed August 11, 2025, <a href="https://etd.lib.metu.edu.tr/upload/12622173/index.pdf" target="_blank">https://etd.lib.metu.edu.tr/upload/12622173/index.pdf</a></li>
+            <li>​Problems in the Interpretations of Ottoman Rebellions in ... - DergiPark, accessedAugust 11, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/761679" target="_blank">https://dergipark.org.tr/tr/download/article-file/761679</a></li>
+            <li>​Tedirgin Anadolu | Taylan Akyıldırım - Ottoman History Podcast, accessed August11, 2025,<a href="https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html" target="_blank">https://www.ottomanhistorypodcast.com/2013/02/celali-rebellions-anatolia.html</a></li>
+            <li>​OSMANLI DEVLETİNDE CELALİ İSYANLARI - Aydınlar Ocağı, accessed August 11,2025, <a href="https://aydinlarocagi.org/osmanli-devletinde-celali-isyanlari/" target="_blank">https://aydinlarocagi.org/osmanli-devletinde-celali-isyanlari/</a></li>
+            <li>​Ottoman Empire - Decline, Reforms, Fall | Britannica, accessed August 11, 2025,<a href="https://www.britannica.com/place/Ottoman-Empire/The-decline-of-the-Ottoman-Empire-1566-1807" target="_blank">https://www.britannica.com/place/Ottoman-Empire/The-decline-of-the-Ottoman-Empire-1566-1807</a></li>
+            <li>​Comparative Perspectives on Climate Change: The Ottoman Empire and MingChina, accessed August 11, 2025,<a href="https://nerd.wwnorton.com/ebooks/epub/worldstogether7/EPUB/content/13.4-chapter13.xhtml" target="_blank">https://nerd.wwnorton.com/ebooks/epub/worldstogether7/EPUB/content/13.4-chapter13.xhtml</a></li>
+            <li>​The Celali Rebellion (Chapter 7) - The Climate of Rebellion in the Early ModernOttoman Empire - Cambridge University Press, accessed August 11, 2025,<a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/celali-rebellion/42F6F1CBFA4DF43FBF8C00B5D3CFD14D" target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/celali-rebellion/42F6F1CBFA4DF43FBF8C00B5D3CFD14D</a></li>
+            <li>​Decline of the Ottoman Empire | Reasons, Collapse, &amp; Maps - Britannica,accessed August 11, 2025,<a href="https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672" target="_blank">https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672</a></li>
+            <li>​ZfWT Zeitschrift für die Welt der Türken CORRUPTION OF THE OTTOMANINHERITANCE SYSTEM AND REFORM STUDIES CARRIED OUT IN THE 17, accessedAugust 11, 2025,<a href="https://www.dieweltdertuerken.org/admin/files/issues/47-273-1-PB.pdf" target="_blank">https://www.dieweltdertuerken.org/admin/files/issues/47-273-1-PB.pdf</a></li>
+            <li>​Social Movements and Rebellions in the Ottoman Empire in the Period of Crisisand Change: Erzurum Province 1600-1630, accessed August 11, 2025,<a href="https://jomiss.com.tr/makale_indir/4953" target="_blank">https://jomiss.com.tr/makale_indir/4953</a></li>
+            <li>​The Causes of the Financial Crisis That Began in the 16th Century and Continueduntil the Tanzimat Era in the Ottoman Empire - DergiPark, accessed August 11,2025, <a href="https://dergipark.org.tr/tr/download/article-file/46291" target="_blank">https://dergipark.org.tr/tr/download/article-file/46291</a></li>
+            <li>​celali isyanları&#x27;nın vergisel nedenleri - Vergi Sorunları Dergisi, accessed August 11,2025,<a href="https://www.vergisorunlari.com.tr/makale/celali-isyanlarinin-vergisel-nedenleri/8898" target="_blank">https://www.vergisorunlari.com.tr/makale/celali-isyanlarinin-vergisel-nedenleri/8898</a></li>
+            <li>​The economic consequences of the Celali revolts: the destruction andre-establishment of the state&#x27;s taxation organisation - Brill, accessed August 11,2025, <a href="https://brill.com/view/journals/thr/4/1/article-p57_3.pdf" target="_blank">https://brill.com/view/journals/thr/4/1/article-p57_3.pdf</a></li>
+            <li>​XVI. YÜZYIL ORTALARINDA OSMANLI İMPARATORLUĞU&#x27;NDA SUHTE OLAYLARIYunus KOÇ - DergiPark, accessed August 11, 2025,<a href="https://dergipark.org.tr/tr/download/article-file/620397" target="_blank">https://dergipark.org.tr/tr/download/article-file/620397</a></li>
+            <li>​www.britannica.com, accessed August 11, 2025,<a href="https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672#:~:text=The%20central%20government%20became%20weaker,armies%20still%20guarding%20the%20frontiers." target="_blank">https://www.britannica.com/place/decline-of-the-Ottoman-Empire-2230672#:~:text=The%20central%20government%20became%20weaker,armies%20still%20guarding%20the%20frontiers.</a></li>
+            <li>​The Downfall of the Ottoman Empire: Causes, Consequences, and Legacy -Medium, accessed August 11, 2025,<a href="https://medium.com/@iammuzamil1999/the-downfall-of-the-ottoman-empire-causes-consequences-and-legacy-452e976b4fbf" target="_blank">https://medium.com/@iammuzamil1999/the-downfall-of-the-ottoman-empire-causes-consequences-and-legacy-452e976b4fbf</a></li>
+            <li>​Developments and Decline of the Ottoman Empire -Resourcesforhistoryteachers, accessed August 11, 2025,<a href="http://resourcesforhistoryteachers.pbworks.com/w/page/126065036/Developments%20and%20Decline%20of%20the%20Ottoman%20Empire" target="_blank">http://resourcesforhistoryteachers.pbworks.com/w/page/126065036/Developments%20and%20Decline%20of%20the%20Ottoman%20Empire</a></li>
+            <li>​Controlling Corruption in Law Enforcement: Incentives, Safeguards, andInstitutional Change in the Ottoman Empire - University of Connecticut, accessedAugust 11, 2025, <a href="https://media.economics.uconn.edu/working/2011-18.pdf" target="_blank">https://media.economics.uconn.edu/working/2011-18.pdf</a></li>
+            <li>​Crime and Punishment in Ottoman Times: Corruption and Fines - MIT PressDirect, accessed August 11, 2025,<a href="https://direct.mit.edu/jinh/article/43/3/353/50164/Crime-and-Punishment-in-Ottoman-Times-Corruption" target="_blank">https://direct.mit.edu/jinh/article/43/3/353/50164/Crime-and-Punishment-in-Ottoman-Times-Corruption</a></li>
+            <li>​Celali Ayaklanmalarının Maliye Tarihi Açısından Değerlendirilmesi - DergiPark,accessed August 11, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/145935" target="_blank">https://dergipark.org.tr/tr/download/article-file/145935</a></li>
+            <li>​The Climate of Rebellion in the Early Modern Ottoman Empire - CambridgeUniversity Press, accessed August 11, 2025,<a href="https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/C022031EDC39F862EA87DBC88D66B888" target="_blank">https://www.cambridge.org/core/books/climate-of-rebellion-in-the-early-modern-ottoman-empire/C022031EDC39F862EA87DBC88D66B888</a></li>
+            <li>​The Climate of Rebellion in the Early Modern Ottoman Empire 9781139120012,1139120018 - DOKUMEN.PUB, accessed August 11, 2025,<a href="https://dokumen.pub/the-climate-of-rebellion-in-the-early-modern-ottoman-empire-9781139120012-1139120018.html" target="_blank">https://dokumen.pub/the-climate-of-rebellion-in-the-early-modern-ottoman-empire-9781139120012-1139120018.html</a></li>
+            <li>​What the Ottoman Empire Can Teach Us About the Consequences of ClimateChange, accessed August 11, 2025,<a href="https://science.thewire.in/society/history/what-the-ottoman-empire-can-teach-us-about-the-consequences-of-climate-change/" target="_blank">https://science.thewire.in/society/history/what-the-ottoman-empire-can-teach-us-about-the-consequences-of-climate-change/</a></li>
+            <li>​Kalender Çelebi rebellion - Wikipedia, accessed August 11, 2025,<a href="https://en.wikipedia.org/wiki/Kalender_%C3%87elebi_rebellion" target="_blank">https://en.wikipedia.org/wiki/Kalender_%C3%87elebi_rebellion</a></li>
+            <li>​Kalender Çelebi&#x27;s Rebellion, Karaçayir. Süleymanname of 1558, Topkapi SarayMuseum ms Hazine 1517., accessed August 11, 2025,<a href="https://warfare.x10host.com/Ottoman/Suleymanname/1527-Kalender_Celebi_Rebellion-Suleymanname-large.htm" target="_blank">https://warfare.x10host.com/Ottoman/Suleymanname/1527-Kalender_Celebi_Rebellion-Suleymanname-large.htm</a></li>
+            <li>​Karayazıcı İsyanı - Devlet-i Aliyye-i, accessed August 11, 2025,<a href="https://www.devletialiyyei.com/Zaman-Tuneli/karayazici-isyani" target="_blank">https://www.devletialiyyei.com/Zaman-Tuneli/karayazici-isyani</a></li>
+            <li>​[PDF] Karayazıcı Rebellion - ACARINDEX, accessed August 11, 2025,<a href="https://www.acarindex.com/eskisehir-osmangazi-universitesi-sosyal-bilimler-dergisi/karayazici-rebellion-645116" target="_blank">https://www.acarindex.com/eskisehir-osmangazi-universitesi-sosyal-bilimler-dergisi/karayazici-rebellion-645116</a></li>
+            <li>​Alternatif Tarih Okumaları - Celali İsyanları: Osmanlı Tımar Sisteminin “Bozulması”ve 1550-1650 Köylü Ayaklanmaları - Marksist Teori, accessed August 11, 2025,<a href="https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2010/517-alternatif-tarih-okumalari-celali-isyanlari-osmanli-timar-sisteminin-bozulmasi-ve-1550-1650-koylu-ayaklanmalari.html" target="_blank">https://www.marksistteori6.org/18-marksist-teori/marksist-teori-sayi-2-mayis-haziran-2010/517-alternatif-tarih-okumalari-celali-isyanlari-osmanli-timar-sisteminin-bozulmasi-ve-1550-1650-koylu-ayaklanmalari.html</a></li>
+            <li>​The economic consequences of the Celali revolts: the destruction ..., accessedAugust 11, 2025, <a href="https://brill.com/view/journals/thr/4/1/article-p57_3.xml" target="_blank">https://brill.com/view/journals/thr/4/1/article-p57_3.xml</a></li>
+            <li>​Deli Hasan - Wikipedia, accessed August 11, 2025,<a href="https://en.wikipedia.org/wiki/Deli_Hasan" target="_blank">https://en.wikipedia.org/wiki/Deli_Hasan</a></li>
+            <li>​Kuyucu Murad Pasha - Wikipedia, accessed August 11, 2025,<a href="https://en.wikipedia.org/wiki/Kuyucu_Murad_Pasha" target="_blank">https://en.wikipedia.org/wiki/Kuyucu_Murad_Pasha</a></li>
+            <li>​Kalenderoğlu - Vikipedi, accessed August 11, 2025,<a href="https://tr.wikipedia.org/wiki/Kalendero%C4%9Flu" target="_blank">https://tr.wikipedia.org/wiki/Kalendero%C4%9Flu</a></li>
+            <li>​KALENDER ÇELEBİ İSYANI YA DA KALENDER ŞAH İSYANI - Mavi Didim, accessedAugust 11, 2025,<a href="https://www.mavididim.com.tr/kalender-celebi-isyani-ya-da-kalender-sah-isyani" target="_blank">https://www.mavididim.com.tr/kalender-celebi-isyani-ya-da-kalender-sah-isyani</a></li>
+            <li>​RURAL ORDER, REVOLT AND MESSIANISM IN THE EARLY SIXTEENTH CENTURYANATOLIA: THE REBELLION OF 1526-27 by CAN GÖRTAN Submitted to, accessedAugust 11, 2025, <a href="https://research.sabanciuniv.edu/50995/1/10473560.pdf" target="_blank">https://research.sabanciuniv.edu/50995/1/10473560.pdf</a></li>
+            <li>​Şahkulu İsyanı - Vikipedi, accessed August 11, 2025,<a href="https://tr.wikipedia.org/wiki/%C5%9Eahkulu_%C4%B0syan%C4%B1" target="_blank">https://tr.wikipedia.org/wiki/%C5%9Eahkulu_%C4%B0syan%C4%B1</a></li>
+            <li>​A CELÂLÎ IN İÇEL: MUSLU ÇAVUŞ REBELLION (1606-1610) - Istanbul UniversityPress, accessed August 11, 2025,<a href="http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1606-1610" target="_blank">http://iupress.istanbul.edu.tr/en/journal/tjh/article/icelde-bir-celali-muslu-cavus-isyani-1606-1610</a></li>
+            <li>​Osmanlı&#x27;dan Günümüze - EŞKIYALIK VE TERÖR, accessed August 11, 2025,<a href="https://www.historystudies.net/source/eskiyal%C4%B1k-ve-teror.pdf" target="_blank">https://www.historystudies.net/source/eskiyal%C4%B1k-ve-teror.pdf</a></li>
+            <li>​karayazıcı isyanı - KARAYAZICI İSYANI - DergiPark, accessed August 11, 2025,<a href="https://dergipark.org.tr/tr/download/article-file/112963" target="_blank">https://dergipark.org.tr/tr/download/article-file/112963</a></li>
+            <li>​Karayazıcı İsyanı - Türkiye Kaynakçası, accessed August 11, 2025,<a href="http://kaynakca.hacettepe.edu.tr/eser/9164235/karayazici-isyani" target="_blank">http://kaynakca.hacettepe.edu.tr/eser/9164235/karayazici-isyani</a></li>
+            <li>​Deli Hasan - Wikiwand, accessed August 11, 2025,<a href="https://www.wikiwand.com/en/articles/Deli_Hasan" target="_blank">https://www.wikiwand.com/en/articles/Deli_Hasan</a></li>
+            <li>​Deli Hasan - Vikipedi, accessed August 11, 2025,<a href="https://tr.wikipedia.org/wiki/Deli_Hasan" target="_blank">https://tr.wikipedia.org/wiki/Deli_Hasan</a></li>
+            <li>​Deli Hasan | Turkish rebel - Britannica, accessed August 11, 2025,<a href="https://www.britannica.com/biography/Deli-Hasan" target="_blank">https://www.britannica.com/biography/Deli-Hasan</a></li>
+            <li>​CELÂLÎ İSYANLARI - TDV İslâm Ansiklopedisi, accessed August 11, 2025,<a href="https://islamansiklopedisi.org.tr/celali-isyanlari" target="_blank">https://islamansiklopedisi.org.tr/celali-isyanlari</a></li>
+            <li>​KARAYAZICI ABDÜLHALİM - TDV İslâm Ansiklopedisi, accessed August 11, 2025,<a href="https://islamansiklopedisi.org.tr/karayazici-abdulhalim" target="_blank">https://islamansiklopedisi.org.tr/karayazici-abdulhalim</a></li>
+            <li>​Kuyucu Murad Paşa | Ottoman vizier - Britannica, accessed August 11, 2025,<a href="https://www.britannica.com/biography/Kuyucu-Murad-Pasa" target="_blank">https://www.britannica.com/biography/Kuyucu-Murad-Pasa</a></li>
+            <li>​KUYUCU MURAD PAŞA&#x27;NIN ANADOLU&#x27;DA CELÂLİLERLE MÜCADELESİNE DAİR BİROSMANLI KAYNAĞI “AN OTTOMAN SOURCE ABOUT KUYU - The Journal ofInternational Social Research, accessed August 11, 2025,<a href="https://www.sosyalarastirmalar.com/articles/an-ottoman-source-about-kuyucu-murad-pashas-struggle-against-jelalis.pdf" target="_blank">https://www.sosyalarastirmalar.com/articles/an-ottoman-source-about-kuyucu-murad-pashas-struggle-against-jelalis.pdf</a></li>
+            <li>​Bandits and Bureaucrats: The Ottoman Route to State Centralization - GoogleBooks, accessed August 11, 2025,<a href="https://books.google.com/books/about/Bandits_and_Bureaucrats.html?id=wijlgELdgKQC" target="_blank">https://books.google.com/books/about/Bandits_and_Bureaucrats.html?id=wijlgELdgKQC</a></li>
+            <li>​Bandits and Bureaucrats Karen Barkey | PDF | Ottoman Empire | Rebellions -Scribd, accessed August 11, 2025,<a href="https://www.scribd.com/document/307890407/Bandits-and-Bureaucrats-Karen-Barkey" target="_blank">https://www.scribd.com/document/307890407/Bandits-and-Bureaucrats-Karen-Barkey</a></li>
+            <li>​What was the bloodiest rebellion in the history of the Ottoman Empire? - Quora,accessed August 11, 2025,<a href="https://www.quora.com/What-was-the-bloodiest-rebellion-in-the-history-of-the-Ottoman-Empire" target="_blank">https://www.quora.com/What-was-the-bloodiest-rebellion-in-the-history-of-the-Ottoman-Empire</a></li>
+            <li>​Celalis Recorded in the Account Books - OpenMETU, accessed August 11, 2025,<a href="https://open.metu.edu.tr/handle/11511/71152" target="_blank">https://open.metu.edu.tr/handle/11511/71152</a></li>
+            <li>​17. YÜZYILDA OSMANLI DEVLETİ&#x27;NDEKİ BÜYÜK KAÇGUN, accessed August 11,2025, <a href="https://dergipark.org.tr/tr/download/article-file/1123677" target="_blank">https://dergipark.org.tr/tr/download/article-file/1123677</a></li>
+            <li>​Büyük Kaçgun - Vikipedi, accessed August 11, 2025,<a href="https://tr.wikipedia.org/wiki/B%C3%BCy%C3%BCk_Ka%C3%A7gun" target="_blank">https://tr.wikipedia.org/wiki/B%C3%BCy%C3%BCk_Ka%C3%A7gun</a></li>
+            <li>​17.YÜZYILDA OSMANLI DEVLETİ&#x27;NDEKİ BÜYÜK KAÇGUN&#x27;UN NEDEN VESONUÇLARI, accessed August 11, 2025,<a href="https://dergipark.org.tr/tr/pub/ijmeb/issue/54595/744268" target="_blank">https://dergipark.org.tr/tr/pub/ijmeb/issue/54595/744268</a></li>
+            <li>​The Great Armenian Flight: Migration and Cultural Change in theSeventeenth-Century Ottoman Empire in - Brill, accessed August 11, 2025,<a href="https://brill.com/view/journals/jemh/23/1/article-p67_3.xml" target="_blank">https://brill.com/view/journals/jemh/23/1/article-p67_3.xml</a></li>
+            <li>​Marks of a Jelali Destruction in the Ottoman Province: The raid of Tavil Halil inKütahya (Provinces) and the Socio-Economic Reflections of it - Gazi AkademikBakış, accessed August 11, 2025,<a href="https://www.gaziakademikbakis.com/en/article/gab-T-2018-156#!" target="_blank">https://www.gaziakademikbakis.com/en/article/gab-T-2018-156#!</a></li>
+            <li>​Mustafa Akdağ - Türk Halkının Dirlik Ve Düzenlik Kavgası- Celali İsyanları - -анОм1ч | PDF, accessed August 11, 2025,<a href="https://www.scribd.com/document/731146031/Mustafa-Akda%C4%9F-Turk-Halk%C4%B1n%C4%B1n-Dirlik-Ve-Duzenlik-Kavgas%C4%B1-Celali-%C4%B0syanlar%C4%B1-%D0%B0%D0%BD%D0%9E%D0%BC1%D1%87" target="_blank">https://www.scribd.com/document/731146031/Mustafa-Akda%C4%9F-Turk-Halk%C4%B1n%C4%B1n-Dirlik-Ve-Duzenlik-Kavgas%C4%B1-Celali-%C4%B0syanlar%C4%B1-%D0%B0%D0%BD%D0%9E%D0%BC1%D1%87</a></li>
+            <li>​Empire of Difference: the Ottomans in Comparative Perspective: Karen Barkey -ResearchGate, accessed August 11, 2025,<a href="https://www.researchgate.net/profile/Andrea-Stanton/publication/249505081_Empire_of_Difference_the_Ottomans_in_Comparative_Perspective_Karen_Barkey/links/59de87fc458515376b29e4a2/Empire-of-Difference-the-Ottomans-in-Comparative-Perspective-Karen-Barkey.pdf" target="_blank">https://www.researchgate.net/profile/Andrea-Stanton/publication/249505081_Empire_of_Difference_the_Ottomans_in_Comparative_Perspective_Karen_Barkey/links/59de87fc458515376b29e4a2/Empire-of-Difference-the-Ottomans-in-Comparative-Perspective-Karen-Barkey.pdf</a></li>
+            <li>​CELALI İSY ANLARININ BAŞLAMASı - Yazan: Dr. MUSTAFA AKDAG Umumi tarihkültürümüzde, mahiyeti açık bir şekilde bilinmiyen büyük tarih olaylanndan birisi deCelali isyanlarıdır. Bu mesele, esa - isamveri.org, accessed August 11, 2025,<a href="https://isamveri.org/pdfsbv/D00226/1945_4_1/1945_4_1_AKDAGM.pdf" target="_blank">https://isamveri.org/pdfsbv/D00226/1945_4_1/1945_4_1_AKDAGM.pdf</a></li>
+            <li>​Mustafa Akdağ Yorumları ve İncelemeleri - 1000Kitap, accessed August 11, 2025,<a href="https://1000kitap.com/yazar/mustafa-akdag/incelemeler" target="_blank">https://1000kitap.com/yazar/mustafa-akdag/incelemeler</a></li>
+            <li>​AKDAĞ, MUSTAFA - TANER TİMUR TARİH, accessed August 11, 2025,<a href="https://tanertimur.org/akdag-mustafa/" target="_blank">https://tanertimur.org/akdag-mustafa/</a></li>
+            <li>​POPULATION CHANGES IN OTTOMAN ANATOLIA DURING THE 16TH AND 17THCENTURIES: THE “DEMOGRAPHIC CRISIS” RECONSIDERED | International Journalof Middle East Studies - Cambridge University Press, accessed August 11, 2025,<a href="https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/population-changes-in-ottoman-anatolia-during-the-16th-and-17th-centuries-the-demographic-crisis-reconsidered/6C31B15E42837F9AE1196D2C01742E2C" target="_blank">https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/population-changes-in-ottoman-anatolia-during-the-16th-and-17th-centuries-the-demographic-crisis-reconsidered/6C31B15E42837F9AE1196D2C01742E2C</a></li>
+            <li>​Empire of Difference: The Ottomans in Comparative Perspective - NationalAcademic Digital Library of Ethiopia, accessed August 11, 2025,<a href="http://ndl.ethernet.edu.et/bitstream/123456789/50959/1/22.pdf" target="_blank">http://ndl.ethernet.edu.et/bitstream/123456789/50959/1/22.pdf</a></li>
+            <li>​Untitled - University of Michigan, accessed August 11, 2025,<a href="https://sites.lsa.umich.edu/gocek/wp-content/uploads/sites/352/2016/01/GocekMuge.br_.review-of-Barkey-book-1996.pdf" target="_blank">https://sites.lsa.umich.edu/gocek/wp-content/uploads/sites/352/2016/01/GocekMuge.br_.review-of-Barkey-book-1996.pdf</a></li>
+            <li>​Celaliler / Eşkıyalar: Gayesiz Asiler miyiz ki Hepimiz Biz?* - Kebikeç Dergi,accessed August 11, 2025,<a href="https://kebikecdergi.wordpress.com/wp-content/uploads/2012/07/06_aksoy.pdf" target="_blank">https://kebikecdergi.wordpress.com/wp-content/uploads/2012/07/06_aksoy.pdf</a></li>
+            <li>​Eşkiyalar ve Devlet - Karen Barkey - 1000Kitap, accessed August 11, 2025,<a href="https://1000kitap.com/kitap/eskiyalar-ve-devlet--39711" target="_blank">https://1000kitap.com/kitap/eskiyalar-ve-devlet--39711</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: August 29, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
     </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
 </body>
 </html>
