@@ -9,31 +9,31 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0f172a; /* bg-slate-900 */
-            color: #cbd5e1; /* text-slate-300 */
+            background-color: #2a211c; /* Dark Sepia */
+            color: #e8e0d4; /* Parchment Text */
         }
         /* Scrollbar styling */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #1e293b; /* bg-slate-800 */
+            background: #3e2e22; /* Darker Brown */
         }
         ::-webkit-scrollbar-thumb {
-            background: #475569; /* bg-slate-600 */
+            background: #7a5f49; /* Muted Brown */
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #64748b; /* bg-slate-500 */
+            background: #9d7a5c; /* Lighter Muted Brown */
         }
         .character-link {
             cursor: pointer;
-            color: #818cf8; /* text-indigo-400 */
+            color: #d4af37; /* Gold */
             font-weight: 500;
         }
         .character-link:hover {
             text-decoration: underline;
-            color: #a5b4fc; /* text-indigo-300 */
+            color: #f0c975; /* Lighter Gold */
         }
         .modal-enter {
             opacity: 0;
@@ -58,40 +58,44 @@
 <body class="antialiased">
     <div id="app" class="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
         <header class="text-center mb-10">
-            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">Interactive Sharafname Timeline</h1>
-            <p class="mt-3 text-lg text-slate-400">Explore the rich history of the Sharafname</p>
+            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">Interactive Sharafname Timeline</h1>
+            <p class="mt-3 text-lg text-[#c2b4a3]">Explore the rich history of the Sharafname</p>
         </header>
 
         <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Timeline Section -->
-            <div id="timeline-container" class="lg:col-span-2 bg-slate-800/50 backdrop-blur-sm p-6 rounded-lg shadow-lg overflow-y-auto" style="max-height: 80vh;">
-                <!-- Timeline will be injected here by JS -->
-                <div class="text-center p-8">
-                    <svg class="mx-auto h-12 w-12 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <h3 class="mt-2 text-sm font-medium text-slate-200">Loading Timeline...</h3>
+            <div id="timeline-container-wrapper" class="lg:col-span-2 bg-[#3e2e22]/60 backdrop-blur-sm p-6 rounded-lg shadow-lg flex flex-col" style="max-height: 80vh;">
+                <h2 id="timeline-sticky-header" class="text-3xl font-bold text-white mb-4 z-10 flex-shrink-0">Loading Timeline...</h2>
+                <div id="timeline-scroll-content" class="overflow-y-auto flex-grow">
+                     <!-- Loading State -->
+                    <div id="timeline-loader" class="text-center p-8">
+                        <svg class="mx-auto h-12 w-12 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h3 class="mt-2 text-sm font-medium text-amber-200">Loading Timeline...</h3>
+                    </div>
+                    <!-- Timeline will be injected here by JS -->
                 </div>
             </div>
 
             <!-- Characters Section -->
-            <aside id="characters-container" class="bg-slate-800/50 backdrop-blur-sm p-6 rounded-lg shadow-lg flex flex-col" style="max-height: 80vh;">
+            <aside id="characters-container" class="bg-[#3e2e22]/60 backdrop-blur-sm p-6 rounded-lg shadow-lg flex flex-col" style="max-height: 80vh;">
                 <h2 class="text-2xl font-bold text-white mb-4">Cast of Characters</h2>
                 <div class="relative mb-4">
-                    <input type="text" id="character-search" placeholder="Search characters..." class="w-full bg-slate-700 border border-slate-600 text-white rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <input type="text" id="character-search" placeholder="Search characters..." class="w-full bg-[#5a4433] border border-[#7a5f49] text-white rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-amber-500">
                     <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                        <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <svg class="h-5 w-5 text-amber-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                         </svg>
                     </div>
                 </div>
                 <div id="character-list" class="overflow-y-auto flex-grow">
                     <!-- Character list will be injected here by JS -->
-                     <div class="text-center p-8">
-                        <svg class="mx-auto h-12 w-12 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                     <div id="character-loader" class="text-center p-8">
+                        <svg class="mx-auto h-12 w-12 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                           <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21a6 6 0 00-9-5.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-3-5.197M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        <h3 class="mt-2 text-sm font-medium text-slate-200">Loading Characters...</h3>
+                        <h3 class="mt-2 text-sm font-medium text-amber-200">Loading Characters...</h3>
                     </div>
                 </div>
             </aside>
@@ -101,10 +105,10 @@
     <!-- Modal -->
     <div id="modal-backdrop" class="fixed inset-0 bg-black bg-opacity-75 z-40 hidden"></div>
     <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
-        <div id="modal-content" class="bg-slate-800 rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col modal-enter">
-            <div class="flex items-center justify-between p-4 border-b border-slate-700">
+        <div id="modal-content" class="bg-[#3e2e22] rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col modal-enter">
+            <div class="flex items-center justify-between p-4 border-b border-[#5a4433]">
                 <h3 id="modal-title" class="text-xl font-semibold text-white"></h3>
-                <button id="modal-close" class="text-slate-400 hover:text-white">
+                <button id="modal-close" class="text-[#c2b4a3] hover:text-white">
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -632,13 +636,13 @@
             }
 
             // --- RENDER FUNCTIONS ---
-            function renderTimeline(data) {
-                const container = document.getElementById('timeline-container');
-                container.innerHTML = '';
+            function renderTimeline(data, container) {
+                container.innerHTML = ''; // Clear loader
                 data.timeline.forEach(section => {
                     const sectionEl = document.createElement('div');
                     sectionEl.className = 'mb-12';
-                    sectionEl.innerHTML = `<h2 class="text-3xl font-bold text-white mb-6 sticky top-0 bg-slate-800/50 backdrop-blur-sm py-3 z-10">${section.title}</h2>`;
+                    // The h2 header for each section, used for scroll detection
+                    sectionEl.innerHTML = `<h2 class="text-3xl font-bold text-white mb-6 section-header" data-section-title="${section.title}">${section.title}</h2>`;
                     
                     const listEl = document.createElement('div');
                     section.events.forEach((event, index) => {
@@ -649,17 +653,17 @@
                             <!-- Year and Dot -->
                             <div class="flex flex-col items-center mr-6">
                                 <div>
-                                    <div class="flex h-16 w-16 items-center justify-center rounded-full bg-slate-700 border-2 border-slate-600">
-                                       <span class="text-indigo-400 font-bold text-lg">${extractYear(event.date)}</span>
+                                    <div class="flex h-16 w-16 items-center justify-center rounded-full bg-[#5a4433] border-2 border-[#7a5f49]">
+                                       <span class="text-amber-300 font-bold text-lg">${extractYear(event.date)}</span>
                                     </div>
                                 </div>
-                                ${!isLast ? '<div class="h-full w-0.5 bg-slate-600"></div>' : ''}
+                                ${!isLast ? '<div class="h-full w-0.5 bg-[#7a5f49]"></div>' : ''}
                             </div>
                             <!-- Content -->
                             <div class="pb-10 flex-1">
-                                <div class="bg-slate-900 p-4 rounded-lg shadow-md hover:bg-slate-700 transition-colors duration-200 cursor-pointer group" data-event-id="${event.id}">
-                                    <h3 class="font-semibold text-white group-hover:text-indigo-300 mb-1">${event.date}</h3>
-                                    <p class="text-slate-400">${event.description}</p>
+                                <div class="bg-[#2a211c] p-4 rounded-lg shadow-md hover:bg-[#5a4433] transition-colors duration-200 cursor-pointer group" data-event-id="${event.id}">
+                                    <h3 class="font-semibold text-white group-hover:text-amber-200 mb-1">${event.date}</h3>
+                                    <p class="text-[#c2b4a3]">${event.description}</p>
                                 </div>
                             </div>
                         `;
@@ -674,9 +678,11 @@
 
             function renderCharacters(characterList) {
                 const container = document.getElementById('character-list');
-                container.innerHTML = '';
+                const loader = document.getElementById('character-loader');
+                if (loader) loader.remove();
+                container.innerHTML = ''; 
                  if (characterList.length === 0) {
-                    container.innerHTML = `<p class="text-slate-400 text-center">No characters found.</p>`;
+                    container.innerHTML = `<p class="text-[#c2b4a3] text-center">No characters found.</p>`;
                     return;
                 }
                 
@@ -687,11 +693,11 @@
                      if(visibleChars.length > 0) {
                         const categoryEl = document.createElement('div');
                         categoryEl.className = 'mb-4';
-                        categoryEl.innerHTML = `<h3 class="text-lg font-semibold text-indigo-400 mb-2">${category}</h3>`;
+                        categoryEl.innerHTML = `<h3 class="text-lg font-semibold text-amber-300 mb-2">${category}</h3>`;
                         
                         visibleChars.forEach(char => {
                             const charEl = document.createElement('div');
-                            charEl.className = 'text-slate-300 hover:bg-slate-700 p-2 rounded-md cursor-pointer';
+                            charEl.className = 'text-[#e8e0d4] hover:bg-[#5a4433] p-2 rounded-md cursor-pointer';
                             charEl.textContent = char.name;
                             charEl.dataset.charId = char.id;
                             charEl.addEventListener('click', () => showCharacterDetails(char));
@@ -746,7 +752,7 @@
                     });
                 });
                 
-                modalBody.innerHTML = `<p class="text-lg text-slate-300">${descriptionHtml}</p>`;
+                modalBody.innerHTML = `<p class="text-lg text-[#e8e0d4]">${descriptionHtml}</p>`;
                 
                 modalBody.querySelectorAll('.character-link').forEach(link => {
                     link.addEventListener('click', (e) => {
@@ -762,7 +768,7 @@
             function showCharacterDetails(character) {
                 modalTitle.textContent = `Character: ${character.nameWithAliases}`;
                 
-                let bodyHtml = `<p class="text-lg text-slate-300 mb-6">${character.description}</p>`;
+                let bodyHtml = `<p class="text-lg text-[#e8e0d4] mb-6">${character.description}</p>`;
                 
                 // Find related events
                 const relatedEvents = [];
@@ -782,13 +788,13 @@
                 
                 if (relatedEvents.length > 0) {
                     bodyHtml += `<h4 class="text-xl font-semibold text-white mb-3">Related Events</h4>`;
-                    bodyHtml += `<ul class="list-disc list-inside space-y-2 text-slate-300">`;
+                    bodyHtml += `<ul class="list-disc list-inside space-y-2 text-[#e8e0d4]">`;
                     relatedEvents.forEach(event => {
-                        bodyHtml += `<li><span class="font-medium text-indigo-400">${event.date}:</span> ${event.description.substring(0,100)}...</li>`;
+                        bodyHtml += `<li><span class="font-medium text-amber-300">${event.date}:</span> ${event.description.substring(0,100)}...</li>`;
                     });
                     bodyHtml += `</ul>`;
                 } else {
-                    bodyHtml += `<p class="text-slate-400 italic">No timeline events found mentioning this character.</p>`;
+                    bodyHtml += `<p class="text-[#c2b4a3] italic">No timeline events found mentioning this character.</p>`;
                 }
 
                 modalBody.innerHTML = bodyHtml;
@@ -811,12 +817,85 @@
             });
 
 
-            // --- INITIALIZATION ---
+            // --- INITIALIZATION & DYNAMIC HEADER LOGIC (INTERSECTION OBSERVER) ---
             const markdownText = document.getElementById('sharafnama-data').textContent;
             const parsedData = parseSharafname(markdownText);
             
-            renderTimeline(parsedData);
+            const scrollContent = document.getElementById('timeline-scroll-content');
+            const stickyHeader = document.getElementById('timeline-sticky-header');
+            
+            renderTimeline(parsedData, scrollContent);
             renderCharacters(parsedData.characterFlatList);
+
+            // Setup IntersectionObserver
+            const sectionHeaders = scrollContent.querySelectorAll('.section-header');
+            let lastIntersectingHeader = null;
+
+            const observerCallback = (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        lastIntersectingHeader = entry.target;
+                    }
+                });
+
+                // Update header only with the last known intersecting element when scrolling
+                if (lastIntersectingHeader) {
+                    stickyHeader.textContent = lastIntersectingHeader.dataset.sectionTitle;
+                }
+            };
+            
+            const observerOptions = {
+              root: scrollContent,
+              rootMargin: "0px 0px -100% 0px", // Triggers when element is at the very top
+              threshold: 0
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            if (sectionHeaders.length > 0) {
+                // Initialize header with the first section title
+                stickyHeader.textContent = sectionHeaders[0].dataset.sectionTitle;
+                
+                // This is a list of headers that are currently visible at the top
+                let visibleHeaders = [];
+
+                const scrollObserverCallback = (entries) => {
+                    entries.forEach(entry => {
+                        const title = entry.target.dataset.sectionTitle;
+                        if (entry.isIntersecting) {
+                            // Add to list if not already there
+                            if (!visibleHeaders.includes(title)) {
+                                visibleHeaders.push(title);
+                            }
+                        } else {
+                            // Remove from list
+                            visibleHeaders = visibleHeaders.filter(h => h !== title);
+                        }
+                    });
+
+                    // Update the header to the last element in the visible list
+                    if (visibleHeaders.length > 0) {
+                        stickyHeader.textContent = visibleHeaders[visibleHeaders.length - 1];
+                    } else if (sectionHeaders.length > 0) {
+                        // Fallback if no headers are visible (scrolled to top)
+                        stickyHeader.textContent = sectionHeaders[0].dataset.sectionTitle;
+                    }
+                };
+                
+                const scrollObserver = new IntersectionObserver(scrollObserverCallback, {
+                    root: scrollContent,
+                    // The negative top margin means the element's top edge must pass 
+                    // this many pixels *above* the container's top edge to be "intersecting"
+                    rootMargin: `0px 0px -${scrollContent.clientHeight - 30}px 0px`,
+                    threshold: 0
+                });
+
+                sectionHeaders.forEach(header => scrollObserver.observe(header));
+
+            } else {
+                 document.getElementById('timeline-loader').remove();
+                 stickyHeader.textContent = 'Timeline';
+            }
         });
     </script>
 </body>
