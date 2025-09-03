@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Arabic Word Factory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbf1c7; /* Parchment color */
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23928374' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .arabic-text-large {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 2.2rem;
+            line-height: 1.6;
+        }
+        .arabic-text-medium {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 1.5rem;
+        }
+         .arabic-text-small {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            font-size: 1.2rem;
+        }
+        .feedback-correct {
+            border-color: #689d6a !important;
+            background-color: #f2e5bc !important;
+            color: #282828;
+        }
+        .feedback-incorrect {
+            border-color: #cc241d !important;
+            background-color: #f2e5bc !important;
+        }
+        input::placeholder { color: #928374; opacity: 1; }
+        .root-display { direction: rtl; }
+        .nav-button {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-button-active {
+            background-color: #076678;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="text-[#3c3836]">
+    <nav id="top-nav" class="bg-[#d5c4a1] p-2 sticky top-0 z-10 shadow-md">
+        <div class="container mx-auto flex justify-center items-center gap-2 flex-wrap">
+            <!-- Nav buttons will be injected here -->
+        </div>
+    </nav>
+
+    <div id="lesson-container" class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <!-- All pages will be injected here by JavaScript -->
+    </div>
+    
+    <div class="text-center mt-8 mb-12 flex justify-center items-center gap-4">
+        <button type="button" id="show-answers-button" onclick="showAnswers()" class="bg-[#b16286] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#8f3f71] transition-colors text-lg">Show Answers</button>
+        <button type="button" id="check-button" onclick="checkCurrentPageAnswers()" class="bg-[#458588] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#076678] transition-colors text-lg">Check Answers</button>
+        <button type="button" id="next-button" onclick="goToNextPage()" class="hidden bg-[#79740e] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#98971a] transition-colors text-lg">Next Lesson →</button>
+        <button type="button" id="quiz-check-button" onclick="checkQuiz()" class="hidden bg-[#9d0006] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#cc241d] transition-colors text-xl">Check All Answers</button>
+    </div>
+
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 7;
+
+        const grammarConcepts = [
+            { key: 'past', name: 'الماضي', rule: "To make the past tense, add short 'a' vowels (fatha) to the first and last letters of the root.", model: 'كَتَبَ' },
+            { key: 'present', name: 'المضارع', rule: "To make the present tense, add the prefix يَـ to the beginning of the root.", model: 'يَكْتُبُ' },
+            { key: 'command', name: 'الأمر', rule: "To make the command, add the prefix اُ to the beginning and make the last letter silent (sukūn).", model: 'اُكْتُبْ' },
+            { key: 'noun', name: 'المصدر', rule: "The Verbal Noun (المصدر) is the idea of the action (e.g., 'the act of writing'). For 'writing' (ك-ت-ب): Add an Alif (ا) after the second letter and a Ta-Marbuta (ة) to the end. For all other verbs: Simply use the three root letters together with no additions.", model: 'كِتَابَة / فَتْح' },
+            { key: 'active', name: 'اسم الفاعل', rule: "To make the 'doer' of the action, add an Alif (ا) after the first root letter.", model: 'كَاتِب' },
+            { key: 'passive', name: 'اسم المفعول', rule: "To make the 'receiver' of the action, add the prefix مَـ and insert a Wāw (و) before the last root letter.", model: 'مَكْتُوب' }
+        ];
+
+        const roots = {
+            'ktb': { 
+                display: 'ك-ت-ب', 
+                past: 'كَتَبَ', present: 'يَكْتُبُ', command: 'اُكْتُبْ', noun: 'كِتَابَة', active: 'كَاتِب', passive: 'مَكْتُوب',
+                meanings: { past: 'he wrote', present: 'he writes', command: 'write!', noun: 'the act of writing', active: 'writer', passive: 'written' }
+            },
+            'nzr': { 
+                display: 'ن-ظ-ر', 
+                past: 'نَظَرَ', present: 'يَنْظُرُ', command: 'اُنْظُرْ', noun: 'نَظَر', active: 'نَاظِر', passive: 'مَنْظُور',
+                meanings: { past: 'he looked', present: 'he looks', command: 'look!', noun: 'a look', active: 'looker', passive: 'looked at' }
+            },
+            'fth': { 
+                display: 'ف-ت-ح', 
+                past: 'فَتَحَ', present: 'يَفْتَحُ', command: 'اِفْتَحْ', noun: 'فَتْح', active: 'فَاتِح', passive: 'مَفْتُوح',
+                meanings: { past: 'he opened', present: 'he opens', command: 'open!', noun: 'an opening', active: 'opener', passive: 'opened' }
+            },
+            'shrb': { 
+                display: 'ش-ر-ب', 
+                past: 'شَرِبَ', present: 'يَشْرَبُ', command: 'اِشْرَبْ', noun: 'شُرْب', active: 'شَارِب', passive: 'مَشْرُوب',
+                meanings: { past: 'he drank', present: 'he drinks', command: 'drink!', noun: 'a drink', active: 'drinker', passive: 'drunk (beverage)' }
+            },
+            'alm': { 
+                display: 'ع-ل-م', 
+                past: 'عَلِمَ', present: 'يَعْلَمُ', command: 'اِعْلَمْ', noun: 'عِلْم', active: 'عَالِم', passive: 'مَعْلُوم',
+                meanings: { past: 'he knew', present: 'he knows', command: 'know!', noun: 'knowledge', active: 'scholar', passive: 'known' }
+            }
+        };
+
+        function stripDiacritics(str) {
+            if (!str) return '';
+            return str.replace(/[\u064B-\u0652]/g, "");
+        }
+
+        function generateNav() {
+            const navContainer = document.getElementById('top-nav').querySelector('div');
+            let navHTML = grammarConcepts.map((concept, index) => 
+                `<button id="nav-btn-${index + 1}" onclick="goToPage(${index + 1})" class="nav-button arabic-text-small bg-[#f2e5bc] px-3 py-1 rounded-md hover:bg-[#076678] hover:text-white">${concept.name}</button>`
+            ).join('');
+            navHTML += `<button id="nav-btn-7" onclick="goToPage(7)" class="nav-button arabic-text-small bg-[#f2e5bc] px-3 py-1 rounded-md hover:bg-[#9d0006] hover:text-white">الاختبار النهائي</button>`;
+            navContainer.innerHTML = navHTML;
+            updateNav();
+        }
+
+        function updateNav() {
+            document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('nav-button-active'));
+            const activeBtn = document.getElementById(`nav-btn-${currentPage}`);
+            if (activeBtn) {
+                activeBtn.classList.add('nav-button-active');
+            }
+        }
+        
+        function goToPage(pageNumber) {
+            currentPage = pageNumber;
+            renderCurrentPage();
+        }
+
+        function generateLessonPageHTML(pageNumber) {
+            const conceptIndex = pageNumber - 1;
+            const concept = grammarConcepts[conceptIndex];
+
+            let cumulativeTableHTML = '';
+            if (pageNumber > 1) {
+                const headers = grammarConcepts.slice(0, conceptIndex).map(c => `<th class="p-2 border border-[#d5c4a1] arabic-text-small">${c.name}</th>`).join('');
+                const rows = Object.values(roots).map(forms => {
+                    const cells = grammarConcepts.slice(0, conceptIndex).map(c => `<td class="p-2 border border-[#d5c4a1] arabic-text-medium">${forms[c.key]}</td>`).join('');
+                    return `<tr class="bg-[#ebdbb2]"><td class="p-2 border border-[#d5c4a1] arabic-text-medium">${forms.display}</td>${cells}</tr>`;
+                }).join('');
+                cumulativeTableHTML = `
+                    <div class="mt-8 mb-10">
+                        <h3 class="text-xl font-bold text-center mb-4 text-[#79740e]">Your Word Table (So Far)</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-center border-collapse">
+                                <thead class="bg-[#d5c4a1]"><tr><th class="p-2 border border-[#d5c4a1] arabic-text-small">الجذر</th>${headers}</tr></thead>
+                                <tbody>${rows}</tbody>
+                            </table>
+                        </div>
+                    </div>`;
+            }
+            
+            const practiceHTML = Object.entries(roots).map(([rootKey, forms]) => {
+                const placeholderText = pageNumber === 1 ? stripDiacritics(forms[concept.key]) : '';
+                const meaningText = forms.meanings[concept.key];
+                return `
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-2/5 md:w-1/4 text-right pr-4">
+                        <p class="font-bold text-lg" style="direction: ltr;">Root:</p>
+                        <p class="arabic-text-medium root-display">${forms.display}</p>
+                        <p class="text-sm italic text-[#504945]" style="direction: ltr;">(${meaningText})</p>
+                    </div>
+                    <div class="w-3/5 md:w-3/4">
+                        <input id="input-${pageNumber}-${rootKey}" type="text" class="arabic-text-large w-full p-2 border-2 border-[#d5c4a1] bg-[#fbf1c7] rounded-lg text-center" placeholder="${placeholderText}">
+                    </div>
+                </div>`;
+            }).join('');
+
+            return `
+                <div id="page-${pageNumber}" class="page-content bg-[#f2e5bc] p-6 md:p-8 rounded-xl shadow-lg border border-[#d5c4a1]">
+                    <header class="text-center mb-6 border-b border-[#d5c4a1] pb-6">
+                        <p class="text-sm font-semibold text-[#504945]" style="direction: ltr;">Lesson ${pageNumber} of 6</p>
+                        <h1 class="text-3xl md:text-4xl font-bold text-[#076678] arabic-text-large">${concept.name}</h1>
+                    </header>
+                    <div class="text-center bg-[#ebdbb2] p-4 rounded-lg mb-6">
+                         <h2 class="text-xl font-bold mb-2">The Rule</h2>
+                         <p class="text-lg" style="direction: ltr;">${concept.rule}</p>
+                         <p class="arabic-text-large text-[#9d0006] mt-2">${concept.model}</p>
+                    </div>
+                    ${cumulativeTableHTML}
+                    <div><h2 class="text-xl font-bold text-center mb-4">Practice</h2>${practiceHTML}</div>
+                </div>`;
+        }
+        
+        function generateQuizPageHTML() {
+            const headers = grammarConcepts.map(c => `<th class="p-2 border border-[#d5c4a1] arabic-text-small">${c.name}</th>`).join('');
+            const rows = Object.entries(roots).map(([rootKey, forms]) => {
+                const cells = grammarConcepts.map(c => `<td class="p-1 border border-[#d5c4a1]"><input id="quiz-${rootKey}-${c.key}" type="text" class="arabic-text-medium w-full p-1 bg-[#fbf1c7] text-center" placeholder=""></td>`).join('');
+                return `<tr><td class="p-2 border font-bold border-[#d5c4a1] bg-[#ebdbb2] arabic-text-medium">${forms.display}</td>${cells}</tr>`;
+            }).join('');
+        
+            return `
+                <div id="page-7" class="page-content bg-[#f2e5bc] p-6 md:p-8 rounded-xl shadow-lg border border-[#d5c4a1]">
+                    <header class="text-center mb-6 border-b border-[#d5c4a1] pb-6">
+                        <p class="text-sm font-semibold text-[#504945]" style="direction: ltr;">Page 7 of 7</p>
+                        <h1 class="text-3xl md:text-4xl font-bold text-[#9d0006]">The Final Quiz</h1>
+                        <p class="mt-2 text-lg" style="direction: ltr;">Fill in the entire table with all the correct forms.</p>
+                    </header>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-center border-collapse">
+                            <thead class="bg-[#d5c4a1]"><tr><th class="p-2 border border-[#d5c4a1] arabic-text-small">الجذر</th>${headers}</tr></thead>
+                            <tbody>${rows}</tbody>
+                        </table>
+                    </div>
+                </div>`;
+        }
+
+        function renderCurrentPage() {
+            const container = document.getElementById('lesson-container');
+            document.getElementById('check-button').classList.toggle('hidden', currentPage === totalPages);
+            document.getElementById('show-answers-button').classList.toggle('hidden', currentPage === totalPages);
+            document.getElementById('quiz-check-button').classList.toggle('hidden', currentPage !== totalPages);
+            
+            if (currentPage < totalPages) {
+                container.innerHTML = generateLessonPageHTML(currentPage);
+            } else {
+                container.innerHTML = generateQuizPageHTML();
+            }
+            document.getElementById('next-button').classList.add('hidden');
+            updateNav();
+        }
+        
+        function showAnswers() {
+            if (currentPage === totalPages) { // Quiz page
+                 Object.keys(roots).forEach(rootKey => {
+                    grammarConcepts.forEach(concept => {
+                        const input = document.getElementById(`quiz-${rootKey}-${concept.key}`);
+                        input.value = roots[rootKey][concept.key];
+                        input.disabled = true;
+                    });
+                });
+            } else { // Lesson pages
+                const concept = grammarConcepts[currentPage - 1];
+                Object.keys(roots).forEach(rootKey => {
+                    const input = document.getElementById(`input-${currentPage}-${rootKey}`);
+                    input.value = roots[rootKey][concept.key];
+                    input.disabled = true;
+                });
+            }
+        }
+
+        function checkCurrentPageAnswers() {
+            let allCorrect = true;
+            const concept = grammarConcepts[currentPage - 1];
+            Object.keys(roots).forEach(rootKey => {
+                const input = document.getElementById(`input-${currentPage}-${rootKey}`);
+                const correctAnswer = roots[rootKey][concept.key];
+                if (stripDiacritics(input.value.trim()) === stripDiacritics(correctAnswer)) {
+                    input.value = correctAnswer;
+                    input.classList.add('feedback-correct');
+                    input.classList.remove('feedback-incorrect');
+                    input.disabled = true;
+                } else {
+                    input.classList.add('feedback-incorrect');
+                    input.classList.remove('feedback-correct');
+                    allCorrect = false;
+                }
+            });
+            if (allCorrect) {
+                document.getElementById('next-button').classList.remove('hidden');
+                document.getElementById('check-button').classList.add('hidden');
+                document.getElementById('show-answers-button').classList.add('hidden');
+            }
+        }
+        
+        function checkQuiz() {
+            let allQuizCorrect = true;
+            Object.keys(roots).forEach(rootKey => {
+                grammarConcepts.forEach(concept => {
+                    const input = document.getElementById(`quiz-${rootKey}-${concept.key}`);
+                    const correctAnswer = roots[rootKey][concept.key];
+                    if (stripDiacritics(input.value.trim()) === stripDiacritics(correctAnswer)) {
+                        input.value = correctAnswer;
+                        input.classList.add('feedback-correct');
+                        input.classList.remove('feedback-incorrect');
+                        input.disabled = true;
+                    } else {
+                        input.classList.add('feedback-incorrect');
+                        input.classList.remove('feedback-correct');
+                        allQuizCorrect = false;
+                    }
+                });
+            });
+            if (allQuizCorrect) {
+                const quizHeader = document.querySelector('#page-7 header');
+                if (!quizHeader.querySelector('.success-message')) { // Prevent multiple messages
+                    const successMessage = document.createElement('p');
+                    successMessage.textContent = 'Excellent! You have mastered all the forms!';
+                    successMessage.className = 'success-message mt-4 text-xl font-bold text-[#79740e]';
+                    successMessage.style.direction = 'ltr';
+                    quizHeader.appendChild(successMessage);
+                }
+                document.getElementById('quiz-check-button').classList.add('hidden');
+                document.getElementById('show-answers-button').classList.add('hidden');
+            }
+        }
+
+        function goToNextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderCurrentPage();
+            }
+        }
+
+        // Initial setup
+        generateNav();
+        renderCurrentPage();
+
+    </script>
+</body>
+</html>
+
