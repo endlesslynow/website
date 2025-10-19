@@ -712,37 +712,66 @@
 /* Add this new rule anywhere in your <style> block */
 .updates-label {
     position: absolute;
-    top: 1rem;
+    top: 1.5rem;
     left: 2rem;
     font-style: italic;
     color: #555;
     font-size: 1.3rem;
+    z-index: 10;
 }
 
 .updates-container {
     max-width: 1000px;
     margin: 0 auto 3rem auto;
     font-size: 1.1rem;
-    text-align: left;
-    background: rgba(240, 244, 248, 0.25); /* <-- CHANGE THIS LINE */
+    background: rgba(240, 244, 248, 0.75);
     border-radius: 8px;
-    padding: 1rem 2rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: relative; /* <-- ADD THIS LINE */
+    position: relative;
+    padding: 4rem 2rem 1.5rem 2rem;
 }
 
-    .update-item {
-        display: grid;
-        grid-template-columns: 160px 2fr 3fr;
-        gap: 1.5rem;
-        padding: 1rem 0;
-        border-bottom: 2px solid #e0e4e8;
-        align-items: center;
-    }
+.updates-slider-wrapper {
+    overflow: hidden;
+}
 
-    .update-item:last-child {
-        border-bottom: none;
-    }
+.updates-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.update-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 160px 2fr 3fr;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.updates-nav {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    display: flex;
+    gap: 0.75rem;
+    z-index: 10;
+}
+
+.updates-nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #b5bab6;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.updates-nav-dot.active {
+    background: #9E6B4A;
+}
 
     .update-date {
         font-weight: bold;
@@ -767,40 +796,18 @@
             gap: 0.5rem;
         }
         .updates-container {
-            padding: 1rem;
+            padding: 4rem 1rem 1.5rem 1rem;
         }
     }
 </style>
 
 <div class="updates-container">
-    <span class="updates-label">Latest Updates</span> <div class="update-item"></div>
-    <div class="update-item">
-        <div class="update-date">October 18, 2025</div>
-        <div class="update-section">
-            <a href="#afrin_archive_project">The Archive of Afrin</a>
-        </div>
-        <div class="update-description">Added and consolidated villages to better reflect reality. There were previously 367 villages listed as seperate villages, which was not correct. There are now 350 distinct villages in the archive.</div>
-    </div>
-    <div class="update-item">
-        <div class="update-date">October 14, 2025</div>
-        <div class="update-section">
-            <a href="#research_audio_archive_project">Kurdish Research Audio Archive</a>
-        </div>
-        <div class="update-description">Added 8 new Audio Files.</div>
-    </div>
-    <div class="update-item">
-        <div class="update-date">October 12, 2025</div>
-        <div class="update-section">
-            <a href="#endlessly-youtube_project">Endlessly Now Youtube Channel</a> + <a href="#charts_project">Charts and Posters</a>
-        </div>
-        <div class="update-description">Made a new Video and Poster about the Ottoman Empire during the Little Ice Age.</div>
-    </div>
-    <div class="update-item">
-        <div class="update-date">October 9, 2025</div>
-        <div class="update-section">
-            <a href="#afrin_archive_project">The Archive of Afrin</a>
-        </div>
-        <div class="update-description">Added foundational data to hundreds of village files.</div>
+    <span class="updates-label">Latest Updates</span>
+    <div class="updates-nav"></div>
+    <div class="updates-slider-wrapper">
+        <div class="updates-slider">
+    <!-- Updates will be loaded here by JavaScript -->
+</div>
     </div>
 </div>
                 <div id="projects_grid_container">
@@ -1090,6 +1097,92 @@
 
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        /* --- DYNAMIC UPDATES SLIDER SCRIPT --- */
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.querySelector('.updates-slider');
+            const navContainer = document.querySelector('.updates-nav');
+            if (!slider || !navContainer) return;
+
+            // Fetch updates from the JSON file
+            fetch('updates.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(updates => {
+                    // Clear any placeholder content
+                    slider.innerHTML = '';
+                    navContainer.innerHTML = '';
+
+                    // Generate HTML for each update
+                    updates.forEach(update => {
+                        const sectionsHTML = update.sections.map(section => 
+                            `<a href="${section.link}">${section.text}</a>`
+                        ).join(' + ');
+
+                        const slideHTML = `
+                            <div class="update-item">
+                                <div class="update-date">${update.date}</div>
+                                <div class="update-section">${sectionsHTML}</div>
+                                <div class="update-description">${update.description}</div>
+                            </div>`;
+                        slider.insertAdjacentHTML('beforeend', slideHTML);
+                    });
+                    
+                    // Now that slides are loaded, initialize the slider functionality
+                    initializeSlider();
+                })
+                .catch(error => {
+                    console.error('Error fetching or parsing updates:', error);
+                    slider.innerHTML = `<div class="update-item" style="text-align: center; display: block; padding: 1rem;">Failed to load updates.</div>`;
+                });
+
+            function initializeSlider() {
+                const slides = Array.from(slider.children);
+                if (slides.length === 0) return;
+
+                let currentIndex = 0;
+                let slideInterval;
+
+                // Create navigation dots
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('updates-nav-dot');
+                    dot.addEventListener('click', () => {
+                        goToSlide(i);
+                        resetInterval();
+                    });
+                    navContainer.appendChild(dot);
+                });
+
+                const dots = Array.from(navContainer.children);
+
+                const goToSlide = (index) => {
+                    if (index < 0 || index >= slides.length) return;
+                    slider.style.transform = `translateX(-${index * 100}%)`;
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[index].classList.add('active');
+                    currentIndex = index;
+                };
+
+                const nextSlide = () => {
+                    const nextIndex = (currentIndex + 1) % slides.length;
+                    goToSlide(nextIndex);
+                };
+
+                const resetInterval = () => {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(nextSlide, 4000); // 1 second interval
+                };
+
+                // Initialize
+                goToSlide(0);
+                resetInterval();
+            }
+        });
     </script>
 </body>
 </html>
