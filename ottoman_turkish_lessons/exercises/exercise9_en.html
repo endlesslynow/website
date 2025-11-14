@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Exercise: Lesson 9 Ottoman Phrases</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Ottoman-inspired color scheme (Matches Lesson 8) */
+        :root {
+            --ottoman-blue: #0081C9; --ottoman-red: #C70039; --ottoman-gold: #FFB100;
+            --ottoman-teal: #00B8A9; --ottoman-navy: #023E7D; --ottoman-cream: #FFF8E1;
+            --ottoman-light-blue: #E0F7FF; --ottoman-pink: #FFCCDF; --ottoman-light-teal: #CCFCF6;
+            --body-background: #1D2F6F; --text-color: #1A3A5A; --text-light: #FFFFFF;
+        }
+        body { font-family: 'Nunito', Arial, sans-serif; line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 15px; background-color: var(--body-background); background-image: url('../ottoman_background.png'); background-repeat: repeat; background-size: 300px auto; box-sizing: border-box; color: var(--text-color); }
+        /* Styles for Ottoman text using Noto Naskh Arabic */
+        [lang="ar"], td:first-child, .ottoman-text, .matching-item.ottoman-text, .fill-input.ottoman-input, .key-btn, .correct-answer-display { font-family: 'Noto Naskh Arabic', serif; font-size: 1.4em; line-height: 1.5; font-weight: 500; }
+        .matching-item.ottoman-text, .key-btn { text-align: center; }
+        .fill-input.ottoman-input { text-align: right; font-size: 1.6em; }
+        /* Ensure table cells with Ottoman text align correctly */
+        td:first-child, td[lang="ar"] { text-align: left !important; padding-top: 18px; padding-bottom: 18px; }
+        * { box-sizing: border-box; }
+        h1, h2, h3 { color: var(--ottoman-navy); font-weight: 700; line-height: 1.3; }
+        h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.8rem; color: var(--text-light); }
+        h2 { font-size: 1.5rem; margin-top: 30px; }
+        h3 { font-size: 1.2rem; margin-top: 25px; color: var(--ottoman-blue); }
+        .section { background-color: var(--ottoman-light-blue); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); background-color: #C0E0F0; }
+        .title-section { background-color: var(--ottoman-navy); border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        .title-section h1 { text-align: left; border-bottom: 3px solid var(--ottoman-gold); padding-bottom: 15px; margin-bottom: 0; margin-top: 0; font-size: 1.8rem; color: var(--text-light); }
+        th, td { padding: 12px 15px; text-align: left; border: none; }
+        th { background-color: var(--ottoman-blue); color: var(--text-light); font-weight: 600; }
+        tr:nth-child(even) { background-color: var(--ottoman-light-blue); }
+        tr:hover { background-color: #B9E7FE; }
+
+        /* Navigation */
+        .nav-buttons-container { display: flex; justify-content: space-between; margin-top: 30px; margin-bottom: 40px; padding: 0 10px; }
+        .nav-button { background-color: var(--ottoman-navy); color: var(--text-light); border: 3px solid var(--ottoman-blue); border-radius: 12px; padding: 15px 20px; font-family: 'Nunito', Arial, sans-serif; font-weight: 600; font-size: 1.3rem; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; text-decoration: none; text-align: center; display: inline-block; line-height: 1.4; }
+        .nav-button:hover { background-color: var(--ottoman-blue); border-color: var(--ottoman-navy); }
+
+        @media (max-width: 600px) {
+            .section, .title-section { padding: 20px 15px; border-radius: 10px; }
+            h1 { font-size: 1.6rem; padding-bottom: 10px; } h2 { font-size: 1.3rem; } h3 { font-size: 1.1rem; }
+            table { display: block; overflow-x: auto; white-space: nowrap; } th, td { padding: 10px 12px; } th { font-size: 0.9rem; padding: 10px 8px; }
+            .nav-buttons-container { flex-direction: column; gap: 15px; } .nav-button { width: 100%; margin: 0; font-size: 1rem;}
+            
+            /* Mobile optimizations for exercise sentences */
+            .exercise-sentence { margin-bottom: 12px; padding: 12px 8px; }
+            .exercise-header { flex-direction: row; align-items: center; justify-content: space-between; }
+            .exercise-number { font-size: 1rem; margin-right: 8px; }
+            .exercise-english { font-size: 0.95rem; margin-top: 10px; padding: 8px; background-color: #f9f9f9; border-radius: 4px; }
+            .exercise-arrow { font-size: 1rem; }
+            
+            /* Mobile optimizations for dialogue table */
+            .dialogue-table { display: table !important; width: 100% !important; font-size: 0.9em; overflow-x: auto; }
+            .dialogue-table th, .dialogue-table td { display: table-cell !important; white-space: normal !important; word-wrap: break-word !important; padding: 8px 6px !important; }
+            .translation { font-size: 0.8rem; margin-top: 6px; line-height: 1.3; }
+        }
+
+        @media (max-width: 450px) {
+            body { padding: 10px; }
+        }
+
+         .congrats-ottoman { font-family: 'Amiri', serif; font-size: 30px; line-height: 1.4; }
+         .congrats-english { font-size: 1.2em; margin-top: 10px; }
+         .prev-button { margin-right: auto; }
+         .next-button, .exercises-button { margin-left: 10px; }
+
+         /* Additional styles for the dialogue table */
+         .dialogue-table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); background-color: #F0FAFF; }
+         .dialogue-table th { background-color: var(--ottoman-blue); color: var(--text-light); padding: 12px 15px; text-align: center; font-weight: 600; }
+         .dialogue-table td { padding: 12px 15px; border-bottom: 1px solid #B9E7FE; cursor: pointer; position: relative; transition: background-color 0.2s; }
+         .dialogue-table td:hover { background-color: #B9E7FE; }
+         .ottoman-cell { position: relative; }
+         .translation { display: block; margin-top: 5px; font-style: normal; color: #333; font-size: 0.9rem; }
+
+         /* Style for the image container */
+         .ottoman-image-container { text-align: center; margin: 20px 0; }
+         .ottoman-image-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); background-color: var(--ottoman-cream); }
+         
+         /* Style for exercise sentences */
+         .exercise-sentence { margin-bottom: 15px; padding: 10px; cursor: pointer; transition: background-color 0.2s; }
+         .exercise-sentence:hover { background-color: var(--ottoman-light-blue); border-radius: 4px; }
+         .exercise-header { display: flex; align-items: center; justify-content: space-between; }
+         .exercise-english { font-family: 'Nunito', Arial, sans-serif; font-size: 1rem; line-height: 1.4; color: #333; display: none; margin-top: 8px; text-align: left; }
+         .exercise-english.show { display: block; }
+         .exercise-number { font-family: 'Nunito', Arial, sans-serif; font-size: 1.2rem; font-weight: 600; color: var(--ottoman-blue); margin-right: 10px; }
+         .exercise-arrow { font-size: 0.8rem; color: var(--ottoman-blue); transition: transform 0.3s ease; }
+         .exercise-arrow.rotated { transform: rotate(180deg); }
+
+    </style>
+</head>
+<body>
+    <div class="title-section">
+        <h1>Exercises for Lesson 9</h1>
+    </div>
+
+    <div class="section">
+        <h2>Important Note About The Exercises</h2>
+        <p>You are under no obligation to complete these exercises. There are a lot of them and you may not need to do them all to get the point. Feel free to pick and choose whatever you'd like to do or not do.</p>
+        <div style="background-color: #FFD6E0; padding: 15px 20px; margin: 15px 0; position: relative; border-radius: 4px; overflow: hidden;">
+            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 8px; background-color: #FF4D6D;"></div>
+            <p style="margin: 0; padding-left: 10px; color: #1A3A5A;">
+                <strong>Note:</strong> You must know the Lesson 9 Vocabulary from the vocabulary section to do these exercises. Also, some exercises, especially the dialogue, will still have new vocabulary!
+            </p>
+        </div>
+
+        <div class="nav-buttons-container">
+            <a href="#dialogue-section" class="nav-button">Dialogue</a>
+            <a href="#ottomantext-section" class="nav-button">Ottoman Text</a>
+        </div>
+    </div>
+
+    <div class="section" id="dialogue-section">
+        <h2>Conversation <span class="ottoman-text" style="font-size: 1.2em;">مکالمه</span></h2>
+        <p>Click on any phrase to see its English translation.</p>
+
+        <table class="dialogue-table" id="dialogue-table">
+            <thead>
+                <tr>
+                    <th style="width: 50%;">Ottoman Text</th>
+                    <th style="width: 50%;">Ottoman Text</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'He is Mr. Joseph, the son of the honey-seller.')">بالجی زاده یوسف افندی در.</td>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'Who is this man?')">بو آدم کیم در؟</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'I am of the Austrian nation.')">بن نمچه ملتندن ایم.</td>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'Where are you from?')">سن نره لی سین؟</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'My monthly salary is three French liras.')">آيلغم اوچ فرانسیز لیره سیدر.</td>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'How many piasters is your monthly salary?')">آيلقك قاچ غروش در؟</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'I have one Ottoman lira.')">بر عثمانلو لیراسی پارهم وار.</td>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'Do you have much money?')">چوق پاره ك وار می؟</td>
+                </tr>
+                <tr>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'He was an emperor of the French.')">فرانسیزلرك بر ایمپراطوری ایدی.</td>
+                    <td class="ottoman-cell ottoman-text" onclick="showTranslation(this, 'Who was Napoleon?')">ناپولیون کیم ایدی؟</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="ottomantext-section">
+        <h2>Original Ottoman Text - Exercise</h2>
+        <p>This is the original Ottoman text for the exercises below. Reading this provides "real" Ottoman reading practice.</p>
+        <div class="ottoman-image-container">
+            <img src="ex_9.png"
+                 alt="Original Ottoman Text - Lesson 9 Exercise"
+                 onerror="this.onerror=null; this.src='https://placehold.co/800x400/FFF8E1/1A3A5A?text=Image+ex_9.png+missing';">
+        </div>
+        
+        <p style="margin-top: 15px;">Congratulations on reading your ninth Ottoman text!</p>
+        
+        <h3 style="color: var(--ottoman-navy); margin-top: 30px; margin-bottom: 20px;">English Translations:</h3>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(1)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 1</span><span class="exercise-arrow" id="arrow1">▼</span></div>
+            <div class="exercise-english" id="exercise1">Who is that man? — He is an American gentleman. What is his name? — His name is Mr. Henry Riggs.</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(2)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 2</span><span class="exercise-arrow" id="arrow2">▼</span></div>
+            <div class="exercise-english" id="exercise2">Who is this tall (long-statured) foreigner? — He is a gentleman of French nationality.</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(3)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 3</span><span class="exercise-arrow" id="arrow3">▼</span></div>
+            <div class="exercise-english" id="exercise3">Who was Cæsar (chézar)? — He was one of the great (emperors) of the ancient Romans.</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(4)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 4</span><span class="exercise-arrow" id="arrow4">▼</span></div>
+            <div class="exercise-english" id="exercise4">Where is the city of Rome? — It is in Italy, in the country of the Italians.</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(5)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 5</span><span class="exercise-arrow" id="arrow5">▼</span></div>
+            <div class="exercise-english" id="exercise5">Shékérji oghlou (confectioner's son) Ahméd Agha is a stranger; his occupation is that of a confectioner; his father and his grandfather too were sugarmakers; they were of the guild (ésnaf) of confectioners.</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(6)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 6</span><span class="exercise-arrow" id="arrow6">▼</span></div>
+            <div class="exercise-english" id="exercise6">The salary of this clerk is two hundred piastres.</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(7)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 7</span><span class="exercise-arrow" id="arrow7">▼</span></div>
+            <div class="exercise-english" id="exercise7">The bookseller sells books; the treacleseller sells treacle.</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(8)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 8</span><span class="exercise-arrow" id="arrow8">▼</span></div>
+            <div class="exercise-english" id="exercise8">I am not a native of this city, I am a stranger.</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(9)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 9</span><span class="exercise-arrow" id="arrow9">▼</span></div>
+            <div class="exercise-english" id="exercise9">Your name is Ali, and my name too is Ali, we two are namesakes.</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(10)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 10</span><span class="exercise-arrow" id="arrow10">▼</span></div>
+            <div class="exercise-english" id="exercise10">My lovely house is very small, but I am very poor (There is poverty on my head).</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(11)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 11</span><span class="exercise-arrow" id="arrow11">▼</span></div>
+            <div class="exercise-english" id="exercise11">Your brother and I are of the same occupation and age.</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(12)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 12</span><span class="exercise-arrow" id="arrow12">▼</span></div>
+            <div class="exercise-english" id="exercise12">The man without money is poor; the man with money is rich.</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(13)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 13</span><span class="exercise-arrow" id="arrow13">▼</span></div>
+            <div class="exercise-english" id="exercise13">Although that is a wooded spot, yet it is dry, there is no water.</div>
+        </div>
+        
+        <div class="exercise-sentence" onclick="toggleExerciseTranslation(14)">
+            <div class="exercise-header"><span class="exercise-number">Sentence 14</span><span class="exercise-arrow" id="arrow14">▼</span></div>
+            <div class="exercise-english" id="exercise14">What is the occupation of your companion? — My companion is a stone-cutter, his father was a baker.</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 style="text-align: center;">
+            <span class="congrats-ottoman">تبريكات<br>درس طقوزنجی اكمال ايتدكز</span><br><br>
+            <span class="congrats-english" style="display: block; font-size: inherit;">Congratulations<br>You finished the exercises for Lesson 9</span>
+        </h2>
+    </div>
+
+    <div class="nav-buttons-container">
+        <a href="../../landing_pages/ottoman_lessons_en.html" class="nav-button prev-button">Back to all lessons</a>
+    </div>
+
+    <script>
+        // Function to show/hide translations when dialogue cells are clicked
+        function showTranslation(element, translation) {
+            const existingTranslation = element.querySelector('.translation');
+            if (existingTranslation) {
+                element.removeChild(existingTranslation);
+            } else {
+                const translationSpan = document.createElement('span');
+                translationSpan.className = 'translation';
+                translationSpan.textContent = translation;
+                element.appendChild(translationSpan);
+            }
+        }
+
+        // Function to toggle individual exercise translations
+        function toggleExerciseTranslation(number) {
+            const translation = document.getElementById('exercise' + number);
+            const arrow = document.getElementById('arrow' + number);
+            
+            if (translation.classList.contains('show')) {
+                translation.classList.remove('show');
+                arrow.classList.remove('rotated');
+            } else {
+                translation.classList.add('show');
+                arrow.classList.add('rotated');
+            }
+        }
+    </script>
+</body>
+</html>
