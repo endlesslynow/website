@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roger Lescot</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
+
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        /* Original audio player styles */
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+            position: relative;
+             z-index: 2; /* Ensure player is above ::before */
+        }
+
+        audio {
+            width: 100%;
+            filter: sepia(20%);
+        }
+
+        .audio-download {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 5px;
+            color: #5a4a2e;
+            text-decoration: none;
+            font-weight: 500;
+             position: relative; z-index: 2;
+        }
+
+        .audio-download:hover {
+            text-decoration: underline;
+        }
+
+        .audio-icon {
+            margin-right: 8px;
+        }
+
+        /* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+
+        /* Original audio player style adjustment inside wrapper */
+        #audioPlayer { /* Selects the audio element specifically */
+            flex-grow: 1;
+        }
+
+        /* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Roger Lescot</h1>
+
+        <div class="audio-player">
+            <div class="player-wrapper">
+                <audio id="audioPlayer" controls>
+                    <source src="../audio/Roger_Lescot_Scholar_Spy_Nation_Builder.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <button id="rewindBtn" class="rewind-button">
+                    ⏪︎
+                </button>
+            </div>
+            <a href="../audio/Roger_Lescot_Scholar_Spy_Nation_Builder.mp3" download class="audio-download">
+                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Audio File
+            </a>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p>The sources provide a detailed study of Roger Lescot (1914–1975), a French Orientalist whose career uniquely bridged rigorous scholarship and state diplomacy, defining the Kurdish-French connection during the French Mandate era. Lescot received elite training in Middle Eastern languages, but his crucial specialization in Kurdish signaled that the French state intended to use him as a specialist in the &quot;Kurdish question&quot; for intelligence and administrative purposes. Functioning with a &quot;dual casquette&quot; as both scholar and state agent, Lescot actively collaborated with exiled Kurdish nationalists, most notably the Bedirkhan brothers, providing vital academic and political validation for their cultural nation-building goals. This collaboration resulted in foundational works like the Grammaire Kurde and his influential report, Bases éventuelles d&#x27;une politique kurde, which successfully advocated for French cultural patronage as a means of strategic anti-communism. Ultimately, Lescot institutionalized this alliance by creating the first Kurdish lectureship at INALCO and then transferring the post to his nationalist collaborator, Kamuran Bedirkhan, solidifying the Bedirkhans&#x27; version of Kurdish culture as the academic standard in Europe.</p>
+        </div>
+
+        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+            <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"></path>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return to Podcast Archive
+        </a>
+
+        <div class="download-section">
+            <h2>Related Document</h2>
+            <a href="../docs/Roger Lescot_ Kurdish Studies and Diplomacy.pdf" class="download-btn" download>
+                <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ul>
+            <li>​ Roger Lescot - Kurdipedia, accessed November 16, 2025,<a href="https://www.kurdipedia.org/Default.aspx?q=20220609143902416999&amp;lng=8" target="_blank">https://www.kurdipedia.org/Default.aspx?q=20220609143902416999&amp;lng=8</a></li>
+            <li>​ Roger Lescot | The National Library of Israel, accessed November 16, 2025,<a href="https://www.nli.org.il/en/a-topic/987007273187605171" target="_blank">https://www.nli.org.il/en/a-topic/987007273187605171</a></li>
+            <li>​ Roger Lescot - Wikipedia, accessed November 16, 2025,<a href="https://en.wikipedia.org/wiki/Roger_Lescot" target="_blank">https://en.wikipedia.org/wiki/Roger_Lescot</a></li>
+            <li>​ Roger Lescot - Kurdolog 1914 - 1975 - SARA Distribution, accessed November 16,2025, <a href="https://www.saradistribution.com/rogerlescot.htm" target="_blank">https://www.saradistribution.com/rogerlescot.htm</a></li>
+            <li>​ Kurmanji - Wikipedia, accessed November 16, 2025,<a href="https://en.wikipedia.org/wiki/Kurmanji" target="_blank">https://en.wikipedia.org/wiki/Kurmanji</a></li>
+            <li>​ Adaptation studies in Europe - SciSpace, accessed November 16, 2025,<a href="https://scispace.com/pdf/adaptation-studies-in-europe-3z67rjdlxe.pdf" target="_blank">https://scispace.com/pdf/adaptation-studies-in-europe-3z67rjdlxe.pdf</a></li>
+            <li>​ KURDISH LANGUAGE ii. History of Kurdish Studies - Encyclopaedia ..., accessedNovember 16, 2025,<a href="https://www.iranicaonline.org/articles/kurdish-language-ii-history-of-kurdish-studies/" target="_blank">https://www.iranicaonline.org/articles/kurdish-language-ii-history-of-kurdish-studies/</a></li>
+            <li>​ Les constructions de l&#x27;identité kurde sous l&#x27;influence de la ..., accessed November16, 2025, <a href="https://journals.openedition.org/ejts/751?lang=en" target="_blank">https://journals.openedition.org/ejts/751?lang=en</a></li>
+            <li>​ The Kurdish Cultural Movement in Mandatory Syria and Lebanon: An UnfinishedProject of “National Renaissance,” 1932–46 | Iranian Studies, accessed November16, 2025,<a href="https://www.cambridge.org/core/journals/iranian-studies/article/kurdish-cultural-movement-in-mandatory-syria-and-lebanon-an-unfinished-project-of-national-renaissance-193246/32E000AD54E37AB1693464D3CED174A2" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/kurdish-cultural-movement-in-mandatory-syria-and-lebanon-an-unfinished-project-of-national-renaissance-193246/32E000AD54E37AB1693464D3CED174A2</a></li>
+            <li>​The Kurdish Cultural Movement in Mandatory Syria and Lebanon: An UnfinishedProject of “National Renaissance,” 1932–46 - ResearchGate, accessed November16, 2025,<a href="https://www.researchgate.net/publication/264562649_The_Kurdish_Cultural_Movement_in_Mandatory_Syria_and_Lebanon_An_Unfinished_Project_of_National_Renaissance_1932-46" target="_blank">https://www.researchgate.net/publication/264562649_The_Kurdish_Cultural_Movement_in_Mandatory_Syria_and_Lebanon_An_Unfinished_Project_of_National_Renaissance_1932-46</a></li>
+            <li>​A Life Devoted to the Kurds in: Kurdish Studies Journal Volume 3 Issue 1 (2025) -Brill, accessed November 16, 2025,<a href="https://brill.com/view/journals/ksj/3/1/article-p109_6.xml" target="_blank">https://brill.com/view/journals/ksj/3/1/article-p109_6.xml</a></li>
+            <li>​Jordi TEJEL GORGAS World Congress of KURDISH STUDIES - Institut kurde deParis, accessed November 16, 2025,<a href="https://www.institutkurde.org/en/conferences/kurdish_studies_irbil_2006/Jordi+TEJEL+GORGAS.html" target="_blank">https://www.institutkurde.org/en/conferences/kurdish_studies_irbil_2006/Jordi+TEJEL+GORGAS.html</a></li>
+            <li>​Full article: Musical spirits and poetic tongues: oral traditions in the culturalpolitics of Kurdish intellectuals (1920s-1940s), accessed November 16, 2025,<a href="https://www.tandfonline.com/doi/full/10.1080/13530194.2022.2025763" target="_blank">https://www.tandfonline.com/doi/full/10.1080/13530194.2022.2025763</a></li>
+            <li>​Syria&#x27;s Kurds: History, politics and society, accessed November 16, 2025,<a href="https://masoudmanaf.wordpress.com/wp-content/uploads/2014/11/syrian-kurds.pdf" target="_blank">https://masoudmanaf.wordpress.com/wp-content/uploads/2014/11/syrian-kurds.pdf</a></li>
+            <li>​Knowledge, ideology and power. Deconstructing Kurdish Studies - OpenEditionJournals, accessed November 16, 2025,<a href="https://journals.openedition.org/ejts/pdf/777" target="_blank">https://journals.openedition.org/ejts/pdf/777</a></li>
+            <li>​The Kurdish question, its origins and causes - OpenEdition Books, accessedNovember 16, 2025, <a href="https://books.openedition.org/ceup/2057?lang=en" target="_blank">https://books.openedition.org/ceup/2057?lang=en</a></li>
+            <li>​Hawar Archive – NYKCC - New York Kurdish Cultural Center, accessed November16, 2025, <a href="https://nykcc.org/langauge/hawar-archive/" target="_blank">https://nykcc.org/langauge/hawar-archive/</a></li>
+            <li>​Musical spirits and poetic tongues: oral traditions in the cultural politics of Kurdishintellectuals (1920s-1940s) - ResearchGate, accessed November 16, 2025,<a href="https://www.researchgate.net/publication/357704195_Musical_spirits_and_poetic_tongues_oral_traditions_in_the_cultural_politics_of_Kurdish_intellectuals_1920s-1940s" target="_blank">https://www.researchgate.net/publication/357704195_Musical_spirits_and_poetic_tongues_oral_traditions_in_the_cultural_politics_of_Kurdish_intellectuals_1920s-1940s</a></li>
+            <li>​Translators&#x27; Formative Agency in the Periodical Hawar (1932–1943) - Brill,accessed November 16, 2025,<a href="https://brill.com/display/book/9789004726666/9789004726666_webready_content_text.pdf" target="_blank">https://brill.com/display/book/9789004726666/9789004726666_webready_content_text.pdf</a></li>
+            <li>​Formation of a Kurdish Cultural Identity through Translations in ... - Brill, accessedNovember 16, 2025,<a href="https://brill.com/display/book/9789004726666/BP000006.pdf" target="_blank">https://brill.com/display/book/9789004726666/BP000006.pdf</a></li>
+            <li>​Introduction - Brill, accessed November 16, 2025,<a href="https://brill.com/display/book/9789004726666/BP000001.pdf" target="_blank">https://brill.com/display/book/9789004726666/BP000001.pdf</a></li>
+            <li>​The Yazidis - University of Exeter, accessed November 16, 2025,<a href="https://ore.exeter.ac.uk/ndownloader/files/56774897" target="_blank">https://ore.exeter.ac.uk/ndownloader/files/56774897</a></li>
+            <li>​Enquête sur les Yezidis de Syrie et du Djebel Sindjār by Roger Lescot | OpenLibrary, accessed November 16, 2025,<a href="https://openlibrary.org/books/OL14023969M/Enqu%C3%AAte_sur_les_Yezidis_de_Syrie_et_du_Djebel_Sindja%CC%84r" target="_blank">https://openlibrary.org/books/OL14023969M/Enqu%C3%AAte_sur_les_Yezidis_de_Syrie_et_du_Djebel_Sindja%CC%84r</a></li>
+            <li>​Textes kurdes ; [éd. par] Roger Lescot ; [publ. par l&#x27;] Institut français de Damas -Altaïr, accessed November 16, 2025,<a href="https://altair.imarabe.org/notice.php?q=id:8272" target="_blank">https://altair.imarabe.org/notice.php?q=id:8272</a></li>
+            <li>​studies on &quot;mem u zin&quot; , a kurdish - La bibliothèque numérique kurde (BNK),accessed November 16, 2025,<a href="https://bnk.institutkurde.org/images/pdf/7KS6DGQY39.pdf" target="_blank">https://bnk.institutkurde.org/images/pdf/7KS6DGQY39.pdf</a></li>
+            <li>​Love, Sexuality, Gender, and Drag in Ehmedê Xanî&#x27;s Mem û Zîn - CambridgeUniversity Press &amp; Assessment, accessed November 16, 2025,<a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/BDDB73EEE4B047C51C39C1160425F3F4/S0020743822000836a.pdf/the-kurds-have-not-made-love-their-aim-love-sexuality-gender-and-drag-in-ehmede-xanis-mem-u-zin.pdf" target="_blank">https://www.cambridge.org/core/services/aop-cambridge-core/content/view/BDDB73EEE4B047C51C39C1160425F3F4/S0020743822000836a.pdf/the-kurds-have-not-made-love-their-aim-love-sexuality-gender-and-drag-in-ehmede-xanis-mem-u-zin.pdf</a></li>
+            <li>​Textes kurdes: ptie. Mamé Alan - Roger Lescot - Google Books, accessedNovember 16, 2025,<a href="https://books.google.com/books/about/Textes_kurdes_ptie_Mam%C3%A9_Alan.html?id=8vXVAAAAMAAJ" target="_blank">https://books.google.com/books/about/Textes_kurdes_ptie_Mam%C3%A9_Alan.html?id=8vXVAAAAMAAJ</a></li>
+            <li>​Musical spirits and poetic tongues: oral traditions in the cultural politics of Kurdishintellectuals (1920s-1940s) - Taylor &amp; Francis Online, accessed November 16,2025, <a href="https://www.tandfonline.com/doi/abs/10.1080/13530194.2022.2025763" target="_blank">https://www.tandfonline.com/doi/abs/10.1080/13530194.2022.2025763</a></li>
+            <li>​BEDIR KHAN et LESCOT Grammaire Kurde (Dialecte Kurmandji), accessedNovember 16, 2025,<a href="http://maisonneuve-adrien.com/description/linguistique_divers/lescot_grammaire.htm" target="_blank">http://maisonneuve-adrien.com/description/linguistique_divers/lescot_grammaire.htm</a></li>
+            <li>​Enquête sur les Yezidis de Syrie et du Djebel Sindjār [microform], accessedNovember 16, 2025, <a href="https://www.ezipedia.de/Bib/Books/Lescot_Yezidis_1938.pdf" target="_blank">https://www.ezipedia.de/Bib/Books/Lescot_Yezidis_1938.pdf</a></li>
+            <li>​d&#x27;études arabes - de damas - La bibliothèque numérique kurde (BNK), accessedNovember 16, 2025, <a href="https://bnk.institutkurde.org/images/pdf/KSGH5YZBX6.pdf" target="_blank">https://bnk.institutkurde.org/images/pdf/KSGH5YZBX6.pdf</a></li>
+            <li>​The Evolution of the Yezidi Religion. From Spoken Word to Written Scripture -Scholarly Publications Leiden University, accessed November 16, 2025,<a href="https://scholarlypublications.universiteitleiden.nl/access/item%3A2729008/view" target="_blank">https://scholarlypublications.universiteitleiden.nl/access/item%3A2729008/view</a></li>
+            <li>​A Yezidi Manuscript:—Mišūr of P&#x27;īr Sīnī Bahrī/P&#x27;īr Sīnī Dārānī, Its Study and CriticalAnalysis, accessed November 16, 2025,<a href="https://www.cambridge.org/core/journals/iranian-studies/article/yezidi-manuscriptmisur-of-pir-sini-bahripir-sini-darani-its-study-and-critical-analysis/84ECC740B2E3460C3A4184868CD28E99" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/yezidi-manuscriptmisur-of-pir-sini-bahripir-sini-darani-its-study-and-critical-analysis/84ECC740B2E3460C3A4184868CD28E99</a></li>
+            <li>​Grammaire Kurde Dialecte kurmandji | DJELABET BEDIR Khan Emir - LESCOTRoger, accessed November 16, 2025,<a href="https://www.meretsegerbooks.com/pages/books/M7703/djelabet-bedir-khan-emir-lescot-roger/grammaire-kurde-dialecte-kurmandji" target="_blank">https://www.meretsegerbooks.com/pages/books/M7703/djelabet-bedir-khan-emir-lescot-roger/grammaire-kurde-dialecte-kurmandji</a></li>
+            <li>​Jeladet Bedir Xan (1893-1951) - Kurdish Academy of Language, accessedNovember 16, 2025, <a href="https://kurdishacademy.org/?p=210" target="_blank">https://kurdishacademy.org/?p=210</a></li>
+            <li>​Celadet Alî Bedirxan - Wikipedia, accessed November 16, 2025,<a href="https://en.wikipedia.org/wiki/Celadet_Al%C3%AE_Bedirxan" target="_blank">https://en.wikipedia.org/wiki/Celadet_Al%C3%AE_Bedirxan</a></li>
+            <li>​KURDISH WRITTEN LITERATURE - Encyclopaedia Iranica, accessed November 16,2025, <a href="https://www.iranicaonline.org/articles/kurdish-written-literature/" target="_blank">https://www.iranicaonline.org/articles/kurdish-written-literature/</a></li>
+            <li>​Kurdipedia - Textes kurdes II. Mamé Alan, accessed November 16, 2025,<a href="https://kurdipedia.org/default.aspx?q=2014052613584076496&amp;lng=7" target="_blank">https://kurdipedia.org/default.aspx?q=2014052613584076496&amp;lng=7</a></li>
+            <li>​Nation, Kingship, and Language: the Ambiguous Politics of Ehmedê Xanî&#x27;s Mem ûZîn in, accessed November 16, 2025,<a href="https://brill.com/edcollchap-oa/book/9789004708488/BP000008.xml?language=en" target="_blank">https://brill.com/edcollchap-oa/book/9789004708488/BP000008.xml?language=en</a></li>
+            <li>​“A People Forgotten by History”: Soviet Studies of the Kurds, accessed November16, 2025,<a href="https://www.cambridge.org/core/journals/iranian-studies/article/people-forgotten-by-history-soviet-studies-of-the-kurds/45B00164D6FFD2BBE74C28E1E434D221" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/people-forgotten-by-history-soviet-studies-of-the-kurds/45B00164D6FFD2BBE74C28E1E434D221</a></li>
+            <li>​The Ambiguous Politics of Ehmedê Khânî&#x27;s Mem û Zîn - UvA-DARE (DigitalAcademic Repository), accessed November 16, 2025,<a href="https://pure.uva.nl/ws/files/46127725/487_606_1_PB.pdf" target="_blank">https://pure.uva.nl/ws/files/46127725/487_606_1_PB.pdf</a></li>
+            <li>​European journal of Turkish studies, 5, accessed November 16, 2025,<a href="https://journals.openedition.org/ejts/pdf/749" target="_blank">https://journals.openedition.org/ejts/pdf/749</a></li>
+            <li>​Bulletins 335 - Monthly Liaison and Information bulletin of the Kurdish Institute ofParis, accessed November 16, 2025,<a href="https://www.institutkurde.org/en/publications/bulletins/335.html" target="_blank">https://www.institutkurde.org/en/publications/bulletins/335.html</a></li>
+            <li>​Kamuran Alî Bedirxan - Wikipedia, accessed November 16, 2025,<a href="https://en.wikipedia.org/wiki/Kamuran_Al%C3%AE_Bedirxan" target="_blank">https://en.wikipedia.org/wiki/Kamuran_Al%C3%AE_Bedirxan</a></li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+        </div>
+
+        <div class="last-updated">
+            <p>This page was created on: November 16, 2025 and last updated: <span id="last-modified-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Get and format the last modified date (Original Logic)
+        // Note: This uses double curly braces {} for the options object literal
+        try {
+            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (e) {
+            console.error("Error setting last modified date:", e);
+            document.getElementById('last-modified-date').textContent = 'N/A';
+        }
+
+        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
+         document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const rewindBtn = document.getElementById('rewindBtn');
+
+            // Check if elements exist before adding listener
+            if (audio && rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    // Rewind 10 seconds, but not before the start
+                    audio.currentTime = Math.max(0, audio.currentTime - 10);
+                });
+            } else {
+                // Log error if elements aren't found (optional debug)
+                if (!audio) console.error("Audio player element not found");
+                if (!rewindBtn) console.error("Rewind button element not found");
+            }
+        });
+    </script>
+</body>
+</html>
