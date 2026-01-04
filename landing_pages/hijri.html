@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hijri - Gregorian Calendar Converter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0d4a3a 0%, #1a6b4a 50%, #2d8659 100%);
+            padding: 20px;
+            padding-top: 60px;
+        }
+
+        .nav-banner {
+            width: 100%;
+            height: 40px;
+            background-color: #0d4a3a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px 25px;
+            max-width: 420px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0d4a3a;
+            margin-bottom: 8px;
+            font-size: 1.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .converter-section {
+            background: #f8faf9;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 2px solid #e0ebe6;
+            transition: border-color 0.3s ease;
+        }
+
+        .converter-section:focus-within {
+            border-color: #1a6b4a;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            color: #0d4a3a;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .date-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .input-group label {
+            font-size: 0.7rem;
+            color: #64748b;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-group input, .input-group select {
+            padding: 10px 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: white;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .input-group select {
+            cursor: pointer;
+            text-overflow: ellipsis;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: #1a6b4a;
+            box-shadow: 0 0 0 3px rgba(26, 107, 74, 0.15);
+        }
+
+        .input-group input::placeholder {
+            color: #a0aec0;
+        }
+
+        .convert-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #0d4a3a, #1a6b4a);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .convert-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(13, 74, 58, 0.4);
+        }
+
+        .convert-btn:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #f0f9f4, #e8f5ec);
+            border-radius: 10px;
+            margin-top: 12px;
+            display: none;
+            border: 1px solid #c6e7d4;
+        }
+
+        .result.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .result-label {
+            font-size: 0.75rem;
+            color: #166534;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .result-input {
+            font-size: 0.9rem;
+            color: #166534;
+            margin-bottom: 8px;
+        }
+
+        .result-date {
+            font-size: 1.3rem;
+            color: #14532d;
+            font-weight: 700;
+        }
+
+        .result-date-alt {
+            font-size: 1.1rem;
+            color: #14532d;
+            font-weight: 600;
+            margin-top: 4px;
+            direction: rtl;
+        }
+
+        .result-weekday {
+            font-size: 0.85rem;
+            color: #166534;
+            margin-top: 6px;
+        }
+
+        .result-range {
+            font-size: 1.2rem;
+            color: #14532d;
+            font-weight: 700;
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #d4e5dc;
+        }
+
+        .divider span {
+            padding: 0 15px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2) !important;
+            border-color: #fecaca !important;
+        }
+
+        .error .result-label {
+            color: #dc2626;
+        }
+
+        .error .result-date {
+            color: #b91c1c;
+            font-size: 0.95rem;
+        }
+
+        .today-btn {
+            background: #e0ebe6;
+            color: #0d4a3a;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-bottom: 12px;
+            transition: background 0.2s;
+        }
+
+        .today-btn:hover {
+            background: #c6e7d4;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 15px;
+            color: #94a3b8;
+            font-size: 0.75rem;
+        }
+
+        .optional-hint {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+                padding-top: 50px;
+            }
+
+            .container {
+                padding: 20px 15px;
+                border-radius: 12px;
+            }
+
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            .subtitle {
+                font-size: 0.85rem;
+            }
+
+            .converter-section {
+                padding: 15px;
+            }
+
+            .date-inputs {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .input-group input, .input-group select {
+                padding: 12px 10px;
+                font-size: 1rem;
+            }
+
+            .result-date {
+                font-size: 1.1rem;
+            }
+
+            .result-date-alt {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-banner">
+        <a href="https://www.zachariahhopkins.com" target="_blank" rel="noopener noreferrer" class="nav-link">
+            Created by Zachariah Hopkins
+        </a>
+    </nav>
+
+    <div class="container">
+        <h1>Calendar Converter</h1>
+        <p class="subtitle">Convert dates between Hijri and Gregorian calendars</p>
+
+        <!-- Hijri to Gregorian -->
+        <div class="converter-section">
+            <div class="section-title">Hijri to Gregorian</div>
+            <p class="optional-hint">Day and month are optional for year-only conversion</p>
+            <div class="date-inputs">
+                <div class="input-group">
+                    <label>Day</label>
+                    <input type="number" id="h-day" min="1" max="30" placeholder="DD">
+                </div>
+                <div class="input-group">
+                    <label>Month</label>
+                    <select id="h-month">
+                        <option value="">- Select -</option>
+                        <option value="1">Muḥarram / محرم</option>
+                        <option value="2">Ṣafar / صفر</option>
+                        <option value="3">Rabīʿ al-Awwal / ربيع الأول</option>
+                        <option value="4">Rabīʿ al-Thānī / ربيع الثاني</option>
+                        <option value="5">Jumādā al-Ūlā / جمادى الأولى</option>
+                        <option value="6">Jumādā al-Thāniyah / جمادى الثانية</option>
+                        <option value="7">Rajab / رجب</option>
+                        <option value="8">Shaʿbān / شعبان</option>
+                        <option value="9">Ramaḍān / رمضان</option>
+                        <option value="10">Shawwāl / شوال</option>
+                        <option value="11">Dhū al-Qaʿdah / ذو القعدة</option>
+                        <option value="12">Dhū al-Ḥijjah / ذو الحجة</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Year</label>
+                    <input type="number" id="h-year" min="1" placeholder="YYYY">
+                </div>
+            </div>
+            <button class="convert-btn" onclick="hijriToGregorian()">Convert to Gregorian</button>
+            <div class="result" id="gregorian-result">
+                <div class="result-label">Gregorian Date</div>
+                <div class="result-input" id="gregorian-input"></div>
+                <div class="result-date" id="gregorian-date"></div>
+                <div class="result-weekday" id="gregorian-weekday"></div>
+                <div class="result-range" id="gregorian-range"></div>
+            </div>
+        </div>
+
+        <div class="divider"><span>or</span></div>
+
+        <!-- Gregorian to Hijri -->
+        <div class="converter-section">
+            <div class="section-title">Gregorian to Hijri</div>
+            <button class="today-btn" onclick="fillToday()">Use Today's Date</button>
+            <p class="optional-hint">Day and month are optional for year-only conversion</p>
+            <div class="date-inputs">
+                <div class="input-group">
+                    <label>Day</label>
+                    <input type="number" id="g-day" min="1" max="31" placeholder="DD">
+                </div>
+                <div class="input-group">
+                    <label>Month</label>
+                    <select id="g-month">
+                        <option value="">- Select -</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Year</label>
+                    <input type="number" id="g-year" min="622" placeholder="YYYY">
+                </div>
+            </div>
+            <button class="convert-btn" onclick="gregorianToHijri()">Convert to Hijri</button>
+            <div class="result" id="hijri-result">
+                <div class="result-label">Hijri Date</div>
+                <div class="result-input" id="hijri-input"></div>
+                <div class="result-date" id="hijri-date"></div>
+                <div class="result-date-alt" id="hijri-date-ar"></div>
+                <div class="result-weekday" id="hijri-weekday"></div>
+                <div class="result-range" id="hijri-range"></div>
+            </div>
+        </div>
+
+        <footer>
+            Uses the standard astronomical calculation method
+        </footer>
+    </div>
+
+    <script>
+        const hijriMonthsEn = [
+            'Muḥarram', 'Ṣafar', 'Rabīʿ al-Awwal', 'Rabīʿ al-Thānī',
+            'Jumādā al-Ūlā', 'Jumādā al-Thāniyah', 'Rajab', 'Shaʿbān',
+            'Ramaḍān', 'Shawwāl', 'Dhū al-Qaʿdah', 'Dhū al-Ḥijjah'
+        ];
+
+        const hijriMonthsAr = [
+            'محرم', 'صفر', 'ربيع الأول', 'ربيع الثاني',
+            'جمادى الأولى', 'جمادى الثانية', 'رجب', 'شعبان',
+            'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'
+        ];
+
+        const gregorianMonths = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+
+        const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        function fillToday() {
+            const today = new Date();
+            document.getElementById('g-day').value = today.getDate();
+            document.getElementById('g-month').value = today.getMonth() + 1;
+            document.getElementById('g-year').value = today.getFullYear();
+        }
+
+        // Gregorian to Julian Day Number
+        function gregorianToJD(year, month, day) {
+            if (month <= 2) {
+                year -= 1;
+                month += 12;
+            }
+            const A = Math.floor(year / 100);
+            const B = 2 - A + Math.floor(A / 4);
+            return Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + B - 1524.5;
+        }
+
+        // Julian Day Number to Gregorian
+        function jdToGregorian(jd) {
+            const Z = Math.floor(jd + 0.5);
+            const F = jd + 0.5 - Z;
+            let A;
+            if (Z < 2299161) {
+                A = Z;
+            } else {
+                const alpha = Math.floor((Z - 1867216.25) / 36524.25);
+                A = Z + 1 + alpha - Math.floor(alpha / 4);
+            }
+            const B = A + 1524;
+            const C = Math.floor((B - 122.1) / 365.25);
+            const D = Math.floor(365.25 * C);
+            const E = Math.floor((B - D) / 30.6001);
+            
+            const day = B - D - Math.floor(30.6001 * E);
+            const month = E < 14 ? E - 1 : E - 13;
+            const year = month > 2 ? C - 4716 : C - 4715;
+            
+            return { year, month, day: Math.floor(day) };
+        }
+
+        // Hijri to Julian Day Number
+        function hijriToJD(year, month, day) {
+            return Math.floor((11 * year + 3) / 30) + 354 * year + 30 * month 
+                   - Math.floor((month - 1) / 2) + day + 1948440 - 385;
+        }
+
+        // Julian Day Number to Hijri
+        function jdToHijri(jd) {
+            jd = Math.floor(jd) + 0.5;
+            const L = Math.floor(jd - 1948440 + 10632);
+            const N = Math.floor((L - 1) / 10631);
+            const L2 = L - 10631 * N + 354;
+            const J = Math.floor((10985 - L2) / 5316) * Math.floor((50 * L2) / 17719) 
+                    + Math.floor(L2 / 5670) * Math.floor((43 * L2) / 15238);
+            const L3 = L2 - Math.floor((30 - J) / 15) * Math.floor((17719 * J) / 50) 
+                     - Math.floor(J / 16) * Math.floor((15238 * J) / 43) + 29;
+            const month = Math.floor((24 * L3) / 709);
+            const day = L3 - Math.floor((709 * month) / 24);
+            const year = 30 * N + J - 30;
+            
+            return { year, month, day };
+        }
+
+        function getWeekday(jd) {
+            return weekdays[Math.floor(jd + 1.5) % 7];
+        }
+
+        function gregorianToHijri() {
+            const day = document.getElementById('g-day').value ? parseInt(document.getElementById('g-day').value) : null;
+            const month = document.getElementById('g-month').value ? parseInt(document.getElementById('g-month').value) : null;
+            const year = parseInt(document.getElementById('g-year').value);
+            
+            const resultDiv = document.getElementById('hijri-result');
+            const inputEl = document.getElementById('hijri-input');
+            const dateEl = document.getElementById('hijri-date');
+            const dateArEl = document.getElementById('hijri-date-ar');
+            const weekdayEl = document.getElementById('hijri-weekday');
+            const rangeEl = document.getElementById('hijri-range');
+            
+            if (!year) {
+                resultDiv.classList.add('show', 'error');
+                inputEl.textContent = '';
+                dateEl.textContent = 'Please enter at least a year';
+                dateArEl.textContent = '';
+                weekdayEl.textContent = '';
+                rangeEl.textContent = '';
+                return;
+            }
+
+            // Year-only conversion
+            if (!day && !month) {
+                const startJd = gregorianToJD(year, 1, 1);
+                const endJd = gregorianToJD(year, 12, 31);
+                const startHijri = jdToHijri(startJd);
+                const endHijri = jdToHijri(endJd);
+                
+                resultDiv.classList.remove('error');
+                resultDiv.classList.add('show');
+                inputEl.textContent = `${year} CE spans:`;
+                dateEl.textContent = `${hijriMonthsEn[startHijri.month - 1]} ${startHijri.year} AH`;
+                dateArEl.textContent = '';
+                weekdayEl.textContent = 'to';
+                rangeEl.textContent = `${hijriMonthsEn[endHijri.month - 1]} ${endHijri.year} AH`;
+                return;
+            }
+
+            // Need both day and month for full conversion
+            if (!day || !month) {
+                resultDiv.classList.add('show', 'error');
+                inputEl.textContent = '';
+                dateEl.textContent = 'Please enter day and month, or just year';
+                dateArEl.textContent = '';
+                weekdayEl.textContent = '';
+                rangeEl.textContent = '';
+                return;
+            }
+            
+            // Validate Gregorian date
+            const testDate = new Date(year, month - 1, day);
+            if (testDate.getDate() !== day || testDate.getMonth() !== month - 1) {
+                resultDiv.classList.add('show', 'error');
+                inputEl.textContent = '';
+                dateEl.textContent = 'Invalid date';
+                dateArEl.textContent = '';
+                weekdayEl.textContent = '';
+                rangeEl.textContent = '';
+                return;
+            }
+            
+            const jd = gregorianToJD(year, month, day);
+            const hijri = jdToHijri(jd);
+            const weekday = getWeekday(jd);
+            
+            resultDiv.classList.remove('error');
+            resultDiv.classList.add('show');
+            inputEl.textContent = `${day} ${gregorianMonths[month - 1]} ${year} CE`;
+            dateEl.textContent = `${hijri.day} ${hijriMonthsEn[hijri.month - 1]} ${hijri.year} AH`;
+            dateArEl.textContent = `${hijri.day} ${hijriMonthsAr[hijri.month - 1]} ${hijri.year} هـ`;
+            weekdayEl.textContent = weekday;
+            rangeEl.textContent = '';
+        }
+
+        function hijriToGregorian() {
+            const day = document.getElementById('h-day').value ? parseInt(document.getElementById('h-day').value) : null;
+            const month = document.getElementById('h-month').value ? parseInt(document.getElementById('h-month').value) : null;
+            const year = parseInt(document.getElementById('h-year').value);
+            
+            const resultDiv = document.getElementById('gregorian-result');
+            const inputEl = document.getElementById('gregorian-input');
+            const dateEl = document.getElementById('gregorian-date');
+            const weekdayEl = document.getElementById('gregorian-weekday');
+            const rangeEl = document.getElementById('gregorian-range');
+            
+            if (!year) {
+                resultDiv.classList.add('show', 'error');
+                inputEl.textContent = '';
+                dateEl.textContent = 'Please enter at least a year';
+                weekdayEl.textContent = '';
+                rangeEl.textContent = '';
+                return;
+            }
+
+            // Year-only conversion
+            if (!day && !month) {
+                const startJd = hijriToJD(year, 1, 1);
+                const endJd = hijriToJD(year, 12, 29); // Using 29 as safe last day
+                const startGregorian = jdToGregorian(startJd);
+                const endGregorian = jdToGregorian(endJd);
+                
+                resultDiv.classList.remove('error');
+                resultDiv.classList.add('show');
+                inputEl.textContent = `${year} AH spans:`;
+                dateEl.textContent = `${startGregorian.day} ${gregorianMonths[startGregorian.month - 1]} ${startGregorian.year} CE`;
+                weekdayEl.textContent = 'to';
+                rangeEl.textContent = `${endGregorian.day} ${gregorianMonths[endGregorian.month - 1]} ${endGregorian.year} CE`;
+                return;
+            }
+
+            // Need both day and month for full conversion
+            if (!day || !month) {
+                resultDiv.classList.add('show', 'error');
+                inputEl.textContent = '';
+                dateEl.textContent = 'Please enter day and month, or just year';
+                weekdayEl.textContent = '';
+                rangeEl.textContent = '';
+                return;
+            }
+            
+            // Basic validation for Hijri dates
+            if (day < 1 || day > 30 || month < 1 || month > 12 || year < 1) {
+                resultDiv.classList.add('show', 'error');
+                inputEl.textContent = '';
+                dateEl.textContent = 'Invalid date';
+                weekdayEl.textContent = '';
+                rangeEl.textContent = '';
+                return;
+            }
+            
+            const jd = hijriToJD(year, month, day);
+            const gregorian = jdToGregorian(jd);
+            const weekday = getWeekday(jd);
+            
+            resultDiv.classList.remove('error');
+            resultDiv.classList.add('show');
+            inputEl.textContent = `${day} ${hijriMonthsEn[month - 1]} ${year} AH`;
+            dateEl.textContent = `${gregorian.day} ${gregorianMonths[gregorian.month - 1]} ${gregorian.year} CE`;
+            weekdayEl.textContent = weekday;
+            rangeEl.textContent = '';
+        }
+
+        // Allow Enter key to trigger conversion
+        document.querySelectorAll('#g-day, #g-month, #g-year').forEach(el => {
+            el.addEventListener('keypress', e => {
+                if (e.key === 'Enter') gregorianToHijri();
+            });
+        });
+
+        document.querySelectorAll('#h-day, #h-month, #h-year').forEach(el => {
+            el.addEventListener('keypress', e => {
+                if (e.key === 'Enter') hijriToGregorian();
+            });
+        });
+    </script>
+</body>
+</html>
