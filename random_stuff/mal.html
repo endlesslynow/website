@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Kurmanji Proverb Trail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #3D2B1F
+        }
+
+        #landing {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F2EAD9;
+            padding: 40px 24px;
+            transition: opacity .6s ease
+        }
+
+        #landing.hidden {
+            opacity: 0;
+            pointer-events: none
+        }
+
+        .landing-inner {
+            text-align: center;
+            max-width: 480px;
+            animation: fadeInUp .8s ease both
+        }
+
+        .landing-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 8vw, 52px);
+            font-weight: 600;
+            color: #3D2B1F;
+            line-height: 1.12;
+            margin-bottom: 20px
+        }
+
+        .landing-subtitle {
+            font-family: 'Alegreya', serif;
+            font-size: clamp(15px, 3.5vw, 17px);
+            color: #6B4F3A;
+            line-height: 1.65;
+            margin-bottom: 36px
+        }
+
+        .landing-footer {
+            font-family: 'Alegreya', serif;
+            font-size: 13px;
+            color: #A8937E;
+            margin-top: 48px
+        }
+
+        .btn-primary {
+            font-family: 'EB Garamond', serif;
+            font-size: 17px;
+            color: #F2EAD9;
+            background-color: #3D2B1F;
+            border: none;
+            padding: 13px 36px;
+            cursor: pointer;
+            letter-spacing: .06em;
+            text-transform: lowercase;
+            transition: background-color .2s ease
+        }
+
+        .btn-primary:hover {
+            background-color: #2A1C12
+        }
+
+        .btn-terracotta {
+            font-family: 'EB Garamond', serif;
+            font-size: 16px;
+            color: #F2EAD9;
+            background-color: #B8623C;
+            border: none;
+            padding: 11px 28px;
+            cursor: pointer;
+            letter-spacing: .06em;
+            text-transform: lowercase;
+            width: 100%;
+            transition: background-color .2s ease
+        }
+
+        .btn-terracotta:hover {
+            background-color: #9E4F2A
+        }
+
+        .btn-ghost {
+            font-family: 'EB Garamond', serif;
+            font-size: 17px;
+            color: #5A3E2B;
+            background: transparent;
+            border: 1px solid #B8A88E;
+            padding: 13px 36px;
+            cursor: pointer;
+            letter-spacing: .06em;
+            text-transform: lowercase
+        }
+
+        #map-container {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            background-color: #D1C7A8;
+            touch-action: none;
+            display: block;
+            cursor: pointer
+        }
+
+        #map-container.active {
+            display: block
+        }
+
+        #map-svg {
+            width: 100%;
+            height: 100%;
+            display: block
+        }
+
+        #hud {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Alegreya', serif;
+            font-size: clamp(12px, 2.8vw, 14px);
+            color: #F2EAD9;
+            background-color: rgba(61, 43, 31, .72);
+            padding: 8px 20px;
+            border-radius: 20px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity .4s ease;
+            pointer-events: none
+        }
+
+        #hud.visible {
+            opacity: 1
+        }
+
+        #controls-hint {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-family: 'Alegreya', serif;
+            font-size: clamp(11px, 2.5vw, 13px);
+            color: #F2EAD9;
+            background-color: rgba(61, 43, 31, .55);
+            padding: 6px 14px;
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity .4s ease;
+            pointer-events: none
+        }
+
+        #controls-hint.visible {
+            opacity: 1
+        }
+
+        #panel-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            background: linear-gradient(to top, rgba(61, 43, 31, .55) 0%, rgba(61, 43, 31, .08) 50%, transparent 100%);
+            padding: 0 16px 20px;
+            z-index: 10;
+            overflow-y: auto;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .5s ease
+        }
+
+        #panel-overlay.visible {
+            opacity: 1;
+            pointer-events: auto
+        }
+
+        #panel-card {
+            background-color: #F5EDD9;
+            max-width: 600px;
+            width: 100%;
+            padding: clamp(24px, 6vw, 40px);
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(40, 25, 10, .4);
+            max-height: 85vh;
+            overflow-y: auto;
+            transform: translateY(30px);
+            transition: transform .5s cubic-bezier(.16, 1, .3, 1), opacity .4s ease;
+            opacity: 0;
+            text-align: left;
+        }
+
+        #panel-overlay.visible #panel-card {
+            transform: translateY(0);
+            opacity: 1
+        }
+
+        .proverb-kurdish {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: clamp(16px, 3.5vw, 18px);
+            font-weight: 700;
+            color: #3D2B1F;
+            margin-bottom: 2px;
+            line-height: 1.4;
+        }
+
+        .proverb-english {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: clamp(14px, 3.2vw, 16px);
+            color: #5A3E2B;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        #p-title-e {
+            margin-bottom: 20px;
+        }
+
+        .proverb-desc-kurdish {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: clamp(14px, 3.2vw, 16px);
+            font-weight: 700;
+            color: #3D2B1F;
+            margin-bottom: 2px;
+            line-height: 1.5;
+        }
+
+        #completion {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background-color: #F2EAD9;
+            padding: 40px 24px
+        }
+
+        #completion.active {
+            display: flex
+        }
+
+        .completion-inner {
+            text-align: center;
+            max-width: 480px;
+            animation: fadeInUp .8s ease both
+        }
+
+        .completion-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(26px, 6vw, 40px);
+            font-weight: 600;
+            color: #3D2B1F;
+            line-height: 1.15;
+            margin-bottom: 18px
+        }
+
+        .completion-btns {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes flowRight {
+            from {
+                stroke-dashoffset: 0
+            }
+
+            to {
+                stroke-dashoffset: -60
+            }
+        }
+
+        @keyframes flowRight2 {
+            from {
+                stroke-dashoffset: 0
+            }
+
+            to {
+                stroke-dashoffset: -40
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Landing removed -->
+
+    <div id="map-container">
+        <svg id="map-svg" preserveAspectRatio="xMidYMid slice"></svg>
+        <div id="hud"></div>
+        <div id="controls-hint">Click to walk / WASD or arrows to move</div>
+        <div id="panel-overlay">
+            <div id="panel-card">
+                <div class="proverb-kurdish" id="p-title-k"></div>
+                <div class="proverb-english" id="p-title-e"></div>
+                <div class="proverb-desc-kurdish" id="p-desc-k"></div>
+                <div class="proverb-english" id="p-desc-e"></div>
+                <button class="btn-terracotta" id="btn-walk"
+                    style="width:100%; margin-top:10px; display:none; transition: opacity .3s ease">Return
+                    to Game</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="completion">
+        <div class="completion-inner">
+            <svg width="48" height="48" viewBox="0 0 48 48" style="margin-bottom:20px;opacity:.5">
+                <circle cx="24" cy="24" r="20" fill="none" stroke="#B8623C" stroke-width="1.5" />
+                <circle cx="24" cy="24" r="3" fill="#B8623C" />
+            </svg>
+            <h1 class="completion-title">You have walked the trail</h1>
+            <p class="landing-subtitle">Ten proverbs. Ten threads of meaning. The loop is closed.</p>
+            <div class="completion-btns">
+                <button class="btn-primary" id="btn-restart">Walk it again</button>
+                <button class="btn-ghost" id="btn-leave">Leave</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* ═══════ DATA ═══════ */
+        const PROVERBS = [
+            {
+                kurmanji: "Mal bê arvan dibe, bûk bê benîşt nabe.",
+                english: "A home can be without a roof-beam, but a bride cannot be without dignity.",
+                descKurmanji: "Hin kes di civakê de werin çi astê jî dev ji şopên xwe yên kevin bernadin.",
+                descEnglish: "No matter what level they reach in society, some people never abandon their old ways and roots."
+            },
+            {
+                kurmanji: "Mal bê malxwe nabe.",
+                english: "A home cannot exist without a homeowner.",
+                descKurmanji: "Pêwîst e di her malê de malxweyek yanê berpirsyarek hebe, ji bo ku kar bi sazûmanî bê kirin.",
+                descEnglish: "Every household needs a head — someone responsible — so that things run in an orderly way."
+            },
+            {
+                kurmanji: "Mal bê nan, gund bê kûçik nabin.",
+                english: "A home cannot be without bread, nor a village without dogs.",
+                descKurmanji: "Mirov bi xwarinê jiyana xwe didomîne, gund jî bi kûçikan xwe ji bûyerên bêdeng diparêzin.",
+                descEnglish: "People sustain their lives with food, and villages protect themselves from quiet threats with dogs. This saying is sometimes used to acknowledge the need for even undesirable things."
+            },
+            {
+                kurmanji: "Mal bê xwedî nadebire.",
+                english: "A home without an owner does not flourish.",
+                descKurmanji: "Dema malek bêxwedî be, dê belav bibe.",
+                descEnglish: "When a household has no one to tend to it, it will fall apart and scatter."
+            },
+            {
+                kurmanji: "Mal bi serê xwe mekteb e.",
+                english: "The home is itself a school.",
+                descKurmanji: "Mal di gihandina zarok û kesên malê de dibistana ewil û sereke ye. Tiştê ku mirov li mala xwe hîn bibe, heya dawiya jiyana xwe jê fêde dibîne û bi kar tîne.",
+                descEnglish: "The home is the first and most important institution in raising children and family members. Whatever a person learns at home, they benefit from and apply for the rest of their life."
+            },
+            {
+                kurmanji: "Mal birçî ye, kebanî li ber çi ye?",
+                english: "The home is hungry — what is the housewife doing?",
+                descKurmanji: "Dema ku têretêr zad û zexîre nekeve malekê, hikmê kebaniyê tune. Kebanî nikare serqoriyê li tiştên ku tên wê malê bike.",
+                descEnglish: "When sufficient food and provisions do not come into a household, the housewife has no power to manage anything. Because everyone is hungry, whatever comes into the house is immediately consumed."
+            },
+            {
+                kurmanji: "Mal têr e, kebanî şêr e.",
+                english: "When the home is full, the housewife is like a lion.",
+                descKurmanji: "Dema mal têr û tej be, kebanî pesnê xwe dide. Ji ber ku çi ji kebaniyê bê xwestin dikare çêbike.",
+                descEnglish: "When the home is full and well-stocked, the housewife praises herself — because she can fulfil whatever is asked of her."
+            },
+            {
+                kurmanji: "Mal û mevan, nebû qutik û fîstan.",
+                english: "Home and guests — when it runs out, it's rags and tatters.",
+                descKurmanji: "Mala ku mêvanên wê zehf in, lêçûyên wê jî zehf dibin. Tu tişt ji ber lêçûyên mêvanan namîne ku ji kulfetê malê re xerc bike.",
+                descEnglish: "A home with many guests also has many expenses. Nothing is left from the guests' costs to spend on the household's own needs."
+            },
+            {
+                kurmanji: "Malek bi yek be, gundek; gund bi yek be, eşîrek; eşîr bi yek be, dûgelek pê nikare.",
+                english: "One household united is a village; one village united is a tribe; one tribe united — nothing can stand against them.",
+                descKurmanji: "Dema mirov ji hev re dilsoz be, xwe li hev bigire û bikaribe pişta xwe bide hev û ji hev re yek be, tu kes nikare pişta mirov bide erdê.",
+                descEnglish: "When people are loyal to one another, stand together, and can depend on each other, no one can bring them down."
+            },
+            {
+                kurmanji: "Mangaya zer şîrê xwe dide, paşê lingê xwe lê hildide.",
+                english: "The yellow cow gives her milk, then kicks it over.",
+                descKurmanji: "Hin kes mafê mirov didin mirov lê di dawiyê de ji ber kêmasiyek an xeletiyekê qenciya wan dibin siya xerabiya wan de dimîne.",
+                descEnglish: "Some people give a person their due, but in the end, because of some small flaw, their kindness is overshadowed and erased by their cruelty."
+            },
+            // ─── Additional proverbs for decorative houses ───
+            {
+                kurmanji: "Mal bi destmizan xwedî nabin.",
+                english: "A home cannot be maintained on tips.",
+                descKurmanji: "Mirov nikare debara mala xwe bi hewlên demdemî bike. Ger ku mirov bixwaze malê xwe biparêze divê mirov baş bixebite.",
+                descEnglish: "A person cannot sustain their household on occasional efforts. To truly protect one's home, one must work diligently and consistently."
+            },
+            {
+                kurmanji: "Mal bi herfaneyekê xera nabe.",
+                english: "A home is not ruined by hosting one evening gathering.",
+                descKurmanji: "Bi hewandina şevekê ya mêvanan mal xera nabe.",
+                descEnglish: "Hosting guests for a single evening does not ruin a household."
+            },
+            {
+                kurmanji: "Mal bi zorê, mirî bi gorê tê veşartin.",
+                english: "Wealth is hidden by force; the dead are hidden by the grave.",
+                descKurmanji: "Maldarî hinek zordarî dixwaze, kesên maldar ne zordest bin, nikarin malê xwe veşêrin biparêzin. Gor jî miriyan vedişêre.",
+                descEnglish: "Wealth requires a degree of assertiveness — those who are not firm cannot protect it. Just as the grave conceals the dead, force conceals wealth."
+            },
+            {
+                kurmanji: "Mal cuda ne, derdê wan jî cuda ne.",
+                english: "Homes are different, and so are their troubles.",
+                descKurmanji: "Her tiştek li gorî wî şert û mercên wî hene û li gorî wan şert û mercan pêdiviyên wî jî hene.",
+                descEnglish: "Every household has its own conditions and circumstances, and its needs are shaped accordingly."
+            },
+            {
+                kurmanji: "Mal di ber mal re, can di ber can re.",
+                english: "Wealth for wealth, soul for soul.",
+                descKurmanji: "Mal nikare bihayê can bigire, wekî can ne binirx e. Berdêlê mal, mal; berdêlê can dîsa can e.",
+                descEnglish: "Property cannot equal the value of a life, for life is beyond price. The equal of property is property; the equal of a life is a life."
+            },
+            {
+                kurmanji: "Mala bêga bi golik nabe.",
+                english: "A home without a bull calf cannot continue.",
+                descKurmanji: "Ji malekê re mêr gereg in, mala ku mêr tê de tune ye, nijada wan berdewam nake, di dawiyê de ocaxê wan ditemire.",
+                descEnglish: "A household needs men. Without a man in the house, their lineage does not continue, and in the end the family line dies out."
+            },
+            {
+                kurmanji: "Mala bêmalxwe kes nizane mezin kî ye.",
+                english: "In a home without a master, no one knows who is in charge.",
+                descKurmanji: "Dema di malê de sermiyan tune be û malxweyê wê ne diyar be, her kes bi serê xwe ye û her kes xwe sermiyanê malê hesab dike.",
+                descEnglish: "When there is no central figure in a household, everyone acts on their own and each considers themselves the head of the house."
+            },
+            {
+                kurmanji: "Mala bêmêvan, gundê bêşivan her du jî bêguman.",
+                english: "A home without guests and a village without a shepherd — both are suspect.",
+                descKurmanji: "Mala ku qet mêvan neçinê û gundê ku şivanê xwe tune, tê wê wateyê ku kes tu tiştî ji wan hêvî nake.",
+                descEnglish: "A home that never receives guests and a village with no shepherd both suggest that no one expects anything of value from them."
+            },
+            {
+                kurmanji: "Mala bêsermiyan wekî pezê bêşivan e.",
+                english: "A home without a head is like a flock without a shepherd.",
+                descKurmanji: "Sermiyanê malê, malê dixe pergalê, sazûmanekê di malê de ava dike. Erka her kesî li wan pay dike.",
+                descEnglish: "The head of household brings order and structure to the home, assigning each person their role."
+            },
+            {
+                kurmanji: "Mala bêzarok xerabe ye.",
+                english: "A childless home is a ruin.",
+                descKurmanji: "Nav û dengê malbatekê bi zarên wê malbatê didome. Mal û milkê malbatekê dema zarên wê malbatê hebin dimînin dem û dewranên pêşerojê.",
+                descEnglish: "The name and legacy of a family continue through its children. The property and wealth of a family endure into future generations when they have children."
+            },
+            {
+                kurmanji: "Mala feqîran wêran dibe bi zilma zorkeran.",
+                english: "The homes of the poor are ruined by the oppression of the powerful.",
+                descKurmanji: "Mala jar û bêkesan ji ber zilm û zora zaliman xera dibe.",
+                descEnglish: "The homes of the helpless and destitute are destroyed by the cruelty of tyrants."
+            },
+            {
+                kurmanji: "Mala fesadan tune.",
+                english: "The corrupt have no home.",
+                descKurmanji: "Kesên fesad mala xwe bi destê xwe xera dikin. Kesên welê ji ber ku ew qas xerab û neqenc in bi giştî serê wan ji bela û bêtaran dernayê.",
+                descEnglish: "Corrupt people destroy their own homes with their own hands. Because they are so wicked, they are never free from trouble and ruin."
+            },
+            {
+                kurmanji: "Mala goşt bikeviyê derd nakeviyê.",
+                english: "Into the home where meat enters, illness does not enter.",
+                descKurmanji: "Li gorî vê gotinê goşt ji bo tenduristiya mirov gelekî pêwîst e û mirov ji nexweşiyan diparêze.",
+                descEnglish: "According to this saying, meat is very important for a person's health and protects them from illness."
+            },
+            {
+                kurmanji: "Mala ku bêyekîtî ketiyê, ew ê zû belav bibe.",
+                english: "A home that has lost its unity will soon fall apart.",
+                descKurmanji: "Mala ku di nav xwe de yekîtiya xwe winda kir, têkiliyên di navbera endamên malê de jî xera dibin. Dema welê bû her kes li gorî daxwaza xwe dijî.",
+                descEnglish: "When the ties between family members break down and unity is lost, everyone begins to live according to their own desires."
+            },
+            {
+                kurmanji: "Mala ku jinê ava kir, Xwedê jî xera nake.",
+                english: "What a woman has built, even God will not destroy.",
+                descKurmanji: "Keda jinê kedeke pîroz e, ji ber ku jin dema kedekî dide ji dil dike. Jina ku di ber keda xwe de xwêdan rêtibe wê diparêze jî.",
+                descEnglish: "A woman's labour is sacred — when she gives her efforts from the heart, she gives fully. A woman who has poured her sweat into building a home also protects it."
+            },
+            {
+                kurmanji: "Mala ku zarok tê de şeytan nakeviyê.",
+                english: "Into a home where there are children, the devil does not enter.",
+                descKurmanji: "Ji ber ku tu tiştê ku şeytan bi zarokan bike tune, nêzîkî mala ku zarok tê de nabe. Zarok xêr û bereketa malê ne, paqij û pîroz in.",
+                descEnglish: "Because there is nothing the devil can do with children, he does not approach a home filled with them. Children are the blessing of a home — their purity keeps the devil away."
+            },
+            {
+                kurmanji: "Mala kuran koşka duran.",
+                english: "The home of sons is a far-off palace.",
+                descKurmanji: "Dema mirov diçe mala kurê xwe gelek kêfa mirov tê, mirov dibêje qey mirov çûye ser gencîneyekê.",
+                descEnglish: "When a person visits their son's home, they feel great joy — as if arriving at a treasury."
+            },
+            {
+                kurmanji: "Mala keç lê, mala naz lê.",
+                english: "Where there are daughters, there is tenderness.",
+                descKurmanji: "Keç xwedî naz in. Cihê keç lê ji wî cihî nazî kêm nabe.",
+                descEnglish: "Daughters bring grace and warmth. Wherever a daughter lives, there is no shortage of tenderness."
+            },
+            {
+                kurmanji: "Mala kal û pîran çêtir e ji mala axa û mîran.",
+                english: "The home of the old and wise is better than the home of lords and princes.",
+                descKurmanji: "Mala kesên kal xweş e, ji ber ku serhatî û serboriyên wan hene, sohbetên wan hene û ji aliyê jiyanê ve xwedî tecrübe ne.",
+                descEnglish: "The home of elders is a fine place — they have experience and wisdom, their conversation is rich, and they know how to value people."
+            },
+            {
+                kurmanji: "Mala xelkê nabe mala mirov, lawê xelkê nabe lawê mirov.",
+                english: "Another's home is not your home; another's son is not your son.",
+                descKurmanji: "Mirov nikare li mala xelkê rehet rabe û rûne. Kurê xelkê ji wisa ye. Wekî kurê mirov ji mirov re bi dil û can nabin.",
+                descEnglish: "A person cannot feel at ease in someone else's home. Nor does another person's son feel toward you as your own son would."
+            },
+            {
+                kurmanji: "Mala xwe xera bike, lê bila rûyê te spî be.",
+                english: "Let your home fall to ruin, but let your face remain white — your honour unclouded.",
+                descKurmanji: "Tu neçar û belengaz bî jî, stûyê xwe li ber kesî xwar neke û bê minet bijî. Tu car ji bo deynan ji soz û peymana xwe nemîne.",
+                descEnglish: "Even if you are poor and struggling, do not bow your head before anyone and live without obligation. Never break a promise or pledge for the sake of debts."
+            },
+            {
+                kurmanji: "Malê helal winda nabe.",
+                english: "Lawfully earned wealth is never lost.",
+                descKurmanji: "Malê ku bi helalî û bi ked were berhevkirin bi pîroziya kedê parastî ye. Malê welê xêra wî li xwediyê wî dibe.",
+                descEnglish: "Wealth gathered honestly and through hard work is protected by the sanctity of that labour. Such wealth brings blessings to its owner."
+            },
+            {
+                kurmanji: "Malê heram di rêya heram de diçe.",
+                english: "Unlawfully earned wealth goes by the unlawful road.",
+                descKurmanji: "Kesên di rêyên heram de bibin xwedî mal, dîsa malê xwe di wê rêyê de winda dikin.",
+                descEnglish: "Those who gain wealth by forbidden means will also lose it by those same means."
+            },
+            {
+                kurmanji: "Malê mirov qula gur be jî, ji koşk û seraya xelkê çêtir e.",
+                english: "Even if one's home is a wolf's burrow, it is better than another's palace.",
+                descKurmanji: "Di mala mirov de gelek kemasî û nebaşî hebin jî, ji mala xelkê çêtir e. Mirov li mala xwe çi bixwaze dikare bike.",
+                descEnglish: "No matter how many flaws one's own home has, it is better than someone else's home. In one's own home, a person can do as they please."
+            },
+            {
+                kurmanji: "Malê pir belaya serê mirov e.",
+                english: "Too much wealth is an affliction on one's head.",
+                descKurmanji: "Malê pir pirsgirêkên gir diafirîne. Kesê ku malê wî pir e, kul û derdê wî jî pir in.",
+                descEnglish: "Great wealth creates great problems. A person with much wealth has much sorrow and trouble."
+            },
+            {
+                kurmanji: "Malê bi kevçiyan were komkirin, dê bi heskê jî here.",
+                english: "What is gathered spoonful by spoonful will go ladle by ladle.",
+                descKurmanji: "Bi rastî mal hêdî hêdî berhev dibe. Lê di dema xerckirinê de zûtir diçe.",
+                descEnglish: "Wealth is accumulated slowly and with great effort. But in the spending, it goes much faster."
+            },
+            {
+                kurmanji: "Malxwe stûna malê ye.",
+                english: "The homeowner is the pillar of the home.",
+                descKurmanji: "Dema di malekê de malxwe tune be yan jî berpirsyar tune be, karên malê nayên kirin û tehma malê namîne.",
+                descEnglish: "When there is no homeowner or responsible person in a household, the work of the home does not get done and the warmth of the home disappears."
+            },
+            {
+                kurmanji: "Malxweyê malê bi ehwalê malê zane.",
+                english: "The owner of the home knows the state of the home.",
+                descKurmanji: "Her kes rewş û taybetiyên mala xwe bi xwe dizane.",
+                descEnglish: "Every person knows the situation and character of their own home."
+            },
+            {
+                kurmanji: "Mala birê mala bûkê ye, dema dê û bav tune bin ew jî dibe mala nasekî.",
+                english: "The brother's home is the bride's home — but when parents are gone, it becomes a stranger's home.",
+                descKurmanji: "Dema birayê mirov bizewice û dê û bavê mirov jî ne di malê de bin, mal dikeve destê bûkê û êdî ew mal ji mirov re dibe wekî mala nasekî.",
+                descEnglish: "When a brother marries and the parents are no longer in the house, the home falls to the sister-in-law, and it becomes like a stranger's home to the sister."
+            },
+            {
+                kurmanji: "Malê dinê dimîne li dinê.",
+                english: "The wealth of this world remains in this world.",
+                descKurmanji: "Mirov çiqas dewlemend û xwedî mal be jî dema mirov mir, nikare wî malî bi xwe re bibe gorê.",
+                descEnglish: "No matter how wealthy a person is, when they die they cannot take their wealth to the grave."
+            },
+            // ─── New proverbs (indices 39–114) ───
+            {
+                kurmanji: "Mal di ser malê de nabe.",
+                english: "One home cannot be built on top of another.",
+                descKurmanji: "Her malekê taybetiyên wan û sirên xwe hene. Pêwîst e her mal cuda be û di nav çar dîwarên xwe yên taybet de be.",
+                descEnglish: "Every household has its own character and secrets. Each home must be separate, within its own four walls."
+            },
+            {
+                kurmanji: "Mal ji bo melîkan tê dizê.",
+                english: "Wealth grows for those who know how to use it.",
+                descKurmanji: "Dema ji bo kesekî pere û mal zehf bigihîjin hev, li gorî tabebeta xwe mal û pere xwe saz dikin. Pereyên ku li gorî sazumanekê bizivirin, mişe faîz digirin û zêde dibin.",
+                descEnglish: "When a great deal of money and wealth accumulates for someone, they manage it according to their nature. Money that circulates in an organized way earns interest and multiplies."
+            },
+            {
+                kurmanji: "Mal kêmasiya mirov dinixumîne.",
+                english: "Wealth conceals a person's shortcomings.",
+                descKurmanji: "Malê mirov zehf be, kemasiyên mirov vedişêre; ku xuyan bikin jî kesên li derdora maldaran çavên xwe ji kêmasiyan re digirin.",
+                descEnglish: "When a person has great wealth, their flaws are hidden. Even when flaws appear, those around the wealthy person tend to overlook them."
+            },
+            {
+                kurmanji: "Mal li ba melîkan pir dibe.",
+                english: "Wealth multiplies in the hands of the shrewd.",
+                descKurmanji: "Tim malê kesên dewlemend zêde dibe, malê kesên feqîr an kêm dibe yan jî wekî xwe dimîne.",
+                descEnglish: "The wealth of the rich always increases, while the wealth of the poor either diminishes or stays the same."
+            },
+            {
+                kurmanji: "Mal nikare can bîne, can dikare mal bîne.",
+                english: "Wealth cannot bring back a life, but a life can bring wealth.",
+                descKurmanji: "Mal nikare kesê mirî rake, lê canê mirov dema sax be, dikare mal berhev bike û bigihîne hev.",
+                descEnglish: "Wealth cannot resurrect the dead, but while a person is alive, they can accumulate and gather wealth."
+            },
+            {
+                kurmanji: "Mal qoçê mêran e.",
+                english: "Wealth is the backbone of men.",
+                descKurmanji: "Dema mal di destê mirov de tune be mirov nikare jiyana xwe bi hêsanî bidomîne.",
+                descEnglish: "When a person has no property or wealth, they cannot easily sustain their life."
+            },
+            {
+                kurmanji: "Mal xizan e, kebanî nezan e.",
+                english: "The home is poor, and the housewife is ignorant.",
+                descKurmanji: "Xurd û xwarina xweş ji alav û amûrên zehf û baş çêdibin. Dema ku alavên xwarinê nekevin firaqxaneya kebaniyê, xelk ê bibêje ku ew kebanî bêkêr û nezan e.",
+                descEnglish: "Good food and fine cooking come from plentiful and quality utensils and ingredients. When the housewife's kitchen is empty, people say she is useless and ignorant — even though it is not her fault."
+            },
+            {
+                kurmanji: "Mala bavan zeynet in, ava cêrê wan şerbet in, dayik ku dimirin, zêyî tên, li ba jinbirayan bêrûmet in.",
+                english: "The parents' home is an ornament; its spring water is like sherbet; but when the mother dies and a stepmother comes, daughters-in-law hold no respect there.",
+                descKurmanji: "Tê gotin ku mala bavê ji bo jinan ocaxê hêviyan e, lê heta ku dayika wan sax û li jiyanê ye, piştî ku dayika wan dimire, êdî mala bavan di destê jinbirayan de dimîne, jinbira jî naxwazin ku ew biçe wir, lewra rûmetê nadinê.",
+                descEnglish: "The father's home is a place of hope for women, as long as their mother is alive. After the mother dies, the home falls into the stepmother's hands, and a daughter-in-law is no longer welcomed there with respect."
+            },
+            {
+                kurmanji: "Mala bavê bûkê gavan e, qelingê bûkê giran e.",
+                english: "The bride's father's home is that of ox-herders; the bride's bride-price is high.",
+                descKurmanji: "Kesên gavan, kesên neçar û perîşan in. Ji bo wê kesên li malê, karker in û birûmet in. Malên gavanan hemû bi hev re dişixulin. Dema ku keç ji wê malê derkeve, ji aliyê karkeriyê ve valahiyeke mezin tê holê, ji ber tijîkirina wê şûnê, qelingê keçan giran digirin.",
+                descEnglish: "Ox-herder families are hard-working and self-sufficient. When a daughter leaves such a household, she leaves a great gap, and so a high bride-price is demanded to fill her place."
+            },
+            {
+                kurmanji: "Mala gavan e, dilika zeriyê giran e.",
+                english: "It is a herdsman's home; the golden morsel is heavy.",
+                descKurmanji: "Kebaniya mala kesên reben û belengaz tim zehmetiyê dikêşe, nikare bi hêsanî pêdiviyên malê bi cih bîne.",
+                descEnglish: "The housewife of a poor and destitute household constantly struggles, unable to easily meet the household's needs."
+            },
+            {
+                kurmanji: "Mala hebûnê mala kereman e, mala tunebûnê mala kurê keran e.",
+                english: "The home of plenty is the home of generosity; the home of nothing is the home of asses.",
+                descKurmanji: "Ji ber ku li mala heyînê tê xwarin û vexwarin, bivê-nevê ew mal ji aliyê mudayîmên wê ve tê pesinandin. Lê mala ku xwarin û vexwarin tê de nîn e, ji aliyê kesan ve nayê pesinandin û bêrûmet e.",
+                descEnglish: "Because there is food and drink in a prosperous home, its regular visitors praise it. But a home where there is nothing to eat or drink is not praised and is considered beneath respect."
+            },
+            {
+                kurmanji: "Mala li ser malan, yek xirab, yek ava.",
+                english: "Homes built on top of homes — one ruins, one flourishes.",
+                descKurmanji: "Ji ber ku taybetî û sirên mêr û jinê hene, malên li ser hev ne xweş in. Heta ku mala nûzewiciyan cihê nebe, hînî jiyanê nabin û xwe xwedîmal nahesibînin.",
+                descEnglish: "Because a husband and wife each have their own character and secrets, homes built side by side are not ideal. Until the newlyweds have their own separate home, they cannot learn to live and do not consider themselves truly home-owners."
+            },
+            {
+                kurmanji: "Mala me çovê me ye, çovê me li ser milê me ye.",
+                english: "Our home is our hoe; our hoe is on our shoulder.",
+                descKurmanji: "Kesên ku nanê xwe bi çovê xwe dixwin, bi hêsanî nazewicin û nabin xwedî mal. Dema ku koç dikin radihêlin serê çovê xwe û tevlî koçê dibin.",
+                descEnglish: "Those who earn their bread by the hoe live in constant uncertainty. Because of this they rarely settle down and start a family. What little they have they carry on their shoulder and join the migration when the time comes."
+            },
+            {
+                kurmanji: "Mala me şora me.",
+                english: "Our home is our own affair.",
+                descKurmanji: "Di nav malekê de çi were axaftin divê di nav malê de bimîne. Kesên xerîb divê ji van axaftinan bêagahdar bin.",
+                descEnglish: "Whatever is spoken within a household should remain within the household. Outsiders should have no knowledge of these matters."
+            },
+            {
+                kurmanji: "Mala mêr tê, kaniya zêr tê.",
+                english: "Where working men are, a spring of gold flows.",
+                descKurmanji: "Dema di malekê de kedkar hebin, ew mal xwedî dahate ye û ew mal dewlemend tê hesabê.",
+                descEnglish: "When a household has workers, it has income and is considered prosperous."
+            },
+            {
+                kurmanji: "Mala min mala gur e, ne dan û ne bilxur e.",
+                english: "My home is a wolf's den — neither give nor take.",
+                descKurmanji: "Kesên di mala wan de gelek kes dijîn û her tişt di demeke kin de tên mezaxtin, dema tiştek ji wan tê xwestin dibêjin: tu tiştê min tune, tiştê heye jî ancax têra min bike.",
+                descEnglish: "Said by those whose household has many mouths and where everything is consumed quickly. When something is requested of them, they say: \"I have nothing — what little there is barely covers my own needs.\""
+            },
+            {
+                kurmanji: "Mala mitriban bi sekinandinê xera dibe.",
+                english: "A musician's home is ruined by stopping.",
+                descKurmanji: "Kesên dema hînî tiştekî bibin û ji karê xwe bên kirin, nikarin jiyana xwe bidomînin.",
+                descEnglish: "Those who make a living from their craft cannot sustain themselves if they are made to stop."
+            },
+            {
+                kurmanji: "Mala mitriban li ser milê wan.",
+                english: "The musician's home is on their back.",
+                descKurmanji: "Kesên geroke ne xwedî malê giran in, çi malê wan hebe li ser milê wan e û bi xwe re digerînin.",
+                descEnglish: "Wandering people carry what little they own and travel with it wherever they go."
+            },
+            {
+                kurmanji: "Mala neçaran şewitiye, dewlemendan pif kiriyê.",
+                english: "The poor man's home burned down; the rich man blew on it.",
+                descKurmanji: "Li gorî vê gotinê kesên dewlemend ji kesên neçar û feqîr hez nakin. Dema bûyereke xerab tê serê wan, kesên dewlemend dixwazin ku ew ji holê rabin.",
+                descEnglish: "According to this saying, the wealthy do not care for the poor. When misfortune befalls the destitute, the wealthy merely wish for them to disappear."
+            },
+            {
+                kurmanji: "Mala pir jin xera bû ji bin.",
+                english: "The home of many women was ruined from the bottom up.",
+                descKurmanji: "Mala ku jin tê de pir, karê wê malê diavêjin ser hev du, haya kesî ji kesî nîn e. Ji derve xuyandina wê malê baş e, lê ji ber ku her kes dibêje, bila ya din bike, kes nake.",
+                descEnglish: "In a home where there are many women, the daily work is passed from one to another. From the outside the home may look fine, but because everyone says \"let the other one do it,\" nothing gets done."
+            },
+            {
+                kurmanji: "Mala pîrê, gora pîrê.",
+                english: "The old woman's home is the old woman's grave.",
+                descKurmanji: "Mala pîrê hemû tiştê pîrê ye. Baş be jî û ne baş be jî, bi kêfa xwe û bi serê xwe ye.",
+                descEnglish: "The old woman's home belongs entirely to the old woman. Good or bad, she runs it by herself and on her own terms."
+            },
+            {
+                kurmanji: "Mala pirjinan, xera bû ji bêhnan.",
+                english: "The home of many women was ruined by idleness.",
+                descKurmanji: "Mala ku jin tê pir bin, karê malê diavêjin ser hev du. Ew dibêje bila ew bike, ya din dibêje, bila ya din bike û mal genî dibe.",
+                descEnglish: "In a home where there are many women, the work is passed endlessly from one to the other, until the home falls into disrepair and disorder."
+            },
+            {
+                kurmanji: "Mala zêran pûç e, mala mêran qûç e.",
+                english: "The home of the golden wealthy is hollow; the home of true men is an embrace.",
+                descKurmanji: "Têkiliyên di navbera dewlemendan de ne ji dil in. Xeberdan ji ser zimanan naçe xwarê. Lê mala kesê camêr ne welê ye. Tiştê bê te gotin ji dil tê gotin.",
+                descEnglish: "The ties between the wealthy are not heartfelt — words spoken are only on the surface. But in the home of a man of honour, what is said comes from the heart."
+            },
+            {
+                kurmanji: "Maldar li mala xwe, rêwî li rêya xwe.",
+                english: "The wealthy man in his home, the traveller on his road.",
+                descKurmanji: "Her kes divê li ser karê xwe be, her kes divê li gorî rewşa xwe û pêdiviyên xwe bilive.",
+                descEnglish: "Everyone should attend to their own affairs and move according to their own situation and needs."
+            },
+            {
+                kurmanji: "Malê axa diçe, canê şîrîn diêşe.",
+                english: "The lord's wealth goes, and his sweet soul aches.",
+                descKurmanji: "Ji bo gelek kesên maldar malê wan gelek bi wan şîrîn e. Dema bûyereke nebaş bi ser malê wan de tê, dilê wan jan dide.",
+                descEnglish: "For many wealthy people, their property is very dear to them. When something bad befalls their wealth, their heart aches with it."
+            },
+            {
+                kurmanji: "Malê bavan li ber çavan nayê.",
+                english: "A father's wealth does not stay before the eyes — it is easily spent.",
+                descKurmanji: "Tiştê ku mirov ked di ber de nerêtibe û di ber de zehmetî nekişandibe, xerckirina wî li mirov hêsan tê.",
+                descEnglish: "It is easy to spend what one has not laboured for and not suffered to obtain."
+            },
+            {
+                kurmanji: "Malê bavan li ber çavan.",
+                english: "A father's wealth is in plain sight.",
+                descKurmanji: "Malê bavê mirov malê mirov tê hesabê, ji ber vê yekê jî ji bo mirov eşkere ye û mirov dizane çiqas heye.",
+                descEnglish: "One considers a father's wealth as one's own, so one knows exactly how much of it there is."
+            },
+            {
+                kurmanji: "Malê bi tirê hatî, bi virê diçe.",
+                english: "What came by arrow will go by hook.",
+                descKurmanji: "Dema ku malek bê ked bi destê mirov bikeve, ew mal ji ber ku bê zehmet hatiye, bi hêsanî ji destê mirov dertê jî.",
+                descEnglish: "When wealth comes into one's hands without effort, it leaves just as easily — because it was not earned through hardship."
+            },
+            {
+                kurmanji: "Malê biheybet e, zeyê biqîmet e.",
+                english: "The wealth may be impressive, but the bride's dignity is more precious.",
+                descKurmanji: "Mala xezûrê bûkê çiqas dewlemend be jî, bûk bi maldarî û xurtiya mala bavê xwe birûmet dibe.",
+                descEnglish: "No matter how wealthy the husband's family is, a bride's honour comes from the strength and dignity of her own father's household."
+            },
+            {
+                kurmanji: "Malê camêrekî û qesîsekî wekî hev diçe.",
+                english: "The wealth of a noble man and a miser end up in the same place.",
+                descKurmanji: "Mirovên camêr û sexî malê xwe ji bo pêdiviyên xwe û mala xwe xerc dikin. Yên qesîs di dawiyê de pereyên wan hemû li nexweşxane û bijîşkan diçin.",
+                descEnglish: "Generous people spend their wealth on their own and their household's needs. Misers cannot bring themselves to spend even on themselves, and in the end all their money goes to doctors and hospitals."
+            },
+            {
+                kurmanji: "Malê çê ji bo roja xerab e.",
+                english: "Good wealth is for the bad day.",
+                descKurmanji: "Dewlemendiya mirov ji bo rojên xerab e. Ji ber ku di rojên wisa de wateya dewlemendiyê dertê holê.",
+                descEnglish: "A person's wealth is most valuable in difficult times — that is when its meaning becomes clear."
+            },
+            {
+                kurmanji: "Malê devlihevan çavhilkirî dixwin.",
+                english: "The wealth of the careless is eaten by the watchful.",
+                descKurmanji: "Kesên ne hişyar û parastina malê xwe li hêviya hev dihêlin, nikarin malê xwe biparêzin û bi giştî malê wan ji wan zêdetir kesên jîr û çavnas dixwin.",
+                descEnglish: "Those who are not vigilant and leave the guarding of their wealth to one another cannot protect it. In general, the wealth of the inattentive is consumed by those who are shrewd and watchful."
+            },
+            {
+                kurmanji: "Malê dînan li ber çavan gereg e.",
+                english: "The wealth of the mad must be kept in sight.",
+                descKurmanji: "Ji ber ku baweriya dînan bi kesî nayê, çi malê wan hebe dixwazin di bin destê wan de be, yan jî li ber çavên wan be.",
+                descEnglish: "Because the mad cannot be trusted, whatever property they have should be kept in their hands or at least within their sight."
+            },
+            {
+                kurmanji: "Malê dinê ji bo dinê ye.",
+                english: "The wealth of this world is for this world.",
+                descKurmanji: "Divê mirov malê dinê ji bo kar û bûyerên dinê xerc bike. Piştî ku mirov mir, rûmeta malî nîn e, ji ber ku kêrî tu tiştî nayê.",
+                descEnglish: "A person's wealth should be used for the matters of this world. After death, wealth has no value — it is of no use."
+            },
+            {
+                kurmanji: "Malê dinê li stûyê mêran e.",
+                english: "The wealth of this world rests on the necks of men.",
+                descKurmanji: "Kirina kar li mêran e. Divê mêr karan bikin, pere qezenc bikin û bigihînin hev.",
+                descEnglish: "The work is for men to do. Men must labour, earn money, and accumulate it."
+            },
+            {
+                kurmanji: "Malê dinê qirêja destan e.",
+                english: "The wealth of this world is the dirt of hands.",
+                descKurmanji: "Bila canê mirov sax be û rehetiya mirov li cî be, mal û milk ne tiştek e, mirov dikare mal ji bo van tiştan biemilîne.",
+                descEnglish: "As long as a person's soul is safe and their comfort is in place, wealth and property are nothing — they can be spent for the sake of these things."
+            },
+            {
+                kurmanji: "Malê egîdan li meydanê.",
+                english: "The wealth of the brave is in the open field.",
+                descKurmanji: "Kesên egîd malê xwe ji kesî venaşêrin, çi heyîna wan hebe, li ber çavan e. En wisa dikarin malê xwe ji her talûkeyê biparêzin.",
+                descEnglish: "Brave people do not hide their wealth from anyone — whatever they have is in plain view. And so they can also protect their wealth from any threat."
+            },
+            {
+                kurmanji: "Malê erzan bihîlet e, malê buha bihîkmet e.",
+                english: "Cheap goods are deceptive; expensive goods are wisdom.",
+                descKurmanji: "Li gorî rastiya bazirganiyê malê buha malê hêja û saxlem e û buhayê wî jî li gorî wî ye. Malê beredayî jî buhayê wî li gorî wî ye.",
+                descEnglish: "According to the truth of commerce, expensive goods are valuable and well-made, and their price reflects this. Cheap goods likewise reflect their price."
+            },
+            {
+                kurmanji: "Malê giriyan ji kenokan re fêdeyê nake.",
+                english: "Wealth earned by weeping brings no benefit to the oppressors.",
+                descKurmanji: "Malê ku bi zordarî ji kesên hewcedar were standin, mirov nikare ji wî malê tu xêrê bibîne.",
+                descEnglish: "Wealth seized by force from those in need brings no good to those who take it."
+            },
+            {
+                kurmanji: "Malê heram di kijan kunê de be jî dê were dîtin.",
+                english: "Unlawfully earned wealth, wherever it is hidden, will come to light.",
+                descKurmanji: "Malê heram ji xelkê çiqas bê veşartin jî dê rojekê derkeve holê. Tiştên heram nayên veşartin.",
+                descEnglish: "Haram wealth cannot be hidden no matter how hard one tries — one day it will surface. What is forbidden cannot remain concealed."
+            },
+            {
+                kurmanji: "Malê heram xwîna xinzîr e.",
+                english: "Unlawfully earned wealth is the blood of a pig.",
+                descKurmanji: "Li gorî baweriya gel tiştê herî heram xwîna xinzîr e û malê heram jî wekî wê tê dîtin.",
+                descEnglish: "According to popular belief, the most forbidden thing is the blood of a pig, and unlawfully earned wealth is regarded in the same way."
+            },
+            {
+                kurmanji: "Malê hewişandî, ne xurê xwedî ye.",
+                english: "Hoarded wealth — its owner is not truly its owner.",
+                descKurmanji: "Li gorî vê gotinê xwediyê malê hewişandî parastî ne xwedî ye, ji ber ku ji wî zêdetir xelk ji wî malî dixwin.",
+                descEnglish: "According to this saying, the owner of hoarded wealth is not its true owner, because more people benefit from it than the owner themselves."
+            },
+            {
+                kurmanji: "Malê kesî li kesî helal nabe.",
+                english: "Another's wealth is not lawful for anyone.",
+                descKurmanji: "Divê çavên te ne li malê kesî be. Mal ked û rênca mirov e. Her kes malê xwe bi xwe dixwe.",
+                descEnglish: "Your eyes should not be on another's property. Wealth is the fruit of a person's labour. Everyone eats what they themselves have earned."
+            },
+            {
+                kurmanji: "Malê ku ba di ber re here, nabe milk.",
+                english: "Wealth that the wind passes through cannot become property.",
+                descKurmanji: "Ev gotin li ser girîngiya milk tê gotin. Tiştê ku ji cihê xwe biqeliqe û şikeber be, nayê hesibandin û bi giştî jî mirov nikare malê xwe qebûl bike.",
+                descEnglish: "This saying is about the importance of fixed property. What is unstable and scatters in the wind cannot be relied upon, and in general a person cannot accept such things as their own."
+            },
+            {
+                kurmanji: "Malê ku ne keda destê mirovan be, zû winda dibe.",
+                english: "Wealth not earned by one's own hands is quickly lost.",
+                descKurmanji: "Malê ku mirov ne bi destê xwe berhev kiribe, mirov qîmeta wî nizane. Ji ber vê yekê jî zû ji dest diçe.",
+                descEnglish: "Wealth a person has not themselves gathered is not valued by them. Because of this it is quickly lost."
+            },
+            {
+                kurmanji: "Malê malyêmezan, xwarê tarîxbilmezan.",
+                english: "The wealth of the one who does not enjoy it goes to those who don't know its history.",
+                descKurmanji: "Kesên qesîs çiqas bi kedeke mezin ji xwe re mal çêbikin jî, ji ber ku dil nakin bixwin, piştî ku dimirin malê wan ji kesên qedirnezan re dimîne.",
+                descEnglish: "No matter how hard misers work to accumulate wealth, because they cannot bring themselves to enjoy it, after their death their wealth falls to those with no idea of its worth or history."
+            },
+            {
+                kurmanji: "Malê mezlûman, nake xêrê li zaliman.",
+                english: "The wealth of the oppressed brings no good to the oppressor.",
+                descKurmanji: "Kesên ku bi malên mezlûman debara xwe dikin û aboriya wan li ser vê yekê ye, bi giştî ji wî malî xêrê nabînin.",
+                descEnglish: "Those who sustain themselves on the wealth of the oppressed, whose entire livelihood rests on this, generally see no blessing from it."
+            },
+            {
+                kurmanji: "Malê min pir e, derd ji min dûr e.",
+                english: "My wealth is great, and trouble is far from me.",
+                descKurmanji: "Hin kes hene ji wan kirî dema dewlemend bibin tu kul û derdê dinê li ser pişta wan namînin û ji wan kirî sedemê her tiştî ev yek e.",
+                descEnglish: "Some people believe that once they become wealthy, no sorrow or trouble in the world touches them — and consider this the cause of everything."
+            },
+            {
+                kurmanji: "Malê miriyan ê zindiyan e.",
+                english: "The wealth of the dead belongs to the living.",
+                descKurmanji: "Ji ber ku dema mirî dimire malê wî dimîne û nikare malê xwe bi xwe re bibe gorê, malê wî ji kesên mîratxurên wî re dimîne.",
+                descEnglish: "When a person dies, their wealth remains behind and cannot be taken to the grave. It is left to the heirs."
+            },
+            {
+                kurmanji: "Malê mirov tune be, kûçik jî ji mirov biqedirtir in.",
+                english: "If a person has no wealth, even the dogs are considered above them.",
+                descKurmanji: "Bi giştî di hin civakan de dema mirov bêmal û milk be, tu kes qedrê mirov nagire û tu kes nizane ka mirov dijî yan na.",
+                descEnglish: "In some societies, when a person has no property or wealth, no one respects them or even knows whether they are alive."
+            },
+            {
+                kurmanji: "Malê misilmanan divê eşkere be.",
+                english: "A Muslim's wealth should be in the open.",
+                descKurmanji: "Kesê misilman divê malê xwe ji hevalê xwe yê misilman veneşêre. Mirovê misilman dema xwedî mal be, divê alîkariya kesên neçar û belengaz bike. Malê xwe di rêya heqiyê de xerc bike.",
+                descEnglish: "A Muslim person should not hide their wealth from their fellow Muslim. When a Muslim has wealth, they must help those in need. They must spend their wealth on the path of justice."
+            },
+            {
+                kurmanji: "Malê ne ji kurê qenc re, ne ji yê xerab re bike.",
+                english: "Leave your wealth neither to the good son nor to the bad one.",
+                descKurmanji: "Kurê qenc bêmal be jî dikare bixebite û mal ji xwe re bike û bibe xwedî mal. Kurê xerab jî tu çi was mal bidiyê jî ew di riya xerabiyê de bi kar tîne.",
+                descEnglish: "A good son, even without inheritance, can work and build his own wealth. A bad son will spend whatever you leave him on bad deeds regardless."
+            },
+            {
+                kurmanji: "Malê nexwarî behra zordaran e.",
+                english: "Unspent wealth is the inheritance of tyrants.",
+                descKurmanji: "Dema mirov malê xwe nexwe, mirov ji kesên xerab re mal dide hev. Dema mal zêde bigihîje hev, dê bi zordarî ji destê mirov were derxistin.",
+                descEnglish: "When a person does not spend their own wealth, they accumulate it for the benefit of the wicked. When wealth piles up too high, it will be seized from them by force."
+            },
+            {
+                kurmanji: "Malê pir bê heram, şorên pir bê derew nabin.",
+                english: "Great wealth without corruption, and many words without lies — these do not exist.",
+                descKurmanji: "Temenê mirovan têra berhevkirina serweteke paqij nake. Heke li derekê gelek pere kom bibin, heramiyek an jî sûcek di bingeha wê de ye. Gotinên pir jî wisa ne.",
+                descEnglish: "A person's lifetime is not enough to accumulate a truly clean fortune. If a great deal of money has been gathered somewhere, there is deceit or wrongdoing at its foundation. The same is true of many words."
+            },
+            {
+                kurmanji: "Malê pir zû ziyan dibe, gerdena stûr zû zirav dibe.",
+                english: "Great wealth is quickly damaged; a thick neck quickly becomes thin.",
+                descKurmanji: "Li dinê kesî neketî û ranebûyî tune. Divê mirov bi zêdebûna malê xwe, bi delaliya xwe pesnê xwe nede. Ji ber ku parastina malê pir gelekî zor e û zû ziyan dibe.",
+                descEnglish: "No one in this world has escaped hardship. A person should not boast of their wealth or their beauty, for protecting great wealth is very difficult and it is quickly damaged. So too with beauty."
+            },
+            {
+                kurmanji: "Malê rind bikire, da ku tu jovan nebî.",
+                english: "Buy good goods, so you will not be a fool.",
+                descKurmanji: "Dema mirov malê baş û hêja bistîne, mirov dikare li gorî daxwaza xwe biemilîne û mirov jê poşman nabe. Lê dema mirov malê beredayî bistîne, bi giştî mirov jê zerarê dibîne.",
+                descEnglish: "When a person buys quality goods, they can use them as they wish and will not regret it. But cheap goods generally bring loss and regret."
+            },
+            {
+                kurmanji: "Malê xerab ê xwediyan e.",
+                english: "Bad goods belong to their seller.",
+                descKurmanji: "Dema bazirganek malekî nebaş bide yekî, dê ew mal lê bizivire. Divê di bazirganiyê de xapandin tune be.",
+                descEnglish: "When a merchant sells someone faulty goods, those goods will come back to them. There should be no deception in trade."
+            },
+            {
+                kurmanji: "Malê xesîs diçe fesîs.",
+                english: "The miser's wealth goes to the wastrel.",
+                descKurmanji: "Malê kesên xesîs ji aliyê xelkê ve tê xwarin, ji ber ku ew dil nade bixwe.",
+                descEnglish: "The miser's wealth is eaten by others because they cannot bring themselves to spend it themselves."
+            },
+            {
+                kurmanji: "Malê yêmezan nexwaran comerd dixwin.",
+                english: "The generous eat what the hoarder will not.",
+                descKurmanji: "Dema mirov dil nede malê xwe bixwe, dê xelk malê mirov bixwin.",
+                descEnglish: "When a person cannot bring themselves to spend their own wealth, others will spend it for them."
+            },
+            {
+                kurmanji: "Malê yetîman xwîna xinzîran.",
+                english: "The wealth of orphans is the blood of pigs.",
+                descKurmanji: "Xwarina goştê xinzîran heram e. Kesên ku malê yetîman dixwin, wekî kesên ku goştê xinzîran dixwin têne dîtin.",
+                descEnglish: "Eating pork is forbidden. Those who consume the wealth of orphans are regarded in the same way as those who eat pork."
+            },
+            {
+                kurmanji: "Maleke bêderî ne hewceyî kilîtê ye.",
+                english: "A home without a door has no need of a lock.",
+                descKurmanji: "Parastina malê li derve zor e. Çiqas tu bixwazî biparêzî jî nayê parastin.",
+                descEnglish: "Protecting property that has no boundaries is very difficult. No matter how hard you try, it cannot truly be protected."
+            },
+            {
+                kurmanji: "Malî li rû cên e.",
+                english: "Wealth is close to the face of the soul.",
+                descKurmanji: "Mal û can nêzîkî hev in, kesê ku keda wî bi ro de here, pir pê dişewite.",
+                english: "Wealth and life are close to one another. A person whose efforts come to nothing burns deeply with that loss."
+            },
+            {
+                kurmanji: "Malika min e, holika min e.",
+                english: "It is my property; it is my den.",
+                descKurmanji: "Malê mirov ne baş be jî dîsa bê tehn û bê gazin mirov dikare biemilîne û ser dilê mirov rehet e. Ji ber vê yekê jî ji malê xelkê şîrîntir e.",
+                english: "Even if a person's own home is not fine, they can still use it without complaint and with an easy heart. For this reason, even a bad home is sweeter than another's."
+            },
+            {
+                kurmanji: "Malkambax gotiye; \"Em ê sibehê betal bin.\"",
+                english: "The ruiner of homes said: \"Tomorrow we will be idle.\"",
+                descKurmanji: "Kesên malxerab ji xwe mala xwe bi betalî û teraliyê xera dikin. Ji ber ku tim betal in yan jî di rêyên xerab de dimeşin.",
+                descEnglish: "Those who ruin their homes do so through idleness and carelessness — they are always idle or walking bad roads."
+            },
+            {
+                kurmanji: "Malxwedî ket destê jinê, karik birî, berxik hişt di bin livayê de.",
+                english: "The homeownership fell to the woman — she slaughtered the rooster and left the lamb under the blanket.",
+                descKurmanji: "Dema malxweyî bikeve destê jinê, rêya debara xwe diheyirîne.",
+                descEnglish: "When the running of the household falls to the woman, she finds her own way of managing it."
+            },
+            {
+                kurmanji: "Malxwedî ket destê kurî, risqê salê sê car birî.",
+                english: "The homeownership fell to the son — the year's provision was cut three times.",
+                descKurmanji: "Dema debara malê bikeve ser pişta kesên nezan û cahîl wê mal belengaz bikeve.",
+                descEnglish: "When the running of the household falls to the inexperienced and ignorant, that household will fall into hardship."
+            },
+            {
+                kurmanji: "Malxweyê malê bû Pelo, xwarina eyal bû sorçilo.",
+                english: "The homeowner became a useless one, and the family's food became gruel.",
+                descKurmanji: "Dema malxweyê malê bibe mirovê bêkêr, jiyana mirov teng û tal dibe, xwarina mirov jî dibe gil û giha.",
+                descEnglish: "When the head of the household becomes useless, life becomes hard and bitter, and the family's food becomes mere gruel and weeds."
+            },
+            {
+                kurmanji: "Malxweyê malê mêr e, kebaniya malê jin e.",
+                english: "The master of the home is the man; the mistress of the home is the woman.",
+                descKurmanji: "Ev gotin li ser parvekirina karên di malê de hatiye gotin. Li gorî vê gotinê aboriya malê li ser pişta mêr e, xebata malê jî li ser pişta jinê ye.",
+                descEnglish: "This saying is about the division of roles in the home. According to it, the financial responsibility of the household lies with the man, and the domestic work lies with the woman."
+            },
+            {
+                kurmanji: "Malxweyê xerab li serdestî mêvan rûdine.",
+                english: "A bad homeowner sits in the seat of honour above his guest.",
+                descKurmanji: "Di civaka kurdan de cihê mêvanan cihekî girîng e. Xwediyê malê mêvanê xwe li serdestî xwe rûdinîne. Kesê nezan û bencax li serdestî mêvanê xwe rûne.",
+                descEnglish: "In Kurdish society, the guest's place is a place of great importance. A proper host seats their guest in the place of honour above themselves. Only the ignorant and ill-mannered sit above their guest."
+            },
+            {
+                kurmanji: "Mangaya malê ji gayê malê natirse.",
+                english: "The household cow does not fear the household bull.",
+                descKurmanji: "Kesên bi hev re û li malekê mezin bûne hev du nas dikin, bi hev dizanin, ji hev natirsin.",
+                descEnglish: "Those who have grown up together and lived under the same roof know one another and do not fear each other."
+            },
+            {
+                kurmanji: "Mangaya rêxokî garanekê diherîmîne.",
+                english: "A stray cow ruins a whole herd.",
+                descKurmanji: "Kesekî/e xerab navê malbatekê bi navê xwe re xera dike.",
+                descEnglish: "One bad person ruins the name of an entire family."
+            },
+            {
+                kurmanji: "Mar axê bi qinet dixwe.",
+                english: "The snake eats the earth in silence — with patience.",
+                descKurmanji: "Mal û pereyên mirov çiqas hebin jî, mirov çiqas dewlemend be jî, divê mirov bi hizir û hesab xerc bike.",
+                descEnglish: "No matter how much wealth and property a person has, however rich they are, they must spend it with thought and care."
+            },
+            {
+                kurmanji: "Mar dibêje; \"Min dikujî bi dijminatî, çal bike bi dosti.\"",
+                english: "The snake says: \"If you kill me, do it as an enemy; bury me as a friend.\"",
+                descKurmanji: "Divê tu heqê dijmin jî bidî dijmin. Şert û şêwazên her tiştekî hene. Kesên merdemêr bi dijminê xwe re li gorî şert û şêwazên pêwîst şer dikin.",
+                descEnglish: "You must give even an enemy their due. Everything has its conditions and conventions. Men of honour fight their enemies according to the proper rules. And after one has killed the other, they bury the body with honour."
+            },
+            {
+                kurmanji: "Mar e, ne cih û ne war e.",
+                english: "It is a snake — neither here nor there.",
+                descKurmanji: "Mar cih û warê wî ne kifş e, ji ber ku tim li derekî nasekine, berê wî bikeve ku diçe li her derê digere.",
+                descEnglish: "The snake's dwelling is unknown, because it never stays in one place. It wanders wherever it is led, going everywhere."
+            },
+            {
+                kurmanji: "Mar jî bi kesê li ser avê ve venade.",
+                english: "Even the snake does not hang from a person standing on water.",
+                descKurmanji: "Di rewşên taybet de mirov xwe têkilî hin kesan neke.",
+                descEnglish: "In certain special circumstances, a person should not get involved with certain people."
+            },
+            {
+                kurmanji: "Mar ji pûngê hez nake, pûng diçe li ber bêvila wî şîn dibe.",
+                english: "The snake does not like the frog; the frog grows up right in front of its nose.",
+                descKurmanji: "Gelek caran tişt an kesên ku mirov ji wan hez nake, tên di ber pozê mirov de cih digirin.",
+                descEnglish: "Very often, the things or people a person dislikes most end up settling right under their nose."
+            },
+        ];
+
+        /* ═══════ WORLD ═══════ */
+        const WW = 5000, WH = 4200;
+        const MARGIN = 350; // walkable area inset from mountains
+        const STATIONS = [
+            { x: 2500, y: 3200 }, { x: 1500, y: 2800 }, { x: 700, y: 2100 }, { x: 550, y: 1450 }, { x: 1100, y: 850 },
+            { x: 2100, y: 550 }, { x: 3100, y: 850 }, { x: 3700, y: 1450 }, { x: 3500, y: 2100 }, { x: 2900, y: 2800 }
+        ];
+
+        const HC = [
+            { w: "#C4AA82", s: "#A8906A", d: "#5C4A35" }, { w: "#CAAD85", s: "#AE9570", d: "#604D38" },
+            { w: "#BFA87E", s: "#A38E68", d: "#564232" }, { w: "#D1B48E", s: "#B59A76", d: "#635040" },
+            { w: "#C8A97D", s: "#AC8F65", d: "#584535" }, { w: "#CCB088", s: "#B09670", d: "#5E4B3A" },
+            { w: "#C0A478", s: "#A48A60", d: "#524030" }, { w: "#D4B890", s: "#B89E78", d: "#665342" },
+            { w: "#C6A880", s: "#AA8E68", d: "#5A4736" }, { w: "#CBB08A", s: "#AF9672", d: "#604C3C" },
+        ];
+
+        // Extra paths — open polylines connecting main-loop stations plus central roads
+        // Path A: Northern spur (station 4 → station 5)
+        const EXTRA_PATH_A_PTS = [
+            { x: 1100, y: 850 }, { x: 1350, y: 700 }, { x: 1600, y: 680 }, { x: 1750, y: 620 }, { x: 2100, y: 550 }
+        ];
+        // Path B: East loop (station 7 → station 8)
+        const EXTRA_PATH_B_PTS = [
+            { x: 3700, y: 1450 }, { x: 3850, y: 1650 }, { x: 3900, y: 1800 }, { x: 3800, y: 1950 }, { x: 3500, y: 2100 }
+        ];
+        // Path C: Southern shortcut (station 0 → station 9)
+        const EXTRA_PATH_C_PTS = [
+            { x: 2500, y: 3200 }, { x: 2600, y: 3050 }, { x: 2700, y: 2950 }, { x: 2800, y: 2870 }, { x: 2900, y: 2800 }
+        ];
+        // Path D: Central west road (station 2 → centre → station 5)
+        const EXTRA_PATH_D_PTS = [
+            { x: 700, y: 2100 }, { x: 1100, y: 1900 }, { x: 1500, y: 1700 }, { x: 1900, y: 1550 }, { x: 2300, y: 1400 }, { x: 2600, y: 1300 }, { x: 2900, y: 1150 }, { x: 3100, y: 850 }
+        ];
+        // Path E: Central east road (station 1 → centre → station 8)
+        const EXTRA_PATH_E_PTS = [
+            { x: 1500, y: 2800 }, { x: 1800, y: 2500 }, { x: 2100, y: 2300 }, { x: 2400, y: 2100 }, { x: 2700, y: 1900 }, { x: 3000, y: 1800 }, { x: 3200, y: 1700 }, { x: 3500, y: 2100 }
+        ];
+        // Path F: Central north–south spine (station 5 area → station 0 area through mid-map)
+        const EXTRA_PATH_F_PTS = [
+            { x: 2500, y: 700 }, { x: 2500, y: 1000 }, { x: 2500, y: 1400 }, { x: 2500, y: 1800 }, { x: 2500, y: 2200 }, { x: 2500, y: 2600 }, { x: 2500, y: 3000 }, { x: 2500, y: 3200 }
+        ];
+        // Path G: NW shortcut (station 3 → station 4)
+        const EXTRA_PATH_G_PTS = [
+            { x: 550, y: 1450 }, { x: 700, y: 1150 }, { x: 900, y: 1000 }, { x: 1100, y: 850 }
+        ];
+        // Path H: SW circuit (station 2 → station 1)
+        const EXTRA_PATH_H_PTS = [
+            { x: 700, y: 2100 }, { x: 650, y: 2500 }, { x: 800, y: 2800 }, { x: 1100, y: 2750 }, { x: 1500, y: 2800 }
+        ];
+        // Path I: SE extension (station 9 → station 7)
+        const EXTRA_PATH_I_PTS = [
+            { x: 2900, y: 2800 }, { x: 3200, y: 3000 }, { x: 3500, y: 2900 }, { x: 3700, y: 2400 }, { x: 3700, y: 1450 }
+        ];
+        // Path J: Northern arc (station 5 → station 6)
+        const EXTRA_PATH_J_PTS = [
+            { x: 2100, y: 550 }, { x: 2500, y: 420 }, { x: 2900, y: 500 }, { x: 3100, y: 850 }
+        ];
+        // Path K: SW long loop (station 1 → station 3)
+        const EXTRA_PATH_K_PTS = [
+            { x: 1500, y: 2800 }, { x: 1300, y: 3100 }, { x: 750, y: 3000 }, { x: 600, y: 2700 }, { x: 500, y: 2300 }, { x: 550, y: 1800 }, { x: 550, y: 1450 }
+        ];
+        // Path L: East spine (station 6 → station 7)
+        const EXTRA_PATH_L_PTS = [
+            { x: 3100, y: 850 }, { x: 3400, y: 900 }, { x: 3700, y: 1100 }, { x: 3700, y: 1450 }
+        ];
+
+        // Decorative houses — on all paths and spread across the map
+        // pi = index into PROVERBS array
+        const DECO_HOUSES = [
+            // Path A — northern spur
+            { x: 1350, y: 700, pi: 10, c: { w: "#C8B08A", s: "#A89068", d: "#5C4A35" } },
+            { x: 1600, y: 680, pi: 11, c: { w: "#CCB488", s: "#B09870", d: "#604D38" } },
+            { x: 1750, y: 620, pi: 12, c: { w: "#C4AC84", s: "#A88C6C", d: "#564232" } },
+            // Path B — east loop
+            { x: 3850, y: 1650, pi: 13, c: { w: "#D0B28C", s: "#B49874", d: "#635040" } },
+            { x: 3900, y: 1800, pi: 14, c: { w: "#C6AA80", s: "#AA8E68", d: "#584535" } },
+            { x: 3800, y: 1950, pi: 15, c: { w: "#CAB08A", s: "#AE9470", d: "#5E4B3A" } },
+            // Path C — southern shortcut
+            { x: 2600, y: 3050, pi: 16, c: { w: "#BEA67C", s: "#A28A62", d: "#524030" } },
+            { x: 2700, y: 2950, pi: 17, c: { w: "#D2B68E", s: "#B69C76", d: "#665342" } },
+            { x: 2800, y: 2870, pi: 18, c: { w: "#C4A880", s: "#A88C68", d: "#5A4736" } },
+            // Path D — central west road
+            { x: 1100, y: 1900, pi: 19, c: { w: "#C8AE86", s: "#AC946E", d: "#604C3C" } },
+            { x: 1500, y: 1700, pi: 20, c: { w: "#C2A87E", s: "#A68E66", d: "#5A4634" } },
+            { x: 1900, y: 1550, pi: 21, c: { w: "#CCAE86", s: "#B0946E", d: "#5E4B3A" } },
+            { x: 2400, y: 2100, pi: 22, c: { w: "#C6AC82", s: "#AA906A", d: "#5C4838" } },
+            { x: 2600, y: 1300, pi: 23, c: { w: "#D0B48E", s: "#B49A76", d: "#624E3E" } },
+            { x: 3150, y: 700, pi: 24, c: { w: "#C0A67A", s: "#A48A62", d: "#524032" } },
+            // Path E — central east road
+            { x: 1800, y: 2500, pi: 25, c: { w: "#C8AA80", s: "#AC8E68", d: "#5A4636" } },
+            { x: 2100, y: 2300, pi: 26, c: { w: "#CCB08A", s: "#B09672", d: "#5E4C3C" } },
+            { x: 2700, y: 1900, pi: 27, c: { w: "#C4A87E", s: "#A88C66", d: "#584434" } },
+            // Path F — central north–south spine
+            { x: 2500, y: 1000, pi: 28, c: { w: "#D0B28C", s: "#B49874", d: "#62503E" } },
+            { x: 2500, y: 1100, pi: 29, c: { w: "#C6AC82", s: "#AA906A", d: "#5C4838" } },
+            { x: 2500, y: 1800, pi: 30, c: { w: "#C8B08A", s: "#A89068", d: "#5C4A35" } },
+            { x: 2500, y: 2200, pi: 31, c: { w: "#CCB488", s: "#B09870", d: "#604D38" } },
+            { x: 2500, y: 2600, pi: 32, c: { w: "#C4AC84", s: "#A88C6C", d: "#564232" } },
+            // Between main-trail stations
+            { x: 2000, y: 3000, pi: 33, c: { w: "#C8AE86", s: "#AC946E", d: "#604C3C" } },
+            { x: 850, y: 1750, pi: 34, c: { w: "#C2A87E", s: "#A68E66", d: "#5A4634" } },
+            { x: 3300, y: 1100, pi: 35, c: { w: "#CCAE86", s: "#B0946E", d: "#5E4B3A" } },
+            { x: 3600, y: 1750, pi: 36, c: { w: "#C6AC82", s: "#AA906A", d: "#5C4838" } },
+            { x: 3200, y: 2500, pi: 37, c: { w: "#D0B48E", s: "#B49A76", d: "#624E3E" } },
+            { x: 1300, y: 2300, pi: 38, c: { w: "#C0A67A", s: "#A48A62", d: "#524032" } },
+            // Path G — NW shortcut
+            { x: 700, y: 1150, pi: 39, c: { w: "#C8B08A", s: "#A89068", d: "#5C4A35" } },
+            { x: 900, y: 1000, pi: 40, c: { w: "#C4A87E", s: "#A88C66", d: "#584434" } },
+            // Path H — SW circuit
+            { x: 650, y: 2500, pi: 41, c: { w: "#D0B28C", s: "#B49874", d: "#635040" } },
+            { x: 800, y: 2800, pi: 42, c: { w: "#C6AA80", s: "#AA8E68", d: "#584535" } },
+            { x: 1100, y: 2750, pi: 43, c: { w: "#CAB08A", s: "#AE9470", d: "#5E4B3A" } },
+            // Path I — SE extension
+            { x: 3200, y: 3000, pi: 44, c: { w: "#BEA67C", s: "#A28A62", d: "#524030" } },
+            { x: 3500, y: 2900, pi: 45, c: { w: "#D2B68E", s: "#B69C76", d: "#665342" } },
+            { x: 3700, y: 2400, pi: 46, c: { w: "#C4A880", s: "#A88C68", d: "#5A4736" } },
+            // Path J — northern arc
+            { x: 2500, y: 420, pi: 47, c: { w: "#C8AE86", s: "#AC946E", d: "#604C3C" } },
+            { x: 2900, y: 500, pi: 48, c: { w: "#C2A87E", s: "#A68E66", d: "#5A4634" } },
+            // Path K — SW long loop
+            { x: 1300, y: 3100, pi: 49, c: { w: "#CCAE86", s: "#B0946E", d: "#5E4B3A" } },
+            { x: 750, y: 3000, pi: 50, c: { w: "#C6AC82", s: "#AA906A", d: "#5C4838" } },
+            { x: 600, y: 2700, pi: 51, c: { w: "#D0B48E", s: "#B49A76", d: "#624E3E" } },
+            { x: 500, y: 2300, pi: 52, c: { w: "#C0A67A", s: "#A48A62", d: "#524032" } },
+            { x: 550, y: 1800, pi: 53, c: { w: "#C8B08A", s: "#A89068", d: "#5C4A35" } },
+            // Path L — east spine
+            { x: 3400, y: 900, pi: 54, c: { w: "#C4AC84", s: "#A88C6C", d: "#564232" } },
+            { x: 3700, y: 1100, pi: 55, c: { w: "#D0B28C", s: "#B49874", d: "#635040" } },
+            // Scattered — underused map areas (far from river)
+            { x: 400, y: 1300, pi: 56, c: { w: "#C6AA80", s: "#AA8E68", d: "#584535" } },
+            { x: 420, y: 900, pi: 57, c: { w: "#CAB08A", s: "#AE9470", d: "#5E4B3A" } },
+            { x: 700, y: 600, pi: 58, c: { w: "#BEA67C", s: "#A28A62", d: "#524030" } },
+            { x: 1000, y: 450, pi: 59, c: { w: "#D2B68E", s: "#B69C76", d: "#665342" } },
+            { x: 1400, y: 400, pi: 60, c: { w: "#C4A880", s: "#A88C68", d: "#5A4736" } },
+            { x: 1700, y: 780, pi: 61, c: { w: "#C8AE86", s: "#AC946E", d: "#604C3C" } },
+            { x: 3350, y: 650, pi: 62, c: { w: "#C2A87E", s: "#A68E66", d: "#5A4634" } },
+            { x: 3600, y: 450, pi: 63, c: { w: "#CCAE86", s: "#B0946E", d: "#5E4B3A" } },
+            { x: 3900, y: 650, pi: 64, c: { w: "#C6AC82", s: "#AA906A", d: "#5C4838" } },
+            { x: 4100, y: 900, pi: 65, c: { w: "#D0B48E", s: "#B49A76", d: "#624E3E" } },
+            { x: 4200, y: 1200, pi: 66, c: { w: "#C0A67A", s: "#A48A62", d: "#524032" } },
+            { x: 4300, y: 1600, pi: 67, c: { w: "#C8B08A", s: "#A89068", d: "#5C4A35" } },
+            { x: 4200, y: 2000, pi: 68, c: { w: "#C4AC84", s: "#A88C6C", d: "#564232" } },
+            { x: 4100, y: 2400, pi: 69, c: { w: "#D0B28C", s: "#B49874", d: "#635040" } },
+            { x: 4000, y: 2700, pi: 70, c: { w: "#C6AA80", s: "#AA8E68", d: "#584535" } },
+            { x: 3800, y: 3000, pi: 71, c: { w: "#CAB08A", s: "#AE9470", d: "#5E4B3A" } },
+            { x: 3600, y: 3300, pi: 72, c: { w: "#BEA67C", s: "#A28A62", d: "#524030" } },
+            { x: 3300, y: 3500, pi: 73, c: { w: "#D2B68E", s: "#B69C76", d: "#665342" } },
+            { x: 2900, y: 3600, pi: 74, c: { w: "#C4A880", s: "#A88C68", d: "#5A4736" } },
+            { x: 2400, y: 3700, pi: 75, c: { w: "#C8AE86", s: "#AC946E", d: "#604C3C" } },
+            { x: 1900, y: 3700, pi: 76, c: { w: "#C2A87E", s: "#A68E66", d: "#5A4634" } },
+            { x: 1500, y: 3600, pi: 77, c: { w: "#CCAE86", s: "#B0946E", d: "#5E4B3A" } },
+            { x: 1100, y: 3500, pi: 78, c: { w: "#C6AC82", s: "#AA906A", d: "#5C4838" } },
+            { x: 700, y: 3400, pi: 79, c: { w: "#D0B48E", s: "#B49A76", d: "#624E3E" } },
+            { x: 450, y: 3100, pi: 80, c: { w: "#C0A67A", s: "#A48A62", d: "#524032" } },
+            { x: 400, y: 2700, pi: 81, c: { w: "#C8B08A", s: "#A89068", d: "#5C4A35" } },
+            { x: 450, y: 2200, pi: 82, c: { w: "#C4AC84", s: "#A88C6C", d: "#564232" } },
+            { x: 1700, y: 3100, pi: 83, c: { w: "#D0B28C", s: "#B49874", d: "#635040" } },
+            { x: 2200, y: 3350, pi: 84, c: { w: "#C6AA80", s: "#AA8E68", d: "#584535" } },
+            { x: 2800, y: 3300, pi: 85, c: { w: "#CAB08A", s: "#AE9470", d: "#5E4B3A" } },
+            { x: 3400, y: 3100, pi: 86, c: { w: "#BEA67C", s: "#A28A62", d: "#524030" } },
+            { x: 3900, y: 2250, pi: 87, c: { w: "#D2B68E", s: "#B69C76", d: "#665342" } },
+            { x: 4050, y: 1750, pi: 88, c: { w: "#C4A880", s: "#A88C68", d: "#5A4736" } },
+            { x: 3950, y: 1300, pi: 89, c: { w: "#C8AE86", s: "#AC946E", d: "#604C3C" } },
+            { x: 1200, y: 1100, pi: 90, c: { w: "#C2A87E", s: "#A68E66", d: "#5A4634" } },
+            { x: 800, y: 800, pi: 91, c: { w: "#CCAE86", s: "#B0946E", d: "#5E4B3A" } },
+            { x: 1350, y: 500, pi: 92, c: { w: "#C6AC82", s: "#AA906A", d: "#5C4838" } },
+            { x: 3000, y: 400, pi: 93, c: { w: "#D0B48E", s: "#B49A76", d: "#624E3E" } },
+            { x: 2700, y: 700, pi: 94, c: { w: "#C0A67A", s: "#A48A62", d: "#524032" } },
+            { x: 1200, y: 3300, pi: 95, c: { w: "#C8B08A", s: "#A89068", d: "#5C4A35" } },
+            { x: 950, y: 1300, pi: 96, c: { w: "#C4AC84", s: "#A88C6C", d: "#564232" } },
+            { x: 1600, y: 1100, pi: 97, c: { w: "#D0B28C", s: "#B49874", d: "#635040" } },
+            { x: 3000, y: 600, pi: 98, c: { w: "#C6AA80", s: "#AA8E68", d: "#584535" } },
+            { x: 3500, y: 3600, pi: 99, c: { w: "#CAB08A", s: "#AE9470", d: "#5E4B3A" } },
+            { x: 2100, y: 3500, pi: 100, c: { w: "#BEA67C", s: "#A28A62", d: "#524030" } },
+            { x: 4300, y: 2900, pi: 101, c: { w: "#D2B68E", s: "#B69C76", d: "#665342" } },
+            { x: 4400, y: 2200, pi: 102, c: { w: "#C4A880", s: "#A88C68", d: "#5A4736" } },
+            { x: 600, y: 450, pi: 103, c: { w: "#C8AE86", s: "#AC946E", d: "#604C3C" } },
+            { x: 350, y: 750, pi: 104, c: { w: "#C2A87E", s: "#A68E66", d: "#5A4634" } },
+            { x: 350, y: 1650, pi: 105, c: { w: "#CCAE86", s: "#B0946E", d: "#5E4B3A" } },
+            { x: 1050, y: 3100, pi: 106, c: { w: "#C6AC82", s: "#AA906A", d: "#5C4838" } },
+            { x: 4200, y: 3300, pi: 107, c: { w: "#D0B48E", s: "#B49A76", d: "#624E3E" } },
+            { x: 2300, y: 3900, pi: 108, c: { w: "#C0A67A", s: "#A48A62", d: "#524032" } },
+            { x: 3100, y: 3800, pi: 109, c: { w: "#C8B08A", s: "#A89068", d: "#5C4A35" } },
+            { x: 1750, y: 400, pi: 110, c: { w: "#C4AC84", s: "#A88C6C", d: "#564232" } },
+            { x: 3800, y: 3700, pi: 111, c: { w: "#D0B28C", s: "#B49874", d: "#635040" } },
+            { x: 4350, y: 3000, pi: 112, c: { w: "#C6AA80", s: "#AA8E68", d: "#584535" } },
+            { x: 4450, y: 1600, pi: 113, c: { w: "#CAB08A", s: "#AE9470", d: "#5E4B3A" } },
+            { x: 300, y: 1100, pi: 114, c: { w: "#BEA67C", s: "#A28A62", d: "#524030" } },
+        ];
+        const DECO_HOUSE_RADIUS = 28; // collision half-width (approx)
+
+        /* River */
+        const RIVER_PTS = [
+            { x: 4300, y: -100 }, { x: 3950, y: 400 }, { x: 3450, y: 950 }, { x: 2850, y: 1300 },
+            { x: 2250, y: 1600 }, { x: 1850, y: 2000 }, { x: 1450, y: 2500 }, { x: 950, y: 3000 },
+            { x: 550, y: 3500 }, { x: 250, y: 4300 }
+        ];
+        const BRIDGE = { x: 780, y: 2080, angle: -25, len: 100, bw: 34 };
+
+        /* Mountains ring */
+        const MTNS = [];
+        (function genMountains() {
+            const r = rng(777);
+            // Top edge
+            for (let x = -200; x < WW + 400; x += 140 + r() * 100) {
+                MTNS.push({ x, y: -50 + r() * 120, w: 180 + r() * 200, h: 200 + r() * 250, c: r() > 0.5 ? "#7A8068" : "#6E745E" });
+            }
+            // Bottom edge
+            for (let x = -200; x < WW + 400; x += 130 + r() * 110) {
+                MTNS.push({ x, y: WH - 80 + r() * 100, w: 180 + r() * 200, h: 200 + r() * 260, c: r() > 0.5 ? "#747A62" : "#6A705A" });
+            }
+            // Left edge
+            for (let y = -100; y < WH + 200; y += 120 + r() * 100) {
+                MTNS.push({ x: -80 + r() * 100, y, w: 180 + r() * 180, h: 200 + r() * 240, c: r() > 0.5 ? "#768066" : "#6C7260" });
+            }
+            // Right edge
+            for (let y = -100; y < WH + 200; y += 120 + r() * 100) {
+                MTNS.push({ x: WW - 80 + r() * 100, y, w: 180 + r() * 180, h: 200 + r() * 240, c: r() > 0.5 ? "#727A60" : "#6E7458" });
+            }
+        })();
+
+        /* Hills */
+        const HILLS = [
+            { cx: 1200, cy: 700, rx: 500, ry: 250, f: "#A3AB8A" }, { cx: 3600, cy: 600, rx: 450, ry: 220, f: "#9EA686" },
+            { cx: 400, cy: 1900, rx: 380, ry: 300, f: "#B5B498" }, { cx: 4200, cy: 2400, rx: 420, ry: 280, f: "#A8A98E" },
+            { cx: 2500, cy: 300, rx: 600, ry: 220, f: "#9DA384" }, { cx: 4000, cy: 3600, rx: 450, ry: 240, f: "#ADB099" },
+            { cx: 800, cy: 3500, rx: 400, ry: 220, f: "#B0AE94" }, { cx: 2200, cy: 3700, rx: 500, ry: 200, f: "#AAA88F" },
+            { cx: 1600, cy: 1400, rx: 350, ry: 180, f: "#A6AB90" }, { cx: 3400, cy: 2900, rx: 300, ry: 200, f: "#ADA993" },
+        ];
+
+        /* Path math */
+        function catmull(pts, closed) {
+            const n = pts.length, segs = [];
+            for (let i = 0; i < (closed ? n : n - 1); i++) {
+                const p0 = pts[(i - 1 + n) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
+                segs.push({ a: p1, b: { x: p1.x + (p2.x - p0.x) / 6, y: p1.y + (p2.y - p0.y) / 6 }, c: { x: p2.x - (p3.x - p1.x) / 6, y: p2.y - (p3.y - p1.y) / 6 }, d: p2 });
+            }
+            return segs;
+        }
+        function sampleBez(s, t) { const u = 1 - t; return { x: u * u * u * s.a.x + 3 * u * u * t * s.b.x + 3 * u * t * t * s.c.x + t * t * t * s.d.x, y: u * u * u * s.a.y + 3 * u * u * t * s.b.y + 3 * u * t * t * s.c.y + t * t * t * s.d.y } }
+        function buildSampled(pts, pps, closed) { const segs = catmull(pts, closed), out = []; for (let i = 0; i < segs.length; i++)for (let j = 0; j < pps; j++)out.push(sampleBez(segs[i], j / pps)); return out }
+        function ptsToD(pts, close) { let d = `M ${pts[0].x} ${pts[0].y}`; for (let i = 1; i < pts.length; i++)d += ` L ${pts[i].x} ${pts[i].y}`; if (close) d += " Z"; return d }
+
+        const TRAIL_PATH = buildSampled(STATIONS, 40, true);
+        const EXTRA_A_SAMPLED = buildSampled(EXTRA_PATH_A_PTS, 20, false);
+        const EXTRA_B_SAMPLED = buildSampled(EXTRA_PATH_B_PTS, 20, false);
+        const EXTRA_C_SAMPLED = buildSampled(EXTRA_PATH_C_PTS, 20, false);
+        const EXTRA_D_SAMPLED = buildSampled(EXTRA_PATH_D_PTS, 20, false);
+        const EXTRA_E_SAMPLED = buildSampled(EXTRA_PATH_E_PTS, 20, false);
+        const EXTRA_F_SAMPLED = buildSampled(EXTRA_PATH_F_PTS, 20, false);
+        const EXTRA_G_SAMPLED = buildSampled(EXTRA_PATH_G_PTS, 20, false);
+        const EXTRA_H_SAMPLED = buildSampled(EXTRA_PATH_H_PTS, 20, false);
+        const EXTRA_I_SAMPLED = buildSampled(EXTRA_PATH_I_PTS, 20, false);
+        const EXTRA_J_SAMPLED = buildSampled(EXTRA_PATH_J_PTS, 20, false);
+        const EXTRA_K_SAMPLED = buildSampled(EXTRA_PATH_K_PTS, 20, false);
+        const EXTRA_L_SAMPLED = buildSampled(EXTRA_PATH_L_PTS, 20, false);
+        const ALL_EXTRA_PATHS = [EXTRA_A_SAMPLED, EXTRA_B_SAMPLED, EXTRA_C_SAMPLED, EXTRA_D_SAMPLED, EXTRA_E_SAMPLED, EXTRA_F_SAMPLED, EXTRA_G_SAMPLED, EXTRA_H_SAMPLED, EXTRA_I_SAMPLED, EXTRA_J_SAMPLED, EXTRA_K_SAMPLED, EXTRA_L_SAMPLED];
+        const RIVER_SAMPLED = buildSampled(RIVER_PTS, 20, false);
+
+        /* Terrain */
+        function rng(seed) { let s = seed; return () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646 } }
+
+        function onAnyExtraPath(x, y, radius) {
+            return ALL_EXTRA_PATHS.some(ep => ep.some(p => Math.hypot(p.x - x, p.y - y) < radius));
+        }
+        function nearDecoHouse(x, y, radius) {
+            return DECO_HOUSES.some(h => Math.hypot(h.x - x, h.y - y) < radius);
+        }
+        function genTrees() {
+            const r = rng(42), out = [];
+            for (let i = 0; i < 90; i++) {
+                const x = MARGIN + r() * (WW - MARGIN * 2), y = MARGIN + r() * (WH - MARGIN * 2);
+                const near = STATIONS.some(s => Math.hypot(s.x - x, s.y - y) < 140);
+                const onPath = TRAIL_PATH.some((p, k) => k % 4 === 0 && Math.hypot(p.x - x, p.y - y) < 30);
+                const onRiver = RIVER_SAMPLED.some(p => Math.hypot(p.x - x, p.y - y) < 55);
+                const onExtra = onAnyExtraPath(x, y, 35);
+                const nearDeco = nearDecoHouse(x, y, 60);
+                if (!near && !onPath && !onRiver && !onExtra && !nearDeco) out.push({ x, y, sc: .45 + r() * .65, sh: r() > .5 ? 0 : 1, type: r() > .75 ? 1 : 0 });
+            }
+            return out;
+        }
+        function genRocks() {
+            const r = rng(137), out = [];
+            for (let i = 0; i < 55; i++) {
+                const x = MARGIN + r() * (WW - MARGIN * 2), y = MARGIN + r() * (WH - MARGIN * 2);
+                if (!STATIONS.some(s => Math.hypot(s.x - x, s.y - y) < 90) && !onAnyExtraPath(x, y, 30) && !nearDecoHouse(x, y, 50))
+                    out.push({ x, y, rx: 5 + r() * 15, ry: 3 + r() * 9, rot: r() * 360 });
+            }
+            return out;
+        }
+        function genBushes() {
+            const r = rng(271), out = [];
+            for (let i = 0; i < 45; i++) {
+                const x = MARGIN + r() * (WW - MARGIN * 2), y = MARGIN + r() * (WH - MARGIN * 2);
+                if (!STATIONS.some(s => Math.hypot(s.x - x, s.y - y) < 110) && !onAnyExtraPath(x, y, 30) && !nearDecoHouse(x, y, 50))
+                    out.push({ x, y, rad: 7 + r() * 13 });
+            }
+            return out;
+        }
+        function genFields() {
+            const r = rng(333), out = [];
+            for (let i = 0; i < 28; i++) {
+                const x = MARGIN + 100 + r() * (WW - MARGIN * 2 - 200), y = MARGIN + 100 + r() * (WH - MARGIN * 2 - 200);
+                const near = STATIONS.some(s => Math.hypot(s.x - x, s.y - y) < 200);
+                const onRiver = RIVER_SAMPLED.some(p => Math.hypot(p.x - x, p.y - y) < 80);
+                if (!near && !onRiver) {
+                    const colors = ["#B8C49A", "#C2CA9E", "#AEB87E", "#C4C89A", "#B0BA86", "#BCC498"];
+                    out.push({ x, y, w: 100 + r() * 200, h: 50 + r() * 120, rot: r() * 40 - 20, c: colors[Math.floor(r() * colors.length)] });
+                }
+            }
+            return out;
+        }
+        function genWalls() {
+            const r = rng(500), out = [];
+            for (let i = 0; i < 18; i++) {
+                const x = MARGIN + r() * (WW - MARGIN * 2), y = MARGIN + r() * (WH - MARGIN * 2);
+                if (!STATIONS.some(s => Math.hypot(s.x - x, s.y - y) < 160) && !onAnyExtraPath(x, y, 40) && !nearDecoHouse(x, y, 60))
+                    out.push({ x, y, len: 50 + r() * 130, angle: r() * 180 });
+            }
+            return out;
+        }
+        function genSheep() {
+            const r = rng(888), herds = [];
+            let attempts = 0;
+            while (herds.length < 15 && attempts < 200) {
+                attempts++;
+                const cx = MARGIN + 200 + r() * (WW - MARGIN * 2 - 400), cy = MARGIN + 200 + r() * (WH - MARGIN * 2 - 400);
+                const near = STATIONS.some(s => Math.hypot(s.x - cx, s.y - cy) < 200);
+                const onRiver = RIVER_SAMPLED.some(p => Math.hypot(p.x - cx, p.y - cy) < 80);
+                if (near || onRiver) continue;
+                const sheep = [];
+                const count = 8 + Math.floor(r() * 12);
+                for (let s = 0; s < count; s++) {
+                    const angle = r() * Math.PI * 2, dist = r() * 80;
+                    sheep.push({
+                        x: cx + Math.cos(angle) * dist,
+                        y: cy + Math.sin(angle) * dist,
+                        sc: .4 + r() * .3,
+                        facing: r() > 0.5 ? 1 : -1
+                    });
+                }
+                // One shepherd (darker dot)
+                herds.push({ cx, cy, sheep, shepherd: { x: cx + 30 - r() * 60, y: cy + 30 - r() * 60 } });
+            }
+            return herds;
+        }
+
+        const TREES = genTrees(), ROCKS = genRocks(), BUSHES = genBushes(), FIELDS = genFields(), WALLS = genWalls(), HERDS = genSheep();
+        const TF = ["#6B7D4E", "#5E7042"];
+
+        /* ═══════ BUILD SVG ═══════ */
+        const NS = "http://www.w3.org/2000/svg";
+        const svg = document.getElementById("map-svg");
+        function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs || {})) e.setAttribute(k, v); if (parent) parent.appendChild(e); return e }
+
+        const defs = el("defs", {}, svg);
+        const rg = el("radialGradient", { id: "skyG", cx: "50%", cy: "40%", r: "70%" }, defs);
+        el("stop", { offset: "0%", "stop-color": "#E8DFCA" }, rg);
+        el("stop", { offset: "100%", "stop-color": "#D1C7A8" }, rg);
+        const filt = el("filter", { id: "hBlur" }, defs);
+        el("feGaussianBlur", { stdDeviation: "12" }, filt);
+        const filt2 = el("filter", { id: "mtnBlur" }, defs);
+        el("feGaussianBlur", { stdDeviation: "3" }, filt2);
+
+        // Background
+        el("rect", { x: -500, y: -500, width: WW + 1000, height: WH + 1000, fill: "url(#skyG)" }, svg);
+
+        // Hills
+        HILLS.forEach(h => el("ellipse", { cx: h.cx, cy: h.cy, rx: h.rx, ry: h.ry, fill: h.f, opacity: .4, filter: "url(#hBlur)" }, svg));
+
+        // Ground wash
+        el("rect", { x: -500, y: -500, width: WW + 1000, height: WH + 1000, fill: "#C5B992", opacity: .06 }, svg);
+
+        // Fields
+        FIELDS.forEach(f => {
+            const g = el("g", { transform: `translate(${f.x},${f.y}) rotate(${f.rot})` }, svg);
+            el("rect", { x: -f.w / 2, y: -f.h / 2, width: f.w, height: f.h, fill: f.c, opacity: .35, rx: 4 }, g);
+            for (let row = 0; row < f.h - 8; row += 10)
+                el("line", { x1: -f.w / 2 + 6, y1: -f.h / 2 + row + 6, x2: f.w / 2 - 6, y2: -f.h / 2 + row + 6, stroke: "#96A47A", "stroke-width": .8, opacity: .3 }, g);
+        });
+
+        // Walls
+        WALLS.forEach(w => {
+            const rad = w.angle * Math.PI / 180;
+            el("line", { x1: w.x, y1: w.y, x2: w.x + Math.cos(rad) * w.len, y2: w.y + Math.sin(rad) * w.len, stroke: "#968B78", "stroke-width": 4, "stroke-linecap": "round", opacity: .45 }, svg);
+        });
+
+        // River
+        const rivD = ptsToD(RIVER_SAMPLED, false);
+        el("path", { d: rivD, fill: "none", stroke: "#8A9E7A", "stroke-width": 52, "stroke-linecap": "round", "stroke-linejoin": "round", opacity: .3 }, svg);
+        el("path", { d: rivD, fill: "none", stroke: "#7BA5B8", "stroke-width": 38, "stroke-linecap": "round", "stroke-linejoin": "round", opacity: .65 }, svg);
+        el("path", { d: rivD, fill: "none", stroke: "rgba(180,210,225,.4)", "stroke-width": 12, "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-dasharray": "8 52", style: "animation:flowRight 3s linear infinite" }, svg);
+        el("path", { d: rivD, fill: "none", stroke: "rgba(200,225,235,.3)", "stroke-width": 6, "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-dasharray": "4 36", style: "animation:flowRight2 2.5s linear infinite" }, svg);
+        el("path", { d: rivD, fill: "none", stroke: "rgba(255,255,255,.12)", "stroke-width": 2, "stroke-linecap": "round", "stroke-dasharray": "2 80", style: "animation:flowRight 4s linear infinite" }, svg);
+
+        // Trail
+        el("path", { d: ptsToD(TRAIL_PATH, true), fill: "none", stroke: "rgba(60,45,20,.1)", "stroke-width": 26, "stroke-linecap": "round", "stroke-linejoin": "round" }, svg);
+        el("path", { d: ptsToD(TRAIL_PATH, true), fill: "none", stroke: "#A38D6C", "stroke-width": 16, "stroke-linecap": "round", "stroke-linejoin": "round" }, svg);
+        el("path", { d: ptsToD(TRAIL_PATH, true), fill: "none", stroke: "#BBA87C", "stroke-width": 5, "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-dasharray": "3 16", opacity: .3 }, svg);
+
+        // Extra paths
+        ALL_EXTRA_PATHS.forEach(ep => {
+            el("path", { d: ptsToD(ep, false), fill: "none", stroke: "rgba(60,45,20,.1)", "stroke-width": 24, "stroke-linecap": "round", "stroke-linejoin": "round" }, svg);
+            el("path", { d: ptsToD(ep, false), fill: "none", stroke: "#A38D6C", "stroke-width": 14, "stroke-linecap": "round", "stroke-linejoin": "round" }, svg);
+            el("path", { d: ptsToD(ep, false), fill: "none", stroke: "#BBA87C", "stroke-width": 5, "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-dasharray": "3 16", opacity: .3 }, svg);
+        });
+
+        // Bridge
+        (function () {
+            const b = BRIDGE, rad = b.angle * Math.PI / 180, cos = Math.cos(rad), sin = Math.sin(rad);
+            const g = el("g", {}, svg);
+            el("rect", { x: b.x - b.len / 2, y: b.y - b.bw / 2, width: b.len, height: b.bw, fill: "#B0A08A", stroke: "#8A7A68", "stroke-width": 2, rx: 3, transform: `rotate(${b.angle},${b.x},${b.y})` }, g);
+            const dx = cos * b.len / 2, dy = sin * b.len / 2, nx = -sin * b.bw / 2, ny = cos * b.bw / 2;
+            el("line", { x1: b.x - dx + nx, y1: b.y - dy + ny, x2: b.x + dx + nx, y2: b.y + dy + ny, stroke: "#7A6B58", "stroke-width": 2.5 }, g);
+            el("line", { x1: b.x - dx - nx, y1: b.y - dy - ny, x2: b.x + dx - nx, y2: b.y + dy - ny, stroke: "#7A6B58", "stroke-width": 2.5 }, g);
+            for (let t = -1; t <= 1; t++) {
+                const px = b.x + dx * t * .8, py = b.y + dy * t * .8;
+                el("line", { x1: px + nx, y1: py + ny, x2: px + nx * .6, y2: py + ny * .6 - 7, stroke: "#7A6B58", "stroke-width": 2 }, g);
+                el("line", { x1: px - nx, y1: py - ny, x2: px - nx * .6, y2: py - ny * .6 - 7, stroke: "#7A6B58", "stroke-width": 2 }, g);
+            }
+        })();
+
+        // Rocks
+        ROCKS.forEach(r => el("ellipse", { cx: r.x, cy: r.y, rx: r.rx, ry: r.ry, fill: "#9B9283", stroke: "#8A8272", "stroke-width": .5, transform: `rotate(${r.rot},${r.x},${r.y})`, opacity: .55 }, svg));
+
+        // Bushes
+        BUSHES.forEach(b => {
+            const g = el("g", {}, svg);
+            el("ellipse", { cx: b.x, cy: b.y + 2, rx: b.rad * 1.1, ry: b.rad * .6, fill: "rgba(0,0,0,.05)" }, g);
+            el("ellipse", { cx: b.x - b.rad * .3, cy: b.y, rx: b.rad * .7, ry: b.rad * .55, fill: "#8A9B6A", opacity: .65 }, g);
+            el("ellipse", { cx: b.x + b.rad * .3, cy: b.y - 2, rx: b.rad * .6, ry: b.rad * .48, fill: "#7D8E5E", opacity: .6 }, g);
+        });
+
+        // Trees
+        TREES.forEach(t => {
+            const g = el("g", { transform: `translate(${t.x},${t.y}) scale(${t.sc})` }, svg);
+            if (t.type === 0) {
+                el("rect", { x: -2, y: -2, width: 4, height: 20, fill: "#7A6B52", rx: 1 }, g);
+                el("ellipse", { cx: -9, cy: -10, rx: 14, ry: 11, fill: TF[t.sh], opacity: .85 }, g);
+                el("ellipse", { cx: 7, cy: -14, rx: 12, ry: 10, fill: TF[t.sh], opacity: .8 }, g);
+                el("ellipse", { cx: -1, cy: -17, rx: 10, ry: 9, fill: t.sh ? "#6E804F" : "#748654", opacity: .82 }, g);
+            } else {
+                el("rect", { x: -1.5, y: -2, width: 3, height: 25, fill: "#6B5E48", rx: 1 }, g);
+                el("ellipse", { cx: 0, cy: -18, rx: 6, ry: 16, fill: "#4A6438", opacity: .82 }, g);
+                el("ellipse", { cx: 0, cy: -14, rx: 5, ry: 12, fill: "#567044", opacity: .7 }, g);
+            }
+        });
+
+        // Sheep herds — capture SVG refs for animation
+        const SHEEP_ANIM = [];
+        const rngSheep = rng(9999);
+        HERDS.forEach(herd => {
+            herd.sheep.forEach(s => {
+                const g = el("g", { transform: `translate(${s.x},${s.y}) scale(${s.sc})` }, svg);
+                // Shadow
+                el("ellipse", { cx: 0, cy: 5, rx: 8, ry: 3, fill: "rgba(0,0,0,.08)" }, g);
+                // Body wool
+                el("ellipse", { cx: 0, cy: 0, rx: 8, ry: 5.5, fill: "#EDE8DC", stroke: "#C8C0AD", "stroke-width": .5 }, g);
+                // Head
+                el("ellipse", { cx: 7 * s.facing, cy: -2, rx: 3.5, ry: 3, fill: "#A09585" }, g);
+                // Legs
+                el("line", { x1: -3, y1: 4, x2: -3, y2: 8, stroke: "#8A7E70", "stroke-width": 1.2 }, g);
+                el("line", { x1: 3, y1: 4, x2: 3, y2: 8, stroke: "#8A7E70", "stroke-width": 1.2 }, g);
+                // Store for animation
+                SHEEP_ANIM.push({
+                    g, sc: s.sc,
+                    cx: herd.cx, cy: herd.cy, // herd center
+                    x: s.x, y: s.y,
+                    vx: (rngSheep() - 0.5) * 0.3,
+                    vy: (rngSheep() - 0.5) * 0.3,
+                    dirTimer: Math.floor(rngSheep() * 180) // frames until next direction change
+                });
+            });
+            // Shepherd
+            const sh = herd.shepherd;
+            const g = el("g", { transform: `translate(${sh.x},${sh.y})` }, svg);
+            el("ellipse", { cx: 0, cy: 6, rx: 5, ry: 2.5, fill: "rgba(0,0,0,.1)" }, g);
+            el("rect", { x: -2, y: -8, width: 4, height: 14, fill: "#7A6044", rx: 1 }, g);
+            el("circle", { cx: 0, cy: -12, r: 4, fill: "#8A7560" }, g);
+            // Staff
+            el("line", { x1: 4, y1: -10, x2: 6, y2: 6, stroke: "#6B5A42", "stroke-width": 1.2 }, g);
+        });
+
+        // Helper: draw a house SVG group (reused for both proverb stations and deco houses)
+        function drawHouse(parent, x, y, c) {
+            const g = el("g", { transform: `translate(${x},${y})` }, parent);
+            el("ellipse", { cx: 4, cy: 20, rx: 32, ry: 10, fill: "rgba(0,0,0,.07)" }, g);
+            el("rect", { x: -22, y: -26, width: 44, height: 42, fill: c.w, stroke: c.s, "stroke-width": 1.2 }, g);
+            el("path", { d: "M22,-26 L30,-30 L30,12 L22,16 Z", fill: c.s, opacity: .65 }, g);
+            el("rect", { x: -24, y: -28, width: 54, height: 3, fill: c.s }, g);
+            el("path", { d: "M-6,16 L-6,0 Q-6,-9 0,-9 Q6,-9 6,0 L6,16 Z", fill: c.d }, g);
+            el("rect", { x: -17, y: -18, width: 8, height: 8, fill: c.d, opacity: .55, rx: 1 }, g);
+            el("rect", { x: 9, y: -18, width: 8, height: 8, fill: c.d, opacity: .55, rx: 1 }, g);
+            el("rect", { x: 23, y: -18, width: 5, height: 6, fill: c.d, opacity: .4, rx: .5, transform: "skewY(-8)" }, g);
+            return g;
+        }
+
+        // Houses (proverb stations) — clickable
+        STATIONS.forEach((s, i) => {
+            const c = HC[i];
+            const g = drawHouse(svg, s.x, s.y, c);
+            el("rect", { x: -35, y: -35, width: 70, height: 65, fill: "transparent", style: "cursor:pointer" }, g);
+            g.addEventListener("click", e => { e.stopPropagation(); onHouseClick(i) });
+        });
+
+        // Decorative houses — clickable, each shows its own proverb
+        DECO_HOUSES.forEach(h => {
+            const g = drawHouse(svg, h.x, h.y, h.c);
+            el("rect", { x: -35, y: -35, width: 70, height: 65, fill: "transparent", style: "cursor:pointer" }, g);
+            g.addEventListener("click", e => { e.stopPropagation(); onHouseClick(h.pi) });
+        });
+
+        // Mountains (drawn on top as border)
+        const mtnLayer = el("g", {}, svg);
+        MTNS.forEach(m => {
+            const g = el("g", {}, mtnLayer);
+            // Mountain body
+            const px = m.x, py = m.y, hw = m.w / 2;
+            const peak1y = py - m.h;
+            const peak2y = py - m.h * .7;
+            el("path", {
+                d: `M${px - hw},${py} Q${px - hw * .6},${peak1y} ${px},${peak1y - .1 * m.h} Q${px + hw * .5},${peak2y} ${px + hw},${py} Z`,
+                fill: m.c, opacity: .85
+            }, g);
+            // Snow cap
+            el("path", {
+                d: `M${px - hw * .15},${peak1y + m.h * .12} Q${px},${peak1y - m.h * .05} ${px + hw * .2},${peak1y + m.h * .1} L${px},${peak1y} Z`,
+                fill: "#D8D4C8", opacity: .4
+            }, g);
+        });
+
+        // Walker (on top of mountains)
+        const walkerG = el("g", {}, svg);
+        el("ellipse", { cx: 0, cy: 6, rx: 7, ry: 3.5, fill: "rgba(0,0,0,.18)" }, walkerG);
+        el("circle", { cx: 0, cy: -2, r: 9, fill: "#B8623C", stroke: "#7A3A1A", "stroke-width": 1.8 }, walkerG);
+        el("circle", { cx: 0, cy: -2, r: 4.5, fill: "#D4855E" }, walkerG);
+
+        /* ═══════ STATE ═══════ */
+        let phase = "walking";
+        let currentStation = 0;
+        let wx = STATIONS[0].x, wy = STATIONS[0].y + 80; // walker position (free 2D)
+        let camX = wx, camY = wy;
+        let viewW = 1500, viewH = 1000;
+        let clickTarget = null; // {x,y} for click-to-walk
+
+        const SPEED = 3.5;
+        let keysDown = {};
+
+        function calcView() {
+            const w = window.innerWidth, h = window.innerHeight, a = w / h;
+            if (w < 500) { viewW = 850; viewH = 850 / a }
+            else if (w < 800) { viewW = 1100; viewH = 1100 / a }
+            else { viewW = 1500; viewH = 1500 / a }
+        }
+        calcView();
+        window.addEventListener("resize", calcView);
+
+        function clampWalker() {
+            wx = Math.max(MARGIN, Math.min(WW - MARGIN, wx));
+            wy = Math.max(MARGIN, Math.min(WH - MARGIN, wy));
+        }
+
+        /* ═══════ RENDERING ═══════ */
+        function updateCamera() {
+            camX += (wx - camX) * .07;
+            camY += (wy - camY) * .07;
+            svg.setAttribute("viewBox", `${camX - viewW / 2} ${camY - viewH / 2} ${viewW} ${viewH}`);
+        }
+        function updateWalker() {
+            walkerG.setAttribute("transform", `translate(${wx},${wy})`);
+        }
+
+        /* ═══════ TYPING EFFECT ═══════ */
+        let typeQueue = [];
+        let isTyping = false;
+        let typeSpeed = 10; // ms per char
+
+        function typeNext() {
+            if (typeQueue.length === 0) {
+                isTyping = false;
+                return;
+            }
+            let current = typeQueue[0];
+            if (current.idx <= current.text.length) {
+                current.el.textContent = current.text.substring(0, current.idx);
+                current.idx++;
+                setTimeout(typeNext, typeSpeed);
+            } else {
+                typeQueue.shift();
+                setTimeout(typeNext, 40); // small pause between paragraphs
+            }
+        }
+
+        function forceFinishTyping() {
+            if (!isTyping) return;
+            isTyping = false;
+            typeQueue.forEach(q => {
+                q.el.textContent = q.text;
+            });
+            typeQueue = [];
+        }
+
+        function showPanel(stationIdx) {
+            const p = PROVERBS[stationIdx] || PROVERBS[0];
+
+            document.getElementById("p-title-k").textContent = "";
+            document.getElementById("p-title-e").textContent = "";
+            document.getElementById("p-desc-k").textContent = "";
+            document.getElementById("p-desc-e").textContent = "";
+
+            forceFinishTyping();
+
+            typeQueue = [
+                { el: document.getElementById("p-title-k"), text: p.kurmanji, idx: 0 },
+                { el: document.getElementById("p-title-e"), text: p.english, idx: 0 },
+                { el: document.getElementById("p-desc-k"), text: p.descKurmanji, idx: 0 },
+                { el: document.getElementById("p-desc-e"), text: p.descEnglish, idx: 0 }
+            ];
+            isTyping = true;
+
+            requestAnimationFrame(() => {
+                document.getElementById("panel-overlay").classList.add("visible");
+                typeNext();
+            });
+        }
+        function hidePanel() { document.getElementById("panel-overlay").classList.remove("visible") }
+
+        /* ═══════ MAIN LOOP ═══════ */
+        function isWaterCollision(px, py) {
+            // Check if player is near any part of the main trail path
+            for (let i = 0; i < TRAIL_PATH.length; i++) {
+                if (Math.hypot(px - TRAIL_PATH[i].x, py - TRAIL_PATH[i].y) < 45) return false;
+            }
+            // Check if player is on any extra path
+            for (const ep of ALL_EXTRA_PATHS) {
+                for (const p of ep) {
+                    if (Math.hypot(px - p.x, py - p.y) < 40) return false;
+                }
+            }
+            // Check if player is near the bridge explicitly
+            const distBridge = Math.hypot(px - BRIDGE.x, py - BRIDGE.y);
+            if (distBridge < 150) return false;
+
+            // If they are far from the path/bridge, don't let them on the water
+            for (let i = 0; i < RIVER_SAMPLED.length; i++) {
+                const p = RIVER_SAMPLED[i];
+                if (Math.hypot(px - p.x, py - p.y) < 80) return true;
+            }
+            return false;
+        }
+
+        function isHouseCollision(px, py) {
+            // Proverb station houses
+            for (const s of STATIONS) {
+                if (Math.abs(px - s.x) < 30 && Math.abs(py - s.y) < 30) return true;
+            }
+            // Decorative houses
+            for (const h of DECO_HOUSES) {
+                if (Math.abs(px - h.x) < DECO_HOUSE_RADIUS && Math.abs(py - h.y) < DECO_HOUSE_RADIUS) return true;
+            }
+            return false;
+        }
+
+        function tick() {
+            if (phase === "walking") {
+                let dx = 0, dy = 0;
+                if (keysDown["w"] || keysDown["arrowup"]) dy = -1;
+                if (keysDown["s"] || keysDown["arrowdown"]) dy = 1;
+                if (keysDown["a"] || keysDown["arrowleft"]) dx = -1;
+                if (keysDown["d"] || keysDown["arrowright"]) dx = 1;
+
+                let nx = wx, ny = wy;
+
+                if (dx || dy) {
+                    const len = Math.sqrt(dx * dx + dy * dy);
+                    nx += dx / len * SPEED;
+                    ny += dy / len * SPEED;
+                    clickTarget = null;
+                }
+
+                // Click-to-walk
+                if (clickTarget) {
+                    const tdx = clickTarget.x - wx, tdy = clickTarget.y - wy;
+                    const dist = Math.sqrt(tdx * tdx + tdy * tdy);
+                    if (dist < 5) { clickTarget = null; }
+                    else {
+                        nx += tdx / dist * SPEED;
+                        ny += tdy / dist * SPEED;
+                    }
+                }
+
+                if (nx !== wx || ny !== wy) {
+                    const waterX = isWaterCollision(nx, ny);
+                    const houseX = isHouseCollision(nx, ny);
+                    if (!waterX && !houseX) {
+                        wx = nx;
+                        wy = ny;
+                    } else if (!isWaterCollision(nx, wy) && !isHouseCollision(nx, wy)) {
+                        wx = nx;
+                        if (clickTarget) clickTarget = null;
+                    } else if (!isWaterCollision(wx, ny) && !isHouseCollision(wx, ny)) {
+                        wy = ny;
+                        if (clickTarget) clickTarget = null;
+                    } else {
+                        if (clickTarget) clickTarget = null;
+                    }
+                }
+
+                clampWalker();
+            }
+
+            // Animate sheep
+            SHEEP_ANIM.forEach(s => {
+                s.dirTimer--;
+                if (s.dirTimer <= 0) {
+                    // Pick a new gentle direction, biased back toward herd center
+                    const pullX = (s.cx - s.x) * 0.01;
+                    const pullY = (s.cy - s.y) * 0.01;
+                    s.vx = (Math.random() - 0.5) * 0.04 + pullX * 0.1;
+                    s.vy = (Math.random() - 0.5) * 0.04 + pullY * 0.1;
+                    s.dirTimer = 120 + Math.floor(Math.random() * 200);
+                }
+                // Drift slowly
+                s.x += s.vx;
+                s.y += s.vy;
+                // Soft boundary — pull back if too far from herd center
+                const dist = Math.hypot(s.x - s.cx, s.y - s.cy);
+                if (dist > 100) {
+                    s.x += (s.cx - s.x) * 0.02;
+                    s.y += (s.cy - s.y) * 0.02;
+                }
+                s.g.setAttribute("transform", `translate(${s.x},${s.y}) scale(${s.sc})`);
+            });
+
+            updateWalker();
+            updateCamera();
+            requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+
+        /* ═══════ EVENTS ═══════ */
+        function onHouseClick(idx) {
+            if (phase !== "walking") return;
+            currentStation = idx;
+            phase = "proverb";
+            showPanel(idx);
+        }
+
+        // Click on map to set walk target
+        function getWorldCoords(clientX, clientY) {
+            const rect = svg.getBoundingClientRect();
+            const vb = svg.getAttribute("viewBox").split(" ").map(Number);
+            const sx = (clientX - rect.left) / rect.width;
+            const sy = (clientY - rect.top) / rect.height;
+            return { x: vb[0] + sx * vb[2], y: vb[1] + sy * vb[3] };
+        }
+
+        document.getElementById("map-container").addEventListener("click", function (e) {
+            if (phase !== "walking") return;
+            if (e.target.closest("#panel-overlay")) return;
+            const coords = getWorldCoords(e.clientX, e.clientY);
+            clickTarget = coords;
+        });
+
+        // Touch: tap to set target, hold works too
+        let touchId = null;
+        document.getElementById("map-container").addEventListener("touchstart", function (e) {
+            if (phase !== "walking") return;
+            if (e.target.closest("#panel-overlay")) return;
+            const t = e.touches[0];
+            const coords = getWorldCoords(t.clientX, t.clientY);
+            clickTarget = coords;
+            touchId = t.identifier;
+        }, { passive: true });
+        document.getElementById("map-container").addEventListener("touchmove", function (e) {
+            if (phase !== "walking") return;
+            for (const t of e.touches) {
+                if (t.identifier === touchId) {
+                    clickTarget = getWorldCoords(t.clientX, t.clientY);
+                }
+            }
+        }, { passive: true });
+        document.getElementById("map-container").addEventListener("touchend", function () {
+            // Keep walking to last target, don't cancel
+        }, { passive: true });
+
+        // Keyboard
+        document.addEventListener("keydown", e => keysDown[e.key.toLowerCase()] = true);
+        document.addEventListener("keyup", e => keysDown[e.key.toLowerCase()] = false);
+
+        // Return to walking when btn-walk is clicked
+        document.getElementById("btn-walk").addEventListener("click", () => {
+            hidePanel();
+            setTimeout(() => { phase = "walking"; }, 300);
+        });
+
+        // Click anywhere on panel overlay to dismiss (or fast-forward typing)
+        document.getElementById("panel-overlay").addEventListener("click", (e) => {
+            if (phase !== "proverb") return;
+            if (isTyping) { forceFinishTyping(); return; }
+            hidePanel();
+            setTimeout(() => { phase = "walking"; }, 300);
+        });
+
+        // Initial setup
+        document.getElementById("map-container").style.display = 'block';
+    </script>
+</body>
+
+</html>
