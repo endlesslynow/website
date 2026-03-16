@@ -1,0 +1,1896 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweets from the Bélus: The Limestone Massif, 1st-15th Century</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Naskh+Arabic:wght@400;600&family=Noto+Sans+Coptic&family=Noto+Sans+Syriac:wght@400;600&family=Noto+Serif:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --app-bg: #e6ecf0;
+            --app-bg-alt: #f5f8fa;
+            --surface: #ffffff;
+            --surface-alt: #f5f8fa;
+            --border: #e1e8ed;
+            --text: #14171a;
+            --muted: #657786;
+            --soft: #aab8c2;
+            --twitter-blue: #55acee;
+            --twitter-blue-deep: #3b94d9;
+            --twitter-blue-pale: #e8f5fd;
+            --surface-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            --surface-shadow-hover: 0 14px 32px rgba(59, 148, 217, 0.18), 0 3px 12px rgba(0, 0, 0, 0.08);
+            --flip-duration: 760ms;
+            --flip-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        body {
+            background:
+                linear-gradient(180deg, #8cc6f4 0, #b9def8 132px, var(--app-bg) 132px, var(--app-bg-alt) 100%);
+            color: var(--text);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.45;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.08)),
+                radial-gradient(circle at top left, rgba(255, 255, 255, 0.16), transparent 20%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 16px 52px;
+        }
+
+        header {
+            position: relative;
+            max-width: 860px;
+            margin: 0 auto 28px;
+            padding: 178px 28px 24px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            box-shadow: var(--surface-shadow);
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .profile-banner {
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 150px;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .profile-banner svg,
+        .profile-badge svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .profile-badge {
+            position: absolute;
+            left: 28px;
+            top: 92px;
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 4px solid var(--surface);
+            overflow: hidden;
+            z-index: 2;
+            box-shadow:
+                inset 0 2px 12px rgba(255, 255, 255, 0.28),
+                inset 0 -8px 16px rgba(16, 89, 146, 0.22),
+                0 10px 22px rgba(0, 0, 0, 0.14);
+        }
+
+        header h1,
+        header .subtitle,
+        .interaction-hint {
+            position: relative;
+            z-index: 3;
+        }
+
+        header h1 {
+            padding-left: 120px;
+            margin-bottom: 4px;
+            color: var(--text);
+            font-size: 2rem;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        header .subtitle {
+            padding-left: 120px;
+            color: var(--muted);
+            font-size: 1rem;
+            font-style: normal;
+            letter-spacing: 0;
+        }
+
+        .interaction-hint {
+            margin: 16px 0 0 120px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface-alt);
+            color: var(--muted);
+            font-size: 0.86rem;
+            line-height: 1.35;
+        }
+
+        .interaction-hint::before {
+            content: 'Translate Tweet';
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: var(--twitter-blue);
+            color: #fff;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .century-section {
+            position: relative;
+            max-width: 676px;
+            margin: 0 auto 30px;
+            padding: 14px 12px 8px;
+            border-radius: 14px;
+            background:
+                linear-gradient(180deg, rgba(85, 172, 238, 0.13), rgba(255, 255, 255, 0.58) 78px, transparent 78px);
+            box-shadow: inset 0 0 0 1px rgba(85, 172, 238, 0.12);
+        }
+
+        .century-section + .century-section {
+            margin-top: 34px;
+        }
+
+        .century-section + .century-section::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -27px;
+            width: 100vw;
+            height: 22px;
+            transform: translateX(-50%);
+            background:
+                radial-gradient(circle at center, rgba(85, 172, 238, 0.34) 0 5px, transparent 5.5px),
+                linear-gradient(90deg,
+                    transparent 0,
+                    rgba(85, 172, 238, 0.16) 6%,
+                    rgba(85, 172, 238, 0.35) 16%,
+                    rgba(85, 172, 238, 0.35) 84%,
+                    rgba(85, 172, 238, 0.16) 94%,
+                    transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .century-section + .century-section::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -18px;
+            width: 100vw;
+            height: 1px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, transparent, rgba(101, 119, 134, 0.24) 12%, rgba(101, 119, 134, 0.24) 88%, transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .century-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 14px 16px;
+            border: 1px solid #c8dceb;
+            border-left: 6px solid var(--twitter-blue-deep);
+            border-radius: 12px;
+            background:
+                linear-gradient(135deg, rgba(85, 172, 238, 0.18), rgba(255, 255, 255, 0.96) 56%);
+            box-shadow: 0 8px 22px rgba(85, 172, 238, 0.12);
+        }
+
+        .century-header::before,
+        .century-header::after {
+            display: none;
+        }
+
+        .century-numeral {
+            min-width: 62px;
+            padding: 11px 12px;
+            border: 0;
+            border-radius: 10px;
+            background: var(--twitter-blue-deep);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        .century-label {
+            color: var(--twitter-blue-deep);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .century-label::before {
+            content: 'Timeline Chapter';
+            display: block;
+            margin-bottom: 5px;
+            color: var(--muted);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .tweet-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-areas: "stack";
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            overflow: hidden;
+            cursor: pointer;
+            perspective: 1400px;
+            background: transparent;
+            box-shadow: var(--surface-shadow);
+            opacity: 0;
+            transform: translateY(12px);
+            animation: fadeIn 0.45s ease forwards;
+            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+            outline: none;
+            isolation: isolate;
+        }
+
+        .tweet-card::before {
+            content: attr(data-state-label);
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 4;
+            padding: 5px 10px;
+            border-radius: 999px;
+            border: 1px solid #cfe7f7;
+            background: var(--twitter-blue-pale);
+            color: var(--twitter-blue-deep);
+            font-size: 0.67rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            transition: transform 260ms ease, opacity 260ms ease, background 260ms ease;
+        }
+
+        .tweet-card::after {
+            content: '';
+            position: absolute;
+            inset: -40%;
+            z-index: 3;
+            background:
+                linear-gradient(115deg,
+                    transparent 18%,
+                    rgba(85, 172, 238, 0.06) 44%,
+                    rgba(255, 255, 255, 0.55) 50%,
+                    rgba(85, 172, 238, 0.06) 56%,
+                    transparent 82%);
+            opacity: 0;
+            transform: translateX(-45%) rotate(6deg);
+            pointer-events: none;
+        }
+
+        .tweet-card:hover,
+        .tweet-card:focus-visible {
+            transform: translateY(-2px);
+            border-color: #c6d9e8;
+            box-shadow: var(--surface-shadow-hover);
+        }
+
+        .tweet-card:focus-visible {
+            box-shadow:
+                0 0 0 3px rgba(85, 172, 238, 0.18),
+                var(--surface-shadow-hover);
+        }
+
+        .tweet-card.is-animating::after {
+            animation: gleam 760ms ease;
+        }
+
+        .tweet-card.is-translated::before {
+            background: #dff0fc;
+            transform: translateY(1px);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gleam {
+            0% {
+                opacity: 0;
+                transform: translateX(-45%) rotate(6deg);
+            }
+
+            25% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(45%) rotate(6deg);
+            }
+        }
+
+        .tweet-left,
+        .tweet-right {
+            position: relative;
+            grid-area: stack;
+            min-height: 162px;
+            padding: 20px 18px 52px 84px;
+            background:
+                linear-gradient(180deg, rgba(85, 172, 238, 0.05), transparent 42px),
+                var(--surface);
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            transition:
+                transform var(--flip-duration) var(--flip-ease),
+                opacity 560ms ease,
+                filter 560ms ease;
+        }
+
+        .tweet-left {
+            z-index: 2;
+            transform-origin: 50% 16%;
+            transform: rotateX(0deg) translateY(0) scale(1);
+            opacity: 1;
+            filter: blur(0);
+        }
+
+        .tweet-left::before,
+        .tweet-right::before {
+            display: block;
+            margin-bottom: 2px;
+            color: var(--soft);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .tweet-left::before {
+            content: 'Original Tweet';
+        }
+
+        .tweet-right {
+            z-index: 1;
+            transform-origin: 50% 84%;
+            transform: rotateX(-92deg) translateY(18px) scale(0.985);
+            opacity: 0;
+            filter: blur(10px);
+            pointer-events: none;
+        }
+
+        .tweet-right::before {
+            content: 'English Translation';
+        }
+
+        .tweet-left::after,
+        .tweet-right::after {
+            content: '↩   ↻   ★   ⋯';
+            position: absolute;
+            left: 84px;
+            bottom: 14px;
+            color: var(--soft);
+            font-size: 0.98rem;
+            letter-spacing: 0.18em;
+        }
+
+        .tweet-avatar {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.98);
+            background: #dff0fc;
+            box-shadow: 0 3px 10px rgba(20, 23, 26, 0.14);
+        }
+
+        .tweet-avatar img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tweet-card.is-translated .tweet-left {
+            transform: rotateX(92deg) translateY(-18px) scale(0.985);
+            opacity: 0;
+            filter: blur(10px);
+            pointer-events: none;
+        }
+
+        .tweet-card.is-translated .tweet-right {
+            transform: rotateX(0deg) translateY(0) scale(1);
+            opacity: 1;
+            filter: blur(0);
+            pointer-events: auto;
+        }
+
+        .tweet-lang {
+            margin-bottom: 8px;
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        .tweet-lang::after {
+            content: ' · source text';
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        .tweet-handle {
+            margin-bottom: 8px;
+            padding-right: 112px;
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .tweet-handle::after {
+            content: ' · translated';
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        .tweet-text,
+        .tweet-text-translated {
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .tweet-text-translated[dir="rtl"] {
+            text-align: right;
+        }
+
+        .tweet-text-translated.syriac {
+            font-family: 'Noto Sans Syriac', 'Segoe UI Historic', 'Estrangelo Edessa', serif;
+            font-size: 1.05rem;
+            line-height: 1.72;
+        }
+
+        .tweet-text-translated.arabic {
+            font-family: 'Noto Naskh Arabic', 'Amiri', 'Geeza Pro', 'Times New Roman', serif;
+            font-size: 1.08rem;
+            line-height: 1.82;
+        }
+
+        .tweet-text-translated.coptic {
+            font-family: 'Noto Sans Coptic', 'Segoe UI Historic', serif;
+            font-size: 1.02rem;
+        }
+
+        .tweet-text-translated.greek {
+            font-family: 'Noto Serif', 'Palatino Linotype', 'Times New Roman', serif;
+            font-size: 1rem;
+            line-height: 1.62;
+        }
+
+        .tweet-text-translated.latin {
+            font-family: 'Cinzel', 'Noto Serif', 'Times New Roman', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            font-size: 0.98rem;
+            line-height: 1.62;
+        }
+
+        .tweet-text-translated.old-french {
+            font-family: 'Cormorant Garamond', 'Noto Serif', 'Times New Roman', serif;
+            font-size: 1.08rem;
+            line-height: 1.58;
+        }
+
+        .tweet-text-translated.kurmanji {
+            font-family: 'Noto Serif', 'Georgia', 'Times New Roman', serif;
+            font-style: normal;
+            font-size: 1rem;
+            line-height: 1.58;
+        }
+
+        .tweet-lang {
+            display: none !important;
+        }
+
+        .tweet-lang::after,
+        .tweet-handle::after {
+            content: none !important;
+        }
+
+        .tweet-right .tweet-handle {
+            padding-right: 112px;
+        }
+
+        .tweet-left .tweet-handle {
+            padding-right: 0;
+        }
+
+        .tweet-text-translated.kurmanji {
+            font-family: 'Noto Naskh Arabic', 'Amiri', 'Geeza Pro', 'Times New Roman', serif;
+            font-size: 1.08rem;
+            line-height: 1.82;
+        }
+
+        .note {
+            max-width: 640px;
+            margin: 20px auto 0;
+            padding: 16px 18px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            background: var(--surface);
+            box-shadow: var(--surface-shadow);
+            color: var(--muted);
+            font-size: 0.86rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .tweet-card,
+            .tweet-left,
+            .tweet-right,
+            .tweet-card::before,
+            .tweet-card::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .tweet-card {
+                opacity: 1;
+                transform: none;
+            }
+
+            .tweet-right {
+                display: none;
+                opacity: 1;
+                transform: none;
+                filter: none;
+            }
+
+            .tweet-card.is-translated .tweet-left {
+                display: none;
+            }
+
+            .tweet-card.is-translated .tweet-right {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background:
+                    linear-gradient(180deg, #8cc6f4 0, #b9def8 112px, var(--app-bg) 112px, var(--app-bg-alt) 100%);
+            }
+
+            .page-wrapper {
+                padding: 0 10px 32px;
+            }
+
+            header {
+                margin: 0 -10px 18px;
+                border-radius: 0;
+                border-left: 0;
+                border-right: 0;
+                padding: 136px 16px 16px;
+            }
+
+            header::before {
+                height: 112px;
+            }
+
+            .profile-badge {
+                left: 16px;
+                top: 70px;
+                width: 74px;
+                height: 74px;
+            }
+
+            header h1 {
+                padding-left: 92px;
+                font-size: 1.52rem;
+            }
+
+            header .subtitle {
+                padding-left: 92px;
+                font-size: 0.92rem;
+            }
+
+            .interaction-hint {
+                margin-left: 0;
+                margin-top: 14px;
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .century-section {
+                max-width: 100%;
+                margin-bottom: 18px;
+                padding: 10px 8px 4px;
+                border-radius: 12px;
+            }
+
+            .century-section + .century-section {
+                margin-top: 28px;
+            }
+
+            .century-section + .century-section::before {
+                top: -21px;
+                height: 18px;
+            }
+
+            .century-section + .century-section::after {
+                top: -13px;
+            }
+
+            .century-header {
+                gap: 10px;
+                margin-bottom: 12px;
+                padding: 12px 12px 12px 10px;
+                border-left-width: 5px;
+                border-radius: 10px;
+            }
+
+            .tweet-left,
+            .tweet-right {
+                min-height: 0;
+                padding: 16px 14px 46px 68px;
+                background:
+                    linear-gradient(180deg, rgba(85, 172, 238, 0.05), transparent 38px),
+                    var(--surface);
+            }
+
+            .tweet-left::after,
+            .tweet-right::after {
+                left: 68px;
+                bottom: 12px;
+                font-size: 0.88rem;
+                letter-spacing: 0.14em;
+            }
+
+            .tweet-avatar {
+                top: 14px;
+                left: 14px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .tweet-card::before {
+                top: 10px;
+                right: 10px;
+            }
+
+            .tweet-handle {
+                padding-right: 84px;
+            }
+
+            .tweet-text,
+            .tweet-text-translated {
+                font-size: 0.95rem;
+                line-height: 1.48;
+            }
+
+            .note {
+                margin-top: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header>
+            <div class="profile-banner" aria-hidden="true">
+                <svg viewBox="0 0 1200 240" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="headerSky" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#78bdf0" />
+                            <stop offset="100%" stop-color="#d9f1ff" />
+                        </linearGradient>
+                        <linearGradient id="bannerHillA" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#9dc97d" />
+                            <stop offset="100%" stop-color="#81b162" />
+                        </linearGradient>
+                        <linearGradient id="bannerHillB" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#84b26a" />
+                            <stop offset="100%" stop-color="#69924f" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="1200" height="240" fill="url(#headerSky)" />
+                    <circle cx="131" cy="55" r="58" fill="rgba(255,255,255,0.12)" />
+                    <circle cx="990" cy="46" r="72" fill="rgba(255,255,255,0.1)" />
+                    <circle cx="262" cy="82" r="98" fill="rgba(255,255,255,0.08)" />
+                    <circle cx="118" cy="155" r="22" fill="#ffe691" />
+                    <path d="M0 150c117-11 240 1 363 36 140 40 274 44 404 12 145-36 257-92 433-159v201H0z"
+                        fill="url(#bannerHillA)" />
+                    <path d="M0 186c120 5 223 27 313 67 70 30 146 34 230 13 89-23 176-67 261-131 86-65 218-132 396-201v246H0z"
+                        fill="url(#bannerHillB)" />
+                    <g fill="#69894e">
+                        <ellipse cx="80" cy="178" rx="22" ry="16" />
+                        <ellipse cx="136" cy="192" rx="20" ry="15" />
+                        <ellipse cx="210" cy="175" rx="24" ry="17" />
+                        <ellipse cx="286" cy="192" rx="21" ry="15" />
+                        <ellipse cx="366" cy="176" rx="24" ry="17" />
+                        <ellipse cx="448" cy="198" rx="22" ry="16" />
+                        <ellipse cx="540" cy="180" rx="26" ry="18" />
+                        <ellipse cx="634" cy="198" rx="22" ry="16" />
+                        <ellipse cx="742" cy="177" rx="25" ry="18" />
+                        <ellipse cx="846" cy="196" rx="22" ry="16" />
+                        <ellipse cx="954" cy="175" rx="24" ry="17" />
+                        <ellipse cx="1062" cy="192" rx="21" ry="15" />
+                        <ellipse cx="1138" cy="176" rx="22" ry="16" />
+                    </g>
+                    <g stroke="#7b5a35" stroke-width="8" stroke-linecap="round">
+                        <path d="M80 190v28" />
+                        <path d="M136 204v26" />
+                        <path d="M210 188v28" />
+                        <path d="M286 204v27" />
+                        <path d="M366 188v28" />
+                        <path d="M448 210v25" />
+                        <path d="M540 192v29" />
+                        <path d="M634 209v25" />
+                        <path d="M742 191v29" />
+                        <path d="M846 208v25" />
+                        <path d="M954 190v28" />
+                        <path d="M1062 205v25" />
+                        <path d="M1138 190v29" />
+                    </g>
+                    <path d="M0 230c152-18 304-21 454-8 186 15 345 12 478-9 113-17 202-40 268-69v96H0z"
+                        fill="rgba(234, 216, 179, 0.26)" />
+                </svg>
+            </div>
+            <div class="profile-badge" aria-hidden="true">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="profileClip">
+                            <circle cx="60" cy="60" r="60" />
+                        </clipPath>
+                        <linearGradient id="profileSky" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#6ab6ef" />
+                            <stop offset="100%" stop-color="#c7ebff" />
+                        </linearGradient>
+                    </defs>
+                    <g clip-path="url(#profileClip)">
+                        <rect width="120" height="120" fill="url(#profileSky)" />
+                        <circle cx="92" cy="28" r="14" fill="#ffe88a" />
+                        <path d="M0 78c22-9 41-11 58-7 13 4 25 4 36 1 10-3 19-8 26-15v63H0z" fill="#a7cf88" />
+                        <path d="M0 91c15-2 30 1 46 8 14 7 29 9 45 7 11-2 21-8 29-17v31H0z" fill="#7fae65" />
+                        <path d="M31 72c8 1 15 0 21-3-5-3-9-8-10-14 3 2 7 3 11 3-7-5-11-12-11-20 0-1 0-2 1-4 8 9 19 15 31 16-1-3 0-7 2-10 2-4 6-6 10-6-1 4 0 8 2 11 4 0 8-1 11-3-2 4-5 7-9 10 4 0 7-1 10-2-3 4-7 7-12 9-2 17-17 30-35 30-6 0-12-2-17-5 7 0 13-3 18-8-7 0-12-4-15-10z"
+                            fill="#ffffff" />
+                    </g>
+                    <circle cx="30" cy="30" r="16" fill="rgba(255,255,255,0.34)" />
+                    <circle cx="79" cy="87" r="12" fill="rgba(255,255,255,0.12)" />
+                </svg>
+            </div>
+            <h1>Tweets from the Bélus</h1>
+            <div class="subtitle">The Limestone Massif, 1st &ndash; 15th Century</div>
+            <div class="interaction-hint">to flip each stone card between source text and English</div>
+        </header>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">I</div>
+                <div class="century-label">1st Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Latin</div>
+                    <div class="tweet-text-translated latin">Gaius iterum de quadraginta oleis suis gloriatur 🫒🫒🫒
+                        frater, in saxo aris 😂 meminerō cum ager meus tuum superet. #Bélus</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@LuciusOfChalcis</div>
+                    <div class="tweet-text">Gaius bragging about his forty olive trees AGAIN 🫒🫒🫒 brother you are
+                        farming on a rock 😂 I'll remember this when my plot is outproducing yours. #Bélus</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Aramaic</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܓܒܪܐ ܕܪ̈ܗܘܡܝܐ ܣܠܩ ܡܢ ܐܢܛܝܘܟܝܐ ܕܢܡܫܘܚ ܚܩ̈ܠܬܐ 📜
+                        ܩܡ ܥܠ ܛܘܪܐ ܘܚܪ ܒܟܐܦܐ ܘܟܬܒ ܒܠܘܚܗ 🙄 ܫܪܒܬܝ ܦܣܩܬ ܗܕܐ ܟܐܦܐ ܬܠܬ ܕܪ̈ܝܢ ܐܠܐ ܐܡܪ ܠܝ ܐܝܟܐ ܬܚܘܡܐ #ܒܠܘܣ
+                    </div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@BarSamya</div>
+                    <div class="tweet-text">Roman cadastre man came up from Antioch to measure the plots 📜 Stood on the
+                        ridge squinting at the rock writing on his tablet 🙄 My family has cut this stone for three
+                        generations but sure tell me where the boundary is #Bélus</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Aramaic</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܙܒܘܢܐ ܡܢ ܐܢܛܝܘܟܝܐ ܐܡܪ ܠܝ ܕܡܫܚܝ ܥܟܪ ܐܢܐ ܐܡܪܬ ܛܥܡ
+                        ܛܥܡ 🫒 ܙܒܢ ܫܬ ܓ̈ܢܐ ܒܛܝܡܐ ܡܠܝܐ 💰 ܒܥܠܝ ܒܪܐ ܢܨܒ ܐܝ̈ܠܢܐ ܐܝܟ ܥܝܕܗ #ܢ̈ܫܐܕܙܝ̈ܬܐ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@MarthaBarKalba</div>
+                    <div class="tweet-text">Antioch buyer tried to tell me my oil was cloudy. I said taste it. He tasted
+                        it 🫒 Bought six jars. Full price. Didn't even haggle at the end. I KNOW what I'm pressing. Go
+                        tell your cloudy oil story to someone else habibi 💰 #OliveWives</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.2s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Greek</div>
+                    <div class="tweet-text-translated greek">Ἀνέβην εἰς τὸν ὑψηλὸν τόπον ἅμα τῇ ἕῳ πρὸς τὴν θυσίαν τοῦ
+                        Διὸς Μαδβάχου 🙏⛰️ αἰθρία μέχρι Ἀντιοχείας ✨ ἡ παρουσία τοῦ θεοῦ ᾐσθάνετο σήμερον 🔥🔥
+                        στρατιώτης τις Ῥωμαῖος ἠρώτησε διὰ τί ἐπὶ πέτρας λατρεύομεν. ἠρώτησα αὐτὸν διὰ τί ἐν κιβωτίοις
+                        λατρεύει. οὐκ εἶχεν ἀπόκρισιν. #Μαδβαχος #ΥψηλοςΤοπος #ΔιαςΜεγας</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@PhilonOfSheihBarakât</div>
+                    <div class="tweet-text">Ascended to the high-place at dawn for the offering to Zeus Madbachos 🙏⛰️
+                        Clear sky from here to Antioch ✨ The god's presence was felt today 🔥🔥 A Roman soldier asked
+                        why we worship "on rocks." I asked why he worships in boxes. He did not have an answer.
+                        #Madbachos #HighPlace #ZeusIsGreat</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">II</div>
+                <div class="century-label">2nd Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Greek</div>
+                    <div class="tweet-text-translated greek">Ἡ τῆς γυναικός μου οἰκογένεια οὐδὲν συνεβάλετο εἰς τὴν
+                        στήλην τοῦ Διὸς Μαδβάχου. Οὐδέν 🙄 ἀλλὰ τὰ ὀνόματα αὐτῶν οὐκ ἔστιν ἐπὶ τοῦ λίθου τὸ δὲ ἐμὸν
+                        ἔστιν 🤷 εἰς τὸν αἰῶνα. Τοῦτο μεταξὺ ἐμοῦ καὶ τοῦ θεοῦ. #SheihBarakât</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@DemetriosBarakât</div>
+                    <div class="tweet-text">My wife's family contributed nothing to the stele for Zeus Madbachos.
+                        Nothing 🙄 But their names aren't on the stone and mine is 🤷 forever. That is between me and
+                        the god. #SheihBarakât</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Aramaic</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܥܨܪܬ ܡܫܚܐ ܡܢ ܨܦܪܐ ܥܕܡܐ ܕܐܝ̈ܕܝ ܒܛܠ ܡܢ ܥܒܕܐ ܒܪ ܡܪܐ
+                        ܢܚܬ ܕܢܚܙܐ ܘܐܡܪ ܕܦܫܝܩ ܗܘ 🫒 ܘܐܙܠ ܦܫܝܩ ܗܘ ܛܒ ܡܛܠ ܗܢܐ ܚܨܝ ܗܟܢ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@KiphaAtThePress</div>
+                    <div class="tweet-text">Pressed oil from dawn until my hands stopped working. The master's son came
+                        down to watch for a while and said it looked easy 🫒 Then he left. It is very easy. That is why
+                        my back is like this.</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Greek</div>
+                    <div class="tweet-text-translated greek">Ὁ πατήρ λέγει ὅτι δεῖ με εὐχαριστεῖν ὅτι ἐν τῷ ὄρει ζῶ. Τὴν
+                        Ἀντιόχειαν εἶδον ἅπαξ μόνον 😭 τὸν λιμένα. τοὺς γραπτοὺς κίονας. γυναῖκά τινα πωλοῦσαν ἀμύγδαλα
+                        ὀπτὰ πλησίον τῶν βαλανείων. Περὶ ἐκείνων τῶν ἀμυγδάλων ἀεὶ σκέπτομαι. Ἔτι ὀσφραίνομαι αὐτά. Ὧδε
+                        οὐδὲν τοιοῦτον ὄζει 🏔️ #Βραδ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@YoungAlexandrosOfBrâd</div>
+                    <div class="tweet-text">Father says I should be grateful to live on the mountain. I have seen
+                        Antioch exactly once 😭 The harbor. The painted columns on the main street. A woman selling
+                        roasted almonds near the baths. I think about those almonds constantly. I can still smell them.
+                        There is nothing up here that smells like that 🏔️ #Brâd</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.2s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Greek</div>
+                    <div class="tweet-text-translated greek">Τὸ ὑπόγαιον τετέλεσται 🪦✨ τρία δωμάτια. Ἀετὸς γεγλυμμένος
+                        ὑπὲρ τῆς εἰσόδου. Ἄριστος λίθος ἐν τῷ ὄρει. Ἡ μνήμη τοῦ ἀνδρός μου μενεῖ εἰς γενεὰς σὺν θεῷ 🙏
+                        ἔνιοι δαπανῶσιν εἰς οἰκίας. Ἐγὼ δαπανῶ εἰς αἰωνιότητα. #Μεεζ #ΤιμηΤοιςΝεκροις</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@ZenobiaOfMeez</div>
+                    <div class="tweet-text">The hypogeum is finished 🪦✨ Three chambers. Carved eagle over the entrance.
+                        Finest limestone in the massif. My husband's memory will endure for generations God willing 🙏
+                        Some families spend on living quarters. I spend on eternity. #Meez #HonorTheDead</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">III</div>
+                <div class="century-label">3rd Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Greek</div>
+                    <div class="tweet-text-translated greek">Ἡ στοὰ ΤΕΤΕΛΕΣΤΑΙ 🏛️🏛️🏛️ δύο ὄροφοι. Κίονες. Φίλιππος
+                        ἦλθε καὶ εἶπεν· «ἡ ἀποθήκη σου ἔτι σκολιά ἐστιν.» Φίλιππε, πᾶσα ἡ οἰκία σου πηλὸν ἔχει ἐπὶ τῆς
+                        στέγης. Ἄπελθε 😂 #Κιρκβιζε</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@TheodorosOfQirqbîze</div>
+                    <div class="tweet-text">Portico DONE 🏛️🏛️🏛️ Two stories. Columns. Philippos came over and said
+                        "your barn is still crooked." Philippos your whole house has a mud roof go home 😂 #Qirqbîze
+                    </div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Aramaic</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܢܚܬܬ ܠܐܢܛܝܘܟܝܐ ܥܡ ܥܓܠܬ ܡܫܚܐ ܩܕܡܝܬ ܙܒܢ 😳😳😳
+                        ܫܘܩܐ ܒ̈ܠܢܐ ܩ̈ܠܐ ܓܒܪܐ ܡܙܒܢ ܢ̈ܘܢܐ ܛܓ̈ܢܐ ܒܫܘܩܐ??? ܢ̈ܘܢܐ ܫܚ̈ܝܢܐ??? ܠܒܪ??? 🐟 ܠܝܬ ܠܢ ܗܕܐ ܠܢ ܐܝܬ ܟ̈ܐܦܐ
+                        ܘܕܕܝ ܕܡܡܠܠ ܥܠ ܫܘܪ̈ܐ ܠܐ ܡܫܟܚ ܐܢܐ ܐܗܦܘܟ ܐܝܟ ܩܕ̈ܡ #ܐܢܛܝܘܟܝܐ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@YoungShamsha</div>
+                    <div class="tweet-text">Went down to Antioch with the oil cart for the first time 😳😳😳 the market
+                        the baths the NOISE a man selling fried fish right on the street??? hot fish??? outside??? 🐟 we
+                        don't have that we have rocks and my uncle talking about walls. I can't go back to normal after
+                        this #Antioch</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Greek</div>
+                    <div class="tweet-text-translated greek">Ὁ υἱωνός μου ἠρώτησε διὰ τί ἔτι ἀναβαίνομεν εἰς τὸν ὑψηλὸν
+                        τόπον πρὸς θυσίαν ὅτε «πάντες ἐν Ἀντιοχείᾳ» περὶ τοῦ Χριστοῦ θεοῦ λαλοῦσι 🙄 εἶπον αὐτῷ ὅτι ὁ
+                        πρόπαππος αὐτοῦ ᾠκοδόμησεν ἐκεῖνο τὸ ἱερὸν ταῖς ἰδίαις χερσίν. Οἱ θεοὶ οὐ παρέρχονται ὡς γάλα.
+                        Σέβου. #Μαδβαχος</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@OldNikandros</div>
+                    <div class="tweet-text">My grandson asked me why we still go up to the high-place for the sacrifice
+                        when "everyone in Antioch" is talking about the Christ god now 🙄 I told him his
+                        great-grandfather built that shrine with his own hands. Gods do not expire like milk. Show some
+                        respect. #Madbachos</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.2s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Aramaic</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܐܫܬܐ ܥܒܪܬ ܒܬܠܬ ܒ̈ܬܝܢ ܗܢ ܝܪܚܐ ܫܒܒܬܝ ܐܘܒܕܬ ܙܥܘܪܗ
+                        😔 ܐܘܩܕܢ ܣ̈ܡܡܢܐ ܥܠ ܛܘܪܐ ܘܟܗܢܐ ܢܚܬ ܡܢ ܗܝܟܠܐ ܐܠܐ ܒܫܪܪܐ ܐܢܐ ܚܫܒ ܐܢܐ ܕܡ̈ܝܐ ܕܒܐܪܐ ܒܝ̈ܫܐ ܐܢܘܢ ܐܡܪ ܐܢܐ
+                        ܗܕܐ ܡܢ ܩܝܛܐ ܠܝܬ ܕܫܡܥ ܠܝ ܫܡܥܝܢ ܠܟܗܢܐ ܡ̈ܝܐ ܒܝ̈ܫܐ ܐܢܘܢ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@TabithaTheWidow</div>
+                    <div class="tweet-text">The fever went through three houses this month. My neighbor lost her
+                        youngest 😔 We burned juniper on the ridge and the priest came down from the shrine but honestly
+                        I think the well water is bad. I've been saying this since summer. Nobody listens to me. They
+                        listen to the priest. The water is bad.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">IV</div>
+                <div class="century-label">4th Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܬܠܬ ܫܢ̈ܝܢ ܒܨܘܡܐ ܥܠ ܟܐܦܐ ܫܪܝܪܬܐ ܒܫܬܩܐ 🙏🙏🙏 ܡܕܟܐ
+                        ܐܢܐ ܢܦܫܝ ܠܐܠܗܐ ✝️ ܘܗܫܐ ܐܘܣܒܝܘܣ ܐܡܪ ܕܙܕܩ ܠܝ ܕܐܫܪܐ ܒܕܘܪܬܐ ܐܚܐ ܕܠܓܢܒܝ ܢܚܪ ܒ̈ܨܠܘܬ ܠ̈ܠܝܐ 😐 ܗܕܐ ܠܐ
+                        ܗܘܬ ܣܗܕܘܬܐ ܕܣܒܪܬ #ܬܠܕܐ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@MaronTheSolitary</div>
+                    <div class="tweet-text">Three years fasting on bare rock in silence 🙏🙏🙏 purifying my soul for God
+                        ✝️ and now Eusebius says I have to share a dormitory. The brother next to me snores through
+                        vigils 😐 This was not the martyrdom I imagined. #Teleda</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Greek</div>
+                    <div class="tweet-text-translated greek">Τὰ κέρατα ἀπέκοψαν ἀπὸ τοῦ βωμοῦ τῇ παρελθούσῃ ἑβδομάδι. Ὁ
+                        πατήρ μου ἐγλύψατο ταῦτα. Ὁ πάππος αὐτοῦ τὸν θεμέλιον λίθον ἔθηκεν 😔 Οἱ νέοι λέγουσιν ὅτι ὁ τοῦ
+                        Χριστοῦ θεὸς μόνος ἐστίν καὶ τὰ παλαιὰ ἱερὰ «ἀκάθαρτα.» Ἀκάθαρτα. Ἡ οἰκογένεια μου αἷμα ἔδωκε τῷ
+                        ναῷ τούτῳ. Ἀναβήσομαι εἰς τὴν κορυφὴν μόνος ἐὰν δέῃ. #Μαδβαχος</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@OldDiogenesOfKafrNâbo</div>
+                    <div class="tweet-text">They knocked the horns off the altar last week. My father carved those. His
+                        father laid the foundation stone 😔 The young ones say the Christ god is the only god now and
+                        the old shrines are "unclean." Unclean. My family bled for that temple. I will go up to the
+                        summit alone if I have to. #Madbachos</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܥܡܕܬ ܝܘܡܢ ✝️✨🙏🔥 ܠܐ ܡܫܟܚ ܐܢܐ ܐܦܫܩ ܡܕܡ ܕܚܫܬ ܥܠܡܐ
+                        ܟܠܗ ܐܚܪܢ ܗܘ ܐ̈ܚܐ ܕܒܕܝܪܐ ܙܡܪ ܠܢ ܘܒܟܝܬ ܟܠ ܥܕܢ ܣܒܬܝ ܐܡܪ ܕܡܣ̈ܓܝ ܐܢܐ ܣܒܬܝ ܡܪܝܐ ܩܪܢ 😭✝️ #ܬܠܕܐ
+                        #ܡܥܡܘܕܝܬܐ #ܚ̈ܝܐܚ̈ܕܬܐ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@YoungMaryamOfTeleda</div>
+                    <div class="tweet-text">Baptized today ✝️✨🙏🔥 I cannot describe what I felt. The whole world is
+                        different. The brothers at the monastery sang for us and I wept the entire time. My grandmother
+                        says I'm being dramatic. Grandmother the Lord has CLAIMED me 😭✝️ #Teleda #Baptism #NewLife
+                    </div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.2s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܒܪܬܝ ܫܐܠܬ ܠܝ ܝܘܡܢ ܠܡܢ ܗܝܟܠܐ ܕܥܠ ܛܘܪܐ ܣܦܝܩ ܗܘ ܗܫܐ
+                        ܐܡܪܬ ܠܗ ܕܡܨ̈ܠܝܢܢ ܒܥܕܬܐ ܚܠܦ ܗܕܐ ܐܡܪܬ «ܡܢ ܢܛܪ ܠܗ ܠܗܝܟܠܐ؟ ܟܪܝ ܗܘ» ܗܝ ܒܪܬ ܫܬ ܫ̈ܢܝܢ 😂 ܠܐ ܗܘܐ ܠܝ ܦܘܢܝ
+                        ܣܠܩܢ ܘܣܡܢ ܗ̈ܒܒܐ ܠܘܬ ܬܪܥܐ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@AmelOfQirqbîze</div>
+                    <div class="tweet-text">My daughter asked me today why the old shrine on the hill is empty now. I
+                        told her we pray in the church instead. She said "but who takes care of the shrine? it looks
+                        sad." She's six 😂 I didn't have an answer. We walked up and put wildflowers by the door anyway.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">V</div>
+                <div class="century-label">5th Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܫܬܬܥܣܪ ܡ̈ܨܪܝܐ 🇪🇬 ܘܡܫܡܫܢ ܐܪ̈ܡܢܝ ܒܒܝܬ ܐܘܨ̈ܪܝ
+                        😭😭 ܐܪ̈ܡܢܝ ܐܡܪ ܕܡ̈ܨܪܝܐ ܡܨ̈ܠܝܢ ܓܠ̈ܛ ܡ̈ܨܪܝܐ ܐ̈ܡܪ ܕܐܪ̈ܡܢܝ ܐܟܠ ܣ̈ܓܝ 🍞🍞🍞 ܬ̈ܝܘܒܐ ܥܠ ܐܪܥܐ ܫܡܥܘܢ ܒܪܫ
+                        ܥ̈ܡܘܕ ܚ̈ܡܫܝ ܐ̈ܡ ܠܐ ܛܥܢ ܡܕ̈ܡ ܐ ܫ̈ܦܝܪ 😭 #ܬܠܢܝܣ̈ܘ #ܐ̈ܣܛܘ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@YaqubTheInnkeeper</div>
+                    <div class="tweet-text">SIXTEEN Egyptians 🇪🇬 and an Armenian deacon in MY storehouse 😭😭 the
+                        Armenian says the Egyptians pray wrong. The Egyptians say the Armenian eats too much 🍞🍞🍞
+                        There is vomit on the floor. Simeon is fifty feet in the air unbothered. MUST BE NICE 😭
+                        #Telanissos #Stylite</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Coptic</div>
+                    <div class="tweet-text-translated coptic">ⲁⲓⲙⲟⲟϣⲉ ⲛ̄ϩⲙⲉ ⲛ̄ϩⲟⲟⲩ ⲉⲛⲁⲩ ⲉⲡⲣⲱⲙⲉ ⲉⲧⲟⲩⲁⲁⲃ ϩⲓϫⲙ̄ ⲡⲉϥⲥⲧⲩⲗⲟⲥ
+                        ✝️🙏 ϩⲙⲉ ⲛ̄ϩⲟⲟⲩ ϩⲓⲧⲛ̄ ⲡϣⲁϥⲉ ⲙⲛ̄ ⲡⲓⲟⲙ ⲛⲁⲥⲛⲏⲩ ϩⲟⲧⲁⲛ ⲉⲓϫⲱ ⲛⲏⲧⲛ̄ ϫⲉ ⲧϭⲟⲙ ⲙ̄ⲡⲛⲟⲩⲧⲉ ϩⲓϫⲙ̄ ⲡⲧⲟⲟⲩ
+                        ⲉⲧⲙ̄ⲙⲁⲩ 🔥🔥🔥 ⲁⲓⲣⲓⲙⲉ ⲙ̄ⲡⲓϣϭⲙ̄ϭⲟⲙ ⲉϣⲁϫⲉ ⲁⲓϣⲱⲡⲉ ⲛ̄ⲕⲉⲟⲩⲁ ϣⲁ ⲉⲛⲉϩ #ⲡⲉⲧⲟⲩⲁⲁⲃⲥⲩⲙⲉⲱⲛ #ⲡⲣⲟⲥⲕⲩⲛⲏⲥⲓⲥ
+                        #ⲉⲟⲟⲩ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@ApaKyrillFromThebes</div>
+                    <div class="tweet-text">Walked forty days to see the holy man on his pillar ✝️🙏 Forty days through
+                        the desert and across the sea. Brothers when I tell you the power of God is on that mountain
+                        🔥🔥🔥 I wept. I couldn't speak. I am changed forever. Worth every blister. #SaintSimeon
+                        #Pilgrimage #Glory</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܙܒܢܬ ܡ̈ܝܐ ܟܠ ܝܘܡܐ 💰💰 ܕܪ̈ܥܝ ܟܐܒܢ ܡܢ ܛܥܢܐ ܕܠܛܘܪܐ ܐܠܐ ܐܢܬܬܐ ܡܨܪܝܬܐ
+                        ܝܗܒܬ ܠܝ ܬܪܝܢ ܥܠ ܚܕ ܡܛܠ ܕܠܐ ܐܫܕܬ ܡܕܡ 😁 ܒܬܪܗ̇ ܓܒܪܐ ܝܘܢܝܐ ܒܥܐ ܕܢܬܠ ܠܝ ܦܠܓܐ. ܐܡܪܬ ܠܗ ܠܐ. ܐܡܪ ܕܛܠܝܐ ܐܢܐ. ܐܡܪܬ ܕܕܡܝܐ ܕܡܝܐ ܗܘ. ܝܗܒ 💰 #ܬܠܢܝܣܘܣ #ܚܪܝܦܘܬܐ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@LittleEshaq</div>
+                    <div class="tweet-text">sold water ALL day 💰💰 my arms hurt from carrying it up the hill but an
+                        Egyptian lady gave me DOUBLE because I didn't spill any 😁 then some Greek guy tried to pay me
+                        half. I said no. he said I'm just a kid. I said the price is the price. he paid 💰 #Telanissos
+                        #Hustle</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.2s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܥܪܘܒܬܐ ܡܢ ܛܘܪܐ ܗܢܐ ܠܠܝܐ 😶 ܟܠܗ ܒܠܘܣ ܗܦܟ ܕܗܒܐ. ܚܙܝܢܐ ܥܕܡܐ ܠܝܡܐ.
+                        ܒܙܒܢ̈ܐ ܐܝܟ ܗܢܐ ܡܣܬܟܠܐ ܐܢܐ ܠܡܢܐ ܐܡܬܝ ܐܡܪܬ ܣܒܬܝ ܕܐܠܗ̈ܐ ܓܒܘ ܛܘܪܐ ܗܢܐ. ܗܝ ܐܡܪܬ ܥܠ ܐܠܗ̈ܐ ܥܬܝܩ̈ܐ. ܐܢܐ ܐܡܪܐ ܥܠ ܡܪܢ. ܗܘ ܗܘ ܛܘܪܐ. ܗܘ ܗܘ ܢܘܗܪܐ.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@MaraOfJebelBarîša</div>
+                    <div class="tweet-text">Sunset from the ridge tonight 😶 The whole massif turning gold. You can see
+                        all the way to the coast. Moments like this I understand why my grandmother said the gods chose
+                        this mountain. She meant the old gods. I mean our Lord. Same mountain though. Same light.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">VI</div>
+                <div class="century-label">6th Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܬܫܥܡܐܐ ܓܪ̈ܒܐ 🫒🫒🫒 ܬܫܥܡܐܐ. ܐܝ̈ܕܝ ܗܘ̈ܝ ܐܝܟ ܡܫܟܐ ܥܬܝܩܐ. ܐܒܐ ܕܕܝܪܐ
+                        ܩܡ ܒܟܢܘܫܝܐ ܘܟܠܗܘܢ ܐܘܕܝܘ ܠܗ ܥܠ ܐܓܪܐ ܚܕܬܐ ܕܥܕܬܐ. ܐܢܐ ܫܩܠܬ ܗ̇. ܡܫܚܝ ܗܘ ܕܦܪܥ ܥܠ ܗ̇. ܗܘ ܩܒܠ ܬܘܕܝܬܐ ܘܐܢܐ ܩܒܠܬ ܪܡܙܐ 😐 #ܬܠܕܐ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@HananyaThePresser</div>
+                    <div class="tweet-text">Nine hundred jars 🫒🫒🫒 Nine hundred. My hands look like old leather. The
+                        abbot stood up at the council and everyone thanked him for the new church roof. I paid for that
+                        roof. My oil paid for that roof. He got the thanks and I got a nod 😐 #Teleda</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܥܕܬܐ ܚܕܬܐ ܕܩܠܒܠܘܙ ܐܫܬܡܠܝܬ ✝️✨ ܬܠܬܝܢ ܫܢ̈ܝܢ ܦܠܚܬ ܩܕܡ ܐܠܗܐ ܘܡܬܘܡ ܠܐ
+                        ܚܙܝܬ ܢܘܗܪܐ ܕܡܬܙܝܥ ܐܝܟ ܕܡܬܙܝܥ ܒܟܘ̈ܐ ܡܕܢܚ̈ܝܐ ܒܨܦܪܐ. ܐܦܣܩܘܦܐ ܒܟܐ. ܐܦ ܒܢ̈ܝ ܟܐܦܐ ܒܟܘ. ܐܦ ܐܢܐ ܒܟܝܬ ܘܠܐ ܡܣܟܢܐ ܐܢܐ ܠܒܟܝܐ. ܫܘܒܚܐ ܠܐܠܗܐ ܒܒܝܬܗ 🙏🔥 #ܩܠܒܠܘܙ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@DeaconessShirin</div>
+                    <div class="tweet-text">The new basilica at Qalbloze is finished ✝️✨ I have served God for thirty
+                        years and I have never seen light move like it moves through those east windows at dawn. The
+                        bishop wept. The stonemasons wept. I wept and I am not someone who weeps easily. Glory to God in
+                        His house 🙏🔥 #Qalbloze</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܚܠܘܠܐ ܕܚܬܝ ܡܫܟ ܬܠܬܐ ܝ̈ܘܡܝܢ 🍷🎶 ܟܠܗ ܩܪܝܬܐ ܐܬܬ. ܐܦ ܡܢܟ̈ܐ ܕܒܛܘܪܐ ܢܚܬܘ
+                        ܘܗܕܐ ܠܐ ܗܘܐ ܡܬܗܘܝܐ. ܐܒܝ ܢܟܣ ܬܪܝܢ ܐܡܪ̈ܝܢ. ܕܕܝ ܓܘܐܪܓܝܣ ܪܩܕ ܟܠ ܟܢܐ ܥܕܡܐ ܕܐܬܟܪܗ ܒܚܨܗ ܘܐܬܛܥܢ ܠܒܝܬܗ 😂😂 ܗܢܐ ܫܒܘܥܐ ܛܒܐ ܕܚܝ̈ܝ #ܓܒܠܒܪܝܫܐ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@YoungIshōʿ</div>
+                    <div class="tweet-text">My sister's wedding lasted three days 🍷🎶 the whole village came. Even the
+                        monks from the ridge came down which NEVER happens. Father slaughtered two lambs. Uncle Gewargis
+                        danced so hard he pulled something in his back and had to be carried home 😂😂 best week of my
+                        life #JebelBarîša</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.2s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Greek</div>
+                    <div class="tweet-text-translated greek">Διῆλθον τὸ ὄρος ἐπὶ τῇ ὁδῷ πρὸς Βέροιαν. Πᾶσα κώμη ἔχει
+                        ναὸν λίθινον. Τινὲς δύο ⛪⛪ ἀλλ᾽ ἄκουσον. Εἶδον γεωργοῦ στοὰν κρείττονα κιόνων ἢ τὴν ἀποθήκην τοῦ
+                        ἐμοῦ ἐμπόρου ἐν Ἀντιοχείᾳ. Πόθεν τὸ ἀργύριον;; Ἔλαιον. Πᾶν ἔλαιόν ἐστιν. Πλουτοῦσι καὶ ἐνδύονται
+                        ὡς ποιμένες.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@AnastasiosTheMerchant</div>
+                    <div class="tweet-text">Passed through the massif on the way to Beroea. Every village has a stone
+                        church. Some have two ⛪⛪ But here's the thing. I saw a farmer's portico with better columns than
+                        my supplier's warehouse in Antioch. Where is the money coming from?? Oil. It's all oil. These
+                        people are sitting on a fortune and they dress like shepherds.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">VII</div>
+                <div class="century-label">7th Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܬܪܥܐ ܣܓܝܪ 🚫 ܐܦ ܣܦܬ ܝܡܐ ܣܓܝܪܐ 🚫 ܡܫܚܐ ܕܫܢܬܐ ܥܒܪܬ ܥܕܟܝܠ ܒܓܪ̈ܒܐ. ܒܪܝ
+                        ܐܡܪ ܙܪܥ ܚܛ̈ܐ. ܒܟܐܦܐ ܚܘܪܐ. ܚܪܬ ܒܗ. ܚܪ ܒܝ. #ܓܒܠܣܝܡܥܢ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@SargisBarShimun</div>
+                    <div class="tweet-text">Port closed 🚫 Coast closed 🚫 Oil from last year still in the jars. My son
+                        said "plant wheat." On limestone. I looked at him. He looked at me. #JebelSimân</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">وصلنا للتو إلى المرتفعات مع الحامية. هؤلاء
+                        النصارى يبنون كالعمالقة 😳 بيوت حجرية من طابقين بلا ملاط؟؟ أعمدة في كل مكان. عندنا في بلادنا طوب
+                        طين. ماذا كان يأكل هؤلاء القوم. #شمال_سوريا</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@TariqIbnWaleed</div>
+                    <div class="tweet-text">Just arrived in the highlands with the garrison. These Christians build like
+                        giants 😳 Stone houses two stories high with no mortar?? Columns everywhere. Back home we have
+                        mud brick. What were these people eating. #NorthernSyria</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܫܠܝ̈ܛܐ ܚܕ̈ܬܐ ܡܨܠܝܢ ܒܐܘܪܚܐ ܐܚܪܬܐ ܐܠܐ ܫܒܩܝܢ ܠܢ ܘܟܣܐ ܫܘܝܐ ܗܘ. ܒܫܪܪܐ
+                        ܚܡܝܬ ܒܝ̈ܫܬܐ ܝܬܝܪ ܡܢ ܗܕܐ. ܣܒܬܝ ܚܝܬ ܒܝܘ̈ܡܝ ܬܩ̈ܢܬܐ ܕܡܠܟܘܬܐ ܘܐܡܪܬ ܕܗܢܘܢ ܓܙܠܐ ܗܘܘ 🤷 ܥܕܟܝܠ ܐܝܬ ܠܢ ܥܕܬܐ. ܥܕܟܝܠ ܐܝܬ ܠܢ ܡܫܚܐ. ܐܠܗܐ ܡܦܪܢܣ. ✝️</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@OldMarthaOfBabisqa</div>
+                    <div class="tweet-text">The new rulers pray differently but they leave us alone and the tax is fair.
+                        Honestly I've had worse. My grandmother lived through the imperial tax reforms and she said
+                        those were robbery 🤷 We still have our church. We still have our oil. God provides. ✝️</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.2s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܟܠܢܫ ܐܡܪ ܕܝ̈ܘܡܬܐ ܩܕ̈ܡܝܐ ܗܘܘ ܛܒܝܢ ܝܬܝܪ. ܐܡܘܢܐ ܣܓܝ. ܬܓܪܬܐ ܣܓܝܐܐ. ܒܢ̈ܝܢܐ
+                        ܪܘܪ̈ܒܐ. ܐܢܐ ܠܐ ܝܕܥܐ ܐܢܐ. ܫܡܝܐ ܗܝ ܗܝ ܫܡܝܐ 🌅 ܙܝ̈ܬܐ ܥܕܟܝܠ ܪܒܝܢ. ܒܪܬܝ ܚܟܬ ܟܠܗ ܨܦܪܐ ܟܕ ܪܕܦܐ ܠܚܪܕܘܢܐ ܒܐܣܛܘܐ. ܫܦܝܪ ܠܝ.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@SabaTheYoung</div>
+                    <div class="tweet-text">Everyone says the old days were better. More money. More trade. Bigger
+                        buildings. I don't know. The sky is the same sky 🌅 The olives still grow. My daughter laughed
+                        all morning chasing a lizard through the portico. Feels fine to me.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">VIII</div>
+                <div class="century-label">8th Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܬܫܥܐ ܐܢܘܢ ܕܐܫܬܚܪܘ ✝️ ܟܬܒܬ ܡܢܝܢܗܘܢ ܥܠ ܟܘܬܠܐ ܠܘܬ ܡܢܝܢܐ ܕܫܢܬܐ ܥܒܪܬ.
+                        ܠܐ ܐܡܪܬ ܡܕܡ. #ܟܦܪܠܒ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@BrotherYuhanna</div>
+                    <div class="tweet-text">Nine of us left ✝️ I wrote the number on the wall next to last year's
+                        number. I didn't say anything. #KafrLab</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܐܢܐ ܐܢܬܬܐ ܐܚܪܝܬܐ ܒܩܪܝܬܐ ܗܕܐ. ܠܐ ܐܚܪܝܬܐ ܕܒܢܝ̈ܢܫܐ. ܐܚܪܝܬܐ ܕܢܫ̈ܐ. ܓܒܪ̈ܐ
+                        ܐܡܪܝܢ ܕܢܐܙܠܘܢ ܠܦܩܥܬܐ. ܐܡܪܬ ܠܗܘܢ ܙܠܘ 🤷 ܐܢܫ ܚܕ ܙܕܩ ܕܢܛܪ ܓܢܬܐ ܕܥܕܬܐ. ܐܟܠܝܠܐ ܕܪܘܙܡܪܝܢ ܛܒ ܣܠܩ ܗܫܐ.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@UmmDaniel</div>
+                    <div class="tweet-text">I am the last woman in this village. Not the last person. The last woman.
+                        The men talk about leaving for the plains. I told them go ahead 🤷 Somebody has to tend the
+                        church garden. The rosemary is doing well this year actually.</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܐܫܟܚܬ ܚܕܐ ܬܘܢܐ ܕܛܝܢܐ ܨܒܝܥܐ ܒܚܕܐ ܡܢ ܒ̈ܬܐ ܕܐܫܬܒܩܘ ܝܘܡܢ 🎨 ܙܪ̈ܩܐ ܘܣܘܡ̈ܩܐ
+                        ܥܕܟܝܠ ܢܗܝܪܝܢ. ܦܪܚܬܐ ܨܒܝܥܐ ܠܥܠ ܬܪܥܐ. ܠܝܬ ܐܢܫ ܕܕܟܝܪ ܡܢ ܐܝܠܝܢ ܗܘܘ ܕܥܡܪܘ ܬܡܢ. ܡܠܐ ܛܘܪܐ ܡܢ ܓܘ̈ܣܛܐ ܕܐܝܬ ܠܗܘܢ ܛܥܡܐ ܛܒ ܡܢܢ.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@YoungHannaOfKafrLab</div>
+                    <div class="tweet-text">Found a whole room of painted plaster in one of the abandoned houses today
+                        🎨 Blues and reds still bright. A bird painted over the doorway. Nobody remembers who lived
+                        there. The mountain is full of ghosts who had better taste than us.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">IX</div>
+                <div class="century-label">9th Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܦܣܩܬ ܠܢ ܠܘܚܐ ܚܕܬܐ ܠܬܪܥܐ ܡܢ ܩܥܬܐ ܕܥܡܘܕܐ ܪܗܘܡܝܐ ܕܐܫܟܚܢ ܒܚܪܒܬܐ 🪨 ܐܝܟܢܐ
+                        ܥܒܕܘ ܩܕܡ̈ܝܐ ܠܟܐܦܐ 😳 ܠܝܬ ܐܢܫ ܚܝܐ ܕܝܕܥ ܐܝܟܢܐ. ܢܒܪܟ ܐܠܗܐ ܐܝ̈ܕܝܗܘܢ. #ܒܘܪܓܣܒ ✝️</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@BrotherIbrahim</div>
+                    <div class="tweet-text">Cut a new lintel from a Roman column base we found in the rubble 🪨 The way
+                        those ancients worked stone 😳 Nobody alive knows how they did it. God bless their hands.
+                        #BurgEsSab ✝️</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܐܫܟܚܬ ܟܬܒܐ ܒܒܝܬ ܣܝܡܬܐ ܟܪܝܟ ܒܟܬܢܐ ܥܬܝܩܐ 📜 ܦܠܓ ܛܪ̈ܦܐ ܐܬܐܟܠܘ ܐܠܐ ܡܕܡ
+                        ܕܐܫܬܚܪ ܐܝܬ ܒܗ ܪܘܪܒܐ. ܐܚܐ ܐܒܪܗܝܡ ܐܡܪ ܕܗܘ ܬܫܒܘܚܬܐ ܡܢ ܩܕܡ ܡܐܬܝܢ ܫܢ̈ܝܢ. ܐܪܝܡܬܗ ܠܘܬ ܫܪܓܐ ܘܩܪܝܬ ܒܩܠܝ ܡܕܡ ܕܡܫܟܚ ܗܘܝܬ. ܩܠܝ ܐܬܚܙܝ ܠܝ ܢܘܟܪܝܐ ܒܒܝܬܐ ܪܝܩܐ.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@TheNoviceGabriel</div>
+                    <div class="tweet-text">Found a manuscript in the storeroom wrapped in old linen 📜 Half the pages
+                        are eaten through but what's left!! The hand is so steady and small. Brother Ibrahim says it's a
+                        hymn from two hundred years ago. I held it up to the candle and read what I could out loud. My
+                        voice sounded strange in the empty room.</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">سافرت عبر المرتفعات في طريقي إلى حلب. قرى
+                        بأكملها فارغة. لكن الكنائس لا تزال قائمة 😶 التقيت ثلاثة رهبان في دير صغير. قدموا لي ماءً
+                        وخبزاً. رجال طيبون. مكان غريب.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@IbnRashidThePasser</div>
+                    <div class="tweet-text">Traveled through the highlands on the way to Aleppo. Whole villages empty.
+                        Churches still standing though 😶 Met three monks at a small monastery. They offered me water
+                        and bread. Kind men. Strange place.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">X</div>
+                <div class="century-label">10th Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Greek</div>
+                    <div class="tweet-text-translated greek">Ὁ Κωστᾶς ἐχρήσατο θήκῃ ἁγίου λειψάνου ὡς κύλικι οἴνου 💀🍷
+                        πᾶσα ἡ κώμη οὐ πωλεῖ ἡμῖν ἄρτον νῦν. Τὶς ἐκρέμασεν ἱμάτια ἐπὶ τοῦ στύλου τοῦ ἁγίου ἀνδρός 😂 οὐ
+                        λέγω τίς. Τρίτος μήν μοι ὧδε. Τὸ φαγητόν ἐστιν θαυμαστὸν ἐὰν ἀγαπᾷς πέτρας #ΚαλατΣιμαν</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@NiketasOfThracesia</div>
+                    <div class="tweet-text">Kostas used a saint's reliquary as a wine cup 💀🍷 whole village won't sell
+                        us bread now. Someone hung laundry on the holy man's column 😂 Not saying who. Third month here
+                        btw. The food is incredible if you like rocks #QalatSimân</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Syriac</div>
+                    <div class="tweet-text-translated syriac" dir="rtl">ܚܝ̈ܠܘܬܐ ܕܪ̈ܗܘܡܝܐ ܒܢܝܢ ܫܘܪ̈ܐ ܚܕ̈ܬܐ ܚܕܪ ܥܕܬܗ ܕܡܪܝ ܫܡܥܘܢ. ܫܐܠܬ ܠܚܕ ܡܢܗܘܢ
+                        ܐܢ ܬܘܒ ܢܐܬܘܢ ܣܓܕ̈ܐ. ܓܚܟ ܘܐܡܪ ܠܝ ܠܐ ܒܢܝܢܢ ܐܘܢܕܩܐ ܝܐܡܐ, ܐܠܐ ܚܣܢܐ ⚔️ ܠܐ ܝܕܥܝܢ ܡܢܐ ܗܘܬ ܕܘܟܬܐ ܗܕܐ ܡܢ ܩܕܝܡ. #ܩܠܥܬܣܝܡܥܢ</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@UmmGewargis</div>
+                    <div class="tweet-text">The Byzantine soldiers are rebuilding the walls around Saint Simeon's
+                        church. I asked one of them if pilgrims will come again. He laughed and said "we're not building
+                        an inn, grandmother, we're building a fortress" ⚔️ They have no idea what this place used to be.
+                        #QalatSimân</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Greek</div>
+                    <div class="tweet-text-translated greek">Οἶδα ὅτι πάντες μισοῦσι ταύτην τὴν φρουράν. Οἶδα ὅτι οἱ
+                        ἐντόπιοι μισοῦσιν ἡμᾶς. Οἶδα ὅτι τὸ φαγητὸν δεινόν ἐστιν. Ἀλλ᾽ ἡ ὄψις ἀπὸ τῆς κορυφῆς ἅμα τῇ ἕῳ
+                        🌅 ὁρᾷς πᾶν τὸ πεδίον. Τὸ φῶς ψαύει τῶν παλαιῶν κιόνων καὶ πρὸς στιγμὴν λανθάνει σε ὅτι
+                        στρατιώτης εἶ. Εἶτα ὁ Κωστᾶς ῥίπτει τι καὶ ἡ στιγμὴ τελειοῦται. #ΘεμαΣυνορον</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@CaptainLeonOfAntioch</div>
+                    <div class="tweet-text">I know everyone hates this posting. I know the locals hate us. I know the
+                        food is terrible. But the view from the summit at dawn 🌅 You can see the whole plain. Light
+                        hits the old columns and for a moment you forget you're a soldier. Then Kostas drops something
+                        and the moment is over. #ThemaBorder</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">XI</div>
+                <div class="century-label">11th Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">جدي نجا من الروم. أبي نجا من الفاطميين. الآن
+                        السلاجقة على التلة 😐 كل جيل أحد جديد. لكن المس معزاتي 🐐 جرّب.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@AbuSalimAlJabali</div>
+                    <div class="tweet-text">Grandfather survived the Byzantines. Father survived the Fatimids. Seljuks
+                        on the ridge now 😐 Every generation it's somebody. Touch my goats though 🐐 Try it.</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">خبّأت جرار الزيت تحت حجارة الأرض مرة أخرى. ثالث
+                        مرة هذه السنة. الأولاد يظنونها لعبة 🙃 «ماما ليش نخبي الأكل؟» لأن الجيوش جوعانة ولا تدفع يا
+                        حبيبتي.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@ZaynabOfSermada</div>
+                    <div class="tweet-text">Hid the oil jars under the floor stones again. Third time this year. The
+                        children think it's a game 🙃 "Mama why are we hiding the food?" Because armies are hungry and
+                        they don't pay, habibti.</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">خيول السلاجقة أجمل حيوانات رأيتها في حياتي 🐎 لا
+                        يهمني ماذا يقول أبي عنهم. تلك الخيول. أعطي أي شيء لأركب واحداً.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@YoungKhalilOfDâna</div>
+                    <div class="tweet-text">The Seljuk horses are the most beautiful animals I have ever seen in my life
+                        🐎 I don't care what Father says about them. Those horses. I would give anything to ride one.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">XII</div>
+                <div class="century-label">12th Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">أبيع طحين للفرنج 🍞 ولرجال نور الدين 🍞 زوجتي
+                        تقول ما عندي ولاء 🤷 عندي خمسة أولاد 👨‍👧‍👦 ولائي واضح جداً. #دانا</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@HassanOfDâna</div>
+                    <div class="tweet-text">Selling flour to the Franks 🍞 AND Nur ed-Din's men 🍞 wife says I have no
+                        loyalty 🤷 I have five children 👨‍👧‍👦 My loyalty is extremely clear. #Dâna</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Old French</div>
+                    <div class="tweet-text-translated old-french">Deux ans en ceste terre et encore ne me puis acostumer
+                        a la lumiere 🏰 Ele fait chose a la pierre. Tut reluit. Un viel homme pres de la tur me vent
+                        pain plat a l'uile et as herbes chascun matin. Ne sai son nom. Il ne set le mien. Meillur repas
+                        que j'ai eu et j'ai mangié a la table del Conte. #Outremer</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@RobertDeSermada</div>
+                    <div class="tweet-text">Two years in this country and I still can't get used to the light 🏰 It does
+                        something to the stone. Everything glows. An old man near the tower sells me flatbread with oil
+                        and herbs every morning. I don't know his name. He doesn't know mine. Best meal I've ever had
+                        and I've eaten at the Count's table. #Outremer</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">بنتي تزوجت رجل من قرية الجبل قرب برج الفرنج.
+                        تقول إنها ترى ثلاثة جيوش من سطحها في يوم صاف 😳 قلت لها ارجعي. قالت أشجار الزيتون حلوة. عنادها
+                        من أبيها الله يرحمه.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@UmmAliOfThePlains</div>
+                    <div class="tweet-text">My daughter married a man from the mountain village near the Frankish tower.
+                        She says she can see three armies from her rooftop on a clear day 😳 I told her to come home.
+                        She said the olive trees are beautiful. She gets her stubbornness from her father God rest him.
+                    </div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.2s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Kurmanji</div>
+                    <div class="tweet-text-translated kurmanji" dir="rtl">سەفەربەری قەدییا. نیڤێ زیلامان دچن باشوور. ئەز دەمینم
+                        🏔️ هەوای ڤێر. کەڤر. بیرا من تینە جهێ کو ئەز لێ مەزن بووم. ل سەر چیایێ بلند چەرەیەکا باش هەیە
+                        کو عەرەب نایەن وێر. هەتا بهارێ پەزەک وێ هەبە ئینشالله. #KurdDagh</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@SiwarÊzdîn</div>
+                    <div class="tweet-text">Campaign is over. Half the men are going south. I'm staying 🏔️ The air up
+                        here. The stone. Reminds me of where I grew up. Found good grazing on the high ridge where the
+                        Arabs don't bother going. By next spring I'll have a flock inshallah. #KurdDagh</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">XIII</div>
+                <div class="century-label">13th Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">بنيت المسجد الجديد في حنية الكنيسة القديمة 🕌
+                        الجار يقول أشباح المسيحيين سيغضبون 😂😂 يا أخي هم رحلوا قبل مئتين سنة. الحجر جميل وكان مجاناً 👏
+                        #البارة</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@MustafaAlBârawi</div>
+                    <div class="tweet-text">Built the new mosque in the old church apse 🕌 Neighbor says the Christian
+                        ghosts will be angry 😂😂 brother they left two hundred years ago. The stone is beautiful and it
+                        was FREE 👏 #ElBâra</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">أبي أخذني لنشوف الخرابات الكبيرة اليوم. في وجوه
+                        منحوتة بالحجر 😳 وحيوانات كمان. نسر كامل فوق باب. سألت مين صنعهم. قال ناس عاشوا هنا قبلنا. سألت
+                        وين راحوا. قال ما حدا يعرف. أفكر بهالشي كثير.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@LittleLaylaBintMustafa</div>
+                    <div class="tweet-text">Father took me to see the big ruins today. There are faces carved in the
+                        stone 😳 Animals too. A whole eagle over a doorway. I asked who made them. He said people who
+                        lived here before us. I asked where they went. He said nobody knows. I think about that a lot.
+                    </div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Kurmanji</div>
+                    <div class="tweet-text-translated kurmanji" dir="rtl">کورێ من بزینەکەک بچووک ژ نێزیکی دەیرە کەڤن ئانی مال 🐐
+                        ل بن کەڤرەکی دا ئاسێ بوو. لاو ساعاتەک تەمام ئەو هەڵدا و ئانی. کچە وی شەڤ و ڕۆژ ئەو گرت و
+                        گەڤا من گوت دبی ئەم بدین جیرانان گریا. ئەم نادین جیرانان. ناڤێ وێ هەیە ئێدی 😂 یا مەیە.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@MîrkoÊzidî</div>
+                    <div class="tweet-text">My son brought home a baby goat from near the old church 🐐 It was stuck
+                        under a stone. The boy carried it a whole hour back. His sister held it all night and cried when
+                        I said we might give it to the neighbors. We are not giving it to the neighbors. It has a name
+                        now 😂 It's ours.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">XIV</div>
+                <div class="century-label">14th Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">ستي كانت تقول إنّا كنا نبعث زيت لملوك عبر البحر
+                        🫒👑✨ ملوك أقوياء كثير. يدفعون بوقتهم. أنا أبيع لمحمود وحماره 🫏 هو لا يدفع بوقته 😤😤 محمود إذا
+                        شايف هاد إنت مديون لي بثلاث جرار #محمود_ادفع</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@FatimaOfDâna</div>
+                    <div class="tweet-text">Grandmother said we shipped oil to kings across the sea 🫒👑✨ Very powerful
+                        kings. Paid on time. I sell to Mahmoud and his donkey 🫏 He does NOT pay on time 😤😤 Mahmoud if
+                        you see this you owe me for three jars #MahmoudPayMe</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">حطيت حجر لأخي بالمقبرة اليوم. استعملت قطعة من
+                        إفريز روماني للقاعدة. حجر ممتاز. أحسن من أي شي نلاقيه جديد. أخي كان يحب هيك. كان دائماً يقول
+                        القدماء عرفوا شي نسيناه 😔 الله يرحمه.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@OldAbuKarimOfDâna</div>
+                    <div class="tweet-text">Laid a stone for my brother in the cemetery today. Used a piece of Roman
+                        cornice for the base. Good stone. Better than anything we can find new. My brother would have
+                        liked that. He always said the ancients knew something we forgot 😔 God have mercy on him.</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">الأزهار البرية على التلة هالربيع 🌸🌸 بنفسجي
+                        وأصفر بين الأعمدة القديمة. أخي الصغير صنع تاج منها وحطه على رأس حجري طالع من الأرض. كان شكله ملك
+                        روماني لابس ورود. ضحكنا لحد ما ما قدرنا نتنفس 😂</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@YoungNadiaOfElBâra</div>
+                    <div class="tweet-text">The wildflowers on the ridge this spring 🌸🌸 Purple and yellow everywhere
+                        between the old columns. My little brother made a crown out of them and put it on a carved stone
+                        head sticking out of the ground. It looked like a Roman king wearing flowers. We laughed until
+                        we couldn't breathe 😂</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.2s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Kurmanji</div>
+                    <div class="tweet-text-translated kurmanji" dir="rtl">بەریا سبهێ من فتیل ل زیارەتێ دا ڤەخست وەک کو باڤێ من
+                        فێری من کر و باڤێ وی فێری وی کربوو 🔥 پەت ل بایێ دا نەهەژیا. دوایان کرن. ڕۆژهه‌لات ل سەر
+                        ????? ??? ?? ????? ????? ?? ?????. #KurdDagh #�zd�xaneBim�ne</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@PîrKhalilÊzidî</div>
+                    <div class="tweet-text">Lit the wick at the shrine before dawn as my father taught me and his father
+                        taught him 🔥 The flame held steady in the wind. Said the prayers. Watched the sun come up over
+                        the ridge 🌅 The Peacock Angel sees us. #KurdDagh #ÊzdîxaneBimîne</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="century-section">
+            <div class="century-header">
+                <div class="century-numeral">XV</div>
+                <div class="century-label">15th Century</div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.05s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">أبي يقول الجبل وطن 🙏 نص الجدران القديمة صارت
+                        حظائر غنم. المسجد يصدي صدى. أنا رايح عالسهل. الله يسامحني بس الجبل خلص. #جبل_الزاوية</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@YoussefIbnAli</div>
+                    <div class="tweet-text">Father says the mountain is home 🙏 Half the old walls are sheep pens. The
+                        mosque echoes. I'm going to the plain. God forgive me but the mountain is done. #JebelZâwiye
+                    </div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.1s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">ابني يقول الجبل خلص. الجبل كان هنا قبل جد جد جد
+                        جده. وسيبقى بعدنا كلنا. الشباب دائماً يظنون يعرفون متى شي انتهى 🤷 أنا زرعت شجرة زيتون جديدة
+                        الأسبوع الماضي.</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@RuqayyaUmmYoussef</div>
+                    <div class="tweet-text">My son says the mountain is done. The mountain was here before his
+                        grandfather's grandfather's grandfather. It will be here after all of us. Boys always think they
+                        know when something is finished 🤷 I planted a new olive tree last week.</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.15s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Arabic</div>
+                    <div class="tweet-text-translated arabic" dir="rtl">طلعت بالغنم للمرتفعات للرعي الصيفي 🐑 الخرابات
+                        القديمة أحسن مأوى للحيوانات. لقيت غرفة أرضيتها حجر أملس ما شفت مثله بحياتي. نمت كملك. اللي بنى
+                        هالمكان كان يعرف شغله. #جبل_الزاوية</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@NomadSuleimanAlRashid</div>
+                    <div class="tweet-text">Brought the flock up into the highlands for summer grazing 🐑 The old ruins
+                        make perfect shelters for the animals. Found a room with a stone floor smoother than anything
+                        I've ever seen. Slept like a king last night. Whoever built this place knew what they were
+                        doing. #JebelZâwiye</div>
+                </div>
+            </div>
+
+            <div class="tweet-card" style="animation-delay: 0.2s">
+                <div class="tweet-left">
+                    <div class="tweet-lang">Kurmanji</div>
+                    <div class="tweet-text-translated kurmanji" dir="rtl">بەریا ڕۆژهه‌لاتێ من نان ل سەر ئەردە کەڤرینە کەڤن
+                        پێت 🫓 زارۆک ل ناڤ ستوونان دا ل پەی هەڤ ڕەڤیان دەمێ کو هەڤیر رادبوو. یێ بچووک ل بەر شێرەکی
+                        کەڤرین ڕازییا. رابوو و شێکلێ کەڤری ل ڕووی وی مابوو 😂 ئەڤ چیا ژی مە ڕە باشە. #KurdDagh</div>
+                </div>
+                <div class="tweet-right">
+                    <div class="tweet-handle">@GulêÊzdî</div>
+                    <div class="tweet-text">Baked bread on the old stone floor before sunrise 🫓 The children chased
+                        each other through the columns while the dough rose. My youngest fell asleep against a carved
+                        lion. Woke up with the pattern pressed into his cheek 😂 This mountain is good to us. #KurdDagh
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="note">
+            Disclaimer: Yes, these are actual tweets from the years 1 - 1500 CE
+        </div>
+
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.tweet-card');
+        const avatarPalettes = [
+            ['#55acee', '#7dc7fb', '#dff4ff'],
+            ['#3b94d9', '#7e57c2', '#efe7ff'],
+            ['#17bf63', '#6ee7a8', '#e7fff3'],
+            ['#f5a623', '#ffd57d', '#fff5db'],
+            ['#e0245e', '#ff8ba9', '#ffe7ef'],
+            ['#794bc4', '#ae8df0', '#efe8ff']
+        ];
+
+        const hashString = (value) => {
+            let hash = 0;
+            for (const char of value) {
+                hash = ((hash << 5) - hash) + char.charCodeAt(0);
+                hash |= 0;
+            }
+            return Math.abs(hash);
+        };
+
+        const buildAvatarSvg = (seed, label) => {
+            const hash = hashString(seed);
+            const palette = avatarPalettes[hash % avatarPalettes.length];
+            const cleaned = label.replace(/^@/, '').trim();
+            const words = cleaned.split(/[\s._-]+/).filter(Boolean);
+            let initials = 'TB';
+            if (words.length === 1) {
+                initials = words[0].slice(0, 2).toUpperCase();
+            } else if (words.length > 1) {
+                initials = `${words[0][0]}${words[1][0]}`.toUpperCase();
+            }
+
+            const svg = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="${label}">
+                    <defs>
+                        <linearGradient id="avatarBg-${hash}" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="${palette[0]}"/>
+                            <stop offset="55%" stop-color="${palette[1]}"/>
+                            <stop offset="100%" stop-color="${palette[2]}"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="120" height="120" rx="60" fill="url(#avatarBg-${hash})"/>
+                    <circle cx="36" cy="30" r="18" fill="rgba(255,255,255,0.26)"/>
+                    <circle cx="89" cy="88" r="14" fill="rgba(255,255,255,0.12)"/>
+                    <text x="60" y="72" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif"
+                        font-size="34" font-weight="700" fill="#ffffff">${initials}</text>
+                </svg>`;
+
+            return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+        };
+
+        const ensureAvatar = (panel, src, alt) => {
+            const avatar = document.createElement('div');
+            avatar.className = 'tweet-avatar';
+
+            const image = document.createElement('img');
+            image.src = src;
+            image.alt = alt;
+
+            avatar.appendChild(image);
+            panel.prepend(avatar);
+        };
+
+        const toggleCard = (card) => {
+            card.classList.toggle('is-translated');
+            card.classList.remove('is-animating');
+            void card.offsetWidth;
+            card.classList.add('is-animating');
+
+            const translated = card.classList.contains('is-translated');
+            card.dataset.stateLabel = translated ? 'Show original' : 'Show translation';
+            card.setAttribute('aria-pressed', String(translated));
+        };
+
+        cards.forEach((card, index) => {
+            const lang = card.querySelector('.tweet-lang')?.textContent?.trim() || 'Original text';
+            const handle = card.querySelector('.tweet-right .tweet-handle')?.textContent?.trim() || 'translation';
+            const avatarSeed = `${handle}|${lang}|${index}`;
+            const avatarSrc = card.dataset.avatar || buildAvatarSvg(avatarSeed, `${handle} avatar`);
+
+            card.dataset.stateLabel = 'Show translation';
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('aria-pressed', 'false');
+            card.setAttribute('aria-label', `Toggle ${lang} tweet for ${handle}`);
+
+            const originalPanel = card.querySelector('.tweet-left');
+            const translationPanel = card.querySelector('.tweet-right');
+
+            if (originalPanel) {
+                if (!originalPanel.querySelector('.tweet-handle')) {
+                    const originalHandle = document.createElement('div');
+                    originalHandle.className = 'tweet-handle';
+                    originalHandle.textContent = handle;
+                    const textBlock = originalPanel.querySelector('.tweet-text-translated');
+                    originalPanel.insertBefore(originalHandle, textBlock || originalPanel.firstChild);
+                }
+                ensureAvatar(originalPanel, avatarSrc, `${handle} avatar`);
+            }
+
+            if (translationPanel) {
+                ensureAvatar(translationPanel, avatarSrc, `${handle} avatar`);
+            }
+
+            card.addEventListener('click', () => toggleCard(card));
+            card.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    toggleCard(card);
+                }
+            });
+
+            card.addEventListener('animationend', (event) => {
+                if (event.animationName === 'gleam') {
+                    card.classList.remove('is-animating');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+
+
