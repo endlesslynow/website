@@ -185,7 +185,7 @@
 
         function switchTab(tabId) {
             currentTab = tabId;
-            const baseClass = "nav-btn w-full sm:w-auto px-4 py-3 sm:py-2 rounded-lg font-medium text-white transition";
+            const baseClass = "nav-btn px-3 py-2 sm:px-4 rounded-lg font-medium text-white text-sm sm:text-base transition";
             ['reference', 'flashcards', 'quiz'].forEach(id => {
                 const btn = document.getElementById('btn-' + id);
                 const section = document.getElementById('sec-' + id);
@@ -245,6 +245,18 @@
                     .filter(segment => /\S/.test(segment));
             }
             return Array.from(normalized).filter(segment => /\S/.test(segment));
+        }
+
+        function getWordBreakPositions(text) {
+            const words = text.split(/\s+/);
+            if (words.length <= 1) return [];
+            const positions = [];
+            let pos = 0;
+            for (let i = 0; i < words.length - 1; i++) {
+                pos += getHebrewTiles(words[i]).length;
+                positions.push(pos);
+            }
+            return positions;
         }
 
         function showMessage(elementId, text, isCorrect) {
@@ -321,7 +333,6 @@
         }
 
         function nextCard() { fcIndex = (fcIndex + 1) % getData().length; renderFlashcard(); }
-        function prevCard() { fcIndex = (fcIndex - 1 + getData().length) % getData().length; renderFlashcard(); }
 
         function resetQuizUI() {
             document.getElementById('quiz-setup').classList.remove('hidden');
@@ -629,12 +640,20 @@
         }
 
         function renderWordBuilder() {
+            const item = bes1WordsData[wbOrder[wbIndex]];
+            const breakPositions = getWordBreakPositions(item.he);
+
             const slotsContainer = document.getElementById('wb-slots');
-            slotsContainer.innerHTML = wbCurrentSlots.map((letter, i) => `
-                <div class="w-14 h-16 sm:w-16 sm:h-20 border-2 border-dashed ${letter ? 'border-blue-500 bg-blue-50 dark:bg-blue-900 dark:border-blue-400 cursor-pointer' : 'border-slate-300 dark:border-slate-600'} rounded-xl flex items-center justify-center text-3xl font-bold text-slate-800 dark:text-slate-100 shadow-inner" onclick="if('${letter}' !== 'null') removeLetterFromSlot(${i})">
+            let slotsHtml = '';
+            wbCurrentSlots.forEach((letter, i) => {
+                if (breakPositions.includes(i)) {
+                    slotsHtml += '<div class="w-3 sm:w-4"></div>';
+                }
+                slotsHtml += `<div class="w-14 h-16 sm:w-16 sm:h-20 border-2 border-dashed ${letter ? 'border-blue-500 bg-blue-50 dark:bg-blue-900 dark:border-blue-400 cursor-pointer' : 'border-slate-300 dark:border-slate-600'} rounded-xl flex items-center justify-center text-3xl font-bold text-slate-800 dark:text-slate-100 shadow-inner" onclick="if('${letter}' !== 'null') removeLetterFromSlot(${i})">
                     ${letter || ''}
-                </div>
-            `).join('');
+                </div>`;
+            });
+            slotsContainer.innerHTML = slotsHtml;
 
             const poolContainer = document.getElementById('wb-pool');
             poolContainer.innerHTML = wbPool.map((letter, i) => `
@@ -897,12 +916,20 @@
         }
 
         function renderB2WordBuilder() {
+            const item = bes2WordsDataExpanded[b2WbOrder[b2WbIndex]];
+            const breakPositions = getWordBreakPositions(item.he);
+
             const slotsContainer = document.getElementById('b2-wb-slots');
-            slotsContainer.innerHTML = b2WbCurrentSlots.map((letter, i) => `
-                <div class="w-12 h-14 sm:w-16 sm:h-20 border-2 border-dashed ${letter ? 'border-green-500 bg-green-50 dark:bg-green-900 dark:border-green-400 cursor-pointer' : 'border-slate-300 dark:border-slate-600'} rounded-xl flex items-center justify-center text-3xl font-bold text-slate-800 dark:text-slate-100 shadow-inner" onclick="if('${letter}' !== 'null') removeB2LetterFromSlot(${i})">
+            let slotsHtml = '';
+            b2WbCurrentSlots.forEach((letter, i) => {
+                if (breakPositions.includes(i)) {
+                    slotsHtml += '<div class="w-3 sm:w-4"></div>';
+                }
+                slotsHtml += `<div class="w-12 h-14 sm:w-16 sm:h-20 border-2 border-dashed ${letter ? 'border-green-500 bg-green-50 dark:bg-green-900 dark:border-green-400 cursor-pointer' : 'border-slate-300 dark:border-slate-600'} rounded-xl flex items-center justify-center text-3xl font-bold text-slate-800 dark:text-slate-100 shadow-inner" onclick="if('${letter}' !== 'null') removeB2LetterFromSlot(${i})">
                     ${letter || ''}
-                </div>
-            `).join('');
+                </div>`;
+            });
+            slotsContainer.innerHTML = slotsHtml;
 
             const poolContainer = document.getElementById('b2-wb-pool');
             poolContainer.innerHTML = b2WbPool.map((letter, i) => `
