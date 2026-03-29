@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabet Games - Pratîka Îbranî</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../ibrani.css">
+    <script>
+        tailwind.config = { darkMode: 'class' };
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body data-page="lesson1" class="ibrani-page theme-alphabet bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans min-h-screen flex flex-col transition-colors duration-300">
+
+    <header class="ibrani-header text-white shadow-md sm:sticky sm:top-0 z-50 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 py-2 sm:py-4 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4">
+            <div class="text-center sm:text-left flex-1 flex items-center gap-4">
+                <div>
+                    <a href="../ibrani_index.html" class="block">
+                        <div class="bilingual-line title-bilingual text-2xl font-bold">
+                            <h1 data-i18n="title">Pratîka Îbranî</h1>
+                            <p class="hebrew-side">תרגול עברית</p>
+                        </div>
+                    </a>
+                    <p class="text-sm text-blue-200 dark:text-blue-300" data-i18n="alpha_title">Elîfbêya Îbranî</p>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center gap-4 w-full sm:w-auto mt-2 sm:mt-0">
+                <button onclick="toggleTheme()" class="p-2 rounded-full bg-blue-700 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 transition" aria-label="Toggle Dark Mode">
+                    <svg id="theme-icon-moon" class="w-6 h-6 hidden dark:block text-yellow-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-icon-sun" class="w-6 h-6 block dark:hidden text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" stroke-width="2"></circle><path stroke-linecap="round" stroke-width="2" d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"/></svg>
+                </button>
+
+                <div class="lang-shell flex items-center gap-3 px-4 py-2 rounded-xl">
+                    <span class="text-sm font-bold text-white" id="lbl-ku">KU</span>
+                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="lang-toggle" onclick="toggleLanguage()" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-300 dark:border-slate-500 appearance-none cursor-pointer transition-transform duration-200 ease-in-out z-10 top-0 left-0 checked:translate-x-6 checked:border-green-500"/>
+                        <label for="lang-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 dark:bg-slate-500 cursor-pointer transition-colors duration-200 ease-in-out"></label>
+                    </div>
+                    <span class="text-sm font-bold text-slate-300 dark:text-slate-400" id="lbl-en">EN</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl mx-auto w-full px-4 py-6 sm:py-8 space-y-10">
+        <div class="page-switch flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
+            <a href="../ibrani_index.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                <span data-i18n="course_home">Course Home</span>
+            </a>
+            <a href="./alefbet.html" class="inline-flex items-center px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition font-semibold" data-i18n="nav_lesson">Lesson</a>
+            <a href="./alefbet-games.html" aria-current="page" class="inline-flex items-center px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition font-semibold" data-i18n="nav_games">Games</a>
+        </div>
+
+        <section class="accent-shell p-4 sm:p-8 rounded-2xl">
+            <h2 class="text-2xl font-bold text-center text-slate-800 dark:text-slate-100 mb-6" data-i18n="alpha_games_title">Lîstikên Elîfbêyê</h2>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
+                <button onclick="switchAlphabetGameTab('letters')" id="btn-alpha-game-letters" class="nav-btn px-6 py-3 rounded-full font-bold shadow-sm transition bg-blue-600 text-white dark:bg-blue-500" data-i18n="alpha_tab_letters">Hevcotkirina Tîpan</button>
+                <button onclick="switchAlphabetGameTab('nikud')" id="btn-alpha-game-nikud" class="nav-btn px-6 py-3 rounded-full font-bold shadow-sm transition bg-white text-blue-600 border border-blue-600 hover:bg-blue-50 dark:bg-slate-800 dark:border-blue-500 dark:text-blue-400 dark:hover:bg-slate-700" data-i18n="alpha_tab_nikud">Hevcotkirina Nikudan</button>
+            </div>
+            <div class="bg-white dark:bg-slate-800 p-6 sm:p-10 rounded-2xl shadow border border-slate-200 dark:border-slate-700 max-w-4xl mx-auto">
+                <p id="alpha-game-instruction" class="text-slate-500 dark:text-slate-400 mb-6 font-medium text-center" data-i18n="alpha_inst_letters">Her tîpek Îbranî bi nav û dengê wê re hevcot bike.</p>
+                <div id="alpha-msg" class="min-h-[2rem] font-bold text-lg text-center mb-4 hidden whitespace-normal break-words"></div>
+                <div class="grid grid-cols-2 gap-4 sm:gap-8">
+                    <div id="alpha-left" class="flex flex-col gap-3"></div>
+                    <div id="alpha-right" class="flex flex-col gap-3"></div>
+                </div>
+                <div id="alpha-win-panel" class="hidden text-center mt-8">
+                    <button onclick="initAlphabetGame()" class="px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl shadow transition" data-i18n="quiz_play_again">Dîsa Bileyze</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../ibrani_data.js"></script>
+    <script src="../ibrani_app.js"></script>
+</body>
+</html>

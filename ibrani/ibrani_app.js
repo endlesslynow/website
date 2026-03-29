@@ -6,9 +6,6 @@
         
         let fcIndex = 0;
         let isCardFlipped = false;
-        let quizQuestions = [];
-        let currentQIndex = 0;
-        let quizScore = 0;
 
         let currentAlphabetGameTab = 'letters';
         let alphaLeftPairs = [];
@@ -37,6 +34,8 @@
 
         // Games State - Beş 2
         let b2CurrentGameTab = 'wb';
+        let b2SpeakerGender = 'masc';
+        let b2WbData = [];
         let b2WbOrder = [];
         let b2WbIndex = 0;
         let b2WbCurrentSlots = [];
@@ -124,10 +123,6 @@
             if (currentView === 'tools') {
                 if (currentTab === 'reference') renderReference();
                 if (currentTab === 'flashcards') renderFlashcard(true);
-                if (currentTab === 'quiz') {
-                    if (hasElement('quiz-active') && !document.getElementById('quiz-active').classList.contains('hidden')) renderQuestion();
-                    if (hasElement('quiz-results') && !document.getElementById('quiz-results').classList.contains('hidden')) endQuiz();
-                }
             } else if (currentView === 'bes1-text') {
                 renderBes1Text();
                 switchGameTab(currentGameTab); 
@@ -161,14 +156,8 @@
             targetView.classList.remove('hidden');
             targetView.classList.add('block');
 
-            const toolsNav = document.getElementById('tools-nav');
-            if (toolsNav && viewId === 'tools') {
-                toolsNav.classList.remove('hidden');
-                toolsNav.classList.add('flex');
-                switchTab(currentTab); 
-            } else if (toolsNav) {
-                toolsNav.classList.add('hidden');
-                toolsNav.classList.remove('flex');
+            if (viewId === 'tools') {
+                switchTab(currentTab);
             }
 
             if (viewId === 'bes1-text') {
@@ -185,12 +174,16 @@
 
         function switchTab(tabId) {
             currentTab = tabId;
-            const baseClass = "nav-btn px-3 py-2 sm:px-4 rounded-lg font-medium text-white text-sm sm:text-base transition";
-            ['reference', 'flashcards', 'quiz'].forEach(id => {
+            const baseClass = "inline-flex items-center px-4 py-2 rounded-full transition font-semibold";
+            const activeClass = "bg-blue-600 text-white border border-blue-600 dark:bg-blue-500 dark:border-blue-500";
+            const inactiveClass = "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700";
+
+            ['reference', 'flashcards'].forEach(id => {
                 const btn = document.getElementById('btn-' + id);
                 const section = document.getElementById('sec-' + id);
                 if (btn) {
-                    btn.className = baseClass + " " + (tabId === id ? "bg-blue-800 dark:bg-blue-950 shadow-inner" : "bg-blue-500 dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-600");
+                    btn.className = baseClass + " " + (tabId === id ? activeClass : inactiveClass);
+                    btn.setAttribute('aria-pressed', tabId === id ? 'true' : 'false');
                 }
                 if (section) {
                     section.classList.add('hidden');
@@ -203,7 +196,6 @@
 
             if (tabId === 'reference') renderReference();
             if (tabId === 'flashcards') { fcIndex = 0; renderFlashcard(); }
-            if (tabId === 'quiz') resetQuizUI();
         }
 
         function setCategory(cat) {
@@ -334,87 +326,6 @@
 
         function nextCard() { fcIndex = (fcIndex + 1) % getData().length; renderFlashcard(); }
 
-        function resetQuizUI() {
-            document.getElementById('quiz-setup').classList.remove('hidden');
-            document.getElementById('quiz-active').classList.add('hidden');
-            document.getElementById('quiz-results').classList.add('hidden');
-        }
-
-        function startQuiz() {
-            resetQuizUI();
-            document.getElementById('quiz-setup').classList.add('hidden');
-            document.getElementById('quiz-active').classList.remove('hidden');
-            quizScore = 0; currentQIndex = 0;
-            const data = getData();
-            quizQuestions = shuffleArray(data).map((item) => ({
-                targetDataId: data.indexOf(item),
-                qType: Math.random() > 0.5 ? 'name' : 'sound',
-                char: item.char
-            }));
-            renderQuestion();
-        }
-
-        function renderQuestion() {
-            const q = quizQuestions[currentQIndex];
-            const data = getData();
-            const targetItem = data[q.targetDataId];
-            
-            document.getElementById('quiz-question').innerText = t(`quiz_q_${q.qType}_${currentCategory}`);
-            document.getElementById('quiz-focus').innerText = q.char;
-            document.getElementById('quiz-progress').innerText = t('quiz_progress').replace('{current}', currentQIndex + 1).replace('{total}', quizQuestions.length);
-            document.getElementById('quiz-score').innerText = t('quiz_score').replace('{score}', quizScore);
-            document.getElementById('quiz-feedback').classList.add('hidden');
-            
-            const correct = getProp(targetItem, q.qType);
-            let options = [correct];
-            while(options.length < 4) {
-                const wrong = getProp(data[Math.floor(Math.random() * data.length)], q.qType);
-                if(!options.includes(wrong)) options.push(wrong);
-            }
-            options = shuffleArray(options);
-            
-            const cont = document.getElementById('quiz-options');
-            cont.innerHTML = '';
-            options.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = "quiz-opt-btn w-full p-4 sm:p-5 border-2 rounded-xl font-bold text-lg sm:text-xl transition shadow-sm bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-700 hover:border-blue-300";
-                btn.innerText = opt;
-                btn.onclick = () => {
-                    document.querySelectorAll('.quiz-opt-btn').forEach(b => b.disabled = true);
-                    const feedback = document.getElementById('quiz-feedback');
-                    feedback.classList.remove('hidden', 'text-green-500', 'text-red-500');
-                    if (opt === correct) {
-                        btn.classList.add('bg-green-100', 'border-green-500', 'text-green-800', 'dark:bg-green-900', 'dark:text-green-100');
-                        quizScore++;
-                        document.getElementById('quiz-score').innerText = t('quiz_score').replace('{score}', quizScore);
-                        feedback.innerText = t('msg_correct');
-                        feedback.classList.add('text-green-500');
-                    } else {
-                        btn.classList.add('bg-red-100', 'border-red-500', 'text-red-800', 'dark:bg-red-900', 'dark:text-red-100');
-                        document.querySelectorAll('.quiz-opt-btn').forEach(b => {
-                            if (b.innerText === correct) b.classList.add('bg-green-100', 'border-green-500', 'text-green-800', 'dark:bg-green-900', 'dark:text-green-100');
-                        });
-                        feedback.innerText = withCorrectAnswer(correct);
-                        feedback.classList.add('text-red-500');
-                    }
-                    document.getElementById('quiz-next-btn').classList.remove('hidden');
-                };
-                cont.appendChild(btn);
-            });
-            document.getElementById('quiz-next-btn').classList.add('hidden');
-        }
-
-        function nextQuizQuestion() {
-            currentQIndex++;
-            if (currentQIndex < quizQuestions.length) renderQuestion(); else endQuiz();
-        }
-
-        function endQuiz() {
-            document.getElementById('quiz-active').classList.add('hidden');
-            document.getElementById('quiz-results').classList.remove('hidden');
-            document.getElementById('quiz-score-msg').innerHTML = t('quiz_score_msg').replace('{score}', quizScore).replace('{total}', quizQuestions.length);
-        }
-
         // --- LESSON RENDERING (BEŞ 1 TEXT & BEŞ 2) ---
         function renderBes1Text() {
             const langKey = currentLang === 'ku' ? 'ku' : 'en';
@@ -479,7 +390,8 @@
             if (currentAlphabetGameTab === 'letters') {
                 return lettersData.map((item, index) => ({
                     id: `letter-${index}`,
-                    left: `${getProp(item, 'name')} - ${getProp(item, 'sound')}`,
+                    left: getProp(item, 'sound'),
+                    leftSecondary: `(${getProp(item, 'name')})`,
                     right: item.char
                 }));
             }
@@ -487,6 +399,7 @@
             return nikudData.map((item, index) => ({
                 id: `nikud-${index}`,
                 left: getProp(item, 'sound'),
+                leftSecondary: '',
                 right: item.char
             }));
         }
@@ -537,12 +450,18 @@
             leftContainer.innerHTML = alphaLeftPairs.map((item, index) => {
                 const isMatched = item.matched;
                 const isSelected = alphaSelectedLeft === index;
-                let classes = "pair-btn w-full p-4 border-2 rounded-xl font-bold transition shadow-sm ";
+                let classes = "pair-btn w-full h-[4.25rem] px-4 py-2 border-2 rounded-xl transition shadow-sm flex flex-col items-center justify-center ";
                 if (isMatched) classes += "matched text-sm sm:text-base";
                 else if (isSelected) classes += "selected text-base";
                 else classes += "bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-slate-600 text-base";
 
-                return `<button class="${classes}" ${isMatched ? 'disabled' : `onclick="selectAlphabetPair('left', ${index})"`}>${isMatched ? item.matchText : item.left}</button>`;
+                const label = isMatched
+                    ? item.matchText
+                    : item.leftSecondary
+                        ? `<span class="block text-base font-bold leading-none">${item.left}</span><span class="block mt-0.5 text-xs font-medium leading-tight opacity-80">${item.leftSecondary}</span>`
+                        : item.left;
+
+                return `<button class="${classes}" ${isMatched ? 'disabled' : `onclick="selectAlphabetPair('left', ${index})"`}>${label}</button>`;
             }).join('');
 
             rightContainer.innerHTML = alphaRightPairs.map((item, index) => {
@@ -577,7 +496,7 @@
         function checkAlphabetPairMatch() {
             const leftItem = alphaLeftPairs[alphaSelectedLeft];
             const rightItem = alphaRightPairs[alphaSelectedRight];
-            const answerText = `${leftItem.right} - ${leftItem.left}`;
+            const answerText = `${leftItem.right} - ${leftItem.left}${leftItem.leftSecondary ? ` ${leftItem.leftSecondary}` : ''}`;
 
             if (leftItem.id === rightItem.id) {
                 leftItem.matched = true;
@@ -641,18 +560,31 @@
 
         function renderWordBuilder() {
             const item = bes1WordsData[wbOrder[wbIndex]];
-            const breakPositions = getWordBreakPositions(item.he);
+            const heWords = item.he.split(/\s+/);
+            const wordStyles = [
+                { filled: 'border-blue-500 bg-blue-50 dark:bg-blue-900/60 dark:border-blue-400 cursor-pointer', empty: 'border-blue-300 dark:border-blue-700' },
+                { filled: 'border-green-500 bg-green-50 dark:bg-green-900/60 dark:border-green-400 cursor-pointer', empty: 'border-green-300 dark:border-green-700' },
+                { filled: 'border-purple-500 bg-purple-50 dark:bg-purple-900/60 dark:border-purple-400 cursor-pointer', empty: 'border-purple-300 dark:border-purple-700' },
+            ];
 
             const slotsContainer = document.getElementById('wb-slots');
             let slotsHtml = '';
-            wbCurrentSlots.forEach((letter, i) => {
-                if (breakPositions.includes(i)) {
-                    slotsHtml += '<div class="w-3 sm:w-4"></div>';
+
+            let slotIndex = 0;
+            slotsHtml += '<div class="w-full space-y-2">';
+            for (let wordIdx = 0; wordIdx < heWords.length; wordIdx++) {
+                const wordLetterCount = getHebrewTiles(heWords[wordIdx]).length;
+                const style = wordStyles[wordIdx % wordStyles.length];
+                slotsHtml += '<div class="flex flex-row-reverse justify-start gap-2">';
+                for (let l = 0; l < wordLetterCount; l++) {
+                    const letter = wbCurrentSlots[slotIndex];
+                    const i = slotIndex;
+                    slotsHtml += `<div class="w-14 h-16 sm:w-16 sm:h-20 border-2 border-dashed ${letter ? style.filled : style.empty} rounded-xl flex items-center justify-center text-3xl font-bold text-slate-800 dark:text-slate-100 shadow-inner" onclick="if('${letter}' !== 'null') removeLetterFromSlot(${i})">${letter || ''}</div>`;
+                    slotIndex++;
                 }
-                slotsHtml += `<div class="w-14 h-16 sm:w-16 sm:h-20 border-2 border-dashed ${letter ? 'border-blue-500 bg-blue-50 dark:bg-blue-900 dark:border-blue-400 cursor-pointer' : 'border-slate-300 dark:border-slate-600'} rounded-xl flex items-center justify-center text-3xl font-bold text-slate-800 dark:text-slate-100 shadow-inner" onclick="if('${letter}' !== 'null') removeLetterFromSlot(${i})">
-                    ${letter || ''}
-                </div>`;
-            });
+                slotsHtml += '</div>';
+            }
+            slotsHtml += '</div>';
             slotsContainer.innerHTML = slotsHtml;
 
             const poolContainer = document.getElementById('wb-pool');
@@ -895,15 +827,42 @@
         }
 
         // B2 Word Builder
+        function getB2FilteredWords() {
+            return bes2WordsDataExpanded.filter(item => !item.speaker || item.speaker === b2SpeakerGender);
+        }
+
+        function setB2SpeakerGender(gender) {
+            b2SpeakerGender = gender;
+            const mascBtn = document.getElementById('b2-gender-masc');
+            const femBtn = document.getElementById('b2-gender-fem');
+            const activeClass = 'px-5 py-2 font-bold text-sm transition bg-green-600 text-white';
+            const inactiveClass = 'px-5 py-2 font-bold text-sm transition bg-white text-green-600 dark:bg-slate-800 dark:text-green-400';
+            if (mascBtn) mascBtn.className = gender === 'masc' ? activeClass : inactiveClass;
+            if (femBtn) femBtn.className = gender === 'fem' ? activeClass : inactiveClass;
+            b2WbOrder = [];
+            b2WbIndex = 0;
+            initB2WordBuilder();
+        }
+
         function initB2WordBuilder() {
+            b2WbData = getB2FilteredWords();
             if (!b2WbOrder.length || b2WbIndex >= b2WbOrder.length) {
-                b2WbOrder = getShuffledOrder(bes2WordsDataExpanded.length);
+                b2WbOrder = getShuffledOrder(b2WbData.length);
                 b2WbIndex = 0;
             }
-            const item = bes2WordsDataExpanded[b2WbOrder[b2WbIndex]];
+            // Sync gender button styles
+            const activeClass = 'px-5 py-2 font-bold text-sm transition bg-green-600 text-white';
+            const inactiveClass = 'px-5 py-2 font-bold text-sm transition bg-white text-green-600 dark:bg-slate-800 dark:text-green-400';
+            const mascBtn = document.getElementById('b2-gender-masc');
+            const femBtn = document.getElementById('b2-gender-fem');
+            if (mascBtn) mascBtn.className = b2SpeakerGender === 'masc' ? activeClass : inactiveClass;
+            if (femBtn) femBtn.className = b2SpeakerGender === 'fem' ? activeClass : inactiveClass;
+
+            const item = b2WbData[b2WbOrder[b2WbIndex]];
             const targetLetters = getHebrewTiles(item.he);
-            
-            document.getElementById('b2-wb-target-word').innerText = item[currentLang];
+
+            const displayText = item.speaker ? item[currentLang].replace(/ \([^)]+\)$/, '') : item[currentLang];
+            document.getElementById('b2-wb-target-word').innerText = displayText;
             document.getElementById('b2-wb-msg').classList.add('hidden');
             setButtonVisibility('b2-wb-check-btn', true);
             setButtonVisibility('b2-wb-retry-btn', false);
@@ -916,19 +875,32 @@
         }
 
         function renderB2WordBuilder() {
-            const item = bes2WordsDataExpanded[b2WbOrder[b2WbIndex]];
-            const breakPositions = getWordBreakPositions(item.he);
+            const item = b2WbData[b2WbOrder[b2WbIndex]];
+            const heWords = item.he.split(/\s+/);
+            const wordStyles = [
+                { filled: 'border-green-500 bg-green-50 dark:bg-green-900/60 dark:border-green-400 cursor-pointer', empty: 'border-green-300 dark:border-green-700' },
+                { filled: 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/60 dark:border-indigo-400 cursor-pointer', empty: 'border-indigo-300 dark:border-indigo-700' },
+                { filled: 'border-purple-500 bg-purple-50 dark:bg-purple-900/60 dark:border-purple-400 cursor-pointer', empty: 'border-purple-300 dark:border-purple-700' },
+            ];
 
             const slotsContainer = document.getElementById('b2-wb-slots');
             let slotsHtml = '';
-            b2WbCurrentSlots.forEach((letter, i) => {
-                if (breakPositions.includes(i)) {
-                    slotsHtml += '<div class="w-3 sm:w-4"></div>';
+
+            let slotIndex = 0;
+            slotsHtml += '<div class="w-full space-y-2">';
+            for (let wordIdx = 0; wordIdx < heWords.length; wordIdx++) {
+                const wordLetterCount = getHebrewTiles(heWords[wordIdx]).length;
+                const style = wordStyles[wordIdx % wordStyles.length];
+                slotsHtml += '<div class="flex flex-row-reverse justify-start gap-2">';
+                for (let l = 0; l < wordLetterCount; l++) {
+                    const letter = b2WbCurrentSlots[slotIndex];
+                    const i = slotIndex;
+                    slotsHtml += `<div class="w-12 h-14 sm:w-16 sm:h-20 border-2 border-dashed ${letter ? style.filled : style.empty} rounded-xl flex items-center justify-center text-3xl font-bold text-slate-800 dark:text-slate-100 shadow-inner" onclick="if('${letter}' !== 'null') removeB2LetterFromSlot(${i})">${letter || ''}</div>`;
+                    slotIndex++;
                 }
-                slotsHtml += `<div class="w-12 h-14 sm:w-16 sm:h-20 border-2 border-dashed ${letter ? 'border-green-500 bg-green-50 dark:bg-green-900 dark:border-green-400 cursor-pointer' : 'border-slate-300 dark:border-slate-600'} rounded-xl flex items-center justify-center text-3xl font-bold text-slate-800 dark:text-slate-100 shadow-inner" onclick="if('${letter}' !== 'null') removeB2LetterFromSlot(${i})">
-                    ${letter || ''}
-                </div>`;
-            });
+                slotsHtml += '</div>';
+            }
+            slotsHtml += '</div>';
             slotsContainer.innerHTML = slotsHtml;
 
             const poolContainer = document.getElementById('b2-wb-pool');
@@ -959,7 +931,7 @@
         }
 
         function checkB2WordBuilder() {
-            const item = bes2WordsDataExpanded[b2WbOrder[b2WbIndex]];
+            const item = b2WbData[b2WbOrder[b2WbIndex]];
             const targetLetters = getHebrewTiles(item.he);
             const isComplete = b2WbCurrentSlots.every(s => s !== null);
             if(!isComplete) return;

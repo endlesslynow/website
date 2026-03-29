@@ -1,41 +1,329 @@
-/* Flashcard Animations */
-        .perspective-1000 { perspective: 1000px; }
-        .transform-style-3d { transform-style: preserve-3d; }
-        .backface-hidden { backface-visibility: hidden; }
-        .rotate-y-180 { transform: rotateY(180deg); }
-        .transition-transform { transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); }
-        
-        /* Toggle Switch */
-        .toggle-checkbox:checked {
-            right: 0;
-            border-color: #10B981;
-        }
-        .toggle-checkbox:checked + .toggle-label {
-            background-color: #10B981;
-        }
+:root {
+    --hb-blue: #0f62c9;
+    --hb-blue-deep: #123f8f;
+    --hb-blue-soft: #dbeafe;
+    --kr-red: #c73a32;
+    --kr-red-deep: #922922;
+    --kr-green: #1f8b4c;
+    --kr-green-deep: #166638;
+    --kr-gold: #f1c232;
+    --paper: #f8fbff;
+    --paper-warm: #fffaf0;
+    --ink: #16304f;
+    --panel: #ffffff;
+    --accent: var(--hb-blue);
+    --accent-deep: var(--hb-blue-deep);
+}
 
-        /* Game Elements */
-        .pair-btn.selected {
-            background-color: #FDE047 !important; /* Bright Yellow */
-            color: #1E3A8A !important;
-            border-color: #EAB308 !important;
-            box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.5) !important;
-        }
-        .dark .pair-btn.selected {
-            background-color: #CA8A04 !important;
-            color: white !important;
-            border-color: #EAB308 !important;
-            box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.5) !important;
-        }
-        .pair-btn.matched {
-            background-color: #10B981;
-            color: white;
-            border-color: #059669;
-            opacity: 0.8;
-            cursor: default;
-        }
-        .pair-btn.error {
-            background-color: #EF4444;
-            color: white;
-            border-color: #DC2626;
-        }
+.dark {
+    --paper: #0f172a;
+    --paper-warm: #111827;
+    --ink: #e5eefb;
+    --panel: #1e293b;
+}
+
+body.ibrani-page {
+    background: var(--paper);
+    color: var(--ink);
+}
+
+.dark body.ibrani-page {
+    background: #0f172a;
+}
+
+body.ibrani-home,
+body.theme-alphabet {
+    --accent: var(--hb-blue);
+    --accent-deep: var(--hb-blue-deep);
+}
+
+body.theme-ch1 {
+    --accent: var(--hb-blue);
+    --accent-deep: var(--hb-blue-deep);
+}
+
+body.theme-ch2 {
+    --accent: var(--hb-blue);
+    --accent-deep: var(--hb-blue-deep);
+}
+
+.ibrani-header {
+    background: var(--accent);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.95);
+}
+
+.dark .ibrani-header {
+    background: var(--accent-deep);
+}
+
+.header-icon-btn {
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.header-icon-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.lang-shell {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.bilingual-line {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.bilingual-line .hebrew-side {
+    direction: rtl;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.header-bilingual {
+    color: #bfdbfe;
+}
+
+.header-bilingual .hebrew-side {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.title-bilingual {
+    width: 100%;
+    align-items: baseline;
+    color: #fff;
+}
+
+.title-bilingual .hebrew-side {
+    color: rgba(255, 255, 255, 0.96);
+}
+
+.card-bilingual {
+    width: 100%;
+}
+
+.card-bilingual .hebrew-side {
+    opacity: 0.95;
+}
+
+@media (max-width: 640px) {
+    .bilingual-line {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bilingual-line .hebrew-side {
+        white-space: normal;
+    }
+}
+
+.page-switch a {
+    border-color: rgba(18, 63, 143, 0.14);
+    background: rgba(255, 255, 255, 0.94);
+    color: #24405f;
+}
+
+.dark .page-switch a {
+    background: rgba(30, 41, 59, 0.94);
+    color: #e5eefb;
+    border-color: rgba(219, 234, 254, 0.12);
+}
+
+.page-switch a[aria-current="page"] {
+    background: var(--accent);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 14px 32px -22px var(--accent);
+}
+
+.page-switch a:hover {
+    border-color: var(--accent);
+}
+
+.course-card {
+    background: var(--panel);
+    border: 1px solid rgba(18, 63, 143, 0.14);
+    box-shadow: 0 18px 40px -30px rgba(18, 63, 143, 0.45);
+}
+
+.dark .course-card {
+    border-color: rgba(219, 234, 254, 0.12);
+    box-shadow: none;
+}
+
+.course-card:hover {
+    border-color: var(--card-accent);
+}
+
+.course-card-alpha {
+    --card-accent: var(--hb-blue);
+}
+
+.course-card-ch1 {
+    --card-accent: var(--kr-red);
+}
+
+.course-card-ch2 {
+    --card-accent: var(--kr-green);
+}
+
+.course-card-header {
+    position: relative;
+    background: var(--card-accent);
+}
+
+.course-card-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.95);
+    opacity: 1;
+}
+
+.dark .course-card-header {
+    background: var(--card-accent);
+}
+
+.course-card p {
+    color: #4f6380;
+}
+
+.dark .course-card p {
+    color: #c9d6ea;
+}
+
+.accent-shell {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(18, 63, 143, 0.12);
+    box-shadow: 0 20px 40px -32px rgba(18, 63, 143, 0.35);
+}
+
+body.theme-alphabet .accent-shell {
+    background: rgba(219, 234, 254, 0.7);
+    border-color: rgba(15, 98, 201, 0.18);
+}
+
+body.theme-ch1 .accent-shell {
+    background: rgba(253, 232, 231, 0.82);
+    border-color: rgba(199, 58, 50, 0.18);
+}
+
+body.theme-ch2 .accent-shell {
+    background: rgba(229, 246, 235, 0.82);
+    border-color: rgba(31, 139, 76, 0.18);
+}
+
+.dark body.theme-alphabet .accent-shell,
+.dark body.theme-ch1 .accent-shell,
+.dark body.theme-ch2 .accent-shell {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: rgba(219, 234, 254, 0.12);
+}
+
+.dark .accent-shell {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: rgba(219, 234, 254, 0.12);
+    box-shadow: none;
+}
+
+.heritage-note {
+    background: rgba(255, 248, 214, 0.96);
+    border: 1px solid rgba(241, 194, 50, 0.42);
+}
+
+.dark .heritage-note {
+    background: rgba(30, 41, 59, 0.94);
+    border-color: rgba(241, 194, 50, 0.34);
+}
+
+.ibrani-page .nav-btn.shadow-inner {
+    background: var(--accent-deep) !important;
+    border-color: transparent !important;
+    color: #fff !important;
+}
+
+.ibrani-page .nav-btn.bg-white {
+    background: rgba(255, 255, 255, 0.96) !important;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent) !important;
+}
+
+.dark .ibrani-page .nav-btn.bg-white {
+    background: rgba(30, 41, 59, 0.96) !important;
+}
+
+.ibrani-page .nav-btn:not(.bg-white):not(.shadow-inner) {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border: 1px solid transparent !important;
+}
+
+.ibrani-page .cat-btn.bg-white {
+    background: rgba(255, 255, 255, 0.96) !important;
+    color: var(--accent) !important;
+    border-color: var(--accent) !important;
+}
+
+.dark .ibrani-page .cat-btn.bg-white {
+    background: rgba(30, 41, 59, 0.96) !important;
+}
+
+.ibrani-page .cat-btn:not(.bg-white) {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-color: var(--accent) !important;
+}
+
+/* Flashcard Animations */
+.perspective-1000 { perspective: 1000px; }
+.transform-style-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; }
+.rotate-y-180 { transform: rotateY(180deg); }
+.transition-transform { transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); }
+
+/* Toggle Switch */
+.toggle-checkbox:checked {
+    right: 0;
+    border-color: #10B981;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+    background-color: #10B981;
+}
+
+/* Game Elements */
+.pair-btn.selected {
+    background-color: #FDE047 !important;
+    color: #1E3A8A !important;
+    border-color: #EAB308 !important;
+    box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.5) !important;
+}
+
+.dark .pair-btn.selected {
+    background-color: #CA8A04 !important;
+    color: white !important;
+    border-color: #EAB308 !important;
+    box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.5) !important;
+}
+
+.pair-btn.matched {
+    background-color: #10B981;
+    color: white;
+    border-color: #059669;
+    opacity: 0.8;
+    cursor: default;
+}
+
+.pair-btn.error {
+    background-color: #EF4444;
+    color: white;
+    border-color: #DC2626;
+}
