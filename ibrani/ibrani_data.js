@@ -68,12 +68,19 @@
                 tab_wb: "Peyv Çêkirin",
                 tab_cp: "Hevcotkirin",
                 tab_sb: "Hevok Çêkirin",
+                tab_cg: "Lêkera bûn",
                 inst_wb: "Tîpan bitikînin da ku peyva rast çêbikin.",
                 b2_im_a: "Ez",
                 gender_man: "Mêr",
                 gender_woman: "Jin",
                 inst_cp: "Peyvên li milê çepê bi wergera wan a Îbranî ya li milê rastê ve girêbidin.",
                 inst_sb: "Bêjeyan bitikînin da ku hevoka rast çêbikin.",
+                inst_cg: "Pêşî stûna Îbraniyê, paşê stûna şiyandinê ji jor heta jêr tije bike.",
+                cg_col_translation: "Cînavk",
+                cg_col_hebrew: "Îbranî",
+                cg_col_to_be: "Bûn",
+                cg_phase_forms: "Naha şiyandin e.",
+                cg_done: "Te tablo qedand.",
                 btn_check: "Kontrol bike",
                 btn_try_again: "Dîsa Biceribîne",
                 btn_next: "Pêşîn",
@@ -89,11 +96,12 @@
                 b2_title: "Beş 2: Silav û Nasîn / ברכות והיכרות",
                 dialog_title: "Diyalog / דיאלוג",
                 vocab_title: "Bêjeyên Nû / אוצר מילים",
-                b2_gram_title: "Rêzimana Beşê 2: Cînavk, zayend û jimare di Îbranî de",
-                b2_gram_p1: "Di Îbranî de hin cînav û gelek hevokên kurt li gorî nêr / mê û yekjimar / pirjimar diguherin. Mînak: אַתָּה / אַתְּ, הוּא / הִיא, אַתֶּם / אַתֶּן, הֵם / הֵן.",
-                b2_gram_p2: "Cînavka אֲנִי ji bo nêr û mê heman e, lê bi hin lêkeran û sifetan re forma peyvê diguhere: אֲנִי רוֹצֶה / אֲנִי רוֹצָה, אֲנִי גָּר / אֲנִי גָּרָה.",
-                b2_gram_p3: "Di English û Kurmancî de em gelek caran tenê «you» an «ew / hûn» dibêjin, lê di Îbranî de divê zayend û jimare baş were diyarkirin.",
-                b2_gram_table_title: "Cînavkên kesî û formên wan | עברית: לִהְיוֹת",
+                b2_gram_title: "Rêzimana Beşê 1: Lêkera «bûn» û Cînavkên Kesî",
+                b2_gram_p1: "Di Kurmancî de lêkera «bûn» di dema niha de bi vî awayî tê bikaranîn: ez im, tu yî, ew e, em in, hûn in, ew in. Mînak: «Ez baş im» û «Tu li ku yî?».",
+                b2_gram_p2: "Cînavkên kesî yên Kurmancî ev in: ez (min), tu (te), ew (wî/wê), em (me), hûn (we), ew (wan). Forma yekem ji bo mijarê tê bikaranîn; forma duyem ji bo tişta lêkerên gerguhêz tê bikaranîn.",
+                b2_gram_p3: "Pirsa «çawa?» ji bo pirskirina halê kesekî tê bikaranîn. Bersiva asayî: «Ez baş im, spas» an «Ne xirab e».",
+                b2_gram_p4: "Ji bo xatirxwestinê: «Xwedahafiz» wekî «Xudê te bibe nîgehdar» tê bikaranîn. Di Îbranî de hevwateya wê «לְהִתְרָאוֹת» (lehitraot) e.",
+                b2_gram_table_title: "Lêkera «bûn» — Dema Niha  [Dema Niha]  |  Kurmancî: bûn  |  עברית: לִהְיוֹת",
                 hw_instr_trans: "Rêwerzên wergêranê: Van hevokên Kurmancî bo Îbranî wergerînin.",
 
                 // Table Headers
@@ -101,7 +109,7 @@
                 th_ibrani: "Îbranî",
                 th_dengderi: "Dengxwandin",
                 th_cinavk: "Cînavk",
-                th_shiyandin: "Agahdarî"
+                th_shiyandin: "Şiyandin / הַטָּיָה"
             },
             en: {
                 title: "Hebrew Practice",
@@ -171,12 +179,19 @@
                 tab_wb: "Word Builder",
                 tab_cp: "Connect Pairs",
                 tab_sb: "Sentence Builder",
+                tab_cg: "Conjugation",
                 inst_wb: "Click letters to build the correct word.",
-                b2_im_a: "I'm a",
+                b2_im_a: "I am",
                 gender_man: "Man",
                 gender_woman: "Woman",
                 inst_cp: "Connect the words on the left with their Hebrew translation on the right.",
                 inst_sb: "Click words to build the correct sentence.",
+                inst_cg: "Fill the Hebrew column first, then the conjugation column from top to bottom.",
+                cg_col_translation: "Translation",
+                cg_col_hebrew: "Hebrew",
+                cg_col_to_be: "To Be",
+                cg_phase_forms: "Conjugation time.",
+                cg_done: "You completed the table.",
                 btn_check: "Check",
                 btn_try_again: "Try Again",
                 btn_next: "Next",
@@ -192,11 +207,12 @@
                 b2_title: "Chapter 2: Greetings & Introductions / ברכות והיכרות",
                 dialog_title: "Dialogue / דיאלוג",
                 vocab_title: "New Vocabulary / אוצר מילים",
-                b2_gram_title: "Chapter 2 Grammar: Person, gender, and number in Hebrew",
-                b2_gram_p1: "Hebrew distinguishes some forms by masculine / feminine and singular / plural. Important pairs in this lesson are: אַתָּה / אַתְּ, הוּא / הִיא, אַתֶּם / אַתֶּן, and הֵם / הֵן.",
-                b2_gram_p2: "The pronoun אֲנִי is the same for all genders, but some verbs and adjectives still change with the speaker: אֲנִי רוֹצֶה / אֲנִי רוֹצָה, אֲנִי גָּר / אֲנִי גָּרָה.",
-                b2_gram_p3: "English often says only «you» or «they», but Hebrew usually requires a more specific masculine, feminine, or plural form.",
-                b2_gram_table_title: "Personal pronouns and matching forms | לִהְיוֹת",
+                b2_gram_title: "Chapter 1 Grammar: The Verb \"to be\" and Personal Pronouns",
+                b2_gram_p1: "In Kurmanji, the verb «bûn» (to be) is used in the present tense like this: ez im, tu yî, ew e, em in, hûn in, ew in. Examples: «Ez baş im» and «Tu li ku yî?».",
+                b2_gram_p2: "The personal pronouns in Kurmanji are: ez (min), tu (te), ew (wî/wê), em (me), hûn (we), ew (wan). The first form is used for the subject; the second form is used for the object with transitive verbs.",
+                b2_gram_p3: "The question «çawa?» is used to ask how someone is. A common answer is «Ez baş im, spas» or «Ne xirab e».",
+                b2_gram_p4: "For farewells, «Xwedahafiz» is used in the sense of «May God protect you.» In Hebrew, its equivalent is «לְהִתְרָאוֹת» (lehitraot).",
+                b2_gram_table_title: "The Verb \"to be\" — Present Tense  [Present Tense]  |  Kurmanji: bûn  |  Hebrew: לִהְיוֹת",
                 hw_instr_trans: "Translation instructions: Translate these Kurmanji sentences to Hebrew.",
 
                 // Table Headers
@@ -204,7 +220,7 @@
                 th_ibrani: "Hebrew",
                 th_dengderi: "Pronunciation",
                 th_cinavk: "Pronoun",
-                th_shiyandin: "Note"
+                th_shiyandin: "Conjugation"
             }
         };
 
@@ -276,61 +292,53 @@
             { spkKu: 'Arya', spkEn: 'Arya', he: 'שָׁלוֹם! שְׁמִי אַרְיֵה.', trans: 'Şalom! Şmi Arye.', ku: 'Silavê! Navê min Arya ye.', en: 'Hello! My name is Arya.' },
             { spkKu: 'Dani', spkEn: 'Dani', he: 'שָׁלוֹם! שְׁמִי דָּנִי. מַה שְּׁלוֹמְךָ?', trans: 'Şalom! Şmi Dani. Ma şlomxa?', ku: 'Silavê! Navê min Dani ye. Tu çawa yî?', en: 'Hello! My name is Dani. How are you?' },
             { spkKu: 'Arya', spkEn: 'Arya', he: 'אֲנִי בְּסֵדֶר, תּוֹדָה. מֵאֵיפֹה אַתָּה?', trans: 'Ani bseder, toda. Meeyfo ata?', ku: 'Ez baş im, spas. Tu ji ku yî?', en: 'I am fine, thanks. Where are you from?' },
-            { spkKu: 'Dani', spkEn: 'Dani', he: 'אֲנִי מִקּוּרְדִיסְטָן. מַה אַתָּה רוֹצֶה לַעֲשׂוֹת בָּאָרֶץ?', trans: 'Ani mi\'Kurdistan. Ma ata rotse la’asot ba’arets?', ku: 'Ez ji Kurdistanê me. Tu çi dixwazî li Îsraêlê bikî?', en: 'I am from Kurdistan. What do you want to do in Israel?' },
+            { spkKu: 'Dani', spkEn: 'Dani', he: 'אֲנִי מִקּוּרְדִיסְטָן. מַה אַתָּה רוֹצֶה לַעֲשׂוֹת בָּאָרֶץ?', trans: "Ani mi'Kurdistan. Ma ata rotse la’asot ba’arets?", ku: 'Ez ji Kurdistanê me. Tu çi dixwazî li Îsraêlê bikî?', en: 'I am from Kurdistan. What do you want to do in Israel?' },
             { spkKu: 'Arya', spkEn: 'Arya', he: 'אֲנִי רוֹצֶה לִלְמֹד עִבְרִית.', trans: 'Ani rotse lilmod İvrit.', ku: 'Ez dixwazim Îbranî fêr bibim.', en: 'I want to learn Hebrew.' },
             { spkKu: 'Dani', spkEn: 'Dani', he: 'מְצוּיָּן! בָּרוּךְ הַבָּא.', trans: 'Mtsuyân! Barux haba.', ku: 'Baş e! Bi xêr hatî.', en: 'Excellent! Welcome.' },
             { spkKu: 'Arya', spkEn: 'Arya', he: 'בֶּן כַּמָּה אַתָּה?', trans: 'Ben kama ata?', ku: 'Çend salên te hene?', en: 'How old are you?' },
-            { spkKu: 'Dani', spkEn: 'Dani', he: 'אֲנִי בֶּן עֶשְׂרִים וְשָׁלוֹשׁ. וְאַתָּה?', trans: 'Ani ben esrim veşaloş. Ve\'ata?', ku: 'Bîst û sê salên min hene. Tu?', en: 'I am twenty-three. And you?' },
-            { spkKu: 'Arya', spkEn: 'Arya', he: 'אֲנִי בֶּן עֶשְׂרִים וְאֶחָד. אֵיפֹה אַתָּה גָּר?', trans: 'Ani ben esrim ve\'exad. Eyfo ata gar?', ku: 'Min bîst û yek salên min hene. Tu li ku dijî?', en: 'I am twenty-one. Where do you live?' },
-            { spkKu: 'Dani', spkEn: 'Dani', he: 'אֲנִי גָּר בְּקוּרְדִיסְטָן. מְקַוֶּה שֶׁנִּיפָּגֵשׁ שׁוּב!', trans: 'Ani gar beKurdistan. Mekave şenipageş şuv!', ku: 'Ez li Kurdistanê dijim. Hêvî dikim em dîsa bibin hev!', en: 'I live in Kurdistan. Hope we meet again!' }
+            { spkKu: 'Dani', spkEn: 'Dani', he: 'אֲנִי בֶּן עֶשְׂרִים וְשָׁלוֹשׁ. וְאַתָּה?', trans: "Ani ben esrim veşaloş. Ve'ata?", ku: 'Bîst û sê salên min hene. Tu?', en: 'I am twenty-three years old. And you?' },
+            { spkKu: 'Arya', spkEn: 'Arya', he: 'אֲנִי בֶּן עֶשְׂרִים וְאֶחָד. אֵיפֹה אַתָּה גָּר?', trans: "Ani ben esrim ve'exad. Eyfo ata gar?", ku: 'Min bîst û yek salên min hene. Tu li ku dijî?', en: 'I am twenty-one years old. Where do you live?' },
+            { spkKu: 'Dani', spkEn: 'Dani', he: 'אֲנִי גָּר בְּקוּרְדִיסְטָן. מְקַוֶּה שֶׁנִּיפָּגֵשׁ שׁוּב!', trans: 'Ani gar beKurdistan. Mekave şenipageş şuv!', ku: 'Ez li Kurdistanê dijim. Hêvî dikim em dîsa bibin hev!', en: 'I live in Kurdistan. I hope we meet again!' }
         ];
 
         const bes2WordsData = [
-            { ku: 'silav', en: 'hello', he: 'שלום', trans: 'şalom', letters: ['ש','ל','ו','ם'] },
-            { ku: 'nav', en: 'name', he: 'שֵׁם', trans: 'şem', letters: ['ש','ם'] },
-            { ku: 'ez', en: 'I', he: 'אֲנִי', trans: 'anî', letters: ['א','נ','י'] },
-            { ku: 'tu', en: 'you', he: 'אַתָּה', trans: 'ata', letters: ['א','ת','ה'] },
-            { ku: 'baş', en: 'good/fine', he: 'טוֹב', trans: 'tov', letters: ['ט','ו','ב'] },
-            { ku: 'spas', en: 'thanks', he: 'תּוֹדָה', trans: 'toda', letters: ['ת','ו','ד','ה'] },
-            { ku: 'ji ku', en: 'where from', he: 'מֵאַיִן', trans: 'me\'ayin', letters: ['מ','א','י','ן'] },
-            { ku: 'dixwazim', en: 'I want', he: 'אֲנִי רוֹצֶה', trans: 'anî rotse', letters: ['א','נ','י','ר','ו','צ','ה'] },
-            { ku: 'fêr bûn', en: 'to learn', he: 'לִלְמֹד', trans: 'lilmod', letters: ['ל','ל','מ','ד'] },
-            { ku: 'bi xêr hatî', en: 'welcome', he: 'בָּרוּךְ הַבָּא', trans: 'barux haba', letters: ['ב','ר','ו','ך','ה','ב','א'] },
-            { ku: 'erê', en: 'yes', he: 'כֵּן', trans: 'ken', letters: ['כ','ן'] },
-            { ku: 'na', en: 'no', he: 'לֹא', trans: 'lo', letters: ['ל','א'] },
-            { ku: 'xweş', en: 'pleasant', he: 'נָעִים', trans: 'naîm', letters: ['נ','ע','י','ם'] },
-            { ku: 'heval', en: 'friend', he: 'חָבֵר', trans: 'xaver', letters: ['ח','ב','ר'] },
-            { ku: 'şev', en: 'night', he: 'לַיְלָה', trans: 'layla', letters: ['ל','י','ל','ה'] },
-            { ku: 'roj', en: 'day', he: 'יוֹם', trans: 'yom', letters: ['י','ו','ם'] },
-            { ku: 'sibeh', en: 'morning', he: 'בֹּקֶר', trans: 'boker', letters: ['ב','ק','ר'] },
-            { ku: 'êvar', en: 'evening', he: 'עֶרֶב', trans: 'erev', letters: ['ע','ר','ב'] },
-            { ku: 'zû', en: 'quickly/soon', he: 'מַהֵר', trans: 'maher', letters: ['מ','ה','ר'] },
-            { ku: 'xwedahafiz', en: 'goodbye', he: 'לְהִתְרָאוֹת', trans: 'lehitraot', letters: ['ל','ה','ת','ר','א','ו','ת'] }
-        ];
-
-        const bes2SentencesData = [
-            { ku: 'Silav heval', en: 'Hello friend', words: ['שלום', 'חָבֵר'], trans: 'şalom xaver' },
-            { ku: 'Ez dixwazim fêr bûn', en: 'I want to learn', words: ['אֲנִי רוֹצֶה', 'לִלְמֹד'], trans: 'anî rotse lilmod' },
-            { ku: 'Sibeh baş', en: 'Good morning', words: ['בֹּקֶר', 'טוֹב'], trans: 'boker tov' },
-            { ku: 'Êvar xweş', en: 'Pleasant evening', words: ['עֶרֶב', 'נָעִים'], trans: 'erev naîm' },
-            { ku: 'Ez baş im, spas', en: 'I am fine, thanks', words: ['אֲנִי', 'טוֹב', 'תּוֹדָה'], trans: 'anî tov toda' }
+            { ku: 'silav', en: 'hello', he: 'שלום', trans: 'şalom' },
+            { ku: 'nav', en: 'name', he: 'שֵׁם', trans: 'şem' },
+            { ku: 'ez', en: 'I', he: 'אֲנִי', trans: 'anî' },
+            { ku: 'tu', en: 'you', he: 'אַתָּה / אַתְּ', trans: 'ata / at' },
+            { ku: 'baş', en: 'good', he: 'טוֹב', trans: 'tov' },
+            { ku: 'spas', en: 'thank you', he: 'תּוֹדָה', trans: 'toda' },
+            { ku: 'ji ku', en: 'from where', he: 'מֵאַיִן', trans: "me'ayin" },
+            { ku: 'dixwazim', en: 'I want', he: 'אֲנִי רוֹצֶה', trans: 'anî rotse' },
+            { ku: 'fêr bûn', en: 'to learn', he: 'לִלְמֹד', trans: 'lilmod' },
+            { ku: 'bi xêr hatî', en: 'welcome', he: 'בָּרוּךְ הַבָּא', trans: 'barux haba' },
+            { ku: 'erê', en: 'yes', he: 'כֵּן', trans: 'ken' },
+            { ku: 'na', en: 'no', he: 'לֹא', trans: 'no' },
+            { ku: 'xweş', en: 'pleasant', he: 'נָעִים', trans: 'naîm' },
+            { ku: 'heval', en: 'friend', he: 'חָבֵר', trans: 'xaver' },
+            { ku: 'şev', en: 'night', he: 'לַיְלָה', trans: 'layla' },
+            { ku: 'roj', en: 'day', he: 'יוֹם', trans: 'yom' },
+            { ku: 'sibeh', en: 'morning', he: 'בֹּקֶר', trans: 'boker' },
+            { ku: 'êvar', en: 'evening', he: 'עֶרֶב', trans: 'erev' },
+            { ku: 'zû', en: 'quickly', he: 'מַהֵר', trans: 'maher' },
+            { ku: 'xwedahafiz', en: 'goodbye', he: 'לְהִתְרָאוֹת', trans: 'lehitraot' }
         ];
 
         const bes2GrammarData = [
-            { ku: 'Ez', en: 'I', he: 'אֲנִי', sufKu: 'im', sufEn: 'am' },
-            { ku: 'Tu', en: 'You (sing.)', he: 'אַתָּה / אַתְּ', sufKu: 'yî', sufEn: 'are' },
-            { ku: 'Ew (nêr)', en: 'He', he: 'הוּא', sufKu: 'e', sufEn: 'is' },
-            { ku: 'Ew (mê)', en: 'She', he: 'הִיא', sufKu: 'e', sufEn: 'is' },
-            { ku: 'Em', en: 'We', he: 'אֲנַחְנוּ', sufKu: 'in', sufEn: 'are' },
-            { ku: 'Hûn', en: 'You (pl.)', he: 'אַתֶּם / אַתֶּן', sufKu: 'in', sufEn: 'are' },
-            { ku: 'Ew (pirjimar)', en: 'They', he: 'הֵם / הֵן', sufKu: 'in', sufEn: 'are' }
+            { ku: 'Ez', en: 'I', he: 'אֲנִי', noteKu: 'im', noteEn: 'am', pronHe: 'ani', cgForm: 'אֶהְיֶה', cgFormPron: 'ehye' },
+            { ku: 'Tu', en: 'You', he: 'אַתָּה / אַתְּ', noteKu: 'yî', noteEn: 'are', pronHe: 'ata / at', cgForm: 'תִּהְיֶה / תִּהְיִי', cgFormPron: 'tihye / tihyi' },
+            { ku: 'Ew (nêr)', en: 'He', he: 'הוּא', noteKu: 'e', noteEn: 'is', pronHe: 'hu', cgForm: 'יִהְיֶה', cgFormPron: 'yihye' },
+            { ku: 'Ew (mê)', en: 'She', he: 'הִיא', noteKu: 'e', noteEn: 'is', pronHe: 'hi', cgForm: 'תִּהְיֶה', cgFormPron: 'tihye' },
+            { ku: 'Em', en: 'We', he: 'אֲנַחְנוּ', noteKu: 'in', noteEn: 'are', pronHe: 'anaxnu', cgForm: 'נִהְיֶה', cgFormPron: 'nihye' },
+            { ku: 'Hûn', en: 'You (plural)', he: 'אַתֶּם / אַתֶּן', noteKu: 'in', noteEn: 'are', pronHe: 'atem / aten', cgForm: 'תִּהְיוּ', cgFormPron: 'tihyu' },
+            { ku: 'Ew (pirjimar)', en: 'They', he: 'הֵם / הֵן', noteKu: 'in', noteEn: 'are', pronHe: 'hem / hen', cgForm: 'יִהְיוּ', cgFormPron: 'yihyu' }
         ];
 
         const bes2HomeworkData = [
             { ku: 'Navê min Arya ye.', en: 'My name is Arya.' },
             { ku: 'Tu çawa yî?', en: 'How are you?' },
             { ku: 'Ez baş im.', en: 'I am fine.' },
-            { ku: 'Spas ji bo alîkariyê.', en: 'Thanks for the help.' },
+            { ku: 'Spas ji bo alîkariyê.', en: 'Thank you for the help.' },
             { ku: 'Tu ji ku yî?', en: 'Where are you from?' },
             { ku: 'Bi xêr hatî!', en: 'Welcome!' },
             { ku: 'Heval baş e.', en: 'The friend is good.' },
@@ -339,86 +347,40 @@
             { ku: 'Xwedahafiz, heval.', en: 'Goodbye, friend.' }
         ];
 
-        const bes2DialogDataExpanded = [
-            { spkKu: 'Arya', spkEn: 'Arya', he: 'שָׁלוֹם! שְׁמִי אַרְיָה.', trans: 'Şalom! Şmi Arya.', ku: 'Silavê! Navê min Arya ye.', en: 'Hello! My name is Arya.' },
-            { spkKu: 'Dani', spkEn: 'Dani', he: 'שָׁלוֹם! שְׁמִי דָּנִי. מַה שְּׁלוֹמְךָ? / מַה שְּׁלוֹמֵךְ?', trans: 'Şalom! Şmi Dani. Ma şlomkha? / Ma şlomekh?', ku: 'Silavê! Navê min Dani ye. Tu çawa yî? (ji nêr re) / Tu çawa yî? (ji mê re)', en: 'Hello! My name is Dani. How are you? (to a man) / How are you? (to a woman)' },
-            { spkKu: 'Arya', spkEn: 'Arya', he: 'אֲנִי בְּסֵדֶר, תּוֹדָה. מֵאֵיפֹה אַתָּה? / מֵאֵיפֹה אַתְּ?', trans: 'Ani beseder, toda. Me’eifo ata? / Me’eifo at?', ku: 'Ez baş im, spas. Tu ji ku yî? (ji nêr re) / Tu ji ku yî? (ji mê re)', en: 'I am fine, thanks. Where are you from? (to a man) / Where are you from? (to a woman)' },
-            { spkKu: 'Dani', spkEn: 'Dani', he: 'אֲנִי מִכּוּרְדִיסְטָן. מַה אַתָּה רוֹצֶה לַעֲשׂוֹת? / מַה אַתְּ רוֹצָה לַעֲשׂוֹת?', trans: 'Ani miKurdistan. Ma ata rotse la’asot? / Ma at rotsa la’asot?', ku: 'Ez ji Kurdistanê me. Tu çi dixwazî bikî? (nêr) / Tu çi dixwazî bikî? (mê)', en: 'I am from Kurdistan. What do you want to do? (to a man) / What do you want to do? (to a woman)' },
-            { spkKu: 'Arya', spkEn: 'Arya', he: 'אֲנִי רוֹצֶה לִלְמֹד עִבְרִית. / אֲנִי רוֹצָה לִלְמֹד עִבְרִית.', trans: 'Ani rotse lilmod ivrit. / Ani rotsa lilmod ivrit.', ku: 'Ez dixwazim Îbranî fêr bibim. (axaftvan nêr) / Ez dixwazim Îbranî fêr bibim. (axaftvan mê)', en: 'I want to learn Hebrew. (male speaker) / I want to learn Hebrew. (female speaker)' },
-            { spkKu: 'Dani', spkEn: 'Dani', he: 'מְצוּיָּן! בָּרוּךְ הַבָּא. / בְּרוּכָה הַבָּאָה.', trans: 'Metsuyan! Barukh haba. / Brukha haba’a.', ku: 'Baş e! Bi xêr hatî. (ji nêr re) / Bi xêr hatî. (ji mê re)', en: 'Excellent! Welcome. (to a man) / Welcome. (to a woman)' },
-            { spkKu: 'Arya', spkEn: 'Arya', he: 'בֶּן כַּמָּה אַתָּה? / בַּת כַּמָּה אַתְּ?', trans: 'Ben kama ata? / Bat kama at?', ku: 'Çend salî yî? (ji nêr re) / Çend salî yî? (ji mê re)', en: 'How old are you? (to a man) / How old are you? (to a woman)' },
-            { spkKu: 'Dani', spkEn: 'Dani', he: 'אֲנִי בֶּן עֶשְׂרִים וְשָׁלוֹשׁ. / אֲנִי בַּת עֶשְׂרִים וְשָׁלוֹשׁ. וְאַתָּה? / וְאַתְּ?', trans: 'Ani ben esrim veşaloş. / Ani bat esrim veşaloş. Ve’ata? / Ve’at?', ku: 'Ez bîst û sê salî me. (nêr) / Ez bîst û sê salî me. (mê) Tu? (ji nêr re) / Tu? (ji mê re)', en: 'I am twenty-three years old. (male speaker) / I am twenty-three years old. (female speaker) And you? (to a man) / And you? (to a woman)' },
-            { spkKu: 'Arya', spkEn: 'Arya', he: 'אֲנִי בֶּן עֶשְׂרִים וְאֶחָד. / אֲנִי בַּת עֶשְׂרִים וְאַחַת. אֵיפֹה אַתָּה גָּר? / אֵיפֹה אַתְּ גָּרָה?', trans: 'Ani ben esrim ve’ehad. / Ani bat esrim ve’ahat. Eifo ata gar? / Eifo at gara?', ku: 'Ez bîst û yek salî me. (nêr) / Ez bîst û yek salî me. (mê) Tu li ku dijî? (ji nêr re) / Tu li ku dijî? (ji mê re)', en: 'I am twenty-one years old. (male speaker) / I am twenty-one years old. (female speaker) Where do you live? (to a man) / Where do you live? (to a woman)' },
-            { spkKu: 'Dani', spkEn: 'Dani', he: 'אֲנִי גָּר בְּכוּרְדִיסְטָן. / אֲנִי גָּרָה בְּכוּרְדִיסְטָן. מְקַוֶּה / מְקַוָּה שֶׁנִּיפָּגֵשׁ שׁוּב!', trans: 'Ani gar beKurdistan. / Ani gara beKurdistan. Mekave / mekava şenipageş şuv!', ku: 'Ez li Kurdistanê dijim. (axaftvan nêr) / Ez li Kurdistanê dijim. (axaftvan mê) Hêvî dikim em dîsa bibin hev!', en: 'I live in Kurdistan. (male speaker) / I live in Kurdistan. (female speaker) I hope we meet again!' }
-        ];
-
-        const bes2WordsDataExpanded = [
-            { ku: 'silav', en: 'hello', he: 'שָׁלוֹם', trans: 'şalom' },
+        const bes2GameWordsData = [
+            { ku: 'silav', en: 'hello', he: 'שלום', trans: 'şalom' },
             { ku: 'nav', en: 'name', he: 'שֵׁם', trans: 'şem' },
-            { ku: 'ez (ji bo nêr û mê)', en: 'I (same for masc. and fem.)', he: 'אֲנִי', trans: 'ani' },
-            { ku: 'tu (nêr, yekjimar)', en: 'you (masc. singular)', he: 'אַתָּה', trans: 'ata' },
-            { ku: 'tu (mê, yekjimar)', en: 'you (fem. singular)', he: 'אַתְּ', trans: 'at' },
-            { ku: 'ew (nêr)', en: 'he', he: 'הוּא', trans: 'hu' },
-            { ku: 'ew (mê)', en: 'she', he: 'הִיא', trans: 'hi' },
-            { ku: 'em (ji bo hemû zayendan)', en: 'we', he: 'אֲנַחְנוּ', trans: 'anakhnu' },
-            { ku: 'hûn (nêr an tevlihev, pirjimar)', en: 'you (masc. plural / mixed group)', he: 'אַתֶּם', trans: 'atem' },
-            { ku: 'hûn (mê, pirjimar)', en: 'you (fem. plural)', he: 'אַתֶּן', trans: 'aten' },
-            { ku: 'ew (nêr an tevlihev, pirjimar)', en: 'they (masc. plural / mixed group)', he: 'הֵם', trans: 'hem' },
-            { ku: 'ew (mê, pirjimar)', en: 'they (fem. plural)', he: 'הֵן', trans: 'hen' },
-            { ku: 'spas', en: 'thanks', he: 'תּוֹדָה', trans: 'toda' },
-            { ku: 'erê', en: 'yes', he: 'כֵּן', trans: 'ken' },
-            { ku: 'na', en: 'no', he: 'לֹא', trans: 'lo' },
-            { ku: 'ji ku', en: 'from where / where from', he: 'מֵאֵיפֹה', trans: 'me’eifo' },
+            { ku: 'ez', en: 'I', he: 'אֲנִי', trans: 'anî' },
+            { ku: 'spas', en: 'thank you', he: 'תּוֹדָה', trans: 'toda' },
+            { ku: 'ji ku', en: 'from where', he: 'מֵאַיִן', trans: "me'ayin" },
             { ku: 'fêr bûn', en: 'to learn', he: 'לִלְמֹד', trans: 'lilmod' },
-            { ku: 'ez dixwazim (axaftvan nêr)', en: 'I want (male speaker)', he: 'אֲנִי רוֹצֶה', trans: 'ani rotse', speaker: 'masc' },
-            { ku: 'ez dixwazim (axaftvan mê)', en: 'I want (female speaker)', he: 'אֲנִי רוֹצָה', trans: 'ani rotsa', speaker: 'fem' },
-            { ku: 'bi xêr hatî (ji nêr re)', en: 'welcome (to a man)', he: 'בָּרוּךְ הַבָּא', trans: 'barukh haba' },
-            { ku: 'bi xêr hatî (ji mê re)', en: 'welcome (to a woman)', he: 'בְּרוּכָה הַבָּאָה', trans: 'brukha haba’a' },
-            { ku: 'baş / baş im (nêr)', en: 'good / fine (masc.)', he: 'טוֹב', trans: 'tov' },
-            { ku: 'baş / baş im (mê)', en: 'good / fine (fem.)', he: 'טוֹבָה', trans: 'tova' },
-            { ku: 'ez dijim (axaftvan nêr)', en: 'I live (male speaker)', he: 'אֲנִי גָּר', trans: 'ani gar', speaker: 'masc' },
-            { ku: 'ez dijim (axaftvan mê)', en: 'I live (female speaker)', he: 'אֲנִי גָּרָה', trans: 'ani gara', speaker: 'fem' },
-            { ku: 'heval (nêr)', en: 'friend (masc.)', he: 'חָבֵר', trans: 'khaver' },
-            { ku: 'heval (mê)', en: 'friend (fem.)', he: 'חֲבֵרָה', trans: 'khavera' }
+            { ku: 'erê', en: 'yes', he: 'כֵּן', trans: 'ken' },
+            { ku: 'na', en: 'no', he: 'לֹא', trans: 'no' },
+            { ku: 'xweş', en: 'pleasant', he: 'נָעִים', trans: 'naîm' },
+            { ku: 'heval', en: 'friend', he: 'חָבֵר', trans: 'xaver' },
+            { ku: 'şev', en: 'night', he: 'לַיְלָה', trans: 'layla' },
+            { ku: 'roj', en: 'day', he: 'יוֹם', trans: 'yom' },
+            { ku: 'sibeh', en: 'morning', he: 'בֹּקֶר', trans: 'boker' },
+            { ku: 'êvar', en: 'evening', he: 'עֶרֶב', trans: 'erev' },
+            { ku: 'zû', en: 'quickly', he: 'מַהֵר', trans: 'maher' },
+            { ku: 'xwedahafiz', en: 'goodbye', he: 'לְהִתְרָאוֹת', trans: 'lehitraot' },
+            { ku: 'dixwazim', en: 'I want', he: 'אֲנִי רוֹצֶה', trans: 'anî rotse', speaker: 'masc' },
+            { ku: 'dixwazim', en: 'I want', he: 'אֲנִי רוֹצָה', trans: 'anî rotsa', speaker: 'fem' },
+            { ku: 'bi xêr hatî', en: 'welcome', he: 'בָּרוּךְ הַבָּא', trans: 'barux haba', speaker: 'masc' },
+            { ku: 'bi xêr hatî', en: 'welcome', he: 'בְּרוּכָה הַבָּאָה', trans: "bruxa haba'a", speaker: 'fem' },
+            { ku: 'ez dijim', en: 'I live', he: 'אֲנִי גָּר', trans: 'ani gar', speaker: 'masc' },
+            { ku: 'ez dijim', en: 'I live', he: 'אֲנִי גָּרָה', trans: 'ani gara', speaker: 'fem' }
         ];
 
-        const bes2SentencesDataExpanded = [
-            { ku: 'Ez dixwazim Îbranî fêr bibim. (axaftvan nêr)', en: 'I want to learn Hebrew. (male speaker)', words: ['אֲנִי', 'רוֹצֶה', 'לִלְמֹד', 'עִבְרִית'], trans: 'ani rotse lilmod ivrit' },
-            { ku: 'Ez dixwazim Îbranî fêr bibim. (axaftvan mê)', en: 'I want to learn Hebrew. (female speaker)', words: ['אֲנִי', 'רוֹצָה', 'לִלְמֹד', 'עִבְרִית'], trans: 'ani rotsa lilmod ivrit' },
-            { ku: 'Tu baş î. (ji nêr re)', en: 'You are fine. (to a man)', words: ['אַתָּה', 'בְּסֵדֶר'], trans: 'ata beseder' },
-            { ku: 'Tu baş î. (ji mê re)', en: 'You are fine. (to a woman)', words: ['אַתְּ', 'בְּסֵדֶר'], trans: 'at beseder' },
-            { ku: 'Hûn baş in. (nêr an tevlihev, pirjimar)', en: 'You are fine. (masc. plural / mixed group)', words: ['אַתֶּם', 'בְּסֵדֶר'], trans: 'atem beseder' },
-            { ku: 'Hûn baş in. (mê, pirjimar)', en: 'You are fine. (fem. plural)', words: ['אַתֶּן', 'בְּסֵדֶר'], trans: 'aten beseder' },
-            { ku: 'Ew baş in. (nêr an tevlihev, pirjimar)', en: 'They are fine. (masc. plural / mixed group)', words: ['הֵם', 'בְּסֵדֶר'], trans: 'hem beseder' },
-            { ku: 'Ew baş in. (mê, pirjimar)', en: 'They are fine. (fem. plural)', words: ['הֵן', 'בְּסֵדֶר'], trans: 'hen beseder' },
-            { ku: 'Bi xêr hatî! (ji nêr re)', en: 'Welcome! (to a man)', words: ['בָּרוּךְ', 'הַבָּא'], trans: 'barukh haba' },
-            { ku: 'Bi xêr hatî! (ji mê re)', en: 'Welcome! (to a woman)', words: ['בְּרוּכָה', 'הַבָּאָה'], trans: 'brukha haba’a' }
-        ];
-
-        const bes2GrammarDataExpanded = [
-            { ku: 'Ez (ji bo nêr û mê)', en: 'I (same for masc. and fem.)', he: 'אֲנִי', noteKu: 'Cînavk heman e, lê hin lêker û sifet diguherin: רוֹצֶה / רוֹצָה, גָּר / גָּרָה.', noteEn: 'The pronoun stays the same, but some verbs and adjectives change: rotse / rotsa, gar / gara.' },
-            { ku: 'Tu (nêr, yekjimar)', en: 'You (masc. singular)', he: 'אַתָּה', noteKu: 'Dema em bi nêrekî re diaxivin ev form tê bikaranîn.', noteEn: 'Used when speaking to one man or boy.' },
-            { ku: 'Tu (mê, yekjimar)', en: 'You (fem. singular)', he: 'אַתְּ', noteKu: 'Dema em bi mêrekê re diaxivin ev form tê bikaranîn.', noteEn: 'Used when speaking to one woman or girl.' },
-            { ku: 'Ew (nêr)', en: 'He', he: 'הוּא', noteKu: 'Forma kesa sêyem ya nêr.', noteEn: 'Third-person masculine singular.' },
-            { ku: 'Ew (mê)', en: 'She', he: 'הִיא', noteKu: 'Forma kesa sêyem ya mê.', noteEn: 'Third-person feminine singular.' },
-            { ku: 'Em', en: 'We', he: 'אֲנַחְנוּ', noteKu: 'Ji bo hemû koman tê bikaranîn.', noteEn: 'Used for all-gender groups.' },
-            { ku: 'Hûn (nêr an tevlihev, pirjimar)', en: 'You (masc. plural / mixed group)', he: 'אַתֶּם', noteKu: 'Ji bo komekî nêr an komeke tevlihev.', noteEn: 'Used for a group of men or a mixed group.' },
-            { ku: 'Hûn (mê, pirjimar)', en: 'You (fem. plural)', he: 'אַתֶּן', noteKu: 'Ji bo komeke jinan an keçan.', noteEn: 'Used for a group of women or girls.' },
-            { ku: 'Ew (nêr an tevlihev, pirjimar)', en: 'They (masc. plural / mixed group)', he: 'הֵם', noteKu: 'Forma pirjimar a nêr an tevlihev.', noteEn: 'Plural form for men or a mixed group.' },
-            { ku: 'Ew (mê, pirjimar)', en: 'They (fem. plural)', he: 'הֵן', noteKu: 'Forma pirjimar a mê.', noteEn: 'Plural form for women or girls.' }
-        ];
-
-        const bes2HomeworkDataExpanded = [
-            { ku: 'Wergerîne: tu (ji nêr re).', en: 'Translate: you (to a man).' },
-            { ku: 'Wergerîne: tu (ji mê re).', en: 'Translate: you (to a woman).' },
-            { ku: 'Wergerîne: hûn (nêr an tevlihev, pirjimar).', en: 'Translate: you (masc. plural / mixed group).' },
-            { ku: 'Wergerîne: hûn (mê, pirjimar).', en: 'Translate: you (fem. plural).' },
-            { ku: 'Wergerîne: ew (nêr).', en: 'Translate: he.' },
-            { ku: 'Wergerîne: ew (mê).', en: 'Translate: she.' },
-            { ku: 'Wergerîne: ew (nêr an tevlihev, pirjimar).', en: 'Translate: they (masc. plural / mixed group).' },
-            { ku: 'Wergerîne: ew (mê, pirjimar).', en: 'Translate: they (fem. plural).' },
-            { ku: 'Wergerîne: Ez dixwazim Îbranî fêr bibim. (axaftvan nêr)', en: 'Translate: I want to learn Hebrew. (male speaker)' },
-            { ku: 'Wergerîne: Ez dixwazim Îbranî fêr bibim. (axaftvan mê)', en: 'Translate: I want to learn Hebrew. (female speaker)' },
-            { ku: 'Wergerîne: Bi xêr hatî! (ji nêr re)', en: 'Translate: Welcome! (to a man)' },
-            { ku: 'Wergerîne: Bi xêr hatî! (ji mê re)', en: 'Translate: Welcome! (to a woman)' }
+        const bes2GameSentencesData = [
+            { ku: 'Silav heval', en: 'Hello, friend', words: ['שָׁלוֹם', 'חָבֵר'], trans: 'şalom xaver' },
+            { ku: 'Ez baş im, spas', en: 'I am fine, thank you', words: ['אֲנִי', 'בְּסֵדֶר', 'תּוֹדָה'], trans: 'ani bseder, toda' },
+            { ku: 'Ez dixwazim Îbranî fêr bibim.', en: 'I want to learn Hebrew.', words: ['אֲנִי', 'רוֹצֶה', 'לִלְמֹד', 'עִבְרִית'], trans: 'ani rotse lilmod ivrit', speaker: 'masc' },
+            { ku: 'Ez dixwazim Îbranî fêr bibim.', en: 'I want to learn Hebrew.', words: ['אֲנִי', 'רוֹצָה', 'לִלְמֹד', 'עִבְרִית'], trans: 'ani rotsa lilmod ivrit', speaker: 'fem' },
+            { ku: 'Bi xêr hatî!', en: 'Welcome!', words: ['בָּרוּךְ', 'הַבָּא'], trans: 'barux haba', speaker: 'masc' },
+            { ku: 'Bi xêr hatî!', en: 'Welcome!', words: ['בְּרוּכָה', 'הַבָּאָה'], trans: "bruxa haba'a", speaker: 'fem' },
+            { ku: 'Ez li Kurdistanê dijim.', en: 'I live in Kurdistan.', words: ['אֲנִי', 'גָּר', 'בְּקוּרְדִיסְטָן'], trans: 'ani gar beKurdistan', speaker: 'masc' },
+            { ku: 'Ez li Kurdistanê dijim.', en: 'I live in Kurdistan.', words: ['אֲנִי', 'גָּרָה', 'בְּקוּרְדִיסְטָן'], trans: 'ani gara beKurdistan', speaker: 'fem' },
+            { ku: 'Sibehxêr!', en: 'Good morning!', words: ['בֹּקֶר', 'טוֹב'], trans: 'boker tov' },
+            { ku: 'Êvarxêr!', en: 'Good evening!', words: ['עֶרֶב', 'נָעִים'], trans: 'erev naîm' }
         ];

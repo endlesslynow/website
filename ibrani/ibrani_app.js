@@ -54,6 +54,10 @@
         let b2SbCurrentSlots = [];
         let b2SbPool = [];
 
+        let b2CgPhase = 'pronoun';
+        let b2CgIndex = 0;
+        let b2CgOptions = [];
+
         function getPageMode() {
             return document.body?.dataset.page || 'course';
         }
@@ -329,7 +333,6 @@
         // --- LESSON RENDERING (BEŞ 1 TEXT & BEŞ 2) ---
         function renderBes1Text() {
             const langKey = currentLang === 'ku' ? 'ku' : 'en';
-
             document.getElementById('b1-words-tbody').innerHTML = bes1WordsData.map(item => `
                 <tr class="hover:bg-blue-50 dark:hover:bg-slate-700/50 transition border-b border-slate-100 dark:border-slate-700">
                     <td class="p-4 font-medium text-slate-800 dark:text-slate-200">${item[langKey]}</td>
@@ -337,6 +340,11 @@
                     <td class="p-4 text-blue-600 dark:text-blue-400 font-mono">${item.trans}</td>
                 </tr>
             `).join('');
+
+            if (typeof renderBes1Homework === 'function') {
+                renderBes1Homework();
+                return;
+            }
 
             document.getElementById('b1-hw-list').innerHTML = bes1HomeworkData.map(item => `
                 <li class="pl-2">${item[langKey]}</li>
@@ -364,7 +372,7 @@
                 </div>
             `}).join('');
 
-            document.getElementById('b2-words-tbody').innerHTML = bes2WordsDataExpanded.map(item => `
+            document.getElementById('b2-words-tbody').innerHTML = bes2WordsData.map(item => `
                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition border-b border-slate-100 dark:border-slate-700">
                     <td class="p-4 font-medium text-slate-800 dark:text-slate-200">${item[langKey]}</td>
                     <td class="p-4 font-bold text-2xl text-slate-800 dark:text-slate-100" dir="rtl">${item.he}</td>
@@ -372,7 +380,7 @@
                 </tr>
             `).join('');
 
-            document.getElementById('b2-grammar-tbody').innerHTML = bes2GrammarDataExpanded.map(item => `
+            document.getElementById('b2-grammar-tbody').innerHTML = bes2GrammarData.map(item => `
                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition border-b border-slate-200 dark:border-slate-700">
                     <td class="p-3 border-r dark:border-slate-700 text-slate-800 dark:text-slate-200">${item[langKey]}</td>
                     <td class="p-3 border-r dark:border-slate-700 font-bold text-xl text-right text-slate-800 dark:text-slate-100" dir="rtl">${item.he}</td>
@@ -380,7 +388,12 @@
                 </tr>
             `).join('');
 
-            document.getElementById('b2-hw-list').innerHTML = bes2HomeworkDataExpanded.map(item => `
+            if (typeof renderBes2Homework === 'function') {
+                renderBes2Homework();
+                return;
+            }
+
+            document.getElementById('b2-hw-list').innerHTML = bes2HomeworkData.map(item => `
                 <li class="pl-2">${item[langKey]}</li>
             `).join('');
         }
@@ -813,10 +826,11 @@
             const activeClass = "bg-green-600 text-white dark:bg-green-600";
             const inactiveClass = "bg-white text-green-600 border border-green-600 hover:bg-green-50 dark:bg-slate-800 dark:border-green-500 dark:text-green-400 dark:hover:bg-slate-700";
             
-            ['wb', 'cp', 'sb'].forEach(id => {
+            ['wb', 'cp', 'sb', 'cg'].forEach(id => {
                 const btn = document.getElementById('btn-b2-game-' + id);
-                btn.className = baseClass + " " + (tabId === id ? activeClass : inactiveClass);
-                document.getElementById('b2-game-' + id).classList.add('hidden');
+                if (btn) btn.className = baseClass + " " + (tabId === id ? activeClass : inactiveClass);
+                const panel = document.getElementById('b2-game-' + id);
+                if (panel) panel.classList.add('hidden');
             });
             
             document.getElementById('b2-game-' + tabId).classList.remove('hidden');
@@ -824,11 +838,16 @@
             if(tabId === 'wb') initB2WordBuilder();
             if(tabId === 'cp') initB2ConnectPairs();
             if(tabId === 'sb') initB2SentenceBuilder();
+            if(tabId === 'cg') initB2ConjugationGame();
         }
 
         // B2 Word Builder
         function getB2FilteredWords() {
-            return bes2WordsDataExpanded.filter(item => !item.speaker || item.speaker === b2SpeakerGender);
+            return bes2GameWordsData.filter(item => !item.speaker || item.speaker === b2SpeakerGender);
+        }
+
+        function getB2FilteredSentences() {
+            return bes2GameSentencesData.filter(item => !item.speaker || item.speaker === b2SpeakerGender);
         }
 
         function setB2SpeakerGender(gender) {
@@ -841,6 +860,8 @@
             if (femBtn) femBtn.className = gender === 'fem' ? activeClass : inactiveClass;
             b2WbOrder = [];
             b2WbIndex = 0;
+            b2SbOrder = [];
+            b2SbIndex = 0;
             initB2WordBuilder();
         }
 
@@ -963,7 +984,7 @@
         // B2 Connect Pairs (shown in rounds of 10 items)
         function initB2ConnectPairs() {
             b2CpRound = 1;
-            b2CpOrder = getShuffledOrder(bes2WordsDataExpanded.length);
+            b2CpOrder = getShuffledOrder(bes2WordsData.length);
             loadB2CpRound();
         }
 
@@ -985,7 +1006,7 @@
             const endIdx = startIdx + 10;
             const roundWords = b2CpOrder
                 .slice(startIdx, endIdx)
-                .map(index => ({...bes2WordsDataExpanded[index], matched: false, matchText: ''}));
+                .map(index => ({...bes2WordsData[index], matched: false, matchText: ''}));
             
             b2CpLeftPairs = shuffleArray(roundWords);
             b2CpRightPairs = shuffleArray(roundWords);
@@ -1066,11 +1087,12 @@
 
         // B2 Sentence Builder
         function initB2SentenceBuilder() {
+            const sentenceData = getB2FilteredSentences();
             if (!b2SbOrder.length || b2SbIndex >= b2SbOrder.length) {
-                b2SbOrder = getShuffledOrder(bes2SentencesDataExpanded.length);
+                b2SbOrder = getShuffledOrder(sentenceData.length);
                 b2SbIndex = 0;
             }
-            const item = bes2SentencesDataExpanded[b2SbOrder[b2SbIndex]];
+            const item = sentenceData[b2SbOrder[b2SbIndex]];
             
             document.getElementById('b2-sb-target-sentence').innerText = item[currentLang];
             document.getElementById('b2-sb-msg').classList.add('hidden');
@@ -1120,7 +1142,8 @@
         }
 
         function checkB2SentenceBuilder() {
-            const item = bes2SentencesDataExpanded[b2SbOrder[b2SbIndex]];
+            const sentenceData = getB2FilteredSentences();
+            const item = sentenceData[b2SbOrder[b2SbIndex]];
             const isComplete = b2SbCurrentSlots.every(s => s !== null);
             if(!isComplete) return;
 
@@ -1146,6 +1169,161 @@
         function nextB2SentenceBuilder() {
             b2SbIndex++;
             initB2SentenceBuilder();
+        }
+
+        // B2 Conjugation Game
+        function getB2ConjugationOptions(phase) {
+            if (phase === 'form') {
+                return shuffleArray(bes2GrammarData.map(item => item.cgForm));
+            }
+            return shuffleArray(bes2GrammarData.map(item => item.he));
+        }
+
+        function getB2CgHeaderClass(isActive) {
+            return `p-4 text-sm uppercase tracking-[0.14em] transition-colors ${isActive ? 'bg-blue-300 text-slate-900 ring-2 ring-inset ring-blue-500/60 dark:bg-blue-500/30 dark:text-white dark:ring-blue-300/60' : 'text-slate-500 dark:text-slate-400'}`;
+        }
+
+        function getB2CgPlaceholderBox(isActiveColumn, isCurrentCell) {
+            const boxClass = isCurrentCell
+                ? 'border-blue-500 bg-yellow-100 shadow-[0_0_0_4px_rgba(15,98,201,0.18)] dark:bg-yellow-400/15 dark:border-blue-300'
+                : isActiveColumn
+                    ? 'border-green-300 bg-green-50 dark:bg-green-500/10 dark:border-green-700/70'
+                    : 'border-slate-200 bg-transparent dark:border-slate-700';
+
+            return `<div class="mx-auto h-12 w-full max-w-[13rem] rounded-xl border-2 border-dashed ${boxClass}"></div>`;
+        }
+
+        function getB2CgSolvedContent(value, pronunciation, dir = 'ltr') {
+            const valueMarkup = dir === 'rtl'
+                ? `<span dir="rtl" lang="he" class="font-bold text-2xl text-slate-900 dark:text-slate-100">${escapeHtml(value)}</span>`
+                : `<span class="font-bold text-2xl text-slate-900 dark:text-slate-100">${escapeHtml(value)}</span>`;
+
+            return `
+                <div class="flex flex-wrap items-center gap-2">
+                    ${valueMarkup}
+                    <span class="text-blue-700 dark:text-blue-300 font-medium">(${escapeHtml(pronunciation)})</span>
+                </div>
+            `;
+        }
+
+        function getB2CgOptionClass(index, isHebrewOption) {
+            const palettes = isHebrewOption
+                ? [
+                    'border-blue-200 bg-blue-100 hover:bg-blue-200 dark:border-blue-800 dark:bg-blue-500/15 dark:hover:bg-blue-500/25',
+                    'border-green-200 bg-green-100 hover:bg-green-200 dark:border-green-800 dark:bg-green-500/15 dark:hover:bg-green-500/25',
+                    'border-red-200 bg-red-100 hover:bg-red-200 dark:border-red-800 dark:bg-red-500/15 dark:hover:bg-red-500/25',
+                    'border-yellow-200 bg-yellow-100 hover:bg-yellow-200 dark:border-yellow-700 dark:bg-yellow-500/15 dark:hover:bg-yellow-500/25'
+                ]
+                : [
+                    'border-blue-200 bg-blue-100 hover:bg-blue-200 dark:border-blue-800 dark:bg-blue-500/15 dark:hover:bg-blue-500/25',
+                    'border-green-200 bg-green-100 hover:bg-green-200 dark:border-green-800 dark:bg-green-500/15 dark:hover:bg-green-500/25',
+                    'border-red-200 bg-red-100 hover:bg-red-200 dark:border-red-800 dark:bg-red-500/15 dark:hover:bg-red-500/25',
+                    'border-yellow-200 bg-yellow-100 hover:bg-yellow-200 dark:border-yellow-700 dark:bg-yellow-500/15 dark:hover:bg-yellow-500/25'
+                ];
+
+            return palettes[index % palettes.length];
+        }
+
+        function initB2ConjugationGame() {
+            b2CgPhase = 'pronoun';
+            b2CgIndex = 0;
+            b2CgOptions = getB2ConjugationOptions('pronoun');
+            document.getElementById('b2-cg-msg').classList.add('hidden');
+            setButtonVisibility('b2-cg-reset-btn', false);
+            renderB2ConjugationGame();
+        }
+
+        function renderB2ConjugationGame() {
+            const tableBody = document.getElementById('b2-cg-table-body');
+            const optionsElement = document.getElementById('b2-cg-options');
+            const messageElement = document.getElementById('b2-cg-msg');
+            const hebrewHead = document.getElementById('b2-cg-head-hebrew');
+            const formHead = document.getElementById('b2-cg-head-form');
+
+            if (!tableBody || !optionsElement || !messageElement || !hebrewHead || !formHead) return;
+
+            hebrewHead.className = getB2CgHeaderClass(b2CgPhase === 'pronoun');
+            formHead.className = getB2CgHeaderClass(b2CgPhase === 'form');
+
+            tableBody.innerHTML = bes2GrammarData.map((item, index) => {
+                const translation = currentLang === 'en' ? item.en : item.ku;
+                const pronounSolved = b2CgPhase !== 'pronoun' || index < b2CgIndex;
+                const formSolved = b2CgPhase === 'done' || (b2CgPhase === 'form' && index < b2CgIndex);
+                const pronounCurrent = b2CgPhase === 'pronoun' && index === b2CgIndex;
+                const formCurrent = b2CgPhase === 'form' && index === b2CgIndex;
+                const hebrewCellClass = b2CgPhase === 'pronoun' ? 'bg-blue-50 ring-1 ring-inset ring-blue-300/80 dark:bg-blue-500/10 dark:ring-blue-500/40' : '';
+                const formCellClass = b2CgPhase === 'form' ? 'bg-yellow-50 ring-1 ring-inset ring-yellow-300/80 dark:bg-yellow-500/10 dark:ring-yellow-500/40' : '';
+
+                const hebrewCell = pronounSolved
+                    ? getB2CgSolvedContent(item.he, item.pronHe, 'rtl')
+                    : getB2CgPlaceholderBox(b2CgPhase === 'pronoun', pronounCurrent);
+
+                const formCell = formSolved
+                    ? getB2CgSolvedContent(item.cgForm, item.cgFormPron)
+                    : getB2CgPlaceholderBox(b2CgPhase === 'form', formCurrent);
+
+                return `
+                    <tr>
+                        <td class="p-4 font-semibold text-slate-800 dark:text-slate-100">${escapeHtml(translation)}</td>
+                        <td class="p-4 ${hebrewCellClass}">${hebrewCell}</td>
+                        <td class="p-4 ${formCellClass}">${formCell}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            if (b2CgPhase === 'done') {
+                optionsElement.innerHTML = '';
+                showMessage('b2-cg-msg', t('cg_done'), true);
+                setButtonVisibility('b2-cg-reset-btn', true);
+                return;
+            }
+
+            optionsElement.innerHTML = b2CgOptions.map((option, index) => {
+                const isHebrewOption = b2CgPhase === 'pronoun';
+                const paletteClass = getB2CgOptionClass(index, isHebrewOption);
+                return `
+                    <button
+                        onclick="answerB2ConjugationGame(${index})"
+                        ${isHebrewOption ? 'dir="rtl" lang="he"' : ''}
+                        class="min-h-[3.75rem] w-full px-5 rounded-xl border-2 ${paletteClass} text-slate-800 dark:text-slate-100 ${isHebrewOption ? 'text-2xl' : 'text-xl'} font-bold shadow-sm hover:-translate-y-0.5 transition"
+                    >
+                        ${escapeHtml(option)}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function answerB2ConjugationGame(optionIndex) {
+            const item = bes2GrammarData[b2CgIndex];
+            const selected = b2CgOptions[optionIndex];
+            if (!item) return;
+
+            const correctAnswer = b2CgPhase === 'pronoun' ? item.he : item.cgForm;
+            const pronunciation = b2CgPhase === 'pronoun' ? item.pronHe : item.cgFormPron;
+
+            if (selected === correctAnswer) {
+                b2CgIndex++;
+
+                if (b2CgPhase === 'pronoun' && b2CgIndex >= bes2GrammarData.length) {
+                    b2CgPhase = 'form';
+                    b2CgIndex = 0;
+                    b2CgOptions = getB2ConjugationOptions('form');
+                    renderB2ConjugationGame();
+                    showMessage('b2-cg-msg', t('cg_phase_forms'), true);
+                    return;
+                }
+
+                if (b2CgPhase === 'form' && b2CgIndex >= bes2GrammarData.length) {
+                    b2CgPhase = 'done';
+                    renderB2ConjugationGame();
+                    return;
+                }
+
+                renderB2ConjugationGame();
+                showMessageWithPronunciation('b2-cg-msg', t('msg_correct'), pronunciation, true);
+            } else {
+                showMessage('b2-cg-msg', withCorrectAnswer(correctAnswer), false);
+            }
         }
 
         // Initialize on load
