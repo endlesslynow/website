@@ -354,7 +354,6 @@
         function renderBes2() {
             const langKey = currentLang === 'ku' ? 'ku' : 'en';
             const spkKey = currentLang === 'ku' ? 'spkKu' : 'spkEn';
-            const noteKey = currentLang === 'ku' ? 'noteKu' : 'noteEn';
 
             document.getElementById('b2-dialog-container').innerHTML = bes2DialogData.map((item, idx) => {
                 const isArya = idx % 2 === 0; 
@@ -383,8 +382,8 @@
             document.getElementById('b2-grammar-tbody').innerHTML = bes2GrammarData.map(item => `
                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition border-b border-slate-200 dark:border-slate-700">
                     <td class="p-3 border-r dark:border-slate-700 text-slate-800 dark:text-slate-200">${item[langKey]}</td>
-                    <td class="p-3 border-r dark:border-slate-700 font-bold text-xl text-right text-slate-800 dark:text-slate-100" dir="rtl">${item.he}</td>
-                    <td class="p-3 text-blue-600 dark:text-blue-400">${item[noteKey]}</td>
+                    <td class="p-3 border-r dark:border-slate-700 font-bold text-xl text-right text-slate-800 dark:text-slate-100" dir="rtl" lang="he">${item.he}</td>
+                    <td class="p-3 font-bold text-xl text-right text-blue-700 dark:text-blue-300" dir="rtl" lang="he">${item.cgForm}</td>
                 </tr>
             `).join('');
 

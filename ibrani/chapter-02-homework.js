@@ -146,6 +146,52 @@ const bes2HomeworkKeyboardRows = [
 const bes2HomeworkState = {};
 let activeBes2HomeworkInputId = null;
 
+// Keep Chapter 2 homework limited to wording taught in the lesson itself.
+(function restrictBes2HomeworkToLessonForms() {
+    const byId = Object.fromEntries(bes2HomeworkQuestions.map(question => [question.id, question]));
+
+    if (byId.b2q2) {
+        byId.b2q2.solutionDisplay = 'מַה שְּׁלוֹמְךָ?';
+        byId.b2q2.acceptableAnswers = ['מה שלומך', 'מה שלומך?', 'מַה שְּׁלוֹמְךָ', 'מַה שְּׁלוֹמְךָ?'];
+    }
+
+    if (byId.b2q3) {
+        byId.b2q3.solutionDisplay = 'אֲנִי בְּסֵדֶר.';
+        byId.b2q3.acceptableAnswers = ['אני בסדר', 'אני בסדר.', 'אֲנִי בְּסֵדֶר', 'אֲנִי בְּסֵדֶר.'];
+    }
+
+    if (byId.b2q4) {
+        byId.b2q4.prompt = { ku: 'Spas!', en: 'Thank you!' };
+        byId.b2q4.solutionDisplay = 'תּוֹדָה';
+        byId.b2q4.acceptableAnswers = ['תודה', 'תּוֹדָה'];
+    }
+
+    if (byId.b2q5) {
+        byId.b2q5.solutionDisplay = 'מֵאֵיפֹה אַתָּה?';
+        byId.b2q5.acceptableAnswers = ['מאיפה אתה', 'מאיפה אתה?', 'מֵאֵיפֹה אַתָּה', 'מֵאֵיפֹה אַתָּה?'];
+    }
+
+    if (byId.b2q6) {
+        byId.b2q6.solutionDisplay = 'בָּרוּךְ הַבָּא';
+        byId.b2q6.acceptableAnswers = ['ברוך הבא', 'בָּרוּךְ הַבָּא'];
+    }
+
+    if (byId.b2q7) {
+        byId.b2q7.solutionDisplay = 'חָבֵר טוֹב';
+        byId.b2q7.acceptableAnswers = ['חבר טוב', 'חָבֵר טוֹב'];
+    }
+
+    if (byId.b2q9) {
+        byId.b2q9.solutionDisplay = 'עֶרֶב טוֹב';
+        byId.b2q9.acceptableAnswers = ['ערב טוב', 'עֶרֶב טוֹב'];
+    }
+
+    if (byId.b2q10) {
+        byId.b2q10.solutionDisplay = 'לְהִתְרָאוֹת, חָבֵר.';
+        byId.b2q10.acceptableAnswers = ['להתראות חבר', 'להתראות, חבר', 'לְהִתְרָאוֹת חָבֵר', 'לְהִתְרָאוֹת, חָבֵר.'];
+    }
+})();
+
 function getBes2HomeworkLang() {
     return typeof currentLang !== 'undefined' && currentLang === 'en' ? 'en' : 'ku';
 }

@@ -96,20 +96,21 @@
                 b2_title: "Beş 2: Silav û Nasîn / ברכות והיכרות",
                 dialog_title: "Diyalog / דיאלוג",
                 vocab_title: "Bêjeyên Nû / אוצר מילים",
-                b2_gram_title: "Rêzimana Beşê 1: Lêkera «bûn» û Cînavkên Kesî",
-                b2_gram_p1: "Di Kurmancî de lêkera «bûn» di dema niha de bi vî awayî tê bikaranîn: ez im, tu yî, ew e, em in, hûn in, ew in. Mînak: «Ez baş im» û «Tu li ku yî?».",
-                b2_gram_p2: "Cînavkên kesî yên Kurmancî ev in: ez (min), tu (te), ew (wî/wê), em (me), hûn (we), ew (wan). Forma yekem ji bo mijarê tê bikaranîn; forma duyem ji bo tişta lêkerên gerguhêz tê bikaranîn.",
-                b2_gram_p3: "Pirsa «çawa?» ji bo pirskirina halê kesekî tê bikaranîn. Bersiva asayî: «Ez baş im, spas» an «Ne xirab e».",
-                b2_gram_p4: "Ji bo xatirxwestinê: «Xwedahafiz» wekî «Xudê te bibe nîgehdar» tê bikaranîn. Di Îbranî de hevwateya wê «לְהִתְרָאוֹת» (lehitraot) e.",
-                b2_gram_table_title: "Lêkera «bûn» — Dema Niha  [Dema Niha]  |  Kurmancî: bûn  |  עברית: לִהְיוֹת",
+                b2_gram_title: "Rêzimana Beşê 2: Cînavkên kesî û lêkera «bûn»",
+                b2_gram_p1: "Di Îbranî de cînavk û formên lêkerê bi nêr / mê û yekjimar / pirjimar diguherin.",
+                b2_gram_p2: "Ji ber vê yekê, her forma cihê di tabloya jêr de rêzeke serbixwe heye, da ku «tu», «hûn» û «ew» tevlihev nebin.",
+                b2_gram_p3: "Stûna yekem Kurmancî ye, stûna duyem cînavka Îbranî ye, stûna sêyem jî forma Îbranî ya lêkera «bûn» nîşan dide.",
+                b2_gram_p4: "Bi vî awayî tu dikarî bi hêsanî bibînî ka kîjan forma Îbranî bi kîjan cînavkê re tê.",
+                b2_gram_table_title: "Cînavk û formên Îbranî yên lêkera «bûn»  |  Kurmancî: bûn  |  עברית: לִהְיוֹת",
                 hw_instr_trans: "Rêwerzên wergêranê: Van hevokên Kurmancî bo Îbranî wergerînin.",
 
                 // Table Headers
                 th_kurmanci: "Kurmancî",
                 th_ibrani: "Îbranî",
                 th_dengderi: "Dengxwandin",
-                th_cinavk: "Cînavk",
-                th_shiyandin: "Şiyandin / הַטָּיָה"
+                th_subject_lang: "Kurmancî",
+                th_cinavk: "Cînavka Îbranî",
+                th_shiyandin: "Lêkera «bûn»"
             },
             en: {
                 title: "Hebrew Practice",
@@ -207,20 +208,21 @@
                 b2_title: "Chapter 2: Greetings & Introductions / ברכות והיכרות",
                 dialog_title: "Dialogue / דיאלוג",
                 vocab_title: "New Vocabulary / אוצר מילים",
-                b2_gram_title: "Chapter 1 Grammar: The Verb \"to be\" and Personal Pronouns",
-                b2_gram_p1: "In Kurmanji, the verb «bûn» (to be) is used in the present tense like this: ez im, tu yî, ew e, em in, hûn in, ew in. Examples: «Ez baş im» and «Tu li ku yî?».",
-                b2_gram_p2: "The personal pronouns in Kurmanji are: ez (min), tu (te), ew (wî/wê), em (me), hûn (we), ew (wan). The first form is used for the subject; the second form is used for the object with transitive verbs.",
-                b2_gram_p3: "The question «çawa?» is used to ask how someone is. A common answer is «Ez baş im, spas» or «Ne xirab e».",
-                b2_gram_p4: "For farewells, «Xwedahafiz» is used in the sense of «May God protect you.» In Hebrew, its equivalent is «לְהִתְרָאוֹת» (lehitraot).",
-                b2_gram_table_title: "The Verb \"to be\" — Present Tense  [Present Tense]  |  Kurmanji: bûn  |  Hebrew: לִהְיוֹת",
+                b2_gram_title: "Chapter 2 Grammar: Personal Pronouns and the Verb \"to be\"",
+                b2_gram_p1: "In Hebrew, pronouns and verb forms change for masculine/feminine and singular/plural.",
+                b2_gram_p2: "To keep the chart clear, each gendered form has its own row instead of combining entries like \"you\" or \"they\".",
+                b2_gram_p3: "The first column shows English, the second shows the Hebrew pronoun, and the third shows the Hebrew form of the verb \"to be\".",
+                b2_gram_p4: "This makes it easier to see exactly which Hebrew form matches each pronoun.",
+                b2_gram_table_title: "Personal Pronouns and Hebrew Forms of \"to be\"  |  Kurmanji: bûn  |  Hebrew: לִהְיוֹת",
                 hw_instr_trans: "Translation instructions: Translate these Kurmanji sentences to Hebrew.",
 
                 // Table Headers
                 th_kurmanci: "Kurmanji",
                 th_ibrani: "Hebrew",
                 th_dengderi: "Pronunciation",
+                th_subject_lang: "English",
                 th_cinavk: "Pronoun",
-                th_shiyandin: "Conjugation"
+                th_shiyandin: "Verb \"to be\""
             }
         };
 
@@ -325,13 +327,16 @@
         ];
 
         const bes2GrammarData = [
-            { ku: 'Ez', en: 'I', he: 'אֲנִי', noteKu: 'im', noteEn: 'am', pronHe: 'ani', cgForm: 'אֶהְיֶה', cgFormPron: 'ehye' },
-            { ku: 'Tu', en: 'You', he: 'אַתָּה / אַתְּ', noteKu: 'yî', noteEn: 'are', pronHe: 'ata / at', cgForm: 'תִּהְיֶה / תִּהְיִי', cgFormPron: 'tihye / tihyi' },
-            { ku: 'Ew (nêr)', en: 'He', he: 'הוּא', noteKu: 'e', noteEn: 'is', pronHe: 'hu', cgForm: 'יִהְיֶה', cgFormPron: 'yihye' },
-            { ku: 'Ew (mê)', en: 'She', he: 'הִיא', noteKu: 'e', noteEn: 'is', pronHe: 'hi', cgForm: 'תִּהְיֶה', cgFormPron: 'tihye' },
-            { ku: 'Em', en: 'We', he: 'אֲנַחְנוּ', noteKu: 'in', noteEn: 'are', pronHe: 'anaxnu', cgForm: 'נִהְיֶה', cgFormPron: 'nihye' },
-            { ku: 'Hûn', en: 'You (plural)', he: 'אַתֶּם / אַתֶּן', noteKu: 'in', noteEn: 'are', pronHe: 'atem / aten', cgForm: 'תִּהְיוּ', cgFormPron: 'tihyu' },
-            { ku: 'Ew (pirjimar)', en: 'They', he: 'הֵם / הֵן', noteKu: 'in', noteEn: 'are', pronHe: 'hem / hen', cgForm: 'יִהְיוּ', cgFormPron: 'yihyu' }
+            { ku: 'Ez', en: 'I', he: 'אֲנִי', pronHe: 'ani', cgForm: 'אֶהְיֶה', cgFormPron: 'ehye' },
+            { ku: 'Tu (nêr)', en: 'You (masculine singular)', he: 'אַתָּה', pronHe: 'ata', cgForm: 'תִּהְיֶה', cgFormPron: 'tihye' },
+            { ku: 'Tu (mê)', en: 'You (feminine singular)', he: 'אַתְּ', pronHe: 'at', cgForm: 'תִּהְיִי', cgFormPron: 'tihyi' },
+            { ku: 'Ew (nêr)', en: 'He', he: 'הוּא', pronHe: 'hu', cgForm: 'יִהְיֶה', cgFormPron: 'yihye' },
+            { ku: 'Ew (mê)', en: 'She', he: 'הִיא', pronHe: 'hi', cgForm: 'תִּהְיֶה', cgFormPron: 'tihye' },
+            { ku: 'Em', en: 'We', he: 'אֲנַחְנוּ', pronHe: 'anakhnu', cgForm: 'נִהְיֶה', cgFormPron: 'nihye' },
+            { ku: 'Hûn (pirjimar, nêr)', en: 'You (masculine plural)', he: 'אַתֶּם', pronHe: 'atem', cgForm: 'תִּהְיוּ', cgFormPron: 'tihyu' },
+            { ku: 'Hûn (pirjimar, mê)', en: 'You (feminine plural)', he: 'אַתֶּן', pronHe: 'aten', cgForm: 'תִּהְיֶינָה', cgFormPron: 'tihyena' },
+            { ku: 'Ew (pirjimar, nêr)', en: 'They (masculine)', he: 'הֵם', pronHe: 'hem', cgForm: 'יִהְיוּ', cgFormPron: 'yihyu' },
+            { ku: 'Ew (pirjimar, mê)', en: 'They (feminine)', he: 'הֵן', pronHe: 'hen', cgForm: 'תִּהְיֶינָה', cgFormPron: 'tihyena' }
         ];
 
         const bes2HomeworkData = [
