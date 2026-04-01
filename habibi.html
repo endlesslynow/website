@@ -33,7 +33,7 @@
     }
 
     .shell {
-      width: min(100%, 820px);
+      width: 820px;
     }
 
     .inputs {
@@ -62,17 +62,16 @@
       padding: 0 14px;
     }
 
+    input::placeholder {
+      color: #9ca3af;
+    }
+
     input[readonly] {
       background: var(--field-readonly);
       border-color: var(--field-readonly-border);
       color: var(--field-readonly-text);
     }
 
-    @media (max-width: 700px) {
-      .inputs {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
 <body>
@@ -80,17 +79,17 @@
     <div class="inputs">
       <label for="fromTime">
         Von
-        <input id="fromTime" type="time" step="60">
+        <input id="fromTime" type="text" inputmode="numeric" placeholder="12:00" maxlength="5" autocomplete="off" spellcheck="false">
       </label>
 
       <label for="untilTime">
         Bis
-        <input id="untilTime" type="time" step="60">
+        <input id="untilTime" type="text" inputmode="numeric" placeholder="15:00" maxlength="5" autocomplete="off" spellcheck="false">
       </label>
 
       <label for="newUntilTime">
         Neues Bis
-        <input id="newUntilTime" type="time" step="60" readonly>
+        <input id="newUntilTime" type="text" placeholder="16:00" maxlength="5" readonly>
       </label>
     </div>
   </main>
@@ -98,6 +97,16 @@
   <script>
     function calculateExtraTime(totalMinutes) {
       return Math.floor(totalMinutes / 45) * 15;
+    }
+
+    function formatTypedTime(value) {
+      var digits = value.replace(/\D/g, "").slice(0, 4);
+
+      if (digits.length < 3) {
+        return digits;
+      }
+
+      return digits.slice(0, 2) + ":" + digits.slice(2);
     }
 
     function timeToMinutes(value) {
@@ -110,6 +119,10 @@
       var minutes = Number(parts[1]);
 
       if (!Number.isInteger(hours) || !Number.isInteger(minutes)) {
+        return null;
+      }
+
+      if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
         return null;
       }
 
@@ -126,6 +139,11 @@
     var fromTimeInput = document.getElementById("fromTime");
     var untilTimeInput = document.getElementById("untilTime");
     var newUntilTimeInput = document.getElementById("newUntilTime");
+
+    function handleTimeTyping(event) {
+      event.target.value = formatTypedTime(event.target.value);
+      updateNewUntil();
+    }
 
     function updateNewUntil() {
       var fromMinutes = timeToMinutes(fromTimeInput.value);
@@ -145,8 +163,8 @@
       newUntilTimeInput.value = minutesToTime(newUntilMinutes);
     }
 
-    fromTimeInput.addEventListener("input", updateNewUntil);
-    untilTimeInput.addEventListener("input", updateNewUntil);
+    fromTimeInput.addEventListener("input", handleTimeTyping);
+    untilTimeInput.addEventListener("input", handleTimeTyping);
   </script>
 </body>
 </html>
