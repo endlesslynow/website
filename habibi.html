@@ -33,14 +33,13 @@
     }
 
     .shell {
-      width: 820px;
+      width: min(100%, 420px);
     }
 
     .inputs {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      align-items: end;
+      grid-template-columns: 1fr;
+      gap: 18px;
     }
 
     label {
@@ -52,14 +51,14 @@
 
     input {
       width: 100%;
-      height: 68px;
+      height: 76px;
       border-radius: 18px;
       border: 2px solid var(--border);
       background: var(--field);
       color: var(--ink);
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      padding: 0 14px;
+      padding: 0 18px;
     }
 
     input::placeholder {
@@ -72,6 +71,18 @@
       color: var(--field-readonly-text);
     }
 
+    .clear-button {
+      width: 100%;
+      height: 64px;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      background: #ffffff;
+      color: var(--label);
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body>
@@ -79,18 +90,20 @@
     <div class="inputs">
       <label for="fromTime">
         Von
-        <input id="fromTime" type="text" inputmode="numeric" placeholder="12:00" maxlength="5" autocomplete="off" spellcheck="false">
+        <input id="fromTime" type="text" inputmode="numeric" placeholder="--:--" maxlength="5" autocomplete="off" spellcheck="false" value="--:--">
       </label>
 
       <label for="untilTime">
         Bis
-        <input id="untilTime" type="text" inputmode="numeric" placeholder="15:00" maxlength="5" autocomplete="off" spellcheck="false">
+        <input id="untilTime" type="text" inputmode="numeric" placeholder="--:--" maxlength="5" autocomplete="off" spellcheck="false" value="--:--">
       </label>
 
       <label for="newUntilTime">
         Neues Bis
-        <input id="newUntilTime" type="text" placeholder="16:00" maxlength="5" readonly>
+        <input id="newUntilTime" type="text" placeholder="--:--" maxlength="5" readonly value="--:--">
       </label>
+
+      <button id="clearButton" class="clear-button" type="button">Clear</button>
     </div>
   </main>
 
@@ -101,6 +114,10 @@
 
     function formatTypedTime(value) {
       var digits = value.replace(/\D/g, "").slice(0, 4);
+
+      if (digits.length === 0) {
+        return "--:--";
+      }
 
       if (digits.length < 3) {
         return digits;
@@ -139,10 +156,30 @@
     var fromTimeInput = document.getElementById("fromTime");
     var untilTimeInput = document.getElementById("untilTime");
     var newUntilTimeInput = document.getElementById("newUntilTime");
+    var clearButton = document.getElementById("clearButton");
+
+    function handleTimeFocus(event) {
+      if (event.target.value === "--:--") {
+        event.target.value = "";
+      }
+    }
+
+    function handleTimeBlur(event) {
+      if (event.target.value === "") {
+        event.target.value = "--:--";
+      }
+
+      updateNewUntil();
+    }
 
     function handleTimeTyping(event) {
       event.target.value = formatTypedTime(event.target.value);
       updateNewUntil();
+
+      if (event.target === fromTimeInput && event.target.value.length === 5) {
+        untilTimeInput.focus();
+        untilTimeInput.select();
+      }
     }
 
     function updateNewUntil() {
@@ -150,7 +187,7 @@
       var untilMinutes = timeToMinutes(untilTimeInput.value);
 
       if (fromMinutes === null || untilMinutes === null) {
-        newUntilTimeInput.value = "";
+        newUntilTimeInput.value = "--:--";
         return;
       }
 
@@ -163,8 +200,19 @@
       newUntilTimeInput.value = minutesToTime(newUntilMinutes);
     }
 
+    function clearTimes() {
+      fromTimeInput.value = "--:--";
+      untilTimeInput.value = "--:--";
+      newUntilTimeInput.value = "--:--";
+    }
+
     fromTimeInput.addEventListener("input", handleTimeTyping);
+    fromTimeInput.addEventListener("focus", handleTimeFocus);
+    fromTimeInput.addEventListener("blur", handleTimeBlur);
     untilTimeInput.addEventListener("input", handleTimeTyping);
+    untilTimeInput.addEventListener("focus", handleTimeFocus);
+    untilTimeInput.addEventListener("blur", handleTimeBlur);
+    clearButton.addEventListener("click", clearTimes);
   </script>
 </body>
 </html>
