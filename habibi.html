@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Addition Calculator</title>
+  <style>
+    :root {
+      --bg: #ffe4ef;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --blue: #2563eb;
+      --blue-soft: #dbeafe;
+      --pink: #f472b6;
+      --pink-soft: #fce7f3;
+      --green: #16a34a;
+      --green-soft: #dcfce7;
+      --orange: #f97316;
+      --orange-dark: #ea580c;
+      --teal: #0f766e;
+      --teal-soft: #ccfbf1;
+      --yellow: #facc15;
+      --yellow-soft: #fef9c3;
+      --border: rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.75), transparent 35%),
+        linear-gradient(160deg, #ffd8ea 0%, #ffeec7 100%);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .shell {
+      width: min(100%, 840px);
+    }
+
+    .card {
+      background: var(--card);
+      border: 4px solid #f9a8d4;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #2563eb, #38bdf8);
+      color: white;
+      padding: 28px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      line-height: 1.1;
+    }
+
+    .subtitle,
+    .rule {
+      margin: 12px 0 0;
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+
+    .rule {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.95rem;
+    }
+
+    .content {
+      padding: 24px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .inputs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      font-weight: 700;
+      color: #6b21a8;
+    }
+
+    input {
+      width: 100%;
+      height: 52px;
+      border-radius: 18px;
+      border: 2px solid #d8b4fe;
+      background: #faf5ff;
+      font-size: 1rem;
+      padding: 0 14px;
+      color: var(--ink);
+    }
+
+    .panel {
+      border-radius: 24px;
+      border: 2px solid var(--border);
+      padding: 18px;
+      line-height: 1.5;
+    }
+
+    .preview {
+      background: var(--green-soft);
+      border-color: #86efac;
+      color: #14532d;
+    }
+
+    .examples {
+      background: var(--teal-soft);
+      border-color: #5eead4;
+      color: #134e4a;
+    }
+
+    .button {
+      border: 0;
+      border-radius: 18px;
+      background: var(--orange);
+      color: white;
+      height: 52px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .result-box {
+      border-radius: 24px;
+      padding: 18px;
+      text-align: center;
+      border: 2px solid transparent;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .result-box h2 {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .result-box p {
+      margin: 10px 0 0;
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .original {
+      background: var(--pink-soft);
+      border-color: #f9a8d4;
+      color: #831843;
+    }
+
+    .extra {
+      background: var(--blue-soft);
+      border-color: #93c5fd;
+      color: #1e3a8a;
+    }
+
+    .total {
+      background: var(--yellow-soft);
+      border-color: #facc15;
+      color: #713f12;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      .inputs,
+      .results {
+        grid-template-columns: 1fr;
+      }
+
+      .header,
+      .content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="card">
+      <header class="header">
+        <h1>Time Addition Calculator</h1>
+        <p class="subtitle">Enter hours and minutes, then calculate the original time, the extra time, and the total.</p>
+        <p class="rule">Rule used here: every 45 minutes adds 15 extra minutes.</p>
+      </header>
+
+      <div class="content">
+        <div class="inputs">
+          <label for="hours">
+            Hours
+            <input id="hours" type="number" min="0" placeholder="Enter hours">
+          </label>
+
+          <label for="minutes">
+            Minutes
+            <input id="minutes" type="number" min="0" placeholder="Enter minutes">
+          </label>
+        </div>
+
+        <section class="panel preview">
+          <strong>Total time</strong>
+          <div id="previewText">No total yet</div>
+        </section>
+
+        <button id="calculateButton" class="button" type="button">Calculate</button>
+
+        <section id="results" class="results hidden" aria-live="polite">
+          <article class="result-box original">
+            <h2>Original time</h2>
+            <p id="originalValue"></p>
+          </article>
+
+          <article class="result-box extra">
+            <h2>Extra time</h2>
+            <p id="extraValue"></p>
+          </article>
+
+          <article class="result-box total">
+            <h2>Total time</h2>
+            <p id="totalValue"></p>
+          </article>
+        </section>
+
+        <section class="panel examples">
+          Examples with this rule: 45 minutes becomes 1 hour. 1 hour and 30 minutes becomes 2 hours. 2 hours and 25 minutes becomes 3 hours and 10 minutes.
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function formatMinutes(totalMinutes) {
+      var safeMinutes = Math.max(0, Math.floor(totalMinutes));
+      var hours = Math.floor(safeMinutes / 60);
+      var minutes = safeMinutes % 60;
+
+      if (hours === 0) {
+        return minutes + " minute" + (minutes === 1 ? "" : "s");
+      }
+
+      if (minutes === 0) {
+        return hours + " hour" + (hours === 1 ? "" : "s");
+      }
+
+      return hours + " hour" + (hours === 1 ? "" : "s") + " and " + minutes + " minute" + (minutes === 1 ? "" : "s");
+    }
+
+    function calculateExtraTime(totalMinutes) {
+      return Math.floor(totalMinutes / 45) * 15;
+    }
+
+    function readInputValue(element) {
+      var parsed = Number(element.value);
+      return Number.isFinite(parsed) ? Math.max(0, parsed) : 0;
+    }
+
+    var hoursInput = document.getElementById("hours");
+    var minutesInput = document.getElementById("minutes");
+    var previewText = document.getElementById("previewText");
+    var results = document.getElementById("results");
+    var originalValue = document.getElementById("originalValue");
+    var extraValue = document.getElementById("extraValue");
+    var totalValue = document.getElementById("totalValue");
+    var calculateButton = document.getElementById("calculateButton");
+
+    function updatePreview() {
+      if (hoursInput.value === "" && minutesInput.value === "") {
+        previewText.textContent = "No total yet";
+        return;
+      }
+
+      var original = readInputValue(hoursInput) * 60 + readInputValue(minutesInput);
+      var total = original + calculateExtraTime(original);
+      previewText.textContent = formatMinutes(total);
+    }
+
+    function handleCalculate() {
+      var original = readInputValue(hoursInput) * 60 + readInputValue(minutesInput);
+      var extra = calculateExtraTime(original);
+      var total = original + extra;
+
+      originalValue.textContent = formatMinutes(original);
+      extraValue.textContent = formatMinutes(extra);
+      totalValue.textContent = formatMinutes(total);
+      results.classList.remove("hidden");
+    }
+
+    hoursInput.addEventListener("input", updatePreview);
+    minutesInput.addEventListener("input", updatePreview);
+    calculateButton.addEventListener("click", handleCalculate);
+  </script>
+</body>
+</html>
