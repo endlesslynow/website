@@ -441,7 +441,7 @@
                     <div class="font-bold w-20 flex-shrink-0 ${textColClass}">${item[spkKey]}:</div>
                     <div class="flex-grow">
                         <div class="text-xl sm:text-2xl font-bold mb-1 text-slate-900 dark:text-slate-100" dir="rtl">${item.he}</div>
-                        <div class="text-sm text-slate-500 dark:text-slate-400 font-mono mb-2">${item.trans}</div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400 font-mono mb-2 text-right">${item.trans}</div>
                         <div class="font-medium text-slate-800 dark:text-slate-200">${item[langKey]}</div>
                     </div>
                 </div>
@@ -458,8 +458,18 @@
             document.getElementById('b2-grammar-tbody').innerHTML = bes2GrammarData.map(item => `
                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition border-b border-slate-200 dark:border-slate-700">
                     <td class="p-3 border-r dark:border-slate-700 text-slate-800 dark:text-slate-200">${item[langKey]}</td>
-                    <td class="p-3 border-r dark:border-slate-700 font-bold text-xl text-right text-slate-800 dark:text-slate-100" dir="rtl" lang="he">${item.he}</td>
-                    <td class="p-3 font-bold text-xl text-right text-blue-700 dark:text-blue-300" dir="rtl" lang="he">${item.cgForm}</td>
+                    <td class="p-3 border-r dark:border-slate-700">
+                        <div class="flex flex-col items-end">
+                            <span class="font-bold text-xl text-slate-800 dark:text-slate-100" dir="rtl" lang="he">${item.he}</span>
+                            <span class="text-sm text-slate-400 dark:text-slate-500 font-mono">${item.pronHe}</span>
+                        </div>
+                    </td>
+                    <td class="p-3">
+                        <div class="flex flex-col items-end">
+                            <span class="font-bold text-xl text-blue-700 dark:text-blue-300" dir="rtl" lang="he">${item.cgForm}</span>
+                            <span class="text-sm text-slate-400 dark:text-slate-500 font-mono">${item.cgFormPron}</span>
+                        </div>
+                    </td>
                 </tr>
             `).join('');
 
@@ -1415,7 +1425,7 @@
                     <div class="font-bold w-20 flex-shrink-0 ${textColClass}">${item[spkKey]}:</div>
                     <div class="flex-grow">
                         <div class="text-xl sm:text-2xl font-bold mb-1 text-slate-900 dark:text-slate-100" dir="rtl">${item.he}</div>
-                        <div class="text-sm text-slate-500 dark:text-slate-400 font-mono mb-2">${item.trans}</div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400 font-mono mb-2 text-right">${item.trans}</div>
                         <div class="font-medium text-slate-800 dark:text-slate-200">${item[langKey]}</div>
                     </div>
                 </div>
@@ -1432,8 +1442,18 @@
             document.getElementById('b3-grammar-tbody').innerHTML = bes3GrammarData.map(item => `
                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition border-b border-slate-200 dark:border-slate-700">
                     <td class="p-3 border-r dark:border-slate-700 text-slate-800 dark:text-slate-200">${item[langKey]}</td>
-                    <td class="p-3 border-r dark:border-slate-700 font-bold text-xl text-right text-slate-800 dark:text-slate-100" dir="rtl" lang="he">${item.he}</td>
-                    <td class="p-3 font-bold text-xl text-right text-purple-700 dark:text-purple-300" dir="rtl" lang="he">${item.cgForm}</td>
+                    <td class="p-3 border-r dark:border-slate-700">
+                        <div class="flex flex-col items-end">
+                            <span class="font-bold text-xl text-slate-800 dark:text-slate-100" dir="rtl" lang="he">${item.he}</span>
+                            <span class="text-sm text-slate-400 dark:text-slate-500 font-mono">${item.pronHe}</span>
+                        </div>
+                    </td>
+                    <td class="p-3">
+                        <div class="flex flex-col items-end">
+                            <span class="font-bold text-xl text-purple-700 dark:text-purple-300" dir="rtl" lang="he">${item.cgForm}</span>
+                            <span class="text-sm text-slate-400 dark:text-slate-500 font-mono">${item.cgFormPron}</span>
+                        </div>
+                    </td>
                 </tr>
             `).join('');
 
@@ -1946,7 +1966,7 @@
                         <div class="font-bold w-20 flex-shrink-0 ${textColClass}">${item[spkKey]}:</div>
                         <div class="flex-grow">
                             <div class="text-xl sm:text-2xl font-bold mb-1 text-slate-900 dark:text-slate-100" dir="rtl">${item.he}</div>
-                            <div class="text-sm text-slate-500 dark:text-slate-400 font-mono mb-2">${item.trans}</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400 font-mono mb-2 text-right">${item.trans}</div>
                             <div class="font-medium text-slate-800 dark:text-slate-200">${item[langKey]}</div>
                         </div>
                     </div>
@@ -1964,8 +1984,18 @@
             document.getElementById('b4-grammar-tbody').innerHTML = bes4GrammarData.map(item => `
                 <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition border-b border-slate-200 dark:border-slate-700">
                     <td class="p-3 border-r dark:border-slate-700 text-slate-800 dark:text-slate-200">${item[langKey]}</td>
-                    <td class="p-3 border-r dark:border-slate-700 font-bold text-xl text-right text-slate-800 dark:text-slate-100" dir="rtl" lang="he">${item.he}</td>
-                    <td class="p-3 font-bold text-xl text-right text-amber-700 dark:text-amber-300" dir="rtl" lang="he">${item.cgForm}</td>
+                    <td class="p-3 border-r dark:border-slate-700">
+                        <div class="flex flex-col items-end">
+                            <span class="font-bold text-xl text-slate-800 dark:text-slate-100" dir="rtl" lang="he">${item.he}</span>
+                            <span class="text-sm text-slate-400 dark:text-slate-500 font-mono">${item.pronHe}</span>
+                        </div>
+                    </td>
+                    <td class="p-3">
+                        <div class="flex flex-col items-end">
+                            <span class="font-bold text-xl text-amber-700 dark:text-amber-300" dir="rtl" lang="he">${item.cgForm}</span>
+                            <span class="text-sm text-slate-400 dark:text-slate-500 font-mono">${item.cgFormPron}</span>
+                        </div>
+                    </td>
                 </tr>
             `).join('');
 
