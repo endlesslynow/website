@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4 Games - Pratîka Îbranî</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../ibrani.css">
+    <script>
+        tailwind.config = { darkMode: 'class' };
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body data-page="lesson4" class="ibrani-page theme-ch4 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans min-h-screen flex flex-col transition-colors duration-300">
+
+    <header class="ibrani-header text-white shadow-md transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 py-2 sm:py-4 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4">
+            <div class="text-center sm:text-left flex-1 flex items-center gap-4">
+                <div>
+                    <a href="../ibrani_index.html" class="block">
+                        <div class="bilingual-line title-bilingual text-2xl font-bold">
+                            <h1 data-i18n="title">Pratîka Îbranî</h1>
+                            <p class="hebrew-side">תרגול עברית</p>
+                        </div>
+                    </a>
+                    <p class="text-sm text-amber-200 dark:text-amber-300" data-i18n="toc_b4_title">Beş 4: Jimare</p>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center gap-4 w-full sm:w-auto mt-2 sm:mt-0">
+                <button onclick="toggleTheme()" class="p-2 rounded-full bg-amber-700 dark:bg-amber-800 hover:bg-amber-800 dark:hover:bg-amber-700 transition" aria-label="Toggle Dark Mode">
+                    <svg id="theme-icon-moon" class="w-6 h-6 hidden dark:block text-yellow-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-icon-sun" class="w-6 h-6 block dark:hidden text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" stroke-width="2"></circle><path stroke-linecap="round" stroke-width="2" d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"/></svg>
+                </button>
+
+                <div class="lang-shell flex items-center gap-3 px-4 py-2 rounded-xl">
+                    <span class="text-sm font-bold text-white" id="lbl-ku">KU</span>
+                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="lang-toggle" onclick="toggleLanguage()" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-300 dark:border-slate-500 appearance-none cursor-pointer transition-transform duration-200 ease-in-out z-10 top-0 left-0 checked:translate-x-6 checked:border-green-500"/>
+                        <label for="lang-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 dark:bg-slate-500 cursor-pointer transition-colors duration-200 ease-in-out"></label>
+                    </div>
+                    <span class="text-sm font-bold text-slate-300 dark:text-slate-400" id="lbl-en">EN</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl mx-auto w-full px-4 py-6 sm:py-8 space-y-8">
+        <div class="page-switch flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
+            <a href="../ibrani_index.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                <span data-i18n="course_home">Course Home</span>
+            </a>
+            <a href="./chapter-04.html" class="inline-flex items-center px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition font-semibold" data-i18n="nav_lesson">Lesson</a>
+            <a href="./chapter-04-games.html" aria-current="page" class="inline-flex items-center px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition font-semibold" data-i18n="nav_games">Games</a>
+        </div>
+
+        <section class="accent-shell p-4 sm:p-8 rounded-2xl">
+            <h3 class="text-2xl font-bold text-center text-slate-800 dark:text-slate-100 mb-6" data-i18n="toc_b1_p3">Lîstikên Bêjeyan</h3>
+
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
+                <button onclick="switchB4GameTab('wb')" id="btn-b4-game-wb" class="nav-btn px-6 py-3 rounded-full font-bold shadow-sm transition bg-amber-600 text-white dark:bg-amber-600" data-i18n="tab_wb">Peyv Çêkirin</button>
+                <button onclick="switchB4GameTab('cp')" id="btn-b4-game-cp" class="nav-btn px-6 py-3 rounded-full font-bold shadow-sm transition bg-white text-amber-600 border border-amber-600 hover:bg-amber-50 dark:bg-slate-800 dark:border-amber-500 dark:text-amber-400 dark:hover:bg-slate-700" data-i18n="tab_cp">Hevcotkirin</button>
+                <button onclick="switchB4GameTab('sb')" id="btn-b4-game-sb" class="nav-btn px-6 py-3 rounded-full font-bold shadow-sm transition bg-white text-amber-600 border border-amber-600 hover:bg-amber-50 dark:bg-slate-800 dark:border-amber-500 dark:text-amber-400 dark:hover:bg-slate-700" data-i18n="tab_sb">Hevok Çêkirin</button>
+                <button onclick="switchB4GameTab('cg')" id="btn-b4-game-cg" class="nav-btn px-6 py-3 rounded-full font-bold shadow-sm transition bg-white text-amber-600 border border-amber-600 hover:bg-amber-50 dark:bg-slate-800 dark:border-amber-500 dark:text-amber-400 dark:hover:bg-slate-700" data-i18n="tab_num">Jimare</button>
+                <button onclick="switchB4GameTab('gender')" id="btn-b4-game-gender" class="nav-btn px-6 py-3 rounded-full font-bold shadow-sm transition bg-white text-amber-600 border border-amber-600 hover:bg-amber-50 dark:bg-slate-800 dark:border-amber-500 dark:text-amber-400 dark:hover:bg-slate-700" data-i18n="tab_gender">Nêr / Mê</button>
+            </div>
+
+            <div id="b4-game-wb" class="bg-white dark:bg-slate-800 p-6 sm:p-10 rounded-2xl shadow border border-slate-200 dark:border-slate-700 max-w-2xl mx-auto text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-slate-800 dark:text-slate-100 mb-8" id="b4-wb-target-word"></div>
+                <div id="b4-wb-slots" class="flex flex-row-reverse justify-center flex-wrap gap-2 mb-8 min-h-[4rem]"></div>
+                <div id="b4-wb-msg" class="min-h-[2rem] font-bold text-lg mb-4 hidden text-center whitespace-normal break-words"></div>
+                <div id="b4-wb-pool" class="flex flex-wrap justify-center gap-2 mb-8 min-h-[4rem]"></div>
+                <div class="flex justify-center gap-4">
+                    <button onclick="checkB4WordBuilder()" id="b4-wb-check-btn" class="px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl shadow transition" data-i18n="btn_check">Kontrol bike</button>
+                    <button onclick="retryB4WordBuilder()" id="b4-wb-retry-btn" class="hidden px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow transition" data-i18n="btn_try_again">Dîsa Biceribîne</button>
+                    <button onclick="nextB4WordBuilder()" id="b4-wb-next-btn" class="hidden px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl shadow transition" data-i18n="btn_next">Pêşîn</button>
+                </div>
+            </div>
+
+            <div id="b4-game-cp" class="hidden bg-white dark:bg-slate-800 p-6 sm:p-10 rounded-2xl shadow border border-slate-200 dark:border-slate-700 max-w-3xl mx-auto">
+                <p class="text-slate-500 dark:text-slate-400 mb-6 font-medium text-center" data-i18n="inst_cp">Peyvên li milê çepê bi wergera wan a Îbranî ya li milê rastê ve girêbidin.</p>
+                <div id="b4-cp-msg" class="min-h-[2rem] font-bold text-lg text-center mb-4 hidden whitespace-normal break-words"></div>
+                <div class="grid grid-cols-2 gap-4 sm:gap-8">
+                    <div id="b4-cp-left" class="flex flex-col gap-3"></div>
+                    <div id="b4-cp-right" class="flex flex-col gap-3"></div>
+                </div>
+                <div id="b4-cp-win-panel" class="hidden text-center mt-8">
+                    <button onclick="initB4ConnectPairs()" class="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl shadow transition" data-i18n="quiz_play_again">Dîsa Bileyze</button>
+                </div>
+                <div id="b4-cp-next-round-panel" class="hidden text-center mt-8">
+                    <button onclick="nextB4CpRound()" id="b4-cp-next-round" class="px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl shadow transition" data-i18n="btn_next_round">Gera Pêşîn</button>
+                </div>
+            </div>
+
+            <div id="b4-game-sb" class="hidden bg-white dark:bg-slate-800 p-6 sm:p-10 rounded-2xl shadow border border-slate-200 dark:border-slate-700 max-w-2xl mx-auto text-center">
+                <p class="text-slate-500 dark:text-slate-400 mb-6 font-medium" data-i18n="inst_sb">Bêjeyan bitikînin da ku hevoka rast çêbikin.</p>
+                <div class="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-100 mb-8" id="b4-sb-target-sentence"></div>
+                <div id="b4-sb-slots" class="flex flex-row-reverse justify-center gap-4 mb-8 min-h-[4rem]"></div>
+                <div id="b4-sb-msg" class="font-bold text-lg mb-4 hidden text-center whitespace-normal break-words"></div>
+                <div id="b4-sb-pool" class="flex flex-wrap justify-center gap-4 mb-8 min-h-[4rem]"></div>
+                <div class="flex justify-center gap-4">
+                    <button onclick="checkB4SentenceBuilder()" id="b4-sb-check-btn" class="px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl shadow transition" data-i18n="btn_check">Kontrol bike</button>
+                    <button onclick="retryB4SentenceBuilder()" id="b4-sb-retry-btn" class="hidden px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow transition" data-i18n="btn_try_again">Dîsa Biceribîne</button>
+                    <button onclick="nextB4SentenceBuilder()" id="b4-sb-next-btn" class="hidden px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl shadow transition" data-i18n="btn_next">Pêşîn</button>
+                </div>
+            </div>
+
+            <div id="b4-game-cg" class="hidden relative overflow-hidden bg-amber-50 dark:bg-slate-800 p-6 sm:p-10 rounded-2xl shadow-xl border border-amber-200 dark:border-slate-700 max-w-6xl mx-auto text-center">
+                <p class="text-slate-600 dark:text-slate-300 mb-6 font-semibold" data-i18n="inst_num">Pêşî stûna nêr, paşê stûna mê ji jor heta jêr tije bike.</p>
+                <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem] items-start">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse border border-amber-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-slate-900/70">
+                            <thead class="bg-amber-100 dark:bg-slate-900/90">
+                                <tr>
+                                    <th id="b4-cg-head-translation" class="p-4 text-sm uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400" data-i18n="cg_col_translation">Cînavk</th>
+                                    <th id="b4-cg-head-hebrew" class="p-4 text-sm uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400" data-i18n="b4_th_nerman">Nêr (זָכָר)</th>
+                                    <th id="b4-cg-head-form" class="p-4 text-sm uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400" data-i18n="b4_th_jinan">Mê (נְקֵבָה)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="b4-cg-table-body" class="divide-y divide-slate-200 dark:divide-slate-700"></tbody>
+                        </table>
+                    </div>
+                    <aside class="lg:sticky lg:top-6">
+                        <div class="rounded-2xl border border-amber-200 dark:border-slate-700 bg-amber-50 dark:bg-slate-900 p-4 sm:p-5 shadow-lg">
+                            <div id="b4-cg-msg" class="min-h-[2rem] font-bold text-lg mb-4 hidden text-center whitespace-normal break-words"></div>
+                            <div id="b4-cg-options" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-3 mb-4"></div>
+                            <div class="flex justify-center">
+                                <button onclick="initB4ConjugationGame()" id="b4-cg-reset-btn" class="hidden px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl shadow transition" data-i18n="quiz_play_again">Dîsa Bileyze</button>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <div id="b4-game-gender" class="hidden bg-white dark:bg-slate-800 p-6 sm:p-10 rounded-2xl shadow border border-slate-200 dark:border-slate-700 max-w-2xl mx-auto text-center space-y-6"></div>
+        </section>
+    </main>
+
+    <script src="../ibrani_data.js"></script>
+    <script src="../ibrani_app.js"></script>
+</body>
+</html>

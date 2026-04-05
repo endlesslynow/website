@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4 - Pratîka Îbranî</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../ibrani.css">
+    <script>
+        tailwind.config = { darkMode: 'class' };
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body data-page="lesson4" class="ibrani-page theme-ch4 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans min-h-screen flex flex-col transition-colors duration-300">
+
+    <header class="ibrani-header text-white shadow-md transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 py-2 sm:py-4 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4">
+            <div class="text-center sm:text-left flex-1 flex items-center gap-4">
+                <div>
+                    <a href="../ibrani_index.html" class="block">
+                        <div class="bilingual-line title-bilingual text-2xl font-bold">
+                            <h1 data-i18n="title">Pratîka Îbranî</h1>
+                            <p class="hebrew-side">תרגול עברית</p>
+                        </div>
+                    </a>
+                    <p class="text-sm text-amber-200 dark:text-amber-300" data-i18n="toc_b4_title">Beş 4: Jimare</p>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center gap-4 w-full sm:w-auto mt-2 sm:mt-0">
+                <button onclick="toggleTheme()" class="p-2 rounded-full bg-amber-700 dark:bg-amber-800 hover:bg-amber-800 dark:hover:bg-amber-700 transition" aria-label="Toggle Dark Mode">
+                    <svg id="theme-icon-moon" class="w-6 h-6 hidden dark:block text-yellow-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-icon-sun" class="w-6 h-6 block dark:hidden text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" stroke-width="2"></circle><path stroke-linecap="round" stroke-width="2" d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"/></svg>
+                </button>
+
+                <div class="lang-shell flex items-center gap-3 px-4 py-2 rounded-xl">
+                    <span class="text-sm font-bold text-white" id="lbl-ku">KU</span>
+                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="lang-toggle" onclick="toggleLanguage()" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-300 dark:border-slate-500 appearance-none cursor-pointer transition-transform duration-200 ease-in-out z-10 top-0 left-0 checked:translate-x-6 checked:border-green-500"/>
+                        <label for="lang-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 dark:bg-slate-500 cursor-pointer transition-colors duration-200 ease-in-out"></label>
+                    </div>
+                    <span class="text-sm font-bold text-slate-300 dark:text-slate-400" id="lbl-en">EN</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl mx-auto w-full px-4 py-6 sm:py-8">
+        <div class="page-switch mb-8 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
+            <a href="../ibrani_index.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                <span data-i18n="course_home">Course Home</span>
+            </a>
+            <a href="./chapter-04.html" aria-current="page" class="inline-flex items-center px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition font-semibold" data-i18n="nav_lesson">Lesson</a>
+            <a href="./chapter-04-games.html" class="inline-flex items-center px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition font-semibold" data-i18n="nav_games">Games</a>
+        </div>
+
+        <div id="view-bes4" class="block space-y-8 animate-fade-in">
+            <h2 class="text-3xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 border-slate-200 dark:border-slate-700" data-i18n="b4_title">Beş 4: Jimare / מספרים</h2>
+
+            <h3 class="text-2xl font-semibold text-slate-800 dark:text-slate-100 mt-8" data-i18n="dialog_title">Diyalog / דיאלוג</h3>
+            <div id="b4-dialog-container" class="space-y-4"></div>
+
+            <h3 class="text-2xl font-semibold text-slate-800 dark:text-slate-100 mt-8" data-i18n="vocab_title">Bêjeyên Nû / אוצר מילים</h3>
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm overflow-x-auto border border-slate-200 dark:border-slate-700">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 dark:bg-slate-900 border-b-2 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+                            <th class="p-4 font-semibold" data-i18n="th_kurmanci">Kurmancî</th>
+                            <th class="p-4 font-semibold" data-i18n="th_ibrani">Îbranî</th>
+                            <th class="p-4 font-semibold" data-i18n="th_dengderi">Dengdêriya Îbranî</th>
+                        </tr>
+                    </thead>
+                    <tbody id="b4-words-tbody" class="divide-y divide-slate-200 dark:divide-slate-700"></tbody>
+                </table>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-slate-800 dark:text-slate-100 mt-8" data-i18n="b4_gram_title">Rêzimana Beşê 4</h3>
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 space-y-4 text-slate-700 dark:text-slate-300">
+                <p data-i18n="b4_gram_p1">Di Kurmancî de jimarên bingehîn: yek, du, sê, çar, pênc, şeş, heft, heşt, neh, deh.</p>
+                <p data-i18n="b4_gram_p2">Ji bîstê şûn de jimarên pêxatî bi «û» ve tên girêdan: bîst û yek (21), bîst û du (22), hwd.</p>
+                <p data-i18n="b4_gram_p3">Ji bo temenê: «Çend salên te hene?» Bersiv: «[jimare] salên min hene».</p>
+
+                <h4 class="font-bold mt-6 mb-2 text-slate-800 dark:text-slate-100" data-i18n="b4_gram_table_title">Jimare — Nêr û Mê</h4>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-700">
+                        <thead>
+                            <tr class="bg-slate-100 dark:bg-slate-900 border-b-2 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+                                <th class="p-3 font-semibold border-r dark:border-slate-700" data-i18n="th_subject_lang">Kurmancî</th>
+                                <th class="p-3 font-semibold border-r dark:border-slate-700 text-right" data-i18n="b4_th_nerman">Nêr (זָכָר)</th>
+                                <th class="p-3 font-semibold text-right" data-i18n="b4_th_jinan">Mê (נְקֵבָה)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="b4-grammar-tbody" class="divide-y divide-slate-200 dark:divide-slate-700"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-slate-800 dark:text-slate-100 mt-8" data-i18n="hw_title">Spartek / שיעורי בית</h3>
+            <div class="bg-amber-50 dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-amber-200 dark:border-slate-700 space-y-4">
+                <p class="font-bold text-amber-800 dark:text-amber-300" data-i18n="hw_instr_trans">Rêwerzên wergêranê: Van hevokên Kurmancî bo Îbranî wergerînin.</p>
+                <div id="b4-hw-summary" class="space-y-3"></div>
+                <ol class="space-y-4 text-slate-700 dark:text-slate-300" id="b4-hw-list"></ol>
+            </div>
+        </div>
+    </main>
+
+    <script src="../ibrani_data.js"></script>
+    <script src="../chapter-04-homework.js"></script>
+    <script src="../ibrani_app.js"></script>
+</body>
+</html>

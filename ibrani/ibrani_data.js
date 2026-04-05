@@ -6,9 +6,9 @@
                 toc_title: "Naverok",
                 toc_alpha_title: "Elîfbê",
                 toc_alpha_desc: "Tîp, Nikud, Flashcards û Lîstik",
-                toc_ch1_title: "Beş 1",
+                toc_ch1_title: "Beş 1: Bêje",
                 toc_ch1_desc: "Bêjeyên destpêkê û rêziman",
-                toc_ch2_title: "Beş 2",
+                toc_ch2_title: "Beş 2: Silav",
                 toc_ch2_desc: "Silav, nasîn û rêziman",
                 toc_b1_title: "Beş 1: Elîfbêya Îbranî",
                 toc_b1_p1: "Elîfbê",
@@ -104,6 +104,46 @@
                 b2_gram_table_title: "Cînavk û formên Îbranî yên lêkera «bûn»  |  Kurmancî: bûn  |  עברית: לִהְיוֹת",
                 hw_instr_trans: "Rêwerzên wergêranê: Van hevokên Kurmancî bo Îbranî wergerînin.",
 
+                // Chapter 3 texts
+                toc_b3_title: "Beş 3: Malbat",
+                toc_b3_desc: "Malbat, xwedîtî û rêziman",
+                b3_title: "Beş 3: Malbat / משפחה",
+                b3_gram_title: "Rêzimana Beşê 3: Xwedîtî û Lêkera «hebûn»",
+                b3_gram_p1: "Di Kurmancî de xwedîtî bi paşgirên cînavkên xwedîtiyê tê nîşandan: malbata min, malbata te, malbata wî/wê, malbata me, malbata we, malbata wan.",
+                b3_gram_p2: "Lêkera «hebûn» ji bo nîşandana hebûnê tê bikaranîn. «Birayên min hene» û «Xwişka min nîne» (neyînî).",
+                b3_gram_p3: "Di Îbranî de xwedîtî bi «שֶׁל» tê nîşandan: «הַמִּשְׁפָּחָה שֶׁלִּי» = malbata min.",
+                b3_gram_p4: "Rengdêrên «mezin» û «biçûk» di Kurmancî de ji bo temenî jî tên bikaranîn: «Ew ji min mezintir e».",
+                b3_gram_table_title: "Lêkera «hebûn» — Dema Niha  |  Kurmancî: hebûn  |  עברית: יֵשׁ לְ-",
+                b3_th_cinavk: "לְ (ji bo / bo)",
+                b3_th_shiyandin: "יֵשׁ לְ (hene)",
+                tab_poss: "Xwedîtî",
+                inst_poss: "Pêşî stûna לְ (pêşdêr), paşê stûna יֵשׁ לְ (hevoka tam) ji jor heta jêr tije bike.",
+                poss_phase_forms: "Naha stûna יֵשׁ לְ ye.",
+                poss_done: "Te tablo qedand.",
+                tab_gender: "Nêr / Mê",
+                inst_gender: "Ji bo her peyv û hevokê forma Îbranî ya rast hilbijêre.",
+                lbl_masc: "Mêr",
+                lbl_fem: "Jin",
+                gender_correct: "Rast e!",
+                gender_wrong: "Çewt e. Dîsa biceribîne.",
+                gender_done: "Te hemû qedand! Dîsa biceribîne.",
+
+                // Chapter 4 texts
+                toc_b4_title: "Beş 4: Jimare",
+                toc_b4_desc: "Jimare û temen",
+                b4_title: "Beş 4: Jimare / מספרים",
+                b4_gram_title: "Rêzimana Beşê 4: Jimarên Kurmancî û Temen",
+                b4_gram_p1: "Di Kurmancî de jimarên bingehîn: yek, du, sê, çar, pênc, şeş, heft, heşt, neh, deh. Ji dehê şûn de: yanzdeh (11) heya nozdeh (19), bîst (20).",
+                b4_gram_p2: "Ji bîstê şûn de jimarên pêxatî bi «û» ve tên girêdan: bîst û yek (21), bîst û du (22), hwd. Sed (100), hezar (1000).",
+                b4_gram_p3: "Ji bo temenê: «Çend salên te hene?» Bersiv: «[jimare] salên min hene». Di Îbranî de: «בֶּן כַּמָּה אַתָּה?» ji bo nêran û «בַּת כַּמָּה אַתְּ?» ji bo mêan.",
+                b4_gram_table_title: "Jimare — Nêr û Mê  |  זָכָר / נְקֵבָה",
+                b4_th_nerman: "Nêr (זָכָר)",
+                b4_th_jinan: "Mê (נְקֵבָה)",
+                tab_num: "Jimare",
+                inst_num: "Pêşî stûna nêr, paşê stûna mê ji jor heta jêr tije bike.",
+                num_phase_fem: "Naha stûna mê ye.",
+                num_done: "Te tablo qedand.",
+
                 // Table Headers
                 th_kurmanci: "Kurmancî",
                 th_ibrani: "Îbranî",
@@ -118,9 +158,9 @@
                 toc_title: "Table of Contents",
                 toc_alpha_title: "Alphabet",
                 toc_alpha_desc: "Letters, Nikud, Flashcards & Games",
-                toc_ch1_title: "Chapter 1",
+                toc_ch1_title: "Chapter 1: Words",
                 toc_ch1_desc: "First words and grammar",
-                toc_ch2_title: "Chapter 2",
+                toc_ch2_title: "Chapter 2: Greetings",
                 toc_ch2_desc: "Greetings, introductions, and grammar",
                 toc_b1_title: "Chapter 1: The Hebrew Alphabet",
                 toc_b1_p1: "Alphabet",
@@ -215,6 +255,46 @@
                 b2_gram_p4: "This makes it easier to see exactly which Hebrew form matches each pronoun.",
                 b2_gram_table_title: "Personal Pronouns and Hebrew Forms of \"to be\"  |  Kurmanji: bûn  |  Hebrew: לִהְיוֹת",
                 hw_instr_trans: "Translation instructions: Translate these Kurmanji sentences to Hebrew.",
+
+                // Chapter 3 texts
+                toc_b3_title: "Chapter 3: Family",
+                toc_b3_desc: "Family, possession, and grammar",
+                b3_title: "Chapter 3: Family / משפחה",
+                b3_gram_title: "Chapter 3 Grammar: Possession and \"to have\"",
+                b3_gram_p1: "In Kurmanji, possession is shown with possessive pronoun suffixes: my family, your family, his/her family, our family, your family, their family.",
+                b3_gram_p2: "The verb \"to have\" is used to show existence. \"I have brothers\" and \"I don't have a sister\" (negative).",
+                b3_gram_p3: "In Hebrew, possession is shown with \"שֶׁל\": \"הַמִּשְׁפָּחָה שֶׁלִּי\" = my family.",
+                b3_gram_p4: "The adjectives \"big\" and \"small\" are also used for age in Kurmanji: \"He is older than me\".",
+                b3_gram_table_title: "Verb \"to have\" — Present  |  Kurmanji: hebûn  |  Hebrew: יֵשׁ לְ-",
+                b3_th_cinavk: "לְ (to / for)",
+                b3_th_shiyandin: "יֵשׁ לְ (I have / you have…)",
+                tab_poss: "Possession",
+                inst_poss: "Fill the preposition column first, then the full phrase column from top to bottom.",
+                poss_phase_forms: "Now the full phrase column.",
+                poss_done: "You completed the table.",
+                tab_gender: "Male / Female",
+                inst_gender: "Choose the correct Hebrew form for each word or phrase.",
+                lbl_masc: "Male",
+                lbl_fem: "Female",
+                gender_correct: "Correct!",
+                gender_wrong: "Wrong. Try again.",
+                gender_done: "You finished them all! Play again.",
+
+                // Chapter 4 texts
+                toc_b4_title: "Chapter 4: Numbers",
+                toc_b4_desc: "Numbers and age",
+                b4_title: "Chapter 4: Numbers / מספרים",
+                b4_gram_title: "Chapter 4 Grammar: Numbers and Age",
+                b4_gram_p1: "In Kurmanji, the basic numbers are: one, two, three, four, five, six, seven, eight, nine, ten. From ten onwards: eleven (11) to nineteen (19), twenty (20).",
+                b4_gram_p2: "From twenty onwards, compound numbers are connected with «and»: twenty-one (21), twenty-two (22), etc. One hundred (100), one thousand (1000).",
+                b4_gram_p3: "For age: «How old are you?» Answer: «I am [number] years old». In Hebrew: «בֶּן כַּמָּה אַתָּה?» for males and «בַּת כַּמָּה אַתְּ?» for females.",
+                b4_gram_table_title: "Numbers — Masculine and Feminine  |  זָכָר / נְקֵבָה",
+                b4_th_nerman: "Masculine",
+                b4_th_jinan: "Feminine",
+                tab_num: "Numbers",
+                inst_num: "Fill the masculine column first, then the feminine column from top to bottom.",
+                num_phase_fem: "Now the feminine column.",
+                num_done: "You completed the table.",
 
                 // Table Headers
                 th_kurmanci: "Kurmanji",
@@ -388,4 +468,230 @@
             { ku: 'Ez li Kurdistanê dijim.', en: 'I live in Kurdistan.', words: ['אֲנִי', 'גָּרָה', 'בְּקוּרְדִיסְטָן'], trans: 'ani gara beKurdistan', speaker: 'fem' },
             { ku: 'Sibehxêr!', en: 'Good morning!', words: ['בֹּקֶר', 'טוֹב'], trans: 'boker tov' },
             { ku: 'Êvarxêr!', en: 'Good evening!', words: ['עֶרֶב', 'נָעִים'], trans: 'erev naîm' }
+        ];
+
+        // --- CHAPTER 3 DATA: Malbat / משפחה ---
+        const bes3DialogData = [
+            { spkKu: 'Leilê', spkEn: 'Leila', he: 'הַמִּשְׁפָּחָה שֶׁלְּךָ גְּדוֹלָה?', trans: 'Hamişpaxa şelxa gdola?', ku: 'Malbata te mezin e?', en: 'Is your family big?' },
+            { spkKu: 'Yosif', spkEn: 'Yosef', he: 'כֵּן, הַמִּשְׁפָּחָה שֶׁלִּי גְּדוֹלָה. יֵשׁ לִי שְׁנֵי אַחִים.', trans: 'Ken, hamişpaxa şeli gdola. Yeş li şney axim.', ku: 'Erê, malbata min mezin e. Du birayên min hene.', en: 'Yes, my family is big. I have two brothers.' },
+            { spkKu: 'Leilê', spkEn: 'Leila', he: 'יֵשׁ לְךָ גַּם אָחוֹת?', trans: 'Yeş lexa gam axot?', ku: 'Xwişka te jî heye?', en: 'Do you also have a sister?' },
+            { spkKu: 'Yosif', spkEn: 'Yosef', he: 'כֵּן, יֵשׁ לִי אַחַת. שְׁמָהּ מִרְיָם.', trans: 'Ken, yeş li axat. Şma Miryam.', ku: 'Erê, xwişkeke min heye. Navê wê Meryem e.', en: 'Yes, I have one. Her name is Meryem.' },
+            { spkKu: 'Leilê', spkEn: 'Leila', he: 'אֵיפֹה אִמָּא וְאַבָּא שֶׁלְּךָ?', trans: 'Eyfo ima ve\'aba şelxa?', ku: 'Dê û bavê te li ku ne?', en: 'Where are your mom and dad?' },
+            { spkKu: 'Yosif', spkEn: 'Yosef', he: 'הֵם בַּבַּיִת שֶׁלָּנוּ.', trans: 'Hem babayit şelanu.', ku: 'Ew li mala me ne.', en: 'They are at our house.' },
+            { spkKu: 'Leilê', spkEn: 'Leila', he: 'הָאָחוֹת שֶׁלְּךָ גְּדוֹלָה אוֹ קְטַנָּה?', trans: 'Ha\'axot şelxa gdola o ktana?', ku: 'Xwişka te mezin e an biçûk?', en: 'Is your sister older or younger?' },
+            { spkKu: 'Yosif', spkEn: 'Yosef', he: 'הִיא קְטַנָּה מִמֶּנִּי. שְׁמָהּ מִרְיָם.', trans: 'Hi ktana mimeni. Şma Miryam.', ku: 'Ew ji min biçûktir e. Navê wê Meryem e.', en: 'She is younger than me. Her name is Meryem.' },
+            { spkKu: 'Leilê', spkEn: 'Leila', he: 'הַמִּשְׁפָּחָה שֶׁלִּי גַּם גְּדוֹלָה. יֵשׁ לִי שָׁלוֹשׁ אֲחָיוֹת וּשְׁנֵי אַחִים.', trans: 'Hamişpaxa şeli gam gdola. Yeş li şaloş axayot uşney axim.', ku: 'Malbata min jî mezin e. Sê xwişk û du birayên min hene.', en: 'My family is also big. I have three sisters and two brothers.' },
+            { spkKu: 'Yosif', spkEn: 'Yosef', he: 'מִשְׁפָּחָה גְּדוֹלָה! אַתֶּם גָּרִים בְּבַיִת גָּדוֹל?', trans: 'Mişpaxa gdola! Atem garim bebayit gadol?', ku: 'Malbateke mezin! Hûn di mala mezin de dijîn?', en: 'A big family! Do you live in a big house?' }
+        ];
+
+        const bes3WordsData = [
+            { ku: 'malbat', en: 'family', he: 'מִשְׁפָּחָה', trans: 'mişpaxa' },
+            { ku: 'dê', en: 'mother', he: 'אֵם', trans: 'em' },
+            { ku: 'bav', en: 'father', he: 'אָב', trans: 'av' },
+            { ku: 'bira', en: 'brother', he: 'אָח', trans: 'ax' },
+            { ku: 'xwişk', en: 'sister', he: 'אָחוֹת', trans: 'axot' },
+            { ku: 'kur', en: 'son', he: 'בֵּן', trans: 'ben' },
+            { ku: 'keç', en: 'daughter', he: 'בַּת', trans: 'bat' },
+            { ku: 'mêr', en: 'husband', he: 'בַּעַל', trans: 'bayal' },
+            { ku: 'jin', en: 'wife', he: 'אִשָּׁה', trans: 'işa' },
+            { ku: 'bapîr', en: 'grandfather', he: 'סָבָא', trans: 'saba' },
+            { ku: 'dapîr', en: 'grandmother', he: 'סָבְתָא', trans: 'savta' },
+            { ku: 'ap', en: 'uncle', he: 'דּוֹד', trans: 'dod' },
+            { ku: 'xaltî', en: 'aunt', he: 'דּוֹדָה', trans: 'doda' },
+            { ku: 'mezin', en: 'big', he: 'גָּדוֹל', trans: 'gadol' },
+            { ku: 'biçûk', en: 'small', he: 'קָטָן', trans: 'katan' },
+            { ku: 'mal', en: 'house', he: 'בַּיִת', trans: 'bayit' },
+            { ku: 'hene', en: 'there is/are', he: 'יֵשׁ', trans: 'yeş' },
+            { ku: 'ew', en: 'he / she', he: 'הוּא / הִיא', trans: 'hu / hi' },
+            { ku: 'me', en: 'our', he: 'שֶׁלָּנוּ', trans: 'şelanu' },
+            { ku: 'du', en: 'two', he: 'שְׁנַיִם', trans: 'şnayim' }
+        ];
+
+        const bes3GrammarData = [
+            { ku: 'Ez',         en: 'to me / for me',            he: 'לִי',   pronHe: 'li',    cgForm: 'יֵשׁ לִי',   cgFormPron: 'yeş li'    },
+            { ku: 'Tu (Mêr)',   en: 'to you / for you (m.)',     he: 'לְךָ',  pronHe: 'lexa',  cgForm: 'יֵשׁ לְךָ',  cgFormPron: 'yeş lexa'  },
+            { ku: 'Tu (Jin)',   en: 'to you / for you (f.)',     he: 'לָךְ',  pronHe: 'lax',   cgForm: 'יֵשׁ לָךְ',  cgFormPron: 'yeş lax'   },
+            { ku: 'Ew (Mêr)',   en: 'to him / for him',          he: 'לוֹ',   pronHe: 'lo',    cgForm: 'יֵשׁ לוֹ',   cgFormPron: 'yeş lo'    },
+            { ku: 'Ew (Jin)',   en: 'to her / for her',          he: 'לָהּ',  pronHe: 'la',    cgForm: 'יֵשׁ לָהּ',  cgFormPron: 'yeş la'    },
+            { ku: 'Em',         en: 'to us / for us',            he: 'לָנוּ', pronHe: 'lanu',  cgForm: 'יֵשׁ לָנוּ', cgFormPron: 'yeş lanu'  },
+            { ku: 'Hûn (Mêr)', en: 'to you / for you pl. (m.)', he: 'לָכֶם', pronHe: 'laxem', cgForm: 'יֵשׁ לָכֶם', cgFormPron: 'yeş laxem' },
+            { ku: 'Hûn (Jin)', en: 'to you / for you pl. (f.)', he: 'לָכֶן', pronHe: 'laxen', cgForm: 'יֵשׁ לָכֶן', cgFormPron: 'yeş laxen' },
+            { ku: 'Ew (Mêr)',   en: 'to them / for them (m.)',  he: 'לָהֶם', pronHe: 'lahem', cgForm: 'יֵשׁ לָהֶם', cgFormPron: 'yeş lahem' },
+            { ku: 'Ew (Jin)',   en: 'to them / for them (f.)',  he: 'לָהֶן', pronHe: 'lahen', cgForm: 'יֵשׁ לָהֶן', cgFormPron: 'yeş lahen' }
+        ];
+
+        const bes3HomeworkData = [
+            { ku: 'Malbata min biçûk e.', en: 'My family is small.' },
+            { ku: 'Du birayên min hene.', en: 'I have two brothers.' },
+            { ku: 'Navê dêya min Fatma ye.', en: 'My mother\'s name is Fatma.' },
+            { ku: 'Xwişkeke min heye.', en: 'I have a sister.' },
+            { ku: 'Bavê min li mala me ye.', en: 'My father is at our house.' },
+            { ku: 'Bapîrê min mezin e.', en: 'My grandfather is old.' },
+            { ku: 'Kura min li dibistanê ye.', en: 'My son is at school.' },
+            { ku: 'Mêrê wê baş e.', en: 'Her husband is good.' },
+            { ku: 'Dapîra min li Kurdistanê ye.', en: 'My grandmother is in Kurdistan.' },
+            { ku: 'Apê min heval baş e.', en: 'My uncle is a good friend.' }
+        ];
+
+        const bes3GameWordsData = [
+            { ku: 'malbat', en: 'family', he: 'משפחה', trans: 'mişpaxa' },
+            { ku: 'dê', en: 'mother', he: 'אם', trans: 'em' },
+            { ku: 'bav', en: 'father', he: 'אב', trans: 'av' },
+            { ku: 'bira', en: 'brother', he: 'אח', trans: 'ax' },
+            { ku: 'xwişk', en: 'sister', he: 'אחות', trans: 'axot' },
+            { ku: 'kur', en: 'son', he: 'בן', trans: 'ben' },
+            { ku: 'keç', en: 'daughter', he: 'בת', trans: 'bat' },
+            { ku: 'mêr', en: 'husband', he: 'בעל', trans: 'bayal' },
+            { ku: 'jin', en: 'wife', he: 'אשה', trans: 'işa' },
+            { ku: 'bapîr', en: 'grandfather', he: 'סבא', trans: 'saba' },
+            { ku: 'dapîr', en: 'grandmother', he: 'סבתא', trans: 'savta' },
+            { ku: 'ap', en: 'uncle', he: 'דוד', trans: 'dod' },
+            { ku: 'xaltî', en: 'aunt', he: 'דודה', trans: 'doda' },
+            { ku: 'mezin', en: 'big', he: 'גדול', trans: 'gadol' },
+            { ku: 'biçûk', en: 'small', he: 'קטן', trans: 'katan' },
+            { ku: 'mal', en: 'house', he: 'בית', trans: 'bayit' },
+            { ku: 'hene', en: 'there is', he: 'יש', trans: 'yeş' },
+            { ku: 'me', en: 'our', he: 'שלנו', trans: 'şelanu' },
+            { ku: 'du', en: 'two', he: 'שניים', trans: 'şnayim' }
+        ];
+
+        const bes3GameSentencesData = [
+            { ku: 'Malbata min mezin e.', en: 'My family is big.', words: ['הַמִּשְׁפָּחָה', 'שֶׁלִּי', 'גְּדוֹלָה'], trans: 'hamişpaxa şeli gdola' },
+            { ku: 'Du birayên min hene.', en: 'I have two brothers.', words: ['יֵשׁ', 'לִי', 'שְׁנֵי', 'אַחִים'], trans: 'yeş li şney axim' },
+            { ku: 'Xwişkeke min heye.', en: 'I have a sister.', words: ['יֵשׁ', 'לִי', 'אָחוֹת'], trans: 'yeş li axot' },
+            { ku: 'Ew li mala me ne.', en: 'They are at our house.', words: ['הֵם', 'בַּבַּיִת', 'שֶׁלָּנוּ'], trans: 'hem babayit şelanu' },
+            { ku: 'Bapîrê min mezin e.', en: 'My grandfather is old.', words: ['הַסָּבָא', 'שֶׁלִּי', 'גָּדוֹל'], trans: 'hasaba şeli gadol' },
+            { ku: 'Navê wê Meryem e.', en: 'Her name is Meryem.', words: ['שְׁמָהּ', 'מִרְיָם'], trans: 'şma Miryam' },
+            { ku: 'Dê û bavê te li ku ne?', en: 'Where are your parents?', words: ['אֵיפֹה', 'אִמָּא', 'וְאַבָּא', 'שֶׁלְּךָ'], trans: 'eyfo ima ve\'aba şelxa' },
+            { ku: 'Malbateke mezin!', en: 'A big family!', words: ['מִשְׁפָּחָה', 'גְּדוֹלָה'], trans: 'mişpaxa gdola' }
+        ];
+
+        const bes3GenderGameData = [
+            { ku: 'Ez dixwazim', en: 'I want', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'אֲנִי רוֹצֶה', wrong: 'אֲנִי רוֹצָה', trans: 'ani rotse', wrongTrans: 'ani rotsa' },
+            { ku: 'Ez dixwazim', en: 'I want', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'אֲנִי רוֹצָה', wrong: 'אֲנִי רוֹצֶה', trans: 'ani rotsa', wrongTrans: 'ani rotse' },
+            { ku: 'Ez dijim', en: 'I live', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'אֲנִי גָּר', wrong: 'אֲנִי גָּרָה', trans: 'ani gar', wrongTrans: 'ani gara' },
+            { ku: 'Ez dijim', en: 'I live', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'אֲנִי גָּרָה', wrong: 'אֲנִי גָּר', trans: 'ani gara', wrongTrans: 'ani gar' },
+            { ku: 'Bi xêr hatî!', en: 'Welcome!', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'בָּרוּךְ הַבָּא', wrong: 'בְּרוּכָה הַבָּאָה', trans: 'barux haba', wrongTrans: "bruxa haba'a" },
+            { ku: 'Bi xêr hatî!', en: 'Welcome!', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'בְּרוּכָה הַבָּאָה', wrong: 'בָּרוּךְ הַבָּא', trans: "bruxa haba'a", wrongTrans: 'barux haba' },
+            { ku: 'Heval baş', en: 'Good friend', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'חָבֵר טוֹב', wrong: 'חֲבֵרָה טוֹבָה', trans: 'xaver tov', wrongTrans: 'xavera tova' },
+            { ku: 'Heval baş', en: 'Good friend', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'חֲבֵרָה טוֹבָה', wrong: 'חָבֵר טוֹב', trans: 'xavera tova', wrongTrans: 'xaver tov' },
+            { ku: 'Ew biçûk e', en: 'He / She is small', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'הוּא קָטָן', wrong: 'הִיא קְטַנָּה', trans: 'hu katan', wrongTrans: 'hi ktana' },
+            { ku: 'Ew biçûk e', en: 'He / She is small', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'הִיא קְטַנָּה', wrong: 'הוּא קָטָן', trans: 'hi ktana', wrongTrans: 'hu katan' },
+            { ku: 'Ew mezin e', en: 'He / She is big', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'הוּא גָּדוֹל', wrong: 'הִיא גְּדוֹלָה', trans: 'hu gadol', wrongTrans: 'hi gdola' },
+            { ku: 'Ew mezin e', en: 'He / She is big', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'הִיא גְּדוֹלָה', wrong: 'הוּא גָּדוֹל', trans: 'hi gdola', wrongTrans: 'hu gadol' },
+            { ku: 'Bira', en: 'Brother (male)', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'אָח', wrong: 'אָחוֹת', trans: 'ax', wrongTrans: 'axot' },
+            { ku: 'Xwişk', en: 'Sister (female)', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'אָחוֹת', wrong: 'אָח', trans: 'axot', wrongTrans: 'ax' },
+            { ku: 'Kur', en: 'Son (male)', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'בֵּן', wrong: 'בַּת', trans: 'ben', wrongTrans: 'bat' },
+            { ku: 'Keç', en: 'Daughter (female)', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'בַּת', wrong: 'בֵּן', trans: 'bat', wrongTrans: 'ben' }
+        ];
+
+        // ── CHAPTER 4: JIMARE / מספרים ──────────────────────────────────────────
+
+        const bes4DialogData = [
+            { spkKu: 'Muallim', spkEn: 'Teacher', he: 'הַיּוֹם נִלְמַד מִסְפָּרִים.', trans: 'Hayom nilmad misparim.', ku: 'Em ê îro jimaran fêr bibin.', en: 'We will learn numbers today.' },
+            { spkKu: 'Şagirt', spkEn: 'Student', he: 'אַחַת, שְׁתַּיִם, שָׁלוֹשׁ, אַרְבַּע, חָמֵשׁ.', trans: 'Axat, ştayim, şaloş, arba, xameş.', ku: 'Yek, du, sê, çar, pênc.', en: 'One, two, three, four, five.' },
+            { spkKu: 'Muallim', spkEn: 'Teacher', he: 'מְצוּיָּן! שֵׁשׁ, שֶׁבַע, שְׁמוֹנֶה, תֵּשַׁע, עֶשֶׂר.', trans: 'Mtsuyân! Şeş, şeva, şmone, teşa, eser.', ku: 'Baş e! Şeş, heft, heşt, neh, deh.', en: 'Good! Six, seven, eight, nine, ten.' },
+            { spkKu: 'Şagirt', spkEn: 'Student', he: 'בֶּן כַּמָּה אַתָּה?', trans: 'Ben kama ata?', ku: 'Çend salên te hene?', en: 'How old are you?' },
+            { spkKu: 'Muallim', spkEn: 'Teacher', he: 'אֲנִי בֶּן שְׁלוֹשִׁים וְחָמֵשׁ.', trans: 'Ani ben şloşim vexameş.', ku: 'Sî û pênc salên min hene.', en: 'I am thirty-five years old.' },
+            { spkKu: 'Şagirt', spkEn: 'Student', he: 'וַאֲנִי בֶּן עֶשְׂרִים וּשְׁתַּיִם.', trans: "Va'ani ben esrim uştayim.", ku: 'Û min bîst û du salên min hene.', en: 'And I am twenty-two years old.' },
+            { spkKu: 'Muallim', spkEn: 'Teacher', he: 'מְצוּיָּן! עַכְשָׁיו נִקְרָא מִסְפָּרִים. מֵאֶחָד עַד מֵאָה.', trans: "Mtsuyân! Axşav nikra misparim. Me'exad ad me'a.", ku: 'Baş e! Nû em ê jimaran bixwînin. Yek heya sed.', en: 'Good! Now we will read numbers. One to one hundred.' },
+            { spkKu: 'Şagirt', spkEn: 'Student', he: 'מוֹרֶה, אֵיךְ אוֹמְרִים אֶלֶף וְאֶחָד?', trans: 'More, ex omrim elef ve\'exad?', ku: 'Muallim, çawa em digotin «hezar û yek»?', en: 'Teacher, how do we say "one thousand and one"?' },
+            { spkKu: 'Muallim', spkEn: 'Teacher', he: '«אֶלֶף וְאֶחָד» — בְּעִבְרִית אוֹמְרִים אֶלֶף וְאֶחָד.', trans: "Elef ve'exad — be'ivrit omrim elef ve'exad.", ku: '«Hezar û yek» — di Îbranî de jî «אֶלֶף וְאֶחָד» e.', en: '"One thousand and one" — in Hebrew it\'s also "one thousand and one".' },
+            { spkKu: 'Şagirt', spkEn: 'Student', he: 'הֵבַנְתִּי! תּוֹדָה, מוֹרֶה. הַמִּסְפָּר הַמֶּועְדָּף עָלַי הוּא שֶׁבַע.', trans: 'Hevanti! Toda, more. Hamispar hame\'udaf alay hu şeva.', ku: 'Fam kir! Spas, muallim. Jimara bijare ya min heft e.', en: 'I understood! Thank you, teacher. My favorite number is seven.' }
+        ];
+
+        const bes4WordsData = [
+            { ku: 'yek',    en: 'one',          he: 'אֶחָד / אַחַת',    trans: 'exad / axat'     },
+            { ku: 'du',     en: 'two',          he: 'שְׁנַיִם / שְׁתַּיִם', trans: 'şnayim / ştayim' },
+            { ku: 'sê',     en: 'three',        he: 'שְׁלֹשָׁה / שָׁלֹשׁ', trans: 'şloşa / şaloş'   },
+            { ku: 'çar',    en: 'four',         he: 'אַרְבָּעָה / אַרְבַּע', trans: "arba'a / arba"    },
+            { ku: 'pênc',   en: 'five',         he: 'חֲמִשָּׁה / חָמֵשׁ', trans: 'xamiş / xameş'    },
+            { ku: 'şeş',    en: 'six',          he: 'שִׁשָּׁה / שֵׁשׁ',   trans: 'şiş / şeş'        },
+            { ku: 'heft',   en: 'seven',        he: 'שִׁבְעָה / שֶׁבַע',  trans: "şiv'a / şeva"     },
+            { ku: 'heşt',   en: 'eight',        he: 'שְׁמוֹנָה / שְׁמוֹנֶה', trans: 'şmona / şmone'  },
+            { ku: 'neh',    en: 'nine',         he: 'תִּשְׁעָה / תֵּשַׁע', trans: "tiş'a / teşa"    },
+            { ku: 'deh',    en: 'ten',          he: 'עֲשָׂרָה / עֶשֶׂר',  trans: 'asara / eser'     },
+            { ku: 'bîst',   en: 'twenty',       he: 'עֶשְׂרִים',          trans: 'esrîm'            },
+            { ku: 'sî',     en: 'thirty',       he: 'שְׁלֹשִׁים',         trans: 'şloşîm'           },
+            { ku: 'çil',    en: 'forty',        he: 'אַרְבָּעִים',         trans: "arba'îm"          },
+            { ku: 'pêncî',  en: 'fifty',        he: 'חֲמִשִּׁים',          trans: "xamiş'îm"         },
+            { ku: 'sed',    en: 'one hundred',  he: 'מֵאָה',              trans: 'mea'              },
+            { ku: 'hezar',  en: 'one thousand', he: 'אֶלֶף',              trans: 'elef'             },
+            { ku: 'çend',   en: 'how many',     he: 'כַּמָּה',             trans: 'kama'             },
+            { ku: 'sal',    en: 'year',         he: 'שָׁנָה',              trans: 'şana'             },
+            { ku: 'jimare', en: 'number',       he: 'מִסְפָּר',            trans: 'mispar'           },
+            { ku: 'muallim',en: 'teacher',      he: 'מוֹרֶה',              trans: 'more'             }
+        ];
+
+        const bes4GrammarData = [
+            { ku: 'yek',  en: 'one',   he: 'אֶחָד',     pronHe: 'exad',   cgForm: 'אַחַת',     cgFormPron: 'axat'   },
+            { ku: 'du',   en: 'two',   he: 'שְׁנַיִם',  pronHe: 'şnayim', cgForm: 'שְׁתַּיִם', cgFormPron: 'ştayim' },
+            { ku: 'sê',   en: 'three', he: 'שְׁלֹשָׁה', pronHe: 'şloşa',  cgForm: 'שָׁלֹשׁ',   cgFormPron: 'şaloş'  },
+            { ku: 'çar',  en: 'four',  he: 'אַרְבָּעָה', pronHe: "arba'a", cgForm: 'אַרְבַּע',  cgFormPron: 'arba'   },
+            { ku: 'pênc', en: 'five',  he: 'חֲמִשָּׁה',  pronHe: 'xamiş',  cgForm: 'חָמֵשׁ',   cgFormPron: 'xameş'  },
+            { ku: 'şeş',  en: 'six',   he: 'שִׁשָּׁה',   pronHe: 'şiş',    cgForm: 'שֵׁשׁ',    cgFormPron: 'şeş'    },
+            { ku: 'heft', en: 'seven', he: 'שִׁבְעָה',   pronHe: "şiv'a",  cgForm: 'שֶׁבַע',   cgFormPron: 'şeva'   },
+            { ku: 'heşt', en: 'eight', he: 'שְׁמוֹנָה',  pronHe: 'şmona',  cgForm: 'שְׁמוֹנֶה', cgFormPron: 'şmone' },
+            { ku: 'neh',  en: 'nine',  he: 'תִּשְׁעָה',  pronHe: "tiş'a",  cgForm: 'תֵּשַׁע',  cgFormPron: 'teşa'   },
+            { ku: 'deh',  en: 'ten',   he: 'עֲשָׂרָה',   pronHe: 'asara',  cgForm: 'עֶשֶׂר',   cgFormPron: 'eser'   }
+        ];
+
+        const bes4HomeworkData = [
+            { ku: 'Çend jimarên te hene?',      en: 'How many numbers do you have?' },
+            { ku: 'Bîst û yek kursî hene.',     en: 'There are twenty-one chairs.' },
+            { ku: 'Deh şagirt li dibistanê ne.', en: 'Ten students are at school.' },
+            { ku: 'Sê birayên min hene.',        en: 'I have three brothers.' },
+            { ku: 'Pênc û şeş yanzdeh e.',      en: 'Five and six is eleven.' },
+            { ku: 'Hezar û yek şevên Erebî.',   en: 'One thousand and one Arabian nights.' },
+            { ku: 'Min çil salên min hene.',     en: 'I am forty years old.' },
+            { ku: 'Çend sêv dixwazî?',          en: 'How many apples do you want?' },
+            { ku: 'Sed kîlo genim hene.',        en: 'There are one hundred kilos of wheat.' },
+            { ku: 'Navê wê jimareyê deh e.',    en: 'The name of that number is ten.' }
+        ];
+
+        const bes4GameWordsData = [
+            { ku: 'yek',    en: 'one',          he: 'אַחַת',    trans: 'axat'    },
+            { ku: 'du',     en: 'two',          he: 'שְׁתַּיִם', trans: 'ştayim'  },
+            { ku: 'sê',     en: 'three',        he: 'שָׁלֹשׁ',  trans: 'şaloş'   },
+            { ku: 'çar',    en: 'four',         he: 'אַרְבַּע',  trans: 'arba'    },
+            { ku: 'pênc',   en: 'five',         he: 'חָמֵשׁ',   trans: 'xameş'   },
+            { ku: 'şeş',    en: 'six',          he: 'שֵׁשׁ',    trans: 'şeş'     },
+            { ku: 'heft',   en: 'seven',        he: 'שֶׁבַע',   trans: 'şeva'    },
+            { ku: 'heşt',   en: 'eight',        he: 'שְׁמוֹנֶה', trans: 'şmone'  },
+            { ku: 'neh',    en: 'nine',         he: 'תֵּשַׁע',  trans: 'teşa'    },
+            { ku: 'deh',    en: 'ten',          he: 'עֶשֶׂר',   trans: 'eser'    },
+            { ku: 'bîst',   en: 'twenty',       he: 'עֶשְׂרִים', trans: 'esrîm'  },
+            { ku: 'sî',     en: 'thirty',       he: 'שְׁלֹשִׁים', trans: 'şloşîm'},
+            { ku: 'çil',    en: 'forty',        he: 'אַרְבָּעִים', trans: "arba'îm"},
+            { ku: 'pêncî',  en: 'fifty',        he: 'חֲמִשִּׁים', trans: "xamiş'îm"},
+            { ku: 'sed',    en: 'one hundred',  he: 'מֵאָה',    trans: 'mea'     },
+            { ku: 'hezar',  en: 'one thousand', he: 'אֶלֶף',    trans: 'elef'    },
+            { ku: 'çend',   en: 'how many',     he: 'כַּמָּה',   trans: 'kama'    },
+            { ku: 'sal',    en: 'year',         he: 'שָׁנָה',    trans: 'şana'    },
+            { ku: 'jimare', en: 'number',       he: 'מִסְפָּר',  trans: 'mispar'  },
+            { ku: 'muallim',en: 'teacher',      he: 'מוֹרֶה',    trans: 'more'    }
+        ];
+
+        const bes4GameSentencesData = [
+            { ku: 'Em ê îro jimaran fêr bibin.', en: 'We will learn numbers today.', words: ['הַיּוֹם', 'נִלְמַד', 'מִסְפָּרִים'], trans: 'Hayom nilmad misparim.' },
+            { ku: 'Yek, du, sê, çar, pênc.', en: 'One, two, three, four, five.', words: ['אַחַת', 'שְׁתַּיִם', 'שָׁלוֹשׁ', 'אַרְבַּע', 'חָמֵשׁ'], trans: 'Axat, ştayim, şaloş, arba, xameş.' },
+            { ku: 'Şeş, heft, heşt, neh, deh.', en: 'Six, seven, eight, nine, ten.', words: ['שֵׁשׁ', 'שֶׁבַע', 'שְׁמוֹנֶה', 'תֵּשַׁע', 'עֶשֶׂר'], trans: 'Şeş, şeva, şmone, teşa, eser.' },
+            { ku: 'Çend salên te hene?', en: 'How old are you?', words: ['בֶּן', 'כַּמָּה', 'אַתָּה'], trans: 'Ben kama ata?' },
+            { ku: 'Sî û pênc salên min hene.', en: 'I am thirty-five years old.', words: ['אֲנִי', 'בֶּן', 'שְׁלוֹשִׁים', 'וְחָמֵשׁ'], trans: 'Ani ben şloşim vexameş.' },
+            { ku: 'Fam kir! Spas, muallim.', en: 'I understood! Thank you, teacher.', words: ['הֵבַנְתִּי', 'תּוֹדָה', 'מוֹרֶה'], trans: 'Hevanti! Toda, more.' }
+        ];
+
+        const bes4GenderGameData = [
+            { ku: 'yek', en: 'one', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'אֶחָד', wrong: 'אַחַת', trans: 'exad', wrongTrans: 'axat' },
+            { ku: 'yek', en: 'one', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'אַחַת', wrong: 'אֶחָד', trans: 'axat', wrongTrans: 'exad' },
+            { ku: 'sê', en: 'three', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'שְׁלֹשָׁה', wrong: 'שָׁלֹשׁ', trans: 'şloşa', wrongTrans: 'şaloş' },
+            { ku: 'sê', en: 'three', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'שָׁלֹשׁ', wrong: 'שְׁלֹשָׁה', trans: 'şaloş', wrongTrans: 'şloşa' },
+            { ku: 'pênc', en: 'five', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'חֲמִשָּׁה', wrong: 'חָמֵשׁ', trans: 'xamiş', wrongTrans: 'xameş' },
+            { ku: 'pênc', en: 'five', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'חָמֵשׁ', wrong: 'חֲמִשָּׁה', trans: 'xameş', wrongTrans: 'xamiş' },
+            { ku: 'heft', en: 'seven', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'שִׁבְעָה', wrong: 'שֶׁבַע', trans: "şiv'a", wrongTrans: 'şeva' },
+            { ku: 'heft', en: 'seven', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'שֶׁבַע', wrong: 'שִׁבְעָה', trans: 'şeva', wrongTrans: "şiv'a" },
+            { ku: 'deh', en: 'ten', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'עֲשָׂרָה', wrong: 'עֶשֶׂר', trans: 'asara', wrongTrans: 'eser' },
+            { ku: 'deh', en: 'ten', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'עֶשֶׂר', wrong: 'עֲשָׂרָה', trans: 'eser', wrongTrans: 'asara' },
+            { ku: 'Çend salên te hene?', en: 'How old are you?', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'בֶּן כַּמָּה אַתָּה', wrong: 'בַּת כַּמָּה אַתְּ', trans: 'ben kama ata', wrongTrans: 'bat kama at' },
+            { ku: 'Çend salên te hene?', en: 'How old are you?', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'בַּת כַּמָּה אַתְּ', wrong: 'בֶּן כַּמָּה אַתָּה', trans: 'bat kama at', wrongTrans: 'ben kama ata' }
         ];
