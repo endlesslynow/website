@@ -116,6 +116,55 @@
         let b4GenderIndex = 0;
         let b4GenderScore = 0;
 
+        // ── B5 State ──────────────────────────────────────────────────────
+        let b5CurrentGameTab = 'wb';
+        let b5WbData = [];
+        let b5WbOrder = [];
+        let b5WbIndex = 0;
+        let b5WbCurrentSlots = [];
+        let b5WbPool = [];
+
+        let b5CpRound = 1;
+        let b5CpOrder = [];
+        let b5CpLeftPairs = [];
+        let b5CpRightPairs = [];
+        let b5CpSelectedLeft = null;
+        let b5CpSelectedRight = null;
+        let b5CpMatches = 0;
+
+        let b5SbOrder = [];
+        let b5SbIndex = 0;
+        let b5SbCurrentSlots = [];
+        let b5SbPool = [];
+
+        let b5TimeOrder = [];
+        let b5TimeIndex = 0;
+        let b5TimeScore = 0;
+
+        // ── B6 State ──────────────────────────────────────────────────────
+        let b6CurrentGameTab = 'wb';
+        let b6WbData = [];
+        let b6WbOrder = [];
+        let b6WbIndex = 0;
+        let b6WbCurrentSlots = [];
+        let b6WbPool = [];
+
+        let b6CpRound = 1;
+        let b6CpOrder = [];
+        let b6CpLeftPairs = [];
+        let b6CpRightPairs = [];
+        let b6CpSelectedLeft = null;
+        let b6CpSelectedRight = null;
+        let b6CpMatches = 0;
+
+        let b6SbOrder = [];
+        let b6SbIndex = 0;
+        let b6SbCurrentSlots = [];
+        let b6SbPool = [];
+
+        let b6EatCgState = { phase: 'pronoun', index: 0, options: [] };
+        let b6DrinkCgState = { phase: 'pronoun', index: 0, options: [] };
+
         function getPageMode() {
             return document.body?.dataset.page || 'course';
         }
@@ -196,6 +245,24 @@
                 }
                 if (hasElement('btn-b4-game-wb')) {
                     switchB4GameTab(b4CurrentGameTab);
+                }
+                return;
+            }
+            if (pageMode === 'lesson5') {
+                if (hasElement('b5-dialog-container')) {
+                    renderBes5();
+                }
+                if (hasElement('btn-b5-game-wb')) {
+                    switchB5GameTab(b5CurrentGameTab);
+                }
+                return;
+            }
+            if (pageMode === 'lesson6') {
+                if (hasElement('b6-dialog-container')) {
+                    renderBes6();
+                }
+                if (hasElement('btn-b6-game-wb')) {
+                    switchB6GameTab(b6CurrentGameTab);
                 }
                 return;
             }
@@ -2491,6 +2558,916 @@
                 msgEl.classList.remove('hidden');
             }
         }
+
+        // ── CHAPTER 5 FUNCTIONS ───────────────────────────────────────────
+
+        function renderBes5() {
+            const langKey = currentLang === 'ku' ? 'ku' : 'en';
+            const spkKey = currentLang === 'ku' ? 'spkKu' : 'spkEn';
+
+            document.getElementById('b5-dialog-container').innerHTML = bes5DialogData.map((item, idx) => {
+                const isFirst = idx % 2 === 0;
+                const bgClass = isFirst ? 'bg-teal-50 dark:bg-teal-900/20' : 'bg-slate-50 dark:bg-slate-800/40';
+                const textColClass = isFirst ? 'text-teal-700 dark:text-teal-300' : 'text-slate-600 dark:text-slate-400';
+                return `
+                    <div class="flex flex-col sm:flex-row gap-2 sm:gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-700 ${bgClass}">
+                        <div class="font-bold w-20 flex-shrink-0 ${textColClass}">${item[spkKey]}:</div>
+                        <div class="flex-grow">
+                            <div class="text-xl sm:text-2xl font-bold mb-1 text-slate-900 dark:text-slate-100" dir="rtl">${item.he}</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400 font-mono mb-2 text-right">${item.trans}</div>
+                            <div class="font-medium text-slate-800 dark:text-slate-200">${item[langKey]}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('b5-words-tbody').innerHTML = bes5WordsData.map(item => `
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition border-b border-slate-100 dark:border-slate-700">
+                    <td class="p-4 font-medium text-slate-800 dark:text-slate-200">${item[langKey]}</td>
+                    <td class="p-4 font-bold text-2xl text-slate-800 dark:text-slate-100" dir="rtl">${item.he}</td>
+                    <td class="p-4 text-teal-600 dark:text-teal-400 font-mono">${item.trans}</td>
+                </tr>
+            `).join('');
+
+            document.getElementById('b5-grammar-tbody').innerHTML = bes5GrammarData.map(item => `
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition border-b border-slate-200 dark:border-slate-700">
+                    <td class="p-3 text-slate-800 dark:text-slate-200">${item[langKey]}</td>
+                    <td class="p-3">
+                        <div class="flex flex-col items-end">
+                            <span class="font-bold text-xl text-slate-800 dark:text-slate-100" dir="rtl" lang="he">${item.he}</span>
+                            <span class="font-semibold text-lg text-teal-700 dark:text-teal-300 mt-1" dir="rtl" lang="he">${item.cgForm}</span>
+                        </div>
+                    </td>
+                    <td class="p-3 text-teal-600 dark:text-teal-400 font-mono">
+                        <div>${item.pronHe}</div>
+                        <div class="mt-1 text-slate-500 dark:text-slate-400">${item.cgFormPron}</div>
+                    </td>
+                </tr>
+            `).join('');
+
+            if (typeof renderBes5Homework === 'function') {
+                renderBes5Homework();
+                return;
+            }
+
+            document.getElementById('b5-hw-list').innerHTML = bes5HomeworkData.map(item => `
+                <li class="pl-2">${item[langKey]}</li>
+            `).join('');
+        }
+
+        function switchB5GameTab(tabId) {
+            b5CurrentGameTab = tabId;
+            const baseClass = "nav-btn px-6 py-3 rounded-full font-bold shadow-sm transition";
+            const activeClass = "bg-teal-600 text-white dark:bg-teal-600";
+            const inactiveClass = "bg-white text-teal-700 border border-teal-600 hover:bg-teal-50 dark:bg-slate-800 dark:border-teal-500 dark:text-teal-300 dark:hover:bg-slate-700";
+
+            ['wb', 'cp', 'sb', 'time'].forEach(id => {
+                const btn = document.getElementById('btn-b5-game-' + id);
+                if (btn) btn.className = baseClass + " " + (tabId === id ? activeClass : inactiveClass);
+                const panel = document.getElementById('b5-game-' + id);
+                if (panel) panel.classList.add('hidden');
+            });
+
+            document.getElementById('b5-game-' + tabId).classList.remove('hidden');
+
+            if (tabId === 'wb') initB5WordBuilder();
+            if (tabId === 'cp') initB5ConnectPairs();
+            if (tabId === 'sb') initB5SentenceBuilder();
+            if (tabId === 'time') initB5TimeGame();
+        }
+
+        function initB5WordBuilder() {
+            b5WbData = bes5GameWordsData;
+            if (!b5WbOrder.length || b5WbIndex >= b5WbOrder.length) {
+                b5WbOrder = getShuffledOrder(b5WbData.length);
+                b5WbIndex = 0;
+            }
+
+            const item = b5WbData[b5WbOrder[b5WbIndex]];
+            const targetLetters = getHebrewTiles(item.he);
+
+            document.getElementById('b5-wb-target-word').innerText = item[currentLang];
+            document.getElementById('b5-wb-msg').classList.add('hidden');
+            setButtonVisibility('b5-wb-check-btn', true);
+            setButtonVisibility('b5-wb-retry-btn', false);
+            setButtonVisibility('b5-wb-next-btn', false);
+
+            b5WbCurrentSlots = Array(targetLetters.length).fill(null);
+            b5WbPool = shuffleArray(targetLetters);
+
+            renderB5WordBuilder();
+        }
+
+        function renderB5WordBuilder() {
+            const item = b5WbData[b5WbOrder[b5WbIndex]];
+            const heWords = item.he.split(/\s+/);
+            const wordStyles = [
+                { filled: 'border-teal-500 bg-teal-50 dark:bg-teal-900/60 dark:border-teal-400 cursor-pointer', empty: 'border-teal-300 dark:border-teal-700' },
+                { filled: 'border-blue-500 bg-blue-50 dark:bg-blue-900/60 dark:border-blue-400 cursor-pointer', empty: 'border-blue-300 dark:border-blue-700' },
+            ];
+
+            const slotsContainer = document.getElementById('b5-wb-slots');
+            let slotsHtml = '';
+            let slotIndex = 0;
+            slotsHtml += '<div class="w-full space-y-2">';
+            for (let wordIdx = 0; wordIdx < heWords.length; wordIdx++) {
+                const wordLetterCount = getHebrewTiles(heWords[wordIdx]).length;
+                const style = wordStyles[wordIdx % wordStyles.length];
+                slotsHtml += '<div class="flex flex-row-reverse justify-start gap-2">';
+                for (let l = 0; l < wordLetterCount; l++) {
+                    const letter = b5WbCurrentSlots[slotIndex];
+                    const i = slotIndex;
+                    slotsHtml += `<div class="w-12 h-14 sm:w-16 sm:h-20 border-2 border-dashed ${letter ? style.filled : style.empty} rounded-xl flex items-center justify-center text-3xl font-bold text-slate-800 dark:text-slate-100 shadow-inner" onclick="if('${letter}' !== 'null') removeB5LetterFromSlot(${i})">${letter || ''}</div>`;
+                    slotIndex++;
+                }
+                slotsHtml += '</div>';
+            }
+            slotsHtml += '</div>';
+            slotsContainer.innerHTML = slotsHtml;
+
+            document.getElementById('b5-wb-pool').innerHTML = b5WbPool.map((letter, i) => `
+                <button onclick="addB5LetterToSlot(${i})" class="w-12 h-14 sm:w-16 sm:h-20 bg-white dark:bg-slate-700 border-2 border-slate-200 dark:border-slate-600 rounded-xl flex items-center justify-center text-3xl font-bold text-teal-700 dark:text-teal-300 shadow hover:bg-slate-50 hover:-translate-y-1 transition transform">
+                    ${letter}
+                </button>
+            `).join('');
+        }
+
+        function addB5LetterToSlot(poolIndex) {
+            const letter = b5WbPool[poolIndex];
+            const emptySlotIndex = b5WbCurrentSlots.indexOf(null);
+            if (emptySlotIndex !== -1) {
+                b5WbCurrentSlots[emptySlotIndex] = letter;
+                b5WbPool.splice(poolIndex, 1);
+                renderB5WordBuilder();
+            }
+        }
+
+        function removeB5LetterFromSlot(slotIndex) {
+            const letter = b5WbCurrentSlots[slotIndex];
+            if (letter) {
+                b5WbPool.push(letter);
+                b5WbCurrentSlots[slotIndex] = null;
+                renderB5WordBuilder();
+            }
+        }
+
+        function checkB5WordBuilder() {
+            const item = b5WbData[b5WbOrder[b5WbIndex]];
+            const targetLetters = getHebrewTiles(item.he);
+            const isComplete = b5WbCurrentSlots.every(s => s !== null);
+            if (!isComplete) return;
+            const isCorrect = b5WbCurrentSlots.join('') === targetLetters.join('');
+            if (isCorrect) {
+                showMessageWithPronunciation('b5-wb-msg', t('msg_correct'), item.trans, true);
+                setButtonVisibility('b5-wb-check-btn', false);
+                setButtonVisibility('b5-wb-retry-btn', false);
+                setButtonVisibility('b5-wb-next-btn', true);
+            } else {
+                showMessageWithPronunciation('b5-wb-msg', withCorrectAnswer(item.he), item.trans, false);
+                setButtonVisibility('b5-wb-check-btn', false);
+                setButtonVisibility('b5-wb-retry-btn', true);
+                setButtonVisibility('b5-wb-next-btn', false);
+            }
+        }
+
+        function retryB5WordBuilder() { initB5WordBuilder(); }
+        function nextB5WordBuilder() { b5WbIndex++; initB5WordBuilder(); }
+
+        function initB5ConnectPairs() {
+            b5CpRound = 1;
+            b5CpOrder = getShuffledOrder(bes5WordsData.length);
+            loadB5CpRound();
+        }
+
+        function nextB5CpRound() { b5CpRound++; loadB5CpRound(); }
+
+        function loadB5CpRound() {
+            b5CpMatches = 0;
+            b5CpSelectedLeft = null;
+            b5CpSelectedRight = null;
+            document.getElementById('b5-cp-msg').classList.add('hidden');
+            document.getElementById('b5-cp-win-panel').classList.add('hidden');
+            document.getElementById('b5-cp-next-round-panel').classList.add('hidden');
+
+            const startIdx = (b5CpRound - 1) * 10;
+            const endIdx = startIdx + 10;
+            const roundWords = b5CpOrder
+                .slice(startIdx, endIdx)
+                .map(index => ({ ...bes5WordsData[index], matched: false, matchText: '' }));
+
+            b5CpLeftPairs = shuffleArray(roundWords);
+            b5CpRightPairs = shuffleArray(roundWords);
+            renderB5ConnectPairs();
+        }
+
+        function renderB5ConnectPairs() {
+            const leftContainer = document.getElementById('b5-cp-left');
+            const rightContainer = document.getElementById('b5-cp-right');
+
+            leftContainer.innerHTML = b5CpLeftPairs.map((item, i) => {
+                const isMatched = item.matched;
+                const isSelected = b5CpSelectedLeft === i;
+                return `<button onclick="selectB5Pair('left',${i})" class="pair-btn w-full p-3 sm:p-4 rounded-xl border-2 font-bold text-lg transition ${isMatched ? 'matched' : isSelected ? 'selected' : 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 hover:border-teal-400'}" ${isMatched ? 'disabled' : ''}>${isMatched ? item.matchText : item[currentLang]}</button>`;
+            }).join('');
+
+            rightContainer.innerHTML = b5CpRightPairs.map((item, i) => {
+                const isMatched = item.matched;
+                const isSelected = b5CpSelectedRight === i;
+                return `<button onclick="selectB5Pair('right',${i})" dir="rtl" class="pair-btn w-full p-3 sm:p-4 rounded-xl border-2 font-bold text-xl transition ${isMatched ? 'matched' : isSelected ? 'selected' : 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 hover:border-teal-400'}" ${isMatched ? 'disabled' : ''}>${isMatched ? item.matchText : item.he}</button>`;
+            }).join('');
+        }
+
+        function selectB5Pair(side, idx) {
+            if (side === 'left') {
+                if (b5CpLeftPairs[idx].matched) return;
+                b5CpSelectedLeft = idx;
+            } else {
+                if (b5CpRightPairs[idx].matched) return;
+                b5CpSelectedRight = idx;
+            }
+            renderB5ConnectPairs();
+            if (b5CpSelectedLeft !== null && b5CpSelectedRight !== null) checkB5PairMatch();
+        }
+
+        function checkB5PairMatch() {
+            const left = b5CpLeftPairs[b5CpSelectedLeft];
+            const right = b5CpRightPairs[b5CpSelectedRight];
+            const isMatch = left.he === right.he;
+
+            if (isMatch) {
+                left.matched = true;
+                right.matched = true;
+                left.matchText = `${left[currentLang]} = ${left.he}`;
+                right.matchText = left.matchText;
+                b5CpMatches++;
+                showMessage('b5-cp-msg', t('msg_correct'), true);
+            } else {
+                showMessage('b5-cp-msg', t('msg_wrong'), false);
+                const li = b5CpSelectedLeft;
+                const ri = b5CpSelectedRight;
+                b5CpLeftPairs[li].error = true;
+                b5CpRightPairs[ri].error = true;
+                renderB5ConnectPairs();
+                setTimeout(() => {
+                    b5CpLeftPairs[li].error = false;
+                    b5CpRightPairs[ri].error = false;
+                    b5CpSelectedLeft = null;
+                    b5CpSelectedRight = null;
+                    renderB5ConnectPairs();
+                }, 700);
+                return;
+            }
+
+            b5CpSelectedLeft = null;
+            b5CpSelectedRight = null;
+            renderB5ConnectPairs();
+
+            if (b5CpMatches >= b5CpLeftPairs.length) {
+                const hasMore = b5CpRound * 10 < b5CpOrder.length;
+                if (hasMore) {
+                    showMessage('b5-cp-msg', t('msg_round_win').replace('{round}', b5CpRound), true);
+                    document.getElementById('b5-cp-next-round-panel').classList.remove('hidden');
+                } else {
+                    showMessage('b5-cp-msg', t('msg_win'), true);
+                    document.getElementById('b5-cp-win-panel').classList.remove('hidden');
+                }
+            }
+        }
+
+        function initB5SentenceBuilder() {
+            if (!b5SbOrder.length || b5SbIndex >= b5SbOrder.length) {
+                b5SbOrder = getShuffledOrder(bes5GameSentencesData.length);
+                b5SbIndex = 0;
+            }
+            const item = bes5GameSentencesData[b5SbOrder[b5SbIndex]];
+            document.getElementById('b5-sb-target-sentence').innerText = item[currentLang];
+            document.getElementById('b5-sb-msg').classList.add('hidden');
+            setButtonVisibility('b5-sb-check-btn', true);
+            setButtonVisibility('b5-sb-retry-btn', false);
+            setButtonVisibility('b5-sb-next-btn', false);
+
+            b5SbCurrentSlots = Array(item.words.length).fill(null);
+            b5SbPool = shuffleArray([...item.words]);
+            renderB5SentenceBuilder();
+        }
+
+        function renderB5SentenceBuilder() {
+            document.getElementById('b5-sb-slots').innerHTML = b5SbCurrentSlots.map((word, i) =>
+                `<div class="min-w-[4rem] h-14 border-2 border-dashed ${word ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/60 dark:border-teal-400 cursor-pointer' : 'border-teal-300 dark:border-teal-700'} rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 px-3" dir="rtl" onclick="if('${word}' !== 'null') removeB5WordFromSlot(${i})">${word || ''}</div>`
+            ).join('');
+
+            document.getElementById('b5-sb-pool').innerHTML = b5SbPool.map((word, i) =>
+                `<button onclick="addB5WordToSlot(${i})" dir="rtl" class="min-w-[4rem] h-14 bg-white dark:bg-slate-700 border-2 border-slate-200 dark:border-slate-600 rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold text-teal-700 dark:text-teal-300 px-3 shadow hover:bg-slate-50 hover:-translate-y-1 transition transform">${word}</button>`
+            ).join('');
+        }
+
+        function addB5WordToSlot(poolIndex) {
+            const word = b5SbPool[poolIndex];
+            const emptySlotIndex = b5SbCurrentSlots.indexOf(null);
+            if (emptySlotIndex !== -1) {
+                b5SbCurrentSlots[emptySlotIndex] = word;
+                b5SbPool.splice(poolIndex, 1);
+                renderB5SentenceBuilder();
+            }
+        }
+
+        function removeB5WordFromSlot(slotIndex) {
+            const word = b5SbCurrentSlots[slotIndex];
+            if (word) {
+                b5SbPool.push(word);
+                b5SbCurrentSlots[slotIndex] = null;
+                renderB5SentenceBuilder();
+            }
+        }
+
+        function checkB5SentenceBuilder() {
+            const item = bes5GameSentencesData[b5SbOrder[b5SbIndex]];
+            const isComplete = b5SbCurrentSlots.every(s => s !== null);
+            if (!isComplete) return;
+            const isCorrect = b5SbCurrentSlots.join(' ') === item.words.join(' ');
+            if (isCorrect) {
+                showMessageWithPronunciation('b5-sb-msg', t('msg_correct'), item.trans, true);
+                setButtonVisibility('b5-sb-check-btn', false);
+                setButtonVisibility('b5-sb-retry-btn', false);
+                setButtonVisibility('b5-sb-next-btn', true);
+            } else {
+                showMessageWithPronunciation('b5-sb-msg', withCorrectAnswer(item.words.join(' ')), item.trans, false);
+                setButtonVisibility('b5-sb-check-btn', false);
+                setButtonVisibility('b5-sb-retry-btn', true);
+                setButtonVisibility('b5-sb-next-btn', false);
+            }
+        }
+
+        function retryB5SentenceBuilder() { initB5SentenceBuilder(); }
+        function nextB5SentenceBuilder() { b5SbIndex++; initB5SentenceBuilder(); }
+
+        function initB5TimeGame() {
+            b5TimeOrder = getShuffledOrder(bes5TimeGameData.length);
+            b5TimeIndex = 0;
+            b5TimeScore = 0;
+            renderB5TimeGame();
+        }
+
+        function renderB5TimeGame() {
+            const container = document.getElementById('b5-game-time');
+            if (!container) return;
+
+            if (b5TimeIndex >= b5TimeOrder.length) {
+                container.innerHTML = `
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow border border-slate-200 dark:border-slate-700 max-w-xl mx-auto text-center space-y-4">
+                        <div class="text-2xl font-bold text-slate-800 dark:text-slate-100">${escapeHtml(t('msg_win'))}</div>
+                        <div class="text-lg text-slate-600 dark:text-slate-400">${b5TimeScore} / ${b5TimeOrder.length}</div>
+                        <button onclick="initB5TimeGame()" class="px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow transition">${escapeHtml(t('quiz_play_again'))}</button>
+                    </div>
+                `;
+                return;
+            }
+
+            const item = bes5TimeGameData[b5TimeOrder[b5TimeIndex]];
+            const langKey = currentLang === 'en' ? 'en' : 'ku';
+            const typeLabel = currentLang === 'en' ? item.typeEn : item.typeKu;
+            const progress = `${b5TimeIndex + 1} / ${b5TimeOrder.length}`;
+            const showCorrectOnLeft = Math.random() > 0.5;
+            const leftHe = showCorrectOnLeft ? item.correct : item.wrong;
+            const rightHe = showCorrectOnLeft ? item.wrong : item.correct;
+            const leftTrans = showCorrectOnLeft ? item.trans : item.wrongTrans;
+            const rightTrans = showCorrectOnLeft ? item.wrongTrans : item.trans;
+            const leftIsCorrect = showCorrectOnLeft;
+
+            container.innerHTML = `
+                <div class="bg-white dark:bg-slate-800 p-6 sm:p-10 rounded-2xl shadow border border-slate-200 dark:border-slate-700 max-w-2xl mx-auto text-center space-y-6">
+                    <p class="text-slate-500 dark:text-slate-400 font-medium">${escapeHtml(t('inst_time'))}</p>
+                    <div class="text-sm text-slate-400 dark:text-slate-500 font-medium">${escapeHtml(progress)}</div>
+                    <div class="space-y-3">
+                        <div class="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-100">${escapeHtml(item[langKey])}</div>
+                        <span class="inline-block px-4 py-1 rounded-full font-bold text-sm bg-teal-100 text-teal-800 dark:bg-teal-900/40 dark:text-teal-300">${escapeHtml(typeLabel)}</span>
+                    </div>
+                    <div id="b5-time-msg" class="min-h-[1.5rem] font-bold text-lg hidden text-center"></div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex flex-col items-center gap-1">
+                            <button
+                                id="b5-time-btn-left"
+                                onclick="answerB5TimeGame(${leftIsCorrect})"
+                                dir="rtl" lang="he"
+                                class="w-full p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:border-teal-400 hover:-translate-y-0.5 text-slate-800 dark:text-slate-100 text-2xl font-bold transition"
+                            >${escapeHtml(leftHe)}</button>
+                            <span class="text-sm text-slate-600 dark:text-slate-300 font-mono">${escapeHtml(leftTrans)}</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1">
+                            <button
+                                id="b5-time-btn-right"
+                                onclick="answerB5TimeGame(${!leftIsCorrect})"
+                                dir="rtl" lang="he"
+                                class="w-full p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:border-teal-400 hover:-translate-y-0.5 text-slate-800 dark:text-slate-100 text-2xl font-bold transition"
+                            >${escapeHtml(rightHe)}</button>
+                            <span class="text-sm text-slate-600 dark:text-slate-300 font-mono">${escapeHtml(rightTrans)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function answerB5TimeGame(isCorrect) {
+            const msgEl = document.getElementById('b5-time-msg');
+            if (!msgEl) return;
+
+            if (isCorrect) {
+                b5TimeScore++;
+                b5TimeIndex++;
+                showMessage('b5-time-msg', t('msg_correct'), true);
+                setTimeout(() => {
+                    renderB5TimeGame();
+                }, 700);
+            } else {
+                msgEl.textContent = t('msg_wrong');
+                msgEl.className = 'min-h-[1.5rem] font-bold text-lg text-center text-red-600 dark:text-red-400';
+                msgEl.classList.remove('hidden');
+            }
+        }
+
+        // ── CHAPTER 6 FUNCTIONS ───────────────────────────────────────────
+
+        function renderBes6() {
+            const langKey = currentLang === 'ku' ? 'ku' : 'en';
+            const spkKey = currentLang === 'ku' ? 'spkKu' : 'spkEn';
+
+            document.getElementById('b6-dialog-container').innerHTML = bes6DialogData.map((item, idx) => {
+                const isFirst = idx % 2 === 0;
+                const bgClass = isFirst ? 'bg-rose-50 dark:bg-rose-900/20' : 'bg-slate-50 dark:bg-slate-800/40';
+                const textColClass = isFirst ? 'text-rose-700 dark:text-rose-300' : 'text-slate-600 dark:text-slate-400';
+                return `
+                    <div class="flex flex-col sm:flex-row gap-2 sm:gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-700 ${bgClass}">
+                        <div class="font-bold w-20 flex-shrink-0 ${textColClass}">${item[spkKey]}:</div>
+                        <div class="flex-grow">
+                            <div class="text-xl sm:text-2xl font-bold mb-1 text-slate-900 dark:text-slate-100" dir="rtl">${item.he}</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400 font-mono mb-2 text-right">${item.trans}</div>
+                            <div class="font-medium text-slate-800 dark:text-slate-200">${item[langKey]}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('b6-words-tbody').innerHTML = bes6WordsData.map(item => `
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition border-b border-slate-100 dark:border-slate-700">
+                    <td class="p-4 font-medium text-slate-800 dark:text-slate-200">${item[langKey]}</td>
+                    <td class="p-4 font-bold text-2xl text-slate-800 dark:text-slate-100" dir="rtl">${item.he}</td>
+                    <td class="p-4 text-rose-600 dark:text-rose-400 font-mono">${item.trans}</td>
+                </tr>
+            `).join('');
+
+            document.getElementById('b6-eat-grammar-tbody').innerHTML = bes6EatGrammarData.map(item => `
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition border-b border-slate-200 dark:border-slate-700">
+                    <td class="p-3 border-r dark:border-slate-700 text-slate-800 dark:text-slate-200">${item[langKey]}</td>
+                    <td class="p-3 border-r dark:border-slate-700">
+                        <div class="flex flex-col items-end">
+                            <span class="font-bold text-xl text-slate-800 dark:text-slate-100" dir="rtl" lang="he">${item.he}</span>
+                            <span class="text-sm text-slate-400 dark:text-slate-500 font-mono">${item.pronHe}</span>
+                        </div>
+                    </td>
+                    <td class="p-3">
+                        <div class="flex flex-col items-end">
+                            <span class="font-bold text-xl text-rose-700 dark:text-rose-300" dir="rtl" lang="he">${item.cgForm}</span>
+                            <span class="text-sm text-slate-400 dark:text-slate-500 font-mono">${item.cgFormPron}</span>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+
+            document.getElementById('b6-drink-grammar-tbody').innerHTML = bes6DrinkGrammarData.map(item => `
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition border-b border-slate-200 dark:border-slate-700">
+                    <td class="p-3 border-r dark:border-slate-700 text-slate-800 dark:text-slate-200">${item[langKey]}</td>
+                    <td class="p-3 border-r dark:border-slate-700">
+                        <div class="flex flex-col items-end">
+                            <span class="font-bold text-xl text-slate-800 dark:text-slate-100" dir="rtl" lang="he">${item.he}</span>
+                            <span class="text-sm text-slate-400 dark:text-slate-500 font-mono">${item.pronHe}</span>
+                        </div>
+                    </td>
+                    <td class="p-3">
+                        <div class="flex flex-col items-end">
+                            <span class="font-bold text-xl text-rose-700 dark:text-rose-300" dir="rtl" lang="he">${item.cgForm}</span>
+                            <span class="text-sm text-slate-400 dark:text-slate-500 font-mono">${item.cgFormPron}</span>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+
+            if (typeof renderBes6Homework === 'function') {
+                renderBes6Homework();
+                return;
+            }
+
+            document.getElementById('b6-hw-list').innerHTML = bes6HomeworkData.map(item => `
+                <li class="pl-2">${item[langKey]}</li>
+            `).join('');
+        }
+
+        function switchB6GameTab(tabId) {
+            b6CurrentGameTab = tabId;
+            const baseClass = "nav-btn px-6 py-3 rounded-full font-bold shadow-sm transition";
+            const activeClass = "bg-rose-600 text-white dark:bg-rose-600";
+            const inactiveClass = "bg-white text-rose-700 border border-rose-600 hover:bg-rose-50 dark:bg-slate-800 dark:border-rose-500 dark:text-rose-300 dark:hover:bg-slate-700";
+
+            ['wb', 'cp', 'sb', 'eat', 'drink'].forEach(id => {
+                const btn = document.getElementById('btn-b6-game-' + id);
+                if (btn) btn.className = baseClass + " " + (tabId === id ? activeClass : inactiveClass);
+                const panel = document.getElementById('b6-game-' + id);
+                if (panel) panel.classList.add('hidden');
+            });
+
+            document.getElementById('b6-game-' + tabId).classList.remove('hidden');
+
+            if (tabId === 'wb') initB6WordBuilder();
+            if (tabId === 'cp') initB6ConnectPairs();
+            if (tabId === 'sb') initB6SentenceBuilder();
+            if (tabId === 'eat') initB6EatConjugationGame();
+            if (tabId === 'drink') initB6DrinkConjugationGame();
+        }
+
+        function initB6WordBuilder() {
+            b6WbData = bes6GameWordsData;
+            if (!b6WbOrder.length || b6WbIndex >= b6WbOrder.length) {
+                b6WbOrder = getShuffledOrder(b6WbData.length);
+                b6WbIndex = 0;
+            }
+
+            const item = b6WbData[b6WbOrder[b6WbIndex]];
+            const targetLetters = getHebrewTiles(item.he);
+
+            document.getElementById('b6-wb-target-word').innerText = item[currentLang];
+            document.getElementById('b6-wb-msg').classList.add('hidden');
+            setButtonVisibility('b6-wb-check-btn', true);
+            setButtonVisibility('b6-wb-retry-btn', false);
+            setButtonVisibility('b6-wb-next-btn', false);
+
+            b6WbCurrentSlots = Array(targetLetters.length).fill(null);
+            b6WbPool = shuffleArray(targetLetters);
+
+            renderB6WordBuilder();
+        }
+
+        function renderB6WordBuilder() {
+            const item = b6WbData[b6WbOrder[b6WbIndex]];
+            const heWords = item.he.split(/\s+/);
+            const wordStyles = [
+                { filled: 'border-rose-500 bg-rose-50 dark:bg-rose-900/60 dark:border-rose-400 cursor-pointer', empty: 'border-rose-300 dark:border-rose-700' },
+                { filled: 'border-orange-500 bg-orange-50 dark:bg-orange-900/60 dark:border-orange-400 cursor-pointer', empty: 'border-orange-300 dark:border-orange-700' },
+            ];
+
+            const slotsContainer = document.getElementById('b6-wb-slots');
+            let slotsHtml = '';
+            let slotIndex = 0;
+            slotsHtml += '<div class="w-full space-y-2">';
+            for (let wordIdx = 0; wordIdx < heWords.length; wordIdx++) {
+                const wordLetterCount = getHebrewTiles(heWords[wordIdx]).length;
+                const style = wordStyles[wordIdx % wordStyles.length];
+                slotsHtml += '<div class="flex flex-row-reverse justify-start gap-2">';
+                for (let l = 0; l < wordLetterCount; l++) {
+                    const letter = b6WbCurrentSlots[slotIndex];
+                    const i = slotIndex;
+                    slotsHtml += `<div class="w-12 h-14 sm:w-16 sm:h-20 border-2 border-dashed ${letter ? style.filled : style.empty} rounded-xl flex items-center justify-center text-3xl font-bold text-slate-800 dark:text-slate-100 shadow-inner" onclick="if('${letter}' !== 'null') removeB6LetterFromSlot(${i})">${letter || ''}</div>`;
+                    slotIndex++;
+                }
+                slotsHtml += '</div>';
+            }
+            slotsHtml += '</div>';
+            slotsContainer.innerHTML = slotsHtml;
+
+            document.getElementById('b6-wb-pool').innerHTML = b6WbPool.map((letter, i) => `
+                <button onclick="addB6LetterToSlot(${i})" class="w-12 h-14 sm:w-16 sm:h-20 bg-white dark:bg-slate-700 border-2 border-slate-200 dark:border-slate-600 rounded-xl flex items-center justify-center text-3xl font-bold text-rose-700 dark:text-rose-300 shadow hover:bg-slate-50 hover:-translate-y-1 transition transform">
+                    ${letter}
+                </button>
+            `).join('');
+        }
+
+        function addB6LetterToSlot(poolIndex) {
+            const letter = b6WbPool[poolIndex];
+            const emptySlotIndex = b6WbCurrentSlots.indexOf(null);
+            if (emptySlotIndex !== -1) {
+                b6WbCurrentSlots[emptySlotIndex] = letter;
+                b6WbPool.splice(poolIndex, 1);
+                renderB6WordBuilder();
+            }
+        }
+
+        function removeB6LetterFromSlot(slotIndex) {
+            const letter = b6WbCurrentSlots[slotIndex];
+            if (letter) {
+                b6WbPool.push(letter);
+                b6WbCurrentSlots[slotIndex] = null;
+                renderB6WordBuilder();
+            }
+        }
+
+        function checkB6WordBuilder() {
+            const item = b6WbData[b6WbOrder[b6WbIndex]];
+            const targetLetters = getHebrewTiles(item.he);
+            const isComplete = b6WbCurrentSlots.every(s => s !== null);
+            if (!isComplete) return;
+            const isCorrect = b6WbCurrentSlots.join('') === targetLetters.join('');
+            if (isCorrect) {
+                showMessageWithPronunciation('b6-wb-msg', t('msg_correct'), item.trans, true);
+                setButtonVisibility('b6-wb-check-btn', false);
+                setButtonVisibility('b6-wb-retry-btn', false);
+                setButtonVisibility('b6-wb-next-btn', true);
+            } else {
+                showMessageWithPronunciation('b6-wb-msg', withCorrectAnswer(item.he), item.trans, false);
+                setButtonVisibility('b6-wb-check-btn', false);
+                setButtonVisibility('b6-wb-retry-btn', true);
+                setButtonVisibility('b6-wb-next-btn', false);
+            }
+        }
+
+        function retryB6WordBuilder() { initB6WordBuilder(); }
+        function nextB6WordBuilder() { b6WbIndex++; initB6WordBuilder(); }
+
+        function initB6ConnectPairs() {
+            b6CpRound = 1;
+            b6CpOrder = getShuffledOrder(bes6WordsData.length);
+            loadB6CpRound();
+        }
+
+        function nextB6CpRound() { b6CpRound++; loadB6CpRound(); }
+
+        function loadB6CpRound() {
+            b6CpMatches = 0;
+            b6CpSelectedLeft = null;
+            b6CpSelectedRight = null;
+            document.getElementById('b6-cp-msg').classList.add('hidden');
+            document.getElementById('b6-cp-win-panel').classList.add('hidden');
+            document.getElementById('b6-cp-next-round-panel').classList.add('hidden');
+
+            const startIdx = (b6CpRound - 1) * 10;
+            const endIdx = startIdx + 10;
+            const roundWords = b6CpOrder
+                .slice(startIdx, endIdx)
+                .map(index => ({ ...bes6WordsData[index], matched: false, matchText: '' }));
+
+            b6CpLeftPairs = shuffleArray(roundWords);
+            b6CpRightPairs = shuffleArray(roundWords);
+            renderB6ConnectPairs();
+        }
+
+        function renderB6ConnectPairs() {
+            const leftContainer = document.getElementById('b6-cp-left');
+            const rightContainer = document.getElementById('b6-cp-right');
+
+            leftContainer.innerHTML = b6CpLeftPairs.map((item, i) => {
+                const isMatched = item.matched;
+                const isSelected = b6CpSelectedLeft === i;
+                return `<button onclick="selectB6Pair('left',${i})" class="pair-btn w-full p-3 sm:p-4 rounded-xl border-2 font-bold text-lg transition ${isMatched ? 'matched' : isSelected ? 'selected' : 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 hover:border-rose-400'}" ${isMatched ? 'disabled' : ''}>${isMatched ? item.matchText : item[currentLang]}</button>`;
+            }).join('');
+
+            rightContainer.innerHTML = b6CpRightPairs.map((item, i) => {
+                const isMatched = item.matched;
+                const isSelected = b6CpSelectedRight === i;
+                return `<button onclick="selectB6Pair('right',${i})" dir="rtl" class="pair-btn w-full p-3 sm:p-4 rounded-xl border-2 font-bold text-xl transition ${isMatched ? 'matched' : isSelected ? 'selected' : 'bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 hover:border-rose-400'}" ${isMatched ? 'disabled' : ''}>${isMatched ? item.matchText : item.he}</button>`;
+            }).join('');
+        }
+
+        function selectB6Pair(side, idx) {
+            if (side === 'left') {
+                if (b6CpLeftPairs[idx].matched) return;
+                b6CpSelectedLeft = idx;
+            } else {
+                if (b6CpRightPairs[idx].matched) return;
+                b6CpSelectedRight = idx;
+            }
+            renderB6ConnectPairs();
+            if (b6CpSelectedLeft !== null && b6CpSelectedRight !== null) checkB6PairMatch();
+        }
+
+        function checkB6PairMatch() {
+            const left = b6CpLeftPairs[b6CpSelectedLeft];
+            const right = b6CpRightPairs[b6CpSelectedRight];
+            const isMatch = left.he === right.he;
+
+            if (isMatch) {
+                left.matched = true;
+                right.matched = true;
+                left.matchText = `${left[currentLang]} = ${left.he}`;
+                right.matchText = left.matchText;
+                b6CpMatches++;
+                showMessage('b6-cp-msg', t('msg_correct'), true);
+            } else {
+                showMessage('b6-cp-msg', t('msg_wrong'), false);
+                const li = b6CpSelectedLeft;
+                const ri = b6CpSelectedRight;
+                b6CpLeftPairs[li].error = true;
+                b6CpRightPairs[ri].error = true;
+                renderB6ConnectPairs();
+                setTimeout(() => {
+                    b6CpLeftPairs[li].error = false;
+                    b6CpRightPairs[ri].error = false;
+                    b6CpSelectedLeft = null;
+                    b6CpSelectedRight = null;
+                    renderB6ConnectPairs();
+                }, 700);
+                return;
+            }
+
+            b6CpSelectedLeft = null;
+            b6CpSelectedRight = null;
+            renderB6ConnectPairs();
+
+            if (b6CpMatches >= b6CpLeftPairs.length) {
+                const hasMore = b6CpRound * 10 < b6CpOrder.length;
+                if (hasMore) {
+                    showMessage('b6-cp-msg', t('msg_round_win').replace('{round}', b6CpRound), true);
+                    document.getElementById('b6-cp-next-round-panel').classList.remove('hidden');
+                } else {
+                    showMessage('b6-cp-msg', t('msg_win'), true);
+                    document.getElementById('b6-cp-win-panel').classList.remove('hidden');
+                }
+            }
+        }
+
+        function initB6SentenceBuilder() {
+            if (!b6SbOrder.length || b6SbIndex >= b6SbOrder.length) {
+                b6SbOrder = getShuffledOrder(bes6GameSentencesData.length);
+                b6SbIndex = 0;
+            }
+            const item = bes6GameSentencesData[b6SbOrder[b6SbIndex]];
+            document.getElementById('b6-sb-target-sentence').innerText = item[currentLang];
+            document.getElementById('b6-sb-msg').classList.add('hidden');
+            setButtonVisibility('b6-sb-check-btn', true);
+            setButtonVisibility('b6-sb-retry-btn', false);
+            setButtonVisibility('b6-sb-next-btn', false);
+
+            b6SbCurrentSlots = Array(item.words.length).fill(null);
+            b6SbPool = shuffleArray([...item.words]);
+            renderB6SentenceBuilder();
+        }
+
+        function renderB6SentenceBuilder() {
+            document.getElementById('b6-sb-slots').innerHTML = b6SbCurrentSlots.map((word, i) =>
+                `<div class="min-w-[4rem] h-14 border-2 border-dashed ${word ? 'border-rose-500 bg-rose-50 dark:bg-rose-900/60 dark:border-rose-400 cursor-pointer' : 'border-rose-300 dark:border-rose-700'} rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 px-3" dir="rtl" onclick="if('${word}' !== 'null') removeB6WordFromSlot(${i})">${word || ''}</div>`
+            ).join('');
+
+            document.getElementById('b6-sb-pool').innerHTML = b6SbPool.map((word, i) =>
+                `<button onclick="addB6WordToSlot(${i})" dir="rtl" class="min-w-[4rem] h-14 bg-white dark:bg-slate-700 border-2 border-slate-200 dark:border-slate-600 rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold text-rose-700 dark:text-rose-300 px-3 shadow hover:bg-slate-50 hover:-translate-y-1 transition transform">${word}</button>`
+            ).join('');
+        }
+
+        function addB6WordToSlot(poolIndex) {
+            const word = b6SbPool[poolIndex];
+            const emptySlotIndex = b6SbCurrentSlots.indexOf(null);
+            if (emptySlotIndex !== -1) {
+                b6SbCurrentSlots[emptySlotIndex] = word;
+                b6SbPool.splice(poolIndex, 1);
+                renderB6SentenceBuilder();
+            }
+        }
+
+        function removeB6WordFromSlot(slotIndex) {
+            const word = b6SbCurrentSlots[slotIndex];
+            if (word) {
+                b6SbPool.push(word);
+                b6SbCurrentSlots[slotIndex] = null;
+                renderB6SentenceBuilder();
+            }
+        }
+
+        function checkB6SentenceBuilder() {
+            const item = bes6GameSentencesData[b6SbOrder[b6SbIndex]];
+            const isComplete = b6SbCurrentSlots.every(s => s !== null);
+            if (!isComplete) return;
+            const isCorrect = b6SbCurrentSlots.join(' ') === item.words.join(' ');
+            if (isCorrect) {
+                showMessageWithPronunciation('b6-sb-msg', t('msg_correct'), item.trans, true);
+                setButtonVisibility('b6-sb-check-btn', false);
+                setButtonVisibility('b6-sb-retry-btn', false);
+                setButtonVisibility('b6-sb-next-btn', true);
+            } else {
+                showMessageWithPronunciation('b6-sb-msg', withCorrectAnswer(item.words.join(' ')), item.trans, false);
+                setButtonVisibility('b6-sb-check-btn', false);
+                setButtonVisibility('b6-sb-retry-btn', true);
+                setButtonVisibility('b6-sb-next-btn', false);
+            }
+        }
+
+        function retryB6SentenceBuilder() { initB6SentenceBuilder(); }
+        function nextB6SentenceBuilder() { b6SbIndex++; initB6SentenceBuilder(); }
+
+        function getB6ConjugationOptions(data, phase) {
+            if (phase === 'form') {
+                return shuffleArray(data.map(item => item.cgForm));
+            }
+            return shuffleArray(data.map(item => item.he));
+        }
+
+        function getB6ConjugationState(kind) {
+            return kind === 'eat' ? b6EatCgState : b6DrinkCgState;
+        }
+
+        function getB6ConjugationData(kind) {
+            return kind === 'eat' ? bes6EatGrammarData : bes6DrinkGrammarData;
+        }
+
+        function initB6ConjugationGame(kind) {
+            const state = getB6ConjugationState(kind);
+            state.phase = 'pronoun';
+            state.index = 0;
+            state.options = getB6ConjugationOptions(getB6ConjugationData(kind), 'pronoun');
+            document.getElementById(`b6-${kind}-cg-msg`).classList.add('hidden');
+            setButtonVisibility(`b6-${kind}-cg-reset-btn`, false);
+            renderB6ConjugationGame(kind);
+        }
+
+        function renderB6ConjugationGame(kind) {
+            const state = getB6ConjugationState(kind);
+            const data = getB6ConjugationData(kind);
+            const tableBody = document.getElementById(`b6-${kind}-cg-table-body`);
+            const optionsElement = document.getElementById(`b6-${kind}-cg-options`);
+            const hebrewHead = document.getElementById(`b6-${kind}-cg-head-hebrew`);
+            const formHead = document.getElementById(`b6-${kind}-cg-head-form`);
+
+            if (!tableBody || !optionsElement || !hebrewHead || !formHead) return;
+
+            hebrewHead.className = getB2CgHeaderClass(state.phase === 'pronoun');
+            formHead.className = getB2CgHeaderClass(state.phase === 'form');
+
+            tableBody.innerHTML = data.map((item, index) => {
+                const translation = currentLang === 'en' ? item.en : item.ku;
+                const pronounSolved = state.phase !== 'pronoun' || index < state.index;
+                const formSolved = state.phase === 'done' || (state.phase === 'form' && index < state.index);
+                const pronounCurrent = state.phase === 'pronoun' && index === state.index;
+                const formCurrent = state.phase === 'form' && index === state.index;
+                const pronounCellClass = state.phase === 'pronoun' ? 'bg-rose-50 ring-1 ring-inset ring-rose-300/80 dark:bg-rose-500/10 dark:ring-rose-500/40' : '';
+                const formCellClass = state.phase === 'form' ? 'bg-orange-50 ring-1 ring-inset ring-orange-300/80 dark:bg-orange-500/10 dark:ring-orange-500/40' : '';
+
+                const pronounCell = pronounSolved
+                    ? getB2CgSolvedContent(item.he, item.pronHe, 'rtl')
+                    : getB2CgPlaceholderBox(state.phase === 'pronoun', pronounCurrent);
+
+                const formCell = formSolved
+                    ? getB2CgSolvedContent(item.cgForm, item.cgFormPron, 'rtl')
+                    : getB2CgPlaceholderBox(state.phase === 'form', formCurrent);
+
+                return `
+                    <tr>
+                        <td class="p-4 font-semibold text-slate-800 dark:text-slate-100">${escapeHtml(translation)}</td>
+                        <td class="p-4 ${pronounCellClass}">${pronounCell}</td>
+                        <td class="p-4 ${formCellClass}">${formCell}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            if (state.phase === 'done') {
+                optionsElement.innerHTML = '';
+                showMessage(`b6-${kind}-cg-msg`, t('cg_done'), true);
+                setButtonVisibility(`b6-${kind}-cg-reset-btn`, true);
+                return;
+            }
+
+            optionsElement.innerHTML = state.options.map((option, index) => {
+                const isHebrewOption = state.phase === 'pronoun';
+                const paletteClass = getB2CgOptionClass(index, isHebrewOption);
+                return `
+                    <button
+                        onclick="answerB6ConjugationGame('${kind}', ${index})"
+                        dir="rtl" lang="he"
+                        class="min-h-[3.75rem] w-full px-5 rounded-xl border-2 ${paletteClass} text-slate-800 dark:text-slate-100 text-2xl font-bold shadow-sm hover:-translate-y-0.5 transition"
+                    >
+                        ${escapeHtml(option)}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function answerB6ConjugationGame(kind, optionIndex) {
+            const state = getB6ConjugationState(kind);
+            const data = getB6ConjugationData(kind);
+            const item = data[state.index];
+            const selected = state.options[optionIndex];
+            if (!item) return;
+
+            const correctAnswer = state.phase === 'pronoun' ? item.he : item.cgForm;
+            const pronunciation = state.phase === 'pronoun' ? item.pronHe : item.cgFormPron;
+
+            if (selected === correctAnswer) {
+                state.index++;
+                if (state.phase === 'pronoun' && state.index >= data.length) {
+                    state.phase = 'form';
+                    state.index = 0;
+                    state.options = getB6ConjugationOptions(data, 'form');
+                    renderB6ConjugationGame(kind);
+                    showMessage(`b6-${kind}-cg-msg`, t('cg_phase_forms'), true);
+                    return;
+                }
+                if (state.phase === 'form' && state.index >= data.length) {
+                    state.phase = 'done';
+                    renderB6ConjugationGame(kind);
+                    return;
+                }
+                renderB6ConjugationGame(kind);
+                showMessageWithPronunciation(`b6-${kind}-cg-msg`, t('msg_correct'), pronunciation, true);
+            } else {
+                showMessage(`b6-${kind}-cg-msg`, withCorrectAnswer(correctAnswer), false);
+            }
+        }
+
+        function initB6EatConjugationGame() { initB6ConjugationGame('eat'); }
+        function initB6DrinkConjugationGame() { initB6ConjugationGame('drink'); }
 
         // Initialize on load
         window.onload = () => {

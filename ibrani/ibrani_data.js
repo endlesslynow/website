@@ -121,7 +121,9 @@
                 poss_phase_forms: "Naha stûna יֵשׁ לְ ye.",
                 poss_done: "Te tablo qedand.",
                 tab_gender: "Nêr / Mê",
+                tab_time: "Roj û Dem",
                 inst_gender: "Ji bo her peyv û hevokê forma Îbranî ya rast hilbijêre.",
+                inst_time: "Ji bo her peyv an gotinê forma Îbranî ya rast hilbijêre.",
                 lbl_masc: "Mêr",
                 lbl_fem: "Jin",
                 gender_correct: "Rast e!",
@@ -143,6 +145,30 @@
                 inst_num: "Pêşî stûna nêr, paşê stûna mê ji jor heta jêr tije bike.",
                 num_phase_fem: "Naha stûna mê ye.",
                 num_done: "Te tablo qedand.",
+
+                // Chapter 5 texts
+                toc_b5_title: "Beş 5: Roj û Mehê",
+                toc_b5_desc: "Rojên hefteyê, mehan û gotinên demê",
+                b5_title: "Beş 5: Roj û Mehê / ימים ומקדשים",
+                b5_gram_title: "Rêzimana Beşê 5: Rojên Hefteyê û Tîpên Demê",
+                b5_gram_p1: "Rojên hefteyê di Kurmancî de: Yekşem, Duşem, Sêşem, Çarşem, Pêncşem, În, Şemî.",
+                b5_gram_p2: "Ji bo gotina «îro», «sibê» û «duh» tên bikaranîn: «Îro Duşem e», «Sibê Sêşem e».",
+                b5_gram_p3: "Paşgira «-ê» li dû navên rojan tê zêdekirin: «Di Şemiyê de», «Di meha Nîsanê de».",
+                b5_gram_p4: "Di Îbranî de rojên hefteyê jimareyî ne: «יוֹם רִאשׁוֹן» (Yekşem), «יוֹם שֵׁנִי» (Duşem), hwd. Şabat (שַׁבָּת) roja pîroz e.",
+                b5_gram_table_title: "Bêjeyên Demê û Mînakên Wan",
+                b6_tab_eat: "Xwarin",
+                b6_tab_drink: "Vexwarin",
+                b6_inst_cg: "Pêşî stûna cînavka Îbranî, paşê stûna şiklê lêkerê tije bike.",
+                toc_b6_title: "Beş 6: Xwarin û Vexwarin",
+                toc_b6_desc: "Xwarin, vexwarin û lêkerên wan",
+                b6_title: "Beş 6: Xwarin û Vexwarin / אוכל ושתייה",
+                b6_gram_title: "Rêzimana Beşê 6: Lêkerên «xwarin» û «vexwarin»",
+                b6_gram_p1: "Lêkerên «xwarin» û «vexwarin» ji lêkerên bingehîn yên Kurmancî ne. Di dema niha de pêşgira «di-» li wan tê zêdekirin.",
+                b6_gram_p2: "Di rewşa neyînî de pêşgira «na-» li şûna «di-» tê bikaranîn: ez naxwim, tu navexwî, ew naxwe.",
+                b6_gram_p3: "Di Îbranî de: «לֶאֱכֹל» = xwarin û «לִשְׁתּוֹת» = vexwarin. Ev lêker di dawiya hevokê de wekî tevdeyî tên bikaranîn.",
+                b6_gram_p4: "Gava em bipirsin çi dixwe: «Tu çi dixwazî bixwî?» — «bixwî» rengê kilasîk ê «xwarin» e di banga daxwazê de.",
+                b6_eat_table_title: "Lêkera «xwarin» — Dema Niha  |  Kurmancî: xwarin  |  עברית: לֶאֱכֹל",
+                b6_drink_table_title: "Lêkera «vexwarin» — Dema Niha  |  Kurmancî: vexwarin  |  עברית: לִשְׁתּוֹת",
 
                 // Table Headers
                 th_kurmanci: "Kurmancî",
@@ -273,7 +299,9 @@
                 poss_phase_forms: "Now the full phrase column.",
                 poss_done: "You completed the table.",
                 tab_gender: "Male / Female",
+                tab_time: "Days & Time",
                 inst_gender: "Choose the correct Hebrew form for each word or phrase.",
+                inst_time: "Choose the correct Hebrew form for each word or time expression.",
                 lbl_masc: "Male",
                 lbl_fem: "Female",
                 gender_correct: "Correct!",
@@ -295,6 +323,30 @@
                 inst_num: "Fill the masculine column first, then the feminine column from top to bottom.",
                 num_phase_fem: "Now the feminine column.",
                 num_done: "You completed the table.",
+
+                // Chapter 5 texts
+                toc_b5_title: "Chapter 5: Days and Months",
+                toc_b5_desc: "Weekdays, months, and time expressions",
+                b5_title: "Chapter 5: Days and Months / ימים ומקדשים",
+                b5_gram_title: "Chapter 5 Grammar: Weekdays and Time Expressions",
+                b5_gram_p1: "The days of the week in Kurmanji are: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday.",
+                b5_gram_p2: "To say «today», «tomorrow», and «yesterday», Kurmanji uses expressions like «Îro Duşem e» and «Sibê Sêşem e».",
+                b5_gram_p3: "The suffix «-ê» is added after day names in phrases like «Di Şemiyê de» and «Di meha Nîsanê de».",
+                b5_gram_p4: "In Hebrew, the weekdays are numbered: «יוֹם רִאשׁוֹן» (Sunday), «יוֹם שֵׁנִי» (Monday), and so on. Shabbat (שַׁבָּת) is the holy day.",
+                b5_gram_table_title: "Time Expressions and Example Phrases",
+                b6_tab_eat: "Eat",
+                b6_tab_drink: "Drink",
+                b6_inst_cg: "Fill the Hebrew-pronoun column first, then the verb-form column.",
+                toc_b6_title: "Chapter 6: Food and Drink",
+                toc_b6_desc: "Food, drink, and their verbs",
+                b6_title: "Chapter 6: Food and Drink / אוכל ושתייה",
+                b6_gram_title: "Chapter 6 Grammar: The Verbs \"to eat\" and \"to drink\"",
+                b6_gram_p1: "The verbs «xwarin» (to eat) and «vexwarin» (to drink) are basic Kurmanji verbs. In the present tense, the prefix «di-» is added to them.",
+                b6_gram_p2: "In the negative form, the prefix «na-» is used instead of «di-»: «ez naxwim», «tu navexwî», «ew naxwe».",
+                b6_gram_p3: "In Hebrew, «לֶאֱכֹל» means \"to eat\" and «לִשְׁתּוֹת» means \"to drink\". These verbs are used as infinitives at the end of a sentence.",
+                b6_gram_p4: "When asking what someone wants to eat, Kurmanji uses forms like «Tu çi dixwazî bixwî?». The form «bixwî» is the request-style form of «xwarin».",
+                b6_eat_table_title: "Verb \"to eat\" — Present  |  Kurmanji: xwarin  |  Hebrew: לֶאֱכֹל",
+                b6_drink_table_title: "Verb \"to drink\" — Present  |  Kurmanji: vexwarin  |  Hebrew: לִשְׁתּוֹת",
 
                 // Table Headers
                 th_kurmanci: "Kurmanji",
@@ -694,4 +746,230 @@
             { ku: 'deh', en: 'ten', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'עֶשֶׂר', wrong: 'עֲשָׂרָה', trans: 'eser', wrongTrans: 'asara' },
             { ku: 'Çend salên te hene?', en: 'How old are you?', gender: 'masc', genderKu: 'Mêr', genderEn: 'Male', correct: 'בֶּן כַּמָּה אַתָּה', wrong: 'בַּת כַּמָּה אַתְּ', trans: 'ben kama ata', wrongTrans: 'bat kama at' },
             { ku: 'Çend salên te hene?', en: 'How old are you?', gender: 'fem', genderKu: 'Jin', genderEn: 'Female', correct: 'בַּת כַּמָּה אַתְּ', wrong: 'בֶּן כַּמָּה אַתָּה', trans: 'bat kama at', wrongTrans: 'ben kama ata' }
+        ];
+
+        // ── CHAPTER 5: ROJ Û MEHÊ / ימים ומקדשים ───────────────────────────
+
+        const bes5DialogData = [
+            { spkKu: 'Narin', spkEn: 'Narin', he: 'אֵיזֶה יוֹם הַיּוֹם?', trans: 'Eyze yom hayom?', ku: 'Îro çi roj e?', en: 'What day is it today?' },
+            { spkKu: 'Omer', spkEn: 'Omer', he: 'הַיּוֹם יוֹם שֵׁנִי.', trans: 'Hayom yom şeni.', ku: 'Îro Duşem e.', en: 'Today is Monday.' },
+            { spkKu: 'Narin', spkEn: 'Narin', he: 'מַה יוֹם מָחָר?', trans: 'Ma yom maxar?', ku: 'Sibê çi roj e?', en: 'What day is tomorrow?' },
+            { spkKu: 'Omer', spkEn: 'Omer', he: 'מָחָר יוֹם שְׁלִישִׁי. מַה הַתּוֹכְנִיּוֹת שֶׁלְּךָ?', trans: 'Maxar yom şlişi. Ma hatoxniyot şelxa?', ku: 'Sibê Sêşem e. Tu çi planên te hene?', en: 'Tomorrow is Tuesday. What plans do you have?' },
+            { spkKu: 'Narin', spkEn: 'Narin', he: 'אֲנִי הוֹלֶכֶת לְבֵית חֲבֵרָתִי.', trans: 'Ani holexet lebet xaverati.', ku: 'Ez ê here mala hevalê xwe.', en: 'I will go to my friend’s house.' },
+            { spkKu: 'Omer', spkEn: 'Omer', he: 'בַּחֹדֶשׁ אַפְּרִיל יֵשׁ חַג.', trans: 'Baḥodesh April yesh xag.', ku: 'Di meha Nîsanê de cejneke heye.', en: 'There is a holiday in the month of April.' },
+            { spkKu: 'Narin', spkEn: 'Narin', he: 'מַה אַתָּה עוֹשֶׂה בַּשָּׁבוּעַ הַבָּא?', trans: 'Ma ata ose bashavua haba?', ku: 'Hefta bê tu çi dikî?', en: 'What are you doing next week?' },
+            { spkKu: 'Omer', spkEn: 'Omer', he: 'בְּיוֹם רְבִיעִי אֵלֵךְ לְבֵית חָבֵר שֶׁלִּי.', trans: 'Beyom revi‘i elex lebet xaver şeli.', ku: 'Di Çarşemê de ez ê herim mala hevalekî xwe.', en: 'On Wednesday I will go to my friend’s house.' },
+            { spkKu: 'Narin', spkEn: 'Narin', he: 'בְּיוֹם חֲמִישִׁי אֲנַחְנוּ יְכוֹלִים לָלֶכֶת לַשּׁוּק יַחַד.', trans: 'Beyom xamişi anaḥnu yexolim lalexet laşuk yaḥad.', ku: 'Di Pêncşemê de em dikarin bi hev re herin sûkê.', en: 'On Thursday we can go to the market together.' },
+            { spkKu: 'Omer', spkEn: 'Omer', he: 'מְצוּיָּן! בְּשָׁלוֹשׁ אָבוֹא לְיַד הַמִּסְגָּד.', trans: 'Metsuyan! Beşaloş avo leyad hamisgad.', ku: 'Baş e! Di saeta sêyê de li ber mizgeftê bêm.', en: 'Excellent! I will come by the mosque at three.' }
+        ];
+
+        const bes5WordsData = [
+            { ku: 'Duşem', en: 'Monday', he: 'יוֹם שֵׁנִי', trans: 'yom şeni' },
+            { ku: 'Sêşem', en: 'Tuesday', he: 'יוֹם שְׁלִישִׁי', trans: 'yom şlişi' },
+            { ku: 'Çarşem', en: 'Wednesday', he: 'יוֹם רְבִיעִי', trans: 'yom revi‘i' },
+            { ku: 'Pêncşem', en: 'Thursday', he: 'יוֹם חֲמִישִׁי', trans: 'yom xamişi' },
+            { ku: 'În', en: 'Friday', he: 'יוֹם שִׁישִּׁי', trans: 'yom şişi' },
+            { ku: 'Şemî', en: 'Saturday', he: 'יוֹם שַׁבָּת', trans: 'yom şabat' },
+            { ku: 'Yekşem', en: 'Sunday', he: 'יוֹם רִאשׁוֹן', trans: 'yom rişon' },
+            { ku: 'meh', en: 'month', he: 'חֹדֶשׁ', trans: 'xodesh' },
+            { ku: 'Çile', en: 'January', he: 'יָנוּאָר', trans: 'yanuar' },
+            { ku: 'Sibat', en: 'February', he: 'פֶבְרוּאָר', trans: 'februar' },
+            { ku: 'Adar', en: 'March', he: 'מַארְס', trans: 'mars' },
+            { ku: 'Nîsan', en: 'April', he: 'אַפְּרִיל', trans: 'april' },
+            { ku: 'Gulan', en: 'May', he: 'מַאי', trans: 'mai' },
+            { ku: 'Hezîran', en: 'June', he: 'יוּנִי', trans: 'yuni' },
+            { ku: 'îro', en: 'today', he: 'הַיּוֹם', trans: 'hayom' },
+            { ku: 'sibê', en: 'tomorrow', he: 'מָחָר', trans: 'maxar' },
+            { ku: 'duh', en: 'yesterday', he: 'אֶתְמוֹל', trans: 'etmol' },
+            { ku: 'cejna', en: 'holiday', he: 'חַג', trans: 'xag' },
+            { ku: 'taxnît', en: 'plan', he: 'תָּכְנִית', trans: 'taxnit' },
+            { ku: 'hefta', en: 'week', he: 'שָׁבוּעַ', trans: 'şavua' }
+        ];
+
+        const bes5GrammarData = [
+            { ku: 'îro', en: 'today', he: 'הַיּוֹם', pronHe: 'hayom', cgForm: 'הַיּוֹם יוֹם שֵׁנִי', cgFormPron: 'Hayom yom şeni' },
+            { ku: 'sibê', en: 'tomorrow', he: 'מָחָר', pronHe: 'maxar', cgForm: 'מָחָר יוֹם שְׁלִישִׁי', cgFormPron: 'Maxar yom şlişi' },
+            { ku: 'duh', en: 'yesterday', he: 'אֶתְמוֹל', pronHe: 'etmol', cgForm: 'אֶתְמוֹל יוֹם רִאשׁוֹן', cgFormPron: 'Etmol yom rişon' },
+            { ku: 'hefta bê', en: 'next week', he: 'בַּשָּׁבוּעַ הַבָּא', pronHe: 'bashavua haba', cgForm: 'מַה אַתָּה עוֹשֶׂה בַּשָּׁבוּעַ הַבָּא?', cgFormPron: 'Ma ata ose bashavua haba?' },
+            { ku: 'di meha Nîsanê de', en: 'in the month of April', he: 'בַּחֹדֶשׁ אַפְּרִיל', pronHe: 'baḥodesh April', cgForm: 'בַּחֹדֶשׁ אַפְּרִיל יֵשׁ חַג', cgFormPron: 'Baḥodesh April yesh xag' },
+            { ku: 'di Çarşemê de', en: 'on Wednesday', he: 'בְּיוֹם רְבִיעִי', pronHe: 'beyom revi‘i', cgForm: 'בְּיוֹם רְבִיעִי אֵלֵךְ לְבֵית חָבֵר שֶׁלִּי', cgFormPron: 'Beyom revi‘i elex lebet xaver şeli' },
+            { ku: 'di Pêncşemê de', en: 'on Thursday', he: 'בְּיוֹם חֲמִישִׁי', pronHe: 'beyom xamişi', cgForm: 'בְּיוֹם חֲמִישִׁי אֲנַחְנוּ יְכוֹלִים לָלֶכֶת לַשּׁוּק יַחַד', cgFormPron: 'Beyom xamişi anaḥnu yexolim lalexet laşuk yaḥad' },
+            { ku: 'di Şemiyê de', en: 'on Saturday', he: 'בְּיוֹם שַׁבָּת', pronHe: 'beyom şabat', cgForm: 'אֲנִי אָבוֹא בְּיוֹם שַׁבָּת', cgFormPron: 'Ani avo beyom şabat' }
+        ];
+
+        const bes5HomeworkData = [
+            { ku: 'Îro Çarşem e.', en: 'Today is Wednesday.' },
+            { ku: 'Sibê Pêncşem e.', en: 'Tomorrow is Thursday.' },
+            { ku: 'Di meha Gulanê de havîn dest pê dike.', en: 'In the month of May, summer begins.' },
+            { ku: 'Duh Yekşem bû.', en: 'Yesterday was Sunday.' },
+            { ku: 'Di hefta de heft roj hene.', en: 'There are seven days in a week.' },
+            { ku: 'Ez ê di Şemiyê de bêm.', en: 'I will come on Saturday.' },
+            { ku: 'Cejna Pesaxê di meha Nîsanê de ye.', en: 'The holiday of Pesach is in the month of April.' },
+            { ku: 'Plan baş e.', en: 'The plan is good.' },
+            { ku: 'Du mehan maye.', en: 'Two months remain.' },
+            { ku: 'Sibê înê.', en: 'Tomorrow is Friday.' }
+        ];
+
+        const bes5GameWordsData = [
+            { ku: 'Duşem', en: 'Monday', he: 'יוֹם שֵׁנִי', trans: 'yom şeni' },
+            { ku: 'Sêşem', en: 'Tuesday', he: 'יוֹם שְׁלִישִׁי', trans: 'yom şlişi' },
+            { ku: 'Çarşem', en: 'Wednesday', he: 'יוֹם רְבִיעִי', trans: 'yom revi‘i' },
+            { ku: 'Pêncşem', en: 'Thursday', he: 'יוֹם חֲמִישִׁי', trans: 'yom xamişi' },
+            { ku: 'În', en: 'Friday', he: 'יוֹם שִׁישִּׁי', trans: 'yom şişi' },
+            { ku: 'Şemî', en: 'Saturday', he: 'יוֹם שַׁבָּת', trans: 'yom şabat' },
+            { ku: 'Yekşem', en: 'Sunday', he: 'יוֹם רִאשׁוֹן', trans: 'yom rişon' },
+            { ku: 'meh', en: 'month', he: 'חֹדֶשׁ', trans: 'xodesh' },
+            { ku: 'Çile', en: 'January', he: 'יָנוּאָר', trans: 'yanuar' },
+            { ku: 'Sibat', en: 'February', he: 'פֶבְרוּאָר', trans: 'februar' },
+            { ku: 'Adar', en: 'March', he: 'מַארְס', trans: 'mars' },
+            { ku: 'Nîsan', en: 'April', he: 'אַפְּרִיל', trans: 'april' },
+            { ku: 'Gulan', en: 'May', he: 'מַאי', trans: 'mai' },
+            { ku: 'Hezîran', en: 'June', he: 'יוּנִי', trans: 'yuni' },
+            { ku: 'îro', en: 'today', he: 'הַיּוֹם', trans: 'hayom' },
+            { ku: 'sibê', en: 'tomorrow', he: 'מָחָר', trans: 'maxar' },
+            { ku: 'duh', en: 'yesterday', he: 'אֶתְמוֹל', trans: 'etmol' },
+            { ku: 'cejna', en: 'holiday', he: 'חַג', trans: 'xag' },
+            { ku: 'taxnît', en: 'plan', he: 'תָּכְנִית', trans: 'taxnit' },
+            { ku: 'hefta', en: 'week', he: 'שָׁבוּעַ', trans: 'şavua' }
+        ];
+
+        const bes5GameSentencesData = [
+            { ku: 'Îro çi roj e?', en: 'What day is it today?', words: ['אֵיזֶה', 'יוֹם', 'הַיּוֹם'], trans: 'Eyze yom hayom?' },
+            { ku: 'Îro Duşem e.', en: 'Today is Monday.', words: ['הַיּוֹם', 'יוֹם', 'שֵׁנִי'], trans: 'Hayom yom şeni.' },
+            { ku: 'Sibê çi roj e?', en: 'What day is tomorrow?', words: ['מַה', 'יוֹם', 'מָחָר'], trans: 'Ma yom maxar?' },
+            { ku: 'Sibê Sêşem e. Tu çi planên te hene?', en: 'Tomorrow is Tuesday. What plans do you have?', words: ['מָחָר', 'יוֹם', 'שְׁלִישִׁי', 'מַה', 'הַתּוֹכְנִיּוֹת', 'שֶׁלְּךָ'], trans: 'Maxar yom şlişi. Ma hatoxniyot şelxa?' },
+            { ku: 'Ez ê here mala hevalê xwe.', en: 'I will go to my friend’s house.', words: ['אֲנִי', 'הוֹלֶכֶת', 'לְבֵית', 'חֲבֵרָתִי'], trans: 'Ani holexet lebet xaverati.' },
+            { ku: 'Di meha Nîsanê de cejneke heye.', en: 'There is a holiday in the month of April.', words: ['בַּחֹדֶשׁ', 'אַפְּרִיל', 'יֵשׁ', 'חַג'], trans: 'Baḥodesh April yesh xag.' },
+            { ku: 'Hefta bê tu çi dikî?', en: 'What are you doing next week?', words: ['מַה', 'אַתָּה', 'עוֹשֶׂה', 'בַּשָּׁבוּעַ', 'הַבָּא'], trans: 'Ma ata ose bashavua haba?' },
+            { ku: 'Di Çarşemê de ez ê herim mala hevalekî xwe.', en: 'On Wednesday I will go to my friend’s house.', words: ['בְּיוֹם', 'רְבִיעִי', 'אֵלֵךְ', 'לְבֵית', 'חָבֵר', 'שֶׁלִּי'], trans: 'Beyom revi‘i elex lebet xaver şeli.' },
+            { ku: 'Di Pêncşemê de em dikarin bi hev re herin sûkê.', en: 'On Thursday we can go to the market together.', words: ['בְּיוֹם', 'חֲמִישִׁי', 'אֲנַחְנוּ', 'יְכוֹלִים', 'לָלֶכֶת', 'לַשּׁוּק', 'יַחַד'], trans: 'Beyom xamişi anaḥnu yexolim lalexet laşuk yaḥad.' },
+            { ku: 'Baş e! Di saeta sêyê de li ber mizgeftê bêm.', en: 'Excellent! I will come by the mosque at three.', words: ['מְצוּיָּן', 'בְּשָׁלוֹשׁ', 'אָבוֹא', 'לְיַד', 'הַמִּסְגָּד'], trans: 'Metsuyan! Beşaloş avo leyad hamisgad.' }
+        ];
+
+        const bes5TimeGameData = [
+            { ku: 'îro', en: 'today', typeKu: 'Dem', typeEn: 'Time', correct: 'הַיּוֹם', wrong: 'מָחָר', trans: 'hayom', wrongTrans: 'maxar' },
+            { ku: 'sibê', en: 'tomorrow', typeKu: 'Dem', typeEn: 'Time', correct: 'מָחָר', wrong: 'אֶתְמוֹל', trans: 'maxar', wrongTrans: 'etmol' },
+            { ku: 'duh', en: 'yesterday', typeKu: 'Dem', typeEn: 'Time', correct: 'אֶתְמוֹל', wrong: 'הַיּוֹם', trans: 'etmol', wrongTrans: 'hayom' },
+            { ku: 'Duşem', en: 'Monday', typeKu: 'Roj', typeEn: 'Day', correct: 'יוֹם שֵׁנִי', wrong: 'יוֹם שְׁלִישִׁי', trans: 'yom şeni', wrongTrans: 'yom şlişi' },
+            { ku: 'Sêşem', en: 'Tuesday', typeKu: 'Roj', typeEn: 'Day', correct: 'יוֹם שְׁלִישִׁי', wrong: 'יוֹם שֵׁנִי', trans: 'yom şlişi', wrongTrans: 'yom şeni' },
+            { ku: 'Çarşem', en: 'Wednesday', typeKu: 'Roj', typeEn: 'Day', correct: 'יוֹם רְבִיעִי', wrong: 'יוֹם חֲמִישִׁי', trans: 'yom revi‘i', wrongTrans: 'yom xamişi' },
+            { ku: 'Pêncşem', en: 'Thursday', typeKu: 'Roj', typeEn: 'Day', correct: 'יוֹם חֲמִישִׁי', wrong: 'יוֹם רְבִיעִי', trans: 'yom xamişi', wrongTrans: 'yom revi‘i' },
+            { ku: 'În', en: 'Friday', typeKu: 'Roj', typeEn: 'Day', correct: 'יוֹם שִׁישִּׁי', wrong: 'יוֹם שַׁבָּת', trans: 'yom şişi', wrongTrans: 'yom şabat' },
+            { ku: 'Şemî', en: 'Saturday', typeKu: 'Roj', typeEn: 'Day', correct: 'יוֹם שַׁבָּת', wrong: 'יוֹם רִאשׁוֹן', trans: 'yom şabat', wrongTrans: 'yom rişon' },
+            { ku: 'Yekşem', en: 'Sunday', typeKu: 'Roj', typeEn: 'Day', correct: 'יוֹם רִאשׁוֹן', wrong: 'יוֹם שַׁבָּת', trans: 'yom rişon', wrongTrans: 'yom şabat' },
+            { ku: 'meh', en: 'month', typeKu: 'Nav', typeEn: 'Noun', correct: 'חֹדֶשׁ', wrong: 'שָׁבוּעַ', trans: 'xodesh', wrongTrans: 'şavua' },
+            { ku: 'hefta', en: 'week', typeKu: 'Nav', typeEn: 'Noun', correct: 'שָׁבוּעַ', wrong: 'חַג', trans: 'şavua', wrongTrans: 'xag' },
+            { ku: 'cejna', en: 'holiday', typeKu: 'Nav', typeEn: 'Noun', correct: 'חַג', wrong: 'תָּכְנִית', trans: 'xag', wrongTrans: 'taxnit' },
+            { ku: 'taxnît', en: 'plan', typeKu: 'Nav', typeEn: 'Noun', correct: 'תָּכְנִית', wrong: 'חַג', trans: 'taxnit', wrongTrans: 'xag' },
+            { ku: 'Nîsan', en: 'April', typeKu: 'Meh', typeEn: 'Month', correct: 'אַפְּרִיל', wrong: 'מַאי', trans: 'april', wrongTrans: 'mai' },
+            { ku: 'Gulan', en: 'May', typeKu: 'Meh', typeEn: 'Month', correct: 'מַאי', wrong: 'יוּנִי', trans: 'mai', wrongTrans: 'yuni' },
+            { ku: 'Hezîran', en: 'June', typeKu: 'Meh', typeEn: 'Month', correct: 'יוּנִי', wrong: 'פֶבְרוּאָר', trans: 'yuni', wrongTrans: 'februar' },
+            { ku: 'Çile', en: 'January', typeKu: 'Meh', typeEn: 'Month', correct: 'יָנוּאָר', wrong: 'פֶבְרוּאָר', trans: 'yanuar', wrongTrans: 'februar' },
+            { ku: 'Sibat', en: 'February', typeKu: 'Meh', typeEn: 'Month', correct: 'פֶבְרוּאָר', wrong: 'מַארְס', trans: 'februar', wrongTrans: 'mars' },
+            { ku: 'Adar', en: 'March', typeKu: 'Meh', typeEn: 'Month', correct: 'מַארְס', wrong: 'אַפְּרִיל', trans: 'mars', wrongTrans: 'april' }
+        ];
+
+        // ── CHAPTER 6: XWARIN Û VEXWARIN / אוכל ושתייה ───────────────────
+
+        const bes6DialogData = [
+            { spkKu: 'Dîlnoz', spkEn: 'Dilnoz', he: 'אַתָּה רָעֵב?', trans: 'Ata raev?', ku: 'Tu birçî yî?', en: 'Are you hungry?' },
+            { spkKu: 'Kemal', spkEn: 'Kemal', he: 'כֵּן, אֲנִי מְאֹד רָעֵב. מַה נֹּאכַל?', trans: "Ken, ani me'od raev. Ma noxal?", ku: 'Erê, ez pir birçî me. Em çi bixwin?', en: 'Yes, I am very hungry. What shall we eat?' },
+            { spkKu: 'Dîlnoz', spkEn: 'Dilnoz', he: 'אֲנִי רוֹצֶה לֶאֱכֹל לֶחֶם וּגְבִינָה.', trans: "Ani rotse le'exol lexem ugvina.", ku: 'Ez dixwazim nan û penîr bixwim.', en: 'I want to eat bread and cheese.' },
+            { spkKu: 'Kemal', spkEn: 'Kemal', he: 'בְּסֵדֶר. וַאֲנִי אֶשְׁתֶּה תֵּה.', trans: "Beseder. Va'ani eshte te.", ku: 'Baş e. Ez jî çay vexwim.', en: 'Okay. I will drink tea too.' },
+            { spkKu: 'Dîlnoz', spkEn: 'Dilnoz', he: 'כָּאן יֵשׁ אֹכֶל טוֹב.', trans: 'Kan yesh oxel tov.', ku: 'Li vira xwarinek xweş heye.', en: 'There is good food here.' },
+            { spkKu: 'Kemal', spkEn: 'Kemal', he: 'תּוֹדָה! בְּתֵאָבוֹן!', trans: "Toda! Bete'avon!", ku: 'Spas! Xwarinê xweş!', en: 'Thank you! Enjoy your meal!' },
+            { spkKu: 'Dîlnoz', spkEn: 'Dilnoz', he: 'הַפֵּרוֹת בַּחֲנוּת הַזֹּאת מְאֹד טְעִימִים. אַתָּה רוֹצֶה תַּפּוּחַ?', trans: "Haperot baxanut hazot me'od te'imim. Ata rotse tapuax?", ku: 'Fêkiyên vê dikanê pir xweş in. Tu sêv dixwazî?', en: 'The fruits in this shop are very tasty. Do you want an apple?' },
+            { spkKu: 'Kemal', spkEn: 'Kemal', he: 'כֵּן, וַאֲנִי גַּם רוֹצֶה יוֹגוּרְט. אַתְּ שׁוֹתָה חָלָב?', trans: "Ken, va'ani gam rotse yogurt. At shota xalav?", ku: 'Erê, û ez jî mastê dixwazim. Tu şîr vedixwî?', en: 'Yes, and I also want yogurt. Do you drink milk?' },
+            { spkKu: 'Dîlnoz', spkEn: 'Dilnoz', he: 'לֹא, אֲנִי שׁוֹתָה תֵּה. קָפֶה חָזָק מִדַּי בִּשְׁבִילִי.', trans: "Lo, ani shota te. Kafe xazak miday bishvili.", ku: 'Na, ez çayê vedixwim. Kehwe pir tund e ji bo min.', en: 'No, I drink tea. Coffee is too strong for me.' },
+            { spkKu: 'Kemal', spkEn: 'Kemal', he: 'אֲנִי מֵבִין. בְּתֵאָבוֹן, חָבֵר!', trans: "Ani mevin. Bete'avon, xaver!", ku: 'Fam dikim. Xwarinê xweş, heval!', en: 'I understand. Enjoy your meal, friend!' }
+        ];
+
+        const bes6WordsData = [
+            { ku: 'xwarin', en: 'food', he: 'אֹכֶל', trans: 'oxel' },
+            { ku: 'vexwarin', en: 'drink', he: 'שְׁתִיָּה', trans: 'shtiya' },
+            { ku: 'nan', en: 'bread', he: 'לֶחֶם', trans: 'lexem' },
+            { ku: 'penîr', en: 'cheese', he: 'גְּבִינָה', trans: 'gvina' },
+            { ku: 'goşt', en: 'meat', he: 'בָּשָׂר', trans: 'basar' },
+            { ku: 'masî', en: 'fish', he: 'דָּג', trans: 'dag' },
+            { ku: 'sêv', en: 'apple', he: 'תַּפּוּחַ', trans: 'tapuax' },
+            { ku: 'mast', en: 'yogurt', he: 'יוֹגוּרְט', trans: 'yogurt' },
+            { ku: 'şîr', en: 'milk', he: 'חָלָב', trans: 'xalav' },
+            { ku: 'çay', en: 'tea', he: 'תֵּה', trans: 'te' },
+            { ku: 'kehwe', en: 'coffee', he: 'קָפֶה', trans: 'kafe' },
+            { ku: 'av', en: 'water', he: 'מַיִם', trans: 'mayim' },
+            { ku: 'birçî', en: 'hungry', he: 'רָעֵב', trans: 'raev' },
+            { ku: 'tî', en: 'thirsty', he: 'צָמֵא', trans: 'tsame' },
+            { ku: 'xweş', en: 'tasty', he: 'טָעִים', trans: "ta'im" },
+            { ku: 'sor', en: 'red', he: 'אָדֹם', trans: 'adom' },
+            { ku: 'sebze', en: 'vegetable', he: 'יָרָק', trans: 'yarak' },
+            { ku: 'fêkî', en: 'fruit', he: 'פְּרִי', trans: 'pri' },
+            { ku: 'şekir', en: 'sugar', he: 'סֻכָּר', trans: 'sukar' },
+            { ku: 'xwêdan', en: 'salt', he: 'מֶלַח', trans: 'melax' }
+        ];
+
+        const bes6EatGrammarData = [
+            { ku: 'Ez', en: 'I', he: 'אֲנִי', pronHe: 'ani', cgForm: 'אוֹכֵל / אוֹכֶלֶת', cgFormPron: 'oxel / oxelet' },
+            { ku: 'Tu', en: 'You', he: 'אַתָּה / אַתְּ', pronHe: 'ata / at', cgForm: 'אוֹכֵל / אוֹכֶלֶת', cgFormPron: 'oxel / oxelet' },
+            { ku: 'Ew', en: 'He / She', he: 'הוּא / הִיא', pronHe: 'hu / hi', cgForm: 'אוֹכֵל / אוֹכֶלֶת', cgFormPron: 'oxel / oxelet' },
+            { ku: 'Em', en: 'We', he: 'אֲנַחְנוּ', pronHe: 'anaxnu', cgForm: 'אוֹכְלִים / אוֹכְלוֹת', cgFormPron: 'oxlim / oxlot' },
+            { ku: 'Hûn', en: 'You all', he: 'אַתֶּם / אַתֶּן', pronHe: 'atem / aten', cgForm: 'אוֹכְלִים / אוֹכְלוֹת', cgFormPron: 'oxlim / oxlot' },
+            { ku: 'Ew', en: 'They', he: 'הֵם / הֵן', pronHe: 'hem / hen', cgForm: 'אוֹכְלִים / אוֹכְלוֹת', cgFormPron: 'oxlim / oxlot' }
+        ];
+
+        const bes6DrinkGrammarData = [
+            { ku: 'Ez', en: 'I', he: 'אֲנִי', pronHe: 'ani', cgForm: 'שׁוֹתֶה / שׁוֹתָה', cgFormPron: 'shote / shota' },
+            { ku: 'Tu', en: 'You', he: 'אַתָּה / אַתְּ', pronHe: 'ata / at', cgForm: 'שׁוֹתֶה / שׁוֹתָה', cgFormPron: 'shote / shota' },
+            { ku: 'Ew', en: 'He / She', he: 'הוּא / הִיא', pronHe: 'hu / hi', cgForm: 'שׁוֹתֶה / שׁוֹתָה', cgFormPron: 'shote / shota' },
+            { ku: 'Em', en: 'We', he: 'אֲנַחְנוּ', pronHe: 'anaxnu', cgForm: 'שׁוֹתִים / שׁוֹתוֹת', cgFormPron: 'shotim / shotot' },
+            { ku: 'Hûn', en: 'You all', he: 'אַתֶּם / אַתֶּן', pronHe: 'atem / aten', cgForm: 'שׁוֹתִים / שׁוֹתוֹת', cgFormPron: 'shotim / shotot' },
+            { ku: 'Ew', en: 'They', he: 'הֵם / הֵן', pronHe: 'hem / hen', cgForm: 'שׁוֹתִים / שׁוֹתוֹת', cgFormPron: 'shotim / shotot' }
+        ];
+
+        const bes6HomeworkData = [
+            { ku: 'Ez birçî me, tu tiştekî xwarinê dixwazî?', en: 'I am hungry, do you want something to eat?' },
+            { ku: 'Nan û penîr xweş in.', en: 'Bread and cheese are tasty.' },
+            { ku: 'Ez çay vexwim.', en: 'I drink tea.' },
+            { ku: 'Malbata min masî dixwin.', en: 'My family eats fish.' },
+            { ku: 'Av ji bo min, spas.', en: 'Water for me, thank you.' },
+            { ku: 'Kehweya te şirîn e?', en: 'Is your coffee sweet?' },
+            { ku: 'Em ê goşt bixwin.', en: 'We will eat meat.' },
+            { ku: 'Fêkî ji bo tenduristiyê baş e.', en: 'Fruit is good for health.' },
+            { ku: 'Şîrê gav xweş e.', en: 'Cow’s milk is good.' },
+            { ku: 'Xwarinê xweş!', en: 'Enjoy your meal!' }
+        ];
+
+        const bes6GameWordsData = [
+            { ku: 'xwarin', en: 'food', he: 'אֹכֶל', trans: 'oxel' },
+            { ku: 'vexwarin', en: 'drink', he: 'שְׁתִיָּה', trans: 'shtiya' },
+            { ku: 'nan', en: 'bread', he: 'לֶחֶם', trans: 'lexem' },
+            { ku: 'penîr', en: 'cheese', he: 'גְּבִינָה', trans: 'gvina' },
+            { ku: 'goşt', en: 'meat', he: 'בָּשָׂר', trans: 'basar' },
+            { ku: 'masî', en: 'fish', he: 'דָּג', trans: 'dag' },
+            { ku: 'sêv', en: 'apple', he: 'תַּפּוּחַ', trans: 'tapuax' },
+            { ku: 'mast', en: 'yogurt', he: 'יוֹגוּרְט', trans: 'yogurt' },
+            { ku: 'şîr', en: 'milk', he: 'חָלָב', trans: 'xalav' },
+            { ku: 'çay', en: 'tea', he: 'תֵּה', trans: 'te' },
+            { ku: 'kehwe', en: 'coffee', he: 'קָפֶה', trans: 'kafe' },
+            { ku: 'av', en: 'water', he: 'מַיִם', trans: 'mayim' },
+            { ku: 'birçî', en: 'hungry', he: 'רָעֵב', trans: 'raev' },
+            { ku: 'tî', en: 'thirsty', he: 'צָמֵא', trans: 'tsame' },
+            { ku: 'xweş', en: 'tasty', he: 'טָעִים', trans: "ta'im" },
+            { ku: 'sor', en: 'red', he: 'אָדֹם', trans: 'adom' },
+            { ku: 'sebze', en: 'vegetable', he: 'יָרָק', trans: 'yarak' },
+            { ku: 'fêkî', en: 'fruit', he: 'פְּרִי', trans: 'pri' },
+            { ku: 'şekir', en: 'sugar', he: 'סֻכָּר', trans: 'sukar' },
+            { ku: 'xwêdan', en: 'salt', he: 'מֶלַח', trans: 'melax' }
+        ];
+
+        const bes6GameSentencesData = [
+            { ku: 'Tu birçî yî?', en: 'Are you hungry?', words: ['אַתָּה', 'רָעֵב'], trans: 'Ata raev?' },
+            { ku: 'Erê, ez pir birçî me. Em çi bixwin?', en: 'Yes, I am very hungry. What shall we eat?', words: ['כֵּן', 'אֲנִי', 'מְאֹד', 'רָעֵב', 'מַה', 'נֹּאכַל'], trans: "Ken, ani me'od raev. Ma noxal?" },
+            { ku: 'Ez dixwazim nan û penîr bixwim.', en: 'I want to eat bread and cheese.', words: ['אֲנִי', 'רוֹצֶה', 'לֶאֱכֹל', 'לֶחֶם', 'וּגְבִינָה'], trans: "Ani rotse le'exol lexem ugvina." },
+            { ku: 'Baş e. Ez jî çay vexwim.', en: 'Okay. I will drink tea too.', words: ['בְּסֵדֶר', 'וַאֲנִי', 'אֶשְׁתֶּה', 'תֵּה'], trans: "Beseder. Va'ani eshte te." },
+            { ku: 'Li vira xwarinek xweş heye.', en: 'There is good food here.', words: ['כָּאן', 'יֵשׁ', 'אֹכֶל', 'טוֹב'], trans: 'Kan yesh oxel tov.' },
+            { ku: 'Spas! Xwarinê xweş!', en: 'Thank you! Enjoy your meal!', words: ['תּוֹדָה', 'בְּתֵאָבוֹן'], trans: "Toda! Bete'avon!" },
+            { ku: 'Fêkiyên vê dikanê pir xweş in. Tu sêv dixwazî?', en: 'The fruits in this shop are very tasty. Do you want an apple?', words: ['הַפֵּרוֹת', 'בַּחֲנוּת', 'הַזֹּאת', 'מְאֹד', 'טְעִימִים', 'אַתָּה', 'רוֹצֶה', 'תַּפּוּחַ'], trans: "Haperot baxanut hazot me'od te'imim. Ata rotse tapuax?" },
+            { ku: 'Erê, û ez jî mastê dixwazim. Tu şîr vedixwî?', en: 'Yes, and I also want yogurt. Do you drink milk?', words: ['כֵּן', 'וַאֲנִי', 'גַּם', 'רוֹצֶה', 'יוֹגוּרְט', 'אַתְּ', 'שׁוֹתָה', 'חָלָב'], trans: "Ken, va'ani gam rotse yogurt. At shota xalav?" },
+            { ku: 'Na, ez çayê vedixwim. Kehwe pir tund e ji bo min.', en: 'No, I drink tea. Coffee is too strong for me.', words: ['לֹא', 'אֲנִי', 'שׁוֹתָה', 'תֵּה', 'קָפֶה', 'חָזָק', 'מִדַּי', 'בִּשְׁבִילִי'], trans: "Lo, ani shota te. Kafe xazak miday bishvili." },
+            { ku: 'Fam dikim. Xwarinê xweş, heval!', en: 'I understand. Enjoy your meal, friend!', words: ['אֲנִי', 'מֵבִין', 'בְּתֵאָבוֹן', 'חָבֵר'], trans: "Ani mevin. Bete'avon, xaver!" }
         ];
