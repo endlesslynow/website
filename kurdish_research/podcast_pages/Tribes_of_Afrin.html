@@ -55,38 +55,7 @@
              position: relative; z-index: 2; /* Ensure headings are above ::before */
         }
 
-        /* Original audio player styles */
-        .audio-player {
-            width: 100%;
-            margin: 20px 0;
-            position: relative;
-             z-index: 2; /* Ensure player is above ::before */
-        }
-
-        audio {
-            width: 100%;
-            filter: sepia(20%);
-        }
-
-        .audio-download {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 5px;
-            color: #5a4a2e;
-            text-decoration: none;
-            font-weight: 500;
-             position: relative; z-index: 2;
-        }
-
-        .audio-download:hover {
-            text-decoration: underline;
-        }
-
-        .audio-icon {
-            margin-right: 8px;
-        }
-
-        /* Original description styles */
+/* Original description styles */
         .description {
             margin-bottom: 25px;
             background-color: rgba(255, 255, 255, 0.5);
@@ -240,13 +209,7 @@
             background-color: #444; /* Original background */
             border-radius: 3px; /* Original radius */
         }
-
-        /* Original audio player style adjustment inside wrapper */
-        #audioPlayer { /* Selects the audio element specifically */
-            flex-grow: 1;
-        }
-
-        /* Original rewind button style */
+/* Original rewind button style */
         .rewind-button {
             height: 34px; /* Original height */
             width: 40px; /* Original width */
@@ -266,34 +229,14 @@
 <body>
     <div class="container">
         <h1>Tribes of Afrin</h1>
-
-        <div class="audio-player">
-            <div class="player-wrapper">
-                <audio id="audioPlayer" controls>
-                    <source src="../audio/Afrin&#x27;s Tribes, Society, and History Before 2010.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-
-                <button id="rewindBtn" class="rewind-button">
-                    ⏪︎
-                </button>
-            </div>
-            <a href="../audio/Afrin&#x27;s Tribes, Society, and History Before 2010.mp3" download class="audio-download">
-                <svg class="audio-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                Download Audio File
-            </a>
-        </div>
+</div>
 
         <div class="description">
             <h2>Description</h2>
             <p>This collection of sources provides a detailed socio-historical analysis of the Afrin region (Kurd Dagh) in northwestern Syria before the Syrian Civil War. It focuses on the geography and historical significance of the area, its predominantly Kurdish population, and the notable presence of Yezidi and Alevi minority communities. The text examines the centrality and evolution of tribal structures, including the influential role of Agha families and the impact of Syrian state policies like land reforms. It also highlights the significant Muridiyya movement and its effect on tribal loyalties and social cohesion, alongside the region&#x27;s agricultural economy, particularly olive cultivation.</p>
         </div>
 
-        <a href="../../landing_pages/kurdish_research.html" class="back-button">
+        <a href="../kurdish_research.html" class="back-button">
             <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M19 12H5"></path>
                 <polyline points="12 19 5 12 12 5"></polyline>
@@ -457,45 +400,12 @@
         </div>
 
         <div class="disclaimer">
-            <p>Note: This was made with AI research and AI audio output, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+            <p>Note: This was made with AI research, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
         </div>
 
         <div class="last-updated">
             <p>This page was created on: May 06, 2025 and last updated: <span id="last-modified-date"></span></p>
         </div>
     </div>
-
-    <script>
-        // Get and format the last modified date (Original Logic)
-        // Note: This uses double curly braces {} for the options object literal
-        try {
-            document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-        } catch (e) {
-            console.error("Error setting last modified date:", e);
-            document.getElementById('last-modified-date').textContent = 'N/A';
-        }
-
-        // Rewind functionality (Original Logic - Placed after last-modified logic in original script)
-         document.addEventListener('DOMContentLoaded', function() {
-            const audio = document.getElementById('audioPlayer');
-            const rewindBtn = document.getElementById('rewindBtn');
-
-            // Check if elements exist before adding listener
-            if (audio && rewindBtn) {
-                rewindBtn.addEventListener('click', function() {
-                    // Rewind 10 seconds, but not before the start
-                    audio.currentTime = Math.max(0, audio.currentTime - 10);
-                });
-            } else {
-                // Log error if elements aren't found (optional debug)
-                if (!audio) console.error("Audio player element not found");
-                if (!rewindBtn) console.error("Rewind button element not found");
-            }
-        });
-    </script>
 </body>
 </html>
