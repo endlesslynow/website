@@ -91,7 +91,16 @@ function buildDetailCardLines() {
         var midX = x1 + (x2 - x1) * 0.45;
 
         var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        path.setAttribute('class', 'timeline-event-line is-foundation detail-card-line');
+        var eraLineClass = {
+            'foundation-event': 'is-foundation',
+            'golden-event': 'is-golden',
+            'mongol-event': 'is-mongol',
+            'stagnation-event': 'is-stagnation',
+            'ottoman-event': 'is-ottoman',
+            'modern-event': 'is-modern',
+            'protest-event': 'is-protest'
+        }[eventClass] || 'is-foundation';
+        path.setAttribute('class', 'timeline-event-line ' + eraLineClass + ' detail-card-line is-highlight');
         path.setAttribute('d',
             'M ' + x1.toFixed(2) + ' ' + y1.toFixed(2) +
             ' C ' + midX.toFixed(2) + ' ' + y1.toFixed(2) +

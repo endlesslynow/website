@@ -15,6 +15,7 @@ from PyQt6.QtWidgets import (
     QFileDialog,
     QHBoxLayout,
     QLabel,
+    QLineEdit,
     QListWidget,
     QListWidgetItem,
     QMainWindow,
@@ -45,6 +46,18 @@ EVENT_SECTIONS = {
     "BAGHDAD_PROTEST_PHASES": "Protest Cards",
 }
 
+TAB_ORDER = [
+    "Foundation Cards",
+    "Golden Age Cards",
+    "Mongol Siege Cards",
+    "Stagnation Cards",
+    "Ottoman Cards",
+    "Modern Cards",
+    "Protest Cards",
+    "Ruler Portraits",
+    # HTML detail-card sections (named after their h2) come last
+]
+
 
 @dataclass(frozen=True)
 class PictureEntry:
@@ -55,6 +68,8 @@ class PictureEntry:
     span: tuple[int, int] | None = None
     insert_at: int | None = None
     quote: str = '"'
+    caption: str = ""
+    caption_span: tuple[int, int] | None = None
 
     @property
     def target_dir(self) -> Path:
@@ -155,9 +170,27 @@ def scan_html_detail_cards() -> list[PictureEntry]:
                 flags=re.S | re.I,
             )
             label = clean_label(title_match.group(2)) if title_match else Path(src).name
-            start = section_match.start() + image_match.start(2)
-            end = section_match.start() + image_match.end(2)
-            entries.append(PictureEntry(heading, label, src, HTML_FILE, (start, end), quote=image_match.group(1)))
+            src_start = section_match.start() + image_match.start(2)
+            src_end = section_match.start() + image_match.end(2)
+
+            # Extract alt attribute as the caption
+            img_tag = image_match.group(0)
+            alt_m = re.search(r'\balt=([\'"])(.*?)\1', img_tag, re.I | re.S)
+            if alt_m:
+                alt_offset = section_match.start() + image_match.start() + alt_m.start(2)
+                caption = html.unescape(alt_m.group(2))
+                caption_span: tuple[int, int] | None = (alt_offset, alt_offset + len(alt_m.group(2)))
+            else:
+                caption = ""
+                caption_span = None
+
+            entries.append(PictureEntry(
+                heading, label, src, HTML_FILE,
+                (src_start, src_end),
+                quote=image_match.group(1),
+                caption=caption,
+                caption_span=caption_span,
+            ))
     return entries
 
 
@@ -189,7 +222,26 @@ def scan_event_cards() -> list[PictureEntry]:
             title = nearest_value(before, r'"title"\s*:\s*"([^"]+)"', len(before))
             date = nearest_value(before, r'"date"\s*:\s*"([^"]+)"', len(before))
             label = f"{date} - {title}" if date and title else title or Path(src).name
-            entries.append(PictureEntry(section, label, src, EVENTS_FILE, (absolute_start, absolute_end)))
+
+            # Find the "caption" field in the rest of the same image object
+            after_src = block[match.end():]
+            obj_end = after_src.find("}")
+            caption = ""
+            caption_span: tuple[int, int] | None = None
+            if obj_end != -1:
+                cap_m = re.search(r'"caption"\s*:\s*"([^"]*)"', after_src[:obj_end])
+                if cap_m:
+                    abs_cap_start = start + match.end() + cap_m.start(1)
+                    abs_cap_end = start + match.end() + cap_m.end(1)
+                    caption = cap_m.group(1)
+                    caption_span = (abs_cap_start, abs_cap_end)
+
+            entries.append(PictureEntry(
+                section, label, src, EVENTS_FILE,
+                (absolute_start, absolute_end),
+                caption=caption,
+                caption_span=caption_span,
+            ))
     return entries
 
 
@@ -236,10 +288,29 @@ def scan_all_entries() -> list[PictureEntry]:
     return entries
 
 
+def unique_span(text: str, value: str) -> tuple[int, int] | None:
+    matches = [match.span() for match in re.finditer(re.escape(value), text)]
+    if len(matches) == 1:
+        return matches[0]
+    return None
+
+
 def replace_entry(entry: PictureEntry, new_src: str) -> None:
     text = read_text(entry.file_path)
     if entry.span:
         start, end = entry.span
+        found = text[start:end]
+        if found != entry.src:
+            current_span = unique_span(text, entry.src)
+            if current_span is None:
+                count = len(re.findall(re.escape(entry.src), text))
+                reason = "Could not find the expected path." if count == 0 else "Found the expected path more than once."
+                raise ValueError(
+                    f"File changed since last scan — cannot safely update.\n\n"
+                    f"Expected: {entry.src!r}\nFound at scanned position: {found!r}\n\n"
+                    f"{reason}\nClick 'Refresh List' and try again."
+                )
+            start, end = current_span
         text = text[:start] + new_src + text[end:]
     elif entry.insert_at is not None:
         text = text[: entry.insert_at] + f", portrait: {entry.quote}{new_src}{entry.quote}" + text[entry.insert_at :]
@@ -248,11 +319,27 @@ def replace_entry(entry: PictureEntry, new_src: str) -> None:
     write_text(entry.file_path, text)
 
 
+def replace_caption(entry: PictureEntry, new_caption: str) -> None:
+    if entry.caption_span is None:
+        raise ValueError("This entry has no editable caption.")
+    text = read_text(entry.file_path)
+    start, end = entry.caption_span
+    found = text[start:end]
+    if found != entry.caption:
+        raise ValueError(
+            f"File changed since last scan — cannot safely update.\n\n"
+            f"Expected: {entry.caption!r}\nFound at position: {found!r}\n\n"
+            f"Click 'Refresh List' and try again."
+        )
+    text = text[:start] + new_caption + text[end:]
+    write_text(entry.file_path, text)
+
+
 class PictureChanger(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.setWindowTitle("Baghdad Website Picture Changer")
-        self.resize(980, 640)
+        self.resize(980, 680)
         self.entries: list[PictureEntry] = []
         self.lists: dict[str, QListWidget] = {}
 
@@ -275,11 +362,20 @@ class PictureChanger(QMainWindow):
         self.refresh_button = QPushButton("Refresh List")
         self.refresh_button.clicked.connect(self.reload)
 
+        caption_label = QLabel("Caption / Alt text:")
+        self.caption_edit = QLineEdit()
+        self.caption_edit.setPlaceholderText("No caption for this entry")
+        self.save_caption_button = QPushButton("Save Caption")
+        self.save_caption_button.clicked.connect(self.save_caption)
+
         right_layout = QVBoxLayout()
         right_layout.addWidget(self.preview)
         right_layout.addWidget(self.title_label)
         right_layout.addWidget(self.path_label)
         right_layout.addWidget(self.choose_button)
+        right_layout.addWidget(caption_label)
+        right_layout.addWidget(self.caption_edit)
+        right_layout.addWidget(self.save_caption_button)
         right_layout.addWidget(self.refresh_button)
         right_layout.addWidget(self.status_label)
         right_layout.addStretch(1)
@@ -295,6 +391,19 @@ class PictureChanger(QMainWindow):
         self.setCentralWidget(root)
 
         self.reload()
+
+    def _save_position(self) -> tuple[str, int]:
+        tab_name = self.tabs.tabText(self.tabs.currentIndex())
+        current_list = self.tabs.currentWidget()
+        row = current_list.currentRow() if isinstance(current_list, QListWidget) else 0
+        return tab_name, row
+
+    def _restore_position(self, tab_name: str, row: int) -> None:
+        if tab_name in self.lists:
+            self.tabs.setCurrentWidget(self.lists[tab_name])
+            lst = self.lists[tab_name]
+            if row < lst.count():
+                lst.setCurrentRow(row)
 
     def selected_entry(self) -> PictureEntry | None:
         current_list = self.tabs.currentWidget()
@@ -321,7 +430,8 @@ class PictureChanger(QMainWindow):
         for index, entry in enumerate(self.entries):
             grouped.setdefault(entry.section, []).append((index, entry))
 
-        for section, items in grouped.items():
+        ordered = sorted(grouped.items(), key=lambda x: TAB_ORDER.index(x[0]) if x[0] in TAB_ORDER else len(TAB_ORDER))
+        for section, items in ordered:
             list_widget = QListWidget()
             list_widget.currentItemChanged.connect(self.update_preview)
             for index, entry in items:
@@ -345,10 +455,19 @@ class PictureChanger(QMainWindow):
             self.preview.setPixmap(QPixmap())
             self.title_label.setText("")
             self.path_label.setText("")
+            self.caption_edit.setText("")
+            self.caption_edit.setEnabled(False)
+            self.save_caption_button.setEnabled(False)
             return
 
         self.title_label.setText(entry.label)
         self.path_label.setText(f"{entry.src}\n{entry.file_path.relative_to(BAGHDAD_DIR)}")
+
+        has_caption = entry.caption_span is not None
+        self.caption_edit.setText(entry.caption)
+        self.caption_edit.setEnabled(has_caption)
+        self.save_caption_button.setEnabled(has_caption)
+
         image_path = path_for_preview(entry.src)
         if not image_path.exists():
             self.preview.setPixmap(QPixmap())
@@ -394,8 +513,26 @@ class PictureChanger(QMainWindow):
             QMessageBox.critical(self, "Could not change picture", str(exc))
             return
 
+        saved = self._save_position()
         self.status_label.setText(f"Changed: {entry.label}\nNew path: {new_src}")
         self.reload()
+        self._restore_position(*saved)
+
+    def save_caption(self) -> None:
+        entry = self.selected_entry()
+        if entry is None:
+            return
+        new_caption = self.caption_edit.text()
+        try:
+            replace_caption(entry, new_caption)
+        except Exception as exc:
+            QMessageBox.critical(self, "Could not save caption", str(exc))
+            return
+
+        saved = self._save_position()
+        self.status_label.setText(f"Caption saved: {entry.label}")
+        self.reload()
+        self._restore_position(*saved)
 
 
 def main() -> int:

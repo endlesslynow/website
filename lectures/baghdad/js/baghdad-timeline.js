@@ -68,8 +68,8 @@
                 var media = renderEventMedia(event, classes);
                 return [
                     '<article class="' + classes.card + (event.highlight ? ' is-highlight' : '') + '" data-anchor-year="' + anchorYear + '" style="margin-top:' + marginTop.toFixed(1) + 'px">',
-                    '<div class="' + classes.date + '">' + event.date + '</div>',
                     '<div>',
+                    '<div class="' + classes.date + '">' + event.date + '</div>',
                     media,
                     '<h4 class="' + classes.title + '">' + event.title + '</h4>',
                     '<p class="' + classes.copy + '">' + event.description + '</p>',

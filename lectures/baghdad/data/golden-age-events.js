@@ -6,7 +6,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
       {
         "date": "c. 650",
         "title": "Khorasan Enters the Islamic World",
-        "description": "In 650, Arab armies conquered Khorasan, a vast region stretching across today's Iran, Afghanistan, Uzbekistan, and Turkmenistan. Over the following generations it became a churning frontier of Arabs, Persians, Turks, Sogdian merchants, new converts, and soldiers with grievances. The Abbasids built their revolution from exactly this world.",
+        "description": "In 650, various Arab armies conquered Khorasan, a vast region stretching across today's Iran, Afghanistan, Uzbekistan, and Turkmenistan. Over the following generations it became a churning frontier of Arabs, Persians, Turks, Sogdian merchants, new converts, and soldiers with grievances. The Abbasids built their revolution from this world.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 650
@@ -17,9 +17,9 @@ window.BAGHDAD_FOUNDATION_PHASES = [
         "description": "The revolution began quietly, in the markets and backstreets of Kufa. Abbasid agents traveled disguised as merchants, perfume-sellers, apothecaries, saddle-makers, and craftsmen. They carried a message of a more just Islamic order to people who had grown angry at Umayyad Arab privilege. Trade routes became revolutionary routes, threading from Iraq deep into Khorasan.",
         "highlight": true,
         "image": {
-          "src": "images/foundation-cards/abbasid-revolution-map.png",
+          "src": "images/foundation-cards/c-719-secret-abbasid-missions-begin-in-kufa.gif",
           "alt": "Map of the Abbasid Revolution linking Khorasan, Iraq, Syria, and Egypt",
-          "caption": "Revolutionary routes between Khorasan, Iraq, Syria, and Egypt"
+          "caption": "Kufa's proximity to Baghdad"
         },
         "mediaPlaceholder": "Image placeholder: merchant or perfume-seller on a caravan route",
         "anchorYear": 719
@@ -40,7 +40,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
         "image": {
           "src": "images/foundation-cards/abbasid-banner.png",
           "alt": "Black banner used to represent the Abbasid Caliphate",
-          "caption": "The Abbasid black banner"
+          "caption": "The Abbasid black banner (in case you couldn't picture it)"
         },
         "mediaPlaceholder": "Image placeholder: black Abbasid banners outside Merv",
         "anchorYear": 747
@@ -48,7 +48,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
       {
         "date": "748",
         "title": "Abu Muslim Takes Merv",
-        "description": "By early 748, Abu Muslim had made himself master of Merv. The Abbasid cause now had its military engine. He linked the underground organizers in Iraq with the soldiers of Khorasan and sent armies westward with gathering force.",
+        "description": "By early 748, Abu Muslim of the Abbasids had made himself master of Merv. The Abbasid cause now had its military engine. He linked the underground organizers in Iraq with the soldiers of Khorasan and sent armies westward with gathering force.",
         "highlight": true,
         "image": {
           "src": "images/foundation-cards/abu-muslim.jpg",
@@ -66,7 +66,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
         "image": {
           "src": "images/foundation-cards/kufa-mosque.jpg",
           "alt": "Great Mosque of Kufa in Iraq",
-          "caption": "Kufa, the Iraqi city where Abbasid power surfaced"
+          "caption": "Kufa today, the Iraqi city where Abbasid power surfaced"
         },
         "mediaPlaceholder": "Image placeholder: Abbasid safe house in Kufa",
         "anchorYear": 749
@@ -109,20 +109,20 @@ window.BAGHDAD_FOUNDATION_PHASES = [
       {
         "date": "758",
         "title": "The Search for a Safer Capital Becomes Urgent",
-        "description": "A violent palace riot by Persian extremists made al-Mansur's base near Kufa untenable. Damascus carried the stain of Umayyad memory. The Euphrates sites offered little strategic advantage. Al-Mansur took to the Tigris himself, scouting the riverbanks for a site that could be defended, supplied, and shaped into the center of an empire.",
+        "description": "A violent palace riot by Persian extremists who first declared al-Mansur a god then rebelled against him when he didn't accept the status, made al-Mansur's base near Kufa untenable. Damascus carried the stain of Umayyad memory. The Euphrates sites offered little strategic advantage. Al-Mansur took to the Tigris himself, scouting the riverbanks for a site that could be defended, supplied, and shaped into the center of an empire.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 758
       },
       {
         "date": "762",
-        "title": "Al-Mansur Chooses Baghdad",
-        "description": "Baghdad's site was chosen for geography as much as ambition. It stood near the Tigris, close to canals linking the Euphrates, and within reach of routes from Syria, Egypt, Basra, Mosul, Armenia, Iran, Central Asia, and beyond. The future city would be fed by river, canal, caravan, and tax. Al-Mansur was placing the Abbasid state at the crossroads of the known world.",
+        "title": "Al-Mansur Chooses al-Mansur City",
+        "description": "The site of Baghdad (first called al-Mansur City) was chosen for geography as much as ambition. It stood near the Tigris, close to canals linking the Euphrates, and within reach of routes from Syria, Egypt, Basra, Mosul, Armenia, Iran, Central Asia, and beyond. The future city would be fed by river, canal, caravan, and tax. Al-Mansur was placing the Abbasid state at the crossroads of the known world.",
         "highlight": true,
         "image": {
-          "src": "images/foundation-cards/abbasid-caliphate-map.png",
+          "src": "images/foundation-cards/762-al-mansur-chooses-baghdad.png",
           "alt": "Map of the Abbasid Caliphate showing Baghdad's imperial position",
-          "caption": "Baghdad's position in the Abbasid world"
+          "caption": "Baghdad's position in the Abbasid world (it's directly in the center)"
         },
         "mediaPlaceholder": "Image placeholder: Tigris, Euphrates, Sarat Canal, and trade routes",
         "anchorYear": 762
@@ -130,18 +130,18 @@ window.BAGHDAD_FOUNDATION_PHASES = [
     ]
   },
   {
-    "title": "Mudbrick City",
-    "description": "The first Baghdad existed as geometry before it became masonry. It began as a circle traced in fire and cinders, then rose as walls, gates, palace, mosque, and imperial order.",
+    "title": "Planned City",
+    "description": "The first Baghdad existed as geometry before it became masonry. It began as a circle traced in fire and cinders, then rose as walls, gates, palaces, mosques, and imperial orders, and sometimes fell as ash again.",
     "events": [
       {
         "date": "July 30, 762",
         "title": "The Burning Outline and the First Brick",
-        "description": "Al-Mansur had the plan of the Round City traced on the ground with lines of cinders. Cotton balls soaked in naphtha were placed along the outlines and set alight. The future walls appeared in fire before they rose in brick. The astrologers Nawbakht and Mashallah chose the auspicious date, al-Mansur prayed, and he laid the first ceremonial brick. Baghdad was born as a city drawn in fire and built from mud.",
+        "description": "Al-Mansur had the plan of the Round City traced on the ground with lines of cinders. Cotton balls soaked in naphtha were placed along the outlines and set alight. The future walls appeared in fire before they rose in brick. The astrologers Nawbakht and Mashallah chose the auspicious date, al-Mansur prayed, and he laid the first ceremonial brick. Baghdad was born as a city drawn in fire - a very appropriate start considering its history.",
         "highlight": true,
         "image": {
-          "src": "images/foundation-cards/mudbrick-borsippa.jpg",
+          "src": "images/foundation-cards/july-30-762-the-burning-outline-and-the-first-brick.png",
           "alt": "Ancient Mesopotamian mudbrick from Borsippa in Iraq",
-          "caption": "Mesopotamian mudbrick as the city's material logic"
+          "caption": "Image from Umar Farrukh's 'Illustrated History of Islam"
         },
         "mediaPlaceholder": "Image placeholder: burning cotton outline of the Round City",
         "anchorYear": 762
@@ -152,7 +152,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
         "description": "Builders, surveyors, blacksmiths, carpenters, and brickmakers poured in from across the empire by the thousands. The city rose as a perfect circle with massive walls, a moat, four gates, and roads converging inward toward the caliph's palace and mosque. Its beauty was inseparable from its purpose. It was a royal city engineered to protect power from rebellion.",
         "highlight": true,
         "image": {
-          "src": "images/foundation-cards/round-city-le-strange.png",
+          "src": "images/foundation-cards/762-766-the-round-city-rises.jpg",
           "alt": "Plan of the Round City of Baghdad in the time of al-Mansur",
           "caption": "Round City plan in the time of al-Mansur"
         },
@@ -165,9 +165,9 @@ window.BAGHDAD_FOUNDATION_PHASES = [
         "description": "By 766, the Round City was complete. At its center stood the Golden Gate Palace and the Great Mosque, joining political and religious authority in one carefully controlled space. The sprawling metropolis of later centuries lay ahead. For now, the symbolic heart of the Abbasid world had been built.",
         "highlight": true,
         "image": {
-          "src": "images/foundation-cards/round-city-baghdad.png",
+          "src": "images/foundation-cards/766-completion-of-the-round-city.jpg",
           "alt": "Map of the Round City of Baghdad",
-          "caption": "The completed Round City of Baghdad"
+          "caption": "A sketch of Baghdad from the video game, Assassin's Creed"
         },
         "mediaPlaceholder": "Image placeholder: Golden Gate Palace and green dome",
         "anchorYear": 766
@@ -189,7 +189,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
       {
         "date": "768",
         "title": "Rusafa Begins on the East Bank",
-        "description": "Al-Mansur began developing Rusafa on the east bank for his son and heir al-Mahdi, and for troops. A second urban pole took shape across the Tigris. Baghdad was already straining beyond the geometry of al-Mansur's original circle. West bank, east bank, markets, palaces, soldiers, canals, and bridges were assembling themselves into the Abbasid capital of the world.",
+        "description": "Al-Mansur began developing Rusafa on the east bank for his son and heir al-Mahdi, and for troops. A second urban center took shape across the Tigris. Baghdad was already straining beyond the geometry of al-Mansur's original circle. West bank, east bank, markets, palaces, soldiers, canals, and bridges were assembling themselves into the Abbasid capital of the world.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 768
@@ -252,7 +252,7 @@ window.BAGHDAD_MONGOL_SIEGE_PHASES = [
       {
         "date": "18-30 January 1258",
         "title": "Baghdad Is Encircled and Bombarded",
-        "description": "Hulagu's armies converged on Baghdad from the east, west, and north. An Abbasid force crossed the Tigris to strike first, but the Mongols broke the dykes and flooded the ground behind it, drowning much of the army. Hulagu then invested the city. By 30 January, siege engines were hurling stones, palm trunks, arrows, and flaming naphtha into Baghdad. The city was surrounded by war machines and cut off from escape.",
+        "description": "Hulagu's armies converged on Baghdad from the east, west, and north. An Abbasid force crossed the Tigris to strike first, but the Mongols broke the dykes and flooded the ground behind it, drowning much of the army. Hulagu then invaded the city. By 30 January, siege engines were hurling stones, palm trunks, arrows, and flaming naphtha into Baghdad. The city was surrounded by war machines and cut off from escape.",
         "highlight": true,
         "image": {
           "src": "images/mongol-siege-cards/mongol-siege-engines.jpg",
@@ -292,12 +292,12 @@ window.BAGHDAD_MONGOL_SIEGE_PHASES = [
   },
   {
     "title": "Destruction",
-    "description": "The sack ended Abbasid Baghdad as an imperial capital. The scale of killing in the sources varies. The meaning is clear. The city's people, palaces, libraries, schools, markets, and symbols of rule were all attacked together.",
+    "description": "The sack ended Abbasid Baghdad as an imperial capital. The scale of killing in the sources varies. The meaning was clear. The city's people, palaces, libraries, schools, markets, and symbols of rule were all attacked together.",
     "events": [
       {
         "date": "February 1258",
         "title": "The Sack of Baghdad",
-        "description": "Mongol forces killed large numbers of civilians and elites, plundered the city, burned neighborhoods, and destroyed palaces, mosques, law colleges, libraries, markets, and homes. Later memory pictured the Tigris running black with ink from books and red with blood from the dead. Whether literal or legendary, the image captures how Baghdadis remembered the fall as the destruction of both human life and accumulated knowledge.",
+        "description": "Mongol forces killed large numbers of civilians and elites, plundered the city, burned neighborhoods, and destroyed palaces, mosques, law colleges, libraries, markets, and homes. Stories told of the Tigris running black with ink from books and red with blood from the dead. Whether literal or legendary, the image captures how Baghdadis remembered the fall as the destruction of both human life and accumulated knowledge.",
         "highlight": true,
         "image": {
           "src": "images/mongol-siege-cards/fall-of-baghdad-diez.jpg",
@@ -310,7 +310,7 @@ window.BAGHDAD_MONGOL_SIEGE_PHASES = [
       {
         "date": "21 February 1258",
         "title": "The Last Abbasid Caliph Is Executed",
-        "description": "Hulagu ordered Al-Mustasim, his eldest son, and loyal attendants killed outside Baghdad. The famous story that the caliph was forced to eat gold became part of the legend of the fall. Whatever the precise details, the historical meaning is plain. The Abbasid line in Baghdad was broken. The caliphate that had ruled from the city since the eighth century was finished.",
+        "description": "Hulagu ordered Al-Mustasim, his eldest son, and loyal attendants killed outside Baghdad. The famous story that the caliph was forced to eat gold became part of the legend of the fall. The Abbasid line in Baghdad was broken. The caliphate that had ruled from the city since the eighth century was finished.",
         "highlight": true,
         "image": {
           "src": "images/mongol-siege-cards/diez-execution.jpg",
@@ -323,7 +323,7 @@ window.BAGHDAD_MONGOL_SIEGE_PHASES = [
       {
         "date": "8 March 1258",
         "title": "Hulagu Leaves a Ruined City",
-        "description": "Hulagu departed with the treasures of the Abbasid court. He ordered bodies cleared from the streets, bazaars reopened, and a Mongol administration installed. That detail matters. The Mongols turned the former capital of the caliphs into a conquered city inside their empire and moved on.",
+        "description": "Hulagu departed with the treasures of the Abbasid court. He ordered bodies cleared from the streets, bazaars reopened, and a Mongol administration installed.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1258
@@ -523,7 +523,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
         "image": {
           "src": "images/golden-age-cards/harun-envoys.jpg",
           "alt": "Harun al-Rashid receiving envoys from Charlemagne in Baghdad",
-          "caption": "Harun al-Rashid's court and diplomatic prestige"
+          "caption": "Ar-Rashid receives an embassy from Charlemagne at his court in Baghdad. "
         },
         "mediaPlaceholder": "Image placeholder: Harun al-Rashid's court",
         "anchorYear": 786
@@ -547,10 +547,10 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
       {
         "date": "803",
         "title": "The Barmakids Are Purged",
-        "description": "Harun suddenly destroyed the family that had helped make his court so brilliant. Jafar the Barmakid was executed, the family's wealth was seized, and Baghdad learned that its splendor rested beside lethal palace politics.",
+        "description": "Harun suddenly destroyed the family that had helped make his court so brilliant. Jafar the Barmakid was executed, the family's wealth was seized, and Baghdad learned that its splendor rested beside lethal palace politics. The city's poets and scholars who had thrived under their care were left desolute and drained of inspiration.",
         "highlight": true,
         "image": {
-          "src": "images/golden-age-cards/barmakid-purge.png",
+          "src": "images/golden-age-cards/803-the-barmakids-are-purged.png",
           "alt": "Later manuscript image of the killing of Jafar al-Barmaki",
           "caption": "The fall of Ja'far al-Barmaki"
         },
@@ -577,7 +577,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
         "description": "The struggle between al-Amin in Baghdad and al-Ma'mun in the east became a brutal siege of the capital. Mangonels, fire, hunger, and street fighting shattered parts of the Round City. In 813 al-Amin was killed, and al-Ma'mun inherited a wounded city that he would turn toward scholarship, science, and translation.",
         "highlight": true,
         "image": {
-          "src": "images/golden-age-cards/baghdad-150-300-ah.png",
+          "src": "images/golden-age-cards/811-813-civil-war-and-siege-of-baghdad.jpg",
           "alt": "Map of Baghdad between 767 and 912 AD",
           "caption": "Baghdad in the late eighth and early ninth centuries"
         },
@@ -616,9 +616,9 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
         "description": "Al-Khwarizmi developed algebra and helped transmit Hindu numerals. Hunayn ibn Ishaq translated and wrote major medical works. Al-Kindi brought Greek philosophy into Arabic thought. The Banu Musa brothers and Thabit ibn Qurra pushed mathematics, mechanics, and astronomy forward. Baghdad's greatness came from these interlocking networks of scholars, patrons, and ideas.",
         "highlight": true,
         "image": {
-          "src": "images/golden-age-cards/al-khwarizmi-manuscript.jpg",
+          "src": "images/golden-age-cards/9th-century-scholars-transform-world-knowledge.jpg",
           "alt": "Arabic manuscript page of a work by al-Khwarizmi",
-          "caption": "Al-Khwarizmi and Baghdad's scientific networks"
+          "caption": "Al-Khwarizmi"
         },
         "mediaPlaceholder": "Image placeholder: al-Khwarizmi, Hunayn, al-Kindi, and Banu Musa",
         "anchorYear": 850
@@ -650,9 +650,9 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
         "description": "Al-Mu'tadid returned the caliphate from Samarra to Baghdad and rebuilt the palace world on the east bank. The move restored prestige. The unchallenged imperial power of the early Abbasids was gone.",
         "highlight": true,
         "image": {
-          "src": "images/golden-age-cards/abbasid-palace.jpg",
+          "src": "images/golden-age-cards/892-the-caliphs-return-to-baghdad.png",
           "alt": "The Abbasid Palace in Baghdad",
-          "caption": "Abbasid palace architecture in Baghdad"
+          "caption": "Al-Mu'tadid"
         },
         "mediaPlaceholder": "",
         "anchorYear": 892
@@ -708,7 +708,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
         "image": {
           "src": "images/golden-age-cards/nizam-al-mulk.png",
           "alt": "Statue of Nizam al-Mulk, founder of the Nizamiya colleges",
-          "caption": "Nizam al-Mulk and the Nizamiya college network"
+          "caption": "Nizam al-Mulk"
         },
         "mediaPlaceholder": "Image placeholder: Nizamiya Academy and Seljuk Baghdad",
         "anchorYear": 1055
@@ -813,17 +813,17 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
 window.BAGHDAD_STAGNATION_PHASES = [
   {
     "title": "After the Caliphate",
-    "description": "The first part of this era is about survival after 1258. Baghdad still had people, shrines, markets, and memory. It had lost its place at the center of a universal caliphate.",
+    "description": "The first part of this era is about survival after 1258. While Baghdad still had people, shrines, markets, and memory, it had lost its place at the center of a universal caliphate.",
     "events": [
       {
         "date": "1258-c. 1300",
         "title": "Baghdad After the Mongol Sack",
-        "description": "The Mongol conquest broke the political system that had made Baghdad the capital of the Islamic world. The city became a conquered provincial center inside the Ilkhanid world, while the irrigation networks, canals, dykes, and cultivated lands that had sustained Mesopotamia fell into ruin. Baghdad could rebuild houses and markets. Rebuilding the population, court patronage, and water systems that had supported its old greatness would take far longer.",
+        "description": "The Mongol conquest broke the political system that had made Baghdad the capital of the Islamic world. The city became a conquered provincial center inside the Ilkhanid world, while the irrigation networks, canals, dykes, and cultivated lands that had sustained Mesopotamia fell into ruin. Although Baghdad could rebuild houses and markets, rebuilding the population, court patronage, and water systems would take far longer.",
         "highlight": true,
         "image": {
-          "src": "images/rulers/various-ilkhans.jpg",
+          "src": "images/rulers/1258-c-1300-baghdad-after-the-mongol-sack.jpg",
           "alt": "Ilkhanid ruler imagery standing for the Mongol order that ruled Baghdad after 1258",
-          "caption": "Baghdad became provincial inside the Ilkhanid world"
+          "caption": "Baghdad became a provincial ruin inside the Ilkhanid world"
         },
         "mediaPlaceholder": "Image placeholder: map of Ilkhanid Iraq and ruined canal networks",
         "anchorYear": 1258
@@ -831,7 +831,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
       {
         "date": "1327",
         "title": "Ibn Battuta Finds a Surviving but Reduced City",
-        "description": "Ibn Battuta reached Baghdad in 1327 and found a city alive with shrines, mosques, bridges, neighborhoods, and religious charity. The scale and ambition of the Abbasid metropolis were gone. His account matters because it shows Baghdad surviving the Mongol catastrophe in a new and diminished role.",
+        "description": "Ibn Battuta reached Baghdad in 1327 and found a city alive with shrines, mosques, bridges, neighborhoods, and religious charity. The scale and ambition of the Abbasid metropolis were gone. His account shows Baghdad \"survived\" the Mongol catastrophe in a new and diminished role.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1327
@@ -858,7 +858,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
       {
         "date": "1393",
         "title": "Timur Captures Baghdad for the First Time",
-        "description": "Timur's first arrival showed how exposed Baghdad had become. Sultan Ahmad Jalayir fled, and the conqueror's army entered the city without serious resistance. The troops plundered wealth, imposed tribute, and carried scholars and artists away to Samarkand. Baghdad still carried the prestige of a great name. It had lost the power to shape events around it.",
+        "description": "Timur's first arrival showed how exposed Baghdad had become. Sultan Ahmad Jalayir fled, and the conqueror's army entered the city without serious resistance. The troops plundered wealth, imposed tribute, and carried scholars and artists away to Samarkand. ",
         "highlight": true,
         "image": {
           "src": "images/stagnation-cards/timur-siege-baghdad.jpg",
@@ -871,7 +871,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
       {
         "date": "1401",
         "title": "Timur's Catastrophic Sack of Baghdad",
-        "description": "When Timur returned in 1401, Baghdad was leaderless and terrified. The city was stormed in extreme summer heat, civilians tried to flee toward the Tigris, and the sack became one of the most brutal episodes in Baghdad's memory. Chroniclers described mass killing, towers of skulls, ruined markets, burned caravanserais, and a city left in desolation. Whether every number in the sources is exact or rhetorical, the meaning is plain. The second storm crushed the recovery that had followed the Mongols.",
+        "description": "When Timur returned in 1401, Baghdad was leaderless and terrified. The city was stormed in extreme summer heat. The sack became one of the most brutal episodes in Baghdad's memory. Chroniclers described mass killing, towers of skulls, ruined markets, burned caravanserais, and a city left in desolation. The second storm crushed the recovery that had followed the Mongols.",
         "highlight": true,
         "image": {
           "src": "images/stagnation-cards/timur-soldiers.jpg",
@@ -898,12 +898,12 @@ window.BAGHDAD_STAGNATION_PHASES = [
       {
         "date": "1437-1444",
         "title": "Travelers Describe Baghdad as Ruins",
-        "description": "Mid-fifteenth-century accounts give a stark picture. Al-Makrizi described Baghdad as ruined, with its mosques, congregations, calls to prayer, souks, and palm groves diminished. Nicolo de' Conti passed through and gave the city only brief attention. These observations matter because they make stagnation visible. Baghdad had survived. It had fallen far from the crowded, literate, cosmopolitan city of Abbasid memory.",
+        "description": "Mid-fifteenth-century accounts give a stark picture. Al-Makrizi described Baghdad as ruined, with its mosques, congregations, calls to prayer, souks, and palm groves diminished. Nicolo de' Conti passed through and gave the city only brief attention. ",
         "highlight": true,
         "image": {
-          "src": "images/stagnation.jpg",
+          "src": "images/1437-1444-travelers-describe-baghdad-as-ruins.jpg",
           "alt": "Timurid manuscript image connected with Baghdad's late medieval devastation",
-          "caption": "Late medieval Baghdad, remembered as diminished but still alive"
+          "caption": "Dead palm grove"
         },
         "mediaPlaceholder": "Image placeholder: ruined fifteenth-century Baghdad and dried palm groves",
         "anchorYear": 1437
@@ -911,7 +911,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
       {
         "date": "1447-1468",
         "title": "Jahan Shah and Black Sheep Rule",
-        "description": "Jahan Shah, the strongest Black Sheep ruler, expanded his power across much of Iraq and Iran. Baghdad remained unstable throughout his rule. His own son Pir Budak rebelled as governor of the city, forcing a long siege that ended in surrender and death. The event gives the era its political texture. Baghdad was still strategically useful, trapped inside the ambitions and family violence of larger tribal empires.",
+        "description": "Jahan Shah, the strongest Black Sheep ruler, expanded his power across much of Iraq and Iran. Baghdad remained unstable throughout his rule. His own son Pir Budak rebelled as governor of the city, forcing a long siege that ended in surrender and death.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1447
@@ -919,7 +919,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
       {
         "date": "1468",
         "title": "Uzun Hasan and the White Sheep Take Baghdad",
-        "description": "The White Sheep Turkmen under Uzun Hasan replaced the Black Sheep after Jahan Shah's fall. Baghdad resisted before acknowledging the new ruler. The pattern held. The city had become a frontier possession passed between confederations whose main centers lay elsewhere. Its name still carried prestige. Its ability to direct history had withered.",
+        "description": "The White Sheep Turkmen under Uzun Hasan replaced the Black Sheep after Jahan Shah's fall. Baghdad resisted before acknowledging the new ruler. The pattern held. The city had become a frontier possession passed between confederations whose main centers lay elsewhere. Its name still carried prestige but its ability to direct history had withered with its gardens.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1468
@@ -927,7 +927,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
       {
         "date": "1472-1473",
         "title": "Jami's Troubled Stay in Baghdad",
-        "description": "The Persian poet Jami spent four months in Baghdad while traveling on pilgrimage. His visit turned bitter after sectarian accusations against him stirred public anger. He defended himself before the governor, religious scholars, and an agitated crowd, then remembered the city in hostile verse. The episode shows everyday Baghdad as tense, diminished, and still tied to pilgrimage, poetry, and sectarian identity.",
+        "description": "The Persian poet Jami spent four months in Baghdad while traveling on pilgrimage. His visit turned bitter after sectarian accusations against him stirred public anger. He defended himself before the governor, religious scholars, and an agitated crowd, then remembered the city in hostile verse. At least in this way, Baghdad could still inspire poetry.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1472
@@ -954,7 +954,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
       {
         "date": "1514",
         "title": "Chaldiran Makes Baghdad a Frontier Prize",
-        "description": "The Ottoman victory over Shah Ismail at Chaldiran happened far from Baghdad. It changed the city's future all the same. The Safavid defeat weakened Persian confidence and opened northern Iraq to Ottoman pressure. From this point, Baghdad stood between two larger empires, one Sunni Ottoman and one Shia Safavid. Its old caliphal glory had faded. Its symbolic value, trade routes, and shrine landscape made it too important for either side to abandon.",
+        "description": "The Ottoman victory over Shah Ismail at Chaldiran happened far from Baghdad but it changed its future all the same. The Safavid defeat weakened Persian confidence and opened northern Iraq to Ottoman pressure. From this point, Baghdad stood between two larger empires, one Sunni Ottoman and one Shia Safavid.",
         "highlight": true,
         "image": {
           "src": "images/stagnation-cards/chaldiran.jpg",
@@ -971,12 +971,12 @@ window.BAGHDAD_STAGNATION_PHASES = [
 window.BAGHDAD_OTTOMAN_PHASES = [
   {
     "title": "A Frontier Prize",
-    "description": "Baghdad entered the Ottoman age before Ottoman rule was secure. The city had become a place where local commanders, Safavid shahs, and Ottoman sultans could all claim authority. None could take stability for granted.",
+    "description": "Baghdad entered the Ottoman age before Ottoman rule was secure. The city had become a place where local commanders, Safavid shahs, and Ottoman sultans could all claim authority. However, none could take stability for granted.",
     "events": [
       {
         "date": "1528-1530",
         "title": "Dhul Fakar's Coup and Baghdad's Brief Ottoman Turn",
-        "description": "Dhul Fakar seized Baghdad from within the weakened Safavid order and made a dramatic bid for Ottoman protection. He had the Ottoman sultan's name read in the Friday sermon, the public sign that sovereignty had changed. The turn did not last. Safavid intrigue brought his death, and Baghdad slipped back from Ottoman promise into Persian control. The episode matters because it shows how fragile local authority had become before Suleiman ever arrived.",
+        "description": "Dhul Fakar seized Baghdad from within the weakened Safavid order and made a dramatic bid for Ottoman protection. He had the Ottoman sultan's name read in the Friday sermon, the public sign that sovereignty had changed. The turn did not last. Safavid intrigue brought his death, and Baghdad slipped back from Ottoman promise into Persian control. Local authority remained fragile before even Suleiman ever arrived.",
         "highlight": true,
         "image": {
           "src": "images/ottoman-cards/abu-hanifa-mosque.jpg",
@@ -989,7 +989,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
       {
         "date": "1534",
         "title": "Suleiman the Magnificent Enters Baghdad",
-        "description": "Suleiman's campaign turned Dhul Fakar's failed gesture into imperial reality. Ottoman forces entered Baghdad, and the city became a frontier capital of the empire, guarding the road between Anatolia, Iraq, Iran, and the Gulf. Its old Abbasid aura still mattered. Its new role was to stand as a strategic prize between a Sunni Ottoman west and a Shia Safavid east.",
+        "description": "Suleiman's campaign turned Dhul Fakar's failed gesture into imperial reality. Ottoman forces entered Baghdad, and the city became a frontier capital of the empire, guarding the road between Anatolia, Iraq, Iran, and the Gulf. Baghdad's new role was to stand as a strategic prize between a Sunni Ottoman west and a Shia Safavid east.",
         "highlight": true,
         "image": {
           "src": "images/ottoman-cards/suleiman-enters-baghdad.jpg",
@@ -1002,7 +1002,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
       {
         "date": "1623",
         "title": "Safavid Forces Retake Baghdad",
-        "description": "After nearly a century of Ottoman rule, Safavid power returned. The capture of Baghdad was destructive and sectarian, with the Sunni population hit especially hard and many buildings left ruined or empty. The city shrank, schools decayed, and open ground spread inside old walls that had once enclosed a much larger urban life.",
+        "description": "After nearly a century of Ottoman rule, Safavid power returned. The capture of Baghdad was destructive and sectarian, with the Sunni population hit especially hard. Many buildings were left ruined and empty. The city shrank, schools decayed, and open ground spread inside throughout the city.",
         "highlight": true,
         "image": {
           "src": "images/ottoman-cards/shah-abbas.jpg",
@@ -1015,7 +1015,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
       {
         "date": "1625-1630",
         "title": "The Ottomans Fail to Break Baghdad",
-        "description": "Ottoman armies tried twice to recover the city. Mines, artillery, hunger, disease, and mutiny turned the sieges into ordeals for both sides. Baghdad held behind massive brick defenses. The civilian population paid for that survival through famine, epidemic disease, and years of living inside a battlefield.",
+        "description": "Ottoman armies tried twice to recover the city. Artillery, hunger, disease, and mutiny turned the sieges into ordeals for both sides. Baghdad held behind massive brick defenses. The civilian population paid for that survival through famine, epidemic disease, and years of living inside a battlefield.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1625
@@ -1023,7 +1023,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
       {
         "date": "1638-1639",
         "title": "Murad IV Reconquers Baghdad",
-        "description": "Sultan Murad IV personally led the final Ottoman reconquest. Heavy bombardment opened the city, Persian resistance collapsed, and the aftermath brought massacre, plunder, and a new Ottoman order. Murad ordered repairs to the city and its fortifications, then marched out through Bab al-Talism in February 1639. The gate was sealed behind him, turning architecture into a memory of conquest.",
+        "description": "Sultan Murad IV personally led the final Ottoman reconquest. Heavy bombardment opened the city, and Persian resistance collapsed. As was tradition, the aftermath was massacre and plunder. Murad ordered repairs to the city and its fortifications, then marched out through Bab al-Talism in February 1639. The gate was sealed behind him, and remained sealed until the Ottomans destroyed the sealed wall during their retreat from the city during WW I.",
         "highlight": true,
         "image": {
           "src": "images/ottoman-cards/capture-of-baghdad-1638.jpg",
@@ -1042,7 +1042,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
       {
         "date": "1704",
         "title": "Hassan Pasha Begins the Mamluk Era",
-        "description": "Hassan Pasha built a new local power base by training and promoting Mamluks, many of them Georgian or Caucasian recruits. These military households gave Baghdad's governors a disciplined force of their own. The result was a semi-autonomous political order. It was formally Ottoman, with real authority running through local patronage, household loyalty, and the pasha's court.",
+        "description": "Hassan Pasha built a new local power base by training and promoting Mamluks, many of them Georgian or Caucasian recruits. These military households gave Baghdad's governors a disciplined force of their own. The result was a semi-autonomous political order. While Baghdad was formally Ottoman, with real authority running through local patronage and the pasha's court.",
         "highlight": true,
         "image": {
           "src": "images/ottoman-cards/al-saray-mosque.jpg",
@@ -1055,7 +1055,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
       {
         "date": "1723-1747",
         "title": "Ahmad Pasha Holds the Frontier",
-        "description": "Ahmad Pasha's long rule gave Baghdad a rare stretch of continuity. He fought Iranian threats, managed tribal politics, and strengthened the pashalik's local authority. The era was a practical recovery from the instability of the seventeenth century.",
+        "description": "Ahmad Pasha's long rule gave Baghdad a rare stretch of continuity. He fought Iranian threats, managed tribal politics, and strengthened the pashalik's local authority. The era was a practical recovery from the instability of the previous centuries.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1723
@@ -1063,7 +1063,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
       {
         "date": "1766",
         "title": "Niebuhr Sees a City of Ruins and Survivals",
-        "description": "The German explorer Carsten Niebuhr arrived during floods and harsh weather. He found empty ground within the walls, narrow markets, mosques, baths, caravanserais, and a city whose scholarly institutions had fallen far from Abbasid fame. His visit is a useful street-level snapshot of a diminished city that still breathed.",
+        "description": "The German explorer Carsten Niebuhr arrived during floods and harsh weather. He found empty ground within the walls, narrow markets, mosques, baths, caravanserais, and a city whose scholarly institutions had fallen far from Abbasid fame. His visit is a rare street-level snapshot of a diminished city during this period.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1766
@@ -1097,7 +1097,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
       {
         "date": "1826",
         "title": "The Janissaries Are Abolished Without a Baghdad Bloodbath",
-        "description": "When Sultan Mahmud II destroyed the Janissary corps across the empire, Baghdad could easily have erupted. Daud Pasha staged the transition with artillery and Mamluk troops ready. The Janissaries submitted and changed their headgear to that of the new army. In a city accustomed to violent regime changes, this reform passed with remarkable restraint.",
+        "description": "In June 1826, Ottoman Sultan Mahmud II forcibly abolished the centuries-old Janissary corps in Istanbul, killing thousands in the process. He then ordered provincial governors to do the same. In Baghdad, the largely autonomous Mamluk governor Daud Pasha seized the moment. He had already been building a modern, European-trained army and had his own Mamluk troops and artillery at the ready. When the sultan's order arrived that summer, Baghdad's Janissaries, outmatched and isolated, surrendered without a fight and accepted absorption into the new military. For a city with a long history of coups and violent power struggles, the transition was strikingly bloodless.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1826
@@ -1105,7 +1105,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
       {
         "date": "1831",
         "title": "Plague, Flood, Siege, and the End of the Mamluks",
-        "description": "In 1831 Baghdad suffered one of its great catastrophes. Plague swept through the city, corpses filled the streets, social order broke down, and then floodwaters added a second disaster. Ali Rida Pasha, sent by Istanbul, moved against the weakened Daud. Baghdad fell in September, Daud was removed, and the Mamluk order was abolished in blood. The city passed from semi-independent pasha rule into a more centralized Ottoman age.",
+        "description": "An overlapping plague outbreak, Tigris flood, and famine collapses the city from ~80,000 toward 65,000. The 19th-century population stays virtually static for forty years. Ali Rida Pasha, sent by Istanbul, moved against the weakened Daud. Baghdad fell in September, Daud was removed, and the Mamluk order was abolished in blood. The city passed from semi-independent pasha rule into a more centralized Ottoman age.",
         "highlight": true,
         "image": {
           "src": "images/ottoman-cards/baghdad-flood.jpg",
@@ -1219,7 +1219,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
       {
         "date": "1915",
         "title": "Centralization, Repression, and Wartime Misery",
-        "description": "In Baghdad, the Committee of Union and Progress tightened control. Critics of Ottoman policy, including writers and scholars, were arrested and sent into exile. Flooding, cholera, requisitions, closed schools, and military pressure emptied streets and deepened hardship. The city was already being changed by war.",
+        "description": "In Baghdad, the Committee of Union and Progress tightened control. Critics of Ottoman policy, including writers and scholars, were arrested and sent into exile. Flooding, cholera, requisitions, closed schools, and military pressure emptied streets and deepened hardship.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1915
@@ -1227,7 +1227,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
       {
         "date": "1915-1916",
         "title": "Kut Blocks the Road to Baghdad",
-        "description": "The British advance toward Baghdad failed at Kut. Ottoman forces besieged General Townshend's army for five months, and the surrender in April 1916 became one of Britain's worst imperial humiliations. Prisoners passed through Baghdad in misery, while Ottoman commanders celebrated a victory that had only bought them time.",
+        "description": "The British advance toward Baghdad failed at Kut. Ottoman forces besieged General Townshend's army for five months, and the surrender in April 1916 became one of Britain's worst imperial humiliations. Prisoners passed through Baghdad in misery, while Ottoman commanders celebrated the victory.",
         "highlight": true,
         "image": {
           "src": "images/ottoman-cards/kut-before-surrender.png",
@@ -1256,8 +1256,90 @@ window.BAGHDAD_OTTOMAN_PHASES = [
 
 window.BAGHDAD_MODERN_PHASES = [
   {
+    "title": "Mandate, Monarchy, and the First Modern Ruptures",
+    "description": "Modern Baghdad began under British occupation and the Hashemite monarchy. The city became the capital of a new Iraqi state, a stage for anti-colonial politics, and the place where older Ottoman-era pluralism began to fracture under nationalism, empire, war, and state-building.",
+    "events": [
+      {
+        "date": "March 11, 1917",
+        "title": "British Forces Capture Baghdad",
+        "description": "British and Indian troops entered Baghdad after the Ottoman withdrawal, ending nearly four centuries of Ottoman rule. General Maude presented the occupation as liberation, but Baghdadis soon found that imperial control had only changed hands. The event is the opening scene of modern Baghdad: a famous old capital pulled into the British imperial order and the politics of oil, mandates, and Arab nationalism.",
+        "highlight": true,
+        "image": {
+          "src": "images/ottoman-cards/maude-in-baghdad.jpg",
+          "alt": "General Maude entering Baghdad in 1917",
+          "caption": "British forces enter Baghdad in March 1917"
+        },
+        "mediaPlaceholder": "Image placeholder: British and Indian troops entering Baghdad",
+        "anchorYear": 1917
+      },
+      {
+        "date": "1920",
+        "title": "The Revolt Against the British Mandate",
+        "description": "The San Remo decision to grant Britain the mandate over Mesopotamia turned wartime promises of Arab self-rule into anger. Baghdad's mosques, newspapers, notables, students, and political societies became a center of nationalist agitation. Sunni and Shia opposition briefly converged, but the suppression of the revolt also hardened the political imbalance that left many Shia excluded from the new order.",
+        "highlight": false,
+        "mediaPlaceholder": "",
+        "anchorYear": 1920
+      },
+      {
+        "date": "August 23, 1921",
+        "title": "Faisal I Is Crowned King in Baghdad",
+        "description": "Faisal was crowned in the Saray al-Kushla, turning the former Ottoman provinces of Baghdad, Basra, and Mosul into the Kingdom of Iraq. The ceremony joined Arab nationalist language to unmistakable British power: British officers and officials stood around the new king, while Iraqi notables watched a state being invented in Baghdad. The monarchy promised unity, constitutional rule, and modern institutions, but it began under foreign sponsorship.",
+        "highlight": true,
+        "image": {
+          "src": "images/rulers/king-faisal-i.jpg",
+          "alt": "King Faisal I of Iraq",
+          "caption": "Faisal I, first king of modern Iraq"
+        },
+        "mediaPlaceholder": "Image placeholder: Faisal's coronation in the Saray al-Kushla",
+        "anchorYear": 1921
+      },
+      {
+        "date": "1923",
+        "title": "Gertrude Bell Founds the Baghdad Archaeological Museum",
+        "description": "Gertrude Bell helped create the Baghdad Archaeological Museum, the institution that later became the Iraq Museum. The new state used archaeology to claim Sumer, Akkad, Assyria, Babylon, and Abbasid Baghdad as one national inheritance. This card matters because modern Baghdad was not only built through ministries and treaties. It was also built through memory, museums, and the effort to make deep Mesopotamian history speak for Iraq.",
+        "highlight": false,
+        "image": {
+          "src": "images/modern-cards/iraq-museum-memory.jpg",
+          "alt": "Iraq Museum gallery material representing Iraq's ancient cultural memory",
+          "caption": "The Iraq Museum grew from Bell's 1923 museum project"
+        },
+        "mediaPlaceholder": "Image placeholder: Gertrude Bell and the early Iraq Museum",
+        "anchorYear": 1923
+      },
+      {
+        "date": "October 6, 1932",
+        "title": "Iraq Joins the League of Nations",
+        "description": "Iraq entered the League of Nations and the British Mandate officially ended. Baghdad could now present itself as the capital of an independent state. The independence was real, but limited: British air bases, advisers, treaties, and political influence remained central to Iraqi life. The moment helps explain the monarchy's later weakness, because sovereignty and dependence were born together.",
+        "highlight": false,
+        "mediaPlaceholder": "",
+        "anchorYear": 1932
+      },
+      {
+        "date": "April-June 1941",
+        "title": "Rashid Ali's Coup, British Return, and the Farhud",
+        "description": "Rashid Ali al-Gailani and the Golden Square officers seized power in Baghdad, hoping to loosen British control during the Second World War. British forces defeated the coup and reinstalled the regent, but the crisis ended in catastrophe for Baghdad's Jews. On June 1-2, the Farhud pogrom killed and dispossessed members of one of the city's oldest communities. Modern Baghdad's political violence now struck at the city's plural fabric.",
+        "highlight": true,
+        "image": {
+          "src": "images/ottoman-cards/great-synagogue-baghdad.jpg",
+          "alt": "The Great Synagogue of Baghdad",
+          "caption": "The Farhud shattered Jewish confidence in modern Baghdad"
+        },
+        "mediaPlaceholder": "Image placeholder: Baghdad in 1941, Rashid Ali coup, or Jewish Baghdad",
+        "anchorYear": 1941
+      },
+      {
+        "date": "1948-1950",
+        "title": "The Wathba and the Beginning of the Jewish Exodus",
+        "description": "The Portsmouth Treaty provoked the Wathba, a mass protest movement that brought students, workers, parties, and ordinary Baghdadis into the streets against renewed British privileges. In the same years, the aftermath of the 1948 Arab-Israeli War brought arrests, dismissals, restrictions, and fear for Iraqi Jews. By 1950, the path toward mass departure had opened. Baghdad was becoming a modern political capital, but it was losing one of the communities that had powered its commerce, music, banking, and urban life.",
+        "highlight": true,
+        "mediaPlaceholder": "Image placeholder: Wathba street protests and the departure of Jewish Baghdad",
+        "anchorYear": 1948
+      }
+    ]
+  },
+  {
     "title": "Modernist Promise and Republican Rupture",
-    "description": "Modern Baghdad began with oil money, new boulevards, modernist architecture, universities, bridges, housing plans, and a confident capital trying to become a twentieth-century metropolis. The 1958 revolution turned that promise into a republic born through violence.",
+    "description": "By the last years of the monarchy, Baghdad had oil money, new boulevards, modernist architecture, universities, bridges, housing plans, and a confident capital trying to become a twentieth-century metropolis. The 1958 revolution turned that promise into a republic born through violence.",
     "events": [
       {
         "date": "1950-1958",
