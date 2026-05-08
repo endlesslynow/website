@@ -79,11 +79,17 @@
                 ].join('');
             }).join('');
 
+            var phaseHeader = phase.title || phase.description
+                ? [
+                    '<div class="' + classes.phase + '">',
+                    phase.title ? '<h3>' + phase.title + '</h3>' : '',
+                    phase.description ? '<p class="text-base leading-relaxed opacity-80">' + phase.description + '</p>' : '',
+                    '</div>'
+                ].join('')
+                : '';
+
             return [
-                '<div class="' + classes.phase + '">',
-                '<h3>' + phase.title + '</h3>',
-                '<p class="text-base leading-relaxed opacity-80">' + phase.description + '</p>',
-                '</div>',
+                phaseHeader,
                 '<div class="' + classes.events + '">' + cards + '</div>'
             ].join('');
         }).join('');
@@ -280,6 +286,38 @@
         }
     })();
 
+// Hero scroll arrow
+    (function () {
+        function init() {
+            var scrollArrow = document.getElementById('scroll-arrow');
+            var target = document.querySelector('main.timeline-container');
+            if (!scrollArrow || !target) return;
+            var arrowReady = false;
+
+            function syncArrowVisibility() {
+                scrollArrow.style.display = arrowReady && window.scrollY <= 50 ? 'flex' : 'none';
+            }
+
+            scrollArrow.addEventListener('click', function () {
+                target.scrollIntoView({ behavior: 'smooth' });
+                scrollArrow.style.display = 'none';
+            });
+
+            window.addEventListener('scroll', syncArrowVisibility, { passive: true });
+            window.setTimeout(function () {
+                arrowReady = true;
+                syncArrowVisibility();
+            }, 7000);
+            syncArrowVisibility();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+
 // Era particle effects — 7-second bursts triggered on section entry
     (function() {
         function init() {
@@ -424,8 +462,19 @@
 document.addEventListener("DOMContentLoaded", () => {
             const sections = document.querySelectorAll('.fade-in-section[data-era]');
             const body = document.body;
+            const patternEra1 = document.getElementById('pattern-era1');
             const patternEra2 = document.getElementById('pattern-era2');
             const patternEra5 = document.getElementById('pattern-era5');
+
+            function syncBackgroundPatterns(activeEra) {
+                const era = activeEra || body.getAttribute('data-era');
+                const timeline = document.querySelector('main.timeline-container');
+                const timelineEntering = timeline && timeline.getBoundingClientRect().top < window.innerHeight * 0.85;
+
+                patternEra1.style.opacity = (era === 'era1' && timelineEntering) ? '0.9' : '0';
+                patternEra2.style.opacity = (era === 'era2') ? '1' : '0';
+                patternEra5.style.opacity = (era === 'era5') ? '1' : '0';
+            }
 
             // Set up Intersection Observer for fade-in animations and color switching
             const observerOptions = {
@@ -466,8 +515,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
 
                         // Handle Background Patterns
-                        patternEra2.style.opacity = (era === 'era2') ? '1' : '0';
-                        patternEra5.style.opacity = (era === 'era5') ? '1' : '0';
+                        syncBackgroundPatterns(era);
                         if (window.triggerEffect) window.triggerEffect(era);
                     }
                 });
@@ -479,6 +527,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Make hero section visible immediately
             document.getElementById('hero').classList.add('is-visible');
+            window.addEventListener('scroll', () => syncBackgroundPatterns(), { passive: true });
+            syncBackgroundPatterns();
         });
 
 // Round City era1: concentric circles filling background, no spokes
@@ -886,6 +936,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 (function() {
+    var MIN_RULER_SEGMENT_HEIGHT = 12;
+
     var eras = [
         { label: 'Rashidun Caliphate',  years: '650-661',  color: '#1E8B3A', start: 650,  end: 661  },
         { label: 'Umayyad Caliphate',   years: '661-750',  color: '#C8900C', start: 661,  end: 750  },
@@ -902,7 +954,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { label: 'Ottoman Empire',      years: '1638-1917', color: '#2c5f8a', start: 1638, end: 1917 },
         { label: 'British Mandate',     years: '1917-1932',color: '#4a6741', start: 1917, end: 1932 },
         { label: 'Kingdom of Iraq',     years: '1932-1958',color: '#8a7a2c', start: 1932, end: 1958 },
-        { label: 'Republic of Iraq',    years: '1958-now', color: '#3d3d3d', start: 1958, end: 2026 },
+        { label: 'Republic of Iraq',    years: '1958-now', color: '#8a5040', start: 1958, end: 2026 },
     ];
 
     var rulers = [
@@ -1031,8 +1083,9 @@ document.addEventListener("DOMContentLoaded", () => {
         { name: 'Mohammed al-Sudani',   years: '2022–2026', start: 2022, end: 2026, wikiTitle: "Mohammed Shia' Al-Sudani" },
     ];
 
-    var majorYears = [650, 719, 747, 750, 762, 766, 768, 775, 800, 850, 900, 945, 1000, 1055, 1100, 1157, 1200, 1258, 1336, 1401, 1534, 1917, 1920, 1958, 1968, 1979, 1991, 2003, 2019, 2026];
     var S = 650, E = 2026;
+    var TIMELINE_CARD_SELECTOR = '.foundation-event[data-anchor-year], .golden-event[data-anchor-year], .mongol-event[data-anchor-year], .stagnation-event[data-anchor-year], .ottoman-event[data-anchor-year], .modern-event[data-anchor-year], .protest-event[data-anchor-year]';
+    var TIMELINE_DATE_SELECTOR = '.foundation-event-date, .golden-event-date, .mongol-event-date, .stagnation-event-date, .ottoman-event-date, .modern-event-date, .protest-event-date';
 
     function escapeHtml(value) {
         return String(value).replace(/[&<>"']/g, function(ch) {
@@ -1086,18 +1139,22 @@ document.addEventListener("DOMContentLoaded", () => {
         anchors.push({ year: year, y: y });
     }
 
-    function getTimelineAnchors() {
-        var anchors = [];
-        Array.prototype.slice.call(document.querySelectorAll('.foundation-event[data-anchor-year], .golden-event[data-anchor-year], .mongol-event[data-anchor-year], .stagnation-event[data-anchor-year], .ottoman-event[data-anchor-year], .modern-event[data-anchor-year], .protest-event[data-anchor-year]')).forEach(function(card) {
-            var dateEl = card.querySelector('.foundation-event-date, .golden-event-date, .mongol-event-date, .stagnation-event-date, .ottoman-event-date, .modern-event-date, .protest-event-date');
+    function getTimelineCards() {
+        return Array.prototype.slice.call(document.querySelectorAll(TIMELINE_CARD_SELECTOR)).map(function(card) {
+            var year = parseInt(card.getAttribute('data-anchor-year'), 10);
+            var dateEl = card.querySelector(TIMELINE_DATE_SELECTOR);
             var y = docY(dateEl || card, dateEl ? dateEl.offsetHeight / 2 : 32);
-            addAnchor(anchors, parseInt(card.getAttribute('data-anchor-year'), 10), y);
+            return { card: card, year: year, y: y, dateEl: dateEl };
+        }).filter(function(item) {
+            return Number.isFinite(item.year) && item.y != null && !Number.isNaN(item.y);
         });
-        addAnchor(anchors, 1258, docY(document.querySelector('section[data-era="era3"]'), 120));
-        addAnchor(anchors, 1534, docY(document.querySelector('section[data-era="era5"]'), 120));
-        addAnchor(anchors, 1920, docY(document.querySelector('section[data-era="era6"]'), 120));
-        addAnchor(anchors, 2003, docY(document.querySelector('section[data-era="era7"]'), 120));
-        addAnchor(anchors, 2026, Math.max(document.body.scrollHeight - 160, 0));
+    }
+
+    function getTimelineAnchors(cards) {
+        var anchors = [];
+        (cards || getTimelineCards()).forEach(function(item) {
+            addAnchor(anchors, item.year, item.y);
+        });
         anchors.sort(function(a, b) { return a.year === b.year ? a.y - b.y : a.year - b.year; });
 
         var unique = [];
@@ -1109,7 +1166,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 unique.push(anchor);
             }
         });
+        unique.forEach(function(anchor, index) {
+            if (index > 0) {
+                anchor.y = Math.max(anchor.y, unique[index - 1].y + 1);
+            }
+        });
         return unique;
+    }
+
+    function getCardYearAnchors(cards) {
+        var byYear = {};
+        (cards || getTimelineCards()).forEach(function(item) {
+            if (byYear[item.year] == null || item.y < byYear[item.year].y) {
+                byYear[item.year] = { year: item.year, y: item.y };
+            }
+        });
+        return Object.keys(byYear).map(function(year) {
+            return byYear[year];
+        }).sort(function(a, b) {
+            return a.y === b.y ? a.year - b.year : a.y - b.y;
+        });
     }
 
     function makeYearToY(anchors) {
@@ -1178,13 +1254,15 @@ document.addEventListener("DOMContentLoaded", () => {
         while (el && el.firstChild) el.removeChild(el.firstChild);
     }
 
-    function buildSegment(container, item, top, height, bg, html, invert) {
+    function buildSegment(container, item, top, height, bg, html, invert, zIndex, hitTopOverride, hitHeightOverride) {
         if (height < 1) return;
+        var layer = zIndex || 1;
         var seg = document.createElement('div');
         seg.style.cssText = [
             'position:absolute', 'left:0', 'right:0',
             'top:' + top.toFixed(2) + 'px',
             'height:' + height.toFixed(2) + 'px',
+            'z-index:' + layer,
             'background:' + bg,
             'border-bottom:1px solid rgba(0,0,0,0.28)',
             'transition:filter 0.15s',
@@ -1193,14 +1271,14 @@ document.addEventListener("DOMContentLoaded", () => {
         ].join(';');
         container.appendChild(seg);
 
-        var hitTop = top - Math.max(0, (18 - height) / 2);
-        var hitHeight = Math.max(18, height);
+        var hitTop = hitTopOverride == null ? top - Math.max(0, (18 - height) / 2) : hitTopOverride;
+        var hitHeight = hitHeightOverride == null ? Math.max(18, height) : hitHeightOverride;
         var hit = document.createElement('div');
         hit.style.cssText = [
             'position:absolute', 'left:-6px', 'right:-6px',
             'top:' + hitTop.toFixed(2) + 'px',
             'height:' + hitHeight.toFixed(2) + 'px',
-            'z-index:2',
+            'z-index:' + (layer + 10),
             'cursor:default',
             'background:transparent'
         ].join(';');
@@ -1222,6 +1300,19 @@ document.addEventListener("DOMContentLoaded", () => {
         svg.setAttribute('viewBox', '0 0 ' + document.documentElement.scrollWidth + ' ' + height);
         svg.innerHTML = '';
         return svg;
+    }
+
+    function eventConnectorPath(dotX, dotY, cardLeftX, cardY) {
+        var gap = cardLeftX - dotX;
+        if (gap < 56) {
+            return 'M ' + dotX.toFixed(2) + ' ' + dotY.toFixed(2) +
+                ' L ' + cardLeftX.toFixed(2) + ' ' + cardY.toFixed(2);
+        }
+        var midX = dotX + Math.max(40, gap * 0.45);
+        return 'M ' + dotX.toFixed(2) + ' ' + dotY.toFixed(2) +
+            ' C ' + midX.toFixed(2) + ' ' + dotY.toFixed(2) +
+            ', ' + (cardLeftX - 28).toFixed(2) + ' ' + cardY.toFixed(2) +
+            ', ' + cardLeftX.toFixed(2) + ' ' + cardY.toFixed(2);
     }
 
     window.buildBaghdadTimelineSidebars = function() {
@@ -1254,7 +1345,13 @@ document.addEventListener("DOMContentLoaded", () => {
             'max-width:360px'
         ].join(';');
 
-        var anchors = getTimelineAnchors();
+        var timelineCards = getTimelineCards();
+        var anchors = getTimelineAnchors(timelineCards);
+        var cardYearAnchors = getCardYearAnchors(timelineCards);
+        var cardYearY = {};
+        cardYearAnchors.forEach(function(anchor) {
+            cardYearY[anchor.year] = anchor.y;
+        });
         var yearToY = makeYearToY(anchors);
 
         var barTopY = yearToY(S);
@@ -1292,45 +1389,67 @@ document.addEventListener("DOMContentLoaded", () => {
             buildSegment(entityBar, e, top, height, e.color, html, false);
         });
 
+        var previousRulerBottom = null;
         rulers.forEach(function(r, i) {
             var top = yearToY(r.start);
-            var height = Math.max(2, yearToY(r.end) - top);
-            var isEven = i % 2 === 0;
+            var bottom = yearToY(r.end);
+            var naturalHeight = Math.max(2, bottom - top);
+            var isShortReign = naturalHeight < MIN_RULER_SEGMENT_HEIGHT;
+            var visualTop = previousRulerBottom == null ? top : Math.max(top, previousRulerBottom);
+            var height = isShortReign
+                ? MIN_RULER_SEGMENT_HEIGHT
+                : Math.max(2, bottom - visualTop);
+            previousRulerBottom = visualTop + height;
+            var colorIndex = i % 3;
             var bg, fg;
             if (r.start < 762) {
-                bg = isEven ? '#5c3d1e' : '#8a6030';
-                fg = isEven ? '#f0e0c0' : '#f0e0c0';
+                bg = ['#5c3d1e', '#8a6030', '#3f2a16'][colorIndex];
+                fg = '#f0e0c0';
             } else if (r.start < 1258) {
-                bg = isEven ? '#8a6216' : '#d8b45c';
-                fg = isEven ? '#fff5d6' : '#2a1c05';
+                bg = ['#8a6216', '#d8b45c', '#5f4310'][colorIndex];
+                fg = colorIndex === 1 ? '#2a1c05' : '#fff5d6';
             } else if (r.start < 1534) {
                 // Mongol, Jalayirid, Turkmen — dark burnt earth and ash-teal
-                bg = isEven ? '#4d2c0e' : '#253b34';
-                fg = isEven ? '#e0c89a' : '#a8ccc0';
+                bg = ['#4d2c0e', '#253b34', '#5b4a2a'][colorIndex];
+                fg = colorIndex === 1 ? '#a8ccc0' : '#e0c89a';
             } else if (r.start < 1917) {
                 // Ottoman & Safavid interlude — deep crimson and deep lapis
-                bg = isEven ? '#6e1818' : '#18396e';
-                fg = isEven ? '#f5c8c8' : '#c8d8f5';
+                bg = ['#6e1818', '#18396e', '#5b3a12'][colorIndex];
+                fg = colorIndex === 1 ? '#c8d8f5' : '#f5c8c8';
             } else if (r.start >= 2018) {
                 // Protest, Recovery, Contested Future — pale cream and sky blue
-                bg = isEven ? '#f5e8b4' : '#c3e4f8';
-                fg = isEven ? '#4a2800' : '#0e2a3a';
+                bg = ['#f5e8b4', '#c3e4f8', '#e7c66c'][colorIndex];
+                fg = colorIndex === 1 ? '#0e2a3a' : '#4a2800';
             } else {
                 // Modern Iraq — dark steel and muted desert bronze
-                bg = isEven ? '#2e3d4e' : '#6b5a38';
-                fg = isEven ? '#9ab0c8' : '#d4bc88';
+                bg = ['#2e3d4e', '#6b5a38', '#23464d'][colorIndex];
+                fg = colorIndex === 1 ? '#d4bc88' : '#9ab0c8';
             }
             var html = rulerHoverHtml(r, fg);
-            var invert = r.start < 1258 ? !isEven : false;
-            buildSegment(rulerBar, r, top, height, bg, html, invert);
+            var invert = r.start < 1258 && colorIndex === 1;
+            buildSegment(
+                rulerBar,
+                r,
+                visualTop,
+                height,
+                bg,
+                html,
+                invert,
+                isShortReign ? 3 : 1,
+                isShortReign ? visualTop : null,
+                isShortReign ? height : null
+            );
         });
 
         var axis = document.createElement('div');
-        axis.style.cssText = 'position:absolute;left:33px;top:' + yearToY(S).toFixed(2) + 'px;width:4px;height:' + Math.max(1, yearToY(E) - yearToY(S)).toFixed(2) + 'px;background:rgba(255,226,139,0.8);border-radius:999px';
+        var footerEl = document.querySelector('footer');
+        var lineEnd = footerEl ? footerEl.offsetTop : docHeight;
+        axis.style.cssText = 'position:absolute;left:33px;top:' + yearToY(S).toFixed(2) + 'px;width:4px;height:' + Math.max(1, lineEnd - yearToY(S)).toFixed(2) + 'px;background:rgba(255,226,139,0.8);border-radius:999px';
         yearBar.appendChild(axis);
 
-        majorYears.forEach(function(year) {
-            var y = yearToY(year);
+        cardYearAnchors.forEach(function(anchor) {
+            var year = anchor.year;
+            var y = anchor.y;
             var tick = document.createElement('div');
             tick.style.cssText = 'position:absolute;left:0;right:0;top:' + y.toFixed(2) + 'px;height:36px;z-index:4;pointer-events:none';
             tick.innerHTML = '<span style="position:absolute;left:2px;top:-30px;width:64px;text-align:center;background:rgba(0,0,0,0.86);color:#ffe08a;font-size:17px;font-weight:700;line-height:1;padding:5px 2px 4px;border-radius:5px;font-family:Lora,Georgia,serif">' + year + '</span>';
@@ -1339,33 +1458,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
         var svg = ensureConnectorSvg(docHeight);
         var yearBarRect = yearBar.getBoundingClientRect();
-        Array.prototype.slice.call(document.querySelectorAll('.foundation-event[data-anchor-year], .golden-event[data-anchor-year], .mongol-event[data-anchor-year], .stagnation-event[data-anchor-year], .ottoman-event[data-anchor-year], .modern-event[data-anchor-year], .protest-event[data-anchor-year]')).forEach(function(card) {
-            var year = parseInt(card.getAttribute('data-anchor-year'), 10);
+        var drawnDots = {};
+        timelineCards.forEach(function(item) {
+            var card = item.card;
+            var year = item.year;
             var isFoundation = card.classList.contains('foundation-event');
             var isMongol = card.classList.contains('mongol-event');
             var isStagnation = card.classList.contains('stagnation-event');
             var isOttoman = card.classList.contains('ottoman-event');
             var isModern = card.classList.contains('modern-event');
             var isProtest = card.classList.contains('protest-event');
-            var dateEl = card.querySelector('.foundation-event-date, .golden-event-date, .mongol-event-date, .stagnation-event-date, .ottoman-event-date, .modern-event-date, .protest-event-date');
+            var dateEl = item.dateEl;
             var cardRect = card.getBoundingClientRect();
             var dateRect = (dateEl || card).getBoundingClientRect();
-            var axisY = yearToY(year);
+            var axisY = cardYearY[year] == null ? yearToY(year) : cardYearY[year];
             var cardY = dateRect.top + window.scrollY + dateRect.height / 2;
             var dotX = yearBarRect.left + window.scrollX + 35;
             var dotY = axisY + 18;
             var x2 = cardRect.left + window.scrollX;
-            var midX = dotX + Math.max(40, (x2 - dotX) * 0.45);
             var highlight = card.classList.contains('is-highlight');
-            var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path.setAttribute('class', 'timeline-event-line' + (isFoundation ? ' is-foundation' : '') + (isMongol ? ' is-mongol' : '') + (isStagnation ? ' is-stagnation' : '') + (isOttoman ? ' is-ottoman' : '') + (isModern ? ' is-modern' : '') + (isProtest ? ' is-protest' : '') + (highlight ? ' is-highlight' : ''));
-            path.setAttribute('d', 'M ' + dotX.toFixed(2) + ' ' + dotY.toFixed(2) + ' C ' + midX.toFixed(2) + ' ' + dotY.toFixed(2) + ', ' + (x2 - 28).toFixed(2) + ' ' + cardY.toFixed(2) + ', ' + x2.toFixed(2) + ' ' + cardY.toFixed(2));
-            svg.appendChild(path);
+            var connectorD = eventConnectorPath(dotX, dotY, x2, cardY);
+            if (connectorD) {
+                var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('class', 'timeline-event-line' + (isFoundation ? ' is-foundation' : '') + (isMongol ? ' is-mongol' : '') + (isStagnation ? ' is-stagnation' : '') + (isOttoman ? ' is-ottoman' : '') + (isModern ? ' is-modern' : '') + (isProtest ? ' is-protest' : '') + (highlight ? ' is-highlight' : ''));
+                path.setAttribute('d', connectorD);
+                svg.appendChild(path);
+            }
 
-            var dot = document.createElement('div');
-            var dotColor = isFoundation ? (highlight ? '#a64722' : '#d59b63') : isMongol ? (highlight ? '#ff8a4c' : '#b9aaa0') : isStagnation ? (highlight ? '#57d3c2' : '#8ca09b') : isOttoman ? (highlight ? '#55d7c7' : '#b9a16f') : isModern ? (highlight ? '#f97316' : '#8bd3dd') : isProtest ? (highlight ? '#ff9c20' : '#ffbf55') : (highlight ? '#ffe07a' : '#f1d78a');
-            dot.style.cssText = 'position:absolute;left:26px;top:' + (axisY + 9).toFixed(2) + 'px;width:18px;height:18px;border-radius:999px;background:' + dotColor + ';border:3px solid rgba(35,24,5,0.95);z-index:5;pointer-events:none';
-            yearBar.appendChild(dot);
+            if (!drawnDots[year]) {
+                drawnDots[year] = true;
+                var dot = document.createElement('div');
+                var dotColor = isFoundation ? (highlight ? '#a64722' : '#d59b63') : isMongol ? (highlight ? '#ff8a4c' : '#b9aaa0') : isStagnation ? (highlight ? '#57d3c2' : '#8ca09b') : isOttoman ? (highlight ? '#55d7c7' : '#b9a16f') : isModern ? (highlight ? '#f97316' : '#8bd3dd') : isProtest ? (highlight ? '#ff9c20' : '#ffbf55') : (highlight ? '#ffe07a' : '#f1d78a');
+                dot.style.cssText = 'position:absolute;left:26px;top:' + (axisY + 9).toFixed(2) + 'px;width:18px;height:18px;border-radius:999px;background:' + dotColor + ';border:3px solid rgba(35,24,5,0.95);z-index:5;pointer-events:none';
+                yearBar.appendChild(dot);
+            }
         });
     };
 
