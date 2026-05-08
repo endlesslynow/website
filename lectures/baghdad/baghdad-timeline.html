@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,6 +22,7 @@
                         era4: '#3d3d3d', // Ash and stagnation
                         era5: '#8b5a2b', // Ottoman sepia/wood
                         era6: '#1a202c', // Modern concrete/night
+                        era7: '#e8a81e', // Protest/Recovery light sunny gold
                     }
                 }
             }
@@ -48,12 +49,14 @@
     <canvas id="round-city-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
     <canvas id="golden-age-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
     <canvas id="ottoman-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
+    <canvas id="modern-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
+    <canvas id="protest-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
 
     <!-- Hero Section -->
     <header class="min-h-screen flex flex-col items-center justify-center text-center px-4 fade-in-section is-visible relative" id="hero">
         <canvas id="hero-canvas"></canvas>
         <h1 class="font-cinzel text-6xl md:text-8xl font-black mb-6 tracking-wider relative z-10">BAGHDAD</h1>
-        <p class="text-xl md:text-2xl italic max-w-2xl opacity-80 relative z-10">A visual journey through the ages of the City of Peace</p>
+        <p class="text-xl md:text-2xl italic max-w-2xl opacity-80 relative z-10">Center of the World</p>
         <div class="mt-16 animate-bounce relative z-10">
             <svg class="w-8 h-8 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
@@ -61,140 +64,300 @@
 
     <main class="max-w-6xl mx-auto px-4 sm:px-8 py-12 relative timeline-container">
 
-        <!-- 1. The Round City -->
-        <section class="mb-32 relative w-full flex flex-col md:flex-row items-center justify-between fade-in-section" data-era="era1">
-            <div class="hidden md:block w-5/12"></div>
-            <div class="w-full pl-16 md:pl-0 md:w-5/12 text-left md:text-right pr-0 md:pr-8">
-                <div class="mb-6 flex justify-start md:justify-end">
-                    <figure>
-                        <a href="images/round-city.png" class="lightbox-link">
-                            <img src="images/round-city.png" alt="Reconstruction map of the Round City of Baghdad, 762 AD"
-                                 class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
-                        </a>
-                        <figcaption class="text-xs italic opacity-50 mt-1 text-center">Le Strange, 1900</figcaption>
-                    </figure>
-                </div>
-                <h2 class="font-cinzel text-4xl font-bold mb-2">The Round City</h2>
-                <h3 class="text-xl font-bold opacity-70 mb-4 tracking-widest uppercase">762 AD</h3>
-                <p class="text-lg leading-relaxed">
-                    Founded by Caliph al-Mansur, the "City of Peace" (Madinat al-Salam) was a marvel of urban planning. Designed as a perfect circle with four massive gates pointing towards Basra, Kufa, Khurasan, and Syria. The caliph's Golden Gate Palace and the Grand Mosque sat in the pristine, uncrowded center.
+        <!-- 1. Revolution and Mudbrick -->
+        <section class="mb-32 foundation-era-expanded fade-in-section" data-era="era1">
+            <div class="foundation-era-lede">
+                <figure class="mb-8 max-w-2xl mx-auto">
+                    <a href="images/round-city.png" class="lightbox-link">
+                        <img src="images/round-city.png" alt="Reconstruction map of the Round City of Baghdad, 762 AD"
+                             class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
+                    </a>
+                    <figcaption class="text-xs italic opacity-60 mt-2 text-center">Le Strange, 1900</figcaption>
+                </figure>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold mb-3">Revolution and Mudbrick</h2>
+                <h3 class="text-xl font-bold opacity-80 mb-5 tracking-widest uppercase">650-768</h3>
+                <p class="text-lg md:text-xl leading-relaxed opacity-90">
+                    Before Baghdad became the Abbasid world's glittering capital, it was the answer to a political problem. The Abbasids rose through secret networks, black banners, Khorasanian armies, and the collapse of Umayyad Damascus. Al-Mansur then turned that revolutionary victory into a city of fire-marked geometry, mudbrick walls, river trade, and imperial control.
                 </p>
+            </div>
+            <div class="foundation-era-content-row">
+                <div class="foundation-era-shell">
+                    <div id="foundation-events-root"></div>
+                </div>
+                <div class="foundation-detail-column" id="foundation-detail-root">
+                    <div class="detail-card-wrapper" data-anchor-year="650">
+                        <div class="detail-card" data-detail-id="khorasan-power" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/khorasan-map.png" alt="Historic map of Khorasan">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Khorasan and the shifting of power</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="719">
+                        <div class="detail-card" data-detail-id="perfume-dealers" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/merchant-agents.jpg" alt="Medieval manuscript image of merchants carrying goods">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Perfume Dealers</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="747">
+                        <div class="detail-card" data-detail-id="merv" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/merv-ruins.jpg" alt="Ruins and mausoleums at Merv in Turkmenistan">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Merv</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="754">
+                        <div class="detail-card" data-detail-id="al-mansur" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/al-mansur-dinar.jpg" alt="Abbasid dinar minted under al-Mansur">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Al-Mansur and the start of the golden age</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="758" data-event-class="foundation-event">
+                        <div class="detail-card" data-detail-id="persian-rebellion" role="button" tabindex="0">
+                            <div class="detail-card-img"></div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Persian Rebellion in Kufa</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- 2. The Golden Age -->
         <section class="mb-32 golden-age-expanded fade-in-section" data-era="era2">
-            <div class="golden-age-shell">
-                <div class="golden-age-lede">
-                    <figure class="mb-8 max-w-2xl mx-auto">
-                        <a href="images/golden-age.jpg" class="lightbox-link">
-                            <img src="images/golden-age.jpg" alt="Lunar phases diagram by al-Biruni, 11th century"
-                                 class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
-                        </a>
-                        <figcaption class="text-xs italic opacity-60 mt-2 text-center">Al-Biruni, c. 1000 CE</figcaption>
-                    </figure>
-                    <h2 class="font-cinzel text-4xl md:text-5xl font-bold mb-3">The Golden Age</h2>
-                    <h3 class="text-xl font-bold opacity-80 mb-5 tracking-widest uppercase">8th - 13th Century</h3>
-                    <p class="text-lg md:text-xl leading-relaxed opacity-90">
-                        Baghdad grew beyond its circular walls into one of the great intellectual centers of world history. Its golden age was not a single calm century of scholars at desks, but a long Abbasid story of imperial wealth, palace politics, civil war, translation, science, floods, foreign military rule, and stubborn institutional survival. By the time the Mongols arrived in 1258, the city was politically weakened, but its schools, hospitals, libraries, and memories of universal learning still mattered across the Islamic world.
-                    </p>
+            <div class="golden-age-lede">
+                <figure class="mb-8 max-w-2xl mx-auto">
+                    <a href="images/golden-age.jpg" class="lightbox-link">
+                        <img src="images/golden-age.jpg" alt="Lunar phases diagram by al-Biruni, 11th century"
+                             class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
+                    </a>
+                    <figcaption class="text-xs italic opacity-60 mt-2 text-center">Al-Biruni, c. 1000 CE</figcaption>
+                </figure>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold mb-3">The Golden Age</h2>
+                <h3 class="text-xl font-bold opacity-80 mb-5 tracking-widest uppercase">8th - 13th Century</h3>
+                <p class="text-lg md:text-xl leading-relaxed opacity-90">
+                    Baghdad grew beyond its circular walls into one of the great intellectual centers of world history. Its golden age was not a single calm century of scholars at desks, but a long Abbasid story of imperial wealth, palace politics, civil war, translation, science, floods, foreign military rule, and stubborn institutional survival. By the time the Mongols arrived in 1258, the city was politically weakened, but its schools, hospitals, libraries, and memories of universal learning still mattered across the Islamic world.
+                </p>
+            </div>
+            <div class="golden-era-content-row">
+                <div class="golden-age-shell">
+                    <div id="golden-age-events-root"></div>
                 </div>
-
-                <div id="golden-age-events-root"></div>
+                <div class="golden-detail-column" id="golden-detail-root">
+                    <div class="detail-card-wrapper" data-anchor-year="786" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="harun-al-rashid" role="button" tabindex="0">
+                            <div class="detail-card-img"></div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Harun al-Rashid</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="795" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="barmakids" role="button" tabindex="0">
+                            <div class="detail-card-img"></div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Barmakids</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="803" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="jafar-barmakid" role="button" tabindex="0">
+                            <div class="detail-card-img"></div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Jafar the Barmakid</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="799" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="kadhimain" role="button" tabindex="0">
+                            <div class="detail-card-img"></div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Shrine at Kadhimain</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="835" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="relocation-samarra" role="button" tabindex="0">
+                            <div class="detail-card-img"></div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Relocation to Samarra</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="892" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="return-samarra" role="button" tabindex="0">
+                            <div class="detail-card-img"></div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Return from Samarra</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="917" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="byzantine-reception" role="button" tabindex="0">
+                            <div class="detail-card-img"></div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Byzantine Reception</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="945" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="buyids" role="button" tabindex="0">
+                            <div class="detail-card-img"></div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Buyids Take Control</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="1055" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="seljuk-turks" role="button" tabindex="0">
+                            <div class="detail-card-img"></div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Seljuk Turks</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- 3. The Mongol Siege -->
-        <section class="mb-32 relative w-full flex flex-col md:flex-row items-center justify-between fade-in-section" data-era="era3">
-            <div class="hidden md:block w-5/12"></div>
-            <div class="w-full pl-16 md:pl-0 md:w-5/12 text-left md:text-right pr-0 md:pr-8">
-                <div class="mb-6 flex justify-start md:justify-end">
-                    <figure>
-                        <a href="images/mongol-siege.jpg" class="lightbox-link">
-                            <img src="images/mongol-siege.jpg" alt="Fall of Baghdad 1258, from the Diez Albums, 14th century"
-                                 class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
-                        </a>
-                        <figcaption class="text-xs italic opacity-50 mt-1 text-center">Diez Albums, 14th century</figcaption>
-                    </figure>
-                </div>
-                <h2 class="font-cinzel text-4xl font-bold mb-2">The Mongol Siege</h2>
-                <h3 class="text-xl font-bold opacity-70 mb-4 tracking-widest uppercase">1258</h3>
-                <p class="text-lg leading-relaxed">
-                    A devastating turning point. Hulagu Khan's forces breached the city walls. Centuries of accumulated knowledge were destroyed. Legend says the Tigris River ran black with the ink of countless books thrown from the grand libraries, and red with the blood of the city's inhabitants. The Abbasid Caliphate collapsed.
+        <section class="mb-32 mongol-siege-expanded fade-in-section" data-era="era3">
+            <div class="mongol-siege-lede">
+                <figure class="mb-8 max-w-2xl mx-auto">
+                    <a href="images/mongol-siege.jpg" class="lightbox-link">
+                        <img src="images/mongol-siege.jpg" alt="Fall of Baghdad 1258, from the Diez Albums, 14th century"
+                             class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
+                    </a>
+                    <figcaption class="text-xs italic opacity-50 mt-2 text-center">Diez Albums, 14th century</figcaption>
+                </figure>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold mb-3">The Mongol Siege</h2>
+                <h3 class="text-xl font-bold opacity-70 mb-5 tracking-widest uppercase">1219 - 1358</h3>
+                <p class="text-lg md:text-xl leading-relaxed opacity-90">
+                    The fall of Baghdad in 1258 was more than a single battle. It was the final collision between a weakened Abbasid capital and the expanding Mongol world empire. The city still carried the memory of universal learning and caliphal authority, but Hulagu's campaign exposed how fragile that authority had become. The siege destroyed the Abbasid caliphate in Baghdad and reduced the former capital of the Islamic world to a wounded provincial city that slowly rebuilt without regaining its old supremacy.
                 </p>
+            </div>
+            <div class="mongol-siege-shell">
+                <div id="mongol-siege-events-root"></div>
             </div>
         </section>
 
         <!-- 4. Stagnation & Invasions -->
-        <section class="mb-32 relative w-full flex flex-col md:flex-row items-center justify-between fade-in-section" data-era="era4">
-            <div class="w-full pl-16 md:pl-0 md:w-5/12 text-left pl-0 md:pl-8 order-2 md:order-1">
-                <div class="mb-6">
-                    <figure>
-                        <a href="images/stagnation.jpg" class="lightbox-link">
-                            <img src="images/stagnation.jpg" alt="Timur's conquest of Baghdad, from the Zafarnama, 1436"
-                                 class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
-                        </a>
-                        <figcaption class="text-xs italic opacity-50 mt-1 text-center">Zafarnama, 1436</figcaption>
-                    </figure>
-                </div>
-                <h2 class="font-cinzel text-4xl font-bold mb-2">Stagnation & Invasions</h2>
-                <h3 class="text-xl font-bold opacity-70 mb-4 tracking-widest uppercase">1258 – 1534</h3>
-                <p class="text-lg leading-relaxed">
-                    Baghdad entered a dark age, reduced to a provincial town. It was briefly rebuilt under Ilkhanid rule, only to be violently sacked again by Timur in 1401. The city spent centuries passing between competing Turkic federations and the early Safavid Empire, struggling to recover its former glory.
+        <section class="mb-32 stagnation-expanded fade-in-section" data-era="era4">
+            <div class="stagnation-lede">
+                <figure class="mb-8 max-w-2xl mx-auto">
+                    <a href="images/stagnation.jpg" class="lightbox-link">
+                        <img src="images/stagnation.jpg" alt="Timur's conquest of Baghdad, from the Zafarnama, 1436"
+                             class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
+                    </a>
+                    <figcaption class="text-xs italic opacity-50 mt-2 text-center">Zafarnama, 1436</figcaption>
+                </figure>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold mb-3">Stagnation & Invasions</h2>
+                <h3 class="text-xl font-bold opacity-70 mb-5 tracking-widest uppercase">1258 - 1534</h3>
+                <p class="text-lg md:text-xl leading-relaxed opacity-90">
+                    After the Mongol conquest, Baghdad survived without recovering its old imperial role. The city rebuilt fragments of trade and religious life, then suffered Timur's devastating attacks and a long age of rule by Jalayirid, Black Sheep, White Sheep, and Safavid powers. This was not an empty pause in history; it was the period when Baghdad became a symbolic prize between regional and imperial forces.
                 </p>
             </div>
-            <div class="hidden md:block w-5/12 order-1 md:order-2"></div>
+            <div class="stagnation-shell">
+                <div id="stagnation-events-root"></div>
+            </div>
         </section>
 
         <!-- 5. Ottoman Rule -->
-        <section class="mb-32 relative w-full flex flex-col md:flex-row items-center justify-between fade-in-section" data-era="era5">
-            <div class="hidden md:block w-5/12"></div>
-            <div class="w-full pl-16 md:pl-0 md:w-5/12 text-left md:text-right pr-0 md:pr-8">
-                <div class="mb-6 flex justify-start md:justify-end">
-                    <figure>
-                        <a href="images/ottoman.jpg" class="lightbox-link">
-                            <img src="images/ottoman.jpg" alt="Baghdad illustrated by Matrakçı Nasuh, 1537"
-                                 class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
-                        </a>
-                        <figcaption class="text-xs italic opacity-50 mt-1 text-center">Matrakçı Nasuh, 1537</figcaption>
-                    </figure>
-                </div>
-                <h2 class="font-cinzel text-4xl font-bold mb-2">Ottoman Rule</h2>
-                <h3 class="text-xl font-bold opacity-70 mb-4 tracking-widest uppercase">1534 – 1918</h3>
-                <p class="text-lg leading-relaxed">
-                    Captured by Suleiman the Magnificent, Baghdad was integrated into the Ottoman Empire. While largely a neglected provincial outpost for centuries, the late Ottoman period saw a revival. Traditional brick houses with wooden <em>shanashil</em> (balconies) lined the alleys, and bustling souqs re-established its trading roots.
+        <section class="mb-32 ottoman-expanded fade-in-section" data-era="era5">
+            <div class="ottoman-lede">
+                <figure class="mb-8 max-w-2xl mx-auto">
+                    <a href="images/ottoman.jpg" class="lightbox-link">
+                        <img src="images/ottoman.jpg" alt="Baghdad illustrated by MatrakÃ§Ä± Nasuh, 1537"
+                             class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
+                    </a>
+                    <figcaption class="text-xs italic opacity-50 mt-1 text-center">MatrakÃ§Ä± Nasuh, 1537</figcaption>
+                </figure>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold mb-3">Ottoman Rule</h2>
+                <h3 class="text-xl font-bold opacity-80 mb-5 tracking-widest uppercase">1528 - 1917</h3>
+                <p class="text-lg md:text-xl leading-relaxed opacity-90">
+                    Ottoman Baghdad was not simply a long sleepy decline. It began with a fragile local coup, became a fortress in the Ottoman-Safavid frontier, developed a semi-independent Mamluk political order, and then entered the nineteenth century as a city pulled into steam navigation, telegraphy, education reform, railway rivalry, oil politics, and world war.
                 </p>
+            </div>
+            <div class="ottoman-shell">
+                <div id="ottoman-events-root"></div>
             </div>
         </section>
 
-        <!-- 6. 20th Century to Present -->
-        <section class="mb-32 relative w-full flex flex-col md:flex-row items-center justify-between fade-in-section" data-era="era6">
-            <div class="w-full pl-16 md:pl-0 md:w-5/12 text-left pl-0 md:pl-8 order-2 md:order-1">
-                <div class="mb-6">
-                    <figure>
-                        <a href="images/modern.jpg" class="lightbox-link">
-                            <img src="images/modern.jpg" alt="The Freedom Monument and Umma Park, Baghdad, 1961"
-                                 class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
-                        </a>
-                        <figcaption class="text-xs italic opacity-50 mt-1 text-center">Baghdad, 1961</figcaption>
-                    </figure>
-                </div>
-                <h2 class="font-cinzel text-4xl font-bold mb-2">Modern Era</h2>
-                <h3 class="text-xl font-bold opacity-70 mb-4 tracking-widest uppercase">1920 – Present</h3>
-                <p class="text-lg leading-relaxed">
-                    Following the British Mandate and the establishment of the Kingdom, Baghdad expanded rapidly. Al-Rashid Street became the modern heart. Through the establishment of the Republic in 1958, subsequent oil booms, tragic conflicts, and recent recovery, the city's skyline transformed with modern monuments like Jawad Saleem's Freedom Monument, reflecting the eternal resilience of its people.
+        <!-- 6. Modern Era -->
+        <section class="mb-32 modern-expanded fade-in-section" data-era="era6">
+            <div class="modern-lede">
+                <figure class="mb-8 max-w-2xl mx-auto">
+                    <a href="images/modern.jpg" class="lightbox-link">
+                        <img src="images/modern.jpg" alt="The Freedom Monument and Umma Park, Baghdad, 1961"
+                             class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
+                    </a>
+                    <figcaption class="text-xs italic opacity-60 mt-2 text-center">Baghdad, 1961</figcaption>
+                </figure>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold mb-3">Modern Era</h2>
+                <h3 class="text-xl font-bold opacity-80 mb-5 tracking-widest uppercase">1950s Prelude – Present</h3>
+                <p class="text-lg md:text-xl leading-relaxed opacity-90">
+                    Modern Baghdad moved from late-monarchical optimism to revolution, Baathist dictatorship, war, sanctions, occupation, sectarian violence, protest, and uneven recovery. Its modern history is not only a sequence of rulers. It is also the story of new districts, monuments, disappearing communities, damaged heritage, literary survival, and citizens repeatedly returning to the city's public spaces.
                 </p>
             </div>
-            <div class="hidden md:block w-5/12 order-1 md:order-2"></div>
+            <div class="modern-shell">
+                <div id="modern-events-root"></div>
+            </div>
+        </section>
+
+        <!-- 7. Protest, Recovery, and a Contested Future -->
+        <section class="mb-32 protest-expanded fade-in-section" data-era="era7">
+            <div class="protest-lede">
+                <figure class="mb-8 max-w-2xl mx-auto">
+                    <a href="images/modern-cards/tishreen-tahrir.jpg" class="lightbox-link">
+                        <img src="images/modern-cards/tishreen-tahrir.jpg" alt="Tishreen protesters in Tahrir Square, Baghdad, 2019"
+                             class="w-full h-72 object-cover rounded-lg shadow-xl opacity-90 cursor-pointer hover:opacity-100 transition-opacity duration-200">
+                    </a>
+                    <figcaption class="text-xs italic opacity-60 mt-2 text-center">Tahrir Square, Baghdad, 2019</figcaption>
+                </figure>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold mb-3">Protest, Recovery, and a Contested Future</h2>
+                <h3 class="text-xl font-bold opacity-80 mb-5 tracking-widest uppercase">2003 – Present</h3>
+                <p class="text-lg md:text-xl leading-relaxed opacity-90">
+                    After the 2003 invasion, Baghdad entered one of the most turbulent periods in its modern history — occupation, sectarian war, the rise and defeat of ISIS, and the devastating 2019 Tishreen protests. Yet the city has continuously reasserted itself: its youth returned to its squares, its artists painted its walls, and its residents rebuilt life in neighborhoods others had written off. Baghdad's story did not end; it became contested, plural, and stubbornly alive.
+                </p>
+            </div>
+            <div class="protest-shell">
+                <div id="protest-events-root"></div>
+            </div>
         </section>
 
     </main>
 
-    <footer class="py-12 text-center opacity-70 text-sm fade-in-section">
-        <p>Created for educational exploration.</p>
+    <footer style="width:100%;height:40px;background-color:rgba(232,168,30,0.75);display:flex;align-items:center;padding:0 20px;">
+        <a href="https://www.zachariahhopkins.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;font-size:1.2rem;font-weight:500;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Created by Zachariah Hopkins</a>
     </footer>
 
 
+
+    <div id="detail-modal-overlay" class="detail-modal-overlay">
+        <div class="detail-modal">
+            <span id="detail-modal-close" class="detail-modal-close">&#x2715;</span>
+            <div class="detail-modal-eyebrow-row">
+                <span class="detail-modal-eyebrow">more about</span>
+                <span id="detail-modal-date" class="detail-modal-date"></span>
+            </div>
+            <div id="detail-modal-title" class="detail-modal-title"></div>
+            <div id="detail-modal-content" class="detail-modal-content"></div>
+        </div>
+    </div>
 
     <div id="lightbox">
         <span id="lightbox-close">&#x2715;</span>
@@ -203,5 +366,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="data/golden-age-events.js"></script>
     <script src="js/baghdad-timeline.js"></script>
+    <script src="data/detail-cards.js"></script>
+    <script>
+    document.querySelectorAll(".detail-card").forEach(function(card) {
+        function openCard() {
+            var id = card.getAttribute("data-detail-id");
+            var data = DETAIL_CARDS[id];
+            if (!data) return;
+            document.getElementById("detail-modal-title").textContent = data.title;
+            document.getElementById("detail-modal-date").textContent = data.date || "";
+            document.getElementById("detail-modal-content").innerHTML = data.content.map(function(p) { return "<p>" + p + "</p>"; }).join("");
+            document.getElementById("detail-modal-overlay").classList.add("open");
+        }
+        card.addEventListener("click", openCard);
+        card.addEventListener("keydown", function(e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openCard(); }
+        });
+    });
+    document.getElementById("detail-modal-overlay").addEventListener("click", function(e) {
+        if (e.target === this) this.classList.remove("open");
+    });
+    document.getElementById("detail-modal-close").addEventListener("click", function() {
+        document.getElementById("detail-modal-overlay").classList.remove("open");
+    });
+    </script>
 </body>
 </html>
