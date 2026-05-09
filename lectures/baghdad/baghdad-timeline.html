@@ -487,32 +487,37 @@
     <script src="data/baghdad-i18n.ar.js"></script>
     <script src="js/baghdad-language.js"></script>
     <script>
-    document.querySelectorAll(".detail-card").forEach(function(card) {
-        function openCard() {
-            var id = card.getAttribute("data-detail-id");
-            var data = window.BaghdadLanguage && window.BaghdadLanguage.getDetailCard
-                ? window.BaghdadLanguage.getDetailCard(id, DETAIL_CARDS[id])
-                : DETAIL_CARDS[id];
-            if (!data) return;
-            document.getElementById("detail-modal-title").textContent = data.title;
-            document.getElementById("detail-modal-date").textContent = data.date || "";
-            var content = document.getElementById("detail-modal-content");
-            content.innerHTML = "";
-            (data.content || []).forEach(function(paragraph) {
-                var p = document.createElement("p");
-                p.textContent = paragraph;
-                content.appendChild(p);
-            });
-            var overlay = document.getElementById("detail-modal-overlay");
-            var wrapper = card.closest(".detail-card-wrapper");
-            overlay.setAttribute("data-detail-id", id);
-            overlay.setAttribute("data-event-class", wrapper ? (wrapper.getAttribute("data-event-class") || "foundation-event") : "foundation-event");
-            overlay.classList.add("open");
-        }
-        card.addEventListener("click", openCard);
-        card.addEventListener("keydown", function(e) {
-            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openCard(); }
+    function openBaghdadDetailCard(card) {
+        var id = card.getAttribute("data-detail-id");
+        var data = window.BaghdadLanguage && window.BaghdadLanguage.getDetailCard
+            ? window.BaghdadLanguage.getDetailCard(id, DETAIL_CARDS[id])
+            : DETAIL_CARDS[id];
+        if (!data) return;
+        document.getElementById("detail-modal-title").textContent = data.title;
+        document.getElementById("detail-modal-date").textContent = data.date || "";
+        var content = document.getElementById("detail-modal-content");
+        content.innerHTML = "";
+        (data.content || []).forEach(function(paragraph) {
+            var p = document.createElement("p");
+            p.textContent = paragraph;
+            content.appendChild(p);
         });
+        var overlay = document.getElementById("detail-modal-overlay");
+        var wrapper = card.closest(".detail-card-wrapper");
+        overlay.setAttribute("data-detail-id", id);
+        overlay.setAttribute("data-event-class", wrapper ? (wrapper.getAttribute("data-event-class") || "foundation-event") : "foundation-event");
+        overlay.classList.add("open");
+    }
+    document.addEventListener("click", function(e) {
+        var card = e.target.closest(".detail-card[data-detail-id]");
+        if (!card) return;
+        openBaghdadDetailCard(card);
+    });
+    document.addEventListener("keydown", function(e) {
+        var card = e.target.closest(".detail-card[data-detail-id]");
+        if (!card || (e.key !== "Enter" && e.key !== " ")) return;
+        e.preventDefault();
+        openBaghdadDetailCard(card);
     });
     document.getElementById("detail-modal-overlay").addEventListener("click", function(e) {
         if (e.target === this) this.classList.remove("open");

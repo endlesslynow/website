@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>\n<base href="file:///C:/Users/Zachar/Documents/Hatra/The%20Website/lectures/baghdad/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of Baghdad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Reem+Kufi:wght@500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        lora: ['Lora', 'serif'],
+                    },
+                    colors: {
+                        // Era-specific colors for transitions
+                        era1: '#d4b886', // Desert sand
+                        era2: '#6f5318', // Golden Abbasid bronze
+                        era3: '#4a0e0e', // Fire and blood
+                        era4: '#3d3d3d', // Ash and stagnation
+                        era5: '#8b5a2b', // Ottoman sepia/wood
+                        era6: '#1a202c', // Modern concrete/night
+                        era7: '#e8a81e', // Protest/Recovery light sunny gold
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/baghdad-timeline.css">
+</head>
+<body class="font-lora antialiased selection:bg-black selection:text-white lang-locked" data-era="era1" style="position:relative;">
+
+    <!-- Language Picker Overlay -->
+    <div id="lang-overlay" class="lang-overlay" role="dialog" aria-modal="true" aria-label="Language selection">
+        <div class="lang-coins">
+            <button type="button" class="lang-coin lang-coin-en" data-lang="en" aria-label="English">
+                <span class="lang-coin-face">
+                    <span class="lang-coin-label">English</span>
+                </span>
+            </button>
+            <button type="button" class="lang-coin lang-coin-ar" data-lang="ar" aria-label="العربية" lang="ar" dir="rtl">
+                <span class="lang-coin-face">
+                    <span class="lang-coin-label">العربية</span>
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Timeline Sidebar Bars -->
+    <div id="timeline-sidebar" style="position:absolute;left:12px;top:0;height:100%;width:196px;z-index:100;display:flex;flex-direction:row;gap:8px;padding:0 8px 0 0;">
+        <div id="entity-bar" style="width:52px;flex-shrink:0;position:relative;overflow:visible;"></div>
+        <div id="ruler-bar"  style="width:52px;flex-shrink:0;position:relative;overflow:visible;"></div>
+        <div id="year-bar"   style="width:68px;flex-shrink:0;position:relative;overflow:visible;"></div>
+    </div>
+    <!-- Shared hover tooltip -->
+    <svg id="tl-tip-line" style="display:none;position:fixed;inset:0;width:100vw;height:100vh;z-index:499;pointer-events:none;overflow:visible;"></svg>
+    <div id="tl-tip" style="display:none;position:fixed;left:224px;top:50vh;z-index:500;pointer-events:none;transform:translateY(-50%);"></div>
+
+    <!-- Background Patterns -->
+    <div id="pattern-era1" class="bg-pattern"></div>
+    <div id="pattern-era2" class="bg-pattern"></div>
+    <div id="pattern-era5" class="bg-pattern"></div>
+    <canvas id="fx-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
+    <canvas id="round-city-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
+    <canvas id="golden-age-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
+    <canvas id="ottoman-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
+    <canvas id="modern-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
+    <canvas id="protest-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex flex-col items-center justify-center text-center px-4 fade-in-section is-visible relative" id="hero">
+        <canvas id="hero-canvas"></canvas>
+        <h1 class="font-cinzel text-6xl md:text-8xl font-black mb-6 tracking-wider relative z-10">BAGHDAD</h1>
+        <p class="text-2xl md:text-3xl italic font-bold text-black max-w-2xl relative z-10">Center of the World</p>
+        <button id="scroll-arrow" class="floating-scroll-arrow" type="button" aria-label="Scroll to timeline">
+            <svg class="scroll-arrow-bounce" style="width: 120px; height: 120px;" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            </svg>
+        </button>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-8 py-12 relative timeline-container">
+
+        <!-- 1. Revolution and Mudbrick -->
+        <section class="mb-32 foundation-era-expanded fade-in-section" data-era="era1">
+            <div class="foundation-era-lede">
+                <h2 class="font-cinzel text-5xl md:text-7xl font-bold mb-5">Fire and Foundation</h2>
+                <h3 class="text-2xl md:text-3xl font-bold opacity-80 mb-7 tracking-widest uppercase">650-768</h3>
+            </div>
+            <div class="foundation-era-content-row">
+                <div class="foundation-era-shell">
+                    <div id="foundation-events-root"></div>
+                </div>
+                <div class="foundation-detail-column" id="foundation-detail-root">
+                    <div class="detail-card-wrapper" data-anchor-year="650">
+                        <div class="detail-card" data-detail-id="khorasan-power" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/khorasan-map.png" alt="Historic map of Khorasan">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Khorasan and the shifting of power</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="719">
+                        <div class="detail-card" data-detail-id="perfume-dealers" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/merchant-agents.jpg" alt="Medieval manuscript image of merchants carrying goods">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Perfume Dealers</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="747">
+                        <div class="detail-card" data-detail-id="merv" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/merv.jpg" alt="Ruins and mausoleums at Merv in Turkmenistan">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Merv</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="754">
+                        <div class="detail-card" data-detail-id="al-mansur" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/al-mansur-dinar.jpg" alt="Abbasid dinar minted under al-Mansur">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Al-Mansur and the start of the golden age</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="758" data-event-class="foundation-event">
+                        <div class="detail-card" data-detail-id="persian-rebellion" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/persian-rebellion-in-kufa.jpg" alt="Great Mosque of Kufa">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Persian Rebellion in Kufa</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="762" data-event-class="foundation-event">
+                        <div class="detail-card" data-detail-id="many-names" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/foundation-cards/762-al-mansur-chooses-baghdad.png" alt="Map of the Abbasid Caliphate showing Baghdad's imperial position">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Many Names of Baghdad</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="766" data-event-class="foundation-event">
+                        <div class="detail-card" data-detail-id="baghdad-canals" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/foundation-cards/baghdad-s-canals.webp" alt="Plan of the Round City and canals of Baghdad">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Baghdad's Canals</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="766" data-event-class="foundation-event">
+                        <div class="detail-card" data-detail-id="dhimma-system" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/foundation-cards/the-dhimma-system.jpg" alt="Map of the Round City of Baghdad">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Dhimma System</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. The Golden Age -->
+        <section class="mb-32 golden-age-expanded fade-in-section" data-era="era2">
+            <div class="golden-age-lede">
+                <h2 class="font-cinzel text-5xl md:text-7xl font-bold mb-5">The Golden Age</h2>
+                <h3 class="text-2xl md:text-3xl font-bold opacity-80 mb-7 tracking-widest uppercase">8th - 13th Century</h3>
+            </div>
+            <div class="golden-era-content-row">
+                <div class="golden-age-shell">
+                    <div id="golden-age-events-root"></div>
+                </div>
+                <div class="golden-detail-column" id="golden-detail-root">
+                    <div class="detail-card-wrapper" data-anchor-year="786" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="harun-al-rashid" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/harun-al-rashid.jpg" alt="Harun al-Rashid">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Harun al-Rashid</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="795" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="barmakids" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/the-barmakids.jpeg" alt="Illustration representing the end of the Barmakids">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Barmakids</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="803" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="jafar-barmakid" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/jafar-the-barmakid.webp" alt="Harun al-Rashid, Jafar, Abu Yusuf, and a slave girl">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Jafar the Barmakid</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="799" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="kadhimain" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/kadhimayn-entrance-1958.png" alt="Entrance to the Kadhimayn Shrine in Baghdad, 1958">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Shrine at Kadhimain</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="835" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="relocation-samarra" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/malwiya-minaret.jpg" alt="Malwiya Minaret at Samarra">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Relocation to Samarra</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="892" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="return-samarra" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/the-return-from-samarra.jpg" alt="Firdos a thousand years later (spoiler alert)">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Return from Samarra</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="917" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="byzantine-reception" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/the-byzantine-reception.jpg" alt="Byzantine and Arab ambassadors">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Byzantine Reception</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="945" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="buyids" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/the-buyids-take-control.png" alt="Coin of the Buyid ruler Mu'izz al-Dawla">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Buyids Take Control</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="1055" data-event-class="golden-event">
+                        <div class="detail-card" data-detail-id="seljuk-turks" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/detail-cards/seljuk-empire-map.png" alt="Map of the Seljuk Empire">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Seljuk Turks</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. The Mongol Siege -->
+        <section class="mb-32 mongol-siege-expanded fade-in-section" data-era="era3">
+            <div class="mongol-siege-lede">
+                <h2 class="font-cinzel text-5xl md:text-7xl font-bold mb-5">The Mongols</h2>
+                <h3 class="text-2xl md:text-3xl font-bold opacity-70 mb-7 tracking-widest uppercase">1219 - 1258</h3>
+            </div>
+            <div class="mongol-siege-content-row">
+                <div class="mongol-siege-shell">
+                    <div id="mongol-siege-events-root"></div>
+                </div>
+                <div class="timeline-detail-column" id="mongol-detail-root">
+                    <div class="detail-card-wrapper" data-anchor-year="1256" data-event-class="mongol-event">
+                        <div class="detail-card" data-detail-id="historys-greatest-mistake" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/mongol-siege-cards/history-s-greatest-mistake.jpg" alt="Manuscript detail of Hulagu Khan">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">History's Greatest Mistake</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="1257" data-event-class="mongol-event">
+                        <div class="detail-card" data-detail-id="hulagu-correspondence" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/mongol-siege-cards/al-mustasim-defiance-quran.jpg" alt="Late thirteenth-century Baghdad manuscript associated with al-Mustasim's courtly world">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Correspondence between Hulegu and the Caliph</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Stagnation & Invasions -->
+        <section class="mb-32 stagnation-expanded fade-in-section" data-era="era4">
+            <div class="stagnation-lede">
+                <h2 class="font-cinzel text-5xl md:text-7xl font-bold mb-5">Stagnation & Invasion</h2>
+                <h3 class="text-2xl md:text-3xl font-bold opacity-70 mb-7 tracking-widest uppercase">1258 - 1534</h3>
+            </div>
+            <div class="stagnation-content-row">
+                <div class="stagnation-shell">
+                    <div id="stagnation-events-root"></div>
+                </div>
+                <div class="timeline-detail-column" id="stagnation-detail-root">
+                    <div class="detail-card-wrapper" data-anchor-year="1401" data-event-class="stagnation-event">
+                        <div class="detail-card" data-detail-id="tamerlane-brutality" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/stagnation-cards/tamerlane-s-brutality.jpg" alt="Zafarnama manuscript image of soldiers marching before Timur">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Tamerlane's Brutality</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="1402" data-event-class="stagnation-event">
+                        <div class="detail-card" data-detail-id="black-white-sheep" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/black-and-white-sheep.jpg" alt="Late medieval image used for Baghdad's period of ruin">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Black and White Sheep</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="1508" data-event-class="stagnation-event">
+                        <div class="detail-card" data-detail-id="safavids" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/stagnation-cards/the-safavids.png" alt="Portrait detail of Shah Ismail I Safavid">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Safavids</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Ottoman Rule -->
+        <section class="mb-32 ottoman-expanded fade-in-section" data-era="era5">
+            <div class="ottoman-lede">
+                <h2 class="font-cinzel text-5xl md:text-7xl font-bold mb-5">Ottoman Rule</h2>
+                <h3 class="text-2xl md:text-3xl font-bold opacity-80 mb-7 tracking-widest uppercase">1528 - 1917</h3>
+            </div>
+            <div class="ottoman-content-row">
+                <div class="ottoman-shell">
+                    <div id="ottoman-events-root"></div>
+                </div>
+                <div class="timeline-detail-column" id="ottoman-detail-root">
+                    <div class="detail-card-wrapper" data-anchor-year="1889" data-event-class="ottoman-event">
+                        <div class="detail-card" data-detail-id="jews-baghdad" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/ottoman-cards/great-synagogue-baghdad.jpg" alt="Great Synagogue of Baghdad">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">The Jews of Baghdad</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="1910" data-event-class="ottoman-event">
+                        <div class="detail-card" data-detail-id="sarah-khatun" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/ottoman-cards/sarah-khatun.jpg" alt="Al-Saray Mosque in Baghdad near the Ottoman administrative quarter">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Sarah Khatun</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="1917" data-event-class="ottoman-event">
+                        <div class="detail-card" data-detail-id="bab-al-talism" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/mongol-siege-cards/talisman-gate.jpg" alt="Bab al-Talism, the Talisman Gate of Baghdad">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Bab al-Talism</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Modern Era -->
+        <section class="mb-32 modern-expanded fade-in-section" data-era="era6">
+            <div class="modern-lede">
+                <h2 class="font-cinzel text-5xl md:text-7xl font-bold mb-5">Modern Times</h2>
+                <h3 class="text-2xl md:text-3xl font-bold opacity-80 mb-7 tracking-widest uppercase">1917 - 2010</h3>
+            </div>
+            <div class="modern-content-row">
+                <div class="modern-shell">
+                    <div id="modern-events-root"></div>
+                </div>
+                <div class="timeline-detail-column" id="modern-detail-root">
+                    <div class="detail-card-wrapper" data-anchor-year="1980" data-event-class="modern-event">
+                        <div class="detail-card" data-detail-id="war-of-cities" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/modern-cards/war-of-the-cities.jpg" alt="Map of the frontlines in the Iran-Iraq War">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">War of the Cities</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail-card-wrapper" data-anchor-year="2010" data-event-class="modern-event">
+                        <div class="detail-card" data-detail-id="christians-baghdad" role="button" tabindex="0">
+                            <div class="detail-card-img">
+                                <img src="images/modern-cards/christians-of-baghdad.jpg" alt="Our Lady of Salvation Church in Baghdad, remembered after the 2010 attack">
+                            </div>
+                            <div class="detail-card-body">
+                                <div class="detail-card-title">Christians of Baghdad</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Protest, Recovery, and a Contested Future -->
+        <section class="mb-32 protest-expanded fade-in-section" data-era="era7">
+            <div class="protest-lede">
+                <h2 class="font-cinzel text-5xl md:text-7xl font-bold mb-5">Recovery and Future</h2>
+                <h3 class="text-2xl md:text-3xl font-bold opacity-80 mb-7 tracking-widest uppercase">2019 - Present</h3>
+            </div>
+            <div class="protest-shell">
+                <div id="protest-events-root"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="width:100%;box-sizing:border-box;height:40px;background-color:rgba(232,168,30,0.75);display:flex;align-items:center;justify-content:space-between;padding:0 20px;">
+        <a href="https://www.zachariahhopkins.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;font-size:1.2rem;font-weight:500;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Created by Zachariah Hopkins</a>
+        <a href="https://www.zachariahhopkins.com" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;font-size:1.5rem;font-weight:500;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">من إعداد زكريا هوبكنز</a>
+    </footer>
+
+
+
+    <div id="detail-modal-overlay" class="detail-modal-overlay">
+        <div class="detail-modal">
+            <span id="detail-modal-close" class="detail-modal-close">&#x2715;</span>
+            <div class="detail-modal-eyebrow-row">
+                <span class="detail-modal-eyebrow">more about</span>
+                <span id="detail-modal-date" class="detail-modal-date"></span>
+            </div>
+            <div id="detail-modal-title" class="detail-modal-title"></div>
+            <div id="detail-modal-content" class="detail-modal-content"></div>
+        </div>
+    </div>
+
+    <div id="lightbox">
+        <span id="lightbox-close">&#x2715;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="data/golden-age-events.js"></script>
+    <script src="js/baghdad-timeline.js"></script>
+    <script src="data/detail-cards.js"></script>
+    <script src="data/baghdad-i18n.ar.js"></script>
+    <script src="js/baghdad-language.js"></script>
+    <script>
+    function openBaghdadDetailCard(card) {
+        var id = card.getAttribute("data-detail-id");
+        var data = window.BaghdadLanguage && window.BaghdadLanguage.getDetailCard
+            ? window.BaghdadLanguage.getDetailCard(id, DETAIL_CARDS[id])
+            : DETAIL_CARDS[id];
+        if (!data) return;
+        document.getElementById("detail-modal-title").textContent = data.title;
+        document.getElementById("detail-modal-date").textContent = data.date || "";
+        var content = document.getElementById("detail-modal-content");
+        content.innerHTML = "";
+        (data.content || []).forEach(function(paragraph) {
+            var p = document.createElement("p");
+            p.textContent = paragraph;
+            content.appendChild(p);
+        });
+        var overlay = document.getElementById("detail-modal-overlay");
+        var wrapper = card.closest(".detail-card-wrapper");
+        overlay.setAttribute("data-detail-id", id);
+        overlay.setAttribute("data-event-class", wrapper ? (wrapper.getAttribute("data-event-class") || "foundation-event") : "foundation-event");
+        overlay.classList.add("open");
+    }
+    document.addEventListener("click", function(e) {
+        var card = e.target.closest(".detail-card[data-detail-id]");
+        if (!card) return;
+        openBaghdadDetailCard(card);
+    });
+    document.addEventListener("keydown", function(e) {
+        var card = e.target.closest(".detail-card[data-detail-id]");
+        if (!card || (e.key !== "Enter" && e.key !== " ")) return;
+        e.preventDefault();
+        openBaghdadDetailCard(card);
+    });
+    document.getElementById("detail-modal-overlay").addEventListener("click", function(e) {
+        if (e.target === this) this.classList.remove("open");
+    });
+    document.getElementById("detail-modal-close").addEventListener("click", function() {
+        document.getElementById("detail-modal-overlay").classList.remove("open");
+    });
+    </script>
+
+    <script>
+    (function() {
+        var overlay = document.getElementById("lang-overlay");
+        if (!overlay) return;
+        var SVG_NS = "http://www.w3.org/2000/svg";
+
+        function buildCoinArt() {
+            var svg = document.createElementNS(SVG_NS, "svg");
+            svg.setAttribute("viewBox", "0 0 200 200");
+            svg.setAttribute("class", "lang-coin-art");
+            svg.setAttribute("aria-hidden", "true");
+
+            function dotsRing(count, radius, dotR, opacity) {
+                var g = document.createElementNS(SVG_NS, "g");
+                g.setAttribute("fill", "currentColor");
+                g.setAttribute("opacity", String(opacity));
+                for (var i = 0; i < count; i++) {
+                    var a = (i / count) * Math.PI * 2;
+                    var c = document.createElementNS(SVG_NS, "circle");
+                    c.setAttribute("cx", (100 + Math.cos(a) * radius).toFixed(2));
+                    c.setAttribute("cy", (100 + Math.sin(a) * radius).toFixed(2));
+                    c.setAttribute("r", String(dotR));
+                    g.appendChild(c);
+                }
+                return g;
+            }
+
+            function ring(r, sw, opacity) {
+                var c = document.createElementNS(SVG_NS, "circle");
+                c.setAttribute("cx", "100"); c.setAttribute("cy", "100");
+                c.setAttribute("r", String(r));
+                c.setAttribute("fill", "none");
+                c.setAttribute("stroke", "currentColor");
+                c.setAttribute("stroke-width", String(sw));
+                c.setAttribute("opacity", String(opacity));
+                return c;
+            }
+
+            svg.appendChild(dotsRing(64, 92, 1.5, 0.85));
+            svg.appendChild(ring(86, 1.2, 0.65));
+            svg.appendChild(ring(72, 0.8, 0.45));
+            svg.appendChild(dotsRing(40, 67, 1.0, 0.6));
+
+            var marks = document.createElementNS(SVG_NS, "g");
+            marks.setAttribute("stroke", "currentColor");
+            marks.setAttribute("stroke-width", "1.6");
+            marks.setAttribute("stroke-linecap", "round");
+            marks.setAttribute("opacity", "0.55");
+            marks.setAttribute("fill", "none");
+            var nMarks = 8;
+            for (var k = 0; k < nMarks; k++) {
+                var a = (k / nMarks) * Math.PI * 2 + (Math.PI / nMarks);
+                var x1 = 100 + Math.cos(a) * 75;
+                var y1 = 100 + Math.sin(a) * 75;
+                var x2 = 100 + Math.cos(a) * 84;
+                var y2 = 100 + Math.sin(a) * 84;
+                var p = document.createElementNS(SVG_NS, "path");
+                p.setAttribute("d", "M" + x1.toFixed(2) + " " + y1.toFixed(2) + " L " + x2.toFixed(2) + " " + y2.toFixed(2));
+                marks.appendChild(p);
+            }
+            svg.appendChild(marks);
+
+            return svg;
+        }
+
+        overlay.querySelectorAll(".lang-coin-face").forEach(function(face) {
+            face.insertBefore(buildCoinArt(), face.firstChild);
+        });
+
+        var coins = overlay.querySelectorAll(".lang-coin");
+
+        function dismiss(lang) {
+            overlay.setAttribute("data-chosen", lang);
+            document.body.classList.remove("lang-locked");
+            if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+            document.dispatchEvent(new CustomEvent("lang:dismissed", { detail: { lang: lang } }));
+        }
+        coins.forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                dismiss(btn.getAttribute("data-lang") || "en");
+            });
+        });
+    })();
+    </script>
+
+<script>
+(function() {
+    function collect(extra) {
+        var sidebar = document.getElementById('timeline-sidebar');
+        var footer = document.querySelector('footer');
+        var footerRect = footer ? footer.getBoundingClientRect() : { width: 0, height: 0 };
+        var data = {
+            width: window.innerWidth,
+            height: window.innerHeight,
+            scrollWidth: document.documentElement.scrollWidth,
+            bodyScrollWidth: document.body.scrollWidth,
+            mobileDetails: document.querySelectorAll('.mobile-related-details').length,
+            mobileDetailCards: document.querySelectorAll('.mobile-related-details .detail-card').length,
+            originalDetailColumnsVisible: Array.from(document.querySelectorAll('.foundation-detail-column,.golden-detail-column,.timeline-detail-column')).some(function(el) {
+                return getComputedStyle(el).display !== 'none';
+            }),
+            sidebarDisplay: sidebar ? getComputedStyle(sidebar).display : '',
+            sidebarChildren: document.querySelectorAll('#entity-bar > *, #ruler-bar > *, #year-bar > *').length,
+            connectors: !!document.getElementById('timeline-connectors'),
+            overlayPresent: !!document.getElementById('lang-overlay'),
+            footerWidth: Math.round(footerRect.width),
+            footerHeight: Math.round(footerRect.height)
+        };
+        Object.assign(data, extra || {});
+        document.title = 'CODEX_CHECK:' + btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+    }
+    function run() {
+        var coin = document.querySelector('.lang-coin-en');
+        if (coin) coin.click();
+        setTimeout(function() {
+            window.scrollTo(0, 900);
+            var card = document.querySelector('.mobile-related-details .detail-card');
+            if (card) card.click();
+            setTimeout(function() {
+                collect({
+                    modalOpen: document.getElementById('detail-modal-overlay').classList.contains('open')
+                });
+            }, 400);
+        }, 1600);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+    else run();
+})();
+</script>
+\n</body>
+</html>

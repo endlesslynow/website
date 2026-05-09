@@ -1,5 +1,9 @@
 
 (function() {
+    function isMobileTimeline() {
+        return window.isBaghdadMobileTimeline && window.isBaghdadMobileTimeline();
+    }
+
     var MIN_EVENT_GAP = 28;
     var MAX_EVENT_GAP = 210;
     var PX_PER_YEAR = 6.5;
@@ -185,6 +189,8 @@
         });
 
         requestAnimationFrame(function() {
+            if (window.syncBaghdadMobileTimeline) window.syncBaghdadMobileTimeline();
+            if (isMobileTimeline()) return;
             if (window.buildBaghdadTimelineSidebars) window.buildBaghdadTimelineSidebars();
         });
     }
@@ -965,6 +971,111 @@ document.addEventListener("DOMContentLoaded", () => {
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLB(); });
     })();
 
+(function() {
+    var mobileQuery = window.matchMedia ? window.matchMedia('(max-width: 768px)') : null;
+    var detailSourceSelector = [
+        '.foundation-detail-column > .detail-card-wrapper[data-anchor-year]',
+        '.golden-detail-column > .detail-card-wrapper[data-anchor-year]',
+        '.timeline-detail-column > .detail-card-wrapper[data-anchor-year]'
+    ].join(', ');
+    var eventSelector = [
+        '.foundation-event[data-anchor-year]',
+        '.golden-event[data-anchor-year]',
+        '.mongol-event[data-anchor-year]',
+        '.stagnation-event[data-anchor-year]',
+        '.ottoman-event[data-anchor-year]',
+        '.modern-event[data-anchor-year]',
+        '.protest-event[data-anchor-year]'
+    ].join(', ');
+
+    function isMobileTimeline() {
+        return mobileQuery ? mobileQuery.matches : window.innerWidth <= 768;
+    }
+
+    function removeMobileDetails() {
+        Array.prototype.forEach.call(document.querySelectorAll('.mobile-related-details'), function(node) {
+            if (node.parentNode) node.parentNode.removeChild(node);
+        });
+    }
+
+    function nearestEvent(section, year) {
+        var events = Array.prototype.slice.call(section.querySelectorAll(eventSelector));
+        if (!events.length) return null;
+        var best = events[0];
+        var bestDistance = Infinity;
+        events.forEach(function(event) {
+            var eventYear = parseInt(event.getAttribute('data-anchor-year'), 10);
+            if (!Number.isFinite(eventYear)) return;
+            var distance = Math.abs(eventYear - year);
+            if (distance < bestDistance) {
+                best = event;
+                bestDistance = distance;
+            }
+        });
+        return best;
+    }
+
+    function ensureRelatedContainer(event) {
+        var next = event.nextElementSibling;
+        if (next && next.classList && next.classList.contains('mobile-related-details')) return next;
+
+        var container = document.createElement('div');
+        container.className = 'mobile-related-details';
+        container.setAttribute('aria-label', 'Related detail cards');
+        event.parentNode.insertBefore(container, event.nextSibling);
+        return container;
+    }
+
+    function syncMobileTimeline() {
+        removeMobileDetails();
+        if (!isMobileTimeline()) return;
+
+        Array.prototype.forEach.call(document.querySelectorAll(detailSourceSelector), function(wrapper) {
+            var section = wrapper.closest('section[data-era]');
+            if (!section) return;
+
+            var year = parseInt(wrapper.getAttribute('data-anchor-year'), 10);
+            if (!Number.isFinite(year)) return;
+
+            var event = nearestEvent(section, year);
+            if (!event || !event.parentNode) return;
+
+            var clone = wrapper.cloneNode(true);
+            clone.removeAttribute('style');
+            clone.setAttribute('data-mobile-clone', 'true');
+            ensureRelatedContainer(event).appendChild(clone);
+        });
+
+        if (window.BaghdadLanguage && window.BaghdadLanguage.getDetailCard) {
+            Array.prototype.forEach.call(document.querySelectorAll('.mobile-related-details .detail-card[data-detail-id]'), function(card) {
+                var id = card.getAttribute('data-detail-id');
+                var data = window.BaghdadLanguage.getDetailCard(id, window.DETAIL_CARDS && window.DETAIL_CARDS[id]);
+                var titleNode = card.querySelector('.detail-card-title');
+                if (data && titleNode) titleNode.textContent = data.title || titleNode.textContent;
+            });
+        }
+    }
+
+    window.isBaghdadMobileTimeline = isMobileTimeline;
+    window.syncBaghdadMobileTimeline = syncMobileTimeline;
+
+    function onResize() {
+        window.clearTimeout(window.__baghdadMobileRelayout);
+        window.__baghdadMobileRelayout = window.setTimeout(syncMobileTimeline, 120);
+    }
+
+    if (mobileQuery && mobileQuery.addEventListener) {
+        mobileQuery.addEventListener('change', syncMobileTimeline);
+    } else if (mobileQuery && mobileQuery.addListener) {
+        mobileQuery.addListener(syncMobileTimeline);
+    }
+    window.addEventListener('resize', onResize);
+    document.addEventListener('baghdad:language-changed', syncMobileTimeline);
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncMobileTimeline);
+    else syncMobileTimeline();
+})();
+
 
 (function() {
     var MIN_RULER_SEGMENT_HEIGHT = 12;
@@ -1348,7 +1459,34 @@ document.addEventListener("DOMContentLoaded", () => {
             ', ' + cardLeftX.toFixed(2) + ' ' + cardY.toFixed(2);
     }
 
+    function isMobileTimeline() {
+        return window.isBaghdadMobileTimeline && window.isBaghdadMobileTimeline();
+    }
+
+    function clearTimelineArtifacts() {
+        var sidebar = document.getElementById('timeline-sidebar');
+        var entityBar = document.getElementById('entity-bar');
+        var rulerBar = document.getElementById('ruler-bar');
+        var yearBar = document.getElementById('year-bar');
+        var tip = document.getElementById('tl-tip');
+        var tipLine = document.getElementById('tl-tip-line');
+        var svg = document.getElementById('timeline-connectors');
+
+        clear(entityBar);
+        clear(rulerBar);
+        clear(yearBar);
+        if (sidebar) sidebar.style.height = '';
+        if (tip) tip.style.display = 'none';
+        if (tipLine) tipLine.style.display = 'none';
+        if (svg && svg.parentNode) svg.parentNode.removeChild(svg);
+    }
+
     window.buildBaghdadTimelineSidebars = function() {
+        if (isMobileTimeline()) {
+            clearTimelineArtifacts();
+            return;
+        }
+
         var tip = document.getElementById('tl-tip');
         var sidebar = document.getElementById('timeline-sidebar');
         var entityBar = document.getElementById('entity-bar');
@@ -1533,12 +1671,19 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     function init() {
+        if (window.syncBaghdadMobileTimeline) window.syncBaghdadMobileTimeline();
         window.buildBaghdadTimelineSidebars();
         window.addEventListener('resize', function() {
             window.clearTimeout(window.__baghdadSidebarRelayout);
-            window.__baghdadSidebarRelayout = window.setTimeout(window.buildBaghdadTimelineSidebars, 150);
+            window.__baghdadSidebarRelayout = window.setTimeout(function() {
+                if (window.syncBaghdadMobileTimeline) window.syncBaghdadMobileTimeline();
+                window.buildBaghdadTimelineSidebars();
+            }, 150);
         });
-        window.addEventListener('load', window.buildBaghdadTimelineSidebars);
+        window.addEventListener('load', function() {
+            if (window.syncBaghdadMobileTimeline) window.syncBaghdadMobileTimeline();
+            window.buildBaghdadTimelineSidebars();
+        });
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

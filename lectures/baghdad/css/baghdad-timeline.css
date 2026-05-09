@@ -1600,3 +1600,525 @@ body {
             .lang-coins { gap: 24px; flex-direction: column; }
             .lang-coin { width: 220px; height: 220px; }
         }
+
+        /* ============================================================
+           Mobile Timeline Redesign
+           ============================================================ */
+        @media (max-width: 768px) {
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            html,
+            body {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            body {
+                margin: 0;
+                background-color: #d8bd8a;
+                color: #24180d;
+            }
+
+            body[data-era="era1"],
+            body[data-era="era2"],
+            body[data-era="era3"],
+            body[data-era="era4"],
+            body[data-era="era5"],
+            body[data-era="era6"],
+            body[data-era="era7"],
+            .lang-overlay {
+                background-image: none !important;
+            }
+
+            #timeline-sidebar,
+            #timeline-connectors,
+            #tl-tip,
+            #tl-tip-line {
+                display: none !important;
+            }
+
+            #fx-canvas,
+            #round-city-canvas,
+            #golden-age-canvas,
+            #ottoman-canvas,
+            #modern-canvas,
+            #protest-canvas {
+                opacity: 0.18;
+            }
+
+            #hero {
+                min-height: 82vh;
+                padding: 5rem 1rem 6rem;
+                overflow: hidden;
+            }
+
+            #hero h1 {
+                font-size: clamp(3.15rem, 15vw, 5rem) !important;
+                line-height: 0.95;
+                overflow-wrap: anywhere;
+            }
+
+            #hero p {
+                font-size: clamp(1.2rem, 6vw, 1.65rem) !important;
+                line-height: 1.25;
+                max-width: 19rem;
+            }
+
+            .floating-scroll-arrow {
+                width: 76px;
+                height: 76px;
+                bottom: 1.25rem;
+            }
+
+            .scroll-arrow-bounce {
+                width: 72px !important;
+                height: 72px !important;
+            }
+
+            main.timeline-container {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                padding: 2.25rem 1rem 3rem !important;
+                overflow-x: hidden;
+            }
+
+            .foundation-era-expanded,
+            .golden-age-expanded,
+            .mongol-siege-expanded,
+            .stagnation-expanded,
+            .ottoman-expanded,
+            .modern-expanded,
+            .protest-expanded {
+                margin-bottom: 4.5rem !important;
+                padding: 1.1rem 0 0;
+                overflow: visible;
+            }
+
+            .foundation-era-lede,
+            .golden-age-lede,
+            .mongol-siege-lede,
+            .stagnation-lede,
+            .ottoman-lede,
+            .modern-lede,
+            .protest-lede {
+                margin: 0 0 1.5rem;
+                max-width: none;
+                text-align: left;
+            }
+
+            .foundation-era-lede h2,
+            .golden-age-lede h2,
+            .mongol-siege-lede h2,
+            .stagnation-lede h2,
+            .ottoman-lede h2,
+            .modern-lede h2,
+            .protest-lede h2 {
+                font-size: clamp(2rem, 11vw, 3.25rem) !important;
+                line-height: 1.02;
+                margin-bottom: 0.55rem !important;
+                overflow-wrap: anywhere;
+            }
+
+            .foundation-era-lede h3,
+            .golden-age-lede h3,
+            .mongol-siege-lede h3,
+            .stagnation-lede h3,
+            .ottoman-lede h3,
+            .modern-lede h3,
+            .protest-lede h3 {
+                font-size: clamp(1rem, 5vw, 1.35rem) !important;
+                line-height: 1.25;
+                margin-bottom: 0 !important;
+                letter-spacing: 0.08em;
+            }
+
+            .foundation-era-content-row,
+            .golden-era-content-row,
+            .mongol-siege-content-row,
+            .stagnation-content-row,
+            .ottoman-content-row,
+            .modern-content-row {
+                display: block !important;
+            }
+
+            .foundation-era-shell,
+            .golden-age-shell,
+            .mongol-siege-shell,
+            .stagnation-shell,
+            .ottoman-shell,
+            .modern-shell,
+            .protest-shell,
+            .foundation-era-content-row .foundation-era-shell,
+            .golden-era-content-row .golden-age-shell,
+            .mongol-siege-content-row .mongol-siege-shell,
+            .stagnation-content-row .stagnation-shell,
+            .ottoman-content-row .ottoman-shell,
+            .modern-content-row .modern-shell {
+                width: 100%;
+                max-width: none !important;
+                margin: 0 !important;
+                flex: none !important;
+            }
+
+            .foundation-detail-column,
+            .golden-detail-column,
+            .timeline-detail-column {
+                display: none !important;
+            }
+
+            .foundation-era-phase,
+            .golden-age-phase,
+            .mongol-siege-phase,
+            .stagnation-phase,
+            .ottoman-phase,
+            .modern-phase,
+            .protest-phase {
+                margin: 2rem 0 0.9rem;
+                padding-bottom: 0.65rem;
+            }
+
+            .foundation-era-phase h3,
+            .golden-age-phase h3,
+            .mongol-siege-phase h3,
+            .stagnation-phase h3,
+            .ottoman-phase h3,
+            .modern-phase h3,
+            .protest-phase h3 {
+                font-size: clamp(1.25rem, 7vw, 1.75rem);
+                line-height: 1.15;
+                overflow-wrap: anywhere;
+            }
+
+            .foundation-era-phase p,
+            .golden-age-phase p,
+            .mongol-siege-phase p,
+            .stagnation-phase p,
+            .ottoman-phase p,
+            .modern-phase p,
+            .protest-phase p {
+                font-size: 0.98rem;
+                line-height: 1.6;
+            }
+
+            .foundation-events,
+            .golden-age-events,
+            .mongol-siege-events,
+            .stagnation-events,
+            .ottoman-events,
+            .modern-events,
+            .protest-events {
+                display: grid;
+                gap: 0.95rem;
+            }
+
+            .foundation-event,
+            .golden-event,
+            .mongol-event,
+            .stagnation-event,
+            .ottoman-event,
+            .modern-event,
+            .protest-event {
+                width: 100%;
+                max-width: 100%;
+                margin-top: 1rem !important;
+                padding: 1rem;
+                display: block;
+                border-radius: 8px;
+                scroll-margin-top: 1rem;
+                overflow: hidden;
+            }
+
+            .foundation-event:first-child,
+            .golden-event:first-child,
+            .mongol-event:first-child,
+            .stagnation-event:first-child,
+            .ottoman-event:first-child,
+            .modern-event:first-child,
+            .protest-event:first-child {
+                margin-top: 0 !important;
+            }
+
+            .foundation-event > div,
+            .golden-event > div,
+            .mongol-event > div,
+            .stagnation-event > div,
+            .ottoman-event > div,
+            .modern-event > div,
+            .protest-event > div {
+                display: block;
+                min-width: 0;
+            }
+
+            .foundation-event-date,
+            .golden-event-date,
+            .mongol-event-date,
+            .stagnation-event-date,
+            .ottoman-event-date,
+            .modern-event-date,
+            .protest-event-date {
+                display: inline-block;
+                margin-bottom: 0.55rem;
+                font-size: 0.95rem;
+                line-height: 1.2;
+                overflow-wrap: anywhere;
+            }
+
+            .foundation-event-title,
+            .golden-event-title,
+            .mongol-event-title,
+            .stagnation-event-title,
+            .ottoman-event-title,
+            .modern-event-title,
+            .protest-event-title {
+                font-size: 1.16rem;
+                line-height: 1.25;
+                overflow-wrap: anywhere;
+            }
+
+            .foundation-event-copy,
+            .golden-event-copy,
+            .mongol-event-copy,
+            .stagnation-event-copy,
+            .ottoman-event-copy,
+            .modern-event-copy,
+            .protest-event-copy {
+                font-size: 0.98rem;
+                line-height: 1.62;
+                overflow-wrap: break-word;
+            }
+
+            .foundation-event-media,
+            .golden-event-media,
+            .mongol-event-media,
+            .stagnation-event-media,
+            .ottoman-event-media,
+            .modern-event-media,
+            .protest-event-media {
+                float: none !important;
+                clear: both;
+                width: 100% !important;
+                min-height: 0;
+                margin: 0.2rem 0 0.9rem !important;
+                padding: 0.75rem;
+            }
+
+            .timeline-card-image {
+                padding: 0;
+            }
+
+            .timeline-card-image a {
+                aspect-ratio: 4 / 3;
+                min-height: 0;
+            }
+
+            .timeline-card-image-caption {
+                font-size: 0.76rem;
+                line-height: 1.35;
+                overflow-wrap: break-word;
+            }
+
+            .mobile-related-details {
+                display: grid;
+                gap: 0.75rem;
+                margin: 0.75rem 0 1rem;
+            }
+
+            .mobile-related-details .detail-card-wrapper {
+                position: static !important;
+                inset: auto !important;
+                width: 100%;
+            }
+
+            .mobile-related-details .detail-card {
+                border-radius: 8px;
+                display: grid;
+                grid-template-columns: minmax(86px, 32%) minmax(0, 1fr);
+                min-height: 96px;
+            }
+
+            .mobile-related-details .detail-card:hover {
+                transform: none;
+            }
+
+            .mobile-related-details .detail-card-img {
+                height: 100%;
+                min-height: 96px;
+                padding-bottom: 0;
+                border-radius: 7px 0 0 7px;
+            }
+
+            .mobile-related-details .detail-card-body {
+                min-width: 0;
+                padding: 0.85rem;
+                border-top: 0;
+                border-left: 1px solid rgba(255, 232, 190, 0.26);
+            }
+
+            .mobile-related-details .detail-card-title {
+                font-size: 1rem;
+                line-height: 1.25;
+                overflow-wrap: anywhere;
+            }
+
+            .detail-modal-overlay.open {
+                align-items: flex-end;
+                padding: 0;
+            }
+
+            .detail-modal {
+                width: 100%;
+                max-width: none;
+                max-height: 88vh;
+                border-radius: 12px 12px 0 0;
+                padding: 2.8rem 1rem 1.4rem;
+            }
+
+            .detail-modal-close {
+                top: 0.9rem;
+                right: 1rem;
+                font-size: 1.75rem;
+                min-width: 44px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .detail-modal-eyebrow-row {
+                gap: 0.75rem;
+                align-items: flex-start;
+            }
+
+            .detail-modal-title {
+                font-size: 1.32rem;
+                line-height: 1.25;
+                margin-bottom: 1rem;
+                overflow-wrap: anywhere;
+            }
+
+            .detail-modal-content p {
+                font-size: 1rem;
+                line-height: 1.68;
+            }
+
+            #lightbox {
+                padding: 1rem;
+            }
+
+            #lightbox img {
+                max-width: 96vw;
+                max-height: 82vh;
+                border-radius: 8px;
+            }
+
+            #lightbox-close {
+                top: 0.75rem;
+                right: 0.75rem;
+                min-width: 44px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.8rem;
+            }
+
+            .lang-overlay {
+                padding: 1rem;
+                overflow-y: auto;
+            }
+
+            .lang-coins {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .lang-coin {
+                width: min(58vw, 210px);
+                height: min(58vw, 210px);
+            }
+
+            .lang-coin-face {
+                outline-offset: 6px;
+            }
+
+            .lang-coin-label {
+                font-size: clamp(1.35rem, 7vw, 1.8rem);
+                letter-spacing: 0.12em;
+            }
+
+            .lang-coin-ar .lang-coin-label {
+                font-size: clamp(2rem, 11vw, 2.75rem);
+            }
+
+            footer {
+                height: auto !important;
+                min-height: 64px;
+                flex-direction: column;
+                align-items: flex-start !important;
+                justify-content: center !important;
+                gap: 0.25rem;
+                padding: 0.85rem 1rem !important;
+            }
+
+            footer a {
+                max-width: 100%;
+                font-size: 0.98rem !important;
+                line-height: 1.3;
+                overflow-wrap: anywhere;
+            }
+
+            html[dir="rtl"] .foundation-era-lede,
+            html[dir="rtl"] .golden-age-lede,
+            html[dir="rtl"] .mongol-siege-lede,
+            html[dir="rtl"] .stagnation-lede,
+            html[dir="rtl"] .ottoman-lede,
+            html[dir="rtl"] .modern-lede,
+            html[dir="rtl"] .protest-lede {
+                text-align: right;
+            }
+
+            html[dir="rtl"] .foundation-event-media,
+            html[dir="rtl"] .golden-event-media,
+            html[dir="rtl"] .mongol-event-media,
+            html[dir="rtl"] .stagnation-event-media,
+            html[dir="rtl"] .ottoman-event-media,
+            html[dir="rtl"] .modern-event-media,
+            html[dir="rtl"] .protest-event-media {
+                float: none !important;
+                margin: 0.2rem 0 0.9rem !important;
+            }
+
+            html[dir="rtl"] .mobile-related-details .detail-card {
+                grid-template-columns: minmax(0, 1fr) minmax(86px, 32%);
+            }
+
+            html[dir="rtl"] .mobile-related-details .detail-card-img {
+                border-radius: 0 7px 7px 0;
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            html[dir="rtl"] .mobile-related-details .detail-card-body {
+                border-left: 0;
+                border-right: 1px solid rgba(255, 232, 190, 0.26);
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            html[dir="rtl"] .detail-modal-close {
+                right: auto;
+                left: 1rem;
+            }
+
+            html[dir="rtl"] footer {
+                align-items: flex-end !important;
+                text-align: right;
+            }
+        }
