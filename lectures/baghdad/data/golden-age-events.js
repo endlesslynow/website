@@ -223,7 +223,7 @@ window.BAGHDAD_MONGOL_SIEGE_PHASES = [
         "description": "Hulagu demanded that Al-Mustasim submit, dismantle Baghdad's defenses, fill the moats, and come to the Mongol camp or send senior officials in his place. The message offered survival through obedience and threatened total destruction through resistance. It was the classic Mongol formula. Submit early and live. Resist and become an example.",
         "highlight": true,
         "image": {
-          "src": "images/mongol-siege-cards/hulagu-cropped.jpg",
+          "src": "images/mongol-siege-cards/september-1257-hulagu-sends-his-ultimatum.jpg",
           "alt": "Manuscript detail of Hulagu Khan",
           "caption": "Hulagu Khan, commander of the western Mongol campaign"
         },
@@ -979,7 +979,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
         "description": "Dhul Fakar seized Baghdad from within the weakened Safavid order and made a dramatic bid for Ottoman protection. He had the Ottoman sultan's name read in the Friday sermon, the public sign that sovereignty had changed. The turn did not last. Safavid intrigue brought his death, and Baghdad slipped back from Ottoman promise into Persian control. Local authority remained fragile before even Suleiman ever arrived.",
         "highlight": true,
         "image": {
-          "src": "images/ottoman-cards/abu-hanifa-mosque.jpg",
+          "src": "images/ottoman-cards/1528-1530-dhul-fakar-s-coup-and-baghdad-s-brief-ottoman-turn.jpg",
           "alt": "Historic exterior view of Abu Hanifa Mosque in Baghdad",
           "caption": "Baghdad's mosques became symbols of public political allegiance"
         },
@@ -1045,9 +1045,9 @@ window.BAGHDAD_OTTOMAN_PHASES = [
         "description": "Hassan Pasha built a new local power base by training and promoting Mamluks, many of them Georgian or Caucasian recruits. These military households gave Baghdad's governors a disciplined force of their own. The result was a semi-autonomous political order. While Baghdad was formally Ottoman, with real authority running through local patronage and the pasha's court.",
         "highlight": true,
         "image": {
-          "src": "images/ottoman-cards/al-saray-mosque.jpg",
+          "src": "images/ottoman-cards/1704-hassan-pasha-begins-the-mamluk-era.jpg",
           "alt": "Al-Saray Mosque in Baghdad near the Ottoman administrative quarter",
-          "caption": "The Saray district evokes Baghdad's Ottoman administrative world"
+          "caption": "The Mamluks"
         },
         "mediaPlaceholder": "Image placeholder: Mamluk household at the Saray",
         "anchorYear": 1704
@@ -1074,7 +1074,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
         "description": "The Georgian-born Suleyman the Great ruled Baghdad, Basra, and Shahrizor for more than two decades. He curbed rivals, campaigned against tribes, encouraged trade, and worked with British agents as European influence grew. Under him, Mamluk Baghdad reached its strongest form. Provincial in standing, it was wealthy, armed, and politically self-confident.",
         "highlight": true,
         "image": {
-          "src": "images/ottoman-cards/baghdad-1683-map.jpg",
+          "src": "images/ottoman-cards/1780-1802-suleyman-the-great-and-mamluk-stability.webp",
           "alt": "Seventeenth-century map image of Baghdad",
           "caption": "Old European mapping of Baghdad before the late Ottoman reforms"
         },
@@ -1209,7 +1209,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
         "description": "When the Ottoman Empire entered the First World War on the side of Germany, Mesopotamia became a military theater. Britain landed near Fao to protect oil interests around Abadan and soon took Basra. What began as defensive strategy quickly became a campaign aimed up the river toward Baghdad.",
         "highlight": true,
         "image": {
-          "src": "images/ottoman-cards/mesopotamian-campaign-map.jpg",
+          "src": "images/ottoman-cards/1914-war-reaches-ottoman-mesopotamia-2.jpg",
           "alt": "Map of the Mesopotamian campaign in World War I",
           "caption": "The Mesopotamian campaign pushed north toward Baghdad"
         },
@@ -1230,7 +1230,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
         "description": "The British advance toward Baghdad failed at Kut. Ottoman forces besieged General Townshend's army for five months, and the surrender in April 1916 became one of Britain's worst imperial humiliations. Prisoners passed through Baghdad in misery, while Ottoman commanders celebrated the victory.",
         "highlight": true,
         "image": {
-          "src": "images/ottoman-cards/kut-before-surrender.png",
+          "src": "images/ottoman-cards/1915-1916-kut-blocks-the-road-to-baghdad.jpg",
           "alt": "Kut on the day before surrender during the Mesopotamian campaign",
           "caption": "Kut before surrender blocked the road to Baghdad"
         },
@@ -1265,7 +1265,7 @@ window.BAGHDAD_MODERN_PHASES = [
         "description": "British and Indian troops entered Baghdad after the Ottoman withdrawal, ending nearly four centuries of Ottoman rule. General Maude presented the occupation as liberation, but Baghdadis soon found that imperial control had only changed hands. The event is the opening scene of modern Baghdad: a famous old capital pulled into the British imperial order and the politics of oil, mandates, and Arab nationalism.",
         "highlight": true,
         "image": {
-          "src": "images/ottoman-cards/maude-in-baghdad.jpg",
+          "src": "images/ottoman-cards/march-11-1917-british-forces-capture-baghdad.jpg",
           "alt": "General Maude entering Baghdad in 1917",
           "caption": "British forces enter Baghdad in March 1917"
         },
@@ -1283,7 +1283,7 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "August 23, 1921",
         "title": "Faisal I Is Crowned King in Baghdad",
-        "description": "Faisal was crowned in the Saray al-Kushla, turning the former Ottoman provinces of Baghdad, Basra, and Mosul into the Kingdom of Iraq. The ceremony joined Arab nationalist language to unmistakable British power: British officers and officials stood around the new king, while Iraqi notables watched a state being invented in Baghdad. The monarchy promised unity, constitutional rule, and modern institutions, but it began under foreign sponsorship.",
+        "description": "Faisal was crowned in the Saray al-Kushla, turning the former Ottoman provinces of Baghdad, Basra, and Mosul into the Kingdom of Iraq. The ceremony joined Arab nationalist language to unmistakable British power. British officers and officials stood around the new king, while Iraqi notables watched a state being invented in Baghdad. The monarchy promised unity, constitutional rule, and modern institutions, but it began under foreign sponsorship.",
         "highlight": true,
         "image": {
           "src": "images/rulers/king-faisal-i.jpg",
@@ -1296,12 +1296,12 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "1923",
         "title": "Gertrude Bell Founds the Baghdad Archaeological Museum",
-        "description": "Gertrude Bell helped create the Baghdad Archaeological Museum, the institution that later became the Iraq Museum. The new state used archaeology to claim Sumer, Akkad, Assyria, Babylon, and Abbasid Baghdad as one national inheritance. This card matters because modern Baghdad was not only built through ministries and treaties. It was also built through memory, museums, and the effort to make deep Mesopotamian history speak for Iraq.",
+        "description": "Gertrude Bell helped create the Baghdad Archaeological Museum, the institution that later became the Iraq Museum. The new state used archaeology to claim Sumer, Akkad, Assyria, Babylon, and Abbasid Baghdad as one national inheritance. This was national building through an effort to make ancient Mesopotamian history into modern Iraqi history.",
         "highlight": false,
         "image": {
-          "src": "images/modern-cards/iraq-museum-memory.jpg",
+          "src": "images/modern-cards/1923-gertrude-bell-founds-the-baghdad-archaeological-museum.jpg",
           "alt": "Iraq Museum gallery material representing Iraq's ancient cultural memory",
-          "caption": "The Iraq Museum grew from Bell's 1923 museum project"
+          "caption": "Gertrude Bell and Friends in Egypt"
         },
         "mediaPlaceholder": "Image placeholder: Gertrude Bell and the early Iraq Museum",
         "anchorYear": 1923
@@ -1309,7 +1309,7 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "October 6, 1932",
         "title": "Iraq Joins the League of Nations",
-        "description": "Iraq entered the League of Nations and the British Mandate officially ended. Baghdad could now present itself as the capital of an independent state. The independence was real, but limited: British air bases, advisers, treaties, and political influence remained central to Iraqi life. The moment helps explain the monarchy's later weakness, because sovereignty and dependence were born together.",
+        "description": "Iraq entered the League of Nations and the British Mandate officially ended. Baghdad could now present itself as the capital of an independent state. The independence was limited. British air bases, advisers, treaties, and political influence remained central to Iraqi life.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1932
@@ -1317,10 +1317,10 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "April-June 1941",
         "title": "Rashid Ali's Coup, British Return, and the Farhud",
-        "description": "Rashid Ali al-Gailani and the Golden Square officers seized power in Baghdad, hoping to loosen British control during the Second World War. British forces defeated the coup and reinstalled the regent, but the crisis ended in catastrophe for Baghdad's Jews. On June 1-2, the Farhud pogrom killed and dispossessed members of one of the city's oldest communities. Modern Baghdad's political violence now struck at the city's plural fabric.",
+        "description": "Rashid Ali al-Gailani and the Golden Square officers seized power in Baghdad, hoping to loosen British control during the Second World War. British forces defeated the coup and reinstalled the regent, but the crisis ended in catastrophe for Baghdad's Jews. On June 1-2, the Farhud pogrom killed and dispossessed members of one of the city's oldest communities.",
         "highlight": true,
         "image": {
-          "src": "images/ottoman-cards/great-synagogue-baghdad.jpg",
+          "src": "images/ottoman-cards/april-june-1941-rashid-ali-s-coup-british-return-and-the-farhud.jpg",
           "alt": "The Great Synagogue of Baghdad",
           "caption": "The Farhud shattered Jewish confidence in modern Baghdad"
         },
@@ -1330,8 +1330,13 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "1948-1950",
         "title": "The Wathba and the Beginning of the Jewish Exodus",
-        "description": "The Portsmouth Treaty provoked the Wathba, a mass protest movement that brought students, workers, parties, and ordinary Baghdadis into the streets against renewed British privileges. In the same years, the aftermath of the 1948 Arab-Israeli War brought arrests, dismissals, restrictions, and fear for Iraqi Jews. By 1950, the path toward mass departure had opened. Baghdad was becoming a modern political capital, but it was losing one of the communities that had powered its commerce, music, banking, and urban life.",
+        "description": "The Portsmouth Treaty provoked the Wathba, a mass protest movement that brought students, workers, parties, and ordinary Baghdadis into the streets against renewed British privileges. In the same years, the aftermath of the 1948 Arab-Israeli War brought arrests, dismissals, restrictions, and fear for Iraqi Jews. By 1950, the path toward mass Jewish departure had opened. Baghdad was becoming a modern political capital, but it was losing one of the communities that had powered its commerce, music, banking, and urban life.",
         "highlight": true,
+        "image": {
+          "src": "images/modern-cards/1948-1950-the-wathba-and-the-beginning-of-the-jewish-exodus.jpg",
+          "alt": "Baghdad demonstrators during the Wathba protests",
+          "caption": "The Wathba and the beginning of the Jewish exodus"
+        },
         "mediaPlaceholder": "Image placeholder: Wathba street protests and the departure of Jewish Baghdad",
         "anchorYear": 1948
       }
@@ -1344,7 +1349,7 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "1950-1958",
         "title": "Oil Money and the Modernist City",
-        "description": "In the last years of the monarchy, Baghdad was being planned as a modern capital. Oil revenues funded the Development Board, flood-control works, new roads and bridges, and major commissions for international architects. Walter Gropius worked on Baghdad University, Le Corbusier designed a sports complex, Doxiadis prepared housing schemes, and Frank Lloyd Wright imagined an opera house and cultural island in the Tigris. This prelude matters because it shows what 1958 interrupted, a city full of inequality and full of civic ambition.",
+        "description": "In the last years of the monarchy, Baghdad was being planned as a modern capital. Oil revenues funded the Development Board, flood-control works, new roads and bridges, and major commissions for international architects. Walter Gropius worked on Baghdad University, Le Corbusier designed a sports complex, Doxiadis prepared housing schemes, and Frank Lloyd Wright imagined an opera house and cultural island in the Tigris. What could've been...",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1950
@@ -1352,7 +1357,7 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "July 14, 1958",
         "title": "The July 14 Revolution Ends the Monarchy",
-        "description": "Army officers overthrew the Hashemite monarchy and declared a republic. King Faisal II, members of the royal family, Crown Prince Abd al-Ilah, and Prime Minister Nuri al-Said were killed, while crowds attacked symbols of the old order. Baghdad had seen many regime changes across the centuries. This one began the modern cycle of coups, revolutionary courts, street politics, and military rule. The monarchy disappeared in a single morning.",
+        "description": "Army officers overthrew the Hashemite monarchy and declared a republic. King Faisal II, members of the royal family, Crown Prince Abd al-Ilah, and Prime Minister Nuri al-Said were killed, while crowds attacked symbols of the old order. Baghdad had seen many regime changes across the centuries. The monarchy disappeared in a single morning.",
         "highlight": true,
         "image": {
           "src": "images/modern-cards/july-14-revolution.jpg",
@@ -1373,7 +1378,7 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "1959-1960",
         "title": "Al-Thawra Gives the Poor a New District",
-        "description": "Abd al-Karim Qasim tried to anchor the republic in social reform. He cut bread prices, reduced rents, limited working hours, and built a large new suburb for families living in mud-hut settlements. The district was named Al-Thawra, the Revolution. It later became Saddam City and then Sadr City, one of the largest and most politically important parts of Baghdad. The event belongs in the timeline because modern Baghdad is also a story of migration, housing, class, and the growth of the eastern city.",
+        "description": "Abd al-Karim Qasim tried to anchor the republic in social reform. He cut bread prices, reduced rents, limited working hours, and built a large new suburb for families living in mud-hut settlements. The district was named Al-Thawra, the Revolution. It later became Saddam City and then Sadr City, one of the largest and most politically important parts of Baghdad.",
         "highlight": true,
         "image": {
           "src": "images/modern-cards/sadr-city.jpg",
@@ -1386,7 +1391,7 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "October 7, 1959",
         "title": "Saddam Hussein Appears in a Failed Assassination Attempt",
-        "description": "Gunmen attacked Qasim's car on Rashid Street. Qasim survived. One of the young Baathist attackers was wounded and fled Iraq. His name was Saddam Hussein. The event matters because it shows Saddam already present in Baghdad's violent post-1958 politics. The struggle for the republic was already drawing in men who would later dominate the state.",
+        "description": "Gunmen attacked Qasim's car on Rashid Street. Qasim survived. One of the young Baathist attackers, named Saddam Hussein, was wounded and fled Iraq. He would return.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 1959
@@ -1426,7 +1431,7 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "January 27, 1969",
         "title": "Public Hangings in Liberation Square",
-        "description": "The Baathist regime publicly hanged Jewish Iraqis and others accused of espionage in Liberation Square, turning the city's largest public space into a theatre of terror. The event marked a devastating stage in the disappearance of one of Baghdad's oldest communities. Jewish Baghdadis had once been central to commerce, music, banking, and urban life. By the late twentieth century, that world was nearly gone.",
+        "description": "The Baathist regime publicly hanged Jewish Iraqis and others accused of espionage in Liberation Square while 200,000 on-lookers celebrated, turning the city's largest public space into a theatre of terror. The event marked a devastating stage in the disappearance of one of Baghdad's oldest communities. Jewish Baghdadis had once been central to commerce, music, banking, and urban life. By the late twentieth century, that world was nearly gone.",
         "highlight": true,
         "image": {
           "src": "images/modern-cards/liberation-square.jpg",
@@ -1458,7 +1463,7 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "September 1980",
         "title": "The Iran-Iraq War Begins",
-        "description": "Iraq attacked Iran, beginning an eight-year war that reshaped Baghdad. The capital was cushioned at first by oil reserves, imports, and a construction boom. The war steadily entered private life through conscription, funerals, shortages, blackouts, missile strikes, and the constant language of martyrdom. Baghdad became both command center and home front.",
+        "description": "Iraq attacked Iran, beginning an eight-year war that reshaped Baghdad. The capital was cushioned at first by oil reserves, imports, and a construction bubble burst. The war steadily entered private life through conscription, funerals, shortages, blackouts, missile strikes, and the constant language of martyrdom. Baghdad became both command center and home front.",
         "highlight": true,
         "image": {
           "src": "images/modern-cards/iran-iraq-war-map.jpg",
@@ -1482,7 +1487,7 @@ window.BAGHDAD_MODERN_PHASES = [
         "description": "The state built enormous monuments to war and sacrifice. The Martyr's Monument, with its split turquoise dome over an artificial lake, remains one of modern Baghdad's most powerful visual symbols. The Tomb of the Unknown Soldier added another monumental space of memory. These works show how Saddam's Baghdad used art, engineering, and urban space to transform grief into state mythology.",
         "highlight": true,
         "image": {
-          "src": "images/modern-cards/martyrs-monument.jpg",
+          "src": "images/modern-cards/1983-martyr-s-monument-and-the-tomb-of-the-unknown-soldier.jpg",
           "alt": "The split turquoise dome of the Al-Shaheed Martyr's Monument in Baghdad",
           "caption": "The Martyr's Monument in Baghdad"
         },
@@ -1500,10 +1505,10 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "1988-1989",
         "title": "The Victory Arch Turns Exhaustion into Triumph",
-        "description": "After the ceasefire with Iran, the regime ordered celebrations and built the Victory Arch, also known as the Crossed Swords. Giant bronze arms modeled on Saddam's own held swords above captured Iranian helmets. The monument captures the strange emotional logic of the period. A ruinously costly war was recast as victory, and Baghdad's public space was made to repeat that story.",
+        "description": "After the ceasefire with Iran, the regime ordered celebrations and built the Victory Arch, also known as the Crossed Swords. Giant bronze arms modeled on Saddam's own held swords above captured Iranian helmets. The monument captures the strange emotional logic of the period. A ruinously costly war was recast as victory.",
         "highlight": true,
         "image": {
-          "src": "images/modern-cards/victory-arch.jpg",
+          "src": "images/modern-cards/1988-1989-the-victory-arch-turns-exhaustion-into-triumph.jpg",
           "alt": "The Crossed Swords Victory Arch in Baghdad",
           "caption": "The Victory Arch, or Crossed Swords"
         },
@@ -1522,9 +1527,9 @@ window.BAGHDAD_MODERN_PHASES = [
         "description": "Iraq's invasion of Kuwait brought a US-led coalition war. Baghdad was bombed night after night. Bridges, government sites, communications systems, power networks, and civilian routines were shattered. Families sheltered in darkness while the city shook from missiles and aircraft. The war left Baghdad physically damaged and psychologically exhausted.",
         "highlight": true,
         "image": {
-          "src": "images/modern-cards/baghdad-post-strike-1991.jpg",
+          "src": "images/modern-cards/august-1990-january-1991-kuwait-coalition-war-and-the-bombing-of-baghdad.jpg",
           "alt": "Post-strike image of the Tuwaythah Nuclear Research Facility near Baghdad in 1991",
-          "caption": "Baghdad-area infrastructure after coalition bombing in 1991"
+          "caption": "Baghdad anti-aircraft fire 1991"
         },
         "mediaPlaceholder": "Image placeholder: 1991 bombing of Baghdad, bridges, or air raid shelters",
         "anchorYear": 1991
@@ -1532,10 +1537,10 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "1991-2003",
         "title": "The Sanctions Decade Drains the City",
-        "description": "After the Gulf War, UN sanctions and state misrule produced a long urban emergency. Salaries collapsed, infrastructure decayed, medicines and basic goods became scarce, and many educated Baghdadis left or survived through informal work. Public culture shrank and daily life narrowed. The sanctions period is essential because 2003 arrived in a city already exhausted by more than a decade of social and material collapse.",
+        "description": "After the Gulf War, UN sanctions and state misrule produced a long urban emergency. Salaries collapsed, infrastructure decayed, medicines and basic goods became scarce, and many educated Baghdadis left or survived through informal work. Public culture shrank and daily life narrowed. When the 2003 invasion arrived, the city was already exhausted by more than a decade of social and material collapse.",
         "highlight": true,
         "image": {
-          "src": "images/modern-cards/sanctions-decade.jpg",
+          "src": "images/modern-cards/1991-2003-the-sanctions-decade-drains-the-city.jpg",
           "alt": "Baghdad street scene during the sanctions decade",
           "caption": "The sanctions decade narrowed daily life in Baghdad"
         },
@@ -1545,7 +1550,7 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "October 2002",
         "title": "The Last Saddam Referendum",
-        "description": "Shortly before the invasion, the regime announced that Saddam had won another referendum with total support. The result captured the political emptiness of late Baathist rule. Public unanimity was staged while fear, poverty, and international isolation defined private life. Baghdad was about to enter another foreign occupation. The old state still insisted on performing absolute loyalty.",
+        "description": "Shortly before the invasion, the regime announced that Saddam had won another referendum with total support. The result captured the political emptiness of late Baathist rule. Public unanimity was staged while fear, poverty, and international isolation defined private life. Baghdad was about to enter another foreign occupation but the old state still insisted on performing absolute loyalty.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 2002
@@ -1553,10 +1558,10 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "April 9, 2003",
         "title": "Saddam's Statue Falls and the State Collapses",
-        "description": "US forces entered Baghdad and Saddam's statue was pulled down in Firdos Square. The image became the global symbol of regime change. On the ground, the fall of the state meant looting, fear, uncertainty, and a sudden vacuum of authority. Government ministries, archives, universities, hospitals, and public buildings were exposed. The end of dictatorship arrived before any order could replace it.",
+        "description": "US forces entered Baghdad and Saddam's statue was pulled down in Firdos Square. The image became the global symbol of regime change. On the ground, the fall of the state meant looting, fear, uncertainty, and a sudden vacuum of authority. Government ministries, archives, universities, hospitals, and public buildings were exposed.",
         "highlight": true,
         "image": {
-          "src": "images/modern-cards/saddam-collapse-2003.jpg",
+          "src": "images/modern-cards/april-9-2003-saddam-s-statue-falls-and-the-state-collapses.jpg",
           "alt": "Saddam Hussein statue pulled down in Firdos Square, Baghdad, 2003",
           "caption": "Saddam's dictatorship collapsed in Baghdad in 2003"
         },
@@ -1566,10 +1571,10 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "April 2003",
         "title": "The Iraq Museum Is Looted",
-        "description": "As order collapsed, the Iraq Museum was looted. Objects from Mesopotamia's ancient civilizations, gathered to tell the story of the land between the rivers, were damaged, stolen, or scattered. The event belongs in Baghdad's timeline because it links modern violence to deep time. The capital of Iraq failed, for a moment, to protect the material memory of Sumer, Akkad, Assyria, Babylon, and Abbasid Baghdad itself.",
+        "description": "As order collapsed, the Iraq Museum was looted. Objects from Mesopotamia's ancient civilizations, gathered to tell the story of the land between the rivers, were damaged, stolen, or scattered. The event was likened to a modern-day destruction of the House of Wisdom. However, instead of an invading force destroying the history, native Baghdadis did it themselves.",
         "highlight": true,
         "image": {
-          "src": "images/modern-cards/iraq-museum-memory.jpg",
+          "src": "images/modern-cards/april-2003-the-iraq-museum-is-looted.webp",
           "alt": "Iraq Museum gallery material representing the cultural memory damaged by looting in 2003",
           "caption": "The Iraq Museum preserved the material memory looted in 2003"
         },
@@ -1585,7 +1590,7 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "2005",
         "title": "The Al-Mansur Statue Is Bombed",
-        "description": "A monument to Baghdad's Abbasid founder was attacked in 2005. The bombing struck one of the city's core historical claims, the memory of al-Mansur and the founding of the Round City. Modern violence kept reaching backward into Baghdad's oldest symbols.",
+        "description": "A monument to Baghdad's Abbasid founder was attacked in 2005. The bombing struck one of the city's core historical claims, the memory of al-Mansur and the founding of the Round City. Modern violence continued to reach backward into Baghdad's oldest symbols.",
         "highlight": false,
         "mediaPlaceholder": "",
         "anchorYear": 2005
@@ -1606,10 +1611,10 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "March 5, 2007-2008",
         "title": "Mutanabbi Street Is Bombed and Reopens",
-        "description": "A car bomb devastated Mutanabbi Street, Baghdad's famous booksellers' street, and damaged the Shahbandar Coffeehouse. The attack killed readers, booksellers, and passersby, striking the city's identity as a place of books and argument. Its reopening in 2008 gave the modern era its clearest symbol of resilience. Baghdad could be wounded at its literary heart and still return to reading, selling, debating, and remembering.",
+        "description": "A car bomb devastated Mutanabbi Street, Baghdad's famous booksellers' street, and damaged the Shahbandar Coffeehouse. The attack killed readers, booksellers, and passersby, striking the city's identity as a place of books and argument. While not well-remembered abroad, the attack created a deep trama for the intellectual sphere of Baghdadis. Its reopening in 2008 gave the modern era its clearest symbol of resilience. Baghdad could be wounded at its literary heart and still return to reading, selling, debating, and remembering.",
         "highlight": true,
         "image": {
-          "src": "images/modern-cards/mutanabbi-literary-memory.jpg",
+          "src": "images/modern-cards/march-5-2007-2008-mutanabbi-street-is-bombed-and-reopens.jpg",
           "alt": "Mutanabbi Street booksellers and cultural memory in Baghdad",
           "caption": "Baghdad's literary culture survived the attack on Mutanabbi Street"
         },
@@ -1619,12 +1624,12 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "October 31, 2010",
         "title": "Our Lady of Salvation Church Attack",
-        "description": "Gunmen attacked Our Lady of Salvation, a Syriac Catholic church in Karrada, killing worshippers and priests. The attack accelerated the flight of Baghdad's Christians, who had already faced years of kidnapping, bombing, extortion, and murder after 2003. Like the disappearance of Jewish Baghdad earlier in the century, the Christian exodus shows how modern violence stripped the capital of communities that had helped make it plural.",
+        "description": "Gunmen attacked Our Lady of Salvation, a Syriac Catholic church in Karrada, killing worshippers and priests. The attack accelerated the flight of Baghdad's Christians, who had already faced years of kidnapping, bombing, extortion, and murder after 2003. Like the disappearance of Jewish Baghdad earlier in the century, the Christian exodus shows how modern violence stripped the capital of communities that had helped make it diverse.",
         "highlight": true,
         "image": {
-          "src": "images/modern-cards/our-lady-salvation-memory.jpg",
+          "src": "images/modern-cards/october-31-2010-our-lady-of-salvation-church-attack.jpg",
           "alt": "Our Lady of Salvation Church in Baghdad, remembered after the 2010 attack",
-          "caption": "Post-2003 violence stripped Baghdad of many older communities"
+          "caption": "Our Lady of Salvation Church"
         },
         "mediaPlaceholder": "Image placeholder: Our Lady of Salvation Church in Karrada",
         "anchorYear": 2010
@@ -1641,10 +1646,10 @@ window.BAGHDAD_PROTEST_PHASES = [
       {
         "date": "October 2019",
         "title": "Tishreen Protesters Fill Tahrir Square",
-        "description": "Young Iraqis gathered in Tahrir Square and nearby bridges to protest corruption, unemployment, failing services, foreign influence, and the political order that followed 2003. Tuk-tuks carried the wounded, tents turned the square into a civic camp, and the Freedom Monument looked down on a new generation demanding a different republic. The protests matter because they shifted the story from rulers and invaders to citizens claiming Baghdad's public space.",
+        "description": "On October 1, 2019, thousands of young Iraqis took to the streets around Tahrir Square in central Baghdad in a spontaneous outburst against corruption, poor public services, and unemployment. The movement quickly grew to hundreds of thousands across the country. Protesters demanded an end to sectarian politics and the post-2003 political order installed after the invasion. Security forces responded with live ammunition and tear gas from the first day. When ambulances could not reach the wounded or were themselves targeted by rooftop snipers, tuk-tuk drivers plunged into the gunfire to evacuate the injured. The movement became known as Tishreen, and some called it the Tuk-Tuk Revolution. Activists from across the country camped in Tahrir Square for months, turning it into the movement's symbolic heart beneath the Freedom Monument. In the first six months alone, more than 600 protesters were killed and over 20,000 wounded. Even so, the protests forced Prime Minister Adel Abdul-Mahdi to resign, won a new electoral law, and pushed early elections onto the schedule. It was likely the largest popular protest in Iraq's modern history, and the first mass movement driven by civic grievances rather than sect or faction.",
         "highlight": true,
         "image": {
-          "src": "images/modern-cards/tishreen-tahrir.jpg",
+          "src": "images/modern-cards/october-2019-tishreen-protesters-fill-tahrir-square.webp",
           "alt": "Tishreen protesters in Baghdad's Tahrir Square",
           "caption": "Tahrir Square and the Freedom Monument framed the Tishreen protests"
         },
@@ -1662,10 +1667,10 @@ window.BAGHDAD_PROTEST_PHASES = [
       {
         "date": "2025-2026",
         "title": "Baghdad Reclaims Cultural Visibility",
-        "description": "Baghdad has been promoted again as a regional cultural and tourism capital, while Mutanabbi Street, museums, galleries, historic streets, and restoration projects draw renewed attention. The recovery is real and uneven. Heritage houses are still demolished, housing is expensive, and new towers often serve wealthier residents. Baghdad is rebuilding. The argument over what kind of city it will become is still open.",
+        "description": "Baghdad has been promoted again as a regional cultural and tourism capital, while Mutanabbi Street, museums, galleries, historic streets, and restoration projects draw renewed attention. The recovery is real but uneven. Heritage houses are still demolished, housing is expensive, and new towers often serve wealthier residents. Violence is declining drastically but not absent. Baghdad is rebuilding. The argument over what kind of city it will become is still open.",
         "highlight": true,
         "image": {
-          "src": "images/modern-cards/cultural-visibility.jpg",
+          "src": "images/modern-cards/2025-2026-baghdad-reclaims-cultural-visibility.jpg",
           "alt": "Contemporary Baghdad cultural life and restored public visibility",
           "caption": "Baghdad's cultural recovery is visible, but uneven"
         },

@@ -37,25 +37,41 @@ TIMELINE_JS_FILE = BAGHDAD_DIR / "js" / "baghdad-timeline.js"
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"}
 
 EVENT_SECTIONS = {
-    "BAGHDAD_FOUNDATION_PHASES": "Foundation Cards",
-    "BAGHDAD_GOLDEN_AGE_PHASES": "Golden Age Cards",
-    "BAGHDAD_MONGOL_SIEGE_PHASES": "Mongol Siege Cards",
-    "BAGHDAD_STAGNATION_PHASES": "Stagnation Cards",
-    "BAGHDAD_OTTOMAN_PHASES": "Ottoman Cards",
-    "BAGHDAD_MODERN_PHASES": "Modern Cards",
-    "BAGHDAD_PROTEST_PHASES": "Protest Cards",
+    "BAGHDAD_FOUNDATION_PHASES": "Foundation Timeline Cards",
+    "BAGHDAD_GOLDEN_AGE_PHASES": "Golden Age Timeline Cards",
+    "BAGHDAD_MONGOL_SIEGE_PHASES": "Mongol Siege Timeline Cards",
+    "BAGHDAD_STAGNATION_PHASES": "Stagnation Timeline Cards",
+    "BAGHDAD_OTTOMAN_PHASES": "Ottoman Timeline Cards",
+    "BAGHDAD_MODERN_PHASES": "Modern Timeline Cards",
+    "BAGHDAD_PROTEST_PHASES": "Protest Timeline Cards",
+}
+
+DETAIL_SECTIONS_BY_ERA = {
+    "era1": "Foundation More Info Cards",
+    "era2": "Golden Age More Info Cards",
+    "era3": "Mongol Siege More Info Cards",
+    "era4": "Stagnation More Info Cards",
+    "era5": "Ottoman More Info Cards",
+    "era6": "Modern More Info Cards",
+    "era7": "Protest More Info Cards",
 }
 
 TAB_ORDER = [
-    "Foundation Cards",
-    "Golden Age Cards",
-    "Mongol Siege Cards",
-    "Stagnation Cards",
-    "Ottoman Cards",
-    "Modern Cards",
-    "Protest Cards",
+    "Foundation Timeline Cards",
+    "Golden Age Timeline Cards",
+    "Mongol Siege Timeline Cards",
+    "Stagnation Timeline Cards",
+    "Ottoman Timeline Cards",
+    "Modern Timeline Cards",
+    "Protest Timeline Cards",
     "Ruler Portraits",
-    # HTML detail-card sections (named after their h2) come last
+    "Foundation More Info Cards",
+    "Golden Age More Info Cards",
+    "Mongol Siege More Info Cards",
+    "Stagnation More Info Cards",
+    "Ottoman More Info Cards",
+    "Modern More Info Cards",
+    "Protest More Info Cards",
 ]
 
 
@@ -92,6 +108,18 @@ def clean_label(value: str) -> str:
     value = html.unescape(value)
     value = re.sub(r"\s+", " ", value).strip()
     return value or "Untitled"
+
+
+def decode_js_string(value: str) -> str:
+    return (
+        value
+        .replace("\\\\", "\x00")
+        .replace("\\'", "'")
+        .replace('\\"', '"')
+        .replace("\\n", "\n")
+        .replace("\\t", "\t")
+        .replace("\x00", "\\")
+    )
 
 
 def slugify(value: str) -> str:
@@ -158,10 +186,12 @@ def scan_html_detail_cards() -> list[PictureEntry]:
         section_text = section_match.group(0)
         heading_match = re.search(r"<h2[^>]*>(.*?)</h2>", section_text, flags=re.S | re.I)
         heading = clean_label(heading_match.group(1)) if heading_match else "Detail Cards"
+        era_match = re.search(r'\bdata-era=(["\'])(.*?)\1', section_text, flags=re.S | re.I)
+        section = DETAIL_SECTIONS_BY_ERA.get(era_match.group(2), f"{heading} More Info Cards") if era_match else f"{heading} More Info Cards"
 
         for image_match in re.finditer(r"<img\s+[^>]*src=(['\"])(.*?)\1[^>]*>", section_text, flags=re.S | re.I):
             src = image_match.group(2)
-            if not src.startswith("images/detail-cards/"):
+            if not src.startswith("images/"):
                 continue
             after = section_text[image_match.end() :]
             title_match = re.search(
@@ -185,7 +215,10 @@ def scan_html_detail_cards() -> list[PictureEntry]:
                 caption_span = None
 
             entries.append(PictureEntry(
-                heading, label, src, HTML_FILE,
+                section,
+                label,
+                src,
+                HTML_FILE,
                 (src_start, src_end),
                 quote=image_match.group(1),
                 caption=caption,
@@ -258,18 +291,23 @@ def scan_rulers() -> list[PictureEntry]:
     entries: list[PictureEntry] = []
     block_start = rulers_match.start(1)
     block = rulers_match.group(1)
-    object_pattern = re.compile(r"\{[^{}]*name:\s*(['\"])(.*?)\1[^{}]*\}", re.S)
-    portrait_pattern = re.compile(r"portrait:\s*(['\"])(.*?)\1")
-    years_pattern = re.compile(r"years:\s*(['\"])(.*?)\1")
+    object_pattern = re.compile(r"\{[^{}]*\}", re.S)
+    string_value = r"(['\"])((?:\\.|(?!\1).)*)\1"
+    name_pattern = re.compile(r"name:\s*" + string_value, re.S)
+    portrait_pattern = re.compile(r"portrait:\s*" + string_value, re.S)
+    years_pattern = re.compile(r"years:\s*" + string_value, re.S)
     for match in object_pattern.finditer(block):
         item = match.group(0)
-        name = clean_label(match.group(2))
+        name_match = name_pattern.search(item)
+        if not name_match:
+            continue
+        name = clean_label(decode_js_string(name_match.group(2)))
         years_match = years_pattern.search(item)
-        years = clean_label(years_match.group(2)) if years_match else ""
+        years = clean_label(decode_js_string(years_match.group(2))) if years_match else ""
         label = f"{name} ({years})" if years else name
         portrait_match = portrait_pattern.search(item)
         if portrait_match:
-            src = portrait_match.group(2)
+            src = decode_js_string(portrait_match.group(2))
             start = block_start + match.start() + portrait_match.start(2)
             end = block_start + match.start() + portrait_match.end(2)
             entries.append(PictureEntry("Ruler Portraits", label, src, TIMELINE_JS_FILE, (start, end), quote=portrait_match.group(1)))

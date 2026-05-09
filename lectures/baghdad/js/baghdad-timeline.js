@@ -49,7 +49,11 @@
 
     function renderEventPhases(rootId, phases, classes) {
         var root = document.getElementById(rootId);
-        if (!root || !phases.length) return;
+        if (!root) return;
+        if (!phases.length) {
+            root.innerHTML = '';
+            return;
+        }
 
         var lastYear = null;
         root.innerHTML = phases.map(function(phase) {
@@ -95,8 +99,15 @@
         }).join('');
     }
 
+    function activeTimelinePhases(variableName, englishFallback) {
+        if (window.BaghdadLanguage && window.BaghdadLanguage.getTimelinePhases) {
+            return window.BaghdadLanguage.getTimelinePhases(variableName, englishFallback);
+        }
+        return englishFallback;
+    }
+
     function initTimelineEvents() {
-        renderEventPhases('foundation-events-root', window.BAGHDAD_FOUNDATION_PHASES || [], {
+        renderEventPhases('foundation-events-root', activeTimelinePhases('BAGHDAD_FOUNDATION_PHASES', window.BAGHDAD_FOUNDATION_PHASES || []), {
             phase: 'foundation-era-phase',
             events: 'foundation-events',
             card: 'foundation-event',
@@ -107,7 +118,7 @@
             media: 'foundation-event-media'
         });
 
-        renderEventPhases('golden-age-events-root', window.BAGHDAD_GOLDEN_AGE_PHASES || [], {
+        renderEventPhases('golden-age-events-root', activeTimelinePhases('BAGHDAD_GOLDEN_AGE_PHASES', window.BAGHDAD_GOLDEN_AGE_PHASES || []), {
             phase: 'golden-age-phase',
             events: 'golden-age-events',
             card: 'golden-event',
@@ -118,7 +129,7 @@
             media: 'golden-event-media'
         });
 
-        renderEventPhases('mongol-siege-events-root', window.BAGHDAD_MONGOL_SIEGE_PHASES || [], {
+        renderEventPhases('mongol-siege-events-root', activeTimelinePhases('BAGHDAD_MONGOL_SIEGE_PHASES', window.BAGHDAD_MONGOL_SIEGE_PHASES || []), {
             phase: 'mongol-siege-phase',
             events: 'mongol-siege-events',
             card: 'mongol-event',
@@ -129,7 +140,7 @@
             media: 'mongol-event-media'
         });
 
-        renderEventPhases('stagnation-events-root', window.BAGHDAD_STAGNATION_PHASES || [], {
+        renderEventPhases('stagnation-events-root', activeTimelinePhases('BAGHDAD_STAGNATION_PHASES', window.BAGHDAD_STAGNATION_PHASES || []), {
             phase: 'stagnation-phase',
             events: 'stagnation-events',
             card: 'stagnation-event',
@@ -140,7 +151,7 @@
             media: 'stagnation-event-media'
         });
 
-        renderEventPhases('ottoman-events-root', window.BAGHDAD_OTTOMAN_PHASES || [], {
+        renderEventPhases('ottoman-events-root', activeTimelinePhases('BAGHDAD_OTTOMAN_PHASES', window.BAGHDAD_OTTOMAN_PHASES || []), {
             phase: 'ottoman-phase',
             events: 'ottoman-events',
             card: 'ottoman-event',
@@ -151,7 +162,7 @@
             media: 'ottoman-event-media'
         });
 
-        renderEventPhases('modern-events-root', window.BAGHDAD_MODERN_PHASES || [], {
+        renderEventPhases('modern-events-root', activeTimelinePhases('BAGHDAD_MODERN_PHASES', window.BAGHDAD_MODERN_PHASES || []), {
             phase: 'modern-phase',
             events: 'modern-events',
             card: 'modern-event',
@@ -162,7 +173,7 @@
             media: 'modern-event-media'
         });
 
-        renderEventPhases('protest-events-root', window.BAGHDAD_PROTEST_PHASES || [], {
+        renderEventPhases('protest-events-root', activeTimelinePhases('BAGHDAD_PROTEST_PHASES', window.BAGHDAD_PROTEST_PHASES || []), {
             phase: 'protest-phase',
             events: 'protest-events',
             card: 'protest-event',
@@ -177,6 +188,8 @@
             if (window.buildBaghdadTimelineSidebars) window.buildBaghdadTimelineSidebars();
         });
     }
+
+    window.renderBaghdadTimelineEvents = initTimelineEvents;
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTimelineEvents);
     else initTimelineEvents();
@@ -279,10 +292,18 @@
             }
         }
 
+        function bootstrap() {
+            if (document.body && document.body.classList.contains('lang-locked')) {
+                document.addEventListener('lang:dismissed', init, { once: true });
+            } else {
+                init();
+            }
+        }
+
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', init);
+            document.addEventListener('DOMContentLoaded', bootstrap);
         } else {
-            init();
+            bootstrap();
         }
     })();
 
@@ -304,10 +325,20 @@
             });
 
             window.addEventListener('scroll', syncArrowVisibility, { passive: true });
-            window.setTimeout(function () {
-                arrowReady = true;
-                syncArrowVisibility();
-            }, 7000);
+
+            function startTimer() {
+                window.setTimeout(function () {
+                    arrowReady = true;
+                    syncArrowVisibility();
+                }, 7000);
+            }
+
+            if (document.body && document.body.classList.contains('lang-locked')) {
+                document.addEventListener('lang:dismissed', startTimer, { once: true });
+            } else {
+                startTimer();
+            }
+
             syncArrowVisibility();
         }
 
@@ -937,6 +968,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 (function() {
     var MIN_RULER_SEGMENT_HEIGHT = 12;
+    var RULER_TOOLTIP_TEXT_COLOR = '#f0e0c0';
 
     var eras = [
         { label: 'Rashidun Caliphate',  years: '650-661',  color: '#1E8B3A', start: 650,  end: 661  },
@@ -1108,7 +1140,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function rulerPortraitPath(ruler) {
-        return ruler.portrait || 'images/rulers/' + rulerSlug(ruler.name) + '.jpg';
+        var portraitName = ruler.englishName || ruler.name;
+        return ruler.portrait || 'images/rulers/' + rulerSlug(portraitName) + '.jpg';
     }
 
     function rulerHoverHtml(ruler, fg) {
@@ -1348,6 +1381,17 @@ document.addEventListener("DOMContentLoaded", () => {
         var timelineCards = getTimelineCards();
         var anchors = getTimelineAnchors(timelineCards);
         var cardYearAnchors = getCardYearAnchors(timelineCards);
+        var sidebarData = window.BaghdadLanguage && window.BaghdadLanguage.getSidebarData
+            ? window.BaghdadLanguage.getSidebarData({
+                headings: { entity: 'Powers', ruler: 'Rulers' },
+                eras: eras,
+                rulers: rulers
+            })
+            : {
+                headings: { entity: 'Powers', ruler: 'Rulers' },
+                eras: eras,
+                rulers: rulers
+            };
         var cardYearY = {};
         cardYearAnchors.forEach(function(anchor) {
             cardYearY[anchor.year] = anchor.y;
@@ -1356,8 +1400,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         var barTopY = yearToY(S);
         [
-            { el: entityBar, text: 'Powers' },
-            { el: rulerBar,  text: 'Rulers' }
+            { el: entityBar, text: sidebarData.headings.entity },
+            { el: rulerBar,  text: sidebarData.headings.ruler }
         ].forEach(function(item) {
             var lbl = document.createElement('div');
             lbl.style.cssText = [
@@ -1381,7 +1425,7 @@ document.addEventListener("DOMContentLoaded", () => {
             item.el.appendChild(lbl);
         });
 
-        eras.forEach(function(e) {
+        sidebarData.eras.forEach(function(e) {
             var top = yearToY(e.start);
             var height = Math.max(2, yearToY(e.end) - top);
             var html = '<div style="font-size:22px;font-weight:700;letter-spacing:0;margin-bottom:8px">' + e.label + '</div>'
@@ -1390,7 +1434,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         var previousRulerBottom = null;
-        rulers.forEach(function(r, i) {
+        sidebarData.rulers.forEach(function(r, i) {
             var top = yearToY(r.start);
             var bottom = yearToY(r.end);
             var naturalHeight = Math.max(2, bottom - top);
@@ -1401,32 +1445,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 : Math.max(2, bottom - visualTop);
             previousRulerBottom = visualTop + height;
             var colorIndex = i % 3;
-            var bg, fg;
+            var bg;
             if (r.start < 762) {
                 bg = ['#5c3d1e', '#8a6030', '#3f2a16'][colorIndex];
-                fg = '#f0e0c0';
             } else if (r.start < 1258) {
                 bg = ['#8a6216', '#d8b45c', '#5f4310'][colorIndex];
-                fg = colorIndex === 1 ? '#2a1c05' : '#fff5d6';
             } else if (r.start < 1534) {
                 // Mongol, Jalayirid, Turkmen — dark burnt earth and ash-teal
                 bg = ['#4d2c0e', '#253b34', '#5b4a2a'][colorIndex];
-                fg = colorIndex === 1 ? '#a8ccc0' : '#e0c89a';
             } else if (r.start < 1917) {
                 // Ottoman & Safavid interlude — deep crimson and deep lapis
                 bg = ['#6e1818', '#18396e', '#5b3a12'][colorIndex];
-                fg = colorIndex === 1 ? '#c8d8f5' : '#f5c8c8';
             } else if (r.start >= 2018) {
                 // Protest, Recovery, Contested Future — pale cream and sky blue
                 bg = ['#f5e8b4', '#c3e4f8', '#e7c66c'][colorIndex];
-                fg = colorIndex === 1 ? '#0e2a3a' : '#4a2800';
             } else {
                 // Modern Iraq — dark steel and muted desert bronze
                 bg = ['#2e3d4e', '#6b5a38', '#23464d'][colorIndex];
-                fg = colorIndex === 1 ? '#d4bc88' : '#9ab0c8';
             }
-            var html = rulerHoverHtml(r, fg);
-            var invert = r.start < 1258 && colorIndex === 1;
+            var html = rulerHoverHtml(r, RULER_TOOLTIP_TEXT_COLOR);
             buildSegment(
                 rulerBar,
                 r,
@@ -1434,7 +1471,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 height,
                 bg,
                 html,
-                invert,
+                false,
                 isShortReign ? 3 : 1,
                 isShortReign ? visualTop : null,
                 isShortReign ? height : null
