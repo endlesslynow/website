@@ -3290,24 +3290,132 @@ const HOODS = [
       }
     });
   }
-  function applyLanguage(lang) {
+  function applyLanguage(lang, propagate) {
     lang = lang === "ar" ? "ar" : "en";
     setActiveLang(lang);
     applyNavLabels(lang);
     setStoredLang(lang);
+    if (propagate && window.PeoplesLanguage && typeof window.PeoplesLanguage.setLanguage === "function") {
+      window.PeoplesLanguage.setLanguage(lang);
+    }
   }
 
   langButtons.forEach(function(btn) {
     btn.addEventListener("click", function() {
-      applyLanguage(btn.getAttribute("data-banner-lang"));
+      applyLanguage(btn.getAttribute("data-banner-lang"), true);
     });
+  });
+
+  document.addEventListener("peoples:language-changed", function(event) {
+    var lang = event.detail && event.detail.lang ? event.detail.lang : "en";
+    setActiveLang(lang);
+    applyNavLabels(lang);
   });
 
   var stored = getStoredLang();
   if (stored === "en" || stored === "ar") {
-    applyLanguage(stored);
+    applyLanguage(stored, true);
   } else {
     setActiveLang("en");
+  }
+})();
+</script>
+
+<script src="data/peoples-i18n.ar.js"></script>
+<script>
+/* Peoples-of-Baghdad language runtime.
+ * Mirrors lectures/baghdad/js/baghdad-language.js — text-node walker
+ * that swaps English/Arabic via PEOPLES_I18N_AR map at runtime.
+ */
+(function() {
+  var RTL = "ar", LTR = "en";
+  var current = LTR;
+  var initialized = false;
+  var pending = null;
+  var staticNodes = [];
+  var altNodes = [];
+  var englishTitle = document.title;
+
+  function data() { return window.PEOPLES_I18N_AR || {}; }
+  function isAr() { return current === RTL; }
+  function norm(v) { return String(v == null ? "" : v).replace(/\s+/g, " ").trim(); }
+
+  function walk(root, cb) {
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: function(n) {
+        var p = n.parentElement;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        if (/^(SCRIPT|STYLE|SVG|CANVAS)$/i.test(p.tagName)) return NodeFilter.FILTER_REJECT;
+        if (p.closest && p.closest(".hatra-banner")) return NodeFilter.FILTER_REJECT;
+        return norm(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    var n; while ((n = w.nextNode())) cb(n);
+  }
+
+  function snapshot() {
+    staticNodes = [];
+    altNodes = [];
+    walk(document.documentElement, function(n) {
+      staticNodes.push({ node: n, original: n.nodeValue, key: norm(n.nodeValue) });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("img[alt]"), function(img) {
+      altNodes.push({
+        node: img,
+        original: img.getAttribute("alt") || "",
+        key: norm(img.getAttribute("alt") || "")
+      });
+    });
+  }
+
+  function apply() {
+    var d = data();
+    var tmap = d.staticTextByOriginal || {};
+    var amap = d.imageAltByOriginal || {};
+    document.title = isAr() ? (tmap[englishTitle] || englishTitle) : englishTitle;
+    staticNodes.forEach(function(it) {
+      if (!it.node.parentNode) return;
+      it.node.nodeValue = isAr() ? (tmap[it.key] || it.original) : it.original;
+    });
+    altNodes.forEach(function(it) {
+      if (!it.node.parentNode) return;
+      it.node.setAttribute("alt", isAr() ? (amap[it.key] || it.original) : it.original);
+    });
+  }
+
+  function setDir(lang) {
+    var html = document.documentElement;
+    html.setAttribute("lang", lang === RTL ? RTL : LTR);
+    html.setAttribute("dir", lang === RTL ? "rtl" : "ltr");
+    if (document.body) document.body.setAttribute("data-language", lang);
+  }
+
+  function setLanguage(lang) {
+    lang = lang === RTL ? RTL : LTR;
+    current = lang;
+    if (!initialized) { pending = lang; setDir(lang); return; }
+    setDir(lang);
+    apply();
+    document.dispatchEvent(new CustomEvent("peoples:language-changed", { detail: { lang: lang } }));
+  }
+
+  function init() {
+    snapshot();
+    initialized = true;
+    setLanguage(pending || current);
+  }
+
+  window.PeoplesLanguage = {
+    setLanguage: setLanguage,
+    getLanguage: function() { return current; }
+  };
+
+  /* Snapshot AFTER load so JS-rendered content (era panel, charts) is
+   * captured along with the static HTML. */
+  if (document.readyState === "complete") {
+    init();
+  } else {
+    window.addEventListener("load", init);
   }
 })();
 </script>
