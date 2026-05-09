@@ -1,0 +1,2202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Tempora Travel Co. A Field Guide to Baghdad for Time Travelers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:        #f3ead6;
+    --paper-deep:   #ebdfc2;
+    --paper-edge:   #d8c89e;
+    --ink:          #1a1410;
+    --ink-soft:     #4a3f33;
+    --ink-faint:    #8a7c66;
+    --dome:         #1d6b6b;
+    --dome-deep:    #134a4a;
+    --terra:        #b8472b;
+    --terra-deep:   #8a3320;
+    --gold:         #c9a04a;
+    --gold-deep:    #9a7826;
+    --warn:         #8a2a1a;
+    --good:         #2a6b3f;
+
+    --display: "Cormorant Garamond", "Garamond", serif;
+    --body:    "Source Serif 4", "Source Serif Pro", Georgia, serif;
+    --mono:    "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  html, body{ margin:0; padding:0; }
+  body{
+    font-family: var(--body);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+    font-size: 17px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    /* paper texture: subtle noise + tint variation */
+    background-image:
+      radial-gradient(rgba(180,150,90,0.06) 1px, transparent 1.2px),
+      radial-gradient(rgba(80,50,20,0.05) 1px, transparent 1.2px);
+    background-size: 7px 7px, 13px 13px;
+    background-position: 0 0, 3px 4px;
+  }
+
+  /* ============ Type ============ */
+  h1,h2,h3,h4{
+    font-family: var(--display);
+    font-weight: 600;
+    margin: 0;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  h1{ font-size: clamp(56px, 9vw, 144px); line-height: .92; font-weight: 600; }
+  h2{ font-size: clamp(40px, 4.4vw, 72px); line-height: .98; }
+  h3{ font-size: clamp(26px, 2.4vw, 40px); line-height: 1.05; }
+  h4{ font-size: 20px; line-height: 1.2; }
+  p{ margin: 0 0 1em 0; text-wrap: pretty; }
+  em{ font-family: var(--display); font-style: italic; font-size: 1.06em; }
+  small{ font-size: 13px; }
+
+  .stamp, .meta, .label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .label-gold{ color: var(--gold-deep); }
+  .label-dome{ color: var(--dome); }
+  .label-terra{ color: var(--terra); }
+
+  .rule{
+    border: none; border-top: 1px solid var(--ink);
+    margin: 2rem 0;
+  }
+  .rule-double{
+    border: none;
+    border-top: 1px solid var(--ink);
+    border-bottom: 3px double var(--ink);
+    height: 6px;
+    margin: 2rem 0;
+  }
+  .rule-fancy{
+    text-align:center;
+    font-family: var(--display);
+    color: var(--ink-soft);
+    margin: 3rem 0 2rem;
+    letter-spacing: .4em;
+  }
+
+  /* ============ Layout shells ============ */
+  .page{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 56px;
+  }
+  @media (max-width: 720px){
+    .page{ padding: 0 22px; }
+  }
+
+  /* ============ Decorative borders ============ */
+  .deco-border{
+    border: 1.5px solid var(--ink);
+    padding: 22px;
+    position: relative;
+    background:
+      linear-gradient(var(--paper), var(--paper)) padding-box,
+      repeating-linear-gradient(45deg, var(--ink) 0 1px, transparent 1px 6px) border-box;
+  }
+  .double-border{
+    border: 1px solid var(--ink);
+    outline: 1px solid var(--ink);
+    outline-offset: 4px;
+    padding: 28px;
+  }
+
+  /* ============ Cover ============ */
+  .cover{
+    min-height: 100vh;
+    padding: 36px 56px 48px;
+    position: relative;
+    background:
+      radial-gradient(1200px 700px at 50% 30%, rgba(201,160,74,0.18), transparent 60%),
+      var(--paper);
+  }
+  .cover-frame{
+    border: 2px solid var(--ink);
+    padding: 18px;
+    min-height: calc(100vh - 84px);
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  .cover-frame::before{
+    content: "";
+    position: absolute; inset: 8px;
+    border: 1px solid var(--ink);
+    pointer-events: none;
+  }
+  .cover-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 14px 18px 8px;
+    border-bottom: 1px solid var(--ink);
+    gap: 24px;
+  }
+  .cover-co{
+    display: flex; align-items: center; gap: 14px;
+  }
+  .cover-mark{
+    width: 48px; height: 48px;
+    border: 1.5px solid var(--ink);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: var(--display);
+    font-size: 26px;
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+  .cover-co-name{ font-family: var(--mono); font-size: 12px; letter-spacing: .25em; }
+  .cover-co-tag{ font-family: var(--display); font-style: italic; font-size: 14px; color: var(--ink-soft); }
+  .cover-issue{ text-align: right; font-family: var(--mono); font-size: 11px; letter-spacing: .18em; }
+  .cover-issue b{ display:block; font-size: 13px; color: var(--terra); letter-spacing: .14em; }
+
+  .cover-body{
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 36px;
+    padding: 28px 22px;
+    align-items: center;
+  }
+  @media (max-width: 900px){ .cover-body{ grid-template-columns: 1fr; } }
+
+  .cover-title{
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(80px, 13vw, 200px);
+    line-height: .82;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .cover-title .amp{
+    color: var(--terra);
+    font-style: italic;
+  }
+  .cover-sub{
+    font-family: var(--display);
+    font-size: clamp(20px, 2vw, 28px);
+    color: var(--ink-soft);
+    margin: 24px 0 18px;
+    max-width: 36ch;
+    line-height: 1.25;
+    font-style: italic;
+  }
+  .cover-meta{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    margin-top: 18px;
+  }
+  .cover-meta span{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .cover-meta b{ color: var(--ink); font-weight: 500; }
+
+  .cover-bottom{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--ink);
+  }
+  .cover-bottom > div{
+    padding: 16px 22px;
+    border-right: 1px solid var(--ink);
+  }
+  .cover-bottom > div:last-child{ border-right: none; }
+  .cover-bottom .label{ display:block; margin-bottom: 6px; }
+  .cover-bottom .val{ font-family: var(--display); font-size: 22px; font-style: italic; }
+
+  /* Hero illustration block */
+  .cover-art{
+    aspect-ratio: 4/5;
+    border: 1px solid var(--ink);
+    background:
+      repeating-linear-gradient(135deg, rgba(26,20,16,0.05) 0 2px, transparent 2px 9px),
+      linear-gradient(180deg, var(--paper-deep), var(--paper));
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-art .city{
+    position: absolute; inset: 8% 8% 14%;
+  }
+  .cover-art .seal{
+    position: absolute;
+    bottom: 14px; right: 14px;
+    width: 110px; height: 110px;
+    border: 1.5px solid var(--terra);
+    border-radius: 50%;
+    color: var(--terra);
+    display: grid; place-items: center;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-align: center;
+    transform: rotate(-8deg);
+    background: rgba(243,234,214,0.7);
+  }
+  .cover-art .seal::before{
+    content: ""; position: absolute; inset: 6px;
+    border: 1px dashed var(--terra);
+    border-radius: 50%;
+  }
+  .cover-art .photo-tag{
+    position: absolute; left: 14px; bottom: 14px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    color: var(--ink-soft);
+  }
+
+  /* ============ Generic photo placeholder ============ */
+  .photo{
+    border: 1px solid var(--ink);
+    background:
+      repeating-linear-gradient(45deg, rgba(26,20,16,0.06) 0 2px, transparent 2px 8px),
+      var(--paper-deep);
+    position: relative;
+    overflow: hidden;
+    color: var(--ink-soft);
+  }
+  .photo .cap{
+    position: absolute;
+    left: 10px; bottom: 10px; right: 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--paper);
+    padding: 5px 8px;
+    border: 1px solid var(--ink);
+    line-height: 1.4;
+  }
+  .photo .corner{
+    position: absolute; top: 10px; right: 10px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    background: var(--ink); color: var(--paper);
+    padding: 4px 8px;
+  }
+  .photo.tone-dome{ background: var(--dome); color: #f3ead6; }
+  .photo.tone-dome::before{
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.06) 0 2px, transparent 2px 8px);
+  }
+  .photo.tone-dome .cap{ background: var(--dome-deep); color: var(--paper); border-color: var(--paper); }
+  .photo.tone-terra{ background: var(--terra); color: var(--paper); }
+  .photo.tone-terra::before{
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 2px, transparent 2px 8px);
+  }
+  .photo.tone-terra .cap{ background: var(--terra-deep); color: var(--paper); border-color: var(--paper); }
+  .photo.tone-ink{ background: var(--ink); color: var(--paper); }
+  .photo.tone-ink::before{
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 8px);
+  }
+  .photo.tone-ink .cap{ background: var(--paper); color: var(--ink); }
+  .photo.tone-gold{ background: var(--gold); color: var(--ink); }
+  .photo.tone-gold::before{
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(135deg, rgba(0,0,0,0.06) 0 2px, transparent 2px 8px);
+  }
+
+  .photo .center-icon{
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    font-family: var(--display); font-style: italic;
+    font-size: clamp(28px, 4vw, 56px);
+    color: currentColor;
+    opacity: .85;
+    text-align: center;
+    padding: 24px;
+  }
+  .photo svg{ position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  /* ============ Section spacing ============ */
+  section{ padding: 64px 0; }
+
+  /* ============ Brief / Welcome ============ */
+  .brief{
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 42px;
+    align-items: start;
+  }
+  @media (max-width: 900px){ .brief{ grid-template-columns: 1fr; } }
+  .brief-head .label{ display:block; margin-bottom: 14px; color: var(--terra); }
+  .brief-head h2{ font-style: italic; }
+  .brief-body p{ font-size: 19px; }
+  .brief-body .lede{
+    font-family: var(--display);
+    font-size: 26px;
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  /* Pre-departure card */
+  .predep{
+    margin-top: 56px;
+    border: 1.5px solid var(--ink);
+    background: var(--paper-deep);
+    padding: 0;
+  }
+  .predep-head{
+    display:flex; justify-content: space-between; align-items:center;
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .predep-head h4{ color: var(--paper); font-family: var(--mono); font-size: 13px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; }
+  .predep-head span{ font-family: var(--mono); font-size: 11px; letter-spacing: .18em; }
+  .predep-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  @media (max-width: 900px){ .predep-grid{ grid-template-columns: 1fr 1fr; } }
+  .predep-grid > div{
+    padding: 22px;
+    border-right: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .predep-grid > div:nth-child(4n){ border-right: none; }
+  .predep-grid .label{ display:block; margin-bottom: 8px; }
+  .predep-grid .val{ font-family: var(--display); font-size: 24px; line-height: 1.15; }
+  .predep-grid .note{ font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+
+  /* ============ Timeline strip ============ */
+  .timeline-bar{
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--ink);
+    color: var(--paper);
+    border-bottom: 1px solid var(--ink);
+  }
+  .timeline-inner{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .timeline-title{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .timeline-track{
+    flex: 1;
+    position: relative;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+  .timeline-track::-webkit-scrollbar{ display: none; }
+  .timeline-line{
+    position: absolute;
+    left: 0; right: 0; top: 50%;
+    height: 1px;
+    background: var(--paper);
+    opacity: .35;
+  }
+  .timeline-stops{
+    display: flex;
+    gap: 32px;
+    padding: 0 8px;
+    position: relative;
+    z-index: 2;
+    white-space: nowrap;
+  }
+  .tstop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--paper);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .14em;
+    padding: 4px 6px;
+    transition: color .15s;
+  }
+  .tstop:hover{ color: var(--gold); }
+  .tstop.active{ color: var(--gold); }
+  .tstop .dot{
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+  }
+  .tstop.active .dot{ background: var(--gold); }
+  .tstop .yr{ font-weight: 700; }
+  .timeline-legend{
+    display: flex; gap: 14px;
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .timeline-legend i{
+    display: inline-block; width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  @media (max-width: 900px){ .timeline-legend{ display: none; } }
+
+  /* ============ Era spreads ============ */
+  .era{
+    padding: 84px 0 64px;
+    border-bottom: 1px solid var(--ink);
+    position: relative;
+  }
+  .era-tag{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 30px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .era-tag .number{
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 80px;
+    line-height: .9;
+    color: var(--terra);
+  }
+  .era-tag .meta{ text-align: right; }
+
+  .era-head{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 900px){ .era-head{ grid-template-columns: 1fr; } }
+  .era-head h2{
+    font-style: italic;
+    font-weight: 500;
+  }
+  .era-head .kicker{
+    color: var(--terra);
+    margin-bottom: 12px;
+  }
+  .era-head .deck{
+    font-family: var(--display);
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--ink-soft);
+    margin-top: 18px;
+    font-style: italic;
+  }
+  .era-loc{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 14px;
+    display: flex; flex-wrap: wrap; gap: 14px;
+  }
+  .era-loc b{ color: var(--ink); font-weight: 500; }
+
+  /* Era body grid */
+  .era-grid{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  .col-7{ grid-column: span 7; }
+  .col-5{ grid-column: span 5; }
+  .col-6{ grid-column: span 6; }
+  .col-4{ grid-column: span 4; }
+  .col-8{ grid-column: span 8; }
+  .col-12{ grid-column: span 12; }
+  @media (max-width: 900px){
+    .col-4, .col-5, .col-6, .col-7, .col-8{ grid-column: span 12; }
+  }
+
+  /* Sense block */
+  .sense{
+    padding: 22px 22px 22px 0;
+    border-left: 3px solid var(--dome);
+    padding-left: 18px;
+    margin-bottom: 18px;
+  }
+  .sense.smell{ border-left-color: var(--gold); }
+  .sense.sound{ border-left-color: var(--terra); }
+  .sense h4{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .sense.smell h4{ color: var(--gold-deep); }
+  .sense.sound h4{ color: var(--terra); }
+  .sense p{ margin: 0; font-size: 16.5px; }
+
+  /* Avoid box */
+  .avoid{
+    border: 2px solid var(--warn);
+    padding: 22px;
+    background: rgba(138,42,26,0.05);
+    position: relative;
+  }
+  .avoid::before{
+    content: "✕";
+    position: absolute; top: -14px; left: 18px;
+    background: var(--warn);
+    color: var(--paper);
+    width: 28px; height: 28px;
+    display: grid; place-items: center;
+    font-size: 16px;
+    font-family: var(--mono);
+  }
+  .avoid h4{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .22em;
+    color: var(--warn);
+    margin-bottom: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .avoid p{ margin: 0; font-size: 16px; }
+  .avoid .severity{
+    display: inline-block;
+    margin-top: 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--warn);
+    border: 1px solid var(--warn);
+    padding: 3px 8px;
+  }
+
+  /* Recommend box */
+  .recommend{
+    border: 2px solid var(--good);
+    padding: 22px;
+    background: rgba(42,107,63,0.06);
+    position: relative;
+  }
+  .recommend::before{
+    content: "★";
+    position: absolute; top: -14px; left: 18px;
+    background: var(--good);
+    color: var(--paper);
+    width: 28px; height: 28px;
+    display: grid; place-items: center;
+    font-size: 14px;
+  }
+  .recommend h4{
+    font-family: var(--mono); font-size: 12px;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--good); margin-bottom: 12px; font-weight: 700;
+  }
+  .recommend p{ margin: 0; font-size: 16px; }
+
+  /* Tip card */
+  .tip{
+    border: 1px dashed var(--ink);
+    padding: 16px 18px;
+    background: var(--paper-deep);
+  }
+  .tip h4{
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--ink-soft); margin-bottom: 8px; font-weight: 600;
+  }
+  .tip p{ margin: 0; font-size: 15px; line-height: 1.5; }
+
+  /* Photo sizing helpers */
+  .ph-tall{ aspect-ratio: 3/4; }
+  .ph-square{ aspect-ratio: 1/1; }
+  .ph-wide{ aspect-ratio: 16/9; }
+  .ph-poster{ aspect-ratio: 4/5; }
+  .ph-banner{ aspect-ratio: 21/9; }
+
+  /* Pull quote */
+  .pq{
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(28px, 3vw, 44px);
+    line-height: 1.18;
+    color: var(--ink);
+    padding: 14px 28px;
+    border-left: 3px solid var(--terra);
+    margin: 0;
+  }
+  .pq footer{
+    margin-top: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-style: normal;
+  }
+
+  /* ============ Good / Bad / Ugly tri-pane ============ */
+  .audit{
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 0;
+    margin-top: 32px;
+  }
+  .audit h2{ color: var(--paper); font-style: italic; }
+  .audit .label{ color: var(--gold); }
+  .audit-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 48px;
+    border: 1px solid var(--paper);
+  }
+  @media (max-width: 900px){ .audit-grid{ grid-template-columns: 1fr; } }
+  .audit-col{
+    padding: 32px;
+    border-right: 1px solid var(--paper);
+  }
+  .audit-col:last-child{ border-right: none; }
+  .audit-col h3{
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 6px;
+  }
+  .audit-col .badge{
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    padding: 3px 8px;
+    border: 1px solid currentColor;
+    margin-bottom: 18px;
+  }
+  .audit-col.good h3, .audit-col.good .badge{ color: #9bd1a8; }
+  .audit-col.bad h3,  .audit-col.bad .badge { color: var(--gold); }
+  .audit-col.ugly h3, .audit-col.ugly .badge{ color: #e58a76; }
+  .audit-col ul{
+    list-style: none;
+    padding: 0; margin: 0;
+  }
+  .audit-col li{
+    padding: 14px 0;
+    border-top: 1px solid rgba(243,234,214,0.18);
+    font-family: var(--body);
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+  .audit-col li b{
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    color: var(--gold);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  /* ============ Phrasebook + currency ============ */
+  .field-kit{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    margin-top: 48px;
+  }
+  @media (max-width: 900px){ .field-kit{ grid-template-columns: 1fr; } }
+  .kit{
+    border: 1.5px solid var(--ink);
+    padding: 0;
+  }
+  .kit-head{
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 22px;
+    display: flex; justify-content: space-between; align-items:center;
+  }
+  .kit-head h4{
+    color: var(--paper);
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .kit-head span{ font-family: var(--mono); font-size: 11px; letter-spacing: .18em; color: var(--gold); }
+  .kit-body{ padding: 22px; }
+  .kit-row{
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 18px;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--ink-faint);
+  }
+  .kit-row:last-child{ border-bottom: none; }
+  .kit-row .term{
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 19px;
+  }
+  .kit-row .desc{ font-size: 15px; color: var(--ink-soft); }
+  .kit-row .desc b{ color: var(--ink); font-weight: 500; }
+
+  /* ============ Itinerary cards ============ */
+  .itin{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+  @media (max-width: 900px){ .itin{ grid-template-columns: 1fr; } }
+  .itin-card{
+    border: 1px solid var(--ink);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .itin-card .photo{ aspect-ratio: 5/3; border: none; border-bottom: 1px solid var(--ink); }
+  .itin-card .body{ padding: 22px; flex: 1; display: flex; flex-direction: column; }
+  .itin-card .label{ color: var(--terra); margin-bottom: 8px; }
+  .itin-card h3{ font-style: italic; margin-bottom: 8px; }
+  .itin-card .duration{
+    font-family: var(--mono); font-size: 11px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--ink-soft); margin-bottom: 14px;
+  }
+  .itin-card p{ font-size: 15px; flex: 1; }
+  .itin-card .price{
+    border-top: 1px dashed var(--ink-faint);
+    padding-top: 14px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-top: 12px;
+    font-family: var(--display);
+    font-size: 22px;
+    font-style: italic;
+  }
+  .itin-card .price small{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    color: var(--ink-soft);
+    font-style: normal;
+  }
+
+  /* ============ Footer / colophon ============ */
+  footer.colophon{
+    background: var(--paper-deep);
+    border-top: 2px solid var(--ink);
+    padding: 56px 0 28px;
+  }
+  .colo-grid{
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 36px;
+  }
+  @media (max-width: 900px){ .colo-grid{ grid-template-columns: 1fr; } }
+  .colo-grid h4{
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--terra); margin-bottom: 12px; font-weight: 700;
+  }
+  .colo-grid p{ font-size: 15px; }
+  .colo-bottom{
+    margin-top: 36px;
+    padding-top: 18px;
+    border-top: 1px solid var(--ink);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 11px; letter-spacing: .18em;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 720px){ .colo-bottom{ flex-direction: column; gap: 8px; } }
+
+  /* Stamp graphic */
+  .stamp-block{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--terra);
+    color: var(--terra);
+    padding: 8px 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    transform: rotate(-2deg);
+    background: rgba(184,71,43,0.04);
+  }
+  .stamp-block svg{ width: 18px; height: 18px; }
+
+  /* utility */
+  .row{ display: flex; gap: 18px; }
+  .grid-2{ display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  @media (max-width: 720px){ .grid-2{ grid-template-columns: 1fr; } }
+  .grid-3{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 900px){ .grid-3{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px){ .grid-3{ grid-template-columns: 1fr; } }
+
+  .stack-tight > * + *{ margin-top: 12px; }
+  .stack > * + *{ margin-top: 22px; }
+  .stack-lg > * + *{ margin-top: 36px; }
+
+  .nowrap{ white-space: nowrap; }
+
+  /* small monogram svg */
+  .glyph-circle{
+    fill: none; stroke: currentColor; stroke-width: 1.2;
+  }
+
+  /* drop cap */
+  .dropcap::first-letter{
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 5em;
+    float: left;
+    line-height: .85;
+    margin: 8px 10px 0 0;
+    color: var(--terra);
+  }
+
+  /* tweaks panel slot */
+  #tweaks-root{ position: fixed; bottom: 18px; right: 18px; z-index: 80; }
+</style>
+
+<script type="application/json" id="speaker-notes">[]</script>
+</head>
+<body>
+
+<!-- ============================================================
+     COVER
+     ============================================================ -->
+<section class="cover" id="cover">
+  <div class="cover-frame">
+    <div class="cover-top">
+      <div class="cover-co">
+        <div class="cover-mark">T</div>
+        <div>
+          <div class="cover-co-name">TEMPORA TRAVEL CO.</div>
+          <div class="cover-co-tag">Chartered chrononautical excursions since 1893</div>
+        </div>
+      </div>
+      <div class="cover-issue">
+        <b>FIELD GUIDE 03</b>
+        VOL I &nbsp;·&nbsp; PRINTED 2026 CE<br>
+        FOR USE ACROSS 4,000 YEARS
+      </div>
+    </div>
+
+    <div class="cover-body">
+      <div>
+        <div class="stamp" style="margin-bottom: 12px; color: var(--terra);">A Time Traveler's Field Guide to</div>
+        <h1 class="cover-title"><em>Baghdad</em></h1>
+        <p class="cover-sub">The City of Peace, the City of Blood, and ten thousand smells in between. Pack light, breathe shallow, tip the ferryman.</p>
+
+        <div class="cover-meta">
+          <span><b>COVERAGE</b> &nbsp; 2000 BCE → 2026 CE</span>
+          <span><b>LOCALE</b> &nbsp; Banks of the Tigris, Iraq</span>
+          <span><b>READING TIME</b> &nbsp; 18 minutes</span>
+        </div>
+
+        <div style="margin-top: 28px;">
+          <span class="stamp-block">
+            <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 10 L17 10 M10 3 L10 17" stroke="currentColor" stroke-width="1"/></svg>
+            Approved · Bureau of Temporal Tourism
+          </span>
+        </div>
+      </div>
+
+      <div class="cover-art" aria-hidden="true">
+        <svg class="city" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet">
+          <!-- horizon -->
+          <line x1="0" y1="380" x2="400" y2="380" stroke="#1a1410" stroke-width="1"/>
+          <!-- circular city wall -->
+          <circle cx="200" cy="260" r="160" fill="none" stroke="#1a1410" stroke-width="1.2"/>
+          <circle cx="200" cy="260" r="142" fill="none" stroke="#1a1410" stroke-width="0.7" stroke-dasharray="2 3"/>
+          <!-- four cardinal gates -->
+          <rect x="194" y="92" width="12" height="18" fill="#1a1410"/>
+          <rect x="194" y="410" width="12" height="18" fill="#1a1410"/>
+          <rect x="32" y="254" width="18" height="12" fill="#1a1410"/>
+          <rect x="350" y="254" width="18" height="12" fill="#1a1410"/>
+          <!-- domes -->
+          <g fill="#1d6b6b" stroke="#1a1410" stroke-width="1">
+            <path d="M155 230 a25 30 0 0 1 50 0 z"/>
+            <path d="M210 240 a18 22 0 0 1 36 0 z"/>
+            <path d="M135 248 a14 18 0 0 1 28 0 z"/>
+          </g>
+          <!-- minarets -->
+          <g fill="#1a1410">
+            <rect x="180" y="195" width="4" height="38"/>
+            <circle cx="182" cy="193" r="3"/>
+            <rect x="220" y="208" width="3" height="32"/>
+            <circle cx="221.5" cy="206" r="2.5"/>
+          </g>
+          <!-- center dot, the caliph's palace -->
+          <circle cx="200" cy="260" r="4" fill="#b8472b"/>
+          <!-- river -->
+          <path d="M-10 410 Q 100 396 200 412 T 410 408" fill="none" stroke="#1d6b6b" stroke-width="3"/>
+          <path d="M-10 420 Q 100 408 200 424 T 410 420" fill="none" stroke="#1d6b6b" stroke-width="1" opacity=".6"/>
+          <!-- sun / moon -->
+          <circle cx="320" cy="80" r="32" fill="none" stroke="#c9a04a" stroke-width="1.2"/>
+          <circle cx="320" cy="80" r="22" fill="#c9a04a" opacity="0.3"/>
+          <!-- compass -->
+          <g transform="translate(60 60)">
+            <circle r="22" fill="none" stroke="#1a1410" stroke-width="0.8"/>
+            <path d="M0 -20 L 4 0 L 0 20 L -4 0 Z" fill="#b8472b"/>
+            <text y="-26" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#1a1410">N</text>
+          </g>
+        </svg>
+        <div class="seal">
+          BAGHDAD<br>SEAL OF<br>SAFE PASSAGE
+        </div>
+        <div class="photo-tag">PLATE I &nbsp;·&nbsp; THE ROUND CITY, AERIAL ROMANTIC</div>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div>
+        <span class="label">Inside this guide</span>
+        <div class="val">10 eras, 1 river, infinite tea</div>
+      </div>
+      <div>
+        <span class="label">Recommended for</span>
+        <div class="val">Curious travelers, brave noses</div>
+      </div>
+      <div>
+        <span class="label">Currency accepted</span>
+        <div class="val">Dirham, dinar, fils, USD</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TIMELINE BAR (sticky)
+     ============================================================ -->
+<nav class="timeline-bar" id="timelineBar" aria-label="Era timeline">
+  <div class="timeline-inner">
+    <div class="timeline-title">⌖ Itinerary</div>
+    <div class="timeline-track" id="ttrack">
+      <div class="timeline-line"></div>
+      <div class="timeline-stops" id="tstops"></div>
+    </div>
+    <div class="timeline-legend">
+      <span><i style="background:#9bd1a8"></i>Recommended</span>
+      <span><i style="background:#c9a04a"></i>Caution</span>
+      <span><i style="background:#e58a76"></i>Hazard</span>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     BRIEFING
+     ============================================================ -->
+<section id="brief" class="page">
+  <div class="brief">
+    <div class="brief-head">
+      <span class="label">§ 01 &nbsp;·&nbsp; Welcome aboard</span>
+      <h2><em>Before you depart</em></h2>
+      <p style="margin-top: 14px; color: var(--ink-soft); font-style: italic; font-family: var(--display); font-size: 18px;">A short note from your cultural attaché.</p>
+    </div>
+
+    <div class="brief-body">
+      <p class="lede">You hold the only authorized field guide for civilian travel to ancient and modern Baghdad. Within these pages you will find sights worth photographing, smells worth bottling, sounds worth recording, and warnings worth heeding.</p>
+      <p class="dropcap">Baghdad has lived 1,300 years on the bend of the Tigris, and every century has its own perfume. Some you will want on your wrist for the rest of your life. Some you must rinse off in the river before you return home. This guide tells you which is which. Read it twice before stepping into the chamber. The Tigris bends, and so does fortune.</p>
+      <p>We arrange itineraries for travelers of every persuasion. Some want only the smell of fresh paper at the House of Wisdom. Others insist on being present for a banquet at the Palace of the Tree. Fees vary. Insurance does not.</p>
+    </div>
+  </div>
+
+  <!-- Pre-departure card -->
+  <div class="predep">
+    <div class="predep-head">
+      <h4>Pre-Departure Checklist</h4>
+      <span>FORM TT-04 / REV. 2026</span>
+    </div>
+    <div class="predep-grid">
+      <div>
+        <span class="label">Calendar Range</span>
+        <div class="val">2000 BCE through<br>spring of 2026 CE</div>
+        <div class="note">Avoid arrivals during Mongol invasion windows (1258, 1401).</div>
+      </div>
+      <div>
+        <span class="label">Climate Notes</span>
+        <div class="val">Summers reach<br>50°C / 122°F</div>
+        <div class="note">Bring a wide hat and a wider patience.</div>
+      </div>
+      <div>
+        <span class="label">Languages You Will Hear</span>
+        <div class="val">Arabic, Persian, Aramaic, Greek, Hindi, English</div>
+        <div class="note">A polite "as-salaamu alaykum" works in every century.</div>
+      </div>
+      <div>
+        <span class="label">Vaccinations</span>
+        <div class="val">Plague,<br>cholera, smallpox</div>
+        <div class="note">All three required for any visit prior to 1923.</div>
+      </div>
+      <div>
+        <span class="label">Recommended Wardrobe</span>
+        <div class="val">Loose linen, head covering</div>
+        <div class="note">Modesty is currency, in every era.</div>
+      </div>
+      <div>
+        <span class="label">Local Currency</span>
+        <div class="val">Dirham, dinar,<br>and modest tips</div>
+        <div class="note">A silver dirham weighs 3 grams and buys a meal.</div>
+      </div>
+      <div>
+        <span class="label">River Crossings</span>
+        <div class="val">Guffa coracle, pontoon, bridge</div>
+        <div class="note">Two kirats per ride. Tip the ferryman with bread.</div>
+      </div>
+      <div>
+        <span class="label">Forbidden Items</span>
+        <div class="val">Cameras after 1968. Naphtha. Anachronistic shoes.</div>
+        <div class="note">Confiscation upon arrival. No appeals.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ERA SPREADS
+     ============================================================ -->
+
+<!-- ERA 1 - Babylonian Origins -->
+<section class="era page" id="era-2000bce" data-year="2000 BCE" data-era="Origins" data-class="bad">
+  <div class="era-tag">
+    <div class="number">I.</div>
+    <div class="meta">ERA 01 OF 10 &nbsp;·&nbsp; PREHISTORIC BAGHDADU</div>
+  </div>
+
+  <div class="era-head">
+    <div>
+      <span class="label kicker">2000 BCE &nbsp;·&nbsp; Long before the city</span>
+      <h2>Mud, river silt, woodsmoke at dawn</h2>
+      <div class="era-loc">
+        <span><b>WHEN</b> &nbsp; c. 2000 BCE</span>
+        <span><b>WHERE</b> &nbsp; Banks of the Tigris, future site of the Round City</span>
+        <span><b>VIBE</b> &nbsp; Quiet farmstead</span>
+      </div>
+    </div>
+    <div>
+      <p class="deck">A handful of mud-brick dwellings tucked among reed beds. There is no city here yet, only the rumour of one. Bring sturdy boots, a notebook, and very low expectations of cuisine.</p>
+    </div>
+  </div>
+
+  <div class="era-grid">
+    <div class="col-7">
+      <div class="photo ph-banner">
+        <svg viewBox="0 0 800 343" preserveAspectRatio="xMidYMid slice">
+          <rect width="800" height="343" fill="#ebdfc2"/>
+          <path d="M0 240 Q 200 220 400 245 T 800 230 L 800 343 L 0 343 Z" fill="#1d6b6b" opacity="0.18"/>
+          <path d="M0 250 Q 200 240 400 258 T 800 245" fill="none" stroke="#1d6b6b" stroke-width="1.5" opacity="0.7"/>
+          <!-- huts -->
+          <g fill="#8a3320" stroke="#1a1410" stroke-width="1">
+            <path d="M120 220 L 160 200 L 200 220 L 200 260 L 120 260 Z"/>
+            <path d="M260 230 L 290 215 L 320 230 L 320 260 L 260 260 Z"/>
+            <path d="M520 225 L 555 207 L 590 225 L 590 260 L 520 260 Z"/>
+          </g>
+          <!-- reeds -->
+          <g stroke="#9a7826" stroke-width="1">
+            <line x1="50" y1="270" x2="50" y2="240"/><line x1="60" y1="270" x2="60" y2="245"/>
+            <line x1="68" y1="270" x2="68" y2="248"/><line x1="380" y1="270" x2="380" y2="246"/>
+            <line x1="390" y1="270" x2="390" y2="240"/><line x1="700" y1="270" x2="700" y2="244"/>
+            <line x1="708" y1="270" x2="708" y2="250"/>
+          </g>
+          <!-- smoke -->
+          <path d="M170 200 Q 175 180 165 165 Q 175 150 170 130" fill="none" stroke="#1a1410" stroke-width="1" opacity="0.4"/>
+          <path d="M540 207 Q 545 187 535 172" fill="none" stroke="#1a1410" stroke-width="1" opacity="0.4"/>
+          <!-- sun -->
+          <circle cx="650" cy="85" r="34" fill="#c9a04a" opacity="0.4"/>
+          <circle cx="650" cy="85" r="34" fill="none" stroke="#9a7826" stroke-width="1"/>
+        </svg>
+        <div class="cap">PLATE 1.1 &nbsp;·&nbsp; REED HOUSES BESIDE THE TIGRIS, BABYLONIAN PERIOD</div>
+        <div class="corner">SAFE</div>
+      </div>
+
+      <div class="stack" style="margin-top: 24px;">
+        <div class="sense">
+          <h4>◐ Sights</h4>
+          <p>Low mud-brick dwellings the colour of the earth they stand on. Cattle drinking at the river's edge. Children running fishing nets between reed clumps. The Tigris itself, brown with silt, glittering at dusk.</p>
+        </div>
+        <div class="sense smell">
+          <h4>◑ Smells</h4>
+          <p>Wet river silt, damp grass, and the soft woodsmoke of cooking fires. Drying fish in the afternoon. Cattle, unmissably so. The clean, mineral smell of rain on warm earth, which the locals call <em>the breath of the river</em>.</p>
+        </div>
+        <div class="sense sound">
+          <h4>◒ Sounds</h4>
+          <p>The rush of the Tigris. The soft slap of nets on water. A goat bell. The hollow tap of a wooden mortar.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-5">
+      <div class="photo ph-tall tone-gold">
+        <div class="center-icon"><em>Wheat,<br>fish,<br>silence</em></div>
+        <div class="cap">FILLER · Replace with photograph of a Mesopotamian reed boat at sunrise</div>
+      </div>
+
+      <div class="recommend" style="margin-top: 22px;">
+        <h4>★ Highly Recommended</h4>
+        <p>Stand on the riverbank at first light. The air will smell of nothing but water and mud. You will not have this experience again in this guide.</p>
+      </div>
+
+      <div class="avoid" style="margin-top: 22px;">
+        <h4>✕ Avoid</h4>
+        <p>Drinking unfiltered river water. Trying to ask anyone for the way to "Baghdad". The settlement is named <em>Baghdadu</em> and is roughly the size of a livestock pen.</p>
+        <span class="severity">Severity 02 / 10</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ERA 2 - Round City -->
+<section class="era page" id="era-762" data-year="762 CE" data-era="Round City" data-class="good">
+  <div class="era-tag">
+    <div class="number">II.</div>
+    <div class="meta">ERA 02 OF 10 &nbsp;·&nbsp; THE ROUND CITY RISES</div>
+  </div>
+
+  <div class="era-head">
+    <div>
+      <span class="label kicker">30 July 762 CE &nbsp;·&nbsp; Foundation Day</span>
+      <h2>Cinders trace a circle on the desert floor</h2>
+      <div class="era-loc">
+        <span><b>WHEN</b> &nbsp; 30 July 762 CE through 800 CE</span>
+        <span><b>WHERE</b> &nbsp; Madinat al-Salaam, west bank of the Tigris</span>
+        <span><b>VIBE</b> &nbsp; Construction site of the millennium</span>
+      </div>
+    </div>
+    <div>
+      <p class="deck">Caliph Al-Mansur scouts the river himself, picks the bend, and orders the lines of his perfect circular capital traced into the soil with cotton balls soaked in naphtha and set alight. The ground itself glows. Then the bricklayers arrive, and they do not stop for forty years.</p>
+    </div>
+  </div>
+
+  <div class="era-grid">
+    <div class="col-5">
+      <div class="photo ph-poster tone-terra">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet">
+          <circle cx="200" cy="250" r="180" fill="none" stroke="#f3ead6" stroke-width="2"/>
+          <circle cx="200" cy="250" r="155" fill="none" stroke="#f3ead6" stroke-width="0.8" stroke-dasharray="4 6"/>
+          <circle cx="200" cy="250" r="55" fill="#f3ead6" opacity="0.18"/>
+          <circle cx="200" cy="250" r="6" fill="#c9a04a"/>
+          <!-- gates -->
+          <rect x="194" y="60" width="12" height="20" fill="#f3ead6"/>
+          <rect x="194" y="420" width="12" height="20" fill="#f3ead6"/>
+          <rect x="20" y="244" width="20" height="12" fill="#f3ead6"/>
+          <rect x="360" y="244" width="20" height="12" fill="#f3ead6"/>
+          <text x="200" y="55" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#f3ead6">KHURASAN</text>
+          <text x="200" y="455" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#f3ead6">KUFA</text>
+          <text x="30" y="270" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#f3ead6">DAMASCUS</text>
+          <text x="370" y="270" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#f3ead6">BASRA</text>
+        </svg>
+        <div class="cap">PLATE 2.1 &nbsp;·&nbsp; PLAN OF MADINAT AL-SALAAM, AFTER YAKUBI</div>
+      </div>
+
+      <div class="tip" style="margin-top: 22px;">
+        <h4>FIELD TIP &nbsp;·&nbsp; THE FIRST BRICK</h4>
+        <p>The royal astrologers chose 30 July as the most auspicious date in living memory. Arrive a day early to watch the foundation lines glow at dusk, traced in burning cotton soaked in naphtha. It is the most cinematic moment in urban history.</p>
+      </div>
+    </div>
+
+    <div class="col-7">
+      <p class="dropcap" style="font-size: 18px;">The architect-caliph stands at the centre of a circle 2 kilometres across, his palace at the bullseye, four iron gates at the cardinal points, and a triple wall forty feet thick between him and the world. The bricks weigh up to 200 pounds each. Workers haul them on their backs. Chroniclers say there are 100,000 of them. Believe half.</p>
+
+      <div class="stack">
+        <div class="sense">
+          <h4>◐ Sights</h4>
+          <p>A swarming hive of architects, kiln workers, and surveyors. Mountains of sun-baked clay. The four iron gates, said to have been forged by demons for King Solomon. A green dome 48 metres tall above the Caliph's palace, visible from every approach to the city.</p>
+        </div>
+        <div class="sense smell">
+          <h4>◑ Smells</h4>
+          <p>Freshly fired clay. Excavated earth. The metallic tang of the coppersmiths' alley in Karkh. The dry, grassy scent of the reed-weavers. Pungent camel stables at the city edge, which you will smell before you see them.</p>
+        </div>
+        <div class="sense sound">
+          <h4>◒ Sounds</h4>
+          <p>Hammers on stone, all day. Hooves of mule trains arriving from Khurasan. The shouted orders of foremen in Arabic, Persian, Aramaic, and Greek, sometimes all at once.</p>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 24px;">
+        <div class="recommend">
+          <h4>★ Do This</h4>
+          <p>Cross the river by guffa. The circular reed coracles bob like teacups and a single ride costs two kirats. Ask for a sailboat carved as a lion if you are feeling theatrical.</p>
+        </div>
+        <div class="avoid">
+          <h4>✕ Avoid</h4>
+          <p>Wandering near a brick haul. A 200-pound brick falls only once. Also, do not flatter Al-Mansur. He is suspicious by nature and your modern English will mark you as a spy.</p>
+          <span class="severity">Severity 06 / 10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ERA 3 - Harun al-Rashid -->
+<section class="era page" id="era-786" data-year="786 CE" data-era="Golden Age" data-class="good">
+  <div class="era-tag">
+    <div class="number">III.</div>
+    <div class="meta">ERA 03 OF 10 &nbsp;·&nbsp; THE APOGEE OF SCENT</div>
+  </div>
+
+  <div class="era-head">
+    <div>
+      <span class="label kicker">786 CE through 809 CE &nbsp;·&nbsp; The honeymoon of the Caliphate</span>
+      <h2>Roses, paper, mechanical birds, and a great deal of saffron</h2>
+      <div class="era-loc">
+        <span><b>WHEN</b> &nbsp; 786 to 809 CE</span>
+        <span><b>WHERE</b> &nbsp; Royal Precinct, House of Wisdom, Karkh Bazaars</span>
+        <span><b>VIBE</b> &nbsp; A Thousand and One Nights, with documentation</span>
+      </div>
+    </div>
+    <div>
+      <p class="deck">If you can only afford one stop on your itinerary, make it Harun al-Rashid's Baghdad. This is the city as the world remembers it. The lodestar of scientists, poets, and merchants. Pack your softest linen and an empty stomach.</p>
+    </div>
+  </div>
+
+  <div class="era-grid">
+    <div class="col-8">
+      <div class="grid-2">
+        <div class="photo ph-square tone-dome">
+          <div class="center-icon"><em>Silver urns,<br>musk &amp; rosewater</em></div>
+          <div class="cap">2.2 · The Caliph's perfume cabinet</div>
+        </div>
+        <div class="photo ph-square tone-gold">
+          <svg viewBox="0 0 200 200">
+            <g stroke="#1a1410" stroke-width="1.2" fill="none">
+              <rect x="60" y="120" width="80" height="60"/>
+              <line x1="100" y1="120" x2="100" y2="40"/>
+              <g transform="translate(100 90)">
+                <line x1="0" y1="0" x2="-30" y2="-20"/>
+                <line x1="0" y1="0" x2="30" y2="-20"/>
+                <line x1="0" y1="0" x2="-25" y2="-40"/>
+                <line x1="0" y1="0" x2="25" y2="-40"/>
+                <circle cx="-30" cy="-20" r="4" fill="#b8472b"/>
+                <circle cx="30" cy="-20" r="4" fill="#1d6b6b"/>
+                <circle cx="-25" cy="-40" r="4" fill="#1d6b6b"/>
+                <circle cx="25" cy="-40" r="4" fill="#b8472b"/>
+              </g>
+            </g>
+          </svg>
+          <div class="cap">2.3 · Palace of the Tree, mechanical aviary, 1.5 tons of silver</div>
+        </div>
+      </div>
+
+      <div class="stack" style="margin-top: 24px;">
+        <div class="sense">
+          <h4>◐ Sights</h4>
+          <p>Gold plates encrusted with precious stones. Guests in jewel-studded slippers. The Palace of the Tree, a 1.5-ton mechanical contraption of gold and silver whose eighteen branches bear birds that whistle and sing on command, leaves rustling as if a breeze had passed. Byzantine envoys arrive impressed and leave terrified.</p>
+        </div>
+        <div class="sense smell">
+          <h4>◑ Smells</h4>
+          <p>Musk, saffron, and rosewater, blended in silver urns and used to scent the seven tunics of fine Rashidi linen the Caliph wears each day. Spiced stews of onions and marrows. Roasting sheep. <em>Kunafa</em>, golden, dripping honey, sticky on every smile in the room. Most of all, in a corner of the city you will smell something faint and revolutionary, the scent of fresh ink and new paper sheaves at the House of Wisdom.</p>
+        </div>
+        <div class="sense sound">
+          <h4>◒ Sounds</h4>
+          <p>Crystal goblets ringing with ruby Shiraz wine. The thrum of a lute behind a screen. The murmur of Christian, Jewish, Muslim, and Zoroastrian scholars translating Aristotle in the same room.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="photo ph-tall tone-ink">
+        <div class="center-icon" style="color:#c9a04a"><em>"Cairo writes,<br>Beirut prints,<br>Baghdad reads."</em></div>
+        <div class="cap">2.4 · House of Wisdom, paper from China, 794</div>
+      </div>
+
+      <div class="recommend" style="margin-top: 22px;">
+        <h4>★ Eat This</h4>
+        <p>A meal for two. Roast meat, wheat bread dripping with sauce, an almond pie, iced water from the mountains, and a cup of Shiraz. Total <b>20 daniqs</b>, well within budget for any Tempora client travelling on the silver-tier package.</p>
+      </div>
+
+      <div class="tip" style="margin-top: 18px;">
+        <h4>FIELD TIP &nbsp;·&nbsp; THE PERFUMER'S STALL</h4>
+        <p>Bring a small empty vial. The perfumer near the Karkh gate sells ten different scented waters. Ask for orange-flower, then for sweet-scented willow. Both will outlive you, and both can be smuggled home in your sleeve if the customs officer is in a good mood.</p>
+      </div>
+
+      <blockquote class="pq" style="margin-top: 22px;">
+        "Sticky smiles, ruby goblets, and the new smell of paper everywhere."
+        <footer>A field reporter, returned 798 CE</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+
+<!-- ERA 4 - Crimson Tide -->
+<section class="era page" id="era-1258" data-year="1258 CE" data-era="Sieges" data-class="ugly">
+  <div class="era-tag">
+    <div class="number">IV.</div>
+    <div class="meta">ERA 04 OF 10 &nbsp;·&nbsp; THE CRIMSON TIDE</div>
+  </div>
+
+  <div class="era-head">
+    <div>
+      <span class="label kicker">811 CE through 1401 CE &nbsp;·&nbsp; Six centuries of bad weather</span>
+      <h2>Naphtha, ink, and ninety thousand skulls</h2>
+      <div class="era-loc">
+        <span><b>WHEN</b> &nbsp; 811 to 1401 CE</span>
+        <span><b>WHERE</b> &nbsp; All quarters, all bridges, all four gates</span>
+        <span><b>VIBE</b> &nbsp; Do not, under any circumstances, visit</span>
+      </div>
+    </div>
+    <div>
+      <p class="deck">Three appalling moments deserve your awareness, and your absolute avoidance. We list them so that you may calibrate your time-machine to skip past them and not, under any circumstances, accidentally arrive in their middle.</p>
+    </div>
+  </div>
+
+  <div class="era-grid">
+    <div class="col-12">
+      <div class="photo ph-banner tone-ink">
+        <svg viewBox="0 0 800 343" preserveAspectRatio="xMidYMid slice">
+          <rect width="800" height="343" fill="#1a1410"/>
+          <!-- river of ink -->
+          <path d="M0 240 Q 200 220 400 245 T 800 230 L 800 343 L 0 343 Z" fill="#000"/>
+          <path d="M0 250 L 800 245" fill="none" stroke="#c9a04a" stroke-width="0.8" opacity=".4"/>
+          <!-- towers of skulls -->
+          <g fill="#f3ead6" opacity="0.85">
+            <circle cx="120" cy="200" r="6"/><circle cx="135" cy="195" r="6"/><circle cx="120" cy="185" r="6"/><circle cx="135" cy="180" r="6"/><circle cx="120" cy="170" r="6"/>
+            <circle cx="280" cy="210" r="6"/><circle cx="295" cy="205" r="6"/><circle cx="280" cy="195" r="6"/><circle cx="295" cy="190" r="6"/><circle cx="280" cy="180" r="6"/><circle cx="295" cy="175" r="6"/>
+            <circle cx="500" cy="205" r="6"/><circle cx="515" cy="200" r="6"/><circle cx="500" cy="190" r="6"/><circle cx="515" cy="185" r="6"/>
+            <circle cx="660" cy="215" r="6"/><circle cx="675" cy="210" r="6"/><circle cx="660" cy="200" r="6"/><circle cx="675" cy="195" r="6"/><circle cx="660" cy="185" r="6"/>
+          </g>
+          <!-- smoke -->
+          <g fill="#b8472b" opacity="0.4">
+            <ellipse cx="200" cy="100" rx="80" ry="20"/>
+            <ellipse cx="430" cy="80" rx="120" ry="22"/>
+            <ellipse cx="660" cy="95" rx="90" ry="18"/>
+          </g>
+          <text x="400" y="50" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="22" fill="#c9a04a">The Tigris ran black with ink, then red with men.</text>
+        </svg>
+        <div class="cap">PLATE 4.1 &nbsp;·&nbsp; KALA CHIYA, MAIDAN SQUARE, AFTER TAMERLANE 1401</div>
+        <div class="corner" style="background: var(--warn);">DANGER</div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="avoid">
+        <h4>✕ Siege of 811–813</h4>
+        <p>The fratricidal war between Amin and Mamun. Mangonels hurl stones <em>like men's heads</em>, the Harbiya quarter is choked with naphtha smoke, and the Tigris becomes a repository for the decapitated. The smell of burning palm groves carries for miles.</p>
+        <span class="severity">Severity 09 / 10</span>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="avoid">
+        <h4>✕ Mongol Sack, January 1258</h4>
+        <p>Hulagu Khan ends the Abbasid Caliphate in a fortnight. Up to two million dead. The libraries of the House of Wisdom are emptied into the river. Witnesses describe the Tigris running <em>black with ink</em> for days, then red.</p>
+        <span class="severity">Severity 10 / 10</span>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="avoid">
+        <h4>✕ Tamerlane, 1401</h4>
+        <p>Each soldier is ordered to bring his commander a head. The result, called <em>Kala Chiya</em> by locals, is 120 towers built from 90,000 severed skulls, ringed around Maidan Square. There is nothing here for you. Move along.</p>
+        <span class="severity">Severity 10 / 10</span>
+      </div>
+    </div>
+
+    <div class="col-12" style="margin-top: 24px;">
+      <div class="sense smell">
+        <h4>◑ The smell of these centuries</h4>
+        <p>Acrid woodsmoke. The metallic tang of blood. <em>Stagnant floodwater</em> when the Isa Canal breached its banks. The peculiar leathery scent of bodies partially embalmed in resin and hung on the three pontoon bridges as a deterrent of state justice. We mention this only because the historian must, and because no time traveler should ever experience it.</p>
+      </div>
+      <p style="margin-top: 18px; font-style: italic; font-family: var(--display); font-size: 22px; color: var(--ink-soft);">If your itinerary lands you here, return to the chamber. Tempora Travel will issue a credit, no questions asked.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ERA 5 - Coffeehouses -->
+<section class="era page" id="era-1601" data-year="1601 CE" data-era="Coffeehouses" data-class="good">
+  <div class="era-tag">
+    <div class="number">V.</div>
+    <div class="meta">ERA 05 OF 10 &nbsp;·&nbsp; SHOUTING IS SPEAKING</div>
+  </div>
+
+  <div class="era-head">
+    <div>
+      <span class="label kicker">1601 CE &nbsp;·&nbsp; Ottoman Baghdad</span>
+      <h2>The arrival of coffee, hookahs, and the longest argument of the century</h2>
+      <div class="era-loc">
+        <span><b>WHEN</b> &nbsp; from 1601 onward</span>
+        <span><b>WHERE</b> &nbsp; Coffeehouses across the Ottoman quarters</span>
+        <span><b>VIBE</b> &nbsp; Smoky, intense, friendly</span>
+      </div>
+    </div>
+    <div>
+      <p class="deck">The first Baghdadi coffeehouses open in the early 17th century and have not closed since. The local saying explains everything you need to know about the room you are about to enter. <em>Shouting is speaking</em>.</p>
+    </div>
+  </div>
+
+  <div class="era-grid">
+    <div class="col-6">
+      <div class="photo ph-wide tone-ink">
+        <div class="center-icon"><em>backgammon clatter,<br>hookah bubbles,<br>politics</em></div>
+        <div class="cap">5.1 · Interior of an Ottoman-era coffeehouse, c. 1700</div>
+      </div>
+
+      <div class="stack" style="margin-top: 22px;">
+        <div class="sense">
+          <h4>◐ Sights</h4>
+          <p>Dark, wood-panelled rooms. Men playing beads, bent over backgammon boards. Hookahs taller than children. Walls hung with portraits of poets you have never heard of and saints you have only read about.</p>
+        </div>
+        <div class="sense smell">
+          <h4>◑ Smells</h4>
+          <p>The sharp, bitter aroma of beans roasting in iron pans, cutting through thick clouds of sweet apple-flavoured tobacco smoke. A hint of cardamom in every cup, and a hint of yesterday's argument in every chair.</p>
+        </div>
+        <div class="sense sound">
+          <h4>◒ Sounds</h4>
+          <p>The bubble of water pipes. The clack of backgammon pieces. The voices of three men talking at the same volume about the same topic and somehow understanding each other.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="grid-2">
+        <div class="photo ph-tall tone-terra">
+          <div class="center-icon"><em>قهوة</em></div>
+          <div class="cap">5.2 · Beans, dark and bitter</div>
+        </div>
+        <div class="photo ph-tall tone-gold">
+          <div class="center-icon"><em>shisha</em></div>
+          <div class="cap">5.3 · Apple smoke</div>
+        </div>
+      </div>
+
+      <div class="recommend" style="margin-top: 22px;">
+        <h4>★ Do This</h4>
+        <p>Order a small cup of <em>qahwa</em>, a glass of cold water, and stay for at least an hour. Do not pay attention to the political topic. The argument is recreational. Whoever pays for the next round wins it.</p>
+      </div>
+
+      <div class="tip" style="margin-top: 18px;">
+        <h4>FIELD TIP &nbsp;·&nbsp; ETIQUETTE</h4>
+        <p>Stand when an elder enters. Decline the third cup of coffee with your hand on your heart. The fourth cup is a trap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ERA 6 - Plague -->
+<section class="era page" id="era-1831" data-year="1831 CE" data-era="Great Plague" data-class="ugly">
+  <div class="era-tag">
+    <div class="number">VI.</div>
+    <div class="meta">ERA 06 OF 10 &nbsp;·&nbsp; THE BLACK ODOUR</div>
+  </div>
+
+  <div class="era-head">
+    <div>
+      <span class="label kicker">1831 CE &nbsp;·&nbsp; The Great Plague</span>
+      <h2>An empty city and a smell that will follow you home</h2>
+      <div class="era-loc">
+        <span><b>WHEN</b> &nbsp; spring of 1831 CE</span>
+        <span><b>WHERE</b> &nbsp; Every quarter, but mostly the river districts</span>
+        <span><b>VIBE</b> &nbsp; Not under any circumstances</span>
+      </div>
+    </div>
+    <div>
+      <p class="deck">We mention this year only so that you may avoid it. Even an inoculated traveler cannot fully escape the somatic memory of an entire city in mourning.</p>
+    </div>
+  </div>
+
+  <div class="era-grid">
+    <div class="col-7">
+      <p>The 1831 outbreak emptied the streets within a fortnight. Physicians of the era described the affliction by what they called its "black odour", a foul scent of corrupt blood that the public mind came to associate with the very transmission of death. There is no recommended itinerary for this year.</p>
+
+      <div class="avoid" style="margin-top: 22px;">
+        <h4>✕ Hard Skip</h4>
+        <p>Avoid every date between February and August of 1831. Avoid any year ending in epidemic regardless of period. This includes outbreaks of cholera, smallpox, and the recurring fevers of the lower Tigris. Tempora Travel disclaims all responsibility for travelers who insist.</p>
+        <span class="severity">Severity 10 / 10</span>
+      </div>
+    </div>
+
+    <div class="col-5">
+      <div class="photo ph-poster tone-ink">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet">
+          <rect width="400" height="500" fill="#1a1410"/>
+          <!-- empty street -->
+          <path d="M50 500 L 180 200 L 220 200 L 350 500 Z" fill="#4a3f33" opacity=".5"/>
+          <line x1="180" y1="200" x2="220" y2="200" stroke="#8a7c66" stroke-width="1"/>
+          <!-- archway -->
+          <path d="M170 240 L 170 180 Q 200 150 230 180 L 230 240 Z" fill="none" stroke="#8a7c66" stroke-width="1.5"/>
+          <!-- crow -->
+          <g fill="#f3ead6" opacity=".7">
+            <ellipse cx="320" cy="120" rx="14" ry="6"/>
+            <ellipse cx="312" cy="116" rx="6" ry="4"/>
+          </g>
+          <text x="200" y="80" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="20" fill="#c9a04a">an empty street</text>
+        </svg>
+        <div class="cap">6.1 · A side street in Karkh, depopulated, March 1831</div>
+        <div class="corner" style="background: var(--warn);">HAZARD</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ERA 7 - Rashid Street -->
+<section class="era page" id="era-1916" data-year="1916 CE" data-era="Rashid Street" data-class="bad">
+  <div class="era-tag">
+    <div class="number">VII.</div>
+    <div class="meta">ERA 07 OF 10 &nbsp;·&nbsp; THE DRAGGING OF THE ROPE</div>
+  </div>
+
+  <div class="era-head">
+    <div>
+      <span class="label kicker">1916 CE through 1958 CE &nbsp;·&nbsp; Rashid Street and the modern labyrinth</span>
+      <h2>Pastrami, perfume, neon, and the staccato click of barber's scissors</h2>
+      <div class="era-loc">
+        <span><b>WHEN</b> &nbsp; 1916 to 1958 CE</span>
+        <span><b>WHERE</b> &nbsp; Al-Rashid Street, Taht el Takia, Shorja</span>
+        <span><b>VIBE</b> &nbsp; Cosmopolitan, mid-century, contradictory</span>
+      </div>
+    </div>
+    <div>
+      <p class="deck">In 1916 the Ottoman military stretches two ropes across the city and demolishes everything in between. The result is Rashid Street. The poor lose their homes, the wealthy keep theirs, and the smell of pulverised masonry hangs in the air for months. From this rubble grows the most glamorous boulevard in the Arab world.</p>
+    </div>
+  </div>
+
+  <div class="era-grid">
+    <div class="col-7">
+      <div class="photo ph-wide tone-gold">
+        <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice">
+          <rect width="800" height="450" fill="#c9a04a"/>
+          <!-- street perspective -->
+          <path d="M0 450 L 350 200 L 450 200 L 800 450 Z" fill="#9a7826"/>
+          <line x1="400" y1="200" x2="400" y2="450" stroke="#1a1410" stroke-width="1" stroke-dasharray="8 8"/>
+          <!-- buildings -->
+          <g fill="#1a1410" opacity=".85">
+            <rect x="20" y="160" width="320" height="90"/>
+            <rect x="460" y="160" width="320" height="90"/>
+          </g>
+          <!-- neon signs -->
+          <g fill="#b8472b">
+            <rect x="40" y="180" width="80" height="14"/>
+            <rect x="180" y="180" width="100" height="14"/>
+            <rect x="500" y="180" width="120" height="14"/>
+            <rect x="660" y="180" width="80" height="14"/>
+          </g>
+          <!-- arches -->
+          <g fill="none" stroke="#1a1410" stroke-width="1.4">
+            <path d="M 20 250 Q 35 230 50 250"/><path d="M 80 250 Q 95 230 110 250"/><path d="M 140 250 Q 155 230 170 250"/>
+            <path d="M 200 250 Q 215 230 230 250"/><path d="M 260 250 Q 275 230 290 250"/>
+            <path d="M 460 250 Q 475 230 490 250"/><path d="M 520 250 Q 535 230 550 250"/>
+            <path d="M 580 250 Q 595 230 610 250"/><path d="M 640 250 Q 655 230 670 250"/>
+            <path d="M 700 250 Q 715 230 730 250"/>
+          </g>
+          <!-- traffic light -->
+          <circle cx="400" cy="190" r="6" fill="#b8472b"/>
+          <text x="400" y="80" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="28" fill="#1a1410">Al-Rashid Street, c. 1956</text>
+        </svg>
+        <div class="cap">7.1 · The first traffic light in Iraq is installed here, 1956</div>
+      </div>
+
+      <div class="stack" style="margin-top: 22px;">
+        <div class="sense">
+          <h4>◐ Sights</h4>
+          <p>Orosdi-Back's Harrods-style window displays. The first neon signs in the country, glowing red after dusk. Boutiques selling French perfumes and Egyptian fabrics. The arched colonnades of the boulevard, repeating into a long perspective. Gramophones in cafe windows, playing the singers Salima Murad and Munira al-Mahdiyya.</p>
+        </div>
+        <div class="sense smell">
+          <h4>◑ Smells</h4>
+          <p>Freshly ground coffee. The pungent, spicy scent of <em>basterma</em>, smoked beef hung in delicatessen windows. Arshak's expensive French perfume wafting from the door of his portrait studio. The leaded petrol of imported London double-decker buses, against your better judgement, smelling somehow exciting.</p>
+        </div>
+        <div class="sense sound">
+          <h4>◒ Sounds</h4>
+          <p>The staccato clicking of barbers' scissors. The long raspberries blown by coachmen like the legendary <em>Sheykhan</em>. The clack of backgammon pieces in Al Zahawi cafe. A live broadcast of the Iraqi <em>maqam</em> performed by Yusuf Za'rur, drifting from a radio shop.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-5">
+      <div class="grid-2">
+        <div class="photo ph-tall tone-terra">
+          <div class="center-icon"><em>basterma</em></div>
+          <div class="cap">7.2 · Smoked beef</div>
+        </div>
+        <div class="photo ph-tall tone-dome">
+          <div class="center-icon"><em>maqam</em></div>
+          <div class="cap">7.3 · Salima Murad on the radio</div>
+        </div>
+      </div>
+
+      <div class="recommend" style="margin-top: 22px;">
+        <h4>★ Do This (1948)</h4>
+        <p>Take a window table at Cafe Brazilian on a Thursday evening. Order coffee, listen to the radio, and watch the boulevard fill with families heading to the cinemas. Tip generously. The waiter will remember.</p>
+      </div>
+
+      <div class="avoid" style="margin-top: 18px;">
+        <h4>✕ Avoid</h4>
+        <p>Lingering in central Baghdad on 14 July 1958. The "ugly" transition of the coup unfolds quickly, and the very streets that hosted royal parades become something far less hospitable within hours.</p>
+        <span class="severity">Severity 08 / 10</span>
+      </div>
+
+      <div class="tip" style="margin-top: 18px;">
+        <h4>HISTORICAL FOOTNOTE</h4>
+        <p>Iraq's first traffic light is installed at the corner of Rashid Street in 1956. Locals stop to watch it change for the first three weeks. So should you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ERA 8 - Oil Boom -->
+<section class="era page" id="era-1970" data-year="1970s" data-era="Oil Boom" data-class="bad">
+  <div class="era-tag">
+    <div class="number">VIII.</div>
+    <div class="meta">ERA 08 OF 10 &nbsp;·&nbsp; OIL, FISH, AND CONTRADICTION</div>
+  </div>
+
+  <div class="era-head">
+    <div>
+      <span class="label kicker">1970s &nbsp;·&nbsp; The boom years</span>
+      <h2>Masgouf grilling on the river, while the sarifa neighborhoods drown in their own water</h2>
+      <div class="era-loc">
+        <span><b>WHEN</b> &nbsp; 1968 to 1980 CE</span>
+        <span><b>WHERE</b> &nbsp; Abu Nuwas riverside, outer ring of Sadr City and Revolution City</span>
+        <span><b>VIBE</b> &nbsp; Glittering centre, painful periphery</span>
+      </div>
+    </div>
+    <div>
+      <p class="deck">Oil money rebuilds the centre in marble and concrete. Ten kilometres away, tens of thousands live in <em>sarifa</em> reed-and-mud houses on the city's edge. Both districts share the same sky. Both share the same Tigris. The smells are very different.</p>
+    </div>
+  </div>
+
+  <div class="era-grid">
+    <div class="col-7">
+      <div class="photo ph-wide tone-terra">
+        <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice">
+          <rect width="800" height="450" fill="#b8472b"/>
+          <!-- grill -->
+          <g>
+            <rect x="200" y="250" width="400" height="20" fill="#1a1410"/>
+            <g stroke="#1a1410" stroke-width="2">
+              <line x1="220" y1="270" x2="220" y2="340"/><line x1="580" y1="270" x2="580" y2="340"/>
+            </g>
+            <!-- fish, splayed -->
+            <g fill="#f3ead6">
+              <path d="M260 220 Q 300 200 380 220 Q 360 230 380 240 Q 300 260 260 240 Z"/>
+              <path d="M420 220 Q 460 200 540 220 Q 520 230 540 240 Q 460 260 420 240 Z"/>
+            </g>
+            <!-- flames -->
+            <g fill="#c9a04a" opacity=".9">
+              <path d="M250 280 Q 260 250 270 280"/>
+              <path d="M310 285 Q 320 245 330 285"/>
+              <path d="M380 280 Q 390 250 400 280"/>
+              <path d="M460 285 Q 470 245 480 285"/>
+              <path d="M540 280 Q 550 250 560 280"/>
+            </g>
+          </g>
+          <text x="400" y="100" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="40" fill="#f3ead6">Masgouf, the national dish</text>
+          <text x="400" y="130" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#f3ead6" letter-spacing=".2em">SPLIT, SALTED, SLOW-GRILLED OVER ORANGEWOOD</text>
+        </svg>
+        <div class="cap">8.1 · Masgouf on the Abu Nuwas riverbank, summer evening</div>
+      </div>
+
+      <div class="stack" style="margin-top: 22px;">
+        <div class="sense">
+          <h4>◐ Sights</h4>
+          <p>Wide avenues filled with imported luxury vehicles. A flourishing intellectual cafe culture along Abu Nuwas Street. Multi-generational families feasting at long damask-covered tables. Public gardens in flower. On the city's outskirts, an ocean of mud-and-reed <em>sarifa</em> houses, in stark visual contrast to the air-conditioned ministries of the centre.</p>
+        </div>
+        <div class="sense smell">
+          <h4>◑ Smells</h4>
+          <p>Grilling <em>masgouf</em>, the river fish split open and slow-cooked over orangewood, served with flatbreads and a mango sauce that will redefine your understanding of mango. Public garden jasmine in bloom. The leaded gasoline of state-imported sedans. In the <em>sarifa</em> neighborhoods, raw sewage, damp earth, and animal husbandry, all of it unfiltered by infrastructure.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-5">
+      <div class="photo ph-tall tone-ink">
+        <div class="center-icon"><em>"the air is<br>two cities"</em></div>
+        <div class="cap">8.2 · Centre and periphery, same horizon</div>
+      </div>
+
+      <div class="recommend" style="margin-top: 22px;">
+        <h4>★ Eat This</h4>
+        <p>Masgouf at sunset on Abu Nuwas Street. The fish is split open like a book, salted, then propped vertically beside an open fire of orangewood. It cooks for an hour. You wait. You will not regret waiting.</p>
+      </div>
+
+      <div class="avoid" style="margin-top: 18px;">
+        <h4>✕ Avoid</h4>
+        <p>Walking into the <em>sarifa</em> neighborhoods at night without a guide. Conditions are difficult and politely guarded. Any unsolicited photography will be received as an insult.</p>
+        <span class="severity">Severity 04 / 10</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ERA 9 - War & Resilience -->
+<section class="era page" id="era-1980" data-year="1980s" data-era="War & Resilience" data-class="ugly">
+  <div class="era-tag">
+    <div class="number">IX.</div>
+    <div class="meta">ERA 09 OF 10 &nbsp;·&nbsp; THE SCREECHING VIOLIN</div>
+  </div>
+
+  <div class="era-head">
+    <div>
+      <span class="label kicker">1980 CE through 2007 CE &nbsp;·&nbsp; Wars, sanctions, and one bookshop that refused</span>
+      <h2>Air-raid sirens, blast walls, and the smell of charred books</h2>
+      <div class="era-loc">
+        <span><b>WHEN</b> &nbsp; 1980 to 2007 CE</span>
+        <span><b>WHERE</b> &nbsp; Citywide. Mutanabbi Street, especially.</span>
+        <span><b>VIBE</b> &nbsp; Witness only, do not engage</span>
+      </div>
+    </div>
+    <div>
+      <p class="deck">A single generation lives through three wars and a decade of sanctions. We list the sensory landmarks of the era so that future travelers may understand the scale of what was endured, and what survived anyway.</p>
+    </div>
+  </div>
+
+  <div class="era-grid">
+    <div class="col-12">
+      <div class="photo ph-banner tone-ink">
+        <div class="center-icon" style="color:#c9a04a"><em>"a screeching violin<br>that plays mercilessly<br>all over one's body"</em></div>
+        <div class="cap">9.1 · From a memoir of Baghdad, 1985, on the sound of the red alert siren</div>
+        <div class="corner" style="background: var(--warn);">WITNESS ONLY</div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="stack">
+        <div class="sense">
+          <h4>◐ 1980s &nbsp;·&nbsp; Iran-Iraq War</h4>
+          <p>Sights of anti-aircraft tracer fire arcing across the night sky. Citizens huddled in dark interior hallways reading novels by candlelight. The somatic, body-shaking concussion of distant strikes felt as much as heard.</p>
+        </div>
+        <div class="sense smell">
+          <h4>◑ April 2003 &nbsp;·&nbsp; The Invasion</h4>
+          <p>The smell of cordite, pulverised concrete, and burning documents from looted ministries. Helicopters, in the words of one Baghdadi, hanging low like <em>angry wasps</em>. Rooms with no air conditioning because the grid is gone.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="stack">
+        <div class="sense sound">
+          <h4>◒ 2006-2007 &nbsp;·&nbsp; Sectarian Walls</h4>
+          <p>Three-mile-long grey concrete blast walls rise overnight, physically amputating neighborhoods from one another. Old districts like Taht el Takia become deserted warrens governed by, in one journalist's phrase, a febrile atmosphere of <em>justified paranoia</em>.</p>
+        </div>
+        <div class="sense">
+          <h4>◐ 5 March 2007 &nbsp;·&nbsp; Mutanabbi Street</h4>
+          <p>A suicide bomb detonates in the heart of the book market. Charred pages drift down the alley like grey leaves. Within months, booksellers are back. Within a year, Shahbandar Coffee-House reopens. The street insists on existing.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12" style="margin-top: 24px;">
+      <blockquote class="pq" style="text-align:center; border-left: none; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 28px 22px;">
+        "Cairo writes, Beirut prints, and Baghdad reads."
+        <footer>Arab proverb, last verified Friday morning at the Mutanabbi book market</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+
+<!-- ERA 10 - Modern Revival -->
+<section class="era page" id="era-2024" data-year="2026 CE" data-era="Modern Revival" data-class="good">
+  <div class="era-tag">
+    <div class="number">X.</div>
+    <div class="meta">ERA 10 OF 10 &nbsp;·&nbsp; THE INTELLECTUAL LUNGS</div>
+  </div>
+
+  <div class="era-head">
+    <div>
+      <span class="label kicker">2024 CE to present &nbsp;·&nbsp; The present tense</span>
+      <h2>The smell of fresh books, sweet sheesha, and grilled fish, all at once</h2>
+      <div class="era-loc">
+        <span><b>WHEN</b> &nbsp; March 2026 CE, give or take a Friday</span>
+        <span><b>WHERE</b> &nbsp; Mutanabbi Street, Souq al-Safafeer, Abu Nuwas</span>
+        <span><b>VIBE</b> &nbsp; Cautiously cheerful</span>
+      </div>
+    </div>
+    <div>
+      <p class="deck">Baghdad in our own century is the city refusing to disappear. You will hear coppersmith hammers ringing in alleys older than your country. You will smell paper and tea on the same breeze. You will see old men by the river at dusk, drinking tea, exactly as their ancestors did.</p>
+    </div>
+  </div>
+
+  <div class="era-grid">
+    <div class="col-4">
+      <div class="photo ph-tall tone-dome">
+        <div class="center-icon"><em>Mutanabbi Street,<br>Friday morning</em></div>
+        <div class="cap">10.1 · The book market</div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="photo ph-tall tone-gold">
+        <div class="center-icon"><em>Souq al-Safafeer,<br>copper hammers</em></div>
+        <div class="cap">10.2 · The 8th-century coppersmith souk</div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="photo ph-tall tone-terra">
+        <div class="center-icon"><em>Tea by the Tigris,<br>dusk</em></div>
+        <div class="cap">10.3 · An old man, a small glass, a long view</div>
+      </div>
+    </div>
+
+    <div class="col-7" style="margin-top: 24px;">
+      <div class="stack">
+        <div class="sense">
+          <h4>◐ Sights</h4>
+          <p>Hundreds of booksellers lining Al-Mutanabbi Street, with photocopied editions stacked beside hard-to-find originals. The Al-Shaheed Monument's turquoise dome split down the centre, an eternal flame at its core. Old men sipping black tea beside the river at dusk. The interior of Shahbandar Cafe, walls covered in memorabilia of a hundred years of Baghdadi political life.</p>
+        </div>
+        <div class="sense smell">
+          <h4>◑ Smells</h4>
+          <p>Sweet sheesha smoke. Piping hot black tea served in <em>istikans</em>, small tulip-shaped glasses. The perennial aroma of grilled <em>masgouf</em> drifting up from Abu Nuwas. Aging paper, ink, and the faint vinegar of book glue. Pomegranate and tamarind juice from the Haji Zbala stand.</p>
+        </div>
+        <div class="sense sound">
+          <h4>◒ Sounds</h4>
+          <p>The rhythmic, melodic ding of coppersmith hammers, a sound continuous for over a thousand years. Poetic recitations from a microphone strapped to a chair. The small <em>tink</em> of a teaspoon against an istikan. The laughter of children playing by the river.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-5" style="margin-top: 24px;">
+      <div class="recommend">
+        <h4>★ Friday Itinerary</h4>
+        <p>Begin at sunrise on Mutanabbi Street. Browse for an hour. Buy something you cannot read yet. Walk three blocks to Souq al-Safafeer for a copper tray. Stop at Shahbandar for tea and one cigarette of someone else's tobacco. Cross to Abu Nuwas for masgouf at sunset. Sleep on the train home.</p>
+      </div>
+
+      <div class="tip" style="margin-top: 18px;">
+        <h4>FIELD TIP &nbsp;·&nbsp; THE FOURTH GLASS OF TEA</h4>
+        <p>Refuse it politely once. Accept it on the second offer. The hospitality of Baghdad is a centuries-deep tradition and your refusal will be taken as a request to argue.</p>
+      </div>
+
+      <blockquote class="pq" style="margin-top: 18px; font-size: 22px;">
+        "The city refuses to die. Bring an empty bag."
+        <footer>A Tempora bookseller, March 2026</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GOOD / BAD / UGLY AUDIT
+     ============================================================ -->
+<section class="audit" id="audit">
+  <div class="page">
+    <span class="label">§ 11 &nbsp;·&nbsp; The Sensorial Audit</span>
+    <h2 style="margin-top: 8px;"><em>The good, the bad, and the ugly</em></h2>
+    <p style="font-family: var(--display); font-style: italic; font-size: 22px; max-width: 60ch; margin-top: 16px; color: var(--paper);">A cross-century summary, for the chrononaut in a hurry. If you can only remember three lists, remember these.</p>
+
+    <div class="audit-grid">
+      <div class="audit-col good">
+        <span class="badge">★ The Good</span>
+        <h3>Worth crossing centuries for</h3>
+        <ul>
+          <li><b>800s · Karkh perfumer</b>Rosewater, orange-flower, willow-flower, musk, ambergris. Bring vials.</li>
+          <li><b>800s · House of Wisdom</b>The smell of new paper. Aristotle in four languages.</li>
+          <li><b>1700s · Coffeehouse</b>Apple smoke, dark coffee, an argument that lasts an hour and ends in friendship.</li>
+          <li><b>1948 · Rashid Street</b>French perfume, basterma, neon, and a barber who knows your name.</li>
+          <li><b>1972 · Abu Nuwas</b>Masgouf at sunset. Mango sauce. Public garden jasmine.</li>
+          <li><b>2026 · Mutanabbi Friday</b>Aging paper, hot tea, coppersmith hammers a thousand years old.</li>
+          <li><b>Any era · The Tigris at dusk</b>Old men, small glasses, the river bending southeast.</li>
+        </ul>
+      </div>
+
+      <div class="audit-col bad">
+        <span class="badge">⚠ The Bad</span>
+        <h3>Inconvenient, but survivable</h3>
+        <ul>
+          <li><b>Year-round · The heat</b>50°C in August. The locals call it head-roasting and they are not metaphorical.</li>
+          <li><b>1916 · The Rope</b>Pulverised masonry hangs in the air for months. Wear a scarf.</li>
+          <li><b>1950s · Sarifa contrast</b>Raw sewage on the periphery, air conditioning in the centre, both within ten kilometres.</li>
+          <li><b>1970s · Leaded petrol</b>State-imported sedans burn fuel that will tickle your throat in six different ways.</li>
+          <li><b>2015 · The smog</b>A grey-brown layer over the river, blending diesel with seasonal dust storms.</li>
+          <li><b>Camel stables</b>In every century. Smell them once. Then walk upwind, forever.</li>
+          <li><b>Sanitation</b>The water table is high and the pumps fail. Wear waterproof shoes after rain.</li>
+        </ul>
+      </div>
+
+      <div class="audit-col ugly">
+        <span class="badge">✕ The Ugly</span>
+        <h3>Hard skip, no exceptions</h3>
+        <ul>
+          <li><b>811-813 · The Fourth Fitna</b>Mangonels, naphtha smoke, decapitated bodies in the river.</li>
+          <li><b>January 1258 · Mongol Sack</b>The Tigris runs black with ink, then red. Up to two million dead.</li>
+          <li><b>1401 · Tamerlane's Towers</b>Ninety thousand skulls in 120 towers around Maidan Square.</li>
+          <li><b>1831 · The Great Plague</b>The "black odour" of corrupt blood, an empty city, no recommended itinerary.</li>
+          <li><b>1985 · Red alert sirens</b>A sound that plays inside your sternum, not in your ear.</li>
+          <li><b>April 2003 · Shock and awe</b>Cordite, broken concrete, and a sky full of <em>angry wasps</em>.</li>
+          <li><b>2006 · The blast walls</b>Grey concrete amputations of historic neighborhoods. Photograph nothing.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FIELD KIT (currency + phrasebook)
+     ============================================================ -->
+<section class="page" id="kit">
+  <span class="label" style="color: var(--terra);">§ 12 &nbsp;·&nbsp; Field Kit</span>
+  <h2 style="margin-top: 8px;"><em>Currency, phrases, and small useful nonsense</em></h2>
+
+  <div class="field-kit">
+    <div class="kit">
+      <div class="kit-head">
+        <h4>Currency &amp; prices</h4>
+        <span>VERIFIED 9TH-CENTURY DATA</span>
+      </div>
+      <div class="kit-body">
+        <div class="kit-row">
+          <div class="term">1 silver dirham</div>
+          <div class="desc"><b>3 grams of silver</b>. Standard daily wage for a porter. Buys a flatbread, a fish, and a smile.</div>
+        </div>
+        <div class="kit-row">
+          <div class="term">1 gold dinar</div>
+          <div class="desc">Roughly 20 dirhams. Saved for taxes, dowries, and bribes of an unspecified ceremonial nature.</div>
+        </div>
+        <div class="kit-row">
+          <div class="term">2 kirats</div>
+          <div class="desc">A single ride across the city by donkey from the Karkh stand. Tip the donkey-keeper, not the donkey.</div>
+        </div>
+        <div class="kit-row">
+          <div class="term">20 daniqs</div>
+          <div class="desc">A meal for two. <b>Roast meat, sauced bread, almond pie, iced water</b>. Highest possible value-per-daniq in the empire.</div>
+        </div>
+        <div class="kit-row">
+          <div class="term">1 small glass of tea</div>
+          <div class="desc">Free, in any century, in any cafe, after the third polite refusal of the fourth glass.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit">
+      <div class="kit-head">
+        <h4>Useful phrases &amp; smells</h4>
+        <span>POCKET REFERENCE</span>
+      </div>
+      <div class="kit-body">
+        <div class="kit-row">
+          <div class="term">As-salaamu alaykum</div>
+          <div class="desc"><b>Peace be upon you.</b> Universal greeting. Works in 762 and 2026.</div>
+        </div>
+        <div class="kit-row">
+          <div class="term">Shukran</div>
+          <div class="desc"><b>Thank you.</b> Use after every cup of tea. Use even before the cup of tea.</div>
+        </div>
+        <div class="kit-row">
+          <div class="term">La, shukran</div>
+          <div class="desc"><b>No, thank you.</b> Required for the fourth cup of tea. Will be ignored.</div>
+        </div>
+        <div class="kit-row">
+          <div class="term">Wayn al-souq?</div>
+          <div class="desc"><b>Where is the market?</b> The answer is always "two streets that way", whichever way you are facing.</div>
+        </div>
+        <div class="kit-row">
+          <div class="term">Yallah!</div>
+          <div class="desc"><b>Let's go.</b> Said with affection by anyone who has waited longer than ninety seconds for anything.</div>
+        </div>
+        <div class="kit-row">
+          <div class="term">Habibi</div>
+          <div class="desc"><b>My dear.</b> Used by waiters, taxi drivers, and old friends. Use sparingly. Or do not.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ITINERARIES (packages)
+     ============================================================ -->
+<section class="page" id="packages" style="padding-bottom: 80px;">
+  <span class="label" style="color: var(--terra);">§ 13 &nbsp;·&nbsp; Recommended Packages</span>
+  <h2 style="margin-top: 8px;"><em>Three itineraries for three appetites</em></h2>
+  <p style="font-family: var(--display); font-style: italic; font-size: 22px; max-width: 56ch; margin-top: 12px; color: var(--ink-soft);">All packages include round-trip chronotransit, period-appropriate wardrobe, and a sealed envelope of small change in dirhams.</p>
+
+  <div class="itin">
+    <div class="itin-card">
+      <div class="photo tone-gold">
+        <div class="center-icon"><em>The Scholar</em></div>
+      </div>
+      <div class="body">
+        <span class="label">Package A &nbsp;·&nbsp; The Scholar</span>
+        <h3>Paper, ink, perfume</h3>
+        <div class="duration">3 days &nbsp;·&nbsp; arrives spring 798 CE</div>
+        <p>One full day at the House of Wisdom watching translation in progress. An afternoon at the Karkh perfumer with two empty vials supplied. A sunset banquet in the third tier of the royal precinct. Returns through 1601 for a single coffeehouse evening on the way home.</p>
+        <div class="price">2,400 chrononotes <small>per traveler</small></div>
+      </div>
+    </div>
+
+    <div class="itin-card">
+      <div class="photo tone-terra">
+        <div class="center-icon"><em>The Gourmand</em></div>
+      </div>
+      <div class="body">
+        <span class="label">Package B &nbsp;·&nbsp; The Gourmand</span>
+        <h3>A meal across centuries</h3>
+        <div class="duration">5 days &nbsp;·&nbsp; arrivals 798, 1948, 1972, 2026</div>
+        <p>Caliphal banquet. Cafe Brazilian on Rashid Street, 1948. Masgouf on Abu Nuwas, 1972 and 2026. Pomegranate juice at Haji Zbala. Tea at Shahbandar. One unscheduled stop at a coppersmith for a tray.</p>
+        <div class="price">3,800 chrononotes <small>per traveler</small></div>
+      </div>
+    </div>
+
+    <div class="itin-card">
+      <div class="photo tone-dome">
+        <div class="center-icon"><em>The Listener</em></div>
+      </div>
+      <div class="body">
+        <span class="label">Package C &nbsp;·&nbsp; The Listener</span>
+        <h3>Maqam, hammers, hookah, river</h3>
+        <div class="duration">4 days &nbsp;·&nbsp; arrivals 1936, 1948, 2026</div>
+        <p>An evening of Iraqi <em>maqam</em> by Yusuf Za'rur in the Jewish quarter. A Salima Murad radio broadcast at Al Zahawi cafe. The coppersmith hammers of Souq al-Safafeer at dawn. The Tigris at dusk, three nights in a row.</p>
+        <div class="price">3,200 chrononotes <small>per traveler</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     COLOPHON / FOOTER
+     ============================================================ -->
+<footer class="colophon">
+  <div class="page">
+    <div class="colo-grid">
+      <div>
+        <h4>About this Field Guide</h4>
+        <p>Compiled by the Bureau of Temporal Tourism on commission from Tempora Travel Co., from notes of returning travelers, the medieval geographers, the chronicles of Yakubi, the journal of Carsten Niebuhr, and the everyday testimony of Baghdadi grandmothers. Errors are the editor's. The smells are nobody's.</p>
+        <p>All photographs in this edition are provisional. Replace with your own at leisure.</p>
+      </div>
+      <div>
+        <h4>Tempora Travel Co.</h4>
+        <p>Founded 1893. Chartered for chrononautical excursions across all permitted centuries. We do not transport weapons, anachronistic technology, large dogs, or strong opinions.</p>
+        <p><strong>Field Office</strong><br>Beneath the second arch, Mutanabbi Street, present tense.</p>
+      </div>
+      <div>
+        <h4>Disclaimers</h4>
+        <p>Tempora Travel Co. assumes no liability for sieges, pestilence, fire, sectarian unrest, sandstorms, conscription, romantic entanglement with members of the Caliph's court, or the loss of the second-best pair of slippers.</p>
+        <p>Travelers are reminded that history is observed, never edited.</p>
+      </div>
+    </div>
+
+    <div class="colo-bottom">
+      <div>FIELD GUIDE 03 &nbsp;·&nbsp; BAGHDAD &nbsp;·&nbsp; PRINTED 2026 CE</div>
+      <div>SET IN CORMORANT GARAMOND, SOURCE SERIF 4, AND JETBRAINS MONO</div>
+      <div>© BUREAU OF TEMPORAL TOURISM</div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script>
+  // Build timeline stops from the era sections.
+  const eras = Array.from(document.querySelectorAll('.era'));
+  const stopsEl = document.getElementById('tstops');
+
+  const colorFor = (cls) => {
+    if (cls === 'good') return '#9bd1a8';
+    if (cls === 'bad')  return '#c9a04a';
+    if (cls === 'ugly') return '#e58a76';
+    return '#f3ead6';
+  };
+
+  eras.forEach((era) => {
+    const id = era.id;
+    const yr = era.dataset.year;
+    const label = era.dataset.era;
+    const cls = era.dataset.class;
+    const btn = document.createElement('button');
+    btn.className = 'tstop';
+    btn.dataset.target = id;
+    btn.innerHTML = `
+      <div class="dot" style="background:${colorFor(cls)}"></div>
+      <div class="yr">${yr}</div>
+      <div>${label}</div>
+    `;
+    btn.addEventListener('click', () => {
+      const el = document.getElementById(id);
+      if (el){
+        const top = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+    stopsEl.appendChild(btn);
+  });
+
+  // Scrollspy: highlight the current era stop.
+  const stops = Array.from(stopsEl.querySelectorAll('.tstop'));
+  const setActive = () => {
+    const y = window.scrollY + 200;
+    let active = eras[0];
+    for (const e of eras){
+      if (e.offsetTop <= y) active = e;
+    }
+    stops.forEach(s => s.classList.toggle('active', s.dataset.target === active.id));
+    // ensure active stop is visible inside the horizontally scrolling track
+    const activeBtn = stops.find(s => s.classList.contains('active'));
+    if (activeBtn){
+      const track = document.getElementById('ttrack');
+      const tr = activeBtn.getBoundingClientRect();
+      const trackRect = track.getBoundingClientRect();
+      if (tr.left < trackRect.left + 40 || tr.right > trackRect.right - 40){
+        track.scrollTo({
+          left: activeBtn.offsetLeft - track.clientWidth/2 + activeBtn.clientWidth/2,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+  document.addEventListener('scroll', setActive, { passive: true });
+  window.addEventListener('load', setActive);
+</script>
+
+</body>
+</html>

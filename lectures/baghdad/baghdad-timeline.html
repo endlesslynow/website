@@ -29,8 +29,117 @@
         }
     </script>
     <link rel="stylesheet" href="css/baghdad-timeline.css">
+    <style>
+        /* Hatra cross-page banner */
+        .hatra-banner {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 9000;
+            background: rgba(20, 16, 12, 0.92);
+            backdrop-filter: blur(12px) saturate(1.25);
+            -webkit-backdrop-filter: blur(12px) saturate(1.25);
+            border-bottom: 1px solid rgba(212, 184, 134, 0.22);
+            color: #ead7af;
+            font-family: 'Lora', Georgia, serif;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 420ms cubic-bezier(.2,.7,.2,1), opacity 320ms ease;
+            pointer-events: none;
+        }
+        .hatra-banner.is-visible {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .hatra-banner-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 11px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .hatra-banner-nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        .hatra-banner-link {
+            position: relative;
+            color: #d4b886;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            padding: 6px 0;
+            transition: color 180ms ease;
+        }
+        .hatra-banner-link:hover { color: #f6e6c0; }
+        .hatra-banner-link.is-active { color: #f7e8c4; }
+        .hatra-banner-link.is-active::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: -2px;
+            height: 1px;
+            background: #d4b886;
+        }
+        .hatra-banner-langs {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .hatra-banner-lang {
+            background: transparent;
+            border: 1px solid rgba(212, 184, 134, 0.28);
+            color: #d4b886;
+            padding: 6px 14px;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+        }
+        .hatra-banner-lang[lang="ar"] {
+            font-family: 'Amiri', 'Reem Kufi', system-ui, sans-serif;
+            font-size: 16px;
+            letter-spacing: 0;
+            padding: 4px 14px 5px;
+        }
+        .hatra-banner-lang:hover {
+            border-color: rgba(212, 184, 134, 0.6);
+            color: #f6e6c0;
+        }
+        .hatra-banner-lang.is-active {
+            background: rgba(212, 184, 134, 0.18);
+            border-color: rgba(212, 184, 134, 0.6);
+            color: #f7e8c4;
+        }
+        @media (max-width: 640px) {
+            .hatra-banner-inner { padding: 9px 14px; gap: 12px; flex-wrap: wrap; }
+            .hatra-banner-nav { gap: 14px; }
+            .hatra-banner-link { font-size: 12.5px; letter-spacing: 0.03em; }
+            .hatra-banner-lang { padding: 5px 10px; font-size: 12px; }
+            .hatra-banner-lang[lang="ar"] { font-size: 14px; }
+        }
+    </style>
 </head>
 <body class="font-lora antialiased selection:bg-black selection:text-white lang-locked" data-era="era1" style="position:relative;">
+
+    <!-- Hatra cross-page banner -->
+    <div id="hatra-banner" class="hatra-banner" role="navigation" aria-label="Baghdad lecture navigation">
+        <div class="hatra-banner-inner">
+            <nav class="hatra-banner-nav">
+                <a href="baghdad-timeline.html" class="hatra-banner-link is-active" data-banner-link="timeline" data-en="Timeline of Baghdad" data-ar="الخط الزمني لبغداد">Timeline of Baghdad</a>
+                <a href="Peoples-of-baghdad.html" class="hatra-banner-link" data-banner-link="peoples" data-en="Peoples of Baghdad" data-ar="شعوب بغداد">Peoples of Baghdad</a>
+            </nav>
+            <div class="hatra-banner-langs">
+                <button type="button" class="hatra-banner-lang" data-banner-lang="en" aria-label="English">English</button>
+                <button type="button" class="hatra-banner-lang" data-banner-lang="ar" lang="ar" dir="rtl" aria-label="العربية">العربية</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Language Picker Overlay -->
     <div id="lang-overlay" class="lang-overlay" role="dialog" aria-modal="true" aria-label="Language selection">
@@ -609,6 +718,101 @@
                 dismiss(btn.getAttribute("data-lang") || "en");
             });
         });
+    })();
+    </script>
+
+    <script>
+    /* Hatra cross-page banner: visibility, language sync, persistence */
+    (function() {
+        var STORAGE_KEY = "hatra_baghdad_lang";
+        var banner = document.getElementById("hatra-banner");
+        if (!banner) return;
+
+        var foundationSection = document.querySelector("section.foundation-era-expanded");
+        var langButtons = banner.querySelectorAll(".hatra-banner-lang");
+        var navLinks = banner.querySelectorAll(".hatra-banner-link");
+
+        function getStoredLang() {
+            try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+        }
+        function setStoredLang(lang) {
+            try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+        }
+
+        function setActiveLang(lang) {
+            langButtons.forEach(function(btn) {
+                btn.classList.toggle("is-active", btn.getAttribute("data-banner-lang") === lang);
+            });
+        }
+
+        function applyNavLabels(lang) {
+            navLinks.forEach(function(link) {
+                var en = link.getAttribute("data-en");
+                var ar = link.getAttribute("data-ar");
+                if (lang === "ar" && ar) {
+                    link.textContent = ar;
+                    link.setAttribute("lang", "ar");
+                    link.setAttribute("dir", "rtl");
+                } else if (en) {
+                    link.textContent = en;
+                    link.removeAttribute("lang");
+                    link.removeAttribute("dir");
+                }
+            });
+        }
+
+        function applyLanguage(lang, propagate) {
+            lang = lang === "ar" ? "ar" : "en";
+            setActiveLang(lang);
+            applyNavLabels(lang);
+            setStoredLang(lang);
+            if (propagate && window.BaghdadLanguage && typeof window.BaghdadLanguage.setLanguage === "function") {
+                window.BaghdadLanguage.setLanguage(lang);
+            }
+        }
+
+        langButtons.forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                applyLanguage(btn.getAttribute("data-banner-lang"), true);
+            });
+        });
+
+        document.addEventListener("lang:dismissed", function(event) {
+            var lang = event.detail && event.detail.lang ? event.detail.lang : "en";
+            applyLanguage(lang, false);
+        });
+        document.addEventListener("baghdad:language-changed", function(event) {
+            var lang = event.detail && event.detail.lang ? event.detail.lang : "en";
+            setActiveLang(lang);
+            applyNavLabels(lang);
+        });
+
+        var stored = getStoredLang();
+        if (stored === "en" || stored === "ar") {
+            setActiveLang(stored);
+            applyNavLabels(stored);
+        } else {
+            setActiveLang("en");
+        }
+
+        function updateVisibility() {
+            if (!foundationSection) return;
+            var rect = foundationSection.getBoundingClientRect();
+            if (rect.top <= 60) banner.classList.add("is-visible");
+            else banner.classList.remove("is-visible");
+        }
+        var ticking = false;
+        function onScroll() {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function() {
+                updateVisibility();
+                ticking = false;
+            });
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+        updateVisibility();
     })();
     </script>
 </body>

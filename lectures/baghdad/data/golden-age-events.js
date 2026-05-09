@@ -1,4 +1,4 @@
-window.BAGHDAD_FOUNDATION_PHASES = [
+﻿window.BAGHDAD_FOUNDATION_PHASES = [
   {
     "title": "Eastern Revolution",
     "description": "Baghdad's story starts a thousand miles from the Tigris, in the eastern provinces that gave the Abbasids their soldiers, their networks, and their nerve.",
@@ -21,7 +21,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
           "alt": "Map of the Abbasid Revolution linking Khorasan, Iraq, Syria, and Egypt",
           "caption": "Kufa's proximity to Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: merchant or perfume-seller on a caravan route",
+        "mediaPlaceholder": "Image placeholder for merchant or perfume-seller on a caravan route",
         "anchorYear": 719
       },
       {
@@ -42,7 +42,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
           "alt": "Black banner used to represent the Abbasid Caliphate",
           "caption": "The Abbasid black banner (in case you couldn't picture it)"
         },
-        "mediaPlaceholder": "Image placeholder: black Abbasid banners outside Merv",
+        "mediaPlaceholder": "Image placeholder for black Abbasid banners outside Merv",
         "anchorYear": 747
       },
       {
@@ -55,7 +55,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
           "alt": "Portrait of Abu Muslim from a sixteenth-century manuscript",
           "caption": "Abu Muslim, later manuscript portrait"
         },
-        "mediaPlaceholder": "Image placeholder: Abu Muslim and armies moving west",
+        "mediaPlaceholder": "Image placeholder for Abu Muslim and armies moving west",
         "anchorYear": 748
       },
       {
@@ -68,7 +68,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
           "alt": "Great Mosque of Kufa in Iraq",
           "caption": "Kufa today, the Iraqi city where Abbasid power surfaced"
         },
-        "mediaPlaceholder": "Image placeholder: Abbasid safe house in Kufa",
+        "mediaPlaceholder": "Image placeholder for Abbasid safe house in Kufa",
         "anchorYear": 749
       },
       {
@@ -81,7 +81,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
           "alt": "The Great Zab River in northern Iraq",
           "caption": "The Great Zab region in northern Iraq"
         },
-        "mediaPlaceholder": "Image placeholder: river battle near the Great Zab",
+        "mediaPlaceholder": "Image placeholder for river battle near the Great Zab",
         "anchorYear": 750
       },
       {
@@ -124,7 +124,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
           "alt": "Map of the Abbasid Caliphate showing Baghdad's imperial position",
           "caption": "Baghdad's position in the Abbasid world (it's directly in the center)"
         },
-        "mediaPlaceholder": "Image placeholder: Tigris, Euphrates, Sarat Canal, and trade routes",
+        "mediaPlaceholder": "Image placeholder for Tigris, Euphrates, Sarat Canal, and trade routes",
         "anchorYear": 762
       }
     ]
@@ -143,7 +143,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
           "alt": "Ancient Mesopotamian mudbrick from Borsippa in Iraq",
           "caption": "Image from Umar Farrukh's 'Illustrated History of Islam"
         },
-        "mediaPlaceholder": "Image placeholder: burning cotton outline of the Round City",
+        "mediaPlaceholder": "Image placeholder for burning cotton outline of the Round City",
         "anchorYear": 762
       },
       {
@@ -156,7 +156,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
           "alt": "Plan of the Round City of Baghdad in the time of al-Mansur",
           "caption": "Round City plan in the time of al-Mansur"
         },
-        "mediaPlaceholder": "Image placeholder: Round City reconstruction",
+        "mediaPlaceholder": "Image placeholder for Round City reconstruction",
         "anchorYear": 763
       },
       {
@@ -169,7 +169,7 @@ window.BAGHDAD_FOUNDATION_PHASES = [
           "alt": "Map of the Round City of Baghdad",
           "caption": "A sketch of Baghdad from the video game, Assassin's Creed"
         },
-        "mediaPlaceholder": "Image placeholder: Golden Gate Palace and green dome",
+        "mediaPlaceholder": "Image placeholder for Golden Gate Palace and green dome",
         "anchorYear": 766
       }
     ]
@@ -227,7 +227,7 @@ window.BAGHDAD_MONGOL_SIEGE_PHASES = [
           "alt": "Manuscript detail of Hulagu Khan",
           "caption": "Hulagu Khan, commander of the western Mongol campaign"
         },
-        "mediaPlaceholder": "Image placeholder: Hulagu's ultimatum carried to Baghdad",
+        "mediaPlaceholder": "Image placeholder for Hulagu's ultimatum carried to Baghdad",
         "anchorYear": 1257
       },
       {
@@ -240,7 +240,7 @@ window.BAGHDAD_MONGOL_SIEGE_PHASES = [
           "alt": "Late thirteenth-century Baghdad manuscript associated with Ya'qut al-Musta'simi",
           "caption": "Al-Mustasim answered Mongol pressure from Baghdad's courtly world"
         },
-        "mediaPlaceholder": "Image placeholder: Abbasid reply sent from the caliphal palace",
+        "mediaPlaceholder": "Image placeholder for Abbasid reply sent from the caliphal palace",
         "anchorYear": 1257
       }
     ]
@@ -259,7 +259,7 @@ window.BAGHDAD_MONGOL_SIEGE_PHASES = [
           "alt": "Persian manuscript image of Hulagu's army attacking a city with a siege engine",
           "caption": "Mongol siege warfare in manuscript art"
         },
-        "mediaPlaceholder": "Image placeholder: Mongol siege engines around Baghdad",
+        "mediaPlaceholder": "Image placeholder for Mongol siege engines around Baghdad",
         "anchorYear": 1258
       },
       {
@@ -272,7 +272,7 @@ window.BAGHDAD_MONGOL_SIEGE_PHASES = [
           "alt": "Historic photograph of Baghdad's Talisman Gate before its destruction",
           "caption": "A surviving image of Baghdad's medieval walls and gates"
         },
-        "mediaPlaceholder": "Image placeholder: breach in Baghdad's eastern wall",
+        "mediaPlaceholder": "Image placeholder for breach in Baghdad's eastern wall",
         "anchorYear": 1258
       },
       {
@@ -285,7 +285,7 @@ window.BAGHDAD_MONGOL_SIEGE_PHASES = [
           "alt": "Miniature showing al-Mustasim brought before Hulagu Khan",
           "caption": "Al-Mustasim brought before Hulagu Khan"
         },
-        "mediaPlaceholder": "Image placeholder: Al-Mustasim leaving Baghdad to surrender",
+        "mediaPlaceholder": "Image placeholder for Al-Mustasim leaving Baghdad to surrender",
         "anchorYear": 1258
       }
     ]
@@ -304,7 +304,7 @@ window.BAGHDAD_MONGOL_SIEGE_PHASES = [
           "alt": "Manuscript image of the fall of Baghdad from the Diez Albums",
           "caption": "The fall of Baghdad in later manuscript art"
         },
-        "mediaPlaceholder": "Image placeholder: Baghdad burning and books thrown into the Tigris",
+        "mediaPlaceholder": "Image placeholder for Baghdad burning and books thrown into the Tigris",
         "anchorYear": 1258
       },
       {
@@ -317,7 +317,7 @@ window.BAGHDAD_MONGOL_SIEGE_PHASES = [
           "alt": "Manuscript image from the Diez Albums showing an execution scene",
           "caption": "Execution imagery from the Diez Albums"
         },
-        "mediaPlaceholder": "Image placeholder: the execution of Al-Mustasim",
+        "mediaPlaceholder": "Image placeholder for the execution of Al-Mustasim",
         "anchorYear": 1258
       },
       {
@@ -525,7 +525,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
           "alt": "Harun al-Rashid receiving envoys from Charlemagne in Baghdad",
           "caption": "Ar-Rashid receives an embassy from Charlemagne at his court in Baghdad. "
         },
-        "mediaPlaceholder": "Image placeholder: Harun al-Rashid's court",
+        "mediaPlaceholder": "Image placeholder for Harun al-Rashid's court",
         "anchorYear": 786
       },
       {
@@ -554,7 +554,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
           "alt": "Later manuscript image of the killing of Jafar al-Barmaki",
           "caption": "The fall of Ja'far al-Barmaki"
         },
-        "mediaPlaceholder": "Image placeholder: Barmakid palaces and court politics",
+        "mediaPlaceholder": "Image placeholder for Barmakid palaces and court politics",
         "anchorYear": 803
       },
       {
@@ -581,7 +581,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
           "alt": "Map of Baghdad between 767 and 912 AD",
           "caption": "Baghdad in the late eighth and early ninth centuries"
         },
-        "mediaPlaceholder": "Image placeholder: siege engines around Abbasid Baghdad",
+        "mediaPlaceholder": "Image placeholder for siege engines around Abbasid Baghdad",
         "anchorYear": 811
       },
       {
@@ -594,7 +594,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
           "alt": "Thirteenth-century Baghdad School manuscript image of scholars in a library",
           "caption": "Manuscript culture and scholarly exchange"
         },
-        "mediaPlaceholder": "Image placeholder: translators and manuscripts in the House of Wisdom",
+        "mediaPlaceholder": "Image placeholder for translators and manuscripts in the House of Wisdom",
         "anchorYear": 813
       },
       {
@@ -607,7 +607,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
           "alt": "Close-up of a medieval Islamic astrolabe",
           "caption": "Astronomical instruments and star tables"
         },
-        "mediaPlaceholder": "Image placeholder: instruments, astrolabe, and star tables",
+        "mediaPlaceholder": "Image placeholder for instruments, astrolabe, and star tables",
         "anchorYear": 828
       },
       {
@@ -620,7 +620,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
           "alt": "Arabic manuscript page of a work by al-Khwarizmi",
           "caption": "Al-Khwarizmi"
         },
-        "mediaPlaceholder": "Image placeholder: al-Khwarizmi, Hunayn, al-Kindi, and Banu Musa",
+        "mediaPlaceholder": "Image placeholder for al-Khwarizmi, Hunayn, al-Kindi, and Banu Musa",
         "anchorYear": 850
       },
       {
@@ -710,7 +710,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
           "alt": "Statue of Nizam al-Mulk, founder of the Nizamiya colleges",
           "caption": "Nizam al-Mulk"
         },
-        "mediaPlaceholder": "Image placeholder: Nizamiya Academy and Seljuk Baghdad",
+        "mediaPlaceholder": "Image placeholder for Nizamiya Academy and Seljuk Baghdad",
         "anchorYear": 1055
       },
       {
@@ -753,7 +753,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
           "alt": "Map of Ibn Jubayr's twelfth-century journey",
           "caption": "Ibn Jubayr's route through the Islamic world"
         },
-        "mediaPlaceholder": "Image placeholder: Ibn Jubayr's view of late Abbasid Baghdad",
+        "mediaPlaceholder": "Image placeholder for Ibn Jubayr's view of late Abbasid Baghdad",
         "anchorYear": 1184
       },
       {
@@ -790,7 +790,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
           "alt": "Courtyard of the Mustansiriya Madrasa in Baghdad",
           "caption": "The Mustansiriya Madrasa courtyard"
         },
-        "mediaPlaceholder": "Image placeholder: Mustansiriya Madrasa courtyard",
+        "mediaPlaceholder": "Image placeholder for Mustansiriya Madrasa courtyard",
         "anchorYear": 1233
       },
       {
@@ -803,7 +803,7 @@ window.BAGHDAD_GOLDEN_AGE_PHASES = [
           "alt": "Manuscript detail of the Abbasid caliph al-Mustasim",
           "caption": "Al-Mustasim, the last Abbasid caliph in Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: Al-Mustasim in the Abbasid court",
+        "mediaPlaceholder": "Image placeholder for Al-Mustasim in the Abbasid court",
         "anchorYear": 1242
       }
     ]
@@ -825,7 +825,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
           "alt": "Ilkhanid ruler imagery standing for the Mongol order that ruled Baghdad after 1258",
           "caption": "Baghdad became a provincial ruin inside the Ilkhanid world"
         },
-        "mediaPlaceholder": "Image placeholder: map of Ilkhanid Iraq and ruined canal networks",
+        "mediaPlaceholder": "Image placeholder for map of Ilkhanid Iraq and ruined canal networks",
         "anchorYear": 1258
       },
       {
@@ -846,7 +846,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
           "alt": "Interior of Khan Murjan in Baghdad",
           "caption": "Khan Mirjan, a visible sign of Jalayirid recovery"
         },
-        "mediaPlaceholder": "Image placeholder: Khan Mirjan caravanserai interior",
+        "mediaPlaceholder": "Image placeholder for Khan Mirjan caravanserai interior",
         "anchorYear": 1358
       }
     ]
@@ -865,7 +865,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
           "alt": "Zafarnama manuscript image of Timur at the siege of Baghdad",
           "caption": "Timur at Baghdad in Zafarnama manuscript art"
         },
-        "mediaPlaceholder": "Image placeholder: Timur's army entering Baghdad in 1393",
+        "mediaPlaceholder": "Image placeholder for Timur's army entering Baghdad in 1393",
         "anchorYear": 1393
       },
       {
@@ -878,7 +878,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
           "alt": "Zafarnama manuscript image of soldiers marching before Timur with severed heads",
           "caption": "Zafarnama imagery linked to the skull towers after Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: Timur's 1401 sack and towers of skulls from the Zafarnama",
+        "mediaPlaceholder": "Image placeholder for Timur's 1401 sack and towers of skulls from the Zafarnama",
         "anchorYear": 1401
       }
     ]
@@ -905,7 +905,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
           "alt": "Timurid manuscript image connected with Baghdad's late medieval devastation",
           "caption": "Dead palm grove"
         },
-        "mediaPlaceholder": "Image placeholder: ruined fifteenth-century Baghdad and dried palm groves",
+        "mediaPlaceholder": "Image placeholder for ruined fifteenth-century Baghdad and dried palm groves",
         "anchorYear": 1437
       },
       {
@@ -948,7 +948,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
           "alt": "Portrait detail of Shah Ismail I Safavid",
           "caption": "Shah Ismail I and the Safavid turn in Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: Shah Ismail at Kadhimiya and Safavid Baghdad",
+        "mediaPlaceholder": "Image placeholder for Shah Ismail at Kadhimiya and Safavid Baghdad",
         "anchorYear": 1508
       },
       {
@@ -961,7 +961,7 @@ window.BAGHDAD_STAGNATION_PHASES = [
           "alt": "Artwork depicting the Battle of Chaldiran in 1514",
           "caption": "Chaldiran made Baghdad a long-term Ottoman-Safavid frontier prize"
         },
-        "mediaPlaceholder": "Image placeholder: map from Chaldiran to Baghdad, showing Ottoman-Safavid rivalry",
+        "mediaPlaceholder": "Image placeholder for map from Chaldiran to Baghdad, showing Ottoman-Safavid rivalry",
         "anchorYear": 1514
       }
     ]
@@ -983,7 +983,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Historic exterior view of Abu Hanifa Mosque in Baghdad",
           "caption": "Baghdad's mosques became symbols of public political allegiance"
         },
-        "mediaPlaceholder": "Image placeholder: Friday sermon in a Baghdad mosque",
+        "mediaPlaceholder": "Image placeholder for Friday sermon in a Baghdad mosque",
         "anchorYear": 1528
       },
       {
@@ -996,7 +996,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Artwork showing Sultan Suleiman the Magnificent entering Baghdad",
           "caption": "Suleiman the Magnificent enters Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: Suleiman's army approaching Baghdad",
+        "mediaPlaceholder": "Image placeholder for Suleiman's army approaching Baghdad",
         "anchorYear": 1534
       },
       {
@@ -1009,7 +1009,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Portrait of Shah Abbas I of Safavid Iran",
           "caption": "Shah Abbas I and the Safavid return to Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: Safavid Baghdad and the shrine districts",
+        "mediaPlaceholder": "Image placeholder for Safavid Baghdad and the shrine districts",
         "anchorYear": 1623
       },
       {
@@ -1030,7 +1030,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Historical artwork of the Ottoman capture of Baghdad in 1638",
           "caption": "The Ottoman capture of Baghdad in 1638"
         },
-        "mediaPlaceholder": "Image placeholder: Murad IV at Bab al-Talism",
+        "mediaPlaceholder": "Image placeholder for Murad IV at Bab al-Talism",
         "anchorYear": 1638
       }
     ]
@@ -1049,7 +1049,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Al-Saray Mosque in Baghdad near the Ottoman administrative quarter",
           "caption": "The Mamluks"
         },
-        "mediaPlaceholder": "Image placeholder: Mamluk household at the Saray",
+        "mediaPlaceholder": "Image placeholder for Mamluk household at the Saray",
         "anchorYear": 1704
       },
       {
@@ -1078,7 +1078,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Seventeenth-century map image of Baghdad",
           "caption": "Old European mapping of Baghdad before the late Ottoman reforms"
         },
-        "mediaPlaceholder": "Image placeholder: Suleyman's court and British Resident",
+        "mediaPlaceholder": "Image placeholder for Suleyman's court and British Resident",
         "anchorYear": 1780
       },
       {
@@ -1091,7 +1091,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Portrait of Davud Pasha of Baghdad",
           "caption": "Davud Pasha of Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: Daud Pasha's audience hall",
+        "mediaPlaceholder": "Image placeholder for Daud Pasha's audience hall",
         "anchorYear": 1817
       },
       {
@@ -1112,7 +1112,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Persian miniature image of flooding in Baghdad",
           "caption": "Flooding in Baghdad, a recurring danger in the city"
         },
-        "mediaPlaceholder": "Image placeholder: flooded Baghdad and abandoned streets",
+        "mediaPlaceholder": "Image placeholder for flooded Baghdad and abandoned streets",
         "anchorYear": 1831
       }
     ]
@@ -1139,7 +1139,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Jones and Collingwood ground plan of Baghdad from 1853 to 1854",
           "caption": "Jones and Collingwood's ground plan of Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: Jones's ground plan of Baghdad",
+        "mediaPlaceholder": "Image placeholder for Jones's ground plan of Baghdad",
         "anchorYear": 1853
       },
       {
@@ -1160,7 +1160,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Midhat Pasha and Baghdad officials photographed in 1870",
           "caption": "Midhat Pasha with Baghdad officials in 1870"
         },
-        "mediaPlaceholder": "Image placeholder: Midhat Pasha, Al-Zawra press, and demolished walls",
+        "mediaPlaceholder": "Image placeholder for Midhat Pasha, Al-Zawra press, and demolished walls",
         "anchorYear": 1869
       },
       {
@@ -1173,7 +1173,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Great Synagogue of Baghdad",
           "caption": "The Great Synagogue of Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: Jewish quarter, school, or Ottoman parliament",
+        "mediaPlaceholder": "Image placeholder for Jewish quarter, school, or Ottoman parliament",
         "anchorYear": 1889
       },
       {
@@ -1186,7 +1186,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Map of the Baghdad Railway",
           "caption": "The Baghdad Railway tied the city to global imperial rivalry"
         },
-        "mediaPlaceholder": "Image placeholder: Baghdad Railway map and Bab al-Wastani wireless station",
+        "mediaPlaceholder": "Image placeholder for Baghdad Railway map and Bab al-Wastani wireless station",
         "anchorYear": 1903
       },
       {
@@ -1213,7 +1213,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Map of the Mesopotamian campaign in World War I",
           "caption": "The Mesopotamian campaign pushed north toward Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: map from Fao and Basra toward Baghdad",
+        "mediaPlaceholder": "Image placeholder for map from Fao and Basra toward Baghdad",
         "anchorYear": 1914
       },
       {
@@ -1234,7 +1234,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "Kut on the day before surrender during the Mesopotamian campaign",
           "caption": "Kut before surrender blocked the road to Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: Kut prisoners entering Baghdad",
+        "mediaPlaceholder": "Image placeholder for Kut prisoners entering Baghdad",
         "anchorYear": 1916
       },
       {
@@ -1247,7 +1247,7 @@ window.BAGHDAD_OTTOMAN_PHASES = [
           "alt": "General Maude entering Baghdad in 1917",
           "caption": "General Maude enters Baghdad in March 1917"
         },
-        "mediaPlaceholder": "Image placeholder: Maude entering Baghdad and Bab al-Talism destroyed",
+        "mediaPlaceholder": "Image placeholder for Maude entering Baghdad and Bab al-Talism destroyed",
         "anchorYear": 1917
       }
     ]
@@ -1262,14 +1262,14 @@ window.BAGHDAD_MODERN_PHASES = [
       {
         "date": "March 11, 1917",
         "title": "British Forces Capture Baghdad",
-        "description": "British and Indian troops entered Baghdad after the Ottoman withdrawal, ending nearly four centuries of Ottoman rule. General Maude presented the occupation as liberation, but Baghdadis soon found that imperial control had only changed hands. The event is the opening scene of modern Baghdad: a famous old capital pulled into the British imperial order and the politics of oil, mandates, and Arab nationalism.",
+        "description": "British and Indian troops entered Baghdad after the Ottoman withdrawal, ending nearly four centuries of Ottoman rule. General Maude presented the occupation as liberation. Baghdadis soon found that imperial control had only changed hands. The event is the opening scene of modern Baghdad, a famous old capital pulled into the British imperial order and the politics of oil, mandates, and Arab nationalism.",
         "highlight": true,
         "image": {
           "src": "images/ottoman-cards/march-11-1917-british-forces-capture-baghdad.jpg",
           "alt": "General Maude entering Baghdad in 1917",
           "caption": "British forces enter Baghdad in March 1917"
         },
-        "mediaPlaceholder": "Image placeholder: British and Indian troops entering Baghdad",
+        "mediaPlaceholder": "Image placeholder for British and Indian troops entering Baghdad",
         "anchorYear": 1917
       },
       {
@@ -1290,7 +1290,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "King Faisal I of Iraq",
           "caption": "Faisal I, first king of modern Iraq"
         },
-        "mediaPlaceholder": "Image placeholder: Faisal's coronation in the Saray al-Kushla",
+        "mediaPlaceholder": "Image placeholder for Faisal's coronation in the Saray al-Kushla",
         "anchorYear": 1921
       },
       {
@@ -1303,7 +1303,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Iraq Museum gallery material representing Iraq's ancient cultural memory",
           "caption": "Gertrude Bell and Friends in Egypt"
         },
-        "mediaPlaceholder": "Image placeholder: Gertrude Bell and the early Iraq Museum",
+        "mediaPlaceholder": "Image placeholder for Gertrude Bell and the early Iraq Museum",
         "anchorYear": 1923
       },
       {
@@ -1324,7 +1324,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "The Great Synagogue of Baghdad",
           "caption": "The Farhud shattered Jewish confidence in modern Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: Baghdad in 1941, Rashid Ali coup, or Jewish Baghdad",
+        "mediaPlaceholder": "Image placeholder for Baghdad in 1941, Rashid Ali coup, or Jewish Baghdad",
         "anchorYear": 1941
       },
       {
@@ -1337,7 +1337,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Baghdad demonstrators during the Wathba protests",
           "caption": "The Wathba and the beginning of the Jewish exodus"
         },
-        "mediaPlaceholder": "Image placeholder: Wathba street protests and the departure of Jewish Baghdad",
+        "mediaPlaceholder": "Image placeholder for Wathba street protests and the departure of Jewish Baghdad",
         "anchorYear": 1948
       }
     ]
@@ -1364,7 +1364,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Revolutionary soldiers in a Baghdad street during the July 14 Revolution of 1958",
           "caption": "Revolutionary soldiers in Baghdad, July 14, 1958"
         },
-        "mediaPlaceholder": "Image placeholder: July 1958 revolution, royal palace, or Baghdad crowds",
+        "mediaPlaceholder": "Image placeholder for July 1958 revolution, royal palace, or Baghdad crowds",
         "anchorYear": 1958
       },
       {
@@ -1385,7 +1385,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "A street scene in Sadr City, the later name of Al-Thawra district in Baghdad",
           "caption": "Sadr City, the later Al-Thawra district"
         },
-        "mediaPlaceholder": "Image placeholder: early Al-Thawra/Sadr City housing and street plan",
+        "mediaPlaceholder": "Image placeholder for early Al-Thawra/Sadr City housing and street plan",
         "anchorYear": 1959
       },
       {
@@ -1412,7 +1412,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Abd al-Karim Qasim in military uniform near the beginning of the Iraqi republic",
           "caption": "Abd al-Karim Qasim, overthrown and killed in 1963"
         },
-        "mediaPlaceholder": "Image placeholder: Broadcasting House, Ministry of Defence, or 1963 coup troops",
+        "mediaPlaceholder": "Image placeholder for Broadcasting House, Ministry of Defence, or 1963 coup troops",
         "anchorYear": 1963
       },
       {
@@ -1425,7 +1425,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Ahmed Hassan al-Bakr with Michel Aflaq in Baghdad in 1968",
           "caption": "Ahmed Hassan al-Bakr and Baathist power in Baghdad, 1968"
         },
-        "mediaPlaceholder": "Image placeholder: Baathist coup, Republican Guard headquarters, or Baghdad Radio",
+        "mediaPlaceholder": "Image placeholder for Baathist coup, Republican Guard headquarters, or Baghdad Radio",
         "anchorYear": 1968
       },
       {
@@ -1438,13 +1438,13 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "The Freedom Monument in Liberation Square, Baghdad",
           "caption": "Liberation Square, turned into a stage of terror in 1969"
         },
-        "mediaPlaceholder": "Image placeholder: Liberation Square and the decline of Jewish Baghdad",
+        "mediaPlaceholder": "Image placeholder for Liberation Square and the decline of Jewish Baghdad",
         "anchorYear": 1969
       }
     ]
   },
   {
-    "title": "Saddam's Capital: Monument, War, and Fear",
+    "title": "Saddam's Capital. Monument, War, and Fear",
     "description": "Under Saddam Hussein, Baghdad was rebuilt as a capital of spectacle. New roads, hotels, monuments, parade grounds, and propaganda images appeared beside prisons, security offices, funerals, and war damage. The city was modernized and militarized at the same time.",
     "events": [
       {
@@ -1457,7 +1457,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Saddam Hussein during the 1979 Baath Party purge",
           "caption": "Saddam Hussein during the 1979 Baath Party purge"
         },
-        "mediaPlaceholder": "Image placeholder: Saddam in 1979 or Khuld Hall party purge",
+        "mediaPlaceholder": "Image placeholder for Saddam in 1979 or Khuld Hall party purge",
         "anchorYear": 1979
       },
       {
@@ -1470,7 +1470,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Map of the frontlines in the Iran-Iraq War",
           "caption": "The Iran-Iraq War frontlines"
         },
-        "mediaPlaceholder": "Image placeholder: Baghdad during the Iran-Iraq War or military mobilization",
+        "mediaPlaceholder": "Image placeholder for Baghdad during the Iran-Iraq War or military mobilization",
         "anchorYear": 1980
       },
       {
@@ -1491,7 +1491,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "The split turquoise dome of the Al-Shaheed Martyr's Monument in Baghdad",
           "caption": "The Martyr's Monument in Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: Martyr's Monument and Tomb of the Unknown Soldier",
+        "mediaPlaceholder": "Image placeholder for Martyr's Monument and Tomb of the Unknown Soldier",
         "anchorYear": 1983
       },
       {
@@ -1512,7 +1512,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "The Crossed Swords Victory Arch in Baghdad",
           "caption": "The Victory Arch, or Crossed Swords"
         },
-        "mediaPlaceholder": "Image placeholder: Victory Arch / Crossed Swords monument",
+        "mediaPlaceholder": "Image placeholder for Victory Arch / Crossed Swords monument",
         "anchorYear": 1989
       }
     ]
@@ -1531,7 +1531,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Post-strike image of the Tuwaythah Nuclear Research Facility near Baghdad in 1991",
           "caption": "Baghdad anti-aircraft fire 1991"
         },
-        "mediaPlaceholder": "Image placeholder: 1991 bombing of Baghdad, bridges, or air raid shelters",
+        "mediaPlaceholder": "Image placeholder for 1991 bombing of Baghdad, bridges, or air raid shelters",
         "anchorYear": 1991
       },
       {
@@ -1544,7 +1544,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Baghdad street scene during the sanctions decade",
           "caption": "The sanctions decade narrowed daily life in Baghdad"
         },
-        "mediaPlaceholder": "Image placeholder: 1990s Baghdad markets, ration cards, or damaged infrastructure",
+        "mediaPlaceholder": "Image placeholder for 1990s Baghdad markets, ration cards, or damaged infrastructure",
         "anchorYear": 1996
       },
       {
@@ -1565,7 +1565,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Saddam Hussein statue pulled down in Firdos Square, Baghdad, 2003",
           "caption": "Saddam's dictatorship collapsed in Baghdad in 2003"
         },
-        "mediaPlaceholder": "Image placeholder: Firdos Square and the fallen Saddam statue",
+        "mediaPlaceholder": "Image placeholder for Firdos Square and the fallen Saddam statue",
         "anchorYear": 2003
       },
       {
@@ -1578,7 +1578,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Iraq Museum gallery material representing the cultural memory damaged by looting in 2003",
           "caption": "The Iraq Museum preserved the material memory looted in 2003"
         },
-        "mediaPlaceholder": "Image placeholder: Iraq Museum galleries after looting",
+        "mediaPlaceholder": "Image placeholder for Iraq Museum galleries after looting",
         "anchorYear": 2003
       }
     ]
@@ -1605,7 +1605,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Baghdad street scene during the years of occupation and sectarian conflict",
           "caption": "Modern Baghdad after the sectarian rupture of 2006-2008"
         },
-        "mediaPlaceholder": "Image placeholder: blast walls, checkpoint map, or segregated Baghdad districts",
+        "mediaPlaceholder": "Image placeholder for blast walls, checkpoint map, or segregated Baghdad districts",
         "anchorYear": 2007
       },
       {
@@ -1618,7 +1618,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Mutanabbi Street booksellers and cultural memory in Baghdad",
           "caption": "Baghdad's literary culture survived the attack on Mutanabbi Street"
         },
-        "mediaPlaceholder": "Image placeholder: Mutanabbi Street booksellers and Shahbandar Coffeehouse",
+        "mediaPlaceholder": "Image placeholder for Mutanabbi Street booksellers and Shahbandar Coffeehouse",
         "anchorYear": 2008
       },
       {
@@ -1631,7 +1631,7 @@ window.BAGHDAD_MODERN_PHASES = [
           "alt": "Our Lady of Salvation Church in Baghdad, remembered after the 2010 attack",
           "caption": "Our Lady of Salvation Church"
         },
-        "mediaPlaceholder": "Image placeholder: Our Lady of Salvation Church in Karrada",
+        "mediaPlaceholder": "Image placeholder for Our Lady of Salvation Church in Karrada",
         "anchorYear": 2010
       }
     ]
@@ -1653,7 +1653,7 @@ window.BAGHDAD_PROTEST_PHASES = [
           "alt": "Tishreen protesters in Baghdad's Tahrir Square",
           "caption": "Tahrir Square and the Freedom Monument framed the Tishreen protests"
         },
-        "mediaPlaceholder": "Image placeholder: Tishreen protests in Tahrir Square and the Freedom Monument",
+        "mediaPlaceholder": "Image placeholder for Tishreen protests in Tahrir Square and the Freedom Monument",
         "anchorYear": 2019
       },
       {
@@ -1674,7 +1674,7 @@ window.BAGHDAD_PROTEST_PHASES = [
           "alt": "Contemporary Baghdad cultural life and restored public visibility",
           "caption": "Baghdad's cultural recovery is visible, but uneven"
         },
-        "mediaPlaceholder": "Image placeholder: restored Mutanabbi Street, heritage streets, or new Baghdad skyline",
+        "mediaPlaceholder": "Image placeholder for restored Mutanabbi Street, heritage streets, or new Baghdad skyline",
         "anchorYear": 2026
       }
     ]
