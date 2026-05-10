@@ -2620,6 +2620,9 @@ function renderEra(era) {
       </div>
     </div>
   `;
+  if (window.PeoplesLanguage && window.PeoplesLanguage.refreshNode) {
+    window.PeoplesLanguage.refreshNode(eraPanel);
+  }
   // animate fade
   eraPanel.style.opacity = "0";
   requestAnimationFrame(() => {
@@ -3405,9 +3408,37 @@ const HOODS = [
     setLanguage(pending || current);
   }
 
+  function refreshNode(el) {
+    if (!el) return;
+    walk(el, function(n) {
+      var alreadyTracked = false;
+      for (var i = 0; i < staticNodes.length; i++) {
+        if (staticNodes[i].node === n) { alreadyTracked = true; break; }
+      }
+      if (!alreadyTracked) {
+        staticNodes.push({ node: n, original: n.nodeValue, key: norm(n.nodeValue) });
+      }
+    });
+    Array.prototype.forEach.call(el.querySelectorAll("img[alt]"), function(img) {
+      var tracked = false;
+      for (var j = 0; j < altNodes.length; j++) {
+        if (altNodes[j].node === img) { tracked = true; break; }
+      }
+      if (!tracked) {
+        altNodes.push({
+          node: img,
+          original: img.getAttribute("alt") || "",
+          key: norm(img.getAttribute("alt") || "")
+        });
+      }
+    });
+    if (initialized) apply();
+  }
+
   window.PeoplesLanguage = {
     setLanguage: setLanguage,
-    getLanguage: function() { return current; }
+    getLanguage: function() { return current; },
+    refreshNode: refreshNode
   };
 
   /* Snapshot AFTER load so JS-rendered content (era panel, charts) is
