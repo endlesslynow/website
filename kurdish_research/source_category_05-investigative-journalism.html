@@ -1,35 +1,87 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Investigative journalism Sources</title><style>
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #e8e1d1; }
-.container { background-color: #f8f4e8; border: 1px solid #d3c9a5; border-radius: 0px; padding: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); position: relative; margin-top: 20px; }
-.container::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.1); pointer-events: none; z-index: 1; }
-h1 { font-size: 38px; margin-top: 0; color: #5a4a2e; border-bottom: 2px solid #d3c9a5; padding-bottom: 10px; text-align: center; }
-h2 { color: #6b553f; font-size: 28px; margin-top: 30px; border-bottom: 1px solid #d3c9a5; padding-bottom: 5px; }
-h3 { color: #6b553f; font-size: 22px; margin-top: 20px; }
-h4 { color: #7a634a; font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: bold; }
-.category { margin-bottom: 40px; background-color: rgba(255, 255, 255, 0.5); padding: 20px; border: 1px solid #e0d7c0; border-radius: 2px; }
-.resource-link { display: block; margin: 15px 0; padding: 12px; background-color: #f0e9d9; border: 1px solid #d3c9a5; border-radius: 2px; text-decoration: none; color: #5a4a2e; transition: all 0.2s; }
-.resource-link:hover { background-color: #e0d7c0; transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
-.link-content { width: 100%; }
-.link-title { font-weight: 600; display: block; font-size: 18px; }
-.intro { margin-bottom: 30px; padding: 20px; background-color: rgba(255, 255, 255, 0.6); border: 1px solid #e0d7c0; border-radius: 2px; font-size: 17px; line-height: 1.7; }
-footer { margin-top: 40px; text-align: center; color: #8b7355; font-size: 14px; border-top: 1px solid #d3c9a5; padding-top: 20px; }
-.nav-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; justify-content: center; }
-.nav-btn { padding: 10px 15px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 14px; color: #ffffff !important; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); border: 1px solid rgba(0,0,0,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-.nav-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 10px rgba(0,0,0,0.3); filter: brightness(110%); }
-.source-entry { margin: 18px 0; padding: 18px; background-color: rgba(255, 255, 255, 0.55); border: 1px solid #e0d7c0; border-radius: 2px; }
-.sort-controls { display: flex; flex-wrap: wrap; gap: 8px; margin: -24px 0 24px; justify-content: center; }
-.sort-btn { padding: 8px 12px; border-radius: 4px; font-weight: 700; font-size: 14px; color: #5a4a2e; background-color: #f0e9d9; border: 1px solid #d3c9a5; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease; }
-.sort-btn:hover { transform: translateY(-2px); background-color: #e0d7c0; }
-.sort-btn.active { color: #ffffff; background-color: #5a4a2e; border-color: #5a4a2e; }
-.source-entry h3 { margin-top: 0; overflow-wrap: anywhere; }
-.meta-row { margin: 8px 0; }
-.meta-label { font-weight: 700; color: #6b553f; }
-.tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-.tag { display: inline-block; padding: 3px 7px; background-color: #f0e9d9; border: 1px solid #d3c9a5; border-radius: 2px; color: #5a4a2e; font-size: 14px; }
-.url { overflow-wrap: anywhere; }
-.count { color: #8b7355; font-size: 14px; margin-top: 4px; }
-.back-link { margin-bottom: 20px; }
-@media (max-width: 768px) { body { padding: 10px; } .container { padding: 15px; } h1 { font-size: 28px; } .nav-btn { flex: 1 1 auto; text-align: center; font-size: 13px; } }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: #3a2f1f;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #e8e1d1;
+  background-image: url('background.png');
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+.container {
+  background-color: #f8f4e8;
+  border: 1px solid #d3c9a5;
+  padding: 48px 52px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease;
+}
+.container:has(.nav-buttons .nav-btn:nth-child(1).active) { background-color: #556b2f; }
+.container:has(.nav-buttons .nav-btn:nth-child(2).active) { background-color: #2e8b57; }
+.container:has(.nav-buttons .nav-btn:nth-child(3).active) { background-color: #696969; }
+.container:has(.nav-buttons .nav-btn:nth-child(4).active) { background-color: #4682b4; }
+.container:has(.nav-buttons .nav-btn:nth-child(5).active) { background-color: #800000; }
+.container:has(.nav-buttons .nav-btn:nth-child(6).active) { background-color: #483d8b; }
+.container:has(.nav-buttons .nav-btn:nth-child(7).active) { background-color: #8b4513; }
+.container:has(.nav-buttons .nav-btn:nth-child(8).active) { background-color: #a0522d; }
+.container:has(.nav-buttons .nav-btn:nth-child(9).active) { background-color: #008080; }
+.container:has(.nav-buttons .nav-btn:nth-child(10).active) { background-color: #191970; }
+.container:has(.nav-buttons .nav-btn:nth-child(11).active) { background-color: #2f4f4f; }
+.container:has(.nav-buttons .nav-btn:nth-child(12).active) { background-color: #58365f; }
+.container:has(.nav-buttons .nav-btn:nth-child(13).active) { background-color: #b22222; }
+.container:has(.nav-buttons .nav-btn:nth-child(14).active) { background-color: #555555; }
+.container:has(.nav-buttons .nav-btn:nth-child(15).active) { background-color: #b8860b; }
+.container:has(.nav-buttons .nav-btn:nth-child(16).active) { background-color: #d2691e; }
+h1 {
+  font-size: 34px;
+  font-weight: 700;
+  margin: 0 0 24px;
+  color: #4a3a1f;
+  letter-spacing: -0.3px;
+  transition: color 0.2s ease;
+}
+.container:has(.nav-buttons .nav-btn.active) h1 { color: #ffffff; }
+h2 { display: none; }
+.category {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.back-link { margin: 0 0 24px; }
+.back-link .resource-link {
+  display: inline-block;
+  padding: 8px 14px;
+  background-color: #ede4cd;
+  border: 1px solid #c9b985;
+  text-decoration: none;
+  color: #4a3a1f;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.back-link .resource-link:hover { background-color: #e2d6b6; border-color: #b8a874; }
+.back-link .link-title { font-size: 14px; font-weight: 600; }
+
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 24px;
+}
+.nav-btn {
+  padding: 7px 13px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  border: 1px solid rgba(0,0,0,0.15);
+  transition: filter 0.15s ease;
+}
+.nav-btn:hover { filter: brightness(112%); }
+.nav-btn.active { filter: brightness(85%); outline: 3px solid #ffd700; outline-offset: 2px; }
 
 .nav-buttons .nav-btn:nth-child(1) { background-color: #556b2f; }
 .nav-buttons .nav-btn:nth-child(2) { background-color: #2e8b57; }
@@ -46,7 +98,114 @@ footer { margin-top: 40px; text-align: center; color: #8b7355; font-size: 14px; 
 .nav-buttons .nav-btn:nth-child(13) { background-color: #b22222; }
 .nav-buttons .nav-btn:nth-child(14) { background-color: #555555; }
 .nav-buttons .nav-btn:nth-child(15) { background-color: #b8860b; }
-.nav-buttons .nav-btn:nth-child(16) { background-color: #d2691e; }</style></head><body><div class="container">
+.nav-buttons .nav-btn:nth-child(16) { background-color: #d2691e; }
+
+.sort-controls {
+  display: flex;
+  gap: 6px;
+  margin: 0 0 24px;
+}
+.sort-btn {
+  padding: 7px 14px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #4a3a1f;
+  background-color: #f4ecd6;
+  border: 1px solid #d3c9a5;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.sort-btn:hover { background-color: #e8dcb6; border-color: #cdbe8d; }
+.sort-btn.active { color: #f8f4e8; background-color: #4a3a1f; border-color: #4a3a1f; outline: 3px solid #ffd700; outline-offset: 2px; }
+.sort-label { font-weight: 700; font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase; color: #4a3a1f; align-self: center; margin-right: 6px; transition: color 0.2s ease; }
+.container:has(.nav-buttons .nav-btn.active) .sort-label { color: #ffffff; }
+
+/* Works-cited entry */
+.source-entry {
+  display: flex;
+  flex-direction: column;
+  background-color: #f4ecd6;
+  border: 1px solid #e0d4ac;
+  padding: 18px 22px;
+  margin-bottom: 10px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.source-entry:hover { background-color: #e8dcb6; border-color: #cdbe8d; }
+.source-entry[hidden] { display: none; }
+
+/* Title first */
+.source-entry > h3 {
+  order: 1;
+  margin: 0 0 10px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #2a1f10;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+/* Link second */
+.source-entry > .meta-row.url {
+  order: 2;
+  margin: 6px 0 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.source-entry > .meta-row.url a {
+  color: #0645ad;
+  text-decoration: underline;
+  border-bottom: none;
+  word-break: break-all;
+  transition: color 0.15s ease;
+}
+.source-entry > .meta-row.url a:hover { color: #002f6c; }
+
+/* Hide redundant Source-material category row (always the first .meta-row) */
+.source-entry > .meta-row:first-of-type { display: none; }
+
+/* Used in (the second .meta-row, after category is hidden) */
+.source-entry > .meta-row {
+  order: 3;
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #6b553f;
+}
+.meta-label { font-weight: 700; color: #6b553f; }
+.tag-list { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-top: 6px; }
+.tag {
+  display: inline-block;
+  padding: 3px 8px;
+  background-color: #ede4cd;
+  border: 1px solid #d3c9a5;
+  color: #5a4a2e;
+  font-size: 12px;
+  text-decoration: none;
+}
+.tag:hover { background-color: #e2d6b6; border-color: #b8a874; color: #4a3a1f; }
+
+.source-entry > .meta-row.count {
+  order: 4;
+}
+
+footer {
+  margin-top: 40px;
+  padding-top: 22px;
+  border-top: 1px solid #d3c9a5;
+  text-align: center;
+  color: #8b7355;
+  font-size: 14px;
+}
+
+@media (max-width: 720px) {
+  body { padding: 12px; }
+  .container { padding: 24px 22px; }
+  h1 { font-size: 26px; }
+  .nav-btn { flex: 1 1 auto; text-align: center; }
+  .source-entry { padding: 16px 18px; }
+}
+</style></head><body><div class="container">
 <h1>Investigative journalism</h1>
 <div class="nav-buttons">
 <a href="#afrin" class="nav-btn">Afrin</a>
@@ -77,145 +236,145 @@ footer { margin-top: 40px; text-align: center; color: #8b7355; font-size: 14px; 
 <h3>1. The Ain Dara temple site in 2010 (photo by Michael Danti) - bellingcat</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Ain Dara Temple Complex A Pre-2010 Archaeological Portrait</span>
+<a class="tag" href="kurdish_research.html">The Ain Dara Temple Complex A Pre-2010 Archaeological Portrait</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites/attachment/1-the-ain-dara-temple-site-in-2010-photo-by-michael-danti" target="_blank" rel="noopener noreferrer">https://bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites/attachment/1-the-ain-dara-temple-site-in-2010-photo-by-michael-danti</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites/attachment/1-the-ain-dara-temple-site-in-2010-photo-by-michael-danti" target="_blank" rel="noopener noreferrer">https://bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites/attachment/1-the-ain-dara-temple-site-in-2010-photo-by-michael-danti</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry" data-topics="afrin">
 <h3>A Revolution Within the Revolution - VICE</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">Hyper-Local Cultural Practices in Afrin, Syria A Portrait Before 2010</span>
+<a class="tag" href="kurdish_research.html">Hyper-Local Cultural Practices in Afrin, Syria A Portrait Before 2010</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://vice.com/en/article/syrias-kurdish-spring-turkish-boader" target="_blank" rel="noopener noreferrer">https://vice.com/en/article/syrias-kurdish-spring-turkish-boader</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://vice.com/en/article/syrias-kurdish-spring-turkish-boader" target="_blank" rel="noopener noreferrer">https://vice.com/en/article/syrias-kurdish-spring-turkish-boader</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry" data-topics="afrin">
 <h3>Afrin and the Race for the Azaz Corridor - News Deeply - The New Humanitarian</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">Afrin and its Neighbors A Historical Analysis from the French Mandate to 2010</span>
+<a class="tag" href="kurdish_research.html">Afrin and its Neighbors A Historical Analysis from the French Mandate to 2010</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://deeply.thenewhumanitarian.org/syria/community/2016/02/24/afrin-and-the-race-for-the-azaz-corridor" target="_blank" rel="noopener noreferrer">https://deeply.thenewhumanitarian.org/syria/community/2016/02/24/afrin-and-the-race-for-the-azaz-corridor</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://deeply.thenewhumanitarian.org/syria/community/2016/02/24/afrin-and-the-race-for-the-azaz-corridor" target="_blank" rel="noopener noreferrer">https://deeply.thenewhumanitarian.org/syria/community/2016/02/24/afrin-and-the-race-for-the-azaz-corridor</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry" data-topics="afrin climate culture geography history relations linguistics literature mythology religion research yezidi">
 <h3>Afrin: Incidents Of Desecration And Destruction Of Cultural Sites - bellingcat</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">Hyper-Local Cultural Practices in Afrin, Syria A Portrait Before 2010</span><span class="tag">Important Tribes of the Afrin Region Before 2010 A Socio-Historical Analysis</span><span class="tag">The Ain Dara Temple Complex A Pre-2010 Archaeological Portrait</span><span class="tag">The Arameans of Afrin A Report on a Deep History and a Fragile Presence Before 2010</span><span class="tag">The Enduring Landscape How Afrin&#x27;s Geography Shaped its History Before 2010</span><span class="tag">The Kilis-Afrin Connection A Pre-2010 Analysis of a Syrian-Turkish Borderland</span><span class="tag">The Yezidis of Afrin Before 2010 A Socio-Historical Overview</span>
+<a class="tag" href="kurdish_research.html">Hyper-Local Cultural Practices in Afrin, Syria A Portrait Before 2010</a><a class="tag" href="kurdish_research.html">Important Tribes of the Afrin Region Before 2010 A Socio-Historical Analysis</a><a class="tag" href="kurdish_research.html">The Ain Dara Temple Complex A Pre-2010 Archaeological Portrait</a><a class="tag" href="kurdish_research.html">The Arameans of Afrin A Report on a Deep History and a Fragile Presence Before 2010</a><a class="tag" href="kurdish_research.html">The Enduring Landscape How Afrin&#x27;s Geography Shaped its History Before 2010</a><a class="tag" href="kurdish_research.html">The Kilis-Afrin Connection A Pre-2010 Analysis of a Syrian-Turkish Borderland</a><a class="tag" href="kurdish_research.html">The Yezidis of Afrin Before 2010 A Socio-Historical Overview</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites" target="_blank" rel="noopener noreferrer">https://bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites</a></div>
-<div class="count">Number of times used: 7</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites" target="_blank" rel="noopener noreferrer">https://bellingcat.com/news/mena/2019/07/11/afrin-incidents-of-desecration-and-destruction-of-cultural-sites</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 7</div>
 </div>
 <div class="source-entry" data-topics="culture">
 <h3>Ajam Mixtape #3: Sounds of Nowruz</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">Newroz An Ancient Rite of Spring and a Modern Emblem of Kurdish Identity</span>
+<a class="tag" href="kurdish_research.html">Newroz An Ancient Rite of Spring and a Modern Emblem of Kurdish Identity</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://ajammc.com/2014/03/19/ajam-mixtape-3-sounds-of-nowruz" target="_blank" rel="noopener noreferrer">https://ajammc.com/2014/03/19/ajam-mixtape-3-sounds-of-nowruz</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://ajammc.com/2014/03/19/ajam-mixtape-3-sounds-of-nowruz" target="_blank" rel="noopener noreferrer">https://ajammc.com/2014/03/19/ajam-mixtape-3-sounds-of-nowruz</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry" data-topics="relations">
 <h3>Das Schweigen der Völker - Deutschlandfunk Kultur</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</span>
+<a class="tag" href="kurdish_research.html">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://deutschlandfunkkultur.de/das-schweigen-der-voelker-100.html" target="_blank" rel="noopener noreferrer">https://deutschlandfunkkultur.de/das-schweigen-der-voelker-100.html</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://deutschlandfunkkultur.de/das-schweigen-der-voelker-100.html" target="_blank" rel="noopener noreferrer">https://deutschlandfunkkultur.de/das-schweigen-der-voelker-100.html</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry" data-topics="relations">
 <h3>In This Sign They Will Conquer? - Christian Militias in the Syrian Conflict - bellingcat</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</span>
+<a class="tag" href="kurdish_research.html">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://bellingcat.com/news/mena/2017/11/04/sign-will-conquer-christian-militias-syrian-conflict" target="_blank" rel="noopener noreferrer">https://bellingcat.com/news/mena/2017/11/04/sign-will-conquer-christian-militias-syrian-conflict</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://bellingcat.com/news/mena/2017/11/04/sign-will-conquer-christian-militias-syrian-conflict" target="_blank" rel="noopener noreferrer">https://bellingcat.com/news/mena/2017/11/04/sign-will-conquer-christian-militias-syrian-conflict</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry" data-topics="relations">
 <h3>Music of a Confused Society - Hetq.am</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</span>
+<a class="tag" href="kurdish_research.html">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://hetq.am/en/article/10197" target="_blank" rel="noopener noreferrer">https://hetq.am/en/article/10197</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://hetq.am/en/article/10197" target="_blank" rel="noopener noreferrer">https://hetq.am/en/article/10197</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry" data-topics="climate">
 <h3>Scientists discuss the role of climate change in the Syrian civil war - Carbon Brief</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">Anatomy of a Crisis The Convergent Causes of Syria&#x27;s 2006-2010 Drought and its Role as a Catalyst for Conflict</span>
+<a class="tag" href="kurdish_research.html">Anatomy of a Crisis The Convergent Causes of Syria&#x27;s 2006-2010 Drought and its Role as a Catalyst for Conflict</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://carbonbrief.org/scientists-discuss-the-role-of-climate-change-in-the-syrian-civil-war" target="_blank" rel="noopener noreferrer">https://carbonbrief.org/scientists-discuss-the-role-of-climate-change-in-the-syrian-civil-war</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://carbonbrief.org/scientists-discuss-the-role-of-climate-change-in-the-syrian-civil-war" target="_blank" rel="noopener noreferrer">https://carbonbrief.org/scientists-discuss-the-role-of-climate-change-in-the-syrian-civil-war</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry" data-topics="relations research">
 <h3>Syrian Turkmen Groups in Latakia: An Overview - bellingcat</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">Significant Academic Research Gaps Concerning Afrin, Syria A Critical Assessment</span><span class="tag">The Tangled Web An Examination of Kurdish-Turkmen Relations from the Ottoman Era to the Present</span>
+<a class="tag" href="kurdish_research.html">Significant Academic Research Gaps Concerning Afrin, Syria A Critical Assessment</a><a class="tag" href="kurdish_research.html">The Tangled Web An Examination of Kurdish-Turkmen Relations from the Ottoman Era to the Present</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://bellingcat.com/news/mena/2019/02/07/syrian-turkmen-groups-in-latakia-an-overview" target="_blank" rel="noopener noreferrer">https://bellingcat.com/news/mena/2019/02/07/syrian-turkmen-groups-in-latakia-an-overview</a></div>
-<div class="count">Number of times used: 2</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://bellingcat.com/news/mena/2019/02/07/syrian-turkmen-groups-in-latakia-an-overview" target="_blank" rel="noopener noreferrer">https://bellingcat.com/news/mena/2019/02/07/syrian-turkmen-groups-in-latakia-an-overview</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 2</div>
 </div>
 <div class="source-entry" data-topics="culture">
 <h3>The Battle Over Iran&#x27;s Flag - Ajam Media Collective</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Faravahar An Iconographic and Cultural Biography of a Persian Symbol</span>
+<a class="tag" href="kurdish_research.html">The Faravahar An Iconographic and Cultural Biography of a Persian Symbol</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://ajammc.com/2025/07/09/battle-iran-flag" target="_blank" rel="noopener noreferrer">https://ajammc.com/2025/07/09/battle-iran-flag</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://ajammc.com/2025/07/09/battle-iran-flag" target="_blank" rel="noopener noreferrer">https://ajammc.com/2025/07/09/battle-iran-flag</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry" data-topics="afrin history yezidi">
 <h3>The Yazidis: Myth and Reality of a Religious Group of Proud Anti-IS Fighters | Reset DOC</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">A People Outside of History The Unique and Persecuted Legacy of the Yazidis</span><span class="tag">An Ancient Bond of Geography and Fate A Comprehensive Analysis of the Relationship Between the Jewish and Yazidi Peoples</span>
+<a class="tag" href="kurdish_research.html">A People Outside of History The Unique and Persecuted Legacy of the Yazidis</a><a class="tag" href="kurdish_research.html">An Ancient Bond of Geography and Fate A Comprehensive Analysis of the Relationship Between the Jewish and Yazidi Peoples</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://resetdoc.org/story/the-yazidis-myth-and-reality-of-a-religious-group-of-proud-anti-is-fighters" target="_blank" rel="noopener noreferrer">https://resetdoc.org/story/the-yazidis-myth-and-reality-of-a-religious-group-of-proud-anti-is-fighters</a></div>
-<div class="count">Number of times used: 2</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://resetdoc.org/story/the-yazidis-myth-and-reality-of-a-religious-group-of-proud-anti-is-fighters" target="_blank" rel="noopener noreferrer">https://resetdoc.org/story/the-yazidis-myth-and-reality-of-a-religious-group-of-proud-anti-is-fighters</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 2</div>
 </div>
 <div class="source-entry" data-topics="relations">
 <h3>Turkey hosted the first-ever independent Circassian event, a move that will unsettle Russia</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">A Relationship Forged in Empire A Comparative Analysis of Kurdish and Circassian Peoples</span>
+<a class="tag" href="kurdish_research.html">A Relationship Forged in Empire A Comparative Analysis of Kurdish and Circassian Peoples</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://nordicmonitor.com/2023/08/turkey-hosted-the-first-ever-independent-circassian-event-a-move-that-will-unsettle-russia" target="_blank" rel="noopener noreferrer">https://nordicmonitor.com/2023/08/turkey-hosted-the-first-ever-independent-circassian-event-a-move-that-will-unsettle-russia</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://nordicmonitor.com/2023/08/turkey-hosted-the-first-ever-independent-circassian-event-a-move-that-will-unsettle-russia" target="_blank" rel="noopener noreferrer">https://nordicmonitor.com/2023/08/turkey-hosted-the-first-ever-independent-circassian-event-a-move-that-will-unsettle-russia</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry" data-topics="yezidi">
 <h3>Were &#x27;Devil Worshipper&#x27; Yazidis There for the Birth of Human Culture? - VICE</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">A People Outside of History The Unique and Persecuted Legacy of the Yazidis</span>
+<a class="tag" href="kurdish_research.html">A People Outside of History The Unique and Persecuted Legacy of the Yazidis</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://vice.com/en/article/yazidi-gobekli-tepe-is-172" target="_blank" rel="noopener noreferrer">https://vice.com/en/article/yazidi-gobekli-tepe-is-172</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://vice.com/en/article/yazidi-gobekli-tepe-is-172" target="_blank" rel="noopener noreferrer">https://vice.com/en/article/yazidi-gobekli-tepe-is-172</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry" data-topics="relations">
 <h3>Yêrêvan Xeberdide: How a Soviet Armenian Radio Station Preserved Kurdish Culture</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</span>
+<a class="tag" href="kurdish_research.html">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://ajammc.com/2021/06/13/radio-yerevan-kurdish-culture" target="_blank" rel="noopener noreferrer">https://ajammc.com/2021/06/13/radio-yerevan-kurdish-culture</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://ajammc.com/2021/06/13/radio-yerevan-kurdish-culture" target="_blank" rel="noopener noreferrer">https://ajammc.com/2021/06/13/radio-yerevan-kurdish-culture</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry" data-topics="relations">
 <h3>“Fatally Tied Together”: The Intertwined History of Kurds and</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Investigative journalism</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</span>
+<a class="tag" href="kurdish_research.html">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://researchgate.net/publication/337475335_Fatally_Tied_Together_The_Intertwined_History_of_Kurds_and_Armenians_in_the_20th_Century" target="_blank" rel="noopener noreferrer">https://researchgate.net/publication/337475335_Fatally_Tied_Together_The_Intertwined_History_of_Kurds_and_Armenians_in_the_20th_Century</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://researchgate.net/publication/337475335_Fatally_Tied_Together_The_Intertwined_History_of_Kurds_and_Armenians_in_the_20th_Century" target="_blank" rel="noopener noreferrer">https://researchgate.net/publication/337475335_Fatally_Tied_Together_The_Intertwined_History_of_Kurds_and_Armenians_in_the_20th_Century</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 </div>
 <footer>Kurdish Research Source Categories</footer></div><script id="source-topic-filter">
@@ -230,6 +389,20 @@ function entryTitle(entry) {
   const heading = entry.querySelector("h3");
   return heading ? heading.textContent.trim() : "";
 }
+function titleSortKey(title) {
+  return title
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/^\s*(?:\((?:pdf|article|book|chapter)\)\s*)+/i, "")
+    .replace(/^\s*full article:\s*/i, "")
+    .replace(/^[^\p{L}\p{N}]+/u, "")
+    .replace(/^(?:a|an|the)\s+/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+function entrySortTitle(entry) {
+  return titleSortKey(entryTitle(entry));
+}
 function entryUseCount(entry) {
   const count = entry.querySelector(".count");
   const match = count ? count.textContent.match(/\d+/) : null;
@@ -241,10 +414,10 @@ function applySort() {
   const entries = Array.from(category.querySelectorAll(".source-entry"));
   entries.sort(function (a, b) {
     if (currentSort === "alpha") {
-      return collator.compare(entryTitle(a), entryTitle(b));
+      return collator.compare(entrySortTitle(a), entrySortTitle(b)) || collator.compare(entryTitle(a), entryTitle(b));
     }
     const countDiff = entryUseCount(b) - entryUseCount(a);
-    return countDiff || collator.compare(entryTitle(a), entryTitle(b));
+    return countDiff || collator.compare(entrySortTitle(a), entrySortTitle(b)) || collator.compare(entryTitle(a), entryTitle(b));
   });
   entries.forEach(function (entry) { category.appendChild(entry); });
 }

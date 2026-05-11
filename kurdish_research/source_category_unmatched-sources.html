@@ -1,49 +1,211 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Unmatched Sources Sources</title><style>
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #e8e1d1; }
-.container { background-color: #f8f4e8; border: 1px solid #d3c9a5; border-radius: 0px; padding: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); position: relative; margin-top: 20px; }
-.container::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.1); pointer-events: none; z-index: 1; }
-h1 { font-size: 38px; margin-top: 0; color: #5a4a2e; border-bottom: 2px solid #d3c9a5; padding-bottom: 10px; text-align: center; }
-h2 { color: #6b553f; font-size: 28px; margin-top: 30px; border-bottom: 1px solid #d3c9a5; padding-bottom: 5px; }
-h3 { color: #6b553f; font-size: 22px; margin-top: 20px; }
-h4 { color: #7a634a; font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: bold; }
-.category { margin-bottom: 40px; background-color: rgba(255, 255, 255, 0.5); padding: 20px; border: 1px solid #e0d7c0; border-radius: 2px; }
-.resource-link { display: block; margin: 15px 0; padding: 12px; background-color: #f0e9d9; border: 1px solid #d3c9a5; border-radius: 2px; text-decoration: none; color: #5a4a2e; transition: all 0.2s; }
-.resource-link:hover { background-color: #e0d7c0; transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
-.link-content { width: 100%; }
-.link-title { font-weight: 600; display: block; font-size: 18px; }
-.intro { margin-bottom: 30px; padding: 20px; background-color: rgba(255, 255, 255, 0.6); border: 1px solid #e0d7c0; border-radius: 2px; font-size: 17px; line-height: 1.7; }
-footer { margin-top: 40px; text-align: center; color: #8b7355; font-size: 14px; border-top: 1px solid #d3c9a5; padding-top: 20px; }
-.nav-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; justify-content: center; }
-.nav-btn { padding: 10px 15px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 14px; color: #ffffff !important; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); border: 1px solid rgba(0,0,0,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-.nav-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 10px rgba(0,0,0,0.3); filter: brightness(110%); }
-.source-entry { margin: 18px 0; padding: 18px; background-color: rgba(255, 255, 255, 0.55); border: 1px solid #e0d7c0; border-radius: 2px; }
-.source-entry h3 { margin-top: 0; overflow-wrap: anywhere; }
-.meta-row { margin: 8px 0; }
-.meta-label { font-weight: 700; color: #6b553f; }
-.tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-.tag { display: inline-block; padding: 3px 7px; background-color: #f0e9d9; border: 1px solid #d3c9a5; border-radius: 2px; color: #5a4a2e; font-size: 14px; }
-.url { overflow-wrap: anywhere; }
-.count { color: #8b7355; font-size: 14px; margin-top: 4px; }
-.back-link { margin-bottom: 20px; }
-@media (max-width: 768px) { body { padding: 10px; } .container { padding: 15px; } h1 { font-size: 28px; } .nav-btn { flex: 1 1 auto; text-align: center; font-size: 13px; } }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: #3a2f1f;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #e8e1d1;
+  background-image: url('background.png');
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+.container {
+  background-color: #f8f4e8;
+  border: 1px solid #d3c9a5;
+  padding: 48px 52px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease;
+}
+.container:has(.nav-buttons .nav-btn:nth-child(1).active) { background-color: #556b2f; }
+.container:has(.nav-buttons .nav-btn:nth-child(2).active) { background-color: #2e8b57; }
+.container:has(.nav-buttons .nav-btn:nth-child(3).active) { background-color: #696969; }
+.container:has(.nav-buttons .nav-btn:nth-child(4).active) { background-color: #4682b4; }
+.container:has(.nav-buttons .nav-btn:nth-child(5).active) { background-color: #800000; }
+.container:has(.nav-buttons .nav-btn:nth-child(6).active) { background-color: #483d8b; }
+.container:has(.nav-buttons .nav-btn:nth-child(7).active) { background-color: #8b4513; }
+.container:has(.nav-buttons .nav-btn:nth-child(8).active) { background-color: #a0522d; }
+.container:has(.nav-buttons .nav-btn:nth-child(9).active) { background-color: #008080; }
+.container:has(.nav-buttons .nav-btn:nth-child(10).active) { background-color: #191970; }
+.container:has(.nav-buttons .nav-btn:nth-child(11).active) { background-color: #2f4f4f; }
+.container:has(.nav-buttons .nav-btn:nth-child(12).active) { background-color: #58365f; }
+.container:has(.nav-buttons .nav-btn:nth-child(13).active) { background-color: #b22222; }
+.container:has(.nav-buttons .nav-btn:nth-child(14).active) { background-color: #555555; }
+.container:has(.nav-buttons .nav-btn:nth-child(15).active) { background-color: #b8860b; }
+.container:has(.nav-buttons .nav-btn:nth-child(16).active) { background-color: #d2691e; }
+h1 {
+  font-size: 34px;
+  font-weight: 700;
+  margin: 0 0 24px;
+  color: #4a3a1f;
+  letter-spacing: -0.3px;
+  transition: color 0.2s ease;
+}
+.container:has(.nav-buttons .nav-btn.active) h1 { color: #ffffff; }
+h2 { display: none; }
+.category {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
 
-.nav-buttons .nav-btn:nth-child(1) { background-color: #5a4a2e; }
-.nav-buttons .nav-btn:nth-child(2) { background-color: #556b2f; }
-.nav-buttons .nav-btn:nth-child(3) { background-color: #2e8b57; }
-.nav-buttons .nav-btn:nth-child(4) { background-color: #696969; }
-.nav-buttons .nav-btn:nth-child(5) { background-color: #4682b4; }
-.nav-buttons .nav-btn:nth-child(6) { background-color: #800000; }
-.nav-buttons .nav-btn:nth-child(7) { background-color: #483d8b; }
-.nav-buttons .nav-btn:nth-child(8) { background-color: #8b4513; }
-.nav-buttons .nav-btn:nth-child(9) { background-color: #a0522d; }
-.nav-buttons .nav-btn:nth-child(10) { background-color: #008080; }
-.nav-buttons .nav-btn:nth-child(11) { background-color: #191970; }
-.nav-buttons .nav-btn:nth-child(12) { background-color: #2f4f4f; }
-.nav-buttons .nav-btn:nth-child(13) { background-color: #58365f; }
-.nav-buttons .nav-btn:nth-child(14) { background-color: #b22222; }
-.nav-buttons .nav-btn:nth-child(15) { background-color: #555555; }
-.nav-buttons .nav-btn:nth-child(16) { background-color: #b8860b; }
-.nav-buttons .nav-btn:nth-child(17) { background-color: #d2691e; }</style></head><body><div class="container">
+.back-link { margin: 0 0 24px; }
+.back-link .resource-link {
+  display: inline-block;
+  padding: 8px 14px;
+  background-color: #ede4cd;
+  border: 1px solid #c9b985;
+  text-decoration: none;
+  color: #4a3a1f;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.back-link .resource-link:hover { background-color: #e2d6b6; border-color: #b8a874; }
+.back-link .link-title { font-size: 14px; font-weight: 600; }
+
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 24px;
+}
+.nav-btn {
+  padding: 7px 13px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  border: 1px solid rgba(0,0,0,0.15);
+  transition: filter 0.15s ease;
+}
+.nav-btn:hover { filter: brightness(112%); }
+.nav-btn.active { filter: brightness(85%); outline: 3px solid #ffd700; outline-offset: 2px; }
+
+.nav-buttons .nav-btn:nth-child(1) { background-color: #556b2f; }
+.nav-buttons .nav-btn:nth-child(2) { background-color: #2e8b57; }
+.nav-buttons .nav-btn:nth-child(3) { background-color: #696969; }
+.nav-buttons .nav-btn:nth-child(4) { background-color: #4682b4; }
+.nav-buttons .nav-btn:nth-child(5) { background-color: #800000; }
+.nav-buttons .nav-btn:nth-child(6) { background-color: #483d8b; }
+.nav-buttons .nav-btn:nth-child(7) { background-color: #8b4513; }
+.nav-buttons .nav-btn:nth-child(8) { background-color: #a0522d; }
+.nav-buttons .nav-btn:nth-child(9) { background-color: #008080; }
+.nav-buttons .nav-btn:nth-child(10) { background-color: #191970; }
+.nav-buttons .nav-btn:nth-child(11) { background-color: #2f4f4f; }
+.nav-buttons .nav-btn:nth-child(12) { background-color: #58365f; }
+.nav-buttons .nav-btn:nth-child(13) { background-color: #b22222; }
+.nav-buttons .nav-btn:nth-child(14) { background-color: #555555; }
+.nav-buttons .nav-btn:nth-child(15) { background-color: #b8860b; }
+.nav-buttons .nav-btn:nth-child(16) { background-color: #d2691e; }
+
+.sort-controls {
+  display: flex;
+  gap: 6px;
+  margin: 0 0 24px;
+}
+.sort-btn {
+  padding: 7px 14px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #4a3a1f;
+  background-color: #f4ecd6;
+  border: 1px solid #d3c9a5;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.sort-btn:hover { background-color: #e8dcb6; border-color: #cdbe8d; }
+.sort-btn.active { color: #f8f4e8; background-color: #4a3a1f; border-color: #4a3a1f; outline: 3px solid #ffd700; outline-offset: 2px; }
+.sort-label { font-weight: 700; font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase; color: #4a3a1f; align-self: center; margin-right: 6px; transition: color 0.2s ease; }
+.container:has(.nav-buttons .nav-btn.active) .sort-label { color: #ffffff; }
+
+/* Works-cited entry */
+.source-entry {
+  display: flex;
+  flex-direction: column;
+  background-color: #f4ecd6;
+  border: 1px solid #e0d4ac;
+  padding: 18px 22px;
+  margin-bottom: 10px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.source-entry:hover { background-color: #e8dcb6; border-color: #cdbe8d; }
+.source-entry[hidden] { display: none; }
+
+/* Title first */
+.source-entry > h3 {
+  order: 1;
+  margin: 0 0 10px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #2a1f10;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+/* Link second */
+.source-entry > .meta-row.url {
+  order: 2;
+  margin: 6px 0 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.source-entry > .meta-row.url a {
+  color: #0645ad;
+  text-decoration: underline;
+  border-bottom: none;
+  word-break: break-all;
+  transition: color 0.15s ease;
+}
+.source-entry > .meta-row.url a:hover { color: #002f6c; }
+
+/* Hide redundant Source-material category row (always the first .meta-row) */
+.source-entry > .meta-row:first-of-type { display: none; }
+
+/* Used in (the second .meta-row, after category is hidden) */
+.source-entry > .meta-row {
+  order: 3;
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #6b553f;
+}
+.meta-label { font-weight: 700; color: #6b553f; }
+.tag-list { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-top: 6px; }
+.tag {
+  display: inline-block;
+  padding: 3px 8px;
+  background-color: #ede4cd;
+  border: 1px solid #d3c9a5;
+  color: #5a4a2e;
+  font-size: 12px;
+  text-decoration: none;
+}
+.tag:hover { background-color: #e2d6b6; border-color: #b8a874; color: #4a3a1f; }
+
+.source-entry > .meta-row.count {
+  order: 4;
+}
+
+footer {
+  margin-top: 40px;
+  padding-top: 22px;
+  border-top: 1px solid #d3c9a5;
+  text-align: center;
+  color: #8b7355;
+  font-size: 14px;
+}
+
+@media (max-width: 720px) {
+  body { padding: 12px; }
+  .container { padding: 24px 22px; }
+  h1 { font-size: 26px; }
+  .nav-btn { flex: 1 1 auto; text-align: center; }
+  .source-entry { padding: 16px 18px; }
+}
+</style></head><body><div class="container">
 <h1>Unmatched Sources</h1>
 <div class="back-link"><a href="source_categories.html" class="resource-link"><span class="link-title">Back to Source Categories</span></a></div>
 <div class="category">
@@ -52,1207 +214,1207 @@ footer { margin-top: 40px; text-align: center; color: #8b7355; font-size: 14px; 
 <h3>Between Tigris and Zagros: Rediscovering the Prehistory of Iraqi Kurdistan, https://journals.openedition.org/paleorient/643 5. Zagros Mountains - Wikipedia, https://en.wikipedia.org/wiki/Zagros_Mountains 6. KURDISH LANGUAGE i. HISTORY OF THE KURDISH LA ..., https://www.iranicaonline.org/articles/kurdish-language-i 7. The Origin of Kurds - Scientific Research Publishing, https://www.scirp.org/html/19564.html 8. Population genetic study of 17 Y-STR Loci of the Sorani Kurds in the ..., https://pmc.ncbi.nlm.nih.gov/articles/PMC9682651/ 9. MtDNA and Y-chromosome Variation in Kurdish Groups, https://www.researchgate.net/publication/7748420_MtDNA_and_Y-chromosome_Variation_in_K urdish_Groups 10. Kurdistan | History, Religion, Map, &amp; Facts | Britannica, https://www.britannica.com/place/Kurdistan 11. The impact of religious diversity on the Kurdish identity within a geopolitical framework, https://www.researchgate.net/publication/385128411_The_impact_of_religious_diversity_on_the _Kurdish_identity_within_a_geopolitical_framework 12. Religious Minorities in Kurdistan: Beyond the Mainstream, edited by Khanna Omarkhali in: Kurdish Studies Archive - Brill, https://brill.com/edcollchap-oa/book/9789004706552/BP000017.xml 13. Kurd | Syria, Language, Map, Women, Turkey, Iraq, Iran, History ..., https://www.britannica.com/topic/Kurd 14. Kurdish Dialects, Writing System &amp; Grammar - Languages - Britannica, https://www.britannica.com/topic/Kurdish-language 15. The cultural situation of the Kurds - Parliamentary Assembly of the Council of Europe, https://pace.coe.int/files/11316/html 16. Kurdish - UC Berkeley Library Update, https://update.lib.berkeley.edu/2020/08/24/kurdish/ 17. Kurds - Summary - eHRAF World Cultures, https://ehrafworldcultures.yale.edu/cultures/MA11/summary 18. History of the Kurds - Wikipedia, https://en.wikipedia.org/wiki/History_of_the_Kurds 19. GUTIANS - Encyclopaedia Iranica, https://iranicaonline.org/articles/gutians 20. History of the Kurds, http://www.fransamaltingvongeusau.com/documents/news/72.pdf 21. About - Kurdish Writing, https://kurdishwriting.com/aboutpage/ 22. Indo-European heritage of the Kurdish peoples : r/IndoEuropean - Reddit, https://www.reddit.com/r/IndoEuropean/comments/dihtw0/indoeuropean_heritage_of_the_kurdis h_peoples/ 23. Kurdistan on the Path of a Historical Evolution (From the Xenophon&#x27;s Report), https://cultureproject.org.uk/kurdistan-on-the-path-of-a-historical-evolution/ 24. Kordestān | History, Culture &amp; Geography - Britannica, https://www.britannica.com/place/Kordestan 25. Yazidi | History, Culture, &amp; Religion | Britannica, https://www.britannica.com/topic/Yazidi 26. The Kurds and Kurdistan - TeachMideast, https://teachmideast.org/the-kurds-and-kurdistan/ 27. Geographic Division: An Ignored Factor Affecting Kurdish Unity - The ..., https://nlka.net/eng/geographical-division-an-ignored-factor-affecting-kurdish-division/ 28. The Zagros Epipalaeolithic revisited: New excavations and 14C dates from Palegawra cave in Iraqi Kurdistan - PMC - PubMed Central, https://pmc.ncbi.nlm.nih.gov/articles/PMC7505476/ 29. The Early Neolithic of Iraqi Kurdistan: Current research at Bestansur, Shahrizor Plain, https://journals.openedition.org/paleorient/644?lang=en 30. History of the Kurds - Kurdland - Your gateway to Kurdistan, https://kurdland.net/english/history 31. Exploring Kurdish Origins - Prof. Mehrdad R. Izady - KURDISTANICA, https://kurdistanica.com/257/exploring-kurdish-origins/ 32. ARCHEOLOGY ii. Median and Achaemenid - Encyclopaedia Iranica, https://www.iranicaonline.org/articles/archeology-ii 33. Guti | Persian Dynasty, Ancient Mesopotamia, Elamite Empire - Britannica, https://www.britannica.com/topic/Guti 34. Michael Izady - GeoCurrents, https://www.geocurrents.info/blog/tag/michael-izady/ 35. Medes - Wikipedia, https://en.wikipedia.org/wiki/Medes 36. THE MEDIAN CONFEDERACY - Brill, https://brill.com/downloadpdf/book/9789004460645/BP000005.pdf 37. Median kingdom - Wikipedia, https://en.wikipedia.org/wiki/Median_kingdom 38. Kurdish language - Wikipedia, https://en.wikipedia.org/wiki/Kurdish_language 39. Classification - KurdishPeople.Org, https://kurdishpeople.org/language/classification/ 40. en.wikipedia.org, https://en.wikipedia.org/wiki/Kurdish_language#:~:text=12%20External%20links-,Classification %20and%20origin,between%20Northwestern%20and%20Southwestern%20Iranian. 41. (PDF) Kurdish linguistics: a brief overview - ResearchGate, https://www.researchgate.net/publication/273068693_Kurdish_linguistics_a_brief_overview 42. Kurdish: Our Languages: About - Central Eurasian Studies, https://ceus.indiana.edu/about/languages/kurdish.html 43. Kurdish Language: Its Origins, Geographical Reach, and Sociolinguistic Influence, https://kurdishlessons.com/kurdish-language-its-origins-geographical-reach-and-sociolinguistic-i nfluence/ 44. (PDF) Gorani substrate within Kurdish Evidence from southern dialects of Central Kurdish, https://www.researchgate.net/publication/380761124_Gorani_substrate_within_Kurdish_Evidenc e_from_southern_dialects_of_Central_Kurdish 45. (PDF) KURDISH DIALECT CONTINUUM, AS A STANDARDIZATION SOLUTION, https://www.researchgate.net/publication/276057902_KURDISH_DIALECT_CONTINUUM_AS_ A_STANDARDIZATION_SOLUTION 46. The Reformation and Development of Yazidi Identity from Theoretical and Historical Perspectives: Ethnopolitics - Taylor &amp; Francis Online, https://www.tandfonline.com/doi/abs/10.1080/17449057.2020.1860550 47. Revisiting Kurdish dialect geography: Findings from the Manchester Database - FIS Universität Bamberg, https://fis.uni-bamberg.de/bitstreams/1880dfe1-4287-47fe-b603-6c9c174e5085/download 48. Joint Genetic Analyses of Mitochondrial and Y-Chromosome Molecular Markers for a Population from Northwest China - MDPI, https://www.mdpi.com/2073-4425/11/5/564 49. An X-STRs analysis of the Iraqi Sorani Kurds - PMC - PubMed Central, https://pmc.ncbi.nlm.nih.gov/articles/PMC10681225/ 50. (PDF) The Origin of Kurds - ResearchGate, https://www.researchgate.net/publication/265947486_The_Origin_of_Kurds 51. Georgian and Kurd mtDNA sequence analysis shows a lack of correlation between languages and female genetic lineages | Request PDF - ResearchGate, https://www.researchgate.net/publication/12549523_Georgian_and_Kurd_mtDNA_sequence_a nalysis_shows_a_lack_of_correlation_between_languages_and_female_genetic_lineages 52. Religion in Kurdistan (Chapter 19) - The Cambridge History of the Kurds, https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/religion-in-kurdistan/F7D1 39FC0FBC49393B4FEE5461C27559 53. The Kurds - Kurdish Studies, https://kurdishstudies.net/menu-script/index.php/KS/article/download/165/153/154 54. &#x27;Kurdish&#x27; Religious Minorities in the Modern World (Chapter 21 ..., https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/kurdish-religious-minoritie s-in-the-modern-world/92D1C763C53F7A49EF679A7BA3F3647C 55. Kurds in the Middle East in the context of plurality of identities - ResearchGate, https://www.researchgate.net/publication/331301551_Kurds_in_the_Middle_East_in_the_contex t_of_plurality_of_identities 56. Full article: The hybridisation of religion and nationalism in Iraqi Kurdistan: the case of Kurdish Islam - Taylor and Francis, https://www.tandfonline.com/doi/full/10.1080/23802014.2022.2070269 57. kurdistan region with focus on religious groups | Paradox Interactive Forums, https://forum.paradoxplaza.com/forum/threads/kurdistan-region-with-focus-on-religious-groups.1 444974/ 58. YAZIDIS i. GENERAL - Encyclopaedia Iranica, https://www.iranicaonline.org/articles/yazidis-i-general-1/ 59. Yazidis - Wikipedia, https://en.wikipedia.org/wiki/Yazidis 60. Yazidism - Wikipedia, https://en.wikipedia.org/wiki/Yazidism 61. Yazidis | Oxford Research Encyclopedia of Religion, https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780 199340378-e-254?d=%2F10.1093%2Facrefore%2F9780199340378.001.0001%2Facrefore-978 0199340378-e-254&amp;p=emailAghNO9rvSn8EI 62. Who Are the Yazidis? - Home, https://www.pah.org.pl/dom/en/who-are-the-yazidis/ 63. The Yazidis: Myth and Reality of a Religious Group of Proud Anti-IS Fighters | Reset DOC, https://www.resetdoc.org/story/the-yazidis-myth-and-reality-of-a-religious-group-of-proud-anti-is- fighters/ 64. Aspirations for Ethnonationalist Identities among Religious Minorities in Iraq: The Case of Yazidi Identity in the Period of Kurdish and Arab Nationalism, 1963–2003 | Nationalities Papers - Cambridge University Press &amp; Assessment, https://www.cambridge.org/core/journals/nationalities-papers/article/aspirations-for-ethnonationa list-identities-among-religious-minorities-in-iraq-the-case-of-yazidi-identity-in-the-period-of-kurdis h-and-arab-nationalism-19632003/91265FED3DB7208911FF1215B0ABFA73 65. Alevis | Oxford Research Encyclopedia of Religion, https://oxfordre.com/religion/display/10.1093/acrefore/9780199340378.001.0001/acrefore-9780 199340378-e-101?p=emailAmi/niBttqdvk&amp;d=/10.1093/acrefore/9780199340378.001.0001/acref ore-9780199340378-e-101 66. Kurds, Turks and the Alevi Revival in Turkey - MERIP, https://merip.org/1996/09/kurds-turks-and-the-alevi-revival-in-turkey/ 67. MERIA: The Alevi of Anatolia - Columbia International Affairs Online, https://ciaotest.cc.columbia.edu/olj/meria/meria99_zed02.html 68. Alevism - Wikipedia, https://en.wikipedia.org/wiki/Alevism 69. Kurdish Alevism - Multiple Secularities, https://www.multiple-secularities.de/media/wps_18_gueltekin_alevikurds.pdf 70. Kurdish Alevism - Wikipedia, https://en.wikipedia.org/wiki/Kurdish_Alevism 71. A Survey of the Roots and History of Kurdish Alevism: What are the Divergences and Convergences between Kurdish Alevi Groups in Turkey?, https://kurdishstudies.net/menu-script/index.php/KS/article/view/77 72. Editorial: Alevi Kurds: History, Politics and Identity - Kurdish Studies, https://kurdishstudies.net/menu-script/index.php/KS/article/view/74 73. Alevi Kurds: History, Politics, Migration and Identity: an Interview with Martin van Bruinessen in - Brill, https://brill.com/abstract/book/9789004700369/BP000007.xml 74. Yarsanism - KurdishPeople.Org, https://kurdishpeople.org/yarsanism/ 75. Yarsanism - Wikipedia, https://en.wikipedia.org/wiki/Yarsanism 76. Yarsanism - ROOTSHUNT, https://rootshunt.com/aryans/indiairanandaryans/archaeologicalsitesinpersia/sarpolezahab/yars anism.htm 77. Oral Tradition Journal at Harvard University, https://oraltradition.org/the-religious-textual-heritage-of-the-yarsan-ahl-e-haqq/ 78. Ahl al-Haqq - wikishia, https://en.wikishia.net/view/Ahl_al-Haqq 79. The Ahl-e Haqq Minority Faith Fights for Its Homeland in Northern Iraq - GeoCurrents, http://www.geocurrents.info/blog/2015/08/29/the-ahl-e-haqq-minority-faith-fights-for-its-homelan d-in-northern-iraq/ 80. Inner Truth and Outer History: The Two Worlds of the Ahl-i Haqq of Kurdistan | International Journal of Middle East Studies, https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/inner -truth-and-outer-history-the-two-worlds-of-the-ahli-haqq-of-kurdistan/38DF1CC8BF45493367CB 876908D5D479 81. Yarsani Religion - Beliefs and Practices - Servant Group International, https://servantgroup.org/yarsani-religion-beliefs-and-practices/ 82. Kurdish nationalism: What are its origins? - ResearchGate, https://www.researchgate.net/publication/272209206_Kurdish_nationalism_What_are_its_origin s 83. Kurds and Kurdish Nationalism in the Interwar Period (Chapter 7), https://www.cambridge.org/core/books/cambridge-history-of-the-kurds/kurds-and-kurdish-nation alism-in-the-interwar-period/1C6C81ABFE0926AB4E1205D6BC5514D9 84. (PDF) Religious Minorities in Kurdistan: Beyond the Mainstream - ResearchGate, https://www.researchgate.net/publication/335834967_Religious_Minorities_in_Kurdistan_Beyon d_the_Mainstream</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Peer-reviewed academic</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Origins of the Kurds An Interdisciplinary Synthesis</span>
+<a class="tag" href="kurdish_research.html">The Origins of the Kurds An Interdisciplinary Synthesis</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://journals.openedition.org/paleorient/6435.ZagrosMountains-Wikipedia,https:/en.wikipedia.org/wiki/Zagros_Mountains6.KURDISHLANGUAGEi.HISTORYOFTHEKURDISHLA...,https:/www.iranicaonline.org/articles/kurdish-language-i7.TheOriginofKurds-ScientificResearchPublishing,https:/www.scirp.org/html/19564.html8.Populationgeneticstudyof17Y-STRLocioftheSoraniKurdsinthe...,https:/pmc.ncbi.nlm.nih.gov/articles/PMC9682651/9.MtDNAandY-chromosomeVariationinKurdishGroups,https:/www.researchgate.net/publication/7748420_MtDNA_and_Y-chromosome_Variation_in_Kurdish_Groups10.Kurdistan" target="_blank" rel="noopener noreferrer">https://journals.openedition.org/paleorient/6435.ZagrosMountains-Wikipedia,https:/en.wikipedia.org/wiki/Zagros_Mountains6.KURDISHLANGUAGEi.HISTORYOFTHEKURDISHLA...,https:/www.iranicaonline.org/articles/kurdish-language-i7.TheOriginofKurds-ScientificResearchPublishing,https:/www.scirp.org/html/19564.html8.Populationgeneticstudyof17Y-STRLocioftheSoraniKurdsinthe...,https:/pmc.ncbi.nlm.nih.gov/articles/PMC9682651/9.MtDNAandY-chromosomeVariationinKurdishGroups,https:/www.researchgate.net/publication/7748420_MtDNA_and_Y-chromosome_Variation_in_Kurdish_Groups10.Kurdistan</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://journals.openedition.org/paleorient/6435.ZagrosMountains-Wikipedia,https:/en.wikipedia.org/wiki/Zagros_Mountains6.KURDISHLANGUAGEi.HISTORYOFTHEKURDISHLA...,https:/www.iranicaonline.org/articles/kurdish-language-i7.TheOriginofKurds-ScientificResearchPublishing,https:/www.scirp.org/html/19564.html8.Populationgeneticstudyof17Y-STRLocioftheSoraniKurdsinthe...,https:/pmc.ncbi.nlm.nih.gov/articles/PMC9682651/9.MtDNAandY-chromosomeVariationinKurdishGroups,https:/www.researchgate.net/publication/7748420_MtDNA_and_Y-chromosome_Variation_in_Kurdish_Groups10.Kurdistan" target="_blank" rel="noopener noreferrer">https://journals.openedition.org/paleorient/6435.ZagrosMountains-Wikipedia,https:/en.wikipedia.org/wiki/Zagros_Mountains6.KURDISHLANGUAGEi.HISTORYOFTHEKURDISHLA...,https:/www.iranicaonline.org/articles/kurdish-language-i7.TheOriginofKurds-ScientificResearchPublishing,https:/www.scirp.org/html/19564.html8.Populationgeneticstudyof17Y-STRLocioftheSoraniKurdsinthe...,https:/pmc.ncbi.nlm.nih.gov/articles/PMC9682651/9.MtDNAandY-chromosomeVariationinKurdishGroups,https:/www.researchgate.net/publication/7748420_MtDNA_and_Y-chromosome_Variation_in_Kurdish_Groups10.Kurdistan</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>www.cambridge.org© in this web service Cambridge University PressCambridge University Press978-1-107-00831-1 - The Climate of Rebellion in the Early Modern Ottoman EmpireSam WhiteFrontmatterMore information</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Peer-reviewed academic</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">THE CLIMATE OF REBELLION IN THE EARLY MODERN OTTOMAN EMPIRE</span>
+<a class="tag" href="kurdish_research.html">THE CLIMATE OF REBELLION IN THE EARLY MODERN OTTOMAN EMPIRE</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Mari.&quot; Jewish Virtual Library</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Buck, Mary E. &quot;The Amorite-Canaanite-Israelite Connection.&quot; PhD diss., University of Chicago</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Burke, Aaron A. &quot;Introduction.&quot; In The Amorites and the Bronze Age Near East. Cambridge University Press</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Burke, Aaron A. &quot;Mercenaries and Merchants.&quot; In The Amorites and the Bronze Age Near East. Cambridge University Press</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Homsher, Robert. &quot;The Amorites: A Re-evaluation of the Nature of Their Identity.&quot; PhD diss., University of California, Los Angeles</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Howard, J. Caleb. &quot;Amorite Names Through Time and Space.&quot; Journal of Semitic Studies</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Journal of Cuneiform Studies, Volume 15. American Schools of Oriental Research</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Journal of Cuneiform Studies, Volume 70. The University of Chicago Press</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Journal of Cuneiform Studies. American Society of Overseas Research</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Journal of Cuneiform Studies. Cuneiform Digital Library Initiative</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Kenyon, Kathleen. Amorites and Canaanites. Liverpool University Press</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Ostrogorsky, G., History of the Byzantine State. New Brunswick: Rutgers University Press, 1969</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Potter, Lawrence, “The Kart Dynasty of Herat: Religion and Politics in Medieval Iran.” Doctoral dissertation, Columbia University, New York, 1992</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Review of The Amorites and the Bronze Age Near East. Journal of Near Eastern</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Review of The Amorites and the Bronze Age Near East. Journal of Near Eastern Studies</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Runciman, Steven, A History of the Crusades. New York: Cambridge University Press, 1951. 3 vols. Rtisdi, Mehmet, Miikemmel ve Mufassal Tiirkiye Cumhuriyeti atlasi. Istanbul: Tefeyyiiz, 1928. Sachau, Eduard, “Ein Verzeichnis Muhammedanische Dynastien,” Abhandlungen der Preussischen</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Sasson, Jack M. From the Mari Archives: An Anthology of Old Babylonian Letters. Johns Hopkins University Press</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Academic non-peer-reviewed</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Ancient Amorite Language Discovered.&quot; Biblical Archaeology Society</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Informational websites</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Origin of The Kurds - Kurdish Cultural Center of Illinois, https://www.kurdsofillinois.org/origin-of-the-kurds/ 2. Origin of the Kurds - Wikipedia, https://en.wikipedia.org/wiki/Origin_of_the_Kurds 3. Prehistoric Archeology Along the Zagros Flanks | Institute for the Study of Ancient Cultures, https://isac.uchicago.edu/research/publications/oip/prehistoric-archeology-along-zagros-flanks</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Informational websites</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Origins of the Kurds An Interdisciplinary Synthesis</span>
+<a class="tag" href="kurdish_research.html">The Origins of the Kurds An Interdisciplinary Synthesis</a>
 </div></div>
-<div class="meta-row url"><span class="meta-label">URL:</span> <a href="https://kurdsofillinois.org/origin-of-the-kurds/2.OriginoftheKurds-Wikipedia,https:/en.wikipedia.org/wiki/Origin_of_the_Kurds3.PrehistoricArcheologyAlongtheZagrosFlanks" target="_blank" rel="noopener noreferrer">https://kurdsofillinois.org/origin-of-the-kurds/2.OriginoftheKurds-Wikipedia,https:/en.wikipedia.org/wiki/Origin_of_the_Kurds3.PrehistoricArcheologyAlongtheZagrosFlanks</a></div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://kurdsofillinois.org/origin-of-the-kurds/2.OriginoftheKurds-Wikipedia,https:/en.wikipedia.org/wiki/Origin_of_the_Kurds3.PrehistoricArcheologyAlongtheZagrosFlanks" target="_blank" rel="noopener noreferrer">https://kurdsofillinois.org/origin-of-the-kurds/2.OriginoftheKurds-Wikipedia,https:/en.wikipedia.org/wiki/Origin_of_the_Kurds3.PrehistoricArcheologyAlongtheZagrosFlanks</a></div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Agriculture in the Fertile Crescent &amp; Mesopotamia.&quot; World History Encyclopedia</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Named reference works</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorite.&quot; World History Encyclopedia</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Named reference works</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;About: Yamhad.&quot; DBpedia</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Anonymous reference</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Analysis: Code of Hammurabi.&quot; EBSCO Research Starters</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Anonymous reference</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Agriculture in Mesopotamia.&quot; Wikipedia, Wikimedia Foundation</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorite language.&quot; Wikipedia, Wikimedia Foundation</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorites.&quot; Wikipedia, Wikimedia Foundation</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorites.&quot; Wikipedia, Wikimedia Foundation, last modified 28 April 2025</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorites.&quot; Wikipedia, Wikimedia Foundation. Last updated 28 April 2025</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorrites.&quot; Wikipédia, Fondation Wikimedia</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorrites.&quot; Wikipédia, Fondation Wikimedia. Last updated 3 July 2025</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amurru kingdom.&quot; Wikipedia, Wikimedia Foundation</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Code of Hammurabi.&quot; Wikipedia, Wikimedia Foundation</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;King&#x27;s Highway (ancient).&quot; Wikipedia, Wikimedia Foundation</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Mari, Syria.&quot; Wikipedia, Wikimedia Foundation</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Mari, Syria.&quot; Wikipedia, Wikimedia Foundation. Last updated 7 July 2025</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Primary sources for the study of Amorites.&quot; Wikipedia, Wikimedia Foundation</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Primary sources for the study of the Amorites.&quot; Wikipedia, Wikimedia Foundation</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Qatna.&quot; Wikipedia, Wikimedia Foundation</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Qatna.&quot; Wikipedia, Wikimedia Foundation. Last updated 20 July 2025</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale.&quot; Wikipédia, Fondation Wikimedia</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Trade in Ancient Mesopotamia.&quot; World History Encyclopedia. &quot;King&#x27;s Highway (ancient).&quot; Wikipedia, Wikimedia Foundation. &quot;The Amorites.&quot; Kukis.org</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Yamhad dynasty.&quot; Wikipedia, Wikimedia Foundation</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Yamhad.&quot; Wikipedia, Wikimedia Foundation</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Zeitschrift für Assyriologie und Vorderasiatische Archäologie.&quot; Wikipedia (German)</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> User-generated</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;8 Things You May Not Know About Hammurabi&#x27;s Code.&quot; History.com</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Ammonites, Amorites, Amalekites, Moabites, Edomites: how many peoples were there?&quot; Hermeneutics Stack Exchange</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorite.&quot; Encyclopædia Britannica, Encyclopædia Britannica, Inc</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorite.&quot; Merriam-Webster.com Dictionary, Merriam-Webster</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorites, a Caste of Royal Scribes.&quot; Just Genesis</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorites, an introduction.&quot; Khan Academy</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorites.&quot; Encyclopedia of the Bible, BibleGateway.com</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorites.&quot; Encyclopedia.com</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorites.&quot; Facts and Details</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorites.&quot; International Standard Bible Encyclopedia Online</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorites.&quot; Jewish Virtual Library</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorites.&quot; New World Encyclopedia</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorrhites.&quot; New Advent Catholic Encyclopedia</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorrites.&quot; Encyclopédie de l&#x27;Histoire du Monde</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorrites.&quot; Larousse Encyclopédie</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Amorrites.&quot; New Catholic Encyclopedia, Encyclopedia.com</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Ancient Empires of the Middle East.&quot; God&#x27;s War Plan</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Babylonian: Hammurabi.&quot; Smarthistory</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Catalog Record: Zeitschrift für Assyriologie.&quot; HathiTrust Digital Library</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Hammurabi&#x27;s Code and legal developments.&quot; Fiveable</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Hammurabi&#x27;s Code.&quot; Lumen Learning</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Hammurabi.&quot; History.com</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;History: The Amorite Kingdoms.&quot; Warlord Games</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Kingdoms of Syria: Qatna.&quot; The History Files</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Kingdoms of Syria: Qatna.&quot; The History Files. Studies</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Lessons Plans from Ancient Mesopotamia: The Hittite-Mitanni Conflict.&quot; Historical Conquest</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Promulgation of Hammurabi&#x27;s Code.&quot; EBSCO Research Starters</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Qatna.&quot; Alfusaic</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale - Numéro 93, 1 : Les traditions amorrites et la Bible.&quot; E.Leclerc</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale, n°92, 1. Les traditions amorrites et la Bible.&quot; Les Libraires</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale.&quot; Cairn.info</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale.&quot; Cairn.info (English)</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Sumer.&quot; Encyclopædia Britannica</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;The Amorite Kingdoms.&quot; Pete&#x27;s Favourite Things</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;The Amorites in the Bible and in the Cuneiform Sources.&quot; Brill</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;The Amorites.&quot; Kukis.org</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;The Amorites: Founders of the First Babylonian Empire.&quot; History with Cy (YouTube)</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;The Collapse of the Bronze Age Kingdom of Mitanni.&quot; Nutter&#x27;s World</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;The Fierce Amorites and the First King of the Babylonian Empire.&quot; Ancient Origins</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;The gods of the Amorites.&quot; Bible Hub</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;The Kingdom of Qatna.&quot; HeritageDaily</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;The Kingdom of Qatna.&quot; HeritageDaily. Last updated 29 May 2020. &quot;Mari.&quot; Jewish Virtual Library</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;The Mitanni Kingdom: Rise &amp; Fall of a Bronze Age Superpower.&quot; The Collector</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Timeline of the Amorites.&quot; World History Encyclopedia</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Trade in Ancient Mesopotamia.&quot; World History Encyclopedia</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Who were the Amorites?&quot; GotQuestions.org</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Who were the Amorites?&quot; Study of Antiquity and the Middle Ages (YouTube)</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Who were the Amorites?&quot; Tyndale House</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Why so many Canaanites such as Amorites adopted Jewish religion?&quot; Reddit</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>&quot;Yamhad.&quot; Alfusaic</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Akademie der Wissenschaften I. Berlin, 1923</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Bureau, 1949-51. 10 vols. Rashid al-Din Fadlallah, ed., Jami‘ al-tawdrikh-i Rashidi,, A. Atash ed. Teheran: Donya-i Kitab, 1983</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Bureau, 1949-51. 10 vols. Rashid al-Din Fadlallah, ed., Jami‘ al-tawdrikh-i Rashidi,, A. Atash ed. Teheran: Donya-i Kitab, year 1983</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Charpin, Dominique. &quot;Les Amorrites, fondateurs de Babylone.&quot; Clio.fr</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Hanover, 1927</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Last updated 28 April 2025</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>MirkhWand Muhammad b. Khawandshah b. Mahmid, Rawdat al-safa fi sirat al-nnbiya wa’l- muliak wa’l-khulafa. ed. A. Zaryab. Teheran: Imi, 1994</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Mustawfi Qazvini , Hamdullah, Nuz&#x27;hat al-qulib. Teheran: Khavar, 1959</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Mustawfi Qazvini , Hamdullah, Tarikh-i guzida. Teheran: Sajjadi, 1960</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Mu‘ini, Mutakhab al-tawarikh -i Mu‘ini, ed. G. Aubin. Teheran: Khayyam, 1971</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Nasavi Khurandizi, i, Sirat Jalal al-Din Mangubirti. Teheran: Bongah-i Tarjumah, 1965</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Newby, P.H., Saladin and His Time. Boston: Faber and Faber, 1983</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Pardee, Dennis. &quot;The Mari Archives.&quot; Ministry Magazine, April 1977</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Pliny the Elder, Natural History, trn an d ed. Rackham. Cambridge: Harvard Loeb Classics, 1969</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Procopius,History of the Wars, tran. H. B. Dewing. Cambridge: Harvard Loeb Classics, 1992, Sth reprint</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Ptolemy, Claudius, Geography, ed. and trans. E. Stevenson. New York: Dover, 1991</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Rawandi, Rahat al-sudur, eds. M. Iqbal and M. Minuvi. Teheran: Amir Kabir, 1985</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Razmara, A., ed., Farhang-i jughrdfiya’i-i Iran. Teheran: The Iranian Armed Forces Geographical</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Revue d&#x27;Assyriologie et d&#x27;Archéologie Orientale. Cuneiform Digital Library Initiative</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Rich, Claudius J., Narrative of a Residence in Kurdistan... London, 1838. 2 vols. Riley-Smith, Jonathan, ed., The Atlas of the Crusades. Oxford: Facts on File, 1991</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Risvanoglu, Mahmut, Dogu asiretleri ve emperyalizm. Istanbul: Turk Kiiltiir Yayini, No. 10, 1975</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Rumli, Hasan-Beg, Ahsan al-tawdrikh, ed. C.N. Seddon. Baroda, India, 1931</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Sardar As‘ad Bakhtiyari, ©Ali-Qoli Khan, Tarikh-i Bakhtiydri. Teheran: Farhangsara, 1984, 2nd edition</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Scott, Sir Walter,The Talisman, London, 1825</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Shadhi (Anon.), Mujmal al-tawdarikh wa’l-qisas, ed. Bahar. Teheran, 1938</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Strabo, Geography, tn. H.L. Jones. Cambridge: Harvard Loeb Classics, 1982, 6th reprint</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Suetonius, De Vita Cesarum, tran. and ed, J.C. Rolfe. Cambridge: Harvard Loeb Classics, 1989, 11th reprint</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Tacitus, The Annals, trn. and ed., J. Jackson (Cambridge: Harvard Loeb Classics, 1986), reprint of 1937 original</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Taj al-Din Shahanshah b. Ayyub, Tarikh.. Cairo, 1928</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Varavini, KhWaja Sa‘d al-Din b. Husayn, Taj al-tawarikh; M. Nejat. Teheran, 1947</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Véliaminof-Zernof, V., Scheref-nameh ou Histoire des kourdes. Par Scheref, prince de Bidlis. St. Petersbourgh, 1860-62, 2 vols. von Zambaur, Eduard, Manuel de généalogie et de chronologie pour l’histoire de I’Islam</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Wiistenfeld. Leipzig, 1866</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Woods, John, Aqquyunlu: Clan, Confederation, Empire. Bibliotheca Islamica, 1976</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Yafi‘i, Abi-‘Abdallah b. Asad, Mir’at al-jinan fi hawddith al-zaman. Hayderabad, India, 1962</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Yaqut al-Himawi, Shahab al-Din Abi-‘Abdallhah ibn ‘Abdallah, Kitab mu‘jam al-buldan, ed. F</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Yazdi, Sharaf al-Din ©Ali, Zafarndma; ed. M. Abbasi. Teheran, 1957. 2 vols. Ya‘qubi al-Isfahani, Ahmad b. Wadih, Bulddn, ed. T.G.J. Juynboll. Leiden, 1861</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Zakariya Qazvini, Athdr al-biladd wa akhbar al-“ibad. Beirut: Dar al-Sadir, 1960. 264</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Sharafnama, or, The history of the Kurdish nation, 1597</span>
+<a class="tag" href="kurdish_research.html">The Sharafnama, or, The history of the Kurdish nation, 1597</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 <div class="source-entry">
 <h3>Zeitschrift für Assyriologie und vorderasiatische Archäologie. Internet Archive</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Unverifiable</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<span class="tag">The Westerners A Comprehensive Analysis of the Amorites and Their World</span>
+<a class="tag" href="kurdish_research.html">The Westerners A Comprehensive Analysis of the Amorites and Their World</a>
 </div></div>
-<div class="meta-row"><span class="meta-label">URL:</span> No URL</div>
-<div class="count">Number of times used: 1</div>
+<div class="meta-row url"><span class="meta-label">Link:</span> No URL</div>
+<div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
 </div>
 </div>
 <footer>Kurdish Research Source Categories</footer></div></body></html>

@@ -1,67 +1,372 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Kurdish Research Source Categories</title><style>
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #e8e1d1; }
-.container { background-color: #f8f4e8; border: 1px solid #d3c9a5; border-radius: 0px; padding: 30px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); position: relative; margin-top: 20px; }
-.container::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.1); pointer-events: none; z-index: 1; }
-h1 { font-size: 38px; margin-top: 0; color: #5a4a2e; border-bottom: 2px solid #d3c9a5; padding-bottom: 10px; text-align: center; }
-h2 { color: #6b553f; font-size: 28px; margin-top: 30px; border-bottom: 1px solid #d3c9a5; padding-bottom: 5px; }
-h3 { color: #6b553f; font-size: 22px; margin-top: 20px; }
-h4 { color: #7a634a; font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: bold; }
-.category { margin-bottom: 40px; background-color: rgba(255, 255, 255, 0.5); padding: 20px; border: 1px solid #e0d7c0; border-radius: 2px; }
-.resource-link { display: block; margin: 15px 0; padding: 12px; background-color: #f0e9d9; border: 1px solid #d3c9a5; border-radius: 2px; text-decoration: none; color: #5a4a2e; transition: all 0.2s; }
-.resource-link:hover { background-color: #e0d7c0; transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
-.link-content { width: 100%; }
-.link-title { font-weight: 600; display: block; font-size: 18px; }
-.intro { margin-bottom: 30px; padding: 20px; background-color: rgba(255, 255, 255, 0.6); border: 1px solid #e0d7c0; border-radius: 2px; font-size: 17px; line-height: 1.7; }
-footer { margin-top: 40px; text-align: center; color: #8b7355; font-size: 14px; border-top: 1px solid #d3c9a5; padding-top: 20px; }
-.nav-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; justify-content: center; }
-.nav-btn { padding: 10px 15px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 14px; color: #ffffff !important; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); border: 1px solid rgba(0,0,0,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-.nav-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 10px rgba(0,0,0,0.3); filter: brightness(110%); }
-.source-entry { margin: 18px 0; padding: 18px; background-color: rgba(255, 255, 255, 0.55); border: 1px solid #e0d7c0; border-radius: 2px; }
-.source-entry h3 { margin-top: 0; overflow-wrap: anywhere; }
-.meta-row { margin: 8px 0; }
-.meta-label { font-weight: 700; color: #6b553f; }
-.tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-.tag { display: inline-block; padding: 3px 7px; background-color: #f0e9d9; border: 1px solid #d3c9a5; border-radius: 2px; color: #5a4a2e; font-size: 14px; }
-.url { overflow-wrap: anywhere; }
-.count { color: #8b7355; font-size: 14px; margin-top: 4px; }
-.back-link { margin-bottom: 20px; }
-@media (max-width: 768px) { body { padding: 10px; } .container { padding: 15px; } h1 { font-size: 28px; } .nav-btn { flex: 1 1 auto; text-align: center; font-size: 13px; } }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: #3a2f1f;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #e8e1d1;
+  background-image: url('background.png');
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
 
-.nav-buttons .nav-btn:nth-child(1) { background-color: #5a4a2e; }
-.nav-buttons .nav-btn:nth-child(2) { background-color: #556b2f; }
-.nav-buttons .nav-btn:nth-child(3) { background-color: #2e8b57; }
-.nav-buttons .nav-btn:nth-child(4) { background-color: #696969; }
-.nav-buttons .nav-btn:nth-child(5) { background-color: #4682b4; }
-.nav-buttons .nav-btn:nth-child(6) { background-color: #800000; }
-.nav-buttons .nav-btn:nth-child(7) { background-color: #483d8b; }
-.nav-buttons .nav-btn:nth-child(8) { background-color: #8b4513; }
-.nav-buttons .nav-btn:nth-child(9) { background-color: #a0522d; }
-.nav-buttons .nav-btn:nth-child(10) { background-color: #008080; }
-.nav-buttons .nav-btn:nth-child(11) { background-color: #191970; }
-.nav-buttons .nav-btn:nth-child(12) { background-color: #2f4f4f; }
-.nav-buttons .nav-btn:nth-child(13) { background-color: #58365f; }
-.nav-buttons .nav-btn:nth-child(14) { background-color: #b22222; }
-.nav-buttons .nav-btn:nth-child(15) { background-color: #555555; }
-.nav-buttons .nav-btn:nth-child(16) { background-color: #b8860b; }
-.nav-buttons .nav-btn:nth-child(17) { background-color: #d2691e; }</style></head><body><div class="container">
-<h1>Kurdish Research Source Categories</h1>
-<div class="category"><h2>Categories</h2>
-<a href="source_category_01-peer-reviewed-academic.html" class="resource-link"><div class="link-content"><span class="link-title">Peer-reviewed academic</span><span class="count">2,609 sources from 01-peer-reviewed-academic.md</span></div></a>
-<a href="source_category_02-academic-non-peer-reviewed.html" class="resource-link"><div class="link-content"><span class="link-title">Academic non-peer-reviewed</span><span class="count">964 sources from 02-academic-non-peer-reviewed.md</span></div></a>
-<a href="source_category_03-expert-non-academic.html" class="resource-link"><div class="link-content"><span class="link-title">Expert non-academic</span><span class="count">530 sources from 03-expert-non-academic.md</span></div></a>
-<a href="source_category_04-verified-research-reports.html" class="resource-link"><div class="link-content"><span class="link-title">Verified research reports</span><span class="count">151 sources from 04-verified-research-reports.md</span></div></a>
-<a href="source_category_05-investigative-journalism.html" class="resource-link"><div class="link-content"><span class="link-title">Investigative journalism</span><span class="count">16 sources from 05-investigative-journalism.md</span></div></a>
-<a href="source_category_06-general-news-reporting.html" class="resource-link"><div class="link-content"><span class="link-title">General news reporting</span><span class="count">276 sources from 06-general-news-reporting.md</span></div></a>
-<a href="source_category_07-state-affiliated-and-propaganda-media.html" class="resource-link"><div class="link-content"><span class="link-title">State-affiliated and propaganda media</span><span class="count">232 sources from 07-state-affiliated-and-propaganda-media.md</span></div></a>
-<a href="source_category_08-tabloid-and-sensationalist-journalism.html" class="resource-link"><div class="link-content"><span class="link-title">Tabloid and sensationalist journalism</span><span class="count">88 sources from 08-tabloid-and-sensationalist-journalism.md</span></div></a>
-<a href="source_category_09-advocacy-with-sourcing.html" class="resource-link"><div class="link-content"><span class="link-title">Advocacy with sourcing</span><span class="count">473 sources from 09-advocacy-with-sourcing.md</span></div></a>
-<a href="source_category_10-advocacy-without-sourcing.html" class="resource-link"><div class="link-content"><span class="link-title">Advocacy without sourcing</span><span class="count">281 sources from 10-advocacy-without-sourcing.md</span></div></a>
-<a href="source_category_11-partisan-individual-writing.html" class="resource-link"><div class="link-content"><span class="link-title">Partisan individual writing</span><span class="count">62 sources from 11-partisan-individual-writing.md</span></div></a>
-<a href="source_category_12-informational-websites.html" class="resource-link"><div class="link-content"><span class="link-title">Informational websites</span><span class="count">4,533 sources from 12-informational-websites.md</span></div></a>
-<a href="source_category_13-named-reference-works.html" class="resource-link"><div class="link-content"><span class="link-title">Named reference works</span><span class="count">283 sources from 13-named-reference-works.md</span></div></a>
-<a href="source_category_14-anonymous-reference.html" class="resource-link"><div class="link-content"><span class="link-title">Anonymous reference</span><span class="count">650 sources from 14-anonymous-reference.md</span></div></a>
-<a href="source_category_15-user-generated.html" class="resource-link"><div class="link-content"><span class="link-title">User-generated</span><span class="count">3,058 sources from 15-user-generated.md</span></div></a>
-<a href="source_category_16-unverifiable.html" class="resource-link"><div class="link-content"><span class="link-title">Unverifiable</span><span class="count">436 sources from 16-unverifiable.md</span></div></a>
-<a href="source_category_unmatched-sources.html" class="resource-link"><div class="link-content"><span class="link-title">Unmatched Sources</span><span class="count">134 sources from unmatched-sources.md</span></div></a>
+.container {
+  background-color: #f8f4e8;
+  border: 1px solid #d3c9a5;
+  padding: 48px 52px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  font-size: 34px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  color: #4a3a1f;
+  letter-spacing: -0.3px;
+}
+
+.intro {
+  font-size: 16px;
+  color: #5a4a2e;
+  margin: 0 0 40px;
+  line-height: 1.7;
+  max-width: 640px;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+.card-title {
+  font-weight: 700;
+  color: #4a3a1f;
+  line-height: 1.3;
+}
+.card-desc {
+  margin: 8px 0 0;
+  color: #6b553f;
+  line-height: 1.5;
+}
+
+.count-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  background-color: #4a3a1f;
+  color: #f8f4e8;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Featured #1 — the foundation */
+.card.primary {
+  background-color: #ede4cd;
+  border: 1px solid #c9b985;
+  padding: 32px 34px;
+  margin-bottom: 14px;
+}
+.card.primary:hover { background-color: #e2d6b6; border-color: #b8a874; }
+.card.primary .card-title { font-size: 26px; }
+.card.primary .card-desc { font-size: 16px; margin-top: 10px; }
+.card.primary .count-badge { font-size: 14px; padding: 6px 14px; }
+
+/* Featured #2 */
+.card.secondary {
+  background-color: #f1e8d1;
+  border: 1px solid #d3c9a5;
+  padding: 26px 30px;
+  margin-bottom: 36px;
+}
+.card.secondary:hover { background-color: #e8dcbb; border-color: #c1b48a; }
+.card.secondary .card-title { font-size: 21px; }
+.card.secondary .card-desc { font-size: 15px; }
+
+/* Supplementary */
+.card.compact {
+  background-color: #f4ecd6;
+  border: 1px solid #e0d4ac;
+  padding: 16px 20px;
+  margin-bottom: 8px;
+}
+.card.compact:hover { background-color: #e8dcb6; border-color: #cdbe8d; }
+.card.compact .card-title { font-size: 17px; }
+.card.compact .card-desc { font-size: 14px; margin-top: 6px; }
+
+/* Disclosure */
+details.more { margin-top: 0; margin-bottom: 14px; }
+details.more summary {
+  cursor: pointer;
+  padding: 14px 20px;
+  background-color: #ede4cd;
+  border: 1px solid #d3c9a5;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #4a3a1f;
+  list-style: none;
+  user-select: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+details.more summary::-webkit-details-marker { display: none; }
+details.more summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 10px;
+  color: #8b7355;
+  transition: transform 0.15s ease;
+}
+details.more[open] summary::before { transform: rotate(90deg); }
+details.more summary:hover { background-color: #e2d6b6; border-color: #b8a874; }
+details.more .card.compact { margin-top: 0; }
+details.more .card.compact:first-of-type { margin-top: 10px; }
+
+footer {
+  margin-top: 52px;
+  padding-top: 24px;
+  border-top: 1px solid #d3c9a5;
+  font-size: 14px;
+  color: #8b7355;
+}
+footer a {
+  color: #5a4a2e;
+  text-decoration: none;
+  border-bottom: 1px solid #c9b985;
+  padding-bottom: 1px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+footer a:hover { color: #4a3a1f; border-bottom-color: #4a3a1f; }
+
+@media (max-width: 720px) {
+  body { padding: 12px; }
+  .container { padding: 24px 22px; }
+  h1 { font-size: 26px; }
+  .card.primary { padding: 22px 22px; }
+  .card.primary .card-title { font-size: 21px; }
+  .card.secondary { padding: 20px 22px; }
+  .card.secondary .card-title { font-size: 18px; }
+  .card-top { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+</style></head><body><div class="container">
+
+<h1>Source Categories for Researching Afrin</h1>
+
+<p class="intro">The Kurdish Research Archive draws on <span id="total-count">14,776</span> sources sorted by reliability. Peer-reviewed academic work is the foundation, and usually the only sources worth using from this list. The other categories are included for context and should be weighed against the primary literature.</p>
+
+<a class="card primary" href="source_category_01-peer-reviewed-academic.html">
+  <div class="card-top">
+    <span class="card-title">Peer-reviewed academic</span>
+    <span class="count-badge">2,609 sources</span>
+  </div>
+  <p class="card-desc">Articles and books vetted through scholarly peer review at journals and academic presses</p>
+</a>
+
+<a class="card secondary" href="source_category_02-academic-non-peer-reviewed.html">
+  <div class="card-top">
+    <span class="card-title">Academic non-peer-reviewed</span>
+    <span class="count-badge">964 sources</span>
+  </div>
+  <p class="card-desc">Theses, dissertations, working papers, and scholarly writing that has not been formally peer reviewed</p>
+</a>
+
+<details class="more">
+  <summary>Show 6 low-confidence categories</summary>
+
+  <a class="card compact" href="source_category_03-expert-non-academic.html">
+    <div class="card-top">
+      <span class="card-title">Expert non-academic</span>
+      <span class="count-badge">530</span>
+    </div>
+    <p class="card-desc">Books and articles by recognized experts writing outside academic channels</p>
+  </a>
+
+  <a class="card compact" href="source_category_04-verified-research-reports.html">
+    <div class="card-top">
+      <span class="card-title">Verified research reports</span>
+      <span class="count-badge">151</span>
+    </div>
+    <p class="card-desc">Institutional reports with transparent methodology and editorial standards</p>
+  </a>
+
+  <a class="card compact" href="source_category_05-investigative-journalism.html">
+    <div class="card-top">
+      <span class="card-title">Investigative journalism</span>
+      <span class="count-badge">16</span>
+    </div>
+    <p class="card-desc">Long-form reporting built on original sources and verification</p>
+  </a>
+
+  <a class="card compact" href="source_category_06-general-news-reporting.html">
+    <div class="card-top">
+      <span class="card-title">General news reporting</span>
+      <span class="count-badge">276</span>
+    </div>
+    <p class="card-desc">Day-to-day coverage from mainstream news outlets</p>
+  </a>
+
+  <a class="card compact" href="source_category_09-advocacy-with-sourcing.html">
+    <div class="card-top">
+      <span class="card-title">Advocacy with sourcing</span>
+      <span class="count-badge">473</span>
+    </div>
+    <p class="card-desc">Advocacy publications that cite their underlying sources</p>
+  </a>
+
+  <a class="card compact" href="source_category_13-named-reference-works.html">
+    <div class="card-top">
+      <span class="card-title">Named reference works</span>
+      <span class="count-badge">283</span>
+    </div>
+    <p class="card-desc">Encyclopedias and reference texts with named editors and contributors</p>
+  </a>
+</details>
+
+<details class="more">
+  <summary>Show 9 very low-confidence categories</summary>
+
+  <a class="card compact" href="source_category_07-state-affiliated-and-propaganda-media.html">
+    <div class="card-top">
+      <span class="card-title">State-affiliated and propaganda media</span>
+      <span class="count-badge">232</span>
+    </div>
+    <p class="card-desc">Outlets owned by or aligned with state governments</p>
+  </a>
+
+  <a class="card compact" href="source_category_08-tabloid-and-sensationalist-journalism.html">
+    <div class="card-top">
+      <span class="card-title">Tabloid and sensationalist journalism</span>
+      <span class="count-badge">88</span>
+    </div>
+    <p class="card-desc">Outlets that favor entertainment value over verification</p>
+  </a>
+
+  <a class="card compact" href="source_category_10-advocacy-without-sourcing.html">
+    <div class="card-top">
+      <span class="card-title">Advocacy without sourcing</span>
+      <span class="count-badge">281</span>
+    </div>
+    <p class="card-desc">Advocacy material that does not provide citations</p>
+  </a>
+
+  <a class="card compact" href="source_category_11-partisan-individual-writing.html">
+    <div class="card-top">
+      <span class="card-title">Partisan individual writing</span>
+      <span class="count-badge">62</span>
+    </div>
+    <p class="card-desc">Personal essays and blogs from openly partisan voices</p>
+  </a>
+
+  <a class="card compact" href="source_category_12-informational-websites.html">
+    <div class="card-top">
+      <span class="card-title">Informational websites</span>
+      <span class="count-badge">4,533</span>
+    </div>
+    <p class="card-desc">General-purpose websites that compile background information</p>
+  </a>
+
+  <a class="card compact" href="source_category_14-anonymous-reference.html">
+    <div class="card-top">
+      <span class="card-title">Anonymous reference</span>
+      <span class="count-badge">650</span>
+    </div>
+    <p class="card-desc">Reference material without identified authorship</p>
+  </a>
+
+  <a class="card compact" href="source_category_15-user-generated.html">
+    <div class="card-top">
+      <span class="card-title">User-generated</span>
+      <span class="count-badge">3,058</span>
+    </div>
+    <p class="card-desc">Wikipedia, forums, social media, and other crowdsourced content</p>
+  </a>
+
+  <a class="card compact" href="source_category_16-unverifiable.html">
+    <div class="card-top">
+      <span class="card-title">Unverifiable</span>
+      <span class="count-badge">436</span>
+    </div>
+    <p class="card-desc">Sources whose origin or content could not be confirmed</p>
+  </a>
+
+  <a class="card compact" href="source_category_unmatched-sources.html">
+    <div class="card-top">
+      <span class="card-title">Unmatched sources</span>
+      <span class="count-badge">134</span>
+    </div>
+    <p class="card-desc">Sources that did not fit any defined category</p>
+  </a>
+</details>
+
+<footer><a href="kurdish_research.html">Back to Kurdish Research Archive</a></footer>
+
 </div>
-<footer><a href="kurdish_research.html">Back to Kurdish Research Archive</a></footer></div></body></html>
+<script>
+(function() {
+  function updateTotal() {
+    var total = 0;
+    document.querySelectorAll('.count-badge').forEach(function(b) {
+      var n = parseInt(b.textContent.replace(/[^0-9]/g, ''), 10);
+      if (!isNaN(n)) total += n;
+    });
+    var el = document.getElementById('total-count');
+    if (el) el.textContent = total.toLocaleString('en-US');
+  }
+
+  function updateToggleLabels() {
+    document.querySelectorAll('details.more').forEach(function(d) {
+      var summary = d.querySelector('summary');
+      if (!summary) return;
+      var n = d.querySelectorAll('.card').length;
+      summary.textContent = summary.textContent.replace(/\d+/, n);
+    });
+  }
+
+  function formatBadge(card, n) {
+    var withWord = card.classList.contains('primary') || card.classList.contains('secondary');
+    var formatted = n.toLocaleString('en-US');
+    return withWord ? formatted + ' sources' : formatted;
+  }
+
+  updateToggleLabels();
+  updateTotal();
+
+  var cards = document.querySelectorAll('a.card[href]');
+  var remaining = cards.length;
+  if (remaining === 0) return;
+
+  cards.forEach(function(card) {
+    var href = card.getAttribute('href');
+    var badge = card.querySelector('.count-badge');
+    if (!href || !badge) {
+      remaining--;
+      if (remaining === 0) updateTotal();
+      return;
+    }
+    fetch(href)
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var count = doc.querySelectorAll('.source-entry').length;
+        if (count > 0) badge.textContent = formatBadge(card, count);
+      })
+      .catch(function() { /* keep hardcoded fallback on error */ })
+      .finally(function() {
+        remaining--;
+        if (remaining === 0) updateTotal();
+      });
+  });
+})();
+</script>
+</body></html>
