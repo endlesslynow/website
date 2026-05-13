@@ -5,152 +5,391 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elam and the Elamites</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #e8e1d1; background-image: url("https://www.transparenttextures.com/patterns/paper.png"); }
-        .container { background-color: #f8f4e8; border: 1px solid #d3c9a5; padding: 25px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); position: relative; margin-top: 20px; }
-        h1 { font-size: 34px; margin-top: 0; color: #5a4a2e; border-bottom: 2px solid #d3c9a5; padding-bottom: 10px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
 
-.description p { white-space: pre-wrap; margin: 0; }
-        .download-btn { display: inline-flex; align-items: center; background-color: #8b7355; color: white; padding: 10px 15px; text-decoration: none; font-weight: 500; }
-        .sources ul { padding-left: 20px; list-style-type: decimal; margin: 0; }
-        .sources li { margin-bottom: 8px; word-break: break-word; }
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+/* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+/* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Elam and the Elamites</h1>
-<div class="description"><h2>Description</h2><p>The provided text offers a comprehensive overview of the ancient Elamite civilization, spanning nearly three millennia in southwestern Iran. It explores Elam&#x27;s unique identity shaped by its geographical duality of lowlands and highlands, which influenced its economy, politics, and culture. The document details the Proto-Elamite period&#x27;s emergence with its distinct script and urban network, followed by the Old Elamite period&#x27;s formation of a recognizable kingdom and its notable Sukkalmah federal system of governance. The text then describes the Middle Elamite period as an imperial zenith marked by military conquests and a strong cultural &quot;Elamization&quot; drive, exemplified by monumental architecture like Chogha Zanbil. Finally, it covers the Neo-Elamite period of decline due to conflict with Assyria and internal fragmentation, concluding with Elam&#x27;s enduring legacy as the foundational administrative and cultural predecessor to the Achaemenid Persian Empire.</p></div>
-        <a href="../docs/Elamite Civilization_ Comprehensive Overview_.pdf" class="download-btn" download>Download PDF</a>
+
+        <div class="description"><h2>Description</h2><p>The provided text offers a comprehensive overview of the ancient Elamite civilization, spanning nearly three millennia in southwestern Iran. It explores Elam&#x27;s unique identity shaped by its geographical duality of lowlands and highlands, which influenced its economy, politics, and culture. The document details the Proto-Elamite period&#x27;s emergence with its distinct script and urban network, followed by the Old Elamite period&#x27;s formation of a recognizable kingdom and its notable Sukkalmah federal system of governance. The text then describes the Middle Elamite period as an imperial zenith marked by military conquests and a strong cultural &quot;Elamization&quot; drive, exemplified by monumental architecture like Chogha Zanbil. Finally, it covers the Neo-Elamite period of decline due to conflict with Assyria and internal fragmentation, concluding with Elam&#x27;s enduring legacy as the foundational administrative and cultural predecessor to the Achaemenid Persian Empire.</p></div>
+
+        <a href="../kurdish_research.html" class="back-button">
+                    <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5"></path>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Return to Podcast Archive
+                </a>
+
+        <div class="download-section">
+                    <h2>Related Document</h2>
+                    <a href="../docs/Elamite Civilization_ Comprehensive Overview_.pdf" class="download-btn" download>
+                        <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        Download PDF
+                    </a>
+                </div>
+
         <div class="sources"><h2>Sources</h2><ul><li>​ The History of Elam: Iran before Persia | TimeMaps, accessed August 11, 2025, <a href="https://timemaps.com/encyclopedia/history-elam/" target="_blank">https://timemaps.com/encyclopedia/history-elam/</a></li>
-<li>​ Elam - Livius, accessed August 11, 2025, <a href="https://www.livius.org/articles/place/elam/" target="_blank">https://www.livius.org/articles/place/elam/</a></li>
-<li>​ Exploring The Elamite Civilization: A Guide To Ancient Iran&#x27;s Legacy - OrientTrips, accessed August 11, 2025, <a href="https://orienttrips.com/mag/elamite-civilization/" target="_blank">https://orienttrips.com/mag/elamite-civilization/</a></li>
-<li>​ Timeline: Elam - World History Encyclopedia, accessed August 11, 2025, <a href="https://www.worldhistory.org/timeline/elam/" target="_blank">https://www.worldhistory.org/timeline/elam/</a></li>
-<li>​ Elam | Iran, Map, &amp; History - Britannica, accessed August 11, 2025, <a href="https://www.britannica.com/place/Elam" target="_blank">https://www.britannica.com/place/Elam</a></li>
-<li>​ Elam - Jewish Virtual Library, accessed August 11, 2025, <a href="https://www.jewishvirtuallibrary.org/elam" target="_blank">https://www.jewishvirtuallibrary.org/elam</a></li>
-<li>​ History of Iran: Elamite Empire - Iran Chamber Society, accessed August 11, 2025, <a href="https://www.iranchamber.com/history/elamite/elamite.php" target="_blank">https://www.iranchamber.com/history/elamite/elamite.php</a></li>
-<li>​ The History of the Elamite Empire - YouTube, accessed August 11, 2025, <a href="https://www.youtube.com/watch?v=TVKwzrdnOjA" target="_blank">https://www.youtube.com/watch?v=TVKwzrdnOjA</a></li>
-<li>​ Elam - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Elam" target="_blank">https://en.wikipedia.org/wiki/Elam</a></li>
-<li>​Ten Ancient Elam Facts You Need to Know - World History Encyclopedia, accessed August 11, 2025, <a href="https://www.worldhistory.org/article/1591/ten-ancient-elam-facts-you-need-to-k" target="_blank">https://www.worldhistory.org/article/1591/ten-ancient-elam-facts-you-need-to-k</a> now/</li>
-<li>​What do we know of the ancient Elamites (language, religion, social structures, ethnic classification, etc), and who are their direct descendants? - Quora, accessed August 11, 2025, <a href="https://www.quora.com/What-do-we-know-of-the-ancient-Elamites-language-r" target="_blank">https://www.quora.com/What-do-we-know-of-the-ancient-Elamites-language-r</a> eligion-social-structures-ethnic-classification-etc-and-who-are-their-direct-des cendants</li>
-<li>​The Neo-Elamite period (Chapter 8) - The Archaeology of Elam, accessed August 11, 2025, <a href="https://www.cambridge.org/core/books/archaeology-of-elam/neoelamite-period/" target="_blank">https://www.cambridge.org/core/books/archaeology-of-elam/neoelamite-period/</a> 054799B680BFE4F9897D0F521CAA46E8</li>
-<li>​Elam in Third-Millennium BC Mesopotamian Written Sources: Awan Dynasty, accessed August 11, 2025, <a href="https://www.researchgate.net/publication/363627852_Elam_in_Third-Millennium_B" target="_blank">https://www.researchgate.net/publication/363627852_Elam_in_Third-Millennium_B</a> C_Mesopotamian_Written_Sources_Awan_Dynasty</li>
-<li>​Maritime history rewritten in the ancient kingdom of Elam ... - CORDIS, accessed August 11, 2025, <a href="https://cordis.europa.eu/article/id/457122-maritime-history-rewritten-in-the-ancie" target="_blank">https://cordis.europa.eu/article/id/457122-maritime-history-rewritten-in-the-ancie</a> nt-kingdom-of-elam</li>
-<li>​DYNAMICS OF THE FALL: ASHURBANIPAL&#x27;S CONQUEST OF ELAM Peter Dubovský* . Introduction The main aim of this paper is to reco - Brill, accessed August 11, 2025, <a href="https://brill.com/previewpdf/book/edcoll/9789004207417/B9789004207417_027.x" target="_blank">https://brill.com/previewpdf/book/edcoll/9789004207417/B9789004207417_027.x</a> ml</li>
-<li>​The Elamite civilization: A cultural and political powerhouse of ancient Iran, accessed August 11, 2025, <a href="https://www.fabriziomusacchio.com/weekend_stories/told/2025/2025-01-01-ela" target="_blank">https://www.fabriziomusacchio.com/weekend_stories/told/2025/2025-01-01-ela</a> mite_civilization/</li>
-<li>​en.wikipedia.org, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Proto-Elamite_(period)#:~:text=The%20Proto%2DEla" target="_blank">https://en.wikipedia.org/wiki/Proto-Elamite_(period)#:~:text=The%20Proto%2DEla</a> mite%20period%2C%20also,the%20oldest%20civilization%20in%20Iran.</li>
-<li>​Proto-Elamite (period) - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Proto-Elamite_(period)" target="_blank">https://en.wikipedia.org/wiki/Proto-Elamite_(period)</a></li>
-<li>​Proto-Elamite script - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Proto-Elamite_script" target="_blank">https://en.wikipedia.org/wiki/Proto-Elamite_script</a></li>
-<li>​Kingdoms of the Eastern Near East - Elam / Haltamtu / Susiana, accessed August 11, 2025, <a href="https://www.historyfiles.co.uk/KingListsMiddEast/EasternElamOld.htm" target="_blank">https://www.historyfiles.co.uk/KingListsMiddEast/EasternElamOld.htm</a></li>
-<li>​Mesopotamian history: the basics - Oracc, accessed August 11, 2025, <a href="https://oracc.museum.upenn.edu/amgg/mesopotamianhistory/" target="_blank">https://oracc.museum.upenn.edu/amgg/mesopotamianhistory/</a></li>
-<li>​Chogha Zanbil – following hadrian photography, accessed August 11, 2025, <a href="https://followinghadrianphotography.com/2019/05/13/chogha-zanbil/" target="_blank">https://followinghadrianphotography.com/2019/05/13/chogha-zanbil/</a></li>
-<li>​The Elamites - ruled an empire from Susa before the Medes and Persians - iran &amp; the iranians, accessed August 11, 2025, <a href="https://www.the-persians.co.uk/elam.htm" target="_blank">https://www.the-persians.co.uk/elam.htm</a></li>
-<li>​Chogha Zanbil | Meaning, History, &amp; Facts - Britannica, accessed August 11, 2025, <a href="https://www.britannica.com/place/Chogha-Zanbil" target="_blank">https://www.britannica.com/place/Chogha-Zanbil</a></li>
-<li>​The lost world of Elam: Re-creation of a vanished civilization. By Walther Hinz. Translated from the German by Jennifer Barnes. - Cambridge University Press, accessed August 11, 2025, <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/19A" target="_blank">https://www.cambridge.org/core/services/aop-cambridge-core/content/view/19A</a> EAB8457D04D9612D0818F9595C4C7/S0035869X00132897a.pdf/lost_world_of_el am_recreation_of_a_vanished_civilization_by_walther_hinz_translated_from_the_ german_by_jennifer_barnes_pp_192_32_pl_london_sidgwick_and_jackson_1972_</li>
-<li>pdf</li>
-<li>​List of Elamite kings - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/List_of_Elamite_kings" target="_blank">https://en.wikipedia.org/wiki/List_of_Elamite_kings</a></li>
-<li>​Cultures | Neo-Elamite Period - Ancient Mesopotamia, accessed August 11, 2025, <a href="https://ancientmesopotamia.org/cultures/neo-elamite-period" target="_blank">https://ancientmesopotamia.org/cultures/neo-elamite-period</a></li>
-<li>​Proto-Elamite | Iran Tour and Travel with IranianTours, accessed August 11, 2025, <a href="https://www.iraniantours.com/historical-period/proto-elamite/" target="_blank">https://www.iraniantours.com/historical-period/proto-elamite/</a></li>
-<li>​Formation of the Proto-Elamite Union on the Iranian plateau, accessed August 11, 2025, <a href="https://nbsh.basu.ac.ir/m/article_4935.html?lang=en" target="_blank">https://nbsh.basu.ac.ir/m/article_4935.html?lang=en</a></li>
-<li>​The Proto-Elamite Settlement and its Neighbors: Tepe Yahya Period IVC, accessed August 11, 2025, <a href="https://whitelevy.fas.harvard.edu/proto-elamite-settlement-and-its-neighbors-te" target="_blank">https://whitelevy.fas.harvard.edu/proto-elamite-settlement-and-its-neighbors-te</a> pe-yahya-period-ivc</li>
-<li>​Proto-Elamite - Mnamon, accessed August 11, 2025, <a href="https://mnamon.sns.it/index.php?page=Scrittura&amp;id=9&amp;lang=en" target="_blank">https://mnamon.sns.it/index.php?page=Scrittura&amp;id=9&amp;lang=en</a></li>
-<li>​From the Proto-Elamite to Shimashki: the third millennium BC at Tappeh Senjar, the Susiana Plain - MOM Éditions - OpenEdition Books, accessed August 11, 2025, <a href="https://books.openedition.org/momeditions/8046" target="_blank">https://books.openedition.org/momeditions/8046</a></li>
-<li>​The State of Decipherment of Proto-Elamite - MPG.PuRe, accessed August 11, 2025, <a href="https://pure.mpg.de/pubman/item/item_2273899/component/file_2273897/P183.P" target="_blank">https://pure.mpg.de/pubman/item/item_2273899/component/file_2273897/P183.P</a> DF</li>
-<li>​The Puzzle of Proto-Elamite - History Today, accessed August 11, 2025, <a href="https://www.historytoday.com/archive/puzzle-proto-elamite" target="_blank">https://www.historytoday.com/archive/puzzle-proto-elamite</a></li>
-<li>​Proto-Elamite Writing in Iran - Harappa, accessed August 11, 2025, <a href="https://www.harappa.com/content/proto-elamite-writing-iran" target="_blank">https://www.harappa.com/content/proto-elamite-writing-iran</a></li>
-<li>​Deciphering The Elamite Language | Edge Induced Cohesion, accessed August 11, 2025, <a href="https://edgeinducedcohesion.blog/2024/12/20/deciphering-the-elamite-language" target="_blank">https://edgeinducedcohesion.blog/2024/12/20/deciphering-the-elamite-language</a> /</li>
-<li>​Linear Elamite - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Linear_Elamite" target="_blank">https://en.wikipedia.org/wiki/Linear_Elamite</a></li>
-<li>​A highway to understand the Proto-Elamite writing - YouTube, accessed August 11, 2025, <a href="https://www.youtube.com/watch?v=bUrvXj2w5RE" target="_blank">https://www.youtube.com/watch?v=bUrvXj2w5RE</a></li>
-<li>​(PDF) The Decipherment of Linear Elamite Writing - ResearchGate, accessed August 11, 2025, <a href="https://www.researchgate.net/publication/361675439_The_Decipherment_of_Line" target="_blank">https://www.researchgate.net/publication/361675439_The_Decipherment_of_Line</a> ar_Elamite_Writing</li>
-<li>​Trade and Politics in Proto-Elamite Iran [and Comments and Reply] | Current Anthropology, accessed August 11, 2025, <a href="https://www.journals.uchicago.edu/doi/abs/10.1086/202914" target="_blank">https://www.journals.uchicago.edu/doi/abs/10.1086/202914</a></li>
-<li>​(PDF) Trade and Politics in Proto-Elamite Iran - ResearchGate, accessed August 11, 2025, <a href="https://www.researchgate.net/publication/249178426_Trade_and_Politics_in_Proto" target="_blank">https://www.researchgate.net/publication/249178426_Trade_and_Politics_in_Proto</a> -Elamite_Iran</li>
-<li>​List of Rulers of Elam | PDF | Ancient Peoples Of The Near East - Scribd, accessed August 11, 2025, <a href="https://www.scribd.com/document/120750818/List-of-rulers-of-Elam-docx" target="_blank">https://www.scribd.com/document/120750818/List-of-rulers-of-Elam-docx</a></li>
-<li>​ancientpersiaowns.weebly.com, accessed August 11, 2025, <a href="https://ancientpersiaowns.weebly.com/the-elamite-empire.html#:~:text=The%20" target="_blank">https://ancientpersiaowns.weebly.com/the-elamite-empire.html#:~:text=The%20</a> Elamite%20form%20of%20government,the%20viceroy%20and%20the%20overl ord.</li>
-<li>​The Elamite Empire - Ancient Persia, accessed August 11, 2025, <a href="https://ancientpersiaowns.weebly.com/the-elamite-empire.html" target="_blank">https://ancientpersiaowns.weebly.com/the-elamite-empire.html</a></li>
-<li>​Political succession | Britannica, accessed August 11, 2025, <a href="https://www.britannica.com/topic/political-succession" target="_blank">https://www.britannica.com/topic/political-succession</a></li>
-<li>​Susa - Livius, accessed August 11, 2025, <a href="https://www.livius.org/articles/place/susa/" target="_blank">https://www.livius.org/articles/place/susa/</a></li>
-<li>​Iran World Heritage Sites: Ziggurat of Chogha Zanbil | FinancialTribune, accessed August 11, 2025, <a href="https://den.ir/articles/people-travel/782/iran-world-heritage-sites-ziggurat-of-cho" target="_blank">https://den.ir/articles/people-travel/782/iran-world-heritage-sites-ziggurat-of-cho</a> gha-zanbil</li>
-<li>​Chogha Zanbil - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Chogha_Zanbil" target="_blank">https://en.wikipedia.org/wiki/Chogha_Zanbil</a></li>
-<li>​Maria Brosius. “No Reason to Hide: Women in the Neo-Elamite and Persian Periods”, accessed August 11, 2025, <a href="https://journals.openedition.org/abstractairanica/44842?lang=en" target="_blank">https://journals.openedition.org/abstractairanica/44842?lang=en</a></li>
-<li>​Elamite art – The Artistic Adventure of Mankind - WordPress.com, accessed August 11, 2025, <a href="https://arsartisticadventureofmankind.wordpress.com/tag/elamite-art/" target="_blank">https://arsartisticadventureofmankind.wordpress.com/tag/elamite-art/</a></li>
-<li>​Power and politics in the Neo-Elamite kingdom | DIAL.pr - BOREAL, accessed August 11, 2025, <a href="https://dial.uclouvain.be/pr/boreal/object/boreal:151260" target="_blank">https://dial.uclouvain.be/pr/boreal/object/boreal:151260</a></li>
-<li>​“Don&#x27;t Let the Boats Pass!” Neo-Elamite Grain Procurement in Times of Famine and Drought | Iranian Studies - Cambridge University Press, accessed August 11, 2025, <a href="https://www.cambridge.org/core/journals/iranian-studies/article/dont-let-the-boa" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/dont-let-the-boa</a> ts-pass-neoelamite-grain-procurement-in-times-of-famine-and-drought/64E9A ADBEE89E6616EB8F72772B2D1D0</li>
-<li>​“Don&#x27;t Let the Boats Pass!” Neo-Elamite Grain Procurement in Times of Famine and Drought - Cambridge University Press, accessed August 11, 2025, <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/64E" target="_blank">https://www.cambridge.org/core/services/aop-cambridge-core/content/view/64E</a> 9AADBEE89E6616EB8F72772B2D1D0/S0021086223000282a.pdf/dont_let_the_bo ats_pass_neoelamite_grain_procurement_in_times_of_famine_and_drought.pdf</li>
-<li>​Religion in Elam - The Database of Religious History, accessed August 11, 2025, <a href="https://religiondatabase.org/browse/1005" target="_blank">https://religiondatabase.org/browse/1005</a></li>
-<li>​The Role of Elamite Gods in the Formation of the Divine Triad: Hormazd-Mithra-Anahita, accessed August 11, 2025, <a href="https://jls.um.ac.ir/article_33666.html?lang=en" target="_blank">https://jls.um.ac.ir/article_33666.html?lang=en</a></li>
-<li>​Iran: Visual Arts: The Art of Elamites - Iran Chamber Society, accessed August 11, 2025, <a href="https://www.iranchamber.com/art/articles/art_of_elamites.php" target="_blank">https://www.iranchamber.com/art/articles/art_of_elamites.php</a></li>
-<li>​Haft Tappeh: Journey Into The Ancient Elamite Civilization - Surfiran, accessed August 11, 2025, <a href="https://surfiran.com/mag/haft-tappeh-archaeological-site/" target="_blank">https://surfiran.com/mag/haft-tappeh-archaeological-site/</a></li>
-<li>​Haft Tepe - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Haft_Tepe" target="_blank">https://en.wikipedia.org/wiki/Haft_Tepe</a></li>
-<li>​Examining the architecture of the proto Elamite and Elamite periods according to Tal-e-Malyan as ancient city of Anshan in Fars, accessed August 11, 2025, <a href="https://jfaup.ut.ac.ir/article_80908.html?lang=en" target="_blank">https://jfaup.ut.ac.ir/article_80908.html?lang=en</a></li>
-<li>​Expedition Magazine | Middle Elamite Malayan - Penn Museum, accessed August 11, 2025, <a href="https://www.penn.museum/sites/expedition/middle-elamite-malayan/" target="_blank">https://www.penn.museum/sites/expedition/middle-elamite-malayan/</a></li>
-<li>​Elamite language - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Elamite_language" target="_blank">https://en.wikipedia.org/wiki/Elamite_language</a></li>
-<li>​The Neo-Elamite Period - Elam vs. Assyria (1100 - 550 BC) | Supplemental Podcast #6, accessed August 11, 2025, <a href="https://m.youtube.com/watch?v=mZ2ibQtICKQ&amp;pp=ygUJI2J1dGF6aXJ1" target="_blank">https://m.youtube.com/watch?v=mZ2ibQtICKQ&amp;pp=ygUJI2J1dGF6aXJ1</a></li>
-<li>​Elamite Empire: A Journey through Ancient Iran, accessed August 11, 2025, <a href="https://toirantour.com/blog/elamite-empire/" target="_blank">https://toirantour.com/blog/elamite-empire/</a></li>
-<li>​Achaemenid Empire - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Achaemenid_Empire" target="_blank">https://en.wikipedia.org/wiki/Achaemenid_Empire</a></li>
-<li>​Elam and Persia | January 2013 (117.1) - American Journal of Archaeology, accessed August 11, 2025, <a href="https://ajaonline.org/book-review/1477/" target="_blank">https://ajaonline.org/book-review/1477/</a></li>
-<li>​Elam in the Achaemenid empire (Chapter 9) - The Archaeology of ..., accessed August 11, 2025, <a href="https://www.cambridge.org/core/books/archaeology-of-elam/elam-in-the-achae" target="_blank">https://www.cambridge.org/core/books/archaeology-of-elam/elam-in-the-achae</a> menid-empire/97F08CF8ED5F955AEFAE0D0E79E52BCC</li>
-<li>​The Elamites | The Empire That VANISHED For 3,000 YEARS - YouTube, accessed August 11, 2025, <a href="https://www.youtube.com/watch?v=i9bDEQX1R4M" target="_blank">https://www.youtube.com/watch?v=i9bDEQX1R4M</a></li>
-<li>​Elam and Persia. Edited by Javier Álvarez-Mon and Mark B. Garrison. Winona Lake, IN: Eisenbrauns, 2011. Pp. xviii + 493. $89.50 (cloth)., accessed August 11, 2025, <a href="https://www.journals.uchicago.edu/doi/10.1086/671453" target="_blank">https://www.journals.uchicago.edu/doi/10.1086/671453</a></li>
-<li>​Assyria&#x27;s Downfall (631–609), accessed August 11, 2025, <a href="https://ia803201.us.archive.org/31/items/downfall-of-assyria/Downfall%20of%20A" target="_blank">https://ia803201.us.archive.org/31/items/downfall-of-assyria/Downfall%20of%20A</a> ssyria.pdf</li>
-<li>​www.iraniantours.com, accessed August 11, 2025, <a href="https://www.iraniantours.com/historical-period/proto-elamite/#:~:text=Clay%20ta" target="_blank">https://www.iraniantours.com/historical-period/proto-elamite/#:~:text=Clay%20ta</a> blets%20with%20pictographic%20characters,Elamite%20ziggurat%20is%20still %20seen.</li>
-<li>​Expedition Magazine | Aspects of Elamite Art and Archaeology - Penn Museum, accessed August 11, 2025, <a href="https://www.penn.museum/sites/expedition/aspects-of-elamite-art-and-archaeol" target="_blank">https://www.penn.museum/sites/expedition/aspects-of-elamite-art-and-archaeol</a> ogy/</li>
-<li>​Crafting under Divine Protection During the Middle Elamite Period - Pourdavoud Institute, accessed August 11, 2025, <a href="https://pourdavoud.ucla.edu/video/crafting-under-divine-protection-during-the-" target="_blank">https://pourdavoud.ucla.edu/video/crafting-under-divine-protection-during-the-</a> middle-elamite-period/</li>
-<li>​The History of the Elamites (Facts and Theories) - YouTube, accessed August 11, 2025, <a href="https://www.youtube.com/watch?v=tLdFCVdPyWc" target="_blank">https://www.youtube.com/watch?v=tLdFCVdPyWc</a></li>
-<li>​Neo-Elamite Geography, Chronology, History, and the Textual and Iconographic Evidence Used in this Book - Brill, accessed August 11, 2025, <a href="https://brill.com/downloadpdf/book/9789004391772/BP000002.xml" target="_blank">https://brill.com/downloadpdf/book/9789004391772/BP000002.xml</a></li>
-<li>​Suse et l&#x27;Elam - François Vallat - Google Books, accessed August 11, 2025, <a href="https://books.google.com/books/about/Suse_et_l_Elam.html?id=fextAAAAMAAJ" target="_blank">https://books.google.com/books/about/Suse_et_l_Elam.html?id=fextAAAAMAAJ</a></li>
-<li>​Elam and Persia 9781575066127 - DOKUMEN.PUB, accessed August 11, 2025, <a href="https://dokumen.pub/elam-and-persia-9781575066127.html" target="_blank">https://dokumen.pub/elam-and-persia-9781575066127.html</a></li>
-<li>​Tammarītu, “king of Ḫidalu,” Tammarītu, “king of Elam” | Iranian Studies | Cambridge Core, accessed August 11, 2025, <a href="https://www.cambridge.org/core/journals/iranian-studies/article/tammaritu-king-" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/tammaritu-king-</a> of-hidalu-tammaritu-king-of-elam/074AEAFDC1CBE01D3650D917F9B4ED23</li>
-<li>​Chapter 21 Akkadian in Elam in - Brill, accessed August 11, 2025, <a href="https://brill.com/display/book/edcoll/9789004445215/BP000027.xml" target="_blank">https://brill.com/display/book/edcoll/9789004445215/BP000027.xml</a></li>
-<li>​The lost world of Elam: Re-creation of a vanished civilization. By Walther Hinz. Translated from the German by Jennifer Barnes. pp. 192, 32 pl. London, Sidgwick and Jackson, 1972. £3.25. | Journal of the Royal Asiatic Society | Cambridge Core, accessed August 11, 2025, <a href="https://www.cambridge.org/core/journals/journal-of-the-royal-asiatic-society/arti" target="_blank">https://www.cambridge.org/core/journals/journal-of-the-royal-asiatic-society/arti</a> cle/lost-world-of-elam-recreation-of-a-vanished-civilization-by-walther-hinz-tra nslated-from-the-german-by-jennifer-barnes-pp-192-32-pl-london-sidgwick-an d-jackson-1972-325/19AEAB8457D04D9612D0818F9595C4C7</li>
-<li>​The lost world of Elam, re-creation of a vanished civilization : Hinz ..., accessed August 11, 2025, <a href="https://archive.org/details/lostworldofelamr0000hinz" target="_blank">https://archive.org/details/lostworldofelamr0000hinz</a></li>
-<li>​The Lost World of Elam by Walther Hinz - Goodreads, accessed August 11, 2025, <a href="https://www.goodreads.com/book/show/282441.The_Lost_World_of_Elam" target="_blank">https://www.goodreads.com/book/show/282441.The_Lost_World_of_Elam</a></li>
-<li>​Publications | Inrap, accessed August 11, 2025, <a href="https://www.inrap.fr/publications-9874" target="_blank">https://www.inrap.fr/publications-9874</a></li>
-<li>​Les Nouvelles de l&#x27;archéologie | Revues (factice) | Éditions de la Maison des sciences de l&#x27;homme, accessed August 11, 2025, <a href="https://www.editions-msh.fr/revue/les-nouvelles-de-larcheologie/" target="_blank">https://www.editions-msh.fr/revue/les-nouvelles-de-larcheologie/</a></li>
-<li>​References - The Archaeology of Elam - Cambridge University Press, accessed August 11, 2025, <a href="https://www.cambridge.org/core/books/archaeology-of-elam/references/497CAA" target="_blank">https://www.cambridge.org/core/books/archaeology-of-elam/references/497CAA</a> 35927A8C26F6E20E3B49236805</li>
-<li>​Les Élamites - La Revue de Téhéran | Iran, accessed August 11, 2025, <a href="http://www.teheran.ir/spip.php?article274" target="_blank">http://www.teheran.ir/spip.php?article274</a></li>
-<li>​Zeitschrift - Deutscher Verband für Archäologie, accessed August 11, 2025, <a href="https://www.dvarch.de/blickpunkt-archaeologie/zeitschrift/" target="_blank">https://www.dvarch.de/blickpunkt-archaeologie/zeitschrift/</a></li>
-<li>​Über die Zeitschrift | Archäologische Informationen, accessed August 11, 2025, <a href="https://journals.ub.uni-heidelberg.de/index.php/arch-inf/about" target="_blank">https://journals.ub.uni-heidelberg.de/index.php/arch-inf/about</a></li>
-<li>​The archaeology of Elam : formation and transformation of an ancient Iranian state : Potts, Daniel T : Free Download, Borrow, and Streaming - Internet Archive, accessed August 11, 2025, <a href="https://archive.org/details/archaeologyofela0000pott" target="_blank">https://archive.org/details/archaeologyofela0000pott</a></li>
-<li>​Archäologische Zeitschriften - Herder.de, accessed August 11, 2025, <a href="https://www.herder.de/wissen/zeitschriften/archaeologie/" target="_blank">https://www.herder.de/wissen/zeitschriften/archaeologie/</a></li>
-<li>​Elynn Gorris. Power and Politics in the Neo-Elamite Kingdom (c. 1100-520 BC), accessed August 11, 2025, <a href="https://journals.openedition.org/abstractairanica/53148" target="_blank">https://journals.openedition.org/abstractairanica/53148</a></li>
-<li>​Did Assyria, Babylonia, Media and Persia ever exist as separate kingdoms at the same time? - Reddit, accessed August 11, 2025, <a href="https://www.reddit.com/r/history/comments/9sn6ap/did_assyria_babylonia_media" target="_blank">https://www.reddit.com/r/history/comments/9sn6ap/did_assyria_babylonia_media</a> _and_persia_ever_exist/</li>
-<li>​Elamite Dynasty in Iranian plateau - Best Iran Tours 2025, accessed August 11, 2025, <a href="https://irangashttour.com/2021/10/14/elamite-dynasty-in-iranian-plateau/" target="_blank">https://irangashttour.com/2021/10/14/elamite-dynasty-in-iranian-plateau/</a></li>
-<li>​Rise and Fall of Elam: A Journey through Iran&#x27;s Forgotten History - YouTube, accessed August 11, 2025, <a href="https://www.youtube.com/watch?v=7mE2T05t8gI" target="_blank">https://www.youtube.com/watch?v=7mE2T05t8gI</a></li>
-<li>​www.fabriziomusacchio.com, accessed August 11, 2025, <a href="https://www.fabriziomusacchio.com/weekend_stories/told/2025/2025-01-01-ela" target="_blank">https://www.fabriziomusacchio.com/weekend_stories/told/2025/2025-01-01-ela</a> mite_civilization/#:~:text=and%20political%20centralization.-,Decline%20and%20 legacy,end%20of%20its%20political%20independence.</li>
-<li>​Elam: The Black Persians - Realhistoryww.com, accessed August 11, 2025, <a href="https://realhistoryww.com/world_history/ancient/Elam_Iran_2a.htm" target="_blank">https://realhistoryww.com/world_history/ancient/Elam_Iran_2a.htm</a></li>
-<li>​Assyriology - Heidelberg University, accessed August 11, 2025, <a href="https://www.uni-heidelberg.de/en/study/all-subjects/assyriology" target="_blank">https://www.uni-heidelberg.de/en/study/all-subjects/assyriology</a></li>
-<li>​Heidemarie Koch - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Heidemarie_Koch" target="_blank">https://en.wikipedia.org/wiki/Heidemarie_Koch</a></li>
-<li>​List of 8 Ancient Near Eastern Studies Universities in Germany 🏛️, accessed August 11, 2025, <a href="https://www.mygermanuniversity.com/subjects/ancient-near-eastern-studies" target="_blank">https://www.mygermanuniversity.com/subjects/ancient-near-eastern-studies</a></li>
-<li>​Germanic Studies | German Department - The University of Chicago, accessed August 11, 2025, <a href="https://german.uchicago.edu/" target="_blank">https://german.uchicago.edu/</a></li>
-<li>​ iDAI.publications/journals, accessed August 11, 2025, <a href="https://publications.dainst.org/journals/" target="_blank">https://publications.dainst.org/journals/</a></li>
-<li>​ Publications - iDAI.world, accessed August 11, 2025, <a href="https://idai.world/what/publications" target="_blank">https://idai.world/what/publications</a></li>
-<li>​ Archäologie in Iran und Turan | iDAI.publications/books, accessed August 11, 2025, <a href="https://publications.dainst.org/books/dai/catalog/series/aiut" target="_blank">https://publications.dainst.org/books/dai/catalog/series/aiut</a></li>
-<li>​ Elamite Kingdom, accessed August 11, 2025, <a href="https://www.elamit.net/depot/resources/basello2016encyclopedia-of-empire.pdf" target="_blank">https://www.elamit.net/depot/resources/basello2016encyclopedia-of-empire.pdf</a></li>
-<li>​ DAI - Publications - Deutsches Archäologisches Institut, accessed August 11, 2025, <a href="https://www.dainst.org/en/research/publications" target="_blank">https://www.dainst.org/en/research/publications</a></li>
-<li>​ German Archaeological Institute - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/German_Archaeological_Institute" target="_blank">https://en.wikipedia.org/wiki/German_Archaeological_Institute</a></li>
-<li>​ Archäologische Mitteilungen aus Iran - Google Books, accessed August 11, 2025, <a href="https://books.google.com/books/about/Arch%C3%A4ologische_Mitteilungen_aus" target="_blank">https://books.google.com/books/about/Arch%C3%A4ologische_Mitteilungen_aus</a> _Iran.html?id=gWAuAQAAIAAJ</li>
-<li>​ Archaeologische Mitteilungen aus Iran - Google Books, accessed August 11, 2025, <a href="https://books.google.com/books/about/Archaeologische_Mitteilungen_aus_Iran.h" target="_blank">https://books.google.com/books/about/Archaeologische_Mitteilungen_aus_Iran.h</a> tml?id=7HIMAQAAMAAJ</li>
-<li>​ Zeitschrift für Assyriologie und Vorderasiatische Archäologie - Wikipedia, accessed August 11, 2025, <a href="https://de.wikipedia.org/wiki/Zeitschrift_f%C3%BCr_Assyriologie_und_Vorderasiati" target="_blank">https://de.wikipedia.org/wiki/Zeitschrift_f%C3%BCr_Assyriologie_und_Vorderasiati</a> sche_Arch%C3%A4ologie</li>
-<li>​ ISSN 1613-1150 (Online) | Zeitschrift für Assyriologie und vorderasiatische Archäologie, accessed August 11, 2025, <a href="https://portal.issn.org/resource/ISSN/1613-1150" target="_blank">https://portal.issn.org/resource/ISSN/1613-1150</a></li>
-<li>​ Zeitschrift für Assyriologie und vorderasiatische Archäologie : Free Download, Borrow, and Streaming - Internet Archive, accessed August 11, 2025, <a href="https://archive.org/details/bub_gb_7EBGAQAAMAAJ" target="_blank">https://archive.org/details/bub_gb_7EBGAQAAMAAJ</a></li>
-<li>​ Zeitschrift für Assyriologie und Vorderasiatische Archäologie, accessed August 11, 2025, <a href="https://www.assyriologie.uni-muenchen.de/publikationen/za/index.html" target="_blank">https://www.assyriologie.uni-muenchen.de/publikationen/za/index.html</a></li>
-<li>​ Susa and Elam. Archaeological, Philological, Historical and Geographical Perspectives - Brill, accessed August 11, 2025, <a href="https://brill.com/display/book/edcoll/9789004207417/B9789004207417_001.pdf" target="_blank">https://brill.com/display/book/edcoll/9789004207417/B9789004207417_001.pdf</a></li>
-<li>​ Zeitschrift für Assyriologie und vorderasiatische Archäologie - Google Books, accessed August 11, 2025, <a href="http://books.google.com/books?id=vDEkAQAAMAAJ" target="_blank">http://books.google.com/books?id=vDEkAQAAMAAJ</a></li>
-<li>​ Matthew W. Stolper | Middle Eastern Studies - The University of Chicago, accessed August 11, 2025, <a href="https://mes.uchicago.edu/people/matthew-w-stolper" target="_blank">https://mes.uchicago.edu/people/matthew-w-stolper</a></li>
-<li>​ Catalog of Publications - Institute for the Study of Ancient Cultures, accessed August 11, 2025, <a href="https://isac.uchicago.edu/research/catalog-publications" target="_blank">https://isac.uchicago.edu/research/catalog-publications</a></li>
-<li>​ THE ORIENTAL INSTITUTE, accessed August 11, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oi_fourth_handb" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oi_fourth_handb</a> ook.pdf</li>
-<li>​ Oriental Institute Publications (OIP), accessed August 11, 2025, <a href="https://isac.uchicago.edu/research/publications/oriental-institute-publications-oip" target="_blank">https://isac.uchicago.edu/research/publications/oriental-institute-publications-oip</a></li>
-<li>​ persepolis treasury tablets - Institute for the Study of Ancient Cultures, accessed August 11, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oip65.pdf" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oip65.pdf</a></li>
-<li>​ Annals of Sennacherib - Institute for the Study of Ancient Cultures, accessed August 11, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oip2.pdf" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oip2.pdf</a></li>
-<li>​ Journal: Cahiers de la Délégation Archéologique Française en Iran, accessed August 11, 2025, <a href="https://cdli.earth/journals/249" target="_blank">https://cdli.earth/journals/249</a></li>
-<li>​ Cahiers de la délégation archéologique française en Iran - Google Books, accessed August 11, 2025, <a href="https://books.google.com/books/about/Cahiers_de_la_d%C3%A9l%C3%A9gation" target="_blank">https://books.google.com/books/about/Cahiers_de_la_d%C3%A9l%C3%A9gation</a> _arch%C3%A9ologiqu.html?id=HLgZywEACAAJ</li>
-<li>​ Cahiers de la Délégation archéologique française en Iran | Periodical, accessed August 11, 2025, <a href="https://www.nli.org.il/en/journals/NNL-Journals990040949020205171/NLI" target="_blank">https://www.nli.org.il/en/journals/NNL-Journals990040949020205171/NLI</a></li>
-<li>​ Cahiers de la Délégation Archéologique Française en Iran (DAFI) - Index Theologicus, accessed August 11, 2025, <a href="https://ixtheo.de/Record/1399599437" target="_blank">https://ixtheo.de/Record/1399599437</a></li>
-<li>​ Cahiers de la Délégation Archéologique Française en Iran (DAFI) 10 - Universität Tübingen, accessed August 11, 2025, <a href="https://vergil.uni-tuebingen.de/keibi/Record/KEI00064027" target="_blank">https://vergil.uni-tuebingen.de/keibi/Record/KEI00064027</a></li>
-<li>​ Cahiers de la Délégation archéologique française en Iran - Google Books, accessed August 11, 2025, <a href="https://books.google.com/books/about/Cahiers_de_la_D%C3%A9l%C3%A9gation" target="_blank">https://books.google.com/books/about/Cahiers_de_la_D%C3%A9l%C3%A9gation</a> _arch%C3%A9ologiqu.html?id=-tMRAQAAMAAJ</li>
-<li>​ MLEIHA (EMIRATE OF SHARJAH, UAE) AT THE BEGINNING OF ..., accessed August 11, 2025, <a href="https://www.jstor.org/stable/41223408" target="_blank">https://www.jstor.org/stable/41223408</a></li>
-<li>​ accessed January 1, 1970, <a href="https://www.cairn.info/revue-d-assyriologie-et-d-archeologie-orientale-2008-1-" target="_blank">https://www.cairn.info/revue-d-assyriologie-et-d-archeologie-orientale-2008-1-</a> page-65.htm</li>
-<li>​ accessed January 1, 1970, <a href="https://ancientmesopotamia.org/cultures/neo-elamite-period/" target="_blank">https://ancientmesopotamia.org/cultures/neo-elamite-period/</a></li>
-<li>​ accessed January 1, 1970, <a href="https://www.iranicaonline.org/articles/elam-vi-elamite-religion" target="_blank">https://www.iranicaonline.org/articles/elam-vi-elamite-religion</a></li>
-<li>​ accessed January 1, 1970, <a href="https://www.iranicaonline.org/articles/elam-iv-elamite-language-in-the-achaeme" target="_blank">https://www.iranicaonline.org/articles/elam-iv-elamite-language-in-the-achaeme</a> nid-period</li></ul></div>
+        <li>​ Elam - Livius, accessed August 11, 2025, <a href="https://www.livius.org/articles/place/elam/" target="_blank">https://www.livius.org/articles/place/elam/</a></li>
+        <li>​ Exploring The Elamite Civilization: A Guide To Ancient Iran&#x27;s Legacy - OrientTrips, accessed August 11, 2025, <a href="https://orienttrips.com/mag/elamite-civilization/" target="_blank">https://orienttrips.com/mag/elamite-civilization/</a></li>
+        <li>​ Timeline: Elam - World History Encyclopedia, accessed August 11, 2025, <a href="https://www.worldhistory.org/timeline/elam/" target="_blank">https://www.worldhistory.org/timeline/elam/</a></li>
+        <li>​ Elam | Iran, Map, &amp; History - Britannica, accessed August 11, 2025, <a href="https://www.britannica.com/place/Elam" target="_blank">https://www.britannica.com/place/Elam</a></li>
+        <li>​ Elam - Jewish Virtual Library, accessed August 11, 2025, <a href="https://www.jewishvirtuallibrary.org/elam" target="_blank">https://www.jewishvirtuallibrary.org/elam</a></li>
+        <li>​ History of Iran: Elamite Empire - Iran Chamber Society, accessed August 11, 2025, <a href="https://www.iranchamber.com/history/elamite/elamite.php" target="_blank">https://www.iranchamber.com/history/elamite/elamite.php</a></li>
+        <li>​ The History of the Elamite Empire - YouTube, accessed August 11, 2025, <a href="https://www.youtube.com/watch?v=TVKwzrdnOjA" target="_blank">https://www.youtube.com/watch?v=TVKwzrdnOjA</a></li>
+        <li>​ Elam - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Elam" target="_blank">https://en.wikipedia.org/wiki/Elam</a></li>
+        <li>​Ten Ancient Elam Facts You Need to Know - World History Encyclopedia, accessed August 11, 2025, <a href="https://www.worldhistory.org/article/1591/ten-ancient-elam-facts-you-need-to-k" target="_blank">https://www.worldhistory.org/article/1591/ten-ancient-elam-facts-you-need-to-k</a> now/</li>
+        <li>​What do we know of the ancient Elamites (language, religion, social structures, ethnic classification, etc), and who are their direct descendants? - Quora, accessed August 11, 2025, <a href="https://www.quora.com/What-do-we-know-of-the-ancient-Elamites-language-r" target="_blank">https://www.quora.com/What-do-we-know-of-the-ancient-Elamites-language-r</a> eligion-social-structures-ethnic-classification-etc-and-who-are-their-direct-des cendants</li>
+        <li>​The Neo-Elamite period (Chapter 8) - The Archaeology of Elam, accessed August 11, 2025, <a href="https://www.cambridge.org/core/books/archaeology-of-elam/neoelamite-period/" target="_blank">https://www.cambridge.org/core/books/archaeology-of-elam/neoelamite-period/</a> 054799B680BFE4F9897D0F521CAA46E8</li>
+        <li>​Elam in Third-Millennium BC Mesopotamian Written Sources: Awan Dynasty, accessed August 11, 2025, <a href="https://www.researchgate.net/publication/363627852_Elam_in_Third-Millennium_B" target="_blank">https://www.researchgate.net/publication/363627852_Elam_in_Third-Millennium_B</a> C_Mesopotamian_Written_Sources_Awan_Dynasty</li>
+        <li>​Maritime history rewritten in the ancient kingdom of Elam ... - CORDIS, accessed August 11, 2025, <a href="https://cordis.europa.eu/article/id/457122-maritime-history-rewritten-in-the-ancie" target="_blank">https://cordis.europa.eu/article/id/457122-maritime-history-rewritten-in-the-ancie</a> nt-kingdom-of-elam</li>
+        <li>​DYNAMICS OF THE FALL: ASHURBANIPAL&#x27;S CONQUEST OF ELAM Peter Dubovský* . Introduction The main aim of this paper is to reco - Brill, accessed August 11, 2025, <a href="https://brill.com/previewpdf/book/edcoll/9789004207417/B9789004207417_027.x" target="_blank">https://brill.com/previewpdf/book/edcoll/9789004207417/B9789004207417_027.x</a> ml</li>
+        <li>​The Elamite civilization: A cultural and political powerhouse of ancient Iran, accessed August 11, 2025, <a href="https://www.fabriziomusacchio.com/weekend_stories/told/2025/2025-01-01-ela" target="_blank">https://www.fabriziomusacchio.com/weekend_stories/told/2025/2025-01-01-ela</a> mite_civilization/</li>
+        <li>​en.wikipedia.org, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Proto-Elamite_(period)#:~:text=The%20Proto%2DEla" target="_blank">https://en.wikipedia.org/wiki/Proto-Elamite_(period)#:~:text=The%20Proto%2DEla</a> mite%20period%2C%20also,the%20oldest%20civilization%20in%20Iran.</li>
+        <li>​Proto-Elamite (period) - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Proto-Elamite_(period)" target="_blank">https://en.wikipedia.org/wiki/Proto-Elamite_(period)</a></li>
+        <li>​Proto-Elamite script - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Proto-Elamite_script" target="_blank">https://en.wikipedia.org/wiki/Proto-Elamite_script</a></li>
+        <li>​Kingdoms of the Eastern Near East - Elam / Haltamtu / Susiana, accessed August 11, 2025, <a href="https://www.historyfiles.co.uk/KingListsMiddEast/EasternElamOld.htm" target="_blank">https://www.historyfiles.co.uk/KingListsMiddEast/EasternElamOld.htm</a></li>
+        <li>​Mesopotamian history: the basics - Oracc, accessed August 11, 2025, <a href="https://oracc.museum.upenn.edu/amgg/mesopotamianhistory/" target="_blank">https://oracc.museum.upenn.edu/amgg/mesopotamianhistory/</a></li>
+        <li>​Chogha Zanbil – following hadrian photography, accessed August 11, 2025, <a href="https://followinghadrianphotography.com/2019/05/13/chogha-zanbil/" target="_blank">https://followinghadrianphotography.com/2019/05/13/chogha-zanbil/</a></li>
+        <li>​The Elamites - ruled an empire from Susa before the Medes and Persians - iran &amp; the iranians, accessed August 11, 2025, <a href="https://www.the-persians.co.uk/elam.htm" target="_blank">https://www.the-persians.co.uk/elam.htm</a></li>
+        <li>​Chogha Zanbil | Meaning, History, &amp; Facts - Britannica, accessed August 11, 2025, <a href="https://www.britannica.com/place/Chogha-Zanbil" target="_blank">https://www.britannica.com/place/Chogha-Zanbil</a></li>
+        <li>​The lost world of Elam: Re-creation of a vanished civilization. By Walther Hinz. Translated from the German by Jennifer Barnes. - Cambridge University Press, accessed August 11, 2025, <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/19A" target="_blank">https://www.cambridge.org/core/services/aop-cambridge-core/content/view/19A</a> EAB8457D04D9612D0818F9595C4C7/S0035869X00132897a.pdf/lost_world_of_el am_recreation_of_a_vanished_civilization_by_walther_hinz_translated_from_the_ german_by_jennifer_barnes_pp_192_32_pl_london_sidgwick_and_jackson_1972_</li>
+        <li>pdf</li>
+        <li>​List of Elamite kings - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/List_of_Elamite_kings" target="_blank">https://en.wikipedia.org/wiki/List_of_Elamite_kings</a></li>
+        <li>​Cultures | Neo-Elamite Period - Ancient Mesopotamia, accessed August 11, 2025, <a href="https://ancientmesopotamia.org/cultures/neo-elamite-period" target="_blank">https://ancientmesopotamia.org/cultures/neo-elamite-period</a></li>
+        <li>​Proto-Elamite | Iran Tour and Travel with IranianTours, accessed August 11, 2025, <a href="https://www.iraniantours.com/historical-period/proto-elamite/" target="_blank">https://www.iraniantours.com/historical-period/proto-elamite/</a></li>
+        <li>​Formation of the Proto-Elamite Union on the Iranian plateau, accessed August 11, 2025, <a href="https://nbsh.basu.ac.ir/m/article_4935.html?lang=en" target="_blank">https://nbsh.basu.ac.ir/m/article_4935.html?lang=en</a></li>
+        <li>​The Proto-Elamite Settlement and its Neighbors: Tepe Yahya Period IVC, accessed August 11, 2025, <a href="https://whitelevy.fas.harvard.edu/proto-elamite-settlement-and-its-neighbors-te" target="_blank">https://whitelevy.fas.harvard.edu/proto-elamite-settlement-and-its-neighbors-te</a> pe-yahya-period-ivc</li>
+        <li>​Proto-Elamite - Mnamon, accessed August 11, 2025, <a href="https://mnamon.sns.it/index.php?page=Scrittura&amp;id=9&amp;lang=en" target="_blank">https://mnamon.sns.it/index.php?page=Scrittura&amp;id=9&amp;lang=en</a></li>
+        <li>​From the Proto-Elamite to Shimashki: the third millennium BC at Tappeh Senjar, the Susiana Plain - MOM Éditions - OpenEdition Books, accessed August 11, 2025, <a href="https://books.openedition.org/momeditions/8046" target="_blank">https://books.openedition.org/momeditions/8046</a></li>
+        <li>​The State of Decipherment of Proto-Elamite - MPG.PuRe, accessed August 11, 2025, <a href="https://pure.mpg.de/pubman/item/item_2273899/component/file_2273897/P183.P" target="_blank">https://pure.mpg.de/pubman/item/item_2273899/component/file_2273897/P183.P</a> DF</li>
+        <li>​The Puzzle of Proto-Elamite - History Today, accessed August 11, 2025, <a href="https://www.historytoday.com/archive/puzzle-proto-elamite" target="_blank">https://www.historytoday.com/archive/puzzle-proto-elamite</a></li>
+        <li>​Proto-Elamite Writing in Iran - Harappa, accessed August 11, 2025, <a href="https://www.harappa.com/content/proto-elamite-writing-iran" target="_blank">https://www.harappa.com/content/proto-elamite-writing-iran</a></li>
+        <li>​Deciphering The Elamite Language | Edge Induced Cohesion, accessed August 11, 2025, <a href="https://edgeinducedcohesion.blog/2024/12/20/deciphering-the-elamite-language" target="_blank">https://edgeinducedcohesion.blog/2024/12/20/deciphering-the-elamite-language</a> /</li>
+        <li>​Linear Elamite - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Linear_Elamite" target="_blank">https://en.wikipedia.org/wiki/Linear_Elamite</a></li>
+        <li>​A highway to understand the Proto-Elamite writing - YouTube, accessed August 11, 2025, <a href="https://www.youtube.com/watch?v=bUrvXj2w5RE" target="_blank">https://www.youtube.com/watch?v=bUrvXj2w5RE</a></li>
+        <li>​(PDF) The Decipherment of Linear Elamite Writing - ResearchGate, accessed August 11, 2025, <a href="https://www.researchgate.net/publication/361675439_The_Decipherment_of_Line" target="_blank">https://www.researchgate.net/publication/361675439_The_Decipherment_of_Line</a> ar_Elamite_Writing</li>
+        <li>​Trade and Politics in Proto-Elamite Iran [and Comments and Reply] | Current Anthropology, accessed August 11, 2025, <a href="https://www.journals.uchicago.edu/doi/abs/10.1086/202914" target="_blank">https://www.journals.uchicago.edu/doi/abs/10.1086/202914</a></li>
+        <li>​(PDF) Trade and Politics in Proto-Elamite Iran - ResearchGate, accessed August 11, 2025, <a href="https://www.researchgate.net/publication/249178426_Trade_and_Politics_in_Proto" target="_blank">https://www.researchgate.net/publication/249178426_Trade_and_Politics_in_Proto</a> -Elamite_Iran</li>
+        <li>​List of Rulers of Elam | PDF | Ancient Peoples Of The Near East - Scribd, accessed August 11, 2025, <a href="https://www.scribd.com/document/120750818/List-of-rulers-of-Elam-docx" target="_blank">https://www.scribd.com/document/120750818/List-of-rulers-of-Elam-docx</a></li>
+        <li>​ancientpersiaowns.weebly.com, accessed August 11, 2025, <a href="https://ancientpersiaowns.weebly.com/the-elamite-empire.html#:~:text=The%20" target="_blank">https://ancientpersiaowns.weebly.com/the-elamite-empire.html#:~:text=The%20</a> Elamite%20form%20of%20government,the%20viceroy%20and%20the%20overl ord.</li>
+        <li>​The Elamite Empire - Ancient Persia, accessed August 11, 2025, <a href="https://ancientpersiaowns.weebly.com/the-elamite-empire.html" target="_blank">https://ancientpersiaowns.weebly.com/the-elamite-empire.html</a></li>
+        <li>​Political succession | Britannica, accessed August 11, 2025, <a href="https://www.britannica.com/topic/political-succession" target="_blank">https://www.britannica.com/topic/political-succession</a></li>
+        <li>​Susa - Livius, accessed August 11, 2025, <a href="https://www.livius.org/articles/place/susa/" target="_blank">https://www.livius.org/articles/place/susa/</a></li>
+        <li>​Iran World Heritage Sites: Ziggurat of Chogha Zanbil | FinancialTribune, accessed August 11, 2025, <a href="https://den.ir/articles/people-travel/782/iran-world-heritage-sites-ziggurat-of-cho" target="_blank">https://den.ir/articles/people-travel/782/iran-world-heritage-sites-ziggurat-of-cho</a> gha-zanbil</li>
+        <li>​Chogha Zanbil - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Chogha_Zanbil" target="_blank">https://en.wikipedia.org/wiki/Chogha_Zanbil</a></li>
+        <li>​Maria Brosius. “No Reason to Hide: Women in the Neo-Elamite and Persian Periods”, accessed August 11, 2025, <a href="https://journals.openedition.org/abstractairanica/44842?lang=en" target="_blank">https://journals.openedition.org/abstractairanica/44842?lang=en</a></li>
+        <li>​Elamite art – The Artistic Adventure of Mankind - WordPress.com, accessed August 11, 2025, <a href="https://arsartisticadventureofmankind.wordpress.com/tag/elamite-art/" target="_blank">https://arsartisticadventureofmankind.wordpress.com/tag/elamite-art/</a></li>
+        <li>​Power and politics in the Neo-Elamite kingdom | DIAL.pr - BOREAL, accessed August 11, 2025, <a href="https://dial.uclouvain.be/pr/boreal/object/boreal:151260" target="_blank">https://dial.uclouvain.be/pr/boreal/object/boreal:151260</a></li>
+        <li>​“Don&#x27;t Let the Boats Pass!” Neo-Elamite Grain Procurement in Times of Famine and Drought | Iranian Studies - Cambridge University Press, accessed August 11, 2025, <a href="https://www.cambridge.org/core/journals/iranian-studies/article/dont-let-the-boa" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/dont-let-the-boa</a> ts-pass-neoelamite-grain-procurement-in-times-of-famine-and-drought/64E9A ADBEE89E6616EB8F72772B2D1D0</li>
+        <li>​“Don&#x27;t Let the Boats Pass!” Neo-Elamite Grain Procurement in Times of Famine and Drought - Cambridge University Press, accessed August 11, 2025, <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/64E" target="_blank">https://www.cambridge.org/core/services/aop-cambridge-core/content/view/64E</a> 9AADBEE89E6616EB8F72772B2D1D0/S0021086223000282a.pdf/dont_let_the_bo ats_pass_neoelamite_grain_procurement_in_times_of_famine_and_drought.pdf</li>
+        <li>​Religion in Elam - The Database of Religious History, accessed August 11, 2025, <a href="https://religiondatabase.org/browse/1005" target="_blank">https://religiondatabase.org/browse/1005</a></li>
+        <li>​The Role of Elamite Gods in the Formation of the Divine Triad: Hormazd-Mithra-Anahita, accessed August 11, 2025, <a href="https://jls.um.ac.ir/article_33666.html?lang=en" target="_blank">https://jls.um.ac.ir/article_33666.html?lang=en</a></li>
+        <li>​Iran: Visual Arts: The Art of Elamites - Iran Chamber Society, accessed August 11, 2025, <a href="https://www.iranchamber.com/art/articles/art_of_elamites.php" target="_blank">https://www.iranchamber.com/art/articles/art_of_elamites.php</a></li>
+        <li>​Haft Tappeh: Journey Into The Ancient Elamite Civilization - Surfiran, accessed August 11, 2025, <a href="https://surfiran.com/mag/haft-tappeh-archaeological-site/" target="_blank">https://surfiran.com/mag/haft-tappeh-archaeological-site/</a></li>
+        <li>​Haft Tepe - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Haft_Tepe" target="_blank">https://en.wikipedia.org/wiki/Haft_Tepe</a></li>
+        <li>​Examining the architecture of the proto Elamite and Elamite periods according to Tal-e-Malyan as ancient city of Anshan in Fars, accessed August 11, 2025, <a href="https://jfaup.ut.ac.ir/article_80908.html?lang=en" target="_blank">https://jfaup.ut.ac.ir/article_80908.html?lang=en</a></li>
+        <li>​Expedition Magazine | Middle Elamite Malayan - Penn Museum, accessed August 11, 2025, <a href="https://www.penn.museum/sites/expedition/middle-elamite-malayan/" target="_blank">https://www.penn.museum/sites/expedition/middle-elamite-malayan/</a></li>
+        <li>​Elamite language - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Elamite_language" target="_blank">https://en.wikipedia.org/wiki/Elamite_language</a></li>
+        <li>​The Neo-Elamite Period - Elam vs. Assyria (1100 - 550 BC) | Supplemental Podcast #6, accessed August 11, 2025, <a href="https://m.youtube.com/watch?v=mZ2ibQtICKQ&amp;pp=ygUJI2J1dGF6aXJ1" target="_blank">https://m.youtube.com/watch?v=mZ2ibQtICKQ&amp;pp=ygUJI2J1dGF6aXJ1</a></li>
+        <li>​Elamite Empire: A Journey through Ancient Iran, accessed August 11, 2025, <a href="https://toirantour.com/blog/elamite-empire/" target="_blank">https://toirantour.com/blog/elamite-empire/</a></li>
+        <li>​Achaemenid Empire - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Achaemenid_Empire" target="_blank">https://en.wikipedia.org/wiki/Achaemenid_Empire</a></li>
+        <li>​Elam and Persia | January 2013 (117.1) - American Journal of Archaeology, accessed August 11, 2025, <a href="https://ajaonline.org/book-review/1477/" target="_blank">https://ajaonline.org/book-review/1477/</a></li>
+        <li>​Elam in the Achaemenid empire (Chapter 9) - The Archaeology of ..., accessed August 11, 2025, <a href="https://www.cambridge.org/core/books/archaeology-of-elam/elam-in-the-achae" target="_blank">https://www.cambridge.org/core/books/archaeology-of-elam/elam-in-the-achae</a> menid-empire/97F08CF8ED5F955AEFAE0D0E79E52BCC</li>
+        <li>​The Elamites | The Empire That VANISHED For 3,000 YEARS - YouTube, accessed August 11, 2025, <a href="https://www.youtube.com/watch?v=i9bDEQX1R4M" target="_blank">https://www.youtube.com/watch?v=i9bDEQX1R4M</a></li>
+        <li>​Elam and Persia. Edited by Javier Álvarez-Mon and Mark B. Garrison. Winona Lake, IN: Eisenbrauns, 2011. Pp. xviii + 493. $89.50 (cloth)., accessed August 11, 2025, <a href="https://www.journals.uchicago.edu/doi/10.1086/671453" target="_blank">https://www.journals.uchicago.edu/doi/10.1086/671453</a></li>
+        <li>​Assyria&#x27;s Downfall (631–609), accessed August 11, 2025, <a href="https://ia803201.us.archive.org/31/items/downfall-of-assyria/Downfall%20of%20A" target="_blank">https://ia803201.us.archive.org/31/items/downfall-of-assyria/Downfall%20of%20A</a> ssyria.pdf</li>
+        <li>​www.iraniantours.com, accessed August 11, 2025, <a href="https://www.iraniantours.com/historical-period/proto-elamite/#:~:text=Clay%20ta" target="_blank">https://www.iraniantours.com/historical-period/proto-elamite/#:~:text=Clay%20ta</a> blets%20with%20pictographic%20characters,Elamite%20ziggurat%20is%20still %20seen.</li>
+        <li>​Expedition Magazine | Aspects of Elamite Art and Archaeology - Penn Museum, accessed August 11, 2025, <a href="https://www.penn.museum/sites/expedition/aspects-of-elamite-art-and-archaeol" target="_blank">https://www.penn.museum/sites/expedition/aspects-of-elamite-art-and-archaeol</a> ogy/</li>
+        <li>​Crafting under Divine Protection During the Middle Elamite Period - Pourdavoud Institute, accessed August 11, 2025, <a href="https://pourdavoud.ucla.edu/video/crafting-under-divine-protection-during-the-" target="_blank">https://pourdavoud.ucla.edu/video/crafting-under-divine-protection-during-the-</a> middle-elamite-period/</li>
+        <li>​The History of the Elamites (Facts and Theories) - YouTube, accessed August 11, 2025, <a href="https://www.youtube.com/watch?v=tLdFCVdPyWc" target="_blank">https://www.youtube.com/watch?v=tLdFCVdPyWc</a></li>
+        <li>​Neo-Elamite Geography, Chronology, History, and the Textual and Iconographic Evidence Used in this Book - Brill, accessed August 11, 2025, <a href="https://brill.com/downloadpdf/book/9789004391772/BP000002.xml" target="_blank">https://brill.com/downloadpdf/book/9789004391772/BP000002.xml</a></li>
+        <li>​Suse et l&#x27;Elam - François Vallat - Google Books, accessed August 11, 2025, <a href="https://books.google.com/books/about/Suse_et_l_Elam.html?id=fextAAAAMAAJ" target="_blank">https://books.google.com/books/about/Suse_et_l_Elam.html?id=fextAAAAMAAJ</a></li>
+        <li>​Elam and Persia 9781575066127 - DOKUMEN.PUB, accessed August 11, 2025, <a href="https://dokumen.pub/elam-and-persia-9781575066127.html" target="_blank">https://dokumen.pub/elam-and-persia-9781575066127.html</a></li>
+        <li>​Tammarītu, “king of Ḫidalu,” Tammarītu, “king of Elam” | Iranian Studies | Cambridge Core, accessed August 11, 2025, <a href="https://www.cambridge.org/core/journals/iranian-studies/article/tammaritu-king-" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/tammaritu-king-</a> of-hidalu-tammaritu-king-of-elam/074AEAFDC1CBE01D3650D917F9B4ED23</li>
+        <li>​Chapter 21 Akkadian in Elam in - Brill, accessed August 11, 2025, <a href="https://brill.com/display/book/edcoll/9789004445215/BP000027.xml" target="_blank">https://brill.com/display/book/edcoll/9789004445215/BP000027.xml</a></li>
+        <li>​The lost world of Elam: Re-creation of a vanished civilization. By Walther Hinz. Translated from the German by Jennifer Barnes. pp. 192, 32 pl. London, Sidgwick and Jackson, 1972. £3.25. | Journal of the Royal Asiatic Society | Cambridge Core, accessed August 11, 2025, <a href="https://www.cambridge.org/core/journals/journal-of-the-royal-asiatic-society/arti" target="_blank">https://www.cambridge.org/core/journals/journal-of-the-royal-asiatic-society/arti</a> cle/lost-world-of-elam-recreation-of-a-vanished-civilization-by-walther-hinz-tra nslated-from-the-german-by-jennifer-barnes-pp-192-32-pl-london-sidgwick-an d-jackson-1972-325/19AEAB8457D04D9612D0818F9595C4C7</li>
+        <li>​The lost world of Elam, re-creation of a vanished civilization : Hinz ..., accessed August 11, 2025, <a href="https://archive.org/details/lostworldofelamr0000hinz" target="_blank">https://archive.org/details/lostworldofelamr0000hinz</a></li>
+        <li>​The Lost World of Elam by Walther Hinz - Goodreads, accessed August 11, 2025, <a href="https://www.goodreads.com/book/show/282441.The_Lost_World_of_Elam" target="_blank">https://www.goodreads.com/book/show/282441.The_Lost_World_of_Elam</a></li>
+        <li>​Publications | Inrap, accessed August 11, 2025, <a href="https://www.inrap.fr/publications-9874" target="_blank">https://www.inrap.fr/publications-9874</a></li>
+        <li>​Les Nouvelles de l&#x27;archéologie | Revues (factice) | Éditions de la Maison des sciences de l&#x27;homme, accessed August 11, 2025, <a href="https://www.editions-msh.fr/revue/les-nouvelles-de-larcheologie/" target="_blank">https://www.editions-msh.fr/revue/les-nouvelles-de-larcheologie/</a></li>
+        <li>​References - The Archaeology of Elam - Cambridge University Press, accessed August 11, 2025, <a href="https://www.cambridge.org/core/books/archaeology-of-elam/references/497CAA" target="_blank">https://www.cambridge.org/core/books/archaeology-of-elam/references/497CAA</a> 35927A8C26F6E20E3B49236805</li>
+        <li>​Les Élamites - La Revue de Téhéran | Iran, accessed August 11, 2025, <a href="http://www.teheran.ir/spip.php?article274" target="_blank">http://www.teheran.ir/spip.php?article274</a></li>
+        <li>​Zeitschrift - Deutscher Verband für Archäologie, accessed August 11, 2025, <a href="https://www.dvarch.de/blickpunkt-archaeologie/zeitschrift/" target="_blank">https://www.dvarch.de/blickpunkt-archaeologie/zeitschrift/</a></li>
+        <li>​Über die Zeitschrift | Archäologische Informationen, accessed August 11, 2025, <a href="https://journals.ub.uni-heidelberg.de/index.php/arch-inf/about" target="_blank">https://journals.ub.uni-heidelberg.de/index.php/arch-inf/about</a></li>
+        <li>​The archaeology of Elam : formation and transformation of an ancient Iranian state : Potts, Daniel T : Free Download, Borrow, and Streaming - Internet Archive, accessed August 11, 2025, <a href="https://archive.org/details/archaeologyofela0000pott" target="_blank">https://archive.org/details/archaeologyofela0000pott</a></li>
+        <li>​Archäologische Zeitschriften - Herder.de, accessed August 11, 2025, <a href="https://www.herder.de/wissen/zeitschriften/archaeologie/" target="_blank">https://www.herder.de/wissen/zeitschriften/archaeologie/</a></li>
+        <li>​Elynn Gorris. Power and Politics in the Neo-Elamite Kingdom (c. 1100-520 BC), accessed August 11, 2025, <a href="https://journals.openedition.org/abstractairanica/53148" target="_blank">https://journals.openedition.org/abstractairanica/53148</a></li>
+        <li>​Did Assyria, Babylonia, Media and Persia ever exist as separate kingdoms at the same time? - Reddit, accessed August 11, 2025, <a href="https://www.reddit.com/r/history/comments/9sn6ap/did_assyria_babylonia_media" target="_blank">https://www.reddit.com/r/history/comments/9sn6ap/did_assyria_babylonia_media</a> _and_persia_ever_exist/</li>
+        <li>​Elamite Dynasty in Iranian plateau - Best Iran Tours 2025, accessed August 11, 2025, <a href="https://irangashttour.com/2021/10/14/elamite-dynasty-in-iranian-plateau/" target="_blank">https://irangashttour.com/2021/10/14/elamite-dynasty-in-iranian-plateau/</a></li>
+        <li>​Rise and Fall of Elam: A Journey through Iran&#x27;s Forgotten History - YouTube, accessed August 11, 2025, <a href="https://www.youtube.com/watch?v=7mE2T05t8gI" target="_blank">https://www.youtube.com/watch?v=7mE2T05t8gI</a></li>
+        <li>​www.fabriziomusacchio.com, accessed August 11, 2025, <a href="https://www.fabriziomusacchio.com/weekend_stories/told/2025/2025-01-01-ela" target="_blank">https://www.fabriziomusacchio.com/weekend_stories/told/2025/2025-01-01-ela</a> mite_civilization/#:~:text=and%20political%20centralization.-,Decline%20and%20 legacy,end%20of%20its%20political%20independence.</li>
+        <li>​Elam: The Black Persians - Realhistoryww.com, accessed August 11, 2025, <a href="https://realhistoryww.com/world_history/ancient/Elam_Iran_2a.htm" target="_blank">https://realhistoryww.com/world_history/ancient/Elam_Iran_2a.htm</a></li>
+        <li>​Assyriology - Heidelberg University, accessed August 11, 2025, <a href="https://www.uni-heidelberg.de/en/study/all-subjects/assyriology" target="_blank">https://www.uni-heidelberg.de/en/study/all-subjects/assyriology</a></li>
+        <li>​Heidemarie Koch - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/Heidemarie_Koch" target="_blank">https://en.wikipedia.org/wiki/Heidemarie_Koch</a></li>
+        <li>​List of 8 Ancient Near Eastern Studies Universities in Germany 🏛️, accessed August 11, 2025, <a href="https://www.mygermanuniversity.com/subjects/ancient-near-eastern-studies" target="_blank">https://www.mygermanuniversity.com/subjects/ancient-near-eastern-studies</a></li>
+        <li>​Germanic Studies | German Department - The University of Chicago, accessed August 11, 2025, <a href="https://german.uchicago.edu/" target="_blank">https://german.uchicago.edu/</a></li>
+        <li>​ iDAI.publications/journals, accessed August 11, 2025, <a href="https://publications.dainst.org/journals/" target="_blank">https://publications.dainst.org/journals/</a></li>
+        <li>​ Publications - iDAI.world, accessed August 11, 2025, <a href="https://idai.world/what/publications" target="_blank">https://idai.world/what/publications</a></li>
+        <li>​ Archäologie in Iran und Turan | iDAI.publications/books, accessed August 11, 2025, <a href="https://publications.dainst.org/books/dai/catalog/series/aiut" target="_blank">https://publications.dainst.org/books/dai/catalog/series/aiut</a></li>
+        <li>​ Elamite Kingdom, accessed August 11, 2025, <a href="https://www.elamit.net/depot/resources/basello2016encyclopedia-of-empire.pdf" target="_blank">https://www.elamit.net/depot/resources/basello2016encyclopedia-of-empire.pdf</a></li>
+        <li>​ DAI - Publications - Deutsches Archäologisches Institut, accessed August 11, 2025, <a href="https://www.dainst.org/en/research/publications" target="_blank">https://www.dainst.org/en/research/publications</a></li>
+        <li>​ German Archaeological Institute - Wikipedia, accessed August 11, 2025, <a href="https://en.wikipedia.org/wiki/German_Archaeological_Institute" target="_blank">https://en.wikipedia.org/wiki/German_Archaeological_Institute</a></li>
+        <li>​ Archäologische Mitteilungen aus Iran - Google Books, accessed August 11, 2025, <a href="https://books.google.com/books/about/Arch%C3%A4ologische_Mitteilungen_aus" target="_blank">https://books.google.com/books/about/Arch%C3%A4ologische_Mitteilungen_aus</a> _Iran.html?id=gWAuAQAAIAAJ</li>
+        <li>​ Archaeologische Mitteilungen aus Iran - Google Books, accessed August 11, 2025, <a href="https://books.google.com/books/about/Archaeologische_Mitteilungen_aus_Iran.h" target="_blank">https://books.google.com/books/about/Archaeologische_Mitteilungen_aus_Iran.h</a> tml?id=7HIMAQAAMAAJ</li>
+        <li>​ Zeitschrift für Assyriologie und Vorderasiatische Archäologie - Wikipedia, accessed August 11, 2025, <a href="https://de.wikipedia.org/wiki/Zeitschrift_f%C3%BCr_Assyriologie_und_Vorderasiati" target="_blank">https://de.wikipedia.org/wiki/Zeitschrift_f%C3%BCr_Assyriologie_und_Vorderasiati</a> sche_Arch%C3%A4ologie</li>
+        <li>​ ISSN 1613-1150 (Online) | Zeitschrift für Assyriologie und vorderasiatische Archäologie, accessed August 11, 2025, <a href="https://portal.issn.org/resource/ISSN/1613-1150" target="_blank">https://portal.issn.org/resource/ISSN/1613-1150</a></li>
+        <li>​ Zeitschrift für Assyriologie und vorderasiatische Archäologie : Free Download, Borrow, and Streaming - Internet Archive, accessed August 11, 2025, <a href="https://archive.org/details/bub_gb_7EBGAQAAMAAJ" target="_blank">https://archive.org/details/bub_gb_7EBGAQAAMAAJ</a></li>
+        <li>​ Zeitschrift für Assyriologie und Vorderasiatische Archäologie, accessed August 11, 2025, <a href="https://www.assyriologie.uni-muenchen.de/publikationen/za/index.html" target="_blank">https://www.assyriologie.uni-muenchen.de/publikationen/za/index.html</a></li>
+        <li>​ Susa and Elam. Archaeological, Philological, Historical and Geographical Perspectives - Brill, accessed August 11, 2025, <a href="https://brill.com/display/book/edcoll/9789004207417/B9789004207417_001.pdf" target="_blank">https://brill.com/display/book/edcoll/9789004207417/B9789004207417_001.pdf</a></li>
+        <li>​ Zeitschrift für Assyriologie und vorderasiatische Archäologie - Google Books, accessed August 11, 2025, <a href="http://books.google.com/books?id=vDEkAQAAMAAJ" target="_blank">http://books.google.com/books?id=vDEkAQAAMAAJ</a></li>
+        <li>​ Matthew W. Stolper | Middle Eastern Studies - The University of Chicago, accessed August 11, 2025, <a href="https://mes.uchicago.edu/people/matthew-w-stolper" target="_blank">https://mes.uchicago.edu/people/matthew-w-stolper</a></li>
+        <li>​ Catalog of Publications - Institute for the Study of Ancient Cultures, accessed August 11, 2025, <a href="https://isac.uchicago.edu/research/catalog-publications" target="_blank">https://isac.uchicago.edu/research/catalog-publications</a></li>
+        <li>​ THE ORIENTAL INSTITUTE, accessed August 11, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oi_fourth_handb" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oi_fourth_handb</a> ook.pdf</li>
+        <li>​ Oriental Institute Publications (OIP), accessed August 11, 2025, <a href="https://isac.uchicago.edu/research/publications/oriental-institute-publications-oip" target="_blank">https://isac.uchicago.edu/research/publications/oriental-institute-publications-oip</a></li>
+        <li>​ persepolis treasury tablets - Institute for the Study of Ancient Cultures, accessed August 11, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oip65.pdf" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oip65.pdf</a></li>
+        <li>​ Annals of Sennacherib - Institute for the Study of Ancient Cultures, accessed August 11, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oip2.pdf" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oip2.pdf</a></li>
+        <li>​ Journal: Cahiers de la Délégation Archéologique Française en Iran, accessed August 11, 2025, <a href="https://cdli.earth/journals/249" target="_blank">https://cdli.earth/journals/249</a></li>
+        <li>​ Cahiers de la délégation archéologique française en Iran - Google Books, accessed August 11, 2025, <a href="https://books.google.com/books/about/Cahiers_de_la_d%C3%A9l%C3%A9gation" target="_blank">https://books.google.com/books/about/Cahiers_de_la_d%C3%A9l%C3%A9gation</a> _arch%C3%A9ologiqu.html?id=HLgZywEACAAJ</li>
+        <li>​ Cahiers de la Délégation archéologique française en Iran | Periodical, accessed August 11, 2025, <a href="https://www.nli.org.il/en/journals/NNL-Journals990040949020205171/NLI" target="_blank">https://www.nli.org.il/en/journals/NNL-Journals990040949020205171/NLI</a></li>
+        <li>​ Cahiers de la Délégation Archéologique Française en Iran (DAFI) - Index Theologicus, accessed August 11, 2025, <a href="https://ixtheo.de/Record/1399599437" target="_blank">https://ixtheo.de/Record/1399599437</a></li>
+        <li>​ Cahiers de la Délégation Archéologique Française en Iran (DAFI) 10 - Universität Tübingen, accessed August 11, 2025, <a href="https://vergil.uni-tuebingen.de/keibi/Record/KEI00064027" target="_blank">https://vergil.uni-tuebingen.de/keibi/Record/KEI00064027</a></li>
+        <li>​ Cahiers de la Délégation archéologique française en Iran - Google Books, accessed August 11, 2025, <a href="https://books.google.com/books/about/Cahiers_de_la_D%C3%A9l%C3%A9gation" target="_blank">https://books.google.com/books/about/Cahiers_de_la_D%C3%A9l%C3%A9gation</a> _arch%C3%A9ologiqu.html?id=-tMRAQAAMAAJ</li>
+        <li>​ MLEIHA (EMIRATE OF SHARJAH, UAE) AT THE BEGINNING OF ..., accessed August 11, 2025, <a href="https://www.jstor.org/stable/41223408" target="_blank">https://www.jstor.org/stable/41223408</a></li>
+        <li>​ accessed January 1, 1970, <a href="https://www.cairn.info/revue-d-assyriologie-et-d-archeologie-orientale-2008-1-" target="_blank">https://www.cairn.info/revue-d-assyriologie-et-d-archeologie-orientale-2008-1-</a> page-65.htm</li>
+        <li>​ accessed January 1, 1970, <a href="https://ancientmesopotamia.org/cultures/neo-elamite-period/" target="_blank">https://ancientmesopotamia.org/cultures/neo-elamite-period/</a></li>
+        <li>​ accessed January 1, 1970, <a href="https://www.iranicaonline.org/articles/elam-vi-elamite-religion" target="_blank">https://www.iranicaonline.org/articles/elam-vi-elamite-religion</a></li>
+        <li>​ accessed January 1, 1970, <a href="https://www.iranicaonline.org/articles/elam-iv-elamite-language-in-the-achaeme" target="_blank">https://www.iranicaonline.org/articles/elam-iv-elamite-language-in-the-achaeme</a> nid-period</li></ul></div>
+
+        <div class="disclaimer">
+                    <p>Note: This was made with AI research, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+                </div>
+
         <div class="last-updated"><p>This page was created on: August 11, 2025</p></div>
     </div>
 </body>

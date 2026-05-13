@@ -15,17 +15,18 @@
             background-color: #e8e1d1;
             background-image: url("https://www.transparenttextures.com/patterns/paper.png");
         }
-        
+
         .container {
             background-color: #f8f4e8;
             border: 1px solid #d3c9a5;
-            border-radius: 0px;
+            border-radius: 0px; /* Original: no radius */
             padding: 25px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             position: relative;
             margin-top: 20px;
         }
-        
+
+        /* Original container::before style */
         .container::before {
             content: "";
             position: absolute;
@@ -36,33 +37,45 @@
             background-image: url("https://www.transparenttextures.com/patterns/paper.png");
             opacity: 0.08;
             pointer-events: none;
-            z-index: 1;
+            z-index: 1; /* Original z-index */
         }
-        
+
+        /* Original heading styles */
         h1 {
             font-size: 34px;
             margin-top: 0;
             color: #5a4a2e;
             border-bottom: 2px solid #d3c9a5;
             padding-bottom: 10px;
-        }
-        
-        h2 {
-            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
         }
 
-.description {
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+/* Original description styles */
+        .description {
             margin-bottom: 25px;
             background-color: rgba(255, 255, 255, 0.5);
             padding: 15px;
             border: 1px solid #e0d7c0;
             border-radius: 2px;
+             position: relative; z-index: 2;
         }
-        
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
         .download-section {
             margin: 25px 0;
+             position: relative; z-index: 2;
         }
-        
+
         .download-btn {
             display: inline-flex;
             align-items: center;
@@ -75,15 +88,16 @@
             transition: background-color 0.2s;
             border: 1px solid #6b553f;
         }
-        
+
         .download-btn:hover {
             background-color: #6b553f;
         }
-        
+
         .pdf-icon {
             margin-right: 8px;
         }
-        
+
+        /* Original sources styles */
         .sources {
             margin-top: 30px;
             padding-top: 20px;
@@ -91,32 +105,35 @@
             background-color: rgba(255, 255, 255, 0.5);
             padding: 15px;
             border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
         }
-        
+
         .sources h2 {
             font-size: 18px;
             margin-bottom: 10px;
         }
-        
+
         .sources ul {
             padding-left: 20px;
-            list-style-type: decimal;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
         }
-        
+
         .sources li {
             margin-bottom: 8px;
             word-break: break-word;
         }
-        
+
         .sources a {
-            color: #0066cc;
+            color: #0066cc; /* Original link color */
             text-decoration: none;
         }
-        
+
         .sources a:hover {
             text-decoration: underline;
         }
-        
+
+        /* Original back button styles */
         .back-button {
             display: inline-flex;
             align-items: center;
@@ -128,115 +145,143 @@
             font-weight: 500;
             transition: background-color 0.2s;
             border: 1px solid #6b553f;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
         }
-        
+
         .back-button:hover {
             background-color: #6b553f;
         }
-        
+
         .back-icon {
             margin-right: 8px;
         }
-        
+
+        /* Original disclaimer styles */
         .disclaimer {
             margin-top: 30px;
             padding: 15px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border: 1px solid #e0d7c0;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
             border-radius: 2px;
-            color: #333;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
         }
-        
+
         .disclaimer p {
             margin: 0;
-            font-size: 16px;
+            /* font-size: 20px; REMOVED to use default/inherited size */
             font-weight: 500;
         }
-        
+
+        /* Original last updated styles */
         .last-updated {
             margin-top: 20px;
             text-align: center;
             font-size: 12px;
             color: #8b7355;
+             position: relative; z-index: 2;
         }
-        
-        /* Responsive adjustments */
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
         @media (max-width: 600px) {
             body {
                 padding: 15px;
             }
-            
+
             .container {
                 padding: 20px;
             }
-            
+
             h1 {
-                font-size: 22px;
+                font-size: 22px; /* Original responsive size */
             }
         }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+/* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Kurdish Dengbêj</h1>
-        
-        
-        
+
+        <a href="../kurdish_research.html" class="back-button">
+                    <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5"></path>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Return to Podcast Archive
+                </a>
+
         <div class="sources">
-            <h2>Sources</h2>
-            <ul>
-                <li>The Kurdish Storytellers / Turkey / Areas / Homepage - Osservatorio Balcani e Caucaso Transeuropa, accessed April 17, 2025, <a href="https://www.balcanicaucaso.org/eng/Areas/Turkey/The-Kurdish-Storytellers-163457" target="_blank">https://www.balcanicaucaso.org/eng/Areas/Turkey/The-Kurdish-Storytellers-163457</a></li>
-                <li>The Dengbêj: Keepers of Kurdish Memory & History, accessed April 17, 2025, <a href="https://nlka.net/eng/the-dengbej-keepers-of-kurdish-memory-and-history/" target="_blank">https://nlka.net/eng/the-dengbej-keepers-of-kurdish-memory-and-history/</a></li>
-                <li>Dengbej: The musical preservation of Kurdish myths, testimonies and history - Medya News, accessed April 17, 2025, <a href="https://medyanews.net/12613-2/" target="_blank">https://medyanews.net/12613-2/</a></li>
-                <li>Dengbêj - Wikipedia, accessed April 17, 2025, <a href="https://en.wikipedia.org/wiki/Dengb%C3%AAj" target="_blank">https://en.wikipedia.org/wiki/Dengb%C3%AAj</a></li>
-                <li>The Invention of a Tradition:Diyarbakır's Dengbêj Project - ResearchGate, accessed April 17, 2025, <a href="https://www.researchgate.net/publication/40903248_The_Invention_of_a_TraditionDiyarbakir's_Dengbej_Project" target="_blank">https://www.researchgate.net/publication/40903248_The_Invention_of_a_TraditionDiyarbakir's_Dengbej_Project</a></li>
-                <li>Turkey: Preserving Kurdish Culture Through the Power of Music - Eurasianet, accessed April 17, 2025, <a href="https://eurasianet.org/turkey-preserving-kurdish-culture-through-the-power-of-music" target="_blank">https://eurasianet.org/turkey-preserving-kurdish-culture-through-the-power-of-music</a></li>
-                <li>Geleneksel Dengbêj İcrasından Avangarda: Ruşen Alkar ile Kadın Dengbêjlerin Mirası Üzerine - Müzikte Kalmaz, accessed April 17, 2025, <a href="https://muziktekalmaz.org/2020/09/05/geleneksel-dengbej-icrasindan-avangarda-rusen-alkar-ile-kadin-dengbejlerin-mirasi-uzerine/" target="_blank">https://muziktekalmaz.org/2020/09/05/geleneksel-dengbej-icrasindan-avangarda-rusen-alkar-ile-kadin-dengbejlerin-mirasi-uzerine/</a></li>
-                <li>Bulanık'ta Dengbêjlik Edebiyatı ve Temsilcileri - Kürd Araştırmaları, accessed April 17, 2025, <a href="http://kurdarastirmalari.com/yazi-detay-bulan-k-ta-dengb-jlik-edebiyat-ve-temsilcileri-94" target="_blank">http://kurdarastirmalari.com/yazi-detay-bulan-k-ta-dengb-jlik-edebiyat-ve-temsilcileri-94</a></li>
-                <li>Dengbêjs on Borderlands: Borders and the State as Seen through the Eyes of Kurdish Singer-poets - Brill, accessed April 17, 2025, <a href="https://brill.com/edcollchap-oa/book/9789004706538/BP000009.pdf" target="_blank">https://brill.com/edcollchap-oa/book/9789004706538/BP000009.pdf</a></li>
-                <li>On the Trails of a Banned Language | The Attic, accessed April 17, 2025, <a href="https://theatticmag.com/reports/2369/on-the-trails-of-a-banned-language.html" target="_blank">https://theatticmag.com/reports/2369/on-the-trails-of-a-banned-language.html</a></li>
-                <li>Dengbejlik - Vikipedi, accessed April 17, 2025, <a href="https://tr.wikipedia.org/wiki/Dengbejlik" target="_blank">https://tr.wikipedia.org/wiki/Dengbejlik</a></li>
-                <li>Being sick of politics: The production of dengbêjî as Kurdish cultural heritage in contemporary Turkey - OpenEdition Journals, accessed April 17, 2025, <a href="https://journals.openedition.org/ejts/5200" target="_blank">https://journals.openedition.org/ejts/5200</a></li>
-                <li>ÂŞIK VE DENGBÊJ İCRALARINDA DİNLEYİCİ ROLÜ (KARŞILAŞTIRMALI BİR ANALİZ) - DergiPark, accessed April 17, 2025, <a href="https://dergipark.org.tr/en/download/article-file/3482326" target="_blank">https://dergipark.org.tr/en/download/article-file/3482326</a></li>
-                <li>HOSTAYÊ RIBABÊ MIRADÊ KINÊ Û ANALÎZA ŞERÊ WÎ YÊ BI NAVÊ OSÊ ZERÎ, accessed April 17, 2025, <a href="https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/263347/yokAcikBilim_10269541.pdf?sequence=-1&isAllowed=y" target="_blank">https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/263347/yokAcikBilim_10269541.pdf?sequence=-1&isAllowed=y</a></li>
-                <li>Storytelling and the House of the Dengbej - Kurdistan Chronicle, accessed April 17, 2025, <a href="https://www.kurdistanchronicle.com/babat/3594" target="_blank">https://www.kurdistanchronicle.com/babat/3594</a></li>
-                <li>DI PEYDABÛNA EDEBIYATA KURDÎ YA LI CIZÎRA BOTAN DE KARÎGERIYA BAJARVANIYÊ - Kurdipedia, accessed April 17, 2025, <a href="https://www.kurdipedia.org/docviewer.aspx?lng=4&book=2016082812275295878" target="_blank">https://www.kurdipedia.org/docviewer.aspx?lng=4&book=2016082812275295878</a></li>
-                <li>From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Tradition and Revitalization of the Kurdish Language in the Works of Mehmed Uzun and Mehmet Dicle | Iranian Studies - Cambridge University Press, accessed April 17, 2025, <a href="https://www.cambridge.org/core/journals/iranian-studies/article/from-dengbej-to-modern-writer-heritagization-of-the-kurdish-oral-tradition-and-revitalization-of-the-kurdish-language-in-the-works-of-mehmed-uzun-and-mehmet-dicle/0F3BA0717D881D70DE8923CF6CAE4099" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/from-dengbej-to-modern-writer-heritagization-of-the-kurdish-oral-tradition-and-revitalization-of-the-kurdish-language-in-the-works-of-mehmed-uzun-and-mehmet-dicle/0F3BA0717D881D70DE8923CF6CAE4099</a></li>
-                <li>Kürt kültürünün rönesansı: Dengbejler! - Gazete Duvar, accessed April 17, 2025, <a href="https://www.gazeteduvar.com.tr/kitap/2019/03/03/kurt-kulturunun-ronesansi-dengbejler" target="_blank">https://www.gazeteduvar.com.tr/kitap/2019/03/03/kurt-kulturunun-ronesansi-dengbejler</a></li>
-                <li>In Turkey, Kurdish Singers Keep Traditional Music Alive - Blue Ridge Public Radio, accessed April 17, 2025, <a href="https://www.bpr.org/2017-03-31/in-turkey-kurdish-singers-keep-traditional-music-alive" target="_blank">https://www.bpr.org/2017-03-31/in-turkey-kurdish-singers-keep-traditional-music-alive</a></li>
-                <li>Kurdiyat - Yıl/Sal/Year: 2023 Sayı/Hejmar/Issue - DergiPark, accessed April 17, 2025, <a href="https://dergipark.org.tr/tr/download/issue-file/74554" target="_blank">https://dergipark.org.tr/tr/download/issue-file/74554</a></li>
-                <li>K.T ZANÎNGEHA BÎNGOLÊ ENSTÎTUYA ZIMANÊN ZINDÎ ġAXA MAKEZANISTA ZIMAN Û WÊJEYA KURDÎ TEZA MASTERÊ HÛRNÊRÎNEKE SEMIY - BİNGÖL ÜNİVERSİTESİ, accessed April 17, 2025, <a href="http://acikerisim.bingol.edu.tr:8080/bitstream/handle/20.500.12898/5477/Ahmet%20SUBA%C5%9EI.pdf?sequence=2&isAllowed=y" target="_blank">http://acikerisim.bingol.edu.tr:8080/bitstream/handle/20.500.12898/5477/Ahmet%20SUBA%C5%9EI.pdf?sequence=2&isAllowed=y</a></li>
-                <li>Di Kilamên Evînî Yên Dengbêjan de Temaya Jinê - Tekin ÇİFÇİ | PDF - Scribd, accessed April 17, 2025, <a href="https://id.scribd.com/document/433413655/Di-Kilamen-Evini-Yen-Dengbejan-de-Temaya-Jine-Tekin-C%C4%B0FC%C4%B0" target="_blank">https://id.scribd.com/document/433413655/Di-Kilamen-Evini-Yen-Dengbejan-de-Temaya-Jine-Tekin-C%C4%B0FC%C4%B0</a></li>
-                <li>Dengbêj çalışmalarına akademik bir katkı: Şakiro'nun şarkıları - soL haber, accessed April 17, 2025, <a href="https://haber.sol.org.tr/haber/dengbej-calismalarina-akademik-bir-katki-sakironun-sarkilari-334326" target="_blank">https://haber.sol.org.tr/haber/dengbej-calismalarina-akademik-bir-katki-sakironun-sarkilari-334326</a></li>
-                <li>Kadınlar özgür - Newaya Jin, accessed April 17, 2025, <a href="https://www.newayajin.net/wp-content/uploads/2021/11/01-KAPAK-birles%CC%A7tirildi-sikis%CC%A7tirildi.pdf" target="_blank">https://www.newayajin.net/wp-content/uploads/2021/11/01-KAPAK-birles%CC%A7tirildi-sikis%CC%A7tirildi.pdf</a></li>
-                <li>S E M P O Z Y U M B İ L D İ R İ L E R İ - ResearchGate, accessed April 17, 2025, <a href="https://www.researchgate.net/profile/Dicle_Oezcan_Elci/publication/338689752_dengbejliksempozyumu/links/5e2569b392851cafc3935a29/dengbejliksempozyumu.pdf" target="_blank">https://www.researchgate.net/profile/Dicle_Oezcan_Elci/publication/338689752_dengbejliksempozyumu/links/5e2569b392851cafc3935a29/dengbejliksempozyumu.pdf</a></li>
-                <li>naveroka hejmar 7 - Zimannas, accessed April 17, 2025, <a href="https://zimannas.wordpress.com/wp-content/uploads/2016/07/hejmar7.pdf" target="_blank">https://zimannas.wordpress.com/wp-content/uploads/2016/07/hejmar7.pdf</a></li>
-                <li>T.C. KADİR HAS ÜNİVERSİTESİ SOSYAL BİLİMLER ENSTİTÜSÜ FİLM VE DRAMA ANLATICI OLARAK DENGBÊJ VE DENGBÊJ ANLATILARIN, accessed April 17, 2025, <a href="https://gcris.khas.edu.tr/bitstreams/53846325-a99a-47c5-a2bb-7eb46e137f50/download" target="_blank">https://gcris.khas.edu.tr/bitstreams/53846325-a99a-47c5-a2bb-7eb46e137f50/download</a></li>
-                <li>DENGBÊJLİK GELENEĞİ VE ÂŞIK EDEBİYATI İLE KARŞILAŞTIRILMASI - Fırat Üniversitesi, accessed April 17, 2025, <a href="https://openaccess.firat.edu.tr/xmlui/bitstream/handle/11508/14705/354926.pdf?sequence=1&isAllowed=y" target="_blank">https://openaccess.firat.edu.tr/xmlui/bitstream/handle/11508/14705/354926.pdf?sequence=1&isAllowed=y</a></li>
-                <li>GELENEKSEL DENGBEJ MÜZİĞİNİN TERAPÖTİK ETKİSİNİN PSİKANALİTİK AÇIDAN DEĞERLENDİRİLMESİ - GCRIS, accessed April 17, 2025, <a href="https://gcris.artuklu.edu.tr/bitstreams/eb689ca9-a660-4d8c-b567-168bdc91e8d8/download" target="_blank">https://gcris.artuklu.edu.tr/bitstreams/eb689ca9-a660-4d8c-b567-168bdc91e8d8/download</a></li>
-                <li>Full article: Musical spirits and poetic tongues: oral traditions in the cultural politics of Kurdish intellectuals (1920s-1940s) - Taylor & Francis Online, accessed April 17, 2025, <a href="https://www.tandfonline.com/doi/full/10.1080/13530194.2022.2025763" target="_blank">https://www.tandfonline.com/doi/full/10.1080/13530194.2022.2025763</a></li>
-                <li>(PDF) Ozan and Dengbej: The Lost Voices of Oral Tradition in Turkey - ResearchGate, accessed April 17, 2025, <a href="https://www.researchgate.net/publication/342058048_Ozan_and_Dengbej_The_Lost_Voices_of_Oral_Tradition_in_Turkey" target="_blank">https://www.researchgate.net/publication/342058048_Ozan_and_Dengbej_The_Lost_Voices_of_Oral_Tradition_in_Turkey</a></li>
-            </ul>
-        </div>
-        
+                    <h2>Sources</h2>
+                    <ul>
+                        <li>The Kurdish Storytellers / Turkey / Areas / Homepage - Osservatorio Balcani e Caucaso Transeuropa, accessed April 17, 2025, <a href="https://www.balcanicaucaso.org/eng/Areas/Turkey/The-Kurdish-Storytellers-163457" target="_blank">https://www.balcanicaucaso.org/eng/Areas/Turkey/The-Kurdish-Storytellers-163457</a></li>
+                        <li>The Dengbêj: Keepers of Kurdish Memory & History, accessed April 17, 2025, <a href="https://nlka.net/eng/the-dengbej-keepers-of-kurdish-memory-and-history/" target="_blank">https://nlka.net/eng/the-dengbej-keepers-of-kurdish-memory-and-history/</a></li>
+                        <li>Dengbej: The musical preservation of Kurdish myths, testimonies and history - Medya News, accessed April 17, 2025, <a href="https://medyanews.net/12613-2/" target="_blank">https://medyanews.net/12613-2/</a></li>
+                        <li>Dengbêj - Wikipedia, accessed April 17, 2025, <a href="https://en.wikipedia.org/wiki/Dengb%C3%AAj" target="_blank">https://en.wikipedia.org/wiki/Dengb%C3%AAj</a></li>
+                        <li>The Invention of a Tradition:Diyarbakır's Dengbêj Project - ResearchGate, accessed April 17, 2025, <a href="https://www.researchgate.net/publication/40903248_The_Invention_of_a_TraditionDiyarbakir's_Dengbej_Project" target="_blank">https://www.researchgate.net/publication/40903248_The_Invention_of_a_TraditionDiyarbakir's_Dengbej_Project</a></li>
+                        <li>Turkey: Preserving Kurdish Culture Through the Power of Music - Eurasianet, accessed April 17, 2025, <a href="https://eurasianet.org/turkey-preserving-kurdish-culture-through-the-power-of-music" target="_blank">https://eurasianet.org/turkey-preserving-kurdish-culture-through-the-power-of-music</a></li>
+                        <li>Geleneksel Dengbêj İcrasından Avangarda: Ruşen Alkar ile Kadın Dengbêjlerin Mirası Üzerine - Müzikte Kalmaz, accessed April 17, 2025, <a href="https://muziktekalmaz.org/2020/09/05/geleneksel-dengbej-icrasindan-avangarda-rusen-alkar-ile-kadin-dengbejlerin-mirasi-uzerine/" target="_blank">https://muziktekalmaz.org/2020/09/05/geleneksel-dengbej-icrasindan-avangarda-rusen-alkar-ile-kadin-dengbejlerin-mirasi-uzerine/</a></li>
+                        <li>Bulanık'ta Dengbêjlik Edebiyatı ve Temsilcileri - Kürd Araştırmaları, accessed April 17, 2025, <a href="http://kurdarastirmalari.com/yazi-detay-bulan-k-ta-dengb-jlik-edebiyat-ve-temsilcileri-94" target="_blank">http://kurdarastirmalari.com/yazi-detay-bulan-k-ta-dengb-jlik-edebiyat-ve-temsilcileri-94</a></li>
+                        <li>Dengbêjs on Borderlands: Borders and the State as Seen through the Eyes of Kurdish Singer-poets - Brill, accessed April 17, 2025, <a href="https://brill.com/edcollchap-oa/book/9789004706538/BP000009.pdf" target="_blank">https://brill.com/edcollchap-oa/book/9789004706538/BP000009.pdf</a></li>
+                        <li>On the Trails of a Banned Language | The Attic, accessed April 17, 2025, <a href="https://theatticmag.com/reports/2369/on-the-trails-of-a-banned-language.html" target="_blank">https://theatticmag.com/reports/2369/on-the-trails-of-a-banned-language.html</a></li>
+                        <li>Dengbejlik - Vikipedi, accessed April 17, 2025, <a href="https://tr.wikipedia.org/wiki/Dengbejlik" target="_blank">https://tr.wikipedia.org/wiki/Dengbejlik</a></li>
+                        <li>Being sick of politics: The production of dengbêjî as Kurdish cultural heritage in contemporary Turkey - OpenEdition Journals, accessed April 17, 2025, <a href="https://journals.openedition.org/ejts/5200" target="_blank">https://journals.openedition.org/ejts/5200</a></li>
+                        <li>ÂŞIK VE DENGBÊJ İCRALARINDA DİNLEYİCİ ROLÜ (KARŞILAŞTIRMALI BİR ANALİZ) - DergiPark, accessed April 17, 2025, <a href="https://dergipark.org.tr/en/download/article-file/3482326" target="_blank">https://dergipark.org.tr/en/download/article-file/3482326</a></li>
+                        <li>HOSTAYÊ RIBABÊ MIRADÊ KINÊ Û ANALÎZA ŞERÊ WÎ YÊ BI NAVÊ OSÊ ZERÎ, accessed April 17, 2025, <a href="https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/263347/yokAcikBilim_10269541.pdf?sequence=-1&isAllowed=y" target="_blank">https://acikbilim.yok.gov.tr/bitstream/handle/20.500.12812/263347/yokAcikBilim_10269541.pdf?sequence=-1&isAllowed=y</a></li>
+                        <li>Storytelling and the House of the Dengbej - Kurdistan Chronicle, accessed April 17, 2025, <a href="https://www.kurdistanchronicle.com/babat/3594" target="_blank">https://www.kurdistanchronicle.com/babat/3594</a></li>
+                        <li>DI PEYDABÛNA EDEBIYATA KURDÎ YA LI CIZÎRA BOTAN DE KARÎGERIYA BAJARVANIYÊ - Kurdipedia, accessed April 17, 2025, <a href="https://www.kurdipedia.org/docviewer.aspx?lng=4&book=2016082812275295878" target="_blank">https://www.kurdipedia.org/docviewer.aspx?lng=4&book=2016082812275295878</a></li>
+                        <li>From Dengbêj to Modern Writer: Heritagization of the Kurdish Oral Tradition and Revitalization of the Kurdish Language in the Works of Mehmed Uzun and Mehmet Dicle | Iranian Studies - Cambridge University Press, accessed April 17, 2025, <a href="https://www.cambridge.org/core/journals/iranian-studies/article/from-dengbej-to-modern-writer-heritagization-of-the-kurdish-oral-tradition-and-revitalization-of-the-kurdish-language-in-the-works-of-mehmed-uzun-and-mehmet-dicle/0F3BA0717D881D70DE8923CF6CAE4099" target="_blank">https://www.cambridge.org/core/journals/iranian-studies/article/from-dengbej-to-modern-writer-heritagization-of-the-kurdish-oral-tradition-and-revitalization-of-the-kurdish-language-in-the-works-of-mehmed-uzun-and-mehmet-dicle/0F3BA0717D881D70DE8923CF6CAE4099</a></li>
+                        <li>Kürt kültürünün rönesansı: Dengbejler! - Gazete Duvar, accessed April 17, 2025, <a href="https://www.gazeteduvar.com.tr/kitap/2019/03/03/kurt-kulturunun-ronesansi-dengbejler" target="_blank">https://www.gazeteduvar.com.tr/kitap/2019/03/03/kurt-kulturunun-ronesansi-dengbejler</a></li>
+                        <li>In Turkey, Kurdish Singers Keep Traditional Music Alive - Blue Ridge Public Radio, accessed April 17, 2025, <a href="https://www.bpr.org/2017-03-31/in-turkey-kurdish-singers-keep-traditional-music-alive" target="_blank">https://www.bpr.org/2017-03-31/in-turkey-kurdish-singers-keep-traditional-music-alive</a></li>
+                        <li>Kurdiyat - Yıl/Sal/Year: 2023 Sayı/Hejmar/Issue - DergiPark, accessed April 17, 2025, <a href="https://dergipark.org.tr/tr/download/issue-file/74554" target="_blank">https://dergipark.org.tr/tr/download/issue-file/74554</a></li>
+                        <li>K.T ZANÎNGEHA BÎNGOLÊ ENSTÎTUYA ZIMANÊN ZINDÎ ġAXA MAKEZANISTA ZIMAN Û WÊJEYA KURDÎ TEZA MASTERÊ HÛRNÊRÎNEKE SEMIY - BİNGÖL ÜNİVERSİTESİ, accessed April 17, 2025, <a href="http://acikerisim.bingol.edu.tr:8080/bitstream/handle/20.500.12898/5477/Ahmet%20SUBA%C5%9EI.pdf?sequence=2&isAllowed=y" target="_blank">http://acikerisim.bingol.edu.tr:8080/bitstream/handle/20.500.12898/5477/Ahmet%20SUBA%C5%9EI.pdf?sequence=2&isAllowed=y</a></li>
+                        <li>Di Kilamên Evînî Yên Dengbêjan de Temaya Jinê - Tekin ÇİFÇİ | PDF - Scribd, accessed April 17, 2025, <a href="https://id.scribd.com/document/433413655/Di-Kilamen-Evini-Yen-Dengbejan-de-Temaya-Jine-Tekin-C%C4%B0FC%C4%B0" target="_blank">https://id.scribd.com/document/433413655/Di-Kilamen-Evini-Yen-Dengbejan-de-Temaya-Jine-Tekin-C%C4%B0FC%C4%B0</a></li>
+                        <li>Dengbêj çalışmalarına akademik bir katkı: Şakiro'nun şarkıları - soL haber, accessed April 17, 2025, <a href="https://haber.sol.org.tr/haber/dengbej-calismalarina-akademik-bir-katki-sakironun-sarkilari-334326" target="_blank">https://haber.sol.org.tr/haber/dengbej-calismalarina-akademik-bir-katki-sakironun-sarkilari-334326</a></li>
+                        <li>Kadınlar özgür - Newaya Jin, accessed April 17, 2025, <a href="https://www.newayajin.net/wp-content/uploads/2021/11/01-KAPAK-birles%CC%A7tirildi-sikis%CC%A7tirildi.pdf" target="_blank">https://www.newayajin.net/wp-content/uploads/2021/11/01-KAPAK-birles%CC%A7tirildi-sikis%CC%A7tirildi.pdf</a></li>
+                        <li>S E M P O Z Y U M B İ L D İ R İ L E R İ - ResearchGate, accessed April 17, 2025, <a href="https://www.researchgate.net/profile/Dicle_Oezcan_Elci/publication/338689752_dengbejliksempozyumu/links/5e2569b392851cafc3935a29/dengbejliksempozyumu.pdf" target="_blank">https://www.researchgate.net/profile/Dicle_Oezcan_Elci/publication/338689752_dengbejliksempozyumu/links/5e2569b392851cafc3935a29/dengbejliksempozyumu.pdf</a></li>
+                        <li>naveroka hejmar 7 - Zimannas, accessed April 17, 2025, <a href="https://zimannas.wordpress.com/wp-content/uploads/2016/07/hejmar7.pdf" target="_blank">https://zimannas.wordpress.com/wp-content/uploads/2016/07/hejmar7.pdf</a></li>
+                        <li>T.C. KADİR HAS ÜNİVERSİTESİ SOSYAL BİLİMLER ENSTİTÜSÜ FİLM VE DRAMA ANLATICI OLARAK DENGBÊJ VE DENGBÊJ ANLATILARIN, accessed April 17, 2025, <a href="https://gcris.khas.edu.tr/bitstreams/53846325-a99a-47c5-a2bb-7eb46e137f50/download" target="_blank">https://gcris.khas.edu.tr/bitstreams/53846325-a99a-47c5-a2bb-7eb46e137f50/download</a></li>
+                        <li>DENGBÊJLİK GELENEĞİ VE ÂŞIK EDEBİYATI İLE KARŞILAŞTIRILMASI - Fırat Üniversitesi, accessed April 17, 2025, <a href="https://openaccess.firat.edu.tr/xmlui/bitstream/handle/11508/14705/354926.pdf?sequence=1&isAllowed=y" target="_blank">https://openaccess.firat.edu.tr/xmlui/bitstream/handle/11508/14705/354926.pdf?sequence=1&isAllowed=y</a></li>
+                        <li>GELENEKSEL DENGBEJ MÜZİĞİNİN TERAPÖTİK ETKİSİNİN PSİKANALİTİK AÇIDAN DEĞERLENDİRİLMESİ - GCRIS, accessed April 17, 2025, <a href="https://gcris.artuklu.edu.tr/bitstreams/eb689ca9-a660-4d8c-b567-168bdc91e8d8/download" target="_blank">https://gcris.artuklu.edu.tr/bitstreams/eb689ca9-a660-4d8c-b567-168bdc91e8d8/download</a></li>
+                        <li>Full article: Musical spirits and poetic tongues: oral traditions in the cultural politics of Kurdish intellectuals (1920s-1940s) - Taylor & Francis Online, accessed April 17, 2025, <a href="https://www.tandfonline.com/doi/full/10.1080/13530194.2022.2025763" target="_blank">https://www.tandfonline.com/doi/full/10.1080/13530194.2022.2025763</a></li>
+                        <li>(PDF) Ozan and Dengbej: The Lost Voices of Oral Tradition in Turkey - ResearchGate, accessed April 17, 2025, <a href="https://www.researchgate.net/publication/342058048_Ozan_and_Dengbej_The_Lost_Voices_of_Oral_Tradition_in_Turkey" target="_blank">https://www.researchgate.net/publication/342058048_Ozan_and_Dengbej_The_Lost_Voices_of_Oral_Tradition_in_Turkey</a></li>
+                    </ul>
+                </div>
+
         <div class="disclaimer">
-            <p>Note: This was made with AI research, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
-        </div>
-        
+                    <p>Note: This was made with AI research, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+                </div>
+
         <div class="last-updated">
-            <p>This page was created on: April 17, 2025 and last updated: <span id="last-modified-date"></span></p>
-        </div>
+                    <p>This page was created on: April 17, 2025 and last updated: <span id="last-modified-date"></span></p>
+                </div>
     </div>
-    
-    <script>
-        // Get and format the last modified date
-        document.getElementById('last-modified-date').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-    </script>
 </body>
 </html>

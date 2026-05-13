@@ -5,141 +5,380 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Amorites</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #e8e1d1; background-image: url("https://www.transparenttextures.com/patterns/paper.png"); }
-        .container { background-color: #f8f4e8; border: 1px solid #d3c9a5; padding: 25px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); position: relative; margin-top: 20px; }
-        h1 { font-size: 34px; margin-top: 0; color: #5a4a2e; border-bottom: 2px solid #d3c9a5; padding-bottom: 10px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
 
-.description p { white-space: pre-wrap; margin: 0; }
-        .download-btn { display: inline-flex; align-items: center; background-color: #8b7355; color: white; padding: 10px 15px; text-decoration: none; font-weight: 500; }
-        .sources ul { padding-left: 20px; list-style-type: decimal; margin: 0; }
-        .sources li { margin-bottom: 8px; word-break: break-word; }
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+/* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+/* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h1>The Amorites</h1>
-<div class="description"><h2>Description</h2><p>The provided source offers a comprehensive historical analysis of the Amorites, a people pivotal to the ancient Near East from roughly 2000 to 1600 BCE. It begins by addressing the &quot;Amorite Problem,&quot; which highlights the paradox between their portrayal as uncivilized nomads by their neighbors and their actual role as architects of powerful urban states like Babylon and Mari. The text explores their identity, clarifying that &quot;Amorite&quot; was a fluid term encompassing linguistic, geographical, and sociological aspects, often denoting &quot;westerners&quot; from Syria. It details their rise to power following the collapse of the Ur III Dynasty, emphasizing their opportunistic ascendancy and rapid cultural assimilation into Mesopotamian traditions while retaining distinct West Semitic characteristics. The source further examines the societal structure of the Amorite Age, characterized by a dimorphic interplay between settled agriculturalists and nomadic pastoralists, and illuminates their economic engine driven by trade and a decentralized market. Finally, it discusses their decline due to new powers like the Hittites and Kassites, while underscoring their enduring legacy in law (e.g., Hammurabi&#x27;s Code), language (influencing later West Semitic tongues), and political structures.</p></div>
-        <a href="../docs/Amorites_ Comprehensive Historical Analysis_.pdf" class="download-btn" download>Download PDF</a>
+
+        <div class="description"><h2>Description</h2><p>The provided source offers a comprehensive historical analysis of the Amorites, a people pivotal to the ancient Near East from roughly 2000 to 1600 BCE. It begins by addressing the &quot;Amorite Problem,&quot; which highlights the paradox between their portrayal as uncivilized nomads by their neighbors and their actual role as architects of powerful urban states like Babylon and Mari. The text explores their identity, clarifying that &quot;Amorite&quot; was a fluid term encompassing linguistic, geographical, and sociological aspects, often denoting &quot;westerners&quot; from Syria. It details their rise to power following the collapse of the Ur III Dynasty, emphasizing their opportunistic ascendancy and rapid cultural assimilation into Mesopotamian traditions while retaining distinct West Semitic characteristics. The source further examines the societal structure of the Amorite Age, characterized by a dimorphic interplay between settled agriculturalists and nomadic pastoralists, and illuminates their economic engine driven by trade and a decentralized market. Finally, it discusses their decline due to new powers like the Hittites and Kassites, while underscoring their enduring legacy in law (e.g., Hammurabi&#x27;s Code), language (influencing later West Semitic tongues), and political structures.</p></div>
+
+        <a href="../kurdish_research.html" class="back-button">
+                    <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5"></path>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Return to Podcast Archive
+                </a>
+
+        <div class="download-section">
+                    <h2>Related Document</h2>
+                    <a href="../docs/Amorites_ Comprehensive Historical Analysis_.pdf" class="download-btn" download>
+                        <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        Download PDF
+                    </a>
+                </div>
+
         <div class="sources"><h2>Sources</h2><ul><li>​ &quot;Amorites.&quot; Wikipedia, Wikimedia Foundation, last modified 28 April 2025.</li>
-<li>​ &quot;Amorite.&quot; Encyclopædia Britannica, Encyclopædia Britannica, Inc.</li>
-<li>​ &quot;Timeline of the Amorites.&quot; World History Encyclopedia.</li>
-<li>​ &quot;Amorite.&quot; World History Encyclopedia.</li>
-<li>​ &quot;The Fierce Amorites and the First King of the Babylonian Empire.&quot; Ancient Origins.</li>
-<li>​ &quot;Amorite.&quot; Merriam-Webster.com Dictionary, Merriam-Webster.</li>
-<li>​ &quot;Amorites, an introduction.&quot; Khan Academy.</li>
-<li>​ &quot;Amorites.&quot; Facts and Details.</li>
-<li>​ &quot;The Amorites: Founders of the First Babylonian Empire.&quot; History with Cy (YouTube).</li>
-<li>​&quot;The Amorites in the Bible and in the Cuneiform Sources.&quot; Brill.</li>
-<li>​&quot;Amurru kingdom.&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​&quot;Who were the Amorites?&quot; Tyndale House.</li>
-<li>​&quot;Amorites.&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​&quot;Who were the Amorites?&quot; GotQuestions.org.</li>
-<li>​&quot;The gods of the Amorites.&quot; Bible Hub.</li>
-<li>​&quot;Ammonites, Amorites, Amalekites, Moabites, Edomites: how many peoples were there?&quot; Hermeneutics Stack Exchange.</li>
-<li>​&quot;Who were the Amorites?&quot; Study of Antiquity and the Middle Ages (YouTube).</li>
-<li>​&quot;Amorites.&quot; New World Encyclopedia.</li>
-<li>​&quot;Amorites.&quot; Encyclopedia.com.</li>
-<li>​&quot;Amorites.&quot; Jewish Virtual Library.</li>
-<li>​&quot;Amorites.&quot; International Standard Bible Encyclopedia Online.</li>
-<li>​&quot;Amorrhites.&quot; New Advent Catholic Encyclopedia.</li>
-<li>​&quot;Amorites.&quot; Encyclopedia of the Bible, BibleGateway.com.</li>
-<li>​&quot;Amorrites.&quot; New Catholic Encyclopedia, Encyclopedia.com.</li>
-<li>​&quot;Amorrites.&quot; Larousse Encyclopédie.</li>
-<li>​&quot;Amorrites.&quot; Wikipédia, Fondation Wikimedia.</li>
-<li>​Charpin, Dominique. &quot;Les Amorrites, fondateurs de Babylone.&quot; Clio.fr.</li>
-<li>​&quot;Amorrites.&quot; Encyclopédie de l&#x27;Histoire du Monde.</li>
-<li>​&quot;Analysis: Code of Hammurabi.&quot; EBSCO Research Starters.</li>
-<li>​&quot;Hammurabi&#x27;s Code.&quot; Lumen Learning.</li>
-<li>​&quot;Code of Hammurabi.&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​&quot;Hammurabi.&quot; History.com.</li>
-<li>​Sasson, Jack M. From the Mari Archives: An Anthology of Old Babylonian Letters. Johns Hopkins University Press.</li>
-<li>​&quot;Mari.&quot; Jewish Virtual Library.</li>
-<li>​Pardee, Dennis. &quot;The Mari Archives.&quot; Ministry Magazine, April 1977.</li>
-<li>​&quot;Mari, Syria.&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​&quot;Yamhad dynasty.&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​&quot;Yamhad.&quot; Alfusaic.</li>
-<li>​&quot;About: Yamhad.&quot; DBpedia.</li>
-<li>​&quot;Yamhad.&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​&quot;Qatna.&quot; Alfusaic.</li>
-<li>​&quot;The Kingdom of Qatna.&quot; HeritageDaily.</li>
-<li>​&quot;Qatna.&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​&quot;Kingdoms of Syria: Qatna.&quot; The History Files.</li>
-<li>​Burke, Aaron A. &quot;Mercenaries and Merchants.&quot; In The Amorites and the Bronze Age Near East. Cambridge University Press.</li>
-<li>​Review of The Amorites and the Bronze Age Near East. Journal of Near Eastern Studies.</li>
-<li>​&quot;Trade in Ancient Mesopotamia.&quot; World History Encyclopedia.</li>
-<li>​&quot;King&#x27;s Highway (ancient).&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​&quot;Amorites, a Caste of Royal Scribes.&quot; Just Genesis.</li>
-<li>​&quot;The Amorites.&quot; Kukis.org.</li>
-<li>​Buck, Mary E. &quot;The Amorite-Canaanite-Israelite Connection.&quot; PhD diss., University of Chicago.</li>
-<li>​Burke, Aaron A. &quot;Introduction.&quot; In The Amorites and the Bronze Age Near East. Cambridge University Press.</li>
-<li>​&quot;The Amorites: Founders of the First Babylonian Empire.&quot; History with Cy (YouTube).</li>
-<li>​&quot;Who were the Amorites?&quot; Tyndale House.</li>
-<li>​&quot;Promulgation of Hammurabi&#x27;s Code.&quot; EBSCO Research Starters.</li>
-<li>​&quot;Hammurabi&#x27;s Code and legal developments.&quot; Fiveable.</li>
-<li>​&quot;8 Things You May Not Know About Hammurabi&#x27;s Code.&quot; History.com.</li>
-<li>​&quot;Babylonian: Hammurabi.&quot; Smarthistory.</li>
-<li>​&quot;Primary sources for the study of Amorites.&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​Kenyon, Kathleen. Amorites and Canaanites. Liverpool University Press.</li>
-<li>​Burke, Aaron A. &quot;Mercenaries and Merchants.&quot; In The Amorites and the Bronze Age Near East. Cambridge University Press.</li>
-<li>​&quot;Agriculture in Mesopotamia.&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​&quot;History: The Amorite Kingdoms.&quot; Warlord Games.</li>
-<li>​&quot;Amorites, an introduction.&quot; Khan Academy.</li>
-<li>​&quot;Sumer.&quot; Encyclopædia Britannica.</li>
-<li>​&quot;Agriculture in the Fertile Crescent &amp; Mesopotamia.&quot; World History Encyclopedia.</li>
-<li>​&quot;The Amorite Kingdoms.&quot; Pete&#x27;s Favourite Things.</li>
-<li>​&quot;Amorites.&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​&quot;Ancient Empires of the Middle East.&quot; God&#x27;s War Plan.</li>
-<li>​&quot;Lessons Plans from Ancient Mesopotamia: The Hittite-Mitanni Conflict.&quot; Historical Conquest.</li>
-<li>​&quot;The Collapse of the Bronze Age Kingdom of Mitanni.&quot; Nutter&#x27;s World.</li>
-<li>​&quot;The Mitanni Kingdom: Rise &amp; Fall of a Bronze Age Superpower.&quot; The Collector.</li>
-<li>​&quot;Amorite.&quot; World History Encyclopedia.</li>
-<li>​&quot;Who were the Amorites?&quot; Tyndale House.</li>
-<li>​&quot;Ancient Amorite Language Discovered.&quot; Biblical Archaeology Society.</li>
-<li>​Burke, Aaron A. &quot;Introduction.&quot; In The Amorites and the Bronze Age Near East. Cambridge University Press.</li>
-<li>​Homsher, Robert. &quot;The Amorites: A Re-evaluation of the Nature of Their Identity.&quot; PhD diss., University of California, Los Angeles.</li>
-<li>​&quot;Why so many Canaanites such as Amorites adopted Jewish religion?&quot; Reddit.</li>
-<li>​Journal of Cuneiform Studies. American Society of Overseas Research.</li>
-<li>​Howard, J. Caleb. &quot;Amorite Names Through Time and Space.&quot; Journal of Semitic Studies.</li>
-<li>​&quot;Amorite language.&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​Journal of Cuneiform Studies, Volume 15. American Schools of Oriental Research.</li>
-<li>​Journal of Cuneiform Studies. Cuneiform Digital Library Initiative.</li>
-<li>​Journal of Cuneiform Studies, Volume 70. The University of Chicago Press.</li>
-<li>​&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale.&quot; Wikipédia, Fondation Wikimedia.</li>
-<li>​&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale.&quot; Cairn.info.</li>
-<li>​&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale.&quot; Cairn.info (English).</li>
-<li>​&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale - Numéro 93, 1 : Les traditions amorrites et la Bible.&quot; E.Leclerc.</li>
-<li>​Revue d&#x27;Assyriologie et d&#x27;Archéologie Orientale. Cuneiform Digital Library Initiative.</li>
-<li>​&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale, n°92, 1. Les traditions amorrites et la Bible.&quot; Les Libraires.</li>
-<li>​&quot;Zeitschrift für Assyriologie und Vorderasiatische Archäologie.&quot; Wikipedia (German).</li>
-<li>​Zeitschrift für Assyriologie und vorderasiatische Archäologie. Internet Archive.</li>
-<li>​&quot;Catalog Record: Zeitschrift für Assyriologie.&quot; HathiTrust Digital Library.</li>
-<li>​&quot;Amorrites.&quot; Wikipédia, Fondation Wikimedia. Last updated 3 July 2025.</li>
-<li>​&quot;Amorite.&quot; World History Encyclopedia.</li>
-<li>​&quot;Amorites.&quot; Wikipedia, Wikimedia Foundation. Last updated 28 April 2025.</li>
-<li>​&quot;Amorrites.&quot; Wikipédia, Fondation Wikimedia. Last updated 3 July 2025.</li>
-<li>​Sasson, Jack M. From the Mari Archives: An Anthology of Old Babylonian Letters. Johns Hopkins University Press.</li>
-<li>​&quot;Yamhad dynasty.&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​ &quot;The Kingdom of Qatna.&quot; HeritageDaily. Last updated 29 May 2020.</li>
-<li>​ &quot;Mari.&quot; Jewish Virtual Library.</li>
-<li>​ Pardee, Dennis. &quot;The Mari Archives.&quot; Ministry Magazine, April 1977.</li>
-<li>​ &quot;Mari, Syria.&quot; Wikipedia, Wikimedia Foundation. Last updated 7 July 2025.</li>
-<li>​ &quot;Yamhad.&quot; Alfusaic.</li>
-<li>​ &quot;About: Yamhad.&quot; DBpedia.</li>
-<li>​ &quot;Qatna.&quot; Alfusaic.</li>
-<li>​ &quot;Qatna.&quot; Wikipedia, Wikimedia Foundation. Last updated 20 July 2025.</li>
-<li>​ &quot;Kingdoms of Syria: Qatna.&quot; The History Files.</li>
-<li>​ Review of The Amorites and the Bronze Age Near East. Journal of Near Eastern Studies.</li>
-<li>​ &quot;Trade in Ancient Mesopotamia.&quot; World History Encyclopedia.</li>
-<li>​ &quot;King&#x27;s Highway (ancient).&quot; Wikipedia, Wikimedia Foundation.</li>
-<li>​ &quot;The Amorites.&quot; Kukis.org.</li>
-<li>​ Buck, Mary E. &quot;The Amorite-Canaanite-Israelite Connection.&quot; PhD diss., University of Chicago.</li>
-<li>​ &quot;Who were the Amorites?&quot; Tyndale House.</li>
-<li>​ &quot;Promulgation of Hammurabi&#x27;s Code.&quot; EBSCO Research Starters.</li>
-<li>​ &quot;Hammurabi&#x27;s Code and legal developments.&quot; Fiveable.</li>
-<li>​ &quot;8 Things You May Not Know About Hammurabi&#x27;s Code.&quot; History.com.</li>
-<li>​ &quot;Babylonian: Hammurabi.&quot; Smarthistory.</li>
-<li>​ &quot;Primary sources for the study of the Amorites.&quot; Wikipedia, Wikimedia Foundation. Last updated 28 April 2025.</li>
-<li>​ Kenyon, Kathleen. Amorites and Canaanites. Liverpool University Press.</li></ul></div>
+        <li>​ &quot;Amorite.&quot; Encyclopædia Britannica, Encyclopædia Britannica, Inc.</li>
+        <li>​ &quot;Timeline of the Amorites.&quot; World History Encyclopedia.</li>
+        <li>​ &quot;Amorite.&quot; World History Encyclopedia.</li>
+        <li>​ &quot;The Fierce Amorites and the First King of the Babylonian Empire.&quot; Ancient Origins.</li>
+        <li>​ &quot;Amorite.&quot; Merriam-Webster.com Dictionary, Merriam-Webster.</li>
+        <li>​ &quot;Amorites, an introduction.&quot; Khan Academy.</li>
+        <li>​ &quot;Amorites.&quot; Facts and Details.</li>
+        <li>​ &quot;The Amorites: Founders of the First Babylonian Empire.&quot; History with Cy (YouTube).</li>
+        <li>​&quot;The Amorites in the Bible and in the Cuneiform Sources.&quot; Brill.</li>
+        <li>​&quot;Amurru kingdom.&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​&quot;Who were the Amorites?&quot; Tyndale House.</li>
+        <li>​&quot;Amorites.&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​&quot;Who were the Amorites?&quot; GotQuestions.org.</li>
+        <li>​&quot;The gods of the Amorites.&quot; Bible Hub.</li>
+        <li>​&quot;Ammonites, Amorites, Amalekites, Moabites, Edomites: how many peoples were there?&quot; Hermeneutics Stack Exchange.</li>
+        <li>​&quot;Who were the Amorites?&quot; Study of Antiquity and the Middle Ages (YouTube).</li>
+        <li>​&quot;Amorites.&quot; New World Encyclopedia.</li>
+        <li>​&quot;Amorites.&quot; Encyclopedia.com.</li>
+        <li>​&quot;Amorites.&quot; Jewish Virtual Library.</li>
+        <li>​&quot;Amorites.&quot; International Standard Bible Encyclopedia Online.</li>
+        <li>​&quot;Amorrhites.&quot; New Advent Catholic Encyclopedia.</li>
+        <li>​&quot;Amorites.&quot; Encyclopedia of the Bible, BibleGateway.com.</li>
+        <li>​&quot;Amorrites.&quot; New Catholic Encyclopedia, Encyclopedia.com.</li>
+        <li>​&quot;Amorrites.&quot; Larousse Encyclopédie.</li>
+        <li>​&quot;Amorrites.&quot; Wikipédia, Fondation Wikimedia.</li>
+        <li>​Charpin, Dominique. &quot;Les Amorrites, fondateurs de Babylone.&quot; Clio.fr.</li>
+        <li>​&quot;Amorrites.&quot; Encyclopédie de l&#x27;Histoire du Monde.</li>
+        <li>​&quot;Analysis: Code of Hammurabi.&quot; EBSCO Research Starters.</li>
+        <li>​&quot;Hammurabi&#x27;s Code.&quot; Lumen Learning.</li>
+        <li>​&quot;Code of Hammurabi.&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​&quot;Hammurabi.&quot; History.com.</li>
+        <li>​Sasson, Jack M. From the Mari Archives: An Anthology of Old Babylonian Letters. Johns Hopkins University Press.</li>
+        <li>​&quot;Mari.&quot; Jewish Virtual Library.</li>
+        <li>​Pardee, Dennis. &quot;The Mari Archives.&quot; Ministry Magazine, April 1977.</li>
+        <li>​&quot;Mari, Syria.&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​&quot;Yamhad dynasty.&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​&quot;Yamhad.&quot; Alfusaic.</li>
+        <li>​&quot;About: Yamhad.&quot; DBpedia.</li>
+        <li>​&quot;Yamhad.&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​&quot;Qatna.&quot; Alfusaic.</li>
+        <li>​&quot;The Kingdom of Qatna.&quot; HeritageDaily.</li>
+        <li>​&quot;Qatna.&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​&quot;Kingdoms of Syria: Qatna.&quot; The History Files.</li>
+        <li>​Burke, Aaron A. &quot;Mercenaries and Merchants.&quot; In The Amorites and the Bronze Age Near East. Cambridge University Press.</li>
+        <li>​Review of The Amorites and the Bronze Age Near East. Journal of Near Eastern Studies.</li>
+        <li>​&quot;Trade in Ancient Mesopotamia.&quot; World History Encyclopedia.</li>
+        <li>​&quot;King&#x27;s Highway (ancient).&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​&quot;Amorites, a Caste of Royal Scribes.&quot; Just Genesis.</li>
+        <li>​&quot;The Amorites.&quot; Kukis.org.</li>
+        <li>​Buck, Mary E. &quot;The Amorite-Canaanite-Israelite Connection.&quot; PhD diss., University of Chicago.</li>
+        <li>​Burke, Aaron A. &quot;Introduction.&quot; In The Amorites and the Bronze Age Near East. Cambridge University Press.</li>
+        <li>​&quot;The Amorites: Founders of the First Babylonian Empire.&quot; History with Cy (YouTube).</li>
+        <li>​&quot;Who were the Amorites?&quot; Tyndale House.</li>
+        <li>​&quot;Promulgation of Hammurabi&#x27;s Code.&quot; EBSCO Research Starters.</li>
+        <li>​&quot;Hammurabi&#x27;s Code and legal developments.&quot; Fiveable.</li>
+        <li>​&quot;8 Things You May Not Know About Hammurabi&#x27;s Code.&quot; History.com.</li>
+        <li>​&quot;Babylonian: Hammurabi.&quot; Smarthistory.</li>
+        <li>​&quot;Primary sources for the study of Amorites.&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​Kenyon, Kathleen. Amorites and Canaanites. Liverpool University Press.</li>
+        <li>​Burke, Aaron A. &quot;Mercenaries and Merchants.&quot; In The Amorites and the Bronze Age Near East. Cambridge University Press.</li>
+        <li>​&quot;Agriculture in Mesopotamia.&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​&quot;History: The Amorite Kingdoms.&quot; Warlord Games.</li>
+        <li>​&quot;Amorites, an introduction.&quot; Khan Academy.</li>
+        <li>​&quot;Sumer.&quot; Encyclopædia Britannica.</li>
+        <li>​&quot;Agriculture in the Fertile Crescent &amp; Mesopotamia.&quot; World History Encyclopedia.</li>
+        <li>​&quot;The Amorite Kingdoms.&quot; Pete&#x27;s Favourite Things.</li>
+        <li>​&quot;Amorites.&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​&quot;Ancient Empires of the Middle East.&quot; God&#x27;s War Plan.</li>
+        <li>​&quot;Lessons Plans from Ancient Mesopotamia: The Hittite-Mitanni Conflict.&quot; Historical Conquest.</li>
+        <li>​&quot;The Collapse of the Bronze Age Kingdom of Mitanni.&quot; Nutter&#x27;s World.</li>
+        <li>​&quot;The Mitanni Kingdom: Rise &amp; Fall of a Bronze Age Superpower.&quot; The Collector.</li>
+        <li>​&quot;Amorite.&quot; World History Encyclopedia.</li>
+        <li>​&quot;Who were the Amorites?&quot; Tyndale House.</li>
+        <li>​&quot;Ancient Amorite Language Discovered.&quot; Biblical Archaeology Society.</li>
+        <li>​Burke, Aaron A. &quot;Introduction.&quot; In The Amorites and the Bronze Age Near East. Cambridge University Press.</li>
+        <li>​Homsher, Robert. &quot;The Amorites: A Re-evaluation of the Nature of Their Identity.&quot; PhD diss., University of California, Los Angeles.</li>
+        <li>​&quot;Why so many Canaanites such as Amorites adopted Jewish religion?&quot; Reddit.</li>
+        <li>​Journal of Cuneiform Studies. American Society of Overseas Research.</li>
+        <li>​Howard, J. Caleb. &quot;Amorite Names Through Time and Space.&quot; Journal of Semitic Studies.</li>
+        <li>​&quot;Amorite language.&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​Journal of Cuneiform Studies, Volume 15. American Schools of Oriental Research.</li>
+        <li>​Journal of Cuneiform Studies. Cuneiform Digital Library Initiative.</li>
+        <li>​Journal of Cuneiform Studies, Volume 70. The University of Chicago Press.</li>
+        <li>​&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale.&quot; Wikipédia, Fondation Wikimedia.</li>
+        <li>​&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale.&quot; Cairn.info.</li>
+        <li>​&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale.&quot; Cairn.info (English).</li>
+        <li>​&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale - Numéro 93, 1 : Les traditions amorrites et la Bible.&quot; E.Leclerc.</li>
+        <li>​Revue d&#x27;Assyriologie et d&#x27;Archéologie Orientale. Cuneiform Digital Library Initiative.</li>
+        <li>​&quot;Revue d&#x27;assyriologie et d&#x27;archéologie orientale, n°92, 1. Les traditions amorrites et la Bible.&quot; Les Libraires.</li>
+        <li>​&quot;Zeitschrift für Assyriologie und Vorderasiatische Archäologie.&quot; Wikipedia (German).</li>
+        <li>​Zeitschrift für Assyriologie und vorderasiatische Archäologie. Internet Archive.</li>
+        <li>​&quot;Catalog Record: Zeitschrift für Assyriologie.&quot; HathiTrust Digital Library.</li>
+        <li>​&quot;Amorrites.&quot; Wikipédia, Fondation Wikimedia. Last updated 3 July 2025.</li>
+        <li>​&quot;Amorite.&quot; World History Encyclopedia.</li>
+        <li>​&quot;Amorites.&quot; Wikipedia, Wikimedia Foundation. Last updated 28 April 2025.</li>
+        <li>​&quot;Amorrites.&quot; Wikipédia, Fondation Wikimedia. Last updated 3 July 2025.</li>
+        <li>​Sasson, Jack M. From the Mari Archives: An Anthology of Old Babylonian Letters. Johns Hopkins University Press.</li>
+        <li>​&quot;Yamhad dynasty.&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​ &quot;The Kingdom of Qatna.&quot; HeritageDaily. Last updated 29 May 2020.</li>
+        <li>​ &quot;Mari.&quot; Jewish Virtual Library.</li>
+        <li>​ Pardee, Dennis. &quot;The Mari Archives.&quot; Ministry Magazine, April 1977.</li>
+        <li>​ &quot;Mari, Syria.&quot; Wikipedia, Wikimedia Foundation. Last updated 7 July 2025.</li>
+        <li>​ &quot;Yamhad.&quot; Alfusaic.</li>
+        <li>​ &quot;About: Yamhad.&quot; DBpedia.</li>
+        <li>​ &quot;Qatna.&quot; Alfusaic.</li>
+        <li>​ &quot;Qatna.&quot; Wikipedia, Wikimedia Foundation. Last updated 20 July 2025.</li>
+        <li>​ &quot;Kingdoms of Syria: Qatna.&quot; The History Files.</li>
+        <li>​ Review of The Amorites and the Bronze Age Near East. Journal of Near Eastern Studies.</li>
+        <li>​ &quot;Trade in Ancient Mesopotamia.&quot; World History Encyclopedia.</li>
+        <li>​ &quot;King&#x27;s Highway (ancient).&quot; Wikipedia, Wikimedia Foundation.</li>
+        <li>​ &quot;The Amorites.&quot; Kukis.org.</li>
+        <li>​ Buck, Mary E. &quot;The Amorite-Canaanite-Israelite Connection.&quot; PhD diss., University of Chicago.</li>
+        <li>​ &quot;Who were the Amorites?&quot; Tyndale House.</li>
+        <li>​ &quot;Promulgation of Hammurabi&#x27;s Code.&quot; EBSCO Research Starters.</li>
+        <li>​ &quot;Hammurabi&#x27;s Code and legal developments.&quot; Fiveable.</li>
+        <li>​ &quot;8 Things You May Not Know About Hammurabi&#x27;s Code.&quot; History.com.</li>
+        <li>​ &quot;Babylonian: Hammurabi.&quot; Smarthistory.</li>
+        <li>​ &quot;Primary sources for the study of the Amorites.&quot; Wikipedia, Wikimedia Foundation. Last updated 28 April 2025.</li>
+        <li>​ Kenyon, Kathleen. Amorites and Canaanites. Liverpool University Press.</li></ul></div>
+
+        <div class="disclaimer">
+                    <p>Note: This was made with AI research, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+                </div>
+
         <div class="last-updated"><p>This page was created on: July 22, 2025</p></div>
     </div>
 </body>

@@ -5,199 +5,438 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yamhad</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #e8e1d1; background-image: url("https://www.transparenttextures.com/patterns/paper.png"); }
-        .container { background-color: #f8f4e8; border: 1px solid #d3c9a5; padding: 25px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); position: relative; margin-top: 20px; }
-        h1 { font-size: 34px; margin-top: 0; color: #5a4a2e; border-bottom: 2px solid #d3c9a5; padding-bottom: 10px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
 
-.description p { white-space: pre-wrap; margin: 0; }
-        .download-btn { display: inline-flex; align-items: center; background-color: #8b7355; color: white; padding: 10px 15px; text-decoration: none; font-weight: 500; }
-        .sources ul { padding-left: 20px; list-style-type: decimal; margin: 0; }
-        .sources li { margin-bottom: 8px; word-break: break-word; }
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+/* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+/* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Yamhad</h1>
-<div class="description"><h2>Description</h2><p>The sources examine the Kingdom of Yamhad, a powerful Middle Bronze Age state in ancient Syria, centered on the continuously inhabited city of Halab (modern Aleppo). Because its capital is archaeologically inaccessible, the kingdom&#x27;s history is reconstructed primarily from external textual evidence, notably archives from Mari and Alalakh, which reveal its political, economic, and cultural significance. The text traces Yamhad&#x27;s rise as a dominant Amorite power, its strategic control of interregional trade, and its complex societal and religious structures influenced by Hurrian and Mesopotamian cultures. Ultimately, it details the kingdom&#x27;s decline and fall due to internal fracturing and the strategic campaigns of the Hittites, concluding with its lasting legacy and the subsequent rise of Mitanni.</p></div>
-        <a href="../docs/Yamhad_ Middle Bronze Age Syria_.pdf" class="download-btn" download>Download PDF</a>
+
+        <div class="description"><h2>Description</h2><p>The sources examine the Kingdom of Yamhad, a powerful Middle Bronze Age state in ancient Syria, centered on the continuously inhabited city of Halab (modern Aleppo). Because its capital is archaeologically inaccessible, the kingdom&#x27;s history is reconstructed primarily from external textual evidence, notably archives from Mari and Alalakh, which reveal its political, economic, and cultural significance. The text traces Yamhad&#x27;s rise as a dominant Amorite power, its strategic control of interregional trade, and its complex societal and religious structures influenced by Hurrian and Mesopotamian cultures. Ultimately, it details the kingdom&#x27;s decline and fall due to internal fracturing and the strategic campaigns of the Hittites, concluding with its lasting legacy and the subsequent rise of Mitanni.</p></div>
+
+        <a href="../kurdish_research.html" class="back-button">
+                    <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5"></path>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Return to Podcast Archive
+                </a>
+
+        <div class="download-section">
+                    <h2>Related Document</h2>
+                    <a href="../docs/Yamhad_ Middle Bronze Age Syria_.pdf" class="download-btn" download>
+                        <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        Download PDF
+                    </a>
+                </div>
+
         <div class="sources"><h2>Sources</h2><ul><li>​ 1</li>
-<li>​ 16</li>
-<li>​ 7</li>
-<li>​ 25</li>
-<li>​ 8</li>
-<li>​ 24</li>
-<li>​ 5</li>
-<li>​ 2</li>
-<li>​ 40</li>
-<li>​22</li>
-<li>​39</li>
-<li>​6</li>
-<li>​19</li>
-<li>​41</li>
-<li>​26</li>
-<li>​31</li>
-<li>​42</li>
-<li>​3</li>
-<li>​3</li>
-<li>​4</li>
-<li>​43</li>
-<li>​44</li>
-<li>​45</li>
-<li>​1</li>
-<li>​46</li>
-<li>​47</li>
-<li>​48</li>
-<li>​49</li>
-<li>​50</li>
-<li>​51</li>
-<li>​52</li>
-<li>​53</li>
-<li>​54</li>
-<li>​55</li>
-<li>​56</li>
-<li>​57</li>
-<li>​58</li>
-<li>​1</li>
-<li>​26</li>
-<li>​23</li>
-<li>​59</li>
-<li>​32</li>
-<li>​33</li>
-<li>​60</li>
-<li>​35</li>
-<li>​7</li>
-<li>​34</li>
-<li>​25</li>
-<li>​16</li>
-<li>​9</li>
-<li>​13</li>
-<li>​10</li>
-<li>​29</li>
-<li>​11</li>
-<li>​12</li>
-<li>​61</li>
-<li>​13</li>
-<li>​17</li>
-<li>​14</li>
-<li>​18</li>
-<li>​62</li>
-<li>​15</li>
-<li>​28</li>
-<li>​63</li>
-<li>​30</li>
-<li>​64</li>
-<li>​27</li>
-<li>​20</li>
-<li>​10</li>
-<li>​65</li>
-<li>​66</li>
-<li>​21</li>
-<li>​1</li>
-<li>​16</li>
-<li>​67</li>
-<li>​23</li>
-<li>​2</li>
-<li>​68</li>
-<li>​69</li>
-<li>​70</li>
-<li>​36</li>
-<li>​71</li>
-<li>​38</li>
-<li>​37</li>
-<li>​7</li>
-<li>​72</li>
-<li>​73</li>
-<li>​74</li>
-<li>​75</li>
-<li>​76</li>
-<li>​4</li>
-<li>​3</li>
-<li>​5</li>
-<li>​4</li>
-<li>​18</li>
-<li>​34</li>
-<li>​13</li>
-<li>​11</li>
-<li>​18</li>
-<li>​ 23</li>
-<li>​ 15 Works cited</li>
-<li>​ Yamhad - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Yamhad" target="_blank">https://en.wikipedia.org/wiki/Yamhad</a></li>
-<li>​ About: Yamhad - DBpedia, accessed July 27, 2025, <a href="https://dbpedia.org/page/Yamhad" target="_blank">https://dbpedia.org/page/Yamhad</a></li>
-<li>​ Yamhad — Wikipédia, accessed July 27, 2025, <a href="https://fr.wikipedia.org/wiki/Yamhad" target="_blank">https://fr.wikipedia.org/wiki/Yamhad</a></li>
-<li>​ Alep, le Yamkhad - Antikforever, accessed July 27, 2025, <a href="https://antikforever.com/alep_yamkhad/" target="_blank">https://antikforever.com/alep_yamkhad/</a></li>
-<li>​ Aleppo - New World Encyclopedia, accessed July 27, 2025, <a href="https://www.newworldencyclopedia.org/entry/Aleppo" target="_blank">https://www.newworldencyclopedia.org/entry/Aleppo</a></li>
-<li>​ Aleppo - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Aleppo" target="_blank">https://en.wikipedia.org/wiki/Aleppo</a></li>
-<li>​ Yamhad — Al Fusaic, accessed July 27, 2025, <a href="https://www.alfusaic.net/civilizations-101/yamhad" target="_blank">https://www.alfusaic.net/civilizations-101/yamhad</a></li>
-<li>​ Ancient Yamhad: The History and Legacy of Syria&#x27;s First Great Kingdom - Audiobooks.com, accessed July 27, 2025, <a href="https://www.audiobooks.com/audiobook/ancient-yamhad-the-history-and-legac" target="_blank">https://www.audiobooks.com/audiobook/ancient-yamhad-the-history-and-legac</a> y-of-syrias-first-great-kingdom/501184</li>
-<li>​ Ancient Yamhad: The History and Legacy of Syria&#x27;s First Great Kingdom - Audiobook - Charles River Editors - ISBN 9781662274213 - Storytel, accessed July 27, 2025, <a href="https://www.storytel.com/tv/books/ancient-yamhad-the-history-and-legacy-of-s" target="_blank">https://www.storytel.com/tv/books/ancient-yamhad-the-history-and-legacy-of-s</a> yria-s-first-great-kingdom-1149272</li>
-<li>​5. Mari and the Amorite Age: The City and Its Music - The Center for Hellenic Studies, accessed July 27, 2025, <a href="https://chs.harvard.edu/chapter/5-mari-and-the-amorite-age-the-city-and-its-m" target="_blank">https://chs.harvard.edu/chapter/5-mari-and-the-amorite-age-the-city-and-its-m</a> usic/</li>
-<li>​Mari - Jewish Virtual Library, accessed July 27, 2025, <a href="https://www.jewishvirtuallibrary.org/mari" target="_blank">https://www.jewishvirtuallibrary.org/mari</a></li>
-<li>​Mari, Syria - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Mari,_Syria" target="_blank">https://en.wikipedia.org/wiki/Mari,_Syria</a></li>
-<li>​Chapter 14 The Kingdom of Yamḫad in: The Amorites - Brill, accessed July 27, 2025, <a href="https://brill.com/display/book/9789004547315/BP000025.xml" target="_blank">https://brill.com/display/book/9789004547315/BP000025.xml</a></li>
-<li>​Alalakh - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Alalakh" target="_blank">https://en.wikipedia.org/wiki/Alalakh</a></li>
-<li>​Alalakh - Wikiwand, accessed July 27, 2025, <a href="https://www.wikiwand.com/en/articles/Alalakh" target="_blank">https://www.wikiwand.com/en/articles/Alalakh</a></li>
-<li>​Yamhad dynasty - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Yamhad_dynasty" target="_blank">https://en.wikipedia.org/wiki/Yamhad_dynasty</a></li>
-<li>​iV. hiStoRy AnD chRonoloGiES FoR AlAlAkh: tEXtuAl AnD ARchAEoloGicAl DAtA, accessed July 27, 2025, <a href="https://austriaca.at/0xc1aa5572%200x00078f58.pdf" target="_blank">https://austriaca.at/0xc1aa5572%200x00078f58.pdf</a></li>
-<li>​MIDDLE BRONZE AGE II (1800-1600 BC) - Alalakh, accessed July 27, 2025, <a href="https://www.alalakh.org/middle-bronze-age-ii/" target="_blank">https://www.alalakh.org/middle-bronze-age-ii/</a></li>
-<li>​The Eastern Mediterranean and Syria, 2000–1000 B.C. | Chronology | Heilbrunn Timeline of Art History, accessed July 27, 2025, <a href="https://www.metmuseum.org/toah/ht/03/wae.html" target="_blank">https://www.metmuseum.org/toah/ht/03/wae.html</a></li>
-<li>​Amorites - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Amorites" target="_blank">https://en.wikipedia.org/wiki/Amorites</a></li>
-<li>​Cultural Identity, Archaeology, and the Amorites of the Early Second Millennium BCE: An Analytical Paradigmatic Approach - eScholarship.org, accessed July 27, 2025, <a href="https://escholarship.org/content/qt9pn561nn/qt9pn561nn_noSplash_a7bcaf22383" target="_blank">https://escholarship.org/content/qt9pn561nn/qt9pn561nn_noSplash_a7bcaf22383</a> cdec0ff03ae8b34ac6324.pdf</li>
-<li>​Kingdoms of Syria - Aleppo / Yamkhad (Syria) - The History Files, accessed July 27, 2025, <a href="https://www.historyfiles.co.uk/KingListsMiddEast/SyriaAlep.htm" target="_blank">https://www.historyfiles.co.uk/KingListsMiddEast/SyriaAlep.htm</a></li>
-<li>​Yamhad - Wikiwand, accessed July 27, 2025, <a href="https://www.wikiwand.com/en/articles/Yamhad" target="_blank">https://www.wikiwand.com/en/articles/Yamhad</a></li>
-<li>​Ancient Yamhad: The History and Legacy of Syria&#x27;s First Great Kingdom (Unabridged) - Apple Books, accessed July 27, 2025, <a href="https://books.apple.com/ie/audiobook/ancient-yamhad-the-history-and-legacy-o" target="_blank">https://books.apple.com/ie/audiobook/ancient-yamhad-the-history-and-legacy-o</a> f-syrias/id1652514092</li>
-<li>​Civilizations in Review: Yamhad Empire - Al Fusaic, accessed July 27, 2025, <a href="https://www.alfusaic.net/blog/recommendations/civilizations-in-review-yamhad" target="_blank">https://www.alfusaic.net/blog/recommendations/civilizations-in-review-yamhad</a></li>
-<li>​A Sketch of North Syrian Economic Relations in the Middle Bronze ..., accessed July 27, 2025, <a href="https://ir.vanderbilt.edu/bitstreams/8a2beda9-1c1e-430a-8f87-cfbc43384e70/do" target="_blank">https://ir.vanderbilt.edu/bitstreams/8a2beda9-1c1e-430a-8f87-cfbc43384e70/do</a> wnload</li>
-<li>​Ancient Amorite Language Discovered - Biblical Archaeology Society, accessed July 27, 2025, <a href="https://www.biblicalarchaeology.org/daily/ancient-cultures/ancient-near-eastern-" target="_blank">https://www.biblicalarchaeology.org/daily/ancient-cultures/ancient-near-eastern-</a> world/ancient-amorite-language-discovered/</li>
-<li>​bm-sep-2007-71 - Ancient Egypt and Archaeology Web Site, accessed July 27, 2025, <a href="https://www.ancient-egypt.co.uk/british%20museum/pages/bm-sep-2007-71.ht" target="_blank">https://www.ancient-egypt.co.uk/british%20museum/pages/bm-sep-2007-71.ht</a> m</li>
-<li>​The Mari Archives - Ministry Magazine, accessed July 27, 2025, <a href="https://www.ministrymagazine.org/archive/1977/04/the-mari-archives" target="_blank">https://www.ministrymagazine.org/archive/1977/04/the-mari-archives</a></li>
-<li>​Alalakh - Tiscali, accessed July 27, 2025, <a href="http://web.tiscali.it/ranesorg/Alalah.htm" target="_blank">http://web.tiscali.it/ranesorg/Alalah.htm</a></li>
-<li>​Yamhad (Aleppo), Middle Bronze Age temple orthostats, detail (Photo by... | Download Scientific Diagram - ResearchGate, accessed July 27, 2025, <a href="https://www.researchgate.net/figure/Yamhad-Aleppo-Middle-Bronze-Age-templ" target="_blank">https://www.researchgate.net/figure/Yamhad-Aleppo-Middle-Bronze-Age-templ</a> e-orthostats-detail-Photo-by-author-summer_fig2_259764433</li>
-<li>​Hadad | EBSCO Research Starters, accessed July 27, 2025, <a href="https://www.ebsco.com/research-starters/religion-and-philosophy/hadad" target="_blank">https://www.ebsco.com/research-starters/religion-and-philosophy/hadad</a></li>
-<li>​Hadad - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Hadad" target="_blank">https://en.wikipedia.org/wiki/Hadad</a></li>
-<li>​Temple of the Storm God - Archaeology Magazine Archive, accessed July 27, 2025, <a href="https://archive.archaeology.org/0911/features/syria_aleppo_temple_storm_god_ci" target="_blank">https://archive.archaeology.org/0911/features/syria_aleppo_temple_storm_god_ci</a> tadel.html</li>
-<li>​Hadad | Dr. Claude Mariottini - Professor of Old Testament, accessed July 27, 2025, <a href="https://claudemariottini.com/tag/hadad/" target="_blank">https://claudemariottini.com/tag/hadad/</a></li>
-<li>​aemw/alalakh/idrimi - Oracc, accessed July 27, 2025, <a href="https://oracc.museum.upenn.edu/aemw/alalakh/idrimi/P500443" target="_blank">https://oracc.museum.upenn.edu/aemw/alalakh/idrimi/P500443</a></li>
-<li>​Idrimi - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Idrimi" target="_blank">https://en.wikipedia.org/wiki/Idrimi</a></li>
-<li>​Abraham and Idrimi - BYU ScholarsArchive, accessed July 27, 2025, <a href="https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=1511&amp;context=jbms" target="_blank">https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=1511&amp;context=jbms</a></li>
-<li>​The History of Aleppo during the Bronze Age - YouTube, accessed July 27, 2025, <a href="https://m.youtube.com/watch?v=8MaRRXoZm2U&amp;pp=ygUJI2FydGhhbGFi" target="_blank">https://m.youtube.com/watch?v=8MaRRXoZm2U&amp;pp=ygUJI2FydGhhbGFi</a></li>
-<li>​Yamhad Dynasty - Encyclopedia.pub, accessed July 27, 2025, <a href="https://encyclopedia.pub/entry/30940" target="_blank">https://encyclopedia.pub/entry/30940</a></li>
-<li>​Urban Regeneration: Middle Bronze II (ca. 1800-1600 BC, Umm el-Marra Period IIIa-c), accessed July 27, 2025, <a href="https://sites.krieger.jhu.edu/ummelmarra/2014/01/27/urban-regeneration-middle-" target="_blank">https://sites.krieger.jhu.edu/ummelmarra/2014/01/27/urban-regeneration-middle-</a> bronze-ii-ca-1800-1600-bc-umm-el-marra-period-iiia-c/</li>
-<li>​Middle Bronze Age, accessed July 27, 2025, <a href="https://brown.edu/Departments/Joukowsky_Institute/courses/archaeologiesneare" target="_blank">https://brown.edu/Departments/Joukowsky_Institute/courses/archaeologiesneare</a> ast/files/3930368.pdf</li>
-<li>​Le Yamhad - Villes de l&#x27;âge du bronze, accessed July 27, 2025, <a href="http://bronze-age-towns.com/les-autres-pays-de-lage-du-bronze/le-yamhad/" target="_blank">http://bronze-age-towns.com/les-autres-pays-de-lage-du-bronze/le-yamhad/</a></li>
-<li>​Chutzpah in a Letter Intended for the King of Yamhad - UB, accessed July 27, 2025, <a href="https://www.ub.edu/ipoa/wp-content/uploads/2021/07/20191AuOrMiglio.pdf" target="_blank">https://www.ub.edu/ipoa/wp-content/uploads/2021/07/20191AuOrMiglio.pdf</a></li>
-<li>​J. Lauinger, Following the Man of Yamhad. Settlement and Territory at Old Babylonian Alalah, Culture &amp; History of the Ancient Near East 75, Leyde/Boston, 2015 - Cairn, accessed July 27, 2025, <a href="https://shs.cairn.info/article/ASSY_111_0179d?lang=fr&amp;ID_ARTICLE=ASSY_111_0179" target="_blank">https://shs.cairn.info/article/ASSY_111_0179d?lang=fr&amp;ID_ARTICLE=ASSY_111_0179</a> d</li>
-<li>​Jam – Chad&#x27;s Raspberry Kitchen, Inc., accessed July 27, 2025, <a href="https://chadsraspberrykitchen.com/collections/jam" target="_blank">https://chadsraspberrykitchen.com/collections/jam</a></li>
-<li>​Animal Jam Chad Stfu - Discover &amp; Share GIFs - Tenor, accessed July 27, 2025, <a href="https://tenor.com/view/animal-jam-chad-stfu-stfu-im-playing-stfu-im-playing-ani" target="_blank">https://tenor.com/view/animal-jam-chad-stfu-stfu-im-playing-stfu-im-playing-ani</a> mal-jam-gif-24458538</li>
-<li>​February Art Jam: Chad by JJSponge120 on DeviantArt, accessed July 27, 2025, <a href="https://www.deviantart.com/jjsponge120/journal/February-Art-Jam-Chad-90569" target="_blank">https://www.deviantart.com/jjsponge120/journal/February-Art-Jam-Chad-90569</a> 3224</li>
-<li>​Virtual Jam - Chad LB, Noah Kellman, Corey Fonville, Nick Frenay - YouTube, accessed July 27, 2025, <a href="https://www.youtube.com/watch?v=dJWLvhD3AF4" target="_blank">https://www.youtube.com/watch?v=dJWLvhD3AF4</a></li>
-<li>​Jamchad - Wikipedia, accessed July 27, 2025, <a href="https://de.wikipedia.org/wiki/Jamchad" target="_blank">https://de.wikipedia.org/wiki/Jamchad</a></li>
-<li>​BIBLICAL IDEAS OF NATIONALITY ANCIENT AND MODERN - dokumen.pub, accessed July 27, 2025, <a href="https://dokumen.pub/download/biblical-ideas-of-nationality-ancient-and-moder" target="_blank">https://dokumen.pub/download/biblical-ideas-of-nationality-ancient-and-moder</a> n-9781575065342.html</li>
-<li>​Ge 106 | PDF - Scribd, accessed July 27, 2025, <a href="https://www.scribd.com/document/706663567/GE-106" target="_blank">https://www.scribd.com/document/706663567/GE-106</a></li>
-<li>​Ancient Mesopotamia: Portrait of a Dead Civilization 9780226177670 - DOKUMEN.PUB, accessed July 27, 2025, <a href="https://dokumen.pub/ancient-mesopotamia-portrait-of-a-dead-civilization-9780" target="_blank">https://dokumen.pub/ancient-mesopotamia-portrait-of-a-dead-civilization-9780</a></li>
-<li>html</li>
-<li>​Full text of &quot;Ancient Mesopotamia: Portrait of a Dead Civilization&quot; - Internet Archive, accessed July 27, 2025, <a href="https://archive.org/stream/ancientmesopotamia/Ancient%20Mesopotamia_djvu.tx" target="_blank">https://archive.org/stream/ancientmesopotamia/Ancient%20Mesopotamia_djvu.tx</a> t</li>
-<li>​NOTE TO USERS UMI, accessed July 27, 2025, <a href="https://utoronto.scholaris.ca/bitstreams/940e6af2-1652-4f1b-b2ce-f0923dda285" target="_blank">https://utoronto.scholaris.ca/bitstreams/940e6af2-1652-4f1b-b2ce-f0923dda285</a> a/download</li>
-<li>​THIS Volume has been printed by the Political Economy Club of London for distribution amongst its members and tlieU&#x27; immediate f, accessed July 27, 2025, <a href="https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2060/McCullo" target="_blank">https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2060/McCullo</a> ch_1372_Bk.pdf</li>
-<li>​Ancient Africa: Trade Routes - Exploros, accessed July 27, 2025, <a href="https://www.exploros.com/summary/Ancient-Africa-Trade-Routes" target="_blank">https://www.exploros.com/summary/Ancient-Africa-Trade-Routes</a></li>
-<li>​Transcontinental Trade and Economic Growth in the Early Islamic Empire: The Red Sea Corridor in the 8th-10th Centuries Maya Sha - Western History Department, accessed July 27, 2025, <a href="https://www.history.uwo.ca/People/Docs/Shatzmiller-Articles/12-Transcontinental" target="_blank">https://www.history.uwo.ca/People/Docs/Shatzmiller-Articles/12-Transcontinental</a> -Trade.pdf</li>
-<li>​Silk Roads, Indian Ocean, &amp; Trans-Saharan Routes [AP World History Review]—Unit 2 Topics 1, 3, 4 - YouTube, accessed July 27, 2025, <a href="https://www.youtube.com/watch?v=Vi6aLWr6HZw&amp;pp=0gcJCfwAo7VqN5tD" target="_blank">https://www.youtube.com/watch?v=Vi6aLWr6HZw&amp;pp=0gcJCfwAo7VqN5tD</a></li>
-<li>​Hadad - Wikiwand, accessed July 27, 2025, <a href="https://www.wikiwand.com/en/articles/Hadad" target="_blank">https://www.wikiwand.com/en/articles/Hadad</a></li>
-<li>​Israel &amp; the Mari Archives | Arabian Prophets, accessed July 27, 2025, <a href="https://arabianprophets.com/?page_id=2158" target="_blank">https://arabianprophets.com/?page_id=2158</a></li>
-<li>​Alalakh | Turkish Archaeological News, accessed July 27, 2025, <a href="https://turkisharchaeonews.net/site/alalakh" target="_blank">https://turkisharchaeonews.net/site/alalakh</a></li>
-<li>​EXCAVATIONS AT TELL ATCHANA - Alalakh, accessed July 27, 2025, <a href="https://www.alalakh.org/excavations-at-tell-atchana/" target="_blank">https://www.alalakh.org/excavations-at-tell-atchana/</a></li>
-<li>​hereafter -- Alalakh - Our Ancient World, accessed July 27, 2025, <a href="http://ourancientworld.com/Settlement.aspx?id=518" target="_blank">http://ourancientworld.com/Settlement.aspx?id=518</a></li>
-<li>​Amorites in the early Old Babylonian Period - Scholarly Publications Leiden University, accessed July 27, 2025, <a href="https://scholarlypublications.universiteitleiden.nl/access/item%3A2944806/view" target="_blank">https://scholarlypublications.universiteitleiden.nl/access/item%3A2944806/view</a></li>
-<li>​Chapter 17 Akkadian and the Amorites in - Brill, accessed July 27, 2025, <a href="https://brill.com/display/book/edcoll/9789004445215/BP000023.xml" target="_blank">https://brill.com/display/book/edcoll/9789004445215/BP000023.xml</a></li>
-<li>​Brotherhood of Kings, accessed July 27, 2025, <a href="https://institutes.abu.edu.ng/idr/public/assets/docs/Brotherhood%20of%20Kings_" target="_blank">https://institutes.abu.edu.ng/idr/public/assets/docs/Brotherhood%20of%20Kings_</a> %20How%20International%20Relations%20Shaped%20the%20Ancient%20Near %20East%20(%20PDFDrive%20).pdf</li>
-<li>​Where Was the Mysterious Kingdom of Yam? - Ancient Origins, accessed July 27, 2025, <a href="https://www.ancient-origins.net/ancient-places-africa/where-was-mysterious-kin" target="_blank">https://www.ancient-origins.net/ancient-places-africa/where-was-mysterious-kin</a> gdom-yam-005524</li>
-<li>​en.wikipedia.org, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Idrimi#:~:text=According%20to%20Edward%20Gree" target="_blank">https://en.wikipedia.org/wiki/Idrimi#:~:text=According%20to%20Edward%20Gree</a> nstein%20and,I%20did%20what%20I%20wanted.</li>
-<li>​statue | British Museum, accessed July 27, 2025, <a href="https://www.britishmuseum.org/collection/object/W_1939-0613-101?selectedIma" target="_blank">https://www.britishmuseum.org/collection/object/W_1939-0613-101?selectedIma</a> geId=1613080026</li>
-<li>​The Statue of Idrimi - Factum Foundation, accessed July 27, 2025, <a href="https://factumfoundation.org/our-projects/digitisation/the-statue-of-idrimi/" target="_blank">https://factumfoundation.org/our-projects/digitisation/the-statue-of-idrimi/</a></li>
-<li>​THE UNIVERSITY OF CHICAGO THE AMORITE DYNASTY OF UGARIT: THE HISTORICAL ORIGINS OF THE BRONZE AGE POLITY OF UGARIT BASED UPON L - Knowledge UChicago, accessed July 27, 2025, <a href="https://knowledge.uchicago.edu/record/286/files/Buck_uchicago_0330D_14194.p" target="_blank">https://knowledge.uchicago.edu/record/286/files/Buck_uchicago_0330D_14194.p</a> df</li>
-<li>​Middle Eastern empires - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Middle_Eastern_empires" target="_blank">https://en.wikipedia.org/wiki/Middle_Eastern_empires</a></li>
-<li>​History, accessed July 27, 2025, <a href="https://antakyatarihikentmerkezi.ktb.gov.tr/EN-348066/history.html" target="_blank">https://antakyatarihikentmerkezi.ktb.gov.tr/EN-348066/history.html</a></li>
-<li>​Historical Dictionary of Mesopotamia - Nomos eLibrary, accessed July 27, 2025, <a href="https://www.nomos-elibrary.de/10.5771/9780810863248.pdf" target="_blank">https://www.nomos-elibrary.de/10.5771/9780810863248.pdf</a></li>
-<li>​The Evolution of Defensive Elements in the Syrian Cities and Kingdoms during the Bronze Age. - CORE, accessed July 27, 2025, <a href="https://core.ac.uk/download/pdf/322821098.pdf" target="_blank">https://core.ac.uk/download/pdf/322821098.pdf</a></li></ul></div>
+        <li>​ 16</li>
+        <li>​ 7</li>
+        <li>​ 25</li>
+        <li>​ 8</li>
+        <li>​ 24</li>
+        <li>​ 5</li>
+        <li>​ 2</li>
+        <li>​ 40</li>
+        <li>​22</li>
+        <li>​39</li>
+        <li>​6</li>
+        <li>​19</li>
+        <li>​41</li>
+        <li>​26</li>
+        <li>​31</li>
+        <li>​42</li>
+        <li>​3</li>
+        <li>​3</li>
+        <li>​4</li>
+        <li>​43</li>
+        <li>​44</li>
+        <li>​45</li>
+        <li>​1</li>
+        <li>​46</li>
+        <li>​47</li>
+        <li>​48</li>
+        <li>​49</li>
+        <li>​50</li>
+        <li>​51</li>
+        <li>​52</li>
+        <li>​53</li>
+        <li>​54</li>
+        <li>​55</li>
+        <li>​56</li>
+        <li>​57</li>
+        <li>​58</li>
+        <li>​1</li>
+        <li>​26</li>
+        <li>​23</li>
+        <li>​59</li>
+        <li>​32</li>
+        <li>​33</li>
+        <li>​60</li>
+        <li>​35</li>
+        <li>​7</li>
+        <li>​34</li>
+        <li>​25</li>
+        <li>​16</li>
+        <li>​9</li>
+        <li>​13</li>
+        <li>​10</li>
+        <li>​29</li>
+        <li>​11</li>
+        <li>​12</li>
+        <li>​61</li>
+        <li>​13</li>
+        <li>​17</li>
+        <li>​14</li>
+        <li>​18</li>
+        <li>​62</li>
+        <li>​15</li>
+        <li>​28</li>
+        <li>​63</li>
+        <li>​30</li>
+        <li>​64</li>
+        <li>​27</li>
+        <li>​20</li>
+        <li>​10</li>
+        <li>​65</li>
+        <li>​66</li>
+        <li>​21</li>
+        <li>​1</li>
+        <li>​16</li>
+        <li>​67</li>
+        <li>​23</li>
+        <li>​2</li>
+        <li>​68</li>
+        <li>​69</li>
+        <li>​70</li>
+        <li>​36</li>
+        <li>​71</li>
+        <li>​38</li>
+        <li>​37</li>
+        <li>​7</li>
+        <li>​72</li>
+        <li>​73</li>
+        <li>​74</li>
+        <li>​75</li>
+        <li>​76</li>
+        <li>​4</li>
+        <li>​3</li>
+        <li>​5</li>
+        <li>​4</li>
+        <li>​18</li>
+        <li>​34</li>
+        <li>​13</li>
+        <li>​11</li>
+        <li>​18</li>
+        <li>​ 23</li>
+        <li>​ 15 Works cited</li>
+        <li>​ Yamhad - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Yamhad" target="_blank">https://en.wikipedia.org/wiki/Yamhad</a></li>
+        <li>​ About: Yamhad - DBpedia, accessed July 27, 2025, <a href="https://dbpedia.org/page/Yamhad" target="_blank">https://dbpedia.org/page/Yamhad</a></li>
+        <li>​ Yamhad — Wikipédia, accessed July 27, 2025, <a href="https://fr.wikipedia.org/wiki/Yamhad" target="_blank">https://fr.wikipedia.org/wiki/Yamhad</a></li>
+        <li>​ Alep, le Yamkhad - Antikforever, accessed July 27, 2025, <a href="https://antikforever.com/alep_yamkhad/" target="_blank">https://antikforever.com/alep_yamkhad/</a></li>
+        <li>​ Aleppo - New World Encyclopedia, accessed July 27, 2025, <a href="https://www.newworldencyclopedia.org/entry/Aleppo" target="_blank">https://www.newworldencyclopedia.org/entry/Aleppo</a></li>
+        <li>​ Aleppo - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Aleppo" target="_blank">https://en.wikipedia.org/wiki/Aleppo</a></li>
+        <li>​ Yamhad — Al Fusaic, accessed July 27, 2025, <a href="https://www.alfusaic.net/civilizations-101/yamhad" target="_blank">https://www.alfusaic.net/civilizations-101/yamhad</a></li>
+        <li>​ Ancient Yamhad: The History and Legacy of Syria&#x27;s First Great Kingdom - Audiobooks.com, accessed July 27, 2025, <a href="https://www.audiobooks.com/audiobook/ancient-yamhad-the-history-and-legac" target="_blank">https://www.audiobooks.com/audiobook/ancient-yamhad-the-history-and-legac</a> y-of-syrias-first-great-kingdom/501184</li>
+        <li>​ Ancient Yamhad: The History and Legacy of Syria&#x27;s First Great Kingdom - Audiobook - Charles River Editors - ISBN 9781662274213 - Storytel, accessed July 27, 2025, <a href="https://www.storytel.com/tv/books/ancient-yamhad-the-history-and-legacy-of-s" target="_blank">https://www.storytel.com/tv/books/ancient-yamhad-the-history-and-legacy-of-s</a> yria-s-first-great-kingdom-1149272</li>
+        <li>​5. Mari and the Amorite Age: The City and Its Music - The Center for Hellenic Studies, accessed July 27, 2025, <a href="https://chs.harvard.edu/chapter/5-mari-and-the-amorite-age-the-city-and-its-m" target="_blank">https://chs.harvard.edu/chapter/5-mari-and-the-amorite-age-the-city-and-its-m</a> usic/</li>
+        <li>​Mari - Jewish Virtual Library, accessed July 27, 2025, <a href="https://www.jewishvirtuallibrary.org/mari" target="_blank">https://www.jewishvirtuallibrary.org/mari</a></li>
+        <li>​Mari, Syria - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Mari,_Syria" target="_blank">https://en.wikipedia.org/wiki/Mari,_Syria</a></li>
+        <li>​Chapter 14 The Kingdom of Yamḫad in: The Amorites - Brill, accessed July 27, 2025, <a href="https://brill.com/display/book/9789004547315/BP000025.xml" target="_blank">https://brill.com/display/book/9789004547315/BP000025.xml</a></li>
+        <li>​Alalakh - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Alalakh" target="_blank">https://en.wikipedia.org/wiki/Alalakh</a></li>
+        <li>​Alalakh - Wikiwand, accessed July 27, 2025, <a href="https://www.wikiwand.com/en/articles/Alalakh" target="_blank">https://www.wikiwand.com/en/articles/Alalakh</a></li>
+        <li>​Yamhad dynasty - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Yamhad_dynasty" target="_blank">https://en.wikipedia.org/wiki/Yamhad_dynasty</a></li>
+        <li>​iV. hiStoRy AnD chRonoloGiES FoR AlAlAkh: tEXtuAl AnD ARchAEoloGicAl DAtA, accessed July 27, 2025, <a href="https://austriaca.at/0xc1aa5572%200x00078f58.pdf" target="_blank">https://austriaca.at/0xc1aa5572%200x00078f58.pdf</a></li>
+        <li>​MIDDLE BRONZE AGE II (1800-1600 BC) - Alalakh, accessed July 27, 2025, <a href="https://www.alalakh.org/middle-bronze-age-ii/" target="_blank">https://www.alalakh.org/middle-bronze-age-ii/</a></li>
+        <li>​The Eastern Mediterranean and Syria, 2000–1000 B.C. | Chronology | Heilbrunn Timeline of Art History, accessed July 27, 2025, <a href="https://www.metmuseum.org/toah/ht/03/wae.html" target="_blank">https://www.metmuseum.org/toah/ht/03/wae.html</a></li>
+        <li>​Amorites - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Amorites" target="_blank">https://en.wikipedia.org/wiki/Amorites</a></li>
+        <li>​Cultural Identity, Archaeology, and the Amorites of the Early Second Millennium BCE: An Analytical Paradigmatic Approach - eScholarship.org, accessed July 27, 2025, <a href="https://escholarship.org/content/qt9pn561nn/qt9pn561nn_noSplash_a7bcaf22383" target="_blank">https://escholarship.org/content/qt9pn561nn/qt9pn561nn_noSplash_a7bcaf22383</a> cdec0ff03ae8b34ac6324.pdf</li>
+        <li>​Kingdoms of Syria - Aleppo / Yamkhad (Syria) - The History Files, accessed July 27, 2025, <a href="https://www.historyfiles.co.uk/KingListsMiddEast/SyriaAlep.htm" target="_blank">https://www.historyfiles.co.uk/KingListsMiddEast/SyriaAlep.htm</a></li>
+        <li>​Yamhad - Wikiwand, accessed July 27, 2025, <a href="https://www.wikiwand.com/en/articles/Yamhad" target="_blank">https://www.wikiwand.com/en/articles/Yamhad</a></li>
+        <li>​Ancient Yamhad: The History and Legacy of Syria&#x27;s First Great Kingdom (Unabridged) - Apple Books, accessed July 27, 2025, <a href="https://books.apple.com/ie/audiobook/ancient-yamhad-the-history-and-legacy-o" target="_blank">https://books.apple.com/ie/audiobook/ancient-yamhad-the-history-and-legacy-o</a> f-syrias/id1652514092</li>
+        <li>​Civilizations in Review: Yamhad Empire - Al Fusaic, accessed July 27, 2025, <a href="https://www.alfusaic.net/blog/recommendations/civilizations-in-review-yamhad" target="_blank">https://www.alfusaic.net/blog/recommendations/civilizations-in-review-yamhad</a></li>
+        <li>​A Sketch of North Syrian Economic Relations in the Middle Bronze ..., accessed July 27, 2025, <a href="https://ir.vanderbilt.edu/bitstreams/8a2beda9-1c1e-430a-8f87-cfbc43384e70/do" target="_blank">https://ir.vanderbilt.edu/bitstreams/8a2beda9-1c1e-430a-8f87-cfbc43384e70/do</a> wnload</li>
+        <li>​Ancient Amorite Language Discovered - Biblical Archaeology Society, accessed July 27, 2025, <a href="https://www.biblicalarchaeology.org/daily/ancient-cultures/ancient-near-eastern-" target="_blank">https://www.biblicalarchaeology.org/daily/ancient-cultures/ancient-near-eastern-</a> world/ancient-amorite-language-discovered/</li>
+        <li>​bm-sep-2007-71 - Ancient Egypt and Archaeology Web Site, accessed July 27, 2025, <a href="https://www.ancient-egypt.co.uk/british%20museum/pages/bm-sep-2007-71.ht" target="_blank">https://www.ancient-egypt.co.uk/british%20museum/pages/bm-sep-2007-71.ht</a> m</li>
+        <li>​The Mari Archives - Ministry Magazine, accessed July 27, 2025, <a href="https://www.ministrymagazine.org/archive/1977/04/the-mari-archives" target="_blank">https://www.ministrymagazine.org/archive/1977/04/the-mari-archives</a></li>
+        <li>​Alalakh - Tiscali, accessed July 27, 2025, <a href="http://web.tiscali.it/ranesorg/Alalah.htm" target="_blank">http://web.tiscali.it/ranesorg/Alalah.htm</a></li>
+        <li>​Yamhad (Aleppo), Middle Bronze Age temple orthostats, detail (Photo by... | Download Scientific Diagram - ResearchGate, accessed July 27, 2025, <a href="https://www.researchgate.net/figure/Yamhad-Aleppo-Middle-Bronze-Age-templ" target="_blank">https://www.researchgate.net/figure/Yamhad-Aleppo-Middle-Bronze-Age-templ</a> e-orthostats-detail-Photo-by-author-summer_fig2_259764433</li>
+        <li>​Hadad | EBSCO Research Starters, accessed July 27, 2025, <a href="https://www.ebsco.com/research-starters/religion-and-philosophy/hadad" target="_blank">https://www.ebsco.com/research-starters/religion-and-philosophy/hadad</a></li>
+        <li>​Hadad - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Hadad" target="_blank">https://en.wikipedia.org/wiki/Hadad</a></li>
+        <li>​Temple of the Storm God - Archaeology Magazine Archive, accessed July 27, 2025, <a href="https://archive.archaeology.org/0911/features/syria_aleppo_temple_storm_god_ci" target="_blank">https://archive.archaeology.org/0911/features/syria_aleppo_temple_storm_god_ci</a> tadel.html</li>
+        <li>​Hadad | Dr. Claude Mariottini - Professor of Old Testament, accessed July 27, 2025, <a href="https://claudemariottini.com/tag/hadad/" target="_blank">https://claudemariottini.com/tag/hadad/</a></li>
+        <li>​aemw/alalakh/idrimi - Oracc, accessed July 27, 2025, <a href="https://oracc.museum.upenn.edu/aemw/alalakh/idrimi/P500443" target="_blank">https://oracc.museum.upenn.edu/aemw/alalakh/idrimi/P500443</a></li>
+        <li>​Idrimi - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Idrimi" target="_blank">https://en.wikipedia.org/wiki/Idrimi</a></li>
+        <li>​Abraham and Idrimi - BYU ScholarsArchive, accessed July 27, 2025, <a href="https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=1511&amp;context=jbms" target="_blank">https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=1511&amp;context=jbms</a></li>
+        <li>​The History of Aleppo during the Bronze Age - YouTube, accessed July 27, 2025, <a href="https://m.youtube.com/watch?v=8MaRRXoZm2U&amp;pp=ygUJI2FydGhhbGFi" target="_blank">https://m.youtube.com/watch?v=8MaRRXoZm2U&amp;pp=ygUJI2FydGhhbGFi</a></li>
+        <li>​Yamhad Dynasty - Encyclopedia.pub, accessed July 27, 2025, <a href="https://encyclopedia.pub/entry/30940" target="_blank">https://encyclopedia.pub/entry/30940</a></li>
+        <li>​Urban Regeneration: Middle Bronze II (ca. 1800-1600 BC, Umm el-Marra Period IIIa-c), accessed July 27, 2025, <a href="https://sites.krieger.jhu.edu/ummelmarra/2014/01/27/urban-regeneration-middle-" target="_blank">https://sites.krieger.jhu.edu/ummelmarra/2014/01/27/urban-regeneration-middle-</a> bronze-ii-ca-1800-1600-bc-umm-el-marra-period-iiia-c/</li>
+        <li>​Middle Bronze Age, accessed July 27, 2025, <a href="https://brown.edu/Departments/Joukowsky_Institute/courses/archaeologiesneare" target="_blank">https://brown.edu/Departments/Joukowsky_Institute/courses/archaeologiesneare</a> ast/files/3930368.pdf</li>
+        <li>​Le Yamhad - Villes de l&#x27;âge du bronze, accessed July 27, 2025, <a href="http://bronze-age-towns.com/les-autres-pays-de-lage-du-bronze/le-yamhad/" target="_blank">http://bronze-age-towns.com/les-autres-pays-de-lage-du-bronze/le-yamhad/</a></li>
+        <li>​Chutzpah in a Letter Intended for the King of Yamhad - UB, accessed July 27, 2025, <a href="https://www.ub.edu/ipoa/wp-content/uploads/2021/07/20191AuOrMiglio.pdf" target="_blank">https://www.ub.edu/ipoa/wp-content/uploads/2021/07/20191AuOrMiglio.pdf</a></li>
+        <li>​J. Lauinger, Following the Man of Yamhad. Settlement and Territory at Old Babylonian Alalah, Culture &amp; History of the Ancient Near East 75, Leyde/Boston, 2015 - Cairn, accessed July 27, 2025, <a href="https://shs.cairn.info/article/ASSY_111_0179d?lang=fr&amp;ID_ARTICLE=ASSY_111_0179" target="_blank">https://shs.cairn.info/article/ASSY_111_0179d?lang=fr&amp;ID_ARTICLE=ASSY_111_0179</a> d</li>
+        <li>​Jam – Chad&#x27;s Raspberry Kitchen, Inc., accessed July 27, 2025, <a href="https://chadsraspberrykitchen.com/collections/jam" target="_blank">https://chadsraspberrykitchen.com/collections/jam</a></li>
+        <li>​Animal Jam Chad Stfu - Discover &amp; Share GIFs - Tenor, accessed July 27, 2025, <a href="https://tenor.com/view/animal-jam-chad-stfu-stfu-im-playing-stfu-im-playing-ani" target="_blank">https://tenor.com/view/animal-jam-chad-stfu-stfu-im-playing-stfu-im-playing-ani</a> mal-jam-gif-24458538</li>
+        <li>​February Art Jam: Chad by JJSponge120 on DeviantArt, accessed July 27, 2025, <a href="https://www.deviantart.com/jjsponge120/journal/February-Art-Jam-Chad-90569" target="_blank">https://www.deviantart.com/jjsponge120/journal/February-Art-Jam-Chad-90569</a> 3224</li>
+        <li>​Virtual Jam - Chad LB, Noah Kellman, Corey Fonville, Nick Frenay - YouTube, accessed July 27, 2025, <a href="https://www.youtube.com/watch?v=dJWLvhD3AF4" target="_blank">https://www.youtube.com/watch?v=dJWLvhD3AF4</a></li>
+        <li>​Jamchad - Wikipedia, accessed July 27, 2025, <a href="https://de.wikipedia.org/wiki/Jamchad" target="_blank">https://de.wikipedia.org/wiki/Jamchad</a></li>
+        <li>​BIBLICAL IDEAS OF NATIONALITY ANCIENT AND MODERN - dokumen.pub, accessed July 27, 2025, <a href="https://dokumen.pub/download/biblical-ideas-of-nationality-ancient-and-moder" target="_blank">https://dokumen.pub/download/biblical-ideas-of-nationality-ancient-and-moder</a> n-9781575065342.html</li>
+        <li>​Ge 106 | PDF - Scribd, accessed July 27, 2025, <a href="https://www.scribd.com/document/706663567/GE-106" target="_blank">https://www.scribd.com/document/706663567/GE-106</a></li>
+        <li>​Ancient Mesopotamia: Portrait of a Dead Civilization 9780226177670 - DOKUMEN.PUB, accessed July 27, 2025, <a href="https://dokumen.pub/ancient-mesopotamia-portrait-of-a-dead-civilization-9780" target="_blank">https://dokumen.pub/ancient-mesopotamia-portrait-of-a-dead-civilization-9780</a></li>
+        <li>html</li>
+        <li>​Full text of &quot;Ancient Mesopotamia: Portrait of a Dead Civilization&quot; - Internet Archive, accessed July 27, 2025, <a href="https://archive.org/stream/ancientmesopotamia/Ancient%20Mesopotamia_djvu.tx" target="_blank">https://archive.org/stream/ancientmesopotamia/Ancient%20Mesopotamia_djvu.tx</a> t</li>
+        <li>​NOTE TO USERS UMI, accessed July 27, 2025, <a href="https://utoronto.scholaris.ca/bitstreams/940e6af2-1652-4f1b-b2ce-f0923dda285" target="_blank">https://utoronto.scholaris.ca/bitstreams/940e6af2-1652-4f1b-b2ce-f0923dda285</a> a/download</li>
+        <li>​THIS Volume has been printed by the Political Economy Club of London for distribution amongst its members and tlieU&#x27; immediate f, accessed July 27, 2025, <a href="https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2060/McCullo" target="_blank">https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2060/McCullo</a> ch_1372_Bk.pdf</li>
+        <li>​Ancient Africa: Trade Routes - Exploros, accessed July 27, 2025, <a href="https://www.exploros.com/summary/Ancient-Africa-Trade-Routes" target="_blank">https://www.exploros.com/summary/Ancient-Africa-Trade-Routes</a></li>
+        <li>​Transcontinental Trade and Economic Growth in the Early Islamic Empire: The Red Sea Corridor in the 8th-10th Centuries Maya Sha - Western History Department, accessed July 27, 2025, <a href="https://www.history.uwo.ca/People/Docs/Shatzmiller-Articles/12-Transcontinental" target="_blank">https://www.history.uwo.ca/People/Docs/Shatzmiller-Articles/12-Transcontinental</a> -Trade.pdf</li>
+        <li>​Silk Roads, Indian Ocean, &amp; Trans-Saharan Routes [AP World History Review]—Unit 2 Topics 1, 3, 4 - YouTube, accessed July 27, 2025, <a href="https://www.youtube.com/watch?v=Vi6aLWr6HZw&amp;pp=0gcJCfwAo7VqN5tD" target="_blank">https://www.youtube.com/watch?v=Vi6aLWr6HZw&amp;pp=0gcJCfwAo7VqN5tD</a></li>
+        <li>​Hadad - Wikiwand, accessed July 27, 2025, <a href="https://www.wikiwand.com/en/articles/Hadad" target="_blank">https://www.wikiwand.com/en/articles/Hadad</a></li>
+        <li>​Israel &amp; the Mari Archives | Arabian Prophets, accessed July 27, 2025, <a href="https://arabianprophets.com/?page_id=2158" target="_blank">https://arabianprophets.com/?page_id=2158</a></li>
+        <li>​Alalakh | Turkish Archaeological News, accessed July 27, 2025, <a href="https://turkisharchaeonews.net/site/alalakh" target="_blank">https://turkisharchaeonews.net/site/alalakh</a></li>
+        <li>​EXCAVATIONS AT TELL ATCHANA - Alalakh, accessed July 27, 2025, <a href="https://www.alalakh.org/excavations-at-tell-atchana/" target="_blank">https://www.alalakh.org/excavations-at-tell-atchana/</a></li>
+        <li>​hereafter -- Alalakh - Our Ancient World, accessed July 27, 2025, <a href="http://ourancientworld.com/Settlement.aspx?id=518" target="_blank">http://ourancientworld.com/Settlement.aspx?id=518</a></li>
+        <li>​Amorites in the early Old Babylonian Period - Scholarly Publications Leiden University, accessed July 27, 2025, <a href="https://scholarlypublications.universiteitleiden.nl/access/item%3A2944806/view" target="_blank">https://scholarlypublications.universiteitleiden.nl/access/item%3A2944806/view</a></li>
+        <li>​Chapter 17 Akkadian and the Amorites in - Brill, accessed July 27, 2025, <a href="https://brill.com/display/book/edcoll/9789004445215/BP000023.xml" target="_blank">https://brill.com/display/book/edcoll/9789004445215/BP000023.xml</a></li>
+        <li>​Brotherhood of Kings, accessed July 27, 2025, <a href="https://institutes.abu.edu.ng/idr/public/assets/docs/Brotherhood%20of%20Kings_" target="_blank">https://institutes.abu.edu.ng/idr/public/assets/docs/Brotherhood%20of%20Kings_</a> %20How%20International%20Relations%20Shaped%20the%20Ancient%20Near %20East%20(%20PDFDrive%20).pdf</li>
+        <li>​Where Was the Mysterious Kingdom of Yam? - Ancient Origins, accessed July 27, 2025, <a href="https://www.ancient-origins.net/ancient-places-africa/where-was-mysterious-kin" target="_blank">https://www.ancient-origins.net/ancient-places-africa/where-was-mysterious-kin</a> gdom-yam-005524</li>
+        <li>​en.wikipedia.org, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Idrimi#:~:text=According%20to%20Edward%20Gree" target="_blank">https://en.wikipedia.org/wiki/Idrimi#:~:text=According%20to%20Edward%20Gree</a> nstein%20and,I%20did%20what%20I%20wanted.</li>
+        <li>​statue | British Museum, accessed July 27, 2025, <a href="https://www.britishmuseum.org/collection/object/W_1939-0613-101?selectedIma" target="_blank">https://www.britishmuseum.org/collection/object/W_1939-0613-101?selectedIma</a> geId=1613080026</li>
+        <li>​The Statue of Idrimi - Factum Foundation, accessed July 27, 2025, <a href="https://factumfoundation.org/our-projects/digitisation/the-statue-of-idrimi/" target="_blank">https://factumfoundation.org/our-projects/digitisation/the-statue-of-idrimi/</a></li>
+        <li>​THE UNIVERSITY OF CHICAGO THE AMORITE DYNASTY OF UGARIT: THE HISTORICAL ORIGINS OF THE BRONZE AGE POLITY OF UGARIT BASED UPON L - Knowledge UChicago, accessed July 27, 2025, <a href="https://knowledge.uchicago.edu/record/286/files/Buck_uchicago_0330D_14194.p" target="_blank">https://knowledge.uchicago.edu/record/286/files/Buck_uchicago_0330D_14194.p</a> df</li>
+        <li>​Middle Eastern empires - Wikipedia, accessed July 27, 2025, <a href="https://en.wikipedia.org/wiki/Middle_Eastern_empires" target="_blank">https://en.wikipedia.org/wiki/Middle_Eastern_empires</a></li>
+        <li>​History, accessed July 27, 2025, <a href="https://antakyatarihikentmerkezi.ktb.gov.tr/EN-348066/history.html" target="_blank">https://antakyatarihikentmerkezi.ktb.gov.tr/EN-348066/history.html</a></li>
+        <li>​Historical Dictionary of Mesopotamia - Nomos eLibrary, accessed July 27, 2025, <a href="https://www.nomos-elibrary.de/10.5771/9780810863248.pdf" target="_blank">https://www.nomos-elibrary.de/10.5771/9780810863248.pdf</a></li>
+        <li>​The Evolution of Defensive Elements in the Syrian Cities and Kingdoms during the Bronze Age. - CORE, accessed July 27, 2025, <a href="https://core.ac.uk/download/pdf/322821098.pdf" target="_blank">https://core.ac.uk/download/pdf/322821098.pdf</a></li></ul></div>
+
+        <div class="disclaimer">
+                    <p>Note: This was made with AI research, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+                </div>
+
         <div class="last-updated"><p>This page was created on: July 27, 2025</p></div>
     </div>
 </body>

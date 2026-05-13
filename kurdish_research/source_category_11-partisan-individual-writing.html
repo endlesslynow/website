@@ -121,6 +121,59 @@ h2 { display: none; }
 .sort-btn.active { color: #f8f4e8; background-color: #4a3a1f; border-color: #4a3a1f; outline: 3px solid #ffd700; outline-offset: 2px; }
 .sort-label { font-weight: 700; font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase; color: #4a3a1f; align-self: center; margin-right: 6px; transition: color 0.2s ease; }
 .container:has(.nav-buttons .nav-btn.active) .sort-label { color: #ffffff; }
+.search-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 24px;
+}
+.search-label {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #4a3a1f;
+  transition: color 0.2s ease;
+}
+.container:has(.nav-buttons .nav-btn.active) .search-label,
+.container:has(.nav-buttons .nav-btn.active) .search-count {
+  color: #ffffff;
+}
+.search-input {
+  flex: 1 1 280px;
+  min-width: 0;
+  padding: 9px 12px;
+  color: #2a1f10;
+  background-color: #fffaf0;
+  border: 1px solid #d3c9a5;
+  font: inherit;
+  line-height: 1.35;
+}
+.search-input:focus {
+  outline: 3px solid #ffd700;
+  outline-offset: 2px;
+  border-color: #4a3a1f;
+}
+.search-clear {
+  padding: 8px 13px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #4a3a1f;
+  background-color: #f4ecd6;
+  border: 1px solid #d3c9a5;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.search-clear:hover { background-color: #e8dcb6; border-color: #cdbe8d; }
+.search-count {
+  flex-basis: 100%;
+  font-size: 13px;
+  color: #6b553f;
+  transition: color 0.2s ease;
+}
 
 /* Works-cited entry */
 .source-entry {
@@ -203,6 +256,9 @@ footer {
   .container { padding: 24px 22px; }
   h1 { font-size: 26px; }
   .nav-btn { flex: 1 1 auto; text-align: center; }
+  .search-label,
+  .search-input,
+  .search-clear { width: 100%; }
   .source-entry { padding: 16px 18px; }
 }
 </style></head><body><div class="container">
@@ -229,6 +285,12 @@ footer {
 <button type="button" class="sort-btn active" data-sort="used">Most used</button>
 <button type="button" class="sort-btn" data-sort="alpha">Alphabetical</button>
 </div>
+<div class="search-controls" role="search">
+<label class="search-label" for="source-search">Search</label>
+<input type="search" id="source-search" class="search-input" autocomplete="off" placeholder="Search source names or used-in files">
+<button type="button" class="search-clear" hidden>Clear</button>
+<div class="search-count" aria-live="polite"></div>
+</div>
 <div class="back-link"><a href="source_categories.html" class="resource-link"><span class="link-title">Back to Source Categories</span></a></div>
 <div class="category">
 <h2>Partisan individual writing</h2>
@@ -236,7 +298,7 @@ footer {
 <h3>&#x27;Reading Lolita in Tel Aviv&#x27;: Letters from a Kurd</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Millennial Bond An Analytical History of the Kurdish-Jewish Relationship to 2010</a>
+<a class="tag" href="podcast_pages/Kurdish_Relationship_with_Jews_Before_2010.html" target="_blank" rel="noopener noreferrer">A Millennial Bond An Analytical History of the Kurdish-Jewish Relationship to 2010</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://tarb.co.il/reading-lolita-in-tel-aviv-letters-from-a-kurd" target="_blank" rel="noopener noreferrer">https://tarb.co.il/reading-lolita-in-tel-aviv-letters-from-a-kurd</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -245,7 +307,7 @@ footer {
 <h3>16.Yüzyılda Osmanlı-Kürt İlişki ve İttifakı | Demokratik Modernite</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Kurds and the Ottoman Empire A History of Alliance, Autonomy, and Conflict</a>
+<a class="tag" href="podcast_pages/Kurds_and_Ottoman_Relations_Politics.html" target="_blank" rel="noopener noreferrer">The Kurds and the Ottoman Empire A History of Alliance, Autonomy, and Conflict</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://demokratikmodernite.org/16-yuzyilda-osmanli-kurt-iliski-ve-ittifaki" target="_blank" rel="noopener noreferrer">https://demokratikmodernite.org/16-yuzyilda-osmanli-kurt-iliski-ve-ittifaki</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -254,7 +316,7 @@ footer {
 <h3>1915ÖŠÕ« Õ°Õ¡ÕμÕ¥Ö€Õ« Õ ̧Õ2Õ¢Õ¥Ö€Õ£Õ ̧Ö‚Õ©ÕμÕ ̧Ö‚Õ¶Õ ̈ Õ ̄Õ¡Ö€Õ ̧Õ2 Õ§ Õ ̄Ö€Õ ̄Õ¶Õ3⁄4Õ¥Õ¬ Õ°Õ«Õ ́Õ¡ Ô±Ö†Ö€Õ«Õ¶Õ ̧Ö‚Õ ́. Ô¿Õ¡Ö€Õ ̧ Õ“Õ¡ÕμÕ¬Õ¡Õ¶ (Õ¿Õ¥Õ1⁄2Õ¡Õ¶ÕμÕ ̧Ö‚Õ©) - Armtimes.com</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Place of Refuge, A Fading Presence Armenian Accounts of the Afrin District Before 2010</a>
+<a class="tag" href="podcast_pages/Armenian_Accounts_of_Afrin.html" target="_blank" rel="noopener noreferrer">A Place of Refuge, A Fading Presence Armenian Accounts of the Afrin District Before 2010</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://armtimes.com/hy/article/130551" target="_blank" rel="noopener noreferrer">https://armtimes.com/hy/article/130551</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -263,7 +325,7 @@ footer {
 <h3>1915ÖŠÕ« ÕˆÕ2Õ¢Õ¥Ö€Õ£Õ ̧Ö‚Õ©Õ«Ö‚Õ¶Õ ̈ Ô¿Ö€Õ¶Õ¡Õμ Ô¿Ö€Õ ̄Õ¶Õ ̧Ö‚Õ«Õ¬ Ô±Ö†Ö€Õ«Õ¶Õ« Õ„Õ§Õ». Ô¿Õ¡Ö€Ö... Õ“Õ¡ÕμÕ¬Õ¡Õ¶ - Horizon Weekly</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Place of Refuge, A Fading Presence Armenian Accounts of the Afrin District Before 2010</a>
+<a class="tag" href="podcast_pages/Armenian_Accounts_of_Afrin.html" target="_blank" rel="noopener noreferrer">A Place of Refuge, A Fading Presence Armenian Accounts of the Afrin District Before 2010</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://horizonweekly.ca/am/1915-%D5%AB-%D5%B8%D5%B2%D5%A2%D5%A5%D6%80%D5%A3%D5%B8%D6%82%D5%A9%D5%AB%D6%82%D5%B6%D5%A8-%D5%AF%D6%80%D5%B6%D5%A1%D5%B5-%D5%AF%D6%80%D5%AF%D5%B6%D5%B8%D6%82%D5%AB%D5%AC-%D5%A1%D6%86%D6%80%D5%AB" target="_blank" rel="noopener noreferrer">https://horizonweekly.ca/am/1915-%D5%AB-%D5%B8%D5%B2%D5%A2%D5%A5%D6%80%D5%A3%D5%B8%D6%82%D5%A9%D5%AB%D6%82%D5%B6%D5%A8-%D5%AF%D6%80%D5%B6%D5%A1%D5%B5-%D5%AF%D6%80%D5%AF%D5%B6%D5%B8%D6%82%D5%AB%D5%AC-%D5%A1%D6%86%D6%80%D5%AB</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -272,7 +334,7 @@ footer {
 <h3>1915ÖŠÕ«Õ¶ Õ€Õ¡ÕμÕ¥Ö€Õ ̧Ö‚Õ¶ Õ€Õ¥Õ¿ ÕÕ¥Õ2Õ« ÕˆÖ‚Õ¶Õ¥ÖÕ¡Õ® ÕˆÕ2Õ¢Õ¥Ö€Õ£Õ ̧Ö‚Õ©Õ«Ö‚Õ¶Õ ̈ Ô¿Ö€Õ¶Õ¡Õμ Ô¿Ö€Õ ̄Õ¶Õ ̧Ö‚Õ«Õ¬ Ô±Ö†Ö€Õ«Õ¶Õ« Õ„Õ§Õ». Ô¿Õ¡Ö€Ö... Õ“Õ¡ÕμÕ¬Õ¡Õ¶ - MassisPost</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Place of Refuge, A Fading Presence Armenian Accounts of the Afrin District Before 2010</a>
+<a class="tag" href="podcast_pages/Armenian_Accounts_of_Afrin.html" target="_blank" rel="noopener noreferrer">A Place of Refuge, A Fading Presence Armenian Accounts of the Afrin District Before 2010</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://massispost.com/am/2018/02/05/1915-%D5%AB%D5%B6-%D5%B0%D5%A1%D5%B5%D5%A5%D6%80%D5%B8%D6%82%D5%B6-%D5%B0%D5%A5%D5%BF-%D5%BF%D5%A5%D5%B2%D5%AB-%D5%B8%D6%82%D5%B6%D5%A5%D6%81%D5%A1%D5%AE-%D5%B8%D5%B2%D5%A2%D5%A5%D6%80%D5%A3%D5%B8" target="_blank" rel="noopener noreferrer">https://massispost.com/am/2018/02/05/1915-%D5%AB%D5%B6-%D5%B0%D5%A1%D5%B5%D5%A5%D6%80%D5%B8%D6%82%D5%B6-%D5%B0%D5%A5%D5%BF-%D5%BF%D5%A5%D5%B2%D5%AB-%D5%B8%D6%82%D5%B6%D5%A5%D6%81%D5%A1%D5%AE-%D5%B8%D5%B2%D5%A2%D5%A5%D6%80%D5%A3%D5%B8</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -281,7 +343,7 @@ footer {
 <h3>After a Century, the Question of the Kurds&#x27; Place in Syria Remains Unresolved, | - يف نرقلا نوتآ زكرم عقوملا نیرشعلا يدرُكلا</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">State, Land, and Identity Baathist Arabization and Displacement Policies in Syria&#x27;s Afrin District Before 2010</a><a class="tag" href="kurdish_research.html">The Circassians of Northern Syria A History of Displacement, Resilience, and Political Precarity</a><a class="tag" href="kurdish_research.html">The Enduring Nexus A Historical and Contemporary Analysis of Kurd-Arab Relations in Kurdistan</a><a class="tag" href="kurdish_research.html">The Unfolding Tapestry A History of Kurdish Nationalism</a>
+<a class="tag" href="podcast_pages/How_did_the_Baath_regime_in_Syria_Bring_Arabs_to_Afrin_and_Displace_Others.html" target="_blank" rel="noopener noreferrer">State, Land, and Identity Baathist Arabization and Displacement Policies in Syria&#x27;s Afrin District Before 2010</a><a class="tag" href="podcast_pages/Circassians_of_Afrin.html" target="_blank" rel="noopener noreferrer">The Circassians of Northern Syria A History of Displacement, Resilience, and Political Precarity</a><a class="tag" href="podcast_pages/The_Kurds_Relationship_with_Arabs_in_Kurdistan_Past_and_Present.html" target="_blank" rel="noopener noreferrer">The Enduring Nexus A Historical and Contemporary Analysis of Kurd-Arab Relations in Kurdistan</a><a class="tag" href="podcast_pages/History_of_Kurdish_Nationalism.html" target="_blank" rel="noopener noreferrer">The Unfolding Tapestry A History of Kurdish Nationalism</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://newlinesmag.com/essays/after-a-century-the-question-of-the-kurds-place-in-syria-remains-unresolved" target="_blank" rel="noopener noreferrer">https://newlinesmag.com/essays/after-a-century-the-question-of-the-kurds-place-in-syria-remains-unresolved</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 4</div>
@@ -290,7 +352,7 @@ footer {
 <h3>Alevilik Deyince Ne Anlıyoruz? - HUSEYİN DEDEKARGINOĞLU - perspektif</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Comprehensive Overview of Alevism Beliefs, History, and Contemporary Status</a>
+<a class="tag" href="podcast_pages/Alevism.html" target="_blank" rel="noopener noreferrer">A Comprehensive Overview of Alevism Beliefs, History, and Contemporary Status</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://perspektif.online/alevilik-deyince-ne-anliyoruz" target="_blank" rel="noopener noreferrer">https://perspektif.online/alevilik-deyince-ne-anliyoruz</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -299,7 +361,7 @@ footer {
 <h3>An Insider View on How Kurds See Israel and Palestine</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Millennial Bond An Analytical History of the Kurdish-Jewish Relationship to 2010</a>
+<a class="tag" href="podcast_pages/Kurdish_Relationship_with_Jews_Before_2010.html" target="_blank" rel="noopener noreferrer">A Millennial Bond An Analytical History of the Kurdish-Jewish Relationship to 2010</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://fairobserver.com/world-news/middle-east-news/an-insider-view-on-how-kurds-see-israel-and-palestine" target="_blank" rel="noopener noreferrer">https://fairobserver.com/world-news/middle-east-news/an-insider-view-on-how-kurds-see-israel-and-palestine</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -308,7 +370,7 @@ footer {
 <h3>Armenian-kurdish relations is a strategic necessity - Horizon Weekly</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</a>
+<a class="tag" href="podcast_pages/Armenian-Kurdish_Relations.html" target="_blank" rel="noopener noreferrer">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://horizonweekly.ca/am/52790-2" target="_blank" rel="noopener noreferrer">https://horizonweekly.ca/am/52790-2</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -317,7 +379,7 @@ footer {
 <h3>Assyria And Assyrians: Story Of My People - Modern Diplomacy</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">From City-State to Empire A History of the Assyrians from their Origins to the Fall of Nineveh</a>
+<a class="tag" href="podcast_pages/The_Assyrians_from_their_Origins_to_the_fall_of_the_Neo-Assyrian_Empire.html" target="_blank" rel="noopener noreferrer">From City-State to Empire A History of the Assyrians from their Origins to the Fall of Nineveh</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://moderndiplomacy.eu/2024/01/28/assyria-and-assyrians-story-of-my-people" target="_blank" rel="noopener noreferrer">https://moderndiplomacy.eu/2024/01/28/assyria-and-assyrians-story-of-my-people</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -326,7 +388,7 @@ footer {
 <h3>Beyond the Nation State in the Middle East - Boston Review</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a><a class="tag" href="kurdish_research.html">The Kurdish Tapestry Navigating Identity, Conflict, and Aspirations in the Middle East</a>
+<a class="tag" href="podcast_pages/relations_assyrian.html" target="_blank" rel="noopener noreferrer">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a><a class="tag" href="podcast_pages/The_Kurdish_Relationship_with_the_Middle_East.html" target="_blank" rel="noopener noreferrer">The Kurdish Tapestry Navigating Identity, Conflict, and Aspirations in the Middle East</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://bostonreview.net/articles/beyond-the-nation-state-in-the-middle-east" target="_blank" rel="noopener noreferrer">https://bostonreview.net/articles/beyond-the-nation-state-in-the-middle-east</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 2</div>
@@ -335,7 +397,7 @@ footer {
 <h3>Can Kurds survive the new Syria? - UnHerd</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a>
+<a class="tag" href="podcast_pages/relations_assyrian.html" target="_blank" rel="noopener noreferrer">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://unherd.com/2025/02/can-kurds-survive-the-new-syria" target="_blank" rel="noopener noreferrer">https://unherd.com/2025/02/can-kurds-survive-the-new-syria</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -344,7 +406,7 @@ footer {
 <h3>Creating an Independent Kurdistan: The History of a Hundred-Year-Long Dream - Maydan</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Kurds and the Ottoman Empire A History of Alliance, Autonomy, and Conflict</a><a class="tag" href="kurdish_research.html">The Unfolding Tapestry A History of Kurdish Nationalism</a>
+<a class="tag" href="podcast_pages/Kurds_and_Ottoman_Relations_Politics.html" target="_blank" rel="noopener noreferrer">The Kurds and the Ottoman Empire A History of Alliance, Autonomy, and Conflict</a><a class="tag" href="podcast_pages/History_of_Kurdish_Nationalism.html" target="_blank" rel="noopener noreferrer">The Unfolding Tapestry A History of Kurdish Nationalism</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://themaydan.com/2017/10/creating-independent-kurdistan-history-hundred-year-long-dream" target="_blank" rel="noopener noreferrer">https://themaydan.com/2017/10/creating-independent-kurdistan-history-hundred-year-long-dream</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 2</div>
@@ -353,7 +415,7 @@ footer {
 <h3>Erdoğan should re-initiate peace process, says veteran Kurdish politician Leyla Zana</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Enduring Threads An Ethnographic Report on Kurdish Female Traditions</a>
+<a class="tag" href="podcast_pages/Kurdish_Female_Traditions.html" target="_blank" rel="noopener noreferrer">Enduring Threads An Ethnographic Report on Kurdish Female Traditions</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://duvarenglish.com/erdogan-should-re-initiate-peace-process-says-veteran-kurdish-politician-leyla-zana-news-63685" target="_blank" rel="noopener noreferrer">https://duvarenglish.com/erdogan-should-re-initiate-peace-process-says-veteran-kurdish-politician-leyla-zana-news-63685</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -362,7 +424,7 @@ footer {
 <h3>Expedition Magazine | Sargon&#x27;s March: A New Translation - Penn Museum</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Deioces of the Medes A Critical Reassessment of the Man, the Myth, and the Birth of an Empire</a>
+<a class="tag" href="podcast_pages/Deyako_of_the_Medes.html" target="_blank" rel="noopener noreferrer">Deioces of the Medes A Critical Reassessment of the Man, the Myth, and the Birth of an Empire</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://penn.museum/sites/expedition/sargons-march-a-new-translation" target="_blank" rel="noopener noreferrer">https://penn.museum/sites/expedition/sargons-march-a-new-translation</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -371,7 +433,7 @@ footer {
 <h3>Explaining the difference between Assyrian &amp; Aramean</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A People Defined by Language A Comprehensive History of the Arameans</a>
+<a class="tag" href="podcast_pages/The_History_of_the_Arameans.html" target="_blank" rel="noopener noreferrer">A People Defined by Language A Comprehensive History of the Arameans</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://assyrians.n.nu/1" target="_blank" rel="noopener noreferrer">https://assyrians.n.nu/1</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -380,7 +442,7 @@ footer {
 <h3>From Ducats to Dollars - KURDISTANICA</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Kurds and the Ottoman Empire A History of Alliance, Autonomy, and Conflict</a>
+<a class="tag" href="podcast_pages/Kurds_and_Ottoman_Relations_Politics.html" target="_blank" rel="noopener noreferrer">The Kurds and the Ottoman Empire A History of Alliance, Autonomy, and Conflict</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://kurdistanica.com/699/from-ducats-to-dollars" target="_blank" rel="noopener noreferrer">https://kurdistanica.com/699/from-ducats-to-dollars</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -389,7 +451,7 @@ footer {
 <h3>Great disasters in Islamic history: The abolition of the Khilafah - 5Pillars</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Last Caliph and the Twilight of the House of Osman A Comprehensive Analysis of Abdulmejid II and the Transition from</a>
+<a class="tag" href="podcast_pages/Abdulmejid_II_1922__1924_and_the_Ottoman_Empire_during_his_rule.html" target="_blank" rel="noopener noreferrer">The Last Caliph and the Twilight of the House of Osman A Comprehensive Analysis of Abdulmejid II and the Transition from</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://5pillarsuk.com/2025/03/03/great-disasters-in-islamic-history-the-abolition-of-the-khilafah" target="_blank" rel="noopener noreferrer">https://5pillarsuk.com/2025/03/03/great-disasters-in-islamic-history-the-abolition-of-the-khilafah</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -398,7 +460,7 @@ footer {
 <h3>Hamidiye Cavalry - History Of Kurdistan</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Relationship Forged in Empire A Comparative Analysis of Kurdish and Circassian Peoples</a>
+<a class="tag" href="podcast_pages/Kurdish_Relationship_with_Circassians.html" target="_blank" rel="noopener noreferrer">A Relationship Forged in Empire A Comparative Analysis of Kurdish and Circassian Peoples</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://historyofkurd.com/english/2017/08/21/hamidiye-cavalry" target="_blank" rel="noopener noreferrer">https://historyofkurd.com/english/2017/08/21/hamidiye-cavalry</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -407,7 +469,7 @@ footer {
 <h3>How the Threat of Genocide Sparked a Multi-Ethnic Revolution in Syria - Reason Magazine</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</a>
+<a class="tag" href="podcast_pages/Armenian-Kurdish_Relations.html" target="_blank" rel="noopener noreferrer">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://reason.com/2024/03/30/statelet-of-survivors" target="_blank" rel="noopener noreferrer">https://reason.com/2024/03/30/statelet-of-survivors</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -416,7 +478,7 @@ footer {
 <h3>How Turkey&#x27;s founding ideology shaped its oppression of Kurds and minorities – opinion - The Jerusalem Post</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Relationship Forged in Empire A Comparative Analysis of Kurdish and Circassian Peoples</a>
+<a class="tag" href="podcast_pages/Kurdish_Relationship_with_Circassians.html" target="_blank" rel="noopener noreferrer">A Relationship Forged in Empire A Comparative Analysis of Kurdish and Circassian Peoples</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://jpost.com/opinion/article-838409" target="_blank" rel="noopener noreferrer">https://jpost.com/opinion/article-838409</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -425,7 +487,7 @@ footer {
 <h3>How Turkey&#x27;s “Neo-Ottomanism” and Pakistan&#x27;s “Neo-Mughalism” Are Clear and Present Danger | American Enterprise Institute - AEI</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Evolution of Ottoman Turkish A Linguistic and Political History</a>
+<a class="tag" href="podcast_pages/The_Evolution_of_Ottoman_Turkish.html" target="_blank" rel="noopener noreferrer">The Evolution of Ottoman Turkish A Linguistic and Political History</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://aei.org/op-eds/how-turkeys-neo-ottomanism-and-pakistans-neo-mughalism-are-clear-and-present-danger" target="_blank" rel="noopener noreferrer">https://aei.org/op-eds/how-turkeys-neo-ottomanism-and-pakistans-neo-mughalism-are-clear-and-present-danger</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -434,7 +496,7 @@ footer {
 <h3>https://newlinesmag.com/reportage/the-islamic-states-new-strategies-in-syria</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Enduring Nexus A Historical and Contemporary Analysis of Kurd-Arab Relations in Kurdistan</a>
+<a class="tag" href="podcast_pages/The_Kurds_Relationship_with_Arabs_in_Kurdistan_Past_and_Present.html" target="_blank" rel="noopener noreferrer">The Enduring Nexus A Historical and Contemporary Analysis of Kurd-Arab Relations in Kurdistan</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://newlinesmag.com/reportage/the-islamic-states-new-strategies-in-syria" target="_blank" rel="noopener noreferrer">https://newlinesmag.com/reportage/the-islamic-states-new-strategies-in-syria</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -443,7 +505,7 @@ footer {
 <h3>Hurrians, Amorites, And Horitesː The Beginnings Of Akans/Hebrews−Aramaic</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Hurrians A Comprehensive Synthesis of a Forgotten Bronze Age Civilization</a>
+<a class="tag" href="podcast_pages/The_Hurrians.html" target="_blank" rel="noopener noreferrer">The Hurrians A Comprehensive Synthesis of a Forgotten Bronze Age Civilization</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://modernghana.com/news/1319417/hurrians-amorites-and-horites-the-beginnings.html" target="_blank" rel="noopener noreferrer">https://modernghana.com/news/1319417/hurrians-amorites-and-horites-the-beginnings.html</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -452,7 +514,7 @@ footer {
 <h3>Iraq&#x27;s &#x27;Other&#x27; Minorities Still Endangered - New Lines Magazine</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a>
+<a class="tag" href="podcast_pages/relations_assyrian.html" target="_blank" rel="noopener noreferrer">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://newlinesmag.com/argument/iraqs-other-minorities-still-endangered" target="_blank" rel="noopener noreferrer">https://newlinesmag.com/argument/iraqs-other-minorities-still-endangered</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -461,7 +523,7 @@ footer {
 <h3>Kurdish Autonomy: The Key to Turkish Unity? - Modern Diplomacy</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Kurdish Tapestry Navigating Identity, Conflict, and Aspirations in the Middle East</a>
+<a class="tag" href="podcast_pages/The_Kurdish_Relationship_with_the_Middle_East.html" target="_blank" rel="noopener noreferrer">The Kurdish Tapestry Navigating Identity, Conflict, and Aspirations in the Middle East</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://moderndiplomacy.eu/2025/04/17/kurdish-autonomy-the-key-to-turkish-unity" target="_blank" rel="noopener noreferrer">https://moderndiplomacy.eu/2025/04/17/kurdish-autonomy-the-key-to-turkish-unity</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -470,7 +532,7 @@ footer {
 <h3>Kurdish Newroz Celebrations Expose Iranian Chauvinists&#x27; Fear of Ethnic Identity</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Ancient Roots, Imperial Rule, and Communal Life The Jews of Kurdistan Before 1948</a><a class="tag" href="kurdish_research.html">Enduring Threads An Ethnographic Report on Kurdish Female Traditions</a><a class="tag" href="kurdish_research.html">Newroz An Ancient Rite of Spring and a Modern Emblem of Kurdish Identity</a><a class="tag" href="podcast_pages/Traditions_of_Kurdish_Nowruz_Past_and_Present.html">Traditions of Kurdish Nowruz Past and Present</a>
+<a class="tag" href="podcast_pages/Jewish_Life_in_Pre-1948_Kurdistan.html" target="_blank" rel="noopener noreferrer">Ancient Roots, Imperial Rule, and Communal Life The Jews of Kurdistan Before 1948</a><a class="tag" href="podcast_pages/Kurdish_Female_Traditions.html" target="_blank" rel="noopener noreferrer">Enduring Threads An Ethnographic Report on Kurdish Female Traditions</a><a class="tag" href="podcast_pages/History_of_Kurdish_Nowruz.html" target="_blank" rel="noopener noreferrer">Newroz An Ancient Rite of Spring and a Modern Emblem of Kurdish Identity</a><a class="tag" href="podcast_pages/Traditions_of_Kurdish_Nowruz_Past_and_Present.html" target="_blank" rel="noopener noreferrer">Traditions of Kurdish Nowruz Past and Present</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://fairobserver.com/politics/kurdish-newroz-celebrations-expose-iranian-chauvinists-fear-of-ethnic-identity" target="_blank" rel="noopener noreferrer">https://fairobserver.com/politics/kurdish-newroz-celebrations-expose-iranian-chauvinists-fear-of-ethnic-identity</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 4</div>
@@ -479,7 +541,7 @@ footer {
 <h3>Kurdish oppression against Assyrians - Fred Aprim</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a>
+<a class="tag" href="podcast_pages/relations_assyrian.html" target="_blank" rel="noopener noreferrer">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://fredaprim.com/pdfs/2009/Kurdish_oppression_against_Assyrians.pdf" target="_blank" rel="noopener noreferrer">https://fredaprim.com/pdfs/2009/Kurdish_oppression_against_Assyrians.pdf</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -488,7 +550,7 @@ footer {
 <h3>MONEY AND THE (PKK) KURDISTAN LABORS - Issam Khoury</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A History of Soviet-Kurdish Relations Geopolitics, Ideology, and Instrumentalization</a>
+<a class="tag" href="podcast_pages/The_Kurds_Relationship_with_the_Soviet_Union.html" target="_blank" rel="noopener noreferrer">A History of Soviet-Kurdish Relations Geopolitics, Ideology, and Instrumentalization</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://issamkh.com/2017/04/06/money-and-the-pkk-kurdistan-labors" target="_blank" rel="noopener noreferrer">https://issamkh.com/2017/04/06/money-and-the-pkk-kurdistan-labors</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -497,7 +559,7 @@ footer {
 <h3>Newroz/Nevruz: Comparing Turkish and Kurdish national identities | Nationalism Studies</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Comparative Ethnography of Shared Cultural Traditions Kurdistan and its Neighbors</a>
+<a class="tag" href="podcast_pages/Kurdish_Traditions_shared_by_other_Cultures.html" target="_blank" rel="noopener noreferrer">A Comparative Ethnography of Shared Cultural Traditions Kurdistan and its Neighbors</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://nationalismstudies.wordpress.com/2016/03/09/newroznevruz-comparing-turkish-and-kurdish-national-identities" target="_blank" rel="noopener noreferrer">https://nationalismstudies.wordpress.com/2016/03/09/newroznevruz-comparing-turkish-and-kurdish-national-identities</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -506,7 +568,7 @@ footer {
 <h3>Newroz: Turkish névrose - Duvar English</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Comparative Ethnography of Shared Cultural Traditions Kurdistan and its Neighbors</a><a class="tag" href="kurdish_research.html">The Enduring Flame A History of Kurdish Newroz</a>
+<a class="tag" href="podcast_pages/Kurdish_Traditions_shared_by_other_Cultures.html" target="_blank" rel="noopener noreferrer">A Comparative Ethnography of Shared Cultural Traditions Kurdistan and its Neighbors</a><a class="tag" href="podcast_pages/Kurdish_Traditions_shared_by_other_Cultures.html" target="_blank" rel="noopener noreferrer">The Enduring Flame A History of Kurdish Newroz</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://duvarenglish.com/columns/2020/03/21/newroz-turkish-nevrose" target="_blank" rel="noopener noreferrer">https://duvarenglish.com/columns/2020/03/21/newroz-turkish-nevrose</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 2</div>
@@ -515,7 +577,7 @@ footer {
 <h3>Northern Iraq and the Kurdistani Disputed Territories - Modern Diplomacy</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a>
+<a class="tag" href="podcast_pages/relations_assyrian.html" target="_blank" rel="noopener noreferrer">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://moderndiplomacy.eu/2022/11/20/northern-iraq-and-the-kurdistani-disputed-territories" target="_blank" rel="noopener noreferrer">https://moderndiplomacy.eu/2022/11/20/northern-iraq-and-the-kurdistani-disputed-territories</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -524,7 +586,7 @@ footer {
 <h3>Post-Assad Era and the Circassians, by Omer Aytek Kurmel - AbkhazWorld, يف يف دس نم ایكرت انقیفر زوین دامخلإ ةكرعم نیرفع لتاقملا ثداحب داھشتسا &quot;نیرفع - ياكس تارشعلاب - YouTube</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Relationship Forged in Empire A Comparative Analysis of Kurdish and Circassian Peoples</a><a class="tag" href="kurdish_research.html">The Circassians of Northern Syria A History of Displacement, Resilience, and Political Precarity</a>
+<a class="tag" href="podcast_pages/Kurdish_Relationship_with_Circassians.html" target="_blank" rel="noopener noreferrer">A Relationship Forged in Empire A Comparative Analysis of Kurdish and Circassian Peoples</a><a class="tag" href="podcast_pages/Circassians_of_Afrin.html" target="_blank" rel="noopener noreferrer">The Circassians of Northern Syria A History of Displacement, Resilience, and Political Precarity</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://abkhazworld.com/aw/diaspora/2917-post-assad-era-and-the-circassians-by-omer-aytek-kurmel" target="_blank" rel="noopener noreferrer">https://abkhazworld.com/aw/diaspora/2917-post-assad-era-and-the-circassians-by-omer-aytek-kurmel</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 2</div>
@@ -533,7 +595,7 @@ footer {
 <h3>Prince Sharaf al-Dîn Bitlîsî - KURDISTANICA</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Lion of Bitlis Abdal Khan, the Rozhîkî Emirate, and the Challenge to Ottoman Authority in the Mid-17th Century</a>
+<a class="tag" href="podcast_pages/The_mid-17th-century_RozhîkîBitlis_revolt_led_by_Abdal_Khan_Emir_of_Bitlis.html" target="_blank" rel="noopener noreferrer">The Lion of Bitlis Abdal Khan, the Rozhîkî Emirate, and the Challenge to Ottoman Authority in the Mid-17th Century</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://kurdistanica.com/440/prince-sharaf-al-din-bitlisi" target="_blank" rel="noopener noreferrer">https://kurdistanica.com/440/prince-sharaf-al-din-bitlisi</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -542,7 +604,7 @@ footer {
 <h3>Recovering a Lost Language From the Mountains of Mesopotamia - New Lines Magazine</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Ancient Roots, Imperial Rule, and Communal Life The Jews of Kurdistan Before 1948</a>
+<a class="tag" href="podcast_pages/Jewish_Life_in_Pre-1948_Kurdistan.html" target="_blank" rel="noopener noreferrer">Ancient Roots, Imperial Rule, and Communal Life The Jews of Kurdistan Before 1948</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://newlinesmag.com/first-person/recovering-a-lost-language-from-the-mountains-of-mesopotamia" target="_blank" rel="noopener noreferrer">https://newlinesmag.com/first-person/recovering-a-lost-language-from-the-mountains-of-mesopotamia</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -551,7 +613,7 @@ footer {
 <h3>Resilient Identity: Turkey&#x27;s Alevis and Their Enduring Struggle for Recognition</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Comprehensive Overview of Alevism Beliefs, History, and Contemporary Status</a>
+<a class="tag" href="podcast_pages/Alevism.html" target="_blank" rel="noopener noreferrer">A Comprehensive Overview of Alevism Beliefs, History, and Contemporary Status</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://intpolicydigest.org/the-platform/resilient-identity-turkey-s-alevis-and-their-enduring-struggle-for-recognition" target="_blank" rel="noopener noreferrer">https://intpolicydigest.org/the-platform/resilient-identity-turkey-s-alevis-and-their-enduring-struggle-for-recognition</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -560,7 +622,7 @@ footer {
 <h3>Seleucids: The Valuable Architects of The Middle East - Fair Observer</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Spear-Won Land The Rise, Structure, and Fall of the Seleucid Empire (312–63 BCE)</a>
+<a class="tag" href="podcast_pages/The_Seleucid_Empire.html" target="_blank" rel="noopener noreferrer">Spear-Won Land The Rise, Structure, and Fall of the Seleucid Empire (312–63 BCE)</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://fairobserver.com/world-news/seleucids-the-valuable-architects-of-the-middle-east" target="_blank" rel="noopener noreferrer">https://fairobserver.com/world-news/seleucids-the-valuable-architects-of-the-middle-east</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -569,7 +631,7 @@ footer {
 <h3>St. Simeon the Stylite and Living “Under Law” - Sam Storms</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">An Athlete of Christ on a Syrian Pillar St. Simeon Stylites and the World of Late Antiquity</a>
+<a class="tag" href="podcast_pages/Saint_Simeon_Stylites.html" target="_blank" rel="noopener noreferrer">An Athlete of Christ on a Syrian Pillar St. Simeon Stylites and the World of Late Antiquity</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://samstorms.org/enjoying-god-blog/post/st-simeon-the-stylite-and-living--under-law-" target="_blank" rel="noopener noreferrer">https://samstorms.org/enjoying-god-blog/post/st-simeon-the-stylite-and-living--under-law-</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -578,7 +640,7 @@ footer {
 <h3>Sunni Ahl al-Bayt Literature in English - Orthodox Muslim</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Ahl al-Bayt A Study in Islamic Theology, History, and Devotion</a>
+<a class="tag" href="podcast_pages/Ahl_al-Bayt.html" target="_blank" rel="noopener noreferrer">The Ahl al-Bayt A Study in Islamic Theology, History, and Devotion</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://orthodoxmuslim.com/2024/03/18/sunni-ahl-al-bayt-literature-in-english" target="_blank" rel="noopener noreferrer">https://orthodoxmuslim.com/2024/03/18/sunni-ahl-al-bayt-literature-in-english</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -587,7 +649,7 @@ footer {
 <h3>Syria&#x27;s Kurdish Northeast Ratifies a New Constitution - New Lines Magazine</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a><a class="tag" href="kurdish_research.html">The Circassians of Northern Syria A History of Displacement, Resilience, and Political Precarity</a><a class="tag" href="kurdish_research.html">The Enduring Nexus A Historical and Contemporary Analysis of Kurdish-Iranian Relations</a>
+<a class="tag" href="podcast_pages/relations_assyrian.html" target="_blank" rel="noopener noreferrer">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a><a class="tag" href="podcast_pages/Circassians_of_Afrin.html" target="_blank" rel="noopener noreferrer">The Circassians of Northern Syria A History of Displacement, Resilience, and Political Precarity</a><a class="tag" href="podcast_pages/The_Kurds_Relationship_with_Iranians_Past_and_Present.html" target="_blank" rel="noopener noreferrer">The Enduring Nexus A Historical and Contemporary Analysis of Kurdish-Iranian Relations</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://newlinesmag.com/argument/syrias-kurdish-northeast-ratifies-a-new-constitution" target="_blank" rel="noopener noreferrer">https://newlinesmag.com/argument/syrias-kurdish-northeast-ratifies-a-new-constitution</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 3</div>
@@ -596,7 +658,7 @@ footer {
 <h3>The &quot;Kurdish Question&quot; by Il Lato Cattivo - Endnotes</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A History of Soviet-Kurdish Relations Geopolitics, Ideology, and Instrumentalization</a>
+<a class="tag" href="podcast_pages/The_Kurds_Relationship_with_the_Soviet_Union.html" target="_blank" rel="noopener noreferrer">A History of Soviet-Kurdish Relations Geopolitics, Ideology, and Instrumentalization</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://endnotes.org.uk/posts/il-lato-cattivo-the-kurdish-question" target="_blank" rel="noopener noreferrer">https://endnotes.org.uk/posts/il-lato-cattivo-the-kurdish-question</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -605,7 +667,7 @@ footer {
 <h3>The Dirty Secrets About How Reza Shah Destroyed Iran - Fair Observer</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Lurs and Luristan A Historical and Ethnographic Study of a Zagros People</a>
+<a class="tag" href="podcast_pages/The_Lurs_and_Luristan.html" target="_blank" rel="noopener noreferrer">The Lurs and Luristan A Historical and Ethnographic Study of a Zagros People</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://fairobserver.com/politics/the-dirty-secrets-about-how-reza-shah-destroyed-iran" target="_blank" rel="noopener noreferrer">https://fairobserver.com/politics/the-dirty-secrets-about-how-reza-shah-destroyed-iran</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -614,7 +676,7 @@ footer {
 <h3>The Druze: Born from the Depths of Persian Shiism | EBNHUSSEIN.COM</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Tawhid, Theophany, and Taqammus A Comparative Analysis of the Druze Faith and the Major Branches of Islam</a>
+<a class="tag" href="podcast_pages/DIfferences_between_Druze_and_other_Branches_of_Islam.html" target="_blank" rel="noopener noreferrer">Tawhid, Theophany, and Taqammus A Comparative Analysis of the Druze Faith and the Major Branches of Islam</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://ebnhussein.com/2025/02/28/the-druze-born-from-the-depths-of-shiism" target="_blank" rel="noopener noreferrer">https://ebnhussein.com/2025/02/28/the-druze-born-from-the-depths-of-shiism</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -623,7 +685,7 @@ footer {
 <h3>The experiment of West Kurdistan (Syrian Kurdistan) has proved that</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Drivers of Rural Depopulation in Afrin, Syria A Pre-2010 Analysis</a>
+<a class="tag" href="podcast_pages/Kurdish_Depopulation_Policies_in_Afrin_Pre-2010.html" target="_blank" rel="noopener noreferrer">Drivers of Rural Depopulation in Afrin, Syria A Pre-2010 Analysis</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://libcom.org/article/experiment-west-kurdistan-syrian-kurdistan-has-proved-people-can-make-changes-zaher-baher" target="_blank" rel="noopener noreferrer">https://libcom.org/article/experiment-west-kurdistan-syrian-kurdistan-has-proved-people-can-make-changes-zaher-baher</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -632,7 +694,7 @@ footer {
 <h3>The Folkloric Stories Behind Kurdish Secularism - New Lines Magazine</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Enduring Mystical Path Kurds and Sufism Through History and Modernity</a><a class="tag" href="kurdish_research.html">The Unbroken Circle An Ethnographic Report on Pre-Modern Kurdish Wedding Traditions</a>
+<a class="tag" href="podcast_pages/Kurds_and_Sufism.html" target="_blank" rel="noopener noreferrer">The Enduring Mystical Path Kurds and Sufism Through History and Modernity</a><a class="tag" href="podcast_pages/Kurdish_Wedding_Traditions_before_Modern_Times.html" target="_blank" rel="noopener noreferrer">The Unbroken Circle An Ethnographic Report on Pre-Modern Kurdish Wedding Traditions</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://newlinesmag.com/essays/the-folkloric-stories-behind-kurdish-secularism" target="_blank" rel="noopener noreferrer">https://newlinesmag.com/essays/the-folkloric-stories-behind-kurdish-secularism</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 2</div>
@@ -641,7 +703,7 @@ footer {
 <h3>The French Senate and the Assyrian Genocide Resolution - Modern Diplomacy</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a>
+<a class="tag" href="podcast_pages/relations_assyrian.html" target="_blank" rel="noopener noreferrer">A Contested Coexistence An Examination of Kurdish-Assyrian Relations from Antiquity to the Present</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://moderndiplomacy.eu/2023/02/22/the-french-senate-and-the-assyrian-genocide-resolution" target="_blank" rel="noopener noreferrer">https://moderndiplomacy.eu/2023/02/22/the-french-senate-and-the-assyrian-genocide-resolution</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -650,7 +712,7 @@ footer {
 <h3>The Kurds: Name, History, Homeland, Language and Other Facts - Fred Aprim</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Relationship Forged in Empire A Comparative Analysis of Kurdish and Circassian Peoples</a><a class="tag" href="podcast_pages/Kurdish_Traditions_before_Modern_Times.html">Kurdish Traditions Before Modern Times</a><a class="tag" href="kurdish_research.html">The Enduring Tent A Study of Nomadic Kurdish Life Before Modernity I. Introduction The Nomadic Kurds in Historical Conte</a>
+<a class="tag" href="podcast_pages/Kurdish_Relationship_with_Circassians.html" target="_blank" rel="noopener noreferrer">A Relationship Forged in Empire A Comparative Analysis of Kurdish and Circassian Peoples</a><a class="tag" href="podcast_pages/Kurdish_Traditions_before_Modern_Times.html" target="_blank" rel="noopener noreferrer">Kurdish Traditions Before Modern Times</a><a class="tag" href="podcast_pages/Nomadic_Kurdish_Life_before_Modern_Times.html" target="_blank" rel="noopener noreferrer">The Enduring Tent A Study of Nomadic Kurdish Life Before Modernity I. Introduction The Nomadic Kurds in Historical Conte</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://fredaprim.com/pdfs/2024/The%20Kurds,%20history,%20homeland,%20language%20and%20other%20facts.pdf" target="_blank" rel="noopener noreferrer">https://fredaprim.com/pdfs/2024/The%20Kurds,%20history,%20homeland,%20language%20and%20other%20facts.pdf</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 3</div>
@@ -659,7 +721,7 @@ footer {
 <h3>The Long Shadow of the Last Ottoman Sultan - New Lines Magazine</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Twilight of the Padishah Sultan Mehmed VI Vahideddin and the Dissolution of the Ottoman Empire (1918–1922)</a>
+<a class="tag" href="podcast_pages/Mehmed_VI_1918__1922_and_the_Ottoman_Empire_during_his_rule.html" target="_blank" rel="noopener noreferrer">The Twilight of the Padishah Sultan Mehmed VI Vahideddin and the Dissolution of the Ottoman Empire (1918–1922)</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://newlinesmag.com/essays/the-long-shadow-of-the-last-ottoman-sultan" target="_blank" rel="noopener noreferrer">https://newlinesmag.com/essays/the-long-shadow-of-the-last-ottoman-sultan</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -668,7 +730,7 @@ footer {
 <h3>The PKK and Russia | Kyle Orton&#x27;s Blog</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A History of Soviet-Kurdish Relations Geopolitics, Ideology, and Instrumentalization</a>
+<a class="tag" href="podcast_pages/The_Kurds_Relationship_with_the_Soviet_Union.html" target="_blank" rel="noopener noreferrer">A History of Soviet-Kurdish Relations Geopolitics, Ideology, and Instrumentalization</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://kyleorton.co.uk/2019/11/18/the-pkk-and-russia" target="_blank" rel="noopener noreferrer">https://kyleorton.co.uk/2019/11/18/the-pkk-and-russia</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -677,7 +739,7 @@ footer {
 <h3>The Resilient Artisans Keeping Aleppo Soap Alive - New Lines</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Afrin and Aleppo A Pre-2010 Nexus of Administration, Economy, and Society</a>
+<a class="tag" href="podcast_pages/Afrin-Aleppo_Relations.html" target="_blank" rel="noopener noreferrer">Afrin and Aleppo A Pre-2010 Nexus of Administration, Economy, and Society</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://newlinesmag.com/spotlight/the-resilient-artisans-keeping-aleppo-soap-alive" target="_blank" rel="noopener noreferrer">https://newlinesmag.com/spotlight/the-resilient-artisans-keeping-aleppo-soap-alive</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -686,7 +748,7 @@ footer {
 <h3>The Return to Circassia - New Lines Magazine</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Circassians of Northern Syria A History of Displacement, Resilience, and Political Precarity</a>
+<a class="tag" href="podcast_pages/Circassians_of_Afrin.html" target="_blank" rel="noopener noreferrer">The Circassians of Northern Syria A History of Displacement, Resilience, and Political Precarity</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://newlinesmag.com/spotlight/the-return-to-circassia" target="_blank" rel="noopener noreferrer">https://newlinesmag.com/spotlight/the-return-to-circassia</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -695,7 +757,7 @@ footer {
 <h3>The truth of the Treaty of Lausanne and its historical impact - ANF</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Kilis-Afrin Connection A Pre-2010 Analysis of a Syrian-Turkish Borderland</a>
+<a class="tag" href="podcast_pages/Afrin_-_Kilis_Relations.html" target="_blank" rel="noopener noreferrer">The Kilis-Afrin Connection A Pre-2010 Analysis of a Syrian-Turkish Borderland</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://anfenglish.com/news/the-truth-of-the-treaty-of-lausanne-and-its-historical-impact-69290" target="_blank" rel="noopener noreferrer">https://anfenglish.com/news/the-truth-of-the-treaty-of-lausanne-and-its-historical-impact-69290</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -704,7 +766,7 @@ footer {
 <h3>The Untold History of Turkish-Kurdish Alliances - New Lines Magazine</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">A Legacy Forged in Time Famous Kurdish Figures in History</a><a class="tag" href="kurdish_research.html">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</a><a class="tag" href="kurdish_research.html">Environmental Determinants and Cultural Adaptations A Comparative Analysis of Mountain and Plain Kurds</a><a class="tag" href="kurdish_research.html">Famous Kurdish Tribes and Emirates Through History A Dynastic and Political Survey</a><a class="tag" href="kurdish_research.html">Imperial Frontiers and Tribal Migrations A Historical Analysis of the Afrin Region (Kurd-Dagh) under Early Ottoman Rule,</a><a class="tag" href="podcast_pages/Kurdish_Traditions_before_Modern_Times.html">Kurdish Traditions Before Modern Times</a><a class="tag" href="kurdish_research.html">Migratory Currents and Demographic Shifts in the Afrin Region Ottoman Era to 2010</a><a class="tag" href="kurdish_research.html">Navigating the Mosaic Kurdish Relations with Minority Groups in Kurdistan</a><a class="tag" href="kurdish_research.html">The Enduring Nexus A Historical and Contemporary Analysis of Kurd-Arab Relations in Kurdistan</a><a class="tag" href="kurdish_research.html">The Enduring Nexus A Historical and Contemporary Analysis of Kurdish-Iranian Relations</a><a class="tag" href="kurdish_research.html">The Kurds and the Ottoman Empire A History of Alliance, Autonomy, and Conflict</a><a class="tag" href="kurdish_research.html">The Unfolding Tapestry A History of Kurdish Nationalism</a><a class="tag" href="kurdish_research.html">The Şerefname of Şerefxanê Bedlîsî History, Context, and Legacy</a><a class="tag" href="kurdish_research.html">Traditions of the Kurds Continuity and Transformation Across Time and Space</a>
+<a class="tag" href="podcast_pages/Famous_Kurds_in_History.html" target="_blank" rel="noopener noreferrer">A Legacy Forged in Time Famous Kurdish Figures in History</a><a class="tag" href="podcast_pages/Armenian-Kurdish_Relations.html" target="_blank" rel="noopener noreferrer">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</a><a class="tag" href="podcast_pages/Mountain_Kurds_and_Plains_Kurds.html" target="_blank" rel="noopener noreferrer">Environmental Determinants and Cultural Adaptations A Comparative Analysis of Mountain and Plain Kurds</a><a class="tag" href="podcast_pages/Famous_Kurdish_Tribes_in_History.html" target="_blank" rel="noopener noreferrer">Famous Kurdish Tribes and Emirates Through History A Dynastic and Political Survey</a><a class="tag" href="podcast_pages/People_Migrations_of_Afrin,_Syria_from_the_15th_-_17th_Centuries.html" target="_blank" rel="noopener noreferrer">Imperial Frontiers and Tribal Migrations A Historical Analysis of the Afrin Region (Kurd-Dagh) under Early Ottoman Rule,</a><a class="tag" href="podcast_pages/Kurdish_Traditions_before_Modern_Times.html" target="_blank" rel="noopener noreferrer">Kurdish Traditions Before Modern Times</a><a class="tag" href="podcast_pages/Events_that_Led_to_the_Migrations_to_Afrin_from_Ottoman_Times_until_2010.html" target="_blank" rel="noopener noreferrer">Migratory Currents and Demographic Shifts in the Afrin Region Ottoman Era to 2010</a><a class="tag" href="podcast_pages/The_Kurds_Relationship_with_Minorities_in_Kurdistan_Past_and_Present.html" target="_blank" rel="noopener noreferrer">Navigating the Mosaic Kurdish Relations with Minority Groups in Kurdistan</a><a class="tag" href="podcast_pages/The_Kurds_Relationship_with_Arabs_in_Kurdistan_Past_and_Present.html" target="_blank" rel="noopener noreferrer">The Enduring Nexus A Historical and Contemporary Analysis of Kurd-Arab Relations in Kurdistan</a><a class="tag" href="podcast_pages/The_Kurds_Relationship_with_Iranians_Past_and_Present.html" target="_blank" rel="noopener noreferrer">The Enduring Nexus A Historical and Contemporary Analysis of Kurdish-Iranian Relations</a><a class="tag" href="podcast_pages/Kurds_and_Ottoman_Relations_Politics.html" target="_blank" rel="noopener noreferrer">The Kurds and the Ottoman Empire A History of Alliance, Autonomy, and Conflict</a><a class="tag" href="podcast_pages/History_of_Kurdish_Nationalism.html" target="_blank" rel="noopener noreferrer">The Unfolding Tapestry A History of Kurdish Nationalism</a><a class="tag" href="podcast_pages/The_Sherefname.html" target="_blank" rel="noopener noreferrer">The Şerefname of Şerefxanê Bedlîsî History, Context, and Legacy</a><a class="tag" href="podcast_pages/Traditions_of_the_Kurds.html" target="_blank" rel="noopener noreferrer">Traditions of the Kurds Continuity and Transformation Across Time and Space</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://newlinesmag.com/essays/the-untold-history-of-turkish-kurdish-alliances" target="_blank" rel="noopener noreferrer">https://newlinesmag.com/essays/the-untold-history-of-turkish-kurdish-alliances</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 14</div>
@@ -713,7 +775,7 @@ footer {
 <h3>The Yezidi movement in Armenia - ANN/Groong</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</a>
+<a class="tag" href="podcast_pages/Armenian-Kurdish_Relations.html" target="_blank" rel="noopener noreferrer">An Intertwined History Armenian-Kurdish Relations from the Ottoman Era to the Present</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://groong.org/orig/ja-19980702.html" target="_blank" rel="noopener noreferrer">https://groong.org/orig/ja-19980702.html</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -722,7 +784,7 @@ footer {
 <h3>Theodoret of Cyrus: Commentary on The Letters of St. Paul, Vol 1</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Theodoret of Cyrrhus Pastor, Polemicist, and Architect of Chalcedon</a>
+<a class="tag" href="podcast_pages/Theodoret_of_Cyrrhus.html" target="_blank" rel="noopener noreferrer">Theodoret of Cyrrhus Pastor, Polemicist, and Architect of Chalcedon</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://svspress.com/theodoret-of-cyrus-commentary-on-the-letters-of-st-paul-vol-1" target="_blank" rel="noopener noreferrer">https://svspress.com/theodoret-of-cyrus-commentary-on-the-letters-of-st-paul-vol-1</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -731,7 +793,7 @@ footer {
 <h3>Theodoret of Cyrus: Commentary on the Psalms 1–72 | Logos Bible Software</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Theodoret of Cyrrhus Pastor, Polemicist, and Architect of Chalcedon</a>
+<a class="tag" href="podcast_pages/Theodoret_of_Cyrrhus.html" target="_blank" rel="noopener noreferrer">Theodoret of Cyrrhus Pastor, Polemicist, and Architect of Chalcedon</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://logos.com/product/53660/theodoret-of-cyrus-commentary-on-the-psalms-1-72" target="_blank" rel="noopener noreferrer">https://logos.com/product/53660/theodoret-of-cyrus-commentary-on-the-psalms-1-72</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -740,7 +802,7 @@ footer {
 <h3>Update on Ebla - Ministry Magazine</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Ebla and the Afrin Valley An Analysis of a Hegemonic Core and its Northwestern Periphery in the Third Millennium BCE</a>
+<a class="tag" href="podcast_pages/Eblas_Connection_with_Afrin.html" target="_blank" rel="noopener noreferrer">Ebla and the Afrin Valley An Analysis of a Hegemonic Core and its Northwestern Periphery in the Third Millennium BCE</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://ministrymagazine.org/archive/1982/01/update-on-ebla" target="_blank" rel="noopener noreferrer">https://ministrymagazine.org/archive/1982/01/update-on-ebla</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -749,7 +811,7 @@ footer {
 <h3>Yeni Başlayanlar İçin Kilis (1): Ne Oldu, Ne Oluyor, Ne Olabilir? - Mehmet Nuri Gültekin</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Kilis-Afrin Connection A Pre-2010 Analysis of a Syrian-Turkish Borderland</a>
+<a class="tag" href="podcast_pages/Afrin_-_Kilis_Relations.html" target="_blank" rel="noopener noreferrer">The Kilis-Afrin Connection A Pre-2010 Analysis of a Syrian-Turkish Borderland</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://birikimdergisi.com/guncel/7645/yeni-baslayanlar-icin-kilis-1-ne-oldu-ne-oluyor-ne-olabilir" target="_blank" rel="noopener noreferrer">https://birikimdergisi.com/guncel/7645/yeni-baslayanlar-icin-kilis-1-ne-oldu-ne-oluyor-ne-olabilir</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -758,7 +820,7 @@ footer {
 <h3>ریب يف يف يف متسر نع ةداھش ةنیدمل ایروس ایروس ةبیكرتلا ةبیكرتلا ةیناكسلا تریغت يدروكلا نیرفع_ ..عارصلا يفارغمیدلا - سلجملا</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Kilis-Afrin Connection A Pre-2010 Analysis of a Syrian-Turkish Borderland</a>
+<a class="tag" href="podcast_pages/Afrin_-_Kilis_Relations.html" target="_blank" rel="noopener noreferrer">The Kilis-Afrin Connection A Pre-2010 Analysis of a Syrian-Turkish Borderland</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://ahewar.org/debat/show.art.asp?aid=603061" target="_blank" rel="noopener noreferrer">https://ahewar.org/debat/show.art.asp?aid=603061</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -767,7 +829,7 @@ footer {
 <h3>نادلك/نایرس/نویروشآ https://assyrians.n.nu/10#:~:text=The%20Assyrians%20(Syriacs)%20of%20today, unique%20language%2C%20culture%20and%20heritage. ایدیبیكیو https://ar.wikipedia.org/wiki/%D8%A2%D8%B4%D9%88%D8%B1%D9%8A%D9%8 8%D9%86/%D8%B3%D8%B1%D9%8A%D8%A7%D9%86/%D9%83%D9%84%D8% AF%D8%A7%D9%86</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">The Arameans of Afrin A Report on a Deep History and a Fragile Presence Before 2010</a>
+<a class="tag" href="podcast_pages/The_Arameans_in_Afrin.html" target="_blank" rel="noopener noreferrer">The Arameans of Afrin A Report on a Deep History and a Fragile Presence Before 2010</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://assyrians.n.nu/10" target="_blank" rel="noopener noreferrer">https://assyrians.n.nu/10</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -776,7 +838,7 @@ footer {
 <h3>ىسیع دلاخ - ایروس ناتــسدرك يف ةیبرعلا رئاــشعلا - | Kurd Online |</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Important Tribes of the Afrin Region Before 2010 A Socio-Historical Analysis</a>
+<a class="tag" href="podcast_pages/Tribes_of_Afrin.html" target="_blank" rel="noopener noreferrer">Important Tribes of the Afrin Region Before 2010 A Socio-Historical Analysis</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://kurd-online.com/%D8%A7%D9%84%D8%B9%D8%B4%D9%80%D9%80%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D9%81%D9%8A-%D9%83%D8%B1%D8%AF%D8%B3%D9%80%D9%80%D8%AA%D8%A7%D9%86-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7" target="_blank" rel="noopener noreferrer">https://kurd-online.com/%D8%A7%D9%84%D8%B9%D8%B4%D9%80%D9%80%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-%D9%81%D9%8A-%D9%83%D8%B1%D8%AF%D8%B3%D9%80%D9%80%D8%AA%D8%A7%D9%86-%D8%B3%D9%88%D8%B1%D9%8A%D8%A7</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -785,7 +847,7 @@ footer {
 <h3>ًاثیدحو ًامیدق لامــش ایروــس روصعلا ـ2يف”ـ ةثیدحلا May 6, 2025, https://kurd-online.com/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D8%A7 %D9%84%D9%83%D8%B1%D8%AF-%D9%81%D9%8A-%D8%B4%D9%80%D9% 80%D9%85%D8%A7%D9%84-%D8%B3%D9%80%D9%80%D9%88%D8%B1%D9 %8A%D8%A7-%D9%82%D8%AF%D9%8A%D9%85%D8%A7%D9%8B-%D9%88/ ” - | Kurd Online |</h3>
 <div class="meta-row"><span class="meta-label">Source-material category:</span> Partisan individual writing</div>
 <div class="meta-row"><span class="meta-label">Used in file(s):</span><div class="tag-list">
-<a class="tag" href="kurdish_research.html">Important Tribes of the Afrin Region Before 2010 A Socio-Historical Analysis</a>
+<a class="tag" href="podcast_pages/Tribes_of_Afrin.html" target="_blank" rel="noopener noreferrer">Important Tribes of the Afrin Region Before 2010 A Socio-Historical Analysis</a>
 </div></div>
 <div class="meta-row url"><span class="meta-label">Link:</span> <a href="https://kurd-online.com/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D8%A7%D9%84%D9%83%D8%B1%D8%AF-%D9%81%D9%8A-%D8%B4%D9%80%D9%80%D9%85%D8%A7%D9%84-%D8%B3%D9%80%D9%80%D9%88%D8%B1%D9%8A%D8%A7-%D9%82%D8%AF%D9%8A%D9%85%D8%A7%D9%8B-%D9%88" target="_blank" rel="noopener noreferrer">https://kurd-online.com/%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D8%A7%D9%84%D9%83%D8%B1%D8%AF-%D9%81%D9%8A-%D8%B4%D9%80%D9%80%D9%85%D8%A7%D9%84-%D8%B3%D9%80%D9%80%D9%88%D8%B1%D9%8A%D8%A7-%D9%82%D8%AF%D9%8A%D9%85%D8%A7%D9%8B-%D9%88</a></div>
 <div class="meta-row count"><span class="meta-label">Number of times used:</span> 1</div>
@@ -795,6 +857,7 @@ footer {
 (function () {
 const topicSlugs = ["afrin","geography","geology","climate","culture","dengbej","history","regional","relations","linguistics","literature","mythology","ottoman","research","religion","yezidi"];
 let currentSort = "used";
+let currentQuery = "";
 const collator = new Intl.Collator(undefined, { sensitivity: "base", numeric: true });
 function entryTopics(entry) {
   return (entry.dataset.topics || "").split(" ").filter(Boolean);
@@ -817,6 +880,26 @@ function titleSortKey(title) {
 function entrySortTitle(entry) {
   return titleSortKey(entryTitle(entry));
 }
+function normalizeSearchText(text) {
+  return text
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase();
+}
+function entrySearchText(entry) {
+  if (!entry.sourceSearchText) {
+    const tagList = entry.querySelector(".tag-list");
+    entry.sourceSearchText = normalizeSearchText([entryTitle(entry), tagList ? tagList.textContent : ""].join(" "));
+  }
+  return entry.sourceSearchText;
+}
+function searchTokens() {
+  return normalizeSearchText(currentQuery).split(/\s+/).filter(Boolean);
+}
+function entryMatchesSearch(entry, tokens) {
+  const searchable = entrySearchText(entry);
+  return tokens.every(function (token) { return searchable.indexOf(token) !== -1; });
+}
 function entryUseCount(entry) {
   const count = entry.querySelector(".count");
   const match = count ? count.textContent.match(/\d+/) : null;
@@ -837,13 +920,27 @@ function applySort() {
 }
 function applyFilter() {
   const slug = decodeURIComponent(location.hash.slice(1));
-  const isTopic = topicSlugs.indexOf(slug) !== -1;
+  const hasTopicNav = Boolean(document.querySelector(".nav-buttons"));
+  const isTopic = hasTopicNav && topicSlugs.indexOf(slug) !== -1;
+  const tokens = searchTokens();
+  let visibleCount = 0;
+  let totalCount = 0;
   document.querySelectorAll(".nav-buttons .nav-btn").forEach(function (button) {
     button.classList.toggle("active", isTopic && button.getAttribute("href") === "#" + slug);
   });
   document.querySelectorAll(".source-entry").forEach(function (entry) {
-    entry.hidden = isTopic && entryTopics(entry).indexOf(slug) === -1;
+    totalCount += 1;
+    const topicMatch = !isTopic || entryTopics(entry).indexOf(slug) !== -1;
+    const searchMatch = entryMatchesSearch(entry, tokens);
+    entry.hidden = !(topicMatch && searchMatch);
+    if (!entry.hidden) visibleCount += 1;
   });
+  const count = document.querySelector(".search-count");
+  if (count) {
+    count.textContent = visibleCount === totalCount
+      ? totalCount.toLocaleString() + " sources"
+      : visibleCount.toLocaleString() + " of " + totalCount.toLocaleString() + " sources";
+  }
 }
 function setSort(sortMode) {
   currentSort = sortMode === "alpha" ? "alpha" : "used";
@@ -853,7 +950,27 @@ function setSort(sortMode) {
   applySort();
   applyFilter();
 }
+function initSearch() {
+  const input = document.querySelector(".search-input");
+  const clear = document.querySelector(".search-clear");
+  if (!input) return;
+  input.addEventListener("input", function () {
+    currentQuery = input.value;
+    if (clear) clear.hidden = !currentQuery;
+    applyFilter();
+  });
+  if (clear) {
+    clear.addEventListener("click", function () {
+      input.value = "";
+      currentQuery = "";
+      clear.hidden = true;
+      input.focus();
+      applyFilter();
+    });
+  }
+}
 function init() {
+  initSearch();
   document.querySelectorAll(".sort-btn").forEach(function (button) {
     button.addEventListener("click", function () { setSort(button.dataset.sort); });
   });

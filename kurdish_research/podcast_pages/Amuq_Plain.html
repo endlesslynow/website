@@ -5,267 +5,506 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amuq Plain</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #e8e1d1; background-image: url("https://www.transparenttextures.com/patterns/paper.png"); }
-        .container { background-color: #f8f4e8; border: 1px solid #d3c9a5; padding: 25px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); position: relative; margin-top: 20px; }
-        h1 { font-size: 34px; margin-top: 0; color: #5a4a2e; border-bottom: 2px solid #d3c9a5; padding-bottom: 10px; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e8e1d1;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+        }
 
-.description p { white-space: pre-wrap; margin: 0; }
-        .download-btn { display: inline-flex; align-items: center; background-color: #8b7355; color: white; padding: 10px 15px; text-decoration: none; font-weight: 500; }
-        .sources ul { padding-left: 20px; list-style-type: decimal; margin: 0; }
-        .sources li { margin-bottom: 8px; word-break: break-word; }
+        .container {
+            background-color: #f8f4e8;
+            border: 1px solid #d3c9a5;
+            border-radius: 0px; /* Original: no radius */
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* Original container::before style */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1; /* Original z-index */
+        }
+
+        /* Original heading styles */
+        h1 {
+            font-size: 34px;
+            margin-top: 0;
+            color: #5a4a2e;
+            border-bottom: 2px solid #d3c9a5;
+            padding-bottom: 10px;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+        h2 {
+            color: #6b553f;
+             position: relative; z-index: 2; /* Ensure headings are above ::before */
+        }
+
+/* Original description styles */
+        .description {
+            margin-bottom: 25px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+            border-radius: 2px;
+             position: relative; z-index: 2;
+        }
+         .description p { /* Added to ensure text is above ::before */
+             position: relative; z-index: 2;
+             white-space: pre-wrap; /* Preserve line breaks from input */
+             margin: 0;
+        }
+
+        /* Original download section styles */
+        .download-section {
+            margin: 25px 0;
+             position: relative; z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+        }
+
+        .download-btn:hover {
+            background-color: #6b553f;
+        }
+
+        .pdf-icon {
+            margin-right: 8px;
+        }
+
+        /* Original sources styles */
+        .sources {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #d3c9a5;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border: 1px solid #e0d7c0;
+             position: relative; z-index: 2;
+        }
+
+        .sources h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            padding-left: 20px;
+            list-style-type: decimal; /* Original list style */
+             margin: 0; /* Reset default margin */
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .sources a {
+            color: #0066cc; /* Original link color */
+            text-decoration: none;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Original back button styles */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #8b7355;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: 1px solid #6b553f;
+            margin-top: 20px; /* Original margin */
+            margin-bottom: 20px; /* Original margin */
+             position: relative; z-index: 2;
+        }
+
+        .back-button:hover {
+            background-color: #6b553f;
+        }
+
+        .back-icon {
+            margin-right: 8px;
+        }
+
+        /* Original disclaimer styles */
+        .disclaimer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.5); /* Original background */
+            border: 1px solid #e0d7c0; /* Original border */
+            border-radius: 2px;
+            color: #333; /* Original color */
+             position: relative; z-index: 2;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            /* font-size: 20px; REMOVED to use default/inherited size */
+            font-weight: 500;
+        }
+
+        /* Original last updated styles */
+        .last-updated {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #8b7355;
+             position: relative; z-index: 2;
+        }
+         .last-updated p { /* Added */
+             margin: 0;
+        }
+
+        /* Original Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px; /* Original responsive size */
+            }
+        }
+
+        /* Styles for the custom player controls wrapper (Original) */
+        .player-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #444; /* Original background */
+            border-radius: 3px; /* Original radius */
+        }
+/* Original rewind button style */
+        .rewind-button {
+            height: 34px; /* Original height */
+            width: 40px; /* Original width */
+            background-color: #444; /* Original background */
+            color: white;
+            border: none;
+            font-size: 20px; /* Original size */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 3px 3px 0; /* Original radius */
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Amuq Plain</h1>
-<div class="description"><h2>Description</h2><p>The provided text offers a comprehensive overview of the Amuq Plain, a historically significant region in southern Turkey, detailing its geographical importance as a crossroads connecting major ancient civilizations. It explains how archaeological research, particularly the &quot;Amuq Sequence&quot; established by the University of Chicago, created a foundational chronological framework for the Near East. The text traces the plain&#x27;s history from its earliest Neolithic settlements and advancements in metallurgy through the rise and fall of major Bronze and Iron Age kingdoms like Alalakh and Palistin/Pattin. It then chronicles the region&#x27;s transformation into the agricultural heartland for Antioch during classical antiquity and its later history through the medieval and Ottoman periods, concluding with its modern status and the ongoing challenges of preserving its rich archaeological heritage.</p></div>
-        <a href="../docs/Amuq Plain_ Archaeological Research and Significance.pdf" class="download-btn" download>Download PDF</a>
+
+        <div class="description"><h2>Description</h2><p>The provided text offers a comprehensive overview of the Amuq Plain, a historically significant region in southern Turkey, detailing its geographical importance as a crossroads connecting major ancient civilizations. It explains how archaeological research, particularly the &quot;Amuq Sequence&quot; established by the University of Chicago, created a foundational chronological framework for the Near East. The text traces the plain&#x27;s history from its earliest Neolithic settlements and advancements in metallurgy through the rise and fall of major Bronze and Iron Age kingdoms like Alalakh and Palistin/Pattin. It then chronicles the region&#x27;s transformation into the agricultural heartland for Antioch during classical antiquity and its later history through the medieval and Ottoman periods, concluding with its modern status and the ongoing challenges of preserving its rich archaeological heritage.</p></div>
+
+        <a href="../kurdish_research.html" class="back-button">
+                    <svg class="back-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5"></path>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Return to Podcast Archive
+                </a>
+
+        <div class="download-section">
+                    <h2>Related Document</h2>
+                    <a href="../docs/Amuq Plain_ Archaeological Research and Significance.pdf" class="download-btn" download>
+                        <svg class="pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        Download PDF
+                    </a>
+                </div>
+
         <div class="sources"><h2>Sources</h2><ul><li>​ 1 The Amuq Survey and Related Projects. The University of Chicago.</li>
-<li>​ 2 Welton, L. (2011). The Amuq Plain and Tell Tayinat in the Third Millennium BCE: The Historical and Socio-Political Context.​ Journal of the Canadian Society for Mesopotamian Studies, 6, 15-27.</li>
-<li>​ 5 ʿAmūq. (n.d.). In​ Encyclopædia Britannica.</li>
-<li>​ 17 De Giorgi, A. U. (2016). Geomorphology of the Greater Antioch Region. In​ Antioch on the Orontes: An Archaeological and Historical Guide. Cambridge University Press.</li>
-<li>​ 38 The Alalakh Expedition. The University of Chicago.</li>
-<li>​ 14 Alalakh. (n.d.). In​ Wikipedia.</li>
-<li>​ 58 Hatay Province. (n.d.). In​ Wikipedia.</li>
-<li>​ 4 Alalakh. (n.d.). In​ Turkish Archaeological News.</li>
-<li>​ 18 Casana, J., &amp; Wilkinson, T. J. (2022). The Paleoclimate of the Amuq Plain and the Archaeological Settlement Index: The Assessment of the Long-term Settlement Dynamics Throughout the Holocene.​ ResearchGate.</li>
-<li>​35 The Amuq Survey and Related Projects. The University of Chicago.</li>
-<li>​6 Mallowan, M. E. L. (1963). The &#x27;Amuq Plain.​ Antiquity, 37(147), 185–192.</li>
-<li>​3 Amuq Valley Regional Project (AVRP). (n.d.).​ Alalakh Excavations.</li>
-<li>​32 Braidwood, R. J., &amp; Braidwood, L. S. (1960).​ Excavations in the Plain of Antioch I: The Earlier Assemblages, Phases A-J (OIP 61). The University of Chicago.</li>
-<li>​34 Braidwood, R. J. (1937).​ Mounds in the Plain of Antioch: An Archeological Survey (OIP 48). The University of Chicago.</li>
-<li>​39 Yener, K. A. (2004). Amuq Valley Regional Projects.​ The Oriental Institute 2003–2004 Annual Report. The University of Chicago.</li>
-<li>​41 The Tell Tayinat Archaeological Project. (n.d.). University of Toronto, Department of Near &amp; Middle Eastern Civilizations.</li>
-<li>​64 Tayinat Archaeological Project. (n.d.). University of Toronto.</li>
-<li>​59 Tayinat Archaeological Project (TAP) Online. (2012).​ Ancient World Online.</li>
-<li>​16 Tell Tayinat. (n.d.). In​ Wikipedia.</li>
-<li>​11 Harrison, T. P. (1999). The 1999 Amuq Valley Regional Project Survey.​ Unpublished Report.</li>
-<li>​12 Welton, L., Batiuk, S., &amp; Harrison, T. P. (2014). Revisiting the Amuq sequence: a preliminary investigation of the EBIVB ceramic assemblage from Tell Tayinat.​ Levant, 46(3), 339-370.</li>
-<li>​46 Edwards, S. (2019).​ Ebla&#x27;s Hegemony and Its Impact on the Archaeology of the Amuq Plain in the Third Millennium BCE (Doctoral dissertation, University of Toronto).</li>
-<li>​65 Pucci, M. (2019).​ Excavations in the Plain of Antioch III: Stratigraphy, Pottery, and Small Finds from Chatal Höyük in the Amuq Plain (OIP 143). The University of Chicago.</li>
-<li>​50 Yener, K. A. (2017). The Social and Political Importance of Cult and Ritual at Alalakh during the Hittite Period. In​ La Syrie et ses voisins à l&#x27;âge du Bronze. OpenEdition Books.</li>
-<li>​48 Late Bronze Age II (1400-1300 BC). (n.d.).​ Alalakh Excavations.</li>
-<li>​15 Skourtanioti, E., et al. (2020). Genomic History of the Bronze Age Southern Levant.​ Cell, 181(5), 1146-1157.</li>
-<li>​51 Harrison, T. P. (2019). Neo-Hittites in the Land of Palistin: Renewed investigations at Tell Ta&#x27;yinat on the Plain of Antioch.​ ResearchGate.</li>
-<li>​56 The Toronto Expedition. (n.d.).​ Tayinat Archaeological Project.</li>
-<li>​52 Palistin. (n.d.). In​ Wikipedia.</li>
-<li>​21 Amik Ovası. (n.d.).​ Reyhanlı Kaymakamlığı.</li>
-<li>​23 Amik Ovası. (n.d.). In​ Wikipedia (Turkish).</li>
-<li>​25 Amik Gölü. (n.d.). In​ Wikipedia (Turkish).</li>
-<li>​26 Atahan, M. (2002). Amik Gölü&#x27;nün Kültürel Ekolojisi.​ Dergipark.</li>
-<li>​66 Akar, M. (2018). Amik Ovası M.Ö. 2. Binyıl Yerleşimleri ve Seramikleri.​ Dergipark.</li>
-<li>​49 Akar, M. (2021). Mukiş Krallığı&#x27;nın Başkenti Aççana Höyük (Eski Alalah Kenti) Çok Yönlü Arkeolojik Araştırmaları.​ Mustafa Kemal Üniversitesi.</li>
-<li>​1 The Amuq Survey and Related Projects. The University of Chicago.</li>
-<li>​42 Tell Kurdu Höyüğü. (n.d.). In​ Wikipedia (Turkish).</li>
-<li>​67 Tell Tayinat. (n.d.).​ TAY Project.</li>
-<li>​68 Tell Tayinat. (n.d.).​ TAY Project.</li>
-<li>​61 Tell Tayinat. (n.d.). In​ Wikipedia (Turkish).</li>
-<li>​32 OIP 61. Excavations in the Plain of Antioch I: The Earlier Assemblages Phases A-J. The University of Chicago.</li>
-<li>​69 Braidwood, L. S. (1960). Excavations in the Plain of Antioch 1. the earlier assemblages, phases A-J.​ Archive of Mesopotamian Archaeological Reports (AMAR), 560.</li>
-<li>​37 Pucci, M. (2019).​ Excavations in the Plain of Antioch III (OIP 143). The University of Chicago.</li>
-<li>​70 Dodd, L. S. (2019). Digital Archaeology and the Oriental Institute&#x27;s OCHRE Data Service.​ Austrian Academy of Sciences.</li>
-<li>​34 OIP 48. Mounds in the Plain of Antioch: An Archeological Survey. The University of Chicago.</li>
-<li>​36 Braidwood&#x27;s Amuq Survey Volume Online at the OI. (2010).​ Ancient World Online.</li>
-<li>​71 Braidwood, R. J. (1937). Mounds in the plain of Antioch: an archeological survey.​ Archive of Mesopotamian Archaeological Reports (AMAR), 563.</li>
-<li>​22 Braidwood, R. J. (1937).​ Mounds in the Plain of Antioch: An Archeological Survey (OIP 48). The University of Chicago.</li>
-<li>​13 Tell Kurdu Excavations. (n.d.). The University of Chicago.</li>
-<li>​72 Özbal, R. (2018). The Neolithic of the Amuq Valley.​ Austrian Academy of Sciences.</li>
-<li>​7 Yener, K. A. (1996). The Amuq Valley Regional Project, 1995.​ The Oriental Institute 1995–1996 Annual Report. The University of Chicago.</li>
-<li>​73 Özbal, R. (2010).​ The emergence of pottery in West Asia. (Doctoral dissertation, METU).</li>
-<li>​54 Knapp, A. B., &amp; Manning, S. W. (2016). Crisis in Context: The End of the Late Bronze Age in the Eastern Mediterranean.​ American Journal of Archaeology, 120(1), 99-149.</li>
-<li>​31 Yener, K. A. (1998). Amuq Valley Regional Project.​ The Oriental Institute 1997–1998 Annual Report. The University of Chicago.</li>
-<li>​74 Chalcolithic. (n.d.). In​ Wikipedia.</li>
-<li>​75 Chalcolithic Europe. (n.d.). In​ Wikipedia.</li>
-<li>​27 Gerritsen, F., &amp; Özbal, R. (2008). Settlement and Landscape Transformations in the Amuq Valley, Hatay.​ ResearchGate.</li>
-<li>​76 Joglekar, P. P. (2015). Crafts and Technologies of the Chalcolithic People of South Asia: An Overview.​ Indian Journal of History of Science, 50(1), 42-54.</li>
-<li>​28 Tell Atchana/Alalakh. (n.d.).​ University of Tübingen.</li>
-<li>​14 Alalakh. (n.d.). In​ Wikipedia.</li>
-<li>​15 Skourtanioti, E., et al. (2020). Genomic History of the Bronze Age Southern Levant.​ Cell, 181(5), 1146-1157.</li>
-<li>​47 Middle Bronze Age I (2000-1800 BC). (n.d.).​ Alalakh Excavations.</li>
-<li>​3 Amuq Valley Regional Project (AVRP). (n.d.).​ Alalakh Excavations.</li>
-<li>​53 Tell Ta&#x27;yinat. (n.d.). The University of Chicago.</li>
-<li>​16 Tell Tayinat. (n.d.). In​ Wikipedia.</li>
-<li>​57 Harrison, T. P. (2021). The Iron Age I–II Transition in the Northern Levant.​ Journal of Ancient Near Eastern Religions, 21(2), 325-353.</li>
-<li>​77 Pucci, M. (2023). Storage and Food Control in the &#x27;Amuq from the Late Bronze to the Iron Age.​ ResearchGate.</li>
-<li>​30 Pucci, M. (2019). The Iron Age I–II in the Amuq.​ Austrian Academy of Sciences.</li>
-<li>​39 Yener, K. A. (2004). Amuq Valley Regional Projects.​ The Oriental Institute 2003–2004 Annual Report. The University of Chicago.</li>
-<li>​2 Welton, L. (2011). The Amuq Plain and Tell Tayinat in the Third Millennium BCE.​ Journal of the Canadian Society for Mesopotamian Studies, 6, 15-27.</li>
-<li>​19 De Giorgi, A. U. (2016). The plain of Antioch and the Amuq Valley. In​ Ancient Antioch. Cambridge University Press.</li>
-<li>​62 The Lost City of Antioch. (2020).​ YouTube.</li>
-<li>​78 Antiochene Studies. (n.d.).​ Brepols.</li>
-<li>​63 Ersoy, Z. (2020). French Travelers and Ottoman Antioch.​ Journal of the European Architectural History Network, 12(1).</li>
-<li>​20 Antioch. (n.d.). In​ Wikipedia.</li>
-<li>​23 Amik Ovası. (n.d.). In​ Wikipedia (Turkish).</li>
-<li>​26 Atahan, M. (2002). Amik Gölü&#x27;nün Kültürel Ekolojisi.​ Dergipark.</li>
-<li>​21 Amik Ovası. (n.d.).​ Reyhanlı Kaymakamlığı.</li>
-<li>​79 Yılmaz, E., &amp; Avdan, U. (2022). 1980 Yılı Amik Ovası Taşkınının Tarihi Uydu Görüntüleri ile İncelenmesi.​ Dergipark.</li>
-<li>​80 Amik Valley. (n.d.). In​ Wikipedia.</li>
-<li>​69 Braidwood, L. S. (1960). Excavations in the Plain of Antioch 1. the earlier assemblages, phases A-J.​ Archive of Mesopotamian Archaeological Reports (AMAR), 560.</li>
-<li>​32 OIP 61. Excavations in the Plain of Antioch I: The Earlier Assemblages Phases A-J. The University of Chicago.</li>
-<li>​43 Al-Maqdissi, M. (2022). Tell al-Sour (Homs, Syria): The Pottery Assemblage of Strata B2 (Area P) from the Sixth Millennium bc.​ Syria, 99, 1-28.</li>
-<li>​81 Braidwood, L. S. (1960). Bibliography.​ ResearchGate.</li>
-<li>​82 Pucci, M. (2019). Bibliography.​ SMEA.</li>
-<li>​19 De Giorgi, A. U. (2016). The plain of Antioch and the Amuq Valley. In​ Ancient Antioch. Cambridge University Press.</li>
-<li>​36 Braidwood&#x27;s Amuq Survey Volume Online at the OI. (2010).​ Ancient World Online.</li>
-<li>​34 OIP 48. Mounds in the Plain of Antioch: An Archeological Survey. The University of Chicago.</li>
-<li>​71 Braidwood, R. J. (1937). Mounds in the plain of Antioch: an archeological survey.​ Archive of Mesopotamian Archaeological Reports (AMAR), 563.</li>
-<li>​65 Pucci, M. (2019).​ Excavations in the Plain of Antioch III (OIP 143). The University of Chicago.</li>
-<li>​7 Yener, K. A. (1996). The Amuq Valley Regional Project, 1995.​ The Oriental Institute 1995–1996 Annual Report. The University of Chicago.</li>
-<li>​83 Iamoni, M. (2016). The Land of Nineveh Archaeological Project: The Ceramic Repertoire from the Early Pottery Neolithic to the Sasanian Period.​ ResearchGate.</li>
-<li>​84 Todd, I. A. (1987). The Chalcolithic Period in the Vasilikos Valley.​ Getty Publications.</li>
-<li>​85 Balbo, A., et al. (2014). First results of the new archaeological project at Tell Qarassa North (Sweida, southern Syria).​ Paléorient, 40(1), 93-108.</li>
-<li>​44 Nieuwenhuyse, O. P., et al. (2018). Painting, Polishing and Firing Pottery in the Neolithic of the Near East.​ Levant, 50(3), 261-289.</li>
-<li>​29 Wilkinson, T. J. (2005). Introduction. In​ The Amuq Valley Regional Projects, Volume 1 (OIP 131). The University of Chicago.</li>
-<li>​2 Welton, L. (2011). The Amuq Plain and Tell Tayinat in the Third Millennium BCE.​ Journal of the Canadian Society for Mesopotamian Studies, 6, 15-27.</li>
-<li>​86 Welton, L. (2019). Northern Levantine Spheres of Interaction: The Role of the Amuq in the Late Chalcolithic and Early Bronze Age.​ University of Toronto.</li>
-<li>​87 Gates, M.-H. (2013). The Early Bronze Age at Kinet Höyük.​ Peeters Online Journals.</li>
-<li>​ 88 Friedman, E. (1996). Technological Style in Early Bronze Age Anatolia.​ Dissertation Proposal, The University of Chicago.</li>
-<li>​ 24 Harrison, T. P. (2018). The Metals Trade and Early Bronze Age Craft Production at Tell Tayinat. In​ Overturning Certainties in Near Eastern Archaeology. Brill.</li>
-<li>​ 8 Pucci, M. (2019). The Iron Age I–II in the Amuq.​ Austrian Academy of Sciences.</li>
-<li>​ 60 Osborne, J. F. (2017). Exploring the Lower Settlements of Iron Age Capitals in Anatolia and Syria.​ Antiquity, 91(357), 693-709.</li>
-<li>​ 53 Tell Ta&#x27;yinat. (n.d.). The University of Chicago.</li>
-<li>​ 55 Harrison, T. P. (2019). Shifting Networks and Community Identity at Tell Tayinat in the Iron I.​ American Journal of Archaeology, 123(2), 291-329.</li>
-<li>​ 89 Manning, S. W., et al. (2020). Beyond megadrought and collapse in the Northern Levant.​ PLOS ONE, 15(10), e0240799.</li>
-<li>​ 16 Tell Tayinat. (n.d.). In​ Wikipedia.</li>
-<li>​ 9 Yener, K. A., et al. (2000). The Amuq Valley Regional Project, 1995-1998.​ American Journal of Archaeology, 104(2), 163-220.</li>
-<li>​ 90 Cooper, J. S. (2020). Ancient Egypt and the Near East.​ Oxford Research Encyclopedia of African History.</li>
-<li>​ 45 Yener, K. A. (1995). Amuq Valley Regional Project.​ The Oriental Institute News &amp; Notes, 148.</li>
-<li>​ 91 The Amuq Valley Regional Project 1995-1998. (n.d.).​ ETANA.</li>
-<li>​ 92 Mellaart, J. (1971). Anatolia, c. 4000-2300 B.C. In​ The Cambridge Ancient History. Cambridge University Press.</li>
-<li>​ 93 Sitting at the Crossroads: Cilicia in the Iron Age. (n.d.).​ ArcGIS StoryMaps.</li>
-<li>​ 6 Mallowan, M. E. L. (1963). The &#x27;Amuq Plain.​ Antiquity, 37(147), 185–192.</li>
-<li>​ 10 Robert J. Braidwood. (n.d.). In​ Encyclopædia Britannica.</li>
-<li>​ 33 Rizk Allah, W. W. (2021). Robert Braidwood and his Prehistoric Projects.​ Journal of the Faculty of Archaeology, Cairo University.</li>
-<li>​ 94 Braidwood, R., &amp; Braidwood, L. (1960). Excavations in the Plain of Antioch I.​ ORBi.</li>
-<li>​ 3 Amuq Valley Regional Project (AVRP). (n.d.).​ Alalakh Excavations.</li>
-<li>​ 40 Gerritsen, F., &amp; Özbal, R. (2008). Settlement and Landscape Transformations in the Amuq Valley, Hatay.​ ResearchGate.</li>
-<li>​ 95 Amiran, R. (1964). Review of​ The Cambridge Ancient History. American Historical Review, 69(2), 417-418.</li>
-<li>​ 69 Braidwood, L. S. (1960). Excavations in the Plain of Antioch 1. the earlier assemblages, phases A-J.​ Archive of Mesopotamian Archaeological Reports (AMAR), 560.</li>
-<li>​ 32 OIP 61. Excavations in the Plain of Antioch I: The Earlier Assemblages Phases A-J. The University of Chicago.</li>
-<li>​ 96​ Excavations in the plain of Antioch 1, The earlier assemblages phases A. J. (1960). Sudoc.</li>
-<li>​ 37 Pucci, M. (2019).​ Excavations in the Plain of Antioch III (OIP 143). The University of Chicago.</li>
-<li>​ 97​ The Cambridge Encyclopedia of Archaeology. (1980). Archive.org.</li>
-<li>​ 98 Oriental Institute Publications (OIP). (n.d.). The University of Chicago.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source.</li>
-<li>​ Inaccessible Source. Works cited</li>
-<li>​ The Amuq Survey and Related Projects | Institute for the Study of ..., accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/projects/amuq-survey-and-related-projects" target="_blank">https://isac.uchicago.edu/research/projects/amuq-survey-and-related-projects</a></li>
-<li>​ The Amuq Plain and Tell Tayinat in the Third Millennium BCE - University of Toronto, accessed August 13, 2025, <a href="http://sites.utoronto.ca/tap/assets/welton_csms-2011.pdf" target="_blank">http://sites.utoronto.ca/tap/assets/welton_csms-2011.pdf</a></li>
-<li>​ AMUQ VALLEY REGIONAL PROJECT - Alalakh, accessed August 13, 2025, <a href="https://www.alalakh.org/amuq-valley-regional-project-avrp/" target="_blank">https://www.alalakh.org/amuq-valley-regional-project-avrp/</a></li>
-<li>​ Alalakh | Turkish Archaeological News, accessed August 13, 2025, <a href="https://turkisharchaeonews.net/site/alalakh" target="_blank">https://turkisharchaeonews.net/site/alalakh</a></li>
-<li>​ ʿAmūq | Middle East, Syria, Plain - Britannica, accessed August 13, 2025, <a href="https://www.britannica.com/place/Amuq" target="_blank">https://www.britannica.com/place/Amuq</a></li>
-<li>​ The &#x27;Amuq Plain | Antiquity | Cambridge Core, accessed August 13, 2025, <a href="https://www.cambridge.org/core/journals/antiquity/article/amuq-plain/0C002E27F" target="_blank">https://www.cambridge.org/core/journals/antiquity/article/amuq-plain/0C002E27F</a> 1B6A738DBD8A2FD992434E8</li>
-<li>​ AMUQ VALLEY PROJECTS - Institute for the Study of Ancient Cultures, accessed August 13, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/ar/91-00/95-96/9" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/ar/91-00/95-96/9</a> 5-96_Amuq.pdf</li>
-<li>​ The Amuq Region during the Iron Age I–II: Formation, Organisation and Development of a Community, accessed August 13, 2025, <a href="https://austriaca.at/0xc1aa5572%200x003bca5c.pdf" target="_blank">https://austriaca.at/0xc1aa5572%200x003bca5c.pdf</a></li>
-<li>​ The Amuq Valley Regional Project, 1995-1998 | Request PDF - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/269982187_The_Amuq_Valley_Regional_" target="_blank">https://www.researchgate.net/publication/269982187_The_Amuq_Valley_Regional_</a> Project_1995-1998</li>
-<li>​Robert J. Braidwood | American anthropologist - Britannica, accessed August 13, 2025, <a href="https://www.britannica.com/biography/Robert-J-Braidwood" target="_blank">https://www.britannica.com/biography/Robert-J-Braidwood</a></li>
-<li>​the 1999 amuq valley regional project survey - University of Toronto, accessed August 13, 2025, <a href="http://sites.utoronto.ca/tap/assets/1999amuqregionalsurvey.pdf" target="_blank">http://sites.utoronto.ca/tap/assets/1999amuqregionalsurvey.pdf</a></li>
-<li>​Revisiting the Amuq sequence: a preliminary investigation of the EBIVB ceramic assemblage from Tell Tayinat - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/286684004_Revisiting_the_Amuq_seq" target="_blank">https://www.researchgate.net/publication/286684004_Revisiting_the_Amuq_seq</a> uence_a_preliminary_investigation_of_the_EBIVB_ceramic_assemblage_from_Tell _Tayinat</li>
-<li>​Tell Kurdu Excavations: | Institute for the Study of Ancient Cultures, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/projects/tell-kurdu-excavations" target="_blank">https://isac.uchicago.edu/research/projects/tell-kurdu-excavations</a></li>
-<li>​Alalakh - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Alalakh" target="_blank">https://en.wikipedia.org/wiki/Alalakh</a></li>
-<li>​Human mobility at Tell Atchana (Alalakh), Hatay, Turkey during the 2nd millennium BC: Integration of isotopic and genomic evidence - PubMed Central, accessed August 13, 2025, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8244877/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC8244877/</a></li>
-<li>​Tell Tayinat - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Tell_Tayinat" target="_blank">https://en.wikipedia.org/wiki/Tell_Tayinat</a></li>
-<li>​The Geomorphology of the Greater Antioch Region (Chapter 2) - Cambridge University Press, accessed August 13, 2025, <a href="https://www.cambridge.org/core/books/antioch-on-the-orontes/geomorphology" target="_blank">https://www.cambridge.org/core/books/antioch-on-the-orontes/geomorphology</a> -of-the-greater-antioch-region/ED22E8AB175406A386F3FEA16EE438C9</li>
-<li>​(PDF) The Paleoclimate of the Amuq Plain and the Archaeological Settlement Index: The Assessment of the Long-term Settlement Dynamics Throughout the Holocene - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/366426629_The_Paleoclimate_of_the_A" target="_blank">https://www.researchgate.net/publication/366426629_The_Paleoclimate_of_the_A</a> muq_Plain_and_the_Archaeological_Settlement_Index_The_Assessment_of_the_L ong-term_Settlement_Dynamics_Throughout_the_Holocene</li>
-<li>​The plain of Antioch and the Amuq Valley (Chapter Three) - Ancient ..., accessed August 13, 2025, <a href="https://www.cambridge.org/core/books/ancient-antioch/plain-of-antioch-and-th" target="_blank">https://www.cambridge.org/core/books/ancient-antioch/plain-of-antioch-and-th</a> e-amuq-valley/ED72CBEDA5CC45955FEFEF9B525E5CA8</li>
-<li>​Antioch - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Antioch" target="_blank">https://en.wikipedia.org/wiki/Antioch</a></li>
-<li>​Amik Ovası - T.C. Reyhanlı Kaymakamlığı, accessed August 13, 2025, <a href="http://www.reyhanli.gov.tr/amik-ovasi" target="_blank">http://www.reyhanli.gov.tr/amik-ovasi</a></li>
-<li>​UNIVERSITYf PENNSYLVANIA LIBRARIES, accessed August 13, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oip48.pdf" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oip48.pdf</a></li>
-<li>​Amik Ovası - Vikipedi, accessed August 13, 2025, <a href="https://tr.wikipedia.org/wiki/Amik_Ovas%C4%B1" target="_blank">https://tr.wikipedia.org/wiki/Amik_Ovas%C4%B1</a></li>
-<li>​Chatper 4 The Metals Trade and Early Bronze Age Craft Production at Tell Tayinat in - Brill, accessed August 13, 2025, <a href="https://brill.com/view/book/edcoll/9789004353572/B9789004353572_004.xml" target="_blank">https://brill.com/view/book/edcoll/9789004353572/B9789004353572_004.xml</a></li>
-<li>​Amik Gölü - Vikipedi, accessed August 13, 2025, <a href="https://tr.wikipedia.org/wiki/Amik_G%C3%B6l%C3%BC" target="_blank">https://tr.wikipedia.org/wiki/Amik_G%C3%B6l%C3%BC</a></li>
-<li>​AMİK GÖLÜ&#x27;NÜN KÜLTÜREL EKOLOJİSİ (Cultural Ecology of Lake Amik) - DergiPark, accessed August 13, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/3152" target="_blank">https://dergipark.org.tr/tr/download/article-file/3152</a></li>
-<li>​Settlement and Landscape Transformations in the Amuq Valley, Hatay. A Long-Term Perspective Introduction - CORE, accessed August 13, 2025, <a href="https://core.ac.uk/download/pdf/149241545.pdf" target="_blank">https://core.ac.uk/download/pdf/149241545.pdf</a></li>
-<li>​Late Bronze Age Tell Atchana - Universität Tübingen, accessed August 13, 2025, <a href="https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakult" target="_blank">https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakult</a> aet/fachbereiche/geowissenschaften/arbeitsgruppen/urgeschichte-naturwissens chaftliche-archaeologie/ina/archaeobotanik/forschung/tell-atchana/</li>
-<li>​oriental institute publications • no. 131, accessed August 13, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/OIP_131.pdf" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/OIP_131.pdf</a></li>
-<li>​The Amuq Region during the Iron Age I–II: Formation, Organisation and Development of a Community - FLORE, accessed August 13, 2025, <a href="https://flore.unifi.it/retrieve/e398c37f-c294-179a-e053-3705fe0a4cff/07_Pucci.pd" target="_blank">https://flore.unifi.it/retrieve/e398c37f-c294-179a-e053-3705fe0a4cff/07_Pucci.pd</a> f</li>
-<li>​AMUQ VALLEY REGIONAL PROJECT, accessed August 13, 2025, <a href="https://oi.uchicago.edu/sites/default/files/uploads/shared/docs/ar/91-00/97-98/97-" target="_blank">https://oi.uchicago.edu/sites/default/files/uploads/shared/docs/ar/91-00/97-98/97-</a> 98_Amuq.pdf</li>
-<li>​OIP 61. Excavations in the Plain of Antioch I: The Earlier Assemblages Phases A-J, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/publications/oip/oip-61-excavations-plain-anti" target="_blank">https://isac.uchicago.edu/research/publications/oip/oip-61-excavations-plain-anti</a> och-i-earlier-assemblages-phases-j</li>
-<li>​1909 : 2003 - EKB, accessed August 13, 2025, <a href="https://aafu.journals.ekb.eg/article_280563_4a20010ebeeff2c45e2b6f22edbc6188" target="_blank">https://aafu.journals.ekb.eg/article_280563_4a20010ebeeff2c45e2b6f22edbc6188</a> .pdf</li>
-<li>​OIP 48. Mounds in the Plain of Antioch: An Archeological Survey, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/publications/oip/oip-48-mounds-plain-antioch" target="_blank">https://isac.uchicago.edu/research/publications/oip/oip-48-mounds-plain-antioch</a> -archeological-survey</li>
-<li>​isac.uchicago.edu, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/projects/amuq-survey-and-related-projects#:" target="_blank">https://isac.uchicago.edu/research/projects/amuq-survey-and-related-projects#:</a> ~:text=From%201932%20to%201938%2C%20Robert,team%20discovered%2017 8%20ancient%20settlements.</li>
-<li>​AWOL - The Ancient World Online: May 2010, accessed August 13, 2025, <a href="http://ancientworldonline.blogspot.com/2010/05/" target="_blank">http://ancientworldonline.blogspot.com/2010/05/</a></li>
-<li>​PLAIN OF ANTIOCH - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/profile/Marina-Pucci/publication/333001103_OIP14" target="_blank">https://www.researchgate.net/profile/Marina-Pucci/publication/333001103_OIP14</a> 3_Excavations_Plain_Antioch_part_1_cover/links/5cd58b8b299bf14d9589358f/OIP 143-Excavations-Plain-Antioch-part-1-cover.pdf</li>
-<li>​The Alalakh Expedition | Institute for the Study of Ancient Cultures, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/projects/alalakh-expedition" target="_blank">https://isac.uchicago.edu/research/projects/alalakh-expedition</a></li>
-<li>​AMUQ VALLEY REGIONAL PROJECTS, accessed August 13, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/03-04_Amuq.pd" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/03-04_Amuq.pd</a> f</li>
-<li>​Settlement and Landscape Transformations in the Amuq Valley, Hatay - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/250138513_Settlement_and_Landscape" target="_blank">https://www.researchgate.net/publication/250138513_Settlement_and_Landscape</a> _Transformations_in_the_Amuq_Valley_Hatay</li>
-<li>​The Tell Tayinat Archaeological Project | Department of Near &amp; Middle Eastern Civilizations, accessed August 13, 2025, <a href="https://www.nmc.utoronto.ca/research/research-publications/research-projects/t" target="_blank">https://www.nmc.utoronto.ca/research/research-publications/research-projects/t</a> ell-tayinat-archaeological-project</li>
-<li>​Tell Kurdu Höyüğü - Vikipedi, accessed August 13, 2025, <a href="https://tr.wikipedia.org/wiki/Tell_Kurdu_H%C3%B6y%C3%BC%C4%9F%C3%BC" target="_blank">https://tr.wikipedia.org/wiki/Tell_Kurdu_H%C3%B6y%C3%BC%C4%9F%C3%BC</a></li>
-<li>​Tell al-Sour Late Neolithic (Homs region 6000–5500 bc) - OpenEdition Journals, accessed August 13, 2025, <a href="https://journals.openedition.org/syria/15055?lang=en" target="_blank">https://journals.openedition.org/syria/15055?lang=en</a></li>
-<li>​Full article: Investigating Late Neolithic ceramics in the northern Levant: the view from Shir, accessed August 13, 2025, <a href="https://www.tandfonline.com/doi/full/10.1080/00758914.2018.1453213" target="_blank">https://www.tandfonline.com/doi/full/10.1080/00758914.2018.1453213</a></li>
-<li>​THE AMUQ VALLEY PROJECTS, 1995 - Institute for the Study of Ancient Cultures, accessed August 13, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/nn148.pdf" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/nn148.pdf</a></li>
-<li>​Ebla&#x27;s Hegemony and Its Impact on the Archaeology of the Amuq Plain in the Third Millennium BCE, accessed August 13, 2025, <a href="https://utoronto.scholaris.ca/server/api/core/bitstreams/e106520a-7e27-4113-a73" target="_blank">https://utoronto.scholaris.ca/server/api/core/bitstreams/e106520a-7e27-4113-a73</a> 2-2ca859ba16b2/content</li>
-<li>​MIDDLE BRONZE AGE I (2000-1800 BC) - Alalakh - Tell Atchana, accessed August 13, 2025, <a href="https://www.alalakh.org/middle-bronze-age-i/" target="_blank">https://www.alalakh.org/middle-bronze-age-i/</a></li>
-<li>​LATE BRONZE AGE II (1400-1300 BC) - Alalakh, accessed August 13, 2025, <a href="https://www.alalakh.org/late-bronze-age-ii/" target="_blank">https://www.alalakh.org/late-bronze-age-ii/</a></li>
-<li>​Mukiş Krallığı&#x27;nın Başkenti Aççana Höyük, Eski Alalah Kenti Çok Yönlü Arkeolojik Araştırmaları: Yeni Sorular, Yeni Sonuçlar - Akademik Veri Yönetim Sistemi, accessed August 13, 2025, <a href="https://avesis.mku.edu.tr/yayin/d62c2093-a7fc-4118-9b07-29eebf78a4e5/mukis-k" target="_blank">https://avesis.mku.edu.tr/yayin/d62c2093-a7fc-4118-9b07-29eebf78a4e5/mukis-k</a> ralliginin-baskenti-accana-hoyuk-eski-alalah-kenti-cok-yonlu-arkeolojik-arastirm alari-yeni-sorular-yeni-sonuclar</li>
-<li>​Cult and Ritual at Late Bronze Age II Alalakh: Hybridity and Power under Hittite Administration - OpenEdition Books, accessed August 13, 2025, <a href="https://books.openedition.org/ifeagd/3548" target="_blank">https://books.openedition.org/ifeagd/3548</a></li>
-<li>​Neo-Hittites in the &quot;Land of Palistin&quot;: Renewed investigations at tell ..., accessed August 13, 2025, <a href="https://www.researchgate.net/publication/285718053_Neo-Hittites_in_the_Land_o" target="_blank">https://www.researchgate.net/publication/285718053_Neo-Hittites_in_the_Land_o</a> f_Palistin_Renewed_investigations_at_tell_ta&#x27;yinat_on_the_plain_of_antioch</li>
-<li>​Palistin - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Palistin" target="_blank">https://en.wikipedia.org/wiki/Palistin</a></li>
-<li>​Tell Ta&#x27;yinat | Institute for the Study of Ancient Cultures - The University of Chicago, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/projects/amuq/tell-tayinat" target="_blank">https://isac.uchicago.edu/research/projects/amuq/tell-tayinat</a></li>
-<li>​THE IRON AGE POTTERY FROM ALALAKH/TELL ATCHANA: A, accessed August 13, 2025, <a href="https://livrepository.liverpool.ac.uk/3022477/1/201055609_Feb2018.pdf" target="_blank">https://livrepository.liverpool.ac.uk/3022477/1/201055609_Feb2018.pdf</a></li>
-<li>​Shifting Networks and Community Identity at Tell Tayinat in the Iron I (ca. 12th to Mid 10th Century B.C.E.) | American Journal of Archaeology: Vol 123, No 2, accessed August 13, 2025, <a href="https://www.journals.uchicago.edu/doi/full/10.3764%2Faja.123.2.0291" target="_blank">https://www.journals.uchicago.edu/doi/full/10.3764%2Faja.123.2.0291</a></li>
-<li>​The Toronto Expedition - Tayinat Archaeological Project -, accessed August 13, 2025, <a href="https://tayinat.artsci.utoronto.ca/the-toronto-expedition/" target="_blank">https://tayinat.artsci.utoronto.ca/the-toronto-expedition/</a></li>
-<li>​The Iron Age I–II Transition in the Northern Levant: An Emerging Consensus? - Tayinat Archaeological Project - - University of Toronto, accessed August 13, 2025, <a href="https://tayinat.artsci.utoronto.ca/wp-content/uploads/2021/11/Harrison_JJAR_1_2" target="_blank">https://tayinat.artsci.utoronto.ca/wp-content/uploads/2021/11/Harrison_JJAR_1_2</a></li>
-<li>pdf</li>
-<li>​Hatay Province - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Hatay_Province" target="_blank">https://en.wikipedia.org/wiki/Hatay_Province</a></li>
-<li>​Tayinat Archaeological Project Online, accessed August 13, 2025, <a href="http://ancientworldonline.blogspot.com/2012/09/tayinat-archaeological-project-" target="_blank">http://ancientworldonline.blogspot.com/2012/09/tayinat-archaeological-project-</a> online.html</li>
-<li>​Exploring the lower settlements of Iron Age capitals in Anatolia and Syria | Antiquity, accessed August 13, 2025, <a href="https://www.cambridge.org/core/journals/antiquity/article/exploring-the-lower-se" target="_blank">https://www.cambridge.org/core/journals/antiquity/article/exploring-the-lower-se</a> ttlements-of-iron-age-capitals-in-anatolia-and-syria/EE969C5E60D9772EB23687 B81CB97660</li>
-<li>​Tell Tayinat - Vikipedi, accessed August 13, 2025, <a href="https://tr.wikipedia.org/wiki/Tell_Tayinat" target="_blank">https://tr.wikipedia.org/wiki/Tell_Tayinat</a></li>
-<li>​Antioch: the Forgotten Rome of the East - YouTube, accessed August 13, 2025, <a href="https://www.youtube.com/watch?v=JMPrxUdMpRE" target="_blank">https://www.youtube.com/watch?v=JMPrxUdMpRE</a></li>
-<li>​À La Recherche De L&#x27;Espace Perdu: Architecture, Urban Fabric, and French Travelers to Antioch (1784–1914), accessed August 13, 2025, <a href="https://journal.eahn.org/article/id/7527/" target="_blank">https://journal.eahn.org/article/id/7527/</a></li>
-<li>​Tayinat Archaeological Project -, accessed August 13, 2025, <a href="https://tayinat.artsci.utoronto.ca/" target="_blank">https://tayinat.artsci.utoronto.ca/</a></li>
-<li>​PLAIN OF ANTIOCH - FLORE, accessed August 13, 2025, <a href="https://flore.unifi.it/retrieve/e398c380-cc7f-179a-e053-3705fe0a4cff/OIP%20143" target="_blank">https://flore.unifi.it/retrieve/e398c380-cc7f-179a-e053-3705fe0a4cff/OIP%20143</a> %20Excavations_in_Antioch%20part%201.pdf</li>
-<li>​AMİSOS / AMISOS - DergiPark, accessed August 13, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/509314" target="_blank">https://dergipark.org.tr/tr/download/article-file/509314</a></li>
-<li>​TAY-Yerlesme Dönem Ayrıntıları, accessed August 13, 2025, <a href="http://tayproject.org/TAYages.fm$Retrieve?CagNo=9109&amp;html=ages_detail_t.html" target="_blank">http://tayproject.org/TAYages.fm$Retrieve?CagNo=9109&amp;html=ages_detail_t.html</a> &amp;layout=web</li>
-<li>​TAY-Yerlesme Dönem Ayrıntıları, accessed August 13, 2025, <a href="http://www.tayproject.org/TAYages.fm$Retrieve?CagNo=2891&amp;html=ages_detail_t" target="_blank">http://www.tayproject.org/TAYages.fm$Retrieve?CagNo=2891&amp;html=ages_detail_t</a> .html&amp;layout=web</li>
-<li>​Excavations in the Plain of Antioch 1. the earlier assemblages, phases A-J - Academic Commons, accessed August 13, 2025, <a href="https://commons.library.stonybrook.edu/amar/560/" target="_blank">https://commons.library.stonybrook.edu/amar/560/</a></li>
-<li>​Unlocking Legacy Data: Integrating New and Old in OCHRE, accessed August 13, 2025, <a href="https://www.austriaca.at/0xc1aa5572%200x003bca70.pdf" target="_blank">https://www.austriaca.at/0xc1aa5572%200x003bca70.pdf</a></li>
-<li>​Mounds in the plain of Antioch: an archeological survey, accessed August 13, 2025, <a href="https://commons.library.stonybrook.edu/amar/563/" target="_blank">https://commons.library.stonybrook.edu/amar/563/</a></li>
-<li>​5. The Amuq C Culture, accessed August 13, 2025, <a href="https://austriaca.at/0xc1aa5576_0x003c0582.pdf" target="_blank">https://austriaca.at/0xc1aa5576_0x003c0582.pdf</a></li>
-<li>​the social and symbolic role of early pottery in the near east, accessed August 13, 2025, <a href="https://etd.lib.metu.edu.tr/upload/12623432/index.pdf" target="_blank">https://etd.lib.metu.edu.tr/upload/12623432/index.pdf</a></li>
-<li>​Chalcolithic - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Chalcolithic" target="_blank">https://en.wikipedia.org/wiki/Chalcolithic</a></li>
-<li>​Chalcolithic Europe - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Chalcolithic_Europe" target="_blank">https://en.wikipedia.org/wiki/Chalcolithic_Europe</a></li>
-<li>​Crafts and Technologies of the Chalcolithic People of South Asia: An Overview, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/276883644_Crafts_and_Technologies_o" target="_blank">https://www.researchgate.net/publication/276883644_Crafts_and_Technologies_o</a> f_the_Chalcolithic_People_of_South_Asia_An_Overview</li>
-<li>​Fig. 2. Late Bronze Age/Iron Age transitional levels in the &#x27;Amuq sites... - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/figure/Late-Bronze-Age-Iron-Age-transitional-leve" target="_blank">https://www.researchgate.net/figure/Late-Bronze-Age-Iron-Age-transitional-leve</a> ls-in-the-Amuq-sites-with-evidence-of-grain_fig2_368952830</li>
-<li>​Series - Antiochene Studies - Brepols Publishers, accessed August 13, 2025, <a href="https://www.brepols.net/series/ANT" target="_blank">https://www.brepols.net/series/ANT</a></li>
-<li>​(PDF) 1980 YILI AMİK OVASI TAŞKINININ TARİHİ UYDU GÖRÜNTÜLERİ İLE İNCELENMESİ - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/368575139_1980_YILI_AMIK_OVASI_TAS" target="_blank">https://www.researchgate.net/publication/368575139_1980_YILI_AMIK_OVASI_TAS</a> KINININ_TARIHI_UYDU_GORUNTULERI_ILE_INCELENMESI</li>
-<li>​Amik Valley - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Amik_Valley" target="_blank">https://en.wikipedia.org/wiki/Amik_Valley</a></li>
-<li>​PDF - DergiPark, accessed August 13, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/4990514" target="_blank">https://dergipark.org.tr/tr/download/article-file/4990514</a></li>
-<li>​STUDI MICENEI ED EGEO-ANATOLICI - FLORE, accessed August 13, 2025, <a href="https://flore.unifi.it/retrieve/e398c380-ff75-179a-e053-3705fe0a4cff/2019%20Pu" target="_blank">https://flore.unifi.it/retrieve/e398c380-ff75-179a-e053-3705fe0a4cff/2019%20Pu</a> cci%20SMEA.pdf</li>
-<li>​(PDF) The Land of Nineveh Archaeological Project: The Ceramic Repertoire from the Early Pottery Neolithic to the Sasanian Period - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/303094098_The_Land_of_Nineveh_Arc" target="_blank">https://www.researchgate.net/publication/303094098_The_Land_of_Nineveh_Arc</a> haeological_Project_The_Ceramic_Repertoire_from_the_Early_Pottery_Neolithic_t o_the_Sasanian_Period</li>
-<li>​Chalcolithic Cyprus - Getty Museum, accessed August 13, 2025, <a href="https://www.getty.edu/publications/resources/virtuallibrary/0892362073.pdf" target="_blank">https://www.getty.edu/publications/resources/virtuallibrary/0892362073.pdf</a></li>
-<li>​From the Natufian to the Chalcolithic in Southern Syria: The Qarassa archaeological evidence - OpenEdition Journals, accessed August 13, 2025, <a href="https://journals.openedition.org/paleorient/537" target="_blank">https://journals.openedition.org/paleorient/537</a></li>
-<li>​Northern Levantine Spheres of Interaction: The Role of the Amuq in the Late Chalcolithic and Early Bronze Age | Department of Near &amp; Middle Eastern Civilizations - University of Toronto, accessed August 13, 2025, <a href="https://www.nmc.utoronto.ca/research-publications/faculty-publications/northern" target="_blank">https://www.nmc.utoronto.ca/research-publications/faculty-publications/northern</a> -levantine-spheres-interaction-role-amuq-late</li>
-<li>​PEETERS ONLINE JOURNALS, accessed August 13, 2025, <a href="https://poj.peeters-leuven.be/content.php?id=3289556&amp;url=article" target="_blank">https://poj.peeters-leuven.be/content.php?id=3289556&amp;url=article</a></li>
-<li>​Technological Style in Early Bronze Age Anatolia | Institute for the Study of Ancient Cultures, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/research-archives-library/dissertations/dissert" target="_blank">https://isac.uchicago.edu/research/research-archives-library/dissertations/dissert</a> ation-proposals/technological-style-early</li>
-<li>​Beyond megadrought and collapse in the Northern Levant: The chronology of Tell Tayinat and two historical inflection episodes, around 4.2ka BP, and following</li>
-<li>2ka BP | PLOS One, accessed August 13, 2025, <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0240799" target="_blank">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0240799</a></li>
-<li>​Ancient Egypt and Southwest Asia | Oxford Research Encyclopedia, accessed August 13, 2025, <a href="https://oxfordre.com/africanhistory/display/10.1093/acrefore/9780190277734.001." target="_blank">https://oxfordre.com/africanhistory/display/10.1093/acrefore/9780190277734.001.</a> 0001/acrefore-9780190277734-e-1199?p=emailAObtPPa.cwa/k&amp;d=/10.1093/acref ore/9780190277734.001.0001/acrefore-9780190277734-e-1199</li>
-<li>​The Amuq Valley Regional Project 1995-1998 | ETANA, accessed August 13, 2025, <a href="https://etana.org/node/3997" target="_blank">https://etana.org/node/3997</a></li>
-<li>​CHAPTER XVIII - Cambridge University Press, accessed August 13, 2025, <a href="https://resolve.cambridge.org/core/services/aop-cambridge-core/content/view/8" target="_blank">https://resolve.cambridge.org/core/services/aop-cambridge-core/content/view/8</a> 3E33EBE7C965659965F1D288C2BF97E/9781139054256c18_p363-416_CBO.pdf/an atolia_c_40002300_bc.pdf</li>
-<li>​Sitting at the Crossroads: Cilicia in the Iron Age - ArcGIS StoryMaps, accessed August 13, 2025, <a href="https://storymaps.arcgis.com/stories/b6ab8a5d402347e9952da28b0408e74a" target="_blank">https://storymaps.arcgis.com/stories/b6ab8a5d402347e9952da28b0408e74a</a></li>
-<li>​ORBi: Detailed Reference - ULiège, accessed August 13, 2025, <a href="https://orbi.uliege.be/handle/2268/204930" target="_blank">https://orbi.uliege.be/handle/2268/204930</a></li>
-<li>​Ancient and Medieval, accessed August 13, 2025, <a href="https://academic.oup.com/ahr/article-pdf/69/2/417/984214/69-2-417.pdf" target="_blank">https://academic.oup.com/ahr/article-pdf/69/2/417/984214/69-2-417.pdf</a></li>
-<li>​Excavations in the plain of Antioch 1, The earlier assemblages phases A. J. / by Robert J. Braidwood and Linda S. Braidwood ; with appendixes by Joan Crowfoot Payne and Hans Helbaek - Sudoc, accessed August 13, 2025, <a href="https://www.sudoc.fr/067564569" target="_blank">https://www.sudoc.fr/067564569</a></li>
-<li>​Full text of &quot;Early Civilizations of the Old World&quot; - Internet Archive, accessed August 13, 2025, <a href="https://archive.org/stream/B-001-000-174/B-001-000-174_djvu.txt" target="_blank">https://archive.org/stream/B-001-000-174/B-001-000-174_djvu.txt</a></li>
-<li>​Oriental Institute Publications (OIP), accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/publications/oriental-institute-publications-oip" target="_blank">https://isac.uchicago.edu/research/publications/oriental-institute-publications-oip</a></li></ul></div>
+        <li>​ 2 Welton, L. (2011). The Amuq Plain and Tell Tayinat in the Third Millennium BCE: The Historical and Socio-Political Context.​ Journal of the Canadian Society for Mesopotamian Studies, 6, 15-27.</li>
+        <li>​ 5 ʿAmūq. (n.d.). In​ Encyclopædia Britannica.</li>
+        <li>​ 17 De Giorgi, A. U. (2016). Geomorphology of the Greater Antioch Region. In​ Antioch on the Orontes: An Archaeological and Historical Guide. Cambridge University Press.</li>
+        <li>​ 38 The Alalakh Expedition. The University of Chicago.</li>
+        <li>​ 14 Alalakh. (n.d.). In​ Wikipedia.</li>
+        <li>​ 58 Hatay Province. (n.d.). In​ Wikipedia.</li>
+        <li>​ 4 Alalakh. (n.d.). In​ Turkish Archaeological News.</li>
+        <li>​ 18 Casana, J., &amp; Wilkinson, T. J. (2022). The Paleoclimate of the Amuq Plain and the Archaeological Settlement Index: The Assessment of the Long-term Settlement Dynamics Throughout the Holocene.​ ResearchGate.</li>
+        <li>​35 The Amuq Survey and Related Projects. The University of Chicago.</li>
+        <li>​6 Mallowan, M. E. L. (1963). The &#x27;Amuq Plain.​ Antiquity, 37(147), 185–192.</li>
+        <li>​3 Amuq Valley Regional Project (AVRP). (n.d.).​ Alalakh Excavations.</li>
+        <li>​32 Braidwood, R. J., &amp; Braidwood, L. S. (1960).​ Excavations in the Plain of Antioch I: The Earlier Assemblages, Phases A-J (OIP 61). The University of Chicago.</li>
+        <li>​34 Braidwood, R. J. (1937).​ Mounds in the Plain of Antioch: An Archeological Survey (OIP 48). The University of Chicago.</li>
+        <li>​39 Yener, K. A. (2004). Amuq Valley Regional Projects.​ The Oriental Institute 2003–2004 Annual Report. The University of Chicago.</li>
+        <li>​41 The Tell Tayinat Archaeological Project. (n.d.). University of Toronto, Department of Near &amp; Middle Eastern Civilizations.</li>
+        <li>​64 Tayinat Archaeological Project. (n.d.). University of Toronto.</li>
+        <li>​59 Tayinat Archaeological Project (TAP) Online. (2012).​ Ancient World Online.</li>
+        <li>​16 Tell Tayinat. (n.d.). In​ Wikipedia.</li>
+        <li>​11 Harrison, T. P. (1999). The 1999 Amuq Valley Regional Project Survey.​ Unpublished Report.</li>
+        <li>​12 Welton, L., Batiuk, S., &amp; Harrison, T. P. (2014). Revisiting the Amuq sequence: a preliminary investigation of the EBIVB ceramic assemblage from Tell Tayinat.​ Levant, 46(3), 339-370.</li>
+        <li>​46 Edwards, S. (2019).​ Ebla&#x27;s Hegemony and Its Impact on the Archaeology of the Amuq Plain in the Third Millennium BCE (Doctoral dissertation, University of Toronto).</li>
+        <li>​65 Pucci, M. (2019).​ Excavations in the Plain of Antioch III: Stratigraphy, Pottery, and Small Finds from Chatal Höyük in the Amuq Plain (OIP 143). The University of Chicago.</li>
+        <li>​50 Yener, K. A. (2017). The Social and Political Importance of Cult and Ritual at Alalakh during the Hittite Period. In​ La Syrie et ses voisins à l&#x27;âge du Bronze. OpenEdition Books.</li>
+        <li>​48 Late Bronze Age II (1400-1300 BC). (n.d.).​ Alalakh Excavations.</li>
+        <li>​15 Skourtanioti, E., et al. (2020). Genomic History of the Bronze Age Southern Levant.​ Cell, 181(5), 1146-1157.</li>
+        <li>​51 Harrison, T. P. (2019). Neo-Hittites in the Land of Palistin: Renewed investigations at Tell Ta&#x27;yinat on the Plain of Antioch.​ ResearchGate.</li>
+        <li>​56 The Toronto Expedition. (n.d.).​ Tayinat Archaeological Project.</li>
+        <li>​52 Palistin. (n.d.). In​ Wikipedia.</li>
+        <li>​21 Amik Ovası. (n.d.).​ Reyhanlı Kaymakamlığı.</li>
+        <li>​23 Amik Ovası. (n.d.). In​ Wikipedia (Turkish).</li>
+        <li>​25 Amik Gölü. (n.d.). In​ Wikipedia (Turkish).</li>
+        <li>​26 Atahan, M. (2002). Amik Gölü&#x27;nün Kültürel Ekolojisi.​ Dergipark.</li>
+        <li>​66 Akar, M. (2018). Amik Ovası M.Ö. 2. Binyıl Yerleşimleri ve Seramikleri.​ Dergipark.</li>
+        <li>​49 Akar, M. (2021). Mukiş Krallığı&#x27;nın Başkenti Aççana Höyük (Eski Alalah Kenti) Çok Yönlü Arkeolojik Araştırmaları.​ Mustafa Kemal Üniversitesi.</li>
+        <li>​1 The Amuq Survey and Related Projects. The University of Chicago.</li>
+        <li>​42 Tell Kurdu Höyüğü. (n.d.). In​ Wikipedia (Turkish).</li>
+        <li>​67 Tell Tayinat. (n.d.).​ TAY Project.</li>
+        <li>​68 Tell Tayinat. (n.d.).​ TAY Project.</li>
+        <li>​61 Tell Tayinat. (n.d.). In​ Wikipedia (Turkish).</li>
+        <li>​32 OIP 61. Excavations in the Plain of Antioch I: The Earlier Assemblages Phases A-J. The University of Chicago.</li>
+        <li>​69 Braidwood, L. S. (1960). Excavations in the Plain of Antioch 1. the earlier assemblages, phases A-J.​ Archive of Mesopotamian Archaeological Reports (AMAR), 560.</li>
+        <li>​37 Pucci, M. (2019).​ Excavations in the Plain of Antioch III (OIP 143). The University of Chicago.</li>
+        <li>​70 Dodd, L. S. (2019). Digital Archaeology and the Oriental Institute&#x27;s OCHRE Data Service.​ Austrian Academy of Sciences.</li>
+        <li>​34 OIP 48. Mounds in the Plain of Antioch: An Archeological Survey. The University of Chicago.</li>
+        <li>​36 Braidwood&#x27;s Amuq Survey Volume Online at the OI. (2010).​ Ancient World Online.</li>
+        <li>​71 Braidwood, R. J. (1937). Mounds in the plain of Antioch: an archeological survey.​ Archive of Mesopotamian Archaeological Reports (AMAR), 563.</li>
+        <li>​22 Braidwood, R. J. (1937).​ Mounds in the Plain of Antioch: An Archeological Survey (OIP 48). The University of Chicago.</li>
+        <li>​13 Tell Kurdu Excavations. (n.d.). The University of Chicago.</li>
+        <li>​72 Özbal, R. (2018). The Neolithic of the Amuq Valley.​ Austrian Academy of Sciences.</li>
+        <li>​7 Yener, K. A. (1996). The Amuq Valley Regional Project, 1995.​ The Oriental Institute 1995–1996 Annual Report. The University of Chicago.</li>
+        <li>​73 Özbal, R. (2010).​ The emergence of pottery in West Asia. (Doctoral dissertation, METU).</li>
+        <li>​54 Knapp, A. B., &amp; Manning, S. W. (2016). Crisis in Context: The End of the Late Bronze Age in the Eastern Mediterranean.​ American Journal of Archaeology, 120(1), 99-149.</li>
+        <li>​31 Yener, K. A. (1998). Amuq Valley Regional Project.​ The Oriental Institute 1997–1998 Annual Report. The University of Chicago.</li>
+        <li>​74 Chalcolithic. (n.d.). In​ Wikipedia.</li>
+        <li>​75 Chalcolithic Europe. (n.d.). In​ Wikipedia.</li>
+        <li>​27 Gerritsen, F., &amp; Özbal, R. (2008). Settlement and Landscape Transformations in the Amuq Valley, Hatay.​ ResearchGate.</li>
+        <li>​76 Joglekar, P. P. (2015). Crafts and Technologies of the Chalcolithic People of South Asia: An Overview.​ Indian Journal of History of Science, 50(1), 42-54.</li>
+        <li>​28 Tell Atchana/Alalakh. (n.d.).​ University of Tübingen.</li>
+        <li>​14 Alalakh. (n.d.). In​ Wikipedia.</li>
+        <li>​15 Skourtanioti, E., et al. (2020). Genomic History of the Bronze Age Southern Levant.​ Cell, 181(5), 1146-1157.</li>
+        <li>​47 Middle Bronze Age I (2000-1800 BC). (n.d.).​ Alalakh Excavations.</li>
+        <li>​3 Amuq Valley Regional Project (AVRP). (n.d.).​ Alalakh Excavations.</li>
+        <li>​53 Tell Ta&#x27;yinat. (n.d.). The University of Chicago.</li>
+        <li>​16 Tell Tayinat. (n.d.). In​ Wikipedia.</li>
+        <li>​57 Harrison, T. P. (2021). The Iron Age I–II Transition in the Northern Levant.​ Journal of Ancient Near Eastern Religions, 21(2), 325-353.</li>
+        <li>​77 Pucci, M. (2023). Storage and Food Control in the &#x27;Amuq from the Late Bronze to the Iron Age.​ ResearchGate.</li>
+        <li>​30 Pucci, M. (2019). The Iron Age I–II in the Amuq.​ Austrian Academy of Sciences.</li>
+        <li>​39 Yener, K. A. (2004). Amuq Valley Regional Projects.​ The Oriental Institute 2003–2004 Annual Report. The University of Chicago.</li>
+        <li>​2 Welton, L. (2011). The Amuq Plain and Tell Tayinat in the Third Millennium BCE.​ Journal of the Canadian Society for Mesopotamian Studies, 6, 15-27.</li>
+        <li>​19 De Giorgi, A. U. (2016). The plain of Antioch and the Amuq Valley. In​ Ancient Antioch. Cambridge University Press.</li>
+        <li>​62 The Lost City of Antioch. (2020).​ YouTube.</li>
+        <li>​78 Antiochene Studies. (n.d.).​ Brepols.</li>
+        <li>​63 Ersoy, Z. (2020). French Travelers and Ottoman Antioch.​ Journal of the European Architectural History Network, 12(1).</li>
+        <li>​20 Antioch. (n.d.). In​ Wikipedia.</li>
+        <li>​23 Amik Ovası. (n.d.). In​ Wikipedia (Turkish).</li>
+        <li>​26 Atahan, M. (2002). Amik Gölü&#x27;nün Kültürel Ekolojisi.​ Dergipark.</li>
+        <li>​21 Amik Ovası. (n.d.).​ Reyhanlı Kaymakamlığı.</li>
+        <li>​79 Yılmaz, E., &amp; Avdan, U. (2022). 1980 Yılı Amik Ovası Taşkınının Tarihi Uydu Görüntüleri ile İncelenmesi.​ Dergipark.</li>
+        <li>​80 Amik Valley. (n.d.). In​ Wikipedia.</li>
+        <li>​69 Braidwood, L. S. (1960). Excavations in the Plain of Antioch 1. the earlier assemblages, phases A-J.​ Archive of Mesopotamian Archaeological Reports (AMAR), 560.</li>
+        <li>​32 OIP 61. Excavations in the Plain of Antioch I: The Earlier Assemblages Phases A-J. The University of Chicago.</li>
+        <li>​43 Al-Maqdissi, M. (2022). Tell al-Sour (Homs, Syria): The Pottery Assemblage of Strata B2 (Area P) from the Sixth Millennium bc.​ Syria, 99, 1-28.</li>
+        <li>​81 Braidwood, L. S. (1960). Bibliography.​ ResearchGate.</li>
+        <li>​82 Pucci, M. (2019). Bibliography.​ SMEA.</li>
+        <li>​19 De Giorgi, A. U. (2016). The plain of Antioch and the Amuq Valley. In​ Ancient Antioch. Cambridge University Press.</li>
+        <li>​36 Braidwood&#x27;s Amuq Survey Volume Online at the OI. (2010).​ Ancient World Online.</li>
+        <li>​34 OIP 48. Mounds in the Plain of Antioch: An Archeological Survey. The University of Chicago.</li>
+        <li>​71 Braidwood, R. J. (1937). Mounds in the plain of Antioch: an archeological survey.​ Archive of Mesopotamian Archaeological Reports (AMAR), 563.</li>
+        <li>​65 Pucci, M. (2019).​ Excavations in the Plain of Antioch III (OIP 143). The University of Chicago.</li>
+        <li>​7 Yener, K. A. (1996). The Amuq Valley Regional Project, 1995.​ The Oriental Institute 1995–1996 Annual Report. The University of Chicago.</li>
+        <li>​83 Iamoni, M. (2016). The Land of Nineveh Archaeological Project: The Ceramic Repertoire from the Early Pottery Neolithic to the Sasanian Period.​ ResearchGate.</li>
+        <li>​84 Todd, I. A. (1987). The Chalcolithic Period in the Vasilikos Valley.​ Getty Publications.</li>
+        <li>​85 Balbo, A., et al. (2014). First results of the new archaeological project at Tell Qarassa North (Sweida, southern Syria).​ Paléorient, 40(1), 93-108.</li>
+        <li>​44 Nieuwenhuyse, O. P., et al. (2018). Painting, Polishing and Firing Pottery in the Neolithic of the Near East.​ Levant, 50(3), 261-289.</li>
+        <li>​29 Wilkinson, T. J. (2005). Introduction. In​ The Amuq Valley Regional Projects, Volume 1 (OIP 131). The University of Chicago.</li>
+        <li>​2 Welton, L. (2011). The Amuq Plain and Tell Tayinat in the Third Millennium BCE.​ Journal of the Canadian Society for Mesopotamian Studies, 6, 15-27.</li>
+        <li>​86 Welton, L. (2019). Northern Levantine Spheres of Interaction: The Role of the Amuq in the Late Chalcolithic and Early Bronze Age.​ University of Toronto.</li>
+        <li>​87 Gates, M.-H. (2013). The Early Bronze Age at Kinet Höyük.​ Peeters Online Journals.</li>
+        <li>​ 88 Friedman, E. (1996). Technological Style in Early Bronze Age Anatolia.​ Dissertation Proposal, The University of Chicago.</li>
+        <li>​ 24 Harrison, T. P. (2018). The Metals Trade and Early Bronze Age Craft Production at Tell Tayinat. In​ Overturning Certainties in Near Eastern Archaeology. Brill.</li>
+        <li>​ 8 Pucci, M. (2019). The Iron Age I–II in the Amuq.​ Austrian Academy of Sciences.</li>
+        <li>​ 60 Osborne, J. F. (2017). Exploring the Lower Settlements of Iron Age Capitals in Anatolia and Syria.​ Antiquity, 91(357), 693-709.</li>
+        <li>​ 53 Tell Ta&#x27;yinat. (n.d.). The University of Chicago.</li>
+        <li>​ 55 Harrison, T. P. (2019). Shifting Networks and Community Identity at Tell Tayinat in the Iron I.​ American Journal of Archaeology, 123(2), 291-329.</li>
+        <li>​ 89 Manning, S. W., et al. (2020). Beyond megadrought and collapse in the Northern Levant.​ PLOS ONE, 15(10), e0240799.</li>
+        <li>​ 16 Tell Tayinat. (n.d.). In​ Wikipedia.</li>
+        <li>​ 9 Yener, K. A., et al. (2000). The Amuq Valley Regional Project, 1995-1998.​ American Journal of Archaeology, 104(2), 163-220.</li>
+        <li>​ 90 Cooper, J. S. (2020). Ancient Egypt and the Near East.​ Oxford Research Encyclopedia of African History.</li>
+        <li>​ 45 Yener, K. A. (1995). Amuq Valley Regional Project.​ The Oriental Institute News &amp; Notes, 148.</li>
+        <li>​ 91 The Amuq Valley Regional Project 1995-1998. (n.d.).​ ETANA.</li>
+        <li>​ 92 Mellaart, J. (1971). Anatolia, c. 4000-2300 B.C. In​ The Cambridge Ancient History. Cambridge University Press.</li>
+        <li>​ 93 Sitting at the Crossroads: Cilicia in the Iron Age. (n.d.).​ ArcGIS StoryMaps.</li>
+        <li>​ 6 Mallowan, M. E. L. (1963). The &#x27;Amuq Plain.​ Antiquity, 37(147), 185–192.</li>
+        <li>​ 10 Robert J. Braidwood. (n.d.). In​ Encyclopædia Britannica.</li>
+        <li>​ 33 Rizk Allah, W. W. (2021). Robert Braidwood and his Prehistoric Projects.​ Journal of the Faculty of Archaeology, Cairo University.</li>
+        <li>​ 94 Braidwood, R., &amp; Braidwood, L. (1960). Excavations in the Plain of Antioch I.​ ORBi.</li>
+        <li>​ 3 Amuq Valley Regional Project (AVRP). (n.d.).​ Alalakh Excavations.</li>
+        <li>​ 40 Gerritsen, F., &amp; Özbal, R. (2008). Settlement and Landscape Transformations in the Amuq Valley, Hatay.​ ResearchGate.</li>
+        <li>​ 95 Amiran, R. (1964). Review of​ The Cambridge Ancient History. American Historical Review, 69(2), 417-418.</li>
+        <li>​ 69 Braidwood, L. S. (1960). Excavations in the Plain of Antioch 1. the earlier assemblages, phases A-J.​ Archive of Mesopotamian Archaeological Reports (AMAR), 560.</li>
+        <li>​ 32 OIP 61. Excavations in the Plain of Antioch I: The Earlier Assemblages Phases A-J. The University of Chicago.</li>
+        <li>​ 96​ Excavations in the plain of Antioch 1, The earlier assemblages phases A. J. (1960). Sudoc.</li>
+        <li>​ 37 Pucci, M. (2019).​ Excavations in the Plain of Antioch III (OIP 143). The University of Chicago.</li>
+        <li>​ 97​ The Cambridge Encyclopedia of Archaeology. (1980). Archive.org.</li>
+        <li>​ 98 Oriental Institute Publications (OIP). (n.d.). The University of Chicago.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source.</li>
+        <li>​ Inaccessible Source. Works cited</li>
+        <li>​ The Amuq Survey and Related Projects | Institute for the Study of ..., accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/projects/amuq-survey-and-related-projects" target="_blank">https://isac.uchicago.edu/research/projects/amuq-survey-and-related-projects</a></li>
+        <li>​ The Amuq Plain and Tell Tayinat in the Third Millennium BCE - University of Toronto, accessed August 13, 2025, <a href="http://sites.utoronto.ca/tap/assets/welton_csms-2011.pdf" target="_blank">http://sites.utoronto.ca/tap/assets/welton_csms-2011.pdf</a></li>
+        <li>​ AMUQ VALLEY REGIONAL PROJECT - Alalakh, accessed August 13, 2025, <a href="https://www.alalakh.org/amuq-valley-regional-project-avrp/" target="_blank">https://www.alalakh.org/amuq-valley-regional-project-avrp/</a></li>
+        <li>​ Alalakh | Turkish Archaeological News, accessed August 13, 2025, <a href="https://turkisharchaeonews.net/site/alalakh" target="_blank">https://turkisharchaeonews.net/site/alalakh</a></li>
+        <li>​ ʿAmūq | Middle East, Syria, Plain - Britannica, accessed August 13, 2025, <a href="https://www.britannica.com/place/Amuq" target="_blank">https://www.britannica.com/place/Amuq</a></li>
+        <li>​ The &#x27;Amuq Plain | Antiquity | Cambridge Core, accessed August 13, 2025, <a href="https://www.cambridge.org/core/journals/antiquity/article/amuq-plain/0C002E27F" target="_blank">https://www.cambridge.org/core/journals/antiquity/article/amuq-plain/0C002E27F</a> 1B6A738DBD8A2FD992434E8</li>
+        <li>​ AMUQ VALLEY PROJECTS - Institute for the Study of Ancient Cultures, accessed August 13, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/ar/91-00/95-96/9" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/ar/91-00/95-96/9</a> 5-96_Amuq.pdf</li>
+        <li>​ The Amuq Region during the Iron Age I–II: Formation, Organisation and Development of a Community, accessed August 13, 2025, <a href="https://austriaca.at/0xc1aa5572%200x003bca5c.pdf" target="_blank">https://austriaca.at/0xc1aa5572%200x003bca5c.pdf</a></li>
+        <li>​ The Amuq Valley Regional Project, 1995-1998 | Request PDF - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/269982187_The_Amuq_Valley_Regional_" target="_blank">https://www.researchgate.net/publication/269982187_The_Amuq_Valley_Regional_</a> Project_1995-1998</li>
+        <li>​Robert J. Braidwood | American anthropologist - Britannica, accessed August 13, 2025, <a href="https://www.britannica.com/biography/Robert-J-Braidwood" target="_blank">https://www.britannica.com/biography/Robert-J-Braidwood</a></li>
+        <li>​the 1999 amuq valley regional project survey - University of Toronto, accessed August 13, 2025, <a href="http://sites.utoronto.ca/tap/assets/1999amuqregionalsurvey.pdf" target="_blank">http://sites.utoronto.ca/tap/assets/1999amuqregionalsurvey.pdf</a></li>
+        <li>​Revisiting the Amuq sequence: a preliminary investigation of the EBIVB ceramic assemblage from Tell Tayinat - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/286684004_Revisiting_the_Amuq_seq" target="_blank">https://www.researchgate.net/publication/286684004_Revisiting_the_Amuq_seq</a> uence_a_preliminary_investigation_of_the_EBIVB_ceramic_assemblage_from_Tell _Tayinat</li>
+        <li>​Tell Kurdu Excavations: | Institute for the Study of Ancient Cultures, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/projects/tell-kurdu-excavations" target="_blank">https://isac.uchicago.edu/research/projects/tell-kurdu-excavations</a></li>
+        <li>​Alalakh - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Alalakh" target="_blank">https://en.wikipedia.org/wiki/Alalakh</a></li>
+        <li>​Human mobility at Tell Atchana (Alalakh), Hatay, Turkey during the 2nd millennium BC: Integration of isotopic and genomic evidence - PubMed Central, accessed August 13, 2025, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8244877/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC8244877/</a></li>
+        <li>​Tell Tayinat - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Tell_Tayinat" target="_blank">https://en.wikipedia.org/wiki/Tell_Tayinat</a></li>
+        <li>​The Geomorphology of the Greater Antioch Region (Chapter 2) - Cambridge University Press, accessed August 13, 2025, <a href="https://www.cambridge.org/core/books/antioch-on-the-orontes/geomorphology" target="_blank">https://www.cambridge.org/core/books/antioch-on-the-orontes/geomorphology</a> -of-the-greater-antioch-region/ED22E8AB175406A386F3FEA16EE438C9</li>
+        <li>​(PDF) The Paleoclimate of the Amuq Plain and the Archaeological Settlement Index: The Assessment of the Long-term Settlement Dynamics Throughout the Holocene - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/366426629_The_Paleoclimate_of_the_A" target="_blank">https://www.researchgate.net/publication/366426629_The_Paleoclimate_of_the_A</a> muq_Plain_and_the_Archaeological_Settlement_Index_The_Assessment_of_the_L ong-term_Settlement_Dynamics_Throughout_the_Holocene</li>
+        <li>​The plain of Antioch and the Amuq Valley (Chapter Three) - Ancient ..., accessed August 13, 2025, <a href="https://www.cambridge.org/core/books/ancient-antioch/plain-of-antioch-and-th" target="_blank">https://www.cambridge.org/core/books/ancient-antioch/plain-of-antioch-and-th</a> e-amuq-valley/ED72CBEDA5CC45955FEFEF9B525E5CA8</li>
+        <li>​Antioch - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Antioch" target="_blank">https://en.wikipedia.org/wiki/Antioch</a></li>
+        <li>​Amik Ovası - T.C. Reyhanlı Kaymakamlığı, accessed August 13, 2025, <a href="http://www.reyhanli.gov.tr/amik-ovasi" target="_blank">http://www.reyhanli.gov.tr/amik-ovasi</a></li>
+        <li>​UNIVERSITYf PENNSYLVANIA LIBRARIES, accessed August 13, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oip48.pdf" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/oip48.pdf</a></li>
+        <li>​Amik Ovası - Vikipedi, accessed August 13, 2025, <a href="https://tr.wikipedia.org/wiki/Amik_Ovas%C4%B1" target="_blank">https://tr.wikipedia.org/wiki/Amik_Ovas%C4%B1</a></li>
+        <li>​Chatper 4 The Metals Trade and Early Bronze Age Craft Production at Tell Tayinat in - Brill, accessed August 13, 2025, <a href="https://brill.com/view/book/edcoll/9789004353572/B9789004353572_004.xml" target="_blank">https://brill.com/view/book/edcoll/9789004353572/B9789004353572_004.xml</a></li>
+        <li>​Amik Gölü - Vikipedi, accessed August 13, 2025, <a href="https://tr.wikipedia.org/wiki/Amik_G%C3%B6l%C3%BC" target="_blank">https://tr.wikipedia.org/wiki/Amik_G%C3%B6l%C3%BC</a></li>
+        <li>​AMİK GÖLÜ&#x27;NÜN KÜLTÜREL EKOLOJİSİ (Cultural Ecology of Lake Amik) - DergiPark, accessed August 13, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/3152" target="_blank">https://dergipark.org.tr/tr/download/article-file/3152</a></li>
+        <li>​Settlement and Landscape Transformations in the Amuq Valley, Hatay. A Long-Term Perspective Introduction - CORE, accessed August 13, 2025, <a href="https://core.ac.uk/download/pdf/149241545.pdf" target="_blank">https://core.ac.uk/download/pdf/149241545.pdf</a></li>
+        <li>​Late Bronze Age Tell Atchana - Universität Tübingen, accessed August 13, 2025, <a href="https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakult" target="_blank">https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakult</a> aet/fachbereiche/geowissenschaften/arbeitsgruppen/urgeschichte-naturwissens chaftliche-archaeologie/ina/archaeobotanik/forschung/tell-atchana/</li>
+        <li>​oriental institute publications • no. 131, accessed August 13, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/OIP_131.pdf" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/OIP_131.pdf</a></li>
+        <li>​The Amuq Region during the Iron Age I–II: Formation, Organisation and Development of a Community - FLORE, accessed August 13, 2025, <a href="https://flore.unifi.it/retrieve/e398c37f-c294-179a-e053-3705fe0a4cff/07_Pucci.pd" target="_blank">https://flore.unifi.it/retrieve/e398c37f-c294-179a-e053-3705fe0a4cff/07_Pucci.pd</a> f</li>
+        <li>​AMUQ VALLEY REGIONAL PROJECT, accessed August 13, 2025, <a href="https://oi.uchicago.edu/sites/default/files/uploads/shared/docs/ar/91-00/97-98/97-" target="_blank">https://oi.uchicago.edu/sites/default/files/uploads/shared/docs/ar/91-00/97-98/97-</a> 98_Amuq.pdf</li>
+        <li>​OIP 61. Excavations in the Plain of Antioch I: The Earlier Assemblages Phases A-J, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/publications/oip/oip-61-excavations-plain-anti" target="_blank">https://isac.uchicago.edu/research/publications/oip/oip-61-excavations-plain-anti</a> och-i-earlier-assemblages-phases-j</li>
+        <li>​1909 : 2003 - EKB, accessed August 13, 2025, <a href="https://aafu.journals.ekb.eg/article_280563_4a20010ebeeff2c45e2b6f22edbc6188" target="_blank">https://aafu.journals.ekb.eg/article_280563_4a20010ebeeff2c45e2b6f22edbc6188</a> .pdf</li>
+        <li>​OIP 48. Mounds in the Plain of Antioch: An Archeological Survey, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/publications/oip/oip-48-mounds-plain-antioch" target="_blank">https://isac.uchicago.edu/research/publications/oip/oip-48-mounds-plain-antioch</a> -archeological-survey</li>
+        <li>​isac.uchicago.edu, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/projects/amuq-survey-and-related-projects#:" target="_blank">https://isac.uchicago.edu/research/projects/amuq-survey-and-related-projects#:</a> ~:text=From%201932%20to%201938%2C%20Robert,team%20discovered%2017 8%20ancient%20settlements.</li>
+        <li>​AWOL - The Ancient World Online: May 2010, accessed August 13, 2025, <a href="http://ancientworldonline.blogspot.com/2010/05/" target="_blank">http://ancientworldonline.blogspot.com/2010/05/</a></li>
+        <li>​PLAIN OF ANTIOCH - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/profile/Marina-Pucci/publication/333001103_OIP14" target="_blank">https://www.researchgate.net/profile/Marina-Pucci/publication/333001103_OIP14</a> 3_Excavations_Plain_Antioch_part_1_cover/links/5cd58b8b299bf14d9589358f/OIP 143-Excavations-Plain-Antioch-part-1-cover.pdf</li>
+        <li>​The Alalakh Expedition | Institute for the Study of Ancient Cultures, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/projects/alalakh-expedition" target="_blank">https://isac.uchicago.edu/research/projects/alalakh-expedition</a></li>
+        <li>​AMUQ VALLEY REGIONAL PROJECTS, accessed August 13, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/03-04_Amuq.pd" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/03-04_Amuq.pd</a> f</li>
+        <li>​Settlement and Landscape Transformations in the Amuq Valley, Hatay - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/250138513_Settlement_and_Landscape" target="_blank">https://www.researchgate.net/publication/250138513_Settlement_and_Landscape</a> _Transformations_in_the_Amuq_Valley_Hatay</li>
+        <li>​The Tell Tayinat Archaeological Project | Department of Near &amp; Middle Eastern Civilizations, accessed August 13, 2025, <a href="https://www.nmc.utoronto.ca/research/research-publications/research-projects/t" target="_blank">https://www.nmc.utoronto.ca/research/research-publications/research-projects/t</a> ell-tayinat-archaeological-project</li>
+        <li>​Tell Kurdu Höyüğü - Vikipedi, accessed August 13, 2025, <a href="https://tr.wikipedia.org/wiki/Tell_Kurdu_H%C3%B6y%C3%BC%C4%9F%C3%BC" target="_blank">https://tr.wikipedia.org/wiki/Tell_Kurdu_H%C3%B6y%C3%BC%C4%9F%C3%BC</a></li>
+        <li>​Tell al-Sour Late Neolithic (Homs region 6000–5500 bc) - OpenEdition Journals, accessed August 13, 2025, <a href="https://journals.openedition.org/syria/15055?lang=en" target="_blank">https://journals.openedition.org/syria/15055?lang=en</a></li>
+        <li>​Full article: Investigating Late Neolithic ceramics in the northern Levant: the view from Shir, accessed August 13, 2025, <a href="https://www.tandfonline.com/doi/full/10.1080/00758914.2018.1453213" target="_blank">https://www.tandfonline.com/doi/full/10.1080/00758914.2018.1453213</a></li>
+        <li>​THE AMUQ VALLEY PROJECTS, 1995 - Institute for the Study of Ancient Cultures, accessed August 13, 2025, <a href="https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/nn148.pdf" target="_blank">https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/nn148.pdf</a></li>
+        <li>​Ebla&#x27;s Hegemony and Its Impact on the Archaeology of the Amuq Plain in the Third Millennium BCE, accessed August 13, 2025, <a href="https://utoronto.scholaris.ca/server/api/core/bitstreams/e106520a-7e27-4113-a73" target="_blank">https://utoronto.scholaris.ca/server/api/core/bitstreams/e106520a-7e27-4113-a73</a> 2-2ca859ba16b2/content</li>
+        <li>​MIDDLE BRONZE AGE I (2000-1800 BC) - Alalakh - Tell Atchana, accessed August 13, 2025, <a href="https://www.alalakh.org/middle-bronze-age-i/" target="_blank">https://www.alalakh.org/middle-bronze-age-i/</a></li>
+        <li>​LATE BRONZE AGE II (1400-1300 BC) - Alalakh, accessed August 13, 2025, <a href="https://www.alalakh.org/late-bronze-age-ii/" target="_blank">https://www.alalakh.org/late-bronze-age-ii/</a></li>
+        <li>​Mukiş Krallığı&#x27;nın Başkenti Aççana Höyük, Eski Alalah Kenti Çok Yönlü Arkeolojik Araştırmaları: Yeni Sorular, Yeni Sonuçlar - Akademik Veri Yönetim Sistemi, accessed August 13, 2025, <a href="https://avesis.mku.edu.tr/yayin/d62c2093-a7fc-4118-9b07-29eebf78a4e5/mukis-k" target="_blank">https://avesis.mku.edu.tr/yayin/d62c2093-a7fc-4118-9b07-29eebf78a4e5/mukis-k</a> ralliginin-baskenti-accana-hoyuk-eski-alalah-kenti-cok-yonlu-arkeolojik-arastirm alari-yeni-sorular-yeni-sonuclar</li>
+        <li>​Cult and Ritual at Late Bronze Age II Alalakh: Hybridity and Power under Hittite Administration - OpenEdition Books, accessed August 13, 2025, <a href="https://books.openedition.org/ifeagd/3548" target="_blank">https://books.openedition.org/ifeagd/3548</a></li>
+        <li>​Neo-Hittites in the &quot;Land of Palistin&quot;: Renewed investigations at tell ..., accessed August 13, 2025, <a href="https://www.researchgate.net/publication/285718053_Neo-Hittites_in_the_Land_o" target="_blank">https://www.researchgate.net/publication/285718053_Neo-Hittites_in_the_Land_o</a> f_Palistin_Renewed_investigations_at_tell_ta&#x27;yinat_on_the_plain_of_antioch</li>
+        <li>​Palistin - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Palistin" target="_blank">https://en.wikipedia.org/wiki/Palistin</a></li>
+        <li>​Tell Ta&#x27;yinat | Institute for the Study of Ancient Cultures - The University of Chicago, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/projects/amuq/tell-tayinat" target="_blank">https://isac.uchicago.edu/research/projects/amuq/tell-tayinat</a></li>
+        <li>​THE IRON AGE POTTERY FROM ALALAKH/TELL ATCHANA: A, accessed August 13, 2025, <a href="https://livrepository.liverpool.ac.uk/3022477/1/201055609_Feb2018.pdf" target="_blank">https://livrepository.liverpool.ac.uk/3022477/1/201055609_Feb2018.pdf</a></li>
+        <li>​Shifting Networks and Community Identity at Tell Tayinat in the Iron I (ca. 12th to Mid 10th Century B.C.E.) | American Journal of Archaeology: Vol 123, No 2, accessed August 13, 2025, <a href="https://www.journals.uchicago.edu/doi/full/10.3764%2Faja.123.2.0291" target="_blank">https://www.journals.uchicago.edu/doi/full/10.3764%2Faja.123.2.0291</a></li>
+        <li>​The Toronto Expedition - Tayinat Archaeological Project -, accessed August 13, 2025, <a href="https://tayinat.artsci.utoronto.ca/the-toronto-expedition/" target="_blank">https://tayinat.artsci.utoronto.ca/the-toronto-expedition/</a></li>
+        <li>​The Iron Age I–II Transition in the Northern Levant: An Emerging Consensus? - Tayinat Archaeological Project - - University of Toronto, accessed August 13, 2025, <a href="https://tayinat.artsci.utoronto.ca/wp-content/uploads/2021/11/Harrison_JJAR_1_2" target="_blank">https://tayinat.artsci.utoronto.ca/wp-content/uploads/2021/11/Harrison_JJAR_1_2</a></li>
+        <li>pdf</li>
+        <li>​Hatay Province - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Hatay_Province" target="_blank">https://en.wikipedia.org/wiki/Hatay_Province</a></li>
+        <li>​Tayinat Archaeological Project Online, accessed August 13, 2025, <a href="http://ancientworldonline.blogspot.com/2012/09/tayinat-archaeological-project-" target="_blank">http://ancientworldonline.blogspot.com/2012/09/tayinat-archaeological-project-</a> online.html</li>
+        <li>​Exploring the lower settlements of Iron Age capitals in Anatolia and Syria | Antiquity, accessed August 13, 2025, <a href="https://www.cambridge.org/core/journals/antiquity/article/exploring-the-lower-se" target="_blank">https://www.cambridge.org/core/journals/antiquity/article/exploring-the-lower-se</a> ttlements-of-iron-age-capitals-in-anatolia-and-syria/EE969C5E60D9772EB23687 B81CB97660</li>
+        <li>​Tell Tayinat - Vikipedi, accessed August 13, 2025, <a href="https://tr.wikipedia.org/wiki/Tell_Tayinat" target="_blank">https://tr.wikipedia.org/wiki/Tell_Tayinat</a></li>
+        <li>​Antioch: the Forgotten Rome of the East - YouTube, accessed August 13, 2025, <a href="https://www.youtube.com/watch?v=JMPrxUdMpRE" target="_blank">https://www.youtube.com/watch?v=JMPrxUdMpRE</a></li>
+        <li>​À La Recherche De L&#x27;Espace Perdu: Architecture, Urban Fabric, and French Travelers to Antioch (1784–1914), accessed August 13, 2025, <a href="https://journal.eahn.org/article/id/7527/" target="_blank">https://journal.eahn.org/article/id/7527/</a></li>
+        <li>​Tayinat Archaeological Project -, accessed August 13, 2025, <a href="https://tayinat.artsci.utoronto.ca/" target="_blank">https://tayinat.artsci.utoronto.ca/</a></li>
+        <li>​PLAIN OF ANTIOCH - FLORE, accessed August 13, 2025, <a href="https://flore.unifi.it/retrieve/e398c380-cc7f-179a-e053-3705fe0a4cff/OIP%20143" target="_blank">https://flore.unifi.it/retrieve/e398c380-cc7f-179a-e053-3705fe0a4cff/OIP%20143</a> %20Excavations_in_Antioch%20part%201.pdf</li>
+        <li>​AMİSOS / AMISOS - DergiPark, accessed August 13, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/509314" target="_blank">https://dergipark.org.tr/tr/download/article-file/509314</a></li>
+        <li>​TAY-Yerlesme Dönem Ayrıntıları, accessed August 13, 2025, <a href="http://tayproject.org/TAYages.fm$Retrieve?CagNo=9109&amp;html=ages_detail_t.html" target="_blank">http://tayproject.org/TAYages.fm$Retrieve?CagNo=9109&amp;html=ages_detail_t.html</a> &amp;layout=web</li>
+        <li>​TAY-Yerlesme Dönem Ayrıntıları, accessed August 13, 2025, <a href="http://www.tayproject.org/TAYages.fm$Retrieve?CagNo=2891&amp;html=ages_detail_t" target="_blank">http://www.tayproject.org/TAYages.fm$Retrieve?CagNo=2891&amp;html=ages_detail_t</a> .html&amp;layout=web</li>
+        <li>​Excavations in the Plain of Antioch 1. the earlier assemblages, phases A-J - Academic Commons, accessed August 13, 2025, <a href="https://commons.library.stonybrook.edu/amar/560/" target="_blank">https://commons.library.stonybrook.edu/amar/560/</a></li>
+        <li>​Unlocking Legacy Data: Integrating New and Old in OCHRE, accessed August 13, 2025, <a href="https://www.austriaca.at/0xc1aa5572%200x003bca70.pdf" target="_blank">https://www.austriaca.at/0xc1aa5572%200x003bca70.pdf</a></li>
+        <li>​Mounds in the plain of Antioch: an archeological survey, accessed August 13, 2025, <a href="https://commons.library.stonybrook.edu/amar/563/" target="_blank">https://commons.library.stonybrook.edu/amar/563/</a></li>
+        <li>​5. The Amuq C Culture, accessed August 13, 2025, <a href="https://austriaca.at/0xc1aa5576_0x003c0582.pdf" target="_blank">https://austriaca.at/0xc1aa5576_0x003c0582.pdf</a></li>
+        <li>​the social and symbolic role of early pottery in the near east, accessed August 13, 2025, <a href="https://etd.lib.metu.edu.tr/upload/12623432/index.pdf" target="_blank">https://etd.lib.metu.edu.tr/upload/12623432/index.pdf</a></li>
+        <li>​Chalcolithic - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Chalcolithic" target="_blank">https://en.wikipedia.org/wiki/Chalcolithic</a></li>
+        <li>​Chalcolithic Europe - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Chalcolithic_Europe" target="_blank">https://en.wikipedia.org/wiki/Chalcolithic_Europe</a></li>
+        <li>​Crafts and Technologies of the Chalcolithic People of South Asia: An Overview, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/276883644_Crafts_and_Technologies_o" target="_blank">https://www.researchgate.net/publication/276883644_Crafts_and_Technologies_o</a> f_the_Chalcolithic_People_of_South_Asia_An_Overview</li>
+        <li>​Fig. 2. Late Bronze Age/Iron Age transitional levels in the &#x27;Amuq sites... - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/figure/Late-Bronze-Age-Iron-Age-transitional-leve" target="_blank">https://www.researchgate.net/figure/Late-Bronze-Age-Iron-Age-transitional-leve</a> ls-in-the-Amuq-sites-with-evidence-of-grain_fig2_368952830</li>
+        <li>​Series - Antiochene Studies - Brepols Publishers, accessed August 13, 2025, <a href="https://www.brepols.net/series/ANT" target="_blank">https://www.brepols.net/series/ANT</a></li>
+        <li>​(PDF) 1980 YILI AMİK OVASI TAŞKINININ TARİHİ UYDU GÖRÜNTÜLERİ İLE İNCELENMESİ - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/368575139_1980_YILI_AMIK_OVASI_TAS" target="_blank">https://www.researchgate.net/publication/368575139_1980_YILI_AMIK_OVASI_TAS</a> KINININ_TARIHI_UYDU_GORUNTULERI_ILE_INCELENMESI</li>
+        <li>​Amik Valley - Wikipedia, accessed August 13, 2025, <a href="https://en.wikipedia.org/wiki/Amik_Valley" target="_blank">https://en.wikipedia.org/wiki/Amik_Valley</a></li>
+        <li>​PDF - DergiPark, accessed August 13, 2025, <a href="https://dergipark.org.tr/tr/download/article-file/4990514" target="_blank">https://dergipark.org.tr/tr/download/article-file/4990514</a></li>
+        <li>​STUDI MICENEI ED EGEO-ANATOLICI - FLORE, accessed August 13, 2025, <a href="https://flore.unifi.it/retrieve/e398c380-ff75-179a-e053-3705fe0a4cff/2019%20Pu" target="_blank">https://flore.unifi.it/retrieve/e398c380-ff75-179a-e053-3705fe0a4cff/2019%20Pu</a> cci%20SMEA.pdf</li>
+        <li>​(PDF) The Land of Nineveh Archaeological Project: The Ceramic Repertoire from the Early Pottery Neolithic to the Sasanian Period - ResearchGate, accessed August 13, 2025, <a href="https://www.researchgate.net/publication/303094098_The_Land_of_Nineveh_Arc" target="_blank">https://www.researchgate.net/publication/303094098_The_Land_of_Nineveh_Arc</a> haeological_Project_The_Ceramic_Repertoire_from_the_Early_Pottery_Neolithic_t o_the_Sasanian_Period</li>
+        <li>​Chalcolithic Cyprus - Getty Museum, accessed August 13, 2025, <a href="https://www.getty.edu/publications/resources/virtuallibrary/0892362073.pdf" target="_blank">https://www.getty.edu/publications/resources/virtuallibrary/0892362073.pdf</a></li>
+        <li>​From the Natufian to the Chalcolithic in Southern Syria: The Qarassa archaeological evidence - OpenEdition Journals, accessed August 13, 2025, <a href="https://journals.openedition.org/paleorient/537" target="_blank">https://journals.openedition.org/paleorient/537</a></li>
+        <li>​Northern Levantine Spheres of Interaction: The Role of the Amuq in the Late Chalcolithic and Early Bronze Age | Department of Near &amp; Middle Eastern Civilizations - University of Toronto, accessed August 13, 2025, <a href="https://www.nmc.utoronto.ca/research-publications/faculty-publications/northern" target="_blank">https://www.nmc.utoronto.ca/research-publications/faculty-publications/northern</a> -levantine-spheres-interaction-role-amuq-late</li>
+        <li>​PEETERS ONLINE JOURNALS, accessed August 13, 2025, <a href="https://poj.peeters-leuven.be/content.php?id=3289556&amp;url=article" target="_blank">https://poj.peeters-leuven.be/content.php?id=3289556&amp;url=article</a></li>
+        <li>​Technological Style in Early Bronze Age Anatolia | Institute for the Study of Ancient Cultures, accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/research-archives-library/dissertations/dissert" target="_blank">https://isac.uchicago.edu/research/research-archives-library/dissertations/dissert</a> ation-proposals/technological-style-early</li>
+        <li>​Beyond megadrought and collapse in the Northern Levant: The chronology of Tell Tayinat and two historical inflection episodes, around 4.2ka BP, and following</li>
+        <li>2ka BP | PLOS One, accessed August 13, 2025, <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0240799" target="_blank">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0240799</a></li>
+        <li>​Ancient Egypt and Southwest Asia | Oxford Research Encyclopedia, accessed August 13, 2025, <a href="https://oxfordre.com/africanhistory/display/10.1093/acrefore/9780190277734.001." target="_blank">https://oxfordre.com/africanhistory/display/10.1093/acrefore/9780190277734.001.</a> 0001/acrefore-9780190277734-e-1199?p=emailAObtPPa.cwa/k&amp;d=/10.1093/acref ore/9780190277734.001.0001/acrefore-9780190277734-e-1199</li>
+        <li>​The Amuq Valley Regional Project 1995-1998 | ETANA, accessed August 13, 2025, <a href="https://etana.org/node/3997" target="_blank">https://etana.org/node/3997</a></li>
+        <li>​CHAPTER XVIII - Cambridge University Press, accessed August 13, 2025, <a href="https://resolve.cambridge.org/core/services/aop-cambridge-core/content/view/8" target="_blank">https://resolve.cambridge.org/core/services/aop-cambridge-core/content/view/8</a> 3E33EBE7C965659965F1D288C2BF97E/9781139054256c18_p363-416_CBO.pdf/an atolia_c_40002300_bc.pdf</li>
+        <li>​Sitting at the Crossroads: Cilicia in the Iron Age - ArcGIS StoryMaps, accessed August 13, 2025, <a href="https://storymaps.arcgis.com/stories/b6ab8a5d402347e9952da28b0408e74a" target="_blank">https://storymaps.arcgis.com/stories/b6ab8a5d402347e9952da28b0408e74a</a></li>
+        <li>​ORBi: Detailed Reference - ULiège, accessed August 13, 2025, <a href="https://orbi.uliege.be/handle/2268/204930" target="_blank">https://orbi.uliege.be/handle/2268/204930</a></li>
+        <li>​Ancient and Medieval, accessed August 13, 2025, <a href="https://academic.oup.com/ahr/article-pdf/69/2/417/984214/69-2-417.pdf" target="_blank">https://academic.oup.com/ahr/article-pdf/69/2/417/984214/69-2-417.pdf</a></li>
+        <li>​Excavations in the plain of Antioch 1, The earlier assemblages phases A. J. / by Robert J. Braidwood and Linda S. Braidwood ; with appendixes by Joan Crowfoot Payne and Hans Helbaek - Sudoc, accessed August 13, 2025, <a href="https://www.sudoc.fr/067564569" target="_blank">https://www.sudoc.fr/067564569</a></li>
+        <li>​Full text of &quot;Early Civilizations of the Old World&quot; - Internet Archive, accessed August 13, 2025, <a href="https://archive.org/stream/B-001-000-174/B-001-000-174_djvu.txt" target="_blank">https://archive.org/stream/B-001-000-174/B-001-000-174_djvu.txt</a></li>
+        <li>​Oriental Institute Publications (OIP), accessed August 13, 2025, <a href="https://isac.uchicago.edu/research/publications/oriental-institute-publications-oip" target="_blank">https://isac.uchicago.edu/research/publications/oriental-institute-publications-oip</a></li></ul></div>
+
+        <div class="disclaimer">
+                    <p>Note: This was made with AI research, and does not conform to academic standards. However, sources are confirmed as genuine.</p>
+                </div>
+
         <div class="last-updated"><p>This page was created on: August 13, 2025</p></div>
     </div>
 </body>
