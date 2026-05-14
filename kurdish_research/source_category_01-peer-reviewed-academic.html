@@ -23994,6 +23994,7 @@ function renderSuggestions() {
 }
 function runSearchNow() {
   currentQuery = pendingQuery;
+  if (currentQuery) clearTopicSelectionForSearch();
   applyFilter();
 }
 function applySuggestion(value) {
@@ -24024,6 +24025,14 @@ function applySort() {
     return countDiff || collator.compare(entrySortTitle(a), entrySortTitle(b)) || collator.compare(entryTitle(a), entryTitle(b));
   });
   entries.forEach(function (entry) { category.appendChild(entry); });
+}
+function clearTopicSelectionForSearch() {
+  const slug = decodeURIComponent(location.hash.slice(1));
+  if (topicSlugs.indexOf(slug) === -1) return;
+  history.replaceState(null, "", location.pathname + location.search);
+  document.querySelectorAll(".nav-buttons .nav-btn.active").forEach(function (button) {
+    button.classList.remove("active");
+  });
 }
 function applyFilter() {
   const slug = decodeURIComponent(location.hash.slice(1));

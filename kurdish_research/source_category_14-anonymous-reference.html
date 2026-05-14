@@ -6211,6 +6211,14 @@ function applySort() {
   });
   entries.forEach(function (entry) { category.appendChild(entry); });
 }
+function clearTopicSelectionForSearch() {
+  const slug = decodeURIComponent(location.hash.slice(1));
+  if (topicSlugs.indexOf(slug) === -1) return;
+  history.replaceState(null, "", location.pathname + location.search);
+  document.querySelectorAll(".nav-buttons .nav-btn.active").forEach(function (button) {
+    button.classList.remove("active");
+  });
+}
 function applyFilter() {
   const slug = decodeURIComponent(location.hash.slice(1));
   const hasTopicNav = Boolean(document.querySelector(".nav-buttons"));
@@ -6250,6 +6258,7 @@ function initSearch() {
   input.addEventListener("input", function () {
     currentQuery = input.value;
     if (clear) clear.hidden = !currentQuery;
+    if (currentQuery) clearTopicSelectionForSearch();
     applyFilter();
   });
   if (clear) {
