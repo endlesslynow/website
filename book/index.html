@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Siya Evînê</title>
+<style>
+  :root {
+    --bg: #121212;
+    --bg-bar: #1c1c1c;
+    --text: #e8e6e1;
+    --muted: #7a7a7a;
+    --accent: #4a9eff;
+    --popup-bg: #2a2a2a;
+    --popup-border: #3a3a3a;
+    --btn-bg: #2a2a2a;
+    --btn-bg-active: #3a3a3a;
+    --bar-border: #2a2a2a;
+    --hl: rgba(74,158,255,.28);
+    --reading-size: 21px;
+  }
+  html[data-theme="light"] {
+    --bg: #f7f5f0;
+    --bg-bar: #ffffff;
+    --text: #2a2723;
+    --muted: #8a857c;
+    --accent: #1f6fd6;
+    --popup-bg: #ffffff;
+    --popup-border: #d8d3c8;
+    --btn-bg: #ece8df;
+    --btn-bg-active: #ddd8cc;
+    --bar-border: #e2ddd2;
+    --hl: rgba(31,111,214,.18);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+  }
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Top bar */
+  #bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 16px;
+    background: var(--bg-bar);
+    border-bottom: 1px solid var(--bar-border);
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  #title { font-size: 15px; color: var(--muted); font-weight: 600; letter-spacing: .3px; }
+  #bar-right { display: flex; align-items: center; gap: 8px; }
+  #progress { font-size: 13px; color: var(--muted); min-width: 70px; text-align: right; cursor: pointer; }
+  #progress:active { color: var(--text); }
+  #goto-input {
+    width: 64px;
+    background: var(--btn-bg);
+    color: var(--text);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
+    padding: 6px 4px;
+  }
+  .tool-btn {
+    background: var(--btn-bg);
+    color: var(--text);
+    border: none;
+    border-radius: 8px;
+    min-width: 38px;
+    height: 38px;
+    padding: 0 10px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tool-btn:active { background: var(--btn-bg-active); }
+
+  /* Reading column */
+  #reader {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 28px 24px 240px 24px;
+  }
+  .para {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin: 0 0 1.35em 0;
+  }
+  .para-num {
+    flex: 0 0 auto;
+    width: 34px;
+    text-align: right;
+    color: var(--muted);
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    line-height: 1.85;
+    padding-top: 2px;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .para-body {
+    flex: 1 1 auto;
+    font-size: var(--reading-size);
+    line-height: 1.85;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  .para-body.heading {
+    font-weight: 700;
+    letter-spacing: .5px;
+    color: var(--text);
+    margin: .6em 0;
+  }
+  /* word highlighted while looking up */
+  .lookup-hl { background: var(--hl); border-radius: 3px; }
+
+  /* Translation popup */
+  #popup {
+    position: absolute;
+    z-index: 100;
+    max-width: 320px;
+    min-width: 160px;
+    background: var(--popup-bg);
+    border: 1px solid var(--popup-border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.55);
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: none;
+  }
+  #popup .pop-word { font-size: 19px; font-weight: 700; color: var(--text); }
+  #popup .pop-pron { font-size: 14px; color: var(--accent); margin-top: 2px; font-style: italic; }
+  #popup .pop-def { font-size: 16px; color: var(--text); margin-top: 9px; line-height: 1.4; }
+  #popup .pop-def.loading { color: var(--muted); font-style: italic; }
+
+  /* Settings panel */
+  #settings {
+    position: fixed;
+    z-index: 90;
+    top: 58px;
+    right: 12px;
+    background: var(--popup-bg);
+    border: 1px solid var(--popup-border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.55);
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: none;
+  }
+  #settings .row { display: flex; align-items: center; gap: 12px; margin: 6px 0; }
+  #settings label { font-size: 14px; color: var(--muted); }
+  #settings .sz-btn {
+    background: var(--btn-bg-active); color: var(--text); border: none; border-radius: 8px;
+    width: 40px; height: 40px; font-size: 20px; cursor: pointer;
+  }
+  #settings .sz-btn:active { filter: brightness(1.2); }
+  #settings .sz-val { font-size: 15px; min-width: 54px; text-align: center; color: var(--text); }
+</style>
+</head>
+<body>
+  <div id="bar">
+    <span id="title">Siya Evînê</span>
+    <div id="bar-right">
+      <span id="progress">¶ 0 / 0</span>
+      <button class="tool-btn" id="theme-btn" title="Light / dark">☾</button>
+      <button class="tool-btn" id="settings-btn" title="Settings">Aa</button>
+    </div>
+  </div>
+
+  <div id="settings">
+    <div class="row">
+      <label>Text size</label>
+      <button class="sz-btn" id="sz-minus">−</button>
+      <span class="sz-val" id="sz-val">21px</span>
+      <button class="sz-btn" id="sz-plus">+</button>
+    </div>
+  </div>
+
+  <div id="reader"></div>
+
+  <div id="popup">
+    <div class="pop-word"></div>
+    <div class="pop-pron"></div>
+    <div class="pop-def"></div>
+  </div>
+
+  <script src="/reader/reader2/book.js"></script>
+  <script>
+  (function () {
+    "use strict";
+
+    var SRC_LANG = "ku";       // Kurmanji (Kurdish)
+    var WORD_RE = /[\p{L}\p{M}'’‑-]+/u;  // letters, marks, apostrophes, hyphen
+
+    var readerEl = document.getElementById("reader");
+    var popupEl = document.getElementById("popup");
+    var progressEl = document.getElementById("progress");
+    var settingsEl = document.getElementById("settings");
+    var szValEl = document.getElementById("sz-val");
+
+    /* ---------- Build paragraphs from the markdown text ---------- */
+    var raw = (window.BOOK_TEXT || "").replace(/\r\n/g, "\n");
+    // Split on blank lines into paragraph blocks.
+    var blocks = raw.split(/\n\s*\n/);
+    var paraEls = [];
+    var num = 0;
+
+    blocks.forEach(function (block) {
+      var t = block.replace(/\n+/g, " ").trim();
+      if (!t) return;
+
+      var isHeading = false;
+      // Markdown heading
+      var m = t.match(/^#{1,6}\s+(.*)$/);
+      if (m) { t = m[1].trim(); isHeading = true; }
+      // ALL-CAPS short lines read as headings (chapter titles)
+      else if (t.length <= 60 && t === t.toUpperCase() && /[A-ZÊÎÛÇŞ]/.test(t)) {
+        isHeading = true;
+      }
+
+      var para = document.createElement("div");
+      para.className = "para";
+
+      var body = document.createElement("div");
+      body.className = "para-body" + (isHeading ? " heading" : "");
+      body.textContent = t;
+
+      var numEl = document.createElement("div");
+      numEl.className = "para-num";
+      if (!isHeading) {
+        num += 1;
+        numEl.textContent = num;
+        para.dataset.num = String(num);
+      }
+
+      para.appendChild(numEl);
+      para.appendChild(body);
+      readerEl.appendChild(para);
+      paraEls.push(para);
+    });
+
+    var totalParas = num;
+
+    /* ---------- Text size ---------- */
+    var size = parseInt(localStorage.getItem("reader_size") || "21", 10);
+    function applySize() {
+      document.documentElement.style.setProperty("--reading-size", size + "px");
+      szValEl.textContent = size + "px";
+      localStorage.setItem("reader_size", String(size));
+    }
+    applySize();
+    document.getElementById("sz-plus").addEventListener("click", function () {
+      size = Math.min(40, size + 1); applySize();
+    });
+    document.getElementById("sz-minus").addEventListener("click", function () {
+      size = Math.max(13, size - 1); applySize();
+    });
+    /* ---------- Light / dark theme ---------- */
+    var themeBtn = document.getElementById("theme-btn");
+    function applyTheme(theme) {
+      if (theme === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+        themeBtn.textContent = "☀";
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+        themeBtn.textContent = "☾";
+      }
+      localStorage.setItem("reader_theme", theme);
+    }
+    applyTheme(localStorage.getItem("reader_theme") || "dark");
+    themeBtn.addEventListener("click", function () {
+      var isLight = document.documentElement.getAttribute("data-theme") === "light";
+      applyTheme(isLight ? "dark" : "light");
+    });
+
+    document.getElementById("settings-btn").addEventListener("click", function (e) {
+      e.stopPropagation();
+      settingsEl.style.display = settingsEl.style.display === "block" ? "none" : "block";
+    });
+
+    /* ---------- Progress tracking + restore position ---------- */
+    function currentParagraph() {
+      var best = 0;
+      var probe = 120; // a little below the sticky bar
+      for (var i = 0; i < paraEls.length; i++) {
+        var p = paraEls[i];
+        if (!p.dataset.num) continue;
+        var rect = p.getBoundingClientRect();
+        if (rect.top <= probe) best = parseInt(p.dataset.num, 10);
+        else break;
+      }
+      return best;
+    }
+    var saveTimer = null;
+    function onScroll() {
+      var cur = currentParagraph();
+      progressEl.textContent = "¶ " + cur + " / " + totalParas;
+      if (saveTimer) clearTimeout(saveTimer);
+      saveTimer = setTimeout(function () {
+        localStorage.setItem("reader_para", String(cur));
+      }, 250);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    function gotoParagraph(n) {
+      n = Math.max(1, Math.min(totalParas, parseInt(n, 10) || 0));
+      var target = paraEls.find(function (p) { return p.dataset.num === String(n); });
+      if (target) target.scrollIntoView({ block: "start" });
+      return n;
+    }
+
+    // Restore
+    var savedPara = parseInt(localStorage.getItem("reader_para") || "0", 10);
+    if (savedPara > 0) gotoParagraph(savedPara);
+    onScroll();
+
+    /* ---------- Tap the counter to jump to a paragraph ---------- */
+    progressEl.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var input = document.createElement("input");
+      input.id = "goto-input";
+      input.type = "number";
+      input.min = "1";
+      input.max = String(totalParas);
+      input.placeholder = currentParagraph() + " / " + totalParas;
+      progressEl.replaceWith(input);
+      input.focus();
+      input.select();
+
+      function finish(jump) {
+        if (jump && input.value !== "") gotoParagraph(input.value);
+        input.replaceWith(progressEl);
+        onScroll();
+      }
+      input.addEventListener("keydown", function (ev) {
+        if (ev.key === "Enter") { ev.preventDefault(); finish(true); }
+        else if (ev.key === "Escape") { finish(false); }
+      });
+      input.addEventListener("blur", function () { finish(true); });
+    });
+
+    /* ---------- Word lookup ---------- */
+    var lastHl = null;
+    function clearHl() {
+      if (lastHl) {
+        var parent = lastHl.parentNode;
+        parent.replaceChild(document.createTextNode(lastHl.textContent), lastHl);
+        parent.normalize();
+        lastHl = null;
+      }
+    }
+    function hidePopup() {
+      popupEl.style.display = "none";
+      clearHl();
+    }
+
+    // Find the word range at a screen point.
+    function wordAtPoint(x, y) {
+      var pos = null;
+      if (document.caretPositionFromPoint) {
+        var cp = document.caretPositionFromPoint(x, y);
+        if (cp) pos = { node: cp.offsetNode, offset: cp.offset };
+      } else if (document.caretRangeFromPoint) {
+        var r = document.caretRangeFromPoint(x, y);
+        if (r) pos = { node: r.startContainer, offset: r.startOffset };
+      }
+      if (!pos || !pos.node || pos.node.nodeType !== 3) return null;
+
+      var node = pos.node;
+      // must be inside a paragraph body
+      var bodyEl = node.parentNode;
+      if (!bodyEl || !bodyEl.classList || !bodyEl.classList.contains("para-body")) return null;
+
+      var text = node.nodeValue;
+      var i = pos.offset;
+      if (i > text.length) i = text.length;
+
+      function isWordChar(ch) { return ch != null && WORD_RE.test(ch); }
+
+      var start = i, end = i;
+      while (start > 0 && isWordChar(text[start - 1])) start--;
+      while (end < text.length && isWordChar(text[end])) end++;
+      if (start === end) return null;
+
+      var word = text.slice(start, end);
+      if (!WORD_RE.test(word)) return null;
+
+      return { node: node, start: start, end: end, word: word };
+    }
+
+    function highlight(info) {
+      clearHl();
+      var node = info.node;
+      var range = document.createRange();
+      range.setStart(node, info.start);
+      range.setEnd(node, info.end);
+      var span = document.createElement("span");
+      span.className = "lookup-hl";
+      try {
+        range.surroundContents(span);
+        lastHl = span;
+        return span;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function showPopup(anchorRect, word, pron, def, loading) {
+      popupEl.querySelector(".pop-word").textContent = word;
+      var pronEl = popupEl.querySelector(".pop-pron");
+      pronEl.textContent = pron || "";
+      pronEl.style.display = pron ? "block" : "none";
+      var defEl = popupEl.querySelector(".pop-def");
+      defEl.textContent = def;
+      defEl.className = "pop-def" + (loading ? " loading" : "");
+
+      // Show first to measure, then position.
+      popupEl.style.display = "block";
+      popupEl.style.left = "0px";
+      popupEl.style.top = "0px";
+      var pw = popupEl.offsetWidth;
+      var ph = popupEl.offsetHeight;
+      var margin = 8;
+
+      var left = anchorRect.left + window.scrollX;
+      left = Math.min(left, window.scrollX + document.documentElement.clientWidth - pw - margin);
+      left = Math.max(window.scrollX + margin, left);
+
+      // Prefer above the word; if no room, go below.
+      var top = anchorRect.top + window.scrollY - ph - 10;
+      if (anchorRect.top - ph - 10 < 60) {
+        top = anchorRect.bottom + window.scrollY + 10;
+      }
+      popupEl.style.left = left + "px";
+      popupEl.style.top = top + "px";
+    }
+
+    function lookup(info, anchorRect) {
+      showPopup(anchorRect, info.word, "", "Looking up…", true);
+
+      var q = encodeURIComponent(info.word);
+      var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=" +
+                SRC_LANG + "&tl=en&dt=t&dt=rm&q=" + q;
+
+      fetch(url)
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var segments = (data && data[0]) || [];
+          var parts = [];
+          var pron = "";
+          segments.forEach(function (seg) {
+            if (!Array.isArray(seg)) return;
+            if (typeof seg[0] === "string" && seg[0]) parts.push(seg[0]);
+            if (seg.length > 3 && typeof seg[3] === "string" && seg[3].trim()) pron = seg[3].trim();
+          });
+          var def = parts.join("").trim() || "No translation";
+          showPopup(anchorRect, info.word, pron, def, false);
+        })
+        .catch(function () {
+          showPopup(anchorRect, info.word, "", "Translation error (check connection)", false);
+        });
+    }
+
+    /* ---------- Long-press handling (touch + mouse) ---------- */
+    var pressTimer = null;
+    var startX = 0, startY = 0;
+    var MOVE_TOL = 10;
+    var HOLD_MS = 420;
+    var pressActive = false;
+
+    function beginPress(x, y) {
+      cancelPress();
+      pressActive = true;
+      startX = x; startY = y;
+      pressTimer = setTimeout(function () {
+        pressTimer = null;
+        var info = wordAtPoint(x, y);
+        if (!info) { hidePopup(); return; }
+        var span = highlight(info);
+        var rect = span ? span.getBoundingClientRect() : { left: x, top: y, bottom: y, right: x };
+        lookup(info, rect);
+      }, HOLD_MS);
+    }
+    function cancelPress() {
+      if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; }
+      pressActive = false;
+    }
+
+    readerEl.addEventListener("touchstart", function (e) {
+      if (e.touches.length !== 1) { cancelPress(); return; }
+      var t = e.touches[0];
+      beginPress(t.clientX, t.clientY);
+    }, { passive: true });
+    readerEl.addEventListener("touchmove", function (e) {
+      if (!pressActive) return;
+      var t = e.touches[0];
+      if (Math.abs(t.clientX - startX) > MOVE_TOL || Math.abs(t.clientY - startY) > MOVE_TOL) {
+        cancelPress();
+      }
+    }, { passive: true });
+    readerEl.addEventListener("touchend", cancelPress, { passive: true });
+    readerEl.addEventListener("touchcancel", cancelPress, { passive: true });
+
+    // Mouse: long-press too (desktop testing)
+    readerEl.addEventListener("mousedown", function (e) {
+      if (e.button !== 0) return;
+      beginPress(e.clientX, e.clientY);
+    });
+    readerEl.addEventListener("mousemove", function (e) {
+      if (!pressActive) return;
+      if (Math.abs(e.clientX - startX) > MOVE_TOL || Math.abs(e.clientY - startY) > MOVE_TOL) {
+        cancelPress();
+      }
+    });
+    document.addEventListener("mouseup", cancelPress);
+
+    /* ---------- Dismiss popup / settings on tap elsewhere ---------- */
+    document.addEventListener("pointerdown", function (e) {
+      if (!popupEl.contains(e.target) && !e.target.classList.contains("lookup-hl")) {
+        // allow long-press to open a new one; just hide the current
+        if (popupEl.style.display === "block") hidePopup();
+      }
+      if (settingsEl.style.display === "block" &&
+          !settingsEl.contains(e.target) &&
+          e.target.id !== "settings-btn") {
+        settingsEl.style.display = "none";
+      }
+    }, true);
+  })();
+  </script>
+</body>
+</html>
