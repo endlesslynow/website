@@ -130,6 +130,25 @@
   }
   /* word highlighted while looking up */
   .lookup-hl { background: var(--hl); border-radius: 3px; }
+  .para-body span[data-en] { cursor: pointer; border-radius: 3px; }
+  #sentence-translation {
+    position: fixed;
+    top: 58px;
+    left: 0;
+    right: 0;
+    z-index: 49;
+    display: none;
+    padding: 8px 18px;
+    background: var(--bg-bar);
+    border-bottom: 1px solid var(--bar-border);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.35;
+    text-align: center;
+    pointer-events: none;
+  }
+  #sentence-translation.visible { display: block; }
 
   /* Translation popup */
   #popup {
@@ -184,6 +203,8 @@
     </div>
   </div>
 
+  <div id="sentence-translation" aria-live="polite"></div>
+
   <div id="settings">
     <div class="row">
       <label>Text size</label>
@@ -201,62 +222,156 @@
     <div class="pop-def"></div>
   </div>
 
-  <script src="/reader/reader2/book.js"></script>
   <script>
   (function () {
     "use strict";
 
+    var BOOK_MD_URL = "/reader/mds/sample_kurdish_tagged.md";
     var SRC_LANG = "ku";       // Kurmanji (Kurdish)
     var WORD_RE = /[\p{L}\p{M}'’‑-]+/u;  // letters, marks, apostrophes, hyphen
 
     var readerEl = document.getElementById("reader");
     var popupEl = document.getElementById("popup");
+    var sentenceTranslationEl = document.getElementById("sentence-translation");
     var progressEl = document.getElementById("progress");
     var settingsEl = document.getElementById("settings");
     var szValEl = document.getElementById("sz-val");
 
-    /* ---------- Build paragraphs from the markdown text ---------- */
-    var raw = (window.BOOK_TEXT || "").replace(/\r\n/g, "\n");
-    // Split on blank lines into paragraph blocks.
-    var blocks = raw.split(/\n\s*\n/);
     var paraEls = [];
-    var num = 0;
+    var totalParas = 0;
 
-    blocks.forEach(function (block) {
-      var t = block.replace(/\n+/g, " ").trim();
-      if (!t) return;
-
-      var isHeading = false;
-      // Markdown heading
-      var m = t.match(/^#{1,6}\s+(.*)$/);
-      if (m) { t = m[1].trim(); isHeading = true; }
-      // ALL-CAPS short lines read as headings (chapter titles)
-      else if (t.length <= 60 && t === t.toUpperCase() && /[A-ZÊÎÛÇŞ]/.test(t)) {
-        isHeading = true;
+    function prepareMarkdown(raw) {
+      var text = raw.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
+      var metadataEnd = text.indexOf("\n---\n");
+      if (metadataEnd !== -1) {
+        text = text.slice(metadataEnd + 5);
       }
+      return text.replace(/\f/g, "\n\n");
+    }
 
-      var para = document.createElement("div");
-      para.className = "para";
+    function escapeHtmlText(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
 
-      var body = document.createElement("div");
-      body.className = "para-body" + (isHeading ? " heading" : "");
-      body.textContent = t;
+    function escapeHtmlAttr(value) {
+      return escapeHtmlText(value)
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
 
-      var numEl = document.createElement("div");
-      numEl.className = "para-num";
-      if (!isHeading) {
-        num += 1;
-        numEl.textContent = num;
-        para.dataset.num = String(num);
-      }
+    /* ---------- Build paragraphs from the markdown text ---------- */
+    function renderBook(rawMarkdown) {
+      readerEl.textContent = "";
+      paraEls = [];
+      var num = 0;
+      var blocks = prepareMarkdown(rawMarkdown).split(/\n\s*\n/);
 
-      para.appendChild(numEl);
-      para.appendChild(body);
-      readerEl.appendChild(para);
-      paraEls.push(para);
-    });
+      blocks.forEach(function (block) {
+        var lines = block.split("\n").map(function (line) { return line.trim(); }).filter(Boolean);
+        if (lines.length === 0) return;
+        if (lines.length === 1 && /^\d+$/.test(lines[0])) return;
 
-    var totalParas = num;
+        var firstLineMatch = lines[0].match(/^(\d+)\.\s*(.*)$/);
+        var isHeading = false;
+        var bodyHTML = "";
+
+        if (firstLineMatch) {
+          var sentences = {};
+          var ids = [];
+          lines.forEach(function (line) {
+            var match = line.match(/^(\d+)\.\s*(.*)$/);
+            if (!match) return;
+            var id = match[1];
+            var content = match[2];
+            if (!sentences[id]) {
+              sentences[id] = { ku: content, en: "" };
+              ids.push(id);
+            } else {
+              sentences[id].en = content;
+            }
+          });
+
+          var combinedKu = ids.map(function (id) {
+            var ku = sentences[id].ku;
+            var hm = ku.match(/^#{1,6}\s+(.*)$/);
+            return hm ? hm[1] : ku;
+          }).join(" ");
+
+          if (combinedKu.length <= 60 && combinedKu === combinedKu.toUpperCase() && /\p{Lu}/u.test(combinedKu)) {
+            isHeading = true;
+          }
+
+          var spans = [];
+          ids.forEach(function (id) {
+            var ku = sentences[id].ku;
+            var en = sentences[id].en;
+            var hm = ku.match(/^#{1,6}\s+(.*)$/);
+            if (hm) {
+              isHeading = true;
+              ku = hm[1];
+            }
+            var em = en.match(/^#{1,6}\s+(.*)$/);
+            if (em) en = em[1];
+            spans.push('<span id="s' + id + '" data-en="' + escapeHtmlAttr(en) + '">' + escapeHtmlText(ku) + '</span>');
+          });
+          bodyHTML = spans.join(" ");
+        } else {
+          var t = block.replace(/\n+/g, " ").trim();
+          if (!t || /^\d+$/.test(t)) return;
+
+          var m = t.match(/^#{1,6}\s+(.*)$/);
+          if (m) { t = m[1].trim(); isHeading = true; }
+          else if (t.length <= 60 && t === t.toUpperCase() && /\p{Lu}/u.test(t)) {
+            isHeading = true;
+          }
+          bodyHTML = escapeHtmlText(t);
+        }
+
+        var para = document.createElement("div");
+        para.className = "para";
+
+        var body = document.createElement("div");
+        body.className = "para-body" + (isHeading ? " heading" : "");
+        body.innerHTML = bodyHTML;
+
+        var numEl = document.createElement("div");
+        numEl.className = "para-num";
+        if (!isHeading) {
+          num += 1;
+          numEl.textContent = num;
+          para.dataset.num = String(num);
+        }
+
+        para.appendChild(numEl);
+        para.appendChild(body);
+        readerEl.appendChild(para);
+        paraEls.push(para);
+      });
+
+      totalParas = num;
+      var savedPara = parseInt(localStorage.getItem("reader_para") || "0", 10);
+      window.requestAnimationFrame(function () {
+        if (savedPara > 0) gotoParagraph(savedPara);
+        onScroll();
+      });
+    }
+
+    function loadBook() {
+      readerEl.textContent = "Loading...";
+      fetch(BOOK_MD_URL)
+        .then(function (response) {
+          if (!response.ok) throw new Error("HTTP " + response.status);
+          return response.text();
+        })
+        .then(renderBook)
+        .catch(function () {
+          readerEl.textContent = "Could not load the markdown source.";
+          progressEl.textContent = "¶ 0 / 0";
+        });
+    }
 
     /* ---------- Text size ---------- */
     var size = parseInt(localStorage.getItem("reader_size") || "21", 10);
@@ -326,11 +441,6 @@
       return n;
     }
 
-    // Restore
-    var savedPara = parseInt(localStorage.getItem("reader_para") || "0", 10);
-    if (savedPara > 0) gotoParagraph(savedPara);
-    onScroll();
-
     /* ---------- Tap the counter to jump to a paragraph ---------- */
     progressEl.addEventListener("click", function (e) {
       e.stopPropagation();
@@ -360,15 +470,34 @@
     var lastHl = null;
     function clearHl() {
       if (lastHl) {
-        var parent = lastHl.parentNode;
-        parent.replaceChild(document.createTextNode(lastHl.textContent), lastHl);
-        parent.normalize();
+        if (lastHl.id) {
+          lastHl.classList.remove("lookup-hl");
+        } else {
+          var parent = lastHl.parentNode;
+          parent.replaceChild(document.createTextNode(lastHl.textContent), lastHl);
+          parent.normalize();
+        }
         lastHl = null;
       }
     }
     function hidePopup() {
       popupEl.style.display = "none";
       clearHl();
+    }
+
+    function showSentenceTranslation(span) {
+      if (!span || !span.hasAttribute("data-en")) return;
+      hidePopup();
+      clearHl();
+      span.classList.add("lookup-hl");
+      lastHl = span;
+      sentenceTranslationEl.textContent = span.getAttribute("data-en") || "";
+      sentenceTranslationEl.classList.add("visible");
+    }
+
+    function sentenceAtPoint(x, y) {
+      var el = document.elementFromPoint(x, y);
+      return el && el.closest ? el.closest("span[id^='s'][data-en]") : null;
     }
 
     // Find the word range at a screen point.
@@ -385,8 +514,8 @@
 
       var node = pos.node;
       // must be inside a paragraph body
-      var bodyEl = node.parentNode;
-      if (!bodyEl || !bodyEl.classList || !bodyEl.classList.contains("para-body")) return null;
+      var bodyEl = node.parentNode.closest ? node.parentNode.closest(".para-body") : null;
+      if (!bodyEl) return null;
 
       var text = node.nodeValue;
       var i = pos.offset;
@@ -484,18 +613,17 @@
     var MOVE_TOL = 10;
     var HOLD_MS = 420;
     var pressActive = false;
+    var lastPressTime = 0;
 
     function beginPress(x, y) {
       cancelPress();
       pressActive = true;
+      lastPressTime = Date.now();
       startX = x; startY = y;
       pressTimer = setTimeout(function () {
         pressTimer = null;
-        var info = wordAtPoint(x, y);
-        if (!info) { hidePopup(); return; }
-        var span = highlight(info);
-        var rect = span ? span.getBoundingClientRect() : { left: x, top: y, bottom: y, right: x };
-        lookup(info, rect);
+        var span = sentenceAtPoint(x, y);
+        if (span) showSentenceTranslation(span);
       }, HOLD_MS);
     }
     function cancelPress() {
@@ -531,6 +659,15 @@
     });
     document.addEventListener("mouseup", cancelPress);
 
+    readerEl.addEventListener("click", function (e) {
+      var span = e.target.closest ? e.target.closest("span[id^='s']") : null;
+      if (span && span.hasAttribute("data-en")) {
+        e.preventDefault();
+        e.stopPropagation();
+        showSentenceTranslation(span);
+      }
+    });
+
     /* ---------- Dismiss popup / settings on tap elsewhere ---------- */
     document.addEventListener("pointerdown", function (e) {
       if (!popupEl.contains(e.target) && !e.target.classList.contains("lookup-hl")) {
@@ -543,6 +680,8 @@
         settingsEl.style.display = "none";
       }
     }, true);
+
+    loadBook();
   })();
   </script>
 </body>
