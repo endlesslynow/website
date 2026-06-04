@@ -10,13 +10,9 @@
   <style>
     :root {
       --bg: #0f0f11;
-      --card-bg: #16161a;
-      --card-border: #24242b;
-      --card-hover-border: #3f3f4e;
       --text: #f3f3f6;
       --text-muted: #8e8e9f;
       --accent: #4a9eff;
-      --accent-gradient: linear-gradient(135deg, #4a9eff 0%, #a855f7 100%);
     }
 
     * {
@@ -35,160 +31,68 @@
       align-items: center;
       justify-content: center;
       padding: 24px;
-      overflow-x: hidden;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 600px;
       width: 100%;
       text-align: center;
-      animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 40px;
       letter-spacing: -0.5px;
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
-    .subtitle {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 48px;
-      font-weight: 300;
-    }
-
-    .books-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      width: 100%;
-    }
-
-    @media (max-width: 600px) {
-      .books-grid {
-        grid-template-columns: 1fr;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      .subtitle {
-        margin-bottom: 32px;
-      }
-    }
-
-    .book-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 32px 24px;
-      text-decoration: none;
-      color: inherit;
+    .book-item {
+      margin-bottom: 36px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    .book-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--accent-gradient);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 0;
-    }
-
-    .book-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--card-hover-border);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-    }
-
-    .book-card:hover::before {
-      opacity: 0.03;
-    }
-
-    .book-cover-placeholder {
-      width: 80px;
-      height: 110px;
-      background: linear-gradient(135deg, #1f1f27 0%, #2b2b36 100%);
-      border-radius: 6px;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-      position: relative;
-      z-index: 1;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .book-card:hover .book-cover-placeholder {
-      transform: scale(1.05) rotate(-2deg);
+      gap: 12px;
     }
 
     .book-title {
       font-size: 1.4rem;
       font-weight: 600;
-      margin-bottom: 6px;
-      position: relative;
-      z-index: 1;
-      transition: color 0.3s ease;
+      color: var(--text);
     }
 
-    .book-card:hover .book-title {
-      color: var(--accent);
-    }
-
-    .book-author {
+    .read-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #1f1f24;
+      color: var(--text);
+      border: 1px solid #2d2d35;
+      padding: 10px 28px;
+      border-radius: 8px;
       font-size: 0.95rem;
-      color: var(--text-muted);
-      font-weight: 400;
-      position: relative;
-      z-index: 1;
+      font-weight: 500;
+      transition: all 0.2s ease;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .read-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0f0f11;
+      transform: translateY(-1px);
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Library</h1>
-    <p class="subtitle">Select a book to start reading</p>
     
-    <div class="books-grid">
-      <a href="/books/reader.html?book=siya_evine" class="book-card">
-        <div class="book-cover-placeholder">📖</div>
-        <div class="book-title">Sîya Evînê</div>
-        <div class="book-author">Mehmed Uzun</div>
-      </a>
-      
-      <a href="/books/reader.html?book=gilgamesh" class="book-card">
-        <div class="book-cover-placeholder">📜</div>
-        <div class="book-title">L’épopée de Gilgamesh</div>
-        <div class="book-author">Pierre-Marie Beaude</div>
-      </a>
+    <div class="book-item">
+      <div class="book-title">Sîya Evînê</div>
+      <a href="/books/reader.html?book=siya_evine" class="read-btn">Read</a>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-title">L’épopée de Gilgamesh</div>
+      <a href="/books/reader.html?book=gilgamesh" class="read-btn">Read</a>
     </div>
   </div>
 </body>
