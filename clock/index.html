@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Simple time zone converter">
+<title>Time Converter</title>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: dark; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Ubuntu', system-ui, sans-serif;
+    background: #1a1d21;
+    color: #e8eaed;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 16px 48px;
+  }
+
+  .wrap { width: 100%; max-width: 760px; }
+
+  header { text-align: center; margin-bottom: 26px; }
+  h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.01em; }
+  .sub { color: #9aa0a8; font-size: 0.95rem; margin-top: 6px; }
+
+  .converter {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .panel {
+    flex: 1 1 0;
+    background: #262a30;
+    border-radius: 16px;
+    padding: 18px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  input, .zone-input {
+    width: 100%;
+    background: #1c2025;
+    color: #e8eaed;
+    border: 1px solid #3a3f47;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 11px 12px;
+  }
+  input:focus, .zone-input:focus {
+    outline: none;
+    border-color: #6ea8fe;
+  }
+
+  input[type="time"] {
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.02em;
+    padding: 8px 10px;
+  }
+
+  .row { display: flex; gap: 10px; align-items: center; }
+  .row input[type="date"] { flex: 1; font-size: 0.95rem; }
+
+  .weekday { color: #c2c7cf; font-size: 0.9rem; white-space: nowrap; }
+  .meta { color: #9aa0a8; font-size: 0.85rem; text-align: center; min-height: 1.2em; }
+
+  /* search combobox */
+  .combo { position: relative; }
+  .zone-list {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #1c2025;
+    border: 1px solid #3a3f47;
+    border-radius: 10px;
+    max-height: 280px;
+    overflow-y: auto;
+    z-index: 60;
+    list-style: none;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    display: none;
+  }
+  .zone-list.open { display: block; }
+  .zone-list li { padding: 9px 12px; cursor: pointer; }
+  .zone-list li.active, .zone-list li:hover { background: #2f343b; }
+  .zone-list .p { font-size: 0.95rem; }
+  .zone-list .s { font-size: 0.76rem; color: #9aa0a8; margin-top: 1px; }
+  .zone-list .empty { color: #9aa0a8; padding: 12px; cursor: default; }
+  .zone-list .empty:hover { background: transparent; }
+
+  .swap-col { display: flex; align-items: center; justify-content: center; padding-top: 6px; }
+  .swap {
+    background: #2f343b;
+    border: 1px solid #3a3f47;
+    color: #e8eaed;
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+  }
+  .swap:hover { background: #3a4048; }
+
+  .summary { text-align: center; margin-top: 20px; color: #c2c7cf; font-size: 1rem; min-height: 1.4em; }
+
+  .toolbar { display: flex; justify-content: center; gap: 10px; margin-top: 18px; }
+  .toolbar button {
+    background: #2f343b;
+    border: 1px solid #3a3f47;
+    color: #e8eaed;
+    border-radius: 10px;
+    padding: 9px 16px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .toolbar button:hover { background: #3a4048; }
+
+  footer { margin-top: 34px; }
+  footer a { color: #6ea8fe; text-decoration: none; font-size: 0.9rem; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 620px) {
+    h1 { font-size: 1.6rem; }
+    .converter { flex-direction: column; }
+    .swap { transform: rotate(90deg); }
+    input[type="time"] { font-size: 2.1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Time Converter</h1>
+    <p class="sub">Type a time on either side. The other updates instantly.</p>
+  </header>
+
+  <div class="converter">
+    <div class="panel">
+      <div class="combo">
+        <input type="text" class="zone-input" id="leftInput" placeholder="City, zone or code" autocomplete="off" spellcheck="false" aria-label="Left time zone">
+        <ul class="zone-list" id="leftList" role="listbox"></ul>
+      </div>
+      <input type="time" id="leftTime" aria-label="Left time">
+      <div class="row">
+        <input type="date" id="leftDate" aria-label="Left date">
+        <span class="weekday" id="leftDay"></span>
+      </div>
+      <div class="meta" id="leftMeta"></div>
+    </div>
+
+    <div class="swap-col">
+      <button class="swap" id="swap" title="Swap sides" aria-label="Swap the two time zones">&#8644;</button>
+    </div>
+
+    <div class="panel">
+      <div class="combo">
+        <input type="text" class="zone-input" id="rightInput" placeholder="City, zone or code" autocomplete="off" spellcheck="false" aria-label="Right time zone">
+        <ul class="zone-list" id="rightList" role="listbox"></ul>
+      </div>
+      <input type="time" id="rightTime" aria-label="Right time">
+      <div class="row">
+        <input type="date" id="rightDate" aria-label="Right date">
+        <span class="weekday" id="rightDay"></span>
+      </div>
+      <div class="meta" id="rightMeta"></div>
+    </div>
+  </div>
+
+  <div class="summary" id="summary"></div>
+
+  <div class="toolbar">
+    <button id="nowBtn">Set to now</button>
+  </div>
+
+  <footer><a href="/">Back to home</a></footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var el = function (id) { return document.getElementById(id); };
+
+  function validZone(z) {
+    try { new Intl.DateTimeFormat("en-US", { timeZone: z }); return true; }
+    catch (e) { return false; }
+  }
+
+  // ---- Zone data -----------------------------------------------------------
+
+  var FALLBACK = [
+    "UTC","Pacific/Honolulu","America/Anchorage","America/Los_Angeles","America/Denver",
+    "America/Chicago","America/New_York","America/Halifax","America/Sao_Paulo",
+    "Europe/London","Europe/Paris","Europe/Berlin","Europe/Athens","Europe/Moscow",
+    "Africa/Cairo","Africa/Lagos","Africa/Nairobi","Africa/Johannesburg",
+    "Europe/Istanbul","Asia/Jerusalem","Asia/Baghdad","Asia/Tehran","Asia/Dubai",
+    "Asia/Karachi","Asia/Kolkata","Asia/Dhaka","Asia/Bangkok","Asia/Shanghai",
+    "Asia/Hong_Kong","Asia/Singapore","Asia/Tokyo","Asia/Seoul",
+    "Australia/Perth","Australia/Sydney","Pacific/Auckland"
+  ];
+
+  var IANA;
+  try { IANA = Intl.supportedValuesOf("timeZone"); } catch (e) { IANA = null; }
+  if (!IANA || !IANA.length) IANA = FALLBACK;
+
+  // Common time zone abbreviations. Ambiguous codes appear more than once on
+  // purpose so the user can pick the right one.
+  var ABBR = [
+    ["UTC","Coordinated Universal Time","UTC"],
+    ["GMT","Greenwich Mean Time","UTC"],
+    ["EST","Eastern Standard Time","America/New_York"],
+    ["EDT","Eastern Daylight Time","America/New_York"],
+    ["ET","Eastern Time","America/New_York"],
+    ["CST","Central Standard Time","America/Chicago"],
+    ["CDT","Central Daylight Time","America/Chicago"],
+    ["CT","Central Time","America/Chicago"],
+    ["MST","Mountain Standard Time","America/Denver"],
+    ["MDT","Mountain Daylight Time","America/Denver"],
+    ["MT","Mountain Time","America/Denver"],
+    ["PST","Pacific Standard Time","America/Los_Angeles"],
+    ["PDT","Pacific Daylight Time","America/Los_Angeles"],
+    ["PT","Pacific Time","America/Los_Angeles"],
+    ["AKST","Alaska Standard Time","America/Anchorage"],
+    ["AKDT","Alaska Daylight Time","America/Anchorage"],
+    ["HST","Hawaii Standard Time","Pacific/Honolulu"],
+    ["AST","Atlantic Standard Time","America/Halifax"],
+    ["ADT","Atlantic Daylight Time","America/Halifax"],
+    ["NST","Newfoundland Standard Time","America/St_Johns"],
+    ["BRT","Brasilia Time","America/Sao_Paulo"],
+    ["ART","Argentina Time","America/Argentina/Buenos_Aires"],
+    ["CLT","Chile Time","America/Santiago"],
+    ["COT","Colombia Time","America/Bogota"],
+    ["WET","Western European Time","Europe/Lisbon"],
+    ["WEST","Western European Summer Time","Europe/Lisbon"],
+    ["BST","British Summer Time","Europe/London"],
+    ["CET","Central European Time","Europe/Paris"],
+    ["CEST","Central European Summer Time","Europe/Paris"],
+    ["EET","Eastern European Time","Europe/Athens"],
+    ["EEST","Eastern European Summer Time","Europe/Athens"],
+    ["MSK","Moscow Time","Europe/Moscow"],
+    ["TRT","Turkey Time","Europe/Istanbul"],
+    ["IST","India Standard Time","Asia/Kolkata"],
+    ["IST","Israel Standard Time","Asia/Jerusalem"],
+    ["IST","Irish Standard Time","Europe/Dublin"],
+    ["GST","Gulf Standard Time","Asia/Dubai"],
+    ["AST","Arabia Standard Time","Asia/Riyadh"],
+    ["IRST","Iran Standard Time","Asia/Tehran"],
+    ["PKT","Pakistan Standard Time","Asia/Karachi"],
+    ["BST","Bangladesh Standard Time","Asia/Dhaka"],
+    ["NPT","Nepal Time","Asia/Kathmandu"],
+    ["ICT","Indochina Time","Asia/Bangkok"],
+    ["WIB","Western Indonesia Time","Asia/Jakarta"],
+    ["CST","China Standard Time","Asia/Shanghai"],
+    ["HKT","Hong Kong Time","Asia/Hong_Kong"],
+    ["SGT","Singapore Time","Asia/Singapore"],
+    ["PHT","Philippine Time","Asia/Manila"],
+    ["JST","Japan Standard Time","Asia/Tokyo"],
+    ["KST","Korea Standard Time","Asia/Seoul"],
+    ["AEST","Australian Eastern Standard Time","Australia/Sydney"],
+    ["AEDT","Australian Eastern Daylight Time","Australia/Sydney"],
+    ["ACST","Australian Central Standard Time","Australia/Adelaide"],
+    ["AWST","Australian Western Standard Time","Australia/Perth"],
+    ["NZST","New Zealand Standard Time","Pacific/Auckland"],
+    ["NZDT","New Zealand Daylight Time","Pacific/Auckland"],
+    ["WAT","West Africa Time","Africa/Lagos"],
+    ["CAT","Central Africa Time","Africa/Maputo"],
+    ["EAT","East Africa Time","Africa/Nairobi"],
+    ["SAST","South Africa Standard Time","Africa/Johannesburg"]
+  ];
+
+  // Major cities whose name is not its own IANA zone, mapped to a zone.
+  var ALIASES = [
+    ["Boston","America/New_York"],["Washington","America/New_York"],["Philadelphia","America/New_York"],
+    ["Atlanta","America/New_York"],["Miami","America/New_York"],["Orlando","America/New_York"],
+    ["Charlotte","America/New_York"],["Pittsburgh","America/New_York"],["Cleveland","America/New_York"],
+    ["Cincinnati","America/New_York"],["Tampa","America/New_York"],
+    ["Houston","America/Chicago"],["Dallas","America/Chicago"],["Austin","America/Chicago"],
+    ["San Antonio","America/Chicago"],["Minneapolis","America/Chicago"],["Kansas City","America/Chicago"],
+    ["Milwaukee","America/Chicago"],["Memphis","America/Chicago"],["New Orleans","America/Chicago"],
+    ["Nashville","America/Chicago"],["St Louis","America/Chicago"],["Oklahoma City","America/Chicago"],
+    ["Salt Lake City","America/Denver"],["Albuquerque","America/Denver"],
+    ["San Francisco","America/Los_Angeles"],["San Diego","America/Los_Angeles"],["Seattle","America/Los_Angeles"],
+    ["Portland","America/Los_Angeles"],["Las Vegas","America/Los_Angeles"],["Sacramento","America/Los_Angeles"],
+    ["San Jose","America/Los_Angeles"],["Oakland","America/Los_Angeles"],
+    ["Montreal","America/Toronto"],["Ottawa","America/Toronto"],["Quebec","America/Toronto"],
+    ["Calgary","America/Edmonton"],["Guadalajara","America/Mexico_City"],
+    ["Manchester","Europe/London"],["Birmingham","Europe/London"],["Edinburgh","Europe/London"],
+    ["Glasgow","Europe/London"],["Liverpool","Europe/London"],["Leeds","Europe/London"],
+    ["Lyon","Europe/Paris"],["Marseille","Europe/Paris"],["Nice","Europe/Paris"],["Toulouse","Europe/Paris"],
+    ["Munich","Europe/Berlin"],["Frankfurt","Europe/Berlin"],["Hamburg","Europe/Berlin"],
+    ["Cologne","Europe/Berlin"],["Stuttgart","Europe/Berlin"],["Dusseldorf","Europe/Berlin"],
+    ["Barcelona","Europe/Madrid"],["Valencia","Europe/Madrid"],["Seville","Europe/Madrid"],["Bilbao","Europe/Madrid"],
+    ["Milan","Europe/Rome"],["Naples","Europe/Rome"],["Turin","Europe/Rome"],["Florence","Europe/Rome"],["Venice","Europe/Rome"],
+    ["Rotterdam","Europe/Amsterdam"],["The Hague","Europe/Amsterdam"],
+    ["Geneva","Europe/Zurich"],["Bern","Europe/Zurich"],["Basel","Europe/Zurich"],
+    ["Porto","Europe/Lisbon"],["Krakow","Europe/Warsaw"],
+    ["Saint Petersburg","Europe/Moscow"],["St Petersburg","Europe/Moscow"],["Kiev","Europe/Kyiv"],
+    ["Tel Aviv","Asia/Jerusalem"],["Abu Dhabi","Asia/Dubai"],["Mecca","Asia/Riyadh"],["Jeddah","Asia/Riyadh"],
+    ["Mumbai","Asia/Kolkata"],["Delhi","Asia/Kolkata"],["New Delhi","Asia/Kolkata"],["Bangalore","Asia/Kolkata"],
+    ["Bengaluru","Asia/Kolkata"],["Chennai","Asia/Kolkata"],["Hyderabad","Asia/Kolkata"],["Pune","Asia/Kolkata"],
+    ["Lahore","Asia/Karachi"],["Islamabad","Asia/Karachi"],["Colombo","Asia/Colombo"],
+    ["Hanoi","Asia/Ho_Chi_Minh"],["Saigon","Asia/Ho_Chi_Minh"],["Kuala Lumpur","Asia/Kuala_Lumpur"],
+    ["Beijing","Asia/Shanghai"],["Guangzhou","Asia/Shanghai"],["Shenzhen","Asia/Shanghai"],["Chengdu","Asia/Shanghai"],
+    ["Osaka","Asia/Tokyo"],["Kyoto","Asia/Tokyo"],["Nagoya","Asia/Tokyo"],["Busan","Asia/Seoul"],
+    ["Melbourne","Australia/Melbourne"],["Brisbane","Australia/Brisbane"],["Canberra","Australia/Sydney"],
+    ["Gold Coast","Australia/Brisbane"],["Wellington","Pacific/Auckland"],["Christchurch","Pacific/Auckland"],
+    ["Cape Town","Africa/Johannesburg"],["Durban","Africa/Johannesburg"],["Pretoria","Africa/Johannesburg"],
+    ["Alexandria","Africa/Cairo"],["Marrakech","Africa/Casablanca"],["Abuja","Africa/Lagos"],
+    ["Rio de Janeiro","America/Sao_Paulo"],["Brasilia","America/Sao_Paulo"],["Quito","America/Guayaquil"]
+  ];
+
+  // Build the searchable entry list.
+  function pretty(zone) {
+    var parts = zone.split("/");
+    return parts[parts.length - 1].replace(/_/g, " ");
+  }
+
+  var ENTRIES = [];
+  IANA.forEach(function (z) {
+    if (z.indexOf("Etc/") === 0) return; // cleaner offset entries added below
+    ENTRIES.push({
+      kind: "city", zone: z, display: pretty(z),
+      primary: pretty(z), secondary: z,
+      search: (z + " " + pretty(z)).toLowerCase().replace(/\//g, " ")
+    });
+  });
+  ABBR.forEach(function (a) {
+    ENTRIES.push({
+      kind: "abbr", zone: a[2], display: a[0],
+      primary: a[0] + " · " + a[1], secondary: a[2],
+      search: (a[0] + " " + a[1] + " " + a[2]).toLowerCase()
+    });
+  });
+  ALIASES.forEach(function (a) {
+    ENTRIES.push({
+      kind: "alias", zone: a[1], display: a[0],
+      primary: a[0], secondary: a[1].replace(/_/g, " "),
+      search: (a[0] + " " + a[1]).toLowerCase().replace(/\//g, " ")
+    });
+  });
+  for (var o = -12; o <= 14; o++) {
+    var zone = o === 0 ? "UTC" : "Etc/GMT" + (o < 0 ? "+" + (-o) : "-" + o);
+    var name = "UTC" + (o >= 0 ? "+" : "") + o;
+    ENTRIES.push({
+      kind: "offset", zone: zone, display: name,
+      primary: name, secondary: "Fixed offset",
+      search: (name + " gmt" + (o >= 0 ? "+" : "") + o).toLowerCase()
+    });
+  }
+  // Drop anything this browser cannot actually use.
+  ENTRIES = ENTRIES.filter(function (e) { return validZone(e.zone); });
+
+  // Popular suggestions shown when a box is focused but empty.
+  var POPULAR = [
+    "Pacific/Honolulu","America/Los_Angeles","America/Denver","America/Chicago",
+    "America/New_York","America/Sao_Paulo","UTC","Europe/London","Europe/Paris",
+    "Europe/Berlin","Europe/Athens","Europe/Moscow","Africa/Cairo","Europe/Istanbul",
+    "Asia/Jerusalem","Asia/Baghdad","Asia/Dubai","Asia/Tehran","Asia/Karachi",
+    "Asia/Kolkata","Asia/Bangkok","Asia/Shanghai","Asia/Tokyo","Australia/Sydney",
+    "Pacific/Auckland"
+  ];
+  var cityByZone = {};
+  ENTRIES.forEach(function (e) { if (e.kind === "city" && !cityByZone[e.zone]) cityByZone[e.zone] = e; });
+  var popularEntries = POPULAR.map(function (z) { return cityByZone[z]; }).filter(Boolean);
+
+  // ---- Conversion core -----------------------------------------------------
+
+  function offsetMs(zone, date) {
+    var dtf = new Intl.DateTimeFormat("en-US", {
+      timeZone: zone, hourCycle: "h23",
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", second: "2-digit"
+    });
+    var p = {};
+    dtf.formatToParts(date).forEach(function (x) { p[x.type] = x.value; });
+    var asUTC = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second);
+    return asUTC - date.getTime();
+  }
+
+  function wallToInstant(y, mo, d, hh, mm, zone) {
+    var guess = Date.UTC(y, mo - 1, d, hh, mm);
+    var off = offsetMs(zone, new Date(guess));
+    var ms = guess - off;
+    var off2 = offsetMs(zone, new Date(ms));
+    if (off2 !== off) ms = guess - off2;
+    return new Date(ms);
+  }
+
+  function partsInZone(date, zone) {
+    var dtf = new Intl.DateTimeFormat("en-US", {
+      timeZone: zone, hourCycle: "h23", weekday: "short",
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", timeZoneName: "short"
+    });
+    var p = {};
+    dtf.formatToParts(date).forEach(function (x) { p[x.type] = x.value; });
+    return {
+      date: p.year + "-" + p.month + "-" + p.day,
+      time: p.hour + ":" + p.minute,
+      weekday: p.weekday,
+      abbr: p.timeZoneName
+    };
+  }
+
+  function offsetLabel(zone, date) {
+    var mins = Math.round(offsetMs(zone, date) / 60000);
+    var sign = mins >= 0 ? "+" : "-";
+    var a = Math.abs(mins), h = Math.floor(a / 60), m = a % 60;
+    return "UTC" + sign + h + (m ? ":" + String(m).padStart(2, "0") : "");
+  }
+
+  function metaText(zone, date, abbr) {
+    var off = offsetLabel(zone, date);
+    if (/^[A-Za-z]+$/.test(abbr) && abbr !== "UTC") return abbr + " · " + off;
+    return off;
+  }
+
+  function dayShift(a, b) {
+    var pa = a.split("-").map(Number), pb = b.split("-").map(Number);
+    return Math.round((Date.UTC(pb[0], pb[1] - 1, pb[2]) - Date.UTC(pa[0], pa[1] - 1, pa[2])) / 86400000);
+  }
+
+  // ---- State and rendering -------------------------------------------------
+
+  var state = {
+    left: { zone: "Europe/Berlin", label: "Berlin" },
+    right: { zone: "America/Chicago", label: "Chicago" }
+  };
+  var instant = new Date(); instant.setSeconds(0, 0);
+
+  var leftTime = el("leftTime"), rightTime = el("rightTime");
+  var leftDate = el("leftDate"), rightDate = el("rightDate");
+  var leftDay = el("leftDay"), rightDay = el("rightDay");
+  var leftMeta = el("leftMeta"), rightMeta = el("rightMeta");
+  var leftInput = el("leftInput"), rightInput = el("rightInput");
+  var summary = el("summary");
+
+  function render() {
+    var L = partsInZone(instant, state.left.zone);
+    var R = partsInZone(instant, state.right.zone);
+
+    leftTime.value = L.time; leftDate.value = L.date; leftDay.textContent = L.weekday;
+    leftMeta.textContent = metaText(state.left.zone, instant, L.abbr);
+    rightTime.value = R.time; rightDate.value = R.date; rightDay.textContent = R.weekday;
+    rightMeta.textContent = metaText(state.right.zone, instant, R.abbr);
+
+    var diffH = (offsetMs(state.right.zone, instant) - offsetMs(state.left.zone, instant)) / 3600000;
+    var lName = state.left.label, rName = state.right.label;
+    var shift = dayShift(L.date, R.date);
+    var dayNote = shift === 0 ? "" : (shift > 0 ? " (next day)" : " (previous day)");
+
+    if (diffH === 0) {
+      summary.textContent = rName + " and " + lName + " are at the same time" + dayNote + ".";
+    } else {
+      var amt = Math.abs(diffH);
+      var amtText = (amt % 1 === 0 ? amt : amt.toFixed(1)) + (amt === 1 ? " hour" : " hours");
+      summary.textContent = rName + " is " + amtText + (diffH > 0 ? " ahead of " : " behind ") + lName + dayNote + ".";
+    }
+  }
+
+  function updateFrom(side) {
+    var zone = state[side].zone;
+    var dStr = side === "left" ? leftDate.value : rightDate.value;
+    var tStr = side === "left" ? leftTime.value : rightTime.value;
+    if (!dStr || !tStr) return;
+    var dp = dStr.split("-").map(Number), tp = tStr.split(":").map(Number);
+    instant = wallToInstant(dp[0], dp[1], dp[2], tp[0], tp[1], zone);
+    render();
+  }
+
+  leftTime.addEventListener("input", function () { updateFrom("left"); });
+  leftDate.addEventListener("input", function () { updateFrom("left"); });
+  rightTime.addEventListener("input", function () { updateFrom("right"); });
+  rightDate.addEventListener("input", function () { updateFrom("right"); });
+
+  el("swap").addEventListener("click", function () {
+    var t = state.left; state.left = state.right; state.right = t;
+    leftInput.value = state.left.label; rightInput.value = state.right.label;
+    render();
+  });
+
+  el("nowBtn").addEventListener("click", function () { instant = new Date(); instant.setSeconds(0, 0); render(); });
+
+  // ---- Search combobox -----------------------------------------------------
+
+  function setupCombo(input, list, side) {
+    var current = [], activeIndex = -1;
+
+    function close() { list.classList.remove("open"); activeIndex = -1; }
+    function open() { list.classList.add("open"); }
+
+    function results(q) {
+      q = q.trim().toLowerCase();
+      if (!q) return popularEntries.slice(0, 60);
+      var toks = q.split(/\s+/);
+      var out = ENTRIES.filter(function (e) {
+        for (var i = 0; i < toks.length; i++) if (e.search.indexOf(toks[i]) < 0) return false;
+        return true;
+      });
+      out.sort(function (a, b) {
+        var as = a.search.indexOf(q) === 0 ? 0 : 1, bs = b.search.indexOf(q) === 0 ? 0 : 1;
+        if (as !== bs) return as - bs;
+        return a.primary.length - b.primary.length;
+      });
+      return out.slice(0, 60);
+    }
+
+    function draw(items) {
+      current = items; list.innerHTML = "";
+      if (!items.length) {
+        var em = document.createElement("li");
+        em.className = "empty"; em.textContent = "No match";
+        list.appendChild(em); open(); return;
+      }
+      items.forEach(function (e, idx) {
+        var li = document.createElement("li");
+        li.setAttribute("role", "option");
+        var p = document.createElement("div"); p.className = "p"; p.textContent = e.primary;
+        var s = document.createElement("div"); s.className = "s"; s.textContent = e.secondary;
+        li.appendChild(p); li.appendChild(s);
+        if (idx === activeIndex) li.classList.add("active");
+        li.addEventListener("mousedown", function (ev) { ev.preventDefault(); choose(e); });
+        list.appendChild(li);
+      });
+      open();
+    }
+
+    function choose(e) {
+      state[side] = { zone: e.zone, label: e.display };
+      input.value = e.display;
+      close();
+      render();
+    }
+
+    function refreshActive() {
+      Array.prototype.forEach.call(list.children, function (li, i) {
+        li.classList.toggle("active", i === activeIndex);
+        if (i === activeIndex && li.scrollIntoView) li.scrollIntoView({ block: "nearest" });
+      });
+    }
+
+    input.addEventListener("focus", function () { activeIndex = -1; draw(results(input.value)); input.select(); });
+    input.addEventListener("input", function () { activeIndex = -1; draw(results(input.value)); });
+    input.addEventListener("keydown", function (ev) {
+      if (!list.classList.contains("open")) {
+        if (ev.key === "ArrowDown") { activeIndex = -1; draw(results(input.value)); }
+        return;
+      }
+      if (ev.key === "ArrowDown") { ev.preventDefault(); activeIndex = Math.min(activeIndex + 1, current.length - 1); refreshActive(); }
+      else if (ev.key === "ArrowUp") { ev.preventDefault(); activeIndex = Math.max(activeIndex - 1, 0); refreshActive(); }
+      else if (ev.key === "Enter") {
+        if (activeIndex < 0 && current.length) activeIndex = 0;
+        if (current[activeIndex]) { ev.preventDefault(); choose(current[activeIndex]); }
+      } else if (ev.key === "Escape") { close(); input.blur(); }
+    });
+    input.addEventListener("blur", function () {
+      setTimeout(function () { close(); input.value = state[side].label; }, 120);
+    });
+  }
+
+  setupCombo(leftInput, el("leftList"), "left");
+  setupCombo(rightInput, el("rightList"), "right");
+
+  // ---- Init ----------------------------------------------------------------
+  leftInput.value = state.left.label;
+  rightInput.value = state.right.label;
+  render();
+})();
+</script>
+</body>
+</html>
