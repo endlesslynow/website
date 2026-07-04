@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work Hours</title>
+  <style>
+    :root {
+      --bg: #f4f5f7;
+      --panel: #ffffff;
+      --text: #111827;
+      --line: #d5dbe3;
+      --button: #1f2937;
+      --button-hover: #374151;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    main {
+      width: min(100%, 420px);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: 28px;
+      line-height: 1.15;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    label {
+      display: grid;
+      gap: 7px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font: inherit;
+      color: var(--text);
+      background: #ffffff;
+    }
+
+    input:focus {
+      outline: 3px solid rgba(31, 41, 55, 0.18);
+      border-color: var(--button);
+    }
+
+    button {
+      min-height: 48px;
+      border: 0;
+      border-radius: 6px;
+      padding: 12px 14px;
+      font: inherit;
+      font-weight: 800;
+      color: #ffffff;
+      background: var(--button);
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--button-hover);
+    }
+
+    @media (max-width: 480px) {
+      body {
+        align-items: flex-start;
+        padding: 16px;
+      }
+
+      main {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Work Hours</h1>
+
+    <form id="work-hours-form" action="https://script.google.com/macros/s/AKfycbxgxnmlJPIsGpPxZ8pxvPetNwvj--FXRMkYzUuc7OGsUzjxqGwX2AMITUIs4plkHR-x/exec" method="get" accept-charset="UTF-8">
+      <label for="work-date">
+        Date
+        <input id="work-date" name="date" type="date" required>
+      </label>
+
+      <label for="hours-worked">
+        Hours worked
+        <input id="hours-worked" name="hours" type="number" min="0" max="24" step="0.25" inputmode="decimal" required>
+      </label>
+
+      <button id="save-button" type="submit">Save</button>
+    </form>
+  </main>
+
+  <script>
+    const dateInput = document.querySelector("#work-date");
+
+    function localDateValue(date) {
+      const offsetMs = date.getTimezoneOffset() * 60 * 1000;
+      return new Date(date.getTime() - offsetMs).toISOString().slice(0, 10);
+    }
+
+    dateInput.value = localDateValue(new Date());
+  </script>
+</body>
+</html>
