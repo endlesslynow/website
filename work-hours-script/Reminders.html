@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --tile: #f5f5f6;
+      --red: #dd3d45;
+      --red-dark: #b52830;
+      --orange: #e96b12;
+      --orange-dark: #c25409;
+    }
+
+    * { box-sizing: border-box; }
+
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      padding: 16px 14px;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background: #ffffff;
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.4;
+    }
+
+    #message {
+      margin: 0 0 12px;
+      font-size: 14px;
+      text-align: center;
+      color: var(--muted);
+      display: none;
+    }
+
+    #message.ok { display: block; }
+
+    #message.error {
+      display: block;
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .box {
+      border: 3px solid;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .box + .box { margin-top: 16px; }
+
+    .box.red { border-color: var(--red); }
+    .box.orange { border-color: var(--orange); }
+
+    .box h2 {
+      margin: 0;
+      padding: 12px 16px;
+      font-size: 19px;
+      color: #ffffff;
+    }
+
+    .box.red h2 { background: var(--red); }
+    .box.orange h2 { background: var(--orange); }
+
+    .box-body { padding: 14px; }
+
+    .list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .add-btn-row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .empty {
+      margin: 0;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .reminder-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--tile);
+      border-radius: 12px;
+    }
+
+    .reminder-row input[type="checkbox"] {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+      accent-color: var(--red);
+      cursor: pointer;
+    }
+
+    .reminder-row .text {
+      flex: 1;
+      min-width: 0;
+      overflow-wrap: anywhere;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .reminder-row.done .text {
+      color: var(--muted);
+      font-weight: 400;
+      text-decoration: line-through;
+    }
+
+    .konzept-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--tile);
+      border-radius: 12px;
+    }
+
+    .konzept-row .name {
+      flex: 1;
+      min-width: 0;
+      overflow-wrap: anywhere;
+      font-weight: 700;
+    }
+
+    .konzept-row .countdown {
+      flex-shrink: 0;
+      font-weight: 700;
+      color: var(--orange-dark);
+      white-space: nowrap;
+    }
+
+    .konzept-row .countdown.late {
+      color: var(--red);
+    }
+
+    button.delete {
+      flex-shrink: 0;
+      min-height: 38px;
+      padding: 0 12px;
+      border: 2px solid currentColor;
+      border-radius: 10px;
+      background: #ffffff;
+      color: var(--red);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.add-btn {
+      display: inline-block;
+      width: auto;
+      margin-top: 12px;
+      min-height: 0;
+      border: 0;
+      border-radius: 10px;
+      padding: 7px 16px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .box.red button.add-btn { background: var(--red); }
+    .box.red button.add-btn:hover { background: var(--red-dark); }
+    .box.orange button.add-btn { background: var(--orange); }
+    .box.orange button.add-btn:hover { background: var(--orange-dark); }
+
+    button:disabled { opacity: 0.6; cursor: default; }
+
+    a.sheet-link {
+      display: block;
+      margin-top: 4px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .modal-box.accent-red a.sheet-link { color: var(--red-dark); }
+    .modal-box.accent-orange a.sheet-link { color: var(--orange-dark); }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(31, 41, 55, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 10;
+    }
+
+    .overlay.show { display: flex; }
+
+    .modal-box {
+      background: #ffffff;
+      border: 3px solid;
+      border-radius: 16px;
+      padding: 18px;
+      width: min(100%, 360px);
+      display: grid;
+      gap: 14px;
+    }
+
+    .modal-box.accent-red { border-color: var(--red); }
+    .modal-box.accent-orange { border-color: var(--orange); }
+    .modal-box.accent-neutral { border-color: #d1d5db; }
+
+    .modal-box h3 {
+      margin: 0;
+      font-size: 19px;
+    }
+
+    .modal-box p {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .modal-box label {
+      display: grid;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .modal-box input[type="text"], .modal-box input[type="date"] {
+      width: 100%;
+      min-height: 46px;
+      border: 2px solid #d1d5db;
+      border-radius: 10px;
+      padding: 8px 12px;
+      font: inherit;
+      font-size: 16px;
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    .modal-box input:focus {
+      outline: 3px solid rgba(0, 0, 0, 0.12);
+    }
+
+    .modal-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .modal-actions button.primary {
+      min-height: 48px;
+      border: 0;
+      border-radius: 12px;
+      font: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .modal-box.accent-red button.primary { background: var(--red); }
+    .modal-box.accent-orange button.primary { background: var(--orange); }
+    .modal-box.accent-neutral button.primary { background: var(--red); }
+
+    .modal-actions button.cancel {
+      min-height: 48px;
+      border: 2px solid #d1d5db;
+      border-radius: 12px;
+      background: #ffffff;
+      color: var(--muted);
+      font: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="message" role="status"></div>
+
+  <section class="box red">
+    <h2>Reminders</h2>
+    <div class="box-body">
+      <div class="list" id="reminder-list">
+        <p class="empty">Loading...</p>
+      </div>
+      <div class="add-btn-row">
+        <button type="button" class="add-btn" id="reminder-add-btn">Add</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="box orange">
+    <h2>Arbeitskonzept Reminders</h2>
+    <div class="box-body">
+      <div class="list" id="konzept-list">
+        <p class="empty">Loading...</p>
+      </div>
+      <div class="add-btn-row">
+        <button type="button" class="add-btn" id="konzept-add-btn">Add</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="overlay" id="reminder-modal-overlay">
+    <div class="modal-box accent-red">
+      <h3>New reminder</h3>
+      <form id="reminder-form">
+        <label for="reminder-text">
+          What do you need to remember?
+          <input id="reminder-text" type="text" autocomplete="off">
+        </label>
+        <div class="modal-actions">
+          <button type="submit" class="primary">Add</button>
+          <button type="button" class="cancel" id="reminder-cancel">Cancel</button>
+        </div>
+      </form>
+      <a class="sheet-link" id="reminder-sheet-link" href="#" target="_blank" rel="noopener" hidden>Open the Google Sheet</a>
+    </div>
+  </div>
+
+  <div class="overlay" id="konzept-modal-overlay">
+    <div class="modal-box accent-orange">
+      <h3>New Arbeitskonzept reminder</h3>
+      <form id="konzept-form">
+        <label for="konzept-name">
+          Who is it for?
+          <input id="konzept-name" type="text" autocomplete="off">
+        </label>
+        <label for="konzept-date">
+          Send it by (4 weeks from today, change it if you want)
+          <input id="konzept-date" type="date">
+        </label>
+        <div class="modal-actions">
+          <button type="submit" class="primary">Add</button>
+          <button type="button" class="cancel" id="konzept-cancel">Cancel</button>
+        </div>
+      </form>
+      <a class="sheet-link" id="konzept-sheet-link" href="#" target="_blank" rel="noopener" hidden>Open the Google Sheet</a>
+    </div>
+  </div>
+
+  <div class="overlay" id="confirm-overlay">
+    <div class="modal-box accent-neutral">
+      <p id="confirm-text"></p>
+      <div class="modal-actions">
+        <button type="button" class="primary" id="confirm-yes">Yes, delete it</button>
+        <button type="button" class="cancel" id="confirm-no">No, keep it</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function byId(id) { return document.getElementById(id); }
+
+    /* ----- tell the habibi page how tall this frame is ----- */
+
+    function postHeight() {
+      var height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      try {
+        window.top.postMessage({ habibiReminders: 'height', height: height }, '*');
+      } catch (ignored) {}
+    }
+
+    window.addEventListener('load', postHeight);
+    setInterval(postHeight, 700);
+
+    /* ----- dates ----- */
+
+    function localDateValue(date) {
+      var offsetMs = date.getTimezoneOffset() * 60 * 1000;
+      return new Date(date.getTime() - offsetMs).toISOString().slice(0, 10);
+    }
+
+    function parseDateValue(value) {
+      var match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value || ''));
+      if (!match) return null;
+      return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+    }
+
+    function defaultKonzeptDate() {
+      var date = new Date();
+      date.setDate(date.getDate() + 28);
+      return localDateValue(date);
+    }
+
+    /* ----- business day countdown, shown compactly ----- */
+
+    function workDaysUntil(due) {
+      var now = new Date();
+      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      var step = due.getTime() >= today.getTime() ? 1 : -1;
+      var count = 0;
+      var cursor = new Date(today);
+      var guard = 0;
+
+      while (cursor.getTime() !== due.getTime() && guard < 4000) {
+        cursor.setDate(cursor.getDate() + step);
+        var day = cursor.getDay();
+        if (day !== 0 && day !== 6) {
+          count += step;
+        }
+        guard++;
+      }
+      return count;
+    }
+
+    function compactCountdown(dueValue) {
+      var due = parseDateValue(dueValue);
+      if (!due) return { text: '', late: false };
+
+      var now = new Date();
+      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+      if (due.getTime() === today.getTime()) {
+        return { text: 'Today', late: true };
+      }
+
+      var n = workDaysUntil(due);
+      var late = n < 0;
+      var abs = Math.abs(n);
+      var weeks = Math.floor(abs / 5);
+      var days = abs % 5;
+
+      var parts = [];
+      if (weeks > 0) parts.push(weeks === 1 ? '1 week' : weeks + ' weeks');
+      if (days > 0 || parts.length === 0) parts.push(days === 1 ? '1 day' : days + ' days');
+
+      var text = parts.join(' ');
+      if (late) text += ' overdue';
+      return { text: text, late: late };
+    }
+
+    /* ----- messages and busy state ----- */
+
+    function setBusy(busy) {
+      var buttons = document.querySelectorAll('button');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = busy;
+      }
+    }
+
+    function showMessage(text, isError) {
+      var el = byId('message');
+      el.textContent = text;
+      el.className = isError ? 'error' : 'ok';
+    }
+
+    function fail(error) {
+      showMessage(error.message, true);
+      setBusy(false);
+      postHeight();
+    }
+
+    /* ----- delete confirmation ----- */
+
+    var confirmAction = null;
+
+    function askToDelete(text, action) {
+      confirmAction = action;
+      byId('confirm-text').textContent = text;
+      byId('confirm-overlay').className = 'overlay show';
+    }
+
+    byId('confirm-yes').addEventListener('click', function () {
+      byId('confirm-overlay').className = 'overlay';
+      var action = confirmAction;
+      confirmAction = null;
+      if (action) action();
+    });
+
+    byId('confirm-no').addEventListener('click', function () {
+      byId('confirm-overlay').className = 'overlay';
+      confirmAction = null;
+    });
+
+    /* ----- add-reminder modal ----- */
+
+    byId('reminder-add-btn').addEventListener('click', function () {
+      byId('reminder-text').value = '';
+      byId('reminder-modal-overlay').className = 'overlay show';
+      byId('reminder-text').focus();
+    });
+
+    byId('reminder-cancel').addEventListener('click', function () {
+      byId('reminder-modal-overlay').className = 'overlay';
+    });
+
+    byId('reminder-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var text = byId('reminder-text').value.trim();
+      if (!text) {
+        showMessage('Please type the reminder first.', true);
+        return;
+      }
+      setBusy(true);
+      showMessage('Saving...', false);
+      google.script.run
+        .withSuccessHandler(function (data) {
+          byId('reminder-modal-overlay').className = 'overlay';
+          render(data);
+        })
+        .withFailureHandler(fail)
+        .addReminder(text);
+    });
+
+    /* ----- add-konzept modal ----- */
+
+    byId('konzept-add-btn').addEventListener('click', function () {
+      byId('konzept-name').value = '';
+      byId('konzept-date').value = defaultKonzeptDate();
+      byId('konzept-modal-overlay').className = 'overlay show';
+      byId('konzept-name').focus();
+    });
+
+    byId('konzept-cancel').addEventListener('click', function () {
+      byId('konzept-modal-overlay').className = 'overlay';
+    });
+
+    byId('konzept-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var name = byId('konzept-name').value.trim();
+      var due = byId('konzept-date').value;
+      if (!parseDateValue(due)) {
+        showMessage('Please pick a valid date.', true);
+        return;
+      }
+      setBusy(true);
+      showMessage('Saving...', false);
+      google.script.run
+        .withSuccessHandler(function (data) {
+          byId('konzept-modal-overlay').className = 'overlay';
+          render(data);
+        })
+        .withFailureHandler(fail)
+        .addKonzept(name, due);
+    });
+
+    /* ----- rendering ----- */
+
+    function render(data) {
+      renderReminders(data.reminders);
+      renderKonzepte(data.konzepte);
+
+      if (data.reminderSheetUrl) {
+        var reminderLink = byId('reminder-sheet-link');
+        reminderLink.href = data.reminderSheetUrl;
+        reminderLink.hidden = false;
+      }
+      if (data.konzeptSheetUrl) {
+        var konzeptLink = byId('konzept-sheet-link');
+        konzeptLink.href = data.konzeptSheetUrl;
+        konzeptLink.hidden = false;
+      }
+      if (data.message) {
+        showMessage(data.message, false);
+      }
+      setBusy(false);
+      postHeight();
+    }
+
+    function renderReminders(reminders) {
+      var list = byId('reminder-list');
+      list.innerHTML = '';
+
+      if (!reminders.length) {
+        var empty = document.createElement('p');
+        empty.className = 'empty';
+        empty.textContent = 'No reminders right now.';
+        list.appendChild(empty);
+        return;
+      }
+
+      reminders.forEach(function (reminder) {
+        list.appendChild(reminderRow(reminder));
+      });
+    }
+
+    function reminderRow(reminder) {
+      var row = document.createElement('div');
+      row.className = reminder.done ? 'reminder-row done' : 'reminder-row';
+
+      var box = document.createElement('input');
+      box.type = 'checkbox';
+      box.checked = reminder.done;
+      box.setAttribute('aria-label', 'Done with ' + reminder.text);
+
+      var text = document.createElement('span');
+      text.className = 'text';
+      text.textContent = reminder.text;
+      text.addEventListener('click', function () {
+        box.checked = !box.checked;
+        box.dispatchEvent(new Event('change'));
+      });
+
+      box.addEventListener('change', function () {
+        var checked = box.checked;
+        row.className = checked ? 'reminder-row done' : 'reminder-row';
+        google.script.run
+          .withSuccessHandler(function () {})
+          .withFailureHandler(function (error) {
+            box.checked = !checked;
+            row.className = box.checked ? 'reminder-row done' : 'reminder-row';
+            fail(error);
+          })
+          .setReminderDone(reminder.id, checked);
+      });
+
+      var del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'delete';
+      del.textContent = 'Delete';
+      del.addEventListener('click', function () {
+        askToDelete('Delete the reminder "' + reminder.text + '"?', function () {
+          setBusy(true);
+          showMessage('Deleting...', false);
+          google.script.run
+            .withSuccessHandler(render)
+            .withFailureHandler(fail)
+            .deleteReminder(reminder.id);
+        });
+      });
+
+      row.appendChild(box);
+      row.appendChild(text);
+      row.appendChild(del);
+      return row;
+    }
+
+    function renderKonzepte(konzepte) {
+      var list = byId('konzept-list');
+      list.innerHTML = '';
+
+      if (!konzepte.length) {
+        var empty = document.createElement('p');
+        empty.className = 'empty';
+        empty.textContent = 'No Arbeitskonzept reminders right now.';
+        list.appendChild(empty);
+        return;
+      }
+
+      konzepte.forEach(function (konzept) {
+        list.appendChild(konzeptRow(konzept));
+      });
+    }
+
+    function konzeptRow(konzept) {
+      var row = document.createElement('div');
+      row.className = 'konzept-row';
+
+      var name = document.createElement('span');
+      name.className = 'name';
+      name.textContent = konzept.name;
+
+      var info = compactCountdown(konzept.due);
+      var countdown = document.createElement('span');
+      countdown.className = info.late ? 'countdown late' : 'countdown';
+      countdown.textContent = info.text;
+
+      var del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'delete';
+      del.textContent = 'Delete';
+      del.addEventListener('click', function () {
+        askToDelete('Delete the Arbeitskonzept reminder for "' + konzept.name + '"?', function () {
+          setBusy(true);
+          showMessage('Deleting...', false);
+          google.script.run
+            .withSuccessHandler(render)
+            .withFailureHandler(fail)
+            .deleteKonzept(konzept.id);
+        });
+      });
+
+      row.appendChild(name);
+      row.appendChild(countdown);
+      row.appendChild(del);
+      return row;
+    }
+
+    /* ----- first load ----- */
+
+    google.script.run
+      .withSuccessHandler(render)
+      .withFailureHandler(fail)
+      .getReminderData();
+  </script>
+</body>
+</html>

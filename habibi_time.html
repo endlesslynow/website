@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Calculator</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --label: #6b21a8;
+      --border: #d8b4fe;
+      --field: #faf5ff;
+      --field-readonly: #dcfce7;
+      --field-readonly-border: #86efac;
+      --field-readonly-text: #14532d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.75), transparent 35%),
+        linear-gradient(160deg, #ffd8ea 0%, #ffeec7 100%);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .shell {
+      width: min(100%, 420px);
+      display: grid;
+      gap: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      text-align: center;
+      color: var(--label);
+      font-size: 1.8rem;
+    }
+
+    a.back-btn {
+      display: block;
+      text-align: center;
+      padding: 18px;
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      color: var(--label);
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    a.back-btn:hover {
+      border-color: var(--label);
+      background: var(--field);
+    }
+
+    .inputs {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--label);
+    }
+
+    input {
+      width: 100%;
+      height: 76px;
+      border-radius: 18px;
+      border: 2px solid var(--border);
+      background: var(--field);
+      color: var(--ink);
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding: 0 18px;
+      font-family: inherit;
+    }
+
+    input::placeholder {
+      color: #9ca3af;
+    }
+
+    input[readonly] {
+      background: var(--field-readonly);
+      border-color: var(--field-readonly-border);
+      color: var(--field-readonly-text);
+    }
+
+    .clear-button {
+      width: 100%;
+      height: 64px;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      background: #ffffff;
+      color: var(--label);
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+
+    <h1>Time Calculator</h1>
+
+    <a class="back-btn" href="habibi.html">Back to Habibi</a>
+
+    <div class="inputs">
+      <label for="fromTime">
+        Von
+        <input id="fromTime" type="text" inputmode="numeric" placeholder="--:--" maxlength="5" autocomplete="off" spellcheck="false" value="--:--">
+      </label>
+
+      <label for="untilTime">
+        Bis
+        <input id="untilTime" type="text" inputmode="numeric" placeholder="--:--" maxlength="5" autocomplete="off" spellcheck="false" value="--:--">
+      </label>
+
+      <label for="newUntilTime">
+        Neues Bis
+        <input id="newUntilTime" type="text" placeholder="--:--" maxlength="5" readonly value="--:--">
+      </label>
+
+      <button id="clearButton" class="clear-button" type="button">Clear</button>
+    </div>
+
+  </main>
+
+  <script>
+    function calculateExtraTime(totalMinutes) {
+      return Math.round(totalMinutes / 3);
+    }
+
+    function formatTypedTime(value) {
+      var digits = value.replace(/\D/g, "").slice(0, 4);
+
+      if (digits.length === 0) {
+        return "--:--";
+      }
+
+      if (digits.length < 3) {
+        return digits;
+      }
+
+      return digits.slice(0, 2) + ":" + digits.slice(2);
+    }
+
+    function timeToMinutes(value) {
+      if (!value || !value.includes(":")) {
+        return null;
+      }
+
+      var parts = value.split(":");
+      var hours = Number(parts[0]);
+      var minutes = Number(parts[1]);
+
+      if (!Number.isInteger(hours) || !Number.isInteger(minutes)) {
+        return null;
+      }
+
+      if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+        return null;
+      }
+
+      return (hours * 60) + minutes;
+    }
+
+    function minutesToTime(totalMinutes) {
+      var normalized = ((totalMinutes % 1440) + 1440) % 1440;
+      var hours = Math.floor(normalized / 60);
+      var minutes = normalized % 60;
+      return String(hours).padStart(2, "0") + ":" + String(minutes).padStart(2, "0");
+    }
+
+    var fromTimeInput = document.getElementById("fromTime");
+    var untilTimeInput = document.getElementById("untilTime");
+    var newUntilTimeInput = document.getElementById("newUntilTime");
+    var clearButton = document.getElementById("clearButton");
+
+    function handleTimeFocus(event) {
+      if (event.target.value === "--:--") {
+        event.target.value = "";
+      }
+    }
+
+    function handleTimeBlur(event) {
+      if (event.target.value === "") {
+        event.target.value = "--:--";
+      }
+
+      updateNewUntil();
+    }
+
+    function handleTimeTyping(event) {
+      event.target.value = formatTypedTime(event.target.value);
+      updateNewUntil();
+
+      if (event.target === fromTimeInput && event.target.value.length === 5) {
+        untilTimeInput.focus();
+        untilTimeInput.select();
+      }
+    }
+
+    function updateNewUntil() {
+      var fromMinutes = timeToMinutes(fromTimeInput.value);
+      var untilMinutes = timeToMinutes(untilTimeInput.value);
+
+      if (fromMinutes === null || untilMinutes === null) {
+        newUntilTimeInput.value = "--:--";
+        return;
+      }
+
+      var duration = untilMinutes - fromMinutes;
+      if (duration < 0) {
+        duration += 1440;
+      }
+
+      var newUntilMinutes = untilMinutes + calculateExtraTime(duration);
+      newUntilTimeInput.value = minutesToTime(newUntilMinutes);
+    }
+
+    function clearTimes() {
+      fromTimeInput.value = "--:--";
+      untilTimeInput.value = "--:--";
+      newUntilTimeInput.value = "--:--";
+    }
+
+    fromTimeInput.addEventListener("input", handleTimeTyping);
+    fromTimeInput.addEventListener("focus", handleTimeFocus);
+    fromTimeInput.addEventListener("blur", handleTimeBlur);
+    untilTimeInput.addEventListener("input", handleTimeTyping);
+    untilTimeInput.addEventListener("focus", handleTimeFocus);
+    untilTimeInput.addEventListener("blur", handleTimeBlur);
+    clearButton.addEventListener("click", clearTimes);
+  </script>
+</body>
+</html>

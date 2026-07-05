@@ -9,13 +9,32 @@ var FAMILY_SHEET_PROP = 'familySpreadsheetId';
 var CLIENT_BACKUP_SUBFOLDER = 'client hours backups';
 var CLIENT_SHEET_PROP = 'clientSpreadsheetId';
 var CLIENT_SPREADSHEET_NAME = 'Client Hours Weekly';
+var REMINDER_BACKUP_SUBFOLDER = 'reminder backups';
+var REMINDER_SHEET_PROP = 'reminderSpreadsheetId';
+var REMINDER_SPREADSHEET_NAME = 'Habibi Reminders';
+var KONZEPT_BACKUP_SUBFOLDER = 'arbeitskonzept backups';
+var KONZEPT_SHEET_PROP = 'konzeptSpreadsheetId';
+var KONZEPT_SPREADSHEET_NAME = 'Arbeitskonzept Reminders';
 var LAST_BACKUP_PROP = 'lastBackupDate';
+var PI_BACKUP_VIEWER = 'zacahopkins@gmail.com';
 
 /* ---------- Web app entry points ---------- */
 
 function doGet(e) {
   var params = (e && e.parameter) || {};
   var multi = (e && e.parameters) || {};
+
+  if (params.view === 'reminders') {
+    return HtmlService.createHtmlOutputFromFile('Reminders')
+      .setTitle('Reminders')
+      .addMetaTag('viewport', 'width=device-width, initial-scale=1')
+      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  }
+
+  if (params.action === 'backupNow') {
+    dailyBackup();
+    return ContentService.createTextOutput('ok');
+  }
 
   try {
     if (params.action === 'vacation' && params.date) {
@@ -667,15 +686,23 @@ function consolidateTabsLocked_() {
 
 function ensureBackupTrigger_() {
   try {
+    var hasTrigger = false;
     var triggers = ScriptApp.getProjectTriggers();
     for (var i = 0; i < triggers.length; i++) {
       if (triggers[i].getHandlerFunction() === 'dailyBackup') {
-        return;
+        hasTrigger = true;
+        break;
       }
     }
-    ScriptApp.newTrigger('dailyBackup').timeBased().everyDays(1).atHour(3).create();
-    // Take the first backup right away so it is visible immediately.
-    dailyBackup();
+    if (!hasTrigger) {
+      ScriptApp.newTrigger('dailyBackup').timeBased().everyDays(1).atHour(3).create();
+    }
+    // Catch up right away if today's backup has not happened yet, so a
+    // failed or missed night run heals itself the next time the app is used.
+    var today = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd');
+    if (PropertiesService.getScriptProperties().getProperty(LAST_BACKUP_PROP) !== today) {
+      dailyBackup();
+    }
   } catch (ignored) {
     // Trigger setup must never block the app.
   }
@@ -706,6 +733,7 @@ function dailyBackup() {
   var today = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd');
   var month = today.slice(0, 7);
   var root = topFolder_(BACKUP_ROOT_FOLDER);
+  shareBackupFolder_(root);
 
   backupInto_(root, WORK_BACKUP_SUBFOLDER, month,
     'Work Hours backup ' + today, SpreadsheetApp.getActiveSpreadsheet().getId());
@@ -720,7 +748,25 @@ function dailyBackup() {
     backupInto_(root, CLIENT_BACKUP_SUBFOLDER, month, 'Client Hours backup ' + today, clientId);
   }
 
+  var reminderId = PropertiesService.getScriptProperties().getProperty(REMINDER_SHEET_PROP);
+  if (reminderId) {
+    backupInto_(root, REMINDER_BACKUP_SUBFOLDER, month, 'Reminders backup ' + today, reminderId);
+  }
+
+  var konzeptId = PropertiesService.getScriptProperties().getProperty(KONZEPT_SHEET_PROP);
+  if (konzeptId) {
+    backupInto_(root, KONZEPT_BACKUP_SUBFOLDER, month, 'Arbeitskonzept backup ' + today, konzeptId);
+  }
+
   PropertiesService.getScriptProperties().setProperty(LAST_BACKUP_PROP, today);
+}
+
+function shareBackupFolder_(root) {
+  try {
+    root.addViewer(PI_BACKUP_VIEWER);
+  } catch (ignored) {
+    // Sharing must never block the backup itself.
+  }
 }
 
 function backupInto_(root, subfolderName, month, fileName, fileId) {
@@ -962,6 +1008,335 @@ function familiesPayload_(sheet, message) {
   return {
     families: groupFamilies_(readFamilyRows_(sheet)),
     sheetUrl: sheet.getParent().getUrl(),
+    message: String(message || '')
+  };
+}
+
+/* ---------- Habibi front page reminders ---------- */
+
+function getReminderData() {
+  ensureBackupTrigger_();
+  return combinedRemindersPayload_('');
+}
+
+function addReminder(text) {
+  var reminderText = String(text || '').trim();
+  if (!reminderText) {
+    throw new Error('Please type the reminder first.');
+  }
+
+  var lock = LockService.getScriptLock();
+  if (!lock.tryLock(10000)) {
+    throw new Error('Another save is still running. Please wait a moment and try again.');
+  }
+  try {
+    var sheet = reminderSheet_(getReminderSpreadsheet_());
+    var rows = readReminderRows_(sheet);
+    rows.push({ text: reminderText, done: false, id: newId_() });
+    writeReminderRows_(sheet, rows);
+    return combinedRemindersPayload_('Added the reminder.');
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function setReminderDone(id, done) {
+  var lock = LockService.getScriptLock();
+  if (!lock.tryLock(10000)) {
+    throw new Error('Another save is still running. Please wait a moment and try again.');
+  }
+  try {
+    var sheet = reminderSheet_(getReminderSpreadsheet_());
+    var rows = readReminderRows_(sheet);
+    var found = false;
+    var updated = rows.map(function (row) {
+      if (row.id === String(id || '')) {
+        found = true;
+        return { text: row.text, done: !!done, id: row.id };
+      }
+      return row;
+    });
+    if (!found) {
+      throw new Error('That reminder was not found. Please reload the page.');
+    }
+    writeReminderRows_(sheet, updated);
+    return combinedRemindersPayload_('');
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function deleteReminder(id) {
+  var lock = LockService.getScriptLock();
+  if (!lock.tryLock(10000)) {
+    throw new Error('Another save is still running. Please wait a moment and try again.');
+  }
+  try {
+    var sheet = reminderSheet_(getReminderSpreadsheet_());
+    var rows = readReminderRows_(sheet);
+    var updated = rows.filter(function (row) {
+      return row.id !== String(id || '');
+    });
+    if (updated.length === rows.length) {
+      throw new Error('That reminder was not found. Please reload the page.');
+    }
+    writeReminderRows_(sheet, updated);
+    return combinedRemindersPayload_('Deleted the reminder.');
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function addKonzept(name, dueString) {
+  var due = parseDateString_(dueString);
+  if (!due) {
+    due = todayDate_();
+    due.setDate(due.getDate() + 28);
+  }
+  var label = String(name || '').trim() || 'Arbeitskonzept';
+
+  var lock = LockService.getScriptLock();
+  if (!lock.tryLock(10000)) {
+    throw new Error('Another save is still running. Please wait a moment and try again.');
+  }
+  try {
+    var sheet = konzeptSheet_(getKonzeptSpreadsheet_());
+    var rows = readKonzeptRows_(sheet);
+    rows.push({ name: label, due: due, id: newId_() });
+    writeKonzeptRows_(sheet, sortKonzepte_(rows));
+    return combinedRemindersPayload_('Added the Arbeitskonzept reminder for ' + label + '.');
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function deleteKonzept(id) {
+  var lock = LockService.getScriptLock();
+  if (!lock.tryLock(10000)) {
+    throw new Error('Another save is still running. Please wait a moment and try again.');
+  }
+  try {
+    var sheet = konzeptSheet_(getKonzeptSpreadsheet_());
+    var rows = readKonzeptRows_(sheet);
+    var updated = rows.filter(function (row) {
+      return row.id !== String(id || '');
+    });
+    if (updated.length === rows.length) {
+      throw new Error('That reminder was not found. Please reload the page.');
+    }
+    writeKonzeptRows_(sheet, updated);
+    return combinedRemindersPayload_('Deleted the Arbeitskonzept reminder.');
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+/* ----- pure reminder logic (testable) ----- */
+
+function todayDate_() {
+  var now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+}
+
+function sortKonzepte_(rows) {
+  rows.sort(function (a, b) {
+    var diff = a.due.getTime() - b.due.getTime();
+    if (diff !== 0) {
+      return diff;
+    }
+    return a.name.localeCompare(b.name);
+  });
+  return rows;
+}
+
+/* ----- reminder spreadsheet access (two separate spreadsheets) ----- */
+
+var REMINDER_HEADERS = ['Reminder', 'Done', 'Id'];
+var KONZEPT_HEADERS = ['Name', 'Due date', 'Id'];
+
+function getReminderSpreadsheet_() {
+  var props = PropertiesService.getScriptProperties();
+  var id = props.getProperty(REMINDER_SHEET_PROP);
+  var spreadsheet = null;
+
+  if (id) {
+    try {
+      spreadsheet = SpreadsheetApp.openById(id);
+    } catch (gone) {
+      spreadsheet = null;
+    }
+  }
+  if (!spreadsheet) {
+    spreadsheet = SpreadsheetApp.create(REMINDER_SPREADSHEET_NAME);
+    spreadsheet.getSheets()[0].setName('Reminders');
+    props.setProperty(REMINDER_SHEET_PROP, spreadsheet.getId());
+  }
+
+  reminderSheet_(spreadsheet);
+  return spreadsheet;
+}
+
+function getKonzeptSpreadsheet_() {
+  var props = PropertiesService.getScriptProperties();
+  var id = props.getProperty(KONZEPT_SHEET_PROP);
+  var spreadsheet = null;
+
+  if (id) {
+    try {
+      spreadsheet = SpreadsheetApp.openById(id);
+    } catch (gone) {
+      spreadsheet = null;
+    }
+  }
+  if (!spreadsheet) {
+    spreadsheet = SpreadsheetApp.create(KONZEPT_SPREADSHEET_NAME);
+    spreadsheet.getSheets()[0].setName('Arbeitskonzept');
+    props.setProperty(KONZEPT_SHEET_PROP, spreadsheet.getId());
+  }
+
+  konzeptSheet_(spreadsheet);
+  return spreadsheet;
+}
+
+function reminderSheet_(spreadsheet) {
+  var sheet = spreadsheet.getSheets()[0];
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(REMINDER_HEADERS);
+    sheet.getRange(1, 1, 1, REMINDER_HEADERS.length).setFontWeight('bold');
+    sheet.setFrozenRows(1);
+  }
+  return sheet;
+}
+
+function konzeptSheet_(spreadsheet) {
+  var sheet = spreadsheet.getSheets()[0];
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(KONZEPT_HEADERS);
+    sheet.getRange(1, 1, 1, KONZEPT_HEADERS.length).setFontWeight('bold');
+    sheet.setFrozenRows(1);
+  }
+  return sheet;
+}
+
+function readReminderRows_(sheet) {
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) {
+    return [];
+  }
+
+  // A row width of 4 or more means this sheet still has the old 'Created'
+  // column before 'Id', so the real id is one column further right.
+  var lastCol = Math.max(REMINDER_HEADERS.length, sheet.getLastColumn());
+  var idColIndex = lastCol >= 4 ? 3 : REMINDER_HEADERS.length - 1;
+
+  var values = sheet.getRange(2, 1, lastRow - 1, lastCol).getValues();
+  var rows = [];
+
+  values.forEach(function (row) {
+    var text = String(row[0] || '').trim();
+    if (!text) {
+      return;
+    }
+    rows.push({
+      text: text,
+      done: String(row[1] || '').toLowerCase() === 'yes',
+      id: String(row[idColIndex] || '') || newId_()
+    });
+  });
+
+  return rows;
+}
+
+function writeReminderRows_(sheet, rows) {
+  // Clear the full old extent (header and data) so a sheet left over from
+  // an earlier column layout does not keep stray columns around.
+  var lastRow = sheet.getLastRow();
+  var width = Math.max(REMINDER_HEADERS.length, sheet.getLastColumn());
+  if (lastRow > 0) {
+    sheet.getRange(1, 1, lastRow, width).clearContent();
+  }
+
+  sheet.getRange(1, 1, 1, REMINDER_HEADERS.length).setValues([REMINDER_HEADERS]).setFontWeight('bold');
+
+  if (!rows.length) {
+    return;
+  }
+
+  var values = rows.map(function (row) {
+    return [row.text, row.done ? 'Yes' : 'No', row.id || newId_()];
+  });
+
+  sheet.getRange(2, 1, values.length, REMINDER_HEADERS.length).setNumberFormat('@');
+  sheet.getRange(2, 1, values.length, REMINDER_HEADERS.length).setValues(values);
+}
+
+function readKonzeptRows_(sheet) {
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) {
+    return [];
+  }
+
+  var values = sheet.getRange(2, 1, lastRow - 1, KONZEPT_HEADERS.length).getValues();
+  var rows = [];
+
+  values.forEach(function (row) {
+    var due = parseDateString_(row[1]);
+    if (!due) {
+      return;
+    }
+    rows.push({
+      name: String(row[0] || '').trim() || 'Arbeitskonzept',
+      due: due,
+      id: String(row[2] || '')
+    });
+  });
+
+  return rows;
+}
+
+function writeKonzeptRows_(sheet, rows) {
+  sheet.getRange(1, 1, 1, KONZEPT_HEADERS.length).setValues([KONZEPT_HEADERS]).setFontWeight('bold');
+
+  var lastRow = sheet.getLastRow();
+  if (lastRow > 1) {
+    sheet.getRange(2, 1, lastRow - 1, KONZEPT_HEADERS.length).clearContent();
+  }
+  if (!rows.length) {
+    return;
+  }
+
+  var values = rows.map(function (row) {
+    return [row.name, row.due, row.id || newId_()];
+  });
+
+  sheet.getRange(2, 1, values.length, 1).setNumberFormat('@');
+  sheet.getRange(2, 3, values.length, 1).setNumberFormat('@');
+  sheet.getRange(2, 1, values.length, KONZEPT_HEADERS.length).setValues(values);
+  sheet.getRange(2, 2, values.length, 1).setNumberFormat('ddd d mmm yyyy');
+}
+
+function combinedRemindersPayload_(message) {
+  var timeZone = Session.getScriptTimeZone();
+  var reminderSpreadsheet = getReminderSpreadsheet_();
+  var konzeptSpreadsheet = getKonzeptSpreadsheet_();
+
+  var reminders = readReminderRows_(reminderSheet_(reminderSpreadsheet)).map(function (row) {
+    return { id: row.id, text: row.text, done: row.done };
+  });
+
+  var konzepte = readKonzeptRows_(konzeptSheet_(konzeptSpreadsheet)).map(function (row) {
+    return {
+      id: row.id,
+      name: row.name,
+      due: Utilities.formatDate(row.due, timeZone, 'yyyy-MM-dd')
+    };
+  });
+
+  return {
+    reminders: reminders,
+    konzepte: konzepte,
+    reminderSheetUrl: reminderSpreadsheet.getUrl(),
+    konzeptSheetUrl: konzeptSpreadsheet.getUrl(),
     message: String(message || '')
   };
 }

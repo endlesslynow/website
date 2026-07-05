@@ -8,7 +8,6 @@
     :root {
       --ink: #1f2937;
       --label: #6b21a8;
-      --label-dark: #581c87;
       --border: #d8b4fe;
       --field: #faf5ff;
     }
@@ -75,19 +74,39 @@
       font-size: 0.95rem;
       color: #6b7280;
     }
+
+    .reminders-shell {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .reminders-shell iframe {
+      display: block;
+      width: 100%;
+      border: 0;
+      height: 420px;
+    }
   </style>
 </head>
 <body>
   <main class="shell">
     <h1>Habibi</h1>
 
+    <div class="reminders-shell" id="reminders-shell">
+      <iframe id="reminders-frame" title="Reminders" scrolling="no"
+        src="https://script.google.com/macros/s/AKfycbynTo_fuy09h4OdRopmt0B9Dru4mN5R84tMr5YH3XRf3ZYsrm-BeztudQGYbaHcu-ozNw/exec?view=reminders"></iframe>
+    </div>
+
     <nav class="menu">
-      <a class="tool" href="habibi_tools.html?tab=audio">
+      <a class="tool" href="habibi_audio.html">
         <span class="tool-name">Whatsapp Audio Converter</span>
         <span class="tool-desc">Turn a WhatsApp voice note into an MP3 file</span>
       </a>
 
-      <a class="tool" href="habibi_tools.html?tab=time">
+      <a class="tool" href="habibi_time.html">
         <span class="tool-name">Time Calculator</span>
         <span class="tool-desc">Von, Bis, and the new Bis</span>
       </a>
@@ -108,5 +127,43 @@
       </a>
     </nav>
   </main>
+
+  <script>
+    (function () {
+      var frame = document.getElementById('reminders-frame');
+      var shell = document.getElementById('reminders-shell');
+      var loaded = false;
+
+      window.addEventListener('message', function (event) {
+        var okOrigin = /https:\/\/([a-z0-9-]+\.)*googleusercontent\.com$|https:\/\/script\.google\.com$/.test(event.origin);
+        var data = event.data;
+        if (!okOrigin || !data || data.habibiReminders !== 'height') {
+          return;
+        }
+        loaded = true;
+        var height = Math.max(160, Math.min(2600, Number(data.height) || 0));
+        frame.style.height = height + 'px';
+      });
+
+      setTimeout(function () {
+        if (loaded) {
+          return;
+        }
+        var link = document.createElement('a');
+        link.className = 'tool';
+        link.href = frame.src;
+        link.style.marginBottom = '16px';
+        var name = document.createElement('span');
+        name.className = 'tool-name';
+        name.textContent = 'Reminders';
+        var desc = document.createElement('span');
+        desc.className = 'tool-desc';
+        desc.textContent = 'The reminders could not load here. Tap to open them.';
+        link.appendChild(name);
+        link.appendChild(desc);
+        shell.parentNode.replaceChild(link, shell);
+      }, 9000);
+    })();
+  </script>
 </body>
 </html>
