@@ -16,6 +16,7 @@ var KONZEPT_BACKUP_SUBFOLDER = 'arbeitskonzept backups';
 var KONZEPT_SHEET_PROP = 'konzeptSpreadsheetId';
 var KONZEPT_SPREADSHEET_NAME = 'Arbeitskonzept Reminders';
 var LAST_BACKUP_PROP = 'lastBackupDate';
+var BACKUP_ERROR_PROP = 'lastBackupError';
 var PI_BACKUP_VIEWER = 'zacahopkins@gmail.com';
 
 /* ---------- Web app entry points ---------- */
@@ -32,8 +33,13 @@ function doGet(e) {
   }
 
   if (params.action === 'backupNow') {
-    dailyBackup();
-    return ContentService.createTextOutput('ok');
+    try {
+      dailyBackup();
+      return ContentService.createTextOutput('Backup done. The "work backups" folder is up to date and shared with the Pi.');
+    } catch (error) {
+      rememberBackupError_(error);
+      return ContentService.createTextOutput('Backup FAILED: ' + errorText_(error));
+    }
   }
 
   try {
@@ -236,7 +242,8 @@ function summarize_(message) {
     recentEntries: recent,
     sheetUrl: SpreadsheetApp.getActiveSpreadsheet().getUrl(),
     backupsOn: backup.on,
-    lastBackup: backup.last
+    lastBackup: backup.last,
+    backupError: backup.err
   };
 }
 
@@ -685,26 +692,42 @@ function consolidateTabsLocked_() {
 /* ---------- Daily backup into a Drive folder ---------- */
 
 function ensureBackupTrigger_() {
+  var today = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd');
+  var props = PropertiesService.getScriptProperties();
+
+  // Catch up right away if today's backup has not happened yet, so a
+  // failed or missed night run heals itself the next time the app is used.
+  // Runs before trigger management so a trigger-permission problem cannot
+  // block the backup itself.
   try {
-    var hasTrigger = false;
+    if (props.getProperty(LAST_BACKUP_PROP) !== today) {
+      dailyBackup();
+    }
+  } catch (error) {
+    rememberBackupError_(error);
+  }
+  try {
     var triggers = ScriptApp.getProjectTriggers();
     for (var i = 0; i < triggers.length; i++) {
       if (triggers[i].getHandlerFunction() === 'dailyBackup') {
-        hasTrigger = true;
-        break;
+        return;
       }
     }
-    if (!hasTrigger) {
-      ScriptApp.newTrigger('dailyBackup').timeBased().everyDays(1).atHour(3).create();
-    }
-    // Catch up right away if today's backup has not happened yet, so a
-    // failed or missed night run heals itself the next time the app is used.
-    var today = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd');
-    if (PropertiesService.getScriptProperties().getProperty(LAST_BACKUP_PROP) !== today) {
-      dailyBackup();
-    }
+    ScriptApp.newTrigger('dailyBackup').timeBased().everyDays(1).atHour(3).create();
+  } catch (error) {
+    rememberBackupError_(error);
+  }
+}
+
+function errorText_(error) {
+  return String(error && error.message ? error.message : error);
+}
+
+function rememberBackupError_(error) {
+  try {
+    PropertiesService.getScriptProperties().setProperty(BACKUP_ERROR_PROP, errorText_(error));
   } catch (ignored) {
-    // Trigger setup must never block the app.
+    // Never let error bookkeeping break the app.
   }
 }
 
@@ -718,15 +741,27 @@ function getBackupStatus_() {
         break;
       }
     }
+    var props = PropertiesService.getScriptProperties();
+    var err = props.getProperty(BACKUP_ERROR_PROP) || '';
     if (!on) {
-      return { on: false, last: '' };
+      return { on: false, last: '', err: err };
     }
 
-    var last = PropertiesService.getScriptProperties().getProperty(LAST_BACKUP_PROP) || '';
-    return { on: true, last: last };
+    var last = props.getProperty(LAST_BACKUP_PROP) || '';
+    return { on: true, last: last, err: err };
   } catch (ignored) {
-    return { on: false, last: '' };
+    return { on: false, last: '', err: '' };
   }
+}
+
+// One-time setup only: open this file in the Apps Script editor, pick
+// ZZZ_CLICK_RUN_TO_TURN_ON_BACKUPS from the function dropdown at the top
+// (it sorts to the very bottom of the list, so it is easy to spot), click
+// Run, then approve the Google permission prompt that appears. That single
+// click grants the Drive access dailyBackup() needs; nothing else in this
+// file requires any further setup after that.
+function ZZZ_CLICK_RUN_TO_TURN_ON_BACKUPS() {
+  dailyBackup();
 }
 
 function dailyBackup() {
@@ -758,7 +793,9 @@ function dailyBackup() {
     backupInto_(root, KONZEPT_BACKUP_SUBFOLDER, month, 'Arbeitskonzept backup ' + today, konzeptId);
   }
 
-  PropertiesService.getScriptProperties().setProperty(LAST_BACKUP_PROP, today);
+  var props = PropertiesService.getScriptProperties();
+  props.setProperty(LAST_BACKUP_PROP, today);
+  props.deleteProperty(BACKUP_ERROR_PROP);
 }
 
 function shareBackupFolder_(root) {

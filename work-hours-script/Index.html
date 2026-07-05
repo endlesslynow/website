@@ -843,10 +843,15 @@
       }
 
       var note = byId('backup-note');
-      if (summary.backupsOn) {
+      if (summary.backupError) {
+        note.textContent = 'Drive backup is not working. ' + summary.backupError;
+        note.style.color = '#dd3d45';
+        note.hidden = false;
+      } else if (summary.backupsOn) {
         note.textContent = summary.lastBackup
           ? 'Backups are on. Last backup ' + summary.lastBackup + '.'
           : 'Backups are on. First backup is on its way.';
+        note.style.color = '';
         note.hidden = false;
       } else {
         note.hidden = true;
