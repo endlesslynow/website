@@ -150,28 +150,17 @@
       color: var(--text);
     }
 
-    .tab-bar {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .tab-btn {
-      min-height: 58px;
+    a.back-btn {
+      display: block;
+      text-align: center;
+      padding: 14px;
       border: 3px solid var(--coral);
       border-radius: 14px;
       background: #ffffff;
       color: var(--coral);
-      font: inherit;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 800;
-      cursor: pointer;
-      padding: 6px 4px;
-    }
-
-    .tab-btn.active {
-      background: var(--coral);
-      color: #ffffff;
+      text-decoration: none;
     }
 
     .page {
@@ -509,15 +498,11 @@
 
 <body>
   <main>
-    <h1>My Work Hours</h1>
+    <h1 id="page-title">My Work Hours</h1>
 
     <div id="message" role="status"></div>
 
-    <div class="tab-bar">
-      <button type="button" class="tab-btn active" id="tab-work">Work Hours</button>
-      <button type="button" class="tab-btn" id="tab-family">Family To-Do</button>
-      <button type="button" class="tab-btn" id="tab-clients">Client Hours</button>
-    </div>
+    <a class="back-btn" href="https://zachariahhopkins.com/habibi">Back to Habibi</a>
 
     <div class="page" id="page-work">
 
@@ -950,17 +935,17 @@
       .withFailureHandler(fail)
       .getSummary('');
 
-    /* ----- tabs ----- */
+    /* ----- one page per visit, picked by ?tab= from the habibi menu ----- */
 
     var familiesLoaded = false;
     var clientsLoaded = false;
 
     function showTab(name) {
-      var tabs = ['work', 'family', 'clients'];
-      tabs.forEach(function (tab) {
+      var titles = { work: 'My Work Hours', family: 'Family To-Do', clients: 'Client Hours' };
+      ['work', 'family', 'clients'].forEach(function (tab) {
         byId('page-' + tab).hidden = tab !== name;
-        byId('tab-' + tab).className = tab === name ? 'tab-btn active' : 'tab-btn';
       });
+      byId('page-title').textContent = titles[name];
       if (name === 'family' && !familiesLoaded) {
         loadFamilies();
       }
@@ -968,10 +953,6 @@
         loadClients();
       }
     }
-
-    byId('tab-work').addEventListener('click', function () { showTab('work'); });
-    byId('tab-family').addEventListener('click', function () { showTab('family'); });
-    byId('tab-clients').addEventListener('click', function () { showTab('clients'); });
 
     if (google.script.url && google.script.url.getLocation) {
       google.script.url.getLocation(function (location) {
