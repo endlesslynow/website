@@ -18,6 +18,9 @@ var KONZEPT_SPREADSHEET_NAME = 'Arbeitskonzept Reminders';
 var LAST_BACKUP_PROP = 'lastBackupDate';
 var BACKUP_ERROR_PROP = 'lastBackupError';
 var PI_BACKUP_VIEWER = 'zacahopkins@gmail.com';
+var HEARTBEAT_FILE_NAME = 'habibi-pi-heartbeat.txt';
+var FAILURE_LOG_NAME = 'failure log.txt';
+var LOGGED_PROBLEMS_PROP = 'lastLoggedProblems';
 
 /* ---------- Web app entry points ---------- */
 
@@ -243,7 +246,8 @@ function summarize_(message) {
     sheetUrl: SpreadsheetApp.getActiveSpreadsheet().getUrl(),
     backupsOn: backup.on,
     lastBackup: backup.last,
-    backupError: backup.err
+    backupError: backup.err,
+    warnings: backupWarnings_()
   };
 }
 
@@ -729,6 +733,86 @@ function rememberBackupError_(error) {
   } catch (ignored) {
     // Never let error bookkeeping break the app.
   }
+  appendToFailureLog_('Backup error: ' + errorText_(error));
+}
+
+/* ---------- Health check: pop-up warnings and the failure log ---------- */
+
+function backupWarnings_() {
+  try {
+    var problems = [];
+    var now = new Date().getTime();
+    var day = 24 * 60 * 60 * 1000;
+    var props = PropertiesService.getScriptProperties();
+
+    var err = props.getProperty(BACKUP_ERROR_PROP);
+    if (err) {
+      problems.push('The Google Drive backup hit an error: ' + err);
+    }
+
+    var last = props.getProperty(LAST_BACKUP_PROP);
+    var lastDate = last ? parseDateString_(last) : null;
+    if (!lastDate) {
+      problems.push('No Google Drive backup has ever been made.');
+    } else if (now - lastDate.getTime() > 2.5 * day) {
+      problems.push('The last Google Drive backup was ' + last + '. It should happen every night.');
+    }
+
+    var heartbeat = null;
+    var files = DriveApp.getFilesByName(HEARTBEAT_FILE_NAME);
+    if (files.hasNext()) {
+      heartbeat = files.next();
+    }
+    if (!heartbeat) {
+      problems.push('The Pi backup has never checked in.');
+    } else if (now - heartbeat.getLastUpdated().getTime() > 3 * day) {
+      var seen = Utilities.formatDate(heartbeat.getLastUpdated(), Session.getScriptTimeZone(), 'yyyy-MM-dd');
+      problems.push('The Pi has not copied the backups since ' + seen + '.');
+    }
+
+    logProblemsIfChanged_(problems);
+    return problems;
+  } catch (error) {
+    return ['The safety check itself failed: ' + errorText_(error)];
+  }
+}
+
+function logProblemsIfChanged_(problems) {
+  try {
+    var props = PropertiesService.getScriptProperties();
+    var current = problems.join(' | ');
+    var previous = props.getProperty(LOGGED_PROBLEMS_PROP);
+    if (previous === current || (previous === null && current === '')) {
+      return;
+    }
+    props.setProperty(LOGGED_PROBLEMS_PROP, current);
+    appendToFailureLog_(current ? current : 'All problems cleared.');
+  } catch (ignored) {
+    // Logging must never block the app.
+  }
+}
+
+function appendToFailureLog_(line) {
+  try {
+    var root = topFolder_(BACKUP_ROOT_FOLDER);
+    var stamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm');
+    var entry = stamp + '  ' + line;
+    var files = root.getFilesByName(FAILURE_LOG_NAME);
+    if (files.hasNext()) {
+      var file = files.next();
+      var lines = file.getBlob().getDataAsString().split('\n');
+      lines.push(entry);
+      if (lines.length > 300) {
+        lines = lines.slice(lines.length - 300);
+      }
+      file.setContent(lines.join('\n'));
+    } else {
+      root.createFile(FAILURE_LOG_NAME, entry, MimeType.PLAIN_TEXT);
+    }
+  } catch (ignored) {
+    // If Drive itself is broken this cannot work, but the pop-up still
+    // shows the live error from the script property.
+  }
 }
 
 function getBackupStatus_() {
@@ -791,6 +875,11 @@ function dailyBackup() {
   var konzeptId = PropertiesService.getScriptProperties().getProperty(KONZEPT_SHEET_PROP);
   if (konzeptId) {
     backupInto_(root, KONZEPT_BACKUP_SUBFOLDER, month, 'Arbeitskonzept backup ' + today, konzeptId);
+  }
+
+  if (!root.getFilesByName(FAILURE_LOG_NAME).hasNext()) {
+    var stamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm');
+    root.createFile(FAILURE_LOG_NAME, stamp + '  Failure log started. No problems so far.', MimeType.PLAIN_TEXT);
   }
 
   var props = PropertiesService.getScriptProperties();
@@ -1374,7 +1463,8 @@ function combinedRemindersPayload_(message) {
     konzepte: konzepte,
     reminderSheetUrl: reminderSpreadsheet.getUrl(),
     konzeptSheetUrl: konzeptSpreadsheet.getUrl(),
-    message: String(message || '')
+    message: String(message || ''),
+    warnings: backupWarnings_()
   };
 }
 

@@ -494,6 +494,66 @@
       font-weight: 800;
       cursor: pointer;
     }
+
+    /* ----- "Something is wrong" pop-up ----- */
+
+    #warning-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(61, 34, 40, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 20;
+    }
+
+    #warning-overlay.show { display: flex; }
+
+    .warning-box {
+      background: #ffffff;
+      border: 4px solid #dd3d45;
+      border-radius: 18px;
+      padding: 24px;
+      width: min(100%, 460px);
+      display: grid;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .warning-box .warning-title {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .warning-box h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #dd3d45;
+    }
+
+    .warning-box ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      font-size: 17px;
+      text-align: left;
+    }
+
+    .warning-box button {
+      min-height: 58px;
+      border: none;
+      border-radius: 14px;
+      background: #dd3d45;
+      color: #ffffff;
+      font: inherit;
+      font-size: 20px;
+      font-weight: 800;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -645,6 +705,15 @@
       <p id="confirm-text"></p>
       <button type="button" class="primary" id="confirm-yes">Yes, put in the new time</button>
       <button type="button" class="no" id="confirm-no">No, keep the old time</button>
+    </div>
+  </div>
+
+  <div id="warning-overlay">
+    <div class="warning-box">
+      <p class="warning-title">Something is wrong.</p>
+      <h2>Contact Zachariah immediately.</h2>
+      <ul id="warning-list"></ul>
+      <button type="button" id="warning-close">OK, I will tell him</button>
     </div>
   </div>
 
@@ -815,6 +884,33 @@
       el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
+    /* ----- "Something is wrong" pop-up ----- */
+
+    var shownWarnings = '';
+
+    function maybeShowWarnings(warnings) {
+      if (!warnings || !warnings.length) {
+        return;
+      }
+      var key = warnings.join('|');
+      if (key === shownWarnings) {
+        return;
+      }
+      shownWarnings = key;
+      var list = byId('warning-list');
+      list.innerHTML = '';
+      warnings.forEach(function (text) {
+        var item = document.createElement('li');
+        item.textContent = text;
+        list.appendChild(item);
+      });
+      byId('warning-overlay').className = 'show';
+    }
+
+    byId('warning-close').addEventListener('click', function () {
+      byId('warning-overlay').className = '';
+    });
+
     function render(summary) {
       byId('week-total').textContent = summary.weekTotalLabel;
       byId('week-limit').textContent = summary.weekLimit;
@@ -860,6 +956,7 @@
       if (summary.message) {
         showMessage(summary.message, false);
       }
+      maybeShowWarnings(summary.warnings);
       setBusy(false);
     }
 

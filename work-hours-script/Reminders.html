@@ -202,6 +202,36 @@
 
     .overlay.show { display: flex; }
 
+    /* ----- "Something is wrong" pop-up ----- */
+
+    .modal-box.warning-box {
+      border: 4px solid var(--red);
+      text-align: center;
+      gap: 12px;
+    }
+
+    .warning-box .warning-title {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .warning-box h2 {
+      margin: 0;
+      font-size: 24px;
+      color: var(--red);
+    }
+
+    .warning-box ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      text-align: left;
+    }
+
     .modal-box {
       background: #ffffff;
       border: 3px solid;
@@ -357,6 +387,17 @@
       <div class="modal-actions">
         <button type="button" class="primary" id="confirm-yes">Yes, delete it</button>
         <button type="button" class="cancel" id="confirm-no">No, keep it</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="warning-overlay">
+    <div class="modal-box accent-red warning-box">
+      <p class="warning-title">Something is wrong.</p>
+      <h2>Contact Zachariah immediately.</h2>
+      <ul id="warning-list"></ul>
+      <div class="modal-actions">
+        <button type="button" class="primary" id="warning-close">OK, I will tell him</button>
       </div>
     </div>
   </div>
@@ -549,9 +590,35 @@
 
     /* ----- rendering ----- */
 
+    var shownWarnings = '';
+
+    function maybeShowWarnings(warnings) {
+      if (!warnings || !warnings.length) {
+        return;
+      }
+      var key = warnings.join('|');
+      if (key === shownWarnings) {
+        return;
+      }
+      shownWarnings = key;
+      var list = byId('warning-list');
+      list.innerHTML = '';
+      warnings.forEach(function (text) {
+        var item = document.createElement('li');
+        item.textContent = text;
+        list.appendChild(item);
+      });
+      byId('warning-overlay').className = 'overlay show';
+    }
+
+    byId('warning-close').addEventListener('click', function () {
+      byId('warning-overlay').className = 'overlay';
+    });
+
     function render(data) {
       renderReminders(data.reminders);
       renderKonzepte(data.konzepte);
+      maybeShowWarnings(data.warnings);
 
       if (data.reminderSheetUrl) {
         var reminderLink = byId('reminder-sheet-link');
