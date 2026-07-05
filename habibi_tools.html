@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habibi Tools</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --label: #6b21a8;
+      --border: #d8b4fe;
+      --field: #faf5ff;
+      --field-readonly: #dcfce7;
+      --field-readonly-border: #86efac;
+      --field-readonly-text: #14532d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.75), transparent 35%),
+        linear-gradient(160deg, #ffd8ea 0%, #ffeec7 100%);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .shell {
+      width: min(100%, 420px);
+    }
+
+    .back-link {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--label);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Tabs Layout matching the original UI elements */
+    .tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      width: 100%;
+    }
+
+    .tab-button {
+      flex: 1;
+      height: 54px;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      background: #ffffff;
+      color: var(--label);
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-button.active {
+      background: var(--label);
+      color: #ffffff;
+      border-color: var(--label);
+    }
+
+    .tool-panel {
+      display: none;
+    }
+
+    .tool-panel.active {
+      display: block;
+    }
+
+    /* Original inputs classes */
+    .inputs {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--label);
+    }
+
+    input {
+      width: 100%;
+      height: 76px;
+      border-radius: 18px;
+      border: 2px solid var(--border);
+      background: var(--field);
+      color: var(--ink);
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding: 0 18px;
+      font-family: inherit;
+    }
+
+    input::placeholder {
+      color: #9ca3af;
+    }
+
+    input[readonly] {
+      background: var(--field-readonly);
+      border-color: var(--field-readonly-border);
+      color: var(--field-readonly-text);
+    }
+
+    .clear-button {
+      width: 100%;
+      height: 64px;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      background: #ffffff;
+      color: var(--label);
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* Audio Converter Custom Components styled to fit the page theme */
+    .drop-zone {
+      width: 100%;
+      border: 2px dashed var(--border);
+      border-radius: 18px;
+      background: var(--field);
+      padding: 40px 18px;
+      text-align: center;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .drop-zone:hover, .drop-zone.drag-over {
+      border-color: var(--label);
+      background: #faf0ff;
+    }
+
+    .drop-title {
+      font-weight: 700;
+      color: var(--label);
+      font-size: 1.3rem;
+    }
+
+    .drop-subtitle {
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    .action-button {
+      width: 100%;
+      height: 76px;
+      border-radius: 18px;
+      border: none;
+      background: var(--label);
+      color: #ffffff;
+      font-size: 1.4rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background-color 0.2s ease;
+    }
+
+    .action-button:hover {
+      background: #581c87;
+    }
+
+    .file-card {
+      width: 100%;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      background: #ffffff;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .file-info {
+      text-align: left;
+    }
+
+    .file-name {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.1rem;
+      word-break: break-all;
+    }
+
+    .file-size {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    .btn-remove {
+      border: none;
+      background: transparent;
+      color: #dc2626;
+      font-size: 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 4px 10px;
+    }
+
+    .progress-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--label);
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 20px;
+      background: var(--field);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--label);
+      transition: width 0.1s linear;
+    }
+
+    .error-box {
+      width: 100%;
+      border: 2px solid #fca5a5;
+      background: #fef2f2;
+      color: #b91c1c;
+      padding: 16px;
+      border-radius: 18px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    /* Custom Media Player matching light theme */
+    .custom-player {
+      width: 100%;
+      background: var(--field);
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .play-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--label);
+      border: none;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .play-btn:active {
+      transform: scale(0.95);
+    }
+
+    .player-timeline {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .player-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: 99px;
+      background: #e9d5ff;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .player-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--label);
+      cursor: pointer;
+    }
+
+    .player-slider::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--label);
+      border: none;
+      cursor: pointer;
+    }
+
+    .player-time-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #6b7280;
+      font-weight: 700;
+    }
+
+    .actions-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .actions-span-2 {
+      grid-column: span 2;
+    }
+
+    .btn-secondary {
+      height: 64px;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      background: #ffffff;
+      color: var(--label);
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    /* Instructions Card Styles */
+    .instructions-card {
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      background: #ffffff;
+      padding: 20px;
+      margin-top: 10px;
+      text-align: right;
+      direction: rtl;
+    }
+
+    .instructions-title {
+      font-weight: 700;
+      color: var(--label);
+      font-size: 1.15rem;
+      margin: 0 0 12px 0;
+      letter-spacing: 0.5px;
+    }
+
+    .instructions-list {
+      margin: 0;
+      padding-right: 20px;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--ink);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .instructions-list li {
+      padding-right: 4px;
+      padding-left: 0;
+    }
+
+    .instructions-list a {
+      color: var(--label);
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    .prompt-container {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .prompt-box {
+      background: var(--field);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 0.85rem;
+      color: #374151;
+      font-style: italic;
+      line-height: 1.45;
+      word-break: break-word;
+      width: 100%;
+      text-align: right;
+      direction: rtl;
+    }
+
+    .copy-btn-small {
+      height: 38px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      background: #ffffff;
+      color: var(--label);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 14px;
+      transition: all 0.2s ease;
+      width: fit-content;
+    }
+
+    .copy-btn-small:hover {
+      background: var(--field);
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+
+    <a class="back-link" href="habibi.html">Back to Habibi</a>
+
+    <!-- Tab Controls -->
+    <div class="tabs">
+      <button id="audioTabBtn" class="tab-button active" onclick="switchTab('audio')">🎵 Whatsapp Audio Converter</button>
+      <button id="timeTabBtn" class="tab-button" onclick="switchTab('time')">🕒 Time Calculator</button>
+    </div>
+
+    <!-- AUDIO CONVERTER PANEL -->
+    <div id="audioPanel" class="tool-panel active">
+      <div class="inputs">
+        
+        <!-- Error Alerts -->
+        <div id="audioError" class="error-box" style="display: none;"></div>
+
+        <!-- Selection Screen -->
+        <div id="selectorState">
+          <div class="drop-zone" id="dropZone" onclick="triggerFileInput()">
+            <span class="drop-title" style="direction: rtl;">انقر هنا لإضافة ملف صوت واتساب بصيغة .ogg</span>
+            <input id="audioFileInput" type="file" accept="audio/ogg, audio/*, .ogg" style="display: none;">
+          </div>
+        </div>
+
+        <!-- File Chosen Screen -->
+        <div id="fileChosenState" style="display: none;">
+          <div class="file-card">
+            <div class="file-info">
+              <div class="file-name" id="selectedFileName">audio_file.ogg</div>
+              <div class="file-size" id="selectedFileSize">0.0 MB</div>
+            </div>
+            <button class="btn-remove" onclick="resetConverter()">×</button>
+          </div>
+          <button class="action-button" onclick="startConversion()">Convert to MP3</button>
+        </div>
+
+        <!-- Progress Screen -->
+        <div id="progressState" style="display: none;">
+          <div class="progress-wrapper">
+            <div id="progressStatus">Decoding audio...</div>
+            <div class="progress-bar">
+              <div id="progressBarFill" class="progress-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Screen -->
+        <div id="successState" style="display: none;">
+          <label>MP3 File Ready</label>
+          
+          <!-- Custom player preview -->
+          <div class="custom-player">
+            <button id="customPlayBtn" class="play-btn" onclick="toggleAudioPreview()">
+              <!-- Play Icon SVG -->
+              <svg id="playIconSvg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>
+            </button>
+            <div class="player-timeline">
+              <input id="customPlayerProgress" class="player-slider" type="range" min="0" max="100" value="0" oninput="seekAudioPreview(this.value)">
+              <div class="player-time-labels">
+                <span id="playerCurrentTime">0:00</span>
+                <span id="playerTotalTime">0:00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions-layout">
+            <a id="downloadLink" class="action-button" href="#" download="converted.mp3" style="text-decoration: none;">Download MP3</a>
+            <button id="shareButton" class="btn-secondary" onclick="shareMp3File()">Share File</button>
+            <button class="btn-secondary actions-span-2" onclick="resetConverter()">Convert Another</button>
+          </div>
+        </div>
+
+        <!-- Instructions Card -->
+        <div class="instructions-card">
+          <div class="instructions-title">التعليمات</div>
+          <ol class="instructions-list">
+            <li>قم بتنزيل ملف الصوت من واتساب عن طريق مشاركته مع هاتفك. سيكون الملف بصيغة <code>.ogg</code>.</li>
+            <li>انقر على المربع أعلاه لتحويل ملف <code>.ogg</code> إلى ملف <code>.mp3</code>.</li>
+            <li>احفظ ملف <code>.mp3</code> في هاتفك.</li>
+            <li>انتقل إلى موقع <a href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com</a> (يفتح في علامة تبويب جديدة).</li>
+            <li>استخدم رمز <strong>+</strong> في الدردشة لإضافة ملف الـ MP3.</li>
+            <li>
+              اضغط على زر النسخ لنسخ هذا التوجيه ولصقه في الدردشة:
+              <div class="prompt-container">
+                <button type="button" class="copy-btn-small" id="copyPromptBtn" onclick="copyPromptText()">نسخ التوجيه</button>
+                <div class="prompt-box" id="promptText">يرجى نسخ وترجمة هذا التسجيل إلى اللغة الأصلية، ثم إلى اللغة العربية. اعرض النص المنسوخ بالكامل أولاً، ثم الترجمة العربية بالكامل. ضع النص والترجمة معاً في صندوق كود (codebox) واحد لتسهيل النسخ واللصق. لا تضف أي تعليق أو شرح. اعرض النص والترجمة فقط. من المهم جداً عرض النص والترجمة بالكامل بدون أي أخطاء. هذه الرسالة مهمة للغاية!</div>
+              </div>
+            </li>
+            <li>انسخ النص الناتج والصقه في واتساب لتتمكن من قراءته بسهولة.</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TIME CALCULATOR PANEL -->
+    <div id="timePanel" class="tool-panel">
+      <div class="inputs">
+        <label for="fromTime">
+          Von
+          <input id="fromTime" type="text" inputmode="numeric" placeholder="--:--" maxlength="5" autocomplete="off" spellcheck="false" value="--:--">
+        </label>
+
+        <label for="untilTime">
+          Bis
+          <input id="untilTime" type="text" inputmode="numeric" placeholder="--:--" maxlength="5" autocomplete="off" spellcheck="false" value="--:--">
+        </label>
+
+        <label for="newUntilTime">
+          Neues Bis
+          <input id="newUntilTime" type="text" placeholder="--:--" maxlength="5" readonly value="--:--">
+        </label>
+
+        <button id="clearButton" class="clear-button" type="button">Clear</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // --- TAB SYSTEM ---
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tool-panel').forEach(panel => panel.classList.remove('active'));
+
+      if (tabName === 'audio') {
+        document.getElementById('audioTabBtn').classList.add('active');
+        document.getElementById('audioPanel').classList.add('active');
+      } else if (tabName === 'time') {
+        document.getElementById('timeTabBtn').classList.add('active');
+        document.getElementById('timePanel').classList.add('active');
+      }
+
+      if (previewAudio) {
+        previewAudio.pause();
+        resetPreviewButton();
+      }
+    }
+
+    // --- TIME CALCULATOR LOGIC (Original) ---
+    function calculateExtraTime(totalMinutes) {
+      return Math.round(totalMinutes / 3);
+    }
+
+    function formatTypedTime(value) {
+      var digits = value.replace(/\D/g, "").slice(0, 4);
+
+      if (digits.length === 0) {
+        return "--:--";
+      }
+
+      if (digits.length < 3) {
+        return digits;
+      }
+
+      return digits.slice(0, 2) + ":" + digits.slice(2);
+    }
+
+    function timeToMinutes(value) {
+      if (!value || !value.includes(":")) {
+        return null;
+      }
+
+      var parts = value.split(":");
+      var hours = Number(parts[0]);
+      var minutes = Number(parts[1]);
+
+      if (!Number.isInteger(hours) || !Number.isInteger(minutes)) {
+        return null;
+      }
+
+      if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+        return null;
+      }
+
+      return (hours * 60) + minutes;
+    }
+
+    function minutesToTime(totalMinutes) {
+      var normalized = ((totalMinutes % 1440) + 1440) % 1440;
+      var hours = Math.floor(normalized / 60);
+      var minutes = normalized % 60;
+      return String(hours).padStart(2, "0") + ":" + String(minutes).padStart(2, "0");
+    }
+
+    var fromTimeInput = document.getElementById("fromTime");
+    var untilTimeInput = document.getElementById("untilTime");
+    var newUntilTimeInput = document.getElementById("newUntilTime");
+    var clearButton = document.getElementById("clearButton");
+
+    function handleTimeFocus(event) {
+      if (event.target.value === "--:--") {
+        event.target.value = "";
+      }
+    }
+
+    function handleTimeBlur(event) {
+      if (event.target.value === "") {
+        event.target.value = "--:--";
+      }
+
+      updateNewUntil();
+    }
+
+    function handleTimeTyping(event) {
+      event.target.value = formatTypedTime(event.target.value);
+      updateNewUntil();
+
+      if (event.target === fromTimeInput && event.target.value.length === 5) {
+        untilTimeInput.focus();
+        untilTimeInput.select();
+      }
+    }
+
+    function updateNewUntil() {
+      var fromMinutes = timeToMinutes(fromTimeInput.value);
+      var untilMinutes = timeToMinutes(untilTimeInput.value);
+
+      if (fromMinutes === null || untilMinutes === null) {
+        newUntilTimeInput.value = "--:--";
+        return;
+      }
+
+      var duration = untilMinutes - fromMinutes;
+      if (duration < 0) {
+        duration += 1440;
+      }
+
+      var newUntilMinutes = untilMinutes + calculateExtraTime(duration);
+      newUntilTimeInput.value = minutesToTime(newUntilMinutes);
+    }
+
+    function clearTimes() {
+      fromTimeInput.value = "--:--";
+      untilTimeInput.value = "--:--";
+      newUntilTimeInput.value = "--:--";
+    }
+
+    fromTimeInput.addEventListener("input", handleTimeTyping);
+    fromTimeInput.addEventListener("focus", handleTimeFocus);
+    fromTimeInput.addEventListener("blur", handleTimeBlur);
+    untilTimeInput.addEventListener("input", handleTimeTyping);
+    untilTimeInput.addEventListener("focus", handleTimeFocus);
+    untilTimeInput.addEventListener("blur", handleTimeBlur);
+    clearButton.addEventListener("click", clearTimes);
+
+
+    // --- AUDIO CONVERTER LOGIC (In-Browser) ---
+    var audioFile = null;
+    var audioCtx = null;
+    var previewAudio = null;
+    var previewBlob = null;
+    var previewFilename = 'converted.mp3';
+
+    // Drag and drop setup
+    const dropZone = document.getElementById('dropZone');
+    
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropZone.classList.add('drag-over');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('drag-over');
+      }, false);
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      if (files.length > 0) {
+        handleFileSelection(files[0]);
+      }
+    });
+
+    document.getElementById('audioFileInput').addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        handleFileSelection(e.target.files[0]);
+      }
+    });
+
+    function triggerFileInput() {
+      document.getElementById('audioFileInput').click();
+    }
+
+    function handleFileSelection(file) {
+      document.getElementById('audioError').style.display = 'none';
+      
+      const ext = file.name.split('.').pop().toLowerCase();
+      if (ext !== 'ogg' && !file.type.startsWith('audio/')) {
+        showAudioError('Please select a valid audio file (.ogg).');
+        return;
+      }
+      
+      audioFile = file;
+      document.getElementById('selectedFileName').textContent = file.name;
+      document.getElementById('selectedFileSize').textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+      
+      document.getElementById('selectorState').style.display = 'none';
+      document.getElementById('fileChosenState').style.display = 'block';
+    }
+
+    function showAudioError(msg) {
+      const errCard = document.getElementById('audioError');
+      errCard.textContent = msg;
+      errCard.style.display = 'block';
+      errCard.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetConverter() {
+      audioFile = null;
+      document.getElementById('audioFileInput').value = '';
+      
+      if (previewAudio) {
+        previewAudio.pause();
+        previewAudio = null;
+      }
+      if (previewBlob) {
+        URL.revokeObjectURL(document.getElementById('downloadLink').href);
+        previewBlob = null;
+      }
+
+      document.getElementById('fileChosenState').style.display = 'none';
+      document.getElementById('progressState').style.display = 'none';
+      document.getElementById('successState').style.display = 'none';
+      document.getElementById('selectorState').style.display = 'block';
+    }
+
+    // Worker Script String
+    const workerScriptCode = `
+      importScripts('https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.1/lame.min.js');
+
+      self.onmessage = function(e) {
+        const { channels, sampleRate, left, right, kbps } = e.data;
+        try {
+          const mp3encoder = new lamejs.Mp3Encoder(channels, sampleRate, kbps || 128);
+          const mp3Data = [];
+
+          const lSamples = new Int16Array(left.length);
+          for (let i = 0; i < left.length; i++) {
+            lSamples[i] = Math.max(-32768, Math.min(32767, left[i] * 32767.5));
+          }
+
+          let rSamples = null;
+          if (channels === 2 && right) {
+            rSamples = new Int16Array(right.length);
+            for (let i = 0; i < right.length; i++) {
+              rSamples[i] = Math.max(-32768, Math.min(32767, right[i] * 32767.5));
+            }
+          }
+
+          const sampleBlockSize = 1152;
+          const totalSamples = lSamples.length;
+
+          for (let i = 0; i < totalSamples; i += sampleBlockSize) {
+            const leftChunk = lSamples.subarray(i, i + sampleBlockSize);
+            const rightChunk = rSamples ? rSamples.subarray(i, i + sampleBlockSize) : null;
+
+            let mp3buf;
+            if (channels === 2 && rightChunk) {
+              mp3buf = mp3encoder.encodeBuffer(leftChunk, rightChunk);
+            } else {
+              mp3buf = mp3encoder.encodeBuffer(leftChunk);
+            }
+
+            if (mp3buf.length > 0) {
+              mp3Data.push(mp3buf);
+            }
+
+            const progress = Math.min(99, Math.round((i / totalSamples) * 100));
+            self.postMessage({ type: 'progress', progress: progress });
+          }
+
+          const mp3buf = mp3encoder.flush();
+          if (mp3buf.length > 0) {
+            mp3Data.push(mp3buf);
+          }
+
+          self.postMessage({ type: 'progress', progress: 100 });
+
+          const blob = new Blob(mp3Data, { type: 'audio/mp3' });
+          self.postMessage({ type: 'done', blob: blob });
+        } catch (err) {
+          self.postMessage({ type: 'error', error: err.message });
+        }
+      };
+    `;
+
+    function startConversion() {
+      if (!audioFile) return;
+
+      document.getElementById('fileChosenState').style.display = 'none';
+      document.getElementById('progressState').style.display = 'block';
+      updateProgress('Reading audio file...', 0);
+
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = async function(e) {
+        const arrayBuffer = e.target.result;
+        
+        try {
+          updateProgress('Decoding audio samples...', 10);
+          
+          if (audioCtx.state === 'suspended') {
+            await audioCtx.resume();
+          }
+
+          let audioBuffer;
+          try {
+            audioBuffer = await decodeAudioDataAsync(audioCtx, arrayBuffer);
+          } catch(err) {
+            throw new Error("Decoding failed. Some iOS versions below v17 do not support native OGG decoding. Detail: " + err.message);
+          }
+
+          updateProgress('Compressing to MP3 (0%)...', 25);
+
+          const channels = audioBuffer.numberOfChannels;
+          const sampleRate = audioBuffer.sampleRate;
+          const left = audioBuffer.getChannelData(0);
+          const right = channels > 1 ? audioBuffer.getChannelData(1) : null;
+
+          const workerBlob = new Blob([workerScriptCode], { type: 'application/javascript' });
+          const worker = new Worker(URL.createObjectURL(workerBlob));
+
+          worker.postMessage({
+            channels: channels,
+            sampleRate: sampleRate,
+            left: left,
+            right: right,
+            kbps: 192
+          });
+
+          worker.onmessage = function(msg) {
+            const data = msg.data;
+            if (data.type === 'progress') {
+              const mappedProgress = 25 + Math.round(data.progress * 0.75);
+              updateProgress(`Compressing to MP3 (${data.progress}%)...`, mappedProgress);
+            } else if (data.type === 'done') {
+              worker.terminate();
+              handleConversionDone(data.blob);
+            } else if (data.type === 'error') {
+              worker.terminate();
+              showAudioError('Encoding Error: ' + data.error);
+              resetConverter();
+            }
+          };
+
+        } catch (err) {
+          showAudioError(err.message);
+          resetConverter();
+        }
+      };
+
+      reader.onerror = function() {
+        showAudioError('Failed to read file from storage.');
+        resetConverter();
+      };
+
+      reader.readAsArrayBuffer(audioFile);
+    }
+
+    function decodeAudioDataAsync(context, buffer) {
+      return new Promise((resolve, reject) => {
+        try {
+          const promise = context.decodeAudioData(buffer, 
+            (decoded) => resolve(decoded),
+            (err) => reject(err)
+          );
+          if (promise && typeof promise.then === 'function') {
+            promise.then(resolve, reject).catch(reject);
+          }
+        } catch (e) {
+          try {
+            context.decodeAudioData(buffer).then(resolve, reject).catch(reject);
+          } catch (fallbackError) {
+            reject(fallbackError);
+          }
+        }
+      });
+    }
+
+    function updateProgress(status, pct) {
+      document.getElementById('progressStatus').textContent = status;
+      document.getElementById('progressBarFill').style.width = pct + '%';
+    }
+
+    function handleConversionDone(mp3Blob) {
+      previewBlob = mp3Blob;
+      const downloadName = audioFile.name.substring(0, audioFile.name.lastIndexOf('.')) + '.mp3';
+      previewFilename = downloadName;
+
+      const mp3Url = URL.createObjectURL(mp3Blob);
+      
+      const dlLink = document.getElementById('downloadLink');
+      dlLink.href = mp3Url;
+      dlLink.download = downloadName;
+
+      previewAudio = new Audio(mp3Url);
+      previewAudio.addEventListener('loadedmetadata', () => {
+        document.getElementById('playerTotalTime').textContent = formatAudioTime(previewAudio.duration);
+      });
+      previewAudio.addEventListener('timeupdate', () => {
+        const pct = (previewAudio.currentTime / previewAudio.duration) * 100;
+        document.getElementById('customPlayerProgress').value = isNaN(pct) ? 0 : pct;
+        document.getElementById('playerCurrentTime').textContent = formatAudioTime(previewAudio.currentTime);
+      });
+      previewAudio.addEventListener('ended', () => {
+        resetPreviewButton();
+        document.getElementById('customPlayerProgress').value = 0;
+        document.getElementById('playerCurrentTime').textContent = '0:00';
+      });
+
+      const shareBtn = document.getElementById('shareButton');
+      const testFile = new File([mp3Blob], downloadName, { type: 'audio/mp3' });
+      if (navigator.canShare && navigator.canShare({ files: [testFile] })) {
+        shareBtn.style.display = 'block';
+      } else {
+        shareBtn.style.display = 'none';
+      }
+
+      document.getElementById('progressState').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
+    }
+
+    function toggleAudioPreview() {
+      if (!previewAudio) return;
+
+      const playBtn = document.getElementById('customPlayBtn');
+      const icon = document.getElementById('playIconSvg');
+
+      if (previewAudio.paused) {
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        previewAudio.play();
+        icon.innerHTML = '<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>';
+      } else {
+        previewAudio.pause();
+        resetPreviewButton();
+      }
+    }
+
+    function resetPreviewButton() {
+      const icon = document.getElementById('playIconSvg');
+      icon.innerHTML = '<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>';
+    }
+
+    function seekAudioPreview(val) {
+      if (!previewAudio || isNaN(previewAudio.duration)) return;
+      previewAudio.currentTime = (val / 100) * previewAudio.duration;
+    }
+
+    function formatAudioTime(secs) {
+      if (isNaN(secs)) return '0:00';
+      const m = Math.floor(secs / 60);
+      const s = Math.floor(secs % 60);
+      return m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
+    async function shareMp3File() {
+      if (!previewBlob || !previewFilename) return;
+      
+      const file = new File([previewBlob], previewFilename, { type: 'audio/mp3' });
+      
+      try {
+        await navigator.share({
+          files: [file],
+          title: 'Converted Audio',
+          text: 'Here is your converted MP3 file.'
+        });
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          console.error('Sharing failed:', err);
+        }
+      }
+    }
+
+    // Open the tab named in the URL, so habibi.html can link straight to a tool.
+    (function () {
+      var match = /[?&]tab=(audio|time)/.exec(window.location.search);
+      if (match) {
+        switchTab(match[1]);
+      }
+    })();
+
+    function copyPromptText() {
+      const promptText = document.getElementById('promptText').textContent;
+      navigator.clipboard.writeText(promptText).then(() => {
+        const btn = document.getElementById('copyPromptBtn');
+        const originalText = btn.textContent;
+        btn.textContent = "Copied! ✓";
+        btn.style.background = "#dcfce7";
+        btn.style.color = "#14532d";
+        btn.style.borderColor = "#86efac";
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = "#ffffff";
+          btn.style.color = "var(--label)";
+          btn.style.borderColor = "var(--border)";
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+</body>
+</html>

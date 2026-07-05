@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --bg: #fdf1f3;
+      --panel: #ffffff;
+      --text: #3d2228;
+      --muted: #8a4a57;
+      --orange: #e96b12;
+      --orange-dark: #c25409;
+      --coral: #dd3d45;
+      --coral-dark: #b52830;
+      --pink: #c22f7d;
+      --pink-dark: #9c1f61;
+      --berry: #96305c;
+      --tile: #fbdfe3;
+      --error: #b42318;
+      --error-bg: #fdeaea;
+      --error-strong: #9f1220;
+    }
+
+    * { box-sizing: border-box; }
+
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      padding: 18px 14px 40px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 19px;
+      line-height: 1.45;
+    }
+
+    main {
+      width: min(100%, 460px);
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    h1 {
+      margin: 4px 0 0;
+      font-size: 34px;
+      text-align: center;
+      color: var(--coral-dark);
+    }
+
+    section {
+      background: var(--panel);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    section.totals { border: 3px solid var(--orange); }
+    section.work { border: 3px solid var(--coral); }
+    section.vacation { border: 3px solid var(--pink); }
+    section.history { border: 3px solid var(--berry); }
+
+    h2 {
+      margin: 0;
+      padding: 14px 20px;
+      font-size: 22px;
+      color: #ffffff;
+    }
+
+    section.totals h2 { background: var(--orange); }
+    section.work h2 { background: var(--coral); }
+    section.vacation h2 { background: var(--pink); }
+    section.history h2 { background: var(--berry); }
+
+    .card-body { padding: 18px 16px; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .stat {
+      background: var(--tile);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .stat .num {
+      font-size: 27px;
+      font-weight: 800;
+      color: var(--coral-dark);
+    }
+
+    .stat .lbl {
+      font-size: 15px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .detail {
+      margin: 12px 0 0;
+      font-size: 15px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    form { display: grid; gap: 16px; }
+
+    label.field {
+      display: grid;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .date-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+    }
+
+    .date-row input[type="date"] {
+      flex: 0 1 auto;
+      width: auto;
+      min-width: 0;
+      font-size: 18px;
+      padding: 10px 8px;
+    }
+
+    .day-inline {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--pink);
+      white-space: nowrap;
+    }
+
+    input[type="date"], input[type="time"], input[type="text"], input[type="number"] {
+      width: 100%;
+      min-height: 56px;
+      border: 2px solid var(--coral);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font: inherit;
+      font-size: 20px;
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .tab-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .tab-btn {
+      min-height: 58px;
+      border: 3px solid var(--coral);
+      border-radius: 14px;
+      background: #ffffff;
+      color: var(--coral);
+      font: inherit;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 6px 4px;
+    }
+
+    .tab-btn.active {
+      background: var(--coral);
+      color: #ffffff;
+    }
+
+    .page {
+      display: grid;
+      gap: 18px;
+    }
+
+    section.family-add { border: 3px solid var(--orange); }
+    section.family-add h2 { background: var(--orange); }
+
+    section.family-card { border: 3px solid var(--berry); }
+    section.family-card h2 { background: var(--berry); }
+
+    section.client-add { border: 3px solid var(--orange); }
+    section.client-add h2 { background: var(--orange); }
+
+    section.client-card { border: 3px solid var(--pink); }
+    section.client-card h2 { background: var(--pink); }
+
+    .stats.stacked { grid-template-columns: 1fr; }
+
+    .log-hours {
+      display: grid;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    button.client-btn { background: var(--pink); }
+    button.client-btn:hover { background: var(--pink-dark); }
+
+    .task-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    label.task {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: var(--tile);
+      border-radius: 12px;
+      font-size: 19px;
+      cursor: pointer;
+    }
+
+    label.task input {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+      accent-color: var(--coral);
+    }
+
+    .task-text {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      font-weight: 800;
+    }
+
+    .done-word {
+      display: none;
+      margin-left: auto;
+      color: var(--coral);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    label.task.done .task-text {
+      color: var(--muted);
+      font-weight: 400;
+      text-decoration: line-through;
+    }
+
+    label.task.done .done-word { display: inline; }
+
+    .empty-tasks {
+      margin: 0;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .add-task-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .add-task-row input {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .add-task-row button {
+      flex-shrink: 0;
+      min-height: 56px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--berry);
+      color: #ffffff;
+      font: inherit;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    section.vacation input[type="date"] { border-color: var(--pink); }
+
+    input:focus {
+      outline: 4px solid rgba(221, 61, 69, 0.3);
+    }
+
+    .time-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .time-row input[type="time"] {
+      font-size: 46px;
+      font-weight: 800;
+      min-height: 88px;
+      text-align: center;
+      padding: 6px 8px;
+      min-width: 0;
+    }
+
+    .break-row input[type="time"] {
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      min-width: 0;
+      padding: 10px 6px;
+    }
+
+    .breaks-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 4px 0 0;
+    }
+
+    #break-list { display: grid; gap: 10px; }
+
+    .break-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border: 2px solid var(--tile);
+      border-radius: 12px;
+    }
+
+    .remove-break {
+      grid-column: 1 / -1;
+      min-height: 48px;
+      padding: 0 14px;
+      border: 2px solid var(--coral);
+      border-radius: 12px;
+      background: #ffffff;
+      color: var(--coral);
+      font: inherit;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .add-break {
+      min-height: 54px;
+      border: 2px solid var(--coral);
+      border-radius: 12px;
+      background: #ffffff;
+      color: var(--coral);
+      font: inherit;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .preview {
+      background: var(--tile);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 20px;
+      font-weight: 800;
+      text-align: center;
+      color: var(--berry);
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preview.bad {
+      color: var(--error);
+      background: var(--error-bg);
+    }
+
+    button.primary {
+      min-height: 62px;
+      border: 0;
+      border-radius: 14px;
+      padding: 14px;
+      font: inherit;
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      background: var(--coral);
+      cursor: pointer;
+    }
+
+    button.primary:hover { background: var(--coral-dark); }
+
+    button.vacation-btn { background: var(--pink); }
+    button.vacation-btn:hover { background: var(--pink-dark); }
+
+    button:disabled { opacity: 0.6; cursor: default; }
+
+    label.check {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 18px;
+      font-weight: 700;
+      background: var(--tile);
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+    }
+
+    label.check input {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+      accent-color: var(--pink);
+    }
+
+    #message {
+      font-size: 16px;
+      font-weight: 400;
+      text-align: center;
+      color: var(--muted);
+      margin: 0;
+      display: none;
+    }
+
+    #message.ok {
+      display: block;
+    }
+
+    #message.error {
+      display: block;
+      color: var(--error);
+      font-weight: 700;
+    }
+
+    ul#recent {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    ul#recent li {
+      padding: 12px 0;
+      border-top: 2px solid var(--tile);
+      font-size: 17px;
+    }
+
+    ul#recent li:first-child { border-top: 0; padding-top: 0; }
+
+    a.sheet-link {
+      display: block;
+      text-align: center;
+      padding: 18px;
+      border: 3px solid var(--orange);
+      border-radius: 18px;
+      background: var(--panel);
+      color: var(--orange-dark);
+      font-size: 19px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .backup-note {
+      margin: 0;
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* ----- confirmation dialog ----- */
+
+    #confirm-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(61, 34, 40, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 10;
+    }
+
+    #confirm-overlay.show { display: flex; }
+
+    .confirm-box {
+      background: #ffffff;
+      border: 3px solid var(--orange);
+      border-radius: 18px;
+      padding: 22px;
+      width: min(100%, 400px);
+      display: grid;
+      gap: 16px;
+    }
+
+    .confirm-box p {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .confirm-box button.no {
+      min-height: 58px;
+      border: 3px solid var(--coral);
+      border-radius: 14px;
+      background: #ffffff;
+      color: var(--coral);
+      font: inherit;
+      font-size: 20px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>My Work Hours</h1>
+
+    <div id="message" role="status"></div>
+
+    <div class="tab-bar">
+      <button type="button" class="tab-btn active" id="tab-work">Work Hours</button>
+      <button type="button" class="tab-btn" id="tab-family">Family To-Do</button>
+      <button type="button" class="tab-btn" id="tab-clients">Client Hours</button>
+    </div>
+
+    <div class="page" id="page-work">
+
+    <section class="totals">
+      <h2>Totals</h2>
+      <div class="card-body">
+        <div class="stats">
+          <div class="stat">
+            <div class="num" id="week-total">...</div>
+            <div class="lbl">worked this week<br>(limit <span id="week-limit">25</span> h)</div>
+          </div>
+          <div class="stat">
+            <div class="num" id="overtime-available">...</div>
+            <div class="lbl">overtime you<br>can use</div>
+          </div>
+        </div>
+        <p class="detail" id="overtime-detail"></p>
+      </div>
+    </section>
+
+    <section class="work">
+      <h2>Add a work day</h2>
+      <div class="card-body">
+        <form id="hours-form">
+          <label class="field" for="work-date">
+            Which day?
+            <div class="date-row">
+              <input id="work-date" type="date" required>
+              <span class="day-inline" id="work-day-name"></span>
+            </div>
+          </label>
+
+          <div class="time-row">
+            <label class="field" for="start-time">
+              I started at
+              <input id="start-time" type="time" required>
+            </label>
+            <label class="field" for="end-time">
+              I finished at
+              <input id="end-time" type="time" required>
+            </label>
+          </div>
+
+          <p class="breaks-title">Breaks (if you had any)</p>
+          <div id="break-list"></div>
+          <button type="button" class="add-break" id="add-break">Add a break</button>
+
+          <div class="preview" id="preview">Fill in the times to see your hours.</div>
+
+          <button type="submit" class="primary">Save this day</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="vacation">
+      <h2>Add a vacation day</h2>
+      <div class="card-body">
+        <form id="vacation-form">
+          <label class="field" for="vacation-date">
+            Which day?
+            <div class="date-row">
+              <input id="vacation-date" type="date" required>
+              <span class="day-inline" id="vacation-day-name"></span>
+            </div>
+          </label>
+          <label class="check">
+            <input id="use-overtime" type="checkbox">
+            Pay this day with my saved overtime (5 hours)
+          </label>
+          <button type="submit" class="primary vacation-btn">Save vacation day</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="history">
+      <h2>Last days I saved</h2>
+      <div class="card-body">
+        <ul id="recent"><li>Loading...</li></ul>
+      </div>
+    </section>
+
+    <a class="sheet-link" id="sheet-link" href="#" target="_blank" rel="noopener" hidden>Open the Google Sheet</a>
+
+    </div>
+
+    <div class="page" id="page-family" hidden>
+      <section class="family-add">
+        <h2>Add a family</h2>
+        <div class="card-body">
+          <form id="family-form">
+            <label class="field" for="family-name">
+              Family name
+              <input id="family-name" type="text" autocomplete="off" required>
+            </label>
+            <button type="submit" class="primary">Add this family</button>
+          </form>
+        </div>
+      </section>
+
+      <div class="page" id="family-list">
+        <p class="empty-tasks" id="family-loading">Loading the families...</p>
+      </div>
+
+      <a class="sheet-link" id="family-sheet-link" href="#" target="_blank" rel="noopener" hidden>Open the Google Sheet</a>
+    </div>
+
+    <div class="page" id="page-clients" hidden>
+      <section class="client-add">
+        <h2>Add a client</h2>
+        <div class="card-body">
+          <form id="client-form">
+            <label class="field" for="client-name">
+              Client name
+              <input id="client-name" type="text" autocomplete="off" required>
+            </label>
+            <label class="field" for="client-weekly">
+              Hours I must work for them each week
+              <div class="time-row">
+                <input id="client-weekly" type="time" required>
+              </div>
+            </label>
+            <button type="submit" class="primary">Add this client</button>
+          </form>
+        </div>
+      </section>
+
+      <div class="page" id="client-list">
+        <p class="empty-tasks" id="client-loading">Loading the clients...</p>
+      </div>
+
+      <a class="sheet-link" id="client-sheet-link" href="#" target="_blank" rel="noopener" hidden>Open the Google Sheet</a>
+    </div>
+
+    <p class="backup-note" id="backup-note" hidden></p>
+  </main>
+
+  <div id="confirm-overlay">
+    <div class="confirm-box">
+      <p id="confirm-text"></p>
+      <button type="button" class="primary" id="confirm-yes">Yes, put in the new time</button>
+      <button type="button" class="no" id="confirm-no">No, keep the old time</button>
+    </div>
+  </div>
+
+  <script>
+    function byId(id) { return document.getElementById(id); }
+
+    function localDateValue(date) {
+      var offsetMs = date.getTimezoneOffset() * 60 * 1000;
+      return new Date(date.getTime() - offsetMs).toISOString().slice(0, 10);
+    }
+
+    byId('work-date').value = localDateValue(new Date());
+    byId('vacation-date').value = localDateValue(new Date());
+
+    /* ----- show the day of the week under each date ----- */
+
+    function weekdayOf(value) {
+      var match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || '');
+      if (!match) return '';
+      var date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+      var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      return days[date.getDay()];
+    }
+
+    function updateDayNames() {
+      byId('work-day-name').textContent = weekdayOf(byId('work-date').value);
+      byId('vacation-day-name').textContent = weekdayOf(byId('vacation-date').value);
+    }
+
+    byId('work-date').addEventListener('input', updateDayNames);
+    byId('vacation-date').addEventListener('input', updateDayNames);
+    updateDayNames();
+
+    /* ----- break rows ----- */
+
+    function addBreakRow() {
+      var row = document.createElement('div');
+      row.className = 'break-row';
+
+      var start = document.createElement('input');
+      start.type = 'time';
+      start.className = 'break-start';
+      start.setAttribute('aria-label', 'Break start time');
+
+      var end = document.createElement('input');
+      end.type = 'time';
+      end.className = 'break-end';
+      end.setAttribute('aria-label', 'Break end time');
+
+      var remove = document.createElement('button');
+      remove.type = 'button';
+      remove.className = 'remove-break';
+      remove.textContent = 'Remove';
+      remove.addEventListener('click', function () {
+        row.remove();
+        updatePreview();
+      });
+
+      row.appendChild(start);
+      row.appendChild(end);
+      row.appendChild(remove);
+      byId('break-list').appendChild(row);
+    }
+
+    byId('add-break').addEventListener('click', function () {
+      addBreakRow();
+    });
+
+    /* ----- live preview and validation ----- */
+
+    function parseTime(text) {
+      var match = /^(\d{1,2}):(\d{2})$/.exec(String(text || '').trim());
+      if (!match) return null;
+      return Number(match[1]) * 60 + Number(match[2]);
+    }
+
+    function minutesLabel(total) {
+      var hours = Math.floor(total / 60);
+      var minutes = total % 60;
+      if (hours === 0) return minutes + ' min';
+      if (minutes === 0) return hours + ' h';
+      return hours + ' h ' + minutes + ' min';
+    }
+
+    function collectBreaks() {
+      var rows = document.querySelectorAll('#break-list .break-row');
+      var breaks = [];
+      for (var i = 0; i < rows.length; i++) {
+        var start = rows[i].querySelector('.break-start').value;
+        var end = rows[i].querySelector('.break-end').value;
+        if (!start && !end) continue;
+        breaks.push({ start: start, end: end });
+      }
+      return breaks;
+    }
+
+    function checkForm() {
+      var start = parseTime(byId('start-time').value);
+      var end = parseTime(byId('end-time').value);
+
+      if (start === null || end === null) {
+        return { ok: false, gentle: true, text: 'Fill in the times to see your hours.' };
+      }
+      if (end <= start) {
+        return { ok: false, text: 'The end time must be after the start time.' };
+      }
+
+      var breaks = collectBreaks();
+      var ranges = [];
+      for (var i = 0; i < breaks.length; i++) {
+        var bs = parseTime(breaks[i].start);
+        var be = parseTime(breaks[i].end);
+        if (bs === null || be === null) {
+          return { ok: false, gentle: true, text: 'Fill in both times of the break.' };
+        }
+        if (be <= bs) {
+          return { ok: false, text: 'A break must end after it starts.' };
+        }
+        if (bs < start || be > end) {
+          return { ok: false, text: 'Breaks must be between the start time and the end time.' };
+        }
+        ranges.push({ start: bs, end: be });
+      }
+
+      ranges.sort(function (a, b) { return a.start - b.start; });
+      var breakTotal = 0;
+      var curStart = null;
+      var curEnd = null;
+      ranges.forEach(function (r) {
+        if (curEnd === null) { curStart = r.start; curEnd = r.end; }
+        else if (r.start <= curEnd) { curEnd = Math.max(curEnd, r.end); }
+        else { breakTotal += curEnd - curStart; curStart = r.start; curEnd = r.end; }
+      });
+      if (curEnd !== null) breakTotal += curEnd - curStart;
+
+      var worked = (end - start) - breakTotal;
+      if (worked <= 0) {
+        return { ok: false, text: 'The breaks cover the whole work time.' };
+      }
+
+      var text = 'You worked ' + minutesLabel(worked);
+      if (breakTotal > 0) text += ' (breaks: ' + minutesLabel(breakTotal) + ')';
+      return { ok: true, text: text, breaks: breaks };
+    }
+
+    function updatePreview() {
+      var result = checkForm();
+      var preview = byId('preview');
+      preview.textContent = result.text;
+      preview.className = (result.ok || result.gentle) ? 'preview' : 'preview bad';
+    }
+
+    byId('hours-form').addEventListener('input', updatePreview);
+
+    /* ----- talking to the spreadsheet ----- */
+
+    function setBusy(busy) {
+      var buttons = document.querySelectorAll('button');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = busy;
+      }
+    }
+
+    function showMessage(text, isError) {
+      var el = byId('message');
+      el.textContent = text;
+      el.className = isError ? 'error' : 'ok';
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function render(summary) {
+      byId('week-total').textContent = summary.weekTotalLabel;
+      byId('week-limit').textContent = summary.weekLimit;
+      byId('overtime-available').textContent = summary.overtimeAvailableLabel;
+      byId('overtime-detail').textContent =
+        'Overtime earned all time ' + summary.overtimeEarnedLabel + '. Used on vacation ' +
+        summary.overtimeUsedLabel + '. Vacation days saved ' + summary.vacationDays + '.';
+
+      var list = byId('recent');
+      list.innerHTML = '';
+      if (!summary.recentEntries.length) {
+        var empty = document.createElement('li');
+        empty.textContent = 'Nothing saved yet.';
+        list.appendChild(empty);
+      }
+      summary.recentEntries.forEach(function (line) {
+        var item = document.createElement('li');
+        item.textContent = line;
+        list.appendChild(item);
+      });
+
+      if (summary.sheetUrl) {
+        var link = byId('sheet-link');
+        link.href = summary.sheetUrl;
+        link.hidden = false;
+      }
+
+      var note = byId('backup-note');
+      if (summary.backupsOn) {
+        note.textContent = summary.lastBackup
+          ? 'Backups are on. Last backup ' + summary.lastBackup + '.'
+          : 'Backups are on. First backup is on its way.';
+        note.hidden = false;
+      } else {
+        note.hidden = true;
+      }
+
+      if (summary.message) {
+        showMessage(summary.message, false);
+      }
+      setBusy(false);
+    }
+
+    function fail(error) {
+      showMessage(error.message, true);
+      setBusy(false);
+    }
+
+    /* ----- saving with an overwrite check ----- */
+
+    var pendingSave = null;
+
+    function sendSave(allowOverwrite) {
+      setBusy(true);
+      showMessage('Saving...', false);
+      google.script.run
+        .withSuccessHandler(function (summary) {
+          if (summary.needsConfirmation) {
+            pendingSave.allowOverwrite = true;
+            byId('confirm-text').textContent = summary.message;
+            byId('confirm-overlay').className = 'show';
+            byId('message').className = '';
+            setBusy(false);
+            return;
+          }
+          pendingSave = null;
+          render(summary);
+        })
+        .withFailureHandler(fail)
+        .saveHours(pendingSave.date, pendingSave.start, pendingSave.end, pendingSave.breaks, allowOverwrite);
+    }
+
+    byId('hours-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      var result = checkForm();
+      if (!result.ok) {
+        updatePreview();
+        showMessage(result.text, true);
+        return;
+      }
+
+      pendingSave = {
+        date: byId('work-date').value,
+        start: byId('start-time').value,
+        end: byId('end-time').value,
+        breaks: result.breaks,
+        allowOverwrite: false
+      };
+      sendSave(false);
+    });
+
+    byId('confirm-yes').addEventListener('click', function () {
+      byId('confirm-overlay').className = '';
+      sendSave(true);
+    });
+
+    byId('confirm-no').addEventListener('click', function () {
+      byId('confirm-overlay').className = '';
+      pendingSave = null;
+      showMessage('Nothing was changed.', false);
+    });
+
+    byId('vacation-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      setBusy(true);
+      showMessage('Saving...', false);
+      google.script.run
+        .withSuccessHandler(function (summary) {
+          byId('use-overtime').checked = false;
+          render(summary);
+        })
+        .withFailureHandler(fail)
+        .addVacationDay(byId('vacation-date').value, byId('use-overtime').checked);
+    });
+
+    google.script.run
+      .withSuccessHandler(render)
+      .withFailureHandler(fail)
+      .getSummary('');
+
+    /* ----- tabs ----- */
+
+    var familiesLoaded = false;
+    var clientsLoaded = false;
+
+    function showTab(name) {
+      var tabs = ['work', 'family', 'clients'];
+      tabs.forEach(function (tab) {
+        byId('page-' + tab).hidden = tab !== name;
+        byId('tab-' + tab).className = tab === name ? 'tab-btn active' : 'tab-btn';
+      });
+      if (name === 'family' && !familiesLoaded) {
+        loadFamilies();
+      }
+      if (name === 'clients' && !clientsLoaded) {
+        loadClients();
+      }
+    }
+
+    byId('tab-work').addEventListener('click', function () { showTab('work'); });
+    byId('tab-family').addEventListener('click', function () { showTab('family'); });
+    byId('tab-clients').addEventListener('click', function () { showTab('clients'); });
+
+    if (google.script.url && google.script.url.getLocation) {
+      google.script.url.getLocation(function (location) {
+        var tab = location.parameter && location.parameter.tab;
+        if (tab === 'family' || tab === 'clients') {
+          showTab(tab);
+        }
+      });
+    }
+
+    /* ----- family to-do ----- */
+
+    function loadFamilies() {
+      google.script.run
+        .withSuccessHandler(renderFamilies)
+        .withFailureHandler(fail)
+        .getFamilies();
+    }
+
+    function renderFamilies(data) {
+      familiesLoaded = true;
+      var container = byId('family-list');
+      container.innerHTML = '';
+
+      if (!data.families.length) {
+        var empty = document.createElement('p');
+        empty.className = 'empty-tasks';
+        empty.textContent = 'No families yet. Add the first one above.';
+        container.appendChild(empty);
+      }
+
+      data.families.forEach(function (family) {
+        container.appendChild(familyCard(family));
+      });
+
+      if (data.sheetUrl) {
+        var link = byId('family-sheet-link');
+        link.href = data.sheetUrl;
+        link.hidden = false;
+      }
+      if (data.message) {
+        showMessage(data.message, false);
+      }
+      setBusy(false);
+    }
+
+    function familyCard(family) {
+      var card = document.createElement('section');
+      card.className = 'family-card';
+
+      var title = document.createElement('h2');
+      title.textContent = family.name;
+      card.appendChild(title);
+
+      var body = document.createElement('div');
+      body.className = 'card-body';
+
+      var list = document.createElement('div');
+      list.className = 'task-list';
+
+      if (!family.tasks.length) {
+        var empty = document.createElement('p');
+        empty.className = 'empty-tasks';
+        empty.textContent = 'Nothing to do yet.';
+        list.appendChild(empty);
+      }
+
+      family.tasks.forEach(function (task) {
+        list.appendChild(taskRow(task));
+      });
+      body.appendChild(list);
+
+      var addRow = document.createElement('form');
+      addRow.className = 'add-task-row';
+
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.autocomplete = 'off';
+      input.setAttribute('aria-label', 'New to-do for ' + family.name);
+      input.placeholder = 'New to-do...';
+
+      var button = document.createElement('button');
+      button.type = 'submit';
+      button.textContent = 'Add';
+
+      addRow.appendChild(input);
+      addRow.appendChild(button);
+      addRow.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var text = input.value.trim();
+        if (!text) {
+          showMessage('Please type what needs to be done.', true);
+          return;
+        }
+        setBusy(true);
+        showMessage('Saving...', false);
+        google.script.run
+          .withSuccessHandler(renderFamilies)
+          .withFailureHandler(fail)
+          .addTask(family.name, text);
+      });
+      body.appendChild(addRow);
+
+      card.appendChild(body);
+      return card;
+    }
+
+    function taskRow(task) {
+      var row = document.createElement('label');
+      row.className = task.done ? 'task done' : 'task';
+
+      var box = document.createElement('input');
+      box.type = 'checkbox';
+      box.checked = task.done;
+
+      var text = document.createElement('span');
+      text.className = 'task-text';
+      text.textContent = task.text;
+
+      var doneWord = document.createElement('span');
+      doneWord.className = 'done-word';
+      doneWord.textContent = 'Done!';
+
+      box.addEventListener('change', function () {
+        var checked = box.checked;
+        row.className = checked ? 'task done' : 'task';
+        google.script.run
+          .withSuccessHandler(function () {})
+          .withFailureHandler(function (error) {
+            box.checked = !checked;
+            row.className = box.checked ? 'task done' : 'task';
+            fail(error);
+          })
+          .setTaskDone(task.id, checked);
+      });
+
+      row.appendChild(box);
+      row.appendChild(text);
+      row.appendChild(doneWord);
+      return row;
+    }
+
+    byId('family-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var name = byId('family-name').value.trim();
+      if (!name) {
+        showMessage('Please type a family name.', true);
+        return;
+      }
+      setBusy(true);
+      showMessage('Saving...', false);
+      google.script.run
+        .withSuccessHandler(function (data) {
+          byId('family-name').value = '';
+          renderFamilies(data);
+        })
+        .withFailureHandler(fail)
+        .addFamily(name);
+    });
+
+    /* ----- client hours ----- */
+
+    function parseHoursText(value) {
+      var text = String(value || '').trim();
+      if (!text) return null;
+      var num;
+      var match = /^(\d{1,3}):([0-5]?\d)$/.exec(text);
+      if (match) {
+        num = Number(match[1]) + Number(match[2]) / 60;
+      } else if (/^\d{1,3}$/.test(text)) {
+        num = Number(text);
+      } else {
+        return null;
+      }
+      if (!isFinite(num) || num <= 0 || num > 24 * 7) return null;
+      return num;
+    }
+
+    function loadClients() {
+      google.script.run
+        .withSuccessHandler(renderClients)
+        .withFailureHandler(fail)
+        .getClients();
+    }
+
+    function renderClients(data) {
+      clientsLoaded = true;
+      var container = byId('client-list');
+      container.innerHTML = '';
+
+      if (!data.clients.length) {
+        var empty = document.createElement('p');
+        empty.className = 'empty-tasks';
+        empty.textContent = 'No clients yet. Add the first one above.';
+        container.appendChild(empty);
+      }
+
+      data.clients.forEach(function (client) {
+        container.appendChild(clientCard(client));
+      });
+
+      if (data.sheetUrl) {
+        var link = byId('client-sheet-link');
+        link.href = data.sheetUrl;
+        link.hidden = false;
+      }
+      if (data.message) {
+        showMessage(data.message, false);
+      }
+      setBusy(false);
+    }
+
+    function clientCard(client) {
+      var card = document.createElement('section');
+      card.className = 'client-card';
+
+      var title = document.createElement('h2');
+      title.textContent = client.name;
+      card.appendChild(title);
+
+      var body = document.createElement('div');
+      body.className = 'card-body';
+
+      var stats = document.createElement('div');
+      stats.className = 'stats stacked';
+      stats.appendChild(statTile(client.workedLabel, 'Worked this week'));
+      stats.appendChild(statTile(client.remainingLabel, 'Hours left this week'));
+      body.appendChild(stats);
+
+      var form = document.createElement('form');
+      form.className = 'log-hours';
+
+      var dateLabel = document.createElement('label');
+      dateLabel.className = 'field';
+      dateLabel.appendChild(document.createTextNode('Which day did you work?'));
+      var dateInput = document.createElement('input');
+      dateInput.type = 'date';
+      dateInput.value = localDateValue(new Date());
+      dateInput.setAttribute('aria-label', 'Day you worked for ' + client.name);
+      dateLabel.appendChild(dateInput);
+      form.appendChild(dateLabel);
+
+      var hoursLabel = document.createElement('label');
+      hoursLabel.className = 'field';
+      hoursLabel.appendChild(document.createTextNode('How many hours did you work?'));
+      var timeRow = document.createElement('div');
+      timeRow.className = 'time-row';
+      var hoursInput = document.createElement('input');
+      hoursInput.type = 'time';
+      hoursInput.setAttribute('aria-label', 'Hours worked for ' + client.name);
+      timeRow.appendChild(hoursInput);
+      hoursLabel.appendChild(timeRow);
+      form.appendChild(hoursLabel);
+
+      var button = document.createElement('button');
+      button.type = 'submit';
+      button.className = 'primary client-btn';
+      button.textContent = 'Add these hours';
+      form.appendChild(button);
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (parseHoursText(hoursInput.value) === null) {
+          showMessage('Please fill in how many hours you worked.', true);
+          return;
+        }
+        if (!dateInput.value) {
+          showMessage('Please pick the day you worked.', true);
+          return;
+        }
+        setBusy(true);
+        showMessage('Saving...', false);
+        google.script.run
+          .withSuccessHandler(renderClients)
+          .withFailureHandler(fail)
+          .addClientHours(client.name, dateInput.value, hoursInput.value);
+      });
+
+      body.appendChild(form);
+      card.appendChild(body);
+      return card;
+    }
+
+    function statTile(value, label) {
+      var tile = document.createElement('div');
+      tile.className = 'stat';
+      var num = document.createElement('div');
+      num.className = 'num';
+      num.textContent = value;
+      var lbl = document.createElement('div');
+      lbl.className = 'lbl';
+      lbl.textContent = label;
+      tile.appendChild(num);
+      tile.appendChild(lbl);
+      return tile;
+    }
+
+    byId('client-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var name = byId('client-name').value.trim();
+      var weekly = byId('client-weekly').value;
+      if (!name) {
+        showMessage('Please type a client name.', true);
+        return;
+      }
+      if (parseHoursText(weekly) === null) {
+        showMessage('Please fill in the weekly hours.', true);
+        return;
+      }
+      setBusy(true);
+      showMessage('Saving...', false);
+      google.script.run
+        .withSuccessHandler(function (data) {
+          byId('client-name').value = '';
+          byId('client-weekly').value = '';
+          renderClients(data);
+        })
+        .withFailureHandler(fail)
+        .addClient(name, weekly);
+    });
+  </script>
+</body>
+</html>
