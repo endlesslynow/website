@@ -14,10 +14,8 @@
 
       /* Okabe-Ito colorblind-safe colors */
       --beginner: #0072B2;
-      --readbeginner: #F0E442;
       --unit2: #E69F00;
       --unit3: #D55E00;
-      --advanced: #009E73;
       --poetry: #CC79A7;
       --faranak: #56B4E9;
       --monelli: #000000;
@@ -88,6 +86,7 @@
     .legend-item {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 10px;
       padding: 8px 10px;
       background: #f8fafc;
@@ -95,6 +94,34 @@
       border-radius: 12px;
       font-size: 14px;
       font-weight: 700;
+    }
+
+    .legend-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .legend-stats {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    .legend-time {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .legend-count {
+      min-width: 1.5ch;
+      text-align: right;
+      font-size: 18px;
+      font-weight: 900;
     }
 
     .swatch {
@@ -105,10 +132,8 @@
     }
 
     .swatch.beginner { background: var(--beginner); }
-    .swatch.readbeginner { background: var(--readbeginner); }
     .swatch.unit2 { background: var(--unit2); }
     .swatch.unit3 { background: var(--unit3); }
-    .swatch.advanced { background: var(--advanced); }
     .swatch.poetry { background: var(--poetry); }
     .swatch.faranak { background: var(--faranak); }
     .swatch.monelli { background: var(--monelli); }
@@ -200,14 +225,6 @@
       color: var(--beginner);
     }
 
-    .lesson.readbeginner {
-      background: var(--readbeginner);
-      color: #111827;
-    }
-    .lesson.readbeginner .tag {
-      color: #111827;
-    }
-
     .lesson.unit2 {
       background: var(--unit2);
       color: #111827;
@@ -222,14 +239,6 @@
     }
     .lesson.unit3 .tag {
       color: var(--unit3);
-    }
-
-    .lesson.advanced {
-      background: var(--advanced);
-      color: #ffffff;
-    }
-    .lesson.advanced .tag {
-      color: var(--advanced);
     }
 
     .lesson.poetry {
@@ -275,122 +284,279 @@
   <main class="page">
     <header>
       <h1>Persian Lessons</h1>
-      <p class="sub">Berlin time, from July 1 to July 16, 2026. Matches the PDF classes marked Going.</p>
+      <p class="sub">Berlin time, upcoming lessons through August 8, 2026. Matches the classes you are going to.</p>
       <div class="legend-title">Lesson colors</div>
       <div class="legend" aria-label="Color legend">
-        <div class="legend-item"><span class="swatch beginner"></span>Beginner</div>
-        <div class="legend-item"><span class="swatch readbeginner"></span>Read/Write Beginner</div>
-        <div class="legend-item"><span class="swatch unit2"></span>Not-So Beginner Unit 2</div>
-        <div class="legend-item"><span class="swatch unit3"></span>Not-So Beginner Unit 3</div>
-        <div class="legend-item"><span class="swatch advanced"></span>Read/Write Advanced</div>
-        <div class="legend-item"><span class="swatch poetry"></span>Poetry</div>
-        <div class="legend-item"><span class="swatch faranak"></span>Faranak</div>
-        <div class="legend-item"><span class="swatch monelli"></span>Check-in with Monelli</div>
+        <div class="legend-item" data-legend="beginner"><span class="legend-label"><span class="swatch beginner"></span>Beginner</span><span class="legend-stats"><span class="legend-time"></span><span class="legend-count">0</span></span></div>
+        <div class="legend-item" data-legend="unit2"><span class="legend-label"><span class="swatch unit2"></span>Not-So Beginner Unit 2</span><span class="legend-stats"><span class="legend-time"></span><span class="legend-count">0</span></span></div>
+        <div class="legend-item" data-legend="unit3"><span class="legend-label"><span class="swatch unit3"></span>Not-So Beginner Unit 3</span><span class="legend-stats"><span class="legend-time"></span><span class="legend-count">0</span></span></div>
+        <div class="legend-item" data-legend="poetry"><span class="legend-label"><span class="swatch poetry"></span>Poetry</span><span class="legend-stats"><span class="legend-time"></span><span class="legend-count">0</span></span></div>
+        <div class="legend-item" data-legend="monelli"><span class="legend-label"><span class="swatch monelli"></span>Check-in with Monelli</span><span class="legend-stats"><span class="legend-count">0</span></span></div>
       </div>
     </header>
 
     <div class="days">
       <section class="day-card">
-        <div class="day-head"><h2>Wednesday, July 1</h2><div class="count">2 lessons</div></div>
-        <div class="lessons">
-          <div class="lesson unit2"><div class="lesson-top"><div class="time">20:30-21:30</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
-          <div class="lesson readbeginner"><div class="lesson-top"><div class="time">22:00-23:00</div><div class="tag">READ/WRITE BEGINNER</div></div><div class="title">Read/Write Beginner Reading Club</div></div>
-        </div>
-      </section>
-
-      <section class="day-card">
-        <div class="day-head"><h2>Thursday, July 2</h2><div class="count">6 lessons</div></div>
-        <div class="lessons">
-          <div class="lesson unit3"><div class="lesson-top"><div class="time">01:30-02:30</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
-          <div class="lesson faranak"><div class="lesson-top"><div class="time">16:00-17:00</div><div class="tag">FARANAK</div></div><div class="title">All Levels Conversations with Faranak</div></div>
-          <div class="lesson advanced"><div class="lesson-top"><div class="time">18:00-18:45</div><div class="tag">ADVANCED</div></div><div class="title">Read/Write Advanced Reading Club</div></div>
-          <div class="lesson unit3"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
-          <div class="lesson beginner"><div class="lesson-top"><div class="time">20:30-21:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
-          <div class="lesson unit2"><div class="lesson-top"><div class="time">23:30-00:30</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div><div class="extra">Ends next day</div></div>
-        </div>
-      </section>
-
-      <section class="day-card">
-        <div class="day-head"><h2>Friday, July 3</h2><div class="count">2 lessons</div></div>
-        <div class="lessons">
-          <div class="lesson poetry"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">POETRY</div></div><div class="title">Poetry: Saadi, bani adam</div></div>
-          <div class="lesson unit3"><div class="lesson-top"><div class="time">21:30-22:30</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
-        </div>
-      </section>
-
-      <section class="day-card">
-        <div class="day-head"><h2>Saturday, July 4</h2><div class="count">1 lesson</div></div>
-        <div class="lessons">
-          <div class="lesson beginner"><div class="lesson-top"><div class="time">23:00-00:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div><div class="extra">Ends next day</div></div>
-        </div>
-      </section>
-
-      <section class="day-card">
-        <div class="day-head"><h2>Monday, July 6</h2><div class="count">3 lessons</div></div>
-        <div class="lessons">
-          <div class="lesson faranak"><div class="lesson-top"><div class="time">16:00-17:00</div><div class="tag">FARANAK</div></div><div class="title">All Levels Conversations with Faranak</div></div>
-          <div class="lesson monelli"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">MONELLI</div></div><div class="title">All Levels Check-in with Monelli</div></div>
-          <div class="lesson faranak"><div class="lesson-top"><div class="time">23:30-00:30</div><div class="tag">FARANAK</div></div><div class="title">All Levels Conversations with Faranak</div><div class="extra">Ends next day</div></div>
-        </div>
-      </section>
-
-      <section class="day-card">
         <div class="day-head"><h2>Wednesday, July 8</h2><div class="count">2 lessons</div></div>
         <div class="lessons">
-          <div class="lesson beginner"><div class="lesson-top"><div class="time">18:00-19:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
-          <div class="lesson unit2"><div class="lesson-top"><div class="time">20:30-21:30</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
+          <div class="lesson beginner" data-start="2026-07-08T18:00:00+02:00"><div class="lesson-top"><div class="time">18:00-19:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
+          <div class="lesson unit2" data-start="2026-07-08T20:30:00+02:00"><div class="lesson-top"><div class="time">20:30-21:30</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
         </div>
       </section>
 
       <section class="day-card">
-        <div class="day-head"><h2>Thursday, July 9</h2><div class="count">5 lessons</div></div>
+        <div class="day-head"><h2>Thursday, July 9</h2><div class="count">2 lessons</div></div>
         <div class="lessons">
-          <div class="lesson unit3"><div class="lesson-top"><div class="time">01:30-02:30</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
-          <div class="lesson advanced"><div class="lesson-top"><div class="time">18:00-18:45</div><div class="tag">ADVANCED</div></div><div class="title">Read/Write Advanced Reading Club</div></div>
-          <div class="lesson unit3"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
-          <div class="lesson beginner"><div class="lesson-top"><div class="time">20:30-21:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
-          <div class="lesson unit2"><div class="lesson-top"><div class="time">23:30-00:30</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div><div class="extra">Ends next day</div></div>
+          <div class="lesson unit3" data-start="2026-07-09T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
+          <div class="lesson beginner" data-start="2026-07-09T20:30:00+02:00"><div class="lesson-top"><div class="time">20:30-21:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
         </div>
       </section>
 
       <section class="day-card">
         <div class="day-head"><h2>Friday, July 10</h2><div class="count">2 lessons</div></div>
         <div class="lessons">
-          <div class="lesson poetry"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">POETRY</div></div><div class="title">Poetry: Behbahani, dobareh meesazamat vatan</div></div>
-          <div class="lesson unit3"><div class="lesson-top"><div class="time">21:30-22:30</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
+          <div class="lesson poetry" data-start="2026-07-10T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">POETRY</div></div><div class="title">Poetry: Behbahani, dobareh meesazamat vatan</div></div>
+          <div class="lesson unit3" data-start="2026-07-10T21:30:00+02:00"><div class="lesson-top"><div class="time">21:30-22:30</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
         </div>
       </section>
 
       <section class="day-card">
-        <div class="day-head"><h2>Saturday, July 11</h2><div class="count">2 lessons</div></div>
+        <div class="day-head"><h2>Saturday, July 11</h2><div class="count">1 lesson</div></div>
         <div class="lessons">
-          <div class="lesson unit2"><div class="lesson-top"><div class="time">17:45-18:45</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
-          <div class="lesson beginner"><div class="lesson-top"><div class="time">23:00-00:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div><div class="extra">Ends next day</div></div>
+          <div class="lesson unit2" data-start="2026-07-11T17:45:00+02:00"><div class="lesson-top"><div class="time">17:45-18:45</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
         </div>
       </section>
 
       <section class="day-card">
         <div class="day-head"><h2>Monday, July 13</h2><div class="count">1 lesson</div></div>
         <div class="lessons">
-          <div class="lesson monelli"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">MONELLI</div></div><div class="title">All Levels Check-in with Monelli</div></div>
+          <div class="lesson monelli" data-start="2026-07-13T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">MONELLI</div></div><div class="title">All Levels Check-in with Monelli</div></div>
         </div>
       </section>
 
       <section class="day-card">
         <div class="day-head"><h2>Wednesday, July 15</h2><div class="count">2 lessons</div></div>
         <div class="lessons">
-          <div class="lesson beginner"><div class="lesson-top"><div class="time">18:00-19:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
-          <div class="lesson unit2"><div class="lesson-top"><div class="time">20:30-21:30</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
+          <div class="lesson beginner" data-start="2026-07-15T18:00:00+02:00"><div class="lesson-top"><div class="time">18:00-19:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
+          <div class="lesson unit2" data-start="2026-07-15T20:30:00+02:00"><div class="lesson-top"><div class="time">20:30-21:30</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
         </div>
       </section>
 
       <section class="day-card">
-        <div class="day-head"><h2>Thursday, July 16</h2><div class="count">1 lesson</div></div>
+        <div class="day-head"><h2>Thursday, July 16</h2><div class="count">2 lessons</div></div>
         <div class="lessons">
-          <div class="lesson unit3"><div class="lesson-top"><div class="time">01:30-02:30</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
+          <div class="lesson unit3" data-start="2026-07-16T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
+          <div class="lesson beginner" data-start="2026-07-16T20:30:00+02:00"><div class="lesson-top"><div class="time">20:30-21:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Friday, July 17</h2><div class="count">2 lessons</div></div>
+        <div class="lessons">
+          <div class="lesson poetry" data-start="2026-07-17T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">POETRY</div></div><div class="title">Poetry: Saadi, bani adam</div></div>
+          <div class="lesson unit3" data-start="2026-07-17T21:30:00+02:00"><div class="lesson-top"><div class="time">21:30-22:30</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Saturday, July 18</h2><div class="count">1 lesson</div></div>
+        <div class="lessons">
+          <div class="lesson unit2" data-start="2026-07-18T17:45:00+02:00"><div class="lesson-top"><div class="time">17:45-18:45</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Monday, July 20</h2><div class="count">1 lesson</div></div>
+        <div class="lessons">
+          <div class="lesson monelli" data-start="2026-07-20T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">MONELLI</div></div><div class="title">All Levels Check-in with Monelli</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Wednesday, July 22</h2><div class="count">2 lessons</div></div>
+        <div class="lessons">
+          <div class="lesson beginner" data-start="2026-07-22T18:00:00+02:00"><div class="lesson-top"><div class="time">18:00-19:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
+          <div class="lesson unit2" data-start="2026-07-22T20:30:00+02:00"><div class="lesson-top"><div class="time">20:30-21:30</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Thursday, July 23</h2><div class="count">2 lessons</div></div>
+        <div class="lessons">
+          <div class="lesson unit3" data-start="2026-07-23T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
+          <div class="lesson beginner" data-start="2026-07-23T20:30:00+02:00"><div class="lesson-top"><div class="time">20:30-21:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Friday, July 24</h2><div class="count">2 lessons</div></div>
+        <div class="lessons">
+          <div class="lesson poetry" data-start="2026-07-24T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">POETRY</div></div><div class="title">Poetry: Behbahani, dobareh meesazamat vatan</div></div>
+          <div class="lesson unit3" data-start="2026-07-24T21:30:00+02:00"><div class="lesson-top"><div class="time">21:30-22:30</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Saturday, July 25</h2><div class="count">1 lesson</div></div>
+        <div class="lessons">
+          <div class="lesson unit2" data-start="2026-07-25T17:45:00+02:00"><div class="lesson-top"><div class="time">17:45-18:45</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Monday, July 27</h2><div class="count">1 lesson</div></div>
+        <div class="lessons">
+          <div class="lesson monelli" data-start="2026-07-27T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">MONELLI</div></div><div class="title">All Levels Check-in with Monelli</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Wednesday, July 29</h2><div class="count">2 lessons</div></div>
+        <div class="lessons">
+          <div class="lesson beginner" data-start="2026-07-29T18:00:00+02:00"><div class="lesson-top"><div class="time">18:00-19:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
+          <div class="lesson unit2" data-start="2026-07-29T20:30:00+02:00"><div class="lesson-top"><div class="time">20:30-21:30</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Thursday, July 30</h2><div class="count">2 lessons</div></div>
+        <div class="lessons">
+          <div class="lesson unit3" data-start="2026-07-30T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
+          <div class="lesson beginner" data-start="2026-07-30T20:30:00+02:00"><div class="lesson-top"><div class="time">20:30-21:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Friday, July 31</h2><div class="count">2 lessons</div></div>
+        <div class="lessons">
+          <div class="lesson poetry" data-start="2026-07-31T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">POETRY</div></div><div class="title">Poetry: Saadi, bani adam</div></div>
+          <div class="lesson unit3" data-start="2026-07-31T21:30:00+02:00"><div class="lesson-top"><div class="time">21:30-22:30</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Saturday, August 1</h2><div class="count">1 lesson</div></div>
+        <div class="lessons">
+          <div class="lesson unit2" data-start="2026-08-01T17:45:00+02:00"><div class="lesson-top"><div class="time">17:45-18:45</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Monday, August 3</h2><div class="count">1 lesson</div></div>
+        <div class="lessons">
+          <div class="lesson monelli" data-start="2026-08-03T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">MONELLI</div></div><div class="title">All Levels Check-in with Monelli</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Wednesday, August 5</h2><div class="count">2 lessons</div></div>
+        <div class="lessons">
+          <div class="lesson beginner" data-start="2026-08-05T18:00:00+02:00"><div class="lesson-top"><div class="time">18:00-19:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
+          <div class="lesson unit2" data-start="2026-08-05T20:30:00+02:00"><div class="lesson-top"><div class="time">20:30-21:30</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Thursday, August 6</h2><div class="count">2 lessons</div></div>
+        <div class="lessons">
+          <div class="lesson unit3" data-start="2026-08-06T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
+          <div class="lesson beginner" data-start="2026-08-06T20:30:00+02:00"><div class="lesson-top"><div class="time">20:30-21:00</div><div class="tag">BEGINNER</div></div><div class="title">Complete Beginner Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Friday, August 7</h2><div class="count">2 lessons</div></div>
+        <div class="lessons">
+          <div class="lesson poetry" data-start="2026-08-07T19:00:00+02:00"><div class="lesson-top"><div class="time">19:00-20:00</div><div class="tag">POETRY</div></div><div class="title">Poetry: Behbahani, dobareh meesazamat vatan</div></div>
+          <div class="lesson unit3" data-start="2026-08-07T21:30:00+02:00"><div class="lesson-top"><div class="time">21:30-22:30</div><div class="tag">UNIT 3</div></div><div class="title">Not-So-Beginner Unit 3 Conversation Practice</div></div>
+        </div>
+      </section>
+
+      <section class="day-card">
+        <div class="day-head"><h2>Saturday, August 8</h2><div class="count">1 lesson</div></div>
+        <div class="lessons">
+          <div class="lesson unit2" data-start="2026-08-08T17:45:00+02:00"><div class="lesson-top"><div class="time">17:45-18:45</div><div class="tag">UNIT 2</div></div><div class="title">Not-So-Beginner Unit 2 Conversation Practice</div></div>
         </div>
       </section>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const now = new Date();
+        const lessonTypes = ['beginner', 'unit2', 'unit3', 'poetry', 'monelli'];
+        const totals = new Map(lessonTypes.map((type) => [type, { count: 0, minutes: 0 }]));
+
+        const formatMinutes = (minutes) => {
+          if (!minutes) {
+            return '';
+          }
+
+          const hours = minutes / 60;
+          return `${Number.isInteger(hours) ? hours : hours.toFixed(1)} ${hours === 1 ? 'hour' : 'hours'}`;
+        };
+
+        const lessonMinutes = (lesson) => {
+          const time = lesson.querySelector('.time')?.textContent.trim();
+          const match = time?.match(/^(\d{2}):(\d{2})-(\d{2}):(\d{2})$/);
+          if (!match) {
+            return 0;
+          }
+
+          const start = Number(match[1]) * 60 + Number(match[2]);
+          let end = Number(match[3]) * 60 + Number(match[4]);
+          if (end <= start) {
+            end += 24 * 60;
+          }
+
+          return end - start;
+        };
+
+        document.querySelectorAll('.lesson[data-start]').forEach((lesson) => {
+          if (new Date(lesson.dataset.start) < now) {
+            lesson.remove();
+          }
+        });
+
+        document.querySelectorAll('.day-card').forEach((card) => {
+          const lessons = card.querySelectorAll('.lesson').length;
+          if (!lessons) {
+            card.remove();
+            return;
+          }
+
+          const count = card.querySelector('.count');
+          if (count) {
+            count.textContent = `${lessons} ${lessons === 1 ? 'lesson' : 'lessons'}`;
+          }
+        });
+
+        document.querySelectorAll('.lesson').forEach((lesson) => {
+          const type = lessonTypes.find((item) => lesson.classList.contains(item));
+          if (!type) {
+            return;
+          }
+
+          const total = totals.get(type);
+          total.count += 1;
+          if (type !== 'monelli') {
+            total.minutes += lessonMinutes(lesson);
+          }
+        });
+
+        document.querySelectorAll('.legend-item[data-legend]').forEach((item) => {
+          const total = totals.get(item.dataset.legend);
+          const count = item.querySelector('.legend-count');
+          const time = item.querySelector('.legend-time');
+
+          if (count) {
+            count.textContent = total?.count ?? 0;
+          }
+
+          if (time) {
+            time.textContent = formatMinutes(total?.minutes ?? 0);
+          }
+        });
+      });
+    </script>
   </main>
 </body>
 </html>
