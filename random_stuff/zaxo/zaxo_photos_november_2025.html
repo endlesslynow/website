@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos from my November 2025 Trip to Zaxo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <style>
+        :root {
+            --ink: #17212b;
+            --muted: #5c6874;
+            --paper: #fffdf8;
+            --page: #eee9de;
+            --line: #d7cdbd;
+            --river: #167c89;
+            --river-dark: #0f5b65;
+            --ochre: #b75f21;
+            --ochre-dark: #884317;
+            --soft-blue: #e0eff1;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--page);
+            color: var(--ink);
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page-header {
+            background: var(--paper);
+            border-bottom: 1px solid var(--line);
+            padding: 3.5rem 1.25rem 3rem;
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--river-dark);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .back-link:hover,
+        .back-link:focus-visible {
+            text-decoration: underline;
+        }
+
+        h1 {
+            max-width: 850px;
+            margin: 0 auto 0.75rem;
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+        }
+
+        .intro {
+            max-width: 680px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        main {
+            width: min(1280px, calc(100% - 2rem));
+            margin: 2rem auto 4rem;
+        }
+
+        h2 {
+            margin: 0 0 0.35rem;
+            font-size: clamp(1.45rem, 3vw, 2rem);
+        }
+
+        .comparison-section {
+            margin-bottom: 2rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .comparison-card {
+            overflow: hidden;
+            margin: 0;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            box-shadow: 0 5px 16px rgba(54, 45, 32, 0.08);
+        }
+
+        .comparison-card figcaption {
+            padding: 0.8rem 1rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .comparison-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-top: 1px solid var(--line);
+        }
+
+        .overview-map-section {
+            overflow: hidden;
+            margin-bottom: 3rem;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: 0 8px 24px rgba(54, 45, 32, 0.1);
+        }
+
+        .overview-map-heading {
+            padding: 1.25rem 1.5rem;
+        }
+
+        .overview-map-heading p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        #overview-map {
+            height: min(64vh, 620px);
+            min-height: 430px;
+            border-top: 1px solid var(--line);
+            background: #dbe7e4;
+        }
+
+        .marker-number {
+            display: grid;
+            width: 32px;
+            height: 32px;
+            place-items: center;
+            border: 3px solid white;
+            border-radius: 50%;
+            background: var(--ochre);
+            box-shadow: 0 2px 8px rgba(23, 33, 43, 0.35);
+            color: white;
+            font: 700 13px/1 'Inter', Arial, sans-serif;
+        }
+
+        .overview-marker .marker-number {
+            cursor: pointer;
+        }
+
+        .overview-marker .marker-number:hover,
+        .overview-marker .marker-number:focus-visible {
+            background: var(--ochre-dark);
+            transform: scale(1.12);
+        }
+
+        .gallery-heading {
+            margin: 0 0 1.2rem;
+        }
+
+        .gallery-heading p {
+            margin: 0.35rem 0 0;
+            color: var(--muted);
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .photo-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+            overflow: hidden;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            box-shadow: 0 5px 16px rgba(54, 45, 32, 0.08);
+            min-height: 440px;
+            scroll-margin-top: 1rem;
+            transition: border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .photo-card.is-highlighted {
+            border-color: var(--ochre);
+            box-shadow: 0 0 0 4px rgba(183, 95, 33, 0.2), 0 8px 24px rgba(54, 45, 32, 0.14);
+        }
+
+        .photo-side {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            border-right: 1px solid var(--line);
+        }
+
+        .photo-link {
+            display: block;
+            flex: 1;
+            background: #d8d2c8;
+        }
+
+        .photo-link img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 330px;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        .photo-card.square .photo-link img {
+            object-position: center;
+        }
+
+        .photo-details {
+            padding: 1rem 1.1rem 1.15rem;
+        }
+
+        .photo-title-row {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .photo-number {
+            display: grid;
+            flex: 0 0 30px;
+            width: 30px;
+            height: 30px;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--ochre);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .photo-details h3 {
+            margin: 0;
+            font-size: 1.05rem;
+            line-height: 1.35;
+        }
+
+        .photo-meta {
+            margin: 0.45rem 0 0 2.8rem;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .location-side {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            background: #dbe7e4;
+        }
+
+        .location-heading {
+            position: relative;
+            z-index: 500;
+            padding: 0.9rem 1rem;
+            border-bottom: 1px solid var(--line);
+            background: var(--paper);
+        }
+
+        .location-heading strong,
+        .location-heading span {
+            display: block;
+        }
+
+        .location-heading strong {
+            line-height: 1.3;
+        }
+
+        .location-heading span {
+            margin-top: 0.2rem;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .photo-map {
+            flex: 1;
+            min-height: 360px;
+            background: #dbe7e4;
+        }
+
+        .location-missing {
+            display: grid;
+            flex: 1;
+            min-height: 360px;
+            place-items: center;
+            padding: 2rem;
+            background: #e6e0d5;
+            text-align: center;
+        }
+
+        .location-missing div {
+            max-width: 270px;
+        }
+
+        .location-missing strong,
+        .location-missing span {
+            display: block;
+        }
+
+        .location-missing span {
+            margin-top: 0.45rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            padding: 2rem 1rem 3rem;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        @media (max-width: 640px) {
+            .page-header {
+                padding-top: 2.5rem;
+            }
+
+            main {
+                width: min(100% - 1rem, 1280px);
+                margin-top: 0.5rem;
+            }
+
+            .photo-card {
+                grid-template-columns: 1fr;
+                min-height: 0;
+            }
+
+            .photo-side {
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .photo-map,
+            .location-missing {
+                min-height: 340px;
+            }
+
+            #overview-map {
+                min-height: 390px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <a class="back-link" href="zaxo_landing.html">&larr; Back to the Zaxo landing page</a>
+        <h1>Photos from my November 2025 Trip to Zaxo</h1>
+        <p class="intro">Twenty photographs taken on 6 November 2025, with each known location shown beside its photo.</p>
+    </header>
+
+    <main>
+        <section class="comparison-section" aria-label="Zaxo in 1985 and 2025">
+            <div class="comparison-grid">
+                <figure class="comparison-card">
+                    <figcaption>1. Zaxo 1985</figcaption>
+                    <img src="zaxo_comparison/zaxo_1985.png" alt="Satellite view of Zaxo in 1985">
+                </figure>
+                <figure class="comparison-card">
+                    <figcaption>2. Zaxo 2025</figcaption>
+                    <img src="zaxo_comparison/zaxo_2025.png" alt="Satellite view of Zaxo in 2025">
+                </figure>
+            </div>
+        </section>
+
+        <section class="overview-map-section" aria-labelledby="overview-map-title">
+            <div class="overview-map-heading">
+                <h2 id="overview-map-title">All photo locations</h2>
+                <p>Click a numbered marker to go directly to that photo.</p>
+            </div>
+            <div id="overview-map" aria-label="Satellite map showing all numbered photo locations"></div>
+        </section>
+
+        <div class="gallery-heading">
+            <h2>All photos</h2>
+            <p>Shown in the order they were taken, with the known location beside every photo. Select a photo to open the full-size file.</p>
+        </div>
+
+        <section class="gallery" id="gallery" aria-label="Trip photo gallery"></section>
+    </main>
+
+    <footer>
+        Zaxo, 6 November 2025
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const photoFolder = 'november_2025_photos/';
+        const museumLocation = { lat: 37.136882, lng: 42.695495, location: 'New Museum in Zaxo', locationNote: 'Museum location' };
+        const photos = [
+            { file: 'zaxo_bridge_not_on_island.jpg', title: 'Zaxo Bridge, not on the island', time: '12:59', lat: 37.1366882222, lng: 42.6944045833, location: 'Saved photo location', locationNote: 'GPS saved in photo', square: true },
+            { file: 'new_zaxo.jpg', title: 'New Zaxo', time: '13:06', lat: 37.1366576944, lng: 42.6949005, location: 'Saved photo location', locationNote: 'GPS saved in photo' },
+            { file: 'statues.jpg', title: 'Statues', time: '13:10', lat: 37.1368816, lng: 42.695495, location: 'Saved photo location', locationNote: 'GPS saved in photo' },
+            { file: 'statues_2.jpg', title: 'Statues, second view', time: '13:10', lat: 37.1368827778, lng: 42.6954955833, location: 'Saved photo location', locationNote: 'GPS saved in photo' },
+            { file: 'jewish_section.jpg', title: 'Jewish section', time: '13:13', ...museumLocation },
+            { file: 'tombstone_2.jpg', title: 'Tombstone', time: '13:14', ...museumLocation },
+            { file: 'tombstone_1.jpg', title: 'Tombstone, second view', time: '13:14', ...museumLocation },
+            { file: 'yazidi_picture_and_graves.jpg', title: 'Yazidi picture and graves', time: '13:23', ...museumLocation },
+            { file: 'tranditional_clothes.jpg', title: 'Traditional clothes', time: '13:23', ...museumLocation },
+            { file: 'head_piece_likey_jewish.jpg', title: 'Head piece, likely Jewish', time: '13:29', ...museumLocation },
+            { file: 'zaxo_outside_of_the_island.jpg', title: 'Zaxo outside of the island', time: '13:46', lat: 37.1380315997, lng: 42.6907149997, location: 'Saved photo location', locationNote: 'GPS saved in photo' },
+            { file: 'bridge_to_island.jpg', title: 'Bridge to the island', time: '13:52', lat: 37.14206803258928, lng: 42.685196049456934, location: 'Bridge to the island', locationNote: 'Coordinates provided' },
+            { file: 'island.jpg', title: 'The island', time: '13:57', lat: 37.1416511389, lng: 42.6834296944, location: 'Saved photo location', locationNote: 'GPS saved in photo' },
+            { file: 'old_new_bazaar.jpg', title: 'Old and new bazaar', time: '14:03', lat: 37.1416511389, lng: 42.6834296944, location: 'The island', locationNote: 'Same location as the island' },
+            { file: 'island2.jpg', title: 'The island, second view', time: '14:04', lat: 37.1412607997, lng: 42.6828896, location: 'Saved photo location', locationNote: 'GPS saved in photo' },
+            { file: 'bazaar_old_jewish_area.jpg', title: 'Bazaar in the old Jewish area', time: '14:06', lat: 37.1412734722, lng: 42.6827964722, location: 'Saved photo location', locationNote: 'GPS saved in photo', square: true },
+            { file: 'old_shopkeepers_in_bazaar.jpg', title: 'Old shopkeepers in the bazaar', time: '14:07', lat: 37.1413535833, lng: 42.6823959167, location: 'Saved photo location', locationNote: 'GPS saved in photo' },
+            { file: 'island_old_jewish_area.jpg', title: 'Island in the old Jewish area', time: '14:08', lat: 37.14128875, lng: 42.6817436111, location: 'Saved photo location', locationNote: 'GPS saved in photo' },
+            { file: 'old_jewish_area.jpg', title: 'Old Jewish area', time: '14:10', lat: 37.1419563056, lng: 42.6808242778, location: 'Saved photo location', locationNote: 'GPS saved in photo' },
+            { file: 'new_bazaar_in_old_jewish_area.jpg', title: 'New bazaar in the old Jewish area', time: '14:18', lat: 37.1417332997, lng: 42.6810283, location: 'Saved photo location', locationNote: 'GPS saved in photo' }
+        ];
+
+        const gallery = document.getElementById('gallery');
+
+        photos.forEach((photo, index) => {
+            const number = index + 1;
+            const hasGps = Number.isFinite(photo.lat) && Number.isFinite(photo.lng);
+            const card = document.createElement('article');
+            card.className = `photo-card${photo.square ? ' square' : ''}`;
+            card.id = `photo-${number}`;
+            card.innerHTML = `
+                <div class="photo-side">
+                    <a class="photo-link" href="${photoFolder}${photo.file}" target="_blank" rel="noopener" aria-label="Open full-size photo: ${photo.title}">
+                        <img src="${photoFolder}${photo.file}" alt="${photo.title}" loading="lazy" decoding="async">
+                    </a>
+                    <div class="photo-details">
+                        <div class="photo-title-row">
+                            <span class="photo-number" aria-hidden="true">${number}</span>
+                            <h3>${photo.title}</h3>
+                        </div>
+                        <p class="photo-meta">6 November 2025 at ${photo.time}</p>
+                    </div>
+                </div>
+                <div class="location-side">
+                    ${hasGps
+                        ? `<div class="location-heading"><strong>${photo.location}</strong><span>${photo.locationNote}</span></div><div class="photo-map" id="map-${number}" data-photo-index="${index}" aria-label="Map showing the location of ${photo.title}"></div>`
+                        : '<div class="location-missing"><div><strong>Location to be added</strong><span>This photo did not contain GPS data.</span></div></div>'}
+                </div>`;
+            gallery.appendChild(card);
+        });
+
+        if (typeof L !== 'undefined') {
+            const addSatelliteLayer = (map) => {
+                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                    maxZoom: 19,
+                    attribution: 'Imagery &copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community'
+                }).addTo(map);
+            };
+
+            const overviewMap = L.map('overview-map', { scrollWheelZoom: false });
+            addSatelliteLayer(overviewMap);
+            const overviewBounds = [];
+            const nearbyGroups = new Map();
+
+            photos.forEach((photo, index) => {
+                const key = `${photo.lat.toFixed(4)},${photo.lng.toFixed(4)}`;
+                if (!nearbyGroups.has(key)) {
+                    nearbyGroups.set(key, []);
+                }
+                nearbyGroups.get(key).push(index);
+                overviewBounds.push([photo.lat, photo.lng]);
+            });
+
+            photos.forEach((photo, index) => {
+                const number = index + 1;
+                const key = `${photo.lat.toFixed(4)},${photo.lng.toFixed(4)}`;
+                const group = nearbyGroups.get(key);
+                const position = group.indexOf(index);
+                let markerLat = photo.lat;
+                let markerLng = photo.lng;
+
+                if (group.length > 1) {
+                    const angle = (Math.PI * 2 * position / group.length) - (Math.PI / 2);
+                    const radius = 0.00022;
+                    markerLat += Math.cos(angle) * radius;
+                    markerLng += Math.sin(angle) * radius / Math.cos(photo.lat * Math.PI / 180);
+                }
+
+                const icon = L.divIcon({
+                    className: 'overview-marker',
+                    html: `<span class="marker-number" role="button" tabindex="0" aria-label="Go to photo ${number}: ${photo.title}">${number}</span>`,
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 16]
+                });
+                const marker = L.marker([markerLat, markerLng], { icon, title: `${number}. ${photo.title}` }).addTo(overviewMap);
+                marker.on('click', () => showPhoto(number));
+                marker.on('keypress', (event) => {
+                    if (event.originalEvent.key === 'Enter' || event.originalEvent.key === ' ') {
+                        showPhoto(number);
+                    }
+                });
+                marker.bindTooltip(`${number}. ${photo.title}`, { direction: 'top', offset: [0, -14] });
+            });
+
+            overviewMap.fitBounds(overviewBounds, { padding: [45, 45], maxZoom: 16 });
+
+            const initializeMap = (mapElement) => {
+                const index = Number(mapElement.dataset.photoIndex);
+                const photo = photos[index];
+                const number = index + 1;
+                const map = L.map(mapElement, {
+                    center: [photo.lat, photo.lng],
+                    zoom: 16,
+                    scrollWheelZoom: false
+                });
+
+                addSatelliteLayer(map);
+
+                const icon = L.divIcon({
+                    className: '',
+                    html: `<span class="marker-number">${number}</span>`,
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 16]
+                });
+                L.marker([photo.lat, photo.lng], { icon }).addTo(map);
+                mapElement.dataset.ready = 'true';
+            };
+
+            const mapObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        initializeMap(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '500px 0px' });
+
+            document.querySelectorAll('.photo-map').forEach((mapElement) => mapObserver.observe(mapElement));
+        } else {
+            document.getElementById('overview-map').innerHTML = '<p style="padding: 2rem; text-align: center;">The map could not be loaded.</p>';
+            document.querySelectorAll('.photo-map').forEach((mapElement) => {
+                mapElement.innerHTML = '<p style="padding: 2rem; text-align: center;">The map could not be loaded.</p>';
+            });
+        }
+
+        function showPhoto(number) {
+            const card = document.getElementById(`photo-${number}`);
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            card.classList.add('is-highlighted');
+            window.setTimeout(() => card.classList.remove('is-highlighted'), 2400);
+        }
+    </script>
+</body>
+</html>
