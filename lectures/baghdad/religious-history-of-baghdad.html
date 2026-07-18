@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Religious History of Baghdad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --surface: #fcfcfb;
+    --ink: #141310;
+    --ink-2: #52514e;
+    --ink-3: #898781;
+    --grid: #e7e5df;
+    --axis: #c3c2b7;
+    --muslim: #009E73;
+    --christian: #56B4E9;
+    --jewish: #CC79A7;
+    --sunni: #E69F00;
+    --shia: #0072B2;
+    --nonmuslim-rule: #4d4a45;
+    --violence: #D55E00;
+    --policy: #403c36;
+    --coop: #009E73;
+    --sans: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    background: var(--surface);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+  .hatra-banner {
+    background: rgba(20, 16, 12, 0.96);
+    border-bottom: 1px solid rgba(212, 184, 134, 0.22);
+    color: #ead7af;
+    font-family: 'Lora', Georgia, serif;
+    flex: 0 0 auto;
+  }
+  .hatra-banner-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 11px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .hatra-banner-nav { display: flex; gap: 28px; align-items: center; }
+  .hatra-banner-link {
+    position: relative;
+    color: #d4b886;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 6px 0;
+    transition: color 180ms ease;
+  }
+  .hatra-banner-link:hover { color: #f6e6c0; }
+  .hatra-banner-link.is-active { color: #f7e8c4; }
+  .hatra-banner-link.is-active::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 1px;
+    background: #d4b886;
+  }
+  .hatra-banner-langs { display: flex; gap: 8px; align-items: center; }
+  .hatra-banner-lang {
+    background: transparent;
+    border: 1px solid rgba(212, 184, 134, 0.28);
+    color: #d4b886;
+    padding: 6px 14px;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+  }
+  .hatra-banner-lang[lang="ar"] {
+    font-family: 'Amiri', system-ui, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0;
+    padding: 4px 14px 5px;
+  }
+  .hatra-banner-lang:hover { border-color: rgba(212, 184, 134, 0.6); color: #f6e6c0; }
+  .hatra-banner-lang.is-active {
+    background: rgba(212, 184, 134, 0.18);
+    border-color: rgba(212, 184, 134, 0.6);
+    color: #f7e8c4;
+  }
+  body[data-lang="ar"] header.bar,
+  body[data-lang="ar"] .legend-row,
+  body[data-lang="ar"] footer.note,
+  body[data-lang="ar"] .works h2,
+  body[data-lang="ar"] .works .works-note,
+  body[data-lang="ar"] .works .works-group {
+    font-family: 'Amiri', var(--sans);
+  }
+  body[data-lang="ar"] header.bar h1 { font-size: clamp(19px, 1.7vw, 26px); }
+  body[data-lang="ar"] header.bar,
+  body[data-lang="ar"] footer.note { direction: rtl; }
+  body[data-lang="ar"] #chart text { font-family: 'Amiri', var(--sans); }
+  .screen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .works {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 28px 72px;
+  }
+  .works h2 {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+  .works .works-note {
+    font-size: 12.5px;
+    color: var(--ink-2);
+    margin: 0 0 22px;
+  }
+  .works ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .works li {
+    font-size: 13.5px;
+    line-height: 1.55;
+    padding-left: 34px;
+    text-indent: -34px;
+    margin-bottom: 11px;
+    overflow-wrap: break-word;
+  }
+  .works .works-group {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 26px 0 12px;
+  }
+  header.bar {
+    flex: 0 0 auto;
+    padding: 12px 28px 6px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  header.bar h1 {
+    margin: 0;
+    font-size: clamp(17px, 1.5vw, 23px);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  header.bar .sub {
+    font-size: clamp(11px, 1vw, 13.5px);
+    color: var(--ink-2);
+  }
+  .legend-row {
+    flex: 0 0 auto;
+    padding: 0 28px 6px;
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--ink-2);
+    align-items: center;
+  }
+  .legend-group { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .legend-group .gt { font-weight: 700; color: var(--ink-3); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .chip { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .sw { width: 11px; height: 11px; border-radius: 2px; display: inline-block; flex: 0 0 auto; }
+  .sw.hatch {
+    background:
+      repeating-linear-gradient(45deg, #b9b5ad 0 2px, transparent 2px 5px), #eeece7;
+  }
+  .shape { width: 12px; height: 12px; display: inline-block; flex: 0 0 auto; }
+  #chart-wrap { flex: 1 1 auto; min-height: 0; position: relative; }
+  #chart { display: block; width: 100%; height: 100%; }
+  footer.note {
+    flex: 0 0 auto;
+    padding: 4px 28px 8px;
+    font-size: 11px;
+    color: var(--ink-3);
+  }
+  #tip {
+    position: fixed;
+    display: none;
+    max-width: 340px;
+    background: rgba(20, 19, 16, 0.96);
+    color: #f4f2ee;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    line-height: 1.45;
+    z-index: 50;
+    pointer-events: none;
+  }
+  #tip .t-title { font-weight: 700; margin-bottom: 2px; }
+  #tip .t-date { color: #c9c5bc; font-size: 11.5px; margin-bottom: 5px; }
+</style>
+</head>
+<body>
+
+<div class="screen">
+
+<div class="hatra-banner" role="navigation" aria-label="Baghdad lecture navigation">
+  <div class="hatra-banner-inner">
+    <nav class="hatra-banner-nav">
+      <a href="baghdad-timeline.html" class="hatra-banner-link" data-banner-link="timeline" data-en="Timeline of Baghdad" data-ar="&#1575;&#1604;&#1582;&#1591; &#1575;&#1604;&#1586;&#1605;&#1606;&#1610; &#1604;&#1576;&#1594;&#1583;&#1575;&#1583;">Timeline of Baghdad</a>
+      <a href="Peoples-of-baghdad.html" class="hatra-banner-link" data-banner-link="peoples" data-en="Peoples of Baghdad" data-ar="&#1588;&#1593;&#1608;&#1576; &#1576;&#1594;&#1583;&#1575;&#1583;">Peoples of Baghdad</a>
+      <a href="religious-history-of-baghdad.html" class="hatra-banner-link is-active" data-banner-link="religion" data-en="Religious History" data-ar="&#1575;&#1604;&#1578;&#1575;&#1585;&#1610;&#1582; &#1575;&#1604;&#1583;&#1610;&#1606;&#1610;">Religious History</a>
+    </nav>
+    <div class="hatra-banner-langs">
+      <button type="button" class="hatra-banner-lang" data-banner-lang="en" aria-label="English">English</button>
+      <button type="button" class="hatra-banner-lang" data-banner-lang="ar" lang="ar" dir="rtl" aria-label="&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</button>
+    </div>
+  </div>
+</div>
+
+<header class="bar">
+  <h1 id="page-title">The Religious History of Baghdad</h1>
+  <div class="sub" id="page-sub">762 to 2026 &middot; rulers, faiths, and sectarian conflict &middot; lecture data checked against Marozzi and academic sources &middot; hover anything for its source note</div>
+</header>
+
+<div class="legend-row" id="legend"></div>
+
+<div id="chart-wrap"><svg id="chart"></svg></div>
+
+<footer class="note" id="page-footnote">
+  Base figures come from the Timeline of Baghdad and Peoples of Baghdad lecture pages, verified against Marozzi's Baghdad, Encyclopaedia Iranica, and other academic sources. Corrections applied where scholarship disagreed, see the verification log. Pre-modern shares are scholarly reconstructions at era resolution. Small Mandaean and other communities are noted with markers rather than bands. Christian share is first quantified from the 833 to 946 era. Works cited at the bottom of the page.
+</footer>
+
+</div>
+
+<section class="works">
+  <h2 id="wc-title">Works Cited</h2>
+  <p class="works-note" id="wc-note">Sources actually consulted in building and verifying this chart. Access dates are given for online sources. Where a document's full publication details could not be confirmed, the entry carries only what could be verified, nothing has been inferred.</p>
+
+  <div class="works-group" id="wg-books">Books</div>
+  <ul>
+    <li>Marozzi, Justin. <em>Baghdad: City of Peace, City of Blood</em>. London: Allen Lane, 2014.</li>
+    <li>Russell, Gerard. <em>Heirs to Forgotten Kingdoms: Journeys into the Disappearing Religions of the Middle East</em>. New York: Basic Books, 2014.</li>
+  </ul>
+
+  <div class="works-group" id="wg-ref">Reference works</div>
+  <ul>
+    <li><em>Encyclopaedia Britannica Online</em>, s.v. &ldquo;Ni&#7825;&#257;m&#299;yyah.&rdquo; Accessed July 18, 2026. https://www.britannica.com/place/Nizamiyyah.</li>
+    <li><em>Encyclopaedia Iranica Online</em>, s.v. &ldquo;&#256;q Qoyunl&#363;.&rdquo; Accessed July 18, 2026. https://www.iranicaonline.org/articles/aq-qoyunlu-confederation/.</li>
+    <li><em>Encyclopaedia Iranica Online</em>, s.v. &ldquo;&#7712;&#257;z&#257;n Khan, Ma&#7717;m&#363;d.&rdquo; Accessed July 18, 2026. https://www.iranicaonline.org/articles/gazan-khan-mahmud/.</li>
+    <li><em>Oxford Reference</em>, s.v. &ldquo;Madrasah Nizamiyyah.&rdquo; Accessed July 18, 2026. https://www.oxfordreference.com/display/10.1093/oi/authority.20110803100125170.</li>
+  </ul>
+
+  <div class="works-group" id="wg-journal">Journal articles and scholarly chapters</div>
+  <ul>
+    <li>&ldquo;Iraq and its Jewish minority: from the establishment of the state to the great Jewish immigration 1921-1951.&rdquo; <em>Israel Affairs</em> 30, no. 2 (2024). Accessed July 18, 2026. https://www.tandfonline.com/doi/full/10.1080/13537121.2024.2318157.</li>
+    <li>&ldquo;Iraq: Civil-Military Relations from the Monarchy to the Republics.&rdquo; In <em>Oxford Research Encyclopedia of Politics</em>. Accessed July 18, 2026. https://academic.oup.com/edited-volume/62239/chapter/550755727.</li>
+    <li><em>The Last Jews in Baghdad</em>. Accessed July 18, 2026. https://www.jstor.org/stable/10.7560/702936.</li>
+    <li>&ldquo;Neighborhood Sectarian Displacement and the Battle for Baghdad: A Self-Fulfilling Prophecy of Fear and Crimes Against Humanity in Iraq.&rdquo; Accessed July 18, 2026. https://www.researchgate.net/publication/274141055.</li>
+    <li>Pfeiffer, Judith. &ldquo;Conversion Versions: Sultan &Ouml;ljeyt&uuml;&rsquo;s Conversion to Shi&lsquo;ism (709/1309) in Muslim Narrative Sources.&rdquo; <em>Mongolian Studies</em> 22 (1999). Accessed July 18, 2026. https://www.jstor.org/stable/43193284.</li>
+    <li>&ldquo;The Ruling Political Elite in Ba&lsquo;thi Iraq, 1968&ndash;1986: The Changing Features of a Collective Profile.&rdquo; <em>International Journal of Middle East Studies</em>. Accessed July 18, 2026. https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/abs/ruling-political-elite-in-bathi-iraq-19681986-the-changing-features-of-a-collective-profile/D9A7804A74A3D9B781BC31A827B3FED9.</li>
+    <li>&ldquo;Violence, State-Building, and the Shia-Sunni Cleavage.&rdquo; In <em>Death, Dominance, and State-Building: The US in Iraq and the Future of American Military Intervention</em>. Accessed July 18, 2026. https://academic.oup.com/book/56415/chapter/448410519.</li>
+  </ul>
+
+  <div class="works-group" id="wg-reports">Reports, testimony, and documents</div>
+  <ul>
+    <li>United States Commission on International Religious Freedom. &ldquo;Hearing on Sectarian Violence in Iraq and the Refugee Crisis: Testimony by Dana Graber Ladek, Iraq Displacement Specialist, International Organization for Migration.&rdquo; Accessed July 18, 2026. https://www.uscirf.gov/news-room/releases-statements/hearing-sectarian-violence-iraq-and-refugee-crisis-testimony-dana-0.</li>
+    <li>&ldquo;Violence against Christians in Baghdad and the North.&rdquo; Document IRQ102990.E. Accessed July 18, 2026. https://www.justice.gov/sites/default/files/eoir/legacy/2014/02/04/IRQ102990.E.pdf.</li>
+  </ul>
+</section>
+
+<div id="tip"></div>
+
+<script>
+"use strict";
+
+/* ================= DATA (all from the lecture pages in this folder) ================= */
+
+var T0 = 762, T1 = 2026;
+
+/* Panel A. Faith composition per era. jews, chr, shia are percent of city population.
+   From the Peoples of Baghdad era panels and era stack. chr null means not separately
+   estimated. shia null means no Sunni-Shia split is given for that era. */
+var FAITH_ERAS = [
+  { from: 762,  to: 833,  jews: 5,  chr: null, shia: null, name: "Abbasid Foundation", nameAr: "التأسيس العباسي",
+    tip: "Jews about 5 percent. The Christian share is not separately estimated for this era, though Jewish and Christian communities lived in the city from the start under the dhimma system.",
+    tipAr: "اليهود نحو 5 بالمئة. لا يوجد تقدير مستقل لنسبة المسيحيين في هذه الحقبة، مع أن الجماعتين اليهودية والمسيحية عاشتا في المدينة منذ نشأتها في ظل نظام الذمة." },
+  { from: 833,  to: 946,  jews: 10, chr: 7, shia: null, name: "Islamic Golden Age", nameAr: "العصر الذهبي الإسلامي",
+    tip: "The Babylonian Jewish community, governed by the Exilarch, became the pivot of the global Jewish diaspora. Nestorian Christian physicians and Syriac translators staffed the caliphal court.",
+    tipAr: "أصبحت الجماعة اليهودية البابلية، تحت رئاسة رأس الجالوت، محور الشتات اليهودي العالمي. وعمل أطباء مسيحيون نساطرة ومترجمون سريان في البلاط الخلافي." },
+  { from: 946,  to: 1258, jews: 8,  chr: 6, shia: 40, name: "Buyids and Seljuks", nameAr: "البويهيون والسلاجقة",
+    tip: "Jews about 8 percent and Christians about 6 percent of a city of roughly 500,000 to 700,000.",
+    tipAr: "اليهود نحو 8 بالمئة والمسيحيون نحو 6 بالمئة من مدينة يقدر سكانها بين 500 و700 ألف." },
+  { from: 1258, to: 1401, jews: 6,  chr: 6, shia: 35, name: "Mongol and Jalayirid", nameAr: "المغول والجلائريون",
+    tip: "Mongol viziers were drawn from Persian, Arab, Christian and Jewish ranks alike. This pragmatic pluralism let the surviving minorities stabilize.",
+    tipAr: "اختير وزراء المغول من الفرس والعرب والمسيحيين واليهود على السواء، وقد أتاح هذا التعدد العملي للأقليات الناجية أن تستقر." },
+  { from: 1401, to: 1534, jews: 7,  chr: 5, shia: 30, name: "Turkmen Confederations", nameAr: "الاتحادات التركمانية",
+    tip: "Jews about 7 percent and Christians about 5 percent in a volatile city of 50,000 to 80,000.",
+    tipAr: "اليهود نحو 7 بالمئة والمسيحيون نحو 5 بالمئة في مدينة مضطربة يتراوح سكانها بين 50 و80 ألفا." },
+  { from: 1534, to: 1831, jews: 22, chr: 6, shia: 25, name: "Ottoman Era", nameAr: "العهد العثماني",
+    tip: "The millet system preserved communal boundaries through religious autonomy. The Jewish community thrived in long-distance trade with British India.",
+    tipAr: "حفظ نظام الملل حدود الطوائف عبر الاستقلال الديني، وازدهرت الجماعة اليهودية في التجارة البعيدة مع الهند البريطانية." },
+  { from: 1831, to: 1917, jews: 43, chr: 6, shia: 22, name: "Late Ottoman", nameAr: "أواخر العهد العثماني",
+    tip: "The apex of Jewish Baghdad. Scholarly estimates of the community around 1917 to 1920 range widely, from about 50,000 to 88,000 people, and scholarly accounts describe Jews as more than a third of the city in this period. The band shows the high end of that range.",
+    tipAr: "ذروة بغداد اليهودية. تتباين التقديرات العلمية للجماعة حوالى 1917-1920 تباينا واسعا بين نحو 50 و88 ألف نسمة، وتصف الدراسات اليهود بأنهم كانوا أكثر من ثلث المدينة في هذه الفترة. ويعرض الشريط الحد الأعلى لهذا النطاق." },
+  { from: 1917, to: 1958, jews: 3,  chr: 6, shia: 47, name: "Mandate and Monarchy", nameAr: "الانتداب والملكية",
+    tip: "The Farhud and the 1950 to 1952 airlift extinguished the 2,500 year old community. Marozzi records that only about 2,000 of some 150,000 Iraqi Jews remained after the operation. The lecture's 1957 census figures, 0.3 percent Jewish and 5.2 percent Christian, are not yet independently verified.",
+    tipAr: "أنهى الفرهود ثم الجسر الجوي (1950-1952) جماعة عمرها 25 قرنا. يذكر مروزي أنه لم يبق سوى نحو ألفي يهودي من أصل نحو 150 ألفا في العراق بعد العملية. أرقام إحصاء 1957 الواردة في المحاضرة، 0.3 بالمئة يهود و5.2 بالمئة مسيحيون، لم تدقق بعد من مصدر مستقل." },
+  { from: 1958, to: 2003, jews: 0,  chr: 5, shia: 55, name: "Republics and Ba'ath", nameAr: "الجمهوريات والبعث",
+    tip: "Only a Jewish remnant remained after the airlift. Christians, about half the national total, flourished economically under enforced secularism.",
+    tipAr: "لم تبق بعد الجسر الجوي سوى بقية يهودية صغيرة. أما المسيحيون، نحو نصف مجموعهم الوطني، فازدهروا اقتصاديا في ظل العلمانية المفروضة." },
+  { from: 2003, to: 2014, jews: 0,  chr: 1.5, shia: 73, name: "Civil War", nameAr: "الحرب الأهلية",
+    tip: "An estimated 300,000 of Baghdad's 400,000 Christians fled the city by 2010 under bombings, extortion, and assassination. The small Mandaean community collapsed through flight abroad in the same years.",
+    tipAr: "فر نحو 300 ألف من أصل 400 ألف مسيحي في بغداد بحلول 2010 تحت وطأة التفجيرات والابتزاز والاغتيالات، وانهارت جماعة المندائيين الصغيرة بالهجرة إلى الخارج في السنوات نفسها." },
+  { from: 2014, to: 2026, jews: 0,  chr: 1.2, shia: 81, name: "Contemporary", nameAr: "المرحلة المعاصرة",
+    tip: "Christians and other minorities are about 1.2 percent of a city of roughly 7.8 million.",
+    tipAr: "يشكل المسيحيون وسائر الأقليات نحو 1.2 بالمئة من مدينة يبلغ سكانها نحو 7.8 ملايين." }
+];
+
+/* Panel A markers. Events touching Baghdad's non-Muslim communities. */
+var FAITH_EVENTS = [
+  { year: 766,  kind: "policy",   comm: "all",       title: "The Dhimma System", titleAr: "نظام الذمة",
+    tip: "Jews and Christians were designated a protected minority. Free to practice their religion and exempt from military service, they paid the jizya tax, lived as second-class citizens, and were obliged to dress differently.",
+    tipAr: "صنف اليهود والمسيحيون أقلية محمية، أحرارا في ممارسة دينهم ومعفيين من الخدمة العسكرية مقابل الجزية، وعاشوا مواطنين من درجة ثانية ملزمين بلباس مميز." },
+  { year: 1889, kind: "violence", comm: "jewish",    title: "Funeral violence", titleAr: "عنف الجنازة",
+    tip: "The funeral violence around Rabbi Abdullah Somech exposed the limits of late Ottoman tolerance.",
+    tipAr: "كشف العنف الذي رافق جنازة الحاخام عبد الله سوميخ حدود التسامح في أواخر العهد العثماني." },
+  { year: 1909, kind: "civic",    comm: "jewish",    title: "Sassoon Eskell in parliament", titleAr: "ساسون حسقيل في البرلمان",
+    tip: "After the Young Turk Revolution, Sassoon Eskell represented Baghdad in the Ottoman parliament, one of six deputies for the city. A sign of possibilities that proved short-lived.",
+    tipAr: "بعد ثورة تركيا الفتاة مثل ساسون حسقيل بغداد في البرلمان العثماني، واحدا من ستة نواب عن المدينة. بارقة إمكانات لم يطل عمرها." },
+  { year: 1941, kind: "violence", comm: "jewish",    title: "The Farhud", titleAr: "الفرهود",
+    tip: "On June 1 and 2, 1941, a state-tolerated pogrom against the Jewish quarter killed hundreds and destroyed hundreds of homes.",
+    tipAr: "في الأول والثاني من حزيران 1941 قتلت مذبحة الفرهود، التي تساهلت معها الدولة، مئات الأشخاص ودمرت مئات منازل الحي اليهودي." },
+  { year: 1951, kind: "exodus",   comm: "jewish",    title: "Operation Ezra and Nehemiah", titleAr: "عملية عزرا ونحميا", span: [1950, 1952],
+    tip: "Between 1950 and 1952 about 95 percent of Iraq's Jews departed. More than 120,000 people airlifted. A 2,500 year old community erased in a decade.",
+    tipAr: "بين 1950 و1952 غادر نحو 95 بالمئة من يهود العراق، وأكثر من 120 ألفا نقلوا جوا. جماعة عمرها 25 قرنا محيت في عقد واحد." },
+  { year: 1969, kind: "violence", comm: "jewish",    title: "Liberation Square hangings", titleAr: "إعدامات ساحة التحرير",
+    tip: "The Ba'athist regime publicly hanged Jewish Iraqis accused of espionage while 200,000 onlookers celebrated. A devastating stage in the disappearance of one of Baghdad's oldest communities.",
+    tipAr: "علق النظام البعثي علنا جثث يهود عراقيين اتهموا بالتجسس بينما احتفل نحو 200 ألف متفرج. مرحلة مدمرة في اندثار واحدة من أقدم جماعات بغداد." },
+  { year: 2007, kind: "exodus",   comm: "mandaean",  title: "Mandaean collapse", titleAr: "انهيار المندائيين",
+    tip: "Russell describes the Mandaeans as numbering fewer than 100,000 worldwide, with most living in Iraq until 2003. Pacifist, small, and without militia protection, the community was highly vulnerable after 2003 and collapsed through flight abroad.",
+    tipAr: "يصف راسل المندائيين بأنهم أقل من 100 ألف في العالم كله، ومعظمهم عاش في العراق حتى 2003. جماعة مسالمة صغيرة بلا حماية مسلحة، فكانت شديدة الهشاشة بعد 2003 وانهارت بالهجرة إلى الخارج." },
+  { year: 2008, kind: "exodus",   comm: "christian", title: "Christian exodus from Dora", titleAr: "نزوح مسيحيي الدورة", span: [2003, 2014],
+    tip: "IOM testimony to USCIRF describes continuous and systematic attacks that forcibly displaced tens of thousands of Christians from Baghdad areas including Dora, where militants issued death threats and forced-conversion ultimatums. Citywide, Marozzi reports an estimated 300,000 of Baghdad's 400,000 Christians had fled by 2010.",
+    tipAr: "تصف شهادة المنظمة الدولية للهجرة أمام اللجنة الأميركية للحرية الدينية هجمات متواصلة ومنهجية هجرت قسرا عشرات الآلاف من المسيحيين من مناطق بغداد ومنها الدورة، حيث وجه المسلحون تهديدات بالقتل وإنذارات بالتحول القسري. وعلى مستوى المدينة يذكر مروزي أن نحو 300 ألف من أصل 400 ألف مسيحي فروا بحلول 2010." },
+  { year: 2010, kind: "violence", comm: "christian", title: "Our Lady of Salvation attack", titleAr: "اعتداء كنيسة سيدة النجاة",
+    tip: "Gunmen attacked the Syriac Catholic church in Karrada on October 31, 2010, killing worshippers and priests. The attack accelerated the flight of Baghdad's Christians.",
+    tipAr: "هاجم مسلحون كنيسة السريان الكاثوليك في الكرادة في 31 تشرين الأول 2010 فقتلوا مصلين وكاهنين. سرع الاعتداء نزوح مسيحيي بغداد." }
+];
+
+/* Panel B. Who ruled Baghdad and their sect, per the lecture pages. */
+var RULERS = [
+  { from: 762,  to: 945,  sect: "sunni", name: "Abbasid Caliphate", nameAr: "الخلافة العباسية", shortAr: "العباسيون",
+    tip: "The caliphal state. The lecture notes the Abbasid state repeatedly gave Sunni Arabs administrative weight beyond their numbers, and the Mustansiriya later gathered the four Sunni legal traditions.",
+    tipAr: "الدولة الخلافية. تشير المحاضرة إلى أن الدولة العباسية منحت العرب السنة مرارا وزنا إداريا يفوق أعدادهم، وجمعت المستنصرية لاحقا المذاهب السنية الأربعة." },
+  { from: 945,  to: 1055, sect: "shia", name: "Buyid emirs", nameAr: "الأمراء البويهيون", shortAr: "البويهيون",
+    tip: "The Buyids, a Daylami dynasty Marozzi describes as ardently Shia, patronized Shia scholarship and ritual openly for the first time in the city's history while keeping the Abbasid caliph as a figurehead.",
+    tipAr: "البويهيون، سلالة ديلمية يصفها مروزي بأنها شيعية متحمسة، رعوا العلم والشعائر الشيعية علنا لأول مرة في تاريخ المدينة مع إبقاء الخليفة العباسي واجهة رمزية." },
+  { from: 1055, to: 1157, sect: "sunni", name: "Seljuk sultans", nameAr: "السلاطين السلاجقة", shortAr: "السلاجقة",
+    tip: "The aggressively Sunni Seljuks displaced the Buyids in 1055 and founded the Nizamiyya college to train Sunni jurists against Shia influence.",
+    tipAr: "أزاح السلاجقة، وهم سنة متشددون، البويهيين عام 1055 وأسسوا المدرسة النظامية لتخريج فقهاء سنة في مواجهة النفوذ الشيعي." },
+  { from: 1157, to: 1258, sect: "sunni", name: "Late Abbasid revival", short: "Abbasid", nameAr: "الإحياء العباسي المتأخر", shortAr: "العباسيون",
+    tip: "Direct Seljuk rule ended after the failed siege of 1157. The Abbasid caliphs recovered an active political role until the Mongol sack of 1258.",
+    tipAr: "انتهى الحكم السلجوقي المباشر بعد فشل حصار 1157، فاستعاد الخلفاء العباسيون دورا سياسيا فاعلا حتى السقوط المغولي عام 1258." },
+  { from: 1258, to: 1295, sect: "nonmuslim", name: "Mongol Ilkhanate", short: "Mongol", nameAr: "الإلخانية المغولية", shortAr: "المغول",
+    tip: "The early Ilkhans were Buddhist, Christian, or shamanist and showed no inherited preference between Sunni and Shia, so Shia institutions enjoyed decades of state neutrality. One exception, Tekuder Ahmad ruled as a Muslim 1282 to 1284.",
+    tipAr: "كان الإلخانيون الأوائل بوذيين ومسيحيين وشامانيين بلا انحياز موروث بين السنة والشيعة، فنعمت المؤسسات الشيعية بعقود من حياد الدولة. الاستثناء تكودار أحمد الذي حكم مسلما بين 1282 و1284." },
+  { from: 1295, to: 1309, sect: "sunni", name: "Ghazan and early Oljeitu", short: "Ghazan", nameAr: "غازان وأوائل أولجايتو", shortAr: "غازان",
+    tip: "Per Encyclopaedia Iranica, Ghazan converted on 17 June 1295 and was formally converted to Sunni Islam at his enthronement at Tabriz in November 1295, ending Mongol state neutrality. His brother Oljeitu also began his reign as a Sunni.",
+    tipAr: "بحسب الموسوعة الإيرانية أسلم غازان في 17 حزيران 1295 واعتنق الإسلام السني رسميا عند تتويجه في تبريز في تشرين الثاني 1295، منهيا حياد الدولة المغولية. وبدأ أخوه أولجايتو حكمه سنيا." },
+  { from: 1309, to: 1316, sect: "shia", name: "Oljeitu", nameAr: "أولجايتو",
+    tip: "Oljeitu converted to Shiism in 709 AH, 1309 CE, the date established in Judith Pfeiffer's study of the conversion in Muslim narrative sources. Some accounts report a return to Sunnism near the end of his life.",
+    tipAr: "تحول أولجايتو إلى التشيع سنة 709 هـ الموافقة 1309 م، وهو التاريخ الذي أثبتته دراسة جوديت فايفر للمصادر السردية الإسلامية. وتذكر بعض الروايات عودته إلى التسنن قبيل وفاته." },
+  { from: 1316, to: 1336, sect: "sunni", name: "Abu Sa'id", nameAr: "أبو سعيد",
+    tip: "Sunnism was restored under Abu Sa'id, the last effective Ilkhan, and remained the state's orientation until the dynasty collapsed.",
+    tipAr: "استعيدت السنية في عهد أبي سعيد، آخر الإلخانيين الفاعلين، وبقيت وجهة الدولة حتى انهيار السلالة." },
+  { from: 1336, to: 1410, sect: "unspecified", name: "Jalayirid sultans", nameAr: "السلاطين الجلائريون", shortAr: "الجلائريون",
+    tip: "The Jalayirid successor state. Neither the lecture nor readily accessible scholarship clearly establishes a sectarian identity for these rulers, so none is shown.",
+    tipAr: "دولة الجلائريين الوريثة. لا تحدد المحاضرة ولا المصادر العلمية المتاحة هوية مذهبية واضحة لهؤلاء الحكام، فلم يعرض أي مذهب." },
+  { from: 1410, to: 1468, sect: "disputed", name: "Kara Koyunlu", short: "Kara K.", nameAr: "قره قويونلو", shortAr: "قره قويونلو",
+    tip: "Often described as Twelver Shia, and they did patronize Shia institutions and the shrine cities. Encyclopaedia Iranica cautions that the neat Shia Black Sheep versus Sunni White Sheep contrast rests mainly on later Safavid sources and must be considered doubtful. Shown here as Shia-leaning but disputed.",
+    tipAr: "كثيرا ما يوصفون بأنهم شيعة اثنا عشرية، وقد رعوا فعلا المؤسسات الشيعية ومدن العتبات. غير أن الموسوعة الإيرانية تحذر من أن التقابل الحاد بين قره قويونلو الشيعية وآق قويونلو السنية يستند أساسا إلى مصادر صفوية لاحقة ويجب عده موضع شك. يعرض هنا بوصفه ميلا شيعيا محل خلاف." },
+  { from: 1468, to: 1508, sect: "sunni", name: "Ak Koyunlu", short: "Ak K.", nameAr: "آق قويونلو", shortAr: "آق قويونلو",
+    tip: "The White Sheep Turkmen reverted to Sunnism after 1468, reversing Kara Koyunlu policy.",
+    tipAr: "عاد تركمان آق قويونلو إلى السنية بعد 1468 عاكسين سياسة قره قويونلو." },
+  { from: 1508, to: 1534, sect: "shia", name: "Safavid shahs", nameAr: "الشاهات الصفويون", shortAr: "الصفويون",
+    tip: "Shah Ismail took Baghdad in 1508 and made Twelver Shia Islam the state faith of Iran. Sunni shrines were destroyed or humiliated while Kadhimiya was lavished with attention.",
+    tipAr: "أخذ الشاه إسماعيل بغداد عام 1508 وجعل التشيع الاثني عشري دين الدولة في إيران. دمرت أضرحة سنية أو أهينت بينما أغدق على الكاظمية." },
+  { from: 1534, to: 1623, sect: "sunni", name: "Ottoman sultans", nameAr: "السلاطين العثمانيون", shortAr: "العثمانيون",
+    tip: "Suleiman the Magnificent entered Baghdad in 1534. The city became a frontier prize between a Sunni Ottoman west and a Shia Safavid east.",
+    tipAr: "دخل سليمان القانوني بغداد عام 1534، فصارت المدينة جائزة حدودية بين غرب عثماني سني وشرق صفوي شيعي." },
+  { from: 1623, to: 1638, sect: "shia", name: "Safavid shahs", nameAr: "الشاهات الصفويون", shortAr: "الصفويون",
+    tip: "Shah Abbas retook Baghdad in 1623. The capture was destructive and sectarian, and the Sunni population was hit especially hard.",
+    tipAr: "استعاد الشاه عباس بغداد عام 1623. كان الاستيلاء مدمرا وطائفيا، ونال السكان السنة الضربة الأقسى." },
+  { from: 1638, to: 1917, sect: "sunni", name: "Ottoman sultans", nameAr: "السلاطين العثمانيون", shortAr: "العثمانيون",
+    tip: "Murad IV permanently expelled the Safavids in 1638. Under stable Ottoman rule the Sunni minority monopolized administration while the Shia majority was excluded as a matter of policy.",
+    tipAr: "طرد مراد الرابع الصفويين نهائيا عام 1638. وفي ظل الحكم العثماني المستقر احتكرت الأقلية السنية الإدارة بينما أقصيت الأغلبية الشيعية بوصف ذلك سياسة ثابتة." },
+  { from: 1917, to: 1921, sect: "nonmuslim", name: "British occupation", nameAr: "الاحتلال البريطاني",
+    tip: "British and Indian troops entered Baghdad in March 1917, ending 383 years of Ottoman rule.",
+    tipAr: "دخلت القوات البريطانية والهندية بغداد في آذار 1917 منهية 383 عاما من الحكم العثماني." },
+  { from: 1921, to: 1958, sect: "sunni", name: "Hashemite monarchy", short: "Hashemite", nameAr: "الملكية الهاشمية", shortAr: "الهاشميون",
+    tip: "The British Sharifan Solution placed Faisal I, a Sunni Arab from the Hejaz, over a majority Shia country. The mandate formally ended in 1932.",
+    tipAr: "وضع الحل الشريفي البريطاني فيصل الأول، وهو عربي سني من الحجاز، على رأس بلد ذي أغلبية شيعية. انتهى الانتداب رسميا عام 1932." },
+  { from: 1958, to: 1963, sect: "unspecified", name: "Qasim", nameAr: "قاسم",
+    tip: "Qasim's republic was secular and deliberately cross-sectarian. Scholarship describes his policy of bringing all citizens into the regime regardless of sect or ethnicity, so no sect is shown.",
+    tipAr: "كانت جمهورية قاسم علمانية وعابرة للطوائف عمدا. تصف الدراسات سياسته بإدخال جميع المواطنين في الدولة بغض النظر عن المذهب أو العرق، فلا يعرض لها مذهب." },
+  { from: 1963, to: 1968, sect: "sunni", name: "Arif brothers", nameAr: "الأخوان عارف", shortAr: "عارف",
+    tip: "Scholarship on republican Iraq describes the leadership after the 1963 coup as dominated by pan-Arabist Sunnis whose repressive and economic policies disproportionately disadvantaged the Shia and further enshrined Sunni dominance in the state.",
+    tipAr: "تصف الدراسات الأكاديمية قيادة ما بعد انقلاب 1963 بأنها خاضعة لقوميين عرب سنة أضرت سياساتهم القمعية والاقتصادية بالشيعة على نحو غير متناسب ورسخت الهيمنة السنية في الدولة." },
+  { from: 1968, to: 2003, sect: "sunni", name: "Ba'ath rule", nameAr: "حكم البعث", shortAr: "البعث",
+    tip: "Secularism on the surface. Beneath it the regime's inner circle, security apparatus, and military command were overwhelmingly Sunni Tikriti.",
+    tipAr: "علمانية في الظاهر، لكن الدائرة الداخلية للنظام وأجهزة الأمن وقيادة الجيش كانت سنية تكريتية بأغلبية ساحقة." },
+  { from: 2003, to: 2004, sect: "nonmuslim", name: "US occupation", nameAr: "الاحتلال الأميركي",
+    tip: "US forces took Baghdad in April 2003. Paul Bremer led the Coalition Provisional Authority.",
+    tipAr: "سيطرت القوات الأميركية على بغداد في نيسان 2003 وقاد بول بريمر سلطة الائتلاف المؤقتة." },
+  { from: 2004, to: 2026, sect: "shia", name: "Post-2003 governments", short: "Post-2003", nameAr: "حكومات ما بعد 2003", shortAr: "ما بعد 2003",
+    tip: "Shia parties returning from exile took the Ministry of Interior and the new order. The lecture describes an overwhelmingly Shia capital governed by elite power sharing.",
+    tipAr: "تولت الأحزاب الشيعية العائدة من المنفى وزارة الداخلية والنظام الجديد. تصف المحاضرة عاصمة ذات أغلبية شيعية ساحقة تحكم بتقاسم السلطة بين النخب." }
+];
+
+/* Shia share of the city. Continuous series from 1500, era steps 946 to 1500, nothing before. */
+var SHIA_SHARE = [
+  { y: 1500, shia: 35 }, { y: 1600, shia: 30 }, { y: 1700, shia: 25 },
+  { y: 1800, shia: 22 }, { y: 1900, shia: 20 }, { y: 1917, shia: 22 },
+  { y: 1947, shia: 45 }, { y: 1958, shia: 52 }, { y: 1977, shia: 58 },
+  { y: 1997, shia: 62 }, { y: 2003, shia: 65 }, { y: 2008, shia: 75 },
+  { y: 2014, shia: 78 }, { y: 2024, shia: 81 }
+];
+var SHIA_ERA_STEPS = [
+  { from: 946,  to: 1258, shia: 40, sunni: 45, name: "Buyids and Seljuks", nameAr: "البويهيون والسلاجقة" },
+  { from: 1258, to: 1401, shia: 35, sunni: 50, name: "Mongol and Jalayirid", nameAr: "المغول والجلائريون" },
+  { from: 1401, to: 1500, shia: 30, sunni: 55, name: "Turkmen Confederations", nameAr: "الاتحادات التركمانية" }
+];
+
+/* Panel B conflict spans and events. */
+var CONFLICT_SPANS = [
+  { from: 946, to: 1100, kind: "violence", label: "Karkh riots", labelAr: "اضطرابات الكرخ",
+    title: "The Karkh riots", titleAr: "اضطرابات الكرخ",
+    tip: "Under Buyid patronage Karkh consolidated as the Shia commercial heart while Bab al-Basra stayed Sunni. Recurring riots and street battles through the late 10th and 11th centuries were the first sustained neighborhood-level Sunni and Shia violence in any major Islamic capital.",
+    tipAr: "تحت الرعاية البويهية ترسخ الكرخ قلبا تجاريا شيعيا بينما بقيت باب البصرة سنية. كانت الاضطرابات ومعارك الشوارع المتكررة عبر أواخر القرن العاشر والقرن الحادي عشر أول عنف سني شيعي متواصل على مستوى الأحياء في عاصمة إسلامية كبرى." },
+  { from: 1638, to: 1917, kind: "policy", label: "Structural exclusion of the Shia majority", labelAr: "الإقصاء البنيوي للأغلبية الشيعية",
+    title: "Three centuries of structural exclusion", titleAr: "ثلاثة قرون من الإقصاء البنيوي",
+    tip: "The Sunni minority monopolized provincial government, military command, waqf endowments, and tax farming. The Shia majority was excluded from administration as a matter of policy, and the wealth gap compounded for ten generations.",
+    tipAr: "احتكرت الأقلية السنية حكم الولاية والقيادة العسكرية والأوقاف والالتزام الضريبي، بينما أقصيت الأغلبية الشيعية من الإدارة بوصف ذلك سياسة، وتراكمت فجوة الثروة عبر عشرة أجيال." },
+  { from: 2006, to: 2008, kind: "violence", label: "", labelAr: "",
+    title: "Sectarian civil war", titleAr: "الحرب الأهلية الطائفية",
+    tip: "The February 2006 Samarra shrine bombing triggered full sectarian war. IOM testimony to USCIRF counted more than a million Iraqis displaced after the bombing, with 88 percent of assessed families saying they were targeted for their sectarian identity. Mixed neighborhoods died and concrete T-walls institutionalized the new map.",
+    tipAr: "فجر تفجير مرقد سامراء في شباط 2006 حربا طائفية شاملة. أحصت شهادة المنظمة الدولية للهجرة أمام اللجنة الأميركية أكثر من مليون نازح بعد التفجير، وقال 88 بالمئة من الأسر المشمولة إنها استهدفت بسبب هويتها المذهبية. ماتت الأحياء المختلطة وثبتت الجدران الخرسانية الخريطة الجديدة." }
+];
+var CONFLICT_EVENTS = [
+  { year: 799,  kind: "violence", title: "Imam Musa al-Kadhim dies in confinement", titleAr: "وفاة الإمام موسى الكاظم في الحبس",
+    tip: "Harun al-Rashid imprisoned the seventh Shia Imam, who died in Abbasid confinement. An act of religious persecution whose shrine became the sacred core of Kadhimiya, Baghdad's great Shia shrine district.",
+    tipAr: "سجن هارون الرشيد الإمام السابع موسى الكاظم فمات في الحبس العباسي. اضطهاد ديني صار مرقده النواة المقدسة للكاظمية، حي بغداد الشيعي الأعظم." },
+  { year: 945,  kind: "policy", title: "Buyid provocations", titleAr: "استفزازات بويهية",
+    tip: "Muizz al-Dawla mandated public Shia mourning for Husayn and ordered anti-Sunni denunciations posted on mosque doors, predictably triggering public disturbances in the Sunni-majority city.",
+    tipAr: "فرض معز الدولة الحداد الشيعي العلني على الحسين وأمر بتعليق ذم للسنة على أبواب المساجد، فأشعل اضطرابات عامة في مدينة ذات أغلبية سنية." },
+  { year: 1055, kind: "policy", title: "Sunni Seljuks displace the Shia Buyids", titleAr: "السلاجقة السنة يزيحون البويهيين الشيعة",
+    tip: "Tughril Beg marched on Baghdad at the invitation of the Abbasid caliph, sweeping aside the last Buyid leader after a century of Shia control.",
+    tipAr: "زحف طغرل بك على بغداد بدعوة من الخليفة العباسي مزيحا آخر قادة البويهيين بعد قرن من السيطرة الشيعية." },
+  { year: 1067, kind: "policy", title: "Nizamiyya college founded", titleAr: "تأسيس المدرسة النظامية",
+    tip: "Nizam al-Mulk founded the Nizamiyya in 1067 to institutionalize Sunni legal and theological education, countering Shia influence and especially the Ismaili missionary networks of the Fatimids. Shia institutions retreated from public visibility toward Kadhimiya.",
+    tipAr: "أسس نظام الملك النظامية عام 1067 لترسيخ التعليم الفقهي والكلامي السني في مواجهة النفوذ الشيعي، وخصوصا شبكات الدعوة الإسماعيلية الفاطمية. تراجعت المؤسسات الشيعية عن الحضور العلني نحو الكاظمية." },
+  { year: 1295, kind: "policy", title: "Ghazan converts", titleAr: "إسلام غازان",
+    tip: "Ghazan's conversion to Islam ended the Mongol century of state neutrality between the sects.",
+    tipAr: "أنهى اعتناق غازان الإسلام قرن الحياد المغولي بين المذهبين." },
+  { year: 1468, kind: "policy", title: "Ak Koyunlu reversal", titleAr: "انقلاب آق قويونلو",
+    tip: "The White Sheep reversed open Shia patronage. Each new dynasty now used sectarian patronage as a tool of legitimation. Scholarship cautions that the sharp sectarian contrast between the two confederations rests mainly on later Safavid sources.",
+    tipAr: "عكس آق قويونلو الرعاية الشيعية العلنية. صار كل حكم جديد يستخدم الرعاية المذهبية أداة شرعنة. وتحذر الدراسات من أن التقابل المذهبي الحاد بين الاتحادين يستند أساسا إلى مصادر صفوية لاحقة." },
+  { year: 1472, kind: "unrest", title: "Jami's troubled stay", titleAr: "إقامة الجامي المضطربة",
+    tip: "Sectarian accusations against the Persian poet Jami stirred public anger during his four-month stay. He defended himself before the governor, religious scholars, and an agitated crowd.",
+    tipAr: "أثارت اتهامات طائفية للشاعر الفارسي الجامي غضبا عاما خلال إقامته أربعة أشهر، فدافع عن نفسه أمام الوالي والعلماء وحشد هائج." },
+  { year: 1508, kind: "violence", title: "Safavids deface Sunni shrines", titleAr: "الصفويون يدنسون الأضرحة السنية",
+    tip: "Shah Ismail's forces destroyed or humiliated Sunni shrines including Abu Hanifa and Sheikh Abdul Kadir al-Gailani while lavishing attention on Kadhimiya and the Shia shrine cities.",
+    tipAr: "دمرت قوات الشاه إسماعيل أضرحة سنية أو أهانتها ومنها أبو حنيفة والشيخ عبد القادر الگيلاني، بينما أغدقت على الكاظمية ومدن العتبات الشيعية." },
+  { year: 1534, kind: "policy", title: "Suleiman rebuilds Sunni monuments", titleAr: "سليمان يعيد بناء المعالم السنية",
+    tip: "After retaking the city, Suleiman the Magnificent rebuilt the Sunni monuments the Safavids had defaced. Marozzi notes he was respectful to Shia and Sunni alike, making pilgrimages to Kadhimiya as well as to Sunni shrines.",
+    tipAr: "بعد استعادة المدينة أعاد سليمان القانوني بناء المعالم السنية التي شوهها الصفويون. ويذكر مروزي أنه كان محترما للسنة والشيعة على السواء وزار الكاظمية كما زار المزارات السنية." },
+  { year: 1623, kind: "violence", title: "Massacre of Sunnis", titleAr: "مذبحة السنة",
+    tip: "Shah Abbas retook Baghdad through a secret pact. Thousands of Sunni inhabitants were massacred or enslaved and Sunni mosques were destroyed.",
+    tipAr: "استعاد الشاه عباس بغداد باتفاق سري. قتل آلاف من السكان السنة أو استعبدوا ودمرت مساجد سنية." },
+  { year: 1638, kind: "violence", title: "Murad IV's reprisals against the Shia", titleAr: "انتقام مراد الرابع من الشيعة",
+    tip: "The permanent Ottoman reconquest ended with widespread reprisal massacres against the city's Shia inhabitants, then inaugurated 280 years of Sunni Ottoman administration.",
+    tipAr: "انتهى الفتح العثماني النهائي بمجازر انتقامية واسعة بحق سكان المدينة الشيعة، ثم دشن 280 عاما من الإدارة العثمانية السنية." },
+  { year: 1920, kind: "coop", title: "The 1920 revolt", titleAr: "ثورة العشرين",
+    tip: "Sunni and Shia opposition to the British mandate briefly converged before suppression hardened the political imbalance.",
+    tipAr: "تلاقت المعارضة السنية والشيعية للانتداب البريطاني لفترة وجيزة قبل أن يرسخ القمع الاختلال السياسي." },
+  { year: 1921, kind: "policy", title: "Shia exclusion codified", titleAr: "تقنين إقصاء الشيعة",
+    tip: "The Sharifan Solution installed a Sunni Hashemite king. The colonial administration relied on ex-Ottoman Sunni officers and Shia exclusion from the new state was codified.",
+    tipAr: "نصب الحل الشريفي ملكا هاشميا سنيا. اعتمدت الإدارة الاستعمارية على ضباط سنة عثمانيين سابقين وقنن إقصاء الشيعة من الدولة الجديدة." },
+  { year: 1959, kind: "policy", title: "Madinat al-Thawra built", titleAr: "بناء مدينة الثورة",
+    tip: "Qasim's new district formalized the eastern shantytowns into a permanent Shia enclave. Later Saddam City, then Sadr City, home to over two million people.",
+    tipAr: "حول حي قاسم الجديد العشوائيات الشرقية إلى معقل شيعي دائم، صار لاحقا مدينة صدام ثم مدينة الصدر بأكثر من مليوني ساكن." },
+  { year: 1991, kind: "violence", title: "Shia uprising crushed", titleAr: "سحق الانتفاضة الشيعية",
+    tip: "The 1991 Shia uprising in the south was crushed with extraordinary violence. Shia clerical networks were penetrated and assassinated.",
+    tipAr: "سحقت انتفاضة 1991 الشيعية في الجنوب بعنف استثنائي، واخترقت شبكات رجال الدين الشيعة واغتيل رموزها." },
+  { year: 2003, kind: "policy", title: "De-Ba'athification", titleAr: "اجتثاث البعث",
+    tip: "De-Ba'athification and the disbanding of the army collapsed the Sunni administrative class. Many Sunnis read this as de-Sunnification.",
+    tipAr: "أدى اجتثاث البعث وحل الجيش إلى انهيار الطبقة الإدارية السنية. وقرأه كثير من السنة اجتثاثا للسنة." },
+  { year: 2006, kind: "violence", title: "Samarra shrine bombing", titleAr: "تفجير مرقد سامراء",
+    tip: "The bombing of the Al-Askari shrine in February 2006 triggered full sectarian war in Baghdad.",
+    tipAr: "فجر تفجير مرقد العسكري في شباط 2006 حربا طائفية شاملة في بغداد." }
+];
+
+/* ================= RENDER ================= */
+
+var COLORS = {
+  muslim: "#009E73", christian: "#56B4E9", jewish: "#CC79A7", mandaean: "#403c36", all: "#403c36",
+  sunni: "#E69F00", shia: "#0072B2", nonmuslim: "#4d4a45",
+  violence: "#D55E00", policy: "#403c36", coop: "#009E73", unrest: "#D55E00"
+};
+
+var LANG = "en";
+var I18N = {
+  title: { en: "The Religious History of Baghdad", ar: "التاريخ الديني لبغداد" },
+  sub: { en: "762 to 2026 · rulers, faiths, and sectarian conflict · lecture data checked against Marozzi and academic sources · hover anything for its source note",
+         ar: "762 إلى 2026 · الحكام والأديان والصراع الطائفي · بيانات المحاضرة مدققة وفق مروزي ومصادر أكاديمية · مرر المؤشر فوق أي عنصر لملاحظته المصدرية" },
+  footnote: { en: "Base figures come from the Timeline of Baghdad and Peoples of Baghdad lecture pages, verified against Marozzi's Baghdad, Encyclopaedia Iranica, and other academic sources. Corrections applied where scholarship disagreed, see the verification log. Pre-modern shares are scholarly reconstructions at era resolution. Small Mandaean and other communities are noted with markers rather than bands. Christian share is first quantified from the 833 to 946 era. Works cited at the bottom of the page.",
+              ar: "تستند الأرقام الأساسية إلى صفحتي الخط الزمني لبغداد وشعوب بغداد، وقد دققت وفق كتاب مروزي عن بغداد والموسوعة الإيرانية ومصادر أكاديمية أخرى، مع تصويبات حيث خالفها البحث العلمي، انظر سجل التدقيق. النسب قبل الحديثة إعادة بناء علمية بدقة الحقب. الجماعات الصغيرة كالمندائيين مشار إليها بعلامات لا بأشرطة. نسبة المسيحيين مقدرة لأول مرة من حقبة 833-946. قائمة المصادر في أسفل الصفحة." },
+  wcTitle: { en: "Works Cited", ar: "المصادر" },
+  wcNote: { en: "Sources actually consulted in building and verifying this chart. Access dates are given for online sources. Where a document's full publication details could not be confirmed, the entry carries only what could be verified, nothing has been inferred.",
+            ar: "المصادر التي جرى الرجوع إليها فعلا في بناء هذا المخطط وتدقيقه. تواريخ الوصول مثبتة للمصادر الإلكترونية. وحيث تعذر تأكيد بيانات النشر كاملة اقتصر القيد على ما أمكن التحقق منه دون أي استنتاج. تبقى القيود نفسها بالإنجليزية." },
+  wgBooks: { en: "Books", ar: "كتب" },
+  wgRef: { en: "Reference works", ar: "موسوعات مرجعية" },
+  wgJournal: { en: "Journal articles and scholarly chapters", ar: "مقالات وفصول علمية" },
+  wgReports: { en: "Reports, testimony, and documents", ar: "تقارير وشهادات ووثائق" },
+  secFaiths: { en: "RELIGIONS OF THE CITY", ar: "أديان المدينة" },
+  secSect: { en: "SUNNI AND SHIA", ar: "السنة والشيعة" },
+  rowComposition: { en: "COMPOSITION", ar: "التركيبة" },
+  rowEvents: { en: "EVENTS", ar: "الأحداث" },
+  rowRulers: { en: "RULERS", ar: "الحكام" },
+  rowShare: { en: "SHIA SHARE", ar: "نسبة الشيعة" },
+  rowConflict: { en: "CONFLICT", ar: "الصراع" },
+  labSunni: { en: "Sunni", ar: "السنة" },
+  labShia: { en: "Shia", ar: "الشيعة" },
+  labMuslim: { en: "Muslim", ar: "مسلمون" },
+  labJewish: { en: "Jewish", ar: "اليهود" },
+  labChristian: { en: "Christian", ar: "المسيحيون" },
+  labSunniOther: { en: "Sunni and other Muslim", ar: "السنة وسائر المسلمين" },
+  eraEst: { en: "era-level estimates", ar: "تقديرات على مستوى الحقب" },
+  noEstRot: { en: "no estimate in the lecture data", ar: "لا تقدير في بيانات المحاضرة" },
+  noEstTitle: { en: "No sect estimate", ar: "لا تقدير مذهبي" },
+  noEstBody: { en: "The lecture data gives no Sunni and Shia population split for the city's first two centuries.",
+               ar: "لا تعطي بيانات المحاضرة تقسيما سنيا شيعيا لسكان المدينة في قرنيها الأولين." },
+  splitTitle: { en: "Estimated split", ar: "التقسيم التقديري" },
+  to: { en: " to ", ar: " إلى " },
+  sectSunni: { en: "Sunni rule.", ar: "حكم سني." },
+  sectShia: { en: "Shia rule.", ar: "حكم شيعي." },
+  sectNon: { en: "Non-Muslim rule.", ar: "حكم غير مسلم." },
+  sectDisp: { en: "Shia-leaning rule, sect disputed in scholarship.", ar: "حكم ذو ميول شيعية، مذهب محل خلاف علمي." },
+  sectNone: { en: "No sect assigned.", ar: "بلا مذهب محدد." },
+  chrNA: { en: "Christian share not separately estimated for this era.", ar: "لا يوجد تقدير مستقل لنسبة المسيحيين في هذه الحقبة." },
+  gFaiths: { en: "Faiths", ar: "الأديان" },
+  gRule: { en: "Rule", ar: "الحكم" },
+  gEvents: { en: "Events", ar: "الأحداث" },
+  cMuslimU: { en: "Muslim, split unrecorded", ar: "مسلمون، التقسيم غير مسجل" },
+  cNonMuslim: { en: "Non-Muslim", ar: "غير مسلم" },
+  cDisputed: { en: "Shia-leaning, disputed", ar: "ميول شيعية، محل خلاف" },
+  cNone: { en: "No sect assigned", ar: "بلا مذهب محدد" },
+  cViolence: { en: "Violence", ar: "عنف" },
+  cPolicy: { en: "Decree or policy", ar: "مرسوم أو سياسة" },
+  cExodus: { en: "Departure or collapse", ar: "رحيل أو انهيار" },
+  cCoop: { en: "Cooperation or civic moment", ar: "تعاون أو لحظة مدنية" },
+  cUnrest: { en: "Unrest", ar: "اضطراب" }
+};
+function t(k) { var v = I18N[k]; return v ? (LANG === "ar" ? v.ar : v.en) : k; }
+function LV(obj, base) { return LANG === "ar" ? (obj[base + "Ar"] || obj[base]) : obj[base]; }
+function dspan(a, b) { return a + t("to") + b; }
+
+var svg = document.getElementById("chart");
+var tip = document.getElementById("tip");
+var NS = "http://www.w3.org/2000/svg";
+var PAD_L = 118, PAD_R = 34;
+
+function el(name, attrs, parent) {
+  var n = document.createElementNS(NS, name);
+  for (var k in attrs) n.setAttribute(k, attrs[k]);
+  (parent || svg).appendChild(n);
+  return n;
+}
+function showTip(evt, title, date, body) {
+  tip.setAttribute("dir", LANG === "ar" ? "rtl" : "ltr");
+  tip.style.textAlign = LANG === "ar" ? "right" : "left";
+  tip.style.fontFamily = LANG === "ar" ? "'Amiri', var(--sans)" : "var(--sans)";
+  tip.innerHTML = "";
+  var t = document.createElement("div"); t.className = "t-title"; t.textContent = title; tip.appendChild(t);
+  if (date) { var d = document.createElement("div"); d.className = "t-date"; d.textContent = date; tip.appendChild(d); }
+  var b = document.createElement("div"); b.textContent = body; tip.appendChild(b);
+  tip.style.display = "block";
+  moveTip(evt);
+}
+function moveTip(evt) {
+  var pad = 14;
+  var w = tip.offsetWidth, h = tip.offsetHeight;
+  var x = evt.clientX + pad, y = evt.clientY + pad;
+  if (x + w > window.innerWidth - 8) x = evt.clientX - w - pad;
+  if (y + h > window.innerHeight - 8) y = evt.clientY - h - pad;
+  tip.style.left = x + "px";
+  tip.style.top = y + "px";
+}
+function hideTip() { tip.style.display = "none"; }
+function hover(node, title, date, body) {
+  node.style.cursor = "default";
+  node.addEventListener("mouseenter", function(e) { showTip(e, title, date, body); });
+  node.addEventListener("mousemove", moveTip);
+  node.addEventListener("mouseleave", hideTip);
+}
+
+function markerPath(kind, cx, cy, r) {
+  if (kind === "policy") {
+    return "M" + (cx - r) + " " + (cy - r) + " h" + (2 * r) + " v" + (2 * r) + " h" + (-2 * r) + " Z";
+  }
+  if (kind === "exodus") {
+    return "M" + (cx - r) + " " + (cy - r * 0.8) + " L" + (cx + r) + " " + (cy - r * 0.8) + " L" + cx + " " + (cy + r) + " Z";
+  }
+  /* diamond for violence and unrest */
+  return "M" + cx + " " + (cy - r * 1.25) + " L" + (cx + r * 1.25) + " " + cy + " L" + cx + " " + (cy + r * 1.25) + " L" + (cx - r * 1.25) + " " + cy + " Z";
+}
+
+function render() {
+  var wrap = document.getElementById("chart-wrap");
+  var W = wrap.clientWidth, H = wrap.clientHeight;
+  if (W < 100 || H < 100) return;
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  svg.innerHTML = "";
+
+  var defs = el("defs", {});
+  var pat = el("pattern", { id: "hatch", width: 7, height: 7, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)" }, defs);
+  el("rect", { width: 7, height: 7, fill: "#efede8" }, pat);
+  el("rect", { width: 2.2, height: 7, fill: "#c9c5bc" }, pat);
+  var patB = el("pattern", { id: "hatchBlue", width: 7, height: 7, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)" }, defs);
+  el("rect", { width: 7, height: 7, fill: "#b3d3e8" }, patB);
+  el("rect", { width: 2.6, height: 7, fill: "#0072B2" }, patB);
+
+  var x = function(year) { return PAD_L + ((year - T0) / (T1 - T0)) * (W - PAD_L - PAD_R); };
+
+  /* Row geometry */
+  var aTop = Math.round(H * 0.045), aBot = Math.round(H * 0.330);
+  var aEvTop = aBot + 6, aEvBot = aEvTop + Math.round(H * 0.055);
+  var rTop = aEvBot + Math.round(H * 0.055), rBot = rTop + Math.round(H * 0.062);
+  var sTop = rBot + 8, sBot = Math.round(H * 0.845);
+  var cTop = sBot + 6, cBot = cTop + Math.round(H * 0.062);
+  var axisY = cBot + 8;
+
+  /* Century gridlines */
+  for (var yr = 800; yr <= 2000; yr += 100) {
+    el("line", { x1: x(yr), x2: x(yr), y1: aTop, y2: axisY, stroke: "var(--grid)", "stroke-width": 1 });
+  }
+
+  /* Axis */
+  el("line", { x1: PAD_L, x2: W - PAD_R, y1: axisY, y2: axisY, stroke: "var(--axis)", "stroke-width": 1 });
+  var ticks = [762, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2026];
+  ticks.forEach(function(yr) {
+    el("line", { x1: x(yr), x2: x(yr), y1: axisY, y2: axisY + 4, stroke: "var(--axis)", "stroke-width": 1 });
+    var anchor = "middle";
+    if (yr === 762) anchor = "start";
+    if (yr === 2026) anchor = "end";
+    if (yr === 800 && x(800) - x(762) < 34) return;
+    if (yr === 2000 && x(2026) - x(2000) < 34) return;
+    var t = el("text", { x: x(yr), y: axisY + 16, "text-anchor": anchor, "font-size": 11.5, fill: "var(--ink-3)" });
+    t.textContent = yr;
+  });
+
+  function rowLabel(y, text) {
+    var t = el("text", { x: 12, y: y, "text-anchor": "start", "font-size": 10.5, fill: "var(--ink-3)", "font-weight": 700, "letter-spacing": "0.07em" });
+    t.textContent = text;
+  }
+
+  /* ===== Panel A. Faith composition ===== */
+  rowLabel(aTop + (aBot - aTop) / 2 + 3, t("rowComposition"));
+  var aH = aBot - aTop;
+  var ay = function(pct) { return aBot - (pct / 100) * aH; };
+  [0, 50, 100].forEach(function(v) {
+    var t = el("text", { x: PAD_L - 12, y: ay(v) + 3.5, "text-anchor": "end", "font-size": 9.5, fill: "#b3b0a8" });
+    t.textContent = v + "%";
+  });
+
+  function compText(era) {
+    var jews = era.jews || 0, chr = era.chr || 0;
+    var rest = Math.round((100 - (era.shia || 0) - jews - chr) * 10) / 10;
+    var s;
+    if (LANG === "ar") {
+      if (era.shia != null) {
+        s = "تقدير على مستوى الحقبة. الشيعة نحو " + era.shia + " بالمئة، والسنة وسائر المسلمين نحو " + rest + " بالمئة، واليهود " + jews + " بالمئة" + (era.chr === null ? "، ولا تقدير مستقل للمسيحيين." : "، والمسيحيون " + chr + " بالمئة.");
+      } else {
+        s = "المسلمون وغير المصنفين " + (100 - jews - chr) + " بالمئة، واليهود " + jews + " بالمئة" + (era.chr === null ? "، ولا تقدير مستقل للمسيحيين." : "، والمسيحيون " + chr + " بالمئة.");
+      }
+      return s + " " + (era.tipAr || era.tip);
+    }
+    if (era.shia != null) {
+      s = "Era-level estimate. Shia about " + era.shia + " percent, Sunni and other Muslim about " + rest + " percent, Jewish " + jews + " percent" + (era.chr === null ? ", Christian share not separately estimated." : ", Christian " + chr + " percent.");
+    } else {
+      s = "Muslim and other " + (100 - jews - chr) + " percent, Jewish " + jews + " percent" + (era.chr === null ? ", Christian share not separately estimated." : ", Christian " + chr + " percent.");
+    }
+    return s + " " + era.tip;
+  }
+
+  FAITH_ERAS.forEach(function(era) {
+    var x0 = x(era.from) + 1, x1 = x(era.to) - 1;
+    var wSeg = Math.max(1, x1 - x0);
+    var jews = era.jews || 0, chr = era.chr || 0;
+    var stack = [];
+    if (chr > 0) stack.push({ p: chr, f: COLORS.christian, o: 0.9 });
+    if (jews > 0) stack.push({ p: jews, f: COLORS.jewish, o: 0.9 });
+    if (era.shia != null) {
+      stack.push({ p: era.shia, f: COLORS.shia, o: 0.8 });
+      stack.push({ p: 100 - era.shia - jews - chr, f: COLORS.sunni, o: 0.78 });
+    } else {
+      stack.push({ p: 100 - jews - chr, f: COLORS.muslim, o: 0.55 });
+    }
+    var dateStr = dspan(era.from, era.to);
+    var body = compText(era);
+    var cum = 0;
+    stack.forEach(function(s) {
+      var yLow = ay(cum); cum += s.p; var yHigh = ay(cum);
+      var hSeg = yLow - yHigh - 2;
+      if (hSeg < 1) return;
+      var r = el("rect", { x: x0, y: yHigh + 1, width: wSeg, height: hSeg, fill: s.f, opacity: s.o });
+      hover(r, LV(era, "name"), dateStr, body);
+    });
+    if (era.chr === null) {
+      var hr = el("rect", { x: x0, y: aTop, width: wSeg, height: 10, fill: "url(#hatch)", opacity: 0.9 });
+      hover(hr, LV(era, "name"), dateStr, t("chrNA"));
+    }
+  });
+
+  /* Direct labels for panel A (relief for low-contrast colors) */
+  var labSunA = el("text", { x: x(1150), y: ay(74), "text-anchor": "middle", "font-size": 12, "font-weight": 700, fill: "#5c4a00", "pointer-events": "none" });
+  labSunA.textContent = t("labSunni");
+  var labShiaA = el("text", { x: x(1150), y: ay(33), "text-anchor": "middle", "font-size": 12, "font-weight": 700, fill: "#ffffff", "pointer-events": "none" });
+  labShiaA.textContent = t("labShia");
+  var labMuslim = el("text", { x: x(854), y: ay(55), "text-anchor": "middle", "font-size": 11.5, "font-weight": 700, fill: "#00654a", "pointer-events": "none" });
+  labMuslim.textContent = t("labMuslim");
+  var labJew = el("text", { x: x(1874), y: ay(26), "text-anchor": "middle", "font-size": 11.5, "font-weight": 700, fill: "#6d2c4f", "pointer-events": "none" });
+  labJew.textContent = t("labJewish");
+  var labChr = el("text", { x: x(1680), y: ay(3) + 3.5, "text-anchor": "middle", "font-size": 10.5, "font-weight": 700, fill: "#1d5c85", "pointer-events": "none" });
+  labChr.textContent = t("labChristian");
+
+  /* Panel A event markers */
+  rowLabel(aEvTop + (aEvBot - aEvTop) / 2 + 3, t("rowEvents"));
+  var lastAx = -999;
+  var aEvMidHi = aEvTop + (aEvBot - aEvTop) * 0.32;
+  var aEvMidLo = aEvTop + (aEvBot - aEvTop) * 0.72;
+  var aRowFlip = false;
+  FAITH_EVENTS.forEach(function(ev) {
+    var cx = x(ev.year);
+    if (ev.span) {
+      el("rect", { x: x(ev.span[0]), y: aEvTop + 2, width: Math.max(2, x(ev.span[1]) - x(ev.span[0])), height: aEvBot - aEvTop - 4, fill: COLORS[ev.comm], opacity: 0.18, rx: 2 });
+    }
+    aRowFlip = (cx - lastAx < 22) ? !aRowFlip : false;
+    lastAx = cx;
+    var cy = aRowFlip ? aEvMidLo : aEvMidHi;
+    var p = el("path", { d: markerPath(ev.kind, cx, cy, 5), fill: COLORS[ev.comm], stroke: "#fcfcfb", "stroke-width": 1.4 });
+    var hit = el("circle", { cx: cx, cy: cy, r: 10, fill: "transparent" });
+    var dateStr = ev.span ? dspan(ev.span[0], ev.span[1]) : String(ev.year);
+    hover(hit, LV(ev, "title"), dateStr, LV(ev, "tip"));
+  });
+
+  /* ===== Panel B. Rulers strip ===== */
+  rowLabel(rTop + (rBot - rTop) / 2 + 3, t("rowRulers"));
+  var secTitle = el("text", { x: PAD_L, y: rTop - 8, "font-size": 11, "font-weight": 700, fill: "var(--ink-2)", "letter-spacing": "0.06em" });
+  secTitle.textContent = t("secSect");
+  var secTitleA = el("text", { x: PAD_L, y: aTop - 8, "font-size": 11, "font-weight": 700, fill: "var(--ink-2)", "letter-spacing": "0.06em" });
+  secTitleA.textContent = t("secFaiths");
+
+  RULERS.forEach(function(r) {
+    var x0 = x(r.from) + 0.5, x1 = x(r.to) - 0.5;
+    var wSeg = Math.max(1.5, x1 - x0);
+    var fill = r.sect === "sunni" ? COLORS.sunni : r.sect === "shia" ? COLORS.shia : r.sect === "nonmuslim" ? COLORS.nonmuslim : r.sect === "disputed" ? "url(#hatchBlue)" : "url(#hatch)";
+    var rect = el("rect", { x: x0, y: rTop, width: wSeg, height: rBot - rTop, fill: fill, rx: 2 });
+    var sectWord = r.sect === "sunni" ? t("sectSunni") : r.sect === "shia" ? t("sectShia") : r.sect === "nonmuslim" ? t("sectNon") : r.sect === "disputed" ? t("sectDisp") : t("sectNone");
+    hover(rect, LV(r, "name"), dspan(r.from, r.to), sectWord + " " + LV(r, "tip"));
+    var shortLab = LANG === "ar" ? (r.shortAr || (r.nameAr || r.name).split(" ")[0]) : (r.short || r.name.split(" ")[0]);
+    if (wSeg > shortLab.length * 6.8 + 8) {
+      var lab = el("text", { x: (x0 + x1) / 2, y: rTop + (rBot - rTop) / 2 + 4, "text-anchor": "middle", "font-size": 10.5, "font-weight": 700, fill: (r.sect === "unspecified" || r.sect === "disputed") ? "#3d3a35" : "#ffffff", "pointer-events": "none" });
+      lab.textContent = shortLab;
+    }
+  });
+
+  /* ===== Panel B. Shia share chart ===== */
+  rowLabel(sTop + 12, t("rowShare"));
+  var sH = sBot - sTop;
+  var sy = function(pct) { return sBot - (pct / 100) * sH; };
+  [0, 25, 50, 75, 100].forEach(function(v) {
+    el("line", { x1: PAD_L, x2: W - PAD_R, y1: sy(v), y2: sy(v), stroke: "var(--grid)", "stroke-width": v === 50 ? 0 : 1 });
+    var t = el("text", { x: PAD_L - 12, y: sy(v) + 3.5, "text-anchor": "end", "font-size": 9.5, fill: "#b3b0a8" });
+    t.textContent = v + "%";
+  });
+  el("line", { x1: PAD_L, x2: W - PAD_R, y1: sy(50), y2: sy(50), stroke: "var(--ink-3)", "stroke-width": 1, "stroke-dasharray": "3 4" });
+
+  /* no data before 946 */
+  var nd = el("rect", { x: x(762), y: sTop, width: x(946) - x(762), height: sH, fill: "url(#hatch)", opacity: 0.55 });
+  hover(nd, t("noEstTitle"), dspan(762, 946), t("noEstBody"));
+  var ndt = el("text", { x: (x(762) + x(946)) / 2, y: sTop + sH / 2, "text-anchor": "middle", "font-size": 10.5, fill: "var(--ink-3)", transform: "rotate(-90 " + ((x(762) + x(946)) / 2) + " " + (sTop + sH / 2) + ")" });
+  ndt.textContent = t("noEstRot");
+
+  /* era steps 946 to 1500 */
+  SHIA_ERA_STEPS.forEach(function(s) {
+    var x0 = x(s.from), wSeg = x(s.to) - x(s.from);
+    var rSh = el("rect", { x: x0, y: sy(s.shia), width: wSeg, height: sBot - sy(s.shia), fill: COLORS.shia, opacity: 0.45 });
+    var rSu = el("rect", { x: x0, y: sTop, width: wSeg, height: sy(100 - s.sunni) - sTop, fill: COLORS.sunni, opacity: 0.45 });
+    var body = LANG === "ar"
+      ? "تقدير على مستوى الحقبة. الشيعة نحو " + s.shia + " بالمئة والسنة نحو " + s.sunni + " بالمئة والباقي من غير المسلمين."
+      : "Era-level estimate. Shia about " + s.shia + " percent, Sunni about " + s.sunni + " percent, non-Muslim the remainder.";
+    hover(rSh, LV(s, "name"), dspan(s.from, s.to), body);
+    hover(rSu, LV(s, "name"), dspan(s.from, s.to), body);
+  });
+  var stepNote = el("text", { x: (x(946) + x(1500)) / 2, y: sy(50) - 8, "text-anchor": "middle", "font-size": 10, fill: "var(--ink-3)" });
+  stepNote.textContent = t("eraEst");
+
+  /* continuous series 1500 to 2024 */
+  var dShia = "M " + x(SHIA_SHARE[0].y) + " " + sBot + " ";
+  SHIA_SHARE.forEach(function(p) { dShia += "L " + x(p.y) + " " + sy(p.shia) + " "; });
+  dShia += "L " + x(2026) + " " + sy(SHIA_SHARE[SHIA_SHARE.length - 1].shia) + " L " + x(2026) + " " + sBot + " Z";
+  el("path", { d: dShia, fill: COLORS.shia, opacity: 0.82 });
+  var dSun = "M " + x(SHIA_SHARE[0].y) + " " + sTop + " ";
+  SHIA_SHARE.forEach(function(p) { dSun += "L " + x(p.y) + " " + sy(p.shia) + " "; });
+  dSun += "L " + x(2026) + " " + sy(SHIA_SHARE[SHIA_SHARE.length - 1].shia) + " L " + x(2026) + " " + sTop + " Z";
+  el("path", { d: dSun, fill: COLORS.sunni, opacity: 0.78 });
+
+  var labShia = el("text", { x: x(1962), y: sy(24), "text-anchor": "middle", "font-size": 12.5, "font-weight": 700, fill: "#ffffff", "pointer-events": "none" });
+  labShia.textContent = t("labShia");
+  var labSun = el("text", { x: x(1700), y: sy(62), "text-anchor": "middle", "font-size": 12.5, "font-weight": 700, fill: "#5c4a00", "pointer-events": "none" });
+  labSun.textContent = t("labSunniOther");
+  var lab50 = el("text", { x: W - PAD_R - 4, y: sy(50) - 5, "text-anchor": "end", "font-size": 9.5, fill: "var(--ink-3)" });
+  lab50.textContent = "50%";
+
+  /* crosshair over the continuous series */
+  var cross = el("line", { x1: 0, x2: 0, y1: sTop, y2: sBot, stroke: "var(--ink-2)", "stroke-width": 1, "stroke-dasharray": "2 3", visibility: "hidden" });
+  var hitShare = el("rect", { x: x(1500), y: sTop, width: x(2026) - x(1500), height: sH, fill: "transparent" });
+  hitShare.addEventListener("mousemove", function(e) {
+    var rect = svg.getBoundingClientRect();
+    var px = (e.clientX - rect.left) * (W / rect.width);
+    var yr = T0 + ((px - PAD_L) / (W - PAD_L - PAD_R)) * (T1 - T0);
+    var best = SHIA_SHARE[0];
+    SHIA_SHARE.forEach(function(p) { if (Math.abs(p.y - yr) < Math.abs(best.y - yr)) best = p; });
+    cross.setAttribute("x1", x(best.y)); cross.setAttribute("x2", x(best.y));
+    cross.setAttribute("visibility", "visible");
+    var cBody = LANG === "ar"
+      ? "الشيعة نحو " + best.shia + " بالمئة، والسنة وسائر المسلمين نحو " + (100 - best.shia) + " بالمئة."
+      : "Shia about " + best.shia + " percent. Sunni and other Muslim about " + (100 - best.shia) + " percent.";
+    showTip(e, t("splitTitle") + (LANG === "ar" ? "، " : ", ") + best.y, "", cBody);
+  });
+  hitShare.addEventListener("mouseleave", function() { cross.setAttribute("visibility", "hidden"); hideTip(); });
+  svg.appendChild(cross);
+
+  /* ===== Panel B. Conflict strip ===== */
+  rowLabel(cTop + (cBot - cTop) / 2 + 3, t("rowConflict"));
+  CONFLICT_SPANS.forEach(function(s) {
+    var x0 = x(s.from), wSeg = Math.max(3, x(s.to) - x(s.from));
+    var r = el("rect", { x: x0, y: cTop + 2, width: wSeg, height: cBot - cTop - 4, fill: s.kind === "violence" ? COLORS.violence : COLORS.policy, opacity: 0.22, rx: 3 });
+    hover(r, LV(s, "title"), dspan(s.from, s.to), LV(s, "tip"));
+    var spanLab = LANG === "ar" ? (s.labelAr || s.label) : s.label;
+    if (spanLab && wSeg > 120) {
+      var st = el("text", { x: x0 + wSeg / 2, y: cTop + (cBot - cTop) / 2 + 3.5, "text-anchor": "middle", "font-size": 10, fill: "var(--ink-2)", "pointer-events": "none" });
+      st.textContent = spanLab;
+    }
+  });
+  var lastCx = -999, cRowFlip = false;
+  var cMidHi = cTop + (cBot - cTop) * 0.32;
+  var cMidLo = cTop + (cBot - cTop) * 0.72;
+  CONFLICT_EVENTS.forEach(function(ev) {
+    var cx = x(ev.year);
+    cRowFlip = (cx - lastCx < 22) ? !cRowFlip : false;
+    lastCx = cx;
+    var cy = cRowFlip ? cMidLo : cMidHi;
+    var isOpen = ev.kind === "unrest";
+    var isCoop = ev.kind === "coop";
+    var p;
+    if (isCoop) {
+      p = el("circle", { cx: cx, cy: cy, r: 5, fill: COLORS.coop, stroke: "#fcfcfb", "stroke-width": 1.4 });
+    } else {
+      p = el("path", { d: markerPath(ev.kind === "policy" ? "policy" : "violence", cx, cy, 4.6),
+        fill: isOpen ? "#fcfcfb" : COLORS[ev.kind], stroke: isOpen ? COLORS.violence : "#fcfcfb", "stroke-width": 1.4 });
+    }
+    var hit = el("circle", { cx: cx, cy: cy, r: 10, fill: "transparent" });
+    hover(hit, LV(ev, "title"), String(ev.year), LV(ev, "tip"));
+  });
+}
+
+/* ================= LEGEND ================= */
+function buildLegend() {
+  var lg = document.getElementById("legend");
+  lg.innerHTML = "";
+  function group(title, items) {
+    var g = document.createElement("div"); g.className = "legend-group";
+    var gt = document.createElement("span"); gt.className = "gt"; gt.textContent = title; g.appendChild(gt);
+    items.forEach(function(it) {
+      var c = document.createElement("span"); c.className = "chip";
+      c.innerHTML = it.html;
+      var lbl = document.createElement("span"); lbl.textContent = it.label;
+      c.appendChild(lbl);
+      g.appendChild(c);
+    });
+    lg.appendChild(g);
+  }
+  function sw(color) { return '<span class="sw" style="background:' + color + '"></span>'; }
+  function shp(d, fill, stroke) {
+    return '<svg class="shape" viewBox="0 0 14 14"><path d="' + d + '" fill="' + fill + '"' + (stroke ? ' stroke="' + stroke + '" stroke-width="1.6"' : '') + '/></svg>';
+  }
+  group(t("gFaiths"), [
+    { html: sw("#E69F00"), label: t("labSunni") },
+    { html: sw("#0072B2"), label: t("labShia") },
+    { html: sw("#009E73"), label: t("cMuslimU") },
+    { html: sw("#56B4E9"), label: t("labChristian") },
+    { html: sw("#CC79A7"), label: t("labJewish") }
+  ]);
+  group(t("gRule"), [
+    { html: sw("#4d4a45"), label: t("cNonMuslim") },
+    { html: '<span class="sw" style="background:repeating-linear-gradient(45deg,#0072B2 0 2px,#b3d3e8 2px 5px)"></span>', label: t("cDisputed") },
+    { html: '<span class="sw hatch"></span>', label: t("cNone") }
+  ]);
+  group(t("gEvents"), [
+    { html: shp("M7 1 L13 7 L7 13 L1 7 Z", "#D55E00"), label: t("cViolence") },
+    { html: shp("M2.5 2.5 h9 v9 h-9 Z", "#403c36"), label: t("cPolicy") },
+    { html: shp("M2 3 L12 3 L7 12 Z", "#403c36"), label: t("cExodus") },
+    { html: '<svg class="shape" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5" fill="#009E73"/></svg>', label: t("cCoop") },
+    { html: shp("M7 1 L13 7 L7 13 L1 7 Z", "#fcfcfb", "#D55E00"), label: t("cUnrest") }
+  ]);
+}
+
+/* ================= LANGUAGE ================= */
+function setLang(lang) {
+  LANG = lang === "ar" ? "ar" : "en";
+  document.body.setAttribute("data-lang", LANG);
+  document.documentElement.setAttribute("lang", LANG);
+  try { localStorage.setItem("hatra_baghdad_lang", LANG); } catch (e) {}
+  document.title = t("title");
+  document.getElementById("page-title").textContent = t("title");
+  document.getElementById("page-sub").textContent = t("sub");
+  document.getElementById("page-footnote").textContent = t("footnote");
+  document.getElementById("wc-title").textContent = t("wcTitle");
+  document.getElementById("wc-note").textContent = t("wcNote");
+  document.getElementById("wg-books").textContent = t("wgBooks");
+  document.getElementById("wg-ref").textContent = t("wgRef");
+  document.getElementById("wg-journal").textContent = t("wgJournal");
+  document.getElementById("wg-reports").textContent = t("wgReports");
+  document.querySelectorAll(".hatra-banner-link").forEach(function(link) {
+    var en = link.getAttribute("data-en"), ar = link.getAttribute("data-ar");
+    if (LANG === "ar" && ar) {
+      link.textContent = ar;
+      link.setAttribute("lang", "ar");
+      link.setAttribute("dir", "rtl");
+    } else if (en) {
+      link.textContent = en;
+      link.removeAttribute("lang");
+      link.removeAttribute("dir");
+    }
+  });
+  document.querySelectorAll(".hatra-banner-lang").forEach(function(btn) {
+    btn.classList.toggle("is-active", btn.getAttribute("data-banner-lang") === LANG);
+  });
+  buildLegend();
+  render();
+}
+document.querySelectorAll(".hatra-banner-lang").forEach(function(btn) {
+  btn.addEventListener("click", function() { setLang(btn.getAttribute("data-banner-lang")); });
+});
+
+var resizeTimer = null;
+window.addEventListener("resize", function() {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(render, 120);
+});
+var storedLang = null;
+try { storedLang = localStorage.getItem("hatra_baghdad_lang"); } catch (e) {}
+var urlLang = /[?&]lang=(ar|en)/.exec(window.location.search);
+setLang(urlLang ? urlLang[1] : (storedLang === "ar" ? "ar" : "en"));
+</script>
+</body>
+</html>
