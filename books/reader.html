@@ -232,7 +232,7 @@
     "use strict";
 
     var params = new URLSearchParams(window.location.search);
-    var bookKey = params.get("book") || "siya_evine";
+    var bookKey = params.get("book") || localStorage.getItem("reader_last_book") || "siya_evine";
 
     var BOOK_MD_URL = "/books/mds/siya_evine.md";
     var SRC_LANG = "ku";
@@ -250,7 +250,19 @@
       BOOK_MD_URL = "/books/mds/qewl_u_beyten_ezdiyan.md";
       SRC_LANG = "ku";
       BOOK_TITLE = "Qewl û Beytên Êzdîyan";
+    } else if (bookKey === "farsi_book") {
+      BOOK_MD_URL = "/books/mds/farsi_book.md";
+      SRC_LANG = "fa";
+      BOOK_TITLE = "کتاب فارسی";
+    } else if (bookKey === "hinker_2") {
+      BOOK_MD_URL = "/books/mds/hinker_2.md";
+      SRC_LANG = "ku";
+      BOOK_TITLE = "Hînker 2";
     }
+
+    // Remember the book that is being read so a visit without a ?book= param
+    // reopens the last one, the way a subtitle track resumes its own show.
+    localStorage.setItem("reader_last_book", bookKey);
 
     document.title = BOOK_TITLE;
     var titleEl = document.getElementById("title");

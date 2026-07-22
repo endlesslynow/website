@@ -82,6 +82,35 @@ One entry per book. Each entry holds the source file, the settings used at regis
 
 The markdown file currently ends at numbered pair 371, at the bottom of page 26, ending at Stanza 8 of Beyta Behza-I. Everything up to that point is complete, meaning the title, back cover, biographies, the Pêşgotin (which closes with the authors' signature on page 23), the Du Gotin second foreword on page 24, and then the first main text Beyta Behza-I, whose heading and Stanzas 1 through 3 are on page 25 (the heading is pair 332) and Stanzas 4 through 8 on page 26. The next chunk resumes at page 27 with Stanza 9 of Beyta Behza-I.
 
+## کتاب فارسی
+
+- Key: `farsi_book`
+- Source text: `C:\Users\Zachar\Documents\Hatra\obsdian_vaults\Zachar\3 - Language Learning\Farsi Book.md`
+- Output: `books/mds/farsi_book.md`
+- Registered in `reader.html` with `SRC_LANG` = `fa` and `BOOK_TITLE` = `کتاب فارسی`, and listed in `index.html`.
+- Structure. A graded reader of 12 numbered passages. Each passage is one reader paragraph, so the paragraph numbers on the left run 1 through 12. Inside each passage the sentences are numbered continuously across the whole book, Farsi paired with its English gloss, so each sentence is tappable on its own. The passages are separated by a double blank line in the markdown.
+- OCR quirk. In the source Translations section, passages 2 through 6 appear twice. The first copy was used and the duplicate dropped. The Farsi for passages 1 through 6 is one sentence per line in the source; passages 7 through 12 are wrapped prose and were split by sentence.
+- The English is the literal learning gloss carried over from the source, including its parenthetical literal notes such as (thermometer) and (take off).
+
+### Progress
+
+Complete. All 12 passages, 130 sentence pairs, are in the markdown file. This is the whole source, so there is nothing left to append.
+
+## Hînker 2
+
+- Key: `hinker_2`
+- Source text: `C:\Users\Zachar\Zotero\storage\NDE2SLEB\.zotero-ft-cache` (full text cache of Hînker, Asta Duyemîn by Ronayî Onen and Samî Tan)
+- Output: `books/mds/hinker_2.md`
+- Registered in `reader.html` with `SRC_LANG` = `ku` and `BOOK_TITLE` = `Hînker 2`, and listed in `index.html`.
+- Scope agreed with the user. Not the whole coursebook, only the reading texts from page 64 to the end of Unit 8 that are full texts longer than five sentences. Excluded by agreement were the multiple choice quizzes (Kî dizane), the fill in the blank and conjugation exercises (Dendikê alûyê, Xelata Nobelê), the short passive voice opinion snippets (Pêşeroja ragihandinê), and all comprehension, true false, matching and grammar table material. Three dialogue texts (Bajar interview p78, Ravekirina cih p82, Çapemeniya kurdî p97) and the untitled p93 newspaper text were offered but the user chose not to include them.
+- The 19 texts, in order, with their source page: Vegera li welêt (64), Bûyereke ji dîrokê (66), Feqiyê Teyran (67), Rovî û qijîk (68), Ehmedê Xanî (71), Cîranên Amedê (77), Gera Perwînê li Stenbolê (80), Qada Îstasyona Trênê (81), Avahiya me (83), Odeya Hêlînê (84), Bajarê me (86), Wendy qala welatê xwe dike (87), Deriyên Sûrên Amedê (88), Ragihandin (90), Çîroka ragihandinê (92), Kompîtur û înternet (94), Radyo (98), Televîzyon (99), Cizîr dê bi şahiyên çandî rabe ser piyan (101).
+- Structure. Grouped by the three units (ROJÊN BERÊ, CIH Û WAR, RAGIHANDIN), each unit and each text carries a `##` heading pair, and prose is numbered by sentence with continuous numbering. The two poem stanzas and the quatrain in the Feqiyê Teyran and Ehmedê Xanî texts are kept whole as single verse units.
+- Fixed term choices. Regional place names stay Kurmanji as printed (Amed, Mêrdîn, Heskîf, Midyad, Bazîd, Agirî, Helebçe, Cizîr, and the descriptive gate names). Well known exonyms are used for countries, continents and world cities (Istanbul, London, Amsterdam, The Hague, Germany, Belgium, Europe, Britain). Genre and cultural words stay as themselves (dengbêj, qasid). Tengav is rendered as the Bosphorus. Koça dawîn is rendered as the final migration.
+
+### Progress
+
+Complete. All 19 texts, 283 sentence pairs across 307 numbered pairs including headings, are in the markdown file. This is the full agreed scope, so there is nothing left to append.
+
 
 
 
