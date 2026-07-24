@@ -125,6 +125,20 @@
     color: var(--text);
     margin: .6em 0;
   }
+  /* Right-to-left scripts (Persian, Arabic, ...) */
+  #reader[dir="rtl"] .para-body {
+    direction: rtl;
+    text-align: right;
+  }
+  #reader[dir="rtl"] .para-body.heading {
+    letter-spacing: 0; /* letter-spacing breaks cursive joining in Arabic script */
+  }
+  #reader[dir="rtl"] .para-num {
+    right: auto;
+    left: 100%;
+    margin-right: 0;
+    margin-left: 16px;
+  }
   @media (max-width: 800px) {
     .para-num {
       display: none;
@@ -292,6 +306,8 @@
     var WORD_RE = /[\p{L}\p{M}'’‑-]+/u;  // letters, marks, apostrophes, hyphen
 
     var readerEl = document.getElementById("reader");
+    var RTL_LANGS = ["fa", "ar", "he", "ur", "ps", "ckb", "sd", "ug"];
+    if (RTL_LANGS.indexOf(SRC_LANG) !== -1) readerEl.setAttribute("dir", "rtl");
     var popupEl = document.getElementById("popup");
     var sentenceTranslationEl = document.getElementById("sentence-translation");
     var progressEl = document.getElementById("progress");
