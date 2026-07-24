@@ -1947,3 +1947,726 @@
 
 650. J. Malcolm, di dîroka xwe ya Farisî de, ku di sala 1815'an de weşandiye, gelek caran behsa Şerefnameyê dike û hetta çend kurtebû yer
 650. J. Malcolm, in his Persian history, which he published in the year 1815, discusses the Şerefname many times and even several short events
+
+651. jî jê werdigre.
+651. he takes from it as well.
+
+652. Lê, gelek bi giringi negirtiye û bi dirêjahî li ser naveroka wê nesekiniye.
+652. But, he did not take it with much importance and did not dwell at length upon its content.
+
+653. Em dikarin bêjin ku heta sala 1826'an, Ewrûpiyan qîmeta Şerefnameyê nezanîne.
+653. We can say that until the year 1826, Europeans did not know the value of the Şerefname.
+
+654. Çunki, diqqeta rewşenbîrên wê nekêşaye.
+654. Because, it did not draw the attention of its intellectuals.
+
+655. Ez li vir bi xwe re dibînim vê rastiya han raxim ber çavan ku, di saya zanayên Rûsî de ev diyariya hêja pêşkêşî zanistiyê bûye (Binêre: Durn, Mekoyî Asyayî, beşa duduyan).
+655. I see it with myself here to lay out this very truth before the eyes that, in the shadow (thanks to) of Russian scholars this worthy gift has been presented to science (See: Dorn, Asiatic Museum, second part).
+
+656. Mr. Frach, kesê yekem bû ku di sala 1826'an de, bangek ji bo vê dîroka Kurdan derxist û kurtelêkolîn û şilovekirinek li ser nivîsand û di dawiyê de daxwaz kir ku ev dîroka girîng a Asyayê bê wergerandin.
+656. Mr. Fraehn, was the first person who in the year 1826, issued a call for this history of the Kurds and wrote a short research and analysis on it and in the end requested that this important history of Asia be translated.
+
+657. Ew wiha dibêje: "Wergerandina vê afirandina bi qîmet dê bibe pencereyek û dîroka Asyayê ji me re ronî bike."
+657. He says thus: "The translation of this valuable creation will become a window and illuminate the history of Asia for us."
+
+658. Di eynê salê de, Mr. Volkov, bîranînek li ser dîroka Fars belav kiriye û tê de behsa navê Şerefnameyê û hinek jî ya Şeref Xan bi xwe kiriye.
+658. In the same year, Mr. Volkov, distributed a memoir on the history of the Persians and in it discussed the name of the Şerefname and some of Şeref Xan himself as well.
+
+659. (Rojnameya Asya, beş: 8, sal: 1826, rûpel: 291-298)
+659. (Journal Asiatique, part: 8, year: 1826, pages: 291-298)
+
+660. Qasek piştî wî jî, F. B. Charmoy ku li St. Petersburgê mamosteyê zimanê Rojhilat bû, li ser pêşniyara Mr. Frach dest bi wergera Şerefnameyê kir (Binêre: Frahc, Jiyana Şêx Sefi Erdewîlî), eger nexweşî nebûya, wî Rojhilatnasê hêja dê xebatek wisan bixistaya ber dest ku diqqeta hemû zanayan bikêşaya.
+660. A while after him as well, F. B. Charmoy who in St. Petersburg was a teacher of the Oriental language, upon the suggestion of Mr. Fraehn started the translation of the Şerefname (See: Fraehn, The Life of Şêx Sefî Erdewîlî); if there had not been illness, that worthy Orientalist would have placed such a work at hand that it would have drawn the attention of all scholars.
+
+661. Di dema me de jî, ku di saya têkoşîna zana û gerokan, lêkolîn li ser ziman, dîrok û coxrafya Kurdistanê di halekî gelek geşesitandinî de ye, Şerefname, ji bo vê mebesta taybetî gelek bi kêr û bi feyde ye û hejmara kesên jê îstîfade dikin, roj bi roj zêde dibe.
+661. In our time as well, when in the shadow (thanks to) the struggle of scholars and travelers, research on the language, history and geography of Kurdistan is in a very developing state, the Şerefname, for this specific purpose is very useful and beneficial, and the number of people utilizing it, increases day by day.
+
+662. Mr. Etienne Marc Quatremère, di Dîroka Moxol û Fars a çapa Parîsê û di rûpela 319-329'an de, çend perçe ji Şerefnameyê wergirtiye.
+662. Mr. Etienne Marc Quatremère, in The History of the Mongols and Persians of the Paris edition and on pages 319-329, took several pieces from the Şerefname.
+
+663. Eger em li fihrista "Destnivîsên Rojhilat Di Kitêbxaneya Qeyser de", St. Petersburg, sal: 1852, rûpel: 295'an binêrin, bi serê xwe maqaleyek ji vê dîrokê re amade kiriye.
+663. If we look at the index "Oriental Manuscripts In the Imperial Library", St. Petersburg, year: 1852, page: 295, he prepared an article by itself for this history.
+
+664. Dr. Barb, ku di derheqê felsefeya dîrokê de nivîsandiye û behsa Tirkiyê û Fars dike, di du maqaleyan de kurtiya Şerefnameyê ji serî heta binî bicî kiriye û li ser sekiniye.
+664. Dr. Barb, who wrote regarding the philosophy of history and discusses Turkey and Persia, in two articles placed the summary of the Şerefname from top to bottom and dwelt upon it.
+
+665. Her wiha wî nivîskarî maqaleya sisiyan li ser pênc binemalên Kurd nivîsandiye ku mirov dikare bêje, beşa yekê pê temam kiriye.
+665. Likewise that author wrote a third article on five Kurdish families which one can say, he completed the first part with it.
+
+666. Mr. Morey jî di fihrista Şerefnameyê de navê wan eşîret û serokên bi şaşî hatine nivîsandin, daye ber du wergerên Tirkî û ew rast kirine, ku ev herdu wergerên han di Muzexaneya Brîtanyayê de ne.
+666. Mr. Morey as well in the index of the Şerefname put the names of those tribes and leaders which had been erroneously written, against two Turkish translations and corrected them, which these two very translations are in the British Museum.
+
+667. Mr. Larsen, di behsa Kurdan de kurtemaqaleyek wî li ser dîroka Kurdan heye û çend bûyerên 'ecêb neqil dike ku ji Şerefnameyê wergirtiye.
+667. Mr. Larsen, in the discussion of the Kurds has a short article of his on the history of the Kurds and narrates several strange events which he took from the Şerefname.
+
+668. Lê di dawiyê de Mr. Kotik rastiya wê gotiye û di vî warî de nivîs
+668. But in the end Mr. Kotik told its truth and in this field writings
+
+669. weşandine û heta bi tehl û tirşiya çendîn salan pêwistiyek pêk aniye.
+669. he published and up to the bitterness and sourness of several years fulfilled a necessity.
+
+670. Ez fikirîm û di dawiyê de têgihîştim ku çapkirina Şerefnameyê, ji bilî feydeya wê ya mezin û piralî ya ji bo zanyariya dîroka di derheqê Kurdan de, gelek û gelek pêwist e.
+670. I thought and in the end comprehended that the printing of the Şerefname, aside from its great and multifaceted benefit for the science of history regarding the Kurds, is very and very necessary.
+
+671. Ji ber vê, min biryar da ku ez nusxeya Farisî bi wergera wê ve belav bikim û çend meseleyên felsefî, dîrokî û coxrafî jî têkim ser wê beşa ku ez ê biweşînim, ji bilî kutayiyê, ku dawî bi Şerefnameyê tîne, ew jî ku ez ê çap bikim, ji bo dîroka Kurdan gelek girîng e, çunkê:
+671. Because of this, I decided that I distribute the Persian copy along with its translation and add several philosophical, historical, and geographical issues to that part that I will publish, aside from the short part (kutayi), which brings an end to the Şerefname, that too which I will print, is very important for the history of the Kurds, because:
+
+672. Behsa her eşîretê cihê cihê tê de ye û ez bi behsa serpêhatiya jiyana nivîskar dawî lê tînim û kutayiya wê jî dikeve ser cilda duduyan.
+672. The discussion of every tribe is in it separately and I bring an end to it with the discussion of the adventure of the author's life and its short part (kutayi) as well falls onto the second volume.
+
+673. Vêca va ez ê bi çend bêjeyan ronî bikim ku ji bo belavkirina Farisiya wê ya esli, ka gelo min çi kiriye:
+673. So here I will illuminate with several words that for the distribution of its original Persian, what indeed I have done:
+
+674. ## MIN LI ÇEND DESTNIVÎSAN NÊRIYE
+674. ## I LOOKED AT SEVERAL MANUSCRIPTS
+
+675. 1. Destnivîsa Kitêbxaneya Qeyser a li St. Petersburgê, ku di sala 1007'ê koçî (1599ê z) de -piştî nivîsandina kitêbê du sal- hatiye nivîsandin û ji aliyê nivîskar ve jî hatiye redaktekirin.
+675. 1. The Manuscript of the Imperial Library in St. Petersburg, which in the Hijri year 1007 (1599 Gregorian) -two years after the writing of the book- was written and by the side of (by) the author was redacted as well.
+
+676. Mr. Frach, vê destnivîsa bi qîmet dîtiye (binêre: Durn).
+676. Mr. Fraehn, saw this valuable manuscript (see: Dorn).
+
+677. Navê wê di nav fihrîsta destnivîsan de nivîsandiye, lê gelek kêmasiyên wê hene.
+677. He wrote its name within the index of manuscripts, but it has many deficiencies.
+
+678. Ji nîvê behsa Eşîreta Mehmûdî dest pê dike û di behsa Eşîreta Siyamensorî de qut dibe(Binêre: Beşa Yekem, çapa min a Farisî, rûpel: 304-327).
+678. It starts from the middle of the discussion of the Mehmûdî Tribe and in the discussion of the Siyamensorî Tribe it gets cut off (See: First Part, my Persian edition, pages: 304-327).
+
+679. 2. Destnivîsa Mr. Xanikov.
+679. 2. The Manuscript of Mr. Khanikov.
+
+680. Vi zanayê han ê Rojhilatnas, di sala 1854'an de, li Pîranê konsolosê giştî yê Rûsyayê bûye.
+680. This very Orientalist scholar, in the year 1854, in Pîran was the general consul of Russia.
+
+681. Ev nusxeya han li Dîleman a li ba Salmasê sitandiye û destnivîsên din jî ji Kitêbxaneya Yehya Xanê Xanî yê Fermanrewayê Azerbaycanê wergirtiye.
+681. He took this very copy in Dîleman near Salmas and received other manuscripts as well from the Library of Yehya Xanê Xanî the Ruler of Azerbaijan.
+
+682. Birêz Xanikov, ku hemû kes dizane di riya zanistî de mirovekî çawan e, heta roja ez ji çapkirina wê xelas bûm, destnivîsên xwe raxistin ber destên min.
+682. Honorable Khanikov, who everyone knows what kind of man he is in the path of science, until the day I finished its printing, laid his manuscripts before my hands.
+
+683. Destnivîsa Xanikov, di 19'yê meha Şe'bana sala 1252'yê koçî (1837'ê zayînî) de mirovekî navê wî Mehmûd Riza yê kurê Sabir 'Elî Kerbelayî (Qerbelayî), li ser fermana Rewşen Efendî yê ji gundê Dîlmekan, li ber destnivîsek Şerefnameyê nivîsandiye, ku dîroka wê nusxayê digihîje sala 1007'ê koçî û di dawiya wê de jî wiha nivîsandiye:
+683. The manuscript of Khanikov, on the 19th of the month of Sha'ban of the Hijri year 1252 (1837 Gregorian), a man whose name was Mehmûd Riza the son of Sabir 'Elî Kerbelayî (Qerbelayî), upon the order of Rewşen Efendî from the village of Dîlmekan, wrote it from a manuscript of the Şerefname, that the date of that copy reaches the Hijri year 1007 and at the end of it as well he wrote thus:
+
+684. Ev gotina han rast e.
+684. This very word is true.
+
+685. Çunkî di dawiya destnivîsê de wiha hatiye nivîsandin: "Di dawiya Meha Şeşekan (Muherrem) a sala 1007'an a koça Pêxember -silavên Xwedê li ser bin- li bajarê Bedlîsê -Xwedê ji qeza belayan biparêze- bi destê nivîskarê kitêbê bi xwe -her wext payedar be û destê wî sax be- hatiye rastkirin û dawî bi vê kitêbê hat."
+685. Because at the end of the manuscript it is written thus: "At the end of the Month of Şeşekan (Muharram) of the year 1007 of the migration of the Prophet -peace of God be upon him- in the city of Bedlîs -may God protect it from accidents and calamities- by the hand of the author of the book himself -may he always be enduring and may his hand be healthy- it was corrected and an end came to this book."
+
+686. Nivîskar dibêje: "Nivîskarê vê kitêba han ê muhtacê merhemeta Xwedê, Şerefè kurê Şemseddin Rojki Kesrayî, di dawiya meha Muherrema sala 1007'an a koça pêxember -silavên Xwedê li ser bin- li bajarê Bedlisê -Xwedê ji qeza û belayan biparêze- ji rastkirin û bijartina şaşiyan xelas bû."
+686. The author says: "The author of this very book the one in need of the mercy of God, Şeref the son of Şemseddîn Rojkî Kesrayî, at the end of the month of Muharram of the year 1007 of the migration of the prophet -peace of God be upon him- in the city of Bedlîs -may God protect it from accidents and calamities- finished the correction and selection (weeding out) of errors."
+
+687. Xwediyê vê destnivîsê jî di dawiyê de wiha nivîsandiye: "Bi alîkarî û himmeta Xwedayê bexşînder, jartirîn koleyê ber destê te, Mehmûd Riza yê kurê Sabir Eli Kerbelayî û ji gundê Dîlmekan (Dîlemekan), di roja sêşembê nêzîkî taştêya 19'yê meha Şe'banê, nivîsandina vê kitêbê temam kir."
+687. The owner of this manuscript too at the end wrote thus: "With the help and effort of the granting God, the most pitiful slave before your hand, Mehmûd Riza the son of Sabir 'Elî Kerbelayî and from the village of Dîlmekan (Dîlemekan), on Tuesday near breakfast of the 19th of the month of Sha'ban, completed the writing of this book."
+
+688. Di destnivîsê de, li gelek ciyan şûna muhra Rewşen Efendî tê dîtin.
+688. In the manuscript, in many places the trace of the seal of Rewşen Efendî is seen.
+
+689. Li ser muhra wî ev îbareya han hatiye kolandin: "Xwedê xwe zû dide nîşan, lê dilekî hişyarî jê re lazim e.”
+689. Upon his seal this very phrase has been engraved: "God shows Himself quickly, but an awake heart is necessary for it."
+
+690. Di nîvê wê de jî navê Rewşen û sala 1251'an tên dîtin.
+690. In its middle as well the name Rewşen and the year 1251 are seen.
+
+691. Destnivîsa Xanikov 250 rûpel e, hemû bi hubra kesk hatiye nivîsandin, nivîsandin gelek rewan e û rêzên wê jî nêzîkî hev in.
+691. The manuscript of Khanikov is 250 pages, all has been written with green ink, the writing is very fluent and its lines as well are close to one another.
+
+692. 3. Destnivîsa li Muzexanaya Asyayê ya Universîteya Qeyser a li St. Petersburgê, di bin reqema 756'an û li ser ciyê berî yê Rosso ye.
+692. 3. The Manuscript in the Asiatic Museum of the Imperial University in St. Petersburg, under the number 756 and in the former place of Rousseau.
+
+693. Ev destnivîsa han 605 rûpel e û bi xetek nexweş hatiye nivîsandin.
+693. This very manuscript is 605 pages and has been written with a sick (poor) handwriting.
+
+694. Lê baş tê xwendin.
+694. But it reads well.
+
+695. Bi diyarî ji birêz Rosso re hatiye.
+695. It came as a gift to honorable Rousseau.
+
+696. Ew kesê xwediyê wê, li ser rûpela yekem wiha nivîsandiye: "Ji Badaxanê Hakimê Sawicbulaxe"
+696. That person the owner of it, on the first page wrote thus: "From Badaxan the Governor of Sawicbulax"
+
+697. Lê ne tarixa nivîsandina wê li ser e û ne jî navê nivîskar.
+697. But neither the date of its writing is on it nor the name of the author.
+
+698. Çar xetên destnivîs ên dawiyê jî nemane.
+698. The last four lines of the manuscript have not remained either.
+
+699. Ev nusxeya han a Rosso ji birêz Volkov re hatiye dan û wî jî maqaleyek li ser nivîsandiye û di rojnameya Asya de hatiye weşandin.
+699. This very copy of Rousseau was given to honorable Volkov and he too wrote an article on it and it was published in the Journal Asiatique.
+
+700. 4. Destnivîsa Muzexaneya Asyayê ya di bin reqema 576'an de, Baron Bond ji Îranê aniye û tenê 100 rûpel e.
+700. 4. The Manuscript of the Asiatic Museum under the number 576, Baron Bond brought from Iran and it is only 100 pages.
+
+701. Bi hevoka: "Keeywan keywan ba wucud 'aluşmekan" (?) a ku di pêşgotina Farisî de ye, dest pê dike û bi behsa Fermanrewayên Suwêdiyan a Subhan Beg û Sultan Ehmed Beg dawî pê tê.
+701. It starts with the sentence: "Keeywan keywan ba wucud 'aluşmekan" (?) which is in the Persian preface, and ends with the discussion of the Suwêdî Rulers of Subhan Beg and Sultan Ehmed Beg.
+
+702. Destnivîs, bi xeteke gelek sipehî hatiye nivîsandin.
+702. The manuscript, has been written with a very beautiful handwriting.
+
+703. Wisan dixuyê kevn e û qet agahdariyek jî li ser tune.
+703. It appears thus it is old and absolutely no information is on it either.
+
+704. Di destpêk û dawiyê de çend rêz nivîs jî di derheqê Xwedê û dîn de li ser zêde kiriye.
+704. At the beginning and end a few lines of writing as well regarding God and religion he added onto it.
+
+705. Bendek gelek xweşik jî li ser dîroka Erdelan nivîsandiye û ev û destnivis bi hev re cild kiriye.
+705. He wrote a very beautiful section on the history of Ardalan as well and bound this and the manuscript together.
+
+706. Du kêmasiyên mezin di vê destnivîsê de hene: Yekem, ji rista Mihemmedi Xan El-Şehir dest pê dike û heta tê digihîje gotinên "weşayisteyî ref'et an kesaset" (Binêre: Çapa Şerefnameyê ya yekem, rûpel: 127-159'an ya beşa yekem).
+706. Two great deficiencies exist in this manuscript: First, it starts from the line of Mihemmedî Xan El-Şehîr and comes until it reaches the words "weşayisteyî ref'et an kesaset" (See: The first edition of the Şerefname, pages: 127-159 of the first part).
+
+707. Şaşiya duduyan jî, van du bêjeyan: "asar şeca'ets" dest pê dike û heta tê digihîje gotinên "wa penc
+707. The second error as well, starts with these two words: "asar şeca'ets" and comes until it reaches the words "wa penc
+
+708. peserdaşt".
+708. peserdaşt".
+
+709. Binêre: Çapa Farisî ya Rûsya, beşa yekem, rûpel: 189-197'an.
+709. See: The Persian edition of Russia, first part, pages: 189-197.
+
+710. Tiştên din jî tê de tên dîtin û rûpelên wê jî tev di ciyê xwe yên eslî de nînin.
+710. Other things as well are seen in it and its pages too are not all in their original place.
+
+711. Li gor baweriya min, ji van çar destnivîsan, duduyên wê temam in: Ew jî nusxeya birêz Xanikov û ya Muzexaneya Asyayê ya di bin reqema 576'an de ne.
+711. According to my belief, of these four manuscripts, two of them are complete: Those too are the copy of honorable Khanikov and that of the Asiatic Museum under the number 576.
+
+712. Her çendîn ew herçar bendên behsa Zerza, Estûnî, Dasnî û Terza dikin kêm bin jî.
+712. Even though those four sections that discuss the Zerza, Estûnî, Dasnî, and Terza are missing as well.
+
+713. Vêca ez dibêjim ku mimkun e nivîskar bi xwe behsa van herçar bendan nekiriye.
+713. So I say that it is possible the author himself did not discuss these four sections.
+
+714. Ji xeyrê vê îhtîmalê, mirov dikare vê jî bêje: Yan tiştekî di vî warî de nezaniye, yan jî muhlet neketiyê, yan pê re negihîştiye, yan jî bi xwe dev jê berdaye.
+714. Aside from this possibility, one can say this as well: Either he did not know anything in this field, or else time did not permit him, or he did not get around to it, or else he himself gave it up.
+
+715. Herçî nivîsandina navan jî, cardin mimkun e ku wî van navan nivîsandiye û di firseteke destkevtî de cardin lê vegere, lê ev firseta han jî jê re li hev nehatiye.
+715. As for the writing of the names as well, again it is possible that he wrote these names and in an obtained opportunity would return to it again, but this very opportunity as well did not work out for him.
+
+716. Ev bîr û raya han ji tevan zêdetir nêzîkî rastiyê ye.
+716. This very thought and opinion is closer to reality than all.
+
+717. Çunki, Şeref Xan, bi gelemperî guhê xwe nedaye fihrîsta navên ku di pêşgotinê de rêz kiriye û li gor fihrîsta çêkiriye behsa mijaran nekiriye.
+717. Because, Şeref Xan, generally did not give his ear to the index of names that he arranged in the preface and did not discuss the topics according to the index he made.
+
+718. Ev rêk û pêkiya ku îro tê de tê dîtin, di saya ew fihrîsta ku min bi xwe jê re çêkiriye de ye.
+718. This order and properness that is seen in it today, is in the shadow of (thanks to) that index that I myself made for it.
+
+719. Di destnivîsa Muzexaneya Asyayê ya di bin reqema 576'an de, di beşa duduyan Sefheya Sisiyan (Rûpela Sêhem) de, ku dibû di navbera Fermanrewayên Mahîdeşt û Baneyê de Behsa Terza bê kirin û Behsa Terza ji hemû destnivîsan ketiye, behsek bi serê xwe ya Gelbaxiyan tê.
+719. In the manuscript of the Asiatic Museum under the number 576, in the second part the Third Page, where between the Rulers of Mahîdeşt and Bane the Discussion of the Terza was supposed to be made and the Discussion of the Terza has fallen from all manuscripts, a discussion by itself of the Gelbaxiyan comes.
+
+720. (Binêre: Nusxeya J. Malcolm, Fihrista Munrly, rûpel: 149)
+720. (See: The copy of J. Malcolm, Index of Morley, page: 149)
+
+721. Min, ji ber vê yekê behsa vê rewşa han û ew guhertinên tê de hatine kirin, kir ku, dilê mirov rehet nabe û çavê mirov bi hêsanî ba hilnade ku mirov bêje: Gelek nusxeyên din ên Şerefnameyê dest nakevin.
+721. I, because of this reason discussed this very condition and those changes that were made in it, that, one's heart does not become peaceful and one's eye does not easily lift up (believe) for one to say: Many other copies of the Şerefname cannot be obtained.
+
+722. Ez, ku ew herçar nusxeyên ketin ber destê min, naçar im ku cihêtiyên di navbera herçar nusxeyan de hene, di dawiya beşa duduyan a kitêbê de bidim nîşandan û ji vir şûn de, dema ku ew maqaleyên di derheqê van destnivîsan de bên nivîsandin, dê qîmeta tevan bidin xuyakirin.
+722. I, who had those four copies fall into my hands, am compelled that those differences that exist between all four copies, I show at the end of the second part of the book and from here on, when those articles regarding these manuscripts are written, they will make the value of all of them apparent.
+
+723. Ji bo liberçavgirtina çapkirina kitêbên bi destnivîs ên Kitêbxaneya Qeyser ên belavbûyî baştir bû.
+723. For the taking into consideration of the printing of the handwritten books of the Imperial Library that were distributed it was better.
+
+724. Çunki, Şeref Xan bi destê xwe redakte kiriye.
+724. Because, Şeref Xan redacted it with his own hand.
+
+725. Ez dixwazim bêjim ku, karkerên kitêbxaneyê gelek alîkariya min kirin, rê dan min ku ez îstîfade ji wan destnivîsan bikim.
+725. I want to say that, the workers of the library helped me a lot, gave me way (allowed me) to utilize those manuscripts.
+
+726. Ji bo ku di destûra kitêbxaneyê de derxistina kitêban ji derve tunebû.
+726. Because in the rule of the library taking books outside did not exist.
+
+727. Ji ber vê ez mecbûr mam ku li wir, nusxeyên din bi nusxeya destnivîs a Xanikov re muqayese bikim.
+727. Because of this I remained obliged to compare the other copies with the manuscript copy of Khanikov there.
+
+728. Ji ber vê, di vî warî de ji bo çapkirina wê sergêjî derket.
+728. Because of this, in this field a confusion arose for its printing.
+
+729. Çi kil û kêmasiyên ku di nusxeyên kitêbxaneyê de hebûn, min ew bi yên Xanikov re çap kirin.
+729. Whatever flaws and deficiencies that existed in the copies of the library, I printed them with those of Khanikov.
+
+730. Ji wir şûn de êdî tu şik ji min re nema ku, kitêba min gelek ji destnivîsên di nav Muzexaneya Asyayê de baştir derketiye.
+730. From there onwards then no doubt remained for me that, my book came out much better than the manuscripts inside the Asiatic Museum.
+
+731. Ji bilî vê, bi taybetî min carekê din jî ew di bin çav re derbas kirin û
+731. Aside from this, specifically I passed them under my eye (reviewed them) once more as well and
+
+732. piştre min ew ji çapê re şand.
+732. afterwards I sent it for printing.
+
+733. Min tu destkariyek ji ber xwe ve li ser naveroka wê nekiriye.
+733. I have not done any manual alteration from myself (on my own accord) upon its content.
+
+734. Eger car û caran, ew jî gelek kêm, min valatiyek tijî kiribe, ku ew jî ew nivîsên wan kesan e ku piraniya wan Şeref Xan ji kitêban wergirtine û îstîfade ji wan kirine.
+734. If time and time again (occasionally), that too very little, I filled a void, that too is those writings of those people the majority of which Şeref Xan took from books and utilized them.
+
+735. Wekî, Ibnu'l-Xeleqan, 'Ebdurrezzaq û yên din.
+735. Such as, Ibn Khallikan, 'Ebdurrezzaq and the others.
+
+736. Çunkî wekî min got, rastkirina şaşiyan û belgeyên wan ez dikim dawiyê û ez dûr û dirêj li ser disekinim.
+736. Because as I said, the correction of errors and their proofs I put at the end and I dwell upon it far and long.
+
+737. Ji ber vê, berî ku ez dawî bi vê pêşgotina xwe bînim, ku min bi vê xwest xwendevan bizanin ji bo çap û weşandina vê afirandina han, ez li ser riyek çawan meşiya me, ez pêwist dibînim ku hinek zanyarî jî di derheqê Şerefnameyên bi destnivîs ên li Ewrûpayê hene -qasî ku ez dizanim- li vir bidim xuyakirin.
+737. Because of this, before I bring an end to this preface of mine, with which I wanted readers to know for the printing and publishing of this very creation, upon what kind of path I walked, I deem it necessary to make some information as well regarding the manuscript Şerefnames that exist in Europe -as much as I know- apparent here.
+
+738. Ji bili van çar nusxeyên li Rûsyayê yên ku min kitêba xwe li ber wan amade kir û weşand, sê destnivîsên din li Avusturyayê li ba Dr. Bors hene.
+738. Aside from these four copies in Russia from which I prepared and published my book, three other manuscripts exist in Austria with Dr. Bors.
+
+739. Li Londrayê di destê J. Malcolm de nusxeyek heye ku niha di Kitêbxaneya Asya ya Qraltî ya Brîtanya Mezin û Irlandayê de ye.
+739. In London in the hand of J. Malcolm there is a copy which is now in the Library of the Royal Asiatic Society of Great Britain and Ireland.
+
+740. (Binêre: Kataloga Morly, rûpel: 151)
+740. (See: Catalogue of Morley, page: 151)
+
+741. Li Parîsê destnivîsek heye û beşek ji komekî kitêban e.
+741. In Paris there is a manuscript and it is a part of a collection of books.
+
+742. Bi destpêkek gelek sipehî hatiye nivîsandin.
+742. It has been written with a very beautiful beginning.
+
+743. (Binêre: Maqaleyên Rojnameya Azmank, sal: 1826, beşa 8'an, rûpel: 291. Maqaleya: Tarixa Moxol û Farsan; Etienne Marc Quatremère, rûpel: 301)
+743. (See: Articles of the Journal Asiatique, year: 1826, 8th part, page: 291. Article: The History of the Mongols and Persians; Etienne Marc Quatremère, page: 301)
+
+744. Ez dizanim ku di Muzexaneya Brîtanyayê de nusxeya birêz Rich jî heye ku li Kurdistanê bi dest xistiye.
+744. I know that in the British Museum the copy of honorable Rich exists as well which he obtained in Kurdistan.
+
+745. Çunkî, wî hemû destnivîsên di destan de hebûn, dabû wê muzexaneya navê wê derbas bû.
+745. Because, all the manuscripts that were in his hands, he had given to that museum whose name passed.
+
+746. (Binêre: Bîranînên Rich ên Di Kurdistanê de, beşa yekem, rûpel: 247, nota binî ya Barb, rûpel: 5)
+746. (See: Memoirs of Rich In Kurdistan, first part, page: 247, footnote of Barb, page: 5)
+
+747. Her wekî me behs kir, du wergerên bi zimanê Tirkî jî di Muzexaneya Brîtanyayê de hene.
+747. Just as we discussed, two translations in the Turkish language as well exist in the British Museum.
+
+748. Birêz Riw agahdariyek kurt li ser nivîsandiye.
+748. Honorable Rieu wrote a short piece of information on it.
+
+749. (Binêre: Kataloga Morly, rûpel:145 û nota binî: 3)
+749. (See: Catalogue of Morley, page: 145 and footnote: 3)
+
+750. St. Petersburg Kanuna Pêşî (January) 1860 V. Zirnov
+750. St. Petersburg December (January) 1860 V. Zirnov
+
+751. Li vir bi çend rêzan behsa terzê nêvîsandin û îşaretên ser herfên kitêbê ya Farisî dike.
+751. Here with several lines it discusses the style of writing and the signs upon the letters of the Persian book.
+
+752. Vêca, ji ber ku di Kurdi de karekî me pê tune, min xwest ez jê derbixim. (Hejar)
+752. So, because in Kurdish we have no business with it, I wanted to take it out of it. (Hejar)
+
+753. ## ŞEREFNAME
+753. ## ŞEREFNAME
+
+754. ## -DIROKA KURDISTANÊ—
+754. ## -THE HISTORY OF KURDISTAN-
+
+755. ## [PESINDAN]
+755. ## [PRAISES]
+
+756. ## {PESNÊ XWEDÊ}
+756. ## {THE PRAISE OF GOD}
+
+757. ## BI NAVÊ XWEDAYÊ MEZIN Û DILOVAN
+757. ## IN THE NAME OF GOD THE GREAT AND MERCIFUL
+
+758. Destpêka gotara min bi sipasî ji wî Xwedayî re dest pê dike ku pesnê Wî bi dilekî ronak ve wek roja bi tîrêj erd û asîman ronî dike, ew xwedan şukir û senayê ku hemû payeberz û serbilind li ber dergahê Wî destpençe û sernizm disekinin.
+758. The beginning of my speech starts with thanks to that God whose praise with a bright heart like the beaming sun illuminates the earth and sky, that owner of gratitude and praise that all the high-ranking and proud stand with crossed hands and bowed heads before His court.
+
+759. Ew, karmendek e ku; firaxek nalînê ji bo pena û pêsîrê giyanê Adem ji heriyê çêkiriye, bi tîna tîrêja merhemeta xwe hişk kiriye û bi çav li ser gerandinek wisan rêk û pêk kiriye û ewqas rêz lê girtiye ku, layîqê meclisa baregahê pir şukur û sena ya Wî be û li ber pêşkên textê Yezdan de bi qedir û hêja cî jê re veqetandiye.
+759. He, is a worker who; made a vessel of groaning from mud for the refuge and bosom of Adam's soul, hardened it with the heat of the beam of His mercy and with such an overseeing eye made it orderly and proper and respected it so much that, it may be worthy of the assembly of His court of much gratitude and praise and before the front of the throne of God He separated an honorable and worthy place for it.
+
+760. Ew, hunermendek e ku: di axa reş a şilekî de xêr û bereketek wisan rijandiye ku bi hezaran hezar barên mirarî û cewher di bazara durrnasan di muqabilê wê de ne tiştek bin.
+760. He, is an artist who: into the wet black earth poured such goodness and blessing that thousands of thousands of loads of pearls and jewels in the market of pearl-connoisseurs in exchange for it would be nothing.
+
+761. Ew, baladestek e ku; ew padişah, xan, beg, serdar û serwerên bi pozbilindî, kibîrî û şanazî xwe bi ser bindestan radigirin û henekan li ha û li wir dikin, li hemberî hêz û desthilata Wî rût, pût û bêser û ber in.
+761. He, is a superior who; those kings, xans, begs, commanders and sovereigns who with high-nosedness (arrogance), pride and boasting hold themselves over the subjugated and make jokes here and there, against His power and authority are naked, idols and in a mess.
+
+762. Ew parsek û bêpenayên ku bi çavên çakî li destê bexşînder ê Xwedayê tik û tenê dinêrin û destên niyazan tenê ber bi baregaha Wî ya şukurdar bilind dikin û ji wî pê ve karên wan bi tu kesî hel nabe û her tenê Ew e baregaha wan a dawiyê.
+762. Those beggars and refuge-less ones who with eyes of goodness look at the granting hand of the one and only God and raise the hands of supplications only towards His grateful court and aside from Him their affairs cannot be solved by anyone and He alone is their final court.
+
+763. Ger çendîn bi şiklî û bi dêmen, bê paye, bê ser û ber, şerpeze û perîşan in, lê di rastiya xwe de padişahên serbilind û dilxweş her ew in.
+763. No matter how much in form and in appearance, they are without rank, in a mess, scattered and miserable, but in their truth the proud and happy kings are always them.
+
+764. Bi zanatî hinekan wek bi demî bilind dike, bi ser civakan de datîne û ji bo ceribandinê, rîsê wan têrba dike, demek pişta xwe dide wan.
+764. With knowledge He elevates some temporarily, places them over societies and for testing, gives their yarn full wind (lets them loose), and turns His back to them for a time.
+
+765. Di netîceyê de Melekê Mirinê ji wan re dişîne, wan ji meclisa jiyanê derdixe û ber bi gora cîhanê ve dişîne û wan dispêre gora tengeber û sar.
+765. In the result He sends the Angel of Death to them, takes them out of the assembly of life and sends them towards the grave of the world and entrusts them to the narrow and cold grave.
+
+766. Di roja pirs û hesabê de qenc û xerabiyên wan ji wan dipirse û li ber dadgeha xwe ya bilind bêşermî û bêkêmasî başî û xerabiyên wan ji wan re dihejmêre, sax û qahîman dike mêvanê Beheştê û yax û riziyan ber bi Cehennemê ve dişîne.
+766. On the day of question and account He asks them of their good and evils and before His high court shamelessly and flawlessly He counts their good and evils to them, the healthy and firm He makes guests of Paradise and the rotten and decayed He sends towards Hell.
+
+767. Ew, karnexşînek e ku; ji teke coteke nêr û mê gelek qebîle û eşîretên cur bi cur: spî, sor, zer, gewr, reş û esmer ji nesil û regezên beşer çêkiriye, ji bo ku xwe û xwediyên xwe nas bikin.
+767. He, is a pattern-maker who; from a single pair of male and female made many various tribes and clans: white, red, yellow, gray, black and brown from the generations and races of mankind, so that they may know themselves and their owners.
+
+768. Ji ber kar û barên jiyanê ku ji hemû serekî ve rêk û pêk be, bend û girêdanên jinnameya mirovayetiyê ji ber hev neveqete û ji hev cihê nebe, ew dam û dezgeha mezin û giran û ew xanedanên pirr xîzan û avahî bi awirekî pirr lerzîn netefe, herkesê li gor pêwistiyên jiyanê hînê tiştekî kiriye û pala wan daye cure zanistek û erkê fermanek hêja bi wan sipartiye.
+768. Because of the tasks and loads of life so that from every end it may be orderly and proper, the bonds and ties of the genealogy of humanity may not separate from one another and become separate from each other, that great and heavy apparatus and institution and those very poor families and building may not be extinguished with a very trembling glance, He taught everyone something according to the necessities of life and lent them to a kind of science and entrusted the duty of a worthy command to them.
+
+769. Dilê keç û kuran ji tîn û girên evînê tijî kiriye û bi tîrêja hesreta gihîştina hevûdu dagirtiye.
+769. He filled the heart of girls and boys with the heat and hills (flames) of love and filled them with the beam of the longing of reaching one another.
+
+770. Derdê janê ji jinan bi hezar rengên dilfirîn rengandiye, acizî û westiyana bêser û binî kiriye para mêran.
+770. He colored the trouble of pain for women with a thousand heart-flying colors, the endless annoyance and exhaustion He made the share of men.
+
+771. Her ji ber vê ye ku girên agirê kovanên vê jiyanê li ser rûyê vê cîhanê her geş bibe û tu carî netefe.
+771. It is right because of this that the hills of the fire of sorrows of this life upon the face of this world always brighten and never extinguish.
+
+772. Şi'ir:
+772. Poem:
+
+773. "Her hêjayê te ye mezintî kirin
+773. "Always worthy of You is doing greatness
+
+774. Yadigarên te ne; jiyan û mirin
+774. Your memorials they are; life and death
+
+775. Nizmkirin û bilindî di destê te de ye
+775. Lowering and elevation is in Your hand
+
+776. Jiyana bi hêz û bi taqet di destê te de ye"
+776. Life with power and with strength is in Your hand"
+
+777. ## PESNÊ PÊXEMBER
+777. ## THE PRAISE OF THE PROPHET
+
+778. Dirûd û afirandinek ku tu çaxê biniya wê neyê, ser û binê wê diyar nebe, ji bo dîdarê pak ê wî pêxemberî re ronî be ku emir kiriye: "Ez pêxember bûm û hê min di nav av û lîçê de hereket dikir."
+778. A blessing and creation that at no time its bottom comes (ends), its top and bottom not be apparent, may it be bright for the pure visage of that prophet who commanded: "I was a prophet and still I was moving within water and mud."
+
+779. Ew pêxemberê ku Xwedayê mezin pê re axiftiye û ji bo Wî gotiye: "Min tu ji wan re şand û ew emanet sipartin te ku tu bibî sebebê serwerî, bextewerî û nimunê dadgeriya hemû jîndar û afirandiyan."
+779. That prophet who the great God spoke with and for Him said: "I sent you to them and entrusted those trusts to you so that you become the cause of sovereignty, happiness and the example of justice of all living beings and creations."
+
+780. Pêxember, dema ku ji bo erşê asîman hat bang kirin û bû mêvanê Dîwanxana Yezdanê mezin, di seranserê rê de ji bo xêrhatin û pêşwaziyê, gumbeta bilind û sipehî jê re rast bû û lambe û ronahiyên şewqdar ji bo Wî hilketin.
+780. The Prophet, when he was called to the throne of heaven and became the guest of the Court of the great God, all along the way for welcoming and reception, the high and beautiful dome straightened for him and shining lamps and lights lit up for Him.
+
+781. Ferîşteyê Beheşta Xwedê, Bûraq, di şiklê hespekî bi bask de, ji bo geşta deşt û berriyên bê toz û ax, ber bi xêveta hêşîn bi zîn kirî li ser erdê amade kir û fermana hereket û rêketinê dayê.
+781. The Angel of God's Paradise, Buraq, in the form of a winged horse, for the tour of plains and steppes without dust and soil, towards the blue tent saddled up prepared it on the earth and gave it the command of moving and setting off.
+
+782. Piştesiwarê sivik, nazdar û çeleng, mamze û avzeng lê şidand û bi sebir ber bi armancê ve meşiya.
+782. The light, delicate and agile back-rider, tightened the spur and stirrup on it and with patience walked towards the goal.
+
+783. Hespê bi çeng û per, ji bayê şemalê bezatir, gelek ji xeyalan sur'et û leztir, di navbera bez û meşê de wek bayê birûskê da xwe rabû.
+783. The horse with wings and feathers, faster than the north wind, much speedier and quicker than thoughts, between running and walking like the wind of lightning lifted itself up.
+
+784. Bi çarnaliyek wisan dibeziya, rê li gerîna meh û rojê dibiriya û bi keziyên bijî û bijangên xwe, lehiyên rondikan ji çavê stêrkan dimaliya.
+784. It ran with such a gallop, it cut the path to the touring of the moon and sun and with the braids of its mane and its eyelashes, swept away the floods of tears from the eye of the stars.
+
+785. Ewqas çalak û bi kêr bû, Cebraîl bi pişthespiyê serî pê re dernexist û di nîvê rê bi paş de ma û ew ax û keser di dilê wî de ma.
+785. It was so active and capable, Gabriel did not manage to keep up with the horse-riding and remained behind in the middle of the road and that sigh and sorrow remained in his heart.
+
+786. Şi' ir
+786. Poem
+
+787. "Di şev û rojekê de ku Cebraîl bicî ma
+787. "In a night and day where Gabriel remained in place
+
+788. Mêrxasiya bîra huner û kêrhatiya te ji kê re ma?"
+788. The bravery of the well of art and your capability remained for whom?"
+
+789. Ferîşteyê şox û şeng û ciwan ê ber rikêfa xoşewîstê Xwedê, paye û pîroziya wî ji hemû caran bi qedirtir û bilintir dibû.
+789. The cheerful and sprightly and young Angel before the stirrup of the beloved of God, his rank and holiness became more honorable and higher than all times.
+
+790. Di germiya çûn û hatin û rimbaziyê de şanaziyê bi xwe dikir û dihat bîrê ku, rojekê bazek xwe li ser darekî pîr datîne û dibêje, eger dar kûrmî û dexezdarî jî be ya girîng ew e ku nazê baz lê biçe.
+790. In the heat of coming and going and lance-playing it boasted of itself and remembered that, one day a falcon lands itself on an old tree and says, even if the tree is worm-eaten and rotten too what is important is that the grace of the falcon goes to it.
+
+791. Pîroz bû jî eger bextewer bûya siya sim bi ser xwe de didît ku siya ezîzê Xwedê bi ser de ye.
+791. It would be holy as well if it were happy it saw the shadow of the hoof over itself that the shadow of the dear of God is over it.
+
+792. Şêresiwarê mêvan, li ber dergahê xanedana mezin zengoyê sist kir, ber bi mal û li ser çeng û perên periyên heres ên taybetî yên Baregaha Yezdan danî û xêrhatinek bi şanazî lê hat kirin û bi gavên sivik gihîşt ciyê jê re hatî diyarkirin.
+792. The lion-riding guest, loosened the stirrup before the court of the great family, put down towards the house and on the wings and feathers of the special guard fairies of the Court of God and a welcome with pride was done for him and with light steps he reached the place specified for him.
+
+793. Ew ji têlê kevanê kêmtir, hetta ji bînahiya çavan jî kêmtir, afiranderê giyanliber û bêgiyan nêzîkî Wî ket.
+793. He closer than the string of the bow, even closer than the sight of eyes, the creator of the animate and inanimate fell close to Him.
+
+794. Ew ciyê ev dîtina han rû da, heta dinê dinê ye riya kesekî bi wir nakeve û hetta ne mimkun e kesek di xewna xwe de jî wê paye û senayê bibîne.
+794. That place this very seeing occurred, as long as the world is the world the path of no one falls there and it is not even possible someone in their dream as well sees that rank and praise.
+
+795. Şiir
+795. Poem
+
+796. "Li ber Wî kirin asman û zevî
+796. "Before Him they made sky and field
+
+797. Li ber Wî mija kufr û çewtî revi
+797. Before Him the fog of blasphemy and error fled
+
+798. Ji wê demê zanîbû sewiyeya rêza xwe
+798. From that time knew the level of His respect
+
+799. Ku pêxemberî girte himbêza xwe
+799. Who took prophethood into His embrace
+
+800. ## E SI
+800. ## E SI
+
+801. Bilind payetir bû li her serwerî
+801. Was higher in rank than every sovereign
+
+802. Bi mezintiya Xwedê meger pekî berê
+802. With the greatness of God unless he leaps forward
+
+803. Heta çerx û axa zemîn û zeman
+803. As long as the wheel and earth of land and time
+
+804. Bi qasê pelên daran û avên çeman
+804. By the amount of the leaves of trees and waters of rivers
+
+805. Bi qasê berf û baran, giya û av û xak
+805. By the amount of snow and rain, grass and water and soil
+
+806. Du'a ji xwediyê mal ê erkanê pak"
+806. Prayer for the owner of the house of pure pillars"
+
+807. ## PESNÊ SULTAN
+807. ## THE PRAISE OF THE SULTAN
+
+808. Her wiha piştî sipasî ji Xwedê re û meth û senayê pêxemberê mezin, ez dixwazim sipasî padişahê xwe jî bikim.
+808. Likewise after thanks to God and the praise and laudation of the great prophet, I want to thank my king as well.
+
+809. Ew padişahê ku gumbeta kadêza asîmanê hêşîn, bi hemû dûrî û bilindahiya xwe ve, bi hemû rêk û terzî ve, kêmtirîn xeml û xişrê serderê wî ye.
+809. That king who the milky way dome of the blue sky, with all its distance and height, with all its order and style, is the least decoration and ornament of his lintel.
+
+810. Fermanrewayê seywana çaran ku navê wî, roj û bi bexşîna tîşk û tîrêjên heft reng nexşîna bê dawî û binî ye û heta tu bixwazî, di rêza birêztirînê dergevanan û pasewanan de xurt e.
+810. The ruler of the four-canopy whose name, is the sun and with the granting of beams and rays of seven colors is an endless and bottomless pattern and as much as you wish, is strong in the rank of the most honorable gatekeepers and guards.
+
+811. Pak, tekûz û tîravê helbijartî yê hîm û bingehê sultanan e, ji nesla pak a binemala xanedana xwe ya herî bexşînder û dilovan e.
+811. The pure, perfect and selected arrow-thrower is the foundation and base of sultans, he is from the pure generation of the family of his most granting and merciful dynasty.
+
+812. Pena û pêsîrê wî ciyê rizgariyê ye û ji qeyseran re ciyê daxwaz û hêviyan e.
+812. His refuge and bosom is the place of salvation and for the caesars is the place of request and hopes.
+
+813. Ji padişahên Çîn û Maçînê desthilat kevintir û payebilindtir e.
+813. Than the kings of China and Machin his authority is older and higher in rank.
+
+814. Karê sultanan ramûsana şîpane û serderên deriyên wî ne.
+814. The job of the sultans is kissing the threshold and lintels of his doors.
+
+815. Sunnî mezheban diparêze û ji gumrebûn û gunehan dilê wî dibîze.
+815. He protects the Sunni sects and his heart abhors misguidance and sins.
+
+816. Çi tiştî bêje, kesek çi çarçeveya wan dernakeve.
+816. Whatever thing he says, no one steps outside their framework.
+
+817. Di rast û çep de zordar û tawanbaran radipêçe.
+817. On the right and left he rolls up the oppressors and criminals.
+
+818. Feqîr û xembar di rê de nehiştine, siya dadmendiya bejna wî ya bilind gihîştiye hemû koşe û deveran.
+818. He did not leave the poor and sorrowful on the road, the shadow of justice of his tall stature has reached all corners and regions.
+
+819. Serekên dîn û dinê ye û bexteweriya herdu hêlan e.
+819. He is the leader of religion and the world and the happiness of both sides.
+
+820. Xwediyê du derya û du bejan e: Kole û şerkerê Mekke û Medînan e.
+820. He is the owner of two seas and two lands: He is the slave and warrior of Mecca and Medina.
+
+821. İskenderê şaxdar ê duduyan e û Omerê ji xwedêtirs û parêzgar ê sisiyan e.
+821. He is the second horned Alexander and the third God-fearing and abstemious Omar.
+
+822. Di saya wî de dinê hêmin, aram, bêderd û bêjan e.
+822. In his shadow (thanks to him) the world is calm, peaceful, without trouble and without pain.
+
+823. Babê bêkes û bêçaran e: ew Sultan Mihemmed Xan e û Xwedê temenê wî dirêj bike û wî her tim serkevtî bike.
+823. He is the father of the desolate and the destitute: he is Sultan Mihemmed Xan and may God lengthen his age and make him always victorious.
+
+824. Şi' ir
+824. Poem
+
+825. "Çawan ji pîta te dûrkevim, ey roja tîrêjdar?
+825. "How can I distance myself from your spark, oh beaming sun?
+
+826. Xwezî bi wan kesan ku siya te li ser
+826. Blessed are those people whom your shadow is upon
+
+827. Xwedê di saya te de şadî ji me re şand
+827. God sent joy to us in your shadow
+
+828. Em gelek pê xweş in, em sipartin te❞
+828. We are very pleased with it, we were entrusted to you"
+
+829. ## PESNÊ DÎROKÊ
+829. ## THE PRAISE OF HISTORY
+
+830. Ji aliyê wan kesên ku gelek zîrek û jîr in, dûrbîn û zana ne, gelek eşkere ye ku hemû nivîskarên xurt, hemû zanayên zêdezan û paqij, hemû agahdariyên ji serpêhatiyên borîn, li ba wan wisan e: Dîroknasî di ser hemû huneran re ye.
+830. From the side of those people who are very smart and intelligent, far-sighted and knowledgeable, it is very clear that all strong writers, all excessively-knowing and pure scholars, all information from past adventures, with them is thus: The science of history is above all arts.
+
+831. Dîrok, tijî ji ders û tecrûbên bi feyde û rênîşandanên bi kêrhatî û bi qazanc in.
+831. History, is full of beneficial lessons and experiences and capable and profitable guidances.
+
+832. Serpêhatiyên me yên borî bi bîra me dixe, rojên me yên kevnare yên dûr nêzî me dike û bala me dikişîne ser emekdariyên berî me hatine kirin.
+832. It brings our past adventures to our memory, brings our distant ancient days near us and draws our attention to the labors that were done before us.
+
+833. Ji xwe, bi taybetî eger ew serpêhatî û bûyerên han ji dem û lêkolînên xweş pêk bên û xwendevanên destpak û qelemrengîn rûpelên kitêban pê binexşînin.
+833. Inherently, specifically if those very adventures and events consist of pleasant times and researches and clean-handed and colorful-penned readers pattern the pages of books with it.
+
+834. Di derheqê van cure dîrokan de, Mihemmedê kurê Xwand (Hand) Şah kurê Mehmûd ku bi navê Mîr Xwand bi nav û deng e û xwediyê tarîxa Rewdetu'l-Sefa ye, di pêşgotina kitêba xwe ya hêja û bi qîmet de wiha dibêje: "Xwendina dîrokê di deh waran de feyde digihîne mirov:
+834. Regarding these types of histories, Mihemmed the son of Xwand (Hand) Şah the son of Mehmûd who by the name of Mîr Xwand is famous and the owner of the history Rawdat as-Safa, in the preface of his worthy and valuable book says thus: "The reading of history brings benefit to a person in ten fields:
+
+835. 1- Ji bo naskirina însanan e.
+835. 1- It is for the knowing of humans.
+
+836. 2- Zewq û dilxweşiya ji hînbûna ew mijarên ku di derheqên wan de kêm tên zanîn e.
+836. 2- It is the pleasure and happiness from the learning of those topics regarding which little is known.
+
+837. 3- Zanyariya dîrokê, tiştekî wisan e ku bêyî zehmetî û kulfetek mezin mirov xerc bike, dikare ji derûdora xwe ya nêzîk bi hêsanî bi dest bixe û zanyariyek e ku li ser taqeta zîhîn hatiye danîn.
+837. 3- The science of history, is such a thing that without a person spending great trouble and burden, can easily obtain it from one's near surroundings and is a knowledge that has been placed upon the strength of the mind.
+
+838. 4- Rast û derew ji hev cihê dike û nerewayan ji nav rewayan dibijêre.
+838. 4- It separates truth and lie from one another and weeds out the illegitimate from among the legitimate.
+
+839. 5- Gelek pîvan û daneliberhevî tê de hene.
+839. 5- Many measures and comparisons exist in it.
+
+840. Zanayan gotine: 'Tecrube însanan zana dike' ji ber vê, tecrube şaxek ji wan deh şaxên zanistiyê hesibandine.
+840. Scholars have said: 'Experience makes humans knowledgeable' because of this, they considered experience one branch of those ten branches of science.
+
+841. Mirov bi xwendina dîrokê hînê gelek fikirandin, nêrîn û tecruban dibe.
+841. A person by reading history learns many thoughts, views and experiences.
+
+842. 6- Dîrokzan, ji bo pirsîna tiştan kêmtir karê wî dikeve li ha û li wir.
+842. 6- The historian, for asking of things his work falls here and there less.
+
+843. Çunki mebesta wî ji bo ku li ber destê wî ye, bi xwe lê dinêre û dizane.
+843. Because his purpose for being before his hand, he himself looks at it and knows.
+
+844. 7- Mirovên mezin ên bi karên giran û dijwar rûbirû dibin, bi xwendina dîrokê agirê kula dilê wan vedimire û dikevin nav aramî û bêhnfirehiyê.
+844. 7- Great people who face heavy and difficult tasks, with the reading of history the fire of the wound of their heart is extinguished and they fall into peace and patience.
+
+845. 8- Dîroknasîn, jîrî û hişyariya mirov zêde dike û arastî lêkolîn, fikirandin û bîrên rast dike.
+845. 8- Knowing history, increases the intelligence and wakefulness of a person and directs towards research, thinking and true thoughts.
+
+846. 9- Kesên agahdariya wan ji dîrokê heye, hemû bêhnfireh û hişyar in.
+846. 9- People who have information of history, are all patient and awake.
+
+847. Ev qismê han ji destpêkê heta vir ji wergera Mam Hejar a ji zaravayê Soranî hatiye wergirtin.
+847. This very portion from the beginning until here was taken from the translation of Uncle Hejar from the Sorani dialect.
+
+848. Ev qisim di wergera Tirkî de tune. -Z. A. (Ziya Avci)
+848. This portion is not in the Turkish translation. -Z. A. (Ziya Avci)
+
+849. 10- Serdar û zordar, ji serpêhatiyên borî, desthilatdariya Xwedayê mezin tê bîra wan û bi hêz û qudreta xwe pozbilind nabin û ji ser xwe naçin, baş têdigihin ku heta xweşî li ser be û nexweşî her tenê ji bo wê mebestê ye ku Padişahê hemû Padişahan ku di Qur'ana pîroz de emir kiriye :"Bi rastî jî, di çîrokên wan de ji bo kesên xwedî aqil, nesîhet hene."
+849. 10- Commanders and oppressors, from past adventures, the authority of the great God comes to their memory and with their power and strength they do not become arrogant and do not lose themselves, they comprehend well that as long as goodness is present and illness is only for that purpose that the King of all Kings who in the holy Quran commanded: "Truly too, in their stories for people owning intellect, there are advice."
+
+850. ## EZ Û EV KITEBA HAN
+850. ## I AND THIS VERY BOOK
+
+851. Ez, ku nivîskarê van rûpelan im, navê min Şerefê kurê Şemseddîn e.
+851. I, who am the author of these pages, my name is Şeref the son of Şemseddîn.
+
+852. Çavê min li meziniya Xwedê ye û ez hêvîdar im ku alîkarê min be û min di vê dinyayê de serfiraz bike û ji asteng û giriyên wê dinyaya din jî rizgar bike.
+852. My eye is on the greatness of God and I am hopeful that He be my helper and make me triumphant in this world and save me from the obstacles and weeping of that other world as well.
+
+853. Di kemilîna ciwanî û gulvedan û ajardana bihara jiyana xwe de, piştî ku min destê xwe yê rast û destê çepê nas kir, min di xwendewariyê de hêz û taqet bi dest xist û ez bi hezaran milên zanistiya zahirî û batinî hîn bûm.
+853. In the maturation of youth and the blooming and sprouting of the spring of my life, after I knew my right hand and left hand, I obtained strength and power in literacy and I learned thousands of aspects of exoteric and esoteric science.
+
+854. Çi tiştên ji bo dîn û dinyaya min pêwîst e, min ji her tiştî gelek zanîbû û bi sererastî û meharetî ketim ser kar û barên dîwanê û wê çaxê heta niha hemû bi hêz û mecalên xwe ve ez bi xwendina serpêhatî û dîrokan mijûl im.
+854. Whatever things were necessary for my religion and world, I knew much of everything and with straightness and skill I set upon the tasks and loads of the court and at that time until now with all my power and means I have been engaged with the reading of adventures and histories.
+
+855. Çiqas tem û mija xem û keseran bi ser min de dihatin, min ew bi hejebayê serpêhatiyên borî didan milekî û direvandin.
+855. However much the smoke and fog of sorrows and griefs came over me, I set them aside and drove them away with the strong wind of past adventures.
+
+856. Her çendîn hejebayê sar û sir ê bêhêviyê, armanca wî ew bû bigihîje min û ji min derbas bibe.
+856. Even though the cold and freezing wind of hopelessness, its goal was to reach me and pass over me.
+
+857. Lê têdaketin û pêdaçûna serpêhatiyên mîr û mezinên berî min, serê min germ kirin û heta wisan li min hat, di vê hunera ciwan de ez bûm pehlewanek û lêkolîn û lêgerîna vê zanistiya han a taybetî û helbijartî de bûm bijarte û xwedî meharetek wisan ku min han da û anî li ser wê bîr û baweriyê ku li gor taqeta xwe ez jî çend xelekan têxim ser vê zincîra han.
+857. But the delving into and reviewing of the adventures of the mîrs and elders before me, warmed my head and it even became such for me, in this beautiful art I became a champion and in the researching and searching of this very special and selected science I became selected and the owner of such a skill that it encouraged me and brought me upon that thought and belief that according to my strength I too add a few links onto this very chain.
+
+858. Bi vî awayî min xeyala tamahkariyê kir ku, di vê zanistiya hêja û pirr biha de, nivîsandinek ewqas bi qîmet û serbixwe raxim ber çavan ku tu çaxê ji xeynê min destê dîroknivîsên berî min pê neketibin û yên ez raxim ber çavan, ji min pey ve kesek wisan tê negihîştibe.
+858. In this way I imagined the greed that, in this worthy and very valuable science, I lay out before the eyes a writing so valuable and independent that at no time the hand of historians before me aside from me have touched it, and those I lay out before the eyes, after me no one has comprehended thus.
+
+859. Lê, ji ber sebebên asteng û kuspên dijwar û bûyerên nelibar û demên nazik; ev daxwaz û armanca min her daxwazî ma û bûka di nav perdeya armanca min poşî li ser çavên xwe neda alîkî.
+859. But, because of the reasons of obstacles and difficult stumbling blocks and unpleasant events and delicate times; this desire and goal of mine remained always a desire and the bride within the curtain of my goal did not push aside the veil over her eyes.
+
+860. Ji hemû milan ve her tenê bayê berevajî hebû; keleka daxwaz û armancan ber bi paş de vedigeriya û ji hemû koşan de tenê ba û bahozên gêjiyê yên êrîşkar bûn ku serî li zanayan gêj dikir û dêşand.
+860. From all sides there was only always the reverse wind; the raft of desires and goals turned backwards and from all corners there were only the attacking winds and storms of confusion that made the heads of scholars dizzy and hurt.
+
+861. 54. 44
+861. 54. 44
+
+862. Şi' ir
+862. Poem
+
+863. "Dinya wekî pirçê yar şerpeze bû
+863. "The world was in a mess like the hair of the beloved
+
+864. Dêmen li hemû milê dêw û efrût bû
+864. The appearance on every side was demon and afreet
+
+865. Têkiliyên cîhanê ewqas asê û girê bû
+865. The relations of the world were so steep (difficult) and tangled
+
+866. Xweşiya ser û berî û hêminî genî bû
+866. The goodness of orderliness and calmness was rotten
+
+867. Hewandina şer û ger rezîl bû
+867. The harboring of war and roaming was miserable
+
+868. Çepel cîgir û abro hilo bû.”
+868. The filthy was seated and honor was spilled.”
+
+869. Heşameta feqîr û bêçaran di berriyên perîşaniyê de gêj mabûn, dêw û efrûtên derd û eziyetan lingên xwe yên kul û keseran bi ser de berdabûn.
+869. The multitude of the poor and destitute had remained confused in the steppes of misery, the demons and afreets of trouble and torments had released their legs of wounds and griefs upon them.
+
+870. Di wê dema şûm û tal de kesek nedihat hawara kesekî û ji ax, fixan û nalînê pê ve tiştek ji dest nedihat.
+870. In that ominous and bitter time no one came to the aid of anyone and aside from sigh, cry and groaning nothing came from hand.
+
+871. Çavên xwe yên sor û ter dikirin asîman, destên xwe yên kêmhêz û situyên xwe yên lerzoki pan dikirin û ji Xwedê hêvî û lava dikirin: "Xwedê tu karsazê bêçaran î û dergahê hêviya bêhêviyan î.
+871. They put their red and wet eyes to the sky, spread their low-strength hands and their trembling necks and hoped and begged of God: "God You are the fixer of the destitute and the court of hope of the hopeless.
+
+872. Hilgirtina vî barê giran ji taqet û mecala me der e.
+872. The lifting of this heavy load is outside our strength and means.
+
+873. Xwedê, tu li me giran nekî, bê alîkarî û hawara me, bi destê taqet û qudreta xwe, vê erkê milşikestî û ew eziyeta dilşikestî û ew dax û derdê bêwêne li ber me birevînî û ji ser me rakî."
+873. God, do not make it heavy upon us, come to our help and aid, with the hand of Your strength and power, drive away this shoulder-broken duty and that heart-broken torment and that peerless brand and trouble from before us and lift it from us."
+
+874. Tîrêjên merhemeta Xwedayê tik û tenê lepitîn, hejebayê xweşî û şadiyê hejandin, tarîtiya zordarî û hewrên reşên tarî yên nalebariyê wisan tar û mar bûn ku rêç û şûnên wan jî neman.
+874. The beams of mercy of the one and only God moved, they shook the strong wind of goodness and joy, the darkness of oppression and the dark black clouds of unpleasantness were so utterly scattered that their tracks and traces did not remain either.
+
+875. Piştî ew Padişahê dadmend û hejarperwer hat alîkariya me, wek tasek ava sar li ser dil bê kirin, xweşî û şadiya hêviyan ketin hundurê me.
+875. After that just and poor-nurturing King came to our help, as if a bowl of cold water was put upon the heart, the goodness and joy of hopes fell into our inside.
+
+876. Di saya wî Şahê pîroz de dilxurtî û nerehetî ji bîra hemû kesan çû, agirdana avêtina dilan û perîşanî ji carekê rabûn û feqîr, belengaz, reben û derdejar, hemû têr û tesel bûn û bi dilê xweş û çavên ronî jiyana xwe bi rê ve birin.
+876. In the shadow of that holy Shah heart-strength (courage) and discomfort went from the memory of all people, the firing of the casting of hearts and misery lifted at once and the poor, destitute, wretched and troubled, all became full and satisfied and with happy heart and bright eyes led their lives.
+
+877. Kund û bûmên fitne û şûman firîn, deng û hawara wan a bê pît û bereket ji qêrînê ket.
+877. The owls and eagle-owls of mischief and ominiousness flew away, their voice and cry without spark and blessing fell from screaming.
+
+878. Bayên gotinên xweş dest bi hejînê kirin, ji dev û lêvên wan şekir dibarîn.
+878. The winds of pleasant words began shaking, sugar rained from their mouths and lips.
+
+879. Bulbul, kincên perîşanî û melûliyê ji xwe kir, perdeya bêdengiyê dirand û gelek vekirî û eşkere li hemberî gulê dest bi gotina dilxwaziyên xwe kir, ji wê re xwend û çirikand.
+879. The nightingale, took off the clothes of misery and melancholy from itself, tore the curtain of silence and very openly and clearly opposite the rose began saying its heart-desires, sang and chirped for it.
+
+880. Vêca ew kesên di bazara nivîsandinê de cewherfiroş û durrnas in, ew dîrokzanên ku lehengên nav şekerîstana serpêhatî, çîrok, deng û behsan
+880. So those people who in the market of writing are jewel-sellers and pearl-connoisseurs, those historians who are heroes inside the sugar-land of adventures, stories, voices and discussions
+
+881. in, heta niha riya xwe ber bi Kurdistanê ve nekirine, behs û dengên gernas û sernasên Kurdan nekirine bin devê pênûsê, ew dîroka gelek bi şanazî û xweşiyê ku di tam û bîhna xwe de wek hingivîn û gezoyê ne, gelek mixabin ji aliyê wan ve nayê naskirin û ketiye bin piyan û bi tu awayî dest û devên xwe lê nêzîk nekirine.
+881. are, until now have not made their way towards Kurdistan, have not put the discussions and voices of the champions and chiefs of the Kurds under the mouth of the pen, that history very with pride and pleasantness that in its taste and smell is like honey and manna, very unfortunately is not known by them and has fallen under feet and in no way have they brought their hands and mouths near it.
+
+882. Ez i jar, bêtaqet, bêdest û ziman ketim ser wê xeyalê ku vê mijara han a ji taqet û qudreta min gelek der; behs û serpêhatiyên mirovên mezin, kesên bi nav û deng, serdar û fermanrewayên Kurd û Kurdistanê berhev bikim, ên di dîrokên 'Ecem de min bi xwe dîtine û yên min ji mirovên bi hiş û zîrek û ji derewan dûr, raste rast bi xwe seh kirine, binivîsim û navê wê deynim: ŞEREFNAME.
+882. I the pitiful, powerless, handless and tongueless fell upon that thought that this very topic much outside my strength and power; I compile the discussions and adventures of the great people, famous people, commanders and rulers of the Kurds and Kurdistan, those I myself saw in the histories of the Persians and those I directly heard myself from people with mind and intelligence and far from lies, write them and put its name: ŞEREFNAME.
+
+883. Hemû armanc û daxwaza min jî ev e ku, xanedanên mezin ên Kurdistanê navê wan di nav navan de bimîne û ji bîr neçe.
+883. All my goal and desire as well is this that, the great families of Kurdistan their name remain among names and not be forgotten.
+
+884. Ez, ji kesên zana yên dilpak û çak rica dikim ku gelek bi hûrî û kûrî li ser nivîsandinên min bisekinin, eger kêmasiyek bi ber çavên wan bikeve, bi awaki merdane binirxînin, lêbikolin û rast bikin.
+884. I, request of knowledgeable people pure of heart and good that they dwell very finely and deeply upon my writings, if a deficiency falls before their eyes, evaluate it in a manly (generous) manner, research it and correct it.
+
+885. Eger şaşîtî û jibîrçûnek min tê de bibînin, bila bi henekpêkirin û tinazan nehêlin bi hewa de.
+885. If they see an error and forgetting of mine in it, let them not leave it in the air with joking and mockery.
+
+886. Camêrî û mêraniyê bi min re bikin û bi perçeyek baştir û tazetir ji min re pine bikin.
+886. Let them do nobility and bravery with me and patch it for me with a better and fresher piece.
+
+887. Şi' ir
+887. Poem
+
+888. "Şaşiyan bigre dema ku te dît, li xwediyê wê nexe
+888. "Catch the errors when you saw them, do not strike its owner
+
+889. Çunki afirandina însan ne bêberî ye ji şaşiyan
+889. Because the creation of humans is not free from errors
+
+890. Binêre rojê, bi wan ronahiyên xwe yên taybetmendî ve jî
+890. Look at the sun, with those characteristic lights of its as well
+
+891. Derbas nabe raste rast bi ser ekvatorê re."
+891. It does not pass straight over the equator."

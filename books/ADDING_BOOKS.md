@@ -111,6 +111,21 @@ Complete. All 12 passages, 130 sentence pairs, are in the markdown file. This is
 
 Complete. All 19 texts, 283 sentence pairs across 307 numbered pairs including headings, are in the markdown file. This is the full agreed scope, so there is nothing left to append.
 
+## سلطان
+
+- Key: `the_sultan`
+- Source text: `C:\Users\Zachar\Documents\Hatra\obsdian_vaults\Zachar\3 - Language Learning\Texts\Farsi Stories\The Sultan` (a folder of six files, Chap 1 through Chap 6)
+- Output: `books/mds/the_sultan.md`
+- Registered in `reader.html` with `SRC_LANG` = `fa` and `BOOK_TITLE` = `سلطان`, and listed in `index.html` in the فارسی section.
+- Structure. A graded reader mystery in very short sentences, set in Ottoman Istanbul. The source is monolingual Farsi and was paired sentence by sentence with an English learning gloss. The six untitled source chapters were given `##` headings فصل ۱ through فصل ۶ for navigation, and پایان closes the book as a final heading. The book title uses `#`. Numbering is continuous across the whole book.
+- Fixed term choices. Personal names stay as themselves: Elif (الیف), Baba (بابا, the father's nickname, kept as Baba), Yusuf (یوسف), Kara Yusuf (کارا یوسف), Hasan, Mohammad, Karim. وزیر ابراهیم پاشا is Vizier Ibrahim Pasha. ینی‌چری is Janissary. طلا is gold, مُهر is seal, نشانه is sign, قبرستان is cemetery, سرباز is soldier, هوا is the air. قوی is rendered strong and قدرتمند is rendered powerful to keep them distinct. غمگین is rendered sad and ناراحت is rendered upset to keep them distinct.
+- Orthography. Chapter 1 in the source is written without ZWNJ and uses straight quotation marks. Chapters 2 through 6 use ZWNJ and guillemets. Each chapter's spelling and quote style was preserved as printed. Only mechanical spacing artifacts around punctuation, such as a space before a full stop or a missing space after a quote, were silently normalized.
+- Quirks. The two scene breaks printed as three dash lines in chapter 5 were rendered as ordinary paragraph breaks, since the reader would otherwise treat a bare three dash line as a metadata divider and drop everything above it. The em dash of interrupted speech in بابای من— is kept in the Farsi line and rendered as an ellipsis in the English line to respect the no dash rule.
+
+### Progress
+
+Complete. All six chapters, 1023 sentence pairs across 1031 numbered pairs including the title and eight headings, are in the markdown file. This is the whole story, so there is nothing left to append.
+
 
 
 
