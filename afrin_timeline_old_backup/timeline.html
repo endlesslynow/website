@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sîros Triangle / Efrîn Timeline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #EAE3D4; /* Earthy, parchment-like background */
+        }
+        .timeline-container {
+            display: grid;
+            /* Define columns: Dates | Ruling Powers | Native Peoples | Annotations/Map */
+            grid-template-columns: 80px 1fr 1fr 2fr;
+            gap: 1rem;
+        }
+        .timeline-header {
+            grid-column: 1 / -1; /* Span all columns */
+        }
+        .column-title {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #5A5A5A;
+            margin: 0 auto;
+        }
+        .timeline-bar {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .bar-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            color: white;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            white-space: nowrap;
+        }
+        .annotation-line {
+            position: absolute;
+            height: 1px;
+            background-color: #888;
+        }
+        .annotation-text {
+            position: absolute;
+            font-size: 0.8rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div id="chart-container" class="max-w-7xl mx-auto bg-white p-6 shadow-2xl border-4 border-gray-700">
+        <!-- Header Section -->
+        <div class="timeline-header mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">SÎROS TRIANGLE / EFRÎN 600-1300 CE</h1>
+        </div>
+
+        <!-- Main Timeline Grid -->
+        <div class="timeline-container relative" style="height: 1200px;">
+            <!-- Column 1: Dates (Y-Axis) -->
+            <div id="date-axis" class="relative border-r-2 border-gray-300">
+                <h2 class="column-title" style="margin-top: -2rem;">Dates</h2>
+            </div>
+            
+            <!-- Column 2: Ruling Powers -->
+            <div id="ruling-powers" class="relative border-r-2 border-gray-300">
+                 <h2 class="column-title">Ruling Powers</h2>
+            </div>
+
+            <!-- Column 3: Native Peoples (Structure only, as per example) -->
+            <div id="native-peoples" class="relative border-r-2 border-gray-300">
+                 <h2 class="column-title">Native Peoples</h2>
+            </div>
+
+            <!-- Column 4: Annotations & Map -->
+            <div id="annotations" class="relative">
+                <div class="absolute top-0 right-0 w-48 h-40 bg-gray-200 border-2 border-gray-400">
+                     <img src="https://placehold.co/200x160/d1e4d1/4a5c48?text=Map+of\nSîros+Triangle" alt="Map of the Siros Triangle region" class="w-full h-full object-cover">
+                     <p class="text-xs text-center mt-1">Region of Afrin / Sîros</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Define the overall timeframe for the chart
+            const START_YEAR = 600;
+            const END_YEAR = 1300;
+            const TOTAL_DURATION = END_YEAR - START_YEAR;
+
+            // Data extracted from your document, structured for the chart
+            const timelineData = [
+                { name: 'Rashidun Caliphate', start: 634, end: 660, color: '#8B4513', description: 'Muslim Arabs under the Rashidun Caliphate conquer the city of Entek (Antakya) and Sîros (Siirt).' },
+                { name: 'Umayyad Caliphate', start: 660, end: 750, color: '#A0522D', description: 'Under the Umayyad Caliphate, forces destroy Circim (Marash) and relocate its inhabitants.' },
+                { name: 'Abbasid Caliphate', start: 750, end: 944, color: '#CD853F', description: 'The Abbasid Caliphate defines borders with the Byzantine state. The region is known as "Thughur and Capitals".' },
+                { name: 'Hamdanid Dynasty', start: 944, end: 1001, color: '#D2691E', description: 'The Hamdanid dynasty, with Kurdish support, establishes an emirate in Aleppo, beginning a period of intense conflict with the Byzantines.' },
+                { name: 'Mirdasid/Fatimid Flux', start: 1001, end: 1079, color: '#DAA520', description: 'Control of Aleppo alternates between the Mirdasid dynasty and the Fatimids.' },
+                { name: 'Seljuq & Crusader Era', start: 1079, end: 1128, color: '#B8860B', description: 'The Seljuks take control of Aleppo, followed by the arrival of the Crusaders, who establish a principality in Antakya.' },
+                { name: 'Zengid Dynasty', start: 1128, end: 1175, color: '#BC8F8F', description: 'Imad al-Din Zengi captures Aleppo, initiating the Zengid era and constant warfare with the Crusader states.' },
+                { name: 'Ayyubid Dynasty', start: 1175, end: 1258, color: '#F4A460', description: 'Power passes to the Ayyubids under Sultan Saladin, who consolidates control over northern Syria.' },
+                { name: 'Mongol Invasion', start: 1258, end: 1260, color: '#808080', description: 'The Mongol army under Hulagu plunders the region, destroying all Ayyubid emirates and ending their reign.' }
+            ];
+
+            const dateAxis = document.getElementById('date-axis');
+            const rulingPowersCol = document.getElementById('ruling-powers');
+            const annotationsCol = document.getElementById('annotations');
+
+            // --- Function to calculate vertical position and height ---
+            function calculateStyle(item) {
+                const top = ((item.start - START_YEAR) / TOTAL_DURATION) * 100;
+                const height = ((item.end - item.start) / TOTAL_DURATION) * 100;
+                return { top: `${top}%`, height: `${height}%` };
+            }
+
+            // --- Generate Date Markers on the Y-Axis ---
+            for (let year = START_YEAR; year <= END_YEAR; year += 100) {
+                const marker = document.createElement('div');
+                marker.className = 'absolute w-full text-right pr-2 text-sm text-gray-500';
+                const top = ((year - START_YEAR) / TOTAL_DURATION) * 100;
+                marker.style.top = `${top}%`;
+                marker.style.transform = 'translateY(-50%)';
+                marker.textContent = `${year} CE`;
+                dateAxis.appendChild(marker);
+            }
+
+            // --- Generate Bars and Annotations ---
+            timelineData.forEach((item, index) => {
+                const style = calculateStyle(item);
+
+                // 1. Create the colored bar
+                const bar = document.createElement('div');
+                bar.className = 'timeline-bar';
+                bar.style.top = style.top;
+                bar.style.height = style.height;
+                bar.style.backgroundColor = item.color;
+
+                const barText = document.createElement('span');
+                barText.className = 'bar-text';
+                barText.textContent = item.name;
+                bar.appendChild(barText);
+                
+                rulingPowersCol.appendChild(bar);
+
+                // 2. Create the annotation line and text
+                const annotationY = `calc(${style.top} + (${style.height} / 2))`; // Center of the bar
+
+                const line = document.createElement('div');
+                line.className = 'annotation-line';
+                line.style.top = annotationY;
+                line.style.left = '0';
+                // Alternate line placement for readability
+                const lineLength = (index % 2 === 0) ? '25%' : '50%';
+                line.style.width = lineLength;
+
+                const text = document.createElement('div');
+                text.className = 'annotation-text';
+                text.style.top = `calc(${annotationY} - 10px)`; // Adjust text vertical alignment
+                text.style.left = `calc(${lineLength} + 10px)`;
+                text.style.width = '45%';
+                text.innerHTML = `<strong>${item.start} CE:</strong> ${item.description}`;
+                
+                annotationsCol.appendChild(line);
+                annotationsCol.appendChild(text);
+            });
+        });
+    </script>
+</body>
+</html>
