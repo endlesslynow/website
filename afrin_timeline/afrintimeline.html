@@ -269,7 +269,11 @@
             /* The header row sizes to its tallest title so a long name in Arabic
                or Kurdish wraps instead of being cut off. */
             grid-template-rows: auto 1fr;
+            /* On a phone browser 100vh counts the strip behind the address bar,
+               which puts the bottom of the board off screen. dvh is the height
+               actually on show; the vh line stays for browsers without it. */
             height: calc(100vh - 150px);
+            height: calc(100dvh - 150px);
         }
 
         .timeline-headers,
@@ -320,14 +324,21 @@
         /* The four columns that track a running state say what that state is at
            the scroll position, in plain words on the parchment. */
         .column-header.is-live {
-            background: transparent;
-            color: var(--ink);
-            /* Label above value, so the four stay in line with each other
+            /* Label above value, so the three stay in line with each other
                however long the name of the ruling power happens to be. */
             flex-direction: column;
             justify-content: flex-start;
             gap: 2px;
             line-height: 1.2;
+        }
+
+        /* On a coloured tablet the label and the dates step back from the name
+           by going part-transparent, so they read as quieter without needing a
+           second colour that would have to work on six different backgrounds. */
+        .column-header.is-live .header-label,
+        .column-header.is-live .header-dates {
+            color: inherit;
+            opacity: 0.74;
         }
 
         .header-label {
@@ -497,6 +508,7 @@
             overflow: hidden;
             cursor: pointer;
             position: relative;
+            -webkit-tap-highlight-color: transparent;
             transition: transform 0.12s ease, box-shadow 0.12s ease;
         }
 
@@ -517,9 +529,13 @@
             background: rgba(255, 255, 255, 0.28);
         }
 
-        .timeline-item:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(74, 57, 38, 0.22);
+        /* Only where there is a real pointer. On a touch screen the lift sticks
+           after a tap until something else is tapped. */
+        @media (hover: hover) {
+            .timeline-item:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 3px 8px rgba(74, 57, 38, 0.22);
+            }
         }
 
         .timeline-item.is-search-hit {
@@ -559,7 +575,8 @@
             right: 0;
             width: 440px;
             max-width: 94vw;
-            height: 100%;
+            height: 100vh;
+            height: 100dvh;
             background: #FBF4E7;
             border-left: 1px solid var(--line);
             box-shadow: -10px 0 30px rgba(74, 57, 38, 0.22);
@@ -682,44 +699,134 @@
 
         .detail-map-credit a { color: #8A6A3A; }
 
-        /* ── Mobile ───────────────────────────────────────────────────── */
-        .mobile-warning {
+        /* ── Phone ────────────────────────────────────────────────────────
+           The board is a rail and one column of cards here, with the two kinds
+           of card mixed together in year order and told apart by their colour.
+           The three ruling powers move out of the header row into their own
+           strips above the board, and the maps stay in the drawer. */
+        @media screen and (max-width: 768px) {
+            :root { --rail-width: 52px; }
+
+            /* The masthead and the ruling-power strips take whatever height they
+               need and the board gets the rest, which is steadier than trying to
+               guess their combined height in a calc. */
+            .page {
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+                height: 100dvh;
+            }
+
+            .timeline-container {
+                flex: 1;
+                min-height: 0;
+                height: auto;
+                grid-template-rows: 1fr;
+            }
+
+            .masthead {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+                padding: 12px 12px 8px;
+            }
+
+            .masthead-left { gap: 10px; }
+            .olive-mark { width: 46px; height: 46px; margin-top: 0; }
+
+            .masthead-title {
+                font-size: 1.16rem;
+                white-space: normal;
+                margin-bottom: 8px;
+            }
+
+            .lang-button { font-size: 0.9rem; padding: 6px 13px; }
+            .lang-note { font-size: 0.8rem; }
+
+            .search-shell { padding-top: 0; }
+
+            .search-bar {
+                flex-wrap: wrap;
+                border-radius: 18px;
+                padding: 6px 8px;
+            }
+
+            .search-text-input { flex: 1 1 100%; width: auto; }
+            .search-divider { display: none; }
+            .search-year-input { width: 62px; }
+            .search-submit { margin-left: auto; }
+            .search-count { position: static; text-align: right; }
+            .search-results { max-height: 46vh; }
+
+            /* Rail plus the one merged column. */
+            .timeline-headers,
+            .timeline-content {
+                grid-template-columns: var(--rail-width) minmax(0, 1fr);
+                column-gap: 8px;
+                padding: 0 8px;
+            }
+
+            .timeline-headers { padding-bottom: 8px; }
+
+            .year-marker { padding-right: 14px; }
+            .year-marker-number { font-size: 1.05rem; }
+            .year-marker-era { font-size: 0.62rem; }
+            .year-rail-line { right: 7px; }
+            .year-rail-dot { right: 4px; width: 5px; height: 5px; }
+            .year-rail-dot.is-century { width: 8px; height: 8px; right: 3px; }
+            .year-header { font-size: 0.9rem; }
+
+            .column-header { font-size: 1rem; min-height: 30px; }
+
+            .item-title { font-size: 1rem; -webkit-line-clamp: 6; }
+            .item-date { font-size: 0.8rem; }
+            .item-thumb { width: 40px; height: 40px; }
+
+            .detail-panel {
+                width: 100%;
+                max-width: 100%;
+                border-left: none;
+                padding: 20px 16px 40px;
+            }
+
+            /* It stays pinned to the bottom corner, so the board stops short of
+               it rather than running underneath. */
+            .site-credit { left: 12px; bottom: 4px; font-size: 0.72rem; }
+            .page { padding-bottom: 20px; box-sizing: border-box; }
+        }
+
+        /* ── The ruling powers, as strips above the board on a phone ───── */
+        .state-strips {
             display: none;
-            height: 100vh;
-            width: 100vw;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: var(--parchment);
-            z-index: 9999;
-        }
-
-        .mobile-warning-content {
-            height: 100%;
-            width: 100%;
-            display: flex;
             flex-direction: column;
-            justify-content: center;
-            padding: 2rem;
-            box-sizing: border-box;
+            gap: 5px;
+            padding: 0 8px 8px;
         }
-
-        .warning-text {
-            margin-bottom: 2rem;
-            font-family: var(--serif);
-            font-size: 1.2rem;
-            line-height: 1.5;
-            text-align: center;
-            color: var(--ink);
-        }
-
-        .arabic-text { font-size: 1.4rem; direction: rtl; }
 
         @media screen and (max-width: 768px) {
-            .mobile-warning { display: flex; }
-            .timeline-container, .masthead, .relief-strip, .page-reliefs { display: none; }
-            body { position: fixed; width: 100vw; height: 100vh; overflow: hidden; }
+            .state-strips { display: flex; }
         }
+
+        .state-strip {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0 0.4em;
+            font-family: var(--serif);
+            font-size: 1rem;
+            line-height: 1.25;
+            padding: 5px 10px;
+            border-radius: 7px;
+        }
+
+        .state-strip .header-label,
+        .state-strip .header-dates {
+            color: inherit;
+            opacity: 0.74;
+            font-size: 0.84rem;
+        }
+
+        .state-strip .header-value { font-weight: 600; }
     </style>
 </head>
 <body>
@@ -728,23 +835,6 @@
     <a href="https://www.zachariahhopkins.com" target="_blank" rel="noopener noreferrer" class="site-credit">
         Created by Zachariah Hopkins
     </a>
-
-    <div class="mobile-warning">
-        <div class="mobile-warning-content">
-            <div class="warning-text">
-                The Historical Timeline of Afrin cannot be viewed on a mobile device.<br>
-                Please view the Historical Timeline of Afrin on a computer screen.
-            </div>
-            <div class="warning-text">
-                Kronolojiya Dîrokî ya Efrînê bi amûra mobîl nayê dîtin.<br>
-                Ji kerema xwe Kronolojiya Dîrokî ya Efrînê li ser ekrana komputerê temaşe bikin.
-            </div>
-            <div class="warning-text arabic-text">
-                لا يمكن عرض الجدول الزمني التاريخي لعفرين على جهاز محمول.<br>
-                يرجى عرض الجدول الزمني التاريخي لعفرين على شاشة الكمبيوتر.
-            </div>
-        </div>
-    </div>
 
     <div id="root"></div>
 
@@ -1039,13 +1129,18 @@
                         ? { isContinuation: row.repeat, continues: row.slot < row.rowsInDecade - 1 }
                         : null;
 
+                    // Where the two card columns have been poured into one, the
+                    // card keeps the tone of the column it came from, which is
+                    // what tells the two kinds apart on a phone.
+                    const tint = event && event.fromColumn !== undefined ? event.fromColumn : columnIndex;
+
                     return (
                         <TimelineItem
                             key={rowKey}
                             event={event}
                             height={row.height}
                             dateLabel={event ? formatEventDate(event.startDate, event.endDate) : ''}
-                            color={event ? cardColor(columnIndex, columnTitle, row.year, isSpanning ? 0 : row.slot) : 'transparent'}
+                            color={event ? cardColor(tint, columnTitle, row.year, isSpanning ? 0 : row.slot) : 'transparent'}
                             onOpen={onOpen}
                             band={band}
                         />
@@ -1553,6 +1648,20 @@
             return held;
         };
 
+        const PHONE_WIDTH = '(max-width: 768px)';
+
+        const usePhone = () => {
+            const query = React.useRef(window.matchMedia(PHONE_WIDTH));
+            const [isPhone, setIsPhone] = React.useState(query.current.matches);
+            React.useEffect(() => {
+                const media = query.current;
+                const onChange = (e) => setIsPhone(e.matches);
+                media.addEventListener('change', onChange);
+                return () => media.removeEventListener('change', onChange);
+            }, []);
+            return isPhone;
+        };
+
         /* Keeps its own year so scrolling repaints a few short lines of text and
            not the cards underneath them.
 
@@ -1578,48 +1687,81 @@
             return year;
         };
 
-        const ColumnHeaders = ({ cardColumns, stateColumns, labels, initialYear, register }) => {
+        /* The three ruling powers. On a wide screen these are tablets in the
+           header row, one above each column. On a phone the header row is only
+           the rail and one column, so the same three are laid out as strips
+           above the board instead. Either way they follow the scroll and take
+           the colour that power had on the old board: the Assyrians red, the
+           caliphates green, the Mamluks brown, out of timelineColors.js. */
+        const StatePowers = ({ stateColumns, toneOffset, labels, initialYear, register, asStrips }) => {
             const year = useScrollYear(register, initialYear);
             const runs = React.useMemo(() => stateColumns.map(mergeRuns), [stateColumns]);
 
-            return (
-                <React.Fragment>
-                    <div className="year-header">{labels.era}</div>
+            const tablets = stateColumns.map((column, index) => {
+                // Their place in the original board order, which is what picks
+                // the era scheme. Not how many columns are drawn, since a phone
+                // draws one where a wide screen draws two.
+                const held = runAt(runs[index], year);
+                const fill = cardColor(toneOffset + index, column.title, year, 0);
+                return (
+                    <div
+                        key={index}
+                        className={asStrips ? 'state-strip' : 'column-header is-live'}
+                        style={{ backgroundColor: fill, color: readableInk(fill) }}
+                        title={column.title}
+                    >
+                        <span className="header-label">
+                            {SHORT_TITLES[column.title] || column.title}:
+                        </span>
+                        <span className="header-value">{held ? held.name : '—'}</span>
+                        <span className="header-dates">
+                            {held ? formatEventDate(`${held.start}`, `${held.end}`) : ''}
+                        </span>
+                    </div>
+                );
+            });
 
-                    {cardColumns.map((column, index) => {
-                        const tone = toneFor(index);
-                        return (
-                            <div
-                                key={`card-${index}`}
-                                className={`column-header${tone.plainHeader ? ' is-plain' : ''}`}
-                                style={tone.plainHeader ? undefined : {
-                                    backgroundColor: tone.base,
-                                    color: readableInk(tone.base)
-                                }}
-                                title={column.title}
-                            >
-                                {column.title}
-                            </div>
-                        );
-                    })}
-
-                    {stateColumns.map((column, index) => {
-                        const held = runAt(runs[index], year);
-                        return (
-                            <div key={`state-${index}`} className="column-header is-live" title={column.title}>
-                                <span className="header-label">
-                                    {SHORT_TITLES[column.title] || column.title}:
-                                </span>
-                                <span className="header-value">{held ? held.name : '—'}</span>
-                                <span className="header-dates">
-                                    {held ? formatEventDate(`${held.start}`, `${held.end}`) : ''}
-                                </span>
-                            </div>
-                        );
-                    })}
-                </React.Fragment>
-            );
+            return asStrips
+                ? <div className="state-strips">{tablets}</div>
+                : <React.Fragment>{tablets}</React.Fragment>;
         };
+
+        const ColumnHeaders = ({ boardColumns, stateColumns, toneOffset, labels, initialYear, register, isPhone }) => (
+            <React.Fragment>
+                <div className="year-header">{labels.era}</div>
+
+                {boardColumns.map((column, index) => {
+                    const tone = toneFor(index);
+                    // The merged column on a phone belongs to neither tone, so it
+                    // gets the plain parchment heading.
+                    const plain = tone.plainHeader || isPhone;
+                    return (
+                        <div
+                            key={`card-${index}`}
+                            className={`column-header${plain ? ' is-plain' : ''}`}
+                            style={plain ? undefined : {
+                                backgroundColor: tone.base,
+                                color: readableInk(tone.base)
+                            }}
+                            title={column.title}
+                        >
+                            {column.title}
+                        </div>
+                    );
+                })}
+
+                {!isPhone && (
+                    <StatePowers
+                        stateColumns={stateColumns}
+                        toneOffset={toneOffset}
+                        labels={labels}
+                        initialYear={initialYear}
+                        register={register}
+                        asStrips={false}
+                    />
+                )}
+            </React.Fragment>
+        );
 
         /* Fills the width the three state columns used to take up. It follows the
            scroll rather than a click, so the maps always show the year level with
@@ -1665,7 +1807,7 @@
             );
         };
 
-        const Timeline = ({ grid, cardColumns, stateColumns, labels, onOpen, headerRef, contentRef, onScrollEra }) => {
+        const Timeline = ({ grid, boardColumns, stateColumns, toneOffset, labels, onOpen, headerRef, contentRef, onScrollEra, isPhone, sourceTitle }) => {
             const { rows, cells, tops } = grid;
             const listeners = React.useRef(new Set());
             const register = React.useCallback((fn) => {
@@ -1695,36 +1837,63 @@
             const initialYear = rows.length ? rows[0].year : 0;
 
             return (
-                <div className="timeline-container">
-                    <div ref={headerRef} className="timeline-headers">
-                        <ColumnHeaders
-                            cardColumns={cardColumns}
+                <React.Fragment>
+                    {/* On a phone the header row is only the rail and one column,
+                        so it carries nothing worth showing and the year rail
+                        already says BCE or CE on every marker. The three ruling
+                        powers sit above the board instead. */}
+                    {isPhone && (
+                        <StatePowers
                             stateColumns={stateColumns}
+                            toneOffset={toneOffset}
                             labels={labels}
                             initialYear={initialYear}
                             register={register}
+                            asStrips={true}
                         />
+                    )}
+
+                    <div className="timeline-container">
+                        {!isPhone && (
+                            <div ref={headerRef} className="timeline-headers">
+                                <ColumnHeaders
+                                    boardColumns={boardColumns}
+                                    stateColumns={stateColumns}
+                                    toneOffset={toneOffset}
+                                    labels={labels}
+                                    initialYear={initialYear}
+                                    register={register}
+                                    isPhone={isPhone}
+                                />
+                            </div>
+                        )}
+                        <div ref={contentRef} className="timeline-content" onScroll={handleScroll}>
+                            <YearColumn rows={rows} />
+                            {boardColumns.map((column, index) => (
+                                <TimelineColumn
+                                    key={index}
+                                    columnIndex={index}
+                                    columnTitle={column.title}
+                                    rows={rows}
+                                    cells={cells}
+                                    isSpanning={false}
+                                    onOpen={(event, dateLabel) =>
+                                        onOpen(event, dateLabel, sourceTitle(event, column.title))}
+                                />
+                            ))}
+                            {/* The maps would cost a phone about 60 KB for every
+                                year it stopped on, so there they open with a card
+                                in the drawer instead. */}
+                            {!isPhone && (
+                                <MapPanel
+                                    labels={labels}
+                                    initialYear={initialYear}
+                                    register={register}
+                                />
+                            )}
+                        </div>
                     </div>
-                    <div ref={contentRef} className="timeline-content" onScroll={handleScroll}>
-                        <YearColumn rows={rows} />
-                        {cardColumns.map((column, index) => (
-                            <TimelineColumn
-                                key={index}
-                                columnIndex={index}
-                                columnTitle={column.title}
-                                rows={rows}
-                                cells={cells}
-                                isSpanning={false}
-                                onOpen={(event, dateLabel) => onOpen(event, dateLabel, column.title)}
-                            />
-                        ))}
-                        <MapPanel
-                            labels={labels}
-                            initialYear={initialYear}
-                            register={register}
-                        />
-                    </div>
-                </div>
+                </React.Fragment>
             );
         };
 
@@ -1789,6 +1958,7 @@
             const [era, setEra] = React.useState('BCE');
             const [scrolledEra, setScrolledEra] = React.useState('BCE');
             const [detail, setDetail] = React.useState(null);
+            const isPhone = usePhone();
 
             const headerRef = React.useRef(null);
             const contentRef = React.useRef(null);
@@ -1829,6 +1999,18 @@
             const cardColumns = React.useMemo(() => columns.slice(0, 2), [columns]);
             const stateColumns = React.useMemo(() => columns.slice(2), [columns]);
 
+            /* A phone has room for one column of cards, so the two are poured
+               into one and left in year order. Each card remembers which column
+               it came from, which is all it needs to keep its own colour. */
+            const boardColumns = React.useMemo(() => {
+                if (!isPhone) return cardColumns;
+                const events = [];
+                cardColumns.forEach((column, index) => {
+                    column.events.forEach(event => events.push({ ...event, fromColumn: index }));
+                });
+                return [{ title: cardColumns.map(c => c.title).join(' / '), events }];
+            }, [isPhone, cardColumns]);
+
             React.useEffect(() => {
                 const handleClickOutside = (e) => {
                     if (resultsRef.current && !resultsRef.current.contains(e.target)) {
@@ -1856,7 +2038,7 @@
                 });
 
                 clearHighlights();
-                if (columnIndex === undefined || columnIndex >= cardColumns.length) return;
+                if (columnIndex === undefined || columnIndex >= boardColumns.length) return;
 
                 // The row has to arrive before it can be marked.
                 setTimeout(() => {
@@ -1868,12 +2050,31 @@
                 }, 420);
             };
 
-            // Only the two columns that still draw cards set the row heights.
+            // Only the columns that actually draw cards set the row heights.
             const grid = React.useMemo(
-                () => buildGrid(cardColumns, startYear, endYear, columnWidth),
-                [cardColumns, startYear, endYear, columnWidth]
+                () => buildGrid(boardColumns, startYear, endYear, columnWidth),
+                [boardColumns, startYear, endYear, columnWidth]
             );
             const rows = grid.rows;
+
+            /* A merged card still belongs to one of the two original columns, and
+               that is the name the drawer and the search results should show,
+               not the joined-up name of the merged column. */
+            const sourceTitle = (event, fallback) => (
+                event.fromColumn !== undefined && cardColumns[event.fromColumn]
+                    ? cardColumns[event.fromColumn].title
+                    : fallback
+            );
+
+            /* Search runs over the columns as the board actually holds them, so
+               a hit is the very object drawn on screen and can be found again.
+               On a phone that is the one merged column; on a wide screen it is
+               the two. The three named in the headers come after, and have no
+               card to land on. */
+            const searchColumns = React.useMemo(
+                () => [...boardColumns, ...stateColumns],
+                [boardColumns, stateColumns]
+            );
 
             const rowIndexForEvent = (columnIndex, event) => {
                 const start = parseInt(event.startDate.match(/-?\d+/)[0]);
@@ -1882,11 +2083,11 @@
                 rows.forEach((row, i) => { if (row.year === decade) decadeRows.push(i); });
                 if (!decadeRows.length) return 0;
 
-                // A hit in one of the three header columns has no card to land on,
-                // so the board simply travels to that decade.
-                if (columnIndex >= cardColumns.length) return decadeRows[0];
+                if (columnIndex >= boardColumns.length) return decadeRows[0];
 
-                const inDecade = columns[columnIndex].events
+                // Filtered and sorted exactly as buildGrid did it, over the same
+                // array, so the slot this gives back is the slot on the board.
+                const inDecade = boardColumns[columnIndex].events
                     .filter(e => {
                         const s = parseInt(e.startDate.match(/-?\d+/)[0]);
                         return s >= decade && s < decade + 10;
@@ -1906,7 +2107,7 @@
                 }
 
                 const hits = [];
-                columns.forEach((column, columnIndex) => {
+                searchColumns.forEach((column, columnIndex) => {
                     column.events.forEach(event => {
                         const title = (event.mainEvent || '').toLowerCase();
                         const body = (event.additionalInfo || '').toLowerCase();
@@ -1915,7 +2116,7 @@
                             hits.push({
                                 event,
                                 columnIndex,
-                                columnTitle: column.title,
+                                columnTitle: sourceTitle(event, column.title),
                                 rowIndex: rowIndexForEvent(columnIndex, event),
                                 dateLabel: formatEventDate(event.startDate, event.endDate)
                             });
@@ -1965,7 +2166,7 @@
             };
 
             return (
-                <div>
+                <div className="page">
                     <div className="masthead">
                         <div className="masthead-left">
                             <img
@@ -2072,13 +2273,16 @@
 
                     <Timeline
                         grid={grid}
-                        cardColumns={cardColumns}
+                        boardColumns={boardColumns}
                         stateColumns={stateColumns}
+                        toneOffset={cardColumns.length}
                         labels={{ ...labels, era: scrolledEra }}
                         onOpen={openDetail}
                         headerRef={headerRef}
                         contentRef={contentRef}
                         onScrollEra={setScrolledEra}
+                        isPhone={isPhone}
+                        sourceTitle={sourceTitle}
                     />
 
                     <DetailPanel
