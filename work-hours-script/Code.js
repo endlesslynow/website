@@ -17,6 +17,7 @@ var KONZEPT_SHEET_PROP = 'konzeptSpreadsheetId';
 var KONZEPT_SPREADSHEET_NAME = 'Arbeitskonzept Reminders';
 var LAST_BACKUP_PROP = 'lastBackupDate';
 var BACKUP_ERROR_PROP = 'lastBackupError';
+var TRIGGER_ERROR_PROP = 'lastTriggerError';
 var PI_BACKUP_VIEWER = 'zacahopkins@gmail.com';
 var HEARTBEAT_FILE_NAME = 'habibi-pi-heartbeat.txt';
 var FAILURE_LOG_NAME = 'failure log.txt';
@@ -706,21 +707,34 @@ function ensureBackupTrigger_() {
   try {
     if (props.getProperty(LAST_BACKUP_PROP) !== today) {
       dailyBackup();
+    } else {
+      // Today's copy is already in Drive, so any error left over from an
+      // earlier attempt no longer describes the truth.
+      props.deleteProperty(BACKUP_ERROR_PROP);
     }
   } catch (error) {
     rememberBackupError_(error);
   }
+
+  // The nightly schedule is a separate concern from the backup itself. It has
+  // its own error slot so a missing trigger permission can never be reported
+  // as a Drive failure, and can never hide a real one.
   try {
-    var triggers = ScriptApp.getProjectTriggers();
-    for (var i = 0; i < triggers.length; i++) {
-      if (triggers[i].getHandlerFunction() === 'dailyBackup') {
-        return;
-      }
-    }
-    ScriptApp.newTrigger('dailyBackup').timeBased().everyDays(1).atHour(3).create();
+    ensureNightlyTrigger_();
+    props.deleteProperty(TRIGGER_ERROR_PROP);
   } catch (error) {
-    rememberBackupError_(error);
+    rememberTriggerError_(error);
   }
+}
+
+function ensureNightlyTrigger_() {
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === 'dailyBackup') {
+      return;
+    }
+  }
+  ScriptApp.newTrigger('dailyBackup').timeBased().everyDays(1).atHour(3).create();
 }
 
 function errorText_(error) {
@@ -728,12 +742,28 @@ function errorText_(error) {
 }
 
 function rememberBackupError_(error) {
+  rememberError_(BACKUP_ERROR_PROP, 'Backup error. ', error);
+}
+
+function rememberTriggerError_(error) {
+  rememberError_(TRIGGER_ERROR_PROP, 'Nightly schedule error. ', error);
+}
+
+// Stores the error and writes it to the failure log, but only the first time
+// that exact error appears. Without the check every page load would append the
+// same line again and bury the real history.
+function rememberError_(property, label, error) {
+  var text = errorText_(error);
   try {
-    PropertiesService.getScriptProperties().setProperty(BACKUP_ERROR_PROP, errorText_(error));
+    var props = PropertiesService.getScriptProperties();
+    if (props.getProperty(property) === text) {
+      return;
+    }
+    props.setProperty(property, text);
   } catch (ignored) {
     // Never let error bookkeeping break the app.
   }
-  appendToFailureLog_('Backup error: ' + errorText_(error));
+  appendToFailureLog_(label + text);
 }
 
 /* ---------- Health check: pop-up warnings and the failure log ---------- */
@@ -748,6 +778,14 @@ function backupWarnings_() {
     var err = props.getProperty(BACKUP_ERROR_PROP);
     if (err) {
       problems.push('The Google Drive backup hit an error: ' + err);
+    }
+
+    if (props.getProperty(TRIGGER_ERROR_PROP)) {
+      problems.push(
+        'The nightly automatic backup is switched off. Zachariah has to approve ' +
+        'one Google permission to turn it back on. Until he does, a backup only ' +
+        'happens on the days this page is opened.'
+      );
     }
 
     var last = props.getProperty(LAST_BACKUP_PROP);
@@ -817,35 +855,47 @@ function appendToFailureLog_(line) {
 
 function getBackupStatus_() {
   try {
-    var on = false;
-    var triggers = ScriptApp.getProjectTriggers();
-    for (var i = 0; i < triggers.length; i++) {
-      if (triggers[i].getHandlerFunction() === 'dailyBackup') {
-        on = true;
-        break;
-      }
-    }
     var props = PropertiesService.getScriptProperties();
+    var last = props.getProperty(LAST_BACKUP_PROP) || '';
     var err = props.getProperty(BACKUP_ERROR_PROP) || '';
-    if (!on) {
-      return { on: false, last: '', err: err };
+
+    // Checked separately so a missing trigger permission still leaves the
+    // real backup date visible in the footer.
+    var on = false;
+    try {
+      var triggers = ScriptApp.getProjectTriggers();
+      for (var i = 0; i < triggers.length; i++) {
+        if (triggers[i].getHandlerFunction() === 'dailyBackup') {
+          on = true;
+          break;
+        }
+      }
+    } catch (ignored) {
+      on = false;
     }
 
-    var last = props.getProperty(LAST_BACKUP_PROP) || '';
-    return { on: true, last: last, err: err };
+    return { on: on, last: last, err: err };
   } catch (ignored) {
     return { on: false, last: '', err: '' };
   }
 }
 
-// One-time setup only: open this file in the Apps Script editor, pick
+// One-time setup only. Open this file in the Apps Script editor, pick
 // ZZZ_CLICK_RUN_TO_TURN_ON_BACKUPS from the function dropdown at the top
 // (it sorts to the very bottom of the list, so it is easy to spot), click
 // Run, then approve the Google permission prompt that appears. That single
-// click grants the Drive access dailyBackup() needs; nothing else in this
-// file requires any further setup after that.
+// click grants everything the backups need, and nothing else in this file
+// requires any further setup after that.
+//
+// The trigger call comes first on purpose. A deployed web app is never
+// allowed to show a consent dialog, so a permission the script has not been
+// granted yet can only be granted by a human running the call right here in
+// the editor. Running dailyBackup() alone is not enough, because it never
+// touches ScriptApp and so never asks for the scheduling permission.
 function ZZZ_CLICK_RUN_TO_TURN_ON_BACKUPS() {
+  ensureNightlyTrigger_();
   dailyBackup();
+  PropertiesService.getScriptProperties().deleteProperty(TRIGGER_ERROR_PROP);
 }
 
 function dailyBackup() {

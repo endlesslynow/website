@@ -6723,3 +6723,6252 @@
 
 2242. Ev qismê han di wergera Soranî de heye, lê tu îşaret an zanyariyek ku ji nusxeyek destnivîs a din e, nedaye xuyakirin. -Z. A.
 2242. This very part exists in the Sorani translation, but it has not shown any sign or information that it is from another manuscript copy. -Z. A.
+
+2243. 1-Xidirê kurê Kelul, 2-Ilyasê kurê Xidir, 3-Xidirê kurê Ilyas,
+2243. 1-Xidir the son of Kelul, 2-Ilyas the son of Xidir, 3-Xidir the son of Ilyas,
+
+2244. 4-Hesenê kurê Xidir, 5- Babloyê kurê Hesen, 6- Munzirê kurê Bablo.
+2244. 4-Hesen the son of Xidir, 5-Bablo the son of Hesen, 6-Munzir the son of Bablo.
+
+2245. Ji bo ku nivîskarê van rêzên han, rewş û serpêhatiya vê gruba han baş nekolaye û ji devê kesên bawermend seh nekiriye, ji min re baş zelal nebû û min behsa wan nekir.
+2245. Because the writer of these very lines, has not investigated the condition and adventure of this very group well and has not heard it from the mouth of believing (trustworthy) people, it did not become well clear to me and I did not make mention of them.
+
+2246. Ji ber vê, ez dixwazim tenê di derheqê rewşa wê grûba ku xeberên li ser wan sabit û zelal in binivîsim ku min zanyariyên di derheqê wan de ji çavkaniyên bawerî pê kirî wergirtine û min bi xwe jî bi çavên serê xwe dîtine.
+2246. Because of this, I want to only write regarding the condition of that group that the news upon them is fixed and clear that I have received the informations regarding them from trusted sources and I myself too have seen them with the eyes of my head (my own eyes).
+
+2247. Ew rêz û hevokên kurt ên li vir ji aliyê dev û lêvên qelema duziman ve tên nivîsandin, ne gotinek kêm û ne jî gotinek zêde, ji bilî dubarekirina nivîsandina wan çîrok û gotinên ji aliyê min ve hatine sehkirin pê ve tiştek nîne.
+2247. Those short lines and sentences here that from the side of the mouth and lips of the two-tongued pen are written, neither a word less and nor too a word more, apart from the repetition of the writing of those stories and words that from my side have been heard is nothing else.
+
+2248. Min dev ji nivîsandina wan tiştên nexweş û yên ji aliyê kesên eqlîselîm ve rast nayên dîtin, berda.
+2248. I let go of the writing of those unpleasant things and those that from the side of sound-minded people are not seen true.
+
+2249. Bila silav li ser wan kesan be ku li ser riya rast dimeşin.
+2249. Let peace be upon those people who walk upon the true road.
+
+2250. Memûnê kurê Munzirê kurê Babloyê kurê Hesenê kurê Xidirê kurê Ilyasê kurê Xidirê kurê Kelulê kurê Baba Erdelan:
+2250. Memûn the son of Munzir the son of Bablo the son of Hesen the son of Xidir the son of Ilyas the son of Xidir the son of Kelul the son of Baba Ardalan:
+
+2251. Piştî mirina babê xwe bû hukumdar û demeke gelek dûr û dirêj bi desthilatek qewî, ev welatê han bi awakî serbixwetî bi rê ve bir.
+2251. After the death of his father he became ruler and for a very far and long time with a strong authority, he conducted this very country in an independent way.
+
+2252. Dema ku emrê Xwedê bicî anî, sê kur li pey xwe hiştin: Beyke Beg, Surxab Beg û Mihemmed Beg.
+2252. When he put the command of God in place (died), he left three sons behind himself: Beyke Beg, Surxab Beg and Mihemmed Beg.
+
+2253. Beyke Begê Kurê Memûn Beg:
+2253. Beyke Beg the Son of Memûn Beg:
+
+2254. Piştî mirina babê xwe ew li ser textê desthilatê rûnişt.
+2254. After the death of his father he sat upon the throne of authority.
+
+2255. Memûn Beg hê di saxiya xwe de welatê xwe di navbera kurên xwe de parve kiribû.
+2255. Memûn Beg still in his life (while alive) had divided his country among his sons.
+
+2256. Nahiyên Dalam, Tagsu, Şemîran, Hawar, Sîman, Rawdan û Gulenber ketibûn ber para Beyke Beg; bajarên din ên wilayetê jî ku em ê piştre behs bikin, ketibûn ber para birayên din.
+2256. The sub-districts of Dalam, Tagsu, Şemîran, Hawar, Sîman, Rawdan and Gulenber had fallen before the share of Beyke Beg; the other cities of the province too that we will mention afterwards, had fallen before the share of the other brothers.
+
+2257. Beyke Beg, tam 42 salan fermanrewatî kir.
+2257. Beyke Beg, did rulership exactly for 42 years.
+
+2258. Dema ku malavayî ji jiyanê xwest ber bi melbenda nemanê ve çû, du kurên wî li pişt wî man.
+2258. When he requested farewell from life and went towards the region of non-existence, two sons of his remained behind him.
+
+2259. Ismaîl û Memûn.
+2259. Ismaîl and Memûn.
+
+2260. Memûn Begê Kurê Beyke Beg
+2260. Memûn Beg the Son of Beyke Beg
+
+2261. Piştî mirina babê xwe, bi awakî serfirazî û serbilindî li ciyê wî rûnişt.
+2261. After the death of his father, in a successful and proud way he sat in his place.
+
+2262. Hê salek bi ser de derbas bûbû, Sultan Suleymanê Osmanî, xwest bi destê Sultan Huseyin Beg ê Fermanrewayê Imadiyeyê bi hinek emîrên Kurdistanê yên din ve wilayeta Şehrezolê îstîla bike.
+2262. Still a year had passed over it, the Ottoman Sultan Suleyman, wanted by the hand of Sultan Huseyin Beg the Ruler of Amadiya with some other emirs of Kurdistan to invade the province of Shahrizor.
+
+2263. Li ser vê, Sultan Huseyin Beg, li gor fermana padişah berê xwe da Şehrezol û xwest wê bistîne.
+2263. Upon this, Sultan Huseyin Beg, according to the command of the padishah turned himself to Shahrizor and wanted to take it.
+
+2264. Di Kela Dalamê de derûdora Memûn girtin.
+2264. Inside the Castle of Dalam they took the surroundings of (surrounded) Memûn.
+
+2265. Piştî şerekî giran û xwînavî nekarîn serbikevin, piştre bi riya aştî re Memûn Beg ji keleyê derxistin û şandin seraya Sultan Suleyman.
+2265. After a heavy and bloody war they could not succeed, afterwards by the road of peace they took Memûn Beg out from the castle and sent him to the palace of Sultan Suleyman.
+
+2266. Li ser vê, Surxabê mamê
+2266. Upon this, Surxab the paternal uncle of
+
+2267. Memûn Beg, ev firset zanîbû û Lewî, Meşîle, Mehrewan, Tenûre, Kelos û Neşkaş ku para biraziyê wî bûn, dagîr kir û xist nav sînorên eyaleta xwe û pena bir seraya Şah Tehmasbê Sefewî û girêdan û îta'eta xwe jê re îlan kir.
+2267. Memûn Beg, knew (considered) this an opportunity and occupied Lewî, Meşîle, Mehrewan, Tenûre, Kelos and Neşkaş which were the share of his nephew, and put them inside the borders of his own province and took refuge at the palace of the Safavid Shah Tahmasp and declared his connection and obedience to him.
+
+2268. Li milê din, dema ku ji aliyê Sultan Suleyman ve hat zanîn ku Memûn Beg bêtawan e, ji bo azadkirina wî ferman da.
+2268. On the other side, when it was known from the side of Sultan Suleyman that Memûn Beg is innocent, he gave a command for his freeing.
+
+2269. Piştre kerem kir ku, rêvebirina kar û barên Sancaqa Hîlleyê ya girêdayî Bexdada diyarê aştiyê heta ew li ser rûyê dinê bijî jê re bê sipartinê.
+2269. Afterwards he favored that, the administration of the tasks and affairs of the Sanjak of Hillah connected to Baghdad the land of peace until he lives upon the face of the world be entrusted to him.
+
+2270. Niha ku sala 1005'ê koçî (1597'ê z) ye, Hille di destê Memûn Beg de ye.
+2270. Now which is the year 1005 Hijri (1597 G), Hillah is in the hand of Memûn Beg.
+
+2271. Demek e li wir gelek bi xweşî û serbilindî wextê xwe derbas dike û kar û barên li wir bi serbixwetî dimeşîne.
+2271. For a time there very pleasantly and proudly he passes his time and conducts the tasks and affairs there independently.
+
+2272. Her wiha, ji aliyê Seraya Al-i Osmanî ve Sancaqa Siruçikê jî dan Ismail Begê birayê wî.
+2272. Also, from the side of the Palace of the Ottoman House they gave the Sanjak of Siruçik too to Ismail Beg his brother.
+
+2273. Heta çû rehma Xwedê li wir bi awakî xweşî hukum kir û rêvebiriya kar û barên wir kir.
+2273. Until he went to the mercy of God there in a pleasant way he ruled and did the administration of the tasks and affairs of there.
+
+2274. Surxabê Kurê Memûn Beg
+2274. Surxab the Son of Memûn Beg
+
+2275. Wekî me behs kir, piştî girtina biraziyê wî Memûn Begê kurê Beyke Beg, kar û barê hukumeta Şehrezol û Dalamê bi rê ve bir.
+2275. As we mentioned, after the capturing of his nephew Memûn Beg the son of Beyke Beg, he conducted the tasks and affairs of the government of Shahrizor and Dalam.
+
+2276. Ji bilî vê, beşa Mihemmed Beg ê birayê xwe yê din jî kir ser wilayeta xwe ya jê re mîrate mabû.
+2276. Apart from this, he put the portion of Mihemmed Beg his other brother too upon his own province which had remained as an inheritance for him.
+
+2277. Kar û barên fermanrewatiyê bi awakî baş meşand.
+2277. He conducted the tasks and affairs of rulership in a good way.
+
+2278. Di sala 956'ê koçî (1550'yê z) de, Elqas Mirzayê birayê Şah Tehmasb, ji bo girtina textê Îranê xwe avêt ba Sultan Suleyman Xan û daxwaza alîkariyê jê kir.
+2278. In the year 956 Hijri (1550 G), Elqas Mirza the brother of Shah Tahmasp, for the taking of the throne of Iran threw himself to Sultan Suleyman Xan and made a request of help from him.
+
+2279. Lê qasek şûn de, ket nav hinek helwestan ku Sultan jê bikeve şik û gumanê.
+2279. But a while later, he fell into some positions that the Sultan would fall into doubt and suspicion of him.
+
+2280. Ji ber vê jî xew lê heram bû û ji Sultan tirsiya, bi Surxab Beg re peywendî danî ku ricayê ji birayê wî Şah Tehmasb bike û lê bibore, wekî berê, kar û barên wilayeta Şêrwanê bide destê wî û ew xwe têkelî kar û barên wî neke.
+2280. Because of this too sleep became forbidden to him and he feared the Sultan, he established a connection with Surxab Beg that he make a request from his brother Shah Tahmasp and he forgive him, like before, he give the tasks and affairs of the province of Shirvan into his hand and he not mix himself in his tasks and affairs.
+
+2281. Surxab Beg, çawan vê daxwaza han gihand Seraya Îranê, Şah Tehmasb ji vê firseta mezin û di cî de îstîfade kir.
+2281. Surxab Beg, as soon as he reached this very request to the Palace of Iran, Shah Tahmasp benefited from this great opportunity and in place (immediately).
+
+2282. Heyetek di bin serokatiya Şah Nîmetullahê Kuhustanî de û ji hinek giregir û fermanderên Qizilbaşan pêk hatî damezirand.
+2282. A delegation under the presidency of Shah Nimetullah Kuhustani and consisting of some high-ranking ones and commanders of the Qizilbash was established.
+
+2283. Heyet çû û ew teslîm girt û anîn Seraya Îranê.
+2283. The delegation went and took him as delivered (received him) and brought him to the Palace of Iran.
+
+2284. Lê di cî de ji aliyê Şah de fermana girtina wî hat dan û ew avêtin biniya zindana Kela Kahkahayê.
+2284. But in place (immediately) from the side of the Shah the command of his capture was given and they threw him into the bottom of the prison of the Castle of Qahqaha.
+
+2285. Salekê şûn de, Şah fermana kuştina wî da.
+2285. A year later, the Shah gave the command of his killing.
+
+2286. Li ser vê, wî ji ciyekî keleyê yê herî bilind avêtin û mir.
+2286. Upon this, they threw him from a highest place of the castle and he died.
+
+2287. Li hemberî vê xizmeta mezin a ku ji Şah re kiribû, biryar hat dan ji Surxab Beg re li hemberî vê qenciya wî wekî diyarî ji xezîneya Şah re her sal hezar tumen bê dan.
+2287. Against this great service that he had done for the Shah, a decision was given for Surxab Beg against this goodness of his as a gift from the treasury of the Shah every year a thousand tomans be given.
+
+2288. Surxab Beg, heta dawiya jiyana xwe ya ku gelek domand, her sal ji vê nîmeta han îstîfade dikir.
+2288. Surxab Beg, until the end of his life which lasted much, every year benefited from this very blessing.
+
+2289. Ew dostekî nêzîkê Şah bû û Şah gelek jê hez dikir û ew li ba Şah gelek bi rû bû.
+2289. He was a close friend of the Shah and the Shah liked him very much and he at the side of the Shah was very with-face (respected).
+
+2290. Surxab Beg, temenekî gelek dirêj derbas kir.
+2290. Surxab Beg, passed a very long age.
+
+2291. Fermanrewatiya wî 67 sal ajot.
+2291. His rulership drove (lasted) 67 years.
+
+2292. Dema ku mud-
+2292. When the dur-
+
+2293. detê jiyanê ji aliyê Xwedê ve lê hat birîn û koça dawiyê kir, yanzdeh zarokên kur li ser saheya jiyanê hiştin: Hesen, İskender, Sultan 'Eli, Yaqub, Behram, Besat, Zulfiqar, Asilmiş, Şahsiwar, Saro, Qasim.
+2293. -ation of life from the side of God was cut for him and he made the final migration, he left eleven boy children upon the field of life: Hesen, Iskender, Sultan 'Eli, Yaqub, Behram, Besat, Zulfiqar, Asilmis, Şahsiwar, Saro, Qasim.
+
+2294. Mihemmed Begê Kurê Memûn Beg
+2294. Mihemmed Beg the Son of Memûn Beg
+
+2295. Piştî mirina babê wî, rêvebirina karên herêmên ku di welat de jê re hatibûn diyarkirin ên wekî Siruçik, Qeredax, Şehrbazar, Alan û Dumehran di destê wî de bûn.
+2295. After the death of his father, the administration of the tasks of the regions that in the country had been determined for him like Siruçik, Qeredax, Şehrbazar, Alan and Dumehran were in his hand.
+
+2296. Lê piştre ji bo desthilata hemû eyaleta ku jê re mabû bigre destê xwe, çû Seraya Sultan Suleyman Xan û doza alîkariyê jê kir.
+2296. But afterwards for taking the authority of all the province that had remained for him into his hand, he went to the Palace of Sultan Suleyman Xan and made a case of help from him.
+
+2297. Wezîrê Mezin Rustem Paşa jî di vî warî de mil da ber wî.
+2297. The Grand Vizier Rustem Pasha too in this field gave a shoulder before him (supported him).
+
+2298. Piştre ji Osman Paşa yê Mîrêmîranê Bexdayê re ferman hat dan ku mîrên Kurdistanê jî bigre ba xwe û bimeşe ser wilayeta Erdelanê û wê îstîla bike.
+2298. Afterwards to Osman Pasha the Mir of Mirs of Baghdad a command was given that he take the mirs of Kurdistan too to his side and march upon the province of Ardalan and invade it.
+
+2299. Ji bo cîbicîkirina fermana Sultan, ev fermander û mîrên han meşiyan ser wilayeta navê wê derbas dibe û Kela Dalamê kirin bin abluqayê.
+2299. For the implementation of the command of the Sultan, these very commanders and mirs marched upon the province whose name passes and put the Castle of Dalam under blockade.
+
+2300. Ev kela han ji hemû keleyên din ên wilayetê dijwartir, bi nav û bangtir, asê û qahîmtir bû.
+2300. This very castle was more difficult, more famous, more secure and firmer than all the other castles of the province.
+
+2301. Ji ber ku, bi bilindahiya xwe bi qubbeha kadiz a asîmanê hêşîn re şer dikir; bi stêrka zûhal û stêrkên din ên bilind re qebe qeba wê bû.
+2301. Because, with its height it was doing war with the milky dome of the blue sky; it had a boasting contest with the star Saturn and other high stars.
+
+2302. Abluqeyê du salan domand.
+2302. The blockade lasted for two years.
+
+2303. Di vê navê re Mihemmed Beg bi gulleyeke tivingê hat kuştin.
+2303. Amidst this Mihemmed Beg was killed by a bullet of a rifle.
+
+2304. Piştre hawara Şah Tehmasb ji yên bin abluqeyê re hat.
+2304. Afterwards the help of Shah Tahmasp came to those under blockade.
+
+2305. Li ser vê, Osman Paşa ji ber wan bi paş de kişiya, berê xwe da Şehrezol û li wir jî bi emrê Xwedê mir.
+2305. Upon this, Osman Pasha withdrew backwards because of them, turned himself to Shahrizor and there too by the command of God he died.
+
+2306. Yên ku du sal bû di keleyê de di bin abluqeyê de bûn, ji vê firsetê îstîfade kirin, kele vala kirin û heryek ji wan bi milekî de çûn."
+2306. Those who for two years were inside the castle under blockade, benefited from this opportunity, emptied the castle and every one of them went by a side."
+
+2307. Di sala 969ê koçî (1562'yê z), Mihemmed Paşayê Baltacî ji vê firsetê îstîfade kir û bêsekin ket nav kela vala û ew ji xwe re kir merkez.
+2307. In the year 969 Hijri (1562 G), Mihemmed Pasha Baltaci benefited from this opportunity and without stopping fell inside the empty castle and made it a center for himself.
+
+2308. Ji wir şûn de ji bo bidestxistin û rêvebirina wan ciyan, riya siyaseta devê germ û zimanê nerm baştir dît.
+2308. From there onwards for the obtaining and administration of those places, he saw the road of the politics of a warm mouth and a soft tongue better.
+
+2309. Bi vê yekê jî dest bi dagîrkirina hemû bajar û keleyên vê wilayeta han kir.
+2309. By this one too he started the occupation of all the cities and castles of this very province.
+
+2310. Bi vî awayî wilayeta Şehrezolê ket nav sînorê welatê Sultan û ji wê tarîxê şûn de jî bû yek ji wan wilayetên girêdayî Dewleta Osmani.
+2310. In this way the province of Shahrizor fell inside the border of the country of the Sultan and from that date onwards too it became one of those provinces connected to the Ottoman State.
+
+2311. Sultan 'Eli Begê Kurê Surxab Beg
+2311. Sultan 'Eli Beg the Son of Surxab Beg
+
+2312. Dema ku Surxab Beg mir, rêvebirina kar û barên wilayeta Erdelanê ket destê kurê wî.
+2312. When Surxab Beg died, the administration of the tasks and affairs of the province of Ardalan fell into the hand of his son.
+
+2313. Piştî sê salên desthilatdariyê du zarokên biçûk li pey xwe hiştin û çû rehma Xwedê.
+2313. After three years of rulership he left two small children behind himself and went to the mercy of God.
+
+2314. Navên zarokên wî Tîmûr Xan û Helo Xan bûn.
+2314. The names of his children were Tîmûr Xan and Helo Xan.
+
+2315. Em ê piştre, li gor wan zanyariyên gihîştine destê me, behsa rewşa serpêhatiya wan bikin, ka gelo çi bi wan hat?
+2315. We will afterwards, according to those informations that have reached our hand, make mention of the condition of their adventure, wonder what came to them (happened to them)?
+
+2316. Besat Begê Kurê Surxab Beg
+2316. Besat Beg the Son of Surxab Beg
+
+2317. Piştî mirina birayê xwe Sultan 'Elî, rêvebirina kar û barên Erdelanê girt destê xwe û bi gelemperî rewşa li wir kir bin kontrola xwe.
+2317. After the death of his brother Sultan 'Eli, he took the administration of the tasks and affairs of Ardalan into his hand and generally put the condition there under his control.
+
+2318. Lê kurên Sultan 'Elî ku ji xuşka Sultan Ustaclû Menteş bûn, yanî xwarziyên Sultan Ustaclû bûn, ji bo sitandina desthilata babê xwe, xwe avêtin ba Şah Ismaîlê duduyan ê Sefewî.
+2318. But the sons of Sultan 'Eli who were from the sister of Sultan Ustaclu Mentesh, meaning were the nephews of Sultan Ustaclu, for the taking of the authority of their father, threw themselves to the second Safavid Shah Ismail.
+
+2319. Piştî mirina Şah İsmail, Timur Xan, kurê mezin ê Sultan 'Eli, di welatê bin destê Besat Sultan de dest bi çetetî û talanan kir, girê û asteng derxist.
+2319. After the death of Shah Ismail, Timur Xan, the big (eldest) son of Sultan 'Eli, in the country under the hand of Besat Sultan started banditry and plundering, brought out knots and obstacles.
+
+2320. Ji ber vê dijmintiyek mezin û giran ket navbera wan û heta diçû ev dijmintiya han dijwartir û germtir dibû.
+2320. Because of this a great and heavy enmity fell between them and as it went this very enmity became more difficult and hotter.
+
+2321. Heta Besat Sultan çû rehma Xwedê ev rewşa han bi vî awayî meşiya.
+2321. Until Besat Sultan went to the mercy of God this very condition conducted in this way.
+
+2322. Tîmûr Xanê Kurê Sultan 'Elî
+2322. Tîmûr Xan the Son of Sultan 'Eli
+
+2323. Piştî Besat Sultan çû rehma Xwedê, Tîmûr Xanê biraziyê wî desthilata hukumeta Erdelan girt destê xwe.
+2323. After Besat Sultan went to the mercy of God, Tîmûr Xan his nephew took the authority of the government of Ardalan into his hand.
+
+2324. Di meheke sala 986ê koçî (1581ề z) de, sedaqeta xwe bi Seraya Sultan Murad Xan re pêşkêş kir.
+2324. In a month of the year 986 Hijri (1581 G), he presented his loyalty with the Palace of Sultan Murad Xan.
+
+2325. Sultan jî dilnermî û şefqet nîşanî wî da û ji waridata erdên xwe yên taybetî yên li wilayeta Şehrezolê salane maaşek ji 100 hezar akçeyên Osmanî pêk hatî, ew serbilind û serfiraz kir.
+2325. The Sultan too showed soft-heartedness and affection to him and from the revenues of his special lands at the province of Shahrizor annually a salary consisting of 100 thousand Ottoman akches, he made him proud and successful.
+
+2326. Her çar kurên wî jî bi xelatên Sultantiyê hatin xelatkirin.
+2326. All four of his sons too were rewarded with the rewards of the Sultanate.
+
+2327. Bajarên Sine, Hesenabad û Qizilceqeleyê bi riya sancaq re ji kurê wî yê mezin Sultan 'Elî re; Qeredax ji kurê wî yê din Budak re; Mehrewan (Merîwan) ji kurê wî Murad re û Şehrbazar jî ji kurê wî yê biçûk re hatin dan.
+2327. The cities of Sanandaj, Hasanabad and Qizilceqeleye by the road of sanjak to his big son Sultan 'Eli; Qeredax to his other son Budak; Mehrewan (Meriwan) to his son Murad and Şehrbazar too to his small son were given.
+
+2328. Ji bilî van, wilayeta Dînewerê ya di bin hakimiyeta Qizilbaşan de jî kir ser beşa wilayeta ku ji babê wî jê re mabû.
+2328. Apart from these, he put the province of Dinawar too which was under the domination of the Qizilbash upon the portion of the province that from his father had remained to him.
+
+2329. Ew jî ket nav rêza zincîra mîrêmîranê mezin ê Dewleta Osmanî û leqeba "Timur Xan Paşa❞ girt.
+2329. He too fell into the row of the chain of the great mir of mirs of the Ottoman State and took the nickname "Timur Xan Pasha".
+
+2330. Di netîceyê de bi ber bayê Şeytên ket, ji rê derket û xeyala hukumdartî û serbixwetiyê kir serê xwe.
+2330. In the result he fell before the wind of Satan, went out of the road and put the imagination of rulership and independence into his head.
+
+2331. Carna dibû meyêldarê Rûmiyan û carna jî dibû tagirê Qizilbaşan.
+2331. Sometimes he became inclined to the Rumis (Ottomans) and sometimes too he became a partisan of the Qizilbash.
+
+2332. Her roj li ser benekî dileyîst û dengên cure cure ji têlên saza wî dihatin.
+2332. Every day he played upon a string and various voices came from the strings of his saz.
+
+2333. Ji ber pozbilindî û stûriyê, ji rê derket.
+2333. Because of arrogance and stiffness, he went out of the road.
+
+2334. Derûdor û cînarên xwe tev êşandibû, ew kiribûn nav nerehetiyên mezin, asteng û girê ji wan re saz kiribûn.
+2334. He had hurt his surroundings and neighbors entirely, had put them into great discomforts, had prepared obstacles and knots for them.
+
+2335. Leşkerên xwe di talan û diziyan de serbest kiribû û êdî wisan lê hatibû, xelk ji destê wî ketibû nav bêzariyê.
+2335. He had set his soldiers free in plundering and thefts and anymore it had become such to it, the people from his hand had fallen into disgust.
+
+2336. Di dawiyê de êrîş bir ser welatê kurê Omer Begê Kelehûrî û ew talan kir.
+2336. In the end he took an attack upon the country of the son of Omer Beg of the Kalhor and plundered it.
+
+2337. Şahwêrdî yê Fermanrewayê Loristanê hat hawara kurê Omer Beg.
+2337. Shahverdi the Ruler of Lorestan came to the help of the son of Omer Beg.
+
+2338. Cote riyan li Tîmûr Xan girtin û di esnayê ku talan û malên wilayeta Kelhurê dabû pêşiya xwe û bi xatircemî ber bi mala xwe ve vedigeriya, li Xeserê kemîn li ber danîn û piraniya fermander, esker û serekeşîretên ku pey re bûn kuştin.
+2338. They closed both roads to Tîmûr Xan and in the course that he had given the plunder and properties of the province of Kalhor before himself and with assurance was returning towards his home, at Xesere they placed an ambush before him and killed the majority of the commanders, soldiers and tribe leaders who were with him.
+
+2339. Tîmûr Xan girtin û çend rojan li ba xwe ragirtin.
+2339. They captured Tîmûr Xan and for a few days held him with themselves.
+
+2340. Lê piştre
+2340. But afterwards
+
+2341. dilnermî û dilxweşî nîşanî wî dan û berdan û me'neya van gotinên ku şair di beyta xwe de daye xuyakirin, nedan berçav:
+2341. they showed soft-heartedness and pleasant-heartedness to him and freed him and did not give the meaning of these words that the poet in his couplet has made shown, before the eye (did not consider):
+
+2342. "Dema ku exlaqê gemarî bibe tebiet bikeve bedenê
+2342. "When a filthy morality becomes nature and falls into the body
+
+2343. Dernakeve bi tu awayî heta roja mirin û sekeratê."
+2343. It does not go out in any way until the day of death and throes."
+
+2344. Timur Xan, piştî hat azadkirin, êrîş bir ser Eyaleta Zêrrînkemerê û herêmên bi wê ve girêdayî.
+2344. Timur Xan, after he was freed, took an attack upon the Province of Zerrinkemer and the regions connected to it.
+
+2345. Ev der di bin desthilata Dewletyar Siyah Mensûrî yê ji aliyê Dîwana Şahê Qizilbaş ve hatibû tayînkirin de bû.
+2345. This place was under the authority of Devletyar Siyah Mansuri who had been appointed from the side of the Divan of the Qizilbash Shah.
+
+2346. Dewletyar, li dijî wî rabû, êrîş bir ser û di navbera wan de şerên xwînavî qewimîn.
+2346. Devletyar, rose against him, took an attack upon him and between them bloody wars happened.
+
+2347. Vê carê talihê Timur Xan jê re yar derneket û di meheke sala 998'e koçi (1590'e z) de hat kuştin û birayê wî Helo Xan li ciyê wî rûnişt.
+2347. This time the luck of Timur Xan did not come out as a friend for him and in a month of the year 998 Hijri (1590 G) he was killed and his brother Helo Xan sat in his place.
+
+2348. Helo Xanê Kurê Sultan 'Eliyê Kurê Surxab Beg
+2348. Helo Xan the Son of Sultan 'Eli the Son of Surxab Beg
+
+2349. Piştî kuştina Tîmûr Xan, Helo Xan ê birayê wî bû cînişînê wî û rêvebirina kar û barên hukumeta Loristanê kir destê xwe.
+2349. After the killing of Tîmûr Xan, Helo Xan his brother became his successor and took the administration of the tasks and affairs of the government of Lorestan into his hand.
+
+2350. Girêdanî û îtaeta xwe ji Seraya Sultan Murad Xan re diyar kir.
+2350. He made clear his connection and obedience to the Palace of Sultan Murad Xan.
+
+2351. Dilê Fermanrewayên Qizilbaşan jî ji xwe neşikand, bi hemû aliyan re riyên lihevkirinê û siyasetek bi eqilane meşand.
+2351. He did not break the heart of the Rulers of the Qizilbash too from himself, with all sides he conducted the roads of agreement and a smart politics.
+
+2352. Di saya vê zîrekî û hişyariyê de, karîbû bi serbestî û bê dijîtî fermanrewatiya xwe bimeşîne.
+2352. In the shadow of this cleverness and awareness, he was able freely and without enmity to conduct his rulership.
+
+2353. Niha jî ku sala 1005'ê koçî (1597e z) ye, cardin bi serbilindî dijî û bi serfirazî fermanrewatiya xwe dimeşîne.
+2353. Now too which is the year 1005 Hijri (1597 G), again proudly he lives and successfully he conducts his rulership.
+
+2354. ## BEŞA DUDUYAN
+2354. ## THE SECOND SECTION
+
+2355. ## DI DERHEQÊ FERMANREWAYÊN HEKKARIYÊ DE NE KU BI NAVÊ ŞENBÛ JÎ HATINE NASKIRIN
+2355. ## THEY ARE REGARDING THE RULERS OF HAKKARI WHO BY THE NAME SHENBU TOO HAVE BEEN KNOWN
+
+2356. Ji aliyê kesên erbabên edebiyat û nivîsan ên qedirşînas û payebilind, xwedî dîtinên dûrbûn û zelal û nêrînên ronak jî ku bi awakî vekirî tê zanîn, hîm û koka fermanrewayên vê wilayeta han, digihin xelifeyên 'Ebbasiyan.
+2356. From the side of the people who are masters of literature and writings who are value-knowing and high-ranking, possessors of far-sighted and clear views and bright perspectives too which in an open way is known, the foundation and root of the rulers of this very province, reach to the Abbasid caliphs.
+
+2357. Lê ciyê ax û keserê ye, kesekî ji me re negotiye ku nesla wan ji kijan xelîfeyê mezin zêde bûne.
+2357. But it is the place of sigh and sorrow, a person has not said to us that from which great caliph their lineage increased.
+
+2358. Ji ber vê dest neda ku em ji vê derava şolî û tîreavê derbas bibin û tiştekî vekirî û ronî ji bo rojên bên nexin ber çavan.
+2358. Because of this it did not give a hand (was not possible) that we pass from this muddy and murky ford and we do not put something open and bright for the coming days before the eyes.
+
+2359. Ew yeka li ba hemû kesan eşkere û ronî ye, ev fermanrewayên han, di nav hemû Fermanrewayên Kurdistanê de, bi nesla xwe ya bilind û koka xwe ya berz, bi helwestên xwe yên hêjayê methan, bi kirinên xwe yên bi qîmet û sergiraniya xwe, xwediyê ciyekî bilind û bi nav û deng in.
+2359. That one is obvious and bright at the side of all people, these very rulers, among all the Rulers of Kurdistan, with their high lineage and their elevated root, with their positions worthy of praise, with their valuable deeds and their dignity, are the possessor of a high and famous place.
+
+2360. Ji ber vê yekê, hemû wextê bawermendî dane sultanên mezin û fermanrewayên dinyadîtî yên kêrhatî, wan jî qedr û siyaneta wan girtine, heval û hogirtî bi wan re kirine.
+2360. Because of this one, all the time they gave belief (trust) to the great sultans and capable world-seeing rulers, they too held their value and respect, did friendship and companionship with them.
+
+2361. Ev, bi awaki wisan bûye ku, tu wextê çavên xwe bernedane dagirkirin û ji destên wan sitandina welatê wan.
+2361. This, has been in such a way that, no time have they let their eyes upon the occupying and taking of their country from their hands.
+
+2362. Ger çendîn hinek sultanan qismek ji welatê wan hinek deman dagir kiribin jî, lê bi riya mulkiyetê re cardin li wan vegerandine.
+2362. Although if some sultans for some times may have occupied a part from their country too, but by the road of property again they returned it to them.
+
+2363. Ji ber vê mebestê, Mewlana Şerefeddîn Alî El-Yezdî, di kitêba xwe Zafernameyê de wiha gotiye:
+2363. Because of this purpose, Mawlana Sharaf al-Din Ali Yazdi, in his book Zafarnama has said thus:
+
+2364. "Emîr Tîmûrê Kurganî yê fatihê bi nav û deng, piştî girtina Kela Bayezîdê temam kir, di sala 787'ê koçî (1386ê z) de berê xwe da Kela
+2364. "Emir Timur Gurkani the famous conqueror, after he completed the taking of the Castle of Bayezid, in the year 787 Hijri (1386 G) turned himself to the Castle
+
+2365. Wanê û Westanê.
+2365. of Van and Gevash (Westan).
+
+2366. Izzeddînşêr ku wê çaxê Fermanrewayê Hekkariyê bû, xwe di Kela Wanê de qahîm kir û biryar da ku heta şûrê wî bibire û hêzên wî têrê bike, li dijî hêzên Emîr Timur berxwedanê bike û paşde nekêşe.
+2366. Izzeddînşêr who at that time was the Ruler of Hakkari, made himself firm inside the Castle of Van and gave a decision that as long as his sword cuts and his forces suffice, he do resistance against the forces of Emir Timur and not withdraw backward.
+
+2367. Emir Timûr jî bêsekin bi leşkerekî giran derûdora Kela Wanê girt, şer dest pê kir û car ji carê zêdetir xeleka abluqa li ser rûniştiyên keleyê teng bû û devê gazê li wan civiya.
+2367. Emir Timur too without stopping with a heavy army took the surroundings of the Castle of Van, war started and time from time more the ring of blockade upon the residents of the castle became narrow and the mouth of the gas (danger/siege) gathered upon them.
+
+2368. Di dawiyê de ji Izzeddînşêr re eşkere bû ku ev belayê han dev ji keleyê bernade, mecala berxwedanî û berevanî ne mumkun e, bawerî bi naveroka gotinên vê şi'ira han a Farisî kir:
+2368. In the end it became obvious to Izzeddînşêr that this very trouble does not let go of the castle, the opportunity of resistance and defense is not possible, he did belief with the content of the words of this very Persian poem:
+
+2369. "Ki bi yekî bask polayî re bikeve cedelê
+2369. "Whoever falls into dispute with a steel-winged one
+
+2370. Dê baskê xwe yê zîvî têke nav asteng û mirinê”
+2370. Will put his silver wing inside obstacle and death"
+
+2371. Izzeddînşêr, piştî berxwedana du rojan mecbur ma ji keleyê derket, 'ecz û neserkevtina xwe qebûl kir.
+2371. Izzeddînşêr, after the resistance of two days remained compelled and went out from the castle, accepted his inability and unsuccessfulness.
+
+2372. Ji bo ramûsana serderê bilind xwe amade kir û bi sernizmî serê xwe li ber Emîr Tîmûr tewand û jê ricaya lêborînê kir.
+2372. For the kissing of the high threshold he prepared himself and with head-lowness (humility) bowed his head before Emir Timur and made a request of forgiveness from him.
+
+2373. Lê yekî navê wî Nasireddîn ê xizmê Izzeddînşêr, ji xwe re şerm û rûreşî zanîbû ku ji bo qemçek xwîn hêvî û lava bike û ji mêraniya xwe re layiq nedit ku serê xwe li ber dagirkeran bitewîne.
+2373. But a person whose name was Nasireddîn the relative of Izzeddînşêr, knew (considered) it a shame and face-blackness for himself that for a drop of blood he hope and plead and did not see it worthy of his manliness that he bow his head before the occupiers.
+
+2374. Piştî çûna Izzeddînşêr, deriyê keleyê di piştê de asê kir û dest bi gerandina aşê şerî kir.
+2374. After the going of Izzeddînşêr, he secured the door of the castle in the back and started the turning of the mill of war.
+
+2375. rojan bi dijmin re şer kir û heta taqet û mecala hêzên wî yên berxwedanî hebûn, dest li ber xwe dananî.
+2375. For days he did war with the enemy and until his forces of resistance had capability and opportunity, he did not put his hands down before himself (did not surrender).
+
+2376. Piştî 27 rojan, leşkerên Tîmûr rijiyan nav keleyê û rimên cewherdêr û xencerên devbixwîn li dijî wan bi kar anîn û taqet û mecal ji wan birrîn, hest û can di wan de nehîştin.
+2376. After 27 days, the soldiers of Timur poured inside the castle and used jewel-bearing spears and blood-mouthed daggers against them and cut capability and opportunity from them, did not leave sense and soul in them.
+
+2377. Zanayekî wê çaxê girtina Kela Wanê bi van herdu beytên şi'iran aniye ziman:
+2377. A knowledgeable one of that time brought the taking of the Castle of Van to tongue with these two couplets of poems:
+
+2378. "Şah ê ku sitand welatê Îranê bi zora şûr
+2378. "The Shah who took the country of Iran by the force of the sword
+
+2379. Hiva alaya wî fetih kir sînorên Keywanê
+2379. The moon of his flag conquered the borders of Saturn
+
+2380. Ger bê pirsîn ji te tarîxa sitandina Kela Wanê
+2380. If the date of the taking of the Castle of Van is asked from you
+
+2381. Tu jî bêje ku; 'kê sitand Wanê"
+2381. You too say that; 'who took Van'"
+
+2382. Piştî dagirkirina keleyê temam bû, Emîr Tîmûr ferman da Fermanderê Parêzgeriya Sultantiyê ku keleyê kavil û wêran bike.
+2382. After the occupation of the castle was completed, Emir Timur gave a command to the Commander of the Guardianship of the Sultanate that he make the castle devastated and ruined.
+
+2383. Lê kele avahiyek kevin a ser dewra desthilata Şeddadê kurê 'Ad bû.
+2383. But the castle was an old building of upon the era of the authority of Shaddad the son of 'Ad.
+
+2384. Ew kevirên sext û mezin ên hîmê dîwarên wê li ser ava kiribûn, ew hostekarî û hunermendiya ku di hunandina hîmdanîna dîwaran de bi kar anîbûn, nimûneyên wê li ser rûyê dinê nehatine dîtin û nehatine sehkirin.
+2384. Those hard and large stones that they had built the foundation of its walls upon, that mastership and artisanship that they had used in the weaving of the foundation-laying of the walls, its examples upon the face of the world have not been seen and have not been heard.
+
+2385. Xwe
+2385. They
+
+2386. gelek pey re westandin û gelek hewil dan, lê nekarîn tiştekî bi dest bixin.
+2386. tired themselves much after it and made much effort, but could not obtain a thing.
+
+2387. Hemû ew eziyetên wan di valatiyê de çûn.
+2387. All those torments of theirs went into emptiness.
+
+2388. Nekarîn bi temami hilweşînin, ji ber vê, tenê bi xerakirina hinek ciyên wê man û destê xwe jê kêşan.
+2388. They could not completely destroy it, because of this, they remained only with the ruining of some of its places and pulled their hand from it.
+
+2389. Emîr Tîmûr, bi alaya Şahîtiyê ber bi navçeyên Salmas û Xoyê ve ajot.
+2389. Emir Timur, with the flag of Shahhood drove towards the districts of Salmas and Khoy.
+
+2390. Dema ku xêvet û baregahên rengîn li ser erdê bêser û binî yê xanê Teter berpa kirin, bilindahiya kopên sitûnan û çîtên kon û çadirên hukumdaran, 'ewr ji ber rojê dan alîkî.
+2390. When they established the colorful tents and courts upon the headless and bottomless (boundless) earth of the Tatar khan, the height of the peaks of the pillars and the reeds of the tents and canopies of the rulers, put the clouds aside from before the sun.
+
+2391. Emîr Tîmûr, rê da hukumdar Izzeddînşêr hat dîwana wî û xêrhatinî pê da.
+2391. Emir Timur, gave road to the ruler Izzeddînşêr he came to his divan and he gave welcoming to him.
+
+2392. Bi rûyekî xweşî, welatê wî yê ji bab û bapîrên wî jê re mabû, li gor esasê berê û bi riya temlîkî jê re hat dan.
+2392. With a pleasant face, his country that from his father and grandfathers had remained to him, according to the previous basis and by the road of possession was given to him.
+
+2393. Fermana paşdevegera wî bi serbilindî, bi serfirazî û bi dewletî ya ji bo merkeza welatê wî hat dan û ev fermana han bi muhra berz a ji nexşên Tîmûr hat tesdiqkirin.
+2393. The command of his returning backward proudly, successfully and with statehood for the center of his country was given and this very command by the high seal from the designs of Timur was confirmed.
+
+2394. Di sala 824'e koçî (1422'yê z) de Melik Mihemmedê kurê Melik Izzeddîn û Emîr Şemseddin ê Fermanrewayê wilayetên Xelat û Bedlîsê, bextê wan bi wan re yar bû û dîtina Mîrza Şahrux ji wan re li hev hat.
+2394. In the year 824 Hijri (1422 G) Melik Mihemmed the son of Melik Izzeddin and Emir Şemseddin the Ruler of the provinces of Ahlat and Bedlîs, their luck was a friend with them and the seeing of Mirza Shahrukh matched for them.
+
+2395. Mirza Şahrux, xêrhatineke gelek zêde bi wan da.
+2395. Mirza Shahrukh, gave a very excessive welcoming to them.
+
+2396. Gelek qîmet da wan û dilê wan xweş kir.
+2396. He gave much value to them and made their heart pleasant.
+
+2397. Fermana hukmê wan nû kir û wilayet û eyaletên di bin rêvebirina wan de û ji bab û bapîrên wan ji wan re mabûn, cardin da destê wan.
+2397. He renewed the command of their rule and the provinces and states under their administration and from their father and grandfathers had remained to them, again gave to their hand.
+
+2398. Berê şerê di navbera Mîrza Şahrux û zarokên Qere Yûsifê Tirkmen li ser sînorên Eleşkêrdê biqewime, îzna wan da ku ew vegerin navenda welatên xwe.
+2398. Before the war between Mirza Shahrukh and the children of Qara Yusuf the Turkmen happens upon the borders of Eleşkird, he gave them permission that they return to the center of their countries.
+
+2399. Ev malbata kevin û esîl, ji bilî ew belgeyên navên wan derbas bûn, di derheqê ku ev eyaleta han heta hetayê dê di bin mulkiyeta wan de be, fermanek ji aliyê Sultanên Xanedana Cengêz ve ji wan re hatî dan û bi nivîsandina Uygurî hatî nivîsandin jî di destê wan de heye.
+2399. This old and noble family, apart from those documents whose names passed, regarding that this very province until forever will be under their property, a command from the side of the Sultans of the Dynasty of Genghis having been given to them and having been written with Uyghur writing too exists in their hand.
+
+2400. Nivîskarê van rêzên han ev fermana Xanedana Cengîziyan dîtiye.
+2400. The writer of these very lines has seen this command of the Dynasty of the Genghisids.
+
+2401. Armanca behskirina vê meseleyê li vir, danexuyakirina îsbata vê yekê ye ku; Sultanên mezin û payebilind, her wext li hemberî vê malbata han bi qedir û siyanet hereket kirine, ew axên ji bab û bapîrên wan ji wan re mane, yan di destpêkê de qet êrîş nebirine ser û di destê wan de hiştine, yan jî piştî ji destê wan sitandibin, cardin bi riya sipartina bin mulkiyeta wan di destê wan de mane.
+2401. The aim of the mentioning of this issue here, is the making shown of the proof of this one that; the great and high-ranking Sultans, every time against this very family have acted with value and respect, those lands that from their father and grandfathers have remained to them, either in the beginning they have never taken an attack upon them and have left them in their hand, or too after they may have taken it from their hand, again by the road of entrusting under their property they have remained in their hand.
+
+2402. Em ê li xwarê kesên ku ji vê xenadana han gihîştine sewiyeya hukumdariyê, eger Xwedê bi me re yar be, bi dirêjî behsa navê wan bikin.
+2402. We below will make mention of the names of the people who from this very dynasty have reached the level of rulership, if God is a friend with us, at length.
+
+2403. Esededdînê Kurê Kulabiyê Kurê 'Imadeddîn
+2403. Esededdîn the Son of Kulabi the Son of 'Imadeddî n
+
+2404. Nivîskarê van rûpelan, ev dîroka han gelek car ji mirovên ji derewan dûr, bi bîr û bawer sehkiriye ku, carekê ji caran, di demên berê de, ji ber sebebê hinek bûyeran, Esededdînê kurê Kulabî yê Fermanrewayê
+2404. The writer of these pages, has heard this very history many times from people far from lies, with thought and belief that, once from times (once upon a time), in previous times, because of the reason of some events, Esededdîn the son of Kulabi the Ruler of
+
+2405. Hekkariyê serê xwe hildaye û ji welatê xwe derketiye û koçê Misrê kiriye.
+2405. Hakkari raised his head (rebelled) and went out from his country and migrated to Egypt.
+
+2406. Bi sergerdan, bêkes û nenas pena biriye ber Sultanên Çerkezan.
+2406. With confusion, without a person (alone) and unknown he took refuge before the Sultans of the Circassians.
+
+2407. Lê dibêjin; şêr li ku be pençên wî pê re ne.
+2407. But they say; the lion wherever it is its claws are with it.
+
+2408. Şûrê wî, di çend şerên di navbera Çerkezan û dijminên dîn û xwedanenasan de ku qewimîne, di kalan de nesekiniye.
+2408. His sword, in several wars between the Circassians and the enemies of religion and the God-not-knowers (infidels) that happened, did not stop in the scabbard.
+
+2409. Bi dil û can di erkê leşkerî de nav daye, deriyê derece û meqaman li pêşî hatine vekirin.
+2409. With heart and soul he gave a name in the military duty, the door of degrees and positions were opened before him.
+
+2410. Dibêjin; carekê di meydana merd û mêraniyê de çengekî xwe wenda kiriye, sultanê wê demê bêsekin çengekî zêr jê re çêkiriye û gelek leqeb, paye û mal bi ser de rêtiye û navê wî kiriye Esededdînê Çengzêr.
+2410. They say; once in the square of generosity and manliness he lost one of his arms, the sultan of that time without stopping made an arm of gold for him and poured many nicknames, ranks and properties upon him and made his name Esededdîn the Gold-Armed.
+
+2411. Li milê din, dema ku Hesen Begê Aqqoyunî desthilata xwe bi ser rewşa heyî de xurt kir û li Îranê bû hukumdar û sultanê bêşirîk; di derheqê Kurdan de gelek xerabî di dilê wî de hebûn û dijmintiyeke bi kîn û kerb bi wan re dikir, dixwest Kurdistanê ji ber piyan rake û têxe bin destê xwe.
+2411. On the other side, when Hasan Beg the Aq Qoyunlu strengthened his authority upon the existing condition and in Iran became the ruler and partnerless sultan; regarding the Kurds there were many badnesses in his heart and he did an enmity with hatred and grudge with them, he wanted to remove Kurdistan from before the feet and put it under his hand.
+
+2412. Ji bo vê mebesta han, ji du kesên ji mezinên fermanderên Tirkmenên Aqqoyunî, Sofi Xelîl û 'Ereb Şah Beg re, wezîfeya meşa ser Kurdistanê û dagirkirina wilayeta Hekkariyê sipart.
+2412. For this very purpose, to two people from the greats of the commanders of the Aq Qoyunlu Turkmens, Sofi Xelîl and 'Ereb Şah Beg, he entrusted the duty of the march upon Kurdistan and the occupying of the province of Hakkari.
+
+2413. Sofi Xelîl, qasek bi ser de derbas bû, planên êrîşan danî û li firsetan geriya.
+2413. Sofi Xelîl, a while passed over it, laid the plans of attacks and searched for opportunities.
+
+2414. Bi vî awayî heta rojeke çarşembê fermana êrîşê da û ajot ser wilayeta Hekkariyê.
+2414. In this way until a Wednesday day he gave the command of attack and drove upon the province of Hakkari.
+
+2415. Ew roj roja bihnvedan û îstiraheta Mîr Izzeddînşêrê Fermanrewayê Hekkariyê bû.
+2415. That day was the day of rest and relaxation of Mir Izzeddînşêr the Ruler of Hakkari.
+
+2416. Heresên sînor û riyan, xebera vê êrîşa han gihandin Mîr.
+2416. The guards of the border and roads, reached the news of this very attack to the Mir.
+
+2417. Dijmin çiqas diçû nêzîkatî li wan dikir.
+2417. The enemy however much it went did nearness (approached) to them.
+
+2418. Serok û mirovên maqûl ên Hekkariyê xwe diavêjin ser dest û piyên wî û li derûdora wî tên hev ku ew bê hewara can û malên wan û va namûs û heyayên wan dikeve bin destê dijmin, ferman bide da ku parêzgeriya mal, zarok, namûs û jiyana xwe bikin.
+2418. The leaders and sensible people of Hakkari throw themselves upon his hands and feet and come together around him that he come to the help of their souls and properties and here their honor and shame falls under the hand of the enemy, give a command so that they do the guardianship of their property, children, honor and life.
+
+2419. Lê Esededdîn Şêr dibêje: "Îro çarşembe, rojên çarşemban rojên şer û qirênan nîne, nabe mirov rojên çarşemban şer bike, çunki tu xêr di vê rojê de tune."
+2419. But Esededdîn Şêr says: "Today is Wednesday, the days of Wednesdays are not the days of war and fighting, it is not possible a person does war on the days of Wednesdays, because no good exists in this day."
+
+2420. Bi vî awayî çi dikin û nakin, ew dev ji çarşemba xwe bernade.
+2420. In this way whatever they do and do not, he does not let go of his Wednesday.
+
+2421. Dijminê xwe biçûk dibîne û guhê xwe nade gotinên kesekî.
+2421. He sees his enemy small and does not give his ear to the words of a person.
+
+2422. Ew şîret û pêşniyarên giregirên dewletê yên sadiq û rawêjkerên wî bi kêrî tiştekî nayên.
+2422. Those advices and proposals of the loyal high-ranking ones of the state and his advisors do not come to the use of a thing (are of no use).
+
+2423. Di netîceyê de, dijminê di bin fermanderiya Sofi Xelîl û 'Ereb Şah Beg de, digihîjin ser, serê wî jêdikin û wî di nav xwîna wî de digevizînin.
+2423. In the result, the enemy under the command of Sofi Xelîl and 'Ereb Şah Beg, reaches upon him, they cut off his head and roll him inside his blood.
+
+2424. Bi vî awayî wî dişkinin û wilayeta Hekkariyê ji bo carekê tenê jî be ji destê vi hukumdarî dikeve destê biyaniyan û koka xanedana mîran li wan kor dibe.
+2424. In this way they break him and the province of Hakkari for once only too if it be from the hand of this ruler falls into the hand of foreigners and the root of the dynasty of the mirs becomes blind (extinguished) on them.
+
+2425. Roja çarşembê bi kêrî Aqqoyuniyan hat.
+2425. The Wednesday day came to the use of the Aq Qoyunlu.
+
+2426. Ji wê rojê şûn de rêvebirina li vir ket destê Tirkmenan; kar û barên ewlekarî û hêminiyê jî dan destê eşîreta Dinbilîyan û vê eşîreta han demeke dirêj li ser navê Aqqoyuniyan Hekkari di destê xwe de girtin.
+2426. From that day onwards the administration here fell into the hand of the Turkmens; they gave the tasks and affairs of security and safety too into the hand of the tribe of the Donboli and this very tribe for a long time upon the name of the Aq Qoyunlu held Hakkari in their hand.
+
+2427. Li milê din, hinek Xiristiyanên ji nahiya Dizê ya vê wilayeta han yên bi navê Asûrî (Nestûrî) tên naskirin, wek kiribûn adet, ji bo xebat û
+2427. On the other side, some Christians from the sub-district of Dize of this very province who by the name Assyrian (Nestorian) are known, as they had made a habit, for work and
+
+2428. tîcaretê ber bi Şam û Misrê ve çûbûn.
+2428. trade had gone towards Damascus and Egypt.
+
+2429. Nav û dengê Esededdînê Çengzêr li ber guhê wan ketibû û zanîbûn jî ku kesekî ji mala Fermanrewayê Hekkariyê ne.
+2429. The name and sound (fame) of Esededdîn the Gold-Armed had fallen before their ear and they knew too that they are a person from the house of the Ruler of Hakkari.
+
+2430. Hêviyek ji wan re çêbû û ji hev re gotin, eger em bikarin wî bibin, dê welatê me carek din bikeve destê me, herkes di saya serê wî de dê bigihîje azadiya xwe.
+2430. A hope was formed for them and they said to one another, if we can take him, our country will once again fall into our hand, everyone in the shadow of his head will reach his freedom.
+
+2431. Di nav xwe de şêwirîn, li hev kirin û gotin: "Hewce ye em wî li ser nêrîna xwe ya ji bo birina wî ya ser meşandina kar û barên Hekkariyê û girtina hevsarê fermanrewatiyê îqna bikin."
+2431. They consulted among themselves, agreed and said: "It is necessary we convince him upon our view for his taking upon the conducting of the tasks and affairs of Hakkari and the taking of the halter of rulership."
+
+2432. Esededdîn bi vê daxwaza xwe agahdar kirin û derdên xwe yên bêkesiyê jê re ronî kirin.
+2432. They informed Esededdîn with this request of theirs and made bright their pains of being without a person (friendless/solitary) to him.
+
+2433. Çengzêr, guhê xwe da gotinên wan û bi şarezatiya Asûriyan xwe gihande wilayeta Hekkariyê ku mîrata bab û bapîrên wî bû.
+2433. The Gold-Armed, gave his ear to their words and with the expertise of the Assyrians reached himself to the province of Hakkari which was the inheritance of his father and grandfathers.
+
+2434. Bi nehênî di nav Asûriyan de jiya û li hêviya firsetekê ma ku bikare bi dest bêxe û dijmin ji welatê xwe derbixe.
+2434. Secretly he lived among the Assyrians and remained in the hope of an opportunity that he be able to obtain it and take the enemy out from his country.
+
+2435. Yek ji wan urf û adetên Xiristiyanên vê navçeya han ew bû ku, rojên şenbiyan kar û bar nedikirin û ev roja han ji xwe re roja îstîrahetê dihesibandin.
+2435. One from those customs and traditions of the Christians of this very district was that, on the days of Saturdays they did not do tasks and affairs and they considered this very day for themselves the day of relaxation.
+
+2436. Lê wê rojê wezîfeyek wan a din hebû; ew jî mecbur bûn ulam bikin û pêwistiyên hefteyî yên wek nan, ar, dar, pêxûr û tiştên xwarinê yên din ji rûniştiyên Kela Dizê re bibin.
+2436. But that day they had another duty; that too they were compelled to do forced labor and take the weekly necessities like bread, flour, wood, food and other things of eating to the residents of the Castle of Dize.
+
+2437. Şembiyek ji van şembiyên pîroz, bi grûbeke mêrxas û netirs ên eşîretê re, kincên Xiristiyanan li Eseddedîn kirin.
+2437. A Saturday from these holy Saturdays, with a group of braves and fear-nots of the tribe, they put the clothes of the Christians on Eseddedîn.
+
+2438. Asûriyan, çek û pêwistiyên şer kirin nav barên daran û telîsên kayê, barên xwe bar kirin û gotin Kela Dizê, tu li ku yî xwe ragire em hatin.
+2438. The Assyrians, put weapons and the necessities of war inside the loads of wood and the sacks of straw, loaded their loads and said Castle of Dize, where are you hold yourself we came.
+
+2439. Dema ku ew hatin ber keleyê, wekî hemû caran derî ji wan re vebû, hemû bi hev re ketin nav keleyê.
+2439. When they came before the castle, like all times the door was opened for them, all with one another fell inside the castle.
+
+2440. Çawan ketin hundur, barên xwe avêtin, bi lez kincên şerî li xwe kirin, tîr, kevan, rim û şûrên xwe ji nav dar û poşên hişk derxistin, ketin ser ruhê dagirkeran û dest pê kirin wek êş, ser û laşên wan hêran.
+2440. As soon as they fell inside, they threw their loads, hastily put the clothes of war on themselves, took their arrows, bows, spears and swords out from among the wood and dry chaff, fell upon the soul of the occupiers and started like a mill, ground their heads and bodies.
+
+2441. Kurtiya wê ev e; ew pehlewanên dilbirîn û ew şûrkêşên çê, di çavgirtinekê de Kela Dizê ji nehezan paqij kirin.
+2441. The short of it is this; those heart-wounded heroes and those good sword-drawers, in an eye-closing (blink of an eye) cleaned the Castle of Dize from the ill-wishers.
+
+2442. Ew wekî parastgahên pîroz û ciyên hêvî û tobeyên serê siban paqij û temiz kirin.
+2442. They cleaned and purified it like holy sanctuaries and places of hope and repentances of the head of mornings (early mornings).
+
+2443. Ji herkesî re, yên dûr û nêzîk, banga "Ey kesên xwediyê herdu çavên ronî, ji vê îbret bistînin." dan ragihandin.
+2443. To everyone, those far and near, they gave to be announced the call "O people possessors of both bright eyes, take a lesson from this."
+
+2444. Roja şenbiyê tola çarşembê vekir.
+2444. The Saturday day opened the revenge of the Wednesday.
+
+2445. Xem, kul û keseran malişt û di wê şembiya pîroz de alaya fermanrewatiya nesla ‘Ebbasiyan carek din li ser kopên Kela Dizê daçikandin.
+2445. It swept sorrow, pain and sighs and on that holy Saturday they planted the flag of the rulership of the Abbasid lineage once again upon the peaks of the Castle of Dize.
+
+2446. Piştî vê, Esededdîn roj bi roj welat ji hemû dijminan da paqijkirin.
+2446. After this, Esededdîn day by day gave the country to be cleaned from all enemies.
+
+2447. Di dawiyê de, ew kincê eskerî yê berê li xwe dikir, bi qiyafetê Ebbasi re guhert.
+2447. In the end, he changed that military clothing that previously he put on himself, with the Abbasid outfit.
+
+2448. Zimanê adetî yê wî zemanî, ev herdu beytên ku li rewşa wê çîroka 'ecêb dihat got:
+2448. The customary tongue of that time, said these two couplets that suited the condition of that strange story:
+
+2449. "Şemmasê dêrê roja şenbiyê
+2449. "The deacon of the church on the Saturday day
+
+2450. Veda xêveta xwe di nav gundên 'Ebbasiyan
+2450. Pitched his tent among the villages of the Abbasids
+
+2451. Şikand dijminê xwe û belav kir civakên wan
+2451. Broke his enemy and scattered their communities
+
+2452. Piştre bi dilekî xweş raxist raxistina jiyanê"
+2452. Afterwards with a pleasant heart he spread the spreading of life"
+
+2453. Ji bo damezirandina destpêka cara duduyan a Dewleta Hekkariyê, wekî li jorê derbas bû, roja "şenbeyê çêbû û ev bêjeya han di nav diyalekta vî qewmî de "şenbû" tê telafûzkirin, fermanrewayên wan jî bi navê "Şenbu"yê hatin naskirin.
+2453. For the establishment of the beginning of the second time of the State of Hakkari, as it passed above, the day of "shanba" (Saturday) happened and this very word in the dialect of this people is pronounced "Shenbu", their rulers too by the name of "Shenbu" became known.
+
+2454. Esededdin, gelek salên dirêj desthilata welat di destê xwe de girt û kar û barên eşîretên Hekkariyê rêk û pêk kir.
+2454. Esededdin, for many long years held the authority of the country in his hand and organized the tasks and affairs of the tribes of Hakkari.
+
+2455. Di netîceyê de wekî hemû giyandaran, giyanê xwe siparte Xwedê.
+2455. In the result like all living beings, he entrusted his soul to God.
+
+2456. Şi' ir
+2456. Poem
+
+2457. "Kijan darê îqbalê ye ku bi çerxa felekê re rû bi rû be
+2457. "Which tree of prosperity is it that is face to face with the wheel of fate
+
+2458. Piştre ji aliyê babeliska ecelê ve ji kok ve nehatibe rakirin"
+2458. Afterwards from the side of the whirlwind of death from the root it has not been removed"
+
+2459. Melik Izzeddînşêrê Kurê Esededdînê Çengzêr Ev Mir, piştî mirina babê xwe li ciyê wî rûnişt.
+2459. Melik Izzeddînşêr the Son of Esededdîn the Gold-Armed This Mir, after the death of his father sat in his place.
+
+2460. Kar û barên mîrektiyê bi awakî baş û rêk û pêkî meşand.
+2460. He conducted the tasks and affairs of the emirate in a good and organized way.
+
+2461. Piştre ew jî di asoya jiyanê de ava bû û mir.
+2461. Afterwards he too in the horizon of life set and died.
+
+2462. Xwedê rehma xwe lê bike.
+2462. May God do his mercy on him.
+
+2463. Zahid Begê Kurê Izzeddînşêr
+2463. Zahid Beg the Son of Izzeddînşê r
+
+2464. Piştî mirina babê xwe, bi awakî serbixwe wezîfeya mîrektiyê girt destê xwe.
+2464. After the death of his father, in an independent way he took the duty of the emirate into his hand.
+
+2465. Nêzîkî 60 salan hukum kir.
+2465. He ruled nearly 60 years.
+
+2466. Di vê muddeta han de bi siyaseteke eqilane û rast welat bi rê ve bir.
+2466. In this very period with a smart and true politics he conducted the country.
+
+2467. Şah Ismaîlê Sefewî, gelek rûmet didayê, qedir û siyaneta wî digirt û baweriyeke wî ya zêde bi wî hebû.
+2467. The Safavid Shah Ismail, gave much respect to him, held his value and respect and had an excessive belief in him.
+
+2468. Li ser navê xwe fermanek ji eyaleta wî ya ji bab û bapîrên wî jê re mabû, derxist û wî jî îta'eta wî kir.
+2468. Upon his own name he brought out a command for his province that from his father and grandfathers had remained to him, and he too did his obedience.
+
+2469. Peywendiyên navbera wan ewqas pêşve çûbûn ku, Şah jê re digot "mamo".
+2469. The connections between them had gone forward so much that, the Shah said "uncle" to him.
+
+2470. Ev jî bêguman îsbata paye û sewiyeya peywendiyên di navbera wan de nîşan dide.
+2470. This too without doubt shows the proof of the rank and level of the connections between them.
+
+2471. Di dawiya jiyana xwe de welat di navbera herdu kurên xwe, Melik Beg û Seyid Mihemmed Beg de parve kir û piştre çû rehma Xwedê.
+2471. In the end of his life he divided the country between both his sons, Melik Beg and Seyid Mihemmed Beg and afterwards went to the mercy of God.
+
+2472. Melik Begê Kurê Zahid Beg
+2472. Melik Beg the Son of Zahid Beg
+
+2473. Piştî babê xwe li Kela Bayê fermanrewatiyê girt destê xwe.
+2473. After his father at the Castle of Bay he took rulership into his hand.
+
+2474. Rêvebirinek baş di nav welat de daxist.
+2474. He brought down a good administration inside the country.
+
+2475. Welat bi dadmendî û merhemetî bi rê ve bir.
+2475. He conducted the country with justice and mercy.
+
+2476. Dema ku mir heft kurên wekî stêrkan li pey xwe hiştin: Zeynel Beg, Bayindir Beg, Budak Beg, Bayezîd Beg, Huseyin Beg, Bahaeddin Beg, Rustem Beg.
+2476. When he died he left seven sons like stars behind himself: Zeynel Beg, Bayindir Beg, Budak Beg, Bayezid Beg, Huseyin Beg, Bahaeddin Beg, Rustem Beg.
+
+2477. Rustem Beg, di saxiya babê xwe de kar û barên nahiya Kawaşê û parêzgeriya Kela Extemarê dimeşand.
+2477. Rustem Beg, in the life of his father (while alive) conducted the tasks and affairs of the sub-district of Gevash and the guardianship of the Castle of Akhtamar.
+
+2478. Rustem Beg, di şerekî li nêzîkî nahiya Kawaşê yê di navbera wî û Eşîreta Rojkî de hat kuştin.
+2478. Rustem Beg, in a war near the sub-district of Gevash between him and the Rojki Tribe was killed.
+
+2479. Zeynel Beg, li dijî babê xwe serî hilda, bi Mehmûd Axayê Silbî
+2479. Zeynel Beg, raised a head (rebelled) against his father, with Mehmud Axa Silbi
+
+2480. re, ku dizdarê Kela Bayê bû, rêket û çend giregirên din jî berhev kir, asteng û girê ji babê xwe re saz kirin û di girtina keleyê de bi ser ket.
+2480. who was the warden of the Castle of Bay, agreed and gathered a few other high-ranking ones too, prepared obstacles and knots for his father and in the taking of the castle succeeded.
+
+2481. Bab û kur li hemberî hev rabûn û piştî şerekî gelek bi sawm û xwînavî, babê xwe esîr girt.
+2481. Father and son rose against one another and after a very fearful and bloody war, he took his father captive.
+
+2482. Zeynel, xwest babê xwe bikuje.
+2482. Zeynel, wanted to kill his father.
+
+2483. Piştre nekuşt û biryar da ku herdu çavên babê xwe biqewêre.
+2483. Afterwards he did not kill him and gave a decision that he gouge out both eyes of his father.
+
+2484. Lê hê ev nemerdiya han ji destê wî neqewimîbû, kurê Melik Beg ê din Huseyin Beg gihîşt hewara babê xwe û di vê meseleyê de navberî kir û babê xwe ji vê serpêhatiya xwînavî rizgar kir.
+2484. But still this very unmanliness from his hand had not happened, the other son of Melik Beg Huseyin Beg reached to the help of his father and in this issue mediated and rescued his father from this bloody adventure.
+
+2485. Piştî ku baz da, xwe avêt ba birayê xwe Seyid Mihemmed ê fermanrewayê Westanê.
+2485. After he ran away, he threw himself to his brother Seyid Mihemmed the ruler of Gevash (Westan).
+
+2486. Lê li wir jî zêde nesekinî û berê xwe da Bedlîsê û xwe avêt ba fermanrewayê wir Mîr Şeref Beg.
+2486. But there too he did not stop much and turned himself to Bedlîs and threw himself to the ruler of there Mir Şeref Beg.
+
+2487. Mir Şeref Beg gelek qedrê wî girt û wisan kir ku tu wextê tiştek nekeve dilê mêvanê wî yê hêja.
+2487. Mir Şeref Beg held his value much and did so that no time a thing fall into the heart of his precious guest (his guest not be troubled).
+
+2488. Kurê Melik Beg ê mezin Zeynel Beg, di nav birayên xwe de yê herî biaqil, piştî mamê wî Seyîd Mihemmed Beg hat kuştin, dest danî ser hemû desthilata wilayeta Hekkariyê û bû fermanrewayê serbixwe û azad yê wê melbendê.
+2488. The big son of Melik Beg Zeynel Beg, among his brothers the most smart one, after his paternal uncle Seyid Mihemmed Beg was killed, put a hand upon all the authority of the province of Hakkari and became the independent and free ruler of that region.
+
+2489. Em ê piştre dûr û dirêj behsa rewşa wî bikin.
+2489. We will afterwards far and long (at length) make mention of his condition.
+
+2490. Mirov dikare bi kurtî bi vî awayî behsa rewşa kurên Melik Begê yên din bike:
+2490. A person is able in short in this way to make mention of the condition of the other sons of Melik Beg:
+
+2491. Bayindir Beg serê xwe hilda û xwe avêt Seraya Şah Tehmasb.
+2491. Bayindir Beg raised his head and threw himself to the Palace of Shah Tahmasp.
+
+2492. Lê Şah ewqas rû nedayê ku dilê wî pê xweş be û ji ber vê, bêhêvî ber bi welatê xwe ve hat û li bajarê Wanê mir.
+2492. But the Shah did not give him so much face that his heart by it be pleasant and because of this, hopelessly he came towards his country and in the city of Van died.
+
+2493. Sê kur li pey xwe hiştin; Zahid Beg, Mihemmed Beg û Hacî Beg.
+2493. He left three sons behind himself; Zahid Beg, Mihemmed Beg and Haci Beg.
+
+2494. Kurê wî Budak Beg, çû hecê û di rê de mir û venegeriya.
+2494. His son Budak Beg, went to the hajj and on the road died and did not return.
+
+2495. Du kur jî li pey wî man; Mîr 'Ezîz û Sultan Huseyîn.
+2495. Two sons too remained behind him; Mir 'Eziz and Sultan Huseyin.
+
+2496. Kurê wî Bayezîd Beg li bajarê Diyarbekrê li ba karbidestên Osmanî bicî bûbû.
+2496. His son Bayezid Beg in the city of Diyarbakir at the side of the Ottoman officials had become placed.
+
+2497. Dema ku leşker di bin fermanderiya Mistefa Paşayê Serdar de diçû sefera Şêrwanê, Bayezîd Beg jî pê re bû.
+2497. When the army under the command of Mustafa Pasha the Commander was going to the campaign of Shirvan, Bayezid Beg too was with it.
+
+2498. Di şerê Çildirê de ji aliyê Qizilbaşan ve hat girtin û birin Qezwînê.
+2498. In the war of Çildir from the side of the Qizilbash he was captured and they took him to Qazvin.
+
+2499. Li wir ber çavê Şah Mihemmed Beg ket, Şah ferman da û ew dan destê Zahid Begê biraziyê wî û wî jî ew kuşt.
+2499. There he fell before the eye of Shah Mihemmed Beg, the Shah gave a command and they gave him into the hand of Zahid Beg his nephew and he too killed him.
+
+2500. Kurê wî Huseyin Beg jî, car û caran kar û barên navçeya Elbakê dimeşand.
+2500. His son Huseyin Beg too, time and times (sometimes) conducted the tasks and affairs of the district of Albak.
+
+2501. Piştre Melekê Mewtê gihîşt ser û emanetê pê re bû jê sitand.
+2501. Afterwards the Angel of Death reached upon him and the trust that was with him took from him.
+
+2502. Wî jî kurek li pey xwe hişt.
+2502. He too left a son behind himself.
+
+2503. Eger Xwedê musaede bike, em ê behsa Bahaeddînê kurê Melik Beg bi serpêhatiyên Zeynel Beg re bikin.
+2503. If God permits, we will make mention of Bahaeddin the son of Melik Beg with the adventures of Zeynel Beg.
+
+2504. Seyid Mihemmed Begê Kurê Zahid Beg
+2504. Seyid Mihemmed Beg the Son of Zahid Beg
+
+2505. Seyid Mihemmed û Zeynel Begê biraziyê wî, hemû wextê navbera wan nexweş û bi hev re di cedel û şer de bûn.
+2505. Seyid Mihemmed and Zeynel Beg his nephew, all the time the between of them was unpleasant and with one another they were in dispute and war.
+
+2506. Mamê wî li dijî biraziyê xwe bi Eşîreta Pinyanişî re li hev kir û bi van herdu hêzan re bûn quweteke mezin, êrîş birin ser Zeynel û ew ji wilayeta Hekkarîyê derxistin.
+2506. His paternal uncle against his nephew agreed with the Pinyanishi Tribe and with both these forces they became a great power, took an attack upon Zeynel and took him out from the province of Hakkari.
+
+2507. Bi vî awayî desthilata xwe li ser temamê wilayeta Hekkariyê ya mîrate jê re mabû, xurt kir.
+2507. In this way he strengthened his authority upon the entirety of the province of Hakkari that had remained as an inheritance to him.
+
+2508. Li ser vê, ciyê piyê Zeynel hejiya, cî nema ku bikare tê de bisitire.
+2508. Upon this, the place of Zeynel's foot shook, no place remained that he be able to shelter in it.
+
+2509. Bi naçarî welat terk kir û çû 'Imadiyyeyê û xwe avêt ba Sultan
+2509. With compulsion he abandoned the country and went to Amadiya and threw himself to Sultan
+
+2510. Huseyin ê Fermanrewayê 'Imadiyyeyê.
+2510. Huseyin the Ruler of Amadiya.
+
+2511. Sultan Huseyin Beg jî ji bo serlêdana Seraya Sultan Suleyman Xan alîkariya wî kir.
+2511. Sultan Huseyin Beg too for visiting the Palace of Sultan Suleyman Xan helped him.
+
+2512. Wê çaxê Rustem Paşa wezîr bû.
+2512. That time Rustem Pasha was vizier.
+
+2513. Bixêrhatineke germ dayê û gelekî qedrê wî girt û jê re wiha got:
+2513. He gave a warm welcoming to him and held his value much and said thus to him:
+
+2514. "Em dizanin zorî li te hatiye kirin, mafê te hatiye xwarin û te ji destê birazî û kes û nasên xwe baz daye, tu çûyî Azerbaycanê û te xwe avêtiye bextê Şah Tehmasb.
+2514. "We know force has been done to you, your right has been eaten (usurped) and you from the hand of your nephew and your people and acquaintances have run away, you went to Azerbaijan and you have thrown yourself to the luck of Shah Tahmasp.
+
+2515. Vêca ji ber vê, ne mimkun e ku li vir li ser te dudilî tunebe û dil ji te neşikestibin.
+2515. So because of this, it is not possible that here upon you doubt not exist and hearts not be broken from you.
+
+2516. Eger tu dixwazî vê dudiliyê paqij bikî, divê tu xwe bikî yek alî û biçî mal û xêzanên xwe ji Îranê derênî û bînî welatê Osmanî.
+2516. If you want to clean this doubt, it is necessary you make yourself one side and go take your property and family out from Iran and bring them to the Ottoman country.
+
+2517. Dema ku tu bê vir, dê tu bikevî ber baweşîna rehm û rizaya padişah.
+2517. When you come here, you will fall before the embrace of the mercy and satisfaction of the padishah.
+
+2518. Wê çaxê tu şik û dudiliyek li ser te namîne û cardin ji nû de bawerî bi te tîne û di derheqê hukumeta Hekkariyê de ferman ji te re derdikeve."
+2518. That time no doubt and hesitation upon you remains and again anew he brings belief in you and regarding the government of Hakkari a command comes out for you."
+
+2519. Zeynel Beg, ev mizgîniyek xweş zanîbû û bi mebesta çûna Îranê û anîna mal û xêzanên xwe, ji Stenbolê ber bi melbenda Hekkariyê ket rê.
+2519. Zeynel Beg, knew (considered) this a pleasant good news and with the purpose of going to Iran and bringing his property and family, from Istanbul towards the region of Hakkari fell on the road.
+
+2520. Dema ku gihîşt wilayeta Boxtiyê Bedir Beg ê Fermanrewayê Boxtan, bi vê hatinê hesiya.
+2520. When he reached the province of Bohtan Bedir Beg the Ruler of Bohtan, sensed this coming.
+
+2521. Wî, ji bo bi kevirekî du nêçîran bike, ev firsetekê mezin hesiband.
+2521. He, to do two hunts with one stone, counted this a great opportunity.
+
+2522. Li milekî dijmintiyeke wan a kevin bi Fermanrewayên Hekkariyê re hebû û bi xwîna Zeynel Beg tole distand.
+2522. On one side they had an old enmity with the Rulers of Hakkari and with the blood of Zeynel Beg he took revenge.
+
+2523. Li milê din jî dostekî Seyid Mihemmed ê nêzîk bû.
+2523. On the other side too he was a close friend of Seyid Mihemmed.
+
+2524. Eger wî Zeynel Beg bikusta, ew bela jê dûr dikir û dostaniya wan xweştir dibû û dê ew bikira çavberjêrê qenciya xwe ku tu carê ji bîra wî neçe.
+2524. If he killed Zeynel Beg, he made that trouble far from him and their friendship became more pleasant and he would make him the down-looking eye of his goodness (indebted to him) that no time it go from his memory.
+
+2525. Ji ber vê, çend mêrên gelek aza û gernas ên Boxtî şand ser riya wî û kemîn li ber danîn.
+2525. Because of this, he sent several very free and heroic men of the Bohtan upon his road and they placed an ambush before him.
+
+2526. Zeynel Beg û mirovên xwe ketin kemînê û di navbera wan de şerekî giran qewimî.
+2526. Zeynel Beg and his people fell into the ambush and between them a heavy war happened.
+
+2527. Zeynel Beg û mirovên wî çiqas hêz û taqeta wan hebû ewqas jî danîn ser û berxwedanî kirin, lê zora wan birin û ew girtin û kuştin.
+2527. Zeynel Beg and his people however much force and capability they had that much too they put upon it and did resistance, but they took their force (defeated them) and captured and killed them.
+
+2528. Mirovên Bedir Beg, ji bo qedir û siyanetê, ji bilî serê Zeynel Beg, serê tevan birrîn û ji bo diyarî û belge ji mîrê xwe re birin û laşên wan di şergehê de di cî de hiştin.
+2528. The people of Bedir Beg, for value and respect, apart from the head of Zeynel Beg, cut the head of all of them and for a gift and document brought to their mir and left their bodies inside the battlefield in place.
+
+2529. Bedir Beg, dema ku serê Zeynel Beg di nav seriyan de nedît, ji mirovên xwe pirsî.
+2529. Bedir Beg, when he did not see the head of Zeynel Beg among the heads, asked his people.
+
+2530. Wan jê re got: "Zeynel Beg mirovekî mezin bû û me şerm kir em serê wî ji laşê wî kin.
+2530. They said to him: "Zeynel Beg was a great person and we felt ashamed we cut his head from his body.
+
+2531. Me ew da ber tîr û şûran heta ew bê ruh li erdê ma û me ew mirî di cî de hişt
+2531. We gave him before arrows and swords until he remained without soul on the earth and we left him dead in place."
+
+2532. Dema ku ev deng û behsê han belavê bajarê Cezîrê bû û hat gihîşt guhê jina Bedir Begê û wê ji mêrê xwe re got; madem Zeynel Beg mirovekî xanedan û mezin e û hatiye kuştin, divê laşê wî bînin bajêr û li gor urf û adetên dînê Îslamê bê şûştin û veşartin.
+2532. When this very sound and topic (news) spread to the city of Cizre and came reached the ear of the wife of Bedir Beg and she said to her husband; since Zeynel Beg is a dynastic and great person and has been killed, it is necessary they bring his body to the city and according to the customs and traditions of the religion of Islam it be washed and buried.
+
+2533. Ji me re kêmasiyek e ku laşê wî li wê deştê bimîne û em hilnedin.
+2533. For us it is a lack (shame) that his body remain at that plain and we do not lift it.
+
+2534. Li ser daxwaza jina xwe, çend mirov şandin ku laşê wî bînin.
+2534. Upon the request of his wife, he sent several people that they bring his body.
+
+2535. Dema ku gihîştin ser laşê kuştiyan, dîtin hê dilê Zeynel ji kar neketiye û nefesek tê de maye.
+2535. When they reached upon the body of the killed ones, they saw still the heart of Zeynel had not fallen from work and a breath had remained in him.
+
+2536. Bi nîvruhî anîn nav avahiyan.
+2536. With half-soul they brought him inside the buildings.
+
+2537. Xatuna jina Bedir Beg, gelek bi dilnermî çengên xwe dan jorê û çend
+2537. The lady the wife of Bedir Beg, very with soft-heartedness gave her arms upward (rolled up her sleeves) and several
+
+2538. doktor û hekîmên di Cezîrê de hebûn, tevan lê berhev kirin, derman, melhem, xwarin û çi pêwistiyên çareya nexweşekî bin jê re amade kirin û mesrefa van tevan jî ji perên xwe yên taybetî dan.
+2538. doctors and physicians that existed in Cizre, gathered them all on him, medicines, ointments, food and whatever necessities of the cure of a patient be prepared for him and gave the expense of all these too from her special money.
+
+2539. Bedir Beg, gelek rikoyî bû ku wî bikuje û ji kul û derdên wî rizgar bibe.
+2539. Bedir Beg, was very stubborn that he kill him and be rescued from his pains and troubles.
+
+2540. Lê hêvî, lava, nesîhet û rondikên xanimê, ew dilnerm kir.
+2540. But the hope, pleading, advice and tears of the lady, made him soft-hearted.
+
+2541. Agirê rikoyiyê di singê mêrê xwe de tefand û bi saya camêriya wê şêrejinê, Zeynel Beg careke din dest bi jiyanê kir.
+2541. She extinguished the fire of stubbornness in the chest of her husband and in the shadow of the generosity of that lioness, Zeynel Beg once again started life.
+
+2542. Gelek bi zû hat ser rewşa xwe ya berê û piştre li ser daxwaza jina Bedir Beg, bi awakî rêz û qedir ber bi wilayeta xwe Hekkariyê ve bi rê ket.
+2542. Very quickly he came upon his previous condition and afterwards upon the request of the wife of Bedir Beg, in a way of respect and value towards his province of Hakkari fell on the road.
+
+2543. Em ê behsa serencama karên Zeynel Beg û yên kurên wî bi qasekî şûn de raxin ber çavan.
+2543. We will spread the mention of the result of the tasks of Zeynel Beg and those of his sons a while later before the eyes.
+
+2544. Wekî me behs kir, Eyaleta Hekkariyê bi serî û heta binî ket destê Seyîd Mihemmed û ew bê berhelist hukumdar bû.
+2544. As we mentioned, the Province of Hakkari with head and until bottom fell into the hand of Seyid Mihemmed and he without opposition became ruler.
+
+2545. Lê piştre navbera wî û Iskender Paşa yê Mîrêmîranê Wanê têk çû.
+2545. But afterwards the between of him and Iskender Pasha the Mir of Mirs of Van was ruined.
+
+2546. Her seet û deqîqe çavên wî li ser bûn û her roj bahane lê digirtin û bi hemû zemanan li ba Sultan çala wî dikola.
+2546. Every hour and minute his eyes were upon him and every day he took excuses on him and at all times at the side of the Sultan he dug his pit.
+
+2547. Di netîceyê de karîbûye fermana Sultan ya Fermanrewatiya Eyaleta Hekkariyê û ger firset bi dest bikeve mûsaedeya kuştina Seyîd Mihemmed ji Zeynel Beg re derêxe.
+2547. In the result he was able to bring out the command of the Sultan of the Rulership of the Province of Hakkari and if the opportunity falls into hand the permission of the killing of Seyid Mihemmed for Zeynel Beg.
+
+2548. Piştî derxistina wê fermanê, İskender Paşa şand pey Seyid Mihemmed ku bê Dîwana Wanê.
+2548. After the bringing out of that command, Iskender Pasha sent after Seyid Mihemmed that he come to the Divan of Van.
+
+2549. Seyid Mihemmed dizanî ku di vê de leyzek heye, riya Wanê tijî tirs û bela ye, kemîn û kozik jê re vedane.
+2549. Seyid Mihemmed knew that in this there is a game, the road of Van is full of fear and trouble, ambushes and positions have been set up for him.
+
+2550. Grûbek ji mirovên xwe yên herî mêr û mêrxas bi xwe re bir û ji derveyî bajarê Wanê ji İskender Paşa re cewab şand û jê re got: "Ji ber ku di bajêr de nexweşiya webayê heye û ez nikarim xwe nêzîkî bajêr bikim.
+2550. He took a group from his most manly and brave people with himself and from outside the city of Van sent an answer to Iskender Pasha and said to him: "Because inside the city there is the sickness of plague and I cannot make myself near the city.
+
+2551. Ger Paşa mûsaede û tenezzûl bike, ji bo hevdîtina li derveyî bajêr cî tespît bike, dê qenciyek xwe ya din têke ser wan qenciyên heta niha kirî."
+2551. If the Pasha permits and deigns, for a meeting at the outside of the city determines a place, he will put another goodness of his upon those goodnesses done until now."
+
+2552. Li ser vê, Iskender Paşa naçar ma, ji bajêr derket, hevûdu dîtin û bi vî awayî nekarîbû bigihîje armanca xwe.
+2552. Upon this, Iskender Pasha remained compelled, went out from the city, they saw one another and in this way he could not reach his aim.
+
+2553. Ji ber ku piştî xelasbûna hevûdudîtinê, Mihemmed Beg vegeriya Westan û wisan hizir kir ku êdî tu pîlan û teşqele li pêşiya wî nemane.
+2553. Because after the finishing of the seeing of one another, Mihemmed Beg returned to Gevash (Westan) and thought thus that anymore no plans and troubles have remained before him.
+
+2554. Ji ber vê, tev mirovên xwe yên li derûdora xwe berhev kiribûn, belav kirin.
+2554. Because of this, entirely his people that he had gathered around himself, he scattered.
+
+2555. Lê dema ku ew di vê raketinê de bû, dijminên wî çavên xwe nedabûn hev.
+2555. But when he was in this lying down (unawareness), his enemies had not put their eyes together (had not slept).
+
+2556. Dema ku zanîbû Seyid Mihemmed bêtirs û bi terkexemî vezelaye û kesekî bi wî awayê li derûdora wî nemaye, firset ji destê xwe berneda û serekê koleyên Wanê bi revdek esker ve şand ser.
+2556. When he knew Seyid Mihemmed fearlessly and with carelessness had stretched out and a person in that way had not remained around him, he did not let go of the opportunity from his hand and sent the leader of the slaves of Van with a flock of soldiers upon him.
+
+2557. Piştre ji Seyîd Mihemmed re ev xebera han şand: "Deng û behsên gelek nexweş ji aliyê Qizilbaşan ve hatin; gereke tu bi lez bê Dîwana Wanê û ev hewcedarî û ferz e."
+2557. Afterwards he sent this very news to Seyid Mihemmed: "Very unpleasant sounds and topics (news) from the side of the Qizilbash came; it is necessary you with haste come to the Divan of Van and this is a necessity and obligation."
+
+2558. Eynî wextê, serekê koleyên Wanê bi wê yekê jî têgihand ku, dinê ye eger Mihemmed Beg xwe da erdê û nehat, bi zorî be jî wî rapêçin û ji min re bînin Wanê.
+2558. At the exact time, he made the leader of the slaves of Van too understand with that one that, it is the world if Mihemmed Beg gave himself to the earth (resisted) and did not come, even if it be by force wrap him up and bring him to me to Van.
+
+2559. Dema ku serekê kolan ev ferman gîhand Mihemmed Beg, wî zehf xwe bir û anî, gelek bahane girtin û xwe da erdê, lê ev ih û mihên wî pere nekirin.
+2559. When the leader of the slaves reached this command to Mihemmed Beg, he took and brought himself (hesitated) a lot, took many excuses and gave himself to the earth, but these hmms and haws of his did not make money (were useless).
+
+2560. Bi zorî ew dan pêşiya xwe û birin Wanê.
+2560. By force they gave him before themselves and took him to Van.
+
+2561. İskender Paşa jî di cî de ferman da û ew avêtin kuna zindanê ya tarî.
+2561. Iskender Pasha too in place (immediately) gave a command and they threw him into the dark hole of the prison.
+
+2562. Di gurr û germiya vê xirecirê de, Yaqub Beg ê kurê Seyid Mihemmed baz da û çû û rêvebiriya kar û barên wilayeta xwe girt destê xwe.
+2562. In the intensity and heat of this commotion, Yaqub Beg the son of Seyid Mihemmed ran away and went and took the administration of the tasks and affairs of his province into his hand.
+
+2563. İskender Paşa ji bo girtina wî, Hesen Begê Mehmûdî ku maka temamê van fitne û fesadiyan bû, bi grûbek eskerên kole yên li Wanê re xist pey Yaqub Beg.
+2563. Iskender Pasha for his capturing, put Hesen Beg Mehmudi who was the mother of all these seditions and corruptions, with a group of slave soldiers at Van behind Yaqub Beg.
+
+2564. Yaqub Beg zanîbû ku ji ber nafilite, xwe avêt bextê Eşîreta Pinyanişî ku ji bo Fermanrewatiya Hekkariyê mil bide ber wî ji Şah Quliyê Bilîlanî daxwaza alîkariyê kir.
+2564. Yaqub Beg knew that he does not escape from it, he threw himself to the luck of the Pinyanishi Tribe that for the Rulership of Hakkari he give a shoulder before him (support him) made a request of help from Shah Quli Bililani.
+
+2565. Ew difikirî ku dê eşîreta Pinyanişî wî ragire, biparêze û bike Fermanrewayê Hekkariyê.
+2565. He was thinking that the Pinyanishi tribe will hold him, protect him and make him the Ruler of Hakkari.
+
+2566. Her çendîn Şah Qulî nîmetxwarê babê Yaqub bû jî, lê nankorî kir û gelek bi nemerdî hereket kir.
+2566. Even though Shah Quli was the blessing-eater of the father of Yaqub too, but he did ungratefulness and very with unmanliness he acted.
+
+2567. Çunki Şah Quli Beg û Hesen Begê Mehmûdî, nas û mirovên hev ên kevin bûn û di navbera wan de benên evînî û dostiyê hebû.
+2567. Because Shah Quli Beg and Hesen Beg Mehmudi, were old acquaintances and people of one another and between them the ropes of love and friendship existed.
+
+2568. Ji ber vê, li ser jiholêrakirina tovê nesla Mihemmed Beg li hev kirin.
+2568. Because of this, they agreed upon the taking away from the middle of the seed of the lineage of Mihemmed Beg.
+
+2569. Şah Quli Beg, Yaqub Beg da destê Hesen Beg û herduyan bi hev re ew girtin û birin Wanê.
+2569. Shah Quli Beg, gave Yaqub Beg into the hand of Hesen Beg and both of them with one another captured him and took him to Van.
+
+2570. Iskender Paşa, bêsekin Seyîd Mihemmed Beg û kurê wî Yaqub Beg dan kuştin û Fermanrewatiya Hekkariyê da destê Zeynel Beg.
+2570. Iskender Pasha, without stopping gave Seyid Mihemmed Beg and his son Yaqub Beg to be killed and gave the Rulership of Hakkari into the hand of Zeynel Beg.
+
+2571. Sê kurên Yaqub Beg hebûn: Ulame, Sultan Ehmed û Mîrza.
+2571. Yaqub Beg had three sons: Ulama, Sultan Ehmed and Mirza.
+
+2572. Her çend di welatê Hekkariyan de ji Ulame Beg re beşek nehatibû dan, lê zanîbû ku bawermendiya Sultan Murad Xan qazanc bike.
+2572. Although in the country of the Hakkaris a share had not been given to Ulama Beg, but he knew that he win the belief of Sultan Murad Xan.
+
+2573. Li ser vê, ji aliyê Dîwana Sultan Murad ve rêvebiriya navçeya Xoyê jê re sipartin.
+2573. Upon this, from the side of the Divan of Sultan Murad they entrusted the administration of the district of Khoy to him.
+
+2574. Ulame, li vir wekî sancaq demek dirêj bi rê ve bir.
+2574. Ulama, here as a sanjak for a long time conducted it.
+
+2575. Piştre ev wezîfeya han ji destan sitandin û hat Asîtaneya payebilind.
+2575. Afterwards they took this very duty from the hands and he came to the high-ranking Threshold (Istanbul).
+
+2576. Di dawiyê de jî bi Omerê kurê xwe ve li merkeza saltanata mezin çûn rehma Xwedê.
+2576. In the end too with Omer his son at the center of the great sultanate they went to the mercy of God.
+
+2577. Zeynel Begê Kurê Melik Beg
+2577. Zeynel Beg the Son of Melik Beg
+
+2578. Me berê behs kiribû ku, Zeynel Beg hinek caran li dijî babê xwe hereket dikir û hinek caran jî li hemberî mamê xwe Seyid Mihemmed derdiket.
+2578. We had previously mentioned that, Zeynel Beg sometimes against his father acted and sometimes too against his paternal uncle Seyid Mihemmed came out.
+
+2579. Ew bûyerên li jorê me behs kirin jî li Boxtan hatin serî.
+2579. Those events that we mentioned above too came to a head (happened) at Bohtan.
+
+2580. Em ê niha jî behsa van bikin.
+2580. We will now too make mention of these.
+
+2581. Vêca piştî bi saya qencî û başiyên jina Bedir Beg ji mirinê xelas bû û gihişt Hekkarîyê şûn de, ji bo amadekirina kar û barên xwe dixebitiya û armanca wî ew bû ku biçe Stenbolê.
+2581. So after in the shadow of the goodnesses and well-doings of the wife of Bedir Beg he was saved from death and reached Hakkari onwards, for the preparing of his tasks and affairs he was working and his aim was that he go to Istanbul.
+
+2582. Lê dema ku hereket kir, ji nişka ve xeberek ku tesîreke birûskî li ser bike, seh kir.
+2582. But when he acted (moved), suddenly a news that would do a lightning effect upon him, he heard.
+
+2583. Rustem Paşayê Wezîr ê ciyê pena û hêviyên wî, ji wezîrtiyê hildane.
+2583. Rustem Pasha the Vizier the place of his refuge and hopes, they have removed from the viziership.
+
+2584. Vê nûçeyê bi temamî ew bêhêvî kir.
+2584. This news completely made him hopeless.
+
+2585. Dev ji sefera Stenbolê berda û nedizanî ka dê çi jî bike.
+2585. He let go of the campaign of Istanbul and did not know wonder what too he will do.
+
+2586. Di vî warî de tûşê sergêjiyê bû.
+2586. In this field he became afflicted with dizziness (confusion).
+
+2587. Piştî fikirkirin û lêkolîneke zêde, gihîşt wê qeneetê ku
+2587. After an excessive thinking and investigating, he reached that conviction that
+
+2588. derengî nemîne û biçe Îranê û xwe bavêje Seraya Şah Tehmasb.
+2588. he not remain late and go to Iran and throw himself to the Palace of Shah Tahmasp.
+
+2589. Lê çawan fikirî bû wisan derneket.
+2589. But how he had thought thus it did not come out.
+
+2590. Şahê Îranê, ji bo xatirê Seyid Mihemmed zêde rû nedayê.
+2590. The Shah of Iran, for the sake of Seyid Mihemmed did not give much face to him.
+
+2591. Bi vî awayî demek serberedayî û bêrûmet li wir ma.
+2591. In this way for a time aimlessly and without respect he remained there.
+
+2592. Lê ji nişka ve cardin deriyê ronahiyê li ber vebû.
+2592. But suddenly again the door of light was opened before him.
+
+2593. Xeber belav bû ku Rustem Paşa cardin bûye wezîr.
+2593. The news spread that Rustem Pasha again had become vizier.
+
+2594. Ev xeber Zeynel Beg kişt û jîr kir.
+2594. This news cultivated and made Zeynel Beg smart (revived him).
+
+2595. Gurriyên agirê dilsariya wî tefandin û bêyî xwe lê bigre û bisekine, berê xwe da Asîtaneya Sultan û serdera dergahê maçî kir û xwe gihand ba Rustem Paşa yê ciyê pena û hêviyên wî.
+2595. The flames of the fire of his cold-heartedness were extinguished and without holding himself and stopping, he turned himself to the Threshold of the Sultan and kissed the lintel of the court and reached himself to the side of Rustem Pasha the place of his refuge and hopes.
+
+2596. Lê vê carê ewqas rû û rûmet li balê nedît.
+2596. But this time he did not see that much face and respect at his side.
+
+2597. Rustem Paşa, dostiya kevin înkar kir û bi serê poz pê re da û sitand.
+2597. Rustem Pasha, denied the old friendship and with the tip of the nose (haughtily) gave and took (conversed) with him.
+
+2598. Di ciyê wilayeta Hekkariyê de, tenê ji waridata wilayeta Bosnayê ya li Rûmeliyê zeametek ku bi hatina wê ve bijî jê re hat dan.
+2598. In the place of the province of Hakkari, only from the revenues of the province of Bosnia that is in Rumelia a fief that with its income he live was given to him.
+
+2599. Êdî bi naçarî li Bosnayê ma û heta çend tiştên girîng di vî warî de qewimîn.
+2599. Anymore with compulsion he remained in Bosnia and until several important things in this field happened.
+
+2600. Yek ji van, kuştina Seyid Mihemmed ji aliyê Mîrêmêranê Wanê ve bû.
+2600. One from these, was the killing of Seyid Mihemmed from the side of the Mir of Mirs of Van.
+
+2601. Bahaneya vê kuştinê jî ew bû ku, piştî girtina Kela Wanê, Seyîd Mihemmed di navbera Şahzade Sultan Mistefa û Şah Tehmasb de navbirî kiribû û bûbû sebeb ku ew îltîcayê Seraya Şah bike.
+2601. The excuse of this killing too was that, after the taking of the Castle of Van, Seyid Mihemmed had mediated between Shahzade Sultan Mustafa and Shah Tahmasp and had become the reason that he do refuge to the Palace of the Shah.
+
+2602. Bi vî awayî çend îftîrayên din jî pey ve girêdan û kuştin.
+2602. In this way they tied several other slanders too after it and killed him.
+
+2603. Ya duduyan jî, ji kar dûrxistina ('ezilkirin) Rustem Paşa bû.
+2603. The second one too, was the removing from work (dismissal) of Rustem Pasha.
+
+2604. İskender Paşa, ji tesîra van bûyeran ku bi xwe re anîbûn holê îstîfade kir û ji bo desthilata Hekkariyê bidin destê Zeynel Beg, rewşa wî pêşkêşî serderê Sultan Suleyman kir.
+2604. Iskender Pasha, profited from the effect of these events that with themselves had brought to the middle (produced) and for them to give the authority of Hakkari into the hand of Zeynel Beg, he presented his condition to the threshold of Sultan Suleyman.
+
+2605. Pêşiyê bi serket ku wî ji wilayeta Rumeliyê bîne Wanê.
+2605. First he succeeded that he bring him from the province of Rumelia to Van.
+
+2606. Piştre ew ji bo armanca talan, êrîş, berhevkirina îstîxbarat û pîvana rewş, kir serokê hêzekê û şand sînorê Îranê.
+2606. Afterwards he for the aim of plunder, attack, the gathering of intelligence and the measuring of the condition, made him the leader of a force and sent him to the border of Iran.
+
+2607. Dema ku Zeynel Beg gihîşt milê Salmasê, rastî birayê xwe Bayindir Beg hat û dît ku ew jî eynî ji bo wan karên ku ew ji Osmaniyan re dike, ew jî ji Qizilbaşan re dike.
+2607. When Zeynel Beg reached the side of Salmas, he came across his brother Bayindir Beg and saw that he too exactly for those tasks that he does for the Ottomans, he too does for the Qizilbash.
+
+2608. Herdu bira, li dijî hev rabûn.
+2608. Both brothers, rose against one another.
+
+2609. Bayindir Beg şikest û Zeynel Beg çend mirovên hevalên birayê xwe yên hatî esîrkirin, bi diyarî ji Iskender Paşa re anîn Wanê.
+2609. Bayindir Beg broke and Zeynel Beg brought several people friends of his brother who had been taken captive, with a gift to Iskender Pasha to Van.
+
+2610. Ev serkevtina han bû sebeb ku nav û dengê wî belav be paye û qedrê wî bilind bibe.
+2610. This very success became the reason that his name and sound spread and his rank and value become high.
+
+2611. Li ser vê, Iskender Paşa di derheqê sedaqeta Zeynel Beg de ji Dewleta Osmanî re raporek pêşkêşî Sultan kir û dexalet û daxwaz jê kir ku li hemberî qenciyên wî Fermanrewatiya Hekkariyê jê re bê dan û Seyid Mihemmed jî bê wendakirin.
+2611. Upon this, Iskender Pasha regarding the loyalty of Zeynel Beg for the Ottoman State presented a report to the Sultan and did intercession and request from him that against his goodnesses the Rulership of Hakkari be given to him and Seyid Mihemmed too be lost (eliminated).
+
+2612. Sultan ev hemû daxwazên wî pêk anîn û di vî warî de fermanekî Padişahtî derket.
+2612. The Sultan fulfilled all these requests of his and in this field a Padishah's command came out.
+
+2613. Bi vî awayî Zeynel Beg bû fermanrewayê hukumeta Hekkariyê yê serbixwe.
+2613. In this way Zeynel Beg became the independent ruler of the government of Hakkari.
+
+2614. Ev mezintiya han 40 sal di destê wî de ma.
+2614. This very greatness remained in his hand for 40 years.
+
+2615. Lê di vê muddetê han de, caran ev hukumeta han ji Bahaeddînê birayê wî re dihat dan.
+2615. But in this very period, sometimes this very government was given to Bahaeddin his brother.
+
+2616. Lê di dawiyê de, Bahaeddîn Beg jî bi destê Zeynel Beg û kurê wî Seydi Xan hat kuştin.
+2616. But in the end, Bahaeddin Beg too was killed by the hand of Zeynel Beg and his son Seydi Xan.
+
+2617. Bi vî awayî kesek nema ku êdî berhelistî û dijîtiyê li hemberî Zeynel Beg bike, wî tenê bi serê xwe desthilatdarî meşand.
+2617. In this way no person remained that anymore do opposition and enmity against Zeynel Beg, he only by his own head (alone) conducted authority.
+
+2618. Çar kurên Zeynel Beg hebûn: Zahid Beg, Seydî Xan, Zekeriya Beg û Ibrahim Beg.
+2618. Zeynel Beg had four sons: Zahid Beg, Seydi Xan, Zekeriya Beg and Ibrahim Beg.
+
+2619. Ji van Zahid Beg, hinek caran serhişkî li hemberî babê xwe dikir û li rûyê wî radibû.
+2619. From these Zahid Beg, sometimes did stubbornness against his father and rose at his face.
+
+2620. Di netîceyê de şandin ciyê babê wî yê kevin û ew li wilayeta Bosnayê bicî kirin.
+2620. In the result they sent him to the old place of his father and they placed him in the province of Bosnia.
+
+2621. Ger çendîn Zeynel Beg, di dawiyê de bi rizayê dilê xwe ji bo kurê xwe Seydi Xan Beg dev ji desthilatê berda û ji berpirsiyarên Xelîfetiyê yên mezin berata eyaleta xwe ji kurê xwe Seydî Beg re derxist, lê Seydi Beg ji ser hespê ket û di bihara jiyana xwe de mala xwe bar kir û mir.
+2621. Although Zeynel Beg, in the end with the consent of his heart for his son Seydi Xan Beg let go of the authority and from the great responsibles of the Caliphate brought out the document of his province for his son Seydi Beg, but Seydi Beg fell from upon the horse and in the spring of his life packed his house (departed) and died.
+
+2622. Li ser vê, Zeynel Beg mecbûr ma berata eyaletê bizivirîne ser navê kurê xwe yê din Zekeriya Beg û nahiya Elbakê jî bike sancaq û bide destê kurê xwe yê din Îbrahîm Beg.
+2622. Upon this, Zeynel Beg remained compelled to turn the document of the province upon the name of his other son Zekeriya Beg and make the sub-district of Albak too a sanjak and give it into the hand of his other son Ibrahim Beg.
+
+2623. Di sala 992'yê koçi (1585ề z) de, dema ku Sultan Murad Xan ferman da Osman Paşa yê Wezîrê Mezin ku Azerbaycanê bigire; ji Zeynel Beg re ji ji bo ji wir êrîş bibe ser welatê Qizilbaşan û di kuştin, yaxme û talanan de texsîrati neke, fermana padişahtî derket.
+2623. In the year 992 Hijri (1585 AD), when Sultan Murad Xan gave a command to Osman Pasha the Grand Vizier that he take Azerbaijan; for Zeynel Beg from for from there he take an attack upon the country of the Qizilbash and in killing, pillage and plunders he not do shortcoming, a padishah's command came out.
+
+2624. Wê navê re Şah Sultan Mihemmed bi kurê xwe Hemze Mîrza ve li Tebrîzê baregah vedabûn.
+2624. During that time Shah Sultan Mihemmed with his son Hamza Mirza in Tabriz had pitched a headquarters.
+
+2625. Dema ku xeber ji wan re hat ku Zeynel Beg êrîşê welatê Îranê kiriye û gihîştiye herêma Merend, Şah û Şahzade ji bo berxwedan û berevaniyê hêzeke giran a ji fermander û eskerên Tirkmenan pêk hatî ber bi Zeynel Beg ve şandin.
+2625. When the news came to them that Zeynel Beg had done an attack on the country of Iran and had reached the region of Marand, the Shah and Shahzade for resistance and defense sent a heavy force consisting of Turkmen commanders and soldiers towards Zeynel Beg.
+
+2626. Zeynel Beg û leşkerên xwe, nû ji talanên bajarên Gergerê, Zenuzê û Merendê bi dilekî xweş, sipûsaxlem, di nav hêminî û bêtirsî û bêxufi bi paş de vedigeriyan.
+2626. Zeynel Beg and his soldiers, newly from the plunders of the cities of Karkar, Zonuz and Marand with a pleasant heart, completely sound, inside safety and fearlessness and without fright were returning back.
+
+2627. Zeynel Beg bi çend kesan ve li nêzîkî Xana Elkê nimeja esrê dikirin.
+2627. Zeynel Beg with several people near Xana Elkê were doing the afternoon prayer.
+
+2628. Tam vê navê re Tirkmenan bi ser Zeynel Beg û mirovên wî de girtin.
+2628. Exactly during this time the Turkmens took upon Zeynel Beg and his people (ambushed them).
+
+2629. Di navbera wan de şerekî giran qewimî.
+2629. Between them a heavy war happened.
+
+2630. Di dawiyê de Zeynel Beg û gelek mirovên wî yên di şer de pê re bûn, şehîd ketin û kurê wî Îbrahîm Beg jî esîr girtin.
+2630. In the end Zeynel Beg and many of his people who in the war were with him, fell martyr and his son Ibrahim Beg too they took captive.
+
+2631. Hinek rîspî, maqul û xelkên Merendê, laşê Zeynel Beg kefen kirin û li wir veşartin.
+2631. Some elders, sensible ones and people of Marand, shrouded the body of Zeynel Beg and buried him there.
+
+2632. Piştî fetha Tebrîzê, laşê wî ji Merendê birin Colemêrgê û di medreseka ji aliyê Zeynel Beg bi xwe ve hatibû çêkirin, veşartin.
+2632. After the conquest of Tabriz, they took his body from Marand to Colemêrg (Hakkari) and in a madrasa having been made from the side of Zeynel Beg himself, buried him.
+
+2633. Ji aliyê Dîwana Sultan Murad Xan ve, wekî li jorê jî derbas bû, hê li ser saxiya Zeynel Beg fermanek hatibû derxistin, fermanek ku teyîda dayîna Eyaleta Hekkariyê ji Zekeriya Beg re dikir, ev ferman hat nûkirin.
+2633. From the side of the Divan of Sultan Murad Xan, as above too it passed, still upon the life (while alive) of Zeynel Beg a command had been brought out, a command that did the confirmation of the giving of the Province of Hakkari to Zekeriya Beg, this command was renewed.
+
+2634. Ji bilî vê, ji bo azadkirina Îbrahîm Beg* ji Qizilbaşan re fidyek zêde hat dayîn.
+2634. Apart from this, for the freeing of Ibrahim Beg* a great ransom was given to the Qizilbash.
+
+2635. Piştî ku hat berdan vegeriya melbenda xwe û wekî berî desthilata Elbake meşand.
+2635. After he was let go he returned to his region and like before conducted the authority of Albak.
+
+2636. Zekeriya Begê Kurê Zeynel Beg
+2636. Zekeriya Beg the Son of Zeynel Beg
+
+2637. Piştî du sal bi ser desthilata vî mîrê han re derbas bû, hinek fitne û fesad çûn ba Cefer Paşayê Wezîrê waliyê Eyaleta Wanê û parêzgerê
+2637. After two years passed over the authority of this very mir, some seditions and corruptions (seditionists and corruptors) went to the side of Cefer Pasha the Vizier the governor of the Province of Van and the guardian of
+
+2638. Di wergera Tirkî de li vir têkelheviyek heye.
+2638. In the Turkish translation here there is a confusion.
+
+2639. Dibêje Zekeriya Beg.
+2639. It says Zekeriya Beg.
+
+2640. - Z. A.
+2640. - Z. A.
+
+2641. wilayeta Azerbaycanê û jê re gotin: "Li gor urf, adet û qanûnên Osmanî û prensîbên şerîeta Mistefa, dibê desthilata Eyaleta Hekkariyê ji bilî para Zahid Begê kurê Zeynel Beg ê mezin pê ve ya kesekî nebe.
+2641. the province of Azerbaijan and said to him: "According to the Ottoman customs, traditions and laws and the principles of the sharia of Mustafa, it is necessary the authority of the Province of Hakkari apart from the share of Zahid Beg the big son of Zeynel Beg beyond not be of a person (belong to anyone else).
+
+2642. Karê herî baş û di cî de ew e ku ev wezîfeya han ji wî re bê dan."
+2642. The most good and in place task is that this very duty be given to him."
+
+2643. Wezîr jî bêsekin mesele nivîsand û pêşkêşî textê Osmanî kir.
+2643. The Vizier too without stopping wrote the issue and presented it to the Ottoman throne.
+
+2644. Seray jî li ser vê daxwazê desthilata Eyaleta Hekkariyê da destê Zahid Beg.
+2644. The Palace too upon this request gave the authority of the Province of Hakkari into the hand of Zahid Beg.
+
+2645. Li ser vê, bi işareta Wezîr Cefer, ji bo ku desthilatê teslîm bigre berê xwe da eyaletê.
+2645. Upon this, with the sign of Vizier Cefer, so that he take delivery of the authority he turned himself to the province.
+
+2646. Lê çi heye, meyl û evîniya xelkê welat û eşîretan li ser Zekeriya Beg bû.
+2646. But what is there (however), the inclination and love of the people of the country and the tribes was upon Zekeriya Beg.
+
+2647. Ji Zahid Beg hez nekirin û guhên xwe nedan fermanên wî.
+2647. They did not love Zahid Beg and did not give their ears to his commands.
+
+2648. Ev rewş bû sebeb ku di navbera wan de şer û qirên dest pê bike.
+2648. This condition became the reason that between them war and fighting start.
+
+2649. Di şer de Zahid Beg û kurê xwe hatin kuştin.
+2649. In the war Zahid Beg and his son were killed.
+
+2650. Dema ku Cefer Paşa bi vê bûyerê hesiya, desthilatdariya Eyaleta Hekkariyê da destê Melik Begê kurê Zahid Beg û di vî warî de fermanek ji sultanê xwediyê paye û meqamê bilind derxist.
+2650. When Cefer Pasha sensed this event, he gave the authority of the Province of Hakkari into the hand of Melik Beg the son of Zahid Beg and in this field brought out a command from the sultan possessor of high rank and position.
+
+2651. Piştre yekîneyek eskerî ya hejmara wê gelek zêde ya ji Wan û Tebrîzê pey re rêkxist ku biçe û desthilata welatê xwe bigre destê xwe.
+2651. Afterwards he organized a military unit whose number was very excessive from Van and Tabriz behind him that he go and take the authority of his country into his hand.
+
+2652. Li hemberî vê rewşê, hêviyên Zekeriya yên di warê berevanî û berxwedanî de neman.
+2652. Against this condition, the hopes of Zekeriya in the field of defense and resistance did not remain.
+
+2653. Li ser vê, ji bilî terkkirina eyaleta xwe û xwe avêtina li ba Seydî Xan ê Fermanrewayê 'Imadiyyeyê pê ve riyek nedît.
+2653. Upon this, apart from the abandoning of his province and the throwing of himself to the side of Seydi Xan the Ruler of Amadiya beyond he did not see a road.
+
+2654. Seydî Xan jî, baş û ya herî dicî de dît ku, ew rewşa herdukan çawan bûye bi wî awayî pêşkêşî meqamê xelîfe bike.
+2654. Seydi Xan too, saw it good and the most in place that, that condition of both of them how it has been in that way he present it to the position of the caliph.
+
+2655. Li ser vê, bi alîkarî û piştgiriya Sînan Paşayê Wezîrê Mezin, ji nû de bi mercê ku hemû salê bi navê “diyarî" 100 hezar filorî ji Dîwana Osmanî re bide, ji Dîwana Sultan fermana dayîna Eyaleta Hekkariyê li ser usûla berê ji Zekeriya Beg re hat derxistin.
+2655. Upon this, with the help and support of Sinan Pasha the Grand Vizier, anew with the condition that all year (every year) with the name "gift" he give 100 thousand florins to the Ottoman Divan, from the Divan of the Sultan the command of the giving of the Province of Hakkari upon the previous method for Zekeriya Beg was brought out.
+
+2656. Zekeriya Beg jî hat wilayeta xwe û Melik Beg jê derxist.
+2656. Zekeriya Beg too came to his province and took Melik Beg out from it.
+
+2657. Melik Beg jî cardin berê xwe da Stenbolê, rewşa xwe da diyarkirin û xwest ku careke din desthilat jê re
+2657. Melik Beg too again turned himself to Istanbul, gave his condition to be shown and wanted that once again authority to him
+
+2658. bê dan.
+2658. be given.
+
+2659. Lê nexweşiya webayê girt û ecelê wî yê bêçareyî hat û li wir mir.
+2659. But the sickness of plague caught him and his uncurable hour of death came and he died there.
+
+2660. Di destpêka sala 1005'e koçî (1597'ê z) de, Ebubekir Axayê Kedxuda û sipartedarê Zekeriya Beg û yê di nezdê Seraya Sultan de temsîlkariya Zekeriya Beg jî kiribû, ku mirovekî herî sadiq û bawermendê Zekeriya Beg bû, di netîca fitne û fesadiyên Fexreddîn, bi awakî zulm û xwînavî hat kuştin.
+2660. In the beginning of the year 1005 Hijri (1597 AD), Ebubekir Axa the Kedkhuda and trusted one of Zekeriya Beg and who in the presence of the Palace of the Sultan had done the representation of Zekeriya Beg too, who was the most loyal and believer of Zekeriya Beg person, in the result of the seditions and corruptions of Fexreddin, in a cruel and bloody way was killed.
+
+2661. Ev bûyera han bi vî awayî bûye:
+2661. This very event has been in this way:
+
+2662. Zarokên Şah Quliyê Bilîlanî, bi riya Seyfeddînê biraziyê wî re, rêvebirina Sancaqa Xoyê bi çend mercan ji Dîwana Osmani sitandibûn û bi vî awayî bi rê ve dibirin.
+2662. The children of Shah Quli Bililani, with the road of Seyfeddin his nephew, had taken the administration of the Sanjak of Khoy with several conditions from the Ottoman Divan and in this way were conducting it.
+
+2663. Ji ber vê, Fexreddîn li hemberî kurên Şah Quli dijîtî kir û ji aliyê Dîwana Sultan Mihemmed Xan ve fermanek Sultaniyê ji bo dayîna Sancaqa Xoyê ji Hesen Begê kurê Seydî Xan Begê biraziyê Zekeriya Beg re derxist.
+2663. Because of this, Fexreddin did enmity against the sons of Shah Quli and from the side of the Divan of Sultan Mihemmed Xan brought out a Sultan's command for the giving of the Sanjak of Khoy to Hesen Beg the son of Seydi Xan Beg the nephew of Zekeriya Beg.
+
+2664. Ev kirinên Fexreddîn bûn sebebê ji nû ve vejîna dijminatî û kînên kevin di navbera van herdu binemalan de, ku di salên Kedxudatiya Ebubekir Axa de, bi saya wî navbera wan gelek xweş bûbû.
+2664. These actions of Fexreddin became the reason of the reviving anew of the old enmity and hatreds between these two families, which in the years of the Kedkhudaship of Ebubekir Axa, in his shadow the between of them had become very pleasant.
+
+2665. Êdî ji wê rojê şûn de li ber hev diqelizîn û siyên hev bi tîran dihingavtin.
+2665. Anymore from that day onwards they were kicking before one another and striking the shadows of one another with arrows.
+
+2666. Bi vî awayî li ser Fermanrewatiya Xoyê şer û qirênan dest pê kir, aramî û hèminiyê ciyê xwe ji têkelhevî û aloziyan re hişt.
+2666. In this way upon the Rulership of Khoy wars and fighting started, tranquility and safety left their place to confusion and complexities.
+
+2667. Îbrahîm Begê kurê Zeynel Beg, çend car ajot ser Xoyê ku bistîne û Emîr Seyfeddîn jî li dijî wi radibû û berxwedaniyên tund li dijî wî kirin.
+2667. Ibrahim Beg the son of Zeynel Beg, several times drove upon Khoy that he take it and Emir Seyfeddin too rose against him and did severe resistances against him.
+
+2668. Bi vî awayî xwînrijiyek gelek zêde ket navbera wan û ji herdu milan jî gelek kes hatin kuştin.
+2668. In this way a very excessive blood-spilling fell between them and from both sides too many people were killed.
+
+2669. Lê negihîştin tu armancê.
+2669. But they did not reach any aim.
+
+2670. Belê, her çendîn Îbrahîm Beg hewara xwe digihand Zekeriya Beg û mirovên eşîret û qebîleyan alîkariyek didit, lê, ev alîkariyên han sethî bûn û ne rasteqînî bûn.
+2670. Yes, even though Ibrahim Beg was reaching his help (appealing) to Zekeriya Beg and the people of the tribes and clans gave a help, but, these very helps were superficial and were not true.
+
+2671. Çunki sipartedarê Zekeriya Beg, Ebubekir Axa tagirê şer û têkelheviyan nebû, dixwest di ciyê şer û qirênan de aştî û dostî hebe.
+2671. Because the trusted one of Zekeriya Beg, Ebubekir Axa was not a partisan of war and confusions, he wanted in the place of war and fighting peace and friendship exist.
+
+2672. Ji ber vê yekê di vî warî de mil neda ber ku alîkariyek ji dil û têr bê kirin.
+2672. Because of this one in this field he did not give a shoulder before (did not support) that a help from the heart and full be done.
+
+2673. Sînan Paşa bubu Mîrêmîranê Wanê.
+2673. Sinan Pasha had become the Mir of Mirs of Van.
+
+2674. Zekeriya Beg, Ebubekir Axa bi perrû û diyariyan ve ji bo bixêrtêdana Sînan Paşa şand.
+2674. Zekeriya Beg, sent Ebubekir Axa with feathers (gifts) and presents for welcoming Sinan Pasha.
+
+2675. Fexreddînê navê wî derbas bû, ev ji xwe re firset zanîbû ku belayekê bi serê vî mirovî baş de bîne.
+2675. Fexreddin whose name passed, knew this for himself an opportunity that he bring a trouble upon the head of this good person.
+
+2676. Bi Hesen Begê kurê Seydî Xan re li hev kirin û ketin pey Ebubekir Axa.
+2676. With Hesen Beg the son of Seydi Xan they agreed and fell behind (followed) Ebubekir Axa.
+
+2677. Van herdukan jî dizanîn ku Sînan Paşa mirovekî gelek çavbirçî û pulperest e.
+2677. Both of these too knew that Sinan Pasha is a very greedy and money-worshipping person.
+
+2678. Çûn balê û li ser devê Zekeriya Beg jê re gotin: Beg dibêje, min Ebubekir Axa bi perrû û diyariyan jê re şandiye, ez gelek jê aciz bûme û ez dixwazim ji destê wî rizgar bim.
+2678. They went to his side and upon the mouth (on behalf) of Zekeriya Beg said to him: The Beg says, I have sent Ebubekir Axa with feathers and gifts to him, I have become very annoyed from him and I want to be rescued from his hand.
+
+2679. Eger Paşa wî mirovî ji holê rake, ez ê sê kîs zêr bi diyarî jê re bişînim.
+2679. If the Pasha removes that person from the middle, I will send three bags of gold with a gift to him.
+
+2680. Dema ku Sînan Paşa navê zêran seh kir, wext bû ji şahiyan bizire.
+2680. When Sinan Pasha heard the name of gold, it was time he bray from joys (was overjoyed).
+
+2681. Ebubekir Axa çawan hat, bê sekin ew da girtin û kuşt.
+2681. How Ebubekir Axa came (as soon as he came), without stopping he gave him to be captured and killed.
+
+2682. Niha ku sala 1005è koçî (1596'z) ye, Zekeriya Beg li Colemêrgê li ser bingehê xanedana xwe fermandar e û Îbrahîm Beg jî kar û barên Elbakê dimeşîne.
+2682. Now that it is the year 1005 Hijri (1596 AD), Zekeriya Beg at Colemêrg upon the basis of his dynasty is commander and Ibrahim Beg too conducts the tasks and affairs of Albak.
+
+2683. Ez hêvîdar im di kirinên xwe yên baş û çak de bi ser bikevin.
+2683. I am hopeful in their good and excellent actions they succeed.
+
+2684. ## BEŞA SISIYAN
+2684. ## THE THIRD SECTION
+
+2685. ## DI DERHEQÊ FERMANREWAYÊN 'IMADIYYEYÊ DE NE KU BI NAVÊ BAHADINAN BI NAV Û DENG IN
+2685. ## THEY ARE REGARDING THE RULERS OF AMADIYA WHO BY THE NAME BAHADINAN ARE WITH NAME AND SOUND (FAMOUS)
+
+2686. Yên di baxçeyên gulên xeberan ên xerîb de distrên û kesên di koşkên bahçeyan ên berhemên seyr û 'ecêb de gotinan dibêjin; riwayet dikin ku koka Fermanrewayên 'Imadiyyeyê -li gor îddîayê wan bi xwe- digihe binemala Xelîfeyên 'Ebbasiyan.
+2686. Those who in the gardens of the roses of foreign news sing and the people who in the pavilions of the gardens of the strange and wondrous products say words; narrate that the root of the Rulers of Amadiya -according to the claim of them themselves- reaches the family of the Abbasid Caliphs.
+
+2687. Lê hinek dîroknasên kevin ên bûyer û serpêhatiyan neqil dikin, dibêjin ku nesla wan digihîje yekî navê wî 'Ebbas ê giregirekî serdema xwe yê bi nav û deng.
+2687. But some old historians who transport events and adventures, say that their lineage reaches one his name is 'Ebbas who is a high-ranking one of his era with name and sound.
+
+2688. Belê rastî tenê ji aliyê Xwedê ve tê zanîn.
+2688. Yes the truth only from the side of God is known.
+
+2689. Riwayet çi dibin bila bibin, tu şik di vê de tune ku ew bi navê "Kurên "Ebbas" bi nav û deng bûne û berê di wilayeta Şemizdînan de cîwar bûne.
+2689. Whatever the narrations be let them be, no doubt in this exists that they by the name "Sons of 'Ebbas" have become with name and sound and previously in the province of Semdinli have been settled.
+
+2690. Berî ku bab û bapîrên wan bên 'Imadiyyeyê, li wir desthilata Kela Taronê a girêdayî wilayeta Şemizdînan bi rê ve birine.
+2690. Before their father and grandfathers come to Amadiya, there they have conducted the authority of the Castle of Taron attached to the province of Semdinli.
+
+2691. Ew kesê ku pêşî mala xwe ji Taron aniye 'Imadiyyeyê, navê wî Bahadînan bûye.
+2691. That person who first brought his house from Taron to Amadiya, his name has been Bahadinan.
+
+2692. Ji ber vê, Fermanrewayên 'Imadiyyeyê, di nav Fermanrewayên Kurdistanê de bi navê Bahadînan hatine naskirin.
+2692. Because of this, the Rulers of Amadiya, among the Rulers of Kurdistan by the name of Bahadinan have been known.
+
+2693. Li gor riwayeta herî rast ku şik tê de tune, bi ser desthilata zarokên Bahadînan a li vê navçeya han 400 sal derbas bûne.
+2693. According to the most true narration that doubt in it does not exist, upon the authority of the children of Bahadinan at this very district 400 years have passed.
+
+2694. Kela 'Imadiyyeyê ya niha, avahiyeke nû ye û di dema Selçûkiyan de ji aliyê 'Imadeddînê kurê Aksungur Beg yê waliyê Mûsil û Sencerê ve hatiye çêkirin.
+2694. The Castle of Amadiya of now, is a new building and in the time of the Seljuks from the side of 'Imadeddin the son of Aksungur Beg the governor of Mosul and Sinjar has been built.
+
+2695. Bingehê kel û bajêr li ser kevirekî gilover û pan a mezin hatiye avakirin û li hinek ciyan ev kevirê han ê mezin ji zemînê erdê 100
+2695. The basis of the castle and the city upon a big round and flat stone has been built and at some places this very big stone from the surface of the earth 100
+
+2696. gaz, li hinek ciyan 50-60 û li hinek ciyan jî 20 gaz bilind e.
+2696. gaz, at some places 50-60 and at some places too 20 gaz is high.
+
+2697. Du bîr di nav keleyê de hatine kolan û ava pêwistiyên medrese, hemam û tekyayan ên rojane bi vê tên qedandin.
+2697. Two wells inside the castle have been dug and the water of the daily necessities of the madrasas, baths and tekkes with this are finished (fulfilled).
+
+2698. Xelkê bajêr jî pêwistiyên xwe yên avê, ji derveyî bajêr bi meşkan bi dewaran tînin.
+2698. The people of the city too bring their necessities of water, from outside the city with waterskins with beasts of burden.
+
+2699. Lehçe û qiyafetê rûniştiyên 'Imadiyyeyê, qismen têkeli nav Ereban bûye.
+2699. The dialect and outfit of the residents of Amadiya, partially has been mixed inside the Arabs.
+
+2700. Çunki zanistiya Erebî hakim û serdest e.
+2700. Because Arab science is ruling and dominant.
+
+2701. Ji ber vê, di neticeya vê de gelek kesên dîndar, baş, meyîldarê îbadetê, bi qeneet û terefdarên karên xêrê li vir derketine.
+2701. Because of this, in the result of this many religious, good people, inclined to worship, with contentment and partisans of deeds of charity here have come out.
+
+2702. Ji bo vê yekê, Fermanrewayên 'Imadiyyeyê, li wir gelek medrese û mizgeft ava kirine; kesên zana û xwediyê fezîlet di wan de melatiyê dikin; zanyariyên dinî hîn dikin û bi temamkirina hîndekarî û perwerdetiya dînî hem ji wan tê îstîfadekirin û hem ew îstîfade dikin.
+2702. For this one, the Rulers of Amadiya, there many madrasas and mosques have built; knowing and possessor of virtue people in them do mullah-ship; they teach religious sciences and with the completing of religious teaching and education both from them it is profited and they too profit.
+
+2703. Eşîretên herî mezin û bihêz ên li 'Imadiyyeyê ya yekem Mizûrî û ya duduyan jî Zêbarî ne.
+2703. The most big and strong tribes at Amadiya the first is Mizuri and the second too is Zebari.
+
+2704. Zê, navê çemekî biçûkê wilayeta 'Imadiyyeyê ye.
+2704. Ze, is the name of a small river of the province of Amadiya.
+
+2705. Ew eşîreta duduyan, ji bo ku li derûdora wî çemî rûdinin, navê wî çemê biçûk lê hatiye kirin û jê re gotine Zêbarî.
+2705. That second tribe, because they sit around that river, the name of that small river has been put on them and they have said Zebari to them.
+
+2706. Navê vî çemî yê Erebî jî heye û jê re Nehru'l-Cunûn (Çemê Dînbûnê) dibêjin.
+2706. The Arabic name of this river too exists and they say Nehru'l-Cunun (River of Madness) to it.
+
+2707. Çunkî ewqas gurr û bi sur'et diherike, ev navê han lê kirine.
+2707. Because it flows so intense and with speed, they have put this very name on it.
+
+2708. Eşîreteke din li 'Imadiyyeyê heye, navê wê Radkanî ye, ku di nav Kurdan de ev nav hatiye guhertin û niha Kurd jê re dibêjin Birîkanî.
+2708. Another tribe at Amadiya exists, its name is Radkani, which among the Kurds this name has been changed and now the Kurds say Birikani to it.
+
+2709. Eşîretên din ên 'Imadiyyeyê jî ev in: Perwerî, Mehel, Siyabrûyî, Tilî û Behli.
+2709. The other tribes of Amadiya too are these: Perweri, Mehel, Siyabruyi, Tili and Behli.
+
+2710. Behl, di devoka wî qewmî de ji gelî re tê gotin.
+2710. Behl, in the dialect of that people is said to a valley.
+
+2711. Yek ji wan keleyên bi nav û deng ên 'Imadiyyeyê, Kela Akreyê ye.
+2711. One from those castles with name and sound of Amadiya, is the Castle of Akre.
+
+2712. Bi navê Akreyê bajarek jî heye û nêzîkî hezar û dused malên Cuhî û Musulman tê de hene.
+2712. By the name of Akre a city too exists and nearly one thousand and two hundred houses of Jews and Muslims exist in it.
+
+2713. Ji bilî van, Kela Dihokê û Kela Dîrê yên desthilata wan ji aliyê mîrzadeyên fermanrewayên wan û kurmamên wan ve tên meşandin hene.
+2713. Apart from these, the Castle of Duhok and the Castle of Dire whose authority from the side of the mir-borns of their rulers and their cousins are conducted exist.
+
+2714. Kela Beşriyê ya di destê Eşîreta Radkanî de û Keleyên Qeladeyê, Şûşê, 'Umraniyê û Bazîranê jî hene ku Eşîreta Zêbarî di wan de rúdine.
+2714. The Castle of Beshri that is in the hand of the Radkani Tribe and the Castles of Qelade, Shush, 'Umraniye and Baziran too exist that the Zebari Tribe sits in them.
+
+2715. Nahiya Zaxo jî girêdayî 'Imadiyyeyê ye.
+2715. The sub-district of Zaxo too is attached to Amadiya.
+
+2716. Li vir du eşîretên Kurd hene û navê wan Sindî û Silêmanî ne.
+2716. Here two Kurdish tribes exist and their names are Sindi and Silemani.
+
+2717. Di nav xelkê de ji vê nahiyeyê re Sindiyan jî tê gotin.
+2717. Among the people to this sub-district Sindiyan too is said.
+
+2718. Piraniya zana û kesên xwedî fezîlet ên Kurdistanê ji wir derketine.
+2718. The majority of the knowers and people possessor of virtue of Kurdistan have come out from there.
+
+2719. Ji demên berî heta niha, rewşeke vir a taybetî hebûye û navçeke xwedî rêvebirinek irsî bûye.
+2719. From previous times until now, a special condition of here has existed and it has been a district possessor of a hereditary administration.
+
+2720. Li vir, ji aliyê fermanrewayên serbixwe yên ku li ber Fermanrewayên 'Imadiyyeyê serî netewandine hatine idarekirin.
+2720. Here, from the side of independent rulers who before the Rulers of Amadiya have not bowed a head have been administered.
+
+2721. Di dawiyê de, dema ku Fermanrewayên Zaxoyê bêhêz û jar bûn, Fermanrewayên 'Imadiyyeyê vir kirin bin bandoriya xwe.
+2721. In the end, when the Rulers of Zaxo became without strength and weak, the Rulers of Amadiya made here under their influence.
+
+2722. Niha jî yekî ji wê neslê yê ji kevnekarbidestê Zaxoyê maye, navê wî Yusif Beg e û ba Fermanrewayên Cezîrê rûdine.
+2722. Now too one from that lineage who from the old officials of Zaxo has remained, his name is Yusif Beg and he sits at the side of the Rulers of Cizre.
+
+2723. Hinek ji wan kesên ku ji nesla Bahaeddîn in û desthilata Fermanrewatiya 'Imadiyyeyê meşandine, em navên wan nizanin.
+2723. Some from those people who are from the lineage of Bahaeddin and have conducted the authority of the Rulership of Amadiya, we do not know their names.
+
+2724. Bi alîkariya Xwedê em ê yên ku navên wan tên zanîn û rewşa wan zelal e, yek di pey yekî de binivisînin.
+2724. With the help of God we those whose names are known and their condition is clear, one behind one (one by one) will write them.
+
+2725. Emîr Zeyneddin
+2725. Emir Zeyneddin
+
+2726. Di dema siyasetmedar û fermanrewayê xwediyê şukir û sena Emîr Tîmûrê Kurganî û dewra Şahrux Sultanê kurê wî yê mezin de, Fermanrewayê 'Imadiyyeyê Emîr Zeyneddîn bûye.
+2726. In the time of the politician and ruler possessor of thanks and praise Emir Timur Gurkani and the era of Shahrukh Sultan his big son, the Ruler of Amadiya has been Emir Zeyneddin.
+
+2727. Bi serbilindî, bi şanazî û bi dilekî xweş fermanrewatiya xwe meşandiye.
+2727. With head-highness (pride), with boastfulness and with a pleasant heart he has conducted his rulership.
+
+2728. Piştî ev Emîrê han ê bi dostên xwe re dost û bi dijminên xwe re dijmin berê xwe daye bax û baxçên cennetê, Seyfeddînê kurê wî li ciyê wî rûniştiye.
+2728. After this very Emir who with his friends a friend and with his enemies an enemy turned himself to the vineyards and gardens of paradise, Seyfeddin his son has sat in his place.
+
+2729. Emîr Seyfeddîn
+2729. Emir Seyfeddin
+
+2730. Piştî mirina Mîr Zeyneddin, Mîr Seyfeddînê kurê wî li ciyê wî rûnişt.
+2730. After the death of Mir Zeyneddin, Mir Seyfeddin his son sat in his place.
+
+2731. Siya çeng û baskên dadmendî, merhemetî û qenciyên wî gihîştiye hemû ciyekî û behra xweşiyê ya wî dilovanê hemû jan, kul û kovanan ji bîra feqîr û rûniştiyên welat biriye.
+2731. The shadow of the arms and wings of his justice, mercy and goodnesses has reached every place and the sea of pleasantness of that merciful one has taken all pains, sorrows and griefs from the memory of the poor and the residents of the country.
+
+2732. Dema wî jî ber bi seray û koşka nemanê ve mala xwe bar kiriye, du kurên ciwan û xweşik ên navê wan Hesen û Bayrik li pey xwe hiştine.
+2732. When he too towards the palace and pavilion of non-existence packed his house (departed), two young and beautiful sons whose names are Hesen and Bayrik he has left behind himself.
+
+2733. Hesenê Kurê Seyfeddin
+2733. Hesen the Son of Seyfeddin
+
+2734. Hesen, kurê wî yê mezin bû û ji ber vê bû cînişînê babê xwe.
+2734. Hesen, was his big son and because of this became the successor of his father.
+
+2735. Di zemanê fermanrewatiya wî de, Suleyman Begê Bîjenoxlu yê Aqqoyunî xwest bimeşe ser wilayeta 'Imadiyyeyê û wê îşgal bike.
+2735. In the time of his rulership, Suleyman Beg Bijenoghlu the Aq Qoyunlu wanted to march upon the province of Amadiya and occupy it.
+
+2736. Suleyman Beg, her çendîn di sitandina Kela Akreyê û Kela Şûşê de bi ser ket, lê bi hemû hêz û taqeta xwe ve çi kir û nekir, nekarîbû tiştekî bi Kela 'Imadiyyeyê bike û bêhêvî destê xwe jê kêşa.
+2736. Suleyman Beg, even though in the taking of the Castle of Akre and the Castle of Shush he succeeded, but with all his force and capability whatever he did and did not, he could not do a thing with the Castle of Amadiya and hopelessly pulled his hand from it.
+
+2737. Piştî ku Aqqoyunî di sahê de neman û ber bi pûçbûnê ve çûn û Sefewiyan ciyê wan girtin, Emîr Hesen bêsekin çû Seraya Şah İsmaîlê Sefewî.
+2737. After the Aq Qoyunlu did not remain in the field and went towards rotting (extinction) and the Safavids took their place, Emir Hesen without stopping went to the Palace of Shah Ismail the Safavid.
+
+2738. Şah Ismaîl gelek rêz lê girt û bîr û baweriya xwe pê anî.
+2738. Shah Ismail held much respect for him and brought his thought and belief on him (trusted him).
+
+2739. Di netîceyê de, alîkariya wî kir ku Kela Dihokê ji Eşîreta Dasnî bistîne û têke ser wilayeta ku ji bab û bapîrên wî jê re maye.
+2739. In the result, he helped him that he take the Castle of Duhok from the Dasni Tribe and put it upon the province that from his father and grandfathers has remained to him.
+
+2740. Ji bilî vê, nahiya Sindî jî ji fermanrewayê wê yê serbixwe yê ji Eşîreta Sindiyan sitand û xist ser wilayeta 'Imadiyyeyê.
+2740. Apart from this, the sub-district of Sindi too from its independent ruler who was from the Sindi Tribe he took and put it upon the province of Amadiya.
+
+2741. Piştre heft zarokên kur li pey xwe hiştin û çû rehma Xwedê.
+2741. Afterwards he left seven boy children (sons) behind himself and went to the mercy of God.
+
+2742. Zarokên wî: Sultan Huseyin, Seydi Qasim, Murad Xan, Suleyman, Pîr Budak, Mîrza Mihemmed û Xan Ehmed bûn.
+2742. His children: were Sultan Huseyin, Seydi Qasim, Murad Xan, Suleyman, Pir Budak, Mirza Mihemmed and Xan Ehmed.
+
+2743. Sultan Huseyin Beg ê mezinê tevan, ciyê babê xwe girt ku, em ê qasek şûn de behsa rewşa wî û zarokên wî bikin.
+2743. Sultan Huseyin Beg the big one of them all, took the place of his father that, we will a while later make mention of his condition and his children.
+
+2744. Ji Seydi Qasim kurek ma û
+2744. From Seydi Qasim a son remained and
+
+2745. navê wî 'Eli Xan e.
+2745. his name is 'Eli Xan.
+
+2746. Tu zarokên kur li pey Murad Xan neman û di bûyera Qubad Beg de hat kuştin.
+2746. No boy children (sons) remained behind Murad Xan and in the event of Qubad Beg he was killed.
+
+2747. Kurekî Mîrza Mihemmed ê navê wî Sultan Mehmûd hebû.
+2747. A son of Mirza Mihemmed whose name is Sultan Mehmud existed.
+
+2748. Xan Ehmed jî kurekî navê wî Şah Yusif li pey xwe hişt.
+2748. Xan Ehmed too left a son his name is Shah Yusif behind himself.
+
+2749. Kureki Bayrik Begê kurê Seyfeddîn ê dîn hebû ku wekî dê ji vir şûn de bê behskirin, bù sebebê kuştina Qubad Beg.
+2749. A son of Bayrik Beg the son of Seyfeddin the other existed who as will be mentioned from here onwards, became the reason of the killing of Qubad Beg.
+
+2750. Sultan Huseyin
+2750. Sultan Huseyin
+
+2751. Kurê mezin ê Mir Hesen, bi esil û bingeh xwerû ji binemala Ebbasiyan û yek ji wan bijarteyê Fermanrewayên 'Imadiyyeyê, piştî mirina babê xwe li ser fermana Sultan Selim Xan û li gor wesiyeta babê wî li ser textê mîrektiyê rûnişt.
+2751. The big son of Mir Hesen, with origin and basis purely from the family of the Abbasids and one from those chosen of the Rulers of Amadiya, after the death of his father upon the command of Sultan Selim Xan and according to the will of his father sat upon the throne of the emirate.
+
+2752. Bi payeyeke bilind zana û zekî bû.
+2752. With a high rank he was knowing and intelligent.
+
+2753. Sultan Huseyin, gelek dîndar, parêzgar, zana, zanadost, qencîxwaz û xwoşewîst bû.
+2753. Sultan Huseyin, was very religious, pious, knowing, knowledge-loving, good-wishing and beloved.
+
+2754. Esker, gundî, biçûk û mezin bi saya dadgeriya wî de ketibûn rehetiyê.
+2754. Soldier, villager, small and big in the shadow of his justice had fallen into comfort.
+
+2755. Kesên zana û xwedî fezîlet nêzîkî seraya xwe dikir; eleqe û bawermendiyek xurt dida nîşan; di nav hevwelatiyên xwe de bê ferqîtî, dadmendi û merhemetî bi pîvaneke wekhevî belav dikir.
+2755. He made knowing and possessor of virtue people near his palace; he gave to be shown a strong interest and belief; among his citizens without distinction, he distributed justice and mercy with a measure of equality.
+
+2756. Ev rewşa han, dibû sebeb ku ew bi dilekî xweş û bi minnetarî pêşkên desthilata wî bigrin û wekî ku ew wan serbilind û serfiraz dike, ew jî eynî bi wî awayî wi serbilind û serfiraz dikin.
+2756. This very condition, became the reason that they with a pleasant heart and with gratitude hold the hems of his authority and as he makes them head-high and victorious, they too exactly in that way make him head-high and victorious.
+
+2757. Eynî wextê ew rêz û siyaneta ji aliyê Sultanên Osmaniyan ve jî jê re hatiye kirin, ji tu karbidestên Kurdistanê re nehatine kirin.
+2757. At the exact time that respect and value from the side of the Ottoman Sultans too has been done for him, for no officials of Kurdistan have been done.
+
+2758. Sewiyeya wî di Dîwana Dewleta Osmanî de, gihîştiye dereceyeke wisan, çi kesê ji mirovên maqûl ên Kurdistanê karekî wan biketaya dîwanê, dibû berî ji wî pirs bikin, an jî wî bikin tîkakarê xwe ku karê wan bimeşe.
+2758. His level in the Divan of the Ottoman State, reached such a degree, whatever person from the sensible people of Kurdistan a task of theirs would fall to the divan, it was necessary first they ask him, or too they make him their intercessor that their task progress.
+
+2759. Dikariya bê asteng û bê destê duduyan, çi daxwazên wî hebûn raste rast bigihîne Sultan Suleyman û ji bo çi bûya bila bibûya, dema berê xwe dabûya wî, Sultan dilê wî nedişkand û jê re pêk dianî.
+2759. He was able without obstacle and without a second hand (intermediary), whatever requests he had to reach them directly to Sultan Suleyman and for whatever it be let it be, when he had turned himself to him, the Sultan did not break his heart and fulfilled it for him.
+
+2760. Tu daxwazên wî ji aliyê kesên wezîfedarên dewletê ve nehatin redkirin.
+2760. No requests of his from the side of the official people of the state were rejected.
+
+2761. Wilayeta 'Imadiyyeyê û ciyên îlhaqkirî yên girêdayên wê tam 30 salên dirêj bi serbilindî û şanazî bi rê ve birin.
+2761. He conducted the province of Amadiya and its attached annexed places for exactly 30 long years with head-highness and boastfulness.
+
+2762. Di dawiyê de, di meheka sala 900... de ku barê xwe ber bi cennetê ve bar kir, pênc kur li ser rûyê dinê li pey xwe hiştin: Qubad Beg, Bayram Beg, Rustem Beg, Xan Ismail û Sultan Ebû Se'îd.
+2762. In the end, in a month of the year 900... that he packed his load towards paradise, he left five sons upon the face of the world behind himself: Qubad Beg, Bayram Beg, Rustem Beg, Xan Ismail and Sultan Abu Sa'id.
+
+2763. Qubad Begê Kurê Sultan Huseyin Beg
+2763. Qubad Beg the Son of Sultan Huseyin Beg
+
+2764. Piştî mirina babê xwe li ser fermana Sultan Selîm Xan, li ser textê meşandina kar û barên 'Imadiyyeyê rûnişt.
+2764. After the death of his father upon the command of Sultan Selim Xan, he sat upon the throne of the conducting of the tasks and affairs of Amadiya.
+
+2765. Mirovekî sofî, 'emelderwêş, qeneetkar, bê eza û dilnerm bû.
+2765. He was a sufi, dervish-acting, contented, without harm and soft-hearted person.
+
+2766. Şevên xwe bi nimêj û şevnimêjan dikir sibe û rojên xwe jî bi nêçîran derbas dikir.
+2766. He made his nights morning with prayer and night-prayers and his days too he passed with hunts.
+
+2767. Yên ku wî serî pê re dernedi-
+2767. Those that he did not bring a head out with (could not manage)
+
+2768. xist, karên dinê û meyvexwarin bû.
+2768. were the affairs of the world and wine-drinking.
+
+2769. Caran ji bo guneheke biçûk cezayên gelek mezin didan û lê çi heye caran jî ji tawanên gelek mezin re çavên xwe digirt û cezayên gelek biçûk jê re rewa didît.
+2769. Sometimes for a small sin he gave very big punishments and but what is there (however) sometimes too for very big crimes he closed his eyes and saw very small punishments permissible for them.
+
+2770. Di dawiyê de wisan kir ku hemû kesên derdorên wî, eşîret û qebîle jê aciz bin û xwe jê dûr bikin.
+2770. In the end he did thus that all the people around him, the tribes and clans become annoyed from him and make themselves far from him.
+
+2771. Ji ber vê, xelkê di ciyê wî de Bayram Begê birayê wî dixwestin û daxwaza wan ew bû ku bikevin bin rêveberiya wî.
+2771. Because of this, the people wanted Bayram Beg his brother in his place and their request was that they fall under his administration.
+
+2772. Lê Bayram xwediyê wê hêz û taqetê nebû ku dijîtiya Qubad Beg bike.
+2772. But Bayram was not possessor of that force and capability that he do enmity of Qubad Beg.
+
+2773. Ji ber vê, berê xwe da Qezwînê Seraya Şah İsmaîlê duduyan û wî jî soz û belêniyên mezin danê.
+2773. Because of this, he turned himself to Qazvin the Palace of Shah Ismail the second and he too gave big words and promises to him.
+
+2774. Li milê din, Eşîreta Mizûrî ku gelek alîgirê Bayram Begê bûn, li dijî wî serhildan, ew ji fermanrewatiyê dûr kirin û ji bin fermana wî derketin.
+2774. On the other side, the Mizuri Tribe that were very supporters of Bayram Beg, rebelled against him, made him far from the rulership and went out from under his command.
+
+2775. Di ciyê wî de Suleymanê kurê Bayrikê kurê Seyfeddînê kurmamê Qubad Beg kirin mezinê xwe.
+2775. In his place they made Suleyman the son of Bayrik the son of Seyfeddin the cousin of Qubad Beg their great one.
+
+2776. Zeynel Begê Fermanrewayê Hekkariyê, ku gelek ji Qubad Beg diltijî û bi kîn bû, peyamnêrekî xwe şand Îranê ba Bayram Beg û lê xebitî ku wî ji zîndana Şah Sultan Mihemmed rizgar bike û bîne ba xwe.
+2776. Zeynel Beg the Ruler of Hakkari, who was very full-hearted (resentful) and with hatred from Qubad Beg, sent a messenger of his to Iran to the side of Bayram Beg and worked at it that he rescue him from the prison of Shah Sultan Mihemmed and bring him to his side.
+
+2777. Qubat, bi van kirinên Bayram siliki; ket nav dudiliyê û ji netîceya vi karî gelek tirsiya.
+2777. Qubat, became offended by these actions of Bayram; fell inside hesitation and very much feared from the result of this task.
+
+2778. Ji ber vê, hukmê 'Imadiyyeyê terk kir û ber bi Mûsil û Sencarê ket rê û çû.
+2778. Because of this, he abandoned the rule of Amadiya and fell on the road and went towards Mosul and Sinjar.
+
+2779. Bayram Beg jî, bi armanca mezintiya hukumeta 'Imadiyyeyê ket rê.
+2779. Bayram Beg too, with the aim of the greatness (rulership) of the government of Amadiya fell on the road.
+
+2780. Serdarê bi nav û deng Ferhad Paşa yê wezîrê Osmanî, dema ku bi vê tedbîr û armancê hesiya, nahiya Zaxoyê kir sancaq û siparte Bayram Beg.
+2780. The commander with name and sound Ferhad Pasha the Ottoman vizier, when he sensed this measure and aim, made the sub-district of Zaxo a sanjak and entrusted it to Bayram Beg.
+
+2781. Di vê navê re Qubad Beg jî, bi wê tirs û lerzê ji Mûsilê hat Diyarbekrê û ji wir jî xwe gihande Stenbolê.
+2781. During this time Qubad Beg too, with that fear and trembling came from Mosul to Diyarbakir and from there too reached himself to Istanbul.
+
+2782. Çawan gihîşt wir, bi Siyawuş Paşa yê Wezîrê Mezin re peywendî danî, gilî û gazindên xwe jê re gotin.
+2782. How he reached there (as soon as he reached), he set a connection with Siyawush Pasha the Grand Vizier, said his complaints and grievances to him.
+
+2783. Siyawuş Paşa jî, ji bo fermana Fermanrewatiya 'Imadiyyeyê jê re bê dan, alîkariya wî kir.
+2783. Siyawush Pasha too, for the command of the Rulership of Amadiya to be given to him, helped him.
+
+2784. Qubad Beg jî ev daxwaza xwe bicî kir û careke din ji nû ve fermana meşandina kar û barên wir jê re nû kirin û ew ber bi 'Imadiyyeyê rê kirin.
+2784. Qubad Beg too brought this request of his to place (fulfilled it) and once again anew they renewed the command of the conducting of the tasks and affairs of there for him and sent him on the road towards Amadiya.
+
+2785. Di dema vegera xwe de, çawan gihîşt Kela Dihokê, baştir zanîbû ku demekê li wir bimîne, ew kesên ku têkelhevî derxistine û li dijî wî rabûne, bide alîkî û tola xwe ji wan bistîne, asteng û giriyên neyaran li ber piyên xwe hilde û piştre bi dilekî xweş vegere.
+2785. In the time of his return, how he reached the Castle of Duhok, he knew it better that for a time he remain there, to put those people who had brought out confusion and risen against him to one side and take his revenge from them, to lift the obstacles and knots of the enemies from before his feet and afterwards with a pleasant heart to return.
+
+2786. Lê Suleymanê kurê Bayrik ê ku navê wî derbas bûbû û Mîr Melekê Mizurî li hev kirin; ji hemû aliyê welat birek diz, qatîl û şerfiroş li dora xwe berhev kirin û hatin derûdora Kela Dihokê girtin û Qubad Beg kirin bin abluqayê.
+2786. But Suleyman the son of Bayrik whose name had passed and Mir Melek the Mizuri agreed; from all side of the country gathered a flock of thieves, killers and war-sellers (warmongers) around themselves and came and held the surroundings of the Castle of Duhok and put Qubad Beg under a blockade.
+
+2787. Wê navê re di bin re, bi xelkên nav keleyê re peywendî danîn û bi wan deriyên keleyê dan vekirin û ketin hundur.
+2787. During that time from underneath (secretly), they set a connection with the people inside the castle and by them gave the doors of the castle to be opened and fell inside.
+
+2788. Qubad Beg, kurekî wî û gelek kesên destpêwendên wî yên nêzîk tev girtin û kuştin.
+2788. Qubad Beg, a son of his and many people of his close associates entirely they captured and killed.
+
+2789. Piştre çiqas mal, mulk û waridatên wan hebûn tev talan kirin.
+2789. Afterwards however much property, estate and revenues they had they entirely plundered.
+
+2790. Dema ku Bayram Beg bi vê bûyera han hesiya, bi lez ji Zaxoyê derket û hat 'Imadiyyeyê nav eşîret û qebîleyan.
+2790. When Bayram Beg sensed this very event, with haste he went out from Zaxo and came to Amadiya among the tribes and clans.
+
+2791. Suleyman Beg û Mîr Melekê Mizurî
+2791. Suleyman Beg and Mir Melek the Mizuri
+
+2792. jî, bèsekin kar û barên hukumeta Imadiyyeyê dan destê wî.
+2792. too, without stopping gave the tasks and affairs of the government of Amadiya into his hand.
+
+2793. Li gor Bayram Beg, ya herî baş ew bû ku giregir û civakên eşîret û qebîleyan ji derûdora wî belav nebin, ji ber vê jî bi dilekî razî û nîvrazî wezîfeya fermanrewatiyê qebûl kir û hat ser kursiya fermanrewatiyê rûnişt.
+2793. According to Bayram Beg, the most good was that the high-ranking ones and communities of the tribes and clans from around him not scatter, because of this too with a satisfied and half-satisfied heart he accepted the duty of the rulership and came sat upon the chair of rulership.
+
+2794. Seydi Xan û Sultan Ebû Seîd Xan ên kurên Qubad Beg, bi girîn û qûrîn riya deşt û çiyan dan ber xwe û xwe gihandin ber deriyê Seraya Sultan Murad Xan.
+2794. Seydi Xan and Sultan Abu Said Xan the sons of Qubad Beg, with crying and screaming gave the road of plain and mountains before themselves (took to the plains and mountains) and reached themselves before the door of the Palace of Sultan Murad Xan.
+
+2795. Lê, mezin û biçûk, zengîn û feqîr, Musulman û Xiristiyan, esker û hevwelatî, piraniya nifûsa 'Imadiyyeyê bi Bayram Beg re bûn.
+2795. But, big and small, rich and poor, Muslim and Christian, soldier and citizen, the majority of the population of Amadiya were with Bayram Beg.
+
+2796. Bi vî awayî hêvî û daxwazên wan bicî bû û gihîştin armanca xwe.
+2796. In this way their hope and requests came to place and they reached their aim.
+
+2797. Ji ber vê yekê hevûdu pîroz kirin, dest bi dayîna sedeqe û neziran kirin, şahî û ahengên dilxweşiyê li dar xistin û ketina rêvebiriya Qubad Beg serkevtinek mezin hesibandin.
+2797. Because of this one they congratulated one another, started the giving of alms and vows, held joys and ceremonies of pleasant-heartedness and counted the falling of the administration of Qubad Beg a great success.
+
+2798. Bayram Begê Kurê Sultan Huseyin Beg
+2798. Bayram Beg the Son of Sultan Huseyin Beg
+
+2799. Wek me di pêş de jî behs kir, dema ku Bayram Beg ji tirsa Qubad Begê birayê xwe nekarîbû li ‘Imadiyyeyê bijî, xwe avêt bin bandora Şah İsmaîlê Sefewî û li wir gelek qedir û siyaneta wî hat girtin.
+2799. As we in the front (previously) too mentioned, when Bayram Beg from the fear of Qubad Beg his brother could not live at Amadiya, he threw himself under the influence of Shah Ismail the Safavid and there much of his value and respect was held.
+
+2800. Lê çi heye, piştî mirina Şah İsmail, ku Şah Sultan Mihemmedê birayê wî bû şah, Bayram Beg ew rêz û siyaneta ku berê ji serayê didîn êdî nema, bi ser vê de jî ew bêhêz dîtin û girtin û di Kela Elemutê de zindan kirin.
+2800. But what is there, after the death of Shah Ismail, when Shah Sultan Mihemmed his brother became shah, Bayram Beg that respect and value that previously from the palace he saw anymore did not remain, upon this too they saw him without strength and captured him and imprisoned him in the Castle of Alamut.
+
+2801. Dema ku Zeynel Beg ê Fermanrewayê Hekkariyê ev bûyer seh kir, ji bo rizgarkirina wî hewil da û xebitî û ji bo vê yekê jî bi Emîr Xan ê waliyê Tebrîzê re hevdîtinik çêkir.
+2801. When Zeynel Beg the Ruler of Hakkari heard this event, he gave effort and worked for his rescuing and for this one too made a meeting with Emir Xan the governor of Tabriz.
+
+2802. Li hev kirin ku, bi ser merc û esasê ku Bayram Beg ji Kela Elemutê berdin û bişînin ba wî, dê ew bi navê "diyari" ji Şah Sultan Mihemmed û Emîr Xan re 5 hezar filorî bide.
+2802. They agreed that, upon the condition and basis that they let Bayram Beg go from the Castle of Alamut and send him to his side, he by the name of "gift" will give 5 thousand florins to Shah Sultan Mihemmed and Emir Xan.
+
+2803. Li gor peymana di navbera wan de hatî çêkirin, Zeynel Beg ev pere dan destê mirovên Emîr Xan.
+2803. According to the treaty having been made between them, Zeynel Beg gave this money into the hand of the people of Emir Xan.
+
+2804. Wan ji Bayram Beg ji Kela Elemutê berdan û teslîmê Zeynel Beg kirin.
+2804. They too let Bayram Beg go from the Castle of Alamut and made delivery of him to Zeynel Beg.
+
+2805. Piştî ew bûyerên ku me li jorê behs kirin, Bayram Beg bû serekê hukumeta 'Imadiyyeyê û hakimiyeta xwe xurt kir.
+2805. After those events that we mentioned above, Bayram Beg became the leader of the government of Amadiya and strengthened his rule.
+
+2806. Di nav xelkê û eşîretan de rêveberiyek gelek bi dadmend, bi merhemet û bi rêk û pêk meşand.
+2806. Among the people and the tribes he conducted a very just, merciful and organized administration.
+
+2807. Dema ku nav û dengê siyasetmedarî û bawermendiya wî di nav xelkê û leşker de û rizamendiya wan ji wî gihîşt guhên Osman Paşa yê Wezîrê Mezin û serfermanderê eniya Îranê, gelek kêfxweş bû û ji baregeha xwe ya li Qastamonuyê li ser navê Bayram Beg berata Eyaleta 'Imadiyyeyê şand.
+2807. When the name and sound (fame) of his statesmanship and believing among the people and soldiers and their satisfaction from him reached the ears of Osman Pasha the Grand Vizier and the chief commander of the front of Iran, he became very joyful and from his headquarters at Kastamonu sent the document of the Province of Amadiya upon the name of Bayram Beg.
+
+2808. Li milê din, Seydî Xan Begê kurê Qubad Beg, hewara xwe gihand Sultan Murad Xan, kuştin û serpêhatiyên babê xwe û netîceyên wê bi awaki zelal jê re gotin.
+2808. On the other side, Seydi Xan Beg the son of Qubad Beg, reached his help to Sultan Murad Xan, said the killing and adventures of his father and its results in a clear way to him.
+
+2809. Yek bi yek çawan ew qebîle û eşîret li hemberî babê wi rabûn, serê bab û birayê wî jêkirin, mal û navmalên wan dizîn û ser-
+2809. One by one how those clans and tribes rose against his father, cut off the head of his father and his brother, stole their property and furnishings and upon-
+
+2810. barê ser de jî Bayram Beg kirin Fermanrewayê 'Imadiyyeyê, pêşkêş kirin.
+2810. load of upon it too made Bayram Beg the Ruler of Amadiya, presented.
+
+2811. Sultan Murad, dilê wî xweş kir; fermana Eyaleta 'Imadiyyeyê jê re şand; di derheqê Bayram Beg de emrê vekolînê û fermanek tund û tûj jî di derheqê wendakirina ew kesên ku li 'Imadiyyeyê têkelhevî derxistine û serhildane, ji Serdar Ferhad Paşa re hat dan.
+2811. Sultan Murad, made his heart pleasant; sent the command of the Province of Amadiya to him; regarding Bayram Beg the order of investigation and a severe and sharp command too regarding the losing (elimination) of those people who at Amadiya have brought out confusion and rebelled, was given to Commander Ferhad Pasha.
+
+2812. Ferhad Paşa, ji bo cîbicîkirina vê fermanê dest bi xebatê kir.
+2812. Ferhad Pasha, for the carrying out of this command started work.
+
+2813. Karê wî yê pêşiyê ew bû ku, Sancaqa Hesenkêfê îlhaqê hukumeta Zaxoyê kir û ew, ji bo ku heta firset û mecalek musaîd a ji bo dayîna hukumeta 'Imadiyyeyê ji Bayram Beg re derkeve, ji bo demek muwaqqet da destê Bayram Beg.
+2813. His first task was that, he made the Sanjak of Hasankeyf annexed to the government of Zaxo and it, so that until an opportunity and suitable possibility for the giving of the government of Amadiya to Bayram Beg comes out, for a temporary time he gave into the hand of Bayram Beg.
+
+2814. Mebesta Ferhad Paşa ji vê ew bû ku, Bayram Beg nekeve şikê, bêqêr û bêgêjî wî têxe davikê.
+2814. The purpose of Ferhad Pasha from this was that, Bayram Beg not fall into doubt, without noise and without dizziness he put him into the trap.
+
+2815. Piştî vê jê re nameyek şand û tê de wiha got: "Li gor fermana Sultan dibê tu niha rêvebirina kar û barên 'Imadiyyeyê ji Seydi Xan Beg re berdî û rêvebirina kar û barên Sancaqên Hesenkêf û Zaxoyê bigrî destê xwe.
+2815. After this he sent a letter to him and in it said thus: "According to the command of the Sultan it is necessary you now let go of the administration of the tasks and affairs of Amadiya to Seydi Xan Beg and take the administration of the tasks and affairs of the Sanjaks of Hasankeyf and Zaxo into your hand.
+
+2816. Ji bilî vê, ji bo ku tu îsal bi leşkerê Osmanî yê serkevtî re biçî şerê Gurcistanê û feydeyek û xizmetek te bigihîje padişah û dewletê, tu gerek e bêsekin bê vir."
+2816. Apart from this, so that you this year with the victorious Ottoman army go to the war of Georgia and a benefit and a service of yours reach the padishah and the state, you it is necessary without stopping come here."
+
+2817. Bi vî awayî, Bayram Beg hesab dikir ku dê bi vê yekê firsetekê bide destê Ferhad Paşa ku piştî seferê di derheqên xizmet û kirinên wî de ji serderê bilind re raporekê pêşkêş bike û cardin mecal bikeve destan ku Fermanrewatiya 'Imadiyyeyê bigre destê xwe.
+2817. In this way, Bayram Beg was calculating that with this one he will give an opportunity to the hand of Ferhad Pasha that after the campaign regarding his service and actions he present a report to the high threshold and again the possibility fall to the hands that he take the Rulership of Amadiya into his hand.
+
+2818. Bayram Beg ê saf û dilpak bi vê zimanxweşî û dek û dolabê xapiya, tenê bi Sancaqa Hesenkêfê razî bû û di lehê Seydi Xan de dev ji fermanrewatiya xwe ya 'Imadiyyeyê berda.
+2818. Bayram Beg the naive and pure-hearted was deceived by this sweet-tongue and trick and scheme, was satisfied only with the Sanjak of Hasankeyf and in the favor of Seydi Xan let go of his rulership of Amadiya.
+
+2819. Piştre li gor banga Serdar bi leşkerê Osmanî re berê xwe da Gurcistanê.
+2819. Afterwards according to the call of the Commander with the Ottoman army he turned himself to Georgia.
+
+2820. Dema ku ji sefera Gurcistanê vegeriyan, hê di rê de Serdar, Bayram Beg girt û di Kela Erzirûmê de hepis kir.
+2820. When they returned from the campaign of Georgia, still on the road the Commander, captured Bayram Beg and imprisoned him in the Castle of Erzurum.
+
+2821. Em ê di rêzên pêş de, bi alîkariya Xwedê behsa serpêhatiya wî bikin.
+2821. We in the forward lines, with the help of God will make mention of his adventure.
+
+2822. Seydi Xanê Kurê Qubad Beg
+2822. Seydi Xan the Son of Qubad Beg
+
+2823. Dema ku fermana rêvebirina Eyaleta 'Imadiyyeyê ji Seydi Xan Beg re hat dan û paye û meqamê babê wî yê bilind, li gor mercên çarenivîs û qederê, ji serderê bilind yê ciyê şahî û dilxweşiyê bi fermanekê jê re hat dan; ji bo ku bi hev re bimeşin ser Bayram Beg û eger hat, ew Kela 'Imadiyyeyê û eyaletê teslîm neke, keleyê jê bistînin û teslîmê Seydî Xan Beg bikin, ji Mîrêmîranê Bexda û Şehrezolê, hukumdar û mîrên Kurdistanê yên din re, biryar û fermanên gelek tund û tûj hatin şandin.
+2823. When the command of the administration of the Province of Amadiya was given to Seydi Xan Beg and the high rank and position of his father, according to the conditions of destiny and fate, from the high threshold the place of joy and pleasant-heartedness with a command was given to him; so that with one another they march upon Bayram Beg and if it came, he not deliver the Castle of Amadiya and the province, they take the castle from him and make delivery of it to Seydi Xan Beg, to the Mir of Mirs of Baghdad and Shahrizor, the rulers and other mirs of Kurdistan, very severe and sharp decisions and commands were sent.
+
+2824. Dema ku Seydi Xan gihîşt Mûsilê, Bayram Beg serî li ber feramana Sultan tewand, kele jî û wilayet jî terk kir.
+2824. When Seydi Xan reached Mosul, Bayram Beg bowed a head before the command of the Sultan, he abandoned the castle too and the province too.
+
+2825. Seydî Xan Beg jî ji wir dûr ket.
+2825. Seydi Xan Beg too fell far from there.
+
+2826. Seydî Xan Beg jî, di nîvê meha Zilhîcceya sala 993'yê koçî* (1585ê z) de, bi alî-
+2826. Seydi Xan Beg too, in the middle of the month of Dhu al-Hijjah of the year 993 Hijri* (1585 AD), with the help-
+
+2827. Ev tarîx di wergera Soranî de 933'yê koçî ye. -Z. A.
+2827. This date in the Sorani translation is 933 Hijri. -Z. A.
+
+2828. kariya xalê xwe Suleyman Begê Mîrê Sohran ket nav Kela 'Imadiyyeyê û wekî li joré derbas bûbû, li wir desthilatê girt destê xwe.
+2828. of his maternal uncle Suleyman Beg the Mir of Soran fell inside the Castle of Amadiya and as above it had passed, there he took authority into his hand.
+
+2829. Li milê din, dema ku Serdar Ferhad Paşa ji sefera Gurcistanê vegeriya, li gor plana ku danîbûn, Bayram Beg girt û zîndan kir.
+2829. On the other side, when Commander Ferhad Pasha returned from the campaign of Georgia, according to the plan that they had laid, he captured and imprisoned Bayram Beg.
+
+2830. Şand pey Seydi Xan Beg û ew ani Erzirûmê; piştî ku perekî gelek zêde bi navê "yadîgarî" ji Seydi Xan Beg sitand, wi han da û şîret lê kirin ku, Bayram Beg, ji bo tawana kuştina Qubad Beg li ser esasên qanûnên şerîetê mehkeme bike.
+2830. He sent after Seydi Xan Beg and brought him to Erzurum; after he took a very excessive money by the name of "keepsake" from Seydi Xan Beg, he incited him and did advice to him that, he try Bayram Beg for the crime of the killing of Qubad Beg upon the bases of the laws of the sharia.
+
+2831. Belê, bi vî awayî doz ket ber destê şerîetê û xwîna Qubad Beg li ser Bayram Beg ferz kirin û ew dan destê biraziyê wî yê babkuştî.
+2831. Yes, in this way the case fell before the hand of the sharia and they made the blood of Qubad Beg an obligation upon Bayram Beg and they gave him into the hand of his father-killed nephew.
+
+2832. Wî jî di sala 994è koçi (1586è z) de mamê xwe di ber xwîna babê xwe de kuşt.
+2832. He too in the year 994 Hijri (1586 AD) killed his paternal uncle in front of (for) the blood of his father.
+
+2833. İsal tam yanzdeh sal e ku Seydi Xan Fermanrewayê 'Imadiyyeyê ye.
+2833. This year it is exactly eleven years that Seydi Xan is the Ruler of Amadiya.
+
+2834. Hemû girê û astengên wê navçeyê bi destê wî tên helkirin.
+2834. All the knots and obstacles of that district by his hand are solved.
+
+2835. Li ser desthilatê kesek pey re di nav şer û qirênan de nîne.
+2835. Upon the authority a person is not inside war and fighting with him.
+
+2836. Ger çendîn Eşîreta Mizûrî çend rojan li hemberî wî sekinî, serhildan û hinek têkelhevî û girê derxistin, lê Seydi Xan Beg, hinek caran bi şîddet û tundî û hinek caran jî bi nermî û sersarî ev eşîreta han mexlub kir û kir bin desthilata xwe.
+2836. Even though the Mizuri Tribe stood against him for several days, rebelled and brought out some confusion and knots, but Seydi Xan Beg, sometimes with severity and strictness and sometimes too with softness and coldness (leniency) defeated this very tribe and put it under his authority.
+
+2837. Ya rast ew e ku Seydi Xan Beg, xortekî gelek nazik, zîrek û bi aqil e; xwediyê mêr û mêrxasiyek nedîtî û mirovekî destvekirî ye.
+2837. The truth is that Seydi Xan Beg, is a very delicate, clever and smart youth; possessor of an unseen manliness and bravery and an open-handed person.
+
+2838. Hemû leşker û xelk bi exlaqê xwe yê nerm û dest neberdana ji dadmendiyê, ber bi xwe ve kêşaye.
+2838. He has pulled all soldiers and people towards himself with his soft character and not-letting-go of justice.
+
+2839. Bi îzna Xwedê, hêvî heye ku di karên xwe yên baş de serkevtî be.
+2839. With the permission of God, hope exists that in his good actions he be successful.
+
+2840. ## BEŞA ÇARAN
+2840. ## THE FOURTH SECTION
+
+2841. ## DI DERHEQE FERMANREWAYÊN CEZÎRÊ DE NE KU JI WAN RE "BOXTO" JÎ TÊ GOTIN -Ev Ji Dibin Sê Şax-
+2841. ## THEY ARE REGARDING THE RULERS OF CIZRE THAT TO THEM "BOKHTO" TOO IS SAID -These Too Become Three Branches-
+
+2842. Ew yeka li gor gotin û nivîsandinên dîroknasan eşkere û zelal e, xelekên zincîra bingeh û koka Mîrên Cezîrê digihîjin Xalidê kurê Welîd ê payebilind û eshabeyê Pêxember.
+2842. That one according to the words and writings of the historians is clear and evident, the rings of the chain of the basis and root of the Mirs of Cizre reach Khalid the son of Walid the high-ranking and companion of the Prophet.
+
+2843. Navê yekem bab û bapîrê wan ê ku cara yekê li ser textê Fermanrewatiya Cezîrê rûniştiye, bi navê Suleymanê kurê Xalid tê naskirin.
+2843. The name of their first father and grandfather who for the first time sat upon the throne of the Rulership of Cizre, by the name of Suleyman the son of Khalid is known.
+
+2844. Di destpêkê de kesên vê xanedana han ên xwedî paye, li ser rêça Dînê Êzidîtî yê bêuxir û bêmeymenet dimeşiyan, pişta xwe bi exlaqê û adetên wan ve girê dabûn û ji rê derketibûn.
+2844. In the beginning the possessor of rank people of this very dynasty, walked upon the path of the Yezidi Religion of the without-luck and unblessed, they had tied their back with their character and customs and had gone out of the road.
+
+2845. Lê, piştre, Xwedayê bendeperwer bû rêberê wan û ew xistin ser riya mezhebê ehlê heq û sunnet.
+2845. But, afterwards, the servant-nourishing God became their guide and put them upon the road of the sect of the people of truth and sunnah.
+
+2846. Gelek mizgeft û medrese ava kirin.
+2846. They built many mosques and madrasas.
+
+2847. Ji van xêrat û muesseseyan re ji hejmarê der gundên baş, zevî û axên bi rij û bereket weqif kirin.
+2847. For these charities and institutions out of number (countless) good villages, fields and lands with abundance and blessing they endowed.
+
+2848. Eşîreta Boxtî ku navê eşîreta wan e, di nav eşîretên Kurdistanê de, bi netirsî, mêranî û merdiya xwe bi nav û deng in.
+2848. The Bohti Tribe which is the name of their tribe, among the tribes of Kurdistan, with their fearlessness, manliness and generosity are with name and sound.
+
+2849. Di meydana şer de û pişthespiya xwe de ji hemû kesên ji eşîretên Kurdistanê serkevtîtir in.
+2849. In the square of war and their horseback-riding they are more successful than all the people from the tribes of Kurdistan.
+
+2850. Çekên şer li ba wan nivişta ser dil e.
+2850. The weapons of war at their side are the amulet on the heart.
+
+2851. Hespên esîl û cins ên Ereban li ba wan gula serê kup e.
+2851. The noble and thoroughbred horses of the Arabs at their side are the rose of the head of the jar (the pinnacle/pride).
+
+2852. Şûrên cewherdêr, tîrên avdar û hesp, ji wan re ji nan, av û kincan girîngtir e.
+2852. Jewel-bearing swords, watered arrows and horses, for them are more important than bread, water and clothes.
+
+2853. Bi taybetî mereqek wan a zêde li ser şûrê Misrî û rima Şamî heye û gelek hez dikin ku wan bi dest bixin.
+2853. Especially an excessive curiosity (passion) of theirs exists upon the Egyptian sword and the Damascene spear and they love much that they obtain them.
+
+2854. Li hemberî dijmin, yekdeng in, bi îttîfaq in û di rojên giran, hewar û cengan de hemû pişta hev digrin.
+2854. Against the enemy, they are one-voiced, with agreement and in heavy days, helps and battles all hold the back of one another (support one another).
+
+2855. Ji ber van taybetmendiyên xwe, ew di Kurdistanê de ji hemû eşîretên hemkûfê xwe paye bilindtir û serkevtîtir in.
+2855. Because of these characteristics of theirs, they in Kurdistan from all tribes of their peers are higher rank and more successful.
+
+2856. Bajarê Cezîrê bajarekî kevnare ye.
+2856. The city of Cizre is an ancient city.
+
+2857. Di sala 17'yê koçî (639'ê z) de, di dema Xelîfe Omer de -Xwedê jê razî be- Ebû Mûsayê 'Eşerî û Sed 'Iyadê kurê Osman bêşer, bi riya aştî ev bajar girtin.
+2857. In the year 17 Hijri (639 AD), in the time of Caliph Umar -may God be pleased with him- Abu Musa al-Ash'ari and Sa'd Iyad the son of Uthman without war, by the road of peace took this city.
+
+2858. Wê çaxê hemû xelkê Cezîrê bi dayîna xeraca wan seraneyên ku hatine tesbîtkirin razî bûye.
+2858. That time all the people of Cizre with the giving of the tribute of those head-taxes that were determined became satisfied.
+
+2859. Lê tenê eşîreteke Ereban a navê wê Benî Texleb, serê xwe ji van seraneyan re netewandin, malên xwe bar kirin û xwe gihandin Şamê û pena ber bi Fermanrewayê Rûmê birin.
+2859. But only a tribe of the Arabs its name Beni Taghlib, did not bow their head to these head-taxes, packed their houses and reached themselves to Damascus and took refuge towards the Ruler of Rum (Byzantium).
+
+2860. Ji wir cewab şandin û gotin: "Eger navê serane bên guhertin û bikin sedeqe, em ê vegerin ciyê xwe û çi ji me bê xwestin em ê bidin."
+2860. From there they sent an answer and said: "If the name of head-taxes be changed and they make it alms, we will return to our place and whatever from us be wanted we will give."
+
+2861. Dema ku ev xebera han çûn û gihîştin Omer -Xwedê jê razî be- got ku: "Sedeqe jî her serane ye, qebûl bikin."
+2861. When this very news went and reached Umar -may God be pleased with him- he said that: "Alms too is still head-tax, accept it."
+
+2862. Li ser vê, cardin ew vegeriyan ciyên xwe.
+2862. Upon this, again they returned to their places.
+
+2863. Kela Cezîrê jî eserê Omerê kurê 'Ebdul'ezîz e.
+2863. The Castle of Cizre too is the work of Umar the son of 'Abdul'aziz.
+
+2864. Ew, heştemîn Xelîfeyê Emewiyan e.
+2864. He, is the eighth Caliph of the Umayyads.
+
+2865. Di nav Emewiyan de bi wesfên xwe yên dadmendî, perwerdeyî û dilovanî hatiye naskirin û ji ber vê yekê jî jê re "Omerê kurê Xetab ê duduyan" -Xwedê rehma xwe li herdukan jî bike- hatiye gotin.
+2865. Among the Umayyads with his attributes of justice, education and mercy he has been known and because of this one too to him "Umar the son of Khattab the second" -may God do his mercy on both of them too- has been said.
+
+2866. Di dema desthilatdariya Emewiyan de, nêzîkî 100 salan li ser mînberên mizgeftan û berê hemû nimêjan, îmam û xutbebêjan, bûbû urf û adet ku nav û leqeban gelek neşêrîn bi navê Hezretê Elî -Xwedê jê razî be- û İmam Hesen û Huseyin -Xwedê ji van herdukan jî razî be- ên êzîz û dilovan ve dikirin û le'netê li wan dibarandin.
+2866. In the time of the authority of the Umayyads, for nearly 100 years upon the minbars of the mosques and before all prayers, imams and sermon-sayers, it had become a custom and tradition that very unsweet names and nicknames they attached to the name of Hazrat Ali -may God be pleased with him- and Imam Hasan and Huseyin -may God be pleased with these two too- the beloved and merciful ones and they rained curses on them.
+
+2867. Omerê kurê 'Ebdul'ezîz, di dema fermanrewatiya xwe de ev rakirin û 'alema Islamê ji van guneh û tawanan rizgar kirin.
+2867. Umar the son of 'Abdul'aziz, in the time of his rulership removed this and rescued the world of Islam from these sins and crimes.
+
+2868. Kele û bajarê Cezîrê li ser qeraxê Çemê Şatu'l-'Erebê ye.
+2868. The castle and city of Cizre is upon the edge of the Shatt al-Arab River.
+
+2869. Wextê av bilind dibe, ava çem dibe du perçe û hem kele û hem bajar ji herdu milan ve radipêçe.
+2869. The time the water becomes high, the water of the river becomes two pieces and wraps both the castle and the city from both sides.
+
+2870. Bendeke gelek mezin li milê jorê keleyê heye û ev bi kils û keviran hatiye hunandin.
+2870. A very big dam at the upper side of the castle exists and this with lime and stones has been woven (built).
+
+2871. Ev, ji bo ku xanî û muesseseyên di nav keleyê de ji av û şetên lehiyan bên parastin, hatiye çêkerin.
+2871. This, so that the houses and institutions inside the castle be protected from the water and torrents of floods, has been built.
+
+2872. Ji ber vê ye ku, mirov dibîne xelk di navbera bajar û keleyê de bi ser pirê re diçin û tên.
+2872. Because of this it is that, a person sees the people between the city and the castle go and come over the bridge.
+
+2873. Bi vî halê xwe dibe wek dûrgehek û ji bo vê jî xelk jê re Cezîra Omeriyye dibêjin.
+2873. With this state of itself it becomes like an island and for this too the people say Cizre of 'Umariyye to it.
+
+2874. Li bajarê Cezîrê û derûdora wê, gelek keleyên sipehî û navçeyên balkêş hene.
+2874. At the city of Cizre and its surroundings, many beautiful castles and interesting districts exist.
+
+2875. Ji bo ku xwendevanên hêja aciz nebin û jê nekerixin, em ê di vê kitêbê de tenê behsa navê 14 kele û navçeyan bikin:
+2875. So that the precious readers not become annoyed and not be repulsed by it, we in this book will only make mention of the name of 14 castles and districts:
+
+2876. 1. Nahiya Gurgîlê: Çiyayê Cûdî yê ku dibêjin gemiya Nuh Pêxember -silav li ser wî û li ser pêxemberê me be- li ser -li gor gotinan- sekiniye, li vir e.
+2876. 1. The sub-district of Gurgil: Mount Cudi which they say the ship of Noah the Prophet -peace be upon him and upon our prophet- upon it -according to words- stopped, is here.
+
+2877. Eşîretên vê nahiya han di bin navê heft şaxan de berhev dibin.
+2877. The tribes of this very sub-district gather under the name of seven branches.
+
+2878. Şehreweri, Şehrili, Gurgil û Esturî, ev herçar eşîretên han Huseynî ne.
+2878. Şehreweri, Şehrili, Gurgil and Esturi, these very all four tribes are Huseyni.
+
+2879. Niwidkawun, Şoreş û Hîwdil, ev hersêkên han jî Êzidî ne.
+2879. Niwidkawun, Şoreş and Hiwdil, these very all three too are Yezidi.
+
+2880. 2. Kele û nahiya Bereke (Bireke): Ev navçe di destê Eşîreta Bereke de ne û ji ber vê bi navê eşîretê hatiye binavkirin.
+2880. 2. The Castle and sub-district of Bereke (Bireke): This district is in the hand of the Bereke Tribe and because of this by the name of the tribe it has been named.
+
+2881. 3. Kele û nahiya Arûxê (Erux): Ev kela han a di bin destihilata Eşîreta Arûxê de, di Kurdistanê de kela herî saxlem û xweşik e.
+2881. 3. The Castle and sub-district of Arukh (Eruh): This very castle that is under the authority of the Arukh Tribe, in Kurdistan is the most sound and beautiful castle.
+
+2882. 4. Nahiye û Kela Pîrûzê: Ev navçeya han di destê Eşîreta Pîrûzî de ye.
+2882. 4. The sub-district and Castle of Piruz: This very district is in the hand of the Piruzi Tribe.
+
+2883. Ev eşîreta han bûye sê qisim: Castulan, Bezm û Kirafan.
+2883. This very tribe has become three parts: Castulan, Bezm and Kirafan.
+
+2884. 5. Kele û nahiya Badanê: Di destê Eşîreta Garisî de ye.
+2884. 5. The Castle and sub-district of Badan: It is in the hand of the Garisi Tribe.
+
+2885. 6. Nahiya Tenzi (Tinzê): Ji kela wê re Keleyêok tê gotin û ew jî di destê Eşîreta Garisî de ne.
+2885. 6. The sub-district of Tenzi (Tinze): To its castle Keleyêok is said and they too are in the hand of the Garisi Tribe.
+
+2886. 7. Nahiye û Kela Finikê: Çar eşîret li wir dijîn.
+2886. 7. The sub-district and Castle of Finik: Four tribes live there.
+
+2887. Dema ku em behsa Begên Finikê bikin, em ê li ser bisekinin.
+2887. When we make mention of the Begs of Finik, we will stand upon it.
+
+2888. 8. Nahiya Torê
+2888. 8. The sub-district of Tor
+
+2889. 9. Nahiya Heytemê: Piraniya rûniştiyên wê Ermenî û Xiristiyan in.
+2889. 9. The sub-district of Heytem: The majority of its residents are Armenian and Christian.
+
+2890. Piraniya waridat û hasilatên Fermanrewayên Cezîrê li wir tên ber berhemê.
+2890. The majority of the revenues and harvests of the Rulers of Cizre there come before the product (are produced).
+
+2891. Eşîreta Cilekî (Cilkî) jî nişteciyên wir in.
+2891. The Cileki (Cilki) Tribe too are the settlers of there.
+
+2892. 10. Nahiye û Kela Şaxê: Xelkê li wir jî piraniya wan Ermenî û Xiristiyan in.
+2892. 10. The sub-district and Castle of Şax: The people there too the majority of them are Armenian and Christian.
+
+2893. Qebîleya Şîldî jî rûniştiyên wir in.
+2893. The Şildi Clan too are the residents of there.
+
+2894. Şax, bi hinarên xwe yên xweş bi nav û deng e.
+2894. Şax, with its pleasant pomegranates is with name and sound.
+
+2895. 11. Kela Neş Etelê
+2895. 11. The Castle of Nesh Etel
+
+2896. 12. Kela Ermişatê: Di destê Eşîreta Biraspî de ye.
+2896. 12. The Castle of Ermishat: It is in the hand of the Biraspi Tribe.
+
+2897. Ev eşîreta han, di nav eşîretên Boxtan de ya herî bi hêz û xwediyê hevkariyê ye.
+2897. This very tribe, among the tribes of Bohtan is the most with force and possessor of cooperation.
+
+2898. Di hêla mirovên xwe yên çekdar û waridat û darayî de ji tevan xurttir e.
+2898. In the direction of its armed people and revenues and finances it is stronger than all.
+
+2899. 13. Kela Kîwerê: Qemîz jî jê re tê gotin.
+2899. 13. The Castle of Kiwer: Qemiz too is said to it.
+
+2900. Di bin desthilata Eşîretên Garisî û Qurşî de ye.
+2900. It is under the authority of the Garisi and Qurshi Tribes.
+
+2901. 14. Kela Dêrdeyê: Dikeve navçeya Tenzê (Tinzê).
+2901. 14. The Castle of Derde: It falls to the district of Tenze (Tinze).
+
+2902. Hinek ji rûniştiyên wê yên wekî Tuheyrî, Sefan û Benî 'Ubade 'Ereb in.
+2902. Some from its residents like Tuheyri, Sefan and Beni 'Ubade are Arab.
+
+2903. Piraniya Êrmeniyên vê navçeyê Erebî diaxivin.
+2903. The majority of the Armenians of this district speak Arabic.
+
+2904. Eşîretên din ên Boxtan jî ev in: Dinbilî, Nûkî, Mehmûdî, Şêxbizinî, Maskî, Reşikî, Mix Nehran, Peykan, Belan, Belasturan, Şîroyan, Dutûran.
+2904. The other tribes of Bohtan too are these: Donboli, Nuki, Mehmudi, Shekhbizini, Maski, Reshiki, Mix Nehran, Peykan, Belan, Belasturan, Shiroyan, Duturan.
+
+2905. Ya rast ev e ku Eşîreta Dinbilî û Mehmûdî gelek kevin de ji Cezîrê derketine.
+2905. The truth is this that the Donboli and Mehmudi Tribe very old in went out from Cizre.
+
+2906. Wekî tê zanîn me di destpêkî de fîhrîstek ji wan re çêkiriye.
+2906. As it is known we in the beginning have made an index for them.
+
+2907. Eger Xwedê bi me re yar be, em ê di Sefha Sisiyan de li ser wan bisekinin û rewşa wan baştir ronî bikin.
+2907. If God is a friend with us, we in the Third Page will stand upon them and illuminate their condition better.
+
+2908. Niha jî ez ê bi alîkariya bexşînderê hêz û merdiyê dest bi gotina serpêhatiyên Fermanrewayên Cezîrê bikim:
+2908. Now too I with the help of the bestower of force and generosity will start the saying of the adventures of the Rulers of Cizre:
+
+2909. Suleymanê Kurê Xalid
+2909. Suleyman the Son of Khalid
+
+2910. Wek me di pêş de jî behs kir, yekem kesê ji wê xanedanê yê Fermanrewatiya Cezîrê kiriye, Suleymanê kurê Xalid bûye.
+2910. As we in the front (previously) too mentioned, the first person from that dynasty who has done the Rulership of Cizre, has been Suleyman the son of Khalid.
+
+2911. Demek desthilata xwe bi serbilindî û di xweşiyê de derbas kiriye.
+2911. A time he passed his authority with head-highness and in pleasantness.
+
+2912. Dema malavayî ji
+2912. The time departing from
+
+2913. vê cîhana han kiriye û çûye rehma Xwedê, sê kur li pey xwe hiştine.
+2913. this very world he has done and went to the mercy of God, he left three sons behind himself.
+
+2914. Herse jî lawên şêrîn û helbijartî bûne û navê wan: Mîr Hacî Bedir, Mîr Ebdul'ezîz û Mir 'Ebdal bûn.
+2914. All three too were sweet and chosen boys and their names were: Mir Haci Bedir, Mir Abdulaziz and Mir Abdal.
+
+2915. Lê Emir 'Ebdul'ezîz, di nav birayên xwe de, hîva çarde şevi di nav stêrkan de çawa ye, ew jî bi wî awayî bûye.
+2915. But Emir Abdulaziz, among his brothers, how the moon of fourteen nights is among the stars, he too has been in that way.
+
+2916. Hemû cewher tê de hebûne.
+2916. All jewels existed in him.
+
+2917. Mezinatî û zekawet jê rijiyane.
+2917. Greatness and intelligence poured from him.
+
+2918. Roj bi roj meşandina kar û barên xelkê kirine bin çeng û baskên xwe.
+2918. Day by day they have put the conducting of the tasks and affairs of the people under their arms and wings.
+
+2919. Di dawiyê de bû bi nav û deng û di nav xelkê de deng da.
+2919. In the end he became with name and sound and among the people gave a sound.
+
+2920. Gotinên şair ên jêrê gelek lê hatin:
+2920. The words of the poet below suited him much:
+
+2921. "Ji ber zêdeya hiş û aqilê wî,
+2921. "Because of the excess of his mind and intellect,
+
+2922. serê wî li milê jorê
+2922. his head at the upper side
+
+2923. Dibiriqand sterka wî ya li jorê"
+2923. Sparkled his star at the top"
+
+2924. Ji ber vê, piştî mirina babê wî rêvebirina Cezîrê jê re hat dan.
+2924. Because of this, after the death of his father the administration of Cizre was given to him.
+
+2925. Kar û barên nahiya Gurgilê ji birayê wî Mîr Hacî Bedir re û nahiya Finikê jî ji Mîr 'Ebdal re hat sipartin.
+2925. The tasks and affairs of the sub-district of Gurgil to his brother Mir Haci Bedir and the sub-district of Finik too to Mir Abdal was entrusted.
+
+2926. Hersê biran bi hev re mil dan hev, welatê xwe bi ser û ber kirin, dewra xwe bi xweşî, bi dadmendî û bi însaf derbas kirin.
+2926. All three brothers with one another gave shoulder to one another, they made their country with head and front (organized it), they passed their era with pleasantness, with justice and with fairness.
+
+2927. Li hemberî xelkê wezîfeyên xwe herî bi awakî baş cîbicî kirin.
+2927. Against the people they carried out their duties most in a good way.
+
+2928. Ji gotinên hev dernediketin û di tu warî de neketin nav dijîtî û nelihevhatinê.
+2928. They did not go out from the words of one another and in no domain fell inside enmity and disagreement.
+
+2929. ## ŞAXÊ YEKAN
+2929. ## THE FIRST BRANCH
+
+2930. ## FERMANREWAYÊN CEZÎRÊ YÊN BI NAVÊ 'EZIZAN TÊN NASKIRIN
+2930. ## THE RULERS OF CIZRE WHO BY THE NAME OF AZIZAN ARE KNOWN
+
+2931. Mîr 'Ebdul'ezîz, demek dirêj desthilata hukumeta Cezîrê bi serfiraziyeke mezin di destê xwe de girt.
+2931. Mir Abdulaziz, for a long time held the authority of the government of Cizre with a great success in his hand.
+
+2932. Piştre Melekê Mewtê bû mêvanê wî û emanetê ku pey re bû teslîmê Xwedayê xwe kir.
+2932. Afterwards the Angel of Death became his guest and the trust that was with him he made delivery of it to his God.
+
+2933. Du mîrzade li pey xwe hiştin: Emîr Seyfeddîn û Emîr Mecdeddîn.
+2933. He left two mirzades behind himself: Emir Seyfeddin and Emir Mecdeddin.
+
+2934. Kurê wî yê mezin li ciyê wî rûnişt.
+2934. His big son sat in his place.
+
+2935. Emîr Seyfeddînê Kurê 'Ebdul'ezî z
+2935. Emir Seyfeddin the Son of Abdulaziz
+
+2936. Ev emîrê han bû cînişînê babê xwe û li ser textê desthilata Cezîrê rûnişt.
+2936. This very emir became the successor of his father and sat upon the throne of the authority of Cizre.
+
+2937. Bi tevayî li ser şopa babê xwe yê hêja meşiya û hemû kirin û exlaqên babê xwe yên bi feyde berdewam kirin.
+2937. Entirely he walked upon the track of his precious father and continued all the actions and beneficial characters of his father.
+
+2938. Dilê kesên hevwelatî, destûpêwend, qebîle û eşîretan ber bi xwe ve kêşa, kesek jê neêşiya û bi vî awayî bawermendiya tevan qazanc kir.
+2938. He pulled the heart of the citizen people, associates, clans and tribes towards himself, a person was not hurt by him and in this way he earned the belief of them all.
+
+2939. Dema ku baregaha xwe ber bi nemanê ve bar kir û destê mirinê rûpelên kitêba jiyana wî dan hev, birayê wî ciyê wî girt.
+2939. When he packed his headquarters towards non-existence and the hand of death put the pages of the book of his life together, his brother took his place.
+
+2940. Emîr Mecdeddînê Kurê 'Ebdul'ezî z
+2940. Emir Mecdeddin the Son of Abdulaziz
+
+2941. Di ciyê birayê xwe yê qenc û baş de bû fermanrewa.
+2941. In the place of his good and nice brother he became ruler.
+
+2942. Wî jî wekî dibêjin; "Kurê babê xwe ye." di pakî, çakî û rêvebiriyê de ji bab û birayên xwe derbas kir.
+2942. He too as they say; "He is the son of his father." in pureness, goodness and administration passed from his father and brothers (surpassed them).
+
+2943. Boxtan wisan ava û geş kir, tehn û lomên cennetê pê ketin.
+2943. He so built and brightened Bohtan, the taunts and blames of paradise fell upon it.
+
+2944. Demek dirêj bi şahî û xweşî fermanrewatî kir.
+2944. A long time with joy and pleasantness he did rulership.
+
+2945. Roja temen û jîna wî ket rojavayê mirinê, malavayî xwest û çû û kurê wî Emîr Isa li ciyê wî rûnişt.
+2945. The sun of his age and life fell to the west of death, he wanted departing and went and his son Emir Isa sat in his place.
+
+2946. Emîr Îsayê Kurê Mecdeddîn
+2946. Emir Isa the Son of Mecdeddin
+
+2947. Ciyê babê xwe girt û bi gelemperî gotinên vê şi'ira han kir rêberê jiyana xwe, ku dibêje:
+2947. He took the place of his father and generally he made the words of this very poem the guide of his life, which says:
+
+2948. "Rast, dilpak û dadperwer be
+2948. "Be straight, pure-hearted and justice-nourishing
+
+2949. Heta hetayê serbilind û serwer be"
+2949. Until forever be head-high and sovereign"
+
+2950. Dergahê aştî, xêrxwazî, dadmendiyê heta pişt li ber xelkê vekir û ji bo çareya derddaran û serketina hejaran, di mezintiyê de ji hemû serdaran derbas kir.
+2950. He opened the threshold of peace, charity, justice until the back (fully) before the people and for the remedy of the sufferers and the success of the poor, in greatness he passed from all commanders.
+
+2951. Di temamê jiyana xwe de dilê tu kesekî bê sebeb ji xwe nehişt û tu wextê bêtawan û bêgunehan bend û zîndan nekir.
+2951. In the entirety of his life he did not leave the heart of any person from himself (alienate them) without reason and no time did he bind and imprison the innocent and sinless.
+
+2952. Bi vî awayî jiyana
+2952. In this way the life
+
+2953. xwe di nav hevwelatiyên xwe û destûpêwendên xwe de bi bawermendî û memnuniyeta wan derbas kir.
+2953. of himself among his citizens and his associates with belief and their satisfaction he passed.
+
+2954. Dema ku çirîskên jiyana wî jî ber bi tefînê ve çûn û ava gula wî çikiya, fêkiyê dara wî; Emîr Bedreddîn li ciyê wî rûnişt.
+2954. When the sparks of his life too went towards extinguishing and the water of his rose dried up, the fruit of his tree; Emir Bedreddin sat in his place.
+
+2955. Emir Bedreddînê Kurê Emîr Îsa
+2955. Emir Bedreddin the Son of Emir Isa
+
+2956. Wî jî wezîfeya hukumdartî û desthilatê bi awakî herî baş bi rê ve bir.
+2956. He too conducted the duty of rulership and authority in the most good way.
+
+2957. Keseki wisan bû ku, te digot siparteyê mirovên qenc e.
+2957. He was such a person that, you said he is the entrusted of good people.
+
+2958. Bi tîrêjên dadmendî û alaya wekheviyên xwe dilê kesên bindestên xwe geş kir.
+2958. With the rays of justice and the flag of his equalities he brightened the heart of the people of his subjects.
+
+2959. Ewrek meha Nîsanê yê bi rehim bû, dagirtibû û bi barana xwe bext û şadî dibarand.
+2959. He was a cloud of the month of April with mercy, he had filled and with his rain he rained luck and joy.
+
+2960. Destê wî wek bi dermanan hatibe dagirtin, birînên dilê birîndaran qenc dikir.
+2960. His hand as if it had been filled with medicines, made the wounds of the heart of the wounded good (healed them).
+
+2961. Ji bili van, her wext dixwest kesên erbabên keşf û kerametan ên bawermendiya wan bi tesewwufê heye, di meclisa wî de amade bin.
+2961. Apart from these, every time he wanted that the people who are masters of discoveries and miracles whose belief in sufism exists, be ready in his council.
+
+2962. Dema ku çû rehma Xwedê, kurê wî Emîr 'Ebdal li ciyê wî rûnişt.
+2962. When he went to the mercy of God, his son Emir Abdal sat in his place.
+
+2963. Emîr Ebdalê Kurê Emîr Bedreddîn
+2963. Emir Abdal the Son of Emir Bedreddin
+
+2964. Bû cînişînê babê xwe Emîr Bedreddin.
+2964. He became the successor of his father Emir Bedreddin.
+
+2965. Dema ku li ser textê mîrektiyê rûnişt, heta dawiya jiyana xwe wî jî da ser şopa bab û bapîrên xwe yên payebilind.
+2965. When he sat upon the throne of the emirate, until the end of his life he too put upon the track of his high-ranking father and grandfathers.
+
+2966. Yek saniye nesekinî, çavên xwe bi tu kirinên nerewa negirtin, qewîtî û nesîhetên xanedana xwe ya mezin ji bîra xwe nebirin.
+2966. He did not stop one second, he did not close his eyes to any unjust actions, he did not take the recommendations and advices of his great dynasty from his memory.
+
+2967. Dema wî jî alaya fermanrewatiyê di melbenda nemanê de daçikand û beheştê ji xwe re kir war, kurê wî Emîr Izzeddîn ciyê wî girt.
+2967. When he too planted the flag of rulership in the center of non-existence and made paradise a place (home) for himself, his son Emir Izzeddin took his place.
+
+2968. Emir Izzeddînê Kurê Emîr 'Ebdal
+2968. Emir Izzeddin the Son of Emir Abdal
+
+2969. Dema ku vî emîrê han kar û barên desthilatê, serokatiya eşîret û qebîleyan girt destê xwe, deng û behsê fethên Emîr Tîmûrê Kurganî li hemû cîhanê belav bûbûn û gihîştibûn radeyên herî bilind.
+2969. When this very emir took the tasks and affairs of authority, the leadership of the tribes and clans into his hand, the sound and mention of the conquests of Emir Timur Gurkani had spread in all the world and had reached the highest degrees.
+
+2970. Her wek Mewlana Şerefeddin Ali El-Yezdî di kitêba xwe ya dîrokê Zafernameyê de dibêje:
+2970. Just as Mawlana Sharaf al-Din Ali Yazdi says in his book of history Zafarnama:
+
+2971. "Padişahê ciyê şikur û sena yê bêsînor, Emir Tîmûrê Kurganî, di sala 796e koçi (1393/94e z) de, piştî ku diyarê aşîtî Bexdayê bi arami sitand û Kela Tikritê kavil kir, hemû kele û nahiyên wê melbendê kirin bin destê xwe, ber bi Mêrdînê ve hereket kir.
+2971. "The Padishah the place of limitless thanks and praise, Emir Timur Gurkani, in the year 796 Hijri (1393/94 AD), after he took the land of peace Baghdad with calmness and ruined the Castle of Tikrit, he put all castles and sub-districts of that center under his hand, he moved towards Mardin.
+
+2972. Dema ku ew gihîşt Çemlik ê heft fersah ji Mêrdînê dûr, Emîr Izzeddînê Fermanrewayê Cezîrê, bi gelek yadîgar û diyariyên binirx û zêde yên şayanê şanê wî ve, çû dîtina Tîmûr û bi dîtin û textramûsana wî serfiraz bû.
+2972. When he reached Çemlik which is seven farsakhs far from Mardin, Emir Izzeddin the Ruler of Cizre, with many valuable and excessive keepsakes and gifts which were worthy of his glory, went to the seeing of Timur and with his seeing and throne-kissing became victorious.
+
+2973. Tîmûr, bi çavekî pak û xoşewistî lê nêrî û ew jî bi dilxweşî û serfirazî vegeriya wilayeta xwe.
+2973. Timur, looked at him with a pure and beloved eye and he too with pleasant-heartedness and success returned to his province.
+
+2974. Ji wir, bertîla jê hatibû xwestin ên ji erzaq, xwarin û vexwarinan pêk dihat, ji leşkerê wî re şand.
+2974. From there, the bribe (tribute) that had been wanted from him which consisted of provisions, food and drinks, he sent to his army.
+
+2975. "Li milê din, hinek qusûr û kêmasiyên Sultan Isa yê Fermanrewayê Mêrdînê li hemberî mirovên Emîr Timûr hatin dîtin ku, ne ciyê wan e mirov li vir behs bike.
+2975. "On the other side, some faults and shortcomings of Sultan Isa the Ruler of Mardin against the people of Emir Timur were seen that, it is not their place that a person mentions them here.
+
+2976. Vê rewşê, Emîr Timûr teşwîq kir ku Kela Mêrdînê têke bin abluqayê, lê ji ber çêrîngehan, kêmbûna xwarin û erzaqan, ne mimkun bû ku leşkerekî evqas mezin û giran li vir bimîne û tu meslehetek jî tê de nedît, ji ber vê baştir dît ku dev ji derûdor rapêçana wê berde.
+2976. This condition, encouraged Emir Timur that he put the Castle of Mardin under blockade, but because of the pastures, the decrease of food and provisions, it was not possible that such a big and heavy army remain here and he saw no benefit too in it, because of this he saw it better that he let go of its surroundings-wrapping (siege).
+
+2977. Bi vî awayî, roja sêşemba* 8'ê meha Rebiyu'l-ewwela eynî salê, ji Mêrdînê ber bi Mûsilê ve vegeriya.
+2977. In this way, on the Tuesday* the 8th of the month of Rabi' al-Awwal of the exact same year, he returned from Mardin towards Mosul.
+
+2978. "Emîr Tîmûr, ji wir bi hinek mirovên xwe ve gelek diyarî û tiştên bi qîmet û giranbiha ji Sultan û mîrzadeyên ji malbata xwe yên li Sultaniyyeyê bûn, şandin.
+2978. "Emir Timur, from there with some people of his sent many gifts and valuable and heavy-priced things to the Sultans and mirzades from his family who were at Sultaniyya.
+
+2979. Kurdekî navê wî Şêx û ji Eşîreta Boxtî, li Çemlikê bi Emîr Izzeddîn re derketibû huzura Tîmûr û bi ramûsana textê wî serbilind bûbû.
+2979. A Kurd his name Sheikh and from the Bohti Tribe, at Çemlik with Emir Izzeddin had gone out to the presence of Timur and with the kissing of his throne had become head-high.
+
+2980. Ew jî wê çaxê li baregaha Tîmûr bû.
+2980. He too that time was at the headquarters of Timur.
+
+2981. Wî, ev sefera han firset zanîbû û îzîn xwest ku bi karwan re vegere û biçe mala xwe.
+2981. He, knew this very journey an opportunity and wanted permission that with the caravan he return and go to his house.
+
+2982. Lê dema ku gihîşt derûdora Cezîrê, kirrên xerabiyê ketin dilê wî û ji riya rast derket; dest danî ser wan diyarî û yadîgaran û berê xwe da Cezîrê.
+2982. But when he reached the surroundings of Cizre, the actions of badness fell into his heart and he went out from the straight road; he placed a hand upon those gifts and keepsakes and turned himself to Cizre.
+
+2983. Emîr Izzeddîn jî peymana bi mirovên Tîmûr re girêdabû şikand û bextê xwe bi bextê wî bextreşî ve girêda û xwe kir şirîkê bêaqil û bêhişan.
+2983. Emir Izzeddin too broke the treaty he had tied with the people of Timur and tied his luck with the luck of that black-luck (unlucky) one and made himself the partner of the without-intellect and without-minds.
+
+2984. Payebilindê xwediyê şukir û sena, bi ser wê ceberrudî û bihêziya xwe de jî, ji bo tu rê li ber Emîr Izzeddîn nehêle, du car peyamnêran şand balê û jê re wiha got: 'Ger tu Şêx bigrî û bişînî ba min ez ê li tawanên te biborim.
+2984. The high-ranking possessor of thanks and praise, even upon that forcefulness and his strongness too, so that he leave no road before Emir Izzeddin, two times sent messengers to his side and to him said thus: 'If you capture Sheikh and send him to my side I will forgive your crimes.
+
+2985. Lê ger tu vê nekî, ez ê hemû kele û nahiyên di welatê te de hene, kavil û wêran bikim û wan di bin simên hespan de tarûmar bikim.
+2985. But if you do not do this, I will make all castles and sub-districts that exist in your country, ruined and devastated and I will make them scattered under the hooves of horses.'
+
+2986. Lê Emîr Izzeddîn, bi baweriya asêtî û saxlemiya keleyên xwe û bi taybetî jî avabûna wan li ser çem û avên derûdora wan, ew gelek mexrur kiribû û ji ber vê jî bi ser xwe çû, guhê xwe neda fermana Tîmûr û Şêx neda dest.
+2986. But Emir Izzeddin, with the belief of the inaccessibility and soundness of his castles and especially too their building upon the river and the waters of their surroundings, had made him very proud and because of this too he went upon himself, he did not give his ear to the command of Timur and did not give Sheikh to hand.
+
+2987. Bi vî awayî, Emîr Tîmûr, roja duşemba 13'yê cemaziyu'l-ewwela wê salê, giranahî û muhimmatên xwe li Mûsilê di cî de hiştin û naçar ma biçe ser Izzeddîn û êrîş bibe ser Cezîrê.
+2987. In this way, Emir Timur, on the Monday the 13th of Jumada al-Awwal of that year, left his heaviness (baggage) and ammunitions at Mosul in place and remained obliged to go upon Izzeddin and take an attack upon Cizre.
+
+2988. Bi şev hemû leşkerê xwe ji Dicleyê derbas kirin, bêsekin êrîş bir ser dijmin û berî beyana sibê bi tevayî hemû dorûdora Cezîr rapêça.
+2988. By night he passed all his soldiers from the Tigris, without stopping he took an attack upon the enemy and before the dawn of morning entirely wrapped all the surroundings of Cizre.
+
+2989. Tenê hê seetek bi ser de derbas nebû, Timur kel jî û bajar jî îstîla kir û di seranserê hemû welatê mîrîtiyê de dest bi talan, kuştin û wêraniyê kir.
+2989. Only still an hour upon it had not passed, Timur occupied the castle too and the city too and throughout all the country of the emirate started plundering, killing and devastation.
+
+2990. Emîr Izzeddîn di vî şerî lêhêvînebûyî de ket destê eskerekî ku nedizanî ew Emîr Izzedîn e.
+2990. Emir Izzeddin in this unhoped-for war fell to the hand of a soldier who did not know he is Emir Izzedin.
+
+2991. Piştî ku wî eskerî gelek lê xist û ew îşkence kir, pere û çekên li ser bûn jê sitand û ew berda.
+2991. After that soldier hit him much and tortured him, the money and weapons that were upon him he took from him and let him go.
+
+2992. Bi vî awayî Emîr Izzeddin, bi nîvruhî û di navbera man û nemanê de jî vê serpêhatî û
+2992. In this way Emir Izzeddin, with half-soul and between staying and not staying too this adventure and
+
+2993. bûyerê filitî."
+2993. event he escaped."
+
+2994. Di wergera Tirkî de roja şembiyê ye, lê di Farisî û wergera wê ya Soranî de, roja sêşembê ye. -Z. A.
+2994. In the Turkish translation it is Saturday, but in the Persian and its Sorani translation, it is Tuesday. -Z. A.
+
+2995. Ji vê nuqteyê şûn de, di derheqê vê çîroka han de kurtiya riwayeta ku ji aliyê xelkê Cezîrê ve tê gotin wiha ye:
+2995. From this point onwards, regarding this very story the shortness of the narration that from the side of the people of Cizre is said is thus:
+
+2996. "Emîr Timur, berê gelek ji Emîr Izzeddîn hez dikir, rêz lê digirt û li balê bi qedir û siyanet bû; hetta ev di sewiyek wisan de bû ku, satranc jî pê re dileyîst.
+2996. "Emir Timur, previously loved Emir Izzeddin much, held respect for him and at his side he was with value and respect; even this was in such a level that, he played chess too with him.
+
+2997. Di seferên xwe de ew digirt ba xwe û di meclisên xwe de wextên xweş pê re derbas dikir.
+2997. In his journeys he took him to his side and in his councils he passed pleasant times with him.
+
+2998. Emir Timur, ji bo êrîşa ser Şamê,322 Emîr Izzeddin gelek han da ku pey re biçe; lê çi heye, ji bo ku Emîr Izzeddîn ji Sultanên Şamê wekî xercirah perekî gelek zêde distand, xwe ji vê sefera ser welatên Ereban da paş û red kir.
+2998. Emir Timur, for the attack upon Damascus,322 encouraged Emir Izzeddin much that he go with him; but what is there, because Emir Izzeddin received from the Sultans of Damascus as travel-expense a very excessive money, he put himself back from this journey upon the countries of the Arabs and rejected it.
+
+2999. Belê, ji ber vê bû ku Emîr Tîmûr jê xeyîdî û fermana talan û wêrankirina welatê wî da."
+2999. Yes, because of this it was that Emir Timur became offended by him and gave the command of the plunder and devastating of his country."
+
+3000. Sebeb çi dibe bila bibe, Emir Izzeddin, tehemmûla gelek nerehetî, serêşî û tunetiyê kir û jiyana xwe ya mayî di nav Eşîreta Eruxî de, xwe bi veşartinê derbas kir û heta mir jî rewşa wî her wiha bû.
+3000. Whatever the reason becomes let it become, Emir Izzeddin, endured much discomfort, headache and nothingness and his remaining life among the Erukhi Tribe, passed himself with hiding and until he died too his condition was exactly thus.
+
+3001. Mir 'Ebdalê Kurê Emîr Izzeddîn
+3001. Mir Abdal the Son of Emir Izzeddin
+
+3002. Piştî babê xwe desthilata Cezîrê girt destê xwe; karê serokatiya qebîle û eşîretan bi awakî gelek baş bi rê ve bir.
+3002. After his father he took the authority of Cizre into his hand; he conducted the task of the leadership of the clans and tribes in a very good way.
+
+3003. Lê van rojên han gelek dom nekirin.
+3003. But these very days did not continue much.
+
+3004. Qasek şûn de çû rehma Xwedê.
+3004. A while later he went to the mercy of God.
+
+3005. Emîr Îbrahîmê Kurê Emîr 'Ebdal
+3005. Emir Ibrahim the Son of Emir Abdal
+
+3006. Piştî babê wî mir, di ciyê wî de, li ser textê desthilata Fermanrewatiya Cezîrê rûnişt.
+3006. After his father died, in his place, he sat upon the throne of the authority of the Rulership of Cizre.
+
+3007. Demek kar û barên welat meşand.
+3007. A time he conducted the tasks and affairs of the country.
+
+3008. Sê zarokên kur li pey man: Emir Şeref, Emîr Bedir û Kek Mihemmed.
+3008. Three boy children remained behind: Emir Sheref, Emir Bedir and Kek Mihemmed.
+
+3009. Emir Şeref
+3009. Emir Sheref
+
+3010. Pêşî ev emîrê han li ciyê babê xwe li ser text rûnişt û demekê kar û barên welat bi rê ve birin.
+3010. First this very emir sat upon the throne in the place of his father and for a time conducted the tasks and affairs of the country.
+
+3011. Piştre desthilat ji birayê xwe re hişt û mir.
+3011. Afterwards he left the authority to his brother and died.
+
+3012. Emir Bedir
+3012. Emir Bedir
+
+3013. Piştî birayê xwe kar û barên fermanrewatiyê demekê meşand.
+3013. After his brother he conducted the tasks and affairs of the rulership for a time.
+
+3014. Piştre çû rehma Xwedê.
+3014. Afterwards he went to the mercy of God.
+
+3015. Sê zarokên kur li pey wî man: Mîr Şeref, Mîr Mihemmed û Şah 'Elî Beg.
+3015. Three boy children remained behind him: Mir Sheref, Mir Mihemmed and Shah Ali Beg.
+
+3016. Kek Mihemmedê Kurê Emir Îbrahîm
+3016. Kek Mihemmed the Son of Emir Ibrahim
+
+3017. Piştî nemana birayên wî, fermana kar û barên hukumeta Cezîrê ketin ber destên wî.
+3017. After the non-existence of his brothers, the command of the tasks and affairs of the government of Cizre fell before his hands.
+
+3018. Di dema wî de Hesen Begê Aqqoyunî êrîş anî ser vî welatî û ew dagir kir; welat, ji aliyê Tirkmenên Aqqoyunî ve tev hat wêran û kavilkirin û piraniya giregir û mezinên Boxtan hatin kuştin.
+3018. In his time Hesen Beg the Aq Qoyunlu brought an attack upon this country and occupied it; the country, from the side of the Turkmen of Aq Qoyunlu entirely was devastated and ruined and the majority of the high-ranking and great ones of Bohtan were killed.
+
+3019. Tirkmenan, Kek Mihemmed û biraziyên wî Mîr Mihemmed û Şah 'Elî Beg girtin, ew
+3019. The Turkmens, captured Kek Mihemmed and his nephews Mir Mihemmed and Shah Ali Beg, they
+
+3020. qeyd û lele kirin û bi xwe re birin Iraqê.
+3020. made them chained and shackled and with themselves took them to Iraq.
+
+3021. Bi vî awayî seranserê welatê wan bi xirûxalî ket destê Tirkmenên Aqqoyunî.
+3021. In this way throughout their country completely empty fell to the hand of the Turkmens of Aq Qoyunlu.
+
+3022. Rêvebirina hukumeta Cezîrê jî dan destê mirovekî xwe yê navê wî Çelebî Beg.
+3022. The administration of the government of Cizre too they gave into the hand of a person of theirs his name is Çelebi Beg.
+
+3023. Niha jî di nav Tirkmenan de ji neviyên vî mirovî re Çelebi Lo dibêjin.
+3023. Now too among the Turkmens to the grandchildren of this person they say Çelebi Lo.
+
+3024. Ev Çelebî Begê han, mirovekî zana û xemxwar bû.
+3024. This very Çelebi Beg, was a knowing and caring person.
+
+3025. Tu kesekî qasê misqalê serê derziyê nedikarî têkelhevî û bêaramiyan derêxe û hêmintiyê xera bike.
+3025. No person the amount of the mithqal of the head of a needle could bring out confusion and restlessness and ruin the calmness.
+
+3026. Ji ber vê yekê, wilayet bi 'ezim û îrade bi rê ve bir.
+3026. Because of this one, he conducted the province with determination and will.
+
+3027. Temamê kar û barên li wir girt bin kontrola xwe û alayên aştiyê dan daçikandin.
+3027. He took the entirety of the tasks and affairs there under his control and gave the flags of peace to be planted.
+
+3028. Piştre Emîr Şerefê kurê Emîr Bedir ev welat ji bin destê Aqqoyuniyan rizgar kir.
+3028. Afterwards Emir Sheref the son of Emir Bedir rescued this country from under the hand of the Aq Qoyunlus.
+
+3029. Emîr Şerefê Kurê Emîr Bedir
+3029. Emir Sheref the Son of Emir Bedir
+
+3030. Dema ku Kek Mihemmedê mamê wî û Mîr Mihemmed û Şah 'Elîyê birayên wî ji aliyê Aqqoyuniyan ve esîr hatin girtin, Emîr Şeref baz dabû û rizgar bûbû û bi nehênî li ciyekî ku ji aliyê tu kesekî ve nedihat zanîn, xwe kêşabû kuncekî û bi serê xwe dijiya.
+3030. When Kek Mihemmed his paternal uncle and Mir Mihemmed and Shah Ali his brothers from the side of the Aq Qoyunlus were taken captive, Emir Sheref had run away and had been rescued and secretly at a place that from the side of no person was known, had pulled himself to a corner and lived by his head (on his own).
+
+3031. Vê yekê heta roja stêrka bextê dewra Sultanên Aqqoyuniyan ber bi tefînê ve çû, domand.
+3031. This one continued until the day the star of the luck of the era of the Sultans of Aq Qoyunlu went towards extinguishing.
+
+3032. Piştî vê, roja hêviyên Emîr Şeref hilat û ber bi ronahî, geşbûnî û kemilînê ve çû.
+3032. After this, the sun of the hopes of Emir Sheref rose and went towards light, brightening and maturing.
+
+3033. Şi' ir
+3033. Poem
+
+3034. “Heta yek berî ku gihîje mirazê xwe bimre,
+3034. "Until one dies before he reaches his wish,
+
+3035. Yê din dilxweş û dilevîn nabe"
+3035. The other does not become pleasant-hearted and loving-hearted"
+
+3036. Hêdî hêdî pelehewrên gemar ên Tirkmenên zordar, ji asîmanê welatê Boxtan hildikêşiyan û ber bi nemanê ve diçûn.
+3036. Slowly slowly the dirty cloud-pieces of the oppressive Turkmens, pulled up from the sky of the country of Bohtan and went towards non-existence.
+
+3037. Keviyên befra dagîrkerê bê merhemet, bi hêlma ah û fîxanên bêkesan diheliyan û dilopên sar, lib û lib jê diweriyan.
+3037. The edges of the snow of the without-mercy occupier, melted with the steam of the sighs and wails of the without-people (friendless) and cold drops, piece and piece fell from it.
+
+3038. Stêrka dahatu ya Emîr Şeref roj bi roj geş dibû û dem bi dem çirîskên wî xurt dibûn û gav bi gav tîrêjên ronahiya wê di asoya jiyanê de rewşen dibûn.
+3038. The coming star of Emir Sheref day by day became bright and time by time his sparks became strong and step by step the rays of its light in the horizon of life became illuminated.
+
+3039. Ew kesên ji çengê mirinê xelas bûn û li Boxtan ji tayê giyanê rizgar bûn, Emîr Şeref, tevan li derûdora xwe berhev kirin û bi hêviya wê rojê jiyan ku firsetek bikeve destê wan û dagirkeran ji welatê Cezîrê derêxin û vî belayê han ê bêpêsîr ji xwe dûr bixin.
+3039. Those people who from the arm of death were saved and at Bohtan from the thread of the soul were rescued, Emir Sheref, gathered them all around himself and lived with the hope of that day that an opportunity fall to their hand and they take the occupiers out from the country of Cizre and make this very without-collar trouble far from themselves.
+
+3040. Piştî 30 salên bêhêvîtî, dest li ber rû û şînî, firset ket dest û roja wan hilat ku meydana mêran germ bike.
+3040. After 30 years of hopelessness, hand before face and mourning, the opportunity fell to hand and their sun rose that it warm the square of men.
+
+3041. Mîrê camêr û şêr, ji şikefta tarî serê xwe derxist û berê xwe da dijmin.
+3041. The gentleman and lion Mir, brought out his head from the dark cave and turned himself to the enemy.
+
+3042. Bi xencera zikdir û bi şûrê serbir ket ser ruhê dijmin, êrîş bir ser wan, ew rapêçan û dan li ber xwe maliştin.
+3042. With the belly-tearing dagger and with the head-cutting sword he fell upon the soul of the enemy, took an attack upon them, wrapped them and swept them before himself.
+
+3043. Lekeya şermî û rûreşî ya dîlîtiyê bi xwîna dagirkeran malişt, 'ar û heya rûyê xwe û ya eşîreta xwe spî kir.
+3043. He swept the stain of shame and black-facedness of captivity with the blood of the occupiers, he made white the shame and modesty of his face and that of his tribe.
+
+3044. Bi vî awayî gelek bi şanazî û serbilindî welatê bab û bapîrên xwe rizgar kir û li ser textê Fermanrewatiya Cezîrê rûnişt.
+3044. In this way much with boastfulness and head-highness he rescued the country of his father and grandfathers and sat upon the throne of the Rulership of Cizre.
+
+3045. Di vê navê re mamê
+3045. During this time his paternal uncle
+
+3046. wi Kek Mihemmed û herdu birayên wî Şah 'Eli Beg û Mîr Mihemmedi, ji bend û qeyd û zîndanên qirêj ên Tirkmenan rizgar bûn, hatin ba wî û bi can û dil pê re bûn yek û bûn piştevanên wî.
+3046. Kek Mihemmed and both his brothers Shah Ali Beg and Mir Mihemmedi, from the ties and shackles and dirty prisons of the Turkmens were rescued, came to his side and with soul and heart became one with him and became his supporters.
+
+3047. Li milê din, di wan deman de ku Şah İsmaîlê Sefewî serê xwe hilda û li Îranê hakimiyet kir destê xwe, wilayetên Iraq û Azerbaycanê ji destê Tirkmenan derxist.
+3047. On the other side, in those times that Shah Ismail the Safavid lifted his head and at Iran did rulership into his hand, he brought out the provinces of Iraq and Azerbaijan from the hand of the Turkmens.
+
+3048. Bi vî hewayî, ji axgirtinê dev berneda û li pey ket.
+3048. With this air, he did not let go from land-taking and fell behind it (pursued it).
+
+3049. Wilayetên Diyarbekir, Mûsil û Sencarê jî girt û piştre ji bo dagîrkirina Cezîrê, leşkerek ji Qizilbaşan pêkhati ber bi Cezîrê şand.
+3049. He took the provinces of Diyarbakir, Mosul and Sinjar too and afterwards for the occupying of Cizre, sent an army formed from Qizilbash towards Cizre.
+
+3050. Mîr Şeref ji wan çiyan nebû, bi ba û babelîskek ji ciyê xwe biheje.
+3050. Mir Sheref was not from those mountains, to shake from his place with a wind and a whirlwind.
+
+3051. Derbek wisan li 'Eceman xist, ew gêj û şaş kirin.
+3051. He struck such a blow upon the Ajams, made them dizzy and confused.
+
+3052. Bi awakî ecêbmayî ji ber baz dan û ne tenê carek, çend caran ew ji asoyê axên xwe derbas kirin.
+3052. In an amazed way they ran away from before him and not only once, several times he passed them from the horizon of his lands.
+
+3053. Ben li gewriya wan aland û hemû carê ji cara pêşî pîstir ew raqewirand û şikand.
+3053. He wrapped a rope around their throat and every time worse than the first time he expelled and broke them.
+
+3054. Hetta carekê di şerekî de, ew Qizilbaşên li ber Mîr Şeref baz dan, hezar û heftsed kes ji wan di xwîna xwe de gevizîn û hejmareke gelek zêde ji wan esîr hatin gir- tin.
+3054. Even once in a war, those Qizilbash who ran away before Mir Sheref, one thousand and seven hundred people from them wallowed in their blood and a very excessive number from them were taken captive.
+
+3055. Carekê din Xan Mihemmed Ustaclû yê Mîrêmîranê Diyarbekrê û birayê wî Qerexan, bangê leşkerên 'Eceman kirin û hatin şerê Mîr Şeref.
+3055. Once again Xan Mihemmed Ustaclu the Mir of Mirs of Diyarbakir and his brother Qerexan, made a call to the soldiers of the Ajams and came to the war of Mir Sheref.
+
+3056. Wê carê jî wekî berê hat serê wan.
+3056. That time too it came to their head like before.
+
+3057. Gelek şerpeze bûn, serî li wan şikest, tiştek di destê wan de nema, bi lez û bez xwe jê dûr xistin û birînên xwe alistin.
+3057. They became very scattered, head broke at them, nothing remained in their hand, with haste and speed they made themselves far from him and licked their wounds.
+
+3058. Şah, vê carê gelek aciz bûbû.
+3058. The Shah, this time had become very annoyed.
+
+3059. Ji bo cara sisiyan leşkerekî gelekî giran û hemû ji kesên mêrxas û helbijartî yên heresên taybetî yên Şahî û çekdarên namdar ên din jî berhev kirin, di bin serokatiya Yekem Beg Tekelu yê Qizilbaş û serekpasdarê Şah de, ji Hemedanê ber bi Cezîrê xist rê û jê re hat gotin ku, bê serê Mîr Şeref venegere.
+3059. For the third time he gathered a very heavy army and all from the brave and chosen people of the special guards of the Shah and other famous armed ones too, under the leadership of Yekem Beg Tekelu the Qizilbash and chief-guard of the Shah, from Hamadan put on the road towards Cizre and to him it was said that, do not return without the head of Mir Sheref.
+
+3060. Di wî şerî de jî Xwedayê jorê hat hewara Mîr Şeref û wek bi xwe dibêje: "Gelek civakên biçûk bi emrê Xwedê zora civakên mezin birine."
+3060. In that war too the God of above came to the help of Mir Sheref and as he himself says: "Many small communities with the command of God have carried the force of (overcome) big communities."
+
+3061. Şi' ir
+3061. Poem
+
+3062. "Xwedê alîkar be, yên mêr û mêrxas bin
+3062. "If God be helper, those who be men and brave
+
+3063. Bila kêm jî bin, zêdeyê wan baz nadin"
+3063. Let them be few too, their excess (the majority) will not run away"
+
+3064. Pehlewanên Kurdên Boxtan, wek gurên devbixwîn, pilingên birîndar, şêrên birçî yên nav şikêr û diriyan, bi hêviya hêrana hestiyên neyaran û tiniya xwîna nelibaran, di cengan de sekin û westanê nizanin.
+3064. The heroes of the Kurds of Bohtan, like blood-mouthed wolves, wounded tigers, hungry lions of among the caves and thorns, with the hope of the grinding of the bones of the enemies and the thirst of the blood of the unfavorable ones, do not know stopping and tiredness in battles.
+
+3065. Gelek bi gurc û qahîm li derûdora mîrê xwe hatin hev, serî dan hev û dest li hev badan û xorê meydana şer bûn, gelek bi gurr, bi tîn û dil bi kîn, bûn perjinê hesin, li ber dijmin bûn lemper û çeper, li hemberî wan sekinîn û rêz girêdan.
+3065. Very swiftly and firmly they came together around their mir, gave head to each other and twisted hand in each other and became the sun of the square of war, very blazing, with heat and heart with hatred, they became a fence of iron, before the enemy became a barrier and trench, stood against them and tied a line.
+
+3066. Qizilbaş jî ber bi wan ve hatin û şikestin.
+3066. The Qizilbash too came towards them and broke.
+
+3067. Yekem êrîşa mêr û mêrxasên Kurdistanê wisan anî serê wan, destan li ser hatin gotin.
+3067. The first attack of the men and braves of Kurdistan so brought to their head, epics were said upon it.
+
+3068. Bû hewar û qêjîna wan û dest û pê li ber wan ketin, şaş man, gêj bûn, nekarîn pêş de bên û serkevtin ji dest dan û tenê şikestin di destê wan de ma.
+3068. It became their cry and scream and hand and feet fell before them, they remained confused, became dizzy, could not come forward and gave success from hand (lost it) and only breaking remained in their hand.
+
+3069. Ji hemû milan ve lêdixistin, digurandin, didirandin û seranserê meydana şer a pan û fireh, bi laşên rût û xwînî tijî bûbûn.
+3069. From all sides they hit, sheared, tore and throughout the flat and wide square of war, had become full with naked and bloody corpses.
+
+3070. Hê cehennema şer bi tevayî nehatibû tefandin, Qizilbaşên mayî paş de kişiyan û di ciyê ku Cezîrê rût kin, xwîna xwe rijandin.
+3070. Still the hell of war entirely had not been extinguished, the remaining Qizilbash pulled back and in the place that they make Cizre naked, they poured their blood.
+
+3071. Êdî ew şikestin bû ku pey şikiyan û careke din bi tu awayî heta siya Mîr Şeref li ser rûyê dinê hebû, 'Ecemên Qizilbaş berê xwe nedan Cezîrê û bi xeyal jî be hêviya girtina Cezîrê nekirin. 323
+3071. Anymore that breaking was that after they broke and once again by no way until the shadow of Mir Sheref existed upon the face of the world, the Qizilbash Ajams did not turn themselves to Cizre and be it with imagination too they did not do the hope of the taking of Cizre. 323
+
+3072. Mîr Şeref, vê carê bi dilxweşî li ser kursiya fermanrewatiyê rûnişt û heta ma bi serbilindî û azayetî jiya.
+3072. Mir Sheref, this time with pleasant-heartedness sat upon the chair of rulership and until he remained he lived with head-highness and bravery.
+
+3073. Di netîceyê de baregah û bingehê xwe verêkir nav cergê dilxweşiya bajarê bêpêjn û bêdengan, di beheşta Xwedê de li rexê mirovên merd û aza ciyek jê re hat veqetandin.
+3073. In the result he sent off his headquarters and basis inside the liver of the pleasant-heartedness of the city of the without-sound and without-voices, in the paradise of God at the side of generous and brave people a place was separated for him.
+
+3074. Şah 'Elî Begê Kurê Mîr Bedir
+3074. Shah Ali Beg the Son of Mir Bedir
+
+3075. Dema Mîr Şeref mir, qebîle û eşîretên Boxtan Şah 'Elî Beg layiq dîtin ku bibe fermanrewayê wan.
+3075. When Mir Sheref died, the clans and tribes of Bohtan saw Shah Ali Beg worthy that he become their ruler.
+
+3076. Wî jî rêvebirina kar û barên kele û nahiya Finikê siparte Mîr Mihemmedê birayê xwe.
+3076. He too entrusted the administration of the tasks and affairs of the castle and sub-district of Finik to Mir Mihemmed his brother.
+
+3077. Dema ku giregirên Kurdistanê li hev kirin ku bi hev re biçin Tebrîz û Xoyê û sedaqeta xwe ji Şahê Îranê re diyar bikin, Şah 'Elî Beg jî, bêyî ku bifikire, bê bîrê û bîne ber çavê xwe ku Boxtan çi bi serê leşkerên Îranê de aniye, çi derd ji destên bira û pismamên wî dîtine û xwîna çendan li ser wan e, her bi debdebe, tentenetiya axayên Kurdistanê, bi quretiya çend xulam û xizmetkarên ber destê xwe, hemû bûyerên rojên borî ji bîr kirin û bi 12 sernasên Kurdistanê re berê xwe da baregaha Şah İsmaîlê Sefewî û bi destê xwe, xwe avêt davikê.
+3077. When the high-ranking ones of Kurdistan agreed that with one another they go to Tabriz and Khoy and make their loyalty clear to the Shah of Iran, Shah Ali Beg too, without that he think, bring to memory and bring before his eye what Bohtan has brought upon the head of the soldiers of Iran, what pains from the hands of his brothers and cousins they have seen and the blood of how many is upon them, exactly with the pomp, the magnificence of the aghas of Kurdistan, with the arrogance of several servants and servers before his hand, he forgot all the events of the past days and with 12 recognized ones of Kurdistan turned himself to the headquarters of Shah Ismail the Safavid and with his own hand, threw himself into the trap.
+
+3078. Çavên Şah 'Elî hatibûn qewartin û bînahî tê de nemabu ku pêşiya xwe bibîne.
+3078. The eyes of Shah Ali had been scooped out and sight had not remained in them that he see his front.
+
+3079. Tîr û agirên wê bûyerê hê ji bîra Şah İsmail neçûbûn.
+3079. The arrows and fires of that event still had not gone from the memory of Shah Ismail.
+
+3080. Ew birînên Boxtan li bedena Qizilbaşan vekiribûn, bûbûn kîn û kul di dilê wî de.
+3080. Those wounds that Bohtan had opened on the body of the Qizilbash, had become hatred and sorrow in his heart.
+
+3081. Birayê Mir Şeref bi pê xwe hatibû û digot; tola mirovên xwe ji min veke.
+3081. The brother of Mir Sheref with his own foot had come and was saying; take the revenge of your people from me.
+
+3082. Dê wî çawan ev firset ji destê xwe berdaya?
+3082. How would he have let this opportunity go from his hand?
+
+3083. Hê mîr û beglerên Kurdistanê bi tevayî rojbaş û silav nekiribûn, Qizilbaş li wan hatin hev û di ciyê xelat û nîşanan de, wan bi lele û qeydan xemilandin û berê wan dan zîndana tarî.
+3083. Still the mirs and beglers of Kurdistan entirely had not done good-day and greeting, the Qizilbash came together at them and in the place of awards and medals, they decorated them with shackles and chains and turned them to the dark prison.
+
+3084. Piştî demek di mayîna zîndanê de, her yek ji wan bi awakî ji zîndanê hatin berdan û Şah 'Elî jî wekî ên din rizgar kirin û ber bi Cezîrê vegeriya. 324
+3084. After a time remaining in the prison, each one of them in a way were let go from the prison and they rescued Shah Ali too like the others and he returned towards Cizre. 324
+
+3085. Dema ku wî di zîndanê de çile dikêşa, Şah İsmail, Cezîr dabû destê Ulan Beg* è birayê Xan Mihemmed Ustaclû yê waliyê Diyarbekrê.
+3085. When he in the prison was pulling forty days (enduring ordeal), Shah Ismail, had given Cizre into the hand of Ulan Beg* the brother of Xan Mihemmed Ustaclu the governor of Diyarbakir.
+
+3086. Şah 'Eli Beg, bi alîkariya eşîreta xwe ya mêrxas, êrîş bir ser Ulan Beg û ew raqewirand û Cezîr sitand.
+3086. Shah Ali Beg, with the help of his brave tribe, took an attack upon Ulan Beg and expelled him and took Cizre.
+
+3087. Piştî vê, Şah 'Eli bi Mir Şeref Xanê Bedlîsî re bû dost û hevpeyman, herdu milan jî baş zanîn ku bi tevayî sedaqeta xwe ji Sultan Selîmê Osmani re bidin diyarkirin û êdî îtîrafê bi Qizilbaşan nekin.
+3087. After this, Shah Ali became a friend and ally with Mir Sheref Xan of Bedlis, both sides too knew it well that entirely they give to be made clear their loyalty to Sultan Selim the Ottoman and anymore they do not do confession (acknowledge) to the Qizilbash.
+
+3088. Wextê bû dostê Osmaniyan, Sultan Selîm han da ku Diyarbekir, Azerbaycan û Ermenîstanê ji Qizilbaşan bistîne.
+3088. The time he became a friend of the Ottomans, Sultan Selim encouraged him that he take Diyarbakir, Azerbaijan and Armenia from the Qizilbash.
+
+3089. Piştî muddetek fermanrewatiyê, Şah 'Elî ji dinê malavahiyê xwest û çû rehmetê.
+3089. After a duration of rulership, Shah Ali from the world wanted departing and went to mercy.
+
+3090. Çar kur li pey xwe hiştin: Bedir Beg, Nasir Beg, Kek Mihemmed û Mîr Mihemmed.
+3090. He left four sons behind himself: Bedir Beg, Nasir Beg, Kek Mihemmed and Mir Mihemmed.
+
+3091. Bedir Beg bû cînişînê babê xwe.
+3091. Bedir Beg became the successor of his father.
+
+3092. Kurên wî yên din, Nasir Beg û Kek Mihemmed, demekê li Cezîrê serdar bûn û em ê di ciyê wî de behsa wan bikin.
+3092. His other sons, Nasir Beg and Kek Mihemmed, for a time were commander at Cizre and we in its place will make mention of them.
+
+3093. Herçî Mîr Mihemmed e, kurekî wî yê gelek mêrxas heye û niha jî dimîne.
+3093. As for Mir Mihemmed, a very brave son of his exists and now too remains.
+
+3094. Bedir Begê Kurê Şah 'Elî Beg
+3094. Bedir Beg the Son of Shah Ali Beg
+
+3095. Piştî mirina babê xwe li ser textê mîrektiyê rûnişt.
+3095. After the death of his father he sat upon the throne of the emirate.
+
+3096. Hukumdartiyeke gelek baş û rêvebiriyek gelek sipehî meşand.
+3096. He conducted a very good rulership and a very beautiful administration.
+
+3097. Alaya dadmendî û wekheviyê li seranserê welat daçikand.
+3097. He planted the flag of justice and equality throughout the country.
+
+3098. Li her ciyê welat avahî û pêşdeçûnî geş kir.
+3098. At every place of the country he brightened building and advancement.
+
+3099. Welat bû ciyekî bi pît û bereket.
+3099. The country became a place with fertility and blessing.
+
+3100. Desthilata wî dirêj bû û nêzîkî 70 salan ajot.
+3100. His authority was long and drove (lasted) nearly 70 years.
+
+3101. Di vê muddeta han de bi serbestî û bê berhelist mezintî kir û kar û barên welat meşand.
+3101. In this very duration with freedom and without obstacle he did greatness and conducted the tasks and affairs of the country.
+
+3102. Di seranserê dewra padişahtiya Sultan Suleyman Xanê Osmanî de, bi hemû dilsozî û mahareta xwe ve girêdayî Sultan ma û di bin xizmeta wî de bû.
+3102. Throughout the era of the padishah-ship of Sultan Suleyman Xan the Ottoman, with all his loyalty and skill tied to the Sultan he remained and was under his service.
+
+3103. Beşdariya şerên Sultan ên li Wanê, êrîşa li ser Tebrîzê, girtina Bexdayê û bajarên Iraqa 'Ereb ên din bû.
+3103. He became a participant of the wars of the Sultan at Van, the attack upon Tabriz, the taking of Baghdad and the other cities of the Arab Iraq.
+
+3104. Lê çi heye, ji ber bawermendî û hêviyên van kirin û xizmetên xwe yên serkevtî û baş ji dewletê re û nêzikatiya wî bi vî awayî bi Sultan re, ew kir nav rewşek ne baş û ji ber vê jî du karên ne li rê û sik jê sadir bûn.
+3104. But what is there, because of the belief and hopes of these successful and good actions and services of his to the state and his nearness in this way with the Sultan, he put himself inside a not good condition and because of this too two not on the road and ugly tasks issued from him.
+
+3105. Ev helwestên han bûn sebeb ku hem rewşa Sultan û hem jî yê Wezîrê Mezin Rustem Paşa li hemberî Bedir Beg biguherin.
+3105. These very stances became the reason that both the condition of the Sultan and too that of the Grand Vizier Rustem Pasha against Bedir Beg change.
+
+3106. Bûyera yekem: Dema ku şerê Îranê xelas bû, di teşrîfata vexwendina padişah de qewimi.
+3106. The first event: When the war of Iran finished, it happened in the protocol of the invitation of the padishah.
+
+3107. Piştî şer, hukumdar û mîrên Kurdistanê ku şerê Îranê ji bo Osmaniyan kiribûn, civiyabûn û dixwestin biçin destê Sultan ramûsin û îzna çûna mala xwe jê bixwazin.
+3107. After the war, the rulers and mirs of Kurdistan who had done the war of Iran for the Ottomans, had gathered and wanted to go kiss the hand of the Sultan and want the permission of the going to their house from him.
+
+3108. Lê ji bo ku di rêza teşrîfatê de Sultan Huseyin ê Fermanrewayê 'Imadiyyeyê xistibûn pêşiya Bedir Beg, ew bêyî ku destê Sultan maçî bike ji Diwana Humayun derdikeve.
+3108. But because in the line of protocol they had put Sultan Huseyin the Ruler of Amadiya before Bedir Beg, he without that he kiss the hand of the Sultan goes out from the Imperial Divan.
+
+3109. Ji
+3109. From
+
+3110. Di wergera Tirki de Ulaş Beg e. -Z. A.
+3110. In the Turkish translation it is Ulaş Beg. -Z. A.
+
+3111. Sultan û wezîr Musaede jî naxweze û diyarê aştiyê terk dike û vedigere navenda mîrektiya xwe Cezîrê.
+3111. the Sultan and vizier too he does not want permission and abandons the land of peace and returns to the center of his emirate Cizre.
+
+3112. Bûyera duduyan: Wekî me berê jî behs kiribû, Zeynel Begê Fermanrewayê Hekkariyê bi alîkariya Rustem Paşayê wezîr, ew hêvî û daxwaza girtina fermanrewatiya welatê xwe bi destê xwe de, bi ser ket û ji bo vî karî jî ji Stenbolê ber bi mala xwe ve dihat.
+3112. The second event: As we previously too had mentioned, Zeynel Beg the Ruler of Hakkari with the help of Rustem Pasha the vizier, that hope and request of the taking of the rulership of his country into his own hand, succeeded and for this task too from Istanbul towards his house he was coming.
+
+3113. Dema gihîşt ser sînorê Cezîrê, Bedir Beg, hinek ji Boxtiyên qatîl ên tawanbar şand ser riya wî, rê lê birîn û wek me berê behs kir, mirovên wî kuştin û Zeynel Beg jî bi birîndariyek giran, bêhiş li meydana şer di cî de hiştin.
+3113. When he reached upon the border of Cizre, Bedir Beg, sent some of the criminal killer Bohtis upon his road, cut the road on him and as we previously mentioned, killed his people and left Zeynel Beg too with a heavy woundedness, without mind at the square of war in place.
+
+3114. Dema ku xebera vê bûyera han gihîşt Rustem Paşa, gelek nerehet bû û zêde jî li ber ket.
+3114. When the news of this very event reached Rustem Pasha, he became very uncomfortable and excessive too he fell before it (felt sorrowful/angry).
+
+3115. Piştî vê bûyerê, Rustem Paşa li firsetekê digeriya û xwe li ber Bedir Beg qelizandibû û dixwest di bin re piyên wî bişimitîne.
+3115. After this event, Rustem Pasha was looking for an opportunity and had ambushed himself before Bedir Beg and wanted from underneath to make his feet slip.
+
+3116. Vêca dema ku cara duduyan Rustem Paşa bû wezîr, tedbira ji ser text hildana Bedir Beg kir û ji ber vê jî Nasir Begê birayê wî han da ku doza Fermanrewatiya Cezîrê bike û ji bo vê mebestê jî xwe bigihîne Stenbolê.
+3116. Then when for the second time Rustem Pasha became vizier, he made the measure of the lifting of Bedir Beg from upon the throne and because of this too encouraged Nasir Beg his brother that he do the case of the Rulership of Cizre and for this purpose too reach himself to Istanbul.
+
+3117. Nasir Beg, li ser handan û navlêdana Rustem Paşa, xwe gihand ber serderê bilind a Sultan Suleyman û bi saya mildaneberî û handana Wezîr eleqe û şewqetek baş jê dît û jê re fermana Sultantiyê ya ji bo Fermanrewatiya Cezîrê derket.
+3117. Nasir Beg, upon the encouragement and calling of Rustem Pasha, reached himself before the high threshold of Sultan Suleyman and in the shadow of the backing and encouragement of the Vizier he saw a good interest and compassion from him and for him the command of Sultanate for the Rulership of Cizre came out.
+
+3118. Dema ku Nasir Beg ferman di dest de hat Cezîra navenda fermanrewatiyê, Bedir Beg desthilat ji birayê xwe re berda û wir terk kir û ber bi aliyê Sencarê ve çû.
+3118. When Nasir Beg command in hand came to Cizre the center of the rulership, Bedir Beg let go of the authority to his brother and abandoned there and went towards the side of Sinjar.
+
+3119. Du sal piştî vê bûyerê, Bedir Beg xwe avêt ber serderê Sultan û carek din ji nû ve fermana Sultantiyê ya ji bo Fermanrewatiya Cezîrê bi dest xist û nahiyên Tor û Heytemê jî ji Eyaleta Cezîrê veqetand.
+3119. Two years after this event, Bedir Beg threw himself before the threshold of the Sultan and once again anew he took to hand the command of Sultanate for the Rulership of Cizre and separated the sub-districts of Tor and Heytem too from the Province of Cizre.
+
+3120. Êdî li gor wê fermana pîroz a navê wê derbas bû, bi hemû hêz û karînên xwe, ew salên jiyana xwe ya dirêj ji bo meşandina desthilata wilayeta xwe derbas kirin.
+3120. Anymore according to that sacred command whose name passed, with all his forces and capabilities, he passed those years of his long life for the conducting of the authority of his province.
+
+3121. Bedir Beg, di nav meclis û civînan de bi eşkere esrar dikêşa.
+3121. Bedir Beg, among the councils and meetings openly pulled (smoked) hashish.
+
+3122. Ev karê han gihiştibû dereceyek wisan ku herroj di dîwana wî de qasê 500 dirheman esrar dihat xerckirin.
+3122. This very task had reached such a degree that every day in his divan the amount of 500 dirhams hashish was expended.
+
+3123. Bi xwe, ew miqdarê vê maddeya han a sibe û êvaran xerc dikir, nêzîkî 100 dirheman bû.
+3123. By himself, that amount of this very substance that he morning and evenings expended, was nearly 100 dirhams.
+
+3124. Tiştê 'ecêb û nedîtî ew bû ku, wî li kîsedarê xwe qewîtî kiribû ku bihayê esrara wî tenê ji pereyên wî yên taybetî û ji yên helal bên dan, yanî hewce bû tenê bi zêrên saf bê sitandin.
+3124. The strange and unseen thing was that, he had made a recommendation to his purse-bearer that the price of his hashish only from his special money and from the halal ones be given, that is it was necessary only with pure golds it be taken.
+
+3125. Wekî din jî Bedir mirovekî gelek dindar û dilpak bû.
+3125. Like other too Bedir was a very religious and pure-hearted person.
+
+3126. Bi awakî gelek xurt xwe bi şax û çiqên şerîetê ve girê dabû û bi awakî gelek diqqet û bi dil û can hukmên dînî cîbicî dikirin.
+3126. In a very strong way he had tied himself with the branches and twigs of the sharia and in a very careful way and with heart and soul he carried out the religious rules.
+
+3127. Nimêj û rojî bi ser de derbas nedibûn.
+3127. Prayer and fasting did not pass upon him (he did not miss them).
+
+3128. Bi zana, mela, pîr û kesên qenc re dostaniyê dikir.
+3128. With knowers, mullahs, pirs and good people he did friendship.
+
+3129. Di dema wî de di hêla hejmar û kesên payebilind ên zana û xwedî fezîlet ên ku li Cezîrê li derûdora wî berhev bûbûn, di tu dewr û zemanekî din de nehatibû dîtin.
+3129. In his time in the direction of the number and high-ranking people of the knowing and possessor of virtue who at Cizre had gathered around him, in no other era and time had been seen.
+
+3130. Wek mîsal: Mewlana Mihemmedê Berqel'î, Mewlana Ebubekir,
+3130. As example: Mawlana Mihemmed of Berqel, Mawlana Ebubekir,
+
+3131. Mewlana Hesen Surçî û Mewlana Zeyneddin Bebi* ku di warên zanistiya zahirî û batinî de hîm û çavkaniya zanayên dema xwe bûne.
+3131. Mawlana Hesen Surchi and Mawlana Zeyneddin Bebi* who in the domains of apparent and inner science have been the foundation and source of the knowers of their time.
+
+3132. Mewlana Seyid 'Elî û eynî wextê gelek zanayên din ên bi nav û deng jî hebûne ku afirandin û nivîsandinên wan li ser destê kesên hîndekarên ehlên zanistî digeran.
+3132. Mawlana Seyid Ali and the exact time many other knowers with name and sound too existed whose creations and writings wandered upon the hand of the learner people of the people of science.
+
+3133. Tev ev zanayên han wî wextî li Cezîrê li derûdora Bedir Beg civiya bûn.
+3133. Entirely these very knowers that time at Cizre had gathered around Bedir Beg.
+
+3134. Tê gotin, carekê dilê Mewlana Ebubekir ji Bedir Beg dişkê û jê dixeyîde, ji ber vê biryar dide ku ji Cezîrê biçe.
+3134. It is said, once the heart of Mawlana Ebubekir breaks from Bedir Beg and he becomes offended from him, because of this he gives a decision that he go from Cizre.
+
+3135. Li ser vê, Bedir Beg bi rîspî û giregirên Cezîrê ve xwe avêtiye mala wî û dilê wî vekiriye, gelek xelat û bexşiş jî danê heta ku vegere.
+3135. Upon this, Bedir Beg with the white-beards and high-ranking ones of Cizre threw himself to his house and opened his heart, many awards and tips too he gave to him until he returns.
+
+3136. Di dawiyê de ew memnun kiriye û vegerandiye ciyê wî.
+3136. In the end he has made him satisfied and returned him to his place.
+
+3137. Dema ku birayê wî Nasir Beg emrê Xwedê kir, nahiyên Tor û Heytemê yên para wî jî wekî berê desthilata wan girt destê xwe û daxilê nav axa wilayeta xwe ya ji bab û bapîrên wî jê re mabû kirin.
+3137. When his brother Nasir Beg did the command of God, he took the authority of the sub-districts of Tor and Heytem of his share too like before into his hand and made them enter inside the land of his province that from his father and grandfathers had remained to him.
+
+3138. Bedir Beg gelek jiya û temenê wî ji 90 salan borîbû û gihîştibû nêzîkî 100 salan.
+3138. Bedir Beg lived much and his age had passed 90 years and had reached near 100 years.
+
+3139. Di dawiya jiyana xwe de, kalbûnî gelek tesîrê lê kiribû, hiş û aqilê wî kêm bûbû û karên dûrî aqil dikirin.
+3139. In the end of his life, oldness had made much effect on him, his mind and intellect had decreased and he did tasks far from intellect.
+
+3140. Min çend caran ji kesên bawerî pê kirî seh kiriye ku; rojek mirovek hatiye ba Bedir Beg û piştî hinek gazindan giliya qesabê bajêr jê re kiriye û gotiye ku ew heqaretan li min dike.
+3140. I several times from believed people have heard that; one day a person came to the side of Bedir Beg and after some complaints made a complaint of the butcher of the city to him and said that he does insults to me.
+
+3141. Bedir Beg jî fehm kiriye ku ew kesê giliya wî hatiye kirin, qesar e ne qesab.
+3141. Bedir Beg too has understood that that person whose complaint has been made, is a washer not a butcher.
+
+3142. Li ser vê şandiye pey serekê qesaran û daye anîn, têra xwe lêxistine û piştî baş kutanxwarinê, qesar gotiye: "Mîrê min, tawanê min ê bi vî awayî tawanbariyê çi ye?"
+3142. Upon this he has sent after the leader of the washers and given to be brought, they have hit him his sufficiency and after good beating-eating, the washer has said: "My Mir, what is my crime of this way of being accused?"
+
+3143. Bedir Beg jî bi vî awayî bersiva wî daye: "Te li filan kesê heqaret kiriye.
+3143. Bedir Beg too in this way has given his answer: "You have done an insult to such a person.
+
+3144. Li ser vê qesar gotiye: "Mîrê min, ew kesê ev tawan kiriye qesab e, ez jî ne qesab im, ez qesar im."
+3144. Upon this the washer has said: "My Mir, that person who has done this crime is a butcher, I too am not a butcher, I am a washer."
+
+3145. Mîr jî ev bersiv dayê û jê re gotiye: "Gotinên qesab û qesar eynî tişt in, di navbera wan de wekheviya telefuzê heye; telafiya van awa şaşîtiyên hêsan rehet e."
+3145. The Mir too gave this answer to him and to him said: "The words butcher and washer are the exact thing, between them the equality of pronunciation exists; the compensation of these sort of easy mistakes is comfortable."
+
+3146. Dema hiva jiyana wî di asoya nemanê de ava bû, kurekî tekane li pey xwe hişt û navê wî Mîr Mihemmed bû.
+3146. When the moon of his life set in the horizon of non-existence, he left a single son behind himself and his name was Mir Mihemmed.
+
+3147. Mir Mihemmedê Kurê Bedir Beg
+3147. Mir Mihemmed the Son of Bedir Beg
+
+3148. Di dewra jiyana babê xwe de, kar û barên welat dimeşand û desthilat di destê wî bi xwe de bû û ji bo çareserkirina hemû asteng û probleman seri li wî dihat dan.
+3148. In the era of the life of his father, he was conducting the tasks and affairs of the country and the authority was in his own hand and for the solving of all obstacles and problems head was given to him.
+
+3149. Di pere û maldaneheviyê de tama û bi hirs bû.
+3149. In money and wealth-gathering he was greedy and with ambition.
+
+3150. Qasê tê gotin: 12 hezar seri miyên wî hebûn û salê waridatek zêde ji van bi
+3150. The amount it is said: 12 thousand heads of sheep of his existed and per year an excessive revenue from these to
+
+3151. Di wergera Tirkî de "Yebi" ye. -Z. A.
+3151. In the Turkish translation it is "Yebi". -Z. A.
+
+3152. Di tesnifa xususiyetên van zanayên han de ferqi di navbera wergera Tirkî, wergera Sorani u Farisiya wê de heye.
+3152. In the classification of the characteristics of these very knowers a difference between the Turkish translation, Sorani translation and its Persian exists.
+
+3153. Min li vir tesnîfa Farisî esas girt. -Z. A.
+3153. I here took the Persian classification as basis. -Z. A.
+
+3154. destê wî diket.
+3154. his hand fell.
+
+3155. Ji bilî vê, hezar serî mirîşkên wî hebûn û ew bi ser gundî û şivanan de belav kiribûn û wan jî her sal serê mirîşkê çend hêk didan mîr.
+3155. Apart from this, one thousand heads of chickens of his existed and he had distributed them upon the villagers and shepherds and they too every year per head of chicken gave several eggs to the mir.
+
+3156. Bi kurtî xwediyê serwet û hebûnek gelek zêde bûye.
+3156. In short he has been the possessor of a very excessive wealth and existence.
+
+3157. Çunki di berhevkirina peran û hildana wan de gelek hoste û mahir bûye.
+3157. Because in the gathering of money and their lifting he has been very masterly and skilled.
+
+3158. Piştî babê wî çû rehma Xwedê, li Cezîrê bû fermanrewayê serbixwe û heft salan bê derdeserî bi vî awayî ma.
+3158. After his father went to the mercy of God, at Cizre he became independent ruler and for seven years without headache in this way remained.
+
+3159. Piştre li ser fermana Sultan Murad Xan, di sala 986ê koçî (1758 z)* de, beşdarê leşkerê wezîrê duduyan yê Lala Qere Mistefa Paşa bû, ku wezîfeya îstîlaya Şêrwan û Gurcistanê jê re hatibû pêşkêşkirin.
+3159. Afterwards upon the command of Sultan Murad Xan, in the year 986 Hijri (1758 AD)*, he became a participant of the army of the second vizier Lala Qere Mistefa Pasha, that the duty of the occupying of Shirvan and Georgia had been presented to him.
+
+3160. Dema ku ev leşkerê serkevtî yê Îslamê, gihîş Gurcistanê, ji nişka ve rastî leşkerekî Qizilbaşan ê ji 10 hezar siwariyan pêkhatî hat, ku di bin fermanderiya Mihemmedî Xan ê bi navê Toqmaq bi nav û deng û neviyê Qazik Hemze Ustaclû yê Mîrêmîranê Çukurse'dê û Imam Qulî Sultan Qaçar ê Mîrêmîranê Qerebax û Genceya Arranê de bû.
+3160. When this victorious army of Islam, reached Georgia, suddenly it encountered an army of the Qizilbash consisting of 10 thousand cavalry, that was under the command of Mihemmedi Xan with the name Toqmaq with name and sound and the grandson of Qazik Hemze Ustaclu the Mir of Mirs of Chukursa'd and Imam Quli Sultan Qachar the Mir of Mirs of Karabakh and Ganja of Arran.
+
+3161. Li ciyekî navê wî Çildir baregeha xwe veda bûn.
+3161. At a place its name Çildir they had pitched their headquarters.
+
+3162. Bi tesadufî wê çaxê Derwêş Paşa yê Mîrêmîran ê Diyarbekrê fermanderê pêşengê leşkerê Îslamê bû.
+3162. By coincidence that time Derwesh Pasha the Mir of Mirs of Diyarbakir was the leading commander of the army of Islam.
+
+3163. Di navçeya Çildirê de, li pesara çiyayek di navbera herdu milan de şerekî bi xwînavî û giran dest pê kir û ji serê sibê heta roj çû ava dom kir.
+3163. In the district of Çildir, on the skirt of a mountain between both sides a bloody and heavy war started and from the beginning of morning until the sun went down continued.
+
+3164. Êdî lawên Kurdan ên mêrxas, berê hemû kesan êrîş birin ser vê hêza han û hesibandin ku hejmara wan gelek kêm e û bêyî haya wan li hêleyên hîv û zemanê hebe, ji xwe razî û piştsitur, ketin nav pozbilindiyê û dijminê xwe biçûk dîtin.
+3164. Anymore the brave boys of the Kurds, before all people took an attack upon this very force and calculated that their number is very few and without their awareness to the tricks of the moon and time existing, satisfied from themselves and thick-backed, fell inside high-nosedness and saw their enemy small.
+
+3165. Şiir:
+3165. Poem:
+
+3166. "Biçûk nebîne dijminê xwe ger tu şêr jî bî
+3166. "Do not see your enemy small if you be a lion too
+
+3167. Xwe jê biparêze, çunkî dikare bibe nêçîrvanê şêr
+3167. Protect yourself from him, because he can become the hunter of the lion
+
+3168. Ey mêrxaso! Nebe bawermend tenê bi mêrxasî
+3168. Oh brave one! Do not be believing only with bravery
+
+3169. Di dinê de hê gelek mêr û mêrxas jî hene çunkî
+3169. In the world still many men and braves too exist because
+
+3170. Zînhar pişt girê nede tenê bi herdu pençeyên xwe yên hesinî
+3170. Beware do not tie back only with your both iron paws
+
+3171. Hesinker dikarin bihelînin hesin jî, çunkî"
+3171. Blacksmiths can melt iron too, because"
+
+3172. Qizilbaşan, ev êrîşa han a bi lez û bez, tenê bi çend hezar yekîneyên xwe yên pêşeng ên ku li hemberî leşkerên Rûmê (Osmanî) berxwedanî bikin veqetandibûn.
+3172. The Qizilbash, had separated this very attack with haste and speed, only with several thousand leading units of theirs that against the soldiers of Rum (Ottoman) do resistance.
+
+3173. Piraniya eskerên xwe yên xwedî tecrube û perwerdekirî jî li milê din çiyê di kemînan de veşartibûn û li hêviya destkevtina firsetan bûn.
+3173. The majority of their possessor of experience and trained soldiers too on the other side of the mountain in ambushes they had hidden and were at the hope of the obtaining of opportunities.
+
+3174. Dema ku li vi leşkerê hindik nêrîn, şer henek zanîn, aza û nebezên Kurd ên di bin pêşengiya leşkerê Îslamê de, wekî gurên devbi-
+3174. When they looked at this little army, they knew the war a joke, the brave and unbeatables of the Kurds who were under the leadership of the army of Islam, like wolves with mouth-
+
+3175. Di wergera Tirkî de ev tarîxa han tune.
+3175. In the Turkish translation this very date does not exist.
+
+3176. Li vir jî di tarîxa zayînî de, îhtimal e ku şaşiyek çapê hebe.
+3176. Here too in the AD date, it is probable that a mistake of print exists.
+
+3177. Mimkun e ev 1578'ê z be. -Z. A.
+3177. It is possible this is 1578 AD. -Z. A.
+
+3178. xwîn û destên wan li ser xencerên wan li wan werbûn, qasî çavgirtinekê bi dehan û bi sedan laşên Qizilbaşên bê ser di qada şer de werkirin û wekî tovên erzan ew berş û belav kirin.
+3178. blood and their hands upon their daggers fell upon them, the amount of an eye-closing by tens and by hundreds the bodies of the Qizilbash without head in the field of war they tumbled and like cheap seeds they scattered and spread them.
+
+3179. Tam vê navê re, dema ku ew bi van herc û mercan ve mijûl bûn, ji niska ve çend hezar siwarên Qizilbaşan ên baş perwerdekirî, ji ber çiyan ji kemîn û kozikên xwe derketin û bi awaki wisan ketin meydana şer: wekî çiyayên agirpêj, ejderhayên xwînmêj keliyan û xwişikîn, bi awayê lehiyên baranên biharan ber bi jêr bûn û wekî hingustîlekê Kurd kirin nav helekê, hewara siwaran, hîrrîna hespan, şirqîna siman, vizîna tîran û şirqe sirqa şûran guhê asîman kerr dikirin û ew dêmena ziravteqandî dêw jî ji xwe dida bizdandin.
+3179. Exactly during this, when they with these chaos and conditions were busy, suddenly several thousand cavalry of the Qizilbash well trained, from before the mountains went out from their ambushes and positions and in such a way fell to the square of war: like fire-cooking mountains, blood-sucking dragons they boiled and slid, in the way of the floods of the rains of springs they went down and like a ring made the Kurds inside a circle, the cry of the cavalry, the neighing of the horses, the clatter of the hooves, the whizzing of the arrows and the clashing of the swords made the ear of the sky deaf and that gall-bursting scene gave demons too to be frightened from itself.
+
+3180. Golên ji xwîna şerkeran, di şergahên fireh de pêl didan.
+3180. Lakes from the blood of the warriors, in the wide war-places gave waves.
+
+3181. Li ber siya alaya û mertalan, roja ber bi avabûnê ya zer û bêreng, wekî tarî û tarîstanê lê hat.
+3181. Before the shadow of flags and shields, the sun towards setting yellow and without color, became like dark and dark-land.
+
+3182. Yên di pêşî de jî bûn û yên li paş jî bûn, rojên jiyana wan ên hejmartî yên li ser rûyê vê cîhana han temam bûn, çunkî tevan jî ji destê meygera mirinê dilopa dawîn a di qedehên wan de hebû vexwaribûn.
+3182. Those who were in the front too and those who were at the back too, their counted days of life upon the face of this very world became complete, because all too from the hand of the cup-bearer of death had drunk the last drop that existed in their glasses.
+
+3183. Şi'ir:
+3183. Poem:
+
+3184. "Gurrîna siwaran û birqîna hesin û polan
+3184. "The roaring of the cavalry and the shining of iron and steels
+
+3185. Gur û şêran ji jiyanê re dikirin neban
+3185. Made wolves and lions strange to life
+
+3186. Birqîna devê şûr a tîn bi xwîn
+3186. The shining of the mouth of the sword of heat with blood
+
+3187. Bi berken merg dipirsî, zindî li ku ne?
+3187. With the smiles of death asked, where are the living?
+
+3188. Bi şûr û bi rim li şergehê pahn bûn
+3188. With sword and with spear at the war-place they became flat
+
+3189. Wekî terze baranê bi ser da werîn
+3189. Like hail rain they rained down upon
+
+3190. Ferişteha mirinê, ewqas giyan biribûn
+3190. The angel of death, had taken so many souls
+
+3191. Çewal, têrr û torbe tijî kiribûn”
+3191. Had made sacks, bags and pouches full"
+
+3192. Bu kurtî, şer bi kuştina Mîr Mihemmed û Saruxan Begê Fermanrewayê Hezzoyê, Duman Begê Zirkî û Mîr Mihemmedê Finikî, dawî pê hat.
+3192. In short, the war with the killing of Mir Mihemmed and Saruxan Beg the Ruler of Hezzo, Duman Beg the Zirki and Mir Mihemmed the Finiki, an end came to it.
+
+3193. Lê netîce di 'eksê hêvî û daxwazên Qizilbaşan lê hat; çunkê di dawiyê de gelek xerab şikestin û paşde kişiyan.
+3193. But the result became in the opposite of the hope and requests of the Qizilbash; because in the end very badly they broke and pulled back.
+
+3194. Di wê hengama bi tirs û sawm de ji herdu milan jî çend hezar esker hatibûn kuştin.
+3194. In that time with fear and dread from both sides too several thousand soldiers had been killed.
+
+3195. Dema ku Mir Mihemmed hat kuştin, di xezîna balê de, hezar zêrên sor ên bi sikka Sultantiyê hatibûn lêdan, hebûn.
+3195. When Mir Mihemmed was killed, in the treasury at his side, a thousand red golds that with the coin of the Sultanate had been struck, existed.
+
+3196. Ev, daxilê wan perçên bi qimet, eşyayên sipehî, cewher û alet û edewatên gelek zêde ku pê re hatin dîtin, nebû.
+3196. This, was not inclusive of those pieces with value, beautiful items, jewels and tools and equipments very excessive that with him were seen.
+
+3197. Di wê dewrê de, yek ji wan Fermanrewayên Kurdistanê xwediyê evqas xezîne û serwetan nebû.
+3197. In that era, one from those Rulers of Kurdistan was not the possessor of so much treasury and wealths.
+
+3198. Ji çar keç û kurekî wî yê pênç salî yê navê wî Sultan Mihemmed pê ve, tu warisên wî tunebûn.
+3198. Apart from four daughters and a five year old son of his whose name is Sultan Mihemmed, no heirs of his existed.
+
+3199. Sultan Mihemmedê Kurê Emir Mihemmed
+3199. Sultan Mihemmed the Son of Emir Mihemmed
+
+3200. Dema ku babê wî hat kuştin, Sultan Mihemmed hê gelek zarok bû.
+3200. When his father was killed, Sultan Mihemmed was still very child.
+
+3201. Di Kurdistanê de adet e, dema ku kesek hê di salên xwe yên zaroktiyê de babê xwe wenda bike, navê babê wî lê dikin.
+3201. In Kurdistan it is a custom, when a person still in the years of his childhood loses his father, they put the name of his father on him.
+
+3202. Vêca ne dûr e navekî din li wî hatibe kirin û dema ku babê wî hatiye kuştin, navê babê wî lê danîbin.
+3202. Then it is not far that another name has been put on him and when his father has been killed, they have put the name of his father on him.
+
+3203. Ev yek ji mimkun e, belkê di destpêkî de navê wî danîbin Sultan Mihemmed, lê di emelî de, di bikaranînê de bêjeya navê wî ya yekem "Sultan" hatibe jibîrkirin û navê wî tenê mabe "Mihemmed".
+3203. This one too is possible, maybe in the beginning they put his name Sultan Mihemmed, but in action, in usage the first word of his name "Sultan" has been forgotten and his name only remained "Mihemmed".
+
+3204. Belê, rastî tenê ji aliyê Xwedê ve tê zanîn.
+3204. Yes, the truth only from the side of God is known.
+
+3205. Dayîka Sultan Mihemmed, keça Melik Mihemmedê kurê Melik Xelîlê Fermanrewayê Hesenkêfê bû.
+3205. The mother of Sultan Mihemmed, was the daughter of Melik Mihemmed the son of Melik Xelil the Ruler of Hasankeyf.
+
+3206. Dayîka vî mîrê han, ji bo ku jineke gelek bi rêk û pêk û bi tedbîr bû, bi riya belavkirina hîl'atên bi qîmet, perû û yadîgarên mezin ên ji waridat û serweta bê hed û bê hesab a ji babê kurê wê28 mabû, bi ser warisên fermanrewatiyê û serekên eşîretên Boxtan de, ew gelek dilxweş kirin û ber bi xwe ve kêşan.
+3206. The mother of this very mir, because she was a very organized and measured woman, by the road of the distributing of valuable robes of honor, coins and big keepsakes from the limitless and countless revenues and wealth that from the father of her son28 had remained, upon the heirs of the rulership and the leaders of the tribes of Bohtan, made them very pleasant-hearted and pulled them towards herself.
+
+3207. Bi saya meşîna ser riyeke dadmendî, wekhevî û bi fezîlet, danûsitandina wê ya siyasetmedarane û rêvebirina wê ya bi aqilane ya bi kesên ji eşîret û destûpêwendên xwe re, wisan lê kir ku hefsarê fermanrewatiyê di destê malbata wê de bimîne.
+3207. In the shadow of the walking upon a road of justice, equality and with virtue, her politician-like dealing and her smart administration with the people from her tribe and associates, she did so that the halter of the rulership remain in the hand of her family.
+
+3208. Piştre keçên xwe bi kurên Xan 'Ebdal, Mîr Nasir û Şeref Beg re zewicand û erkê rêvebirina wilayetê û hella meseleyên welat xist ser milên wan.
+3208. Afterwards she married her daughters with the sons of Xan Abdal, Mir Nasir and Sheref Beg and put the duty of the administration of the province and the solving of the issues of the country upon their shoulders.
+
+3209. Wan jî ev karê han bi awakî herî baş meşandin.
+3209. They too conducted this very task in the most good way.
+
+3210. Di saya wan xizmên xwe yên bi hêz de ji hemû asteng û girêyan bi serfirazî derbas bû.
+3210. In the shadow of those strong relatives of hers she passed from all obstacles and knots with success.
+
+3211. Bi kurtî ew jina aza û merd welatê xwe wisan bi ser û ber kir, mirov nikare pesnê wê bide û di wilayeta Cezîrê de rêvebirinek bi vî awayî heta wê çaxê nehatibû dîtin.
+3211. In short that brave and generous woman so made her country with head and front, a person cannot give her praise and in the province of Cizre an administration in this way until that time had not been seen.
+
+3212. Piştre, wê di firsetekê de kurê xwe hilgirt û çû Seraya Sultan Murad Xan a Stenbolê.
+3212. Afterwards, she in an opportunity lifted her son and went to the Palace of Sultan Murad Xan of Istanbul.
+
+3213. Ji destûpêwendên dewletê û giregirên Bab-i Alî re diyarî û yadîgarên gelek zêde û bi qîmet bi xwe re birin û bi van karîbû dilê wan xweş bike û wan ber bi xwe ve bikêşe.
+3213. For the associates of the state and the high-ranking ones of the Sublime Porte she took very excessive and valuable gifts and keepsakes with herself and with these was able to make their heart pleasant and pull them towards herself.
+
+3214. Ev çûna wir û ev kirinên han tesîreke wisan li Sultan kirin ku Sultan wê xelat bike û fermana desthilatdariya Cezîrê ji Sultan Mihemmedê kurê wê re nû bike.
+3214. This going there and these very actions made such an effect on the Sultan that the Sultan award her and renew the command of the authority of Cizre for Sultan Mihemmed her son.
+
+3215. Bi vî awayî wê piştî van kirinên xwe xatir xwest û bi kurê xwe ve paş de vegeriya Cezîrê.
+3215. In this way she after these actions of hers wanted departing and with her son returned back to Cizre.
+
+3216. Piştî 5 sal desthilata Sultan Mihemmed, ew jina hêja û bi qedir ket ber zerdeperîna jiyanê û ruhê wê yê dilovanî ber bi bihuştê ve firiya.
+3216. After 5 years of the authority of Sultan Mihemmed, that precious and with value woman fell before the yellow-leafing of life and her merciful soul flew towards paradise.
+
+3217. Piştî dayîka xwe çend rojan Sultan Mihemmed jî gelek nejiya û di sala 991ề koçi (1582'yê z) de, teyrê ruhê wî yê pak û dilsoz jî ji hêlîna xwe ya di bedena wî de derket û ber bi bihuştê firiya.
+3217. After his mother several days Sultan Mihemmed too did not live much and in the year 991 Hijri (1582 AD), the bird of his pure and loyal soul too went out from its nest that was in his body and flew towards paradise.
+
+3218. Tê gotin, neyar û muxalifên wî yên çevnebar û tirsonek ên jiyana xwe di nemana wî de didîtin û çav
+3218. It is said, his jealous and cowardly enemies and opponents who saw their life in his non-existence and
+
+3219. berdabûn mîrata fermanrewatiyê, jehr kirin nav xwarina wî û kuştin.
+3219. had let eyes upon the inheritance of the rulership, put poison inside his food and killed him.
+
+3220. Bi vî awayî nesla Bedir Beg qeliya û kesek ji zarokên wî neman.
+3220. In this way the lineage of Bedir Beg fried and a person from his children did not remain.
+
+3221. Nasir Begê Kurê Şah 'Elî Beg
+3221. Nasir Beg the Son of Shah Ali Beg
+
+3222. Di dema wî de, ku Sultan Suleyman Xan padişahtî dikir û Rustem Paşa jî wezîrê mezin bû, Derwêş Mehmûdê Keleçîrî di Dîwana Sultan de yekî pêş û rawêjê kar û barên Rustem Paşa bû.
+3222. In his time, that Sultan Suleyman Xan was doing padishah-ship and Rustem Pasha too was the grand vizier, Derwesh Mehmud the Kelechiri in the Divan of the Sultan was one front and consultant of the tasks and affairs of Rustem Pasha.
+
+3223. Ev Derwêş Mehmûdê han, eslê xwe ji Eşîreta Rojkî bû û di warê rexnegiriya şi'ir, înşa û di usluba nivîsandinê de yek ji wan şagirtên Mewlana Idrîsê Bedlîsî bû.
+3223. This very Derwesh Mehmud, his origin was from the Rojki Tribe and in the domain of the criticism of poetry, composition and in the style of writing was one from those students of Mawlana Idris of Bedlis.
+
+3224. Demekê, di Dîwana Emîr Şerefê Fermanrewayê Bedlîsê de wezîfeya rêvebirina kar û barên înşa û nivîsandinê meşandiye.
+3224. For a time, in the Divan of Emir Sheref the Ruler of Bedlis he has conducted the duty of the administration of the tasks and affairs of composition and writing.
+
+3225. Piştî kuştina Şeref Beg, vir terk kiriye û çûye diyarê Rûmê û piştî çûna xwe ya wir qasek şûn de, bûye mamosteyê keça Sultan Suleyman a jina Rustem Pașa.
+3225. After the killing of Sheref Beg, he has abandoned here and gone to the land of Rum and after his going there a while later, he has become the teacher of the daughter of Sultan Suleyman the wife of Rustem Pasha.
+
+3226. Di vê sayê de bilind bûye û gihîştiye sewiyeke bilind a bi nav û deng.
+3226. In this shadow he has become high and reached a high level with name and sound.
+
+3227. Heta wisan lê hatiye, di meşandin û rêvebirina kar û barên Kurdistanê de, berpirsiyarên di saltanatê de bûne, serî li wî dane.
+3227. Until it has come to him so, in the conducting and administration of the tasks and affairs of Kurdistan, the responsible ones in the sultanate have been, have given head to him.
+
+3228. Ji bilî vê, hemû hukumdar û mîrên Kurdistanê ji bo kar û barên xwe yên girîng pena birine ber wî û serî li wî dane.
+3228. Apart from this, all the rulers and mirs of Kurdistan for their important tasks and affairs have taken refuge before him and given head to him.
+
+3229. Bi vî awayî bi saya wî, Rustem Paşa bingehê hemû bûyerên di Kurdistanê de diqewimîn dizanî.
+3229. In this way in his shadow, Rustem Pasha knew the basis of all events that happened in Kurdistan.
+
+3230. Guherînên di kar û barên ew fermanrewayên di riya werasetê de desthilatê digirtin destê xwe di nêzîk de agahdar bû û di vî warî de pisporiyekî zêde ketibû destê wî.
+3230. From the changes in the tasks and affairs of those rulers who in the road of inheritance took authority into their hand closely he was informed and in this domain an excessive expertise had fallen to his hand.
+
+3231. Ez vê pêşgotina han ji ber vê sebebê dinivîsim: Wekî tê zanîn ku me di pêş de jî behs kir, Wezîrê Mezin Rustem Paşa, çawan Nasir Beg han da ku li dijî Bedir Begê birayê xwe serî hilde û daxwaza hukumeta Cezîrê jê bike; li ser işareta wezîr, Nasir Beg jî berê xwe da Stenbolê ber serderê Sultan Suleyman û ji Sultan fermana hukumeta Cezîrê derxist.
+3231. I write this very foreword because of this reason: As it is known that we in the front too mentioned, the Grand Vizier Rustem Pasha, how he encouraged Nasir Beg that against Bedir Beg his brother he lift a head and make the request of the government of Cizre from him; upon the sign of the vizier, Nasir Beg too turned himself to Istanbul before the threshold of Sultan Suleyman and brought out the command of the government of Cizre from the Sultan.
+
+3232. Niha jî em ê behsa vê yekê bikin:
+3232. Now too we will make mention of this one:
+
+3233. Piştî ku du sal bi ser vê bûyerê re derbas bû, Bedir Beg jî berê xwe da Stenbolê, fermanek di derheqê veqetandina nahiyên Tor û Heytemê ji Eyaleta Cezîrê û dayîna wan wekî sancaq ji Nasir Beg re û hukumeta Cezîrê jî ji xwe re derxist.
+3233. After two years upon this event passed, Bedir Beg too turned himself to Istanbul, a command regarding the separating of the sub-districts of Tor and Heytem from the Province of Cizre and giving them as a sanjak to Nasir Beg and the government of Cizre too for himself he brought out.
+
+3234. Piştî ku demek di ser vê bûyerê re derbas bû, Nasir Beg ku li wilayetên Tor û Heytemê dima, mir û wekî li jorê jî derbas bû ev wilayetên han ilhaq kirin û kirin ser Eyaleta Cezîrê.
+3234. After a time upon this event passed, Nasir Beg who at the provinces of Tor and Heytem remained, died and as above too passed these very provinces they annexed and put upon the Province of Cizre.
+
+3235. Vêca mebest bi vî awayî bi firehî, hûr û kûr qisekirina vê bûyera han ew e, ku ji aliyê hinek giregir û zanayên ku naverok û sirrên kar û baran dizanin tê gotin ku: Di vê dewra han de piraniya ew guherînî û neqlên di nav Fermanrewayên Kurdistanê de hatine kirin, eserên hostayetî û işaretên Derweş Mehmûdê Keleçîrî bûne.
+3235. Then the purpose with this way with wideness, finely and deeply chatting of this very event is that, that from the side of some high-ranking ones and knowers who know the content and secrets of the tasks and affairs it is said that: In this very era the majority of those changes and transfers that among the Rulers of Kurdistan have been done, have been the works of the mastery and signs of Derwesh Mehmud the Kelechiri.
+
+3236. Vêca me xwest em qene'eta wan kesên xwediyê van nêrînan li vir îzah bikin.
+3236. Then we wanted we explain the conviction of those people possessor of these views here.
+
+3237. Bi kurtî, dema Nasir Beg çû rehma Xwedê, Xan 'Ebdalê kurê wî, di dema desthilata Sultan Selîm Xan û dewra wezîrtiya Wezîrê Mezin Mihemmed Paşa de, bi hêviya sitandina nahiyên Tor û Heytemê careke din çû Stenbolê.
+3237. In short, when Nasir Beg went to the mercy of God, Xan Abdal his son, in the time of the authority of Sultan Selim Xan and the era of the viziership of the Grand Vizier Mihemmed Pasha, with the hope of the taking of the sub-districts of Tor and Heytem once again went to Istanbul.
+
+3238. Ji ber ku şaxên sewdayê Fermanrewatiya Cezîrê di mejiyê wî de ajar dabûn, kurmên dilê wî dikeliyan û di vî warî de bi rikoyî bû.
+3238. Because the branches of the passion of the Rulership of Cizre had sprouted in his brain, the worms of his heart were boiling (he was impatient) and in this domain he was stubborn.
+
+3239. Ji ber vê bi awakî lez û telaş dixwest hebûna vê eyaleta han ji holê rake.
+3239. Because of this in a hasty and rushed way he wanted that he lift the existence of this very province from the middle (remove it).
+
+3240. Lê çi heye Mihemmed Paşayê Wezîr, li milekî dostê nêzîk yê Bedir Beg bû û li milê din, belkê jî ji bo tercîha xwe ya berjewendên dewletê, parastina pergala gelemperî û vê malbata han a kevnare, biryar da ku pêşiya ew daxwaz û kirinên Xan 'Ebdal dixwaze di vê riyê de bike, bigre.
+3240. But what is there Mihemmed Pasha the Vizier, on one side was the near friend of Bedir Beg and on the other side, maybe too for his preference of the interests of the state, the protecting of the general system and this very ancient family, gave a decision that he take the front of those requests and actions that Xan Abdal wants to do in this road.
+
+3241. Dê vê jî bi riya girtin û hepiskirina wî û piştre jî jê re dayîna cezayê ku heq kiriye re bikira.
+3241. He would do this too by the road of his taking and imprisoning and afterwards too the giving of the punishment to him that he has deserved.
+
+3242. Ji ber vê, li gor mercên vê biryara han, wezîfeyê da Mihemmed Axayê Çawuşbaşî û çend çawuşbaşiyên Bab-i Alî yên pê re ku Xan 'Ebdal bigrin û bînin.
+3242. Because of this, according to the conditions of this very decision, he gave the duty to Mihemmed Agha the Chief Sergeant and several chief sergeants of the Sublime Porte who were with him that they take and bring Xan Abdal.
+
+3243. Dema ku ev çawuşên han hatin, Xan Evdal bi grubek mîrzadeyên Boxtan û revdek mirovên xwe yên din ve ji bo nimêja êvarê çûbûn Mizgefta Edirne.
+3243. When these very sergeants came, Xan Evdal with a group of mir-born ones of Bohtan and a flock of his other people had gone to the Mosque of Edirne for the evening prayer.
+
+3244. Çawuş jî bêsekin çûn mizgeftê.
+3244. The sergeants too without stopping went to the mosque.
+
+3245. Piştî nimêjê Çawuşbaşî çû ba Xan 'Ebdal û jê re got ku hewce ye pê re heta Dîwana Wezîrê Mezin bê.
+3245. After the prayer the Chief Sergeant went to the side of Xan Abdal and said to him that it is necessary with him he come until the Divan of the Grand Vizier.
+
+3246. Li ser vê, ew Kurdên bi Xan 'Ebdal re bûn, ketin şikê û gotin:
+3246. Upon this, those Kurds who were with Xan Abdal, fell into doubt and said:
+
+3247. “Ew sebebê ku Çawuşbaşî û bi çend çawuşên din ve ji bo gazîkirina Xan 'Ebdal li dîwanê ku heta vir aniye, bêguman ne elametê xêrê ne.
+3247. "That reason that the Chief Sergeant and with several other sergeants for the calling of Xan Abdal at the divan that has brought until here, without doubt are not the sign of good.
+
+3248. Ew ji sedî sed dixwazin bêbextiyê pê re bikin û wî bikujin."
+3248. They hundred percent want to do faithlessness with him and kill him."
+
+3249. Tenê ji ber van şik û gumanan, Kurdekî navê wî Şêxê Şêxan, bêyî fikirandin, ket pey Çawuşbaşî û xencera xwe kêşa û çiqas taqeta wî hebû li pişta wî xist û serê xencerê ji singê Çawuşbaşî derket derve.
+3249. Only because of these doubts and suspicions, a Kurd his name Shex of Shexes, without thinking, fell behind the Chief Sergeant and drew his dagger and however much strength of his existed struck upon his back and the head of the dagger went outside from the chest of the Chief Sergeant.
+
+3250. Li ser vê, hevalên wî û alîkarvanên wî yên pê re, heryek di milekî de belav bûn, çûn ba Wezîrê Mezin hewar gihandin wî û kirinên wî Kurdê yên bêyî ku melheza neticeyên jê biqewime kiribe, jê re pêşkêş kirin.
+3250. Upon this, his friends and his helpers who were with him, each one in a side scattered, went to the side of the Grand Vizier reached a cry to him and presented to him the actions of that Kurd which he had done without that he made consideration of the results that happen from it.
+
+3251. Wê navê re Xan 'Ebdal û hevalên wî, 'ecêbmayî man û nedizanîn ka gelo dê çi bikin.
+3251. During that Xan Abdal and his friends, remained amazed and did not know whether I wonder what they will do.
+
+3252. Ew jî bi awakî serberedayî belavî nav kolanên bajarê Edirneyê bûn û heryekî xwe di kuncekî de û di malekê de veşartin.
+3252. They too in a let-go way (aimlessly) became scattered inside the streets of the city of Edirne and each one hid himself in a corner and in a house.
+
+3253. Hinek ji wan jî karîbûn ji bajêr derkevin û berê xwe bidin deşt û berriyan.
+3253. Some from them too were able to go out from the city and turn themselves to plains and steppes.
+
+3254. Li ser vê, delalan di kuçe û kolanên Edirneyê de dest bi banga fermana Sultan û wezîr kirin û gotin ku:
+3254. Upon this, town criers in the alleys and streets of Edirne started the call of the command of the Sultan and vizier and said that:
+
+3255. Dibê hemû xelkê bajêr pey wan bikevin, ew bigrin û nehewînin.
+3255. It must be all the people of the city fall behind them, take them and do not shelter them.
+
+3256. Li ser vê, xelkê bajêr hemû bi hev re ketin pey wan û di demek kurt de Xan 'Ebdal û piraniya heval û mirovên wî girtin û anîn dîwanê.
+3256. Upon this, the people of the city all with each other fell behind them and in a short time took Xan Abdal and the majority of his friends and people and brought to the divan.
+
+3257. Di cî de fermana kuştina tevan hat derxistin.
+3257. In place the command of the killing of all came to be brought out.
+
+3258. Hemû bi ser hev nêzîkî 100 kes bûn û tev jî giregir û serokên Boxtan bûn.
+3258. All upon each other were nearly 100 people and entirely too were high-ranking ones and leaders of Bohtan.
+
+3259. Listeya pere û
+3259. The list of money and
+
+3260. waridata wan ji aliyê zabitê xezîneyê ve hat girtin û teslîmê xezîneya dewletê kirin.
+3260. their revenues from the side of the officer of the treasury came to be taken and they delivered to the treasury of the state.
+
+3261. Bi vî awayî Xan 'Ebdal ji holê hat rakirin.
+3261. In this way Xan Abdal from the middle came to be lifted (was removed).
+
+3262. Heft kur li pey xwe hiştin:
+3262. He left seven sons behind himself:
+
+3263. Emîr Nasir, Emîr Şeref, Emir Mihemmed, Şah 'Elî, Emîr Seyfeddin, Emîr Izzeddîn û Emîr 'Ebdal.
+3263. Emir Nasir, Emir Sheref, Emir Mihemmed, Shah Ali, Emir Seyfeddin, Emir Izzeddin and Emir Abdal.
+
+3264. Emir Nasir, li ser navê Sultan Mihemmed ê Fermanrewayê Cezîrê çû sefera Rewanê.
+3264. Emir Nasir, upon the name of Sultan Mihemmed the Ruler of Cizre went to the expedition of Rewan.
+
+3265. Di vegerê de Ferhad Paşa li Kela Qersê seh kir ku Sultan Mihemmed miriye û li ser vê, bîr û baweriya Serdar a pîroz hat ser wê yekê ku yek ji wan xizmên Sultan Mihemmed ên pê re û bi van leşkerên serkevtî re çûbûn Êrîwanê, bike Fermanrewayê Boxtan û Cezîrê.
+3265. In the return Ferhad Pasha at the Castle of Kars heard that Sultan Mihemmed has died and upon this, the memory and belief of the sacred Commander came upon that one that one from those relatives of Sultan Mihemmed who with him and with these victorious soldiers had gone to Yerevan, he make the Ruler of Bohtan and Cizre.
+
+3266. Kedxuda û giregirên Boxtan ji bo vê meselê hatin ba nivîskarê van rêzên han û ji vî hejarî re gotin; ez ji Serdar re bêjim ku Nasir Beg bike ferman- rewa.
+3266. The stewards and high-ranking ones of Bohtan for this issue came to the side of the writer of these very lines and to this poor one said; that I say to the Commander that he make Nasir Beg ruler.
+
+3267. Serdar jî qebûl kir û belênî da ku Fermanrewatiya Cezîrê heqê Nasir Beg e.
+3267. The Commander too accepted and gave a promise that the Rulership of Cizre is the right of Nasir Beg.
+
+3268. Lê Mîr 'Ezîzê kurê Kek Mihemmed, bi wasita Balî Çawuş, Serdar agahdar kiribû, ku 100 hezar lîreyên Osmanî, mal û serweteke ji hesabê der ji Sultan Mihemmed paş de mane û ji bilî du xuşkên wî pê ve kesek ji mîratgirên wî nemane.
+3268. But Mir Aziz the son of Kek Mihemmed, with the means of Bali Sergeant, had informed the Commander, that 100 thousand Ottoman liras, a property and wealth outside of calculation from Sultan Mihemmed have remained back and apart from two sisters of his besides a person from his heirs have not remained.
+
+3269. Eger mezintiya Cezîrê bidin wî, ew amade ye 100 hezar filorî sikka Sultantiyê ji malê Sultan Mihemmed û 12 hezar filorî ji kîsê xwe têxe nav xezîna Sultan.
+3269. If they give the greatness of Cizre to him, he is ready 100 thousand florins coin of Sultanate from the property of Sultan Mihemmed and 12 thousand florins from his own purse put inside the treasury of the Sultan.
+
+3270. Serdarê bi rêk û pêk, ev pêşniyara han serkevtinek mezin hesiband, roja duduyan ku dibû Mîr Nasir ji bo destramûsanê biçe, Mîr 'Ezîz jî bang kir diwanê û Serdar berê xwe da Boxtiyan û ji wan pirsî:
+3270. The organized Commander, calculated this very proposal a big success, the second day that it was becoming Mir Nasir for hand-kissing go, Mir Aziz too he called to the divan and the Commander turned himself to the Bohtis and asked from them:
+
+3271. Mîr Nasir an Mîr ‘Ezîz, kijan di hêla pismametiyê de nêzîkî Sultan Mihemmed -Xwedê jê razi be- e?
+3271. Mir Nasir or Mir Aziz, which one in the direction of cousindom is near to Sultan Mihemmed may God be satisfied from him?
+
+3272. Kedxudayên Boxtan gotin:
+3272. The stewards of Bohtan said:
+
+3273. Mîr 'Eziz piçekî nêzîktir e.
+3273. Mir Aziz is a little nearer.
+
+3274. Serdar got: "Madem wiha ye Fermanrewatiya Cezîrê digihe pismamê herî nêzîk û dibê ji wî re bê dan."
+3274. The Commander said: "Since it is like this the Rulership of Cizre reaches the most near cousin and it must be given to him."
+
+3275. Cara duduyan giregirên Cezîrê lê vegerandin û jê re gotin:
+3275. For the second time the high-ranking ones of Cizre returned it to him and said to him:
+
+3276. "Her çendîn Mîr 'Ezîz pismamê nêzîktir e û eger mirati be digihe Mîr 'Ezîz, lê hemû eşîret, qebîle û kesên maquûl ên Boxtan bi hev re ji bo bi ser û berî kirin, avayî û parastina welat, Mîr Nasir dixwazin û ew ji mezinên me yên berê jî gelek baştir e."
+3276. "However much Mir Aziz is the nearer cousin and if it be inheritance it reaches Mir Aziz, but all tribes, clans and reasonable people of Bohtan with each other for with head and front doing (managing), building and protecting of the country, want Mir Nasir and he is much better than our previous great ones too."
+
+3277. Serdar, ji wan re got: "Ger wiha jî be cardin ez mezintiya Cezîrê didim Mir 'Eziz."
+3277. The Commander, said to them: "If it be like this too once again I give the greatness of Cizre to Mir Aziz."
+
+3278. Li ser vê, ji giregirên Boxtan yekî gotinên wî birîn û jê re got:
+3278. Upon this, from the high-ranking ones of Bohtan one cut his words and said to him:
+
+3279. "Fermana Sultan Suleyman e, hemû qebîle û eşîret, mezinên xwe bi dilê xwe hildibêjirin û yê helbijarti fermanrewayê wan e.
+3279. "It is the command of Sultan Suleyman, all clans and tribes, choose their great ones with their heart and the chosen one is their ruler.
+
+3280. Kesek ji me, hez ji Mir 'Eziz nake."
+3280. A person from us, does not love Mir Aziz."
+
+3281. Eriwan, Erivan. -M. 'E. 'E.
+3281. Eriwan, Yerevan. M. E. E.
+
+3282. Serdar, bi van gotinan aciz û hêrs bû, bangî Mîr 'Eziz kir û eynî wê rojê, ku pêncşemba* 29'ê meha Remezana pîroz a sala 991'ê koçî (1583 z) bû, li ber deriyê xêveta xwe Mîr Nasir serjê kir.
+3282. The Commander, with these words became annoyed and angry, called Mir Aziz and the exact that day, which was Thursday* the 29th of the sacred month of Ramadan of the year 991 Hijri (1583 AD), before the door of his tent beheaded Mir Nasir.
+
+3283. Êdî bû qêr, girîn û şînek her Xwedê bizane.
+3283. Anymore it became a scream, crying and a mourning that only God know.
+
+3284. Lehiyên rondikan ji çavên pîr, kal û xortan herikîn.
+3284. Floods of tears from the eyes of the old women, old men and youths flowed.
+
+3285. Kuştina wî bêgunehî, gunehek wisan bû, dilê keviran jî jêre dişewitî.
+3285. The killing of that innocent, was such a sin, the heart of stones too burned for him.
+
+3286. Mezin û biçûk li ser wî bêgunehî rondikên çavan dirêtin.
+3286. Big and small upon that innocent poured tears of eyes.
+
+3287. Dengê ax û zarîna wan kevir nerm dikir û tevan şîna wî ciwanmergî kirin.
+3287. The sound of their sighing and groaning made stone soft and all made the mourning of that young-dead one.
+
+3288. Şi'ir:
+3288. Poem:
+
+3289. "Serî kiribû xwîn bi çavan
+3289. "Head had done blood with eyes
+
+3290. Dilê dar û ber jî dihelan
+3290. The heart of tree and fruit too melted
+
+3291. Ji derd û keser gul pêsîr firî
+3291. From pain and sorrow the rose tore its collar
+
+3292. Firî bulbul û qirik li baxan qîrî"
+3292. The nightingale flew and the raven screamed in the gardens"
+
+3293. Di dawiyê de Fermanrewatiya Cezîrê dan Mîr 'Ezîz û bi xelat û beratên Sultan xenî kirin.
+3293. In the end they gave the Rulership of Cizre to Mir Aziz and with awards and deeds of the Sultan they made him rich.
+
+3294. Balî Çawuş jî pê re danîn ku Cezîrê jê re bistîne û bide destan.
+3294. Bali Sergeant too they put with him that he take Cizre for him and give to hands.
+
+3295. Mîr Şeref û birayên wî jî xwe li nahiya Tenziyê veşartin.
+3295. Mir Sheref and his brothers too hid themselves at the sub-district of Tenzi.
+
+3296. Eger Xwedayê mezin alîkar be, em ê bi vê qelema xwe ya bêziman serpêhatiya wan jî binivîsin.
+3296. If the great God be helper, we with this our without-tongue pen will write their adventure too.
+
+3297. ## Mîr 'Ezîzê Kurê Kek Mihemmed
+3297. ## Mir Aziz the Son of Kek Mihemmed
+
+3298. Bi piştgirî û alîkariya Ferhad Paşayê Wezîr, meşandina kar û barên Fermanrewatiya Cezîrê girt destê xwe.
+3298. With the support and help of Ferhad Pasha the Vizier, he took the conducting of the tasks and affairs of the Rulership of Cizre into his hand.
+
+3299. Hê tenê salek û çar meh bi ser de derbas bû, Osman Paşayê Wezîrê Mezin wî ji ser kar hilda û Fermanrewatiya Cezîrê da Mîr Mihemmedê kurê Xan 'Ebdal.
+3299. Still only one year and four months upon it passed, Osman Pasha the Grand Vizier lifted him from upon work and gave the Rulership of Cizre to Mir Mihemmed the son of Xan Abdal.
+
+3300. Emîr 'Ezîzê ji ser kar hatî hildayî, ji bilî beşdarê sefera şerê Tebrîzê bi leşkerên serkevtî yên Îslamê re û di vê navê re xizmetên mezin ji Sultan û leşkerê wî re pê ve tu riyek li ber nema.
+3300. Emir Aziz the lifted from upon work, apart from the participant of the expedition of the war of Tabriz with the victorious soldiers of Islam and during this very great services to the Sultan and his army besides no road remained before him.
+
+3301. Çi jê re hat sipartin tev bi naçarî bicî anî.
+3301. What was entrusted to him entirely with choicelessness (unavoidably) he carried out.
+
+3302. Di dawiyê de mala xwe bar kir û ji Cezîrê derket, çû Sencarê ku berê jî li wir mabû.
+3302. In the end he loaded his house and went out from Cizre, went to Sinjar that previously too he had remained there.
+
+3303. Dema ku Osman Paşa li Tebrîzê mir û carekê din Ferhad Paşa kirin Serdar û ew ber bi welatê 'Ecem ket rê, Emîr 'Eziz jî ji bo ku li Erzirûmê pêşwaziya wî bike hereket kir û cardin daxwaza karbidestiya Fermanrewatiya Cezîrê jê kir.
+3303. When Osman Pasha died at Tabriz and once again they made Ferhad Pasha Commander and he towards the country of the Ajams fell on the road, Emir Aziz too because that at Erzurum he do his welcoming moved and once again made the request of the officialdom of the Rulership of Cizre from him.
+
+3304. Ferhad Paşa bi mercê ku teehhud bike 30 gundên Xiristiyanan ên girêdayî Eyaleta Cezîrê jê veqetîne û têxe ser
+3304. Ferhad Pasha with the condition that he commit that he separate 30 villages of Christians tied to the Province of Cizre from it and put upon
+
+3305. Di wergera Tirkî de roja înê ye. -Z. A.
+3305. In the Turkish translation it is Friday. Z. A.
+
+3306. rêvebirina mulkê taybetî yê Sultan û salane ji waridatên van gundan ên tên hasilkirin, hezar filorî ji xezîneyê re bide, meşandina desthilata kar û barên Cezîrê jê re da.
+3306. the administration of the special property of the Sultan and yearly from the revenues of these villages that are produced, give a thousand florins to the treasury, gave the conducting of the authority of the tasks and affairs of Cizre to him.
+
+3307. Dema ku Mir Mihemmed, xeberên vê bûyerê seh kirin, ket nav qileqil û tengiyê û bi hêviya ku riyek ji vê astengê re bibîne, bi lez ber bi seraya padişah a li Stenbolê hereket kir.
+3307. When Mir Mihemmed, heard the news of this event, fell inside anxiety and narrowness and with the hope that he find a road for this obstacle, with haste moved towards the palace of the padishah at Istanbul.
+
+3308. Wê navê re hevsarê kar û barên wezîrtiyê ketibû destê Sînan Paşa.
+3308. During that the halter of the tasks and affairs of the viziership had fallen to the hand of Sinan Pasha.
+
+3309. Wî dixwest bi alîkariya Emîr 'Eziz asteng û têkelheviyan safi bike û tovê fesadiyê biqelîne.
+3309. He wanted with the help of Emir Aziz he make pure (solve) obstacles and mix-ups (chaos) and fry the seed of mischief.
+
+3310. Ji ber vê yekê, Mîr Mihemmed ber bi aliyê Rûmeliyê şand.
+3310. Because of this one, he sent Mir Mihemmed towards the side of Rumelia.
+
+3311. Emîr Şeref û birayên wî jî ku xwe li nahiya Tinzê veşartibûn û bi waridata li wir jiyana xwe dimeşandin, Emîr 'Eziz ev jî ji wan re zêde dît û navçeya Tinzê ji wan sitand, kir sancaq û da destê Hacî Begê kurê xwe.
+3311. Emir Sheref and his brothers too who had hid themselves at the sub-district of Tinz and with the revenue there were conducting their life, Emir Aziz saw this too excessive for them and took the district of Tinz from them, made it a sanjak and gave into the hand of Haci Beg his son.
+
+3312. Piştre xwe li ber xweş kir ku bi zarokên Xan 'Ebdal re bikeve nav şer û qirênan.
+3312. Afterwards he made himself pleasant before it (prepared himself) that with the children of Xan Abdal he fall inside war and quarrels.
+
+3313. Bi vî awayî Emîr 'Ezîz êdî bê tirs û bi xurti, bê berhelist, bê asteng û bê şirîkatî kar û barên welat meşandin.
+3313. In this way Emir Aziz anymore without fear and strongly, without obstacle, without barrier and without partnership conducted the tasks and affairs of the country.
+
+3314. Rewş demekê bi vî awayî derbas bû.
+3314. The condition for a time passed in this way.
+
+3315. Di dawiyê de kurên Xan 'Ebdal, Emîr Şeref û birayên wî Emîr Izzeddin, Emîr Seyfeddîn û Emîr 'Ebdal li hemberî Emîr 'Ezîz ketin nav hevkariyê û biryar dan ku dest bi têkoşînê bikin.
+3315. In the end the sons of Xan Abdal, Emir Sheref and his brothers Emir Izzeddin, Emir Seyfeddin and Emir Abdal fell inside cooperation against Emir Aziz and gave a decision that they start to struggle.
+
+3316. Her yek ji wan şax û çiqek darên eyaletê bûn û di nav baxçeyên fermanrewatiyê de darên herî berz û bilind bûn.
+3316. Each one from them was a branch and twig of the trees of the province and among the gardens of the rulership were the highest and tallest trees.
+
+3317. Yek ji wan eşîret û qebîleyên welat bêemriya wan nedikirin, li dijî emrê wan nederdiketin û tevan îtaeta wan dikirin.
+3317. One from those tribes and clans of the country did not do their without-command (disobedience), did not go out against their command and all did their obedience.
+
+3318. Van birayan kirasê mirinê li xwe kirin, şûr û mertalên şer girêdan û daxwaza tola xwîna birayê xwe kirin.
+3318. These brothers did the dress of death upon themselves, tied the swords and shields of war and made the request of the revenge of the blood of their brother.
+
+3319. Piştre êrîşê derûdor û destûpêwendên Emîr 'Eziz kirin; nifuza wî ya di eyaletê de hebû malîn û ji holê rakirin; ev karê han gihîşt dereceyek wisan ku ji bilî kele û bajarê Cezîrê pê ve tu cî di destê wî de nema.
+3319. Afterwards they attacked the surroundings and associates of Emir Aziz; his influence that existed in the province they swept and lifted from the middle (removed); this very task reached such a degree that apart from the castle and city of Cizre besides no place remained in his hand.
+
+3320. Li ser vê, Emîr 'Eziz, naçar ma rêvebirina kar û barên bajêr û dizdariya keleyê ji kurê xwe Hacî Beg û biraziyê xwe Mîr Hawend re berde û ji bo ku tedbîr û çareyek ji tolesitandina kurên Xan 'Ebdal re bibîne, berê xwe da rê û çû Stenbolê.
+3320. Upon this, Emir Aziz, remained choiceless that he let go of the administration of the tasks and affairs of the city and the castle-wardenship of the castle to his son Haci Beg and his nephew Mir Hawend and because that he find a measure and solution for the revenge-taking of the sons of Xan Abdal, turned himself to the road and went to Istanbul.
+
+3321. Lê Emîr Şeref bi birayên xwe ve, êrîşên xwe yên li ser bajar û gundên li derûdora Cezîrê domandin û tev sitandin û kirin bin destê xwe.
+3321. But Emir Sheref with his brothers, continued their attacks upon the cities and villages at the surroundings of Cizre and entirely they took and put under their hand.
+
+3322. Piraniya zêde qebîle û eşîretên Boxtan serî li ber wan tewandin.
+3322. The excessive majority of the clans and tribes of Bohtan bent head before them.
+
+3323. Bi vî awayî firseta meşa ser Kela Cezîrê ket destê wan û derûdora keleyê rapêçan.
+3323. In this way the opportunity of the march upon the Castle of Cizre fell to their hand and they wrapped the surroundings of the castle.
+
+3324. Dema ku ev derûdor rapêçan dirêj kêşa û ji 40 rojan derbas bû û ne ji Emîr 'Ezîz û ne jî ji kesên bin muhasereyê de alîkariyek nehat, rewşa wan gelek xerab bû û ketin nav tengî û nexweşiyek giran.
+3324. When this wrapping of surroundings pulled long (lasted long) and passed from 40 days and neither from Emir Aziz and nor from the people under siege a help did not come, their condition became very bad and they fell inside a heavy narrowness and badness.
+
+3325. Tam di vê navê re xebera mirina Hacî Beg hat, ku dixwest hewara alîkariyê bigihîne Ibrahim Paşa yê Mîrêmîranê Diyarbekrê.
+3325. Exactly during this the news of the death of Haci Beg came, who wanted to reach the cry of help to Ibrahim Pasha the Mir of Mirs of Diyarbakir.
+
+3326. Li ser vê rewşê, Emîr Hawend çend mirovên xwe di keleyê de li ba jin û zarokên Emîr 'Ezîz danîn û şev bi nîvê şevê ji keleyê derket.
+3326. Upon this condition, Emir Hawend put several of his people in the castle at the side of the women and children of Emir Aziz and night with half of the night went out from the castle.
+
+3327. Birayê Emîr Şeref, Emîr Seyfeddîn, dema ku
+3327. The brother of Emir Sheref, Emir Seyfeddin, when
+
+3328. bi vê bûyerê hesiya, destsivikî kir û riyên derketinê lê birî.
+3328. he felt (became aware) of this event, did quick-handedness and cut the roads of going out on him.
+
+3329. Bi vî awayî di navbera herdukan de şerekî germ dest pê kir û pêt û guriyên agirê şer çiqas çûn geştir û xurttir bûn.
+3329. In this way between both a warm war started and the flames and blazes of the fire of war however much they went they became brighter and stronger.
+
+3330. Di dawiya vî şerî de Emir Seyfeddîn ji aliyê Emîr Hawend ve hat kuştin û Emîr Hawend ji vê kemînê ruhê xwe rizgar kir.
+3330. In the end of this war Emir Seyfeddin came to be killed from the side of Emir Hawend and Emir Hawend rescued his soul from this ambush.
+
+3331. Li milê din, Emîr Şeref û Emîr Izzeddîn xwe gihandin keleyê, serwet, waridat û hemû hebûnên Emîr 'Eziz talan kirin.
+3331. On the other side, Emir Sheref and Emir Izzeddin reached themselves to the castle, plundered the wealth, revenue and all existences (possessions) of Emir Aziz.
+
+3332. Jin, zarok, xêzan, biçûk û mezinan tev esîr girtin û dan destên esker û mirovên qebîleyan.
+3332. The women, children, family, small and big entirely they took captive and gave to the hands of the soldiers and people of the clans.
+
+3333. Wan jî bi dost û hevalên xwe ve dest danîn ser cariyên wî yên reqqas û dengbêj.
+3333. They too with their friends and companions put hand upon his dancer and singer slave-girls.
+
+3334. Di ber vê têkelhevî û ev zulm û zordarî de kurekî Emîr 'Eziz jî bê ser û şûn wenda bû.
+3334. Before this mix-up and this cruelty and oppression a son of Emir Aziz too became lost without head and trace.
+
+3335. Dema ku deng û behsên vê bûyerê li Asîtane belav bûn û gihiştin guhên pîroz ên herî bilind, padişah, Huseyin Paşayê Mîrêmîranê Mûsilê jî da rexê Emîr 'Ezîz û ber bi Cezîrê ve hereket kirin; fermanek ku ji hemû hukumdar û begên Kurdistanê re hatî derxistin jî da destê wan ku bi Huseyîn Paşa re bimeşin ser Cezîrê, ew cî ji Emîr Şeref û birayên wî ku zoremilki zebt kirine bistînin, ew bigrin û cezayek wisan bidin wan ku ji hemû ew kesên fikra serhildanê dikin serê xwe re bibe îbret û ders û careke din rêçên tiştekî wiha neyên dîtin.
+3335. When the sounds and mentions of this event were distributed at Asitane (Istanbul) and reached the most high sacred ears, the padishah, gave Huseyin Pasha the Mir of Mirs of Mosul too to the side of Emir Aziz and they moved towards Cizre; a command that had been brought out to all rulers and begs of Kurdistan too he gave to their hand that with Huseyin Pasha they march upon Cizre, they take that place from Emir Sheref and his brothers who by force have captured it, take them and give such a punishment to them that for all those people who do the thought of lifting head it become an example and lesson and once again the traces of such a thing not come to be seen.
+
+3336. Huseyîn Paşa, li gor mercên fermana Sultan meşiya û bi Emîr Mihemmed ê Fermanrewayê Hezzoyê re dest bicîbicîkirina wê kir.
+3336. Huseyin Pasha, walked according to the conditions of the command of the Sultan and with Emir Mihemmed the Ruler of Hezzo started its carrying out.
+
+3337. Herdu, leşkerê Mûsilê jî bi wan re, di zivistana sala 999'ê koçî (1590'ê z) de ber bi Cezîrê hereket kirin.
+3337. Both, the army of Mosul too with them, in the winter of the year 999 Hijri (1590 AD) moved towards Cizre.
+
+3338. Dema ku Emîr Şeref û birayên xwe xebera wî girtin, kele û bajar vala kirin û ber bi Tinzê çûn.
+3338. When Emir Sheref and his brothers took his news, they emptied the castle and city and went towards Tinz.
+
+3339. Û zar û zêçên xwe li wir hiştin û ber bi Xîzan (Hîzan) û Miksê ve çûn.
+3339. And they left their children and offspring there and went towards Xizan (Hizan) and Miks.
+
+3340. Bi vî awayî kar û barên Huseyin Paşa hêsan kirin.
+3340. In this way they made the tasks and affairs of Huseyin Pasha easy.
+
+3341. Huseyin Paşa, Emîr 'Ezîz danî ser Kela Cezîrê û bi xwe jî bi leşkerê xwe ve saxûselîm paş de vegeriya.
+3341. Huseyin Pasha, put Emir Aziz upon the Castle of Cizre and by himself too with his army returned back safe and sound.
+
+3342. Dema ku deng û behsên vegera paşa gihîştin Emîr Şeref, birayên wî û giregirên ji xelkê, cardin bêsekin hatin ser Kela Cezîrê û derûdora keleyê girtin û kirin bin muhaserayê.
+3342. When the sounds and mentions of the return of the pasha reached Emir Sheref, his brothers and the high-ranking ones from the people, once again without stopping came upon the Castle of Cizre and took the surroundings of the castle and put under siege.
+
+3343. Ji bo ku Emîr 'Eziz xwediyê wê hêzê nebû ku bikare berevaniya keleyê bike, wî û biraziyê wî Emîr Hawend rizgarî di valakirina keleyê û bazdanê de dîtin.
+3343. Because Emir Aziz was not the possessor of that force that he could do the defending of the castle, he and his nephew Emir Hawend saw rescue in the emptying of the castle and running away.
+
+3344. Lê Emîr Şeref serî li ser wan hilneda, bêsekin ket pey wan û ew qefilandin.
+3344. But Emir Sheref did not lift head upon them, without stopping fell behind them and locked them (cornered them).
+
+3345. Emîr Hawend ji aliyê Emîr Şeref ve hat kuştin.
+3345. Emir Hawend came to be killed from the side of Emir Sheref.
+
+3346. Emîr 'Ezîz jî piştî çend roj derbazbûn, mirî li deşt û berriyan hat dîtin.
+3346. Emir Aziz too after several days passed, was seen dead at the plains and steppes.
+
+3347. Me ev herdu hevok raste rast ji Farisiya wê wergerandin.
+3347. We translated these both sentences directly from its Persian.
+
+3348. Ji ber ku di navbera wergera wan a Tirkî û Soranî de ferq hebûn. -Z. A.
+3348. Because between their Turkish and Sorani translation a difference existed. Z. A.
+
+3349. Şi'ir:
+3349. Poem:
+
+3350. "Ev adetê çerxa felekê yê kevn e
+3350. "This is the old custom of the wheel of fate
+
+3351. Te nizim dike, çi carê ku bibîne tu bilind dibî
+3351. It makes you low, whatever time that it see you become high
+
+3352. Di vê seraya duderî û hêşîn de, çunkî
+3352. In this palace of two-doors and green, because
+
+3353. Piştî dengbêjên şahiyê, dengbêjên şînê tên"
+3353. After the singers of joy, the singers of mourning come"
+
+3354. ## Emir Mihemmedê Kurê Xan 'Ebdal
+3354. ## Emir Mihemmed the Son of Xan Abdal
+
+3355. Wek me got, di sala 991ề koçî (1583ề z) de Ferhad Paşa yê Wezîrê Mezin, Emîr Nasirê birayê Emir Mihemmed kuşt û Mîrektiya Cezîrê da destê Emîr 'Ezîz.
+3355. As we said, in the year 991 Hijri (1583 AD) Ferhad Pasha the Grand Vizier, killed Emir Nasir the brother of Emir Mihemmed and gave the Emirate of Cizre into the hand of Emir Aziz.
+
+3356. Wezîfe da Bali Çawuş jî ku biçe û dest dayne ser serwet û daraya Sultan Mihemmed.
+3356. He gave the duty to Bali Sergeant too that he go and put hand upon the wealth and property of Sultan Mihemmed.
+
+3357. Li ser vê, ji Emîr Mihemmed re ji bilî xwe avêtina li ber serderê Sultan ê li Asîtane pê ve tu riyek nemabû.
+3357. Upon this, for Emir Mihemmed apart from throwing himself before the threshold of the Sultan at Asitane besides no road had remained.
+
+3358. Ji ber vê, wî ji bi jin û zarokên birayê xwe yê kuştî ve berê xwe da dergahê bilind Stenbolê û daxwaza dadmendî û merhemetê kir.
+3358. Because of this, he too with the women and children of his killed brother turned himself to the high doorway Istanbul and made the request of justice and mercy.
+
+3359. Bi tesadufi di wê navê re Ferhad Paşa ji ber îhmalî û terkexemiya wî şerî bi 'Eceman re, ji ser wezîfeya Serdartiyê hatibû rakirin.
+3359. By coincidence during that Ferhad Pasha because of negligence and carelessness of that war with the Ajams, had come to be lifted from upon the duty of Commandership.
+
+3360. Wezîfeya Serdartiyê ji aliyê Osman Paşa ve dihat meşandin.
+3360. The duty of Commandership from the side of Osman Pasha came to be conducted.
+
+3361. Wî, bêsekin Emîr 'Ezîz li ser Fermanrewatiya Cezîrê hilda û da destê Emir Mihemmed.
+3361. He, without stopping lifted Emir Aziz upon the Rulership of Cizre and gave to the hand of Emir Mihemmed.
+
+3362. Dema ku Osman Paşa yê rehmetî li Tebrîzê emrê Xwedê kir û cardin Ferhad Paşa li ser ew meqamê payebilind rûnişt, wekî me berê behs kiribû: Emîr 'Ezîz berê xwe da rê û çû Erzirûmê û ket bin xizmeta Paşa.
+3362. When Osman Pasha the merciful did the command of God at Tabriz and once again Ferhad Pasha sat upon that high-ranking station, as we previously had mentioned: Emir Aziz turned himself to the road and went to Erzurum and fell under the service of the Pasha.
+
+3363. Wî jî bi mercê ku ew misoger dike, dê 30 gundên li Eyaleta Cezîrê yên Êrmeniyan jê veqetîne û rêvebiriya wan têke bin mulkên taybetî yên padişah û salane 60 hezar filorî ya ji waridata wan gundan bide xezineyê, Eyaleta Cezîrê jê re hat dan.
+3363. He too with the condition that he guarantees, he will separate 30 villages of the Armenians at the Province of Cizre from it and put their administration under the special properties of the padishah and yearly give 60 thousand florins that is from the revenues of those villages to the treasury, the Province of Cizre to him came to be given.
+
+3364. Li ser vê, Emîr Mihemmed bi wî halê xwe yê li ser wezîfe hildayî berê xwe da seraya Sultan.
+3364. Upon this, Emir Mihemmed with that condition of his lifted upon duty turned himself to the palace of the Sultan.
+
+3365. Piştî ku li Asîtaneyê li ser vê meselê hevdîtinî û guftûgoyan, li ser işaret û fitneyên Ferhad Paşa, biryar hat dan ku Emîr Mihemmed bişînin wilayeta Bidunê (329 û li wir jê re wezîfeyek bê sipartin û heta mirinê li wir bimîne.
+3365. After that at Asitane upon this issue meetings and conversations, upon the signs and mischiefs of Ferhad Pasha, a decision came to be given that they send Emir Mihemmed to the province of Vidin (329 and there a duty be entrusted to him and until death he remain there.
+
+3366. Vê navê re Emîr Şeref û birayên wî, bi Ferhad Paşa re di sefera Gurcistanê de bûn.
+3366. During this Emir Sheref and his brothers, were with Ferhad Pasha in the expedition of Georgia.
+
+3367. Piştî Serdarê aza û mêrxas ji xezaya xwedênenasan vegeriya, Emîr Şeref û birayên wî bi naçarî çûn navçeya Tinzê û xwe li wir veşartin.
+3367. After the brave and manly Commander returned from the ghaza of the God-not-knowers, Emir Sheref and his brothers with choicelessness went to the district of Tinz and hid themselves there.
+
+3368. Lê çi heye Emîr 'Ezîz, ev navçe jî ji wan re zêde dît.
+3368. But what is there Emir Aziz, saw this district too excessive for them.
+
+3369. Ji Sultan fermana sancaqtiya li vir ji kurê xwe Hacî Beg re bi dest xist.
+3369. From the Sultan he took to hand the command of the sanjak-ship here for his son Haci Beg.
+
+3370. Li milê din, vê carê dema ku Emîr 'Ezîz ket Cezîrê, ji bo ku zarokên Emir Xan 'Ebdal ji holê rake û koka wan biqelîne, hemû hêz û îmkanên xwe seferber kirin.
+3370. On the other side, this time when Emir Aziz fell to Cizre, because that he lift the children of Emir Xan Abdal from the middle (remove them) and fry their root, mobilized all his forces and possibilities.
+
+3371. Lê xewn û xeyalên wî tev berevajî derketin û bi emir
+3371. But his dreams and imaginations entirely went out oppositely and with the command
+
+3372. û teqdira Xwedayê mezin tev ew hewil û tedbîrên wî bi ser neketin.
+3372. and decree of the great God entirely those efforts and measures of his did not succeed.
+
+3373. Wekî li jorê jî derbas bû, Emîr 'Eziz, biraziyê wî Mîr Hawend, kurê wî Hacî Beg û mêr û jin hemû zarokên wî xelas bûn û nesla wî qeliya.
+3373. As above too passed, Emir Aziz, his nephew Mir Hawend, his son Haci Beg and man and woman all his children became finished and his lineage fried.
+
+3374. Bi vî awayî Emîr Şeref, bi dûrbînî û karînên xwe ve hakimiyeta xwe bi ser desthilatê de xurt kir.
+3374. In this way Emir Sheref, with his far-seeing and capabilities strengthened his rulership upon the authority.
+
+3375. Her birayekî xwe jî bi wezîfeya sitandina kele û nahiyên welat ên li çarmedoran wezîfedar kirin.
+3375. Every brother of his too he made duty-bound with the duty of the taking of the castles and sub-districts of the country that are at the four-surroundings.
+
+3376. Li milê din, dema ku deng û behsên vê bûyera han a lê hêvî nebûn gihîştin seraya Sultan, bi lez û bez ji serayê peyamnêrek taybetî şandin ba Emîr Mihemmed û ew anîn Asîtaneyê û li ser daxwaza Îbrahîm Paşayê Wezîr, Eyaleta Cezîrê dan destê wî.
+3376. On the other side, when the sounds and mentions of this very event which hope was not to it reached the palace of the Sultan, with haste and speed from the palace they sent a special messenger to the side of Emir Mihemmed and they brought him to Asitane and upon the request of Ibrahim Pasha the Vizier, they gave the Province of Cizre into his hand.
+
+3377. Ji Mehmed Paşayê Bosneyî yê Mîrêmîranê Diyarbekrê re fermana cîbicîkirina xebatê hat dan, ku mîrên Kurdistanê jî bide rexê xwe û Emîr Mihemmed bibin Cezîrê û bi hev re wilayetê ji destên birayên wî bistînin û teslîmê wî bikin.
+3377. To Mehmed Pasha the Bosnian the Mir of Mirs of Diyarbakir the command of the carrying out of the work came to be given, that he give the mirs of Kurdistan too to his side and they take Emir Mihemmed to Cizre and with each other take the province from the hands of his brothers and make delivery of it to him.
+
+3378. Dema ku Mîrêmîran Mehmed Paşa bi mîrên Kurdistanê re meşiya ser Cezîrê, Emîr Şeref, bê şer û bê qirên wilayet ji birayê xwe Emir Mihemmed re terk kir û bi birayên xwe yên din re berê xwe da rê û çûn nahiya Tinzê û li wir rûniştin.
+3378. When the Mir of Mirs Mehmed Pasha with the mirs of Kurdistan marched upon Cizre, Emir Sheref, without war and without quarrels abandoned the province for his brother Emir Mihemmed and with his other brothers turned himself to the road and went to the sub-district of Tinz and sat there.
+
+3379. Qasekî şûn de mezin û rîspiyên Boxtan ketin navbera wan, Emîr Şeref anîn Cezîrê û herdu bira li hev anîn û biryar hat dan ku; nahiya Şaxê, çend nahiye û gundên din ku nêzîkî nîvê wilayeta Cezîrê ne, ji Emîr Şeref, birayên wî û pismamên wî yên din û mirovên wî re bên dan.
+3379. A while later the great ones and white-beards of Bohtan fell between them, brought Emir Sheref to Cizre and brought both brothers to each other and a decision came to be given that; the sub-district of Shax, several other sub-districts and villages that are near half of the province of Cizre, come to be given to Emir Sheref, his brothers and his other cousins and his people.
+
+3380. Bajar û Kela Cezîrê jî ji Emîr Mihemmed re bên berdan, lê bi mercê ku belêniya dayîna “hediye”yên ji 150 hezar filorî pêk hatî ji heşmetpenah Sultan û wezîr re cîbicî bike.
+3380. The city and Castle of Cizre too come to be let go for Emir Mihemmed, but with the condition that he carry out the promise of the giving of "gift"s consisting of 150 thousand florins to the majesty-refuge Sultan and vizier.
+
+3381. Li ser vi esasî di navbera herdu birayan de aştî hat çêkirin.
+3381. Upon this basis between both brothers peace came to be made.
+
+3382. Herdu mil jî ji vê biryarê razî bûn.
+3382. Both sides too were satisfied from this decision.
+
+3383. Benên biratiya xwe xurt kirin û aştî ket navbera wan.
+3383. They strengthened the ropes of their brotherhood and peace fell between them.
+
+3384. Demek kurt piştî vê lihevkirina han, hat dîtin ku dilê piraniya giregir û serokên Boxtan bi Emîr Şeref re ne û ji wî hez dikin û meyildarê wî ne.
+3384. A short time after this very agreement, it came to be seen that the heart of the majority of the high-ranking ones and leaders of Bohtan are with Emir Sheref and they love him and are inclined to him.
+
+3385. Dema ku Emîr Mihemmed pê hesiya di nav eşîret û qebîleyan de qedir û siyaneta wî kêm e, dê di berhevkirin û dayîna wan 150 hezar filoriyan de zehmetî bikêşe û dê nekare ji binê barê wê belêniya xwe derkeve, ji ber vê Cezîrê ji yên li wir re terk kir û derket û çû.
+3385. When Emir Mihemmed felt of it (became aware) that among the tribes and clans his value and respect is little, he will pull difficulty in the gathering and giving of those 150 thousand florins and will not be able to go out from beneath the load of that promise of his, because of this he abandoned Cizre for the ones there and went out and went.
+
+3386. Wê çaxê, ji aliyê giregir û karbidestên dewletê ve jî bi awakî zelal hat zanîn û ronî bû ku Emîr Şeref layîqê mîrektî û meşandina karûbarên Fermanrewatiya Cezîrê ye.
+3386. That time, from the side of the high-ranking ones and officials of the state too in a clear way it came to be known and became bright that Emir Sheref is worthy of the emirate and the conducting of the tasks-affairs of the Rulership of Cizre.
+
+3387. Li ser vê, ji aliyê rehmetî Sultan Murad Xan ve, ji Emîr Şeref re fermana Fermanrewatiya Cezîrê hat derxistin.
+3387. Upon this, from the side of the merciful Sultan Murad Xan, for Emir Sheref the command of the Rulership of Cizre came to be brought out.
+
+3388. Dema ku Emîr Mihemmed xeberên van bûyeran seh kirin, çû ba Mihemmed Begê Fermanrewayê Hezzoyê û xwe avêt bextê wî û daxwaza alîkariyê jê kir.
+3388. When Emir Mihemmed heard the news of these events, he went to the side of Mihemmed Beg the Ruler of Hezzo and threw himself to his fortune and made the request of help from him.
+
+3389. Ji aliyê xuşka Mihemmed Beg ve di navbera wî û Emîr
+3389. From the side of the sister of Mihemmed Beg between him and Emir
+
+3390. Mihemmed de xizmayetî hebû.
+3390. Mihemmed relative-ness existed.
+
+3391. Ev peywendiya han mecal da Emîr Mihemmed ku mal û zarokên xwe li Hezzoyê li ba Mihemmed Beg bihêle û bi alîkarî û mildaneberiya wî, hêsan kir ku biçe Asîtane û bala karbidest û giregirên dewletê bikêşe ser xwe.
+3391. This very relation gave the opportunity to Emir Mihemmed that he leave his property and children at Hezzo at the side of Mihemmed Beg and with his help and his giving-shoulder-before-it, made it easy that he go to Asitane and pull the attention of the officials and high-ranking ones of the state upon himself.
+
+3392. Bi saya van peywendî û alîkariyan wezîfeya fermana Sancaqtiya Hesenkêfê ji aliyê Sultan ve jê re derket.
+3392. In the shadow of these relations and helps the duty of the command of the Sanjak-ship of Hasankeyf from the side of the Sultan went out for him.
+
+3393. Di dawiyê de Emîr Mihemmed beşdarê fetha Kela Akreyê bû û di bin emir û fermana rikêfa Sultanê berpirsiyarê serkevtinî û serfirazî de -her wext payedar be- ji bo şerê dijminên dîn ên kafirên bêexlaq ên wî milî çû.
+3393. In the end Emir Mihemmed became a participant of the conquest of the Castle of Akre and under the command and order of the stirrup of the Sultan the responsible of success and triumph -every time may he be enduring- for the war of the enemies of religion the immoral infidels of that side went.
+
+3394. Niha, di dema nivîsandina van rûpelên han de, yanî di sala 1005'e koçi (1597ề z) de, di derheqê Fermanrewatiya Cezîrê de, ji aliyê Dîwana Sultan Mihemmed Xan ve fermanek derket.
+3394. Now, in the time of the writing of these very pages, that is in the year 1005 Hijri (1597 AD), regarding the Rulership of Cizre, from the side of the Divan of Sultan Mihemmed Xan a command went out.
+
+3395. Lê çi heye, Emîr Mihemmed, ji tirsa Emîr Şeref, xwediyê wê hêzê nîne ku vegere ciyê xwe, ser kar û barê xwe.
+3395. But what is there, Emir Mihemmed, from the fear of Emir Sheref, is not the possessor of that force that he return to his place, upon his task and affair.
+
+3396. ## Emir Şerefê Kurê Xan 'Ebdal
+3396. ## Emir Sheref the Son of Xan Abdal
+
+3397. Emîr Şeref, ji mîrên hilbijartî û tekmêr ên xanedana mezin a Fermanrewayê Cezîrê yê herî mezin e.
+3397. Emir Sheref, from the chosen mirs and complete-men of the great dynasty of the Ruler of Cizre is the most great.
+
+3398. Çunkî di meydana merdî, mêrxasî û alîkariyê de ji emsal û dijminên xwe yên di vî warî de serdesttir e.
+3398. Because in the square of generosity, bravery and help from his peers and his enemies in this domain he is more dominant.
+
+3399. Di meydana merdan de bi kaşoya mêraniyê gog ajotiye û sebebên rêz û payeyiyê hemû ji xwe re girtiye.
+3399. In the square of men with the stick of manliness he has driven the ball and the reasons of respect and rank all for himself he has taken.
+
+3400. Qehra zendên wî yên bivirî û şûrê wî yê tûj û birekî, tev delîl û îsbatên hêjayetî û serdestiyên mêr û mêrxasiyên wî yên ketina ceng û şeran in.
+3400. The wrath of his ax-like forearms and his sharp and cutting sword, entirely are proofs and evidences of the worthiness and dominations of his men and braveries of the falling into battle and wars.
+
+3401. Wekî şair gotiye:
+3401. As the poet has said:
+
+3402. “Di dema merdîtî, Xatem tama ye, çiloz e, bê mecal
+3402. "In the time of generosity, Hatem is greedy, stingy, without opportunity
+
+3403. Di ceng û şer de, henekan dike bi Rustemê Zal"
+3403. In battle and war, he makes jokes with Rustem of Zal"
+
+3404. A herî rast ew e ku, re'ya û esker ji dadwerî û qenciyên wî razî ne û ji fikir û xebatên wî memnun in.
+3404. The most right one is that, subjects and soldiers are satisfied from his justice and goodness and are content from his thought and works.
+
+3405. Ji bilî vê, nas û xerîb ji serkevtîniyên wî sipasdar û minnetar in û ji kirinên wî yên mirovane dilxweş û şad in.
+3405. Apart from this, known and stranger are thankful and grateful of his successes and are pleasant-hearted and joyful from his humane actions.
+
+3406. Ji ber vê jî ji aliyê giregir û mezinan, kesên di rêzê de, kesên nêzîk û dûr her kesî ve tê hezkirin.
+3406. Because of this too from the side of the high-ranking ones and great ones, the people in the line, near and far people by everyone he is loved.
+
+3407. Hemû ev kesên han her wext ji Xwedê hêvî û lava dikin ku vî mîrê jîr û jêhatî ji wan re biparêze.
+3407. All these very people every time from God hope and pray that he protect this smart and capable mir for them.
+
+3408. Şiir:
+3408. Poem:
+
+3409. "Agirê mezin bi ava gurr û şetan tefandiye
+3409. "The big fire with the water of the roarings and streams he has extinguished
+
+3410. Tirs û lerzî ji sirweya mêraniyê maliştiye
+3410. Fear and trembling from the breeze of manliness he has swept
+
+3411. Ev şiira han di wergera Tirkî de tune.
+3411. This very poem does not exist in the Turkish translation.
+
+3412. Lê di wergera Soranî û Farisiya wê de heye.
+3412. But in the Sorani translation and its Persian it exists.
+
+3413. Min ev ji wergera Soranî girt.-Z. A.
+3413. I took this from the Sorani translation. Z. A.
+
+3414. Çarereşan ji dilê birîn û çavên xwîn bêjîng kiriye
+3414. Black-fated ones from the heart of wounds and eyes of blood he has sifted
+
+3415. Berbizika wî çiyayê berz ê bi rij û jîn e"
+3415. His breast is that high mountain with dignity and life"
+
+3416. Dema ku me behsa rewşa Emîr 'Ezîz kir, hat dîtin ku, Fermanrewatiya Cezîrê piştî van bûyerên ku di navbera wî û birayên wî û Emîr 'Ezîz û Emîr Hawend de derbas bûn, ket nav lepên Emîr Şeref.
+3416. When we made mention of the condition of Emir Aziz, it came to be seen that, the Rulership of Cizre after these events that between him and his brothers and Emir Aziz and Emir Hawend passed, fell inside the paws of Emir Sheref.
+
+3417. Emîr Şeref, kar û barên rêvebiriyê bi awakî herî baş meşandin.
+3417. Emir Sheref, conducted the tasks and affairs of the administration in the most good way.
+
+3418. Berevaniya sînorên xwe kir û ewlekariya welat parast.
+3418. He did the defending of his borders and protected the security of the country.
+
+3419. Di dema wî de xelkê xwe di nav hêminî, parêzgerî û rehetiyê de dît.
+3419. In his time his people saw themselves inside calmness, protection and comfort.
+
+3420. Wekî berê niha me behs kiribû, Mehmed Paşa yê Wezîr, Emîr Mihemmedê birayê Emîr Şeref ji welatê Bosnayê da anîn û wezîfeya Fermanrewatiya Cezîrê da destan.
+3420. As before now we had mentioned, Mehmed Pasha the Vizier, gave to be brought Emir Mihemmed the brother of Emir Sheref from the country of Bosnia and gave the duty of the Rulership of Cizre to hands.
+
+3421. Lê ji destê wî nehat barê erkê vê fermanrewatiya han hilde, ji ber vê, wekî li jorê jî me behs kir, ev wezîfeya han ji aliyê Dîwana Sultan ve carek din ji nû de ji Emîr Şeref re hat dan.
+3421. But from his hand it did not come he lift the load of the duty of this very rulership, because of this, as above too we mentioned, this very duty from the side of the Divan of the Sultan once again anew for Emir Sheref came to be given.
+
+3422. Emîr Şeref, demek bê girê û bê asteng ma.
+3422. Emir Sheref, for a time without knot and without obstacle remained.
+
+3423. Lê qasekî şûn de Emîr Izzeddînê birayê wî li ser desthilatê têkelhevî derxist û sewdaya Fermanrewatiya Cezîrê ket serî.
+3423. But a while later Emir Izzeddin his brother brought out mix-up upon the authority and the passion of the Rulership of Cizre fell to head.
+
+3424. Herroj êrîş dibir ser Cezîrê û derûdora wê û dest bi talan û yaxmeya van deran dikir.
+3424. Every day he took an attack upon Cizre and its surroundings and started to plunder and pillage these places.
+
+3425. Di nav dem û wextekê de boşahiyek zêde ji mirovên rût, serserî, serberedayî û derwêş li derûdora wî berhev bûn.
+3425. Inside a time and a while an excessive abundance from naked, vagabond, aimless and dervish people gathered around him.
+
+3426. Vê rewşa han wisan kir ku Emir Şeref jê bitirse û gelek xofî û xwejêparastinî bike.
+3426. This very condition so did that Emir Sheref fear from him and do much dread and protecting-himself-from-him.
+
+3427. Wekî dibêjin: "Çara diranê êşayî her kêşan e❞ êşa birayê wî bi derman çareserkirinê derbas bûbû.
+3427. As they say: "The solution of the ached tooth is only pulling" the ache of his brother had passed solving with medicine.
+
+3428. Ji ber vê li ber geriya ku davikekê li ber vede û ji bo vê jî ket nav hîle û tedbîran.
+3428. Because of this he searched before it that he pitch a trap before him and for this too he fell inside tricks and measures.
+
+3429. Di dawiyê de bi hinek bawermendên xwe şêwirî û bi hev re biryar dan ku vê bi riya wan re bike.
+3429. In the end he consulted with some of his believing ones (confidants) and with each other gave a decision that he do this by their road.
+
+3430. Li ser vê, ji wan çend kes di mal de dan veşartin û piştre bangî Izzeddîn kir.
+3430. Upon this, from them he gave several people to be hidden in the house and afterwards called Izzeddin.
+
+3431. Bi vî awayî li gor plana hatî danîn, Emîr Izzeddîn hê piyên xwe neavêtibûn vî milê şîpana dîwanê, mirovên Emîr Şeref jiyan pê dan jibîrkirin, bi derbên xenceran mejiyê serê wî ji xeyalên pûç, vala kirin.
+3431. In this way according to the plan come to be put, Emir Izzeddin still had not thrown his feet to this side of the threshold of the divan, the people of Emir Sheref gave life to be forgotten to him, with the blows of daggers emptied the brain of his head from empty imaginations.
+
+3432. Êdî bi vî awayî ji wê rojê şûn de Emîr Şeref bû fermanrewayê serbixwe yê Cezîrê.
+3432. Anymore in this way from that day later Emir Sheref became the independent ruler of Cizre.
+
+3433. Bi hemû taqet û mecalên xwe dest pê kir kar û barên Hukumetê bimeşîne û pêwistiyên xelkê jî bi awakî dadmendî û însaf cîbicî bike.
+3433. With all his strength and opportunities he started to conduct the tasks and affairs of the Government and carry out the necessities of the people too in a way of justice and fairness.
+
+3434. Berhemên avahî û çirîskên geş û gurriya pêşveçûnên vê wilayeta han, di dema wî de hatin dîtin.
+3434. The products of building and bright sparks and roaring of advancements of this very province, in his time came to be seen.
+
+3435. Ez ji Xwedê hêvîdar im her wext serkevtî be.
+3435. I from God am hoping every time he be successful.
+
+3436. ## ŞAXE DUDUYAN
+3436. ## THE SECOND BRANCH
+
+3437. ## DI DERHEQE BEGEN GURGILE DE YE
+3437. ## IT IS REGARDING THE BEGS OF GURGIL
+
+3438. 331. Me di pêş de got ku, zarokên Suleymanê kurê Xalid, wilayeta Cezîrê navbera xwe de parve kirin û nahiya Gurgilê para Mîr Hacî Bedir ket.
+3438. 331. We in the front said that, the children of Suleyman the son of Xalid, partitioned the province of Cizre among themselves and the sub-district of Gurgil fell to the share of Mir Haci Bedir.
+
+3439. Hemû Mîrên Gurgilê ji nevî û nesla vî mîrê han in.
+3439. All the Mirs of Gurgil are from the grandchild and lineage of this very mir.
+
+3440. Navê Gurgil, berî Curdqîl bûye, piştre di nav zeman de ji ber nav xelkê de zêde bikaranîna wê, guheriye û şiklê Gurgil bi ser de hatiye.
+3440. The name Gurgil, previously has been Curdqil, afterwards among time because of its excessive usage among the people, it has changed and the shape of Gurgil has come upon it.
+
+3441. Çiyayê Cûdî, ku gemiya Nuh Pêxember-rehma Xwedê li wî û li pêxemberê me be- li ser sekiniye, di vê navçeya han de ne.
+3441. Mount Cudi, that the ship of Prophet Nuh may the mercy of God be upon him and upon our prophet stopped upon it, is in this very district.
+
+3442. Li nahiya Gurgilê nêzîkî sed gundên Xiristiyan û Musulmannişîn hene.
+3442. At the sub-district of Gurgil nearly a hundred Christian and Muslim-seated villages exist.
+
+3443. Li wir, gelek zozan û havîngehên têrçêre, xweş, pît û bereket hene.
+3443. There, many full-pasture, pleasant, fertile and blessed summer-pastures and summer-resorts exist.
+
+3444. Gelek eşîret û qebîlên Kurd ên koçer ji bo xwedikirina heywanên xwe, hemû wextê di navbera van ciyan de di çûn û hatinê de ne.
+3444. Many nomadic tribes and clans of Kurds for the taking care of their animals, all the time between these places are in going and coming.
+
+3445. Piştî ku Hacî Bedir, li vê wilayetê yek ji wan neviyên wî yê navê wî Hacî Mihemmedê kurê Şemseddîn ciyê wî girt û demek karbidestiya welat kir.
+3445. After that Haci Bedir, at this province one from those grandchildren of his his name Haci Mihemmed the son of Shemseddin took his place and for a time did the officialdom of the country.
+
+3446. Dema wî ji ber bi melbenda nemanê ve mala xwe bar kir, Mîr Şemseddînê kurê wî ciyê wî girt.
+3446. When he loaded his house towards the region of non-existence, Mir Shemseddin his son took his place.
+
+3447. Piştre, wî vê valatiya han tijî kir û piştî qasek rêvebirina kar û barên welat, Xwedayê mezin behra nan û ava wî li ser rûyê vê dinê nehişt û sê zarokên kur ên navên wan Emîr Bedir, Emîr Haci Mihemmed û Emîr Seyid Ehmed li pey xwe hiştin û çû rehma Xwedê.
+3447. Afterwards, he filled this very emptiness and after a while of the administration of the tasks and affairs of the country, the great God did not leave his share of bread and water upon the face of this world and he left three boy children whose names are Emir Bedir, Emir Haci Mihemmed and Emir Seyid Ehmed behind himself and went to the mercy of God.
+
+3448. Hersê biran di pey hev de desthilata Gurgilê girtin destê xwe.
+3448. All three brothers behind each other (successively) took the authority of Gurgil into their hand.
+
+3449. Lê nivîskarê van rêzên han, ji bo ku di derheqê serpêhatiyên wan herdu emîrên destpêkî de xwediyê zanyariyekê nîn e, ew mecal di destê wî de tune ku li vir tiştekî li ser rewşa wan bêje.
+3449. But the writer of these very lines, because regarding the adventures of those both starting emirs is not the possessor of a knowledge, that opportunity does not exist in his hand that here he say a thing upon their condition.
+
+3450. ## Emir Seyid Ehmedê Kurê Mîr Şemsedîn
+3450. ## Emir Seyid Ehmed the Son of Mir Shemsedin
+
+3451. Ev emîrê han, bê hed û bê hesab mêrxas, bêtirs û bi qedir û qîmet bû.
+3451. This very emir, without limit and without calculation was brave, without-fear and with value and price.
+
+3452. Di meydana şer û rojên giran de destsivik, çalak û mahir û xwediyê rewşeke taybetî bû.
+3452. In the square of war and heavy days he was quick-handed, active and skilled and the possessor of a special condition.
+
+3453. Vêca, dema ku mîr û fermanrewayên Kurdistanê xwe avêtin Seraya Osmanî û serên xwe li ber barê Sultan Selîm Xan tewandin, Seyid Ehmed, ji ber ku di sohbet û axiftinên xwe de xweşbêj û xwedî gotinên xweş bû, di meclîsên taybetî de bû yek ji wan kesê herî nêzîk ê hogirê Sultan Selim.
+3453. Then, when the mirs and rulers of Kurdistan threw themselves to the Ottoman Palace and bent their heads before the load of Sultan Selim Xan, Seyid Ehmed, because in his conversations and speaking he was sweet-speaking and the possessor of pleasant words, in the special councils became one from those most near person of the associate of Sultan Selim.
+
+3454. Piştî mirina Sultan Selim, di dema Sultan Suleyman Xan de jî rewşa wî bi vî awayî dewam kir.
+3454. After the death of Sultan Selim, in the time of Sultan Suleyman Xan too his condition in this way continued.
+
+3455. Karekter û mîzacê wî, ew nêzî-
+3455. His character and temperament, him near-
+
+3456. ki Sultanan dikir û bawermendî û dostiya wan qazanc dikir.
+3456. to the Sultans made and gained their belief and friendship.
+
+3457. Ev rewşa wî dibû wesîle, ku hinek caran ji bilî wilayeta Gurgilê ya ji bab û bapîrên wî jê re mîrate mabûn, wilayetên Mûsil û Sencarê jî jê re bên dan.
+3457. This condition of his became a means, that some times apart from the province of Gurgil that from his father and grandfathers to him had remained as inheritance, the provinces of Mosul and Sinjar too come to be given to him.
+
+3458. Tê gotin ku, wextê Sultan Suleyman Xan ji diyarê aşîtî Bexdayê vedigere, Emîr Seyîd Ehmed ji mirovên xwe re dibêje, wî têkin nav tabûtekê û bibin daynin ser riya vegera Sultan Suleyman Xan.
+3458. It is said that, the time Sultan Suleyman Xan returns from the land of peace Baghdad, Emir Seyid Ehmed says to his people, put him inside a coffin and take put upon the road of the return of Sultan Suleyman Xan.
+
+3459. Mirovên wî jî eyni gotina wî dikin.
+3459. His people too do the exact word of his.
+
+3460. Dema ku Sultan tabûtê dibîne û dipirse: "Gelo ew darbest a kê ye?"
+3460. When the Sultan sees the coffin and asks: "I wonder that coffin is whose?"
+
+3461. Jê re dibêjin; ew darbesta Emîr Seyîd Ehmed e û mebesta wî ji vê ew e ku bide xuyakirin: "Sancaqa Mûsilê ji min re wekî ruhê min ê şêrîn bû û madem Sultan ew daye hinekên din, ev tê wê me'neyê ku ruh di laşê min de nemaye û ez mirime."
+3461. To him they say; that is the coffin of Emir Seyid Ehmed and his purpose from this is that he give to show: "The sanjak of Mosul for me was like my sweet soul and since the Sultan has given it to some others, this comes to that meaning that the soul in my body has not remained and I have died."
+
+3462. Ev helwestê han gelek li xweşa Sultan diçe û gelek kêfa wî jê re tê, ji ber wê, fermanê dide ji bilî Fermanrewatiya Gurgilê, wilayeta Mûsilê jî bide wî û di vî warî de beratekê jî belav dike.
+3462. This very stance goes much to the pleasantness of the Sultan and much his joy comes for it, because of it, he gives the command apart from the Rulership of Gurgil, to give the province of Mosul too to him and in this domain he distributes a deed too.
+
+3463. Li ser vê ruhê Seyid Ehmed jî paş de vedigere û jê re jiyan û temenek dirêj dibexşîne.
+3463. Upon this the soul of Seyid Ehmed too returns back and to him grants life and a long age.
+
+3464. Di muddetê vê jiyana xwe ya dirêj de, hemû Sultan jê memnun dimînin, rêz û eleqeyeke baş nîşanî wî didin.
+3464. In the duration of this long life of his, all Sultans remain satisfied from him, show a good respect and interest to him.
+
+3465. Kela Gurgilê, yek ji wan keleyên herî asê û saxlem a Kurdistanê ye.
+3465. The Castle of Gurgil, is one from those most steep and solid castles of Kurdistan.
+
+3466. Tê gotin ku, dema Suleyman Begê Bîjenoxlu, Kela 'Imadiyyeyê abluqe kir û duçarê zivistana xedar û giran bû, ji bo derbazkirina zivistana xwe hat germiyana Bişêriyê, di vê navê re Izzeddînşêrê Fermanrewayê Hekkariyê xwe di Kela Bayê ya girêdayî wilayeta xwe de bicî û asê kir û dest bi xwe amadekirina berevaniya xwe kir.
+3466. It is said that, when Suleyman Beg the Biyenoxlu, blockaded the Castle of Amadiya and was subjected to the harsh and heavy winter, for the passing of his winter he came to the winter-quarters of Bisheri, during this Izzeddinsher the Ruler of Hakkari placed and made himself steep (fortified himself) in the Castle of Bay tied to his province and started to prepare himself for his defending.
+
+3467. Ji ber ku wê çaxê hemû kele û bajarên wî ketibûn destê mirovên Aqqoyuniyan.
+3467. Because that time all his castles and cities had fallen to the hand of the people of the Aqqoyunlus.
+
+3468. Ew ji Suleyman Beg re cewabê dişîne û jê re wiha dibêje: "Heta keleyên Gurgilê, 'Imadiyyeyê, Bayê û Suyê yên girêdayî Bedlisê di destê me Kurdan de bin, tu tirsek me ji we tune.
+3468. He sends the answer to Suleyman Beg and to him says like this: "Until the castles of Gurgil, Amadiya, Bay and Su tied to Bedlis be in the hand of us Kurds, no fear of ours exists from you.
+
+3469. Qîmet û bihayê xêvet û otaxên we, li ber çavên me ferqa wan ji pîsîtî, rêxa ga û gamêşan pê ve ne tişteke.”
+3469. The value and price of your tents and pavilions, before our eyes their difference from dirtiness, the dung of ox and buffaloes besides is not a thing."
+
+3470. Bi kurtî, Emîr Seyid Ehmed, desthilata wilayetên Gurgil û Mûsilê demek dirêj bi serbixwetî meşand.
+3470. In short, Emir Seyid Ehmed, conducted the authority of the provinces of Gurgil and Mosul for a long time with independence.
+
+3471. Piştre mirinê pêsîra wî girt û emrê Xwedê bicî anî.
+3471. Afterwards death took his collar and he carried out the command of God.
+
+3472. Biraziyê wî li ser mîrata wilayeta wî li ciyê wî rûnişt.
+3472. His nephew sat at his place upon the inheritance of his province.
+
+3473. ## Emîr Şemseddînê kurê Emîr Bedir
+3473. ## Emir Shemseddin the son of Emir Bedir
+
+3474. Piştî mirina mamê xwe Emîr Seyîd Ehmed, li ser textê Mîrektiya Gurgilê rûnişt.
+3474. After the death of his uncle Emir Seyid Ehmed, he sat upon the throne of the Emirate of Gurgil.
+
+3475. Ji xeynî wî sê birayên wî yên din jî hebûn: Emîr Îbrahîm, Emîr Omer û Emîr Hacî Mihemmed.
+3475. Besides him three other brothers of his too existed: Emir Ibrahim, Emir Omer and Emir Haci Mihemmed.
+
+3476. Piştî ku Emîr Şemseddin qasek fermanrewatî kir, çû rehma Xwedê û birayê wî Emîr Îbrahîm li ciyê wî rûnişt.
+3476. After that Emir Shemseddin did a while of rulership, he went to the mercy of God and his brother Emir Ibrahim sat at his place.
+
+3477. ## Emir Ibrahîmê Kurê Mîr Bedir
+3477. ## Emir Ibrahim the Son of Mir Bedir
+
+3478. Piştî birayê xwe Emir Şemseddin, desthilata Gurgilê girt destê xwe.
+3478. After his brother Emir Shemseddin, he took the authority of Gurgil into his hand.
+
+3479. Dema ku di navbera Bedir Begê Fermanrewayê Cezîrê û birayê wî Nasir Beg de -wekî çawan dema me behsa rewşa Bedir Beg kir, derbas bû- li ser hukumeta Cezîrê dubendî derketin, ji ber dostiya nêzîk a Emîr Îbrahîm bi Emir Nasir re, ji bo ku ji Mîrêmîranê Wanê Ferhat Paşa teyîdnamekê bistîne û biçe Seraya Sultan Suleyman Xan ket rê û çû Wanê.
+3479. When between Bedir Beg the Ruler of Cizre and his brother Nasir Beg -like how when we made mention of the condition of Bedir Beg, it passed- upon the government of Cizre dualities (factions) went out, because of the near friendship of Emir Ibrahim with Emir Nasir, because that he take a confirmation-letter from the Mir of Mirs of Van Ferhat Pasha and go to the Palace of Sultan Suleyman Xan he fell on the road and went to Van.
+
+3480. Eynî di wê navê re bi tesadufi Şah Tehmasb jî bi leşkerekî gelek giran ê hejmara wî ji dilopên baranê û belgên daran zêdetir êrîşê navçeya Wanê kir.
+3480. Exactly during that by coincidence Shah Tehmasb too with a very heavy army whose number was excessive than the drops of rain and the leaves of trees did an attack on the district of Van.
+
+3481. Emîr Îbrahim, li gor gotina: "Jêhatîbûn serî xelaskirine" hereket kir, baz da û ket hewildana rizgarkirina ruhê xwe û xwest ku bi riya Bergêriyê re xwe bigihîne Bedlîsê.
+3481. Emir Ibrahim, according to the saying: "Capableness is the rescuing of head" moved, ran away and fell into the effort of the rescuing of his soul and wanted that by the road of Bergeri reach himself to Bedlis.
+
+3482. Lê di navbera Bergêrî û Ercîşê de rastî grûbek Qizilbaşan hat.
+3482. But between Bergeri and Ercis he encountered a group of Qizilbash.
+
+3483. Di navbera Emir Ibrahim û vê gruba Qizilbaşan ên di pey wî de bûn û dixwestin wî bigrin, şerekî giran qewimî.
+3483. Between Emir Ibrahim and this group of Qizilbash who were behind him and wanted to take him, a heavy war happened.
+
+3484. Di vî şerî de, Emîr mêr, mêrxasî û desthildaneke nedîtî raxist ber çavan.
+3484. In this war, the Emir laid before eyes unseen man, bravery and hand-lifting (action).
+
+3485. Çunkî xwe ji nav destê wan rizgar kir, bi ser ket û xwe gihande nav Kela Ercîşê.
+3485. Because he rescued himself from among their hand, succeeded and reached himself inside the Castle of Ercis.
+
+3486. Li ser vê, Şah Tehmasb bi xwe di pey wî de hat û derûdora Kela Ercîşê rapêça.
+3486. Upon this, Shah Tehmasb by himself came behind him and wrapped the surroundings of the Castle of Ercis.
+
+3487. Piştî ku vê abluqeya han nêzîkî çar mehan kêşand û yên di bin abluqayê de ketin nav rewşek gelek şeperzetî û tengiyek mezin, biryar hat dan ku bi mercê Şah Tehmasb wan nekûje û xwîna wan ji wan re bibexişîne, dê ew eman ji Şah bixwazin û bi rizayê dilê xwe teslîmê Şah bibin.
+3487. After that this very blockade pulled (lasted) nearly four months and those under the blockade fell inside a condition of very scatteredness and a big narrowness, a decision came to be given that with the condition Shah Tehmasb not kill them and grant their blood to them, they will want quarter from the Shah and with the satisfaction of their heart become delivered (surrender) to the Shah.
+
+3488. Lê kêfa Emîr Îbrahîm û mirovên wî yên ji Boxtan ji vê aştiyê re nehat û ji vê nerazî bûn û dest ji berevaniya xwe bernedan û domandin.
+3488. But the joy of Emir Ibrahim and his people from Bohtan for this peace did not come and they were unsatisfied from this and did not let go of hand from their defending and continued.
+
+3489. Di dawiyê de rûniştiyên keleyê bi dizî bi mirovên Şah Tehmasb ên Qizilbaş re li hev kirin, şev bi nîvê şevê deriyê keleyê ji wan re vekirin, qasê 500-600 çekdarên Şah Tehmasb ên Qizilbaş ketin nav keleyê.
+3489. In the end the sitters (residents) of the castle secretly with the people of Shah Tehmasb the Qizilbash agreed with each other, night with half of the night they opened the door of the castle for them, the amount of 500-600 armed ones of Shah Tehmasb the Qizilbash fell inside the castle.
+
+3490. Bi berê beyana sibê ew bi vê hêza hundur re bûn yek û bi tiving, tîr, rim û şûran êrîşê Emîr Îbrahîm û Boxtiyên pê re kirin.
+3490. With before the announcement of the morning they became one with this force of inside and with gun, arrow, spear and swords attacked Emir Ibrahim and the Bohtis with him.
+
+3491. Emîr Îbrahîm, di vî şerê xwînavî de hat kuştin.
+3491. Emir Ibrahim, in this bloody war came to be killed.
+
+3492. Biraziyê wî jî birîndar bû û bi 50-60 mirovên xwe yên Boxtî ve hat esîrkirin.
+3492. His nephew too became wounded and with 50-60 of his Bohti people came to be taken captive.
+
+3493. Dema ku ew birin huzura Şah Tehmasb, wî bêsekin bi zindî fermana gorîna serê wan da û wan bi vê riya êş û jan de giyanê xwe ya emanet teslîmê Xwedayê xwe kirin.
+3493. When they took them to the presence of Shah Tehmasb, he without stopping lively (alive) gave the command of the changing of their head (execution) and they in this road of ache and pain delivered their entrusted soul to their God.
+
+3494. ## Emir Ehmedê Kurê Emîr Îbrahîm
+3494. ## Emir Ehmed the Son of Emir Ibrahim
+
+3495. Ev emir, piştî kuştina babê xwe li ser fermana pîroz a Sultan Suleyman Xan, li ser textê Mîrektiya Gurgilê rûnişt û 30 salan jî mîrektî kir.
+3495. This emir, after the killing of his father upon the sacred command of Sultan Suleyman Xan, sat upon the throne of the Emirate of Gurgil and for 30 years too did emirate.
+
+3496. Kurekî
+3496. A son
+
+3497. Di wergera Tirki de dibêje: "...yekîneya ku herestiya keleyê dikir...", di wergera Soranî de dibêje: "...rûniştiyên keleyê yên qedim..." û di Farisiya wê, yanî orijinala wê de jî dibêje: "...xelkê keleye...". -Z. A.
+3497. In the Turkish translation it says: "...the unit that did the guard-ship of the castle...", in the Sorani translation it says: "...the ancient sitters (residents) of the castle..." and in its Persian, that is in its original too it says: "...the people of the castle...". Z. A.
+
+3498. wî yê navê wî Mîr Mihemmed hebû.
+3498. of his his name Mir Mihemmed existed.
+
+3499. Dema ku ew mezin bû û gihîşt salên xwe yên kemilînê, dest pê kir li dijî babê xwe serî hilda.
+3499. When he became big and reached his years of maturation, he started against his father lifted head.
+
+3500. Çunki mirovekî gelek şerrût, netebitî û nehewiyayî bû û ri'ayetê heq û huquqên babîtî nedikir.
+3500. Because he was a very fight-naked (quarrelsome), unsettled and unsheltering person and did not do observance of the rights and laws of fatherhood.
+
+3501. Babê wî nav û navan re û di dema serhildana Emîr 'Ezîz de ku zarokên Xan 'Ebdal bi awakî zêde diparastin, meyla wî li ser parastina Emîr 'Ezîz bû.
+3501. His father in name and names and in the time of the uprising of Emir Aziz when they excessively protected the children of Xan Abdal, his inclination was upon the protecting of Emir Aziz.
+
+3502. Emîr 'Ezîz jî ji aliyê xwe mil dan ber wî û wî han da ku babê xwe ji ser textê Mîrektiya Gurgilê bide alîkî û ew li ser text rûne.
+3502. Emir Aziz too from his side gave shoulder before him and encouraged him that he give his father from upon the throne of the Emirate of Gurgil aside and he sit upon the throne.
+
+3503. Li ser vê, Emîr Ehmed, naçar ma rewşa xwe pêşkêşî serderê Sultan Murad Xan bike.
+3503. Upon this, Emir Ehmed, remained choiceless that he present his condition to the threshold of Sultan Murad Xan.
+
+3504. Lê di rê de koça dawiyê kir û çû rehma Xwedê.
+3504. But in the road he did the final migration and went to the mercy of God.
+
+3505. ## Emir Mihemmedê Kurê Emîr Ehmed
+3505. ## Emir Mihemmed the Son of Emir Ehmed
+
+3506. Piştî babê xwe ji ser text hilda, demekê wezîfeya rêvebiriya Mîrektiya Gurgilê kir.
+3506. After he lifted his father from upon the throne, for a time he did the duty of the administration of the Emirate of Gurgil.
+
+3507. Lê ji qabiliyet û xususiyetên meşandina kar û barên rêvebiriya welat dûr bû.
+3507. But he was far from the capability and characteristics of the conducting of the tasks and affairs of the administration of the country.
+
+3508. Di vê muddeta han de bi alîkarî û piştgiriya Emîr 'Ezîz ev wezîfe meşand.
+3508. In this very duration with the help and support of Emir Aziz he conducted this duty.
+
+3509. Ji ber vê yekê di dawiyê de ji aliyê kurmamên xwe, Emîr Omer, Emîr Mihemmed û Emîr Mehmûd ve hat kuştin.
+3509. Because of this one in the end from the side of his paternal cousins, Emir Omer, Emir Mihemmed and Emir Mehmud he came to be killed.
+
+3510. ## Emîr Ehmedê Kurê Emîr Mihemmed
+3510. ## Emir Ehmed the Son of Emir Mihemmed
+
+3511. Dema babê wî hat kuştin, ew gelek zarok bû û bi kêrî meşandina desthilatê nedihat.
+3511. When his father came to be killed, he was very child and to the usefulness of the conducting of the authority did not come.
+
+3512. Lê niha ku tarîxa koçî roja sisiyan a meha Remezana sala 1005'e koçî (1597'ê z) ye, bi saya alîkariya Emîr Şerefê kurê Xan 'Ebdal, kar û barên hukumeta Gurgilê bi awakî gelek baş dimeşîne.
+3512. But now that the Hijri date is the third day of the month of Ramadan of the year 1005 Hijri (1597 AD), in the shadow of the help of Emir Sheref the son of Xan Abdal, he conducts the tasks and affairs of the government of Gurgil in a very good way.
+
+3513. ## ŞAXÊ SISIYAN
+3513. ## THE THIRD BRANCH
+
+3514. ## DI DERHEQE BEGEN FINIKÊ DE NE
+3514. ## IT IS REGARDING THE BEGS OF FINIK
+
+3515. Nahiya Finikê aîdê van herçar eşîretên Kurdan e: Becnewî, Şeqaqî, Mîran û Goyi.
+3515. The sub-district of Finik belongs to these all four tribes of Kurds: Becnewi, Sheqaqi, Miran and Goyi.
+
+3516. Begên Finikê ji nesla Emîr 'Ebdalê kurê Suleymanê kurê Xalid in.
+3516. The Begs of Finik are from the lineage of Emir Abdal the son of Suleyman the son of Xalid.
+
+3517. Wekî me di pêşî de jî behs kir, dema ku Suleymanê kurê Xalid li wilayeta Cezîrê koça dawiyê kir, kurên wî welatên babê xwe di navbera xwe de parve kirin.
+3517. As we in the front too mentioned, when Suleyman the son of Xalid at the province of Cizre did the final migration, his sons partitioned the countries of their father among themselves.
+
+3518. Nahiya Finikê behra Emîr 'Ebdal ket.
+3518. The sub-district of Finik fell the share to Emir Abdal.
+
+3519. Wî, demek dirêj kar û barên vê nahiya han meşand.
+3519. He, for a long time conducted the tasks and affairs of this very sub-district.
+
+3520. Piştî ku mir, zarok, nevî û nevîçirkên wî desthilat girtin destê xwe.
+3520. After he died, his children, grandchildren and great-grandchildren took the authority into their hand.
+
+3521. Piştre Tirkmenên Aqqoyunî ev wilayeta han îstîla kirin.
+3521. Afterwards the Aqqoyunlu Turkmens occupied this very province.
+
+3522. Ji wê rojê pê de têkelhevi, alozi, bêser û berî hemû navçeyê da ber xwe û nêzîkî van sed salên di bin desthilata Aqqoyuniyan de, ev welatê han di nav nalîn û axînê de ma.
+3522. From that day forward mix-up, chaos, without-head and front (disorder) gave all the district before itself and nearly these hundred years under the authority of the Aqqoyunlus, this very country remained inside moaning and sighing.
+
+3523. Piştî ku desthilata van biyaniyan li ser welat hat rakirin û welat ket destê warisên xwe yên eslî, êdî ji wê rojê şûn de kesekî destî xwe dirêjê wan nekir û bi wan re şer û qirênan nekir.
+3523. After that the authority of these strangers upon the country came to be lifted and the country fell to the hand of its original heirs, anymore from that day later a person did not stretch his hand to them and did not do war and quarrels with them.
+
+3524. Tenê carekê Şah 'Elî Begê Fermanrewayê Cezîrê dest danî ser nahiya Finikê û desthilata li vir bi zori da destê birayê xwe Mîr Mihemmed.
+3524. Only once Shah Ali Beg the Ruler of Cizre put hand upon the sub-district of Finik and by force gave the authority here to the hand of his brother Mir Mihemmed.
+
+3525. Lê cardin Fermanrewayên Cezîrê yên piştî wî, heqaniyet teslîmê heqî kirin, nahiya Finikê dan destê xwediyên wê yên berê.
+3525. But once again the Rulers of Cizre after him, delivered rightfulness to the rightful, gave the sub-district of Finik to the hand of its previous owners.
+
+3526. Niha ku tarîxa 1005'e koçî (1597'ê z) ye, li gor usûla berê desthilata xwe dimeşînin.
+3526. Now that the date is 1005 Hijri (1597 AD), according to the previous method they conduct their authority.
+
+3527. ## BEŞA PÊNCAN
+3527. ## THE FIFTH SECTION
+
+3528. ## DI DERHEQE FERMANREWAYÊN HISNKEYFÊ DE NE KU BI NAVE MELIKAN BI NAV Û DENG IN
+3528. ## IT IS REGARDING THE RULERS OF HASANKEYF WHO WITH THE NAME MELIKS ARE WITH NAME AND SOUND
+
+3529. Şi'ir:
+3529. Poem:
+
+3530. "Afiranderê wê xwestiye di her demekê de
+3530. "Its creator has wanted in every time
+
+3531. Di her demekê de bi terzeke din bigere zeman
+3531. In every time in another style time wander
+
+3532. Dengê yên berî kêm û nizm bike
+3532. Make the sound of the previous ones few and low
+
+3533. Û bilind bike dengê yên piştre tên"
+3533. And make high the sound of those coming later"
+
+3534. Ji rîwayetên kesên xeberan neqil dikin û xwediyê berheman tê zanîn ku, dema di sala 662'yê koçî (1264'ê z) de, di Misrê û Şamê de dawî bi desthilata Al-i Eyyubî hat û di wan melbendan de rewşek wan a berbiçav a ku xwe li ser piyan bigrin nema, qelsî û jariyê xwe xolê nav desthilata wan kir, zarokekî ji paşvemayê vê xanedana han a birêz û biqedir demek bi nehênî xwe li bajarê Hemayê veşart; piştre berê xwe da rê û ber bi aliyê Mêrdînê ve çû.
+3534. From the narratives of the people who transfer news and the possessors of products it comes to be known that, when in the year 662 Hijri (1264 AD), in Egypt and Damascus an end came to the authority of the House of Ayyubi and in those regions an obvious condition of theirs that they hold themselves upon feet did not remain, weakness and feebleness slid itself inside their authority, a child from the remained-back of this very dynasty with respect and value for a time secretly hid himself at the city of Hama; afterwards turned himself to the road and went towards the side of Mardin.
+
+3535. Fermanrewayê Mêrdînê jî ew girt nav fermander û mirovên xwe ên giregir û nêzîkên xwe.
+3535. The Ruler of Mardin too took him among his commanders and his high-ranking people and his near ones.
+
+3536. Ew hukumdarê merd û qencîxwaz bi vê tenê jî nema û wezîfeya berpirsiyariya Kela Sawurê jî da destê wî.
+3536. That generous and good-seeking ruler with this only too did not remain and gave the duty of the responsibility of the Castle of Savur too into his hand.
+
+3537. Lê, ji bo ku bêhna vî xortî yê ji binemala Eyyubî teng dibû, di wê keleyê de demek dirêj nema.
+3537. But, because the breath of this youth from the household of Ayyubi became narrow (he was bored), in that castle for a long time he did not remain.
+
+3538. Çû li aliyê Re's el-Qulê ku niha bi navê Hesenkêf bi nav û deng e û av û hewa wir gelek lê hat û zêde jî kêfa wî jê ra hat.
+3538. He went to the side of Ra's al-Qul that now with the name Hasankeyf is with name and sound and the water and air there much came to him (suited him) and excessive too his joy came for it.
+
+3539. Piştre zewicî, xelkê wir nas kir, hînê wan bû, xelkê jî ew nas kirin û hînê wî bûn û di navbera wan de peywendiyên xweşî û germiyê dest pê
+3539. Afterwards he married, recognized the people there, became used to them, the people too recognized him and became used to him and between them the relations of pleasantness and warmth started
+
+3540. kirin.
+3540. started.
+
+3541. Piştre ji xelkê rûniştiyên wan deveran civakek mezin li derûdora wî berhev bûn.
+3541. Afterwards from the people of the residents of those places a big society gathered around him.
+
+3542. Di dawiyê de wisan lê hat, ji dewlemendan bigir heta feqîran, ji biçûkan bigir heta kal û pîran, herkesê di warê pêkanîna hemû karan de serî li ber wî tewandin û îta'eta wî kirin.
+3542. In the end it came to be so, take from the rich until the poor, take from the small ones until the old men and old women, everyone bowed their head before him in the domain of the carrying out of all tasks and did his obedience.
+
+3543. Piştre dem hat û kemili, ev bi rizamendî û bi daxwaza dilê xwe ji bo fermanrewatiya xwe helbijartin.
+3543. Afterwards time came and matured, they chose him for their rulership with satisfaction and with the request of their heart.
+
+3544. Piştre jî bi hev re ew keleya li wir restore û nû kirin.
+3544. Afterwards too with each other they restored and renewed that castle there.
+
+3545. Di wê navê re, bi tesadufi desthilata Sultanê Mêrdînê ber bi jarî û sistiyê ve diçû.
+3545. During that, by coincidence the authority of the Sultan of Mardin went towards feebleness and weakness.
+
+3546. Ji ber vê yekê, Sultanê Mêrdînê ji restore û nûkirina keleyê ket tirsê û ji dizdarê keleyê re xeber sand û ew bangî dîwana xwe kir.
+3546. Because of this one, the Sultan of Mardin fell into fear from the restoring and renewing of the castle and sent news to the castellan of the castle and called him to his divan.
+
+3547. Lê dizdarê keleyê çûna balê red kir û li ser neçûna xwe pê da erdê.
+3547. But the castellan of the castle rejected going to his side and pressed his foot upon the ground upon his not-going.
+
+3548. Vê rewşa han wisan kir ku Sultanê Mêrdînê leşker girê bide û ji bo armanca girtina Kela Hesenkêfê ber bi navçeya Re's el-Qul bakeve rê.
+3548. This very condition so did that the Sultan of Mardin bind army and for the purpose of the taking of the Castle of Hasankeyf fall on the road towards the district of Ra's al-Qul.
+
+3549. Dizdarê vê kela asê, wekî şêran daket meydana şer û wekî pilingên pençexwîn li dijê wî sekinî û di esnayê vê berxwedanî û berevaniyê de mîsalên nedîtî yên mêranî û mêrxasiyê nîşan da.
+3549. The castellan of this steep castle, like lions came down to the square of war and like bloody-clawed tigers stood against him and during this resistance and defending showed unseen examples of manliness and bravery.
+
+3550. Di dawiyê de Fermanrewayê Mêrdînê, naçar ma destvala paş de vegere.
+3550. In the end the Ruler of Mardin, remained choiceless that empty-handed he return back.
+
+3551. Ji wê rojê şûn de, careke din hêviyên rojên ronî yên bextê Al-i Eyyübî geş bûn û alaya roja bexteweriya wan li ser derûdora Hesenkêfê û li hemû navçeyên wê hat daçikandin.
+3551. From that day later, once again the hopes of bright days of the fortune of the House of Ayyubi became bright and the flag of the day of their happiness came to be planted upon the surroundings of Hasankeyf and at all its districts.
+
+3552. Bi vî awayî di demek gelek kurt de nifuza wan belavê seranserê welat bû û otorîteya wan cî girt û xurt bû.
+3552. In this way in a very short time their influence became spread to all across the country and their authority took place and became strong.
+
+3553. Li vir tiştê ku tê qesitkirin, herfa "s" ya di gotina Hesenkêfê de hinek caran bi "sat" û hinek caran jî bi "sin" tê nivîsandin.
+3553. Here the thing that is intended, the letter "s" in the word Hasankeyf is some times written with "sad" and some times too with "sin".
+
+3554. Damezrêner û fermanrewayê keleyê, di dema desthilata xwe de, mirovekî ‘Ereb ê navê wî Hesen digre û di zîndana keleyê de hepis dike.
+3554. The founder and ruler of the castle, in the time of his authority, takes an Arab man whose name is Hasan and imprisons him in the prison of the castle.
+
+3555. Dema ku rojên Hesen ên di mayîna zîndanê de dirêj dibin, rewşa wî ber bi nexweşî diçe û nizane ka gelo çi jî jê tê xwestin, ji hukumdar re xeber dişîne û jê re dibêje: “Êdî ez ber bi nemanê ve diçim; çend roj an çend seetan pê ve rojên jiyana min nemane, ez hêvî û rica ji hukumdar dikim ku firsetekê biçûk bide min, ez siwarê hespê xwe yê ku min bi xwe re anîbû bibim; ez seetekê li ser pişta hespê xwe di nav keleyê de bigerim û huner û çalakiya xwe ya mêrxasî, pişthespî û destsivikiya xwe ya cirîdavêtinê rayêxim ber çavê hukumdar.
+3555. When the days of Hasan in remaining in the prison become long, his condition goes towards sickness and he does not know whether what too is wanted from him, he sends news to the ruler and says to him: "Anymore I go towards non-existence; apart from a few days or a few hours the days of my life have not remained, I hope and beg from the ruler that he give me a small opportunity, that I become mounted on my horse that I had brought with myself; that for an hour on the back of my horse I wander inside the castle and lay my skill and activity of bravery, horse-riding and quick-handedness of javelin-throwing before the eye of the ruler.
+
+3556. Êdî ji wê şûn de dê ji bo bexişandin an kuştina min çavê min tenê bi işaretên hukumdar bin."
+3556. Anymore from that later for my pardoning or my killing my eyes will only be upon the signs of the ruler."
+
+3557. Li ser vê, hukumdar bicianîna daxwaz û hêviyên wî di cî de dîtin û ferman da ku hespê wî jê ra amade bikin.
+3557. Upon this, the ruler saw the carrying out of his request and hopes in place and gave command that they prepare his horse for him.
+
+3558. Dema ku hesp jê re hazir kirin, îzna wî da ku siwar be.
+3558. When they prepared the horse for him, he gave his permission that he mount.
+
+3559. Hesen, wekî bayê birûskê bêsekin xwe diavêje ser pişta hespê xwe, zengî lê dişidîne û di nav keleyê de wekî şetên ava lehiyên barana
+3559. Hasan, like the wind of lightning without stopping throws himself upon the back of his horse, tightens stirrups on it and inside the castle like the streams of the flood-water of the rain of
+
+3560. Wergera Tirkî û Soranî ya vê hevoka han qet li hev nakin.
+3560. The Turkish and Sorani translation of this very sentence do not agree with each other at all.
+
+3561. Her yek tiştekî dibêje.
+3561. Each one says a thing.
+
+3562. Bi Farisiya wê re ji hakeza li hev nakin.
+3562. With its Persian too likewise they do not agree.
+
+3563. Ji ber vê me ev ji Farisiya wê wergerand. -Z. A.
+3563. Because of this we translated this from its Persian. Z. A.
+
+3564. biharê û ava keviyên befran ên ber bi jêr tên, bi wî awayî hespê xwe dibezîne û radike reqasê, bi hespê xwe hunera pişthespiya xwe ya mahirane û leyistikên xwe yên nedîtî û 'ecêb nîşanî hukumdar dide.
+3564. spring and the water of snow drifts that come towards below, in that way makes his horse run and lifts to dancing, with his horse shows his skillful art of horse-riding and his unseen and strange tricks to the ruler.
+
+3565. Şiir:
+3565. Poem:
+
+3566. "Hespê beza yê roj nîşanî 'erdê neda
+3566. "The running horse that did not show the sun to the ground
+
+3567. Ji meydana xwe bi gavek an bi çar gavan derket
+3567. From his square with one step or with four steps went out
+
+3568. Bi piranî hêstirên ji bijangên wî diwerîn
+3568. Mostly tears poured from his eyelashes
+
+3569. Di beza wî de şevên tarî ji mûyên reş derbas dibin
+3569. In his run dark nights pass from black hairs
+
+3570. Dizivire li ser avê wekî berboqek av
+3570. He turns upon the water like a bubble of water
+
+3571. Wekî çirîska ji ber germayê ji agir dipeke
+3571. Like the spark because of heat sparks from fire
+
+3572. Wekî dilopa roja Newrozê li deşt û berriyan dibeze
+3572. Like the drop of Newroz day runs on plains and wildernesses
+
+3573. Û derdikeve jor wekî 'ewrên meha Adarê
+3573. And goes up like clouds of the month of March
+
+3574. Dibeze wekî bi bêrîkirin û miraz hasil dibe wekî roj
+3574. Runs like with longing and desire is obtained like the day
+
+3575. Hewil dide wekî ba, qahîm e wekî agir
+3575. He strives like wind, is firm like fire
+
+3576. Di yek noqteyê de bi hezaran dayîre tên dî tin
+3576. In one point thousands of circles come to be seen
+
+3577. Lê ji hesin e piyên wî yên wekî kerik"
+3577. But from iron are his feet that are like hooves"
+
+3578. Piştre ji nişka ve dan ber zengiyan, pê xwe li kêlekan şidand û deng lê kir û wî xwe ji şerefeyek (bircek) keleyê ya bilindahiya wê ji 150 gazê mîmarî zêdetir, bi awakî zêde xeter avêt xwarê û ket nav pêlên ava Çemê Dîcleyê yê tê re derbas dibû.
+3578. Afterwards suddenly he put to stirrups, with them tightened himself on sides and called out to him and he threw himself down from a parapet (tower) of the castle whose height was more than 150 architect's cubits, in an excessively dangerous way down and fell inside the waves of the water of the Tigris River that passed through there.
+
+3579. Siwar, qet li ser pişta hespê nepekî.
+3579. The rider, did not bounce off from the back of the horse at all.
+
+3580. Hesp bi wê weşa xwe li avê ket û zikê wî diriya.
+3580. The horse with that force of his fell into the water and his belly tore.
+
+3581. Li ser vê, Hesen dev ji hesp berda û bi sêbahî ji wê ava boş û gurr bi sipîsaxlem derbas bû û xwe gihand qeraxên çem û ji wê bûyera nexweş û pêlên xwînavî rizgar bû.
+3581. Upon this, Hasan let go of the horse and by swimming passed safely from that abundant and roaring water and reached himself to the banks of the river and was rescued from that unpleasant event and bloody waves.
+
+3582. Tê gotin ku, dema Hesen ji ber çav wenda bûye, di pey de bangî wî kirine û gotine: “Hesen kêyf?”
+3582. It is said that, when Hasan disappeared from before eyes, behind him they called out to him and said: "Hasan, how?"
+
+3583. Vêca wekî ku tê gotin, bi vî awayî ji wê rojê şûn ve ji ber vê çîroka ecêb navê wê keleyê kirine Hesen Kêyf.
+3583. Then as it is said, in this way from that day later because of this strange story they named that castle Hasan Keyf.
+
+3584. Wekî şair gotiye, “Bi rastî eger ev gotin rast be tiştekî xerîb û ecêb e.”
+3584. As the poet has said, "Truly if this word be right it is a strange and wonderous thing."
+
+3585. Li gor hinek rîwayetên din jî, navê mimarê vê keleya han kêyfayê kurê Talun bûye; ji ber vê yekê jî jê re "Hisn Kêyfa" hatiye gotin.
+3585. According to some other narratives too, the name of the architect of this very castle has been Keyfa the son of Talun; because of this one too to it "Hisn Keyfa" has come to be said.
+
+3586. Belê tenê Xwedê rastiya wê dizane.
+3586. Yes only God knows its truth.
+
+3587. Sêzdeh eşîret û qebîleyên girîng li navçeya Hesenkêfê hene: Aştî, Mihalbî, Mihranî, Becnewî, Şeqaqî, Istûrkî, Kurdlî Mezin, Kurdlî Biçûk, Reşan, Kişki, Cilkî, Xendeqî, Suhanî û Bidyan.
+3587. Thirteen important tribes and clans exist at the district of Hasankeyf: Aşti, Mihalbi, Mihrani, Becnewi, Sheqaqi, Isturki, Kurdli Mezin, Kurdli Bicuk, Reshan, Kishki, Cilki, Xendeqi, Suhani and Bidyan.
+
+3588. Ew ciyên girîng ên bi nav û deng ên girêdayî Hesenkêfê jî ev in: Qesebeya Sêrtê, nahiyên Bişêriyê, Torê û Erzenê ne.
+3588. Those important places with name and sound tied to Hasankeyf too are these: the town of Siirt, the sub-districts of Bisheri, Tor and Erzen.
+
+3589. Erzen, di bin desthi-
+3589. Erzen, is under the autho-
+
+3590. lata Fermanrewayên Hezzoyê de ne û nêzîkî 12 hezar Xiristiyan ên bi dana bac û xeracan mukellef in, tê de dijîn.
+3590. rity of the Rulers of Hezzo and nearly 12 thousand Christians who are obligated with the giving of tax and tribute, live in it.
+
+3591. Ji wê roja damezrênerê keleyê bi Fermanrewayê Mêrdînê re ket nav dubendî û astengan pê ve, welat bi hemû nahiye û ciyên pê ve girêdayî bi rè ve dibir.
+3591. From that day the founder of the castle with the Ruler of Mardin fell inside duality and obstacles forward, he conducted the country with all sub-districts and places tied to it.
+
+3592. Ji bilî vê wezîfeya serokên qebîle û eşîretan jî pêk dianî.
+3592. Apart from this he carried out the duty of the leaders of clans and tribes too.
+
+3593. Heta mir ji keleyê bi awakî serbixwe di destê xwe de girt.
+3593. Until he died he held the castle in an independent way in his hand.
+
+3594. Piştî wî yên desthilat girtin destê xwe, qasê ku tê gotin û di nav xelkê de belav e, ev kesên han in:
+3594. After him those who took the authority into their hand, as much as it is said and among the people is spread, are these very persons:
+
+3595. Melik Suleyman
+3595. Melik Suleyman
+
+3596. Ev, kurê wî emîrî ye.
+3596. This, is the son of that emir.
+
+3597. Li ser textê Fermanrewatiya Hesenkêfê rûnişt û demekê ev wezîfeya han meşand.
+3597. He sat upon the throne of the Rulership of Hasankeyf and for a time conducted this very duty.
+
+3598. Heta dema dawiya desthilata dewleta Cengêz a sala 736ề koçi (1337ê z), wilayeta navê wê derbas bû, di bin rêveberiya wî de ma.
+3598. Until the time of the end of the authority of the state of Genghis of the year 736 Hijri (1337 AD), the province whose name passed, remained under his administration.
+
+3599. Piştî mirina Suleyman jî kurê wî li ciyê wî rûnişt û meşandina kar û barên hukumetê girt destê xwe.
+3599. After the death of Suleyman too his son sat at his place and took the conducting of the tasks and affairs of the government into his hand.
+
+3600. Melik Mihemmed
+3600. Melik Mihemmed
+
+3601. Li ciyê babê xwe li ser textê fermanrewatiyê rûnişt.
+3601. At the place of his father he sat upon the throne of the rulership.
+
+3602. Kar û barên dewletê bi awaki herî baş meşand û serûberiyek gelek sipehî û xweşik kir nav karên welat.
+3602. He conducted the tasks and affairs of the state in the most good way and put a very elegant and beautiful order inside the tasks of the country.
+
+3603. Ev yek bi awaki wisan pêş de bir ku, bû yek ji wan mezinê fermanrewayê berpirsiyar û siyasetmedarê bi nav û deng.
+3603. This one in such a way he advanced that, he became one from those great ones of the responsible ruler and politician with name and sound.
+
+3604. Ji ber ku heta çû rehma Xwedê, her wextê bi Sultan û haqanên Îranê yên Tirk û Teter re, rê û rêça di xweşiyê de borandin û qedandin da pêşiya xwe û li ser wê meşiya.
+3604. Because until he went to the mercy of God, every time with the Sultans and khagans of Iran of the Turks and Tatars, he put the road and way of spending and finishing in pleasantness before himself and walked upon it.
+
+3605. Melik 'Adilê Kurê Melik Mihemmed
+3605. Melik Adil the Son of Melik Mihemmed
+
+3606. Li ser wesiyeta babê xwe li ser textê Fermanrewatiya Hesenkêfê rûnişt.
+3606. Upon the bequest of his father he sat upon the throne of the Rulership of Hasankeyf.
+
+3607. Di nav hevwelatiyên xwe de hîmên dadmendî û wekheviyê avêt û li gor wan hereket kir.
+3607. Among his fellow citizens he laid the foundations of justice and equality and moved according to them.
+
+3608. Di Hesenkêfê de avayî û hêminî serî hildan û geş bûn.
+3608. In Hasankeyf prosperity and calmness lifted head and flourished.
+
+3609. Bi van helwestan, di payebilindî, şan û şohretê de ji emsalên xwe û ji hukumdar û mîrên malbata xwe borand.
+3609. With these stances, in high rank, fame and glory he passed his peers and the rulers and mirs of his family.
+
+3610. Di sala 781'ê koçî (1380'yê z) de, mirinê pêsîra wî girt û çû rehma Xwedê.
+3610. In the year 781 Hijri (1380 AD), death took his collar and he went to the mercy of God.
+
+3611. Melik Eşrefê Kurê Melik 'Adil
+3611. Melik Eshref the Son of Melik Adil
+
+3612. Ev mîrê han, piştî mirina babê xwe li ser textê fermanrewatiyê rûnişt.
+3612. This very mir, after the death of his father sat upon the throne of the rulership.
+
+3613. Bi xwe hevdemê Emîr Kurganî bû.
+3613. He himself was contemporary of Emir Kurgani.
+
+3614. Her wekî nivîskarê Zafernameyê Mewlana Şerefeddin Ali El-Yezdî jî îşaret kiriye, di vî warî de wiha dibê- je:
+3614. Just as the writer of Zafername Mevlana Sherefeddin Ali El-Yezdi too has indicated, in this domain he says like this:
+
+3615. "Di sala 796'ê koçî (1394'ê z) de, Emîr Timur ê xwediyê hêz û ferman, piştî bajarê Bexdayê girt û Kela Tikrîtê jî xist bin destê xwe, bi leşkerek boş û giran ber bi Mêrdînê hereket kir.
+3615. "In the year 796 Hijri (1394 AD), Emir Timur the possessor of force and command, after he took the city of Baghdad and put the Castle of Tikrit too under his hand, moved towards Mardin with an abundant and heavy army.
+
+3616. Dema ku gihîşt bajarê Ruhayê, berpirsiyarê Hesenkêfê bêsekin çû wir û bi serderê hukumdartiya Tîmûr re îta'eta xwe pêşkêş kir û bi ramûsana serderê wî serfiraz bû.
+3616. When he reached the city of Ruha, the responsible one of Hasankeyf went there without stopping and with the threshold of the rulership of Timur presented his obedience and became triumphant with the kissing of his threshold.
+
+3617. Li ser vê, wî jî çeng û baskên eleqe û merhemeta xwe ya şahaneyî bi ser de vedan û bi rizamendî û dilsozî ew qebûl kir û ji bo ku wekî berî welatê xwe bi rê ve bibe, Musaeda wî kir vegere navenda welatê xwe.
+3617. Upon this, he too spread the wings and arms of his royal interest and mercy over him and with satisfaction and devotion accepted him and so that like before he conduct his country, gave him permission to return to the center of his country.
+
+3618. Heta çû rehma Xwedê, di wê dema kurt a jiyana xwe de jî rewşa wî bi vî awayî ma."
+3618. Until he went to the mercy of God, in that short time of his life too his condition remained in this way."
+
+3619. Melik Xelîlê Kurê Melik Şeref ê bi leqeba "Melik Kamil" Dihat Naskirin
+3619. Melik Xelil the Son of Melik Sheref who with the title "Melik Kamil" Came to be Known
+
+3620. Piştî mirina babê xwe, bi helbijartina eşîret û qebîleyan li ciyê wî rûnişt.
+3620. After the death of his father, by the choosing of tribes and clans he sat at his place.
+
+3621. Dema ku di sala 824ê koçî (1422'yê z) de, Mirza Şahruxê kurê Emîr Tîmûrê Kurganî, ji bo êrîşên kurên Qere Yûsifê Tirkmen ên dianîn ser welat berteref bike, hat û gihîşt kewşenê Wan û Westanê, Melik Xelîl bêsekin çû balê û pêşwaziyek şahaneyî lê kir û bi maçîkirina serderê Sultan serbilind û bextewer bû û amadebûna xwe ya di bin desthilata wî de pêşkêşî wî kir.
+3621. When in the year 824 Hijri (1422 AD), Mirza Shahrux the son of Emir Timur the Kurgani, because that he eliminate the attacks of the sons of Qara Yusif the Turkmen that they brought upon the country, came and reached the territory of Van and Westan, Melik Xelil without stopping went to his side and made a royal welcoming to him and with the kissing of the threshold of the Sultan became proud and happy and presented his readiness under his authority to him.
+
+3622. Heta dema ku Mirza Şahrux li ser sînorê Eleşkêrdê mûsaeda vegera hukumdar û mîrên Kurdistanê yên wekî, Emîr Şemseddînê Bedlîsî, Melik Mihemmedê Fermanrewayê Hekkariyê û kurê Sultan Suleymanê Xîzanî da ku vegerin ser wilayetên xwe, rewş bi vî awayî ma.
+3622. Until the time that Mirza Shahrux on the border of Eleskerd gave permission for the return of the rulers and mirs of Kurdistan such as, Emir Shemseddin the Bedlisi, Melik Mihemmed the Ruler of Hakkari and the son of Sultan Suleyman the Xizani that they return upon their provinces, condition in this way remained.
+
+3623. Di wê navê re ew jî vegeriya wilayeta xwe.
+3623. During that he too returned to his province.
+
+3624. Heta jiya bi serbilindî û serfirazî demên xwe derbas kirin, leşker û re'yeta xwe bi gelek qencî û başiyên xwe pardar û dilxweş dikir.
+3624. As long as he lived with pride and triumph he passed his times, made his army and subjects sharing and joyful with his many goodnesses and virtues.
+
+3625. Di sala 862'yê koçî (1458ê z) de melekê mewtê emanetê ku pê re bû jê sitand û ruhê wî ber bi beheştê rê kir.
+3625. In the year 862 Hijri (1458 AD) the angel of death took from him the entrustment that was with him and sent his soul towards paradise.
+
+3626. Melik Xelef
+3626. Melik Xelef
+
+3627. Di nav Kurdan de bi navê "Çavsor Xelef" yanî Xelefê Çavsor hatiye naskirin.
+3627. Among the Kurds with the name "Chawsor Xelef" that is Xelef the Red-eyed he has come to be known.
+
+3628. Ew, kurê Melik Suleymanê birayê Melik Xelîl e.
+3628. He, is the son of Melik Suleyman the brother of Melik Xelil.
+
+3629. Piştî mirina mamê xwe, li ser textê Fermanrewatiya Hesenkêfê rûnişt.
+3629. After the death of his uncle, he sat upon the throne of the Rulership of Hasankeyf.
+
+3630. Serokatiya eşîret û qebîleyan bi awakî herî baş bi rê ve bir.
+3630. He conducted the leadership of tribes and clans in the most good way.
+
+3631. Xelef, di şerên navbera wan û Bohtîyên ku bi awakî vekirî dijmintiyê pê re dikirin, mêranî û mêrxasiyên wî yên nedîtî hatin dîtin; ev yek bi awaki wisan pêş de çû ku êdî di nav xelkê de jê re "Xelefê Babê Cûte Şûran" hat gotin û bi vî navî nav û dengê wî belav bû.
+3631. Xelef, in the wars between them and the Bohtis who in an open way did enmity with him, his unseen manliness and braveries came to be seen; this one in such a way advanced that anymore among the people to him "Xelef the Father of Pair of Swords" came to be said and with this name his name and sound became spread.
+
+3632. Wê navê re, Hesen Begê Bayêndirî yê Sultanê Aqqoyuniyan, xwe li ber îstîlaya wilayetên Kurdistanê re xweş kiribû û wezîfe dabû civaka
+3632. During that, Hasan Beg the Bayandiri the Sultan of the Aqqoyunlus, had made himself pleasant before the occupation of the provinces of Kurdistan and had given duty to the society of
+
+3633. Tirkmenan ku Hesenkèfè bistînin.
+3633. Turkmens that they take Hasankeyf.
+
+3634. Ji bo vê mebestê ew hatin Hesenkêfê û çaraliyên keleyê girtin û ev derûdor girtin xurt û dirêj kirin.
+3634. For this purpose they came to Hasankeyf and took the four sides of the castle and strengthened and lengthened this taking of surroundings.
+
+3635. Lê bi zora çek û şer nekarîn bigihîjin armanca xwe.
+3635. But by the force of arms and war they were not able to reach their purpose.
+
+3636. Ji ber vê, dest avêtin dek û dolaban.
+3636. Because of this, they stretched hand to tricks and deceit.
+
+3637. Di bin re biraziyekî Melik xelef xapandin û ber bi aliyê xwe kêşan, soz pê dan û ew bi hêviyên fermanrewatiyê han dan û jê re gotin ku, eger tu mamê xwe bikûjî em ê fermanrewatiya vî welatî bidin destê te.
+3637. Underneath they deceived a nephew of Melik Xelef and pulled him towards their side, gave promise to him and encouraged him with the hopes of rulership and said to him that, if you kill your uncle we will give the rulership of this country into your hand.
+
+3638. Êdî vî hêtîmê serserî yê xapandî dest ji xêretê berda, rojekê di hemamê de mamê wî tenê bû û kêsa xwe li mamê xwe anî û ew kuşt.
+3638. Anymore this deceived vagabond orphan let go of hand from honor, one day in the bathhouse his uncle was alone and he brought his opportunity upon his uncle and killed him.
+
+3639. Bi vî awayî begê dawî yê vê xanedana hukumdarên mezin û kevnare ji holê hat rakirin û ji bilî vê benên xwe yên pismamtiyê jî qut kirin.
+3639. In this way the last beg of this dynasty of great and ancient rulers came to be lifted from the middle (removed) and apart from this cut his ropes of cousinship too.
+
+3640. Di netîceya vê de jî desthilat ji destê warisên wî yên 'eslî hat sitandin û ket destê Tirkmenan.
+3640. In the result of this too authority came to be taken from the hand of his original heirs and fell to the hand of the Turkmens.
+
+3641. Wan, sozên ji qatîl re dan ji neanîn cî û ji bilî rezîltî, şermî û rûreşiyê pê ve tiştek bi destê qatîl neket.
+3641. They, did not bring the promises given to the killer to place and apart from humiliation, shame and black-facedness besides nothing fell to the hand of the killer.
+
+3642. Şi'ir:
+3642. Poem:
+
+3643. "Tovê wefadarî û evînî di vê zeviya kevin de
+3643. "The seed of loyalty and love in this old field
+
+3644. Tenê di dema çinînê de li ber çav dikeve
+3644. Only in the time of harvesting falls before eyes
+
+3645. Hîv di serê mehê de bi şiklê mehê
+3645. The crescent at the head of the month in the shape of the month
+
+3646. Nişana taca Siyamek û 'ezameta Zû ye"
+3646. Is the sign of the crown of Siyamek and the majesty of Zu"
+
+3647. Melik Xelîlê Kurê Melik Suleyman
+3647. Melik Xelil the Son of Melik Suleyman
+
+3648. Vi melikê han, dema ku Tirkmenan Kurdistan îstîla kirin, xwe li bajarê Hemayê veşartibû.
+3648. This very melik, the time that the Turkmens occupied Kurdistan, had hidden himself at the city of Hama.
+
+3649. Piştre dema sistî û jarî ket nav desthilata malbata Tirkmenên Aqqoyunî û giriyên girêdanên civata wan ber bi bişkiftinî û belavbûnê de çû, Melik Xelîl bi alîkarî û piştgiriya Mîr Şah Mihemmedê Şêrwanî (wezîfeya wezîrtiyê ji berê de emîrên Şêrwiyan dikirin) ku bi Fermanrewayên Hesenkêfê re peywendiyên wî yên xurt hebûn, ji Hemayê vegeriya ciyê xwe.
+3649. Afterwards when weakness and feebleness fell inside the authority of the family of the Aqqoyunlu Turkmens and the knots of the bonds of their society went towards untying and scattering, Melik Xelil with the help and support of Mir Shah Mihemmed the Sherwani (the duty of vizierate from before the emirs of Sherwi did) who with the Rulers of Hasankeyf had his strong relations, returned from Hama to his place.
+
+3650. Ji eşîretên Hesenkêfê li derûdora wî civakek mezin berhev bûn.
+3650. From the tribes of Hasankeyf a big society gathered around him.
+
+3651. Melik Xelîl, ew girtin û meşiya ser Sêrtê û ew bi zora çek û şûran ji destê Aqqoyuniyan rizgar kir.
+3651. Melik Xelil, took them and marched upon Siirt and rescued it by force of arms and swords from the hand of the Aqqoyunlus.
+
+3652. Piştre berê xwe da Kela Hesenkêfê û wê ji destê Aqqoyuniyan bi riya aştî û xweşiyê sitand.
+3652. Afterwards he turned himself to the Castle of Hasankeyf and took it from the hand of the Aqqoyunlus by the road of peace and pleasantness.
+
+3653. Bi vî awayî carek din Melik Xelîl bû fermanrewayê wî welatî.
+3653. In this way once again Melik Xelil became the ruler of that country.
+
+3654. Ya rast ew e ku, di wê demê de di nav Fermanrewayên Kurdistanê de, di şan û şohret û qedirbilindiyê de kesek negihîştiye paye û sewiyeya vi fermanrewayê han.
+3654. The right one is that, in that time among the Rulers of Kurdistan, in fame and glory and highness of value a person did not reach the rank and level of this very ruler.
+
+3655. Pê re 'ezamet û heybeta qralan hebû.
+3655. With him the majesty and awe of kings existed.
+
+3656. Bi xuşka Şah İsmail re jî, dema ku Şah İsmail hatibû Hesenkêfê û bûbû mêvanê wî
+3656. With the sister of Shah Ismail too, when Shah Ismail had come to Hasankeyf and had become his guest
+
+3657. Mimkun e "Siyamek" u "Zu" navên du hukumdaran bin. -M. E. B.
+3657. It is possible "Siyamek" and "Zu" be the names of two rulers. M. E. B.
+
+3658. zewicî bû.
+3658. he was married.
+
+3659. Wê çaxê Şah Ismail, ji ber tehdayî û zordariya Sultan Yaqub ji welatê xwe derketibû û di riya Diyarbekrê re dixwest biçe tewafa Mala Xwedê.
+3659. That time Shah Ismail, because of oppression and tyranny of Sultan Yaqub had gone out from his country and in the road of Diyarbakir wanted to go to the circumambulation of the House of God.
+
+3660. Bi vê munasebetê şahîniyek a ku heta wê rojê emsalê wê nehatibûn dîtin û sehkirin, hat amadekirin.
+3660. With this occasion a festivity of which until that day its peer had not come to be seen and heard, came to be prepared.
+
+3661. Hemû hukumdar, qral û giregirên Kurdistanê û kesên bi nav û deng û xelkên di rêzê de jî di vê şahîniya mezin de amade bûn.
+3661. All rulers, kings and high-ranking ones of Kurdistan and persons with name and sound and the people in the line too were present in this big festivity.
+
+3662. Di van şahîniyan de meygerên xweşik, sipehî û dengxweş kaseyên bad û meyan gerandin; dengbêjên xweşdeng bi dengên xwe yên xweşik ji civakê re kilam û sitran gotin; sazbendan jî nexmeyên dilkul lê xistin.
+3662. In these festivities beautiful, elegant and sweet-voiced cupbearers circulated cups of wine and liquors; sweet-voiced singers with their beautiful voices sang ballads and songs for the society; musicians too played heart-pained melodies.
+
+3663. Şiir:
+3663. Poem:
+
+3664. "Asîman di aso de şahîniyek çêkir, lê çi şahî!
+3664. "Sky in horizon made a festivity, but what a festivity!
+
+3665. Ava û geş bû her ciyê welat bi wê
+3665. Prosperous and bright became every place of the country with it
+
+3666. Civînek ronakî bû ew, roj û hîv hatin ba hev
+3666. A bright gathering was that, sun and moon came beside each other
+
+3667. Û wê şahîniyê hûrî û melek anîn ba hev
+3667. And that festivity brought houris and angels beside each other
+
+3668. Textê Belqis amade bû, wir Bi xêveta Sultan a mezin a tijî dewlet serbilind
+3668. The throne of Bilqis was prepared, there with the big tent of the Sultan full of state proud
+
+3669. bûbû"
+3669. had become"
+
+3670. Piştî vê, demek şûn de, dema ku stêrka bextê dewleta Tirkmenên Aqqoyunî ber bi rijînê ve çû û tîrêjên roja saltanata Şah İsmail ji rojhilatê ve geş bûn û derketin, mîr û fermanrewayên Kurdistanê yên biqedir, ji bo ku girêdan û îta'eta xwe ji textê Şah re pêşkêş bikin, berê xwe dan rê û çûn bajarê Tebrîzê.
+3670. After this, a time later, when the star of fortune of the state of Aqqoyunlu Turkmens went towards pouring down and the rays of the sun of the sultanate of Shah Ismail became bright and went out from the east, the value-worthy mirs and rulers of Kurdistan, because that they present their bond and obedience to the throne of the Shah, turned themselves to the road and went to the city of Tabriz.
+
+3671. Yek ji wan mîr û hukumdaran jî Melik Xelîl bû.
+3671. One from those mirs and rulers too was Melik Xelil.
+
+3672. Çawan ev mîrên han ên Kurdistanê gihîştin Tebrîzê, Şah ferman da û tev bi hev re dan girtin.
+3672. As these very mirs of Kurdistan reached Tabriz, the Shah gave command and gave all with each other to be arrested.
+
+3673. Tevan bi qeyd û leleyan bi hev ve girêdan û teslîmê Zeynel Beg Şamlu yê fermander kirin.
+3673. They bound all with chains and fetters to each other and delivered them to Zeynel Beg Shamlu the commander.
+
+3674. Piştre emir dan Melik Xelîl ku jin û zarokên xwe bîne Tebrîzê.
+3674. Afterwards they gave command to Melik Xelil that he bring his wife and children to Tabriz.
+
+3675. Ji xuşka Şah a jina Melik Xelîl, kurek û sê keç hebûn.
+3675. From the sister of the Shah the wife of Melik Xelil, a son and three daughters existed.
+
+3676. Melik Xelîl bi vî awayî sê salan li Tebrîzê ma.
+3676. Melik Xelil in this way remained for three years at Tabriz.
+
+3677. Di vê muddeta han de wilayeta Hesenkêfê ji destê warisên xwe yên eslî derket û ew rasterast ji aliyê Qizilbaşan ve hat îdarekirin.
+3677. In this very duration the province of Hasankeyf went out from the hand of its original heirs and it directly came to be administered from the side of the Qizilbash.
+
+3678. Dema ku di navbera Selîmê Osmanî û Şah İsmail de Şerê Çaldiranê yê bi nav û deng derket, firset ket destê Melik Xelîl û bi Başibuyuk Bayki re li hev kir, heresên parêzgeriya wî dikirin kuşt û ber bi aliyê Diyarbekrê ve ket rê.
+3678. When between Selim the Ottoman and Shah Ismail the Battle of Chaldiran with name and sound went out, opportunity fell to the hand of Melik Xelil and with Bashibuyuk Bayki agreed, killed the guards who did his protecting and fell on the road towards the side of Diyarbakir.
+
+3679. Dema ku gihîşt nêzîkî Wanê, çekdarên Eşîreta Mehmûdî rê lê birîn û xwestin wî bigrin.
+3679. When he reached near Van, armed ones of the Mahmudi Tribe cut the road upon him and wanted to catch him.
+
+3680. Lê Melik Xelîl gelek bi mêranî dest hilda û bi wan re dest bi şer kir, xwe ji destê wan rizgar kir û di riya geliyê Bedlisê re hat gihîşt Hesenkêfê.
+3680. But Melik Xelil very manly lifted hand and with them started to war, rescued himself from among their hand and in the road of the valley of Bedlis came and reached Hasankeyf.
+
+3681. Lê çi heye Başibuyuk ê hevalê wî di vî şerî de hat kuştin.
+3681. But what is there Bashibuyuk his companion in this war came to be killed.
+
+3682. Wextê ew di zîndanê de bû, Eşîreta Şêrwan, Zirkan û eşîret û qebileyên din li hev kiribûn û Melik Suleymanê kurê Melik Xelîl ji bo fermanrewatiya xwe helbijartibûn.
+3682. The time he was in prison, the Tribe of Sherwan, Zirkan and other tribes and clans had agreed with each other and had chosen Melik Suleyman the son of Melik Xelil for their rulership.
+
+3683. Lê Eşîreta Reşan, daxilê vê hevkariya han nebûbûn û kurmameki Melik Xelil ji bo serokatiya xwe helbijartibûn.
+3683. But the Reshan Tribe, had not entered into this very cooperation and had chosen a paternal cousin of Melik Xelil for their leadership.
+
+3684. Ji bili van, di wê navê re Eşîreta Boxtî jî ji bo bajarê Sêrtê ji destê Qizilbaşan rizgar bikin, leşkerek gelek giran şandibûn ser.
+3684. Apart from these, during that the Bohti Tribe too because that they rescue the city of Siirt from the hand of the Qizilbash, had sent a very heavy army upon it.
+
+3685. Dema ku rewş bi vî awayî bû, ji nişka ve deng û behsê hatina Melik Xelîl belav bû.
+3685. When condition was in this way, suddenly sound and news of the coming of Melik Xelil became spread.
+
+3686. Ev xeber xelk jî û herkes jî 'ecêbmayî hişt û tev bi hev re ketin nav sergêjiyê.
+3686. This news left the people too and everyone too amazed and all with each other fell inside dizziness.
+
+3687. Destê herkesî di paxila wî de ma.
+3687. The hand of everyone remained in his bosom.
+
+3688. Kurên Melik Xelîl girêdanî û îtaeta xwe ji babê xwe re pêşkêş kirin; Eşîreta Botî jî dev ji ablûqeya Sêrtê berdan û vegeriyan welatê xwe.
+3688. The sons of Melik Xelil presented their bond and obedience to their father; the Boti Tribe too let go of hand from the blockade of Siirt and returned to their country.
+
+3689. Piştre Melik Xelîl, çend roj şûn de meşiya ser Sêrtê û ew ji destê Qizilbaşan paş de sitand.
+3689. Afterwards Melik Xelil, a few days later marched upon Siirt and took it back from the hand of the Qizilbash.
+
+3690. Dema ku di destpêkî de Qizilbaşan Kela Hesenkêfê îstîla kirin, muhafiziya wê dabûn destê yekîneyek ji Kurdên Becnewî.
+3690. When in the beginning the Qizilbash occupied the Castle of Hasankeyf, they had given its guard-ship to the hand of a unit from the Becnewi Kurds.
+
+3691. Çunki van Kurdên han esnayê vê îstîlaya han de alîkariya wan kiribûn.
+3691. Because these very Kurds during this very occupation had helped them.
+
+3692. Bi vî awayî ew kele di destê wan Kurdan de mabû.
+3692. In this way that castle had remained in the hand of those Kurds.
+
+3693. Wan jî di vê navê re hêdî hêdî prensîbên Qizilbaşan qebûl kiribûn û bi wan hatibûn xapandin.
+3693. They too during that slowly slowly had accepted the principles of the Qizilbash and had been deceived by them.
+
+3694. Ji ber vê yekê, kirin hişê xwe ku li dijî Melik Xelîl berxwedanê bikin û bi awakî hêsan û bêşer û bêqirên keleyê teslîmê wî nekin.
+3694. Because of this one, they put to their mind that against Melik Xelil they do resistance and in an easy way and without war and without quarrels not deliver the castle to him.
+
+3695. Ji ber vê, çawan xebera hatina Melik Xelîl seh kirin, xwe gihandin nahiya Torê ya girêdayî wilayeta Boxtan û ji wir gelek zexîre û cebirxane berhev kirin û anîn û di keleyê de depo kirin.
+3695. Because of this, as they heard the news of the coming of Melik Xelil, they reached themselves to the sub-district of Tor tied to the province of Bohtan and from there gathered many provisions and ammunition and brought and stored in the castle.
+
+3696. Melik Xelîl jî dema ku bi plan û niyeta van Kurdan hîn bû, bêsekin mirovên eşîret û qebîleyên bi wî ve girêdayî berhev kirin û êrîş bir ser wan û bi awakî kerb û kîn lome li wan kirin.
+3696. Melik Xelil too when he learned of the plan and intention of these Kurds, without stopping gathered the people of tribes and clans tied to him and took attack upon them and in a way of anger and grudge reproached them.
+
+3697. Li ser vê, mecbûr man keleyê bidin destê wî û îtaeta wî bikin.
+3697. Upon this, they remained obliged that they give the castle into his hand and do his obedience.
+
+3698. Di muqabilê vê de Melik Xelîl jî ew bexişandin û bi Huseyin Begê Becnewî re aştî çêkir.
+3698. In exchange for this Melik Xelil too pardoned them and made peace with Huseyin Beg the Becnewi.
+
+3699. Wekî em ê di pêş de jî li ser bisekinin, li hemberî xwîna bab û birayên wî, mulkiyeta gundê Baliji Huseyin Beg re hat dan û piştre ew civaka navê wê derbas bû, kele teslîmê Melik Xelîl kir.
+3699. As we will in the front too stand upon it, against the blood of his father and brothers, the ownership of the village of Bali came to be given to Huseyin Beg and afterwards that society whose name passed, delivered the castle to Melik Xelil.
+
+3700. Ji rîwayetên kesên bawerîpêkirî yên ku rewşa Eşîreta Becnewî neqil dikin, tê zanîn ku; Becn û Boxt, du birayên ji zarokên Fermanrewayên Cezîrê ne.
+3700. From the narratives of trusted persons who transfer the condition of the Becnewi Tribe, it comes to be known that; Becn and Boxt, are two brothers from the children of the Rulers of Cizre.
+
+3701. Di zemanê van herdu birayan de, li ser hukumeta Cezîrê dubendi ket navbera wan.
+3701. In the time of these both brothers, upon the government of Cizre duality fell between them.
+
+3702. Di dawiyê de ev hukumet di destê Boxt de ma û Becn jî çû Hesenkêfê.
+3702. In the end this government remained in the hand of Boxt and Becn too went to Hasankeyf.
+
+3703. Melikan ên ku Fermanrewayê Hesenkêfê bûn, piştre Hesenkêf ji destê van Becnewiyên kevin sitandin.
+3703. The Meliks who were the Ruler of Hasankeyf, afterwards took Hasankeyf from the hand of these old Becnewis.
+
+3704. Li gor riwayeteke din jî ku tê gotin, hemû Kurd ji nesla Becn û Boxt in.
+3704. According to another narrative too that is said, all Kurds are from the lineage of Becn and Boxt.
+
+3705. Vê yekê jî her tenê Xwedê dizane.
+3705. This one too only God knows.
+
+3706. Wextê ku Emîr Şerefê kurê Emîr Bedir, Fermanrewayê Cezîrê bû, ji ber sebebê dijminatiya kevin a di navbera wan de, rêçên muxalefetkirina Eşîreta Becnewî li hemberî wî hatine dîtin.
+3706. The time that Emir Sheref the son of Emir Bedir, was the Ruler of Cizre, because of the reason of the old enmity between them, traces of the opposing of the Becnewi Tribe against him came to be seen.
+
+3707. Li ser vê, Emîr Şeref ji bo tolevekirinê xwe kişt kiriye û şidandiye û ji Melik Xelil xwestiye ku, Mîr Mihemmedê Becnewî di muqabilê xerabiyên ku pê re kirine, ji bo bê cezakirin jê re bişîne.
+3707. Upon this, Emir Sheref for revenge stretched himself and tightened and requested from Melik Xelil that, he send Mir Mihemmed the Becnewi in exchange for the evils that he had done to him, so that he be punished.
+
+3708. Melik Xelîl jî ji bo ku Emîr Şeref memnun bike, Mîr Mihemmedê Becnewî bi 15 kes ji kur û pismamên wî kuştine.
+3708. Melik Xelil too because that he satisfy Emir Sheref, killed Mir Mihemmed the Becnewi with 15 persons from his sons and paternal cousins.
+
+3709. Ji van belengazan, ji bilî Huseyin Begê kurê wî pê ve kesek ji mirinê rizgar nebûbû.
+3709. From these wretches, apart from Huseyin Beg his son besides a person had not been rescued from death.
+
+3710. Huseyin Beg, malên xwe, xwarinên xwe û waridatên ji eşîret û qebîleyan mabûn, tev ber para talanê xist û baz da û çû.
+3710. Huseyin Beg, put his properties, his foods and the revenues remained from tribes and clans entirely before the share of plunder and ran away and went.
+
+3711. Vêca niha jî wekî ku di nav xelkê de belav e û tê gotin, ji ber vê xwîndariyê bûye ku Huseyin Beg, di halê tunetiya Melik Xelîl de, bi Qizilbaşan re li hev kiriye û yekîtî bi wan re çêkiriye.
+3711. Then now too as it is spread among the people and is said, because of this blood-feud it has been that Huseyin Beg, in the state of the non-existence of Melik Xelil, agreed with the Qizilbash and made unity with them.
+
+3712. Ji ber vê, Melik Xelîl jî dema ku firset ket destan bi Huseyin Beg re aştî çêkir û ji bo tefandina agirê vê xwîndariya han dilê wî xweş bike, gundê Balî dayê.
+3712. Because of this, Melik Xelil too when opportunity fell into hands made peace with Huseyin Beg and for the extinguishing of the fire of this very blood-feud so that he please his heart, gave him the village of Bali.
+
+3713. Bi kurtî, bext û feleka Melik Xelîl jê re bûn yar; bi taybetî piştî ku Eşîreta Becnewî Kela Hesenkêfê teslîmê wî kir, nav û dengê wî belav bû, qedir û siyaneta wî bilind bû.
+3713. In short, the fortune and fate of Melik Xelil became companion to him; especially after the Becnewi Tribe delivered the Castle of Hasankeyf to him, his name and sound became spread, his value and respect became high.
+
+3714. Welatê xwe, bi serbixwetiyek temam, bi serfirazî û serbilindî demek dirêj bi rê ve bir.
+3714. His country, with a complete independence, with triumph and pride for a long time he conducted.
+
+3715. Piştre mirinê pêsîra wî girt; ri'ayetê banga "Memnunkirî û memnunbûyî ber bi Rebbê xwe vegere."
+3715. Afterwards death took his collar; observing the call "Satisfied and well-pleased return to your Lord."
+
+3716. Dema ku ji vê diyarê fanî ber bi diyarê axretê koç kir, çar kur li pey xwe hiştin: Melik Suleyman, Melik 'Elî, Melik Mihemmed û Melik Huseyîn.
+3716. When from this mortal land towards the land of the hereafter he migrated, he left four sons behind himself: Melik Suleyman, Melik Ali, Melik Mihemmed and Melik Huseyin.
+
+3717. Melik Huseyînê Kurê Melik Xelîl
+3717. Melik Huseyin the Son of Melik Xelil
+
+3718. Ev Melik Huseyînê han, xortekî serbilind, mert û qencîxwaz bû.
+3718. This very Melik Huseyin, was a proud, generous and good-seeking youth.
+
+3719. Ev xususiyetên wî yên baş û qenc bala hemû eşîret û malbatên mezin ên Hesenkêfê kêşabûn ser xwe.
+3719. These good and virtuous characteristics of his had pulled the attention of all tribes and big families of Hasankeyf upon himself.
+
+3720. Ji ber vê hê nû gav avêtibû salên xwe yên balixiyê, ew ji bo wezîfeya fermanrewatiyê helbijartin.
+3720. Because of this he had still newly stepped into his years of puberty, they chose him for the duty of rulership.
+
+3721. Şi'ir:
+3721. Poem:
+
+3722. "Ew kesên armanca wan evînî be
+3722. "Those persons whose purpose be love
+
+3723. Helbet diherike li ser û çavan nûrek"
+3723. Of course flows upon head and eyes a light"
+
+3724. Lê çi heye, çawan textê fermanrewatiyê girt destê xwe, bêsekin herdu birayên xwe, Melik Mihemmed û Melik 'Elî da girtin.
+3724. But what is there, as he took the throne of the rulership into his hand, without stopping he gave both his brothers, Melik Mihemmed and Melik Ali to be arrested.
+
+3725. Melik Suleymanê birayê wî yê din jî ji nahiya Erzenê baz da û xwe gihande ba Xusrev Paşa yê Mîrêmîranê Amedê û ji bo armanca paşde sitandina hukumeta babe
+3725. Melik Suleyman his other brother too ran away from the sub-district of Erzen and reached himself to the side of Khusrev Pasha the Mir of Mirs of Amed and for the purpose of taking back the government of father
+
+3726. xwe daxwaza alîkariyê jê kir.
+3726. his made the request of help from him.
+
+3727. Xusrev Paşa, bi navê ku naxwaze bira li dijî hevûdu rabin û aştiyê têke navbera wan, şand pey Melik Huseyîn û wî herdu birayên wî yên girtî anî Dîwana Osmanî ya Diyarbekrê û emrê kuştina Melik Huseyin da; meşandina kar û barên hukumeta Hesenkêfê jî da destê birayê wî Melik Suleyman.
+3727. Khusrev Pasha, under the name that he does not want brothers to rise against each other and put peace between them, sent after Melik Huseyin and brought him and his two arrested brothers to the Ottoman Divan of Diyarbakir and gave the command of the killing of Melik Huseyin; gave the conducting of the tasks and affairs of the government of Hasankeyf too into the hand of his brother Melik Suleyman.
+
+3728. Melik Suleymanê Kurê Melik Xelîl
+3728. Melik Suleyman the Son of Melik Xelil
+
+3729. Şarezayên dînî û rêberên riya bawermendiyê gotine ku; ew kesên layîqê serokati, meşandina kar û barên saltanatê û yên xelkê ne, hewce ye di her halûkarî de riayeta naveroka van emrên han bikin: "Qenciyê bike, wekî çawan Xwedê li te qencî kiriye." û ew kesên ji biçûkan bigir heta mezinan, daxwazên hemû kesên hevwelatiyên xwe bicî tînin û li gor fermana Xwedê, "Pismam ji xelkên din lêzimtir in" kar û barên xwe dimeşînin, ew kes in.
+3729. Religious experts and guides of the road of faith have said that; those persons worthy of leadership, the conducting of the tasks and affairs of the sultanate and those of the people, it is necessary in every situation that they observe the content of these very commands: "Do goodness, like how God has done goodness to you." and those persons take from the small ones until the great ones, carry out the requests of all persons of their fellow citizens and according to the command of God, "Cousins are nearer than other people" conduct their tasks and affairs, are those persons.
+
+3730. Çunki, wekî tê zanîn, di bin hemû şert û mercan de ew kesên bi fezîleta benên pismametiyê bigrin û bernedin, ji kesên din bi qedir û siyanettir dibe û ji aliyê herkesî ve tê hezkirin.
+3730. Because, as it is known, under all conditions and terms those persons who hold the virtue of the ropes of cousinship and do not let go, become more value-worthy and respected than other persons and by everyone are loved.
+
+3731. Şi'ir:
+3731. Poem:
+
+3732. "Ger du dost dilê wan yek be, wekî meqesê
+3732. "If two friends their heart be one, like scissors
+
+3733. Dikarin dinê bibirin, lê hevûdu nabirin"
+3733. They can cut the world, but do not cut each other"
+
+3734. Armanc ji vê destpêkê û raxistina wê li vir li ber çavan ev bû û me xwest em vê pê bêjin:
+3734. The purpose from this introduction and its laying here before eyes was this and we wanted that we say this with it:
+
+3735. Dema ku Melik Suleyman, bi saya alîkariya Xusrev Paşa yê Mîrêmîran û waliyê wilayeta Diyarbekrê, li gor fermana Sultan Suleyman Xan, Fermanrewatiya Hesenkêfê girt destê xwe û vegeriya merkeza hukumeta xwe, herdu birayên wî Melik Mihemmed û Melik 'Elî li dijî wî rabûn û li ser desthilatê pê re ketin nav şer û qirênan.
+3735. When Melik Suleyman, in the shadow of the help of Khusrev Pasha the Mir of Mirs and governor of the province of Diyarbakir, according to the command of Sultan Suleyman Xan, took the Rulership of Hasankeyf into his hand and returned to the center of his government, both his brothers Melik Mihemmed and Melik Ali rose against him and upon authority with him fell inside wars and quarrels.
+
+3736. Lê Melik 'Elî, nekarîbû li hemberî wî li ber xwe bide û mexlub bû û xwe avêt ba Şeref Xanê Fermanrewayê Bedlîsê.
+3736. But Melik Ali, was not able to stand before him and was defeated and threw himself to the side of Sheref Xan the Ruler of Bedlis.
+
+3737. Ji bilî vê, hemû eşîret û qebilên welat li hemberî kuştina Melik Huseyin, bi kerb û kîn bûn, nerehetî û nexweşiya xwe diyar kirin.
+3737. Apart from this, all tribes and clans of the country against the killing of Melik Huseyin, were with anger and grudge, expressed their discomfort and disease (displeasure).
+
+3738. Bi vî awayî jî ji Melik Suleyman nefret dikirin û dest pê kirin li dijî wî serî hildan.
+3738. In this way too they hated Melik Suleyman and started against him lifted head.
+
+3739. Vê rewşa han, rê da ku Melik Suleyman li hemberî muxalifên xwe bikeve nav tirsekê.
+3739. This very condition, gave way that Melik Suleyman against his opponents fall inside a fear.
+
+3740. Ji ber vê, tirs û xofê ew girt û bêsekin xwe gihand Amedê û kilîtên keleyê teslîmî Xusrev Paşa kirin û bi rizaya dilê xwe dev ji Fermanrewatiya Hesenkêfê berda û daxwaz kir ku di ciyê wê de eyaleteke din jê re bê dan.
+3740. Because of this, fear and dread seized him and without stopping he reached himself to Amed and delivered the keys of the castle to Khusrev Pasha and with the satisfaction of his heart let go of hand from the Rulership of Hasankeyf and requested that in its place another province come to be given to him.
+
+3741. Xusrev Paşa jî ev rewşa han û daxwaza wî
+3741. Khusrev Pasha too this very condition and his request
+
+3742. gihand serderê herî bilind.
+3742. reached to the most high threshold.
+
+3743. Li ser vê, ji aliyê Sultan Suleyman Xan ve ferman hat derxistin ku, di ciyê hukumeta Hesenkêfê de, rêvebirina desthilata Ruhayê bi riya eyaletê re û bi 700 hezar aqçeyan ji wî re bê dan.
+3743. Upon this, from the side of Sultan Suleyman Xan a command came to be brought out that, in the place of the government of Hasankeyf, the administering of the authority of Ruha by way of province and with 700 thousand akches come to be given to him.
+
+3744. Zeameta wilayeta Ruhayê ya navê wê derbas bû, bi 300 hezar aqçeyan ji Melik Mihemmedê birayê wî re û zeametek din jî di muqabilê 200 hezar aqçeyan de jî ji birayê wî yên din Melik 'Elî re bên dan.
+3744. The zeamet of the province of Ruha whose name passed, with 300 thousand akches to Melik Mihemmed his brother and another zeamet too in exchange for 200 thousand akches too to his other brother Melik Ali come to be given.
+
+3745. Demekê, Melik Suleyman kar û barên desthilata Urfayê meşand.
+3745. For a time, Melik Suleyman conducted the tasks and affairs of the authority of Urfa.
+
+3746. Piştre mirinê pêsîra wî girt û ruhê xwe teslîmî ciyê herî bilind kir.
+3746. Afterwards death took his collar and delivered his soul to the most high place.
+
+3747. Melik Mihemmedê Kurê Melik Xelîl
+3747. Melik Mihemmed the Son of Melik Xelil
+
+3748. Piştî mirina birayê wî, Sancaqa Ruhayê jê hat sitandin û ji aliyê Dîwana Sultan ve Erebgîr bi navê mîrnişînê jê re hat sipartin û piştre jî Bedlîs bi sancaqtî jê re hat dan û lê li wir jî ewqas nesekinî.
+3748. After the death of his brother, the Sanjak of Ruha came to be taken from him and from the side of the Divan of the Sultan Arapgir under the name of principality came to be entrusted to him and afterwards too Bedlis with sanjak-ship came to be given to him and but there too he did not stay so much.
+
+3749. Di dawiyê de îstîqrar jê re nema û bayê nefretê li ser rûnişt û bi tevayî ji giyan û jiyanê bêzar bû.
+3749. In the end stability did not remain for him and the wind of hate sat upon him and completely from soul and life became tired.
+
+3750. Serî ji gizêrî û bacgiriya dîwanê dernedixist.
+3750. He did not bring out head from tax-collecting and tribute-taking of the divan.
+
+3751. Vêca wekî tê gotin, mirov dema ku naçar be, pismamên xwe yên dûr û qerzên xwe yên borî bi bîra xwe tîne.
+3751. Then as it is said, a person when he be choiceless, brings his distant cousins and his past debts to his memory.
+
+3752. Dostiya wî jî zû de bû li gel Bedir Begê Fermanrewayê Cezîrê hebû.
+3752. His friendship too was from early on existed with Bedir Beg the Ruler of Cizre.
+
+3753. Keça xwe da Mîr Mihemmed Begê kurê wî û ji kevin ve jî her dostên hev bûn.
+3753. He gave his daughter to Mir Mihemmed Beg his son and from old too always were friends of each other.
+
+3754. Ji ber vê çû Cezîrê û ji xelkê dûr ket, heta rojên jiyana wî li ser rûyê dinê mabûn, ji wir xwe tev neda.
+3754. Because of this he went to Cizre and became distant from the people, until the days of his life remained upon the face of the world, from there he did not move himself at all.
+
+3755. Dawiyê, Melekê Mewtê bû mêvanê wî û vê dinêya pirr têkilhev û qêr û gêjî li cî hişt.
+3755. In the end, the Angel of Death became his guest and left this world full of mixed-up and shouts and confusion in place.
+
+3756. Yanzdeh kurên wî hebûn: Melik xelef, Melik Sultan Huseyin, Melik Eşref, Melik 'Elî, Melik Suleyman, Melik Xelîl, Melik Zahir, Melik 'Adil, Melik Mehmûd, Melik Hesen û Melik Ehmed.
+3756. He had eleven sons: Melik Xelef, Melik Sultan Huseyin, Melik Eshref, Melik Ali, Melik Suleyman, Melik Xelil, Melik Zahir, Melik Adil, Melik Mehmud, Melik Hesen and Melik Ehmed.
+
+3757. Melik xelef, di bihara gulvedana jiyan û xortaniya xwe de mir, kurekî wî heye navê wî Melik Hemze ye.
+3757. Melik Xelef, in the spring of the rose-blooming of his life and youth died, he has a son whose name is Melik Hemze.
+
+3758. Melik Suleyman, Melik Zahir û Melik Hesen di salên xwe yên xortaniyê de mirin.
+3758. Melik Suleyman, Melik Zahir and Melik Hesen died in their years of youth.
+
+3759. Melik Sultan Huseyîn doza sancaqa babê xwe kir û ev ji aliyê Dîwana Sultan Selîm Xan ve jê re hat dan.
+3759. Melik Sultan Huseyin made the lawsuit of the sanjak of his father and this from the side of the Divan of Sultan Selim Xan came to be given to him.
+
+3760. Birayên din jî ketin bin xizmeta mîrên Kurdistanê û niha jî di nav mîrên Kurdistanê de tên û diçin.
+3760. The other brothers too fell under the service of the mirs of Kurdistan and now too among the mirs of Kurdistan come and go.
+
+3761. Melik Sultan Huseyînê Kurê Melik Mihemmed
+3761. Melik Sultan Huseyin the Son of Melik Mihemmed
+
+3762. Sancaqa babê wî jê re hat dan û wî çend caran ev karê han guherand û ew jî wek babê xwe bêzar bû.
+3762. The sanjak of his father came to be given to him and he several times changed this very task and he too like his father became tired.
+
+3763. Destê xwe ji wê erkê giran kêşa û niha ku sala 1005'e koçî (1597'z) ye, li Kurdistanê rojên xwe derbas dike û behra weqfên bab û bapîrên xwe distîne.
+3763. He pulled his hand from that heavy duty and now that it is the year 1005 Hijri (1597 AD), in Kurdistan passes his days and receives the share of the endowments of his father and grandfathers.
+
+3764. Ji bo kesekî xanedan e, ez hêvî dikim ku Xwedayê mezin wan ewrên reş ji ser bide alîkî û wî bi derece û payeyên bab û bapîrên wî şad bike.
+3764. Because he is a person of dynasty, I hope that the great God give those black clouds aside from upon him and make him joyful with the degrees and ranks of his father and grandfathers.
+
+3765. ## SEFHEYA SISIYAN
+3765. ## THE THIRD PAGE
+
+3766. Di derheqê hinek mîr û fermanrewayên din ên Kurdistanê de ne.
+3766. It is regarding some other mirs and rulers of Kurdistan.
+
+3767. Ew jî sê qism in.
+3767. They too are three parts.
+
+3768. QISME YEKE YA SEFHEYA SISIYAN -Qismê Yekê Neh Beş in-
+3768. THE FIRST PART OF THE THIRD STAGE -The First Part are Nine Sections-
+
+3769. ## BEŞA YEKAN
+3769. ## THE FIRST SECTION
+
+3770. DI DERHEQÊ FERMANREWAYÊN ÇEMİŞGEZEKÊ DE YE -Ew jî ji sê şaxan pêk tên-
+3770. IT IS REGARDING THE RULERS OF CEMISGEZEK -They too consist of three branches-
+
+3771. Ji aliyê dîroknasan ve jî bi awakî zelal tê zanîn ku, nesla Fermanrewayên Çemişgezekê, li gor îddîayên wan bi xwe, diçe digihîje yekî navê wî Melkiş ê yek ji wan zarokên Xelîfeyên 'Ebbasiyan.
+3771. From the side of historians too in a clear way it comes to be known that, the lineage of the Rulers of Cemisgezek, according to claims of themselves, goes and reaches one whose name is Melkish who is one from those children of the Caliphs of the Abbasids.
+
+3772. Lê li gor rîwayetên hinek mezinan, Emîr Salîqê kurê 'Eliyê kurê Qasim, ku ji Şaxeke saltanata Selçukiyan bûye, di dema Alp Arslanê(?)Sultanê Selçukiyan de, desthilata Erzen-i Rum (Arzanu'l-Rum)* û derûberên wê di destê wî de bûye.
+3772. But according to the narratives of some great ones, Emir Saliq the son of Ali the son of Qasim, who was from a Branch of the sultanate of the Seljuks, in the time of Alp Arslan(?) the Sultan of the Seljuks, the authority of Erzen-i Rum (Arzanu'l-Rum)* and its surroundings was in his hand.
+
+3773. Di navbera wî û Fermanrewayên Gurcistanê de dijmintiyek hebû ku koka wê ji kevin ve tê û tim û tim di navbera wan de şer diqewimî.
+3773. Between him and the Rulers of Georgia an enmity existed that its root comes from old and always and always between them war happened.
+
+3774. Nihayet di sala 556ê koçî (1162'yê z) de, di navbera wî û Fermanrewayên Gurcistanê de şerek çêbû û bi xwe bi giregirên leşkerê xwe ve esîr ket destê Gurciyan.
+3774. Finally in the year 556 Hijri (1162 AD), between him and the Rulers of Georgia a war took place and he himself with the high-ranking ones of his army fell captive to the hand of the Georgians.
+
+3775. Lê ji bo ku xuşka wî jina Şah Ermen35 bû, vî Şahê han gelek diyarî û xelat ji Gurcistanê re şandin û ew ji zîndanê rizgar kir.
+3775. But because his sister was the wife of Shah Ermen, this very Shah sent many gifts and presents to Georgia and rescued him from prison.
+
+3776. Piştî wî kurê wî Melik Mihemmed desthilatê girt destê xwe.
+3776. After him his son Melik Mihemmed took authority into his hand.
+
+3777. Piştî mirina wî jî mîrektî ket destê Caqdaş.
+3777. After his death too emirate fell to the hand of Caqdash.
+
+3778. Dema ku Caqdaş jî mir, Melik Şahê kurê Mihemmed li ser textê mîrektiyê rûnişt.
+3778. When Caqdash too died, Melik Shah the son of Mihemmed sat upon the throne of the emirate.
+
+3779. Melik Şah, hewesa serbixwetî û tenê bi serê xwe meşandina deshilatê kir serê xwe.
+3779. Melik Shah, put the desire of independence and only by his head conducting authority into his head.
+
+3780. Ji ber vê, şer derket û di sala 598'ê koçî (1202'yê z) de, ji aliyê Suleymanê kurê Qiliç Arslanê Selçûkî ve hat kuştin.
+3780. Because of this, war broke out and in the year 598 Hijri (1202 AD), from the side of Suleyman the son of Qilic Arslan the Seljuk came to be killed.
+
+3781. Bi vî awayî Erzen-i Rûm jî ji wê tarîxê pê ve ket bin desthilata Selçûkiyên Rûmê.
+3781. In this way Erzen-i Rum too from that date forward fell under the authority of the Seljuks of Rum.
+
+3782. Mimkun e ev Erzirûm be. -M. E. B.
+3782. It is possible this be Erzurum. M. E. B.
+
+3783. Ev rewşa han wisan dide xuyakirin ku, Fermanrewayên Çemişgezekê ji nesla vi Melik Şahê hatine û îhtimal e ku ev gotina "Melik Şah" di zimanê Kurdî de guherî be û bûbe "Melkiş".
+3783. This very condition shows in such a way that, the Rulers of Cemisgezek have come from the lineage of this Melik Shah and it is probable that this phrase "Melik Shah" in the Kurdish language has changed and become "Melkish".
+
+3784. Li milê din, navên Fermanrewayên Çemişgezekê jî, îsbat dike ku ew ji zarok û neviyên Tirkan in.
+3784. On the other side, the names of the Rulers of Cemisgezek too, prove that they are from the children and grandchildren of the Turks.
+
+3785. Çunki, tu peywendiya navên wan bi yên Kurd û Ereban ve tune; qet namînin bi navên 'Ereb û Kurdan. 337
+3785. Because, no connection of their names with those of Kurds and Arabs exists; they do not resemble at all the names of Arabs and Kurds. 337
+
+3786. Belê, eslê wan çi dibe bila bibe, riwayet dibêje ku: Li derûdora vî Melkişê han, civakek gelek zêde yên ji nesla wî Melkişê navê wî derbas bû, berhev bûn; nav û dengê wî belav bû û qîmeta wî zêde bû.
+3786. Yes, whatever their origin may be, narrative says that: Around this very Melkish, a very abundant society of those from the lineage of that Melkish whose name passed, gathered; his name and sound became spread and his value increased.
+
+3787. Di dawiyê de 32 kele û 16 nahiye îstîla kirin, niha ew fîîlî di bin desthilata Fermanrewayên Çemişgezekê de ne.
+3787. In the end they occupied 32 castles and 16 sub-districts, now they are de facto under the authority of the Rulers of Cemisgezek.
+
+3788. Ji ber wê, ew kesên bi wî ve girêdayî bi navê Melkişî hatine bi nav kirin.
+3788. Because of that, those persons tied to him came to be named with the name Melkishi.
+
+3789. Melkişî sê beş in û bi ihtişama xwe, bi boşahiya xizmetkarên xwe û bi destûpeywend û terefdarên xwe ve di Kurdistanê de bi nav û deng in.
+3789. The Melkishi are three parts and with their splendor, with the abundance of their servants and with their adherents and supporters are with name and sound in Kurdistan.
+
+3790. Nêzîkî hezar mal ji wan di bin xizmeta Fermanrewayên Îranê de ne.
+3790. Nearly one thousand houses from them are under the service of the Rulers of Iran.
+
+3791. Grubek din ji wan jî ketin nav zabitên parêzgerî yên Şah.
+3791. Another group from them too fell inside the guard officers of the Shah.
+
+3792. Qismek ji wan di eyaletan de bûn berpirsayarên serbixwe.
+3792. A part from them in the provinces became independent responsible ones.
+
+3793. Heçî welatê wan jî ye, di hêla firehî û giringiyê de, ji aliyê hemû kesên dûr an nêzîk ve bi navê taybetî yê "Kurdistanê dihat naskirin.
+3793. As for their country too, in the aspect of breadth and importance, from the side of all persons far or near was coming to be known with the special name of "Kurdistan".
+
+3794. Heta dema ku di berat û emirnameyan û di hinek belgeyên saltanatê de navê han derbas dibe, tenê ev wilayeta han a girîng tê fahm kirin.
+3794. Until the time that in patents and decrees and in some documents of the sultanate this very name passes, only this very important province comes to be understood.
+
+3795. Ji bilî vê, dema ku di nav Kurdan de gotina "Kurdistanê derbas dibe, ji vê qesit tenê wilayeta Çemişgezekê ye.
+3795. Apart from this, when among the Kurds the word "Kurdistan" passes, from this the intention is only the province of Cemisgezek.
+
+3796. Bi vî awayî, piştî ku Melkiş 32 kele û 16 nahiye kirin bin desthilata xwe, ev ciyên han bi dûrê û di riya werasetê di bin desthilata kur û neviyên wî de ne.
+3796. In this way, after Melkish put 32 castles and 16 sub-districts under his authority, these very places continuously and by way of inheritance are under the authority of his sons and grandsons.
+
+3797. Heta ev bajar û nahiyên han, di demên fatihên mezin ên wekî Cengêz Xan, Emîr Timûrê Kurganî, kurê wî Şahrux Mîrza û Qere Yusifê Tirkmen de jî ji destên wan derneketine.
+3797. Even these very cities and sub-districts, in the times of great conquerors such as Genghis Khan, Emir Timur the Kurgani, his son Shahrux Mirza and Qara Yusif the Turkmen too did not go out from their hands.
+
+3798. Di vê wilayetê de rewş, heta dema Şêxê kurê Emîr Yaliman* bi vî awayî dewam kiriye û hatiye.
+3798. In this province the condition, until the time of Shex the son of Emir Yaliman* in this way continued and came.
+
+3799. Di wextê wî de jî, di Îranê de saltanat ket destê Hesen Begê Bayêndirî.
+3799. In his time too, in Iran the sultanate fell into the hand of Hasan Beg the Bayandiri.
+
+3800. Vi Hesen Begê han jî, temamê hewl û xebata xwe da ser jiholêrakirin û qirkirina koka mîrên Kurdistanê û malbatên qedîm, bi taybetî jî dest pê kir koka wan kesên ku berê bi Sultanên malbata Qereqoyunî re dostî danîne û bi wan re li hev kirine.
+3800. This very Hasan Beg too, gave the whole of his effort and work upon the elimination and eradication of the root of the mirs of Kurdistan and ancient families, especially too he started the root of those persons who before had established friendship with the Sultans of the Qaraqoyunlu family and agreed with them.
+
+3801. Di vê çarçeveya han de, ew ket pey dîtina çareyên ji holêrakirina malbata Fermanrewayên Çemişgezekê, Eşîreta Xerbendelû yê bi nav û deng ji şaxek Eşîreta Qereqoyunî yê herî bi hêz, ji bo îstîlayê ajot ser wilayeta Çemişgezekê.
+3801. In this very framework, he fell after finding remedies for removing the family of the Rulers of Cemisgezek, drove the famous Xerbendelu Tribe from a most powerful branch of the Qaraqoyunlu Tribe for occupation upon the province of Cemisgezek.
+
+3802. Bi vî awayî Xerbendalûyan wilayet ji Emir Şêx Hesen sitandin.
+3802. In this way the Xerbendelus took the province from Emir Shex Hesen.
+
+3803. Di hinek nusxeyan de "Emir Balan" derbas dibe. -Z. A.
+3803. In some copies "Emir Balan" passes. Z. A.
+
+3804. Şêx Hesen, xortekî mêr, mêrxas, camêr û gelek nefsbiçûk bû.
+3804. Shex Hesen, was a manly, brave, generous and very humble youth.
+
+3805. Ev wesfên wî bûn sebeb û jê re bûn alîkar ku, dema piyên xwe avêtin salên xwe yên kemilîn û mêraniyê, xelk li derûdora wî berhev bibin û pê ve bên girêdan.
+3805. These characteristics of his became reason and became helper to him that, when he stepped his feet into his years of maturity and manliness, people gathered around him and came to be bound to him.
+
+3806. Piştî vê, bi şev û bi roj di wê melhezê de bû ku dê çawan mafê wî yê jê hatî sitandin bi dest bixe û welatê xwe yê jê re mîrate mayî ji destê dagirkeran rizgar bike.
+3806. After this, night and day he was in that thought that how he would obtain his right that had been taken from him into hand and rescue his country left as inheritance to him from the hand of the occupiers.
+
+3807. Pêşî tewekkela xwe gihand Xwedê û piştre baweriya xwe bi wan Kurdên mêr û mêrxas ên li derûdora wî berhev bûbûn anî, li dijî Eşîreta Xerbendelû yên welatê wî dagîrkiribûn rabû û ew ji welat derxistin.
+3807. First he reached his reliance to God and afterwards brought his belief to those manly and brave Kurds who had gathered around him, rose against the Xerbendelu Tribe who had occupied his country and brought them out from the country.
+
+3808. Bi vî awayî di welatê xwe de kontrol kir bin destê xwe û welat bi dadmendî û bi însaf bi rê ve bir.
+3808. In this way in his country he put control under his hand and conducted the country with justice and with fairness.
+
+3809. Piştre rojên jiyana wî yên hejmartî yên li ser rûyê vê dinêya ronî xelas bûn û mir.
+3809. Afterwards his numbered days of life upon the face of this bright world finished and he died.
+
+3810. Piştî wî, kurê wî Sohrab Beg desthilatê girt destê xwe û qasekê hukum kir.
+3810. After him, his son Sohrab Beg took authority into his hand and ruled for a short while.
+
+3811. Li ciyê wî jî, kurê wî yê herî zêde li ser riya rastiyê, Hacî Rustem Beg rûnişt.
+3811. At his place too, his son most upon the road of truth, Haci Rustem Beg sat.
+
+3812. Di dema wî de, Şah Ismaîlê Sefewî yê bi nav û deng derket ser text.
+3812. In his time, Shah Ismail the Safavid with name and sound went out upon the throne.
+
+3813. Şah İsmail, yek ji wan begên Qizilbaşan ê navê wî Nur 'Elî Xelîfe, ji bo îstîlaya wilayeta Çemişgezekê şand.
+3813. Shah Ismail, sent one from those begs of the Qizilbash whose name was Nur Ali Xelife for the occupation of the province of Cemisgezek.
+
+3814. Hacî Rustem Beg, bêsekin ku li dijê wî rabe û li hemberî wî dest hilbide, bê şer û qirên welatê xwe teslîmê Nur 'Elî Xelîfe kir û berê xwe da Seraya Şah Ismaîl û situxwarî û îtaeta xwe pêşkêşî wî kir.
+3814. Haci Rustem Beg, without stopping that he rise against him and lift hand before him, without war and quarrel delivered his country to Nur Ali Xelife and turned his face to the Palace of Shah Ismail and presented his submission and obedience to him.
+
+3815. Dema ku ew gihîşt ber textê Şahîtiyê, Şah wî bi xelata şahane serfiraz kir û di ciyê wilayeta Çemişgezekê de, li Iraqê perçeyek erd jê re bexişî.
+3815. When he reached before the throne of Kingship, the Shah made him triumphant with a royal robe of honor and in the place of the province of Cemisgezek, granted a piece of land to him in Iraq.
+
+3816. Nur 'Elî Xelîfe, dest avêt nemerdî, xwînrijî û serbirînî, qirr û qetlîam xist nav Çemişgezekê û gelek kesên ji malbata Melkişiyan û giregirên eşîretan kuştin.
+3816. Nur Ali Xelife, stretched hand to unmanliness, bloodshed and decapitation, put slaughter and massacre inside Cemisgezek and killed many persons from the family of the Melkishis and high-ranking ones of the tribes.
+
+3817. Êdî karekî wisan kir ku pir, kal, xort û biçûkên welat ji destê wî ketin belayê û kêr gihîşt hestî.
+3817. Anymore he did such a work that many, old men, youth and small ones of the country fell into calamity from his hand and the knife reached the bone.
+
+3818. Ji ber vê, herkes ji ber xwe ve dest avêt çek û li dijî vî zordarî sekinîn.
+3818. Because of this, everyone from his own side stretched hand to arms and stood against this tyrant.
+
+3819. Cewab ji Hacî Rustem re şandin ku ji navçeyên Iraq û İsfehanê bê û serokatiya wan bike.
+3819. They sent answer to Haci Rustem that he come from the districts of Iraq and Isfahan and do their leadership.
+
+3820. Di vê navê re Şah Ismaîl jî, bi leşkerên Iraq, Fars û Azerbaycanê ji bo şerê Sultan Selîm ber bi Çaldiranê ve diçû û Hacî Rustem jî di vê seferê de di bin maiyeta Şah de bû.
+3820. During that Shah Ismail too, with the armies of Iraq, Fars and Azerbaijan for the war of Sultan Selim was going towards Chaldiran and Haci Rustem too in this campaign was under the retinue of the Shah.
+
+3821. Dema ku Şerê Çaldiranê bi şikestina Şah Ismaîl û bazdana wî dawî lê hat û Sultan Selîm Xan bi armanca îstîlaya Tebrîzê hereket kir, Hacî Rustem jî, ciyekî navê wî Yam ê girêdayî Merendê, bi beşdariya ber rikêfên Sultan Selîm serfiraz bû.
+3821. When the Battle of Chaldiran with the defeat of Shah Ismail and his fleeing came to an end and Sultan Selim Xan moved with the purpose of the occupation of Tabriz, Haci Rustem too, at a place whose name was Yam tied to Marand, became triumphant with joining before the stirrups of Sultan Selim.
+
+3822. Eynî rojê Sultanê Tirkan jî, fermana serbirrîna Hacî Rustem, neviyê wî û 40 kesên ji serok û giregirên eşîreta wî Melkişî da.
+3822. On the same day the Sultan of the Turks too, gave the command of the decapitation of Haci Rustem, his grandson and 40 persons from the leaders and high-ranking ones of his Melkishi tribe.
+
+3823. Li gor gotinên di nav xelkê de belav in, ev bûyera han bûye sebebê vê helwesta Sultan a sik û kirêt:
+3823. According to the words spread among the people, this very event has been the cause of this bad and ugly stance of the Sultan:
+
+3824. Wergera Tirkiya wê şaş e.
+3824. Its Turkish translation is wrong.
+
+3825. Dibêje: "Di hinek ciyên girêdayê Iraqê de berpirsiyarî jê re hat bexişandin."
+3825. It says: "In some places tied to Iraq responsibility came to be granted to him."
+
+3826. Lê wergera Soranî û Farisiya wê wekî me li jorê nivîsand bi wî awayî ye.-Z. A.
+3826. But its Sorani and Persian translation like we wrote above is in that way. Z. A.
+
+3827. Di sala 878ề koçi (1474ề z) de, dema ku Sultan Mihemmed Xan ê Fermanrewayê Rûmê ji bo îstîlayê diçe ser Kela Kamaxê, Hesen Begê Bayêndirî pê re dest bi şer dike û wî bi awakî gelek xerab dişkîne.
+3827. In the year 878 Hijri (1474 AD), when Sultan Mihemmed Xan the Ruler of Rum goes upon the Castle of Kamax for occupation, Hasan Beg the Bayandiri starts war with him and breaks him in a very bad way.
+
+3828. Di vê navê re dizdarê Kela Kamaxê xwestiye keleyê teslîmê mirovên Sultan Mihemmed Xan bike.
+3828. During that the castellan of the Castle of Kamax wanted to deliver the castle to the men of Sultan Mihemmed Xan.
+
+3829. Lê Hacî Rustem bûye asteng li pêşiya vê daxwaza han û demek gelek dirêj kele di destê xwe de girtiye û di dawiyê de jî dide destê mirovên Şah İsmailê Sefewi.
+3829. But Haci Rustem became an obstacle before this very request and held the castle in his hand for a very long time and in the end too gives it into the hand of the men of Shah Ismail the Safavid.
+
+3830. Ferxşah Begê Bayêndirî ji vê firsetê îstîfade dike û vê bûyera han digihîne ber pêşkên textê saltanatê û jê re wiha dibêje: "Hacî Rustem Beg sistiyek mezin kir û nehişt Kela Kamaxê bê girtin û bikeve destê bapîrên te yên payebilind; lê bê şer û bê têkoşîn teslîmê mirovên Şah İsmail kir."
+3830. Ferxshah Beg the Bayandiri profits from this opportunity and reaches this very event before the threshold of the throne of the sultanate and says to him like this: "Haci Rustem Beg made a big weakness and did not let the Castle of Kamax be taken and fall into the hand of your high-ranked grandfathers; but without war and without struggle delivered it to the men of Shah Ismail."
+
+3831. Ev bûyer, tesîrek gelek xerab kir ser dilê vi Sultanê ceberrut û kîndar; ji ber vê jî çawan Hacî Rustem dibîne, ji bo cezakirin û jê tolsitandinê bêsekin fermana kuştina wî dide.
+3831. This event, made a very bad effect upon the heart of this despotic and vindictive Sultan; because of this too as he sees Haci Rustem, for punishing and taking revenge from him without stopping he gives the command of his killing.
+
+3832. Şi'ir:
+3832. Poem:
+
+3833. "Ew kesên peywendiya wan hebe bi padîșahan re
+3833. "Those persons who have relation with padishahs
+
+3834. Dê cezayê wê jî bikêşînin elbet"
+3834. Will of course suffer its punishment too"
+
+3835. Dema ku xebera kuştina Hacî Rustem Beg çû gihîşt Pîr Huseyin Begê kurê wî, ku wê çaxê li Iraqê bû, bêsekin Iraq terk kir û ji bo ku bikeve bin maiyeta Sultanên Çerkezên Misrê, berê xwe da rê û çû Misrê.
+3835. When the news of the killing of Haci Rustem Beg went and reached Pir Huseyin Beg his son, who at that time was in Iraq, without stopping he left Iraq and because that he fall under the retinue of the Sultans of the Circassians of Egypt, turned his face to the road and went to Egypt.
+
+3836. Di rê de, dema bi ser Meletyeyê re diçû, bû mêvanê Memay Beg ê ji aliyê Sultanên Çerkezan ve ji bo berpirsiyariya vi bajarî hatibû tayînkirin.
+3836. On the road, when he went over Malatya, he became the guest of Memay Beg who from the side of the Sultans of the Circassians had been appointed for the responsibility of this city.
+
+3837. Serpêhatiyên xwe û yên xanedana xwe ji Memay Beg re got û di derheqê çûna xwe ya Misrê de pê şêwirî û rewşa xwe jê re neqil kir.
+3837. He told his adventures and those of his dynasty to Memay Beg and regarding his going to Egypt consulted with him and transferred his condition to him.
+
+3838. Li gor gotinên Xwedayê mezin ku gotiye: "Di karên xwe de bi wan bişêwire" hereket kir û di derheqê biryara xwe ya xweavêtina Seraya Misrê, fikir û nêrînên wî pirsîn.
+3838. According to the words of the great God who has said: "In your tasks consult with them" he moved and regarding his decision of throwing himself to the Palace of Egypt, asked his thoughts and views.
+
+3839. Memay Beg, wekî şairê Faris ji bo mirovekî gotiye, “Pêşengê biaqilan û kaleki haydarê kar û baran e; ji devê wî wekî findê av û agir dibare" ji bo ku ew mirovekî xwedî tecrube bû, gelek caran ketin û rabûnî dîtibû, vî kesê bitemen, serê xwe xwar kir demeke dirêj bê deng sekinî, fikirî; piştre ev bersiva han dayê:
+3839. Memay Beg, like the Persian poet has said for a person, "The leader of the wise and an old man aware of tasks and affairs; from his mouth like a torch water and fire rain" because that he was an experienced person, had seen falling and rising many times, this aged person bent his head, stood silent for a long time, thought; afterwards gave him this very answer:
+
+3840. "Iro, mezintî û qudreta Al-i Osmanî û serdestiya wan li ser sultanên din ên nûdem, tim û tim zêde dibe û her wext ber bi firehbûnê ve diçin.
+3840. "Today, the greatness and power of the House of Osman and their dominance over other modern sultans, always and always increases and every time goes towards expanding.
+
+3841. Nav û dengê fethên wan û payebilindiya şohretên wan, di seranserê asoya cîhanê de nav û deng daye.
+3841. The name and sound of their conquests and the high rank of their fame, throughout the horizon of the world has given name and sound.
+
+3842. Lê, rewşa Sultanên Çerkezan, ji bo ku ji riya
+3842. But, the condition of the Sultans of the Circassians, because that they have gone out from the road of
+
+3843. Di wergera Tirki de: "Fermanrewayê Rûmê" û di wergera Soranî û Farisiya wê de: "Waliyê Rûmê derbas dibe.-Z. A.
+3843. In the Turkish translation: "The Ruler of Rum" and in its Sorani and Persian translation: "The Governor of Rum passes. Z. A.
+
+3844. dadmendî û însafê derketine, tim û tim ber bi paş de û ber bi xerabûnê de diçe.
+3844. justice and fairness, always and always goes towards back and towards ruin.
+
+3845. Ji ber vê yekê, îhtîmalek ne dûr e, ku qasek şûn de dewleta wan ji holê rabe û welatê wan bikeve destê biyaniyan.
+3845. Because of this one, it is a not distant probability, that a short while later their state be removed from the middle and their country fall into the hand of foreigners.
+
+3846. Ji ber vê, ya ji bo kar û barê te, herî baş ew e ku tu ber bi Rûmê hereket bikî û xwe bavêjî ber dergahê Sultan Selim."
+3846. Because of this, the thing best for your task and affair is that you move towards Rum and throw yourself before the threshold of Sultan Selim."
+
+3847. Pîr Huseyin Begê Kurê Hacî Rustem
+3847. Pir Huseyin Beg the Son of Haci Rustem
+
+3848. Ev Begê han, ji vê malbata esîl yekî herî baş e û yek ji wan pêşengê pêş ê ji nav kesên wan ê bijarte ye.
+3848. This very Beg, is one most good from this noble family and is one from those foremost leaders from among their elite persons.
+
+3849. Piştî ew bi vî pîrê biaqil û xwedî tecrube Memay Beg şêwirî, biryar da ku li gor nesîhetên wî yên ji sextekarî û niyetên xerab dûr hereket bike.
+3849. After he consulted with this wise and experienced old man Memay Beg, he decided that according to his advice far from fraud and bad intentions he move.
+
+3850. Şi'ir:
+3850. Poem:
+
+3851. "Nesîhetên ji xerezan dûr bin
+3851. "Advices that are far from grudges
+
+3852. Wekî dermanê çareya nexweşiyan e"
+3852. Are like the medicine of the remedy of illnesses"
+
+3853. Pîr Huseyin, li gor gotina Xwedayê Mezin, "Dema te biryar da, pişta xwe bi xwedê girê bide" bi dil û can zend û baskên xwe radan û bi niyetak baş û bi samimiyet, biryar da ku ber bi xêveta bilind a Sultan Selîm Xan ve hereket bike.
+3853. Pir Huseyin, according to the word of the Great God, "When you have decided, tie your back to God" rolled up his arms and wings with heart and soul and with a good intention and with sincerity, decided that he move towards the high tent of Sultan Selim Xan.
+
+3854. Dema ku li bajarê Amasyayê bi ramûsana serderê bilind serfiraz bû û cara yekem ber çavên Sultan ket, Sultan, ji mêraniya wî ya bêemsal, ji cesareta wî ya nedîtî, bi çavnetirsiya wî û bi dilê wî yê kevirî ecêbmayî ma û wiha got: "Min babê wî, kurê wî** bi çil kesên ji giregirên Eşîreta Melkîşî ve kuşt; bi ser vê de, wî bêtirs û bêxof xwe ji avêtina xêveta min nedaye paş"
+3854. When at the city of Amasya he became triumphant with the kissing of the high threshold and for the first time fell before the eyes of the Sultan, the Sultan, was amazed by his peerless manliness, by his unseen courage, by his fearlessness and by his stony heart and said like this: "I killed his father, his son** with forty persons from the high-ranking ones of the Melkishi Tribe; upon this, without fear and without dread he has not held himself back from throwing himself to my tent"
+
+3855. Ji ber vê, Sultan dest pê kir li gor naveroka vê beyta saxlem hereket kir:
+3855. Because of this, the Sultan started to move according to the content of this solid couplet:
+
+3856. "Dema ku tawanbar daxwaza lêborîna xwe bike
+3856. "When the culprit makes the request of his forgiveness
+
+3857. Ger tu tawanê wî nebibexşînî, tu tawanbariyê dikî"
+3857. If you do not pardon his crime, you commit a crime"
+
+3858. Sultan, qedir û qîmetek gelek zêde da Pîr Huseyin, ew bi xil'etên bi qimet serbilind kir, çeng û baskên dilovanî û evîniya xwe bi ser de vedan û gelek nîmetên xwe bi ser de rijandin.
+3858. The Sultan, gave a very abundant value and worth to Pir Huseyin, made him proud with valuable robes of honor, spread the wings and arms of his compassion and love over him and poured many of his favors over him.
+
+3859. Piştre li gor usûl û esasên berê yên di dema bab û bapîrên wî de dihatin meşandin, wezîfeya Mîrektiya Çemişgezekê jê re bexşî.
+3859. Afterwards according to the former rules and principles that in the time of his father and grandfathers were conducted, he granted the duty of the Emirate of Cemisgezek to him.
+
+3860. Di vî warî de fermanek Padişahtiyê derxist û
+3860. In this domain a Padishah command brought out and
+
+3861. Di wergera Tirkî de têkelheviyek heye.
+3861. In the Turkish translation there is a confusion.
+
+3862. Hinek ciyan ev nav dibe "Pir Huseyin" û hinek ciyan ji "Pîr Hesen".
+3862. In some places this name becomes "Pir Huseyin" and in some places too "Pir Hesen".
+
+3863. Di wergera Soranî û Farisiya wê de jî "Pir Huseyin" e. -Z. A.
+3863. In its Sorani and Persian translation too it is "Pir Huseyin". Z. A.
+
+3864. Mebest neviyê Hacî Rustem ê bi wî re serê wî hat lêdan e. -Z. A.
+3864. The intention is the grandson of Haci Rustem whose head was struck along with him. Z. A.
+
+3865. wezîfe da Biyikli Mehmed Paşa yê Mîrêmîranê Mereşê, bi Pîr Huseyîn Begre biçe Çemişgezekê, wê ji destê Qizilbaşan bistîne û teslîmî wî bike.
+3865. gave the duty to Biyikli Mehmed Pasha the Mir of Mirs of Marash, to go to Cemisgezek with Pir Huseyin Beg, take it from the hand of the Qizilbash and deliver it to him.
+
+3866. Mehmed Paşa jî riaeyta vê fermana han kir û ber bi Çemişgezekê ve hereket kir.
+3866. Mehmed Pasha too observed this very command and moved towards Cemisgezek.
+
+3867. Lê, Pir Huseyin Beg lezand û li hêviya leşkerê Mehmed Paşa nesekinî, ji eşîretên xwe leşkeran û tereftaran berhev kirin û bi wan re meşiya ser wan kesên welatê wî dagîr kirine.
+3867. But, Pir Huseyin Beg hurried and did not wait for the army of Mehmed Pasha, gathered soldiers and supporters from his tribes and with them marched upon those persons who had occupied his country.
+
+3868. Li ciyekî navê wî Tekir Yaylagi bi Nur 'Eli Xelife re ket nav şerekî giran.
+3868. At a place whose name was Tekir Yaylagi he fell into a heavy war with Nur Ali Xelife.
+
+3869. Piştî şerek xwînavî û bi şîddet, şer bi serkevtina mêrxasên Kurdan û mexlubiyeta Qizilbaşan dawî pê hat.
+3869. After a bloody and severe war, the war came to an end with the victory of the Kurdish braves and the defeat of the Qizilbash.
+
+3870. Kurdan di cî de serê Nur 'Elî Xelîfe lê dan.
+3870. The Kurds on the spot struck off the head of Nur Ali Xelife.
+
+3871. Bi vî awayî Pir Huseyin karê paqijiya welatê xwe yê cennetmekan ji sitriyên Qizilbaşan temam kir.
+3871. In this way Pir Huseyin completed the task of cleaning his paradise-like country from the thorns of the Qizilbash.
+
+3872. Di netîceyê de ew bû fermanrewayê tekane û mîrê serbixwe yê welat.
+3872. In the result he became the sole ruler and independent mir of the country.
+
+3873. Ne kesekî bi wî re şer dikir û ne jî li hemberî wî têkoşînek dihat meşandin.
+3873. Neither a person warred with him nor was a struggle conducted before him.
+
+3874. Tam 30 salên temam bi serbilindî û serfirazî welat bi rê ve bir û piştre çû rehma Xwedê.
+3874. Exactly 30 full years with pride and triumph he conducted the country and afterwards went to the mercy of God.
+
+3875. zarokên kur li pey xwe hiştin : Xalid Beg, Mihemmedî Beg, Rustem Beg, Yusif Beg, Pîleten Beg, Keyqubad Beg, Behlûl Beg, Muhsin Beg, Yequb Beg, Feruxşad Beg, Eli Beg, Kulabi Beg, Keyxusrev Beg, Keykawîs Beg, Perwîz Beg û Yaman** Beg.
+3875. he left male children behind himself: Xalid Beg, Mihemmedi Beg, Rustem Beg, Yusif Beg, Pileten Beg, Keyqubad Beg, Behlul Beg, Muhsin Beg, Yequb Beg, Feruxshad Beg, Eli Beg, Kulabi Beg, Keyxusrev Beg, Keykawis Beg, Perwiz Beg and Yaman** Beg.
+
+3876. Gelek mixabinî ye ku, piştî wefata babê wan, van birayan li hev nekirin û hikmeta naveroka vê beyta han ji bîr kirin û riayeta wê nekirin:
+3876. It is very regrettable that, after the death of their father, these brothers did not agree with each other and forgot the wisdom of the content of this very couplet and did not observe it:
+
+3877. "Hemû dewlet ji îttîfaqê dizên
+3877. "All fortune is born from agreement
+
+3878. Bêdewletî jî ji bêtifaqiye"
+3878. Statelessness too is from disagreement"
+
+3879. Bi kurti, tenê li ser xerabûn û bêdewletiyê îttifaq kirin û berê xwe dan rê û çûn Asîtaneyê ba Sultan Suleyman û ev pêşniyarên xwe pêşkêşî dergahê wî kirin:
+3879. In short, only upon ruin and statelessness they agreed and turned their face to the road and went to Asitane beside Sultan Suleyman and presented these suggestions of theirs to his threshold:
+
+3880. Waridatên qesebeya Çemişgezekê, ew xeracên ji kafiran tên sitandin, qemçûrên ji heywanan ku di wilayetê de hene tên sitandin, bi çend gund û nahiyên ku layiqê mulkên taybetî yên Sultan in, em hêvî û dexalet dikin ku hûn wan têkin ser mulkên taybetî yên Sultan.
+3880. The revenues of the town of Cemisgezek, those land taxes taken from non-Muslims, the animal taxes that exist in the province and are taken, with several villages and sub-districts that are worthy of the private properties of the Sultan, we hope and seek refuge that you put them upon the private properties of the Sultan.
+
+3881. Qismên welat ên mayî jî hûn bikin 2 sancaq û 14 zeamet û tîmar.
+3881. The remaining parts of the country too you make into 2 sanjaks and 14 zeamets and timars.
+
+3882. Ji bo ku di warê wergera Soranî de fikrek bide, min xwest wergera vê paragrafa han wekî nota bini derbazi vir bikim.
+3882. Because that it give an idea in the domain of Sorani translation, I wanted to transfer the translation of this very paragraph here as a footnote.
+
+3883. "Lawên Kurdan, bi dilekî şewitî yê bi tîniya xwîna dagirkeran û wekî beranên şer êrîş kirin ser 'Ecemên sersor ên Îranê û meydana şer li wan germ kirin, serên wan ên req li wan nerm kirin û şergeh ji wan tiji terim kirin.
+3883. "The Kurdish youths, with a burned heart with thirst for the blood of occupiers and like rams of war attacked upon the red-headed Persians of Iran and made the battleground warm for them, softened their tough heads for them and filled the battlefield with corpses from them.
+
+3884. Wan co û newalan ji laşên Qizilbaşan tijî kirin û gelek nekêşa serê Nur 'Eli Xelîfe yê bêşerm, bi kulava wî ya sor ve bi serê rima Kurdekî de git hat xuyakirin." -Z. A.
+3884. They filled streams and valleys with the bodies of the Qizilbash and before long the head of the shameless Nur Ali Xelife, with his red cap came to be seen attached upon the tip of a Kurd's spear." Z. A.
+
+3885. Di nusxeyek din de "Yelman" e. (Xwediyê vê jêrnotê ne kifş e. -Z. A.)
+3885. In another copy it is "Yelman". (The owner of this footnote is not clear. Z. A.)
+
+3886. Li ser vê, di vî warî de fermanek Padişahî derket ku: Wilayeta Çemişgezekê, mulkê Sultan ê taybetî ne tê de, li gor daxwaza wan, bi ser du cancaq û 14 tîmar û zeametan de bê parvekirin û ev ji zarok û neviyên Pîr Huseyin re bên dan, lê bi wê mercê ku vi mafê xwe nedin kesekî biyanî û bi xwe jî di welatên din ên li ser erdên Dewlata Osmani de daxwaza wezîfeyekê nekin, vê jî bi riya werasetê dewrê hevûdu bikin.
+3886. Upon this, in this domain a Padishah command came out that: The province of Cemisgezek, the Sultan's private property not inside it, according to their request, be divided over two sanjaks and 14 timars and zeamets and these be given to the children and grandsons of Pir Huseyin, but with that condition that they not give this right of theirs to a foreign person and themselves too in other countries upon the lands of the Ottoman State not make a request for a duty, this too by way of inheritance turn over to each other.
+
+3887. ## ŞAXÊ YEKAN
+3887. ## THE FIRST BRANCH
+
+3888. ## DI DERHEQE BEGÊN MICENGERDÊ DE YE
+3888. ## IT IS REGARDING THE BEGS OF MICENGERD
+
+3889. Nahiya Micengerdê, li ser fermana Sultan Suleyman Xan bi riya sancaqê ji Mihemmedi Begê kurê Pîr Huseyin Begê mezin re hat dan.
+3889. The sub-district of Micengerd, upon the command of Sultan Suleyman Xan by way of sanjak came to be given to Mihemmedi Beg the son of Pir Huseyin Beg the elder.
+
+3890. Wî begî tenê salek rêvebiriya vir kir û piştre mir.
+3890. That beg did the administration of here for only a year and afterwards died.
+
+3891. Çar zarokên kur ên ji bo rêvebiriyê temenên wan gelek biçûk li pey wî man.
+3891. Four male children whose ages were very small for administration remained behind him.
+
+3892. Ji ber vê, rêvebiriya sancaqê ji aliyê Dîwana Sultan Suleyman Xan ve ji birayê wî Feruxşad Beg re hat dan.
+3892. Because of this, the administration of the sanjak from the side of the Divan of Sultan Suleyman Xan came to be given to his brother Feruxshad Beg.
+
+3893. Piştî çend salan koremarên kumreşî û dubendiyê di navbera wî û birayên wî de dest bi gerê kirin.
+3893. After a few years black-capped snakes of malice and duality between him and his brothers started to walk.
+
+3894. Birayên wî, ew bi îxaneta Sultan û xistina malên dewletê di bin zîmmeta xwe de sucdar kirin û di vî warî de raporek pêşkêşî dergahê Sultan kirin.
+3894. His brothers, accused him with treason to the Sultan and putting the state properties under their own liability and in this domain presented a report to the threshold of the Sultan.
+
+3895. Li ser vê, bêsekin fermana kuştina wî hat dan.
+3895. Upon this, without stopping the command of his killing came to be given.
+
+3896. Bi vî awayî ew mir û du zarokên kur ên navên wan Xelîl Beg û Huseyin Beg li pey wî man.
+3896. In this way he died and two male children whose names were Xelil Beg and Huseyin Beg remained behind him.
+
+3897. Ji Sancaqa Micengerdê zeametek hat cihêkirin û ji herdu kurên wî re hat dan.
+3897. From the Sanjak of Micengerd a zeamet came to be separated and came to be given to both his sons.
+
+3898. Sancaqê jî ji Qasim Begê birayê Sînan Paşayê Arnawudî yê Mîrêmîranê Erzirûmê re dan.
+3898. The sanjak too they gave to Qasim Beg the brother of Sinan Pasha the Albanian the Mir of Mirs of Erzurum.
+
+3899. Her çar kurên Mihemmedî Beg dan rûniştandin û bi tîmar û zeametan pêwistiyên jiyana wan ji wan re diyar kirin.
+3899. All four sons of Mihemmedi Beg they seated and with timars and zeamets specified the necessities of their life for them.
+
+3900. Di dawiyê de Rustem Begê Pertekî bi tîkadarî xwe gihand ba Sultan Suleyman Xan û jê re got: "Eger Feruxşad Beg karekî ne li rê kiribe, ji xwe ew gihîşt heqiya xwe.
+3900. In the end Rustem Beg the Perteki persistently reached himself beside Sultan Suleyman Xan and said to him: "If Feruxshad Beg did an improper work, indeed he reached his due.
+
+3901. Lê çi gunehê van zarokên bê cî û bê war heye?
+3901. But what sin do these placeless and homeless children have?
+
+3902. Niha rica û hêviya min ji dergeha te ya pîroz ew e, wek te bi xwe merc daniye, ku nabe ev welatê han ji biyaniyan re bê dan, bila Micengerd ji Pîletenê kurê Mihemmedî Beg re bê dan.
+3902. Now my request and hope from your holy threshold is that, as you yourself have put condition, that this very country must not be given to foreigners, let Micengerd be given to Pileten the son of Mihemmedi Beg.
+
+3903. Di wê navê re Pîleten bi Serdar Mistefa Paşa re çûbû sefera Şêrwanê.
+3903. During that Pileten with Serdar Mistefa Pasha had gone to the campaign of Sherwan.
+
+3904. Sultan li ser vê ricaya Rustem Beg, Micengerd da destê Pîleten û fermanek jî jê re derxist.
+3904. The Sultan upon this request of Rustem Beg, gave Micengerd into the hand of Pileten and brought out a command too for him.
+
+3905. Wextê ji seferê vegeriya, îzna vegera xwe xwest û ber bi Micengerdê hat.
+3905. The time he returned from campaign, he requested permission for his return and came towards Micengerd.
+
+3906. Dema ku gihîşt Turcanê (Tercan) qasidê Xwedê gihîşt ser û emanetê pê re bû jê sitand û nehişt bigihîje mirazê mîrîtiyê.
+3906. When he reached Turcan (Tercan) the messenger of God reached upon him and took from him the entrustment that was with him and did not let him reach the desire of emirate.
+
+3907. Çar kurên wî hebûn: 'Elî Beg, Cîhangîr, Osman û Kel Ehmed Beg.
+3907. He had four sons: Ali Beg, Cihangir, Osman and Kel Ehmed Beg.
+
+3908. Li ser fermana bilind a Sultanê xwediyê şukir û senayê Murad Xan, Mistefa Paşayê Serdar Sancaqa Micengerdê da destê kurê wî yê mezin 'Elî Beg.
+3908. Upon the high command of the Sultan possessor of thanks and praises Murad Xan, Mistefa Pasha the Serdar gave the Sanjak of Micengerd into the hand of his elder son Ali Beg.
+
+3909. Ji her yek birayên wî yên din re jî beşek hat dan û kar ji wan re hat peyda kirin.
+3909. To each one of his other brothers too a portion came to be given and work came to be found for them.
+
+3910. 'Elî Beg, çend rojek kar û barên Micengerdê meşand û piştre mirinê
+3910. Ali Beg, conducted the tasks and affairs of Micengerd for a few days and afterwards death
+
+3911. xwe gihande wî jî û vê dinêya ji qêr û gêjiyan tijî, li cî hişt.
+3911. reached itself to him too and he left this world full of shouts and confusion in place.
+
+3912. Sê kurên wî hebûn: Heyder Beg, Allahwêrdî Beg û Pîleten.
+3912. He had three sons: Heyder Beg, Allahwerdi Beg and Pileten.
+
+3913. Ji aliyê Dîwana Sultan Murad Xan ve Heyder Begê kurê wî yê mezin danîn ser rêvebirina sancaqê.
+3913. From the side of the Divan of Sultan Murad Xan they appointed Heyder Beg his elder son upon the administration of the sanjak.
+
+3914. Lê berî ku bibe şah, mirin jê re bi diyarî hat û ew sipart goristanê.
+3914. But before he became king, death came to him as a gift and entrusted him to the graveyard.
+
+3915. Sancaqa Micengerdê bi mîrat ku niha sala 1005'ê koçî ye û roja duşemba 18'yê meha Remezanê ye, di destê birayê wî Allahwêrdî de ye.
+3915. The Sanjak of Micengerd by inheritance that now it is the year 1005 Hijri and Monday the 18th day of the month of Ramadan, is in the hand of his brother Allahwerdi.
+
+3916. ## ŞAXE DUDUYAN
+3916. ## THE SECOND BRANCH
+
+3917. ## DI DERHEQE FERMANREWAYÊN PERTEKÊ DE YE
+3917. ## IT IS REGARDING THE RULERS OF PERTEK
+
+3918. Wekî me berî niha behis kir, piştî mirina Pîr Huseyin Beg wilayeta Çemişgezekê bi ser du sancaq û çend zeametek hat parvekirin.
+3918. As we discussed before this, after the death of Pir Huseyin Beg the province of Cemisgezek came to be divided over two sanjaks and several zeamets.
+
+3919. Nahiya Pertekê ku yek ji wan bû, li gor fermaneke ji Dîwana Sultan Suleyman Xan derketî, ji Rustem Begê kurê Pîr Huseyin ê duduyan re hat dan.
+3919. The sub-district of Pertek which was one from them, according to a command issued from the Divan of Sultan Suleyman Xan, came to be given to Rustem Beg the second son of Pir Huseyin.
+
+3920. Piştî vi begê han demek dirêj kar û barên welat bi rê ve bir, cîhana beqayê tercîhê cîhana fanî kir û mala xwe bar kir û ber bi wê ve çû û sê zarokên kur li pey xwe hiştin: Baysungur (Baysunqur), Mihemmedî û 'Elî.
+3920. After this very beg conducted the tasks and affairs of the country for a long time, he preferred the world of permanence to the mortal world and moved his house and went towards that one and left three male children behind himself: Baysungur (Baysunqur), Mihemmedi and Ali.
+
+3921. Li gor wesiyeta babê wan, Baysungur meşandina kar û barên hukumetê girt destê xwe.
+3921. According to the bequest of their father, Baysungur took the conducting of the tasks and affairs of the government into his hand.
+
+3922. Bi rastî jî Baysungur miroveki biaqil, zîrek û zana bû.
+3922. Truly too Baysungur was a wise, clever and knowledgeable person.
+
+3923. Siyasetmedarekî baş û bifehm bû.
+3923. He was a good and understanding politician.
+
+3924. Emareyên zekawet û zîrektiya wî ya fehimkirina ji kar û barên hukumetê û tekûzkirina kar û barên eşîretan, xwe dan nîşan û eşkere bûn.
+3924. Signs of his intelligence and cleverness of understanding from the tasks and affairs of the government and perfecting the tasks and affairs of the tribes, showed themselves and became clear.
+
+3925. Ev taybetmendiyên wî, ew di nav hogirên wî yên mîr û fermanrewayên Kurdistanê de anî seviye û payeyak bêemsal û tekane.
+3925. These characteristics of his, brought him among his companions of the mirs and rulers of Kurdistan to a peerless and sole level and rank.
+
+3926. Ew, di warê şi'ir û edebiyatê de xwediyê karekterek nazik bû û di warê zanistî û hunera musîqî de jî xwediyê hêzeke zanyarî ya mezin bû.
+3926. He, in the domain of poetry and literature was the owner of a refined character and in the domain of science and the art of music too was the owner of a great scholarly power.
+
+3927. Ji bilî van, di camêrî û qencî, di mêrxasî û merdiyê de yekemînê hevdema xwe ye.
+3927. Apart from these, in generosity and virtue, in bravery and nobility he is the first of his contemporary time.
+
+3928. Ew bi van xesletên xwe yên sipehî Xatem û Isfendiyarê duduyan e.
+3928. He with these elegant traits of his is Hatim and the second Isfandiyar.
+
+3929. Ji bilî van, zewqek wî ya taybetî li hemberî şahîniyên guneh jê hasil nabin, melzemeyên neqaşan û çekên antîka heye, ku ne mumkun e fermanrewayên wekî wî bikarin dev jê berdin.
+3929. Apart from these, he has a special taste towards festivities from which sin does not arise, materials of painters and antique weapons, which it is impossible that rulers like him be able to abandon them.
+
+3930. Niha, ew li Pertekê bi awakî serbixwe, bi liyaqet û bêkêmasî kar û barên wezîfeya rêvebirî û serokatiya kurmamên xwe û yên eşîret û qebîleyên Çemişgezekê dike.
+3930. Now, he in Pertek in an independent way, with merit and completeness does the tasks and affairs of the duty of administration and leadership of his cousins and those of the tribes and clans of Cemisgezek.
+
+3931. Ew hemû bi hev re bi dil û can riayetên emrê wî dikin û serî li ber ditewînin.
+3931. They all together with heart and soul observe his command and bow head before him.
+
+3932. Em hêvîdar in ji wî Xwedayê mezin, ji bo ku bikare urf û adetên bab û bapîrên xwe biparêze, wî di dewlet û hukumetên mezin de serfiraz û muweffeq bake.
+3932. We are hopeful from that great God, so that he be able to preserve the customs and habits of his father and grandfathers, make him triumphant and successful in great states and governments.
+
+3933. ## ŞAXÉ SISIYAN
+3933. ## THE THIRD BRANCH
+
+3934. ## DI DERHEQÊ BEGÊN SEQEMANÊ DE NE
+3934. ## IT IS REGARDING THE BEGS OF SEQEMAN
+
+3935. Wekî berî jî derbas bûbû, li ser daxwaz û xwestina zarokên Pîr Huseyîn ji Sultan Suleyman Xan, wilayeta Çemişgezekê bi ser du sancaq û 14 zeametan de hat parvekirin.
+3935. As before too passed, upon the request and wish of the children of Pir Huseyin from Sultan Suleyman Xan, the province of Cemisgezek came to be divided over two sanjaks and 14 zeamets.
+
+3936. Li gor vê parvekirina han, nahiya Seqemen bi qesebeya Çemişgezekê ve kirin nav mulkên taybetî yên padişahtî.
+3936. According to this very division, they put the sub-district of Seqeman with the town of Cemisgezek inside the private properties of padishah-ship.
+
+3937. Cardin wekî berî derbas bû, Keyxusrev Beg, Keykawîs Beg û Perwîz Beg ên hersê kurên Pîr Huseyin Beg ên ji dayîkekê bûn, di dema parvekirina wilayeta babê wan de, ji ber ku hê zarok bûn, wê çaxê bi zeamet û tîmaran qeneet kiribûn, hukumet û sancaq nexwestibûn.
+3937. Again as passed before, Keyxusrev Beg, Keykawis Beg and Perwiz Beg who were all three sons of Pir Huseyin Beg from one mother, in the time of the division of the province of their father, because that they were still children, at that time contented with zeamets and timars, did not request government and sanjak.
+
+3938. Dema ku ketin salên xwe yên kemilînê û qencî û xerabî ji hev nas kirin, ji bo daxwaza wan mafên xwe yên hê wekî têjikên şêran ên bê diran û bê neynok di temenên xwe yên bêhêzî û bêtaqetiyê de bûn ji wan hatibûn texsîrkirin û sitandin, bi hev re di derheqê çûna Asîtane ya pîroz de li hev kirin.
+3938. When they fell into their years of maturity and recognized good and bad from each other, for demanding those rights of theirs which while they were still like lion cubs without teeth and without claws in their ages of feebleness and lack of strength had been neglected and taken from them, agreed together regarding going to holy Asitane.
+
+3939. Şiir:
+3939. Poem:
+
+3940. "Her çiqas têjikê şêrê bêhêz û bêçare ye
+3940. "Although the lion cub is feeble and helpless
+
+3941. Lê, sebebê wê hê nederketina diran û neynokên wî ne"
+3941. But, its reason is the not yet coming out of his teeth and claws"
+
+3942. Dema ku gihîştin meqamê fermanrewatiyê û rewşa xwe ya rasteqînî bi riya wezîrên meqamê xilafetê û wezîfedarên wê yên bilind re pêşkêş kirin, dilê Sultan ê bi rehim bi wan şewitî û ferman derxist ku, Nahiya Seqemanê ji nav mulkên padişahtî yên taybetî bê derxistin û bibe sancaq û ji Keyxusrev Beg re bê dan, ji herdu birayên wî yên din re jî zeametên nû û dewlemend bên dan.
+3942. When they reached the station of rulership and presented their true condition by way of the viziers of the station of the caliphate and its high officials, the compassionate heart of the Sultan burned for them and brought out a command that, the Sub-district of Seqeman be brought out from inside the private padishah properties and become a sanjak and be given to Keyxusrev Beg, to both his other brothers too new and rich zeamets be given.
+
+3943. Keyxusrev Beg, demek dirêj di nav seadetî, hevkarî û aramiyê de hukum kir; di dawiyê de çû rehma Xwedê.
+3943. Keyxusrev Beg, ruled for a long time inside happiness, cooperation and tranquility; in the end he went to the mercy of God.
+
+3944. Şiir:
+3944. Poem:
+
+3945. "Kijan darê îqbalê ye ku serê xwe ber bi çerxê ve bilind kiribe
+3945. "Which tree of fortune is it that has lifted its head towards the firmament
+
+3946. Lê ji aliyê bahoza ecelê ji rîşan ve nehatibe qurufandin?"
+3946. But has not been uprooted from roots by the storm of death?"
+
+3947. Sê zarokên kur li pey Keyxusrev Beg man: Salih Beg, Qasim Beg û Omer Beg.
+3947. Three male children remained behind Keyxusrev Beg: Salih Beg, Qasim Beg and Omer Beg.
+
+3948. Ji wan ê yekem, li gor îrs û îstîhqaqê bû cînişînê babê xwe.
+3948. From them the first one, according to inheritance and desert became the successor of his father.
+
+3949. Yê duduyan, mirovekî dîn û nexemxwar û bêxem bû, di wê rewşê de nebû kar û barên resmi bimeşîne; ji ber vê jî, jiyana derwêştî, xwe kêşana nav qalikê xwe ya di kuncikê xanî ji xwe re bijart.
+3949. The second one, was a mad, unconcerned and carefree person, was not in that condition to conduct official tasks and affairs; because of this too, chose for himself dervish life, pulling himself inside his shell in the corner of a house.
+
+3950. Omer Beg jî, her çendîn wek ber bi çav bi meşandina hukum a ji aliyê Salih Beg ve razî bû; lê li hemberî wî di hundurê xwe de tijî bi kîn û bi nefret bû û hetta ger firset bi destan biketaya cesareta kuştina wî jî dikir.
+3950. Omer Beg too, although outwardly he was satisfied with the conducting of the rule from the side of Salih Beg; but before him inside himself he was full with grudge and with hatred and even if opportunity fell into hands he did the courage of his killing too.
+
+3951. Her wek wisan jî lê hat û rojekê firset ket destê wî, derbek li birayê xwe xist û ew kuşt.
+3951. Just as in that way too it happened to him and one day opportunity fell into his hand, struck a blow upon his brother and killed him.
+
+3952. Bi vî awayî, bi riya xesb û zulmê hukum kir destê xwe û xwe mîrê welat îlan kir.
+3952. In this way, by way of usurpation and tyranny he put rule into his hand and declared himself mir of the country.
+
+3953. Bi vê tenê jî nema û çav berda kirinên din, xwe li ber jinbira xwe ya jinebî xweş kir ku wê li xwe mehir bride û mal û mulkên taybetî yên birayê xwe Salih Beg ji bigre destê xwe.
+3953. He did not stay with this alone too and set eyes upon other doings, made himself pleasant before his widowed sister-in-law so that he betroth her to himself and take the private properties and goods of his brother Salih Beg too into his hand.
+
+3954. Piştre rojekê vê meselê bi dizî ji jinikê re vekir.
+3954. Afterwards one day he opened this matter in secret to the woman.
+
+3955. Ew xatun ji her weki ku xwe dilxwazê vî karî bide nîşan, qebûl kir.
+3955. That lady as if showing herself desirous of this task, accepted.
+
+3956. Lê, di hundurê xwe de, ji vê dînê xayîn, kin, nefret û hêrsa tolevekirina mêrê xwe vedişart.
+3956. But, inside herself, from this treacherous madman, she hid grudge, hatred and anger of taking revenge for her husband.
+
+3957. Ev şêrejina han a bi dil û cerg, çend mirovên mêrê xwe yên sadiq û girêdayên wî, bi vê sirr û karê xwe yê girîng ku li ser biryar dabû, agahdar kir.
+3957. This brave lion-woman, informed several faithful men of her husband and those bound to him, with this secret and her important task that she had decided upon.
+
+3958. Wan jî bi dil û can guhên xwe dan wê û dîtinên wê di cî de dîtin.
+3958. They too with heart and soul gave their ears to her and saw her views appropriate.
+
+3959. Tevan bi hev re biryar dan ku, ew rext û çekên xwe girêdin û Şeva xewletê bi dizî bikevin hundurê xanî, li wir bimînin hêviya Omer Beg ku bê bikeve oda bûkê.
+3959. They all together decided that, they tie their cartridge belts and weapons and on the night of privacy secretly enter inside the house, stay there waiting for Omer Beg that he come enter the bride's room.
+
+3960. Dema ku ew bê û bixwaze bikeve hundur, ew ji wan ciyên xwe yên veşartî derkevin û ew plana ku li ser li hev kirine bicî bînin.
+3960. When he comes and wants to enter inside, they come out from those hidden places of theirs and carry out that plan that they agreed upon.
+
+3961. Bi vî awayî, dema ku şeva xewletê hat, ew mirovên ku dê vê plana han bicî bikirana xwe di wan ciyên tespîtkirî de veşartin û man li hêviya zavayê xafil û pozbilind.
+3961. In this way, when the night of privacy came, those men who were to carry out this very plan hid themselves in those designated places and stayed waiting for the heedless and arrogant groom.
+
+3962. Dem derbas bû û wext hat û Omer Beg hat û ket serayê û ber bi oda heremê çû.
+3962. Time passed and the moment came and Omer Beg came and entered the palace and went towards the room of the harem.
+
+3963. Tam di wê navê re, ev şêrên han, wekî birûskê ji kozik û çeperên xwe derketin, êrîşê wî kirin, ew perçe perçe kirin û giyanê wî yê mexrur û li serxwe çûyî ji qalibê wî derxistin.
+3963. Exactly during that, these very lions, like lightning came out from their trenches and positions, attacked him, cut him to pieces and brought out his proud and arrogant soul from his frame.
+
+3964. Sê zarokên kur ên Salih Beg ji vê şêrejinê hebûn: Keyxusrev Beg, Mehmûd Beg û Mihemmed Beg.
+3964. Salih Beg had three male children from this lion-woman: Keyxusrev Beg, Mehmud Beg and Mihemmed Beg.
+
+3965. Wê, destê Keyxusrev Begê kurê xwe yê mezin girt û berê xwe da Asîtaneya pîroz û xwe avêt ber textê Sultan Murad Xan û bi riya wezîrên mezin û wezîfedarên bilind re rewşa xwe bi teferru'at pêşkêşî wî kir.
+3965. She, held the hand of Keyxusrev Beg her elder son and turned her face to holy Asitane and threw herself before the throne of Sultan Murad Xan and by way of grand viziers and high officials presented her condition in detail to him.
+
+3966. Li ser vê, fermanên pîroz derketin ku, li hemberi wê bi însaf û bi merhemet bin, daxwaza wê bicî kirin û meqamê babê wan ji kurê wê re bê dan.
+3966. Upon this, holy commands came out that, before her they be with fairness and with mercy, carried out her request and that the station of their father be given to her son.
+
+3967. Bi vî awayî ew jî bi gihîştina daxwaza dilê xwe paş de vegeriya bajarê xwe.
+3967. In this way she too with reaching the request of her heart returned back to her city.
+
+3968. Niha ku sala 1005'e koçî (1597'ê z) ye, Keyxusrev Beg, bêyî bi tu kesekî re di nav şer de be û bêşirîkatî, hukumeta Seqeman idare dike.
+3968. Now that it is the year 1005 Hijri (1597 AD), Keyxusrev Beg, without being inside war with any person and without partnership, administers the government of Seqeman.
+
+3969. Em ê bi tevayî û bi kurtî di rêzên xwarê de behsa rewşa kurên pîr Huseyîn Beg ên din jî bikin:
+3969. We will entirely and in brief in the lines below discuss the condition of the other sons of Pir Huseyin Beg too:
+
+3970. 1- Yûsif Begê kurê Pîr Huseyin Beg: Di dema parvekirina wilayeta mîrate de zeametek 70 hezar aqçe jê re hat dan.
+3970. 1. Yusif Beg the son of Pir Huseyin Beg: In the time of the division of the inherited province a zeamet of 70 thousand akches came to be given to him.
+
+3971. Piştî ku mir, ji bo ku tu neslek ji zarokên kur pey neketibûn, zeameta wî bi ser hersê kurên Mihemmedî Beg; Zulfiqar Beg, Mistefa Beg û Sohrab Bin El-Qas hatin parvekirin.
+3971. After he died, because that no lineage from male children had appeared, his zeamet came to be divided over all three sons of Mihemmedi Beg; Zulfiqar Beg, Mistefa Beg and Sohrab Bin El-Qas.
+
+3972. 2- Muhsin Begê kurê Pîr Huseyin Beg: Di parvekirina wilayeta mîrate de, ji wî re jî zeametek 70 hezar aqçe hat dan.
+3972. 2. Muhsin Beg the son of Pir Huseyin Beg: In the division of the inherited province, to him too a zeamet of 70 thousand akches came to be given.
+
+3973. Piştî mirina wî, zeameta wî bi awakî hêsan û fireh di navbera kurên wî Îbrahîm, Cehfer, Şêx Hesen, Murad Beg û Eybe (Aybe) Sultan de hat parvekirin.
+3973. After his death, his zeamet in an easy and broad way came to be divided among his sons Ibrahim, Cehfer, Shex Hesen, Murad Beg and Eybe (Aybe) Sultan.
+
+3974. 3- Yaqub Begê kurê Pîr Huseyîn Beg: Zeametek 40 hezar aqçe jê re hat dan.
+3974. 3. Yaqub Beg the son of Pir Huseyin Beg: A zeamet of 40 thousand akches came to be given to him.
+
+3975. Piştî mirina wî, zeamet di navbera hersê kurên wî; Ferrux, Dundar û Babûr Beg de hat parvekirin.
+3975. After his death, the zeamet came to be divided among his all three sons; Ferrux, Dundar and Babur Beg.
+
+3976. 4- Keyqubad Begê kurê Pîr Huseyin Beg: Jê re zeametek 50 hezar aqçeyî hat dan.
+3976. 4. Keyqubad Beg the son of Pir Huseyin Beg: To him a zeamet of 50 thousand akches came to be given.
+
+3977. Lê ji ber ji xwe hezkirin û pozbilindiyê bi vê razî nebû.
+3977. But because of self-love and arrogance he was not satisfied with this.
+
+3978. Welat û malbata xwe terk kir û çû Yêmenê.
+3978. He abandoned his country and his family and went to Yemen.
+
+3979. Li wir xizmetek mezin ji dewletê re kir.
+3979. There he did a great service to the state.
+
+3980. Vê jî ew teşwîq kir ku bi hêviya bidestxistina hukumeta wilayeta xwe ya mîrate, berê xwe bide rê û biçe Asîtaneyê.
+3980. This too encouraged him that with the hope of obtaining the government of his inherited province, turn his face to the road and go to Asitane.
+
+3981. Lê li wir 'ecelê wî pêsîra wî girt û çû rehma Xwedê.
+3981. But there his death took his collar and he went to the mercy of God.
+
+3982. Çar zarokên wî yên kur hebûn: Huseyîn Beg, Mesîh Beg, Zahidî Beg û Îslam Beg.
+3982. He had four male children: Huseyin Beg, Mesih Beg, Zahidi Beg and Islam Beg.
+
+3983. 5- Keykawîs Begê kurê Pîr Huseyîn Beg: Ev Beg bi zeameteke kêm razî kiribûn.
+3983. 5. Keykawis Beg the son of Pir Huseyin Beg: They had satisfied this Beg with a small zeamet.
+
+3984. Piştî mirina wî ev zeameta han ji kurê wî Mensur Beg re hat dan.
+3984. After his death this very zeamet came to be given to his son Mensur Beg.
+
+3985. 6- Perwîz Begê kurê Pîr Huseyîn Beg: Piştî mirina wî, zeameta wî ji kurê wî Heyder Beg re ma.
+3985. 6. Perwiz Beg the son of Pir Huseyin Beg: After his death, his zeamet remained to his son Heyder Beg.
+
+3986. 7- Behlûl Begê kurê Pîr Huseyîn Beg: Zeameta wî 40 hezar aqçe bû.
+3986. 7. Behlul Beg the son of Pir Huseyin Beg: His zeamet was 40 thousand akches.
+
+3987. Piştî mirina wî ji kurê wî Mihemmedî Beg re hat dan.
+3987. After his death it came to be given to his son Mihemmedi Beg.
+
+3988. Dema ku ew jî mir, ev zeameta han di navbera kurên wî Elwend, Oruç û Ehmed Beg de hat parvekirin.
+3988. When he too died, this very zeamet came to be divided among his sons Elwend, Oruc and Ehmed Beg.
+
+3989. 8- Gulabî Begê kurê Pîr Huseyîn Beg: Zeameta wî 40 hezar aqçe bû.
+3989. 8. Gulabi Beg the son of Pir Huseyin Beg: His zeamet was 40 thousand akches.
+
+3990. Dema ku Mistefa Paşayê Serdar meşiya ser herêma Şêrwan, di Şerê Çildirê yê di navbera leşkerê Osmanî û Qizilbaşan de qewimî, ew jî bi gelek mîr û giregirên Kurdan re şehîd bû.
+3990. When Mistefa Pasha the Serdar marched upon the region of Sherwan, in the Battle of Cildir that occurred between the Ottoman army and the Qizilbash, he too with many mirs and high-ranking ones of the Kurds became a martyr.
+
+3991. Li ser vê, zeameta wî ji kurê wî Mihemmed Beg re hat dan.
+3991. Upon this, his zeamet came to be given to his son Mihemmed Beg.
+
+3992. Piştî mirina wî jî ji neviyê wî 'Elî Xan Beg re hat dan.
+3992. After his death too it came to be given to his grandson Ali Xan Beg.
+
+3993. 9- Yalman (Yaman) Begê kurê Pîr Huseyin Beg: Bi zeametek 20 hezar aqçe razî bû.
+3993. 9. Yalman (Yaman) Beg the son of Pir Huseyin Beg: Was satisfied with a zeamet of 20 thousand akches.
+
+3994. Xwedayê mezin temenekî gelekî dirêj nesîbê wî kir.
+3994. Great God granted a very long life to him.
+
+3995. Heta sala 1005'ê koçî (1597'ê z) ku ev rêzên han hatin nivîsandin, hê bi serfirazî û bi şeref zeameta xwe bi rê ve dibe.
+3995. Until the year 1005 Hijri (1597 AD) that these very lines were written, he still with triumph and with honor conducts his zeamet.
+
+3996. ## BEŞA DUDUYAN
+3996. ## THE SECOND SECTION
+
+3997. ## DI DERHEQE FERMANREWAYÊN MIRDASI DE YE
+3997. ## IT IS REGARDING THE RULERS OF MIRDASI
+
+3998. Ew li ser sê şaxên serbixwe parve dibin:
+3998. They are divided over three independent branches:
+
+3999. Mirovên kevn ên pispor, zanayên xebera bûyerên rast û çewt ji hev vediqetînin, bingeh û hîmê xanedana wan a kevn kolane û ji wan re ronî û zelal bûye ku, silsileya nesla bilind a Fermanrewayên Mirdasî diçe digihîje mamê Pêxember -Xwedê ji wî razî be- Hezreti 'Ebbas -bila silavên Xwedê li ser wî jî bin.
+3999. Expert old people, scholars of the news separating true and false events from each other, have dug the foundation and base of their ancient dynasty and it has become bright and clear to them that, the chain of the noble lineage of the Rulers of Mirdasi goes and reaches the uncle of the Prophet - may God be pleased with him - Hazrat Abbas - may the blessings of God be upon him too.
+
+4000. Yekem kes ji wan, Pîr Mensurê kurê Seyid Huseyin ê El-A'rac bûye.
+4000. The first person from them, was Pir Mensur the son of Seyid Huseyin the El-A'rac.
+
+4001. Ew mirovekî dîndar, sofî û Xwedêtirs bûye; car û baran îlhamên xeybê jê re hatine.
+4001. He was a religious, sufi and God-fearing person; times and times inspirations of the unseen came to him.
+
+4002. Niha, li gor secereya di destê zarokên wan de ye, bi 17 piştan diçin digihîjin Hezretê Elî yê kurê 'Ebdullahê kurê 'Ebbas -Xwedê ji tevan razî be.
+4002. Now, according to the genealogy in the hand of their children, with 17 generations they go and reach Hazrat Ali the son of Abdullah the son of Abbas - may God be pleased with all.
+
+4003. Pîr Mensur, di destpêkî de li wilayeta Hekkariyê dijiya.
+4003. Pir Mensur, in the beginning lived in the province of Hakkari.
+
+4004. Piştre ji wir bar kir û çû aliyê Egilê û li gundê Pîranê yê nêzîkî Kela Egilê bicî bû.
+4004. Afterwards he moved from there and went to the side of Egil and settled at the village of Piran near the Castle of Egil.
+
+4005. Li wir îbadetxaneyek vekir û hemû wextê xwe di wê îbadetxaneyê de bi îbadet, ji xweşî û nîmetên dinê dûr, şev û roj bi nimêjan, handana xelkê ji gunehan xwe dûrxistin û îbadetkirina Xwedê re derbas dikir.
+4005. There he opened a house of worship and passed all his time in that house of worship with worship, far from the pleasures and blessings of the world, night and day with prayers, encouraging the people to distance themselves from sins and worship God.
+
+4006. Bi vî awayî li derûdora wî civakek mezin mûrîd û terefdarên wî yên ji xelkê û giregiran pêkhatî berhev bûn.
+4006. In this way around him a big society of his disciples and supporters consisting of the people and high-ranking ones gathered.
+
+4007. Dema ku çû rehma Xwedê, Pîr Mûsa yê kurê wî, ciyê wî girt û seccadeya wî ya şêxîtî ya rehberê riya rastiyê vala nehişt.
+4007. When he went to the mercy of God, Pir Musa his son, took his place and did not leave empty his prayer mat of sheikh-ship of the guide of the true road.
+
+4008. Pîr Mûsa, di wî
+4008. Pir Musa, in that
+
+4009. Di wergera Tirkî de 15 pişt in.
+4009. In the Turkish translation it is 15 generations.
+
+4010. Di wergera Soranî û Farisiya wê de 17 ne. -Z. A.
+4010. In its Sorani and Persian translation it is 17. Z. A.
+
+4011. gundi de tekyayek mezin ava kir.
+4011. village built a big lodge.
+
+4012. Hejmarek gelek zêde ji xelkê yên mûrîd û terefdarên wî berê xwe dan vê tekyaya han.
+4012. A very abundant number of the people who were his disciples and supporters turned their face to this very lodge.
+
+4013. Nav û dengê Pîr Mûsa, di nav Mirdasîyên li wir û eşîret û qebîleyên Kurd de jî belav bû.
+4013. The name and sound of Pir Musa, among the Mirdasis there and Kurdish tribes and clans too became spread.
+
+4014. Kesên giregir û xelkên rêzê de bi eyni seviye û payeyê de bi awakî zêde bi Pîr Mûsa ve hatin girêdan.
+4014. High-ranking persons and ordinary people at the same level and rank in an abundant way came to be bound to Pir Musa.
+
+4015. Piştî mirina Pîr Musa, kurê wî Pîr Bedir li ciyê wî rûnişt.
+4015. After the death of Pir Musa, his son Pir Bedir sat at his place.
+
+4016. Pîr Bedir, ji bab û bapîrên xwe jî derbas kir.
+4016. Pir Bedir, passed even his father and grandfathers.
+
+4017. Di dema wî de, nav û dengê vê malbata han û îtaet û sedaqeta Eşîreta Mirdasî ji wî re, ber bi kopên şan û şerefê çûn.
+4017. In his time, the name and sound of this very family and the obedience and fidelity of the Mirdasi Tribe to him, went towards the summits of fame and honor.
+
+4018. Ji ber vê, ew kar û barên li pêşiyê bûn û behra wî ketibûn, biserûber kirin.
+4018. Because of this, he put in order those tasks and affairs that were ahead and had fallen to his share.
+
+4019. Mulaheze kir û fikirî ku saltanatek maddî jî têke ser vê saltanata xwe ya me'newî ya ruhanî û mezintiyek duserî damezrîne.
+4019. He observed and thought that he put a material sultanate too upon this spiritual sultanate of his and establish a double-headed greatness.
+
+4020. Hewesa bi desthilatek serbixwe û tenê bi serê xwe hukum kir.
+4020. He desired to rule with an independent authority and only by his head.
+
+4021. Li ser vê, bi mûrîd û terefdarên xwe ve êrîşek giran anî ser Kela Egilê û ew bi darê zorê sitand.
+4021. Upon this, with his disciples and supporters he brought a heavy attack upon the Castle of Egil and took it by force of arms.
+
+4022. Kela Egile, keleke asê û saxlem e, li ser kemerbendek xwar hatiye avakirin.
+4022. The Castle of Egil, is a fortified and solid castle, built upon a curved archway.
+
+4023. Ew, ewqas bilind e ku çi kesê lê dinêre di nav tirs û xofê de dimîne.
+4023. It, is so high that whatever person looks at it remains inside fear and dread.
+
+4024. Li gor gotinên di nav xelkê de tê gotin, dema ku carek yek ji wan ewliyayên Xwedê tê re darbaz dibe, destê xwe dirêjê wê kemerbendê dike û bi Tirkî dibêje "egil" û ew kemerbend jî bi qudret û îcazeta Xwedê xwar dibe û bi vî awayî ku tê dîtin xwar dimîne.
+4024. According to words said among the people, when once one from those saints of God passes by it, stretches his hand to that archway and in Turkish says "egil" and that archway too by the power and permission of God becomes curved and in this way that comes to be seen remains curved.
+
+4025. Belê tenê Xwedê bi rastiyê dizane.
+4025. Yes only God knows with truth.
+
+4026. Ev eşîreta han ku di nav vê keleyê û wilayetê de rûdine, ji ber navê serokê Benikilaban (kurên Kilaban), Mirdasê kurê Idrîsê kurê Nusayrê kurê Nasrê kurê Cemîl, "Mirdasi" hatiye gotin.
+4026. This very tribe which resides inside this castle and province, because of the name of the leader of the Benikilabs (sons of Kilab), Mirdas the son of Idris the son of Nusayr the son of Nasr the son of Cevil, has come to be called "Mirdasi".
+
+4027. Mirdasî, berê li derûdora Heleba wê çaxê di bin desthilata Sultan û xelîfeyên Îsmaîliyên Misrê de bûye, jiyane.
+4027. The Mirdasi, formerly lived around Aleppo which at that time was under the authority of the Sultans and caliphs of the Ismailis of Egypt.
+
+4028. Piştre di navbera emîrên Misrê û fermanderên wê de dubendî derket; ji ber vê, hîmê dewleta wan hejiya û rewşa wan kesên li wan deran cîwarî bûn, perîşan û belawela bûn.
+4028. Afterwards between the emirs of Egypt and its commanders duality broke out; because of this, the foundation of their state shook and the condition of those persons who were settled in those places became ruined and scattered.
+
+4029. Piştre Salihê kurê Mirdasê kurê Idris, ji vê dubendiyê îstîfade kir, êrîş bir ser vê kela han û xwest vê ji xwe re bike merkez.
+4029. Afterwards Salih the son of Mirdas the son of Idris, profited from this duality, took attack upon this very castle and wanted to make this a center for himself.
+
+4030. Piştre êrîşê keleyê kir û qasekî ew di bin muhasereyê de hişt û di dawiyê de, dema ku rewşa yên di keleyê de ku di bin zexta muhasereyê de bûn xera bû, keleyê sitand.
+4030. Afterwards he attacked the castle and kept it under siege for a while and in the end, when the condition of those in the castle who were under the pressure of siege became ruined, he took the castle.
+
+4031. Dema ku deng û behsên vê bûyera han gihîştin Zahirê kurê Hakim 338 ê Xelîfeyê Ismaîlî yê li Misrê, ji bo girtina vî tawanbarî mirov şandin.
+4031. When sound and news of this very event reached Zahir the son of Hakim the Ismaili Caliph in Egypt, they sent men for catching this culprit.
+
+4032. Salihê kurê Mirdas hat girtin û di sala 420'e koçî (1029'ê z) de, ew bi kurê xwe ve hatin kuştin.
+4032. Salih the son of Mirdas came to be arrested and in the year 420 Hijri (1029 AD), he along with his son came to be killed.
+
+4033. Li ser vê, malbat û eşîretên wî, mecbur man welatê xwe terk bikin û bên li aliyê Egilê û derûdora wê bicî bibin.
+4033. Upon this, his family and tribes remained obliged to abandon their country and come settle on the side of Egil and its surroundings.
+
+4034. Ji wê tarîxê şûn de ev insanên han di vê wilayeta han de rûdinin.
+4034. From that date forward these very humans reside in this very province.
+
+4035. Bi kurti, Pir Bedir, piştî bi alîkariya mirovên Eşîreta Mirdasî Kela Egilê kir bin destê xwe, di eksê bab û bapîrên xwe yên tenê bi îrşadê mijûl bûn, rêvebiriya desthilata welat jî girt destê xwe.
+4035. In short, Pir Bedir, after with the help of the men of the Mirdasi Tribe put the Castle of Egil under his hand, contrary to his father and grandfathers who were only busy with guidance, took the administration of the authority of the country too into his hand.
+
+4036. Piştre, dema ku yek ji wan
+4036. Afterwards, when one from those
+
+4037. Sultanên Selçûkiyan çav berda welatê wî, bi naçarî mecbur ma bi awakî serberedayî baz bide.
+4037. the Sultans of the Seljuks cast an eye upon his country, by necessity he was obliged to flee in a vagrant way.
+
+4038. Em ê di rêzên xwarê de bi awakî fireh behsa van bûyeran bikin.
+4038. We will in the lines below in a broad way discuss these events.
+
+4039. ## ŞAXE YEKAN
+4039. ## THE FIRST BRANCH
+
+4040. ## DI DERHEQE FERMANREWAYÊN EGILE YÊN BI LEQEBA "BULDUKANI" TÊN NASKIRIN DE YE
+4040. ## IT IS REGARDING THE RULERS OF EGIL WHO ARE RECOGNIZED WITH THE NICKNAME "BULDUKANI"
+
+4041. Nivîskarê van rûpelan, gelek car ji kesên bi bawer seh kiriye ku, sebee:
+4041. The writer of these pages, many times has heard from trusted persons that, the reason:
+
+4042. bê bi van hukumdaran ve pêvekirina leqeba "Buldukanî" ev Dema ku Pîr Bedir ji ber Selçukiyan baz da û rizgar bû, çû Meyafarqînê û xwe avêt bin desthilata Emîr Husameddin ê hukumdarê vi bajarê han.
+4042. that to these rulers this attaching of the nickname "Buldukani" is this when Pir Bedir fled from before the Seljuks and was saved, he went to Meyafarqin and threw himself under the authority of Emir Husameddin the ruler of this very city.
+
+4043. Heta di şerê îstîlaya Kela Meyafarqînê ya ji aliyê fermanderê Sultan Alp Arslanê Selçûkî Emîr Artûq jî li wir xwe veşartî jiya.
+4043. Until in the war of the occupation of the Castle of Meyafarqin from the side of the commander of Sultan Alp Arslan the Seljuk Emir Artuq too he lived hidden there.
+
+4044. Alp Arslanè Selçuki, walîtiya Mêrdîn û Amedê dabû destê Emîr Artûq û nifûza zarokên wî heta Heleb û Bexdayê jî belav bûbû.
+4044. Alp Arslan the Seljuk, had given the governorship of Merdin and Amed into the hand of Emir Artuq and the influence of his children had spread up to Aleppo and Baghdad too.
+
+4045. Ji ber vê, dîroknasan ew kirine nav sultanên şaxên ji Imparatoriya Selçûkiyan.
+4045. Because of this, historians have put them among the sultans of the branches from the Empire of the Seljuks.
+
+4046. Hejmara sultanên ji vê şaxê tên heft in; dawîn kesê ji wan, ew Sultanê navê wî Melik Nasireddin e.
+4046. The number of sultans that come from this branch are seven; the last person from them, is that Sultan whose name is Melik Nasireddin.
+
+4047. Ew, hê di destpêka Dewleta Aqqoyuniyan de ji aliyê Hesen Begê Bayêndirî ve hat kuştin û bi mirina wî jî dawî bi Dewleta Artuki hat.
+4047. He, while at the beginning of the State of the Aqqoyunis came to be killed from the side of Hesen Beg the Bayindiri and with his death too the Artuqid State came to an end.
+
+4048. Yanî bi kurti, Emir Artûq, fermana muhasereya Kela Meyafarqînê girt; dest bicikirina vê emrê han kir û muhasereya ser wan kesên berevanî li xwe dikirin teng kir.
+4048. That is in short, Emir Artuq, received the command of the siege of the Castle of Meyafarqin; he started carrying out this very command and tightened the siege upon those persons who were defending themselves.
+
+4049. Di vê navê re, tîreke eskerên Emîr Artûq, îsabetê Emîr Husameddin ê fermanrewayê keleyê kir û ew kuşt.
+4049. During this, an arrow of the soldiers of Emir Artuq, hit Emir Husameddin the ruler of the castle and killed him.
+
+4050. Vê bûyerê qudumê dest û piyê kesên di bin muhasereyê de sist kir; di nav wan de bêserûberî û sistî dest pê kir; hêz û taqeta wan ji bo berdewamkirina xweparastinî û sebata berxwedanî nema.
+4050. This event loosened the strength of the hand and foot of the persons under siege; among them disorder and looseness started; their power and strength for the continuing of self defense and perseverance of resistance did not remain.
+
+4051. Li ser vê, Emîr Artûq şevekê ji firsetê îstîfade kir û ji hemû milan ve êrîşek tund û giran bir ser keleyê û bi zori ketin hundur.
+4051. Upon this, Emir Artuq one night profited from the opportunity and from all sides took a severe and heavy attack upon the castle and by force they entered inside.
+
+4052. Piştî vê, serê xelkên wê navçeyê û yên wan kesên di keleyê de berevanî dikirin bi şûran lê da; ji wan tu kes berneda.
+4052. After this, he struck the head of the people of that sub-district and of those persons who were defending in the castle with swords; he did not let go any person from them.
+
+4053. Belê, Pîr Bedir jî di vî şerî de û di vê qetlîama kirêt û hovî de şehîd ket.
+4053. Yes, Pir Bedir too in this war and in this ugly and savage massacre fell a martyr.
+
+4054. Bi vî awayî kesek ji Fermanrewayên Egilê nema.
+4054. In this way a person from the Rulers of Egil did not remain.
+
+4055. Lê tenê jina Pîr Bedirê şehîd wê çaxê hamile bû.
+4055. But only the wife of the martyred Pir Bedir at that time was pregnant.
+
+4056. Êdî hemû hêvî bi wê hat girêdan û çavên Mirdasîyan tev li cinsiyeta zarokê dê bibûya bû.
+4056. Already all hope came to be tied to her and the eyes of the Mirdasis entirely were on the gender of the child that was to be.
+
+4057. Herroj rîsipî û giregirên Mirdasiyan dihatin ber derê xaniyê vê jinika han û xebera hemildanîna wê jê dipirsiyan û wiha digotin: "Xwedayê mezin dê zarokek çawan îhsanê me bike; kur e yan keç e?"
+4057. Everyday the elders and high-ranking ones of the Mirdasis came before the door of the house of this very woman and asked the news of her giving birth from her and said like this: "What kind of child will the great God bestow upon us; is it a son or a daughter?"
+
+4058. Rojek ji wan rojan bû ku cardin xelk wekî hemû wextê li ber xanî berhev bûbûn.
+4058. One day from those days it was that again the people as all times had gathered before the house.
+
+4059. Tam wê navê re mirovek ji xanî derket, ji wan
+4059. Exactly during that a man came out from the house, to them
+
+4060. re bi Tirkî û bi işareta ku hê pêşî de di nav xwe de tespit kiribûn wiha got: "Çok şûkûr Hudaya kî îstedîgîmîzî bulduk."
+4060. in Turkish and with the sign that even previously among themselves they had determined said like this: "Much thanks to God that we found what we wanted."
+
+4061. Li ser vê, navê vî kurê esîl bû "Emir Bulduk" û piştre jî nav û leqeba Fermanrewayên Egilê bû "Buldukanî".
+4061. Upon this, the name of this noble son became "Emir Bulduk" and afterwards too the name and nickname of the Rulers of Egil became "Buldukani".
+
+4062. Şi'ir:
+4062. Poem:
+
+4063. "Ji aqilmendên Rûmê hatiye neqilkirin ku:
+4063. "From the wise ones of Rum it has been transmitted that:
+
+4064. Jinek qene'etkar ma hamile rojek
+4064. A contented woman became pregnant one day
+
+4065. Bû bêçare û melûl ji wê rojê şûn de
+4065. She became helpless and sad from that day forward
+
+4066. Ji mêr û welatê xwe bêpar
+4066. Deprived from her husband and her country
+
+4067. Piştre rojek bi xemgîn derket baniyan
+4067. Afterwards one day with sadness she went out to the roofs
+
+4068. Jan dihatinê di ber hemlê de
+4068. Pangs came to her during pregnancy
+
+4069. Ber zarokê xwe ket, ji bo bêkesî û bêkûsî
+4069. She grieved for her child, for placelessness and loneliness
+
+4070. Nedizanî ku dê bi înayeta xwe biparêze Xwedê
+4070. She did not know that God will protect him with his grace
+
+4071. Û dê serberedayî nehêle wî
+4071. And will not leave him vagrant
+
+4072. Di dawiyê de bexişand jê re xezîneyan
+4072. In the end he granted treasures to him
+
+4073. Û ew kir nav rêza kesên mirazhasilî”
+4073. And he put him into the row of persons whose desires have been fulfilled"
+
+4074. Gelek ciyê mixabiniyê ye ku, piştî dayîk hemla xwe danî, ew mir.
+4074. It is a very regrettable place that, after the mother put down her pregnancy, she died.
+
+4075. Lê, giregirên eşîretan û serokên welat, di xwedîkirin û parastina vê stêrka gurr û geş ê ku bi şev û bi roj li hêviya hemla dayîka wî bûn û demek dirêj bû hemû hêviyên xwe bi wî ve girêdabûn, xêretek nedîtî serf kirin.
+4075. But, the high-ranking ones of the tribes and leaders of the country, in raising and protecting this blazing and bright star that by night and by day they were waiting for the pregnancy of his mother and for a long time they had tied all their hopes to him, spent an unseen effort.
+
+4076. Dema ku zarok ket salên xwe yên kemilînê, wî bi rizayê dilê xwe ji xwe re mîr bijartin û danîn ser textê fermanrewatiya xwe.
+4076. When the child fell into his years of maturity, with the consent of their heart they chose him as mir for themselves and appointed him upon the throne of their rulership.
+
+4077. Bi vî awayî Emîr Bulduk di ciyê babê xwe de li ser textê mîrektiyê rûnişt, ket nav rewş û helwestek gelek baş û demek gelek dirêj bi dadmendî û bi însafi hukum kir.
+4077. In this way Emir Bulduk in the place of his father sat upon the throne of the emirate, fell into a very good condition and attitude and for a very long time with justice and with fairness he ruled.
+
+4078. Piştre dema ku çû rehma Xwedê, kurê wî yê mezin li ciyê wî rûnişt.
+4078. Afterwards when he went to the mercy of God, his elder son sat at his place.
+
+4079. Emîr Îbrahîm
+4079. Emir Ibrahim
+
+4080. Bû cînişînê babê xwe û wî jî wekî babê xwe deriyê çakî û qenciyê li ber xelkê xwe vekir.
+4080. He became the successor of his father and he too like his father opened the door of goodness and virtue before his people.
+
+4081. Di dadmendî û sexîtiyê de ji gelek kesên berî xwe borand.
+4081. In justice and generosity he surpassed many persons before him.
+
+4082. Lê hê ciyê xwe bi temamî germ nekiribû, ecelê mirinê lê kir gazî û koça dawiyê kir.
+4082. But while he had not completely warmed his place, the death hour of dying called to him and he made the final migration.
+
+4083. Emir Mihemmed
+4083. Emir Mihemmed
+
+4084. Di ciyê babê xwe de li ser textê mîrektiyê rûnişt.
+4084. In the place of his father he sat upon the throne of the emirate.
+
+4085. Lê dewra wî jî dirêj nekêşa û bi 'ecelê xwe mir.
+4085. But his era too did not draw long and he died by his death hour.
+
+4086. Sê zarokên kur li pey man:
+4086. Three male children remained behind:
+
+4087. 1- Emir İsa: Piştî babê xwe desthilata Egilê girt destê xwe.
+4087. 1. Emir Isa: After his father he took the authority of Egil into his hand.
+
+4088. 2- Teymurtaş: Di dema babê xwe de walî û muhafezê Kela Baxinê û navçeyên derûdora wê bû.
+4088. 2. Teymurtash: In the time of his father he was the governor and protector of the Castle of Baxin and its surrounding sub-districts.
+
+4089. Fermanrewayên Paloyê ji nesla Emîr Teymurtaş in.
+4089. The Rulers of Palo are from the lineage of Emir Teymurtash.
+
+4090. Em ê di şaxê duduyan de bi firehî li ser rewşa wan biseki- nin.
+4090. We will in the second branch extensively dwell upon their condition.
+
+4091. 3- Emir Huseyin: Li ser saxiya babê xwe waliyê Kela Berdencê û nahiya Çermokê bû.
+4091. 3. Emir Huseyin: Upon the aliveness of his father he was the governor of the Castle of Berdenc and the sub-district of Cermok.
+
+4092. Fermanrewayên Çermokê ji nesla wî ne.
+4092. The Rulers of Cermok are from his lineage.
+
+4093. Li gor riwayetên hinek mezinan ji, Emir Huseyin kurê Emîr Mihemmed nîne, kurmamê wî ye.
+4093. According to the transmissions of some great ones too, Emir Huseyin is not the son of Emir Mihemmed, he is his cousin.
+
+4094. Lê li ser dewra Fermanrewatiya Emir Mihemmed, jê re berpirsiyartiya hukumeta Çermokê û Kela Berdencê hatibû dan.
+4094. But upon the era of the Rulership of Emir Mihemmed, the responsibility of the government of Cermok and the Castle of Berdenc had been given to him.
+
+4095. Belê, çi dibe bila bibe, em ê di şaxê sisiyan de bi îzna Xwedayê Padişahê mezin, behsa Emir Huseyîn û yên zarokên wî bikin.
+4095. Yes, whatever happens let it happen, we will in the third branch with the permission of the God of the great Padishah, discuss Emir Huseyin and those of his children.
+
+4096. Emir İsayê Kurê Emîr Mihemmed
+4096. Emir Isa the Son of Emir Mihemmed
+
+4097. Piştî babê xwe desthilat girt destê xwe û bû Fermanrewayê Egilê yê serbixwe.
+4097. After his father he took authority into his hand and became the independent Ruler of Egil.
+
+4098. Bi bira u pismamên xwe re yekdil û lîhevhatî bû.
+4098. With his brothers and cousins he was of one heart and agreed.
+
+4099. Bûyeran di riya siyasetê re û bi 'ezim çareser kirin.
+4099. He solved events through the road of politics and with determination.
+
+4100. Heta mir bi xelkê û eskerên xwe re bi dadmendî û bi qencî hereket kir.
+4100. Until he died he moved with justice and with goodness with his people and soldiers.
+
+4101. Dewletşah Begê Kurê Emîr Îsa
+4101. Dewletshah Beg the Son of Emir Isa
+
+4102. Ev emîrê han, li gor wesyeta babê xwe û bi alîkariya Eşîreta Mirdasî li ser textê Fermanrewatiya Egilê rûnişt.
+4102. This very emir, according to the bequest of his father and with the help of the Mirdasi Tribe sat upon the throne of the Rulership of Egil.
+
+4103. Demek welat bi dadmendî û bi însafi bi rê ve bir.
+4103. For a time he conducted the country with justice and with fairness.
+
+4104. Piştre çû rehma Xwedê û kurê wî li ciyê wî rûnişt.
+4104. Afterwards he went to the mercy of God and his son sat at his place.
+
+4105. Emir Isa
+4105. Emir Isa
+
+4106. Piştî mirina babê xwe rêvebirina Fermanrewatiya Egilê girt destê xwe.
+4106. After the death of his father he took the administration of the Rulership of Egil into his hand.
+
+4107. Di dema wî de bayê dadmendiyê bi ser xelkê de hejiya û avahî û xweşî li hemû ciyê welat belav bû.
+4107. In his time the wind of justice blew over the people and building and pleasantness spread in every place of the country.
+
+4108. Piştre du zarokên kur li pey xwe hiştin û mir: Isfendiyar û Şah Mihemmed.
+4108. Afterwards he left two male children behind himself and died: Isfendiyar and Shah Mihemmed.
+
+4109. Şah Mihemmedê Kurê Emîr Isa
+4109. Shah Mihemmed the Son of Emir Isa
+
+4110. Bi wî jêhatî û kêrhatiya xwe bû cînişînê babê xwe.
+4110. With that capability and usefulness of his he became the successor of his father.
+
+4111. Lê ev cîhana fanî gelek zú terk kir û pênc zarokên kur li pey wî man: Qasim Beg, Isa Beg, Mensur Beg, İsfehan Beg û Emîran Beg.
+4111. But he abandoned this mortal world very early and five male children remained behind him: Qasim Beg, Isa Beg, Mensur Beg, Isfehan Beg and Emiran Beg.
+
+4112. Qasim Begê Kurê Şah Mihemmed Beg
+4112. Qasim Beg the Son of Shah Mihemmed Beg
+
+4113. Di mêrxasí, zanati, edebiyat, exlaqxweşî û karekterçakî de yekane û birêz bû.
+4113. In bravery, knowledge, literature, good morality and good character he was sole and respected.
+
+4114. Di desthilatdariya sipehî, di rêvebirî û dilxweşkirina xelkê de
+4114. In elegant authority, in administration and making the people happy
+
+4115. şêresiwarê meydanê bû.
+4115. he was the lion rider of the field.
+
+4116. Ji aliyê hemû kesî ve bi tiliyan dihat nîşandan û di nav Fermanrewayên Kurdistanê de yekê emsalê wî tunebû.
+4116. From the side of every person he was shown with fingers and among the Rulers of Kurdistan there was no one his peer.
+
+4117. Di dema saltanata Fermanrewayên Aqqoyuniyan de nav û dengê wî belav bû û qîmeta wî zêde bû.
+4117. In the time of the sultanate of the Rulers of Aqqoyuni his name and sound spread and his value increased.
+
+4118. Ev, awaki wisan pêşde çû ku, Aqqoyuniyan ew kirin fermander û lalayê zarokên xwe.
+4118. This, went forward in such a way that, the Aqqoyunis made him commander and tutor of their children.
+
+4119. Ji ber vê jî di nav xelkê de bi leqeba "Lala Qasim" dihat naskirin.
+4119. Because of this too among the people he was recognized with the nickname "Lala Qasim".
+
+4120. Bûyerek bi nav û deng ê ku di vî warî de tê gotin, ev e: Dema ku Şah Ismail, di sala 913'yê koçî (1508'ê z) de Diyarbekrê girt, Lala Qasim bi tu awayî îta'eta wî nekir û serî li ber netewand; tam eksê vê muxalefeteke gelek xurt li hemberî wî meşand.
+4120. A famous event that is said in this domain, is this: When Shah Ismail, in the year 913 Hijri (1508 AD) took Diyarbekr, Lala Qasim in no way obeyed him and did not bow head before him; exactly contrary to this he conducted a very strong opposition against him.
+
+4121. Şah bi vê helwestê wî gelek êşiya û ji ber vê, di bin fermanderiya Xan Mihemmed Ustaclû de leşkerekî giran şand ser wî, Kela Egilê jê sitand û da destê Mensur Beg ê yek ji wan fermanderên Qizilbaşan.
+4121. The Shah was very hurt by this attitude of his and because of this, under the command of Xan Mihemmed Ustaclu he sent a heavy army upon him, took the Castle of Egil from him and gave it into the hand of Mensur Beg one from those commanders of the Qizilbash.
+
+4122. Kela Egilê heft salan di bin zulm û zordestiya desthilata wî de ma.
+4122. The Castle of Egil for seven years remained under the tyranny and oppression of his authority.
+
+4123. Piştre, piştî Şerê Çaldiranê bi alîkarî û piştgiriya Sultan Selîm Xan, Lala Qasim Egilê paş de sitand û vegeriya ser wezîfeya xwe ya jê re mîrate mabû.
+4123. Afterwards, after the Battle of Chaldiran with the help and support of Sultan Selim Xan, Lala Qasim took Egil back and returned upon his duty that had remained to him as inheritance.
+
+4124. Li gor rîwayetekê: Li ser dewra Qerexan, Lala Qasim bi fend û hîlek nesehkirî Kela Amedê ji destê Qizilbaşan derxist û da destê Mehmed Paşa yê Mîrêmîranê Diyarbekrê.
+4124. According to a transmission: Upon the era of Qerexan, Lala Qasim with an unheard trick and stratagem brought out the Castle of Amed from the hand of the Qizilbash and gave it into the hand of Mehmed Pasha the Mir of Mirs of Diyarbekr.
+
+4125. Ji ber vê, li ser dewra Osmaniyan nav û dengê wî gelek belav bû û qîmeta wî zêde bû.
+4125. Because of this, upon the Ottoman era his name and sound spread greatly and his value increased.
+
+4126. Piştre bêyî tu zarokên kur li pey xwe bihêle, çû rehma Xwedê.
+4126. Afterwards without leaving any male children behind himself, he went to the mercy of God.
+
+4127. Ji ber vê, li ser wesyeta wî desthilata hukumeta wî ji biraziyê wî Murad Beg re hat dan.
+4127. Because of this, upon his bequest the authority of his government came to be given to his nephew Murad Beg.
+
+4128. Murad Begê Kurê Îsa Beg
+4128. Murad Beg the Son of Isa Beg
+
+4129. Li gor wesiyeta mamê wî û bi fermana Dîwana Sultan Suleyman Xan rêvebirina hukumeta Egilê jê re hat dan.
+4129. According to the bequest of his uncle and with the command of the Divan of Sultan Suleyman Xan the administration of the government of Egil came to be given to him.
+
+4130. Murad Beg, hukumdarekî gelek dîndar, ji Xwedêtirs, bi dadmend, nerm, geldost, ji biçûkan bigir heta mezinan dilvekiriyê hemû kesan, ji giregiran heta kesên di rêzê de, kesên dûr û yên nêzîk hemû kes razî dikir.
+4130. Murad Beg, a very religious ruler, God-fearing, with justice, gentle, people-loving, from the small take up to the great the open-hearted of all persons, from the high-ranking ones up to the persons in the row, far persons and close ones he satisfied every person.
+
+4131. Li nêzîkî gumbeta mamê xwe Qasim Beg tekyayek mezin ava kir.
+4131. Near the dome of his uncle Qasim Beg he built a great lodge.
+
+4132. Li rexê wê jî xan û qonaxek da avakirin.
+4132. At its side too he had an inn and a mansion built.
+
+4133. Her roj xwarin dida rêwiyên ku tê re derbas dibûn.
+4133. Every day he gave food to the travelers who passed through it.
+
+4134. Ev tekyaya han a xêrê, tenê riya qonaxek ji bajarê Amedê dûr e û bi navê Xana Şerbatin tê naskirin.
+4134. This very lodge of charity, is only a stage's road far from the city of Amed and is recognized with the name of the Inn of Sherbatin.
+
+4135. Çend salek bi vî awayî bi pakî, xweşî û bi ser û berî dewra xwe derbas kir, piştre ji vê dinêya bê peyman bar kir û bû mêvanê mêvanxaneya Beheştê.
+4135. Several years in this way with purity, pleasantness and with order he passed his era, afterwards from this covenantless world he moved and became the guest of the guesthouse of Paradise.
+
+4136. Du kur li pey man: ‘Elîxan û Qasim Beg.
+4136. Two sons remained behind: Alixan and Qasim Beg.
+
+4137. Herdu bira di pey hev de bûn mîr.
+4137. Both brothers in succession of each other became mir.
+
+4138. Lê ji wan yekî jî mezintiyê baş tam nekirin û di temenên xwe yên nazik û ciwan de gula wan çilmisî û dinêya pîr bi ciwanî terk kirin.
+4138. But even one of them did not taste greatness well and in their tender and young ages their rose withered and they abandoned the old world in youth.
+
+4139. Du kurên Qasim Beg hebûn.
+4139. Qasim Beg had two sons.
+
+4140. Cehfer Beg û Xezenfer Beg.
+4140. Cehfer Beg and Xezenfer Beg.
+
+4141. Cehfer Beg
+4141. Cehfer Beg
+
+4142. Di temenê xwe yê biçûk de li ser fermana Sultan Selîm Xan bû Fermanrewayê Egilê.
+4142. In his small age upon the command of Sultan Selim Xan he became the Ruler of Egil.
+
+4143. Niha ku tarix 1005è koçi ye, Cehfer Beg dimîne û 25 sal e ku kar û barên Egilê dimeşîne.
+4143. Now that the date is 1005 Hijri, Cehfer Beg remains and it is 25 years that he conducts the tasks and affairs of Egil.
+
+4144. ## ŞAXÊ DUDUYAN
+4144. ## THE SECOND BRANCH
+
+4145. ## DI DERHEQÊ FERMANREWAYÊN PALOYÊ DE YE
+4145. ## IT IS REGARDING THE RULERS OF PALO
+
+4146. Wekî di behsa Egilê de derbas bû, nesla Fermanrewayên Paloyê diçin digihîjin Emîr Teymûrtaşê kurê Emîr Mihemmedê kurê Emîr Ibrahîmê kurê Emîr Bulduk.
+4146. As passed in the discussion of Egil, the lineage of the Rulers of Palo goes and reaches Emir Teymurtash the son of Emir Mihemmed the son of Emir Ibrahim the son of Emir Bulduk.
+
+4147. Emîr Teymurtaş
+4147. Emir Teymurtash
+
+4148. Ev emîrê han, bi merdî, qencî, payebilindî, di nav emsalên xwe de mêr, di sergiraniyê de bi nav û deng hatiye naskirin.
+4148. This very emir, with nobility, goodness, high rank, man among his peers, in dignity has come to be recognized with name and sound.
+
+4149. Xwedî fikrên bi îsabet û tedbîrên saxlem bû.
+4149. He was the owner of on-target thoughts and solid measures.
+
+4150. Bi kurtî, bi xwe gelek bi dadmend, bi însaf û ji hemû kesan re qencîxwaz bû.
+4150. In short, he himself was very with justice, with fairness and a well-wisher to all persons.
+
+4151. Dema ku roja babê wî mir û wî rikêfên rêvebiriyê di destên xwe de dîtin û heta çavên xwe li vê cîhana han dan hev, di temamên rojên desthilata xwe de, li ser rêç û rêvebiriyek baş meşiya.
+4151. When on the day his father died and he saw the stirrups of administration in his hands and until he closed his eyes to this very world, in the entire days of his authority, he walked upon a good track and administration.
+
+4152. Dema ku mir, zarokek tenê li pey ma.
+4152. When he died, a single child remained behind.
+
+4153. Mir Hemze Beg
+4153. Mir Hemze Beg
+
+4154. Li ser pêşniyar û muwafeqeta serokên qewmê xwe û giregirên eşîretan, di ciyê babê xwe de li ser textê desthilatê rûnişt.
+4154. Upon the suggestion and agreement of the leaders of his people and the high-ranking ones of the tribes, in the place of his father he sat upon the throne of authority.
+
+4155. Wî jî çar zarokên kur li pey xwe hiştin û mir: Huseyin, Yaxmur, Elî û Rustem.
+4155. He too left four male children behind himself and died: Huseyin, Yaxmur, Eli and Rustem.
+
+4156. Huseyin Begê Kurê Mîr Hemze
+4156. Huseyin Beg the Son of Mir Hemze
+
+4157. Bi serfirazî û serbilindî ji babê xwe mîrata fermanrewatiyê sitand.
+4157. With triumph and pride he took the inheritance of rulership from his father.
+
+4158. Ew bûyerên xwînavî yên dîrokî ku bûne sebebê xerabûna Dewleta Aqqoyunî, di dema wî de qewimîn û di temamê wilayeta Diyarbekrê de keşmekêşî hakim bû.
+4158. Those bloody historical events that became the reason for the ruin of the Aqqoyuni State, occurred in his time and in the entirety of the province of Diyarbekr conflict ruled.
+
+4159. Huseyin Beg, ji vê firsetê îstîfade kir û êrîş bir ser Kela Erganiyê û xwest wê ji Tirkmenan bistîne.
+4159. Huseyin Beg, profited from this opportunity and took attack upon the Castle of Ergani and wanted to take it from the Turkmen.
+
+4160. Lê, 'ecel firset neda, hê fêkiyên hukumdartî û saltanatê jê nekiribûn, meygêrê mirinê qedeha wî tijî kir û peymana ku pê re hebû, betal kir.
+4160. But, his death hour did not give opportunity, while he had not yet picked the fruits of rulership and sultanate, the cupbearer of death filled his cup and canceled the covenant that he had with him.
+
+4161. Ji ber ku ew di şer de hat kuştin, tu nesil li pey wî neketin, biraziyê wî Cimşîd li ciyê wî li ser textê desthilatê rûnişt.
+4161. Because he came to be killed in war, no lineage appeared behind him, his nephew Cimshid sat at his place upon the throne of authority.
+
+4162. Cimşîd Begê Kurê Rustem Beg
+4162. Cimshid Beg the Son of Rustem Beg
+
+4163. Tê gotin ku, Cimşîd Beg, di destpêkî de û hê mamê wî sax, di bin xizmeta Xalid Begê Pazûkî de bû.
+4163. It is said that, Cimshid Beg, in the beginning and while his uncle was still alive, was under the service of Xalid Beg the Pazuki.
+
+4164. Rojek, dema ku bi Xalid Beg re diçe nêçîrê, teyrek Xalid Beg ê nêçîrê fir daye û ber bi asîmanan bilind bûye;
+4164. One day, when he goes hunting with Xalid Beg, a bird of prey of Xalid Beg flew and rose towards the skies;
+
+4165. bi awaki wisan bilind bûye ku êdî ji ber çav wenda bûye.
+4165. in such a way it rose that it disappeared from sight.
+
+4166. Bi vê fira wî êdî herkesi hêviya xwe ji vegera wî biriye.
+4166. With this flight of its already every person cut their hope from its return.
+
+4167. Dema ku ew di vi halî di mulaheza vi teyri de ne, lê dinêrin ku qasek şûn de teyr dixuyê, xwe nizim dike û tê xwe li ser serê Cimşîd Beg datîne û divenişe.
+4167. When they are in this state in the observation of this bird, they look that a while later the bird appears, lowers itself and comes places itself upon the head of Cimshid Beg and settles.
+
+4168. Li ser vê, Xalid Beg û giregirên pê re, vê bûyerê nîşana taliheke sipehî û baş hesibandine û wiha gotine: "Dê di gelek nêzîk de dewletek mezin bi destê wî bikeve û dê dinê berê xwe bide wi.
+4168. Upon this, Xalid Beg and the high-ranking ones with him, considered this event the sign of an elegant and good fortune and said like this: "In very soon a great state will fall into his hand and the world will turn its face to him.
+
+4169. Piştî çend roj bi ser vê bûyerê re derbas bûne, bi rastî ji rastiya vê falê derketiye.
+4169. After a few days passed over this event, truly too the truth of this omen came out.
+
+4170. Şi'ir:
+4170. Poem:
+
+4171. "Hemû falên ku koka wan leyz e
+4171. "All omens whose root is play
+
+4172. Dema sterk bi ser de biçe, bêguman rast derdikeve❞
+4172. When the star goes over them, without doubt comes out true"
+
+4173. Weki berê jî behs hat kirin, mamê wî mir û desthilata Paloyê ket destê wî.
+4173. As before too came to be discussed, his uncle died and the authority of Palo fell into his hand.
+
+4174. Cimşid Beg, bi rastî jî mirovekî dinyadîtî, di rêvibirinî û meşandina kar û baran de xwedî tecrube, xwediyê asoyek fireh û siyasetek baş bû.
+4174. Cimshid Beg, truly too was a world-seen person, in administering and conducting tasks and affairs he was an owner of experience, owner of a broad horizon and a good politics.
+
+4175. Dema ku mîr û fermanrewayên bi nav û deng ên Kurdistanê çûn îta'et û sedaqeta xwe ji textê Sultan Selîm Xan re pêşkêş kirin û li dijî Fermanrewayên Qizilbaşan li ba Osmaniyan cî girtin, ew jî di nav wan de bû û wî jî guharên koletî yên Sultan kirin guhê xwe û Sultan, ji bo ku wilayeta Paloyê ya jê re mîrate mayî paş de bistîne, alîkariyek gelek hêja dayê.
+4175. When the famous mirs and rulers of Kurdistan went and presented their obedience and fidelity to the throne of Sultan Selim Xan and took a place beside the Ottomans against the Rulers of Qizilbash, he too was among them and he too put the earrings of slavery of the Sultan into his ear and the Sultan, in order that he take back the province of Palo that had remained to him as inheritance, gave a very valuable help to him.
+
+4176. Wê çaxê berpirsiyarê Paloyê yekî navê wî Tirkmen Erebşah bû.
+4176. At that time the responsible one of Palo was one whose name was Turkmen Erebshah.
+
+4177. Cimşîd Beg, vê wezifeya han gelek bi tekûz û baş bicî anî û bi hêzên xwe yên taybetî ve gelek caran li dijê vê civaka han şer kir; di dawiyê de ew kesên wilayeta wî xesp kiribûn jê derxist, bi vî awayî mîrat û jêmayên bab û bapîrên xwe sitand û hukmê xwe li wir damezirand.
+4177. Cimshid Beg, carried out this very duty very completely and well and with his private forces many times warred against this very society; in the end he brought out those persons who had usurped his province, in this way he took the inheritance and remains of his father and grandfathers and established his rule there.
+
+4178. Çîrokek ecêb a li ser wan deman tê gotin ev e: Di şerekî di navbera Cimşîd Beg û Tirkmenan de, eskerekî Tirkmenan şûrekî li serê xortekî Cimşid Beg dixe û nîvê kasa serê wî difirîne û nîvê din jî bi mejî ve vekiri dimîne.
+4178. A strange story that is said about those times is this: In a war between Cimshid Beg and the Turkmen, a soldier of the Turkmen strikes a sword on the head of a youth of Cimshid Beg and makes half the bowl of his head fly and the other half too with the brain remains open.
+
+4179. Li ser vê, cerrah nîvê kasa serekî tînin û bi wê nivê mayî ve didrún.
+4179. Upon this, surgeons bring half the bowl of a head and sew it to that remaining half.
+
+4180. Qasek şûn de ew bi hev ve dikelin, tu derz tê de namînin û hetta pirç jî pê ve tê.
+4180. A while later they boil (knit) together, no crack remains in it and even hair too comes upon it.
+
+4181. Ew mirov bi wî awayî demek dirêj dijî, heta tê gotin çend zarokên din jî jê zêde dibin.
+4181. That man in that way lives for a long time, even it is said several other children too are added from him.
+
+4182. Her çend, li vir ciyê nivîsandina vê çîrokê nine; lê pîrên dîroknasan gotine: "Eger hûn rastî bûyerên ecêb û seyr bên, bi ser de gav nedin."
+4182. Although, here is not the place for writing this story; but the old historians have said: "If you come across strange and weird events, do not step over them."
+
+4183. Min jî da ser rêça wan.
+4183. I too put onto their track.
+
+4184. Bi kurti, piştî Cimşîd Beg hevsarên desthilata wilayeta Paloyê kirin destê xwe, bi zîrektiya xwe karîbû meyla Sultan û wezîrên Dewleta Osmani û giregirên dewletê ber bi xwe ve bîne, bi rêk û pêkî dostiyê bi
+4184. In short, after Cimshid Beg put the halters of the authority of the province of Palo into his hand, with his cleverness he was able to bring the inclination of the Sultan and viziers of the Ottoman State and the high-ranking ones of the state towards himself, orderly set up friendship with
+
+4185. wan re dayne.
+4185. them.
+
+4186. Wisan kiribû ku padişahên xwedî şikur û sultanên payebilind, bi dil û giyan bûbûn hogirên wî, bîr û baweriya xwe bi wî anîbûn û ew dilsozên xwe yê herî rast dizanîn.
+4186. He had done it so that padishahs possessing thanks and high-ranking sultans, with heart and soul had become his companions, had brought their belief and trust to him and knew him as their most true loyal one.
+
+4187. Ji ber vê yekê, dema ku Gazî Sultan Suleyman Xan ji bo îstîla û fetha Îranê di Kurdistanê re derbas dibû, ji bo muşawêre û îstîfadekirina ji tecrubeyên wî, ji nav hukumdar û mîrên Kurdistanê ew ji xwe re wekî muşawir helbijart.
+4187. Because of this one, when Gazi Sultan Suleyman Xan for the occupation and conquest of Iran passed through Kurdistan, for consultation and profiting from his experiences, from among the rulers and mirs of Kurdistan he chose him as an advisor for himself.
+
+4188. Ev herdu beytên Farisî, gelek li qabiliyet û mîzacên Cimşîd Beg tên:
+4188. These two Persian couplets, very much suit the abilities and temperaments of Cimshid Beg:
+
+4189. "Qenc ew e yê tu qenc dizanî
+4189. "Good is that one whom you know good
+
+4190. Çunki tu riya eqil û qelbê yî
+4190. Because you are the road of mind and heart
+
+4191. Wekî sedefê bêdeng, lê tijî ji nûkteyan
+4191. Like the silent oyster, but full of subtleties
+
+4192. Her çend derveyê sedefê hestî, lê hundur mircan"
+4192. Although the outside of the oyster is bone, but the inside is coral"
+
+4193. Ew fikir û nêrînên ku wî pêşkêşî Sultan dikirin, hemû ji aliyê Sultan ve dihatin teqdîrkirin.
+4193. Those thoughts and views that he presented to the Sultan, all came to be appreciated from the side of the Sultan.
+
+4194. Dema ku Sultan êrîşê Îranê kir, di saya van fikran de gelek cî sitandin.
+4194. When the Sultan attacked Iran, in the shadow of these thoughts many places came to be taken.
+
+4195. Bi rastî Cimşîd Beg xwediyê serwetek mezin, hişyariyek zêde û zekawetek nedîtî bû.
+4195. Truly Cimshid Beg was the owner of a great wealth, abundant awareness and an unseen intelligence.
+
+4196. Xwe gelek bi xelkê dabû hezkirin, heta tu ji Xwedê bixwazî xêrxwaz, destvekirî, henekker û xemxwar bû.
+4196. He had made himself very loved by the people, as much as you might want from God he was benevolent, open-handed, humorous and caring.
+
+4197. Tê gotin ku; hemû salê, ji keriyên pezên xwe yên xumalî ji bo firotinê 3 hezar nêriyên sê salî dişand Helebê.
+4197. It is said that; all year, from his native flocks of sheep for selling he sent 3 thousand three-year-old he-goats to Aleppo.
+
+4198. Qasê vê hejmara han jî bizin dişandin.
+4198. As much as this very number too he sent goats.
+
+4199. Bi serê her yek bizinê ve nalekî hespan girê dida.
+4199. Upon the head of every one goat he tied a horse horseshoe.
+
+4200. Bi wê yekê ku dema ev nalên han berhevê ser hev dibûn, giranahiya wan nêzîkî giranahiya barê 40 deveyan bû.
+4200. With that one that when these very horseshoes were gathered upon each other, their weight was near the weight of the load of 40 camels.
+
+4201. Her sal 10 hezar diketin destê wî.
+4201. Every year 10 thousand fell into his hand.
+
+4202. Ji bilî vê zêdeyên ji heywanên ziraetê yên din, çêlekan jî têkin ser van, vêca hûn bifikirin û muqayese bikin.
+4202. Apart from this the surplus from the other agricultural animals, cows too add upon these, now you think and compare.
+
+4203. Bi kurtî, wê çaxê di Kurdistanê de, bi hejmara zêde yên xizmetkar û îhtişama xwe, di xwedîbûyîna perên zêde û serweta giran de kesekî nedikarî serî bide wî.
+4203. In short, at that time in Kurdistan, with his abundant number of servants and his grandeur, in having abundant money and heavy wealth a person could not give head to him (compete with him).
+
+4204. Di Paloyê de, gelek avahiyên xêratê yên wekî kele û medreseyan da avakirin; ji mesafeyên gelek dûr ji kele û qesebeyê re av anî.
+4204. In Palo, he had many buildings of charity like castles and madrasas built; from very far distances he brought water to the castle and town.
+
+4205. Piştre li ciyekî yê navê wê Demirqapi, karwanserayek fireh da çêkirin.
+4205. Afterwards at a place whose name was Demirqapi, he had a broad caravanserai built.
+
+4206. Ew kesên rêwîtî û karwanî dikirin, havîn û zivistanan li wir disitirîn.
+4206. Those persons who made travel and caravan, summers and winters took shelter there.
+
+4207. Cimşîd Beg, gelek salan jiya û rojên jiyana wî dirêj bûn, ji sed salan derbas bû û gihişt sinorê xwe yê tabîî.
+4207. Cimshid Beg, lived many years and the days of his life were long, passed a hundred years and reached his natural limit.
+
+4208. Şêst salên wî, di fermanrewatiya serbixwe ya Paloyê de derbas bû.
+4208. Sixty years of his, passed in the independent rulership of Palo.
+
+4209. Bi vê jî nema, bi ser vê de jî, ji Gazî Sultan Suleyman Xan, ji bo teyîda mulkê wilayeta xwe û piştî wî, ji bo ku zarokên wî jî mafê xwe yê bi ser mulkiyeta vê wilayeta han de biparêzin û ev heta hetayî ji neslek bikeve destê neslekî din, fermanek derxist.
+4209. He did not stay with this too, upon this too, from Gazi Sultan Suleyman Xan, for the confirmation of the property of his province and after him, in order that his children too protect their right over the ownership of this very province and this up to eternity from a lineage fall into the hand of another lineage, he brought out a command.
+
+4210. Ji bilî
+4210. Apart from
+
+4211. vê, di vê fermana han de, le'netê li wan kesên ku ziddê naverok û hukmên vè fermana han derkevin, dikir.
+4211. this, in this very command, he brought curse upon those persons who would come out against the content and rules of this very command.
+
+4212. Li ser saxiya xwe, Huseyin Xan Begê* kurê xwe kiribû cînişînê xwe û di dawiyê de ji melbenda nexweşî û cefayê bar kir û berê xwe da diyarê hêminî û rehetiyê.
+4212. Upon his aliveness, he had made his son Huseyin Xan Beg* his successor and in the end from the region of illness and suffering he moved and turned his face to the land of tranquility and comfort.
+
+4213. Şiir:
+4213. Poem:
+
+4214. "Her çend rojan carekê ev seraya duderî
+4214. "Once every few days this two-doored palace
+
+4215. Dibe wekî mala xwediyekî din
+4215. Becomes like the house of another owner
+
+4216. Ev dêra bi raxistinên kevin hatî raxistin, tenê karwanseray e
+4216. This monastery spread with old spreadings, is only a caravanserai
+
+4217. Mirovê bi aqil dilê xwe girê nade bi karwanserayê
+4217. The wise man does not tie his heart to the caravanserai
+
+4218. Her tim adetê vê cîhana bêwefa ye:
+4218. It is always the custom of this disloyal world:
+
+4219. Pêşî şêrînî dide piştre jehir"
+4219. First it gives sweetness afterwards poison"
+
+4220. Pênc zarokên kur li pey Cimşîd Beg man: Huseyîn Xan Beg, Hesen Beg, Hemze, Teymurtaş û Dewletşah.
+4220. Five male children remained behind Cimshid Beg: Huseyin Xan Beg, Hesen Beg, Hemze, Teymurtash and Dewletshah.
+
+4221. Ji van Huseyîn Xan Beg û Hesen Beg, ku em ê piştre behs bikin, li ser textê hukumdartî û mîrektiyê rûniştin.
+4221. From these Huseyin Xan Beg and Hesen Beg, who we will discuss afterwards, sat upon the throne of rulership and emirate.
+
+4222. Heçî rewşa kurê sisiyan Hemze Begê ye jî, di despêkî de ji aliyê dergahê saltana Osmani ve bi wezîfeyek re zeametek 40 hezar aqçe jê re hat dan.
+4222. As for the condition of the third son Hemze Beg too, in the beginning from the side of the threshold of the Ottoman sultanate with a duty a zeamet of 40 thousand akches came to be given to him.
+
+4223. Lê piştre, ji bo ku gelek guneh kirin, ji aliyê babê wî ve navê wî ji nav rêza xanedaniyê hat derxistin.
+4223. But afterwards, because that he committed many sins, from the side of his father his name came to be brought out from among the row of the dynasty.
+
+4224. Zarokekî kur ê navê wî Rustem Beg pey wi ma.
+4224. A male child whose name was Rustem Beg remained behind him.
+
+4225. Rustem Beg, piştre bi naveberiya Serdar Mistefa Paşa, bi mercê ku di bin parêzgeriya wilayeta Şêrwanê û maiyeta Wezîr Osman Paşa de be, wezîfeya Fermanrewatiya Paloyê jê re hat dan.
+4225. Rustem Beg, afterwards with the mediation of Serdar Mistefa Pasha, with the condition that he be under the protection of the province of Sherwan and the retinue of Vizier Osman Pasha, the duty of the Rulership of Palo came to be given to him.
+
+4226. Piştre di Şerê Şemaxî yê bi Eres Xan re çêbû, bi destê Qizilbaşan hat kuştin. li
+4226. Afterwards in the Battle of Shemaxi which happened with Eres Xan, by the hand of the Qizilbash he came to be killed.
+
+4227. Kurê Cimşîd Begê çaran Teymurtaş jî, di zemanê babê xwe de rêvebiriya Sancaqa Xarpûtê (Xarbud) a girêdayî Diyarbekrê dikir.
+4227. The fourth son of Cimshid Beg Teymurtash too, in the time of his father did the administration of the Sanjak of Xarput (Xarbud) bound to Diyarbekr.
+
+4228. Piştre Teymurtaş çû rehma Xwedê û du zarokên kur li pey xwe hiştin: Allahwêrdî û Asil.
+4228. Afterwards Teymurtash went to the mercy of God and left two male children behind himself: Allahwerdi and Asil.
+
+4229. Kurê Cimşid Beg yê pêncan** Dewletşah Beg, hê li ser saxiya babê xwe, bi zeametek 40 hezar aqçe, wezîfeya muteferriqiya Sultan dikir.
+4229. The fifth son of Cimshid Beg** Dewletshah Beg, while upon the aliveness of his father, with a zeamet of 40 thousand akches, did the duty of the Sultan's muteferrika.
+
+4230. Piştre wî jî du zarokên kur ên navên wan Yusif û Ehmed li pey xwe hiştin û çû rehma Xwedê.
+4230. Afterwards he too left two male children whose names were Yusif and Ehmed behind himself and went to the mercy of God.
+
+4231. Ev Huseyin Xanê han, di du nusxeyên din de Huseyin Can e. -M. 'E. 'E.
+4231. This very Huseyin Xan, in two other copies is Huseyin Can. - M. E. E.
+
+4232. Di wergera Tirki de kurê sisiyan e.
+4232. In the Turkish translation he is the third son.
+
+4233. Di Farisiya wê û wergera Soranî de kurê pêncan e. -Z. A.
+4233. In its Persian and Sorani translation he is the fifth son. - Z. A.
+
+4234. Huseyin Xan Begê Kurê Cimşîd Beg
+4234. Huseyin Xan Beg the Son of Cimshid Beg
+
+4235. Wekî ku berê jî derbas bû, babê wî hê di saxiya xwe de rêvebiriya hukumeta xwe dabû destê wî.
+4235. As passed before too, his father while in his aliveness had given the administration of his government into his hand.
+
+4236. Piştî babê wî mir, ji aliyê Dîwana Sultan Suleyman Xan ve, di derheqê fermanrewatiya wî de fermanek saltanatê derket.
+4236. After his father died, from the side of the Divan of Sultan Suleyman Xan, regarding his rulership a sultanate command came out.
+
+4237. Bi vî awayî ew bû fermanrewayê serbixwe yê Eyaleta Paloyê û ji dûr û nêzîk ji herkesê re digot: "Tenê ez heme, kesek di ser pozê min re tune." û bi vî awayî nav û dengê wî belav bû.
+4237. In this way he became the independent ruler of the Eyalet of Palo and to far and near every person he said: "Only I exist, a person over my nose does not exist." and in this way his name and sound spread.
+
+4238. Lê, vê yekê, bi hevsarê hukmê desthilatê di dest de û bi dadmendi kir û bi van herdu wesfên xwe, temamê xelkê eyaletê, hemû kesên di bin emrê xwe de, biçûk mezin, feqîr dewlemend herkesê memnun kir.
+4238. But, this one, with the halter of the rule of authority in hand and with justice did and with these both attributes of his, the entirety of the people of the eyalet, all persons under his command, small great, poor rich he made every person satisfied.
+
+4239. Nav û dengê dadmendî û evîna wî ya ji xelkê wî re belavê temamê asoya cîhanê bû.
+4239. The name and sound of his justice and his love for his people spread to the entirety of the horizon of the world.
+
+4240. Di merdîtî û qencîxwaziyê de li ser rêça babê xwe meşiya û bi van xesletên xwe yên sipehî, di seranserê Kurdistanê de, heta di Iraq û Hicazê de jî bû alayeke tekane.
+4240. In nobility and benevolence he walked upon the track of his father and with these elegant traits of his, throughout Kurdistan, even in Iraq and the Hijaz too he became a single banner.
+
+4241. Dewra wî ya geş û rojên wî yên dilxweş dirêj nekêşan.
+4241. His bright era and his happy days did not draw long.
+
+4242. Piştre bi ecelê xwe mir û zarokek wî yê kur ê navê wî Mehmûd hebû.
+4242. Afterwards by his death hour he died and he had a male child whose name was Mehmud.
+
+4243. Lê, Mehmûd mirovekî aqilsivik bû û bi kêrî fermanrewatiyê nedihat.
+4243. But, Mehmud was a light-minded person and did not come in use for rulership.
+
+4244. ji ber vê, serekeşîretên Eyaleta Paloyê, kesên perpirsiyar ên li ser karûbaran, xwestin ku birayê wî Hesen Beg desthilatê bigre destê xwe.
+4244. because of this, the tribe leaders of the Eyalet of Palo, the responsible persons upon affairs, wanted that his brother Hesen Beg take authority into his hand.
+
+4245. Hesen Begê Kurê Cimşîd Beg
+4245. Hesen Beg the Son of Cimshid Beg
+
+4246. Ev beg, piştî mirina birayê wî Huseyin Beg, li gor fermana sultantiyê ya ji aliyê Dîwana Sultan Murad Xan ve hatî derxistin û bi yekdengiya serokeşîret û berpirsiyaran li ser textê Mîrektiya Eyaleta Paloyê rûnişt.
+4246. This beg, after the death of his brother Huseyin Beg, according to the sultanate command issued from the side of the Divan of Sultan Murad Xan and with the unanimous voice of the tribe leaders and responsible ones sat upon the throne of the Emirate of the Eyalet of Palo.
+
+4247. Ew sê salên fermanrewatiya wî bi dadmendî, bi însafî û bi memnuniyeta girsên xelkê û tebeqeyên re'ya derbas bûn.
+4247. Those three years of his rulership passed with justice, with fairness and with the satisfaction of the masses of people and the classes of subjects.
+
+4248. Di sala 986ê* koçî (1578'z) de, dema ku Mistefa Paşayê Serdar ji sefer û şerê Şêrwanê vedigeriya, du zarokên kur ên navên wan Suleyman Beg û Muzeffer Beg li pey xwe hiştin û mir.
+4248. In the year 986* Hijri (1578 AD), when Mistefa Pasha the Serdar returned from the campaign and war of Sherwan, he left two male children whose names were Suleyman Beg and Muzeffer Beg behind himself and died.
+
+4249. Suleyman Begê Kurê Hesen Beg
+4249. Suleyman Beg the Son of Hesen Beg
+
+4250. Piştî mirina babê wî, Mistefa Paşayê Serdar, Fermanrewatiya Paloyê da destan.
+4250. After the death of his father, Mistefa Pasha the Serdar, gave the Rulership of Palo to hands.
+
+4251. Lê, bi alîkarî û îşareta Mehmed Paşa yê Wezîrê Mezin, fermana sultaniyê ya vê wezîfeya han, ji aliyê Dîwana Sultan Murad Xan ve, bi çend mercan ji Yusif Begê kurê Dewletşahê kurê Cimşîd Begê re derket.
+4251. But, with the help and sign of Mehmed Pasha the Grand Vizier, the sultanic command of this very duty, from the side of the Divan of Sultan Murad Xan, with several conditions for Yusif Beg the son of Dewletshah the son of Cimshid Beg came out.
+
+4252. Ev rewşa han bû sebeb, di navbera Suleyman Beg, ku dixwest vê hukumeta han tenê bi serê xwe bimeşîne û Yusif Beg de şer û qirên derkeve û çend salan xwîn birije.
+4252. This very condition became the reason, between Suleyman Beg, who wanted to conduct this very government solely by his head and Yusif Beg war and conflict break out and blood flow for several years.
+
+4253. Lê xelk terefdarê Suleyman Beg bû û mecal
+4253. But the people was a supporter of Suleyman Beg and opportunity
+
+4254. Di wergera Tirkî de ev tarixa han 978ề koçî ye û şaş e.
+4254. In the Turkish translation this very date is 978 Hijri and it is wrong.
+
+4255. Di wergera Soranî û Farisiya wê de 986 koçî ye. -Z. A.
+4255. In its Sorani and Persian translation it is 986 Hijri. - Z. A.
+
+4256. nedan Yusif Beg ku ew xwe têkeli nav kar û barên eyaletê bike.
+4256. they did not give to Yusif Beg that he mingle himself among the tasks and affairs of the eyalet.
+
+4257. Lê halbuki, Yusif Beg xortekî gelek biaqil, zîrek, zana û biedeb bû.
+4257. But whereas, Yusif Beg was a very wise, clever, knowledgeable and polite youth.
+
+4258. Di mêr û mêrxasiyê de wekî Rustem, di merdî û qenciyan de wekî Hatem bû.
+4258. In manliness and bravery he was like Rustem, in nobility and virtues he was like Hatim.
+
+4259. Lê çi heye, weki şair gotiye, zeman maka hemû tiştên nedîtî ye:
+4259. But what is there, as the poet has said, time is the mother of all unseen things:
+
+4260. "Felek hevsarê mirazê dide destê kesên cahil
+4260. "Fortune gives the halter of desire into the hand of ignorant persons
+
+4261. Qebehetê te jî ew e ku tu xwediyê fezîlet û zanist î❞
+4261. Your fault too is that that you are the owner of virtue and science"
+
+4262. Di dawiyê de Yusif Beg, ji wan temamên wesfên xwe bêpar, bi naçarî li deriyê gelek nemerdan, zaliman, bêşerefan xist û destên wî li ber singê wi man.
+4262. In the end Yusif Beg, deprived from those entire attributes of his, by necessity knocked at the door of many ignoble ones, tyrants, honorless ones and his hands remained upon his chest.
+
+4263. Ji ber ku tiştekî wisan di destê wî de tunebû ku çavên çavbirçiyan pê tama bike.
+4263. Because something like that was not in his hand that the eyes of the greedy ones covet by it.
+
+4264. Di nav dîwan û meclisan de rê jê re nehat dan.
+4264. Among divans and assemblies way did not come to be given to him.
+
+4265. Kul û dax dan ser dilê wî û rojên jiyana tarîtiyê bi ser de hatin û bi mirinê ji vê nedametiyê rizgar bû.
+4265. They put sorrow and branding upon his heart and the days of the life of darkness came over him and with death he was saved from this remorse.
+
+4266. Piştî wî, wezîfeya fermanrewatiyê eynî bi wan mercên ku pê dabûn qebûlkirin, ji birayê wî Ehmed Beg re hat dan.
+4266. After him, the duty of rulership exactly with those conditions that they had made accepted by it, came to be given to his brother Ehmed Beg.
+
+4267. Ehmed Beg jî rojên xwe bi şer û dijminatiya bi Suleyman Beg ya bi destxistina hukumetê ve derbas kirin.
+4267. Ehmed Beg too passed his days with war and enmity with Suleyman Beg for obtaining the government.
+
+4268. Ev rewşa han bû sebeb ku xwîna gelek terefdarên herdu milan ên kesên ji eşîretên vê wilayeta han birije.
+4268. This very condition became the reason that the blood of many supporters of both sides of persons from the tribes of this very province flow.
+
+4269. Hemû ew hewl û têkoşînên Ehmed Beg ên di riya van hêviyên xwe de serf kirin, di valatiyê de çûn.
+4269. All those efforts and struggles of Ehmed Beg which he spent in the road of these hopes of his, went into emptiness.
+
+4270. Felek tu carê jê re nebû yar û li rûyê wî nekenî.
+4270. Fortune no time became a friend to him and did not smile in his face.
+
+4271. Şiir:
+4271. Poem:
+
+4272. Gelek caran heye stêrka bêfaman geş e
+4272. Many times there is the star of the uncomprehending ones is bright
+
+4273. Lê çiqas zîrek û famdar jî be, dema bext reş e
+4273. But however clever and comprehending one too may be, when luck is black
+
+4274. Kor, ji tarîtiyê hat û nehat
+4274. Blind, from darkness came and did not come
+
+4275. Koş û lep tijî ji giya û nebat
+4275. Lap and palm full of grass and plant
+
+4276. Nayên ber çavên wî mîr û newêr
+4276. Do not come before his eyes mirs and braves
+
+4277. Zora geniyê pere dertînin li jêr
+4277. The force of rotten money brings them out below
+
+4278. Di netîceyê de, di sala 1001'ê koçî (1593'yê z) de riayeta daxwaza Sultan û eleqeyên jê re dayî nîşan kir, mecbur ma çû Asîtaneyê û li wir bicî bû.
+4278. In the result, in the year 1001 Hijri (1593 AD) he observed the request of the Sultan and the interests shown to him, he was obliged he went to Asitane and settled there.
+
+4279. Li wir bi newxeşiya webayê (rişane) ket û çû rehma Xwedê.
+4279. There he fell with the illness of plague (cholera) and went to the mercy of God.
+
+4280. Hukumeta Paloyê jî bê berhelist di destê Suleyman de ma.
+4280. The government of Palo too without resistance remained in the hand of Suleyman.
+
+4281. Ev şiira han di wergera Tirki de tune.
+4281. This very poem does not exist in the Turkish translation.
+
+4282. Lê di Farisiya wê û wergera Soranî de heye.
+4282. But in its Persian and Sorani translation it exists.
+
+4283. Min ev ji wergera Sorani girt. -Z. A.
+4283. I took this from the Sorani translation. - Z. A.
+
+4284. ## ŞAXÊ SISIYAN
+4284. ## THE THIRD BRANCH
+
+4285. ## DI DERHEQE BEGÊN ÇERMOKE DE YE
+4285. ## IT IS REGARDING THE BEGS OF CERMOK
+
+4286. Wekî me pêş de jî behis kiribû, Emîr Mihemmed, Kela Baxinê da kurê xwe Emîr Teymurtaş û Kela Berdencê jî dabû Emîr Huseyîn.
+4286. As we before too had discussed, Emir Mihemmed, gave the Castle of Baxin to his son Emir Teymurtash and he had given the Castle of Berdenc too to Emir Huseyin.
+
+4287. Li gor riwayetekê, Emîr Huseyin kurê Mîr Mihemmed e û li gor riwayetek din jî kurmamê wî ye.
+4287. According to a transmission, Emir Huseyin is the son of Mir Mihemmed and according to another transmission too he is his cousin.
+
+4288. Lê, dixwaze bila kurê wî be û dixwaze ji bila kurmamê wî be, Emîr Huseyin, demekê ev keleya han parast û piştre zarokek kur li pey xwe hişt û mir.
+4288. But, whether let him be his son and whether let him be his cousin, Emir Huseyin, for a time protected this very castle and afterwards he left a male child behind himself and died.
+
+4289. Emîr Seyfeddîn
+4289. Emir Seyfeddin
+
+4290. Ev mîrê han, piştî babê wî mir, bû cînişînê wî.
+4290. This very mir, after his father died, became his successor.
+
+4291. Desthilatek sipehî damezrand û piştî wî kurê wî Şah Yusif li ciyê wî rûnişt.
+4291. He established an elegant authority and after him his son Shah Yusif sat at his place.
+
+4292. Şah Yusif
+4292. Shah Yusif
+
+4293. Ev mîrê han, piştî mirina babê xwe bû cîgirê mîrata wî.
+4293. This very mir, after the death of his father became the deputy of his inheritance.
+
+4294. Hukmekî baş meşand, bi serfirazî û liyaqet desthilata xwe bi rê ve bir.
+4294. He conducted a good rule, with triumph and merit he administered his authority.
+
+4295. Piştî mir, kurê wî Welat Beg li ciyê wî rûnişt.
+4295. After he died, his son Welat Beg sat at his place.
+
+4296. Welat Beg
+4296. Welat Beg
+
+4297. Ev mîrê han li ciyê babê xwe rêvebiriya welat girt destê xwe.
+4297. This very mir at the place of his father took the administration of the country into his hand.
+
+4298. Piştî wî jî Şah 'Elî Beg ev wezîfe girt destê xwe.
+4298. After him too Shah Ali Beg took this duty into his hand.
+
+4299. Şah 'Eli Beg
+4299. Shah Ali Beg
+
+4300. Bû serokê eşîret û qebîleyan.
+4300. He became the leader of tribes and clans.
+
+4301. Piştî ku mir, ev karê wî yê giran ket destê Isfendiyar Beg.
+4301. After he died, this heavy task of his fell into the hand of Isfendiyar Beg.
+
+4302. Piştî Isfendiyar Beg jî desthilat ket destê Bayindir Beg.
+4302. After Isfendiyar Beg too authority fell into the hand of Bayindir Beg.
+
+4303. Piştî ew jî mir, ciyê wî ji aliyê Mihemmed Beg ve hat tijîkirin.
+4303. After he too died, his place came to be filled from the side of Mihemmed Beg.
+
+4304. Mihemmed Beg
+4304. Mihemmed Beg
+
+4305. Piştî ku Mihemmed Beg wezîfeya fermanrewatiyê girt destê xwe, navçeya Çermokê ji Qizilbaşan rizgar kir û ew jî, wekî bab û bapîrên wî kiribûn, xist bin desthilata xwe.
+4305. After Mihemmed Beg took the duty of rulership into his hand, he saved the sub-district of Cermok from the Qizilbash and it too, as his father and grandfathers had done, he put under his authority.
+
+4306. Piştre ji Sultan Selîm Xan, di esnayê sitandina Diyarbekrê de, di derheqê mulkiyeta xwe ya li ser van ciyan de, fermanek sultantiyê bi dest xist.
+4306. Afterwards from Sultan Selim Xan, during the taking of Diyarbekr, regarding his ownership over these places, he obtained a sultanate command.
+
+4307. Ev fermana han ji aliyê fermanek Sultan Suleyman Xan ve jî hat teyîdkirin.
+4307. This very command came to be confirmed from the side of a command of Sultan Suleyman Xan too.
+
+4308. Ji wê tarîxê heta niha, navçeya Çermokê girêdayê eyaletên ku jê re mîrate mane.
+4308. From that date until now, the sub-district of Cermok is bound to the eyalets that have remained to him as inheritance.
+
+4309. Lê xeraca Xiristiyanên li wan deran, aîdê Dîwana Mal (Darayi) ya Diyarbekrê ye û vê xeracê her sal teslîmê Xezineya Amedê dikin.
+4309. But the land tax of the Christians in those places, belongs to the Divan of Property (Treasury) of Diyarbekr and this land tax they every year deliver to the Treasury of Amed.
+
+4310. Niha jî rêvebirî û hukumet di destê Mihemmed Beg de ne.
+4310. Now too administration and government are in the hand of Mihemmed Beg.
+
+4311. gol bom IM ob gell hermedl
+4311. gol bom IM ob gell hermedl
+
+4312. ## BEŞA SISIYAN
+4312. ## THE THIRD SECTION
+
+4313. ## DI DERHEQE BEGÊN SASONÊ DE NE KU VAN DAWÎYAN BI NAVE "FERMANREWAYÊN HEZZOYÊ HATINE NASKIRIN
+4313. ## IT IS REGARDING THE BEGS OF SASON WHO IN THESE LATTER DAYS HAVE BEEN RECOGNIZED WITH THE NAME "RULERS OF HEZZO"
+
+4314. Ji aliyê ew kesên zanyariya wan li ser kûrahî û zerafeta dîrokê heye, yên seneta edebiyatê û ûsluba axaftinê dizanin, riwayet dikin ku; eslê Fermanrewayên Sasonê digihîje Fermanrewayên Kisrayê.
+4314. From the side of those persons whose knowledge is upon the depth and elegance of history, who know the art of literature and style of speech, they transmit that; the origin of the Rulers of Sason reaches the Rulers of Kisra.
+
+4315. Lê, ew riwayeta di vî warî de ya herî rast ew e, ku ew kurmamên Fermanrewayên Bedlîsê ne.
+4315. But, that most true transmission in this domain is that, that they are the cousins of the Rulers of Bedlis.
+
+4316. Di eslê xwe de ev, du birayên navên wan Izzeddîn û Diyaeddîn bûn.
+4316. In their origin they, were two brothers whose names were Izzeddin and Diyaeddin.
+
+4317. Ji Xelata merkeza herêma Êrmeniyan hatin Bedlîsê û bajarê Sasonê ji mirovekî Gurcî yê navê wî Tawît sitandin; rêvebirina kar û barê wê Izzeddîn girt destê xwe.
+4317. From Xelat the center of the region of the Armenians they came to Bedlis and took the city of Sason from a Georgian man whose name was Tawit; the administration of its tasks and affairs Izzeddin took into his hand.
+
+4318. Dê behsa teferruata vê kurtiya han di mijara Fermanrewayên Bedlîsê de bê kirin.
+4318. The discussion of the detail of this very briefness will come to be done in the topic of the Rulers of Bedlis.
+
+4319. Ji bo ku Kurd gotina "Izzeddîn" di lehçeyên xwe yên taybetî de bi awayê "Azzîn” telafuz dikin, fermanrewayên vê navçeya han jî bi leqeba Azzanî hatin naskirin.
+4319. Because that the Kurds pronounce the word "Izzeddin" in their special dialects in the way of "Azzin", the rulers of this very sub-district too came to be recognized with the nickname Azzani.
+
+4320. Di dema îstîlaya Kela Sasonê de, gelek kesên ji Eşîreta Rojkî li wir bicî bûn.
+4320. In the time of the occupation of the Castle of Sason, many persons from the Rojki Tribe settled there.
+
+4321. Qewmê li vir yê kevin ji çar qebîleyan pêk tê: Şêroyî, Babusî, Susanî û Timoqî.
+4321. The old people here consists of four clans: Sheroyi, Babusi, Susani and Timoqi.
+
+4322. Ev fermanrewayên han, ji bo ku bi serketin nahiya Erzenê jî kirin ser mulkiyeta ji wan re mîrate mabû, Eşîretên Xaldî, Dêrmexarî, 'Ezîzan ên ku ji eşîretên Hesenkêfê bûn û li wir rûdiniştin, bi xwe ve girêdan.
+4322. These very rulers, because that with victory they put the sub-district of Erzen too upon the ownership that had remained as inheritance to them, bound to themselves the Xaldi, Dermexari, Ezizan Tribes which were from the tribes of Hesenkef and resided there.
+
+4323. Fermanrewayên Sasonê, di nav Fermanrewayên Kurdistanê de, bi mêr û mêrxasî, bi merdî û bi alîcenabtiyên xwe bi nav û deng in.
+4323. The Rulers of Sason, among the Rulers of Kurdistan, are famous with manliness and bravery, with nobility and with their generosity.
+
+4324. Ew, di rojên şer û hawarên giran û di desthildanî de tu car paş de nemane û her wext ji emsalên xwe serkevtîtir bûne.
+4324. They, in the days of war and heavy alarms and in rising up have no time remained behind and every time have been more victorious than their peers.
+
+4325. Ji bilî vê, her wext bi fermanrewayên
+4325. Apart from this, every time with the rulers
