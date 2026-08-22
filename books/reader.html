@@ -277,6 +277,10 @@
       BOOK_MD_URL = "/books/mds/farsi_book.md";
       SRC_LANG = "fa";
       BOOK_TITLE = "کتاب فارسی";
+    } else if (bookKey === "conference_of_the_birds_1") {
+      BOOK_MD_URL = "/books/mds/conference_of_the_birds_1.md";
+      SRC_LANG = "fa";
+      BOOK_TITLE = "منطق‌الطیر، بخش ۱";
     } else if (bookKey === "hinker_2") {
       BOOK_MD_URL = "/books/mds/hinker_2.md";
       SRC_LANG = "ku";
@@ -316,6 +320,7 @@
 
     var paraEls = [];
     var totalParas = 0;
+    var repeatParagraphNumbers = bookKey === "conference_of_the_birds_1";
 
     function prepareMarkdown(raw) {
       var text = raw.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
@@ -425,8 +430,13 @@
           var numEl = document.createElement("div");
           numEl.className = "para-num";
           num += 1;
-          numEl.textContent = num;
-          para.dataset.num = String(num);
+          if (repeatParagraphNumbers) {
+            var sourceLabel = num % 2 === 1 ? "فارسی: " : "دری: ";
+            body.insertBefore(document.createTextNode(sourceLabel), body.firstChild);
+          }
+          var displayedNum = repeatParagraphNumbers ? Math.ceil(num / 2) : num;
+          numEl.textContent = displayedNum;
+          para.dataset.num = String(displayedNum);
           para.appendChild(numEl);
         }
 
@@ -435,7 +445,7 @@
         paraEls.push(para);
       });
 
-      totalParas = num;
+      totalParas = repeatParagraphNumbers ? Math.ceil(num / 2) : num;
       var savedPara = parseInt(localStorage.getItem("reader_para_" + bookKey) || "0", 10);
       window.requestAnimationFrame(function () {
         if (savedPara > 0) gotoParagraph(savedPara);

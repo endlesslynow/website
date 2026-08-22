@@ -128,6 +128,15 @@ Complete. All 19 texts, 283 sentence pairs across 307 numbered pairs including h
 
 Complete. All six chapters, 1023 sentence pairs across 1031 numbered pairs including the title and eight headings, are in the markdown file. This is the whole story, so there is nothing left to append.
 
+## منطق‌الطیر، بخش ۱
 
+- Key: `conference_of_the_birds_1`
+- Source text: the four supplied fields for each entry: Original, English, A1 Dari, and A1 Eng. The extensionless input file was converted into the single required Markdown book and removed from `books/mds`.
+- Output: `books/mds/conference_of_the_birds_1.md`
+- Registered in `reader.html` with `SRC_LANG` = `fa` and `BOOK_TITLE` = `منطق‌الطیر، بخش ۱`, and listed in `index.html` in the فارسی section.
+- Structure. Every source entry produces two visible reader paragraphs with the same displayed paragraph number. The numbering therefore runs 1, 1, 2, 2, 3, 3, and so on. Every Persian paragraph begins with the visible label `فارسی:` and every Dari paragraph begins with the visible label `دری:`. The original Persian is paired with its supplied English translation. The A1 Dari follows in the next paragraph and is paired with its supplied A1 English translation. A blank line separates every numbered pair. The named sections from pages 29, 31, and 32 are navigation headings. The unlabelled page 30 break is not shown.
+- Text handling. All supplied Persian, English, Dari, and A1 English wording and punctuation was carried over exactly. No spelling, wording, or punctuation corrections were made.
 
+### Progress
 
+Complete. All 128 supplied entries are included as 256 visible Persian and Dari paragraphs grouped under 128 displayed paragraph numbers, across 260 Markdown pairs including the book title and three section headings. The file ends at the bottom of page 32.
