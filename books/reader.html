@@ -17,6 +17,8 @@
     --btn-bg-active: #3a3a3a;
     --bar-border: #2a2a2a;
     --hl: rgba(74,158,255,.28);
+    --label-persian: #f0b44d;
+    --label-dari: #64b5f6;
     --reading-size: 21px;
   }
   html[data-theme="light"] {
@@ -31,6 +33,8 @@
     --btn-bg-active: #ddd8cc;
     --bar-border: #e2ddd2;
     --hl: rgba(31,111,214,.18);
+    --label-persian: #8a5700;
+    --label-dari: #165f99;
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body {
@@ -152,6 +156,9 @@
   /* word highlighted while looking up */
   .lookup-hl { background: var(--hl); border-radius: 3px; }
   .para-body span[data-en] { cursor: pointer; border-radius: 3px; }
+  .source-label { font-weight: 700; }
+  .source-label.persian { color: var(--label-persian); }
+  .source-label.dari { color: var(--label-dari); }
   #sentence-translation {
     position: fixed;
     top: 58px;
@@ -431,8 +438,11 @@
           numEl.className = "para-num";
           num += 1;
           if (repeatParagraphNumbers) {
-            var sourceLabel = num % 2 === 1 ? "فارسی: " : "دری: ";
-            body.insertBefore(document.createTextNode(sourceLabel), body.firstChild);
+            var isPersianLine = num % 2 === 1;
+            var sourceLabel = document.createElement("span");
+            sourceLabel.className = "source-label " + (isPersianLine ? "persian" : "dari");
+            sourceLabel.textContent = isPersianLine ? "فارسی: " : "دری: ";
+            body.insertBefore(sourceLabel, body.firstChild);
           }
           var displayedNum = repeatParagraphNumbers ? Math.ceil(num / 2) : num;
           numEl.textContent = displayedNum;
