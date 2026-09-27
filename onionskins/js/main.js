@@ -84,15 +84,21 @@
 
   // ---------- fitting the monitor to the window ----------
   function fit() {
-    var vw = window.innerWidth, vh = window.innerHeight;
+    // the window's own size, never widened by something sticking out of it
+    // (a phone's browser widens innerWidth to fit whatever overflows, which
+    // then made the monitor bigger still); on a computer both are the same
+    var vw = document.documentElement.clientWidth || window.innerWidth;
+    var vh = document.documentElement.clientHeight || window.innerHeight;
     var kbOn = !$('keyboard').hidden;
-    // On a phone the keyboard spans the whole width and the paper sits
-    // between the monitor and the keyboard; elsewhere the keyboard matches
-    // the monitor and the paper stands to the right of it.
+    // On a phone the monitor sits at the top, the paper under it takes the
+    // rest of the height (at least 0.34 screen widths), then a row of keys
+    // (44 px, with the gaps and margins 58 px in all), then the keyboard,
+    // which spans the whole width. Elsewhere the keyboard matches the
+    // monitor and the paper stands to the right of it.
     var narrow = vw < 700;
     var kk = narrow ? (vw - 24) / 650 : 0;
     var tall = 0.75 + 122 / 640 + (kbOn && !narrow ? 210 / 640 : 0) + (narrow ? 0.34 : 0);
-    var spare = vh - 24 - (kbOn && narrow ? 210 * kk : 0);
+    var spare = vh - 24 - (narrow ? 58 : 0) - (kbOn && narrow ? 210 * kk + 10 : 0);
     // wide: the monitor (1.1 screen widths) plus the gap and the paper (0.48)
     var sw = Math.min((vw - 32) / (narrow ? 1.1 : 1.58), spare / tall);
     sw = Math.max(240, Math.floor(sw));

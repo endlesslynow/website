@@ -357,24 +357,37 @@ body.on #chin .led { background: #7dff9a; box-shadow: 0 0 8px #58e08a, inset 0 -
 }
 .part-key:focus-visible { outline: 2px solid var(--p3); outline-offset: 2px; }
 
-/* a phone: monitor, then the paper, then the keyboard, one under another */
+/* a phone: the monitor at the very top, the paper under it filling the
+   rest of the screen, then the keyboard key and the sentence keys, then
+   the keyboard when it is out */
 @media (max-width: 699px) {
-  #room { flex-direction: column; gap: calc(var(--k) * 14px); }
+  #room {
+    flex-direction: column; justify-content: flex-start; gap: 10px;
+    height: 100%; height: 100dvh;
+    padding-top: max(8px, env(safe-area-inset-top)); padding-bottom: max(10px, env(safe-area-inset-bottom));
+  }
   #desk { display: contents; }
-  #monitor { order: 1; }
-  #side { order: 2; flex-direction: row; align-items: stretch; width: calc(var(--sw) + var(--k) * 60px); }
-  #keyboard { order: 3; }
-  #paper { flex: 1; width: auto; height: calc(var(--sw) * 0.34); transform: none; --pl: max(22px, calc(var(--k) * 42px)); }
-  .subs { font-size: max(14px, calc(var(--k) * 24px)); }
-  .page-turn { font-size: 14px; padding: 3px 8px; }
-  .gloss b { font-size: 15px; }
-  .gloss .mean { font-size: 13px; }
-  .gloss i { font-size: 13px; }
-  .kb-open { height: auto; align-self: stretch; }
-  /* the sentence keys in a column to the right of the keyboard key */
-  .side-keys { align-self: stretch; gap: calc(var(--k) * 12px); }
-  .parts { flex-direction: column; }
-  .part-key { flex: 1; width: max(30px, calc(var(--k) * 56px)); height: auto; font-size: max(16px, calc(var(--k) * 28px)); }
+  #monitor { order: 1; flex: none; }
+  #side {
+    order: 2; flex: 1; min-height: 0;
+    flex-direction: column; align-items: stretch; gap: 10px;
+    width: calc(var(--sw) + var(--k) * 60px);
+  }
+  #keyboard { order: 3; flex: none; }
+  #paper {
+    flex: 1; width: auto; height: auto; min-height: calc(var(--sw) * 0.34);
+    transform: none; --pl: 38px;
+    padding: calc(var(--pl) * 0.2) 26px 10px 16px;   /* writing from the very first ruled line */
+  }
+  .subs { font-size: 22px; }
+  .page-turn { font-size: 15px; padding: 4px 9px; }
+  .gloss b { font-size: 18px; }
+  .gloss .mean { font-size: 14px; }
+  .gloss i { font-size: 14px; }
+  .side-keys { align-self: flex-start; gap: 10px; }
+  .kb-open { width: 64px; height: 44px; padding: 5px 7px; }
+  .parts { gap: 10px; }
+  .part-key { width: 44px; height: 44px; font-size: 22px; }
 }
 .kb-open:focus-visible, .kb-close:focus-visible { outline: 2px solid var(--p3); outline-offset: 2px; }
 
