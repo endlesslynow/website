@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Farsi, Dari and Kurmanji reading</title>
+<link rel="stylesheet" href="css/font.css">
+<link rel="stylesheet" href="css/reader.css?v=20261004-paragraphs">
+</head>
+<body>
+<main>
+
+  <!-- every reading: the three sets, each grouped the way its source is -->
+  <section id="shelf" class="view" hidden>
+    <div id="list"></div>
+  </section>
+
+  <!-- one reading on a sheet of paper -->
+  <section id="reading" class="view" hidden>
+    <nav class="top">
+      <a href="#" class="back" aria-label="All readings"><svg viewBox="0 0 16 16"><path d="M3 8l5-5v3h5v4H8v3z" fill="currentColor"/></svg></a>
+      <span id="where"></span>
+    </nav>
+    <!-- one centred column: the player bar, the book's drawing, the paper -->
+    <div class="spread">
+        <!-- the story read aloud: one bar that stays in view while the story scrolls -->
+        <div id="player" class="player" hidden>
+         <div class="controls">
+          <button type="button" id="rewind" class="rewind" aria-label="Back one second">
+            <svg viewBox="0 0 16 16"><path d="M8 2a6 6 0 1 1-5.7 7.9l1.9-.6A4 4 0 1 0 5 5.2L7 7H1V1l2.5 2.5A6 6 0 0 1 8 2z" fill="currentColor"/></svg>
+            <span>1</span>
+          </button>
+          <button type="button" id="play" class="play" aria-label="Play the story (space bar)">
+            <svg class="i-play" viewBox="0 0 16 16"><path d="M4 2l10 6l-10 6z" fill="currentColor"/></svg>
+            <svg class="i-pause" viewBox="0 0 16 16"><path d="M4 2h3v12H4zm5 0h3v12H9z" fill="currentColor"/></svg>
+          </button>
+          <div id="track" class="track" role="slider" aria-label="Where in the story"><i id="track-fill"></i></div>
+          <span id="clock" class="clock"></span>
+         </div>
+         <div class="extras">
+          <!-- the volume: ten steps, 1 to 10; click or drag across them, or
+               turn the mouse wheel over them -->
+          <div id="volume" class="volume" role="slider" tabindex="0" aria-label="Volume" aria-valuemin="1" aria-valuemax="10">
+            <svg viewBox="0 0 16 16"><path d="M1.5 6h3l4-3.2v10.4l-4-3.2h-3z" fill="currentColor"/><path d="M11 5.4a3.6 3.6 0 0 1 0 5.2M12.8 3.6a6.2 6.2 0 0 1 0 8.8" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+            <span id="volbars" class="volbars"></span>
+            <b id="volnum" class="volnum"></b>
+          </div>
+          <!-- the sound as an mp3 file, to keep -->
+          <a id="download" class="download" download>
+            <svg viewBox="0 0 16 16"><path d="M7 1h2v7.2l2.6-2.6 1.4 1.4L8 12 3 7l1.4-1.4L7 8.2zM2 13h12v2H2z" fill="currentColor"/></svg>
+            <span>Download Audio</span>
+          </a>
+         </div>
+          <audio id="audio" preload="metadata"></audio>
+        </div>
+        <figure id="picture" class="picture" hidden>
+          <img id="picture-img" alt="">
+          <figcaption id="picture-note"></figcaption>
+        </figure>
+      <div class="page">
+        <article id="paper" dir="rtl" lang="fa">
+          <h2 id="title" class="story-title"></h2>
+          <div id="story"></div>
+          <!-- a word's sound and meaning, or a sentence's sound and English -->
+          <div id="slip" class="slip" role="status" hidden></div>
+        </article>
+        <p id="sounds" class="sounds"></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>var READINGS = [];</script>
+<!-- the Chai and Conversation readings are in locked/, opened by the class password -->
+<!-- Conference of the Birds, in Dari: the owner's own text, one file per chapter -->
+<script src="readings/birds_01.js"></script>
+<script src="readings/birds_02.js"></script>
+<script src="readings/birds_03.js"></script>
+<script src="readings/birds_04.js"></script>
+<script src="readings/birds_05.js"></script>
+<script src="readings/birds_06.js"></script>
+<script src="readings/birds_07.js"></script>
+<script src="readings/birds_08.js"></script>
+<script src="readings/birds_09.js"></script>
+<script src="readings/birds_10.js"></script>
+<script src="readings/birds_11.js"></script>
+<!-- Siya Evînê, in Kurmanji: Chapters 1-18 under DI BIN SIYA EVÎNÊ DE -->
+  <script src="readings/siya_01.js?v=20261004-paragraphs"></script>
+  <script src="readings/siya_02.js?v=20261004"></script>
+  <script src="readings/siya_03.js?v=20261004"></script>
+  <script src="readings/siya_04.js?v=20261004"></script>
+  <script src="readings/siya_05.js?v=20261004"></script>
+  <script src="readings/siya_06.js?v=20261004"></script>
+  <script src="readings/siya_07.js?v=20261004"></script>
+  <script src="readings/siya_08.js?v=20261004"></script>
+  <script src="readings/siya_09.js?v=20261004"></script>
+  <script src="readings/siya_10.js?v=20261004"></script>
+  <script src="readings/siya_11.js?v=20261004"></script>
+  <script src="readings/siya_12.js?v=20261004"></script>
+  <script src="readings/siya_13.js?v=20261004"></script>
+  <script src="readings/siya_14.js?v=20261004"></script>
+  <script src="readings/siya_15.js?v=20261004"></script>
+  <script src="readings/siya_16.js?v=20261004"></script>
+  <script src="readings/siya_17.js?v=20261004"></script>
+  <script src="readings/siya_18.js?v=20261004"></script>
+<script src="js/siya_contents.js"></script>
+<script src="locked/key.js"></script>
+<script src="js/reader.js"></script>
+</body>
+</html>

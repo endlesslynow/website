@@ -1,0 +1,261 @@
+/* The Farsi background of the Beginner Languages program (a blue Persian
+   tile frame around a cream middle), a sheet of old paper, and the
+   small slip that shows a word's sound and meaning (the same slip as Onion
+   Skin's). Text that sits on the background has a light panel behind it, and
+   the play controls a dark bar, so both can be read over the tiles. */
+:root {
+  color-scheme: light;
+  --bar: rgba(36, 24, 15, .92);       /* the dark bar behind the play controls */
+  --panel: rgba(251, 246, 230, .9);   /* the light panel behind text on the background */
+  --desk: #140d08;
+  --desk-glow: #3a2415;
+  --cream: #efe2bb;
+  --cream-dim: #b9a47a;
+  --paper: #eee0b4;
+  --paper-lo: #dcc58c;
+  --paper-edge: rgba(122, 84, 30, .45);
+  --ink: #2b1d10;
+  --ink-soft: #7a4a1c;
+  --tea: #a8471a;
+  --pl: 60px;          /* the height of one line of text */
+  --fs: 27px;          /* the story's letters */
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: #efe6cc;
+  color: var(--ink);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+[hidden] { display: none !important; }
+/* the picture stays still behind the page, on phones too */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: -1;
+  background: url('../pictures/farsi_background.jpg') center / cover no-repeat;
+}
+body.kurmanji::before { background-image: url('../pictures/kurdish_background.png'); }
+main { max-width: 1560px; margin: 0 auto; padding: 28px 16px 60px; }
+/* the three sets side by side; one above the other on a narrow screen */
+#list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start; }
+svg { width: 1em; height: 1em; }
+
+/* ---------- the list of readings ---------- */
+.set-name { display: table; font: 600 26px/1.3 Georgia, 'Times New Roman', serif; margin: 12px 0 22px; padding: 6px 16px;
+  color: var(--ink); background: var(--panel); border-radius: 6px; }
+.group { display: table; font: 700 13px/1.4 'Segoe UI', system-ui, sans-serif; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--ink-soft); margin: 26px 0 10px; padding: 4px 10px; background: var(--panel); border-radius: 4px; }
+.card {
+  display: grid; grid-template-columns: auto 1fr; column-gap: 18px; align-items: baseline;
+  padding: 14px 20px; margin-bottom: 10px; border-radius: 3px; text-decoration: none; color: var(--ink);
+  background: var(--paper);
+  box-shadow: inset 0 0 22px var(--paper-edge), 0 6px 16px rgba(0, 0, 0, .5);
+}
+.card:hover, .card:focus-visible { outline: 2px solid var(--tea); outline-offset: 2px; }
+.card-label { font: 600 15px/1.3 'Segoe UI', system-ui, sans-serif; color: var(--ink-soft); }
+.card-fa { font: 700 28px/1.7 'Vazirmatn', Tahoma, sans-serif; text-align: right; }
+.set[dir="rtl"] .set-name { font-family: 'Vazirmatn', Tahoma, sans-serif; }
+.set[dir="rtl"] .group { font-family: 'Vazirmatn', Tahoma, sans-serif; letter-spacing: normal; text-transform: none; }
+.set[dir="rtl"] .card-label { font-family: 'Vazirmatn', Tahoma, sans-serif; }
+.set-kurmanji .set-name { font: 500 26px/1.3 'Segoe UI', system-ui, sans-serif; }
+.set-kurmanji .group { font: 500 18px/1.4 'Segoe UI', system-ui, sans-serif; text-transform: none; letter-spacing: normal; }
+.set-kurmanji .card-fa { font: 400 18px/1.4 'Segoe UI', system-ui, sans-serif; text-align: left; }
+.card-disabled, .card-disabled:hover {
+  background: #e2e2e2; color: #777; box-shadow: none; outline: none; cursor: default;
+}
+.card-disabled .card-label { color: inherit; }
+/* on the website, the password that opens the Chai and Conversation set */
+.lock { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 14px 20px; border-radius: 3px;
+  background: var(--paper); box-shadow: inset 0 0 22px var(--paper-edge), 0 6px 16px rgba(0, 0, 0, .5); }
+.lock input { flex: 1 1 140px; min-width: 0; font: 400 18px/1.4 'Segoe UI', system-ui, sans-serif; padding: 8px 10px;
+  color: var(--ink); background: #fbf6e6; border: 1px solid var(--paper-edge); border-radius: 3px; }
+.lock input::placeholder { font-family: 'Vazirmatn', Tahoma, sans-serif; color: var(--cream-dim); }
+.lock button { font: 600 17px/1.4 'Vazirmatn', Tahoma, sans-serif; padding: 8px 18px; color: var(--cream);
+  background: var(--tea); border: 0; border-radius: 3px; cursor: pointer; }
+.lock button:disabled { opacity: .6; cursor: default; }
+.lock-note { flex-basis: 100%; margin: 0; font: 600 15px/1.4 'Vazirmatn', Tahoma, sans-serif; color: var(--tea); }
+.lock-note:empty { display: none; }
+
+/* ---------- one reading ---------- */
+.top { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; font-size: 15px; }
+#where { padding: 5px 12px; color: var(--ink); background: var(--panel); border-radius: 6px; }
+body.persian #where, body.persian .download, body.persian .rewind span, body.persian .volnum, body.persian .clock {
+  font-family: 'Vazirmatn', Tahoma, sans-serif; }
+.back { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 50%; color: var(--cream);
+  background: var(--bar); font-size: 20px; }
+.back:hover, .back:focus-visible { background: #4a3220; outline: none; }
+
+/* One centred column: the player bar, the book's drawing, the paper. */
+.top { max-width: 860px; margin-left: auto; margin-right: auto; }
+.spread { display: grid; gap: 20px; max-width: 860px; margin: 0 auto; }
+.picture {
+  width: 100%; max-width: 560px; margin: 0 auto; padding: 14px 14px 10px; border-radius: 2px;
+  background: var(--paper);
+  box-shadow: inset 0 0 30px var(--paper-edge), 0 14px 30px rgba(0, 0, 0, .65);
+}
+/* the white of the scanned page takes the paper's colour */
+.picture img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+.picture figcaption { margin-top: 8px; font: italic 14px/1.4 Georgia, 'Times New Roman', serif; color: var(--ink-soft); }
+/* the player: one dark bar above the paper, with the play controls on the
+   left and the volume and Download Audio on the right; while the story is
+   playing it stays at the top of the screen as the story scrolls */
+.player.playing { position: sticky; top: 10px; }
+.player {
+  position: relative; z-index: 5;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px;
+  padding: 8px 12px 8px 8px; border-radius: 30px; background: var(--bar); box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+}
+.controls { display: flex; align-items: center; gap: 12px; flex: 1 1 300px; min-width: 0; }
+.extras { display: flex; align-items: center; gap: 14px; flex: none; margin-left: auto; }
+/* the volume: a speaker, ten steps growing taller, and the number */
+.volume { display: flex; align-items: center; gap: 8px; padding: 4px 6px; border-radius: 8px;
+  color: var(--cream); cursor: pointer; touch-action: none; }
+.volume:focus-visible { outline: 2px solid var(--tea); outline-offset: 2px; }
+.volume > svg { font-size: 19px; color: var(--cream-dim); }
+.volbars { display: flex; align-items: flex-end; gap: 3px; height: 24px; }
+.volbars i { width: 6px; border-radius: 2px; background: rgba(239, 226, 187, .22); }
+.volbars i.on { background: var(--cream); }
+.volume:hover .volbars i.on { background: #fff6dc; }
+.volnum { width: 1.4em; text-align: center; font: 700 15px/1 'Segoe UI', system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.download {
+  display: flex; align-items: center; gap: 7px; height: 40px; padding: 0 16px; border-radius: 20px;
+  background: rgba(239, 226, 187, .12); color: var(--cream); text-decoration: none;
+  font: 600 15px/1 'Segoe UI', system-ui, sans-serif;
+}
+.download:hover, .download:focus-visible { background: rgba(239, 226, 187, .24); outline: none; }
+.play {
+  display: grid; place-items: center; flex: none; width: 52px; height: 52px; padding: 0;
+  border: none; border-radius: 50%; background: var(--tea); color: var(--cream); font-size: 22px; cursor: pointer;
+}
+.play:hover, .play:focus-visible { background: #c0561f; outline: none; }
+.rewind {
+  display: flex; align-items: center; gap: 3px; flex: none; height: 40px; padding: 0 10px; margin-left: 4px;
+  border: none; border-radius: 20px; background: rgba(239, 226, 187, .1); color: var(--cream); font-size: 17px; cursor: pointer;
+}
+.rewind span { font: 700 14px/1 'Segoe UI', system-ui, sans-serif; }
+.rewind:hover, .rewind:focus-visible { background: rgba(239, 226, 187, .2); outline: none; }
+.play .i-pause, .player.playing .play .i-play { display: none; }
+.player.playing .play .i-pause { display: block; }
+.play .i-play { margin-left: 3px; }
+/* the bar is tall enough to press easily; the line inside it is thin */
+.track { position: relative; flex: 1; height: 24px; cursor: pointer; touch-action: none; }
+.track::before, .track i { content: ''; position: absolute; left: 0; top: 9px; height: 6px; border-radius: 3px; }
+.track::before { right: 0; background: rgba(239, 226, 187, .2); }
+.track i { width: 0; background: var(--cream); }
+.clock { flex: none; font: 14px/1 'Segoe UI', system-ui, sans-serif; font-variant-numeric: tabular-nums; color: var(--cream-dim); }
+
+/* The sheet. Every line of writing is --pl tall, keeping the text's steady
+   rhythm without drawn rules or a fake margin line. */
+#paper {
+  position: relative;
+  padding: var(--pl) 56px calc(var(--pl) * .8) 40px;
+  color: var(--ink);
+  background-color: var(--paper);
+  box-shadow: inset 0 0 40px var(--paper-edge), 0 18px 36px rgba(0, 0, 0, .7);
+  border-radius: 2px;
+}
+#paper[dir="ltr"] { padding-left: 56px; padding-right: 40px; }
+/* Kurmanji: plain paper, with the printed book's indented paragraphs. */
+#paper[lang="kmr"] .story-title { margin-bottom: 24px; font: 500 22px/1.4 'Segoe UI', system-ui, sans-serif; }
+#paper[lang="kmr"] .para { margin: 0; text-indent: 1.6em; font: 400 18px/1.75 'Segoe UI', system-ui, sans-serif; text-shadow: none; }
+#paper[lang="kmr"] #story > .para:first-child { text-indent: 0; }
+#paper[lang="kmr"] .num {
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
+  width: auto; min-width: 1.7em; height: 1.7em; padding: 0 .3em; margin: 0 .32em 0 0;
+  border-width: 1px; border-radius: 999px; vertical-align: .1em;
+  font: 500 12px/1 'Segoe UI', system-ui, sans-serif; font-variant-numeric: tabular-nums;
+}
+#paper[lang="kmr"] .slip-fa { font: 600 20px/1.35 'Segoe UI', system-ui, sans-serif; }
+.story-title { margin: 0 0 var(--pl); text-align: center;
+  font: 800 calc(var(--fs) * 1.3)/var(--pl) 'Vazirmatn', Tahoma, sans-serif; }
+/* a section heading from the PDF, in English, one text line tall */
+.section { margin: var(--pl) 0 0; text-align: center; color: var(--ink-soft);
+  font: italic 600 calc(var(--fs) * .7)/var(--pl) Georgia, 'Times New Roman', serif; }
+.story-title + #story > .section:first-child { margin-top: 0; }
+/* a drawing in the text: exactly four text lines tall (the page colour around
+   each drawing is see-through) */
+.story-pic { margin: 0; height: calc(var(--pl) * 4); padding: calc(var(--pl) * .15) 0; }
+.story-pic img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.para { margin: 0; text-indent: 1.4em;
+  font: 600 var(--fs)/var(--pl) 'Vazirmatn', Tahoma, sans-serif; text-shadow: 0 0 1px rgba(43, 29, 16, .4); }
+
+.w { cursor: pointer; border-radius: 3px; }
+.w:hover { background: rgba(120, 80, 20, .16); }
+.w.lit { background: rgba(168, 71, 26, .10); }
+.w.mate { background: rgba(168, 71, 26, .16); }
+.w.on { background: rgba(168, 71, 26, .30); }
+
+/* the number after a sentence, like the numbers on the book's drawings; it
+   stays on the same line as the sentence's last word */
+.end { white-space: nowrap; }
+.num {
+  display: inline-grid; place-items: center; width: 1.25em; height: 1.25em; padding: 0; margin: 0 .1em;
+  vertical-align: .2em; border: 1.5px solid currentColor; border-radius: 50%; background: none;
+  color: var(--ink-soft); opacity: .7; cursor: pointer; text-indent: 0;
+  font: 700 calc(var(--fs) * .55)/1 'Vazirmatn', Tahoma, sans-serif;
+}
+.num:hover, .num:focus-visible, .num.on { opacity: 1; background: rgba(168, 71, 26, .16); outline: none; }
+
+/* ---------- the slip ---------- */
+.slip {
+  position: absolute; z-index: 2; width: max-content; max-width: min(460px, calc(100% - 16px));
+  display: grid; gap: 3px; justify-items: center; text-align: center; text-indent: 0;
+  padding: 8px 16px 10px;
+  background: #fbf6e6; color: var(--ink); border: 1px solid rgba(90, 60, 20, .35); border-radius: 2px;
+  box-shadow: 0 5px 12px rgba(60, 40, 10, .35);
+  transform: rotate(-1deg);
+}
+.slip-fa { font: 800 26px/1.7 'Vazirmatn', Tahoma, sans-serif; }
+.slip-say { font: italic 500 20px/1.3 Georgia, 'Times New Roman', serif; color: var(--ink-soft); }
+.slip-en { font: 600 18px/1.35 'Segoe UI', system-ui, sans-serif; }
+.spoken { display: flex; align-items: baseline; gap: 7px; font: italic 17px/1.3 Georgia, 'Times New Roman', serif; color: var(--ink-soft); }
+.spoken .tag { font: 700 11px/1 'Segoe UI', system-ui, sans-serif; font-style: normal; letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+.spoken .sp-fa { font: 700 19px/1.4 'Vazirmatn', Tahoma, sans-serif; font-style: normal; color: var(--ink); }
+.mean { display: grid; gap: 4px; margin-top: 3px; font: 600 18px/1.35 'Segoe UI', system-ui, sans-serif; }
+.mean .pair { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; column-gap: 7px; }
+.mean .ph { font: 800 19px/1.6 'Vazirmatn', Tahoma, sans-serif; }
+.mean .ph-say { font: italic 500 16px/1.3 Georgia, 'Times New Roman', serif; color: var(--ink-soft); }
+.mean .eq { opacity: .55; }
+
+/* the PDF's pronunciation guide, under the paper */
+.sounds { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 18px 0 0; padding: 10px 16px; font-size: 14px;
+  color: var(--ink-soft); background: var(--panel); border-radius: 6px; }
+.sounds b { font: italic 700 17px Georgia, 'Times New Roman', serif; color: var(--ink); margin-left: 2px; }
+
+/* ---------- a phone: the play controls and, under them, the volume and
+   Download Audio sit above the paper; while the story is playing the play
+   controls stay at the bottom of the screen ---------- */
+@media (max-width: 700px) {
+  .player, .player.playing { position: static; justify-content: center; padding: 0; background: none; box-shadow: none; }
+  .controls {
+    flex-basis: 100%; padding: 8px 18px 8px 8px; border-radius: 40px;
+    background: var(--bar); box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+  }
+  .player.playing .controls {
+    position: fixed; z-index: 5; left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom));
+    max-width: 560px; margin: 0 auto; box-shadow: 0 6px 22px rgba(0, 0, 0, .6);
+  }
+  .extras { margin: 0 auto; padding: 6px 8px 6px 10px; border-radius: 30px; background: var(--bar); }
+  #reading { padding-bottom: 80px; }
+}
+@media (max-width: 1100px) {
+  #list { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+}
+
+/* ---------- a phone ---------- */
+@media (max-width: 600px) {
+  :root { --pl: 46px; --fs: 21px; }
+  main { padding: 16px 16px 40px; }
+  .set-name { font-size: 21px; }
+  #paper { padding: var(--pl) 30px calc(var(--pl) * .6) 16px; }
+  #paper[dir="ltr"] { padding-left: 30px; padding-right: 16px; }
+  #paper[lang="kmr"] .para { font-size: 18px; }
+  .para { text-indent: 1em; }
+  .slip-fa { font-size: 22px; }
+  .slip-say { font-size: 17px; }
+  .slip-en, .mean { font-size: 15px; }
+  .mean .ph { font-size: 16px; }
+  .mean .ph-say { font-size: 14px; }
+  .card { padding: 12px 14px; column-gap: 12px; }
+  .card-fa { font-size: 23px; }
+}
