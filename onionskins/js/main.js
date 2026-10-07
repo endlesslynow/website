@@ -709,7 +709,10 @@
   }
   $('kb-close').addEventListener('click', function () { sound.start(); sound.key(); setKeyboard(false); });
   $('kb-open').addEventListener('click', function () { sound.start(); sound.key(); setKeyboard($('keyboard').hidden); });
-  setKeyboard(store('keyboard') === true);
+  // there is no keyboard key (the owner, 2026-10-07), so the on-screen
+  // keyboard is never shown: a computer's own keyboard types Persian by
+  // where the keys sit, and a phone uses its own keyboard
+  setKeyboard(false);
 
   // an ordinary keyboard types Persian
   ['q', 'q2'].forEach(function (id) {

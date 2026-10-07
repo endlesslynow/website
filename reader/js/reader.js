@@ -48,6 +48,8 @@
       shelfTitles: { 'beginner-02': 'آرایِشِ وارونِه · بخش ۱', 'beginner-03': 'آرایِشِ وارونِه · بخش ۲' } },
     { name: 'The Conference of the Birds Abridged in Dari', shelfName: 'منطق‌الطیر · خلاصه به دری', barName: 'منطق‌الطیر · دری',
       lang: 'fa', dir: 'rtl', groups: ['Conference of the Birds · Dari'] },
+    { name: 'Dari Grade 9', shelfName: 'زبان و ادبیات دری · صنف نهم', barName: 'دری · صنف نهم',
+      lang: 'fa', dir: 'rtl', groups: ['Dari · grade 9'] },
     { name: 'Siya Evînê', shelfName: 'Siya Evînê', lang: 'kmr', dir: 'ltr',
       groups: ['Siya Evînê · Kurmanji'], contents: SIYA_CONTENTS }
   ];
@@ -57,7 +59,7 @@
   function shelfLabel(r, set) {
     var number = (r.label.match(/\d+/) || [''])[0];
     return set.lang === 'kmr' ? 'Beşa ' + number :
-      (r.id.indexOf('birds-') === 0 ? 'بخش ' : 'هفتهٔ ') + fa(number);
+      (r.id.indexOf('birds-') === 0 ? 'بخش ' : r.id.indexOf('grade9-') === 0 ? 'درس ' : 'هفتهٔ ') + fa(number);
   }
   function shelfCard(label, name, r, set) {
     var card = el(r ? 'a' : 'div', 'card' + (r ? '' : ' card-disabled'));
