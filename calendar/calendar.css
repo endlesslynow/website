@@ -1,0 +1,51 @@
+/* The daily calendar dialogue: the reader's paper and slip (from reader.css),
+   with two sheets side by side, Kurmanji on the left and Dari on the right. */
+main { max-width: 1240px; }
+.date {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: baseline; gap: 16px;
+  margin: 0 0 22px; padding: 10px 20px; background: var(--panel); border-radius: 6px;
+}
+.date p { margin: 0; }
+.date-ku { font: 500 22px/1.4 'Segoe UI', system-ui, sans-serif; }
+.date-en { font: 600 16px/1.4 'Segoe UI', system-ui, sans-serif; color: var(--ink-soft); text-align: center; }
+.date-fa { font: 700 24px/1.5 'Vazirmatn', Tahoma, sans-serif; text-align: right; }
+
+.pair-papers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.paper {
+  position: relative;
+  padding: 34px 40px 30px;
+  color: var(--ink);
+  background-color: var(--paper);
+  box-shadow: inset 0 0 40px var(--paper-edge), 0 18px 36px rgba(0, 0, 0, .7);
+  border-radius: 2px;
+}
+.paper:empty { display: none; }
+.line { margin: 0 0 14px; }
+.line:last-of-type { margin-bottom: 0; }
+.speaker { font-weight: 800; }
+.paper[lang="kmr"] .line { font: 400 22px/1.7 'Segoe UI', system-ui, sans-serif; }
+.paper[lang="kmr"] .speaker { font-weight: 700; }
+.paper[lang="kmr"] .num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: auto; min-width: 1.7em; height: 1.7em; padding: 0 .3em; margin: 0 0 0 .32em;
+  border-width: 1px; border-radius: 999px; vertical-align: .1em;
+  font: 500 12px/1 'Segoe UI', system-ui, sans-serif; font-variant-numeric: tabular-nums;
+}
+.paper[lang="kmr"] .slip-fa { font: 600 20px/1.35 'Segoe UI', system-ui, sans-serif; }
+.paper[lang="kmr"] .mean .ph { font: 600 17px/1.4 'Segoe UI', system-ui, sans-serif; }
+.paper[lang="fa"] .line { font: 600 26px/1.9 'Vazirmatn', Tahoma, sans-serif; text-shadow: 0 0 1px rgba(43, 29, 16, .4); }
+.paper[lang="fa"] .num { font-size: 15px; }
+.none { max-width: 520px; margin: 40px auto; padding: 14px 20px; text-align: center;
+  font: 600 18px/1.4 'Segoe UI', system-ui, sans-serif; background: var(--panel); border-radius: 6px; }
+
+/* one sheet above the other on a narrow screen, Kurmanji first */
+@media (max-width: 900px) {
+  .pair-papers { grid-template-columns: minmax(0, 1fr); }
+  .date { grid-template-columns: 1fr; gap: 2px; text-align: center; }
+  .date-fa, .date-en { text-align: center; }
+}
+@media (max-width: 600px) {
+  .paper { padding: 24px 20px 20px; }
+  .paper[lang="kmr"] .line { font-size: 19px; }
+  .paper[lang="fa"] .line { font-size: 22px; }
+}
