@@ -135,7 +135,26 @@
     title.textContent = '';
     story.textContent = '';
     title.hidden = !r.title;
-    if (r.title) wordsOf(r.title, 0, title, r.lang === 'kmr' ? r.name : null);
+    if (r.title) {
+      wordsOf(r.title, 0, title, r.lang === 'kmr' ? r.name : null);
+      // Count the reading itself, excluding its title, headings, and study notes.
+      var wordCount = 0;
+      r.paragraphs.forEach(function (para) {
+        if (!Array.isArray(para)) return;
+        para.forEach(function (s) {
+          s.words.forEach(function (w) {
+            wordCount += w[0].split(/\s+/).filter(function (word) {
+              return /[\p{L}\p{N}]/u.test(word);
+            }).length;
+          });
+        });
+      });
+      var count = el('span', 'word-count', '(' + num(wordCount) +
+        (persian(r) ? ' واژه' : wordCount === 1 ? ' word' : ' words') + ')');
+      count.dir = persian(r) ? 'rtl' : 'ltr';
+      title.appendChild(document.createTextNode(' '));
+      title.appendChild(count);
+    }
     r.paragraphs.forEach(function (para) {
       // a section heading from the PDF, such as "Chapter 1 (pages 7–9)"
       if (para.heading) {
