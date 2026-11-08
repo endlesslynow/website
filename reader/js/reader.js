@@ -178,15 +178,6 @@
     $('download').lastElementChild.textContent = persian(r) ? 'دانلود صدا' : 'Download Audio';
     $('rewind').lastElementChild.textContent = num(1);
     setVolume(volume);
-    var key = $('sounds');
-    key.textContent = '';
-    (r.sounds || []).forEach(function (x) {
-      var item = el('span', 'sound');
-      item.appendChild(el('b', null, x[0]));
-      item.appendChild(document.createTextNode(' ' + x[1]));
-      key.appendChild(item);
-    });
-    key.hidden = !(r.sounds && r.sounds.length);
     // the book's drawing, and the story read aloud, when the reading has them
     var pic = r.picture;
     $('picture').hidden = !pic;
