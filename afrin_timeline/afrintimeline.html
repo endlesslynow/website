@@ -1236,18 +1236,20 @@
             ? { number: `${Math.abs(year)}`, era: 'BCE' }
             : { number: `${year}`, era: 'CE' });
 
-        const formatEventDate = (startDate, endDate) => {
+        const displayEra = (era, labels) => (labels && labels[`era${era}`]) || era;
+
+        const formatEventDate = (startDate, endDate, labels) => {
             const start = parseInt(startDate, 10);
             const s = formatYear(start);
-            if (!endDate) return `${s.number} ${s.era}`;
+            if (!endDate) return `${s.number} ${displayEra(s.era, labels)}`;
             const e = formatYear(parseInt(endDate, 10));
             return s.era === e.era
-                ? `${s.number}–${e.number} ${e.era}`
-                : `${s.number} ${s.era} – ${e.number} ${e.era}`;
+                ? `${s.number}–${e.number} ${displayEra(e.era, labels)}`
+                : `${s.number} ${displayEra(s.era, labels)} – ${e.number} ${displayEra(e.era, labels)}`;
         };
 
         /* ── Year rail ────────────────────────────────────────────────── */
-        const YearColumn = ({ rows }) => (
+        const YearColumn = ({ rows, labels }) => (
             <div className="year-column">
                 {rows.map((row, i) => {
                     const { number, era } = formatYear(row.year);
@@ -1259,7 +1261,7 @@
                         >
                             <div className="year-marker-label">
                                 <span className="year-marker-number">{number}</span>
-                                <span className="year-marker-era">{era}</span>
+                                <span className="year-marker-era">{displayEra(era, labels)}</span>
                             </div>
                             <div className="year-rail-line"></div>
                             {!row.repeat && (
@@ -1328,7 +1330,7 @@
             );
         };
 
-        const TimelineColumn = ({ columnIndex, columnTitle, rows, cells, isSpanning, onOpen, categoryLabel }) => (
+        const TimelineColumn = ({ columnIndex, columnTitle, rows, cells, isSpanning, onOpen, categoryLabel, labels }) => (
             <div className="timeline-column">
                 {rows.map((row, rowKey) => {
                     const event = cells[rowKey][columnIndex];
@@ -1349,7 +1351,7 @@
                             event={event}
                             height={row.height}
                             categoryLabel={event && categoryLabel ? categoryLabel(event) : null}
-                            dateLabel={event ? formatEventDate(event.startDate, event.endDate) : ''}
+                            dateLabel={event ? formatEventDate(event.startDate, event.endDate, labels) : ''}
                             color={event ? cardColor(tint, columnTitle, row.year, isSpanning ? 0 : row.slot) : 'transparent'}
                             onOpen={onOpen}
                             band={band}
@@ -1672,7 +1674,7 @@
                         <button ref={closeRef} className="detail-close" onClick={onClose} aria-label={labels.close}>×</button>
                         <div className="detail-eyebrow" dir="auto">{columnTitle}</div>
                         <h2 id="detail-title" className="detail-title" dir="auto">{event.mainEvent}</h2>
-                        <div className="detail-date">{dateLabel}</div>
+                        <div className="detail-date"><bdi dir="ltr">{dateLabel}</bdi></div>
 
                         {event.photo && (
                             <div>
@@ -1684,9 +1686,9 @@
                                 />
                                 <div className="detail-caption" dir="auto">
                                     {event.photo.caption}
-                                    {event.photo.credit && <span> — {event.photo.credit}</span>}
+                                    {event.photo.credit && <span> — <bdi dir="auto">{event.photo.credit}</bdi></span>}
                                     {event.photo.link && (
-                                        <span> (<a href={event.photo.link} target="_blank" rel="noopener noreferrer">source</a>)</span>
+                                        <span> (<a href={event.photo.link} target="_blank" rel="noopener noreferrer">{labels.photoSource || 'source'}</a>)</span>
                                     )}
                                 </div>
                             </div>
@@ -1701,8 +1703,8 @@
                                 <div className="detail-section-label">{labels.sources}</div>
                                 {quotes.map((quote, i) => (
                                     <div className="detail-quote" key={i}>
-                                        <div className="detail-quote-text">“{quote.text}”</div>
-                                        <div className="detail-quote-cite">{quote.citation}</div>
+                                        <div className="detail-quote-text" dir="auto">“{quote.text}”</div>
+                                        <div className="detail-quote-cite" dir="auto">{quote.citation}</div>
                                     </div>
                                 ))}
                             </div>
@@ -1711,7 +1713,7 @@
                         {!quotes.length && hasSource && (
                             <div>
                                 <div className="detail-section-label">{labels.sources}</div>
-                                <div className="detail-quote-cite">{event.source}</div>
+                                <div className="detail-quote-cite" dir="auto">{event.source}</div>
                             </div>
                         )}
                     </div>
@@ -1955,7 +1957,7 @@
                         </span>
                         <span className="header-value">{held ? held.name : '—'}</span>
                         <span className="header-dates">
-                            {held ? formatEventDate(`${held.start}`, `${held.end}`) : ''}
+                            {held ? formatEventDate(`${held.start}`, `${held.end}`, labels) : ''}
                         </span>
                     </div>
                 );
@@ -1967,7 +1969,7 @@
                         <h2 id="mobile-powers-title">{labels.powers}</h2>
                         <button className="mobile-panel-close" onClick={onClose} aria-label={labels.closeControls}>×</button>
                     </div>
-                    <span className="state-summary-year">{formatEventDate(`${year}`)}</span>
+                    <span className="state-summary-year">{formatEventDate(`${year}`, undefined, labels)}</span>
                     <div className="state-strip-list">{tablets}</div>
                   </section>
                 : <React.Fragment>{tablets}</React.Fragment>;
@@ -1975,7 +1977,7 @@
 
         const ColumnHeaders = ({ boardColumns, stateColumns, toneOffset, labels, initialYear, register, isPhone }) => (
             <React.Fragment>
-                <div className="year-header">{labels.era === 'CE' ? 'AD' : labels.era}</div>
+                <div className="year-header">{displayEra(labels.era === 'CE' ? 'AD' : labels.era, labels)}</div>
 
                 {boardColumns.map((column, index) => {
                     const tone = toneFor(index);
@@ -2142,12 +2144,13 @@
                             </div>
                         )}
                         <div ref={contentRef} className="timeline-content" onScroll={handleScroll} role="region" aria-label={labels.timeline} tabIndex={0}>
-                            <YearColumn rows={rows} />
+                            <YearColumn rows={rows} labels={labels} />
                             {boardColumns.map((column, index) => (
                                 <TimelineColumn
                                     key={index}
                                     columnIndex={index}
                                     columnTitle={column.title}
+                                    labels={labels}
                                     rows={rows}
                                     cells={cells}
                                     isSpanning={false}
@@ -2199,7 +2202,13 @@
                 note: null
             },
             kurdish: {
-                title: 'Kronolojiya Dîrokî ya Efrînê',
+                tabTitle: "Kronolojiya Dîrokî ya Efrînê (Guhertoya ceribandinê)",
+                siteCredit: "Ji aliyê Zachariah Hopkins ve hatiye çêkirin",
+                photoSource: "çavkanî",
+                eraBCE: "b.z.",
+                eraCE: "z.",
+                eraAD: "z.",
+                title: "Kronolojiya Dîrokî ya Efrînê (Guhertoya ceribandinê - çêtir e ku li ser kompîturê were dîtin)",
                 searchText: 'Lêgerîna nivîsê...',
                 year: 'Sal',
                 search: 'Lêgerîn',
@@ -2223,7 +2232,13 @@
                 note: 'Hişyarî: Wergêran dibe ku ne rast bin. Ji bo rastiya çêtir, bi Îngilîzî bixwînin.'
             },
             arabic: {
-                title: 'الجدول الزمني التاريخي لعفرين',
+                tabTitle: "الجدول الزمني التاريخي لعفرين (نسخة تجريبية)",
+                siteCredit: "تم الإنشاء بواسطة Zachariah Hopkins",
+                photoSource: "المصدر",
+                eraBCE: "ق.م.",
+                eraCE: "م.",
+                eraAD: "م.",
+                title: "الجدول الزمني التاريخي لعفرين (نسخة تجريبية - يُفضل العرض على سطح المكتب)",
                 searchText: 'البحث عن النص...',
                 year: 'سنة',
                 search: 'بحث',
@@ -2301,6 +2316,7 @@
             const headerRef = React.useRef(null);
             const contentRef = React.useRef(null);
             const resultsRef = React.useRef(null);
+            const defaultTabTitle = React.useRef(document.title);
             const [columnWidth, setColumnWidth] = React.useState(0);
 
             // Row heights depend on how much title fits across a column, so the grid
@@ -2329,6 +2345,13 @@
                 : timelineData;
             const labels = COPY[language];
             const { startYear, endYear } = data;
+
+            React.useEffect(() => {
+                document.documentElement.lang = language === 'arabic' ? 'ar' : language === 'kurdish' ? 'ku' : 'en';
+                document.title = labels.tabTitle || defaultTabTitle.current;
+                const credit = document.querySelector('.site-credit');
+                if (credit) credit.textContent = labels.siteCredit || 'Created by Zachariah Hopkins';
+            }, [language]);
 
             /* The climate column is gone. The English file calls it "Climate in
                Afrin" and the other two carry "Historical Eras" in the same slot,
@@ -2466,7 +2489,7 @@
                                 columnIndex,
                                 columnTitle: sourceTitle(event, column.title),
                                 rowIndex: rowIndexForEvent(columnIndex, event),
-                                dateLabel: formatEventDate(event.startDate, event.endDate)
+                                dateLabel: formatEventDate(event.startDate, event.endDate, labels)
                             });
                         }
                     });
@@ -2561,7 +2584,7 @@
                                     ))}
                                 </div>
                                 {labels.note && <div className="lang-note" dir="auto">{labels.note}</div>}
-                                <a className="mobile-credit" href="https://www.zachariahhopkins.com" target="_blank" rel="noopener noreferrer">Created by Zachariah Hopkins</a>
+                                <a className="mobile-credit" href="https://www.zachariahhopkins.com" target="_blank" rel="noopener noreferrer">{labels.siteCredit || 'Created by Zachariah Hopkins'}</a>
                             </div>
                         </div>
 
@@ -2599,12 +2622,12 @@
                                 />
                                 <select
                                     className="search-era-select"
-                                    aria-label="BCE / CE"
+                                    aria-label={`${displayEra('BCE', labels)} / ${displayEra('CE', labels)}`}
                                     value={era}
                                     onChange={(e) => setEra(e.target.value)}
                                 >
-                                    <option value="BCE">BCE</option>
-                                    <option value="CE">CE</option>
+                                    <option value="BCE">{displayEra('BCE', labels)}</option>
+                                    <option value="CE">{displayEra('CE', labels)}</option>
                                 </select>
                                 <button
                                     className="search-submit"

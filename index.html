@@ -857,6 +857,10 @@
     align-items: center;
 }
 
+.update-item.has-no-sections {
+    grid-template-columns: 160px minmax(0, 1fr);
+}
+
 .updates-nav {
     position: absolute;
     top: 1.5rem;
@@ -899,7 +903,8 @@
 
     /* Responsive styles for the updates section */
     @media (max-width: 768px) {
-        .update-item {
+        .update-item,
+        .update-item.has-no-sections {
             grid-template-columns: 1fr;
             gap: 0.5rem;
         }
@@ -969,7 +974,7 @@
                                     <a href="/charts/charts.html" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
                                 </div>
                             </div>
-                            <div class="project" data-project="timeline">
+                            <div class="project" id="timeline_project" data-project="timeline">
                                 <a href="/afrin_timeline/afrintimeline.html" target="_blank" rel="noopener noreferrer">
                                     <div class="project_img"></div>
                                 </a>
@@ -998,7 +1003,7 @@
                     <section class="project-category" id="language-learning" aria-labelledby="language-learning-title">
                         <h3 class="project-category-title" id="language-learning-title">Language Learning</h3>
                         <div class="project-grid">
-                            <div class="project" data-project="dialect">
+                            <div class="project" id="dialect_project" data-project="dialect">
                                 <a href="https://www.instagram.com/afrini_zimane/" target="_blank" rel="noopener noreferrer">
                                     <div class="project_img"></div>
                                 </a>
@@ -1008,7 +1013,7 @@
                                     <a href="https://www.instagram.com/afrini_zimane/" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
                                 </div>
                             </div>
-                            <div class="project" data-project="kurmanji_lessons">
+                            <div class="project" id="kurmanji_lessons_project" data-project="kurmanji_lessons">
                                 <a href="/kurmanji_lessons/kurmanji_lessons.html" target="_blank" rel="noopener noreferrer">
                                     <div class="project_img"></div>
                                 </a>
@@ -1028,7 +1033,7 @@
                                     <a href="/reader/index.html" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
                                 </div>
                             </div>
-                            <div class="project" data-project="ottoman_lessons">
+                            <div class="project" id="ottoman_lessons_project" data-project="ottoman_lessons">
                                 <a href="/ottoman_turkish_lessons/ottoman_lessons_en.html" target="_blank" rel="noopener noreferrer">
                                     <div class="project_img"></div>
                                 </a>
@@ -1048,7 +1053,7 @@
                                     <a href="/dari-games/index.html" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
                                 </div>
                             </div>
-                            <div class="project" data-project="ukrainian_lessons">
+                            <div class="project" id="ukrainian_lessons_project" data-project="ukrainian_lessons">
                                 <a href="/ukrainian_lessons/ukrainian_lessons_en.html" target="_blank" rel="noopener noreferrer">
                                     <div class="project_img"></div>
                                 </a>
@@ -1058,7 +1063,7 @@
                                     <a href="/ukrainian_lessons/ukrainian_lessons_en.html" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
                                 </div>
                             </div>
-                            <div class="project" data-project="hopkins_method">
+                            <div class="project" id="hopkins_method_project" data-project="hopkins_method">
                                 <a href="/hopkins_method/hopkins_method.html" target="_blank" rel="noopener noreferrer">
                                     <div class="project_img"></div>
                                 </a>
@@ -1068,7 +1073,7 @@
                                     <a href="/hopkins_method/hopkins_method.html" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
                                 </div>
                             </div>
-                            <div class="project" data-project="cuneiform">
+                            <div class="project" id="cuneiform_project" data-project="cuneiform">
                                 <a href="/cuneiform/cuneiform.html" target="_blank" rel="noopener noreferrer">
                                     <div class="project_img"></div>
                                 </a>
@@ -1078,7 +1083,7 @@
                                     <a href="/cuneiform/cuneiform.html" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
                                 </div>
                             </div>
-                            <div class="project" data-project="laga">
+                            <div class="project" id="laga_project" data-project="laga">
                                 <a href="https://lagathegame.itch.io/laga" target="_blank" rel="noopener noreferrer">
                                     <div class="project_img"></div>
                                 </a>
@@ -1115,7 +1120,7 @@
                                     <a href="/deep-time/index.html" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
                                 </div>
                             </div>
-                            <div class="project" data-project="baghdad">
+                            <div class="project" id="baghdad_project" data-project="baghdad">
                                 <a href="/lectures/baghdad/baghdad-timeline.html" target="_blank" rel="noopener noreferrer">
                                     <div class="project_img"></div>
                                 </a>
@@ -1136,7 +1141,7 @@
                                     <a href="https://www.youtube.com/@endlesslynow" target="_blank" rel="noopener noreferrer" class="btn">More Info</a>
                                 </div>
                             </div>
-                            <div class="project" data-project="hijri_converter">
+                            <div class="project" id="hijri_converter_project" data-project="hijri_converter">
                                 <a href="/hijri/hijri.html" target="_blank" rel="noopener noreferrer">
                                     <div class="project_img"></div>
                                 </a>
@@ -1273,7 +1278,7 @@
             if (!slider || !navContainer) return;
 
             // Fetch updates from the JSON file
-            fetch('updates.json')
+            fetch('updates.json', { cache: 'no-cache' })
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -1287,14 +1292,15 @@
 
                     // Generate HTML for each update
                     updates.forEach(update => {
-                        const sectionsHTML = update.sections.map(section => 
+                        const sections = Array.isArray(update.sections) ? update.sections : [];
+                        const sectionsHTML = sections.map(section =>
                             `<a href="${section.link}">${section.text}</a>`
                         ).join(' + ');
 
                         const slideHTML = `
-                            <div class="update-item">
+                            <div class="update-item${sections.length ? '' : ' has-no-sections'}">
                                 <div class="update-date">${update.date}</div>
-                                <div class="update-section">${sectionsHTML}</div>
+                                ${sections.length ? `<div class="update-section">${sectionsHTML}</div>` : ''}
                                 <div class="update-description">${update.description}</div>
                             </div>`;
                         slider.insertAdjacentHTML('beforeend', slideHTML);
