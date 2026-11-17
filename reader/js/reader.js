@@ -62,7 +62,7 @@
     var number = (r.label.match(/\d+/) || [''])[0];
     return set.lang === 'kmr' ? 'Beşa ' + number :
       (r.id.indexOf('birds-') === 0 ? 'بخش ' : r.id.indexOf('grade9-') === 0 ? 'درس ' :
-       r.id.indexOf('crossing-') === 0 ? 'پست ' : 'هفتهٔ ') + fa(number);
+       r.id.indexOf('crossing-day-') === 0 ? 'روز ' : r.id.indexOf('crossing-') === 0 ? 'پست ' : 'هفتهٔ ') + fa(number);
   }
   function shelfCard(label, name, r, set) {
     var card = el(r ? 'a' : 'div', 'card' + (r ? '' : ' card-disabled'));

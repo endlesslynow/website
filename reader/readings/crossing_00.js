@@ -1,7 +1,8 @@
-/* Crossing Persia, post 0, in Dari.
+/* Crossing Persia, Post 0, in Dari.
    The Dari is the owner's text, copied exactly from
-   "Crossing Persia/Articles_non_standard_dari/0 Persia 500 BCE - Dari.md" in the
-   Obsidian vault. Each sentence's English follows the owner's English post.
+   "Crossing Persia/Articles_non_standard_dari/0 Persia 500 BCE - Dari.md" in the Obsidian vault (the story
+   only; a daily post's caption and notes are left out). Each sentence's English
+   follows the owner's English post.
    Every sound and meaning was written for this reader, in Kabul Dari as spoken,
    in Onion Skin's letters (see "sounds"). Made by
    eReader/crossing-persia/make_reading.py; change its files, not this one. */
@@ -10,7 +11,7 @@ READINGS.push({
   group: 'Crossing Persia · Dari',
   label: 'Post 0',
   name: "paars paanj sad paysh az mee-laad",
-  source: "0 Persia 500 BCE - Dari.md",
+  source: "Articles_non_standard_dari/0 Persia 500 BCE - Dari.md",
 
   // No recording yet: the file is not there and the player stays hidden.
   audio: 'audio/crossing_00.js',
@@ -201,7 +202,7 @@ READINGS.push({
     "a-daa-ma":                       { fa: "ادامه", mean: "continuing" },
     "a-daa-ma bi-tee":                { fa: "ادامه بتی", mean: "you keep going" },
     "bi-tee":                         { fa: "بتی", mean: "(that) you give" },
-    "daa-dan":                        { fa: "دادن", mean: "to give" },
+    "daa-dan":                        { fa: "دادن", mean: "to give; also: they gave" },
     "du":                             { fa: "2", mean: "two" },
     "se":                             { fa: "3", mean: "three" },
     "roz":                            { fa: "روز", mean: "day" },
@@ -327,7 +328,7 @@ READINGS.push({
     "tayr shee":                      { fa: "تیر شی", mean: "you cross" },
     "shee":                           { fa: "شی", mean: "(that) you become" },
     "may-khaa-yee":                   { fa: "میخایی", mean: "you want" },
-    "baaz":                           { fa: "باز", mean: "again" },
+    "baaz":                           { fa: "باز", mean: "again; open" },
     "baaz ham":                       { fa: "باز هم", mean: "again" },
     "baa-shee":                       { fa: "باشی", mean: "(that) you are" },
     "chaans bi-yaa-ree":              { fa: "چانس بیاری", mean: "you are lucky" },
