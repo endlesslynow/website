@@ -21879,3 +21879,1398 @@
 
 7294. Di wergera Tirkî de Mihemmed Hesen Efendî ye, lê di wergera Soranî û Farisiya wê de Mihemmed Can Efendî ye. Z. A.
 7294. In the Turkish translation it is Mihemmed Hesen Efendî, but in its Sorani and Persian translation it is Mihemmed Can Efendî. Z. A.
+
+7295. mewqiyên bilind, yek ji wan mezinê jin û zarokên wan ên gihîştine rutbeyên bilind, ji bo tarîxa van avahiyên mezin û afirandinên mîmarî yên sipehî yên vi bajarê han gotina "Binaya Xusrevane"* bikar aniye.
+7295. high positions, one from those greats of their women and children who have reached high ranks, for the date of these great buildings and beautiful architectural creations of this very city has used the phrase "Binaya Xusrevane".
+
+7296. Ji bili van muesseseyên xêr û xêratê, wezîrê navê wî derbas bûyî, dest bi du eserên din kir û ev di demeke kurt de, bi awakî ku xelk hemû ji wan re heyran bimîne, temam kirin; ev karê han ji aliyê dûr û nêzîk herkesî ve hat pejirandin.
+7296. Apart from these institutions of good and charity, the vizier whose name passed, began two other works and completed these in a short time, in a way that all the people remain admirers to them; this very work from the side of far and near everyone came to be accepted.
+
+7297. 1- Pêkanîna koma avahiyên Tekyaya Rehwayê yên ku di navbera gundê Tetwanê û Bedlîsê de ne, wiha ye:
+7297. 1. The bringing to existence of the group of buildings of the Rehwa Tekke that are between the village of Tetwan and Bedlîs, is thus:
+
+7298. Ev, du xanên mezin ên ku karwan li wir datînin û dihêwirin, ji tekyayek xwedî du sitûnên bilind, hemamek xweşik û nazik pêkhatî, mizgeftek bîhînvekirî û xweşik û ji deh dikanên ji zeneetkar û tucaran re çêkirî, pêkhatiye.
+7298. This, consists of two great inns that caravans alight and shelter there, a tekke owning two high columns, a bath consisting of beauty and delicacy, a spacious and beautiful mosque and ten shops made for artisans and merchants.
+
+7299. Ji bilî van, ji bo zêdekirina wasiteyên pêwistiyên rehetiya xelkê û eserên çêkirî, ji wî ciyê re, ji kaniyeka 12 hezar zira'i** ji wir dûr, avek xweş û zelal hat anîn.
+7299. Apart from these, for the increasing of the means of the necessities of the ease of the people and the made works, to that place, from a spring 12 thousand zira'i** distant from there, a good and clear water came to be brought.
+
+7300. Bi ser tevan de jî 30** malên ji Musulman û Xiristiyanan pêkhatî, li wir hat bicîkirin.
+7300. Upon all too 30*** households consisting of Muslims and Christians, came to be settled there.
+
+7301. Piştre, ji bo berdewamiya avahiya wir, 'erdên ji aliyê Sultan Murad Xan ve jê re bi riya mulkiyeta îkta’i**** hatibûn dayîn, hat weqifkirin.
+7301. Afterwards, for the continuation of the building of there, the lands that from the side of Sultan Murad Xan to him through the road of ikta'i ownership**** had come to be given, came to be endowed.
+
+7302. Hatinên van ‘erdan ji bo xwarin, vexwarin û duhnê çirayên ronahiyê yên rêwiyên tên û diçin vê tekyaya han, dihatin xerckirin.
+7302. The revenues of these lands for food, drink and the oil of the lamps of light of the travelers who come and go to this very tekke, came to be spent.
+
+7303. Her rêwiyek li gor qedr û mewqiyê xwe bi awakî baş pêşwazî lê tê kirin.
+7303. Every traveler according to his worth and position in a good way comes to be welcomed.
+
+7304. Wekî nimûne, qismek kesên li vê tekyaya han peya dibin û şevên xwe derbas dikin beg û giregirên Tirk, Tacik, 'Ereb û 'Ecem in.
+7304. As an example, a part of the persons who alight at this very tekke and pass their nights are begs and notables of Turk, Tajik, Arab and Persian.
+
+7305. Ji bilî vê, kesên azad, kole, dûr û nêzîk herkes in.
+7305. Apart from this, free persons, slaves, far and near everyone are there.
+
+7306. Her çendîn di navbera vî ciyî û gundê Tetwanê de gelek gund û xan hene û ji ber barîna berfa zêde, di dema sermayên giran de rêwî li wir dihewin jî, lê berf ewqas zêde dibare ku, salekê dema ku zêde berf dibare, giregirên Bedlîsê wê dipîvin, sitûriya wê gihîştiye nêzîkî 60 bihûstan.
+7306. However much between this place and the village of Tetwan many villages and inns exist and because of the falling of much snow, in the time of heavy colds travelers shelter there too, yet snow falls that much that, one year when much snow falls, the notables of Bedlîs measure it, its thickness has reached near 60 spans.
+
+7307. Berî hemû zivistanan, ji sedî sed ji tucaran an ji rêwiyên din çend kes di bageran de difetisîn û dimirin.
+7307. Before in all winters, one hundred percent from the merchants or from the other travelers several persons in storms suffocated and died.
+
+7308. Sultan û fermanrewayên berê, nemaze bab û bapîrên min ên mîr, ew yeka ku wan han da li van
+7308. The sultans and rulers of before, especially my fathers and grandfathers the mirs, that thing that urged them at these
+
+7309. Seydayê Mehmed Emîn û Mam Hejar, herdukan vê gotina han (Bînayê Xusrevane) a li gor hesaba ebcedê teqabûlê kijan tarîxê dike, cihê cihê hesab kirine.
+7309. Seydayê Mehmed Emîn and Mam Hejar, both of them this very phrase (Bînayê Xusrevane) as to which date it corresponds to according to the calculation of abjad, have calculated separately.
+
+7310. Seydayê Mehmed Emîn gotiye: Li gor hesabê ebcedê tarixa ji vê gotinê derdikeve, 974ê koçi (1567'ê z) ye."
+7310. Seydayê Mehmed Emîn has said: "According to the calculation of abjad the date that comes out from this phrase, is 974 Hijri (1567 AD)."
+
+7311. Mam Hejar jî gotiye: "Binayê Xusrevane, li gor hesabê ebcedê 985'ê koçî ye." -Z. A.
+7311. Mam Hejar too has said: "Binayê Xusrevane, according to the calculation of abjad is 985 Hijri." Z. A.
+
+7312. Mam Hejar gotiye: 12 hezar gaz. -Z. A.
+7312. Mam Hejar has said: 12 thousand gaz. Z. A.
+
+7313. Di wergera Tirkî de 30 hezar mal e.
+7313. In the Turkish translation it is 30 thousand households.
+
+7314. Bêguman ew şaş e. -Z. A.
+7314. Without doubt that is wrong. Z. A.
+
+7315. Weki li gelek ciyan jî heye lê me tenê hinek dan xuyakirin, li vir jî cardin ji aliyê Mam Hejar ve riayetê terminolojiya gotinan nehatiye kirin.
+7315. As at many places too exists yet we only gave some to appear (revealed), here too once again from the side of Mam Hejar observance of the terminology of the words has not come to be done.
+
+7316. Dibêje ku :..Sultan Murad Xan bexşiş dabûyê...", Lê di rastiya xwe de weki Seydayê Mehmed Emin gotiye û di Farisiya wê de jî heye; ev dayîn bi riya ikta'i re ye. -Z. A.
+7316. He says that: "...Sultan Murad Xan had given a gift to him...", Yet in its truth as Seydayê Mehmed Emin has said and in its Persian too exists; this giving is through the road of ikta'i. Z. A.
+
+7317. Farisiya wê de 60 weceb e.
+7317. In its Persian it is 60 weceb.
+
+7318. Di wergera Tirkî de 60 zira'e. -Z. A.
+7318. In the Turkish translation it is 60 zira'e. Z. A.
+
+7319. *****
+7319. *****
+
+7320. deran tekyaya û xanan çêkin, ev rewşa han bû.
+7320. places to make tekkes and inns, was this very condition.
+
+7321. Wan, di demên xwe de xîmê van tekyayan avêtin û dest bi çêkirina wan jî kirin.
+7321. They, in their times laid the foundation of these tekkes and began the making of them too.
+
+7322. Hê şûnewarên dîwar û surhên wan tên xuyakirin û li ber çavan in.
+7322. Still the traces of their walls and ramparts come to appear and are before the eyes.
+
+7323. Ji ber sebebên têkilhevî û guherandinên di pêy hev re hatî, çêkirina wan temam nebûn.
+7323. Because of the reasons of the confusions and changes having come behind each other, the making of them became not complete.
+
+7324. Lê, di saya talih û nefsbiçûktiya wî fermanrewayî û Tekyaya Rehwayê de, ev ji bîst salan zêdetir e kesek rastî tu bela û mirinê nehatiye.
+7324. But, in the shadow of the fortune and humility of that ruler and the Rehwa Tekke, this is more than twenty years that no person has come across any calamity and death.
+
+7325. Êdî gelek hacî, gerok, tucar û rêwiyên din bi dilekî xweş û rehet tê re derbas dibin.
+7325. Now many pilgrims, travelers, merchants and other wayfarers with a happy and easy heart pass through it.
+
+7326. 2- Paşayê rehmetî, di navçeya Wanê de mizgeftek bilind, medreseyek mezin, gumbet û tekyayek sipehî da çêkirin.
+7326. 2. The late Pasha, in the district of Van caused a high mosque, a great madrasa, a dome and a beautiful tekke to be made.
+
+7327. Imam, xetîb û muezzînên hafizqur'an ên dengxweş û baş tayînê wir kirin.
+7327. He appointed good and sweet voiced Quran memorizer imams, preachers and muezzins to there.
+
+7328. Van, bi xwendevanên zanatî ya dînî û pîşeya edebî, sofiyên ji hemû tiştên dinyayî peywendiya xwe qutkirî û tenê bi îbadetê mijûl bûyî, da tijîkirin.
+7328. He caused these to be filled with students of religious knowledge and the literary craft, sufis having cut their connection from all worldly things and having become busy only with worship.
+
+7329. Ji wan re, ji bo ku bikarin idareya xwe herî baş bimeşînin û di nav hêminî û dilrehetiyekê fireh de bin, wezîfe û xercirah veqetandin.
+7329. For them, for that they be able to conduct their livelihood best and be in a wide tranquility and peace of heart, he set apart stipends and travel allowances.
+
+7330. Ew jî, piştî her dan ferzên nimêjê, ji ruhê wî yê pak û temiz re fatihe dixwînin.
+7330. They too, after every time of the obligatory acts of prayer, read the Fatiha for his pure and clean spirit.
+
+7331. Piştre, hemû şevên înan û duşemban temamê Qur'anê xetim dikin û sewaba wê jî pêşkêşî ruhê wî yê saf û paqij dikin.
+7331. Afterwards, all nights of Fridays and Mondays they complete the entire Quran and present its reward too to his pure and clean spirit.
+
+7332. Vî Paşayê qencîxwaz, mezin û xêrxwaz, min di evîniya xwe de xerk kir û destê min girt, di rizgariya me ya ji serpêhatiya Qizilbaşan, hem ji min re û hem jî Eşîreta Rojkî ya ji ber bandora hinekan bi min re welat terk kiribûn, bû rêberekî herî bixêr, alîkar û wefadar.
+7332. This well wishing, great and charitable Pasha, drowned me in his love and took my hand, in our deliverance from the ordeal of the Qizilbaş, both to me and too to the Rojkî Tribe who because of the influence of some had abandoned the country with me, became a most auspicious guide, helper and loyal one.
+
+7333. Ev bûyera em ketinê, wisan kir ku em nêzîkî 44 salan di nav Qizilbaşan de bimînin û di vê esnayê de me mecbûr kiribû em guhên xwe bidin gotinên Qizilbaşên serberedayî yên eza û cefayê didan me û dilên me tijî kul û birîn dikirin.
+7333. This event that we fell into, did such that we remain near 44 years among the Qizilbaş and during this time had forced us that we give our ears to the words of the unruly (literally let go the head) Qizilbaş who gave torment and suffering to us and made our hearts full of sorrow and wound.
+
+7334. Belê, vî Paşayî, ji bo rizgariya ji sitrî û kelemên dijmin û muxalîfan, ji bo vegera ser baxçeyên dewlemend ên Musulmantiyê û gihîştina tama zewq û nûmetên rûniştina li welatê ji bab û bapîrên me ji me re mayî, piştre jî xweavêtina wan meskenên bab û bapîrên me yên kevn ku ji me re hiştibûn, bi hemû awayî alîkariya me kir.
+7334. Yes, this Pasha, for deliverance from the thorns and thistles of the enemies and opponents, for return upon the rich gardens of Muslimness and the reaching of the taste of the delight and blessings of dwelling in the country remained to us from our fathers and grandfathers, afterwards too the throwing ourselves to those old dwellings of our fathers and grandfathers that they had left to us, helped us in every way.
+
+7335. Bi kurtî, danenîşana şefqetê ji aliyê Sultanê rehmetî ji nivîskarê van rêzan re, sozdana careke din dayîna desthilatdariya eyaleta irsî ya delal, wekî berê ji min re û ji min xwestina dev jê berdana ji Fermanrewatiya Nahciwanê û vegera nav diyarê Îslamê, di saya Xusrev Paşa û di vê riyê de xerckirina ked, cefa û xebatên wî bû.
+7335. In short, the giving to show compassion from the side of the late Sultan to the writer of these lines, the promising of once again giving the authority of the dear hereditary province, as before to me and the wanting from me the letting go from the Rulership of Nahciwan and the return into the realm of Islam, was through the favor of Xusrev Pasha and the spending of his labor, suffering and efforts in this road.
+
+7336. Bi saya vi karê wî yê bixêr, bîr û hêviya nêzîkî hezar însanên jin, mêr, kal, pîr û xortan pêk hat.
+7336. Through the favor of this auspicious work of his, the thought and hope of near a thousand humans of women, men, old men, old women and youths came to existence.
+
+7337. Ev însanên han bi salan ji bo ku bigihên welatê xwe yê diyarê Îslamê, bi şev û bi roj ji Xwedê hêvî û zarî dikirin.
+7337. These very humans for years for that they reach their country of the realm of Islam, by night and by day did hope and supplication from God.
+
+7338. Di dawiyê de, bi nivîskarê van rêzan re vegeriyan welatê xwe.
+7338. In the end, with the writer of these lines they returned to their country.
+
+7339. Ji bo vê bûyerê hemd, sena û şukur ji Xwedê re be.
+7339. For this event may praise, eulogy and thanks be to God.
+
+7340. Bi rastî hinek ciyên sipehî yên li derûdora bajarê Bedlîsê û nahiyên wê yên xweşik hene.
+7340. In truth some beautiful places at the surroundings of the city of Bedlîs and its pretty subdistricts exist.
+
+7341. Yek ji van, nahiya Xelatê ya bajarekî kevnare yê dîrokî ye û kokên wê ji demên kevn tên.
+7341. One from these, is the subdistrict of Xelat of an ancient historical city and its roots come from old times.
+
+7342. Xelatê, hinek deman serekbajariya qralên herêma Ermenîstanê û Sultanên Êrmeniyan kiriye.
+7342. Xelat, at some times has done the capitalship of the kings of the region of Armenia and the Sultans of the Armenians.
+
+7343. Di dema qral Nuşîrvan de jî, Xelat di bin desthilata mamê wî Camasb de bû.
+7343. In the time of king Nuşîrvan too, Xelat was under the authority of his paternal uncle Camasb.
+
+7344. Av û hewaya Xelatê gelek xweş û temîz e.
+7344. The water and air of Xelat is very good and pure.
+
+7345. Derûdora wê ji aliyê baxçeyên dewlemend, awa awa dar û berên fêkiyan û bi taybetî di tam û mezintiya wan de emsalên wan nedîtî, darên qeysî û sêvan ve hatiye rapêçan.
+7345. Its surroundings from the side of rich gardens, various trees and produce of fruits and in particular in their taste and greatness their matches unseen, apricot and apple trees has come to be wrapped.
+
+7346. Giraniya libek sêva Xelatê ji 100 dirheman zêdetir e.
+7346. The weight of one piece of apple of Xelat is more than 100 dirhams.
+
+7347. Li van deran çend cure sêv û karçîn hene ku ev li herêmên Ermenîstanê û Azerbaycanê bi nav û deng in.
+7347. At these places several kinds of apples and pears exist that these in the regions of Armenia and Azerbaijan are famous.
+
+7348. Li milê din, di wilayeta Xelatê de gelek mizgeft, medrese, qonax û xan ên wekî muesseseyên xêr û xêratê hene.
+7348. On the other side, in the province of Xelat many mosques, madrasas, mansions and inns as institutions of good and charity exist.
+
+7349. Ji bilî van, gelek ewliya, zana, abid û şêx mezin kirine û gihandine.
+7349. Apart from these, it has raised and brought up many saints, knowers, worshippers and sheikhs.
+
+7350. Yek ji wan, Seyid Huseynê Xelatî yê zanayê dema xwe yê herî pêş e û di warê zanistiya zahirî û batinî de pispor û serkevtî bûye.
+7350. One from them, is Seyid Huseyn the Xelatî the foremost knower of his time and in the regard of apparent and hidden science he has been an expert and successful.
+
+7351. Bi xwe, di warê zanistiya "cefr-i cami"463 (cufur) de bi nav û deng bûye.
+7351. He himself, in the regard of the science of "cefr-i cami" (divination) has been famous.
+
+7352. Bi wasiteya vê zanyariyê, zaniye ku dê Cengiz rabe û leşkerên wî yên wêranker dê di welatê Îran û Turanê de agirê şewat û wêraniyê hil bikin.
+7352. By means of this knowledge, he knew that Cengiz will rise and his destructive soldiers in the country of Iran and Turan will kindle the fire of burning and ruin.
+
+7353. Berî rûdana van bûyer, têkelhevî û felaketên bi xwînî, ji welat dûr ket û bi eşîret, qebîle û bi kesên bawermendên xwe re çû welatê Misrê û heta koça dawiyê li wir ma.
+7353. Before the happening of these events, confusions and bloody disasters, he became distant from the country and with his tribe, clan and with his believing persons went to the country of Egypt and until the final migration remained there.
+
+7354. Tirba wî li wir e û yek ji wan ziyaretgahên pîroz e.
+7354. His tomb is there and is one from those sacred pilgrimage places.
+
+7355. Li Misrê, bi munasebeta navê van Xelatiyan taxek heye jê re "Taxa Xelatê tê gotin.
+7355. In Egypt, on the occasion of the name of these Xelatis a quarter exists to it "Quarter of Xelat" comes to be said.
+
+7356. Yek ji wan zanayê Xelatê yê din jî Mewlana Muhyeddînê Xelatî bû.
+7356. One from those other knowers of Xelat too was Mewlana Muhyeddîn the Xelatî.
+
+7357. Bi xwe alaya fezîlet û zanatiyê bû; di warê zanyariya stêrnasî û matematîkê de pispor bû.
+7357. He himself was the banner of virtue and knowledge; in the regard of the science of astronomy and mathematics he was an expert.
+
+7358. Bi xwe yek ji wan kesan bû ku, dema Hulago Xan xwest bi destê Nasireddîn Mihemmed Tusî li Meraxa Tebrîzê rasatxaneyekê bide avakirin û cetwelekê jî jê re bide çêkirin, ew, yek ji wan sê kesan bû ku Nasireddin Mihemmed Tûsî daxwaza alîkariyê jê kir.
+7358. He himself was one from those persons that, when Hulago Xan wanted by the hand of Nasireddîn Mihemmed Tusî at Meraxa of Tebrîz to cause an observatory to be built and to cause an astronomical table too to be made for it, he, was one from those three persons whom Nasireddin Mihemmed Tûsî asked request of help from.
+
+7359. Nasireddîn, ew ji Xelatê bir, bi wî, bi Müeyyîdeddîn El-Arûzî û Necmeddîn Debîran ve dest bi wê xebata zanyarî ya mezin kir.
+7359. Nasireddîn, took him from Xelat, with him, with Müeyyîdeddîn El-Arûzî and Necmeddîn Debîran began that great scholarly work.
+
+7360. Di dema İslamiyetê de bajarê Xelatê çendîn car duçarê xerabî û wêraniyê bûye.
+7360. In the time of Islam the city of Xelat several times has been exposed to destruction and ruin.
+
+7361. Pêşiyê, dema ku di sala 626'ê koçî (1230'ê z) de, Sultan Celaleddînê Herzemşahî meşiya ser Xelatê û bi riya talan û zorê ji destê Selçukiyan sitand, wê wêran û tar û mar kir û di bajêr de qetlîamek mezin çêkir.
+7361. First, when in the year 626 Hijri (1230 AD), Sultan Celaleddîn the Herzemşahî marched upon Xelat and through the road of plunder and force took it from the hand of the Seljuks, ruined and scattered it and made a great massacre in the city.
+
+7362. Piştî wî jî leşkerê Moxolan hatin, bajar ji destê Celaleddîn sitandin û bi awakî ku hiş û aqilê mirov negihê, bajar kavil û wêran kirin.
+7362. After him too the army of the Mongols came, took the city from the hand of Celaleddîn and in a way that the consciousness and mind of a person reaches not, devastated and ruined the city.
+
+7363. Xelat, di sala 644'ê koçî (1247'ê z) de jî rastî zelzeleyekê hat û di netîceya
+7363. Xelat, in the year 644 Hijri (1247 AD) too came across an earthquake and in the result of
+
+7364. vê 'erdhejînê de gelek avahî xera bûn û cardin bajar kavil û wêran bû.
+7364. this earthquake many buildings became destroyed and once again the city became devastated and ruined.
+
+7365. Di nîvê zivistana sala 955ê koçî (1549'ê z) de, Şah Tehmasb êrîşê bajêr kir û derûdora bajar û kela wê kir bin abluqayê û li dawiyê bajar sitandin ku ji yekîneya parêzgerî ya ji aliyê Sultan Suleyman ve hatibûn wezîfedarkirin.
+7365. In the middle of the winter of the year 955 Hijri (1549 AD), Shah Tehmasb attacked the city and put the surroundings of the city and its castle under siege and in the end they took the city that from the garrison unit from the side of Sultan Suleyman had come to be tasked.
+
+7366. Piştre fermana lêxistina bircan û kavilkirina keleyê da.
+7366. Afterwards he gave the command of striking the towers and devastating the castle.
+
+7367. Li ser vê, di navbera seetekê de kele hat ser û binkirin.
+7367. Upon this, within an hour the castle came to be turned upside down.
+
+7368. Demekê piştî vê jî, Sultan Suleyman Xan dev ji bajarê kevin û keleyê berda û li ser qeraxê Gola Wanê bajar û keleyek din a nû da avakirin.
+7368. A time after this too, Sultan Suleyman Xan abandoned the old city and castle and upon the shore of Lake Van caused another new city and castle to be built.
+
+7369. Vê yekê rê da ku bajar û kela kevin bi yekcarî kavil bibin.
+7369. This thing gave road that the old city and castle completely become devastated.
+
+7370. Bajarê nû jî di warê avahî û geşbûnê de pêş de neçû.
+7370. The new city too in the regard of building and flourishing went not forward.
+
+7371. Şi' ir
+7371. Poem
+
+7372. "Kela vê dinê di riya wêranî û lehiyê de
+7372. "The castle of this world in the road of ruin and flood
+
+7373. Bawer neke ku dê bi qemçek herî avahî be”
+7373. Believe not that with a handful of mud it will be a building"
+
+7374. Hê niha jî, dema ku axa bajarê kevn tê kolan, serayên ji kevirên birî û mermerên nazik, eserên kevin ên wekî hemam û xanan derdikevin.
+7374. Even now too, when the soil of the old city comes to be dug, palaces from cut stones and delicate marbles, old works such as baths and inns come out.
+
+7375. Yek ji wan nahiyên Bedlîsê yên kevn jî navçeya Mûşê ya kevn e.
+7375. One from those old subdistricts of Bedlîs too is the old district of Mûş.
+
+7376. Kele û bircên wê yên eserên gelek kevin li ber çavane.
+7376. Its castle and towers of very old works are before the eyes.
+
+7377. Kela Mûşê, di dema bab û bapîrên nivîskarê van rêzên han de, li ser girekî yê fersahek dikeve başûrê bajêr, hatibû avakirin û demekî bi wî awayî ma.
+7377. The Castle of Mûş, in the time of the fathers and grandfathers of the writer of these very lines, upon a hill that falls a parasang south of the city, had come to be built and for a time remained in that way.
+
+7378. Heta dewra Sultan Suleyman li ser piyan bû.
+7378. Until the era of Sultan Suleyman it was upon feet.
+
+7379. Sultan Suleyman vê keleya han da xerakirin û nîvkela li ser girek a rojavayê bajêr da nûkirin; yekîneyek ji 50 eskerên parêzger pêkhatî, bi top û pêdiviyên xwarin û muhimmatan ve li wir hişt.
+7379. Sultan Suleyman caused this very castle to be destroyed and caused the half castle upon a hill of the west of the city to be renewed; he left there a unit consisting of 50 garrison soldiers, with cannons and necessities of food and munitions.
+
+7380. Em bên ser me'neya bêjeya Mûşê: Ev bi zimanê Ermenî tê bi me'neya mijê.
+7380. Let us come upon the meaning of the word Mûş: This in the Armenian language comes with the meaning of fog.
+
+7381. Çunkî, ji ber tesîra dûmana zêde, li wir gelek darên fêkiyan hêşîn nabin.
+7381. Because, from the effect of the much smoke, there many fruit trees grow not green.
+
+7382. Lê li derûdora bajêr, hindik jî be rez hene.
+7382. But at the surroundings of the city, though little too be, vineyards exist.
+
+7383. Li wir, li serê çiyayeke bilind li ser girekî rez danîne û baş girtiye.
+7383. There, at the head of a high mountain upon a hill they have put vineyards and it has taken well.
+
+7384. Lê dema ku mirov bixwaze van mêwên han neqlê nizmayî yan pesaran bike, hişk dibin.
+7384. But when a person wants to do the transfer of these very vines to the lowlands or slopes, they become dry.
+
+7385. Lê genim û berên din, wekî nimûne; birinc û yên wekî wê, gelek ber didin.
+7385. But wheat and other produce, as an example; rice and those like it, give much yield.
+
+7386. Ji bilî van, çêrîngehên dewlemend û deştên bi bereket ên vi bajarî hene.
+7386. Apart from these, rich pastures and blessed plains of this city exist.
+
+7387. Xelk, li van deran gelek ga û garanên madekan, bi hezaran mî û heywanên din xwedî dikin.
+7387. The people, at these places raise many oxen and herds of female buffaloes, thousands of sheep and other animals.
+
+7388. Li ser axên ji çandiniyê re bi kêr tên, di her kotanekê de ku tê bi me'neya mîqdarê axa cotek ga dikare bajo, cot ga û gamêş didin xebatê.
+7388. Upon the soils that come to use for agriculture, in every kotan that comes with the meaning of the amount of soil a pair of oxen can plough, they cause pairs of oxen and water buffaloes to work.
+
+7389. Tirk, ji Deşta Mûşê re "Mûş Ovasi" dibêjin.
+7389. Turks, to the Plain of Mûş say "Mûş Ovasi".
+
+7390. Firehiya vê deşta han nêzîkî çar an pênc car duwanzdeh fersah e.
+7390. The width of this very plain is near four or five times twelve parasangs.
+
+7391. Ev deşta han, her wext tijî
+7391. This very plain, every time full
+
+7392. rîhan, gul û çiçek in.
+7392. are sweet basil, roses and flowers.
+
+7393. Deşta wê ji daristan û giyayan û ji aliyê çiya û girên tijî ji baxçeyên dewlemend ve hatiye rapêçan.
+7393. Its plain from forests and grasses and from the side of mountains and hills full of rich gardens has come to be wrapped.
+
+7394. Di nav van çiyan de, girên tacên befrîn hene ku li ser kopên wan û ji her ciyê wan çemên avên wan sar dirijin.
+7394. Among these mountains, hills of snowy crowns exist that upon their peaks and from every place of them rivers of cold waters pour.
+
+7395. Çemê Firatê, ji sisiyan yekê milê bakurê vê deşta han diqelêşe û piştre berê xwe dide ber bi aliyê başûr.
+7395. The Euphrates River, splits one third of the northern side of this very plain and afterwards gives its face toward the southern side.
+
+7396. Çemê ji Çiyayê Nemrûdê derdikeve û bi navê "Karasu" tê naskirin jî, ji aliyê rojhilatê ve tê û kêm û zêde nîvê deştê diqelêşe û bi Firatê re dibe yek.
+7396. The river that comes out from Mount Nemrûd and with the name "Karasu" comes to be known too, comes from the eastern side and more or less splits the middle of the plain and becomes one with the Euphrates.
+
+7397. Di çiyayên vî welatî de, teyrên nêçîrê yên spî yên cinsê wan baş û di dinê de emsalê wan tuneyî hene.
+7397. In the mountains of this country, white birds of prey whose kind is good and in the world their match exists not exist.
+
+7398. Bi kurtî, di vê deşta bi xêr û bereket de û hêşînahiyên wekî Cennetê de, gelek teyr û masî hene û ew bi kêrî nêçîr û girtinê tên.
+7398. In short, in this plain with goodness and blessing and in greenery like Paradise, many birds and fish exist and they come to use for hunting and catching.
+
+7399. Şair bi vî awayî pesnê wir daye:
+7399. The poet in this way has given the praise of there:
+
+7400. "Bûne wek Behişt ev ciyên han ên wekî dar
+7400. "These very places like trees have become like Paradise
+
+7401. Çemên ji pêşkên wê dirijin wekî kewser sar
+7401. The rivers pouring from its fronts are cold like Kawthar
+
+7402. Bi bêdengî û bi bîhna xweş tîne coş dilan
+7402. With silence and with good scent it brings fervor to hearts
+
+7403. Tê şûştin axa wê bi van avan ji qirêjayî û derdan
+7403. Its soil comes to be washed with these waters from filth and pains
+
+7404. Li wan ciyên wek zumrud, dibin her sal rihan hêşîn
+7404. At those places like emerald, every year sweet basil grows green
+
+7405. Hemû cî wek nimet xweşik, hemû cî nazenîn
+7405. Every place beautiful like a blessing, every place delicate
+
+7406. Ew welat ciyê çêrîngeha teyran e
+7406. That country is the place of the pasture of birds
+
+7407. Teyr û şêr li wir bûne dost û heval
+7407. Birds and lions there have become friends and companions
+
+7408. Axa wê bi axên zer hatî şûştin wek
+7408. Its soil having come to be washed with yellow soils like
+
+7409. Ew ax bi serkevtî hatine rengkirin wek"
+7409. Those soils victoriously have come to be colored like"
+
+7410. Gundên ku nêzîkî sed aîleyên Ermenî tê de rûdinên, di vê deşta zumrudi de li rexên hev in; gundên Musulmanan jî li quntarên çiyayên derûdora vê deştê rapêçayî hatine avakirin û li çarmedora gundên Ermeniyan in.
+7410. The villages in which near a hundred Armenian families dwell, in this emerald plain are at the sides of each other; the villages of Muslims too at the skirts of the mountains wrapping the surroundings of this plain have come to be built and are around the villages of the Armenians.
+
+7411. Heqê dîwanê 464 ya vi xelkî jî, li gor gotina Hemdullah El-Mûstewfî, di dema Sultanên Cengîziyan de 69 hezar û 500 zêr bûye.
+7411. The due of the diwan of this people too, according to the saying of Hemdullah El-Mûstewfî, in the time of the Sultans of the Chingizids was 69 thousand and 500 gold coins.
+
+7412. Di dema Qanûnî Sultan Suleyman de, ku ji nû de hejmara nivîsandina vê navçeyê hat kirin, emlak û gundên weqfê ne tê de, heqê dîwanê yên wek xerac ji 4 hezar xeyrêmusliman hatiye sitandin, li gor rêvebiriya sitandina xeracê ya kevn a bi serê mirovê 70 akçe bû, hindiktirîn bû hezar û zêdetirîn jî derket 5 hezar heta 33 hezar 324 akçeyên Osmanî.
+7412. In the time of Qanûnî Sultan Suleyman, when anew the census of the writing of this district came to be done, the properties and villages of the waqf not included in it, the due of the diwan such as tribute from 4 thousand non-Muslims came to be taken, according to the old administration of taking tribute which per head of person was 70 akches, the least became a thousand and the most too went up to 5 thousand up to 33 thousand 324 Ottoman akches.
+
+7413. Gerek e ev jî bê zanîn ku duwanzdeh akçeyên Osmanî dike misqalek zîvê saf.
+7413. It is necessary this too come to be known that twelve Ottoman akches makes one mithqal of pure silver.
+
+7414. Tê gotin ku, beriya belavbûna Îslamiyetê, di dema Fermanrewayên Ermeniyan de, rojekê Fermanrewayê Mûşê leşkerê xwe teftîş kiriye û dîtiye ku di nav leşkerê wî de 600 cinsên hespan hene; gelek li ber ketiye
+7414. It comes to be said that, before the spread of Islam, in the time of the Rulers of the Armenians, one day the Ruler of Mûş inspected his army and saw that in his army 600 breeds of horses exist; he became very distressed
+
+7415. û gotiye: "Mûş, xwediyê hukumdarekî bi tedbîr ê saxlem û nêrînên di cî de nîn e."
+7415. and has said: "Mûş, is not the owner of a ruler with sound prudence and views in place."
+
+7416. Yek ji wan nahiyên Bedlîsê yên bi nav û deng jî navçeya Xinisê ye.
+7416. One from those famous subdistricts of Bedlîs too is the district of Xinis.
+
+7417. Gelek çêrîngehên bi bereket û fireh girêdayî wê ne.
+7417. Many blessed and wide pastures are connected to it.
+
+7418. Suşehrî, Bingol û Çiyayên Şerefeddînê ji van ciyayan in.
+7418. Suşehrî, Bingol and the Mountains of Şerefeddîn are from these places.
+
+7419. Di dema bab û bapîrên nivîskarê van rêzan de, qebîle û eşîretên Kurdan her wextê girîngî didan van ciyan; gelek serwet û hatinî bi dest dixistin.
+7419. In the time of the fathers and grandfathers of the writer of these lines, the clans and tribes of the Kurds every time gave importance to these places; they gained much wealth and revenue to hand.
+
+7420. Ji bilî van, li vê nahiyê du kaniyên ji avzê hene.
+7420. Apart from these, in this subdistrict two springs of brine exist.
+
+7421. Ji yek ji wan xwêya spî û ji ya din jî xwêya sor tê çêkirin.
+7421. From one from them white salt and from the other too red salt comes to be made.
+
+7422. Waridata herdukan a salewextê digihîje nêzîkî 400 hezar akçeyên Osmanî.
+7422. The yearly revenue of both reaches near 400 thousand Ottoman akches.
+
+7423. Heqên dîwanê, li vir jî wek yê nahiya Mûşê ye.
+7423. The dues of the diwan, here too is like that of the subdistrict of Mûş.
+
+7424. Ger çendîn hejmara Ermenî û xeyrêmuslîmên din ên di vê nahiya han de dijîn, kêm bûye.
+7424. Although the number of Armenians and other non-Muslims who live in this very subdistrict, has become little.
+
+7425. Ji piraniya gundên wê û axên wê yên tên kêlan (ajotin) ji xwediyê tîmar û ze'ametan re hatine dan.
+7425. From the majority of its villages and its soils that come to be ploughed (tilled) to the owners of timars and ze'amets have come to be given.
+
+7426. Hejmara van, texminen gihîştiye 400 perçan.
+7426. The number of these, approximately has reached 400 pieces.
+
+7427. Li vê nahiya han hinek jî hespên 'Erebî yên cins hene.
+7427. In this very subdistrict some purebred Arab horses too exist.
+
+7428. 'Erdê wê jî ji bilî genim û dexlên din, ber nade.
+7428. Its land too apart from wheat and other grains, gives not produce.
+
+7429. Yek ji wan xerîbiyên tebieta wir jî ew gole ku navê wê Bulanix e.
+7429. One from those wonders of the nature of there too is that lake whose name is Bulanix.
+
+7430. Çapa çarmedora vê gola han fersahek e.
+7430. The circumference of the surroundings of this very lake is one parasang.
+
+7431. Ava wê her wext wekî heriya sor e.
+7431. Its water every time is like red mud.
+
+7432. Çemê ji vê golê jî diherike, tu carî paqij nabe û ji wê heriya sor nayê safikirin.
+7432. The river that flows from this lake too, never becomes clean and from that red mud comes not to be purified.
+
+7433. Li wir, di navbera vê golê û bajarê Xelatê de golek din heye û jê re Gola Nazîkê tê gotin, ava wê gelek sivik, paqij û şêrîn e; zivistanan qeşa digre, ev qeşa han wisan sitûr e ku nêzîkî çar mehan karwan di ser re tên û diçin.
+7433. There, between this lake and the city of Xelat another lake exists and to it Lake Nazîk comes to be said, its water is very light, clean and sweet; in winters it freezes (literally takes ice), this very ice is so thick that near four months caravans come and go over it.
+
+7434. Dema ku bihar tê û roj dikeve qama Burca Beranî,* qeşa dest bi helînê dike, dengê derz û şikestina qeşeyên vê gola han ji sê fersehan tê sehkirin.
+7434. When spring comes and the sun enters the station of the Constellation of Aries,* the ice begins melting, the sound of the cracking and breaking of the ice of this very lake comes to be heard from three parasangs.
+
+7435. Ber bi wendabûna van qeşayan ve hewa dest bi nermiyê dike, bi awakî zêde masî tê de hene û ew dest pê dikin ji golê ber bi şetên avên biçûk û şetên avên lehiyan ve diçin.
+7435. Toward the disappearing of these ices the weather begins softening, in an abundant way fish exist in it and they begin to go from the lake toward the small water streams and flood water streams.
+
+7436. Li van deran xelk mehekê li ser hev diçin masîgirtinê.
+7436. At these places the people for one month continuously go to fishing.
+
+7437. Qasî tê gotin, di van şetên avan û golan de, ewqas masiyên bi tam û nû hene ku, mirovek tenê bi serê xwe, rojê dikare çend çuwalan masî bigre.
+7437. As much as comes to be said, in these water streams and lakes, that many tasty and fresh fish exist that, a person alone by himself, a day can catch several sacks of fish.
+
+7438. Dirêjahiya her yek ji van masiyan digihîje nîv zira’i.
+7438. The length of each one of these fish reaches half a zira'i.
+
+7439. Tiştê xerîb û nedîtî ew e ku, hêkên zikên van masiyan gelek bi jehr in; dema ku însan an heywan van hêkan bixwe, ne mimkun e ku bi jehrê nekeve.
+7439. The strange and unseen thing is this that, the eggs of the bellies of these fish are very poisonous; when a human or animal eats these eggs, it is not possible that it is not poisoned (literally falls not with poison).
+
+7440. Çend kesan, li ba nivîskarê van rêzên han, hinek ji wan hêkan xwarin, di cî de bi jehrê ketin û ji hişê xwe çûn, roj û şevekê bêhiş man.
+7440. Several persons, at the side of the writer of these very lines, ate some from those eggs, immediately fell with poison and went out of their consciousness, remained unconscious a day and a night.
+
+7441. Piştî xwarina panzehirê û vereşînî karîn bi ser hişê xwe ve bên.
+7441. After eating the antidote and vomiting they were able to come back to their consciousness.
+
+7442. Mirovên dîwanê, çend caran teşebbus kirin ku bi riya multezîmiyê masiyên di vê golê de îcar bikin û bigrin bin bandora xwe.
+7442. The men of the diwan, several times made an attempt that through the road of tax farming they lease the fish in this lake and take them under their control.
+
+7443. Ev yek jî di dema desthilatdariya min de bû, lê vê teşebbusa han tu feyde negihand dîwanê.
+7443. This thing too was in the time of my authority, but this very attempt brought no benefit to the diwan.
+
+7444. Mam Hejar dibêje: "Nêzîkî Newrozê..." -Z. A.
+7444. Mam Hejar says: "Near Newroz..." Z. A.
+
+7445. Çunki wê salê masî wek adet bû, derneketin ji der ve û derbazê nav avên şêrîn nebûn.
+7445. Because that year the fish as was the custom, came not out outside and passed not into the sweet waters.
+
+7446. Li bakurê Bedlîsê, di navbera Mûşê û Xelatê de çiyayek mezin heye jê re Çiyayê Nemrûdê tê gotin.
+7446. At the north of Bedlîs, between Mûş and Xelat a great mountain exists to it Mount Nemrûd comes to be said.
+
+7447. Li gor baweriya xelkê, Nemrud zivistanên xwe li van deran derbas kiriye û dema ku bûye havîn jî derketiye çiyê û havîna xwe li wê borandiye.
+7447. According to the belief of the people, Nemrud has passed his winters at these places and when it became summer too went up the mountain and spent his summer there.
+
+7448. Ji ber vê, li serê wê keleyek, avahiyên awa, awa û serayên fermanrewatiyê yên mezin dane avakirin.
+7448. Because of this, at its top a castle, various buildings and great palaces of rulership he caused to be built.
+
+7449. Bi xwe di wan de rûniştiye û piraniya wextê xwe li wir derbas kiriye.
+7449. He himself dwelled in them and passed the majority of his time there.
+
+7450. Dema ku Wahidê Qehhar xezeba xwe lê dike û wekî padişahekî mezin wî dike bin destê xwe, wî çiyayê berz ê bilindahiya wê ji du hezar zîra'an zêdetir dide rûniştandin û korteke nêzîkî hezar û pênc sed zira'i jê çêdibe.
+7450. When the One the Subduer puts His wrath upon him and like a great padishah puts him under His hand, He causes that lofty mountain whose height is more than two thousand zira'is to sink down (literally sit) and a hollow of near one thousand and five hundred zira'is becomes made from it.
+
+7451. Ev korta han a ji vê rûniştinê pêkhatî jî bûye golek mezin.
+7451. This very hollow that came to existence from this sinking too has become a great lake.
+
+7452. Seranserê firehiya vê golê, nêzîkî 5 hezar zira'an e.
+7452. All across the width of this lake, is near 5 thousand zira'is.
+
+7453. Ji kevirên belawela yên wir, darên bittir û giyayên zêde, mirov ji derveyê riyekê du riyan pê ve nikare xwe bigihîne wê golê.
+7453. From the scattered stones of there, dense trees and much grasses, a person apart from one road or two roads cannot reach himself to that lake.
+
+7454. Ev yek-du riyên han jî gelek teng û asê ne.
+7454. These very one or two roads too are very narrow and steep.
+
+7455. Ew riyên ku heywan bikarin tê de bimeşin jî, cardin ji duduyan derbas nabin.
+7455. Those roads that animals can walk in them too, once again pass not beyond two.
+
+7456. Ava vê golê gelek paqij û sar e.
+7456. The water of this lake is very clean and cold.
+
+7457. Lê tiştekî xerîb e, dema ku li rexê golê çalek biçûk jî bê kolan, ava germ derdikeve.
+7457. But it is a strange thing, when at the side of the lake even a small pit comes to be dug, warm water comes out.
+
+7458. 'Erd, bi gelemperî kevir e û bi hev ve zeliqîn e.
+7458. The ground, generally is stone and stuck to each other.
+
+7459. Qismek ji van tehtên han, ji curên ku Tirk jê re "devegozu" dibêjin ew in.
+7459. A part from these very rocks, are those from the kinds to which Turks say "devegozu".
+
+7460. Konên van wekî şanê hingivî yên tijî ne û hişk in.
+7460. The holes of these are like full honeycombs and are hard.
+
+7461. Ji bilî van, cureke din teht heye ku ji yên din nermtir e, yên wekî kevirên reş in.
+7461. Apart from these, another kind of rock exists that is softer than the others, they are like black stones.
+
+7462. Di bakurê vî çiyayî de coyek heye, avek reş jê diherike.
+7462. In the north of this mountain a stream exists, a black water flows from it.
+
+7463. Ev ava han a wekî ava ji korika hesinkeran dipale, reş e û giraniya wê ji ya hesinê zêdetir e.
+7463. This very water that drips like the water from the bellows of blacksmiths, is black and its weight is more than that of iron.
+
+7464. Ev ava han ji 'erdê derdikeve û bi awakî sur'et di zinarî de tê xwarê.
+7464. This very water comes out from the ground and in a swift way comes down in the rock.
+
+7465. Li gor baweriya min, ev ava han her sal zêde û kêm dibe.
+7465. According to my belief, this very water every year becomes more and less.
+
+7466. Dema ku divizikîne ji 30 zira'an zêdetir bilind dibe û belavi ser saheyeka firehiya wê ji çend sed zira'an zêdetir dibe.
+7466. When it spouts out it rises more than 30 zira'is and becomes spread upon an area whose width is more than several hundred zira'is.
+
+7467. Ev vizikandina han jî ji çend milan ve dibe.
+7467. This very spouting out too happens from several sides.
+
+7468. Çi kesê bixwaze ji vê ava reş mennek jî veqetîne, rastî girê astengek gelek zehmet tê.
+7468. Whichever person wants to separate even a mann from this black water, comes across the knot of a very difficult obstacle.
+
+7469. Belê her tenê Xwedê xwediyê desthilatê ye.
+7469. Yes only God alone is the owner of power.
+
+7470. ## QISMÊ YEKAN
+7470. ## PART ONE
+
+7471. ## DI DERHEQÊ REWŞA EŞÎRETA ROJKÎ Û SEBEBÊ VI NAVÊ HAN DE YE
+7471. ## IT IS CONCERNING THE CONDITION OF THE ROJKÎ TRIBE AND THE REASON OF THIS VERY NAME
+
+7472. Wekî bi awakî ronî û zelal tê dîtin, bêjeya Rozkî gotinek derî 167 ye.
+7472. As in a bright and clear way comes to be seen, the word Rozkî is a Dari word.
+
+7473. Hinekan awayê nivîsandina vê bêjeya han bi tipa "c"yê68 û hinekên din jî bi tîpa “ş”yê kirine.
+7473. Some have done the way of writing this very word with the letter "c" and others too with the letter "ş".
+
+7474. Îro halê wî yê tê zanîn û belavbûyî Rojkî jî, di eslê xwe de tê me'neya "yekroj", yanî rojek.
+7474. Today its form that comes to be known and spread Rojkî too, in its origin comes with the meaning "one day", meaning a day.
+
+7475. Ev paşgirka "ki" ya di dawiya bêjeya "roj" de jî, "kitek/libek" ifade dike, wekî di nimûneya gotinên "xoceki", "perdeki" de ye.
+7475. This suffix "kî" at the end of the word "roj" too, expresses "a single one/a piece", as is in the example of the words "xoceki", "perdeki".
+
+7476. Hinek edebiyatzan dibêjin ku, tîpên “K” û “T” di Farisî de ji bo biçûkkirinê jî tê bikar anîn.
+7476. Some literary scholars say that, the letters "K" and "T" in Persian too come to be used for diminution.
+
+7477. Em dikarin bêjin ku, nivîsandina vê bêjeya han bi tîpa "c"yê, li gor prensîbên qewaida (rastaxavtina) Erebî ye; çunkê ev tîpa "j"yê ya di derîceyê de wekî awayê tîpa "c"yê ya di Erebî de ye tê nivîsin.
+7477. We can say that, the writing of this very word with the letter "c", is according to the principles of Arabic grammar (correct speaking); because this letter "j" in Dari comes to be written like the form of the letter "c" in Arabic.
+
+7478. Awayê nivîsandina bêjeyê bi “ş”yê jî li gor tebieta Kurdên rastaxêv e.
+7478. The way of writing the word with "ş" too is according to the nature of the clear speaking Kurds.
+
+7479. Li gor riwayetên kesên ku xeberan radigihînin û parêzgerên afirandinan ên bîr û bawerî bi gotinên wan tên kirin; Eşîreta Rojkî, ji yekîtiya 24 eşîretên Kurd pêk hatiye.
+7479. According to the accounts of the persons who transmit news and the preservers of works whose words are trusted (literally thought and belief come to be done to their words); the Rojkî Tribe, has come to existence from the union of 24 Kurdish tribes.
+
+7480. Ev 24 eşîretên han rojekê li ciyekî navê wê Tab ê li derûdora Xwêtê, berhev dibin û vê yekîtiyê pêk tînin.
+7480. These very 24 tribes one day at a place whose name is Tab in the surroundings of Xwêt, gather and bring this union to existence.
+
+7481. Ev civaka han ya ji qebîleyan pêk hatî, piştre bi ser du şaxên girîng ve belav dibe.
+7481. This very community consisting of clans, afterwards becomes divided upon two important branches.
+
+7482. Ji şaxê yekan ê ji 12 grûban pêkhatî re Bilbasî û ya duduyan re jî Qewalîs hatiye gotin.
+7482. To the first branch consisting of 12 groups Bilbasî and to the second too Qewalîs has come to be said.
+
+7483. Gotinên Bilbas an Bilbîs û Qewalîs jî, navê du gundên mîrekên Hekkariyê ne.
+7483. The words Bilbas or Bilbîs and Qewalîs too, are the names of two villages of the mîrs of Hekkarî.
+
+7484. Li gor riwayeteka din jî, ev herdu gotinên han navê du qebîleyên ji Eşîreta Baban in.
+7484. According to another account too, both of these very words are the names of two clans from the Baban Tribe.
+
+7485. Bi kurtî, piştî ew li navçeya Tabê berhev bûn û erdên wir di navbera xwe de perçe, perçe parve kirin, bi ser hemû tiştî re bûn yek, ketin nava hevkariyê û bûn wekî mirovekî yekdil; ji bo rêvebiriya kar û barên xwe yên hundurî mîrek helbijartin.
+7485. In short, after they gathered at the district of Tab and divided the lands of there piece by piece between themselves, above everything became one, fell into cooperation and became like a single hearted person; for the administration of their internal tasks and affairs they chose a mîr.
+
+7486. Piştre jî erdên welat ên mayîn û navçeyên welat ên din jî bidest xistin û rizgar kirin.
+7486. Afterwards too they gained to hand and liberated the remaining lands of the country and the other districts of the country too.
+
+7487. Li gor gotinên di nav xelkê de tên gotin û belav e, ew kesên parên wan di axa navçeya Tabê de tune, ew bi esil ji Rojkiyan nîn in.
+7487. According to the sayings that come to be said among the people and is spread, those persons whose shares in the soil of the district of Tab exist not, they by origin are not from the Rojkîs.
+
+7488. Ev eşîretên han, piştî di bin alaya mîrekî berhev bûn ku ji bo rêvebiriya xwe bi dil û can helbijartin û dest bi êrîşên navçeyên derûdora xwe yên bin desthilata biyaniyan de bûn, kirin.
+7488. These very tribes, after they gathered under the banner of a mîr whom for their administration with heart and soul they chose and began attacks on the districts of their surroundings that were under the authority of foreigners.
+
+7489. Cardin li gor riwayetan, wê çaxê li wilayetên Bedlîs û Hezzoyê, hukumdarek Gurciyan ê navê wî Tawît70 hukum dikir.
+7489. Once again according to accounts, at that time in the provinces of Bedlîs and Hezzo, a ruler of the Georgians whose name was Tawît ruled.
+
+7490. Eşîreta Rojki, wilayeta Bedlîsê û Hezzoyê ji destê vî
+7490. The Rojkî Tribe, the province of Bedlîs and Hezzo from the hand of this
+
+7491. Gurciyi sitand.
+7491. Georgian took.
+
+7492. Li gor riwayetek din jî, Bedlîs ji Eşîreta Girdikan û bajarê Hezzoyê jî ji Gurciyan sitandin.
+7492. According to another account too, they took Bedlîs from the Girdikan Tribe and the city of Hezzo too from the Georgians.
+
+7493. Hinek jî dibêjin: Rojkiyan, Bedlîs ji Eşireta Zoqeysîyan sitandine.
+7493. Some too say: The Rojkîs, have taken Bedlîs from the Zoqeysî Tribe.
+
+7494. Di temamê van gotinan de rastî û şaşî aîdê wan kesan e ku van rîwayetan neqil dikin.
+7494. In all of these sayings the truth and error belongs to those persons who transmit these accounts.
+
+7495. Bi kurti, Rojkiyan piştî ku dest pê kirin Bedlîs û Hezzo bi temamî sitandin û ev herdu navçe wekî mîrektiyên serbixwe û xwediyên wan ên eslî bi rê ve birin, mîrê wan ê ku desthilata wan di destê wî de bû û kar û barên wan dimeşand, çû rehma Xwedê, lê tu zarokên wî yên ciyê wî bigrin, li pey neman.
+7495. In short, after the Rojkîs began and completely took Bedlîs and Hezzo and conducted these two districts as independent mîrships and their original owners, their mîr in whose hand their authority was and who conducted their tasks and affairs, went to the mercy of God, but no children of his to take his place, remained behind.
+
+7496. Vê rewşa han, rê da ku di navbera Rojkiyan de têkilhevî derkeve.
+7496. This very condition, gave road that confusion come out among the Rojkîs.
+
+7497. Serokên wan li ber hev serî netewandin.
+7497. Their leaders bowed not their head before each other.
+
+7498. Ji ber vê, ev gotina Mewlana Hetîfi, tam li rewşa wan dihat:
+7498. Because of this, this saying of Mewlana Hetîfî, came completely upon their condition:
+
+7499. "Ji bo wî welatî tê kirin girîn û gazî
+7499. "For that country crying and calling comes to be done
+
+7500. Eger, dê kî bê hewara wir ku tu nizanî
+7500. If, who will come to the help of there that you know not
+
+7501. Difilite li Ke'beyê fahişeya serxweş
+7501. The drunken harlot slips loose at the Kaaba
+
+7502. Ger hakimek tunebe pey de biçe bide heddî wê baş"
+7502. If a ruler exists not to go after her and give her punishment well"
+
+7503. Piştî ku demekê rewş bi vî awayî ma, serekên eşîret, qebîle û malbatan li ber vê rewşê geriyan û xebitîn ku çareyek jê re bibînin.
+7503. After the condition remained in this way for a time, the leaders of tribes, clans and families searched before this condition and worked that they find a remedy for it.
+
+7504. Rûniştin û bi hev şêwirîn, di dawiyê de biryar dan ku, ji bo bên di nav wan de bicî bibin, biçin ba du birayên navên wan Izzeddîn û Diyaeddîn ên ji nesla Sultanên Kisrayê yên li Xelatê rûdiniştin.
+7504. They sat and consulted with each other, in the end decided that, for that they come and settle among them, they go to the side of two brothers whose names were Izzeddîn and Diyaeddîn who were from the lineage of the Sultans of Kisra who dwelled at Xelat.
+
+7505. Bi vî awayî, wan ê ji van herdu birayan kîjan kêrî meşandina kar û barên xelkê tên, ew tecrube bikiraya û hîn bibûya; dê wî ji bo mîrektiya xwe helbijartina.
+7505. In this way, whichever from these two brothers came to use for conducting the tasks and affairs of the people, they would have tested and learned him; they would have chosen him for their mîrship.
+
+7506. Ji bilî vê jî dê bi dil û can riayeta wî bikirina ku, wî jî bikariya welat pêş de bibe û bi destekî hesinî li serê wan kesên rêzxeraker û şerfiroşan bixistaya û dadgeriyê bi şêhineka rast dipîva bi rê ve bibira.
+7506. Apart from this too they would have observed him with heart and soul so that, he too would have been able to take the country forward and with an iron hand strike upon the head of those order destroying and trouble seeking persons and conduct justice weighing with a true scale.
+
+7507. Ji bo ku vê dîtin û niyeta xwe cîbicî bikin, heyetek ji giregirên Eşîreta Rojkî pêkhatî, çûn Xelatê û bi qebûlkirina ji aliyê van herdu kesên 'esîl ve serfiraz û serbilind bûn û wan bi awakî qedir û siyanet anîn Bedlîsê.
+7507. For that they carry out this view and intention of theirs, a delegation consisting of notables of the Rojkî Tribe, went to Xelat and with the acceptance from the side of both of these noble persons became victorious and proud and brought them in a way of value and respect to Bedlîs.
+
+7508. Di dawiyê de, civatekê xwest Izzeddîn bibe mîrê Bedlîsê û ya din jî Diyaeddin ji bo Mîrektiya Hezzoyê helbijartin.
+7508. In the end, one assembly wanted Izzeddîn become mîr of Bedlîs and the other too chose Diyaeddîn for the Mîrship of Hezzo.
+
+7509. Bi vî awayî welat û hemû ferd û qebîleyên Eşîreta Rojkî bi dilxwazî û dilhêminî serî li ber van herdu birayan tewandin.
+7509. In this way the country and all individuals and clans of the Rojkî Tribe with willingness and tranquility of heart bowed their head before both of these brothers.
+
+7510. Mir Izzeddin, wezîfeya xwe bi awakî herî baş birêve bir; di nav xelkê de helwestek baş da ber xwe.
+7510. Mîr Izzeddîn, conducted his duty in a best way; among the people he put a good attitude before himself.
+
+7511. Bêyî cihêtî û ferqîtî bêxe nava ferdên eşîret û qebîleyan dadmendiyek wekhevî meşand.
+7511. Without putting distinction and difference among the individuals of tribes and clans he conducted an equal justice.
+
+7512. Hemû kesan mil dan ber wî û jê hêviyên karên mezin û bifeyde kirin.
+7512. All persons gave shoulder before him (supported him) and made hopes of great and beneficial deeds from him.
+
+7513. Di eslê xwe de Eşîreta Rojkî, wekî îro çawane, wê çaxê jî di nava eşîret û qebîleyên Kurdistanê de, bi merdayetî, xêrxwazî, ji xweşermi, binamûsî, rastî û başiyên xwe ve bi nav û deng bû.
+7513. In its origin the Rojkî Tribe, as how it is today, at that time too among the tribes and clans of Kurdistan, with its generosity, benevolence, modesty, honorableness, truth and goodnesses was famous.
+
+7514. Ji bilî vê, ferdên vê eşîreta han, di rastbûnî û di dîndarî de gelek pêş in, hem di gotin û hem jî di helwestên xwe de gelek bi bîrûbawer in û heta tu bixwazî bi fedakarî û bi sedaqeta bi mîr û begên xwe re hatine naskirin.
+7514. Apart from this, the individuals of this very tribe, in truthfulness and in religiousness are very foremost, both in word and too in their attitudes are very principled and as much as you want with self sacrifice and with loyalty to their mîrs and begs have come to be known.
+
+7515. Di esnayê felaket û musîbetên tên serên wan de jî, ji bo di riya axa welat û parêzgeriya qazancên welat de, ji pêşkêşkirina fedakarî û xizmetên xwe paş de namînin.
+7515. During the disasters and calamities that come upon their heads too, for in the road of the soil of the country and protection of the gains of the country, from presenting their self sacrifice and services they remain not behind.
+
+7516. Wekî nimûne, di demên dîrokê yên cihê cihê de, zorbeyên ku fermanrewayên wan ji ser desthilatê dûr xistine û Bedlîs sitandine, gelek caran bêyî ku ew alîkarî ji kesekî bistînin, ev cî ji destê wan rizgar kirine.
+7516. As an example, in different times of history, the tyrants who distanced their rulers from upon authority and took Bedlîs, many times without that they take help from anyone, liberated these places from their hand.
+
+7517. Ev jî tenê bi saya serê têgihîştina wan bi kar û baran, mêr û mêrxasiyên wan ên nedîtî yên di şer û qirênan de nîşandayî bûye ku, di esnayê lêqewimînê de bîr û baweriyên wan ên xwe bi xwe û bawermendiya wan bi Xwedayê ku ji 'ebdên xwe yên xebatker û bawermendên xwe re dike.
+7517. This too was only through the favor of their understanding with tasks and affairs, their unseen bravery and valor shown in wars and battles that, during misfortune their confidence in themselves and their belief in God who helps His striving servants and His believers.
+
+7518. Di nav Kurdan de bi nav û deng e, ku ji bo danîna her kevirekî Kela Bedlîsê li ser hev, serê kesekî ji Eşîreta Rojkî tê de çûye.
+7518. Among the Kurds it is famous, that for the placing of every stone of the Castle of Bedlîs upon each other, the head of a person from the Rojkî Tribe has gone in it.
+
+7519. Kijan ji wan sultanên mezin dibe bila bibe, kengî ku bixwaze Kurdistanê werbigre û serê Kurdan li ber desthilata xwe bide tewandin, berî hemû tiştî hewce ye ji sedî sed dijminatiya Mîrên Bedlîsê bike û bi Eşîreta Rojkî re şer bike û serî li wan bitewîne.
+7519. Whichever from those great sultans it be let it be, whenever he wants to take Kurdistan and cause the head of the Kurds to bow before his authority, before everything it is necessary one hundred percent to make enmity of the Mîrs of Bedlîs and fight with the Rojkî Tribe and bow their head.
+
+7520. Dema ku ev eşîreta Kurd serî li ber êrîşker netewîne, civak û xelkên din ên Kurdistanê ji tu kesê re serî natewînin.
+7520. When this Kurdish tribe bows not its head before the attacker, the other communities and peoples of Kurdistan bow not their head to anyone.
+
+7521. Îsbata vê yekê jî ev e:
+7521. The proof of this thing too is this:
+
+7522. Dema ku Sultanê Gazî,72 wilayeta Bedlîsê girt û Şemseddin Xan73 ê serdarê wê ji wir derxist û ew ber bi welatê 'Ecem ve penaber bû, heta sê salan eşîretên Bayîkî (Bayekî), Modki, Zeydanî û Bilbasî neketin bin fermana wî û li hemberî êrîşkeriya wezîfedar û kesên Dewleta Osmanî serî hildan.
+7522. When the Ghazi Sultan, took the province of Bedlîs and drove out Şemseddîn Xan its commander from there and he became a refugee toward the country of Persia, until three years the tribes of Bayîkî (Bayekî), Modkî, Zeydanî and Bilbasî fell not under his command and rebelled (literally lifted their head) against the aggression of the officials and persons of the Ottoman State.
+
+7523. Hetta Sultan, ji hemû mîr û fermanrewayên Kurdistanê re fermana meşa ser van serîhildêran da, ew jî ji bo vê fermanê bicî bikin wekî dêwên pişt Çiyayê Qafê hatin ser wan, lê cardin nekarîn bi quwet û bi darê zorê serî li wan bitewînin.
+7523. Even the Sultan, gave the command of marching upon these rebels to all mîrs and rulers of Kurdistan, they too for that they carry out this command came upon them like the giants behind Mount Qaf, but once again they were not able with force and with compulsion (literally the stick of force) to bow their head.
+
+7524. Di netîceyê de, Sultan Suleyman, siyaset bi kar anî û bi wasiteya mîrê Hezzoyê Bahaeddîn Beg, xelkê Geliyê Kêfnedûrê û Eşîreta Bayîkî ber bi aliyê xwe ve kêşa.
+7524. In the result, Sultan Suleyman, used politics and by means of the mîr of Hezzo Bahaeddîn Beg, pulled the people of Geliyê Kêfnedûr and the Bayîkî Tribe toward his side.
+
+7525. Piştre jî Îbrahîm Beg û Qasim Beg ên kurên Şêx Emîr Bilbasî bi pere û meqaman dilxweş kirin û çavên wan bi soz û qewlan dan girêdan û ancax bi wî awayî karîn mecala sitandina Bedlîsê bi dest bixin û serî li eşîretan bitewînin.
+7525. Afterwards too he made Îbrahîm Beg and Qasim Beg the sons of Şêx Emîr Bilbasî happy hearted with money and positions and caused their eyes to be bound with promises and pledges and only in that way they were able to gain to hand the possibility of taking Bedlîs and bow the head of the tribes.
+
+7526. Li milê din, gelek zarok û kurên mîrên Kurdistanê yên din tên Bedlîsê û wextên xwe yên vala li vir derbas dikin.
+7526. On the other side, many children and sons of the other mîrs of Kurdistan come to Bedlîs and pass their free times here.
+
+7527. Lê zarokên Eşîreta Rojkî û
+7527. But the children of the Rojkî Tribe and
+
+7528. kurên begên Bedlîsê, ji bo xizmet yan ji bo derbazkirina wextên xwe yên vala yan ji bo gerê naçin ber deriyê mîrên din ên Kurdistanê.
+7528. the sons of the begs of Bedlîs, for service or for passing their free times or for wandering go not before the door of other mîrs of Kurdistan.
+
+7529. Ji bilî vê, ew li welatên biyanî yên dûr ji bo bilindbûn û gihîştina bi sifetên hêja yên methan û afirandinên saxlem ên li hemberî zehmetî û karên zor bi sebir û qewîtiyên xwe ve, bi nav û deng in.
+7529. Apart from this, they in distant foreign countries for rising and reaching to worthy praised qualities and sound deeds against difficulties and hard tasks with their patience and firmness, are famous.
+
+7530. Wekî nimûne: Derwêş Mehmûdê Keleçîrî yê mezinê Qebîleya Keleçêriyan, welatê xwe bicî hişt û xwe gihand ber baregeha Sultan Suleyman ê payebilind û bi saya zanatî û perwerdetiya xwe ya bilind û fezîletên xwe yên mezin, bawermendî û rêzmendiya Sultan qazanc kir.
+7530. As an example: Derwêş Mehmûd the Keleçîrî the great one of the Keleçêrî Clan, left his country behind and reached himself before the court of the high positioned Sultan Suleyman and through the favor of his high knowledge and education and his great virtues, earned the trust and respect of the Sultan.
+
+7531. Ew, kesekî wisan bû ku hemû hunermendî û fezîlet pê re hebûn.
+7531. He, was such a person that all artistry and virtue existed with him.
+
+7532. Bi van sifetên xwe karîbû di meclisa Sultan a taybetî de cî bigre û bibe yek ji wan endamên bi qedir û siyanet ên wê meclisê.
+7532. With these qualities of his he was able to take a place in the private council of the Sultan and become one from those members with value and respect of that council.
+
+7533. Şairekî bê emsal bû, gelek şi'ir û qesîdeyên wî yên bi Tirkî û bi Farisî hene.
+7533. He was an unmatched poet, many poems and qasidas of his in Turkish and in Persian exist.
+
+7534. Nivîskarê van herfên han şi'irek wî ya bi Tirkî nivîsandî ji ber e:
+7534. The writer of these very letters knows a poem of his written in Turkish by heart:
+
+7535. "Sebze midir leblerin dorunda ya hatt-i gubar?
+7535. "Is it greenery around your lips or the down of dust?
+
+7536. Ya ayagi şehde batmiş hasta arular midir?"
+7536. Or are they sick bees whose feet have sunk into honey?"
+
+7537. Qur'anxwînekî ewqas baş bû ku, yên guhê xwe didan wî, ji ber dengê wî yê xweş û şêrîn, ji wan we bû ku ew Idrîsê duduyan e.
+7537. He was such a good Quran reciter that, those who gave their ear to him, because of his good and sweet voice, to them it seemed that he is the second Idrîs.
+
+7538. Ew, yek ji wan kesê ji meclîsa Sultan bû û kitêbdariya kitêbxaneya xwe sipartibu wî.
+7538. He, was one from those persons from the council of the Sultan and he had entrusted the librarianship of his library to him.
+
+7539. Biraziyê wî Heyder Aka jî, yek ji wan kesan bû ku, di riya rast de bû, dûrbîn, mêrxas û nefsbiçûk dihat naskirin.
+7539. His nephew Heyder Aka too, was one from those persons who, was in the true road, came to be known far sighted, brave and humble.
+
+7540. Ji ber vê yekê, Sultan Suleyman Xan wî bi wezîfeya sancaqtiyê, bi rêvebiriya kar û barên Eşîreta Cîhanbelku* û jê re dayîna navçek ji wilayeta Paloyê ya bi riya mulkiyeta Iqta'î serfiraz kir.
+7540. Because of this thing, Sultan Suleyman Xan made him honored with the duty of sanjakship, with the administration of the tasks and affairs of the Cîhanbelku Tribe* and giving to him a district from the province of Palo through the road of iqta'i ownership.
+
+7541. Ji Eşîreta Bilbasî, Îbrahîm Begê kurê Kalender Aka jî ji ber dubendî û serêşiya di navbera wî û hinek kesên ji eşîreta wî de, welat terk kir, çû Sîstanê û ket bin xizmeta Mehmed Xanê Tirkmen ê fermanrewayê wî welatê yê tik û tenê.
+7541. From the Bilbasî Tribe, Îbrahîm Beg the son of Kalender Aka too because of the factionalism and headache between him and some persons from his tribe, abandoned the country, went to Sîstan and fell under the service of Mehmed Xan the Turkmen the sole ruler of that country.
+
+7542. Dema ku Mehmed Xan bi wî re nîşan û eserên mêr û mêrxasiyê dîtin, devê wî jê re ma vekirî û qasî di daxilê mecal û taqeta wî de bû, qedrê wî girt.
+7542. When Mehmed Xan saw with him signs and traces of bravery and valor, his mouth remained open for him and as much as was within his possibility and endurance, held his worth.
+
+7543. Di netîceyê de jî bêyî sekin wî kir walî û parastina sînorên Belucîstanê siparte wî.
+7543. In the result too without pause he made him governor and entrusted the protection of the borders of Belucîstan to him.
+
+7544. Belê, tam li wir, ji derveyê van qabiliyetên wî yên ji sînorê hiş û aqilan der, mêr û mêrxasiyên wî yên di afirandina Kurdên serkêş de tên dîtin, xwe dan nîşan.
+7544. Yes, right there, outside of these capabilities of his beyond the border of consciousness and minds, his bravery and valor that come to be seen in the nature of leading Kurds, gave themselves to show.
+
+7545. Di şer û qirênan de çendîn car şûr û rim li dijî Belûciyan bikar anî.
+7545. In wars and battles several times he used sword and spear against the Baluchis.
+
+7546. Çi dema bi wan re biketa nav doz û xubara şer û qirênan, wan belav dikir.
+7546. Whenever he fell with them into the dust and smoke of war and battles, he scattered them.
+
+7547. Di dawiyê de piraniya wan bûn xwera şûr û tîrên wî û welatê wan ji wan sitand, wan xist nav
+7547. In the end the majority of them became food of his sword and arrows and he took their country from them, put them into
+
+7548. Di wergera Soranî de dibêje: "Eşireta Belku (Beglu)" -Z. A.
+7548. In the Sorani translation it says: "The Belku (Beglu) Tribe" Z. A.
+
+7549. rewşek wisan ku ji zarokên xwe zêdetir qedir û siyanetê ji wan dît.
+7549. such a condition that more than his own children he saw value and respect from them.
+
+7550. Ew, niha jî di wî welatê dûr de bi dilek hêmin û xweş desthilatê di destê xwe de digre.
+7550. He, now too in that distant country with a tranquil and happy heart holds authority in his hand.
+
+7551. Bestam Axa jî çû Qendeharê û ket bin fermana Sultan Huseyin Mîrza yê fermanrewayê wir; bawerî û heyrantiya wî qazanc kir.
+7551. Bestam Axa too went to Qendehar and fell under the command of Sultan Huseyin Mîrza the ruler of there; he earned his trust and admiration.
+
+7552. Di netîceyê de, bi awakî zû ber bi payeyan ve bilind bû.
+7552. In the result, in a quick way he rose toward ranks.
+
+7553. Di dawiyê de bû yek ji wan endamên meclîsa Sultan Mirza û Sultan di vê meclîsê de wextên xwe yên xweş bi vî Bestam Axayî re derbas dike.
+7553. In the end he became one from those members of the council of Sultan Mîrza and the Sultan in this council passes his happy times with this Bestam Axa.
+
+7554. Yek ji wan namdaran jî Qasim Begê kurê Şah Huseyin Aka yê Muhurdar e.
+7554. One from those famous ones too is Qasim Beg the son of Şah Huseyin Aka the Keeper of the Seal.
+
+7555. Di dema vegera min a bi Eşîreta Rojki ve ji Nahciwanê ber bi Bedlîsê ve, ew li wilayeta xwe disekinî ku ji bab û bapîrên wî jê ra mabû.
+7555. In the time of my return with the Rojkî Tribe from Nahciwan toward Bedlîs, he stayed in his province that had remained to him from his fathers and grandfathers.
+
+7556. Ew girêdayê sedaqeta xwe ya bi Osmaniyan re bû û wezifeyên ji aliyê wan ve jê re hatibûn dan, bi hemû girêdan, sergiranî û wefadariyên xwe ve bicî dianî.
+7556. He was attached to his loyalty with the Ottomans and carried out the duties that from their side had come to be given to him, with all his attachment, seriousness and faithfulness.
+
+7557. Qasim Beg, berê di nav sefên parêzgerên sultantiyê yên taybetî (Korciyan) de bû.
+7557. Qasim Beg, before was among the ranks of the special royal guards (Korciyan).
+
+7558. Lê çerxa felekê bermeqlub zivirî, dijîtiya di navbera hinek Kurdên Iraqê û Eşîreta Rojkî ya li ser reqabeta sitandina yuzbaşîtiyê, ku ji aliyê herdu milan ve jî dihat xwestin, bû sebeb ku gelek eziyet û cefa lê bên kirin, wî ji wilayeta bab û bapîrên wî dûr bixin û asteng û serêşiyê jê re çêkin.
+7558. But the wheel of fortune turned upside down, the enmity between some Kurds of Iraq and the Rojkî Tribe upon the rivalry of taking the yuzbaşîtî, which from both sides too was wanted, became the reason that much torment and suffering come to be done upon him, that they distance him from the province of his fathers and grandfathers and make obstacles and headache for him.
+
+7559. Lê bi ser hemû van bûyer û neheqiyan de jî Qasim Beg xwe bi şax û çiqên sebrê girt, ji temamê van kirinan re tehemmûl kir û li gor gotina: "Sebir mifta hemû tiştî ye" hereket kir.
+7559. But upon all these events and injustices too Qasim Beg held himself with the branches and twigs of patience, endured all these deeds and moved according to the saying: "Patience is the key of everything".
+
+7560. Di dawiyê de sedeqeta wî ya ji Dewleta Osmanî û kesên dewletê re hat zanîn û xizmetên wî yên bi dil û can hatin dîtin; di netîceyê de, wezîfeya "yuzbaşîtî"* ya ku yek ji wan wezîfeyên Eşîreta Rojkî bû lê ji destê wan derketibû, dan wî.
+7560. In the end his loyalty to the Ottoman State and the persons of the state came to be known and his services with heart and soul came to be seen; in the result, the duty of "yuzbaşîtî"* which was one from those duties of the Rojkî Tribe but had gone out from their hand, they gave to him.
+
+7561. Niha ku sala 1005'ê koçi (1597'ê z) ye, ev beg, wezifeya yuzbaşîtiyê bi awakî herî baş dimeşîne.
+7561. Now that it is the year 1005 Hijri (1597 AD), this beg, conducts the duty of yuzbaşîtî in a best way.
+
+7562. Bi xwe, bi rastî xortekî bi nav û deng ê kemilî, xweşexlaq, serbilind, mêr û mêrxas, camêr û merd e.
+7562. He himself, in truth is a famous perfected, good charactered, proud, brave and valiant, chivalrous and generous youth.
+
+7563. Hêviyek gelek zêde jê tê kirin ku dê di xebat û kirinên xwe de serkevtî be.
+7563. A very much hope comes to be made from him that he will be successful in his efforts and deeds.
+
+7564. Ev eşîreta han a Kurd a bi wan xesletên xwe yên civakî yên bilind, ku behsa wan hatin kirin, ji qismek gelek zêde eşîret û gelên Kurdistanê cihê dibin, qism in.
+7564. This very Kurdish tribe with those high social traits of theirs, whose mention came to be done, become distinct from a very great part of the tribes and peoples of Kurdistan, they are divisions.
+
+7565. Pênc ji van: Qeysanî, Bayekî, Modki, Zoqeysî û
+7565. Five from these: Qeysanî, Bayekî, Modkî, Zoqeysî and
+
+7566. Li gor vê, wergera Tirkî jî hem şaş e û hem jî gelek têkelheve.
+7566. According to this, the Turkish translation too is both wrong and very confused.
+
+7567. Wergera Soranî û ya maqaleyê wek hev in.
+7567. The Sorani translation and that of the article are like each other.
+
+7568. Her çiqas di wergera Tirkiya wê de "geri yuzbaşı" hatiye nivîsîn jî lê ev yek şaş e.
+7568. Although in its Turkish translation "geri yuzbaşı" has come to be written yet this thing is wrong.
+
+7569. Ji ber ku di Farisiya wê de "yuzbaşîgeri" ye ku me'neya wê "yuzbaşîti" (yuzbaşîbûn) ye.
+7569. Because in its Persian it is "yuzbaşîgeri" whose meaning is "yuzbaşîtî" (being a yuzbaşî).
+
+7570. Ev bêje wekî du bêjeyan, yanî "yuzbaşîti" û "geri" hatiye fehimkirin û di wergera Tirkî de jî bûye "geri yuzbaşi”.
+7570. This word has come to be understood as two words, meaning "yuzbaşîtî" and "geri" and in the Turkish translation too has become "geri yuzbaşi".
+
+7571. Di wergera Soranî de Mam Hejar xwe nêzîkî eslê wê kiriye, lê wî jî vê rutbeya han "serliqayeti" bi nav kiriye. -Z. A.
+7571. In the Sorani translation Mam Hejar has brought himself near its origin, but he too has named this very rank "serliqayetî". Z. A.
+
+7572. Di wergera Soranî de dibêje: "24 qebile ne."
+7572. In the Sorani translation it says: "They are 24 clans."
+
+7573. Di Farisiya wê de jî dibêje: "24 şu'be ne." - Z. A.
+7573. In its Persian too it says: "They are 24 branches." Z. A.
+
+7574. Zeydanî eşîretên qedîm en wilayeta Bedlîsê ne.
+7574. Zeydanî are the ancient tribes of the province of Bedlîs.
+
+7575. Panzdehên 74 din jî di bin du şaxên mezin, Bilbasî û Qewalisî de berhev dibin.
+7575. The fifteen others too gather under two great branches, Bilbasî and Qewalisî.
+
+7576. Bilbasî: Keleçîrî, Xerbili, Baleki, Xiyarti, Kori, Birêşî, Sekrî, Garisî, Bêdorî û Belagerdîî ne.
+7576. Bilbasî: are Keleçîrî, Xerbilî, Balekî, Xiyartî, Korî, Birêşî, Sekrî, Garisî, Bêdorî and Belagerdîî.
+
+7577. Qewalisî jî: Zerduzi, Endaki, Pertavi, Girdiki, Suhrewêrdî, Kaşaxî, Xaldî, Wastudkî û 'Ezizan nin.
+7577. Qewalisî too: are Zerduzî, Endakî, Pertavî, Girdikî, Suhrewêrdî, Kaşaxî, Xaldî, Wastudkî and 'Ezizan.
+
+7578. Min ev tesnifa han li gor Farisiya wê nivîsand.
+7578. I wrote this very classification according to its Persian.
+
+7579. Ez dixwazim awayên tesnîfa wergera Tirkî û Sorani ji li vir bidim xuyakirin.
+7579. I want to give to appear (reveal) the ways of classification of the Turkish and Sorani translation too here.
+
+7580. Tesnifa wergera Tirkî wiha ye: "...ev dibin 24 şax.
+7580. The classification of the Turkish translation is thus: "...these become 24 branches.
+
+7581. Pênc ji van, yanî Qeysan (Kaysan), Baykan, Modkan, Zoqeysî(Zokaysi) û Zeydi, eşîretên wilayeta Bedlîsê yên herî kevn in.
+7581. Five from these, meaning Qeysan (Kaysan), Baykan, Modkan, Zoqeysî (Zokaysi) and Zeydî, are the oldest tribes of the province of Bedlîs.
+
+7582. Panzdeh (di hemú nusxeyan de wiha ye, lê rastiya wê 19 ye. -M. 'E. 'E.) eşîretên din ên mayî jî, wekî di pêş de dê bi firehi behsa wan bên kirin, bi ser du qismên mezin ve par ve dibin: Bilbasî û Qewalisî (Kavalisi).
+7582. The remaining fifteen (in all copies it is thus, but its truth is 19. M. 'E. 'E.) other tribes too, as ahead their mention will come to be done in detail, become divided upon two great parts: Bilbasî and Qewalisî (Kavalisi).
+
+7583. Bilbasi bi ser şaxên: Keleçiran, Xirbelan (Hirbelan), Balkan, Xiyartan (Hiyartan), Goran, Birêşan (Birişan), Sekran, Garisi, Bêdoran (Bidoran) û Balekurdan par ve dibin.
+7583. Bilbasî become divided upon the branches: Keleçiran, Xirbelan (Hirbelan), Balkan, Xiyartan (Hiyartan), Goran, Birêşan (Birişan), Sekran, Garisî, Bêdoran (Bidoran) and Balekurdan.
+
+7584. Qewalisi ji ji: Zerduzan, Endakiyan, Pirtavan, Qewalisî (di kitêbê de wiha ye; lê tê dîtin ku ev bi zêdehî ketiyê, çunki "Qewalist" navê müşterek ê tevan e; ji bilî vê bi wê re hejmar jî zêde dibe. -M. 'E. E.). Girdikan, Suhreverdiyan, Kaşagiyan, Xaldan (Haldan), Isdukan û Azizan pêk tên."
+7584. Qewalisî too consist from: Zerduzan, Endakiyan, Pirtavan, Qewalisî (in the book it is thus; but it comes to be seen that this has fallen in by excess, because "Qewalîsî" is the common name of all; apart from this with it the number too increases. M. 'E. E.), Girdikan, Suhreverdiyan, Kaşagiyan, Xaldan (Haldan), Isdukan and Azizan."
+
+7585. Tesnifa wergera Sorani ji wiha ye: "...ev eşîreta han 24 qebîle ne.
+7585. The classification of the Sorani translation too is thus: "...this very tribe is 24 clans.
+
+7586. Pênc ji van, ku Qeysanî, Bayekî, Modki, Zoqeysî û Zeydani ne, rûniştiyên Bedlîsê yên kevn in.
+7586. Five from these, which are Qeysanî, Bayekî, Modkî, Zoqeysî and Zeydanî, are the old residents of Bedlîs.
+
+7587. Dehên wan jî ku ji bereyê Bilbas in: Keleçiri, Xerbili, Baleki, Xiyarti, Kori, Birêşî, Sekrî, Garisî, Bêdorî û Belagerdi' ne.
+7587. Ten of them too which are from the Bilbas front: are Keleçirî, Xerbilî, Balekî, Xiyartî, Korî, Birêşî, Sekrî, Garisî, Bêdorî and Belagerdî'.
+
+7588. Ew neh qebileyên din ji ku: Zerduzi, Endaki, Pertavi, Girdiki, Suhrewerdî, Kaşaxi, Xaldi, Wastuki û 'Ezizan in, Bilbasi ne."- Z. A.
+7588. Those other nine clans too which: are Zerduzî, Endakî, Pertavî, Girdikî, Suhrewerdî, Kaşaxî, Xaldî, Wastukî and 'Ezizan, are Bilbasî." Z. A.
+
+7589. QISME DUDUYAN
+7589. PART TWO
+
+7590. DI DERHEQÊ BINGEH û KOKA MÎRÊN BEDLISÊ DE NE
+7590. IT IS CONCERNING THE FOUNDATION AND ROOT OF THE MÎRS OF BEDLÎS
+
+7591. Li gor zanyariyên di nav xelkê de belav e û tê gotin û di hinek dîrokan de jî hatine behskirin, ku koka Fermanrewayên Bedlîsê diçe digihîje Qiralên Kisrayê.
+7591. According to the knowledges that is spread among the people and comes to be said and in some histories too has come to be mentioned, that the root of the Rulers of Bedlîs goes and reaches the Kings of Kisra.
+
+7592. Ji ber ku di nav xelkê de belav e, ku ew ji nesla Nûşîrewan û neviyên wî ne.
+7592. Because among the people it is spread, that they are from the lineage of Nûşîrewan and his grandsons.
+
+7593. Lê rastiya wê ev e ku, Camasbê kurê Feyrûz ku pêncemîn(?) 75 qiralê Kisrayê bûye, di dema Nûşîrewan de li ser navê Qubad desthilatdarê wilaya Ermenîstan û Şêrwanê bûye.
+7593. But its truth is this that, Camasb the son of Feyrûz who was the fifth(?) king of Kisra, in the time of Nûşîrewan upon the name of Qubad was the ruler of the province of Armenia and Şêrwan.
+
+7594. Dema ku ev Camasbé han mir, sê kur jê man: Nersî,476 Surxab û Behwad.
+7594. When this very Camasb died, three sons remained from him: Nersî, Surxab and Behwad.
+
+7595. Nersî ciyê babê xwe girt û kar û barên wilayetê bi rê ve bir.
+7595. Nersî took the place of his father and conducted the tasks and affairs of the province.
+
+7596. Nûşîrewan, ew girt bin baskên qencî û parêzgeriya xwe.
+7596. Nûşîrewan, took him under the wings of his goodness and protection.
+
+7597. Ew roj bi roj ber bi rutbeyên bilind ve diçû, nav û dengê wî belav bû û desthilata wî gihişt hemû ciyan.
+7597. He day by day went toward high ranks, his name and renown became spread and his authority reached all places.
+
+7598. Piştre bi yekîneyek eskerî ya mezin û giran ve êrîşî wilayeta Geylanê kir û bi darê zor û zordariyê ew der sitand û bi keça yek ji wan qiralên Geylanê re jî zewicî.
+7598. Afterwards with a great and heavy military unit he attacked the province of Geylan and with compulsion (literally the stick of force) and tyranny took that place and married too with the daughter of one from those kings of Geylan.
+
+7599. Vê keça han kurekî navê wî Ceylan Şah anî.
+7599. This very daughter bore (literally brought) a son whose name was Ceylan Şah.
+
+7600. Belê qiralên Rustemdarê ji nesla vî begê han in.
+7600. Yes the kings of Rustemdar are from the lineage of this very beg.
+
+7601. Surxab jî li wilayeta Şêrwanê desthilat girt destê xwe.
+7601. Surxab too took authority in the province of Şêrwan to his hand.
+
+7602. Eslê vê wilayeta han jî digihîje wî.
+7602. The origin of this very province too reaches him.
+
+7603. Behwad jî bi wê waridata kêm a diket destan razî bû û li Xelatê bicî bû û bi eksê urf û adetên bab û bapîrên xwe pey hewesa fetih û firehkirina sînoran negeriya.
+7603. Behwad too became satisfied with that little revenue that fell to hand and settled at Xelat and contrary to the usages and customs of his fathers and grandfathers sought not after the desire of conquest and widening of borders.
+
+7604. Belê kok û eslê Mîrên Bedlîsê diçe digihîje vî begê han.
+7604. Yes the root and origin of the Mîrs of Bedlîs goes and reaches this very beg.
+
+7605. Li gor vê, Mîrên Bedlîsê kurmamên qiralên Rustemdarê û yên Şêrwanê ne.
+7605. According to this, the Mîrs of Bedlîs are the paternal cousins of the kings of Rustemdar and those of Şêrwan.
+
+7606. Niha jî ku sala 1005ê koçî (1597'ê z) a dawiya meha Zilhîcceyê ye, li gor gotinên ku tên gotin, sal derbas dibe ser di destxistina desthilata wilayeta Bedlîsê, ciyên pê ve girêdayî û yên pê ve girêdane û xistine ser.
+7606. Now too that it is the year 1005 Hijri (1597 AD) the end of the month of Zilhîcce, according to the sayings that come to be said, years pass upon the gaining to hand of the authority of the province of Bedlîs, the places connected to it and those attached and put upon it.
+
+7607. Di vê muddetê han de, desthilata serbixwe ya van mîrên han ên bi nav û deng ku dewrê hevûdu kirine, ji hev nehatiye veqetandin.
+7607. In this very period, the independent authority of these very famous mîrs who handed over to each other, has not come to be separated from each other.
+
+7608. Ev ciyên han tenê 110 salan di bin îşgala biyaniyan de mane.
+7608. These very places remained under the occupation of foreigners only for 110 years.
+
+7609. Dema ku ciyê wan bê em ê bi firehî behsa wan çar dewletên mezin ên bi saltanat bikin, ku ev wilayeta han îstîla kirine.
+7609. When their place comes we will do the mention in detail of those four great states with sultanate, which have invaded this very province.
+
+7610. Bi kurtî, wekî berê jî derbas bûbû, her çendîn demek kurt jî nebe, piştî Eşîreta Rojki Izzeddîn ji bo Bedlîsê û Diyaeddîn jî ji bo Hezzoyê hukumdar helbijartin, hat dîtin ku xelkê Bedlîsê ji mîrê xwe Izzeddîn zêdetir, hêdî hêdî meyl û sedaqeta wan ber bi Diyaeddîn ve ye.
+7610. In short, as before too had passed, however much it be not a short time too, after the Rojkî Tribe chose Izzeddîn as ruler for Bedlîs and Diyaeddîn too for Hezzo, it came to be seen that the people of Bedlîs more than their mîr Izzeddîn, slowly slowly their inclination and loyalty is toward Diyaeddîn.
+
+7611. Xelkê Bedlîsê dest
+7611. The people of Bedlîs hand
+
+7612. pê kirin ji Izzeddîn sar bûn, nefret jê kirin û li hemberî wî qet evînek di dilê wan de peyda nebû.
+7612. began to become cold from Izzeddîn, hated him and toward him no love at all appeared in their heart.
+
+7613. Diyaeddîn jî ji vê rewşa lê hatî îstîfade kir; bi taybeti dema ku zanîbû helwesta gelê Bedlîsê li hemberî wî di sewiyek herî li bar û bilind de ye, ji bo ziyareta birayê xwe ji Hezzoyê çû Bedlîsê.
+7613. Diyaeddîn too profited from this condition that had come upon it; especially when he knew the attitude of the people of Bedlîs toward him is at a most favorable and high level, for the visit of his brother went from Hezzo to Bedlîs.
+
+7614. Li wir, pêşwaziyek gelek baş lê hat kirin, rêz, qedir û mêvanperweriyek mezin dit.
+7614. There, a very good reception came to be done to him, he saw great respect, value and hospitality.
+
+7615. Herdu birayan di nav daristan û bahçeyên dewlemend ên Bedlîsê de demên xweş derbas kirin, di nav aheng û şahiyên xweş de çûn civîn û meclisan.
+7615. Both brothers passed happy times in the forests and rich gardens of Bedlîs, in pleasant harmony and joys went to gatherings and councils.
+
+7616. Vê rewşa han mecal û firset da Diyaeddîn ku bizane, xelkê Bedlisê ji giregiran bigre heta xelkên rêzê meyl û sedaqeta herkesê bi wî re ye.
+7616. This very condition gave possibility and opportunity to Diyaeddîn to know, the people of Bedlîs from the notables taking up to the ordinary people the inclination and loyalty of everyone is with him.
+
+7617. Ji bilî vê, av û hewaya Bedlîsê gelek tesîrî wî kir.
+7617. Apart from this, the water and air of Bedlîs affected him much.
+
+7618. Ji ber vê, mîrektiya Bedlîsê xist serê xwe.
+7618. Because of this, he put the mîrship of Bedlîs into his head.
+
+7619. Piştre Diyaeddîn, bi dizdarên keleyê yên tagirên xwe re li ser tertîbateke wiha li hev kirin: “Bêguman, dema ku ez ji bo vegerê ji Kela Bedlîsê derkevim, dê birayê min ji bo birêxistina min bi min re ji keleyê derkeve.
+7619. Afterwards Diyaeddîn, agreed with the castle wardens who were his supporters upon such an arrangement: "Doubtless, when I go out from the Castle of Bedlîs for the return, my brother will go out from the castle with me for seeing me off.
+
+7620. Ez ê wê çaxê ji bo bahaneya birkirina tiştekî xwe di keleyê de, paş de vegerim.
+7620. I will at that time for the excuse of forgetting something of mine in the castle, return back.
+
+7621. Dema ku ez bikevim hundur, dê hûn deriyên keleyê li ser birayê min bigrin û ez jî dê bi vê firsetê keleyê bistînim."
+7621. When I enter inside, you will close the gates of the castle upon my brother and I too will take the castle with this opportunity."
+
+7622. Wext derbas bû û dema vegera Diyaeddîn hat.
+7622. Time passed and the time of the return of Diyaeddîn came.
+
+7623. Ew jî çû ba birayê xwe û îzna vegera xwe ya Hezzoyê jê sitand.
+7623. He too went to the side of his brother and took from him the permission of his return to Hezzo.
+
+7624. Izzeddîn jî ji bo bi rêxistina birayê xwe derket derveyê keleyê û bajêr.
+7624. Izzeddîn too for seeing off his brother went outside of the castle and the city.
+
+7625. Piştî qasekî meşiyan, Diyaeddîn li birayê xwe zivirî û jê re got ku, wî hingustila (gustîl) xwe li keleyê ji bîr kiriye û ji bilî wî jî kesek ciyê wê nizane.
+7625. After they walked for a while, Diyaeddîn turned to his brother and said to him that, he has forgotten his ring (ring) at the castle and apart from him too nobody knows its place.
+
+7626. Eger ew mûsaede bike û qasekî li vir xwe mijûl bikin, dê bi xwe biçe û bîne.
+7626. If he gives permission and for a while they occupy themselves here, he himself will go and bring it.
+
+7627. Li ser vê, Izzeddîn daxwaza birayê xwe qebûl kir û bêyî ji biratiya wî şik bike, li wir sekinî; bi nêçîrê ve mijûl bû û ma li hêviya vegera birayê xwe.
+7627. Upon this, Izzeddîn accepted the request of his brother and without doubting from his brotherhood, stayed there; became occupied with hunting and remained in expectation of the return of his brother.
+
+7628. Diyaeddîn jî ket hindurê keleyê û çawan berê li hev kiribûn, bi wî awayî kir û deriyê keleyê li ser birayê xwe girt û piştre jî ji birayê xwe re cewab şand û jê re wiha got: "Li gor exlaqxweşî û benê di navbera birayan de, dê birayê min di ciyê min de, astenga derbazkirina çend rojên xwe li Hezzoyê, daqurtîne.
+7628. Diyaeddîn too entered inside the castle and as before they had agreed, did in that way and closed the gate of the castle upon his brother and afterwards too sent a message to his brother and spoke to him thus: "According to good manners and the bond between brothers, my brother will in my place, swallow the hardship of passing his several days at Hezzo.
+
+7629. Di vê navê re ez jî dê li Bedlîsê bimînim û ji xweşî û sipehîtiya av û hewaya wê îstîfade bikim."
+7629. Meanwhile I too will stay at Bedlîs and profit from the pleasantness and beauty of its water and air."
+
+7630. Li hemberî vê rewşa han destên Izzeddîn di paxila wî de man û bi hîleya birayê xwe hesiya.
+7630. Before this very condition Izzeddîn was helpless (literally Izzeddîn's hands remained in his bosom) and he became aware of the trick of his brother.
+
+7631. Li ser vê, bêsekin ber bi deriyê keleyê ve ajot û bangi birayê xwe yê bêwefa kir û xwest derî lê veke.
+7631. Upon this, without pause he drove toward the gate of the castle and called his unfaithful brother and wanted him to open the gate to him.
+
+7632. Lê kesekî guhê xwe nedayê.
+7632. But nobody gave his ear to him.
+
+7633. Bi vî awayî, Izzeddîn naçar ma vegeriya Hezzo û Sasonê û desthilata wî welatê girt dest xwe.
+7633. In this way, Izzeddîn remained helpless, returned to Hezzo and Sason and took the authority of that country to his hand.
+
+7634. Belê, Mîrên Hezzoyê ji nesla vî mîrî ne û ji ber vê bi navê "Ezizan" hatine naskirin.
+7634. Yes, the Mîrs of Hezzo are from the lineage of this mîr and because of this have come to be known by the name "Ezîzan".
+
+7635. Mîrên Bedlîsê jî ji nesla Diyaeddin in û ji ber vê ew jî bi navê "Diyaeddîn" hatine naskirin.
+7635. The Mîrs of Bedlîs too are from the lineage of Diyaeddîn and because of this they too have come to be known by the name "Diyaeddîn".
+
+7636. Hejmara Mîrên Bedlîsê yên ku di kitêbên dîrokê de li ber çavê nivîskarê van rêzên han ketine, digihîjin 18'an.
+7636. The number of the Mîrs of Bedlîs who in the books of history have fallen before the eye of the writer of these very lines, reaches 18.
+
+7637. Muddetê rêvebiriya wan a li ser desthilata vî welatî jî bêyî navbir û bi ser hev, ji 450 salan zêdetir e.
+7637. The period of their administration upon the authority of this country too without interruption and continuously, is more than 450 years.
+
+7638. Li milê din, ew mîrê ku Atabeg 'Imadeddînê kurê Atabeg Aksungur Kela Bedlîsê ji destan sitandiye, ji aliyê me ve nehat zanîn.
+7638. On the other side, that mîr from whose hands Atabeg 'Imadeddîn the son of Atabeg Aksungur took the Castle of Bedlîs, came not to be known from our side.
+
+7639. Çunki dema ku min ev rêzên han dinivîsandin, ew kitêbên dîrokê yên di destê min de bûn, behsa navê wî ne dikirin.
+7639. Because when I was writing these very lines, those books of history that were in my hand, made not mention of his name.
+
+7640. Li gor nêrîna min, rîwayeta herî rast ev e: Dema ku Qizil Arslan 180 axa Azerbaycan û Êrmenîstanê îstîla kir, piştre hat Bedlîsê jî dagîr kir.
+7640. According to my view, the truest account is this: When Qizil Arslan invaded the soil of Azerbaijan and Armenia, afterwards he came and occupied Bedlîs too.
+
+7641. Ev, piştî Selçûkiyan, yanî di dawiya dema Xwarzemiyan de, dema ku Sultan Celaleddînê kurê Sultan Mehmûdê HerzemŞahî hat Bedlîsê, Melik Eşref li Bedlîsê mîrektî dikir.
+7641. This, after the Seljuks, meaning at the end of the time of the Khwarazmians, when Sultan Celaleddîn the son of Sultan Mehmûd the Herzemşahî came to Bedlîs, Melik Eşref was doing mîrship at Bedlîs.
+
+7642. Piştî wî, birayê wî Melik Mecdeddin, piştre Izzeddin, piştî wî Mîr Ebubekir, piştre Emîr Şêx Şeref* piştî wî jî Emîr Diyaeddîn e, ku hevdemê Emîr Tîmûrê Kurgan bûye û hevdîtinek wî jî pê re çêbûye.
+7642. After him, his brother Melik Mecdeddîn, afterwards Izzeddîn, after him Mîr Ebubekir, afterwards Emîr Şêx Şeref* after him too is Emîr Diyaeddîn, who was a contemporary of Emîr Tîmûr the Kurgan and a meeting of his too took place with him.
+
+7643. Belê, ji wê rojê heta vê tarîxa han ku Mîrektiya Bedlîsê li gor werasetê ji nivîskarê van rêzan re maye, zincîra Mîrekên Bedlîsê bê navbir dom kiriye û hatiye.
+7643. Yes, from that day until this very date when the Mîrship of Bedlîs according to inheritance has remained to the writer of these lines, the chain of the Mîrs of Bedlîs has continued and come without interruption.
+
+7644. Piştre, dema ku ciyên wan bê em ê bi firehî, yek bi yek behsa bûyerên dema her yekî ji wan bikin.
+7644. Afterwards, when their places come we will in detail, one by one make mention of the events of the time of each one of them.
+
+7645. Li gor qewimîna van bûyeran, em tê digêhin ku, qismek ji van mîr û began, li ba Sultan û xaqanên mezin siyanet û rûmetên mezin dîtine û wezifeyên xwe yên irsî bi awakî serbixwetiyek tam û azadî cîbicî kirine.
+7645. According to the happening of these events, we understand that, a part from these mîrs and begs, at the side of great Sultans and khaqans saw great respect and honors and carried out their hereditary duties in a way of complete independence and freedom.
+
+7646. Hinekên din jî, di eksê yên din, ji aliyê sultan û qralên ku çav berdane welatê wan, rastî felaketên mezin, zulm û zordestiyên giran hatine.
+7646. Others too, in the opposite of the others, from the side of sultans and kings who cast an eye on their country, came across great disasters, heavy oppression and tyranny.
+
+7647. Bi kurtî, di demên berê de, cara yekê sultanên êrîşê ser mîrên hezkerên welat ên Kurdistanê kirine, Selçûkiyên Azerbaycanî bûne.
+7647. In short, in former times, the first time the sultans who attacked upon the country loving mîrs of Kurdistan, were the Azerbaijan Seljuks.
+
+7648. Teferruata vê jî wiha ye:
+7648. The detail of this too is thus:
+
+7649. Di dema Mehmûdê kurê Sultan Mihemmedê kurê Sultan Melikşah ê Selçûkî de, parêzgeriya hinek wilayetên di herêma Iraqa 'Ecem de, kiribûn bin rêvebiriya Atabeg 'Imadeddin Aksungur.
+7649. In the time of Mehmûd the son of Sultan Mihemmed the son of Sultan Melikşah the Seljuk, they had put the governorship of some provinces in the region of Persian Iraq, under the administration of Atabeg 'Imadeddîn Aksungur.
+
+7650. Ji derveyê vê, parêzgeriya wilayetên Azerbaycan û Ermenîstanê jî ji bo Ildeniz ê bapîrê Qizil Arslan Osman hatibû dan.
+7650. Outside of this, the governorship of the provinces of Azerbaijan and Armenia too had come to be given for Ildeniz the grandfather of Qizil Arslan Osman.
+
+7651. Herdukan jî wezifeyên xwe herî baş kirin; berjewendiyên xelkê, ewlekarî, rêz û adet, kar û barên parêzgeriyê herî baş meşandin.
+7651. Both too did their duties best; they conducted the interests of the people, security, order and custom, the tasks and affairs of governorship best.
+
+7652. Dema ku di sala 511'yê koçî (1118'yê z)481 de berpirsiyarê Mûsilê mir, ev hukumeta han jî dan bin desthilata 'Imadeddin Zengî.
+7652. When in the year 511 Hijri (1118 AD) the responsible one of Mûsil died, they gave this very government too under the authority of 'Imadeddîn Zengî.
+
+7653. Nav û dengê 'Imadeddîn roj bi roj bilind bû, piştre leşker kêşan ser bajarê Şamê û Helebê û di demek kurt de ev herdu bajar sitandin.
+7653. The name and renown of 'Imadeddîn rose day by day, afterwards he drew armies upon the city of Damascus and Aleppo and in a short time took both of these cities.
+
+7654. Di sala 534'ê koçî (1140'ê z) de, leşkerên vî begê han ber bi Kurdistanê û Diyarbekrê ve hereket kirin û kele û bajarên vir ên bi nav û deng;
+7654. In the year 534 Hijri (1140 AD), the armies of this very beg moved toward Kurdistan and Diyarbekir and the famous castles and cities of here;
+
+7655. * Di wergera Tirkî de Emîr Şêx Eşref e, lê di wergera Soranî û Farisiya wê de Emir Şêx Şeref e. -Z. A.
+7655. * In the Turkish translation it is Emîr Şêx Eşref, but in its Sorani and Persian translation it is Emîr Şêx Şeref. Z. A.
+
+7656. Bedlis, Cezîr, Xelat, Aşût, Akre* û ciyên din dagir kirin.
+7656. occupied Bedlîs, Cezîr, Xelat, Aşût, Akre* and other places.
+
+7657. Kela Aşûtê ya kevn û qahîm kavil kir û li wir keleyek da avakirin û navê wê danî "Imadiyye".
+7657. He ruined the old and strong Castle of Aşût and caused a castle to be built there and put its name "Imadiyye".
+
+7658. Imadiyye hê paytextê wî welatî ye.
+7658. Imadiyye is still the capital of that country.
+
+7659. Bandora Atabegên Selçûkî ya li ser Kurdistanê û bi taybetî li ser Kela Bedlîsê ji 40 salan zêdetir ajot.
+7659. The influence of the Seljuk Atabegs upon Kurdistan and especially upon the Castle of Bedlîs lasted more than 40 years.
+
+7660. Piştre, di sala 576'ê koçî (1180'yê z) de, Sultan Selaheddînê kurê Nureddînê kurê(?)
+7660. Afterwards, in the year 576 Hijri (1180 AD), Sultan Selaheddîn the son of Nureddîn the son of(?)
+
+7661. Seyfeddin** Gaziyê Atabegi di şerê bi Misriyan re, yanî bi Eyyübîyên Kurd ên Misrî re, mexlûb bû.
+7661. Seyfeddîn** Gazî the Atabegî in the war with the Egyptians, meaning with the Egyptian Kurdish Ayyubids, was defeated.
+
+7662. Ji wê rojê şûn de stêrka Atabegiyan ber bi tefînê ve û dewleta wan jî hêdî hêdî dest pê kir ber bi nemanê ve çû.
+7662. From that day onward the star of the Atabegs toward extinguishing and their state too slowly slowly began and went toward disappearing.
+
+7663. Belê, tam wê çaxê, Eşîreta Rojkî, li hemberî zor û zordaran ku di muddetê vê zerfê han de serî netewandibûn û li serê çiya û latan, di nav newal û geliyan de, ji bo ku wekî şêr û pilingan nêçîra xwe bikin û li hêviya firsetan bin, derketin meydanê û bêyî firset bidin hêzên Atabegî yên tovê fitne û fesadiyê li ser rûyê cîhanê direşandin û welat di bin zor û zordestiyê de digirtin, dan ber êrîşan; û bi şûrên xwe yên tûj û xencerên xwe yên devbixwîn ew ji deşt û çiyayan vekirin û avêtin.
+7663. Yes, right at that time, the Rojkî Tribe, against the oppressors and tyrants who during this very period had not bowed their head and on the top of mountains and cliffs, inside valleys and gorges, for that like lions and tigers they do their hunting and be in expectation of opportunities, came out to the field and without giving opportunity to the Atabegî forces who were sowing the seed of sedition and corruption upon the face of the world and holding the country under force and tyranny, put them under attacks; and with their sharp swords and their blood mouthed daggers cleared and threw them from the plains and mountains.
+
+7664. Li ser navê Atabegên Selçûkî yê ku Bedlîs bi rê ve dibir û kar û barên eyaletê dimeşand..... bû.
+7664. Upon the name of the Seljuk Atabegs the one who conducted Bedlîs and carried on the tasks and affairs of the province was .....
+
+7665. Gelek berhemên wî yên xêr û xêratê yên wekî mizgeft, xan û pir li bajarên Bedlîs û Xelatê hebûn.
+7665. Many works of his of charity and good deeds like mosques, caravanserais and bridges existed in the cities of Bedlîs and Xelat.
+
+7666. Li gor riwayetek din jî: Bajarê Bedlîsê di bin desthilata Atabeg Qizil Arslan de bû.
+7666. According to another account too: The city of Bedlîs was under the authority of Atabeg Qizil Arslan.
+
+7667. Kîjan riwayet rast dibe bila bibe, tarîxa dayîna parêzgeriya Iraqa 'Ereb ji Aksungur(?)*** re û ji Ildeniz re jî dayîna parêzgeriya Azerbaycanê, tam li hev tên.
+7667. Whichever account is true let it be, the date of giving the governorship of Arab Iraq to Aksungur(?)*** and to Ildeniz too giving the governorship of Azerbaijan, completely agree with each other.
+
+7668. Çunki dema desthilata van herdukan jî di wilayetên navên wan derbas bûn de, eynî ye.
+7668. Because the time of the authority of both of these too in the provinces whose names passed, is the same.
+
+7669. Civaka Seraciyan, hê ku li wilayeta Bedlîsê dimînin, ji bilî kevneşopên Selçukiyan tiştek nîn e.
+7669. The community of Seraciyan, who still remain in the province of Bedlîs, apart from the traditions of the Seljuks are nothing.
+
+7670. Gotina "Seraciyan" jî, awayê gotina "Selçûkiyan" a şaş û guherandî ye.
+7670. The word "Seraciyan" too, is the wrong and changed form of the word "Selçûkiyan".
+
+7671. Malbatên Tac Ehmed, Qere Kote, Quli Ozbekan û yên din, paşvemayên vê civaka han in.
+7671. The families of Tac Ehmed, Qere Kote, Qulî Ozbekan and the others, are the remnants of this very community.
+
+7672. * Hejmara van ciyan di wergera Tirkî de wek me li jorê nivîsandî ye.
+7672. * The number of these places in the Turkish translation is as we have written above.
+
+7673. Di wergera Soranî de: Bedlis, Aşût û Akre tenê ye û di Farisiya wê de jî Bedlîs, Cezîre, Aşût û Akre ye. -Z.
+7673. In the Sorani translation: it is Bedlîs, Aşût and Akre only and in its Persian too it is Bedlîs, Cezîre, Aşût and Akre. Z.
+
+7674. A. ** Di wergera Tirkî de Yusuf e.
+7674. A. ** In the Turkish translation it is Yusuf.
+
+7675. Di wergera Soranî û Farisiya wê de Seyfeddin e.
+7675. In its Sorani and Persian translation it is Seyfeddîn.
+
+7676. Ji bilî vê, îşareta pirsê ya vir, di wergera Tirkî de tune. -Z.
+7676. Apart from this, the question mark of here, exists not in the Turkish translation. Z.
+
+7677. A. *** Di wergera Tirkî de işareta pirsê tune. -Z. A..
+7677. A. *** In the Turkish translation the question mark exists not. Z. A.
+
+7678. ## QISMÊ SISIYAN
+7678. ## PART THREE
+
+7679. ## EW SIYANET Û ELEQEYÊN KU MÎRÊN BEDLISÊ JI SULTANÊN KEVIN DITINE
+7679. ## THOSE RESPECTS AND ATTENTIONS THAT THE MÎRS OF BEDLÎS SAW FROM THE OLD SULTANS
+
+7680. -Ev qismê han çar beş e-
+7680. (This very part is four chapters)
+
+7681. ## BEŞA YEKAN
+7681. ## THE FIRST SECTION
+
+7682. ## DI DERHEQÊ MELIK EŞREF DE YE
+7682. ## IT IS CONCERNING MELIK EŞREF
+
+7683. Li gor edebiyatzanên mezin, zanayên bi fezîlet ên dîrokê û rawiyên bi bîr û bawer, bi awakî zelal tê zanîn ku, dema Melik Eşref mîrektiya Bedlîsê girt destê xwe, di destpêkê de li ser navê Sultanên Misir û Şamê hukum meşandiye û bi xwe hevdemê Melik Eşref bûye.
+7683. According to great literary scholars, virtuous scholars of history and trustworthy narrators, in a clear way it comes to be known that, when Melik Eşref took the mîrship of Bedlîs to his hand, in the beginning he conducted rule upon the name of the Sultans of Egypt and Damascus and he himself was a contemporary of Melik Eşref.
+
+7684. Wan Sultanan gelek ew teqdir kirine, rêz û siyanet jê re girtine û jê re heyran mane.
+7684. Those Sultans appreciated him much, held respect and honor for him and remained admiring for him.
+
+7685. Di sala 625'e koçî (1229'ê z) de, dema ku leşkerên Teteran di bin fermanderiya Cengêz Xan de derketin holê û nîşanên fitne û fesadiyên wan li ser rûyê cîhanê hatin dîtin, Sultan Celaleddînê kurê Sultan Mehmûdê Herzemşahî, mecbur ma desthilata Îranê terk bike û ber bi Hindistanê ve biçe.
+7685. In the year 625 Hijri (1229 AD), when the armies of the Tatars under the commandership of Cengêz Xan came out into the open and the signs of their sedition and corruption came to be seen upon the face of the world, Sultan Celaleddîn the son of Sultan Mehmûd the Herzemşahî, remained forced to abandon the authority of Iran and go toward India.
+
+7686. Piştre, dema ku li wir xebera mirina Cengêz Xan ê zalim seh kir, di cî de bi riya Kîc û Mekranê re, ji bo ku Îranê bike bin desthilata xwe, derbazî İsfehana paytext bû.
+7686. Afterwards, when there he heard the news of the death of Cengêz Xan the tyrant, immediately through the road of Kîc and Mekran, for that he put Iran under his authority, he passed to the capital Isfehan.
+
+7687. Afirînerê me'neyan Kemal Ismaîlê Isfehanî, bi vê şi'ira han a Farisî ev bûyera han daye xuyakirin:
+7687. The creator of meanings Kemal Ismaîl the Isfehanî, with this very Persian poem has given this very event to appear (revealed):
+
+7688. "Dinê ava bû bi hemû firehiya xwe ve ji nû de Bi saya dadmendiya fermanrewayên cîhanê Hevûdu pîroz kirin bi şahî, bezm û dawetan Ji însan û heywanan yên paş de mayîn Çandinî û ji nesla hebûna hemû jîndaran Hemû ajar dan, jîndar bûn ji nû de
+7688. "Dinê ava bû bi hemû firehiya xwe ve ji nû de "The world became built with all its breadth anew Bi saya dadmendiya fermanrewayên cîhanê Through the favor of the justice of the rulers of the world Hevûdu pîroz kirin bi şahî, bezm û dawetan They congratulated each other with joy, banquets and weddings Ji însan û heywanan yên paş de mayîn From humans and animals those remaining behind Çandinî û ji nesla hebûna hemû jîndaran Agriculture and from the lineage of the existence of all living things Hemû ajar dan, jîndar bûn ji nû de All sprouted, became alive anew
+
+7689. ## NITY AZ
+7689. ## NITY AZ
+
+7690. Ji bo sedaqeta xwe pêşkêşî dergah bikin Tebieta însanî jî riyek dît, piştî mexlubiyetê ji nû de Temenê te bibe wekî temenê Nûh di vê cîhanê de Piştî tufanê, çunki bi te re hat şahî welat Tu bûyî ku te rakirin xaç ji minberên Îslamê Cardin tu bûyî yê zengil rakirin ji minberan Tu bûyî yê rakir perda zulma li ser rûyê dadmendî Cardin tu bûyî yê perda kufrê rahilda li ser ruyê îmanê"
+7690. Ji bo sedaqeta xwe pêşkêşî dergah bikin For that they present their loyalty to the court Tebieta însanî jî riyek dît, piştî mexlubiyetê ji nû de Human nature too found a road, after defeat anew Temenê te bibe wekî temenê Nûh di vê cîhanê de May your lifespan become like the lifespan of Nûh in this world Piştî tufanê, çunki bi te re hat şahî welat After the flood, because with you joy came to the country Tu bûyî ku te rakirin xaç ji minberên Îslamê It was you that you removed the crosses from the pulpits of Islam Cardin tu bûyî yê zengil rakirin ji minberan Once again it was you who removed the bells from the pulpits Tu bûyî yê rakir perda zulma li ser rûyê dadmendî It was you who removed the veil of tyranny upon the face of justice Cardin tu bûyî yê perda kufrê rahilda li ser ruyê îmanê" Once again it was you who lifted the veil of disbelief upon the face of faith"
+
+7691. Sultan Celaleddin, bi rastî di demek gelek kurt de bi ser ket û welat ji hebûna pîsîtiya bêexlaqiyên wan kafiran paqij kir.
+7691. Sultan Celaleddîn, in truth succeeded in a very short time and cleaned the country from the existence of the filth of the immoralities of those disbelievers.
+
+7692. Lê di ser vê re du sal derbas nebûbû ku, Oktay Kaan di bin fermanderiya Sutay Bahadir û Cermagun Noyan de, leşkerekî ji 30 hezar Moxolên xwînrêj pêk hatî, şand ser Celaleddin.
+7692. But two years had not passed upon this when, Oktay Kaan under the commandership of Sutay Bahadir and Cermagun Noyan, sent an army consisting of 30 thousand blood shedding Mongols upon Celaleddîn.
+
+7693. Li ser vê, taqet û mecala Sultan a ku bikare li hemberî vî leşkerê han xwe rabigire nema, Iran terk kir û derbazê herêmên Arran û Ermenîstanê bû û li wir bajarê Tiflîsê zept kir.
+7693. Upon this, the endurance and possibility of the Sultan that he could hold himself against this very army remained not, he abandoned Iran and passed to the regions of Arran and Armenia and there seized the city of Tiflîs.
+
+7694. Şair Kemal Ismail, ev jî bi vî awayî daye xuyakirin:
+7694. The poet Kemal Ismaîl, has given this too to appear (revealed) in this way:
+
+7695. "Ji te pê ve kijan Sultan bû ku Li Tiflisê hespê xwe biçêrîne û li Ummanê av bide"
+7695. "Ji te pê ve kijan Sultan bû ku "Apart from you which Sultan was it that Li Tiflisê hespê xwe biçêrîne û li Ummanê av bide" Grazes his horse at Tiflîs and waters it at Umman"
+
+7696. Nivîskarê Rewdetu'l-Sefayê wiha dibêje:
+7696. The writer of Rewdetu'l-Sefa says thus:
+
+7697. "Sultan, pêşiyê ji Iraqê berê xwe da Xelatê.
+7697. "The Sultan, at first turned his face from Iraq to Xelat.
+
+7698. Wê çaxê mîrê Bedlîsê Melik Eşref bû, lê birayê wî Melik Mecdeddîn li ser navê wî li Xelatê dima û parêzgerî û parastina wir dikir.
+7698. At that time the mîr of Bedlîs was Melik Eşref, but his brother Melik Mecdeddîn stayed at Xelat upon his name and did the governorship and protection of there.
+
+7699. Yekîneya parêzgerî ya Xelatê, bi qewîbûn û cebirxanên di keleyê de û zêdebûna şerkerên xwe piştrast bû.
+7699. The garrison unit of Xelat, was confident with the strength and munitions in the castle and the abundance of its fighters.
+
+7700. Ji ber vê yekê, yekîneya parêzgerî, guh neda rewşa Sultan, hêzên di destan de, xulam, zêdetiya ihtişam û wasiteyên abluqeyê; hetta mirovên vê yekîneya han dev avêtin wî û pêşiyê bi daxwaza penabertiya wî di keleyê de girtin.
+7700. Because of this thing, the garrison unit, gave not ear to the condition of the Sultan, the forces in hand, servants, the abundance of magnificence and the means of siege; even the men of this very unit insulted him (literally threw mouth at him) and at first shut out his request of refuge in the castle.
+
+7701. Li ser vê, Sultan, ji bilî ku ferman bide leşkerê xwe ku keleyê bikin bin abloqayê pê ve tu riyek jê re nema.
+7701. Upon this, to the Sultan, apart from that he give command to his army that they put the castle under siege no road remained.
+
+7702. Bi vî awayî di navbera herdu milan de pêt û agirên şer gurr bûn û abluqeya keleyê gelek dirêj kêşa.
+7702. In this way between both sides the flames and fires of war blazed up and the siege of the castle lasted very long.
+
+7703. Di vî muddetê han de ji ber kêmbûna xwarin û cebirxanên di nav keleyê de, hêz û taqeta xelkê bajêr û parêzgerên keleyê sist bû.
+7703. In this very period because of the scarcity of food and munitions inside the castle, the force and endurance of the people of the city and the protectors of the castle became weak.
+
+7704. Leşkerê Sultan ji vê rewşê istifade kirin û riya ava kele û bajar xist bin destê xwe.
+7704. The army of the Sultan profited from this condition and put the water road of the castle and city under its hand.
+
+7705. Li ser vê, Melik Mecdeddin mecbur ma vekişiya kela navîn a di nava bajêr de; parêzgerê vir ji Izzeddin ê kolê Melik Eşref bû.
+7705. Upon this, Melik Mecdeddîn remained forced and withdrew to the inner castle inside the city; the protector of here too was Izzeddîn the slave of Melik Eşref.
+
+7706. Qaseki şûn de, rewşa kesên di bin abluqeyê de gelek asê û zehmet bû, mecbur man daxwaza aştiyê kirin.
+7706. A while afterward, the condition of the persons under siege became very tight and difficult, they remained forced and made request of peace.
+
+7707. Ji bo vê, Melik Mecdeddîn eynî rojê
+7707. For this, Melik Mecdeddîn the same day
+
+7708. rabû û ew qedera Xwedê jê re amade kiribû razî bû û ket bin xizmeta Sultan.
+7708. rose up and became satisfied with that fate that God had prepared for him and fell under the service of the Sultan.
+
+7709. Sultan, ew girt bin parêzgeriya bask û çengên xwe û wî ji tawana serîhildanê azad kir.
+7709. The Sultan, took him under the protection of his wings and arms and freed him from the charge of rebellion.
+
+7710. Lê, ew di Dîwana Sultan de ji nişka ve rabû piyan û daxwaza efûya Izzeddîn jî kir.
+7710. But, he in the Diwan of the Sultan suddenly stood up on feet and made request of the pardon of Izzeddîn too.
+
+7711. Li ser vê, Sultan ev gotin jê re gotin: "Kesekî ku di iddiaya meşandina saltanat û desthilata serbixwe de be, jê re ne layîqe ku bibe peyamnêrê xortekî kole?"
+7711. Upon this, the Sultan said these words to him: "For a person who is in the claim of conducting sultanate and independent authority, it is not worthy for him to become the messenger of a slave youth?"
+
+7712. Du roj şûn de Izzeddîn jî teslîm bû û bi rizaya dilê xwe û bi terefdarên xwe ve ji keleyê derket.
+7712. Two days afterward Izzeddîn too surrendered and with the consent of his heart and with his supporters went out from the castle.
+
+7713. Piştre kirin serê xwe ku, dema biçin huzura Sultan, dê ew ji niska ve êrîş bibin ser wî û wî bikujin, ji bo vî karî kemendên xwe jî bi xwe re biribûn û wan di bin qeftanên xwe de veşartibûn.
+7713. Afterwards they put in their head that, when they go to the presence of the Sultan, they will suddenly carry attack upon him and kill him, for this deed they had taken their lassos too with themselves and hidden them under their caftans.
+
+7714. Lê kesên ku li ba Sultan, hay li vê bûyerê bûn û Izzeddîn ji çek kirin û bi tena serê xwe wî birin huzura Sultan.
+7714. But the persons who were at the side of the Sultan, became aware of this event and disarmed Izzeddîn and alone by himself brought him to the presence of the Sultan.
+
+7715. Sultan jî ferman da ku derhal wî qeyd û lele bikin.
+7715. The Sultan too gave command that immediately they shackle and chain him.
+
+7716. Li ser vê, Melik Mecdeddîn xwest ku wî jî têkin zîndanê.
+7716. Upon this, Melik Mecdeddîn wanted that they put him too into prison.
+
+7717. Di esnayê van bûyerên xwînavî de, Melik Eşref ji Fermanrewayên Şamê re peyamnêr û name şandibû û daxwaza alîkariyê ji wan kiribû.
+7717. During these bloody events, Melik Eşref had sent messengers and letters to the Rulers of Damascus and made request of help from them.
+
+7718. Di vê navê re ji Fermanrewayên Misrê û Şamê alîkarî jê re hat.
+7718. Meanwhile help came to him from the Rulers of Egypt and Damascus.
+
+7719. Melik Eşref, di cî de bi leşkerên Kurdistanê yên tagirên xwe re hereket kir û çû pêşwaziya wan û li Deşta Mûşê ew dît.
+7719. Melik Eşref, immediately moved with the armies of Kurdistan who were his supporters and went to meet them and saw them on the Plain of Mûş.
+
+7720. Piştre hemû bi hev re çûn şerê Sultan Celaleddin.
+7720. Afterwards all together went to the war of Sultan Celaleddîn.
+
+7721. Di wê navê re bi tesadufi Sultan nexweş ketibû.
+7721. Meanwhile by coincidence the Sultan had fallen sick.
+
+7722. Lê ber bi vê re jî ji geş û gurrkirina agirê şer û qirênan paş de nema.
+7722. But toward this too he remained not behind from kindling and blazing up the fire of war and battles.
+
+7723. Li ser texterewanekî rûnişt û ferman da ku leşker li pêşiya wî berhev bibe.
+7723. He sat upon a litter and gave command that the army gather in front of him.
+
+7724. Bi vî awayî dem hat û şerî dest pê kir û di navbera herdu milan de, di wê deşta fireh de şer hat daxistin.
+7724. In this way the time came and the war began and between both sides, in that wide plain war was waged.
+
+7725. Piştî sê şev û sê rojan, şer bi netîceya şikestina leşkerên Sultan dawî lê hat.
+7725. After three nights and three days, the war came to an end with the result of the defeat of the armies of the Sultan.
+
+7726. Lê sewma hêz û taqeta Sultan a ku tayê mirinê jê dirijiya, di mejî û zîhnan de têra xwe cî girtibû.
+7726. But the awe of the force and endurance of the Sultan from which the fever of death dripped, had taken enough place in brains and minds.
+
+7727. Bi awaki wisan ku, piştî vê şikestinê jî neketin pey leşkerên wî û hukumdaran bi awakî hevdengî dev ji pey ketina Sultan berdan û vegeriyan welatên xwe.
+7727. In such a way that, after this defeat too they fell not after his armies and the rulers in a unanimous way gave up going after the Sultan and returned to their countries.
+
+7728. Sultan jî vegeriya Xelatê.
+7728. The Sultan too returned to Xelat.
+
+7729. Lê, Sultan çawan li Xelatê peya bû nebû, di pey hev de xeberên gihîştina leşkerên Moxolan ji Arranê hatin; ji bilî vê, bi awakî berfireh xeberên hatina Sotay Bahadir û Cermagun Noyan jî ji aliyê Tebrîzê ve belav bûn.
+7729. But, no sooner had the Sultan dismounted at Xelat than, one after another news of the arrival of the armies of the Mongols from Arran came; apart from this, in a wide way the news of the coming of Sotay Bahadir and Cermagun Noyan too from the side of Tebrîz spread.
+
+7730. Vê rewşa han xewa Sultan revand; ew ket nava girê û astengan û vê rewşê ew mecbûr kir ku di bingehê siyaseta xwe de guhertinan çêke.
+7730. This very condition drove away the sleep of the Sultan; he fell into knots and obstacles and this condition forced him to make changes in the foundation of his policy.
+
+7731. Ji ber vê, bêsekin fermana berdana Melik Mecdeddîn û Izzeddîn da û ji bo belaya ku tê, bi Melik Eşref re li hemberî bûyerên reş û tarî dest bi çêkirina aştî û xurtkirina benên yekîtî û dostiyê kir û muzakereyan kir.
+7731. Because of this, without pause he gave the command of releasing Melik Mecdeddîn and Izzeddîn and for the calamity that is coming, with Melik Eşref against the black and dark events began making peace and strengthening the bonds of unity and friendship and held negotiations.
+
+7732. Keça Melik Eşref da xwestin û pê re zewicî.
+7732. He asked for the daughter of Melik Eşref in marriage and married with her.
+
+7733. Di netîceya vê de jî, Sultan, eskerên xwe paş de şand û musa'eda wan kir ku vegerin welatên xwe. Wi
+7733. In the result of this too, the Sultan, sent his soldiers back and gave them permission that they return to their countries. He
+
+7734. ji xwe li Bedlîsê veşart û dest pê kir wextê xwe bi meyxwirî, şahî, saz û bend û leyistikan derbas kir.
+7734. too hid himself at Bedlîs and began and passed his time with wine drinking, joy, music and merrymaking and games.
+
+7735. Melik Eşref jî car caran bi awakî zelal û nerm di derheqê vê rewşa wî de nesîhet lê dikirin û jê re digot: Ev cure jiyan ne layîqê te ye, dijî urf û adetan e û ne raste ji.
+7735. Melik Eşref too from time to time in a clear and gentle way gave advice to him concerning this condition of his and said to him: This kind of life is not worthy of you, is against usages and customs and is not right either.
+
+7736. Ji bo ku Moxol seh nekin û li pey te neyên vir, hewce ye tu ji Bedlîsê derkevî û biçî hinek gund an ciyên nenas.
+7736. For that the Mongols hear not and come not here after you, it is necessary you go out from Bedlîs and go to some villages or unknown places.
+
+7737. Ger xebera hebûna te ya vir bigihije Moxolan, dê ji sedî sed bên Bedlîsê û welatê kesên girêdayî Sultan û yên alîkariya wî dikin, dê kavil û wêran bikin, ji bilî vê dê eziyet û cefayê bidin wî bi xwe jî.
+7737. If the news of your existence here reaches the Mongols, they will one hundred percent come to Bedlîs and the country of the persons attached to the Sultan and those who help him, they will ruin and devastate, apart from this they will give torment and suffering to him himself too.
+
+7738. Lê hemû van gotinan tu feyde nedikirin.
+7738. But all these words did no benefit.
+
+7739. Hetta Sultan, şik ji Melik Eşref dikir ku van nesîhetên han ji bo armanc û daxwazeka din dike.
+7739. Even the Sultan, suspected from Melik Eşref that he gives these very advices for another aim and desire.
+
+7740. Belê, wî ev nesîhet û pêşniyar bi vî awayî şîrove dikir: Fikir dikir ku, Melik Eşref van yekan ji bo xwe ji rizgarkirina mesrefên wî û yên pê re yên gelek zêde, dibêje û ji ber vê jî dixwaze wî ji wilayeta irsî dûr bixe.
+7740. Yes, he interpreted this advice and proposal in this way: He thought that, Melik Eşref says these things for saving himself from his very much expenses and those of the ones with him, and because of this too wants to distance him from the hereditary province.
+
+7741. 486 Rewş bi vî awayî didomiya û diçû, lê rojekê ji niska ve di şeveka tarî de dîtin ku, di bin fermanderiya Imas Bahadir de leşkerekî Moxolan, ji bo pirsa Sultan li ber deriyê Kela Bedlîsê ye.
+7741. The condition continued and went in this way, but one day suddenly in a dark night they saw that, under the commandership of Imas Bahadir an army of Mongols, for the inquiry of the Sultan is before the gate of the Castle of Bedlîs.
+
+7742. Sultan jî wê çaxê di xeweka kûr de bû.
+7742. The Sultan too at that time was in a deep sleep.
+
+7743. Wekî hemû şevan mey vexwaribû û bêhiş ketibû.
+7743. Like all nights he had drunk wine and fallen unconscious.
+
+7744. Li ser vê, piştî ku cêrek ava sar bi serî dakirin, bi ser hişê xwe ve hat û ji bêhișî û serxweşiyê rizgar bû.
+7744. Upon this, after they poured a jar of cold water down his head, he came back to his consciousness and became saved from unconsciousness and drunkenness.
+
+7745. Dema ku Sultan seh kir Moxol hatine û ji bo wî û kesên pê re hesp hatine zînkirin ku baz bidin, berê xwe da jina xwe ya keça Melik Eşref û wiha jê re got: "Babê te çend caran em ji vê rewşa terkexemî ku em ketibûnê, hişyar kir û nesîhetên xwe yên bi dil û can bi awakî aştî ji me neparast.
+7745. When the Sultan heard the Mongols have come and for him and the persons with him horses have come to be saddled so that they flee, he turned his face to his wife the daughter of Melik Eşref and spoke to her thus: "Your father several times warned us from this condition of carelessness that we had fallen into, and withheld not his heartfelt advices in a peaceful way from us.
+
+7746. Lê me guhê xwe neda wî û me hemû gotinên wî ji bo mebesta hinek armanc û daxwazan şîrove kir.
+7746. But we gave not our ear to him and we interpreted all his words for the purpose of some aims and desires.
+
+7747. Niha, dê tu di vê koçkirina me de bi me re bî yan li ba babê xwe bimînî?”
+7747. Now, will you in this migration of ours be with us or stay at the side of your father?"
+
+7748. Jina Sultan çûna pê re bi daxwaza dilê xwe qebûl kir.
+7748. The wife of the Sultan accepted going with him with the desire of her heart.
+
+7749. Piştre hemûyan bi hev re nîvê şevê kele terk kirin.
+7749. Afterwards all together at midnight abandoned the castle.
+
+7750. Belê ji wê rojê pê ve aqibeta Sultan û rewşa wî ji aliyê lêkolînerên dîrokê ve bi awakî qet'î nehatiye zanîn.
+7750. Yes from that day onward the fate of the Sultan and his condition has not come to be known in a definite way from the side of the researchers of history.
+
+7751. Lê, Şêx Rûkneddîn 'Elaûddewle Semnanî -Xwedê sirrên wî biparêzedi kitêba xwe Risaletu'l-Iqbaliyye de, ku ji şêxê xwe Şêx 'Ebdurrehman Kesrefi neqil kiriye, dibêje: Sultan, ketiye nav rêza wan kesên xwe parastine riya Xwedê û heta çûye rehma Xwedê li gundekî Bexdayê terzîtî û pînedozî kiriye.
+7751. But, Şêx Rûkneddîn 'Elaûddewle Semnanî (may God protect his secrets) in his book Risaletu'l-Iqbaliyye, which he has transmitted from his şêx Şêx 'Ebdurrehman Kesrefî, says: The Sultan, fell into the rank of those persons who have kept themselves to the road of God and until he went to the mercy of God did tailoring and cobbling in a village of Baghdad.
+
+7752. Li gor rîwayeta nivîskarê Dîroka Gûzîde jî: Kurdekî ku di bûyerên Xelatê de birayê wî hatî kuştin rastî wî tê û ji bo toleya birayê xwe wî dikuje.
+7752. According to the account of the writer of Dîroka Gûzîde too: A Kurd whose brother has come to be killed in the events of Xelat comes across him and for the vengeance of his brother kills him.
+
+7753. Li gor riwayeta nivîskarê Tezkîretu'l-Dewletşah jî: Kurdên çiyayî
+7753. According to the account of the writer of Tezkîretu'l-Dewletşah too: Mountain Kurds
+
+7754. çev berdane kinc û hespên Sultan û ew kuştine.
+7754. cast an eye on the clothes and horses of the Sultan and have killed him.
+
+7755. Çi dibe bila bibe, tenê rastî ji aliyê Xwedê ve tê zanîn.
+7755. Whatever it be let it be, only the truth comes to be known from the side of God.
+
+7756. Piştî van bûyeran, Melik Eşref, bêyî serî li ber tu sultanên hevdemî bitewîne, dest pê kir kar û barên wilayeta xwe û meseleyên hukumeta xwe bi rê ve bir.
+7756. After these events, Melik Eşref, without bowing his head before any contemporary sultans, began and conducted the tasks and affairs of his province and the matters of his government.
+
+7757. Piştî çû rehma Xwedê jî, birayê wî Melik Mecdeddîn ê li jorê navê wî derbas bû, li ser textê mîrektiyê rûnişt.
+7757. After he went to the mercy of God too, his brother Melik Mecdeddîn whose name passed above, sat upon the throne of the mîrship.
+
+7758. Piştre jî zarok û neviyên van mîrên han li pey hev kar û barên vê wilayeta han meşandin.
+7758. Afterwards too the children and grandchildren of these very mîrs one after another carried on the tasks and affairs of this very province.
+
+7759. Piştre heta dema fatihê bi nav û deng Emîr Tîmûrê Kurganî -rehma Xwedê lê be, tu fermanrewayên cîranên wan destê xwe dirêjî wan neki- rin.
+7759. Afterwards until the time of the famous conqueror Emîr Tîmûr the Kurganî (may the mercy of God be upon him), no rulers of their neighbors stretched their hand to them.
