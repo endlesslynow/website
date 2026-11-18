@@ -46,7 +46,7 @@
       lang: 'fa', dir: 'rtl', groups: ['Reading · beginner', 'Reading · advanced'], locked: true,
       shelfGroups: { 'Reading · beginner': 'مبتدی', 'Reading · advanced': 'پیشرفته' },
       shelfTitles: { 'beginner-02': 'آرایِشِ وارونِه · بخش ۱', 'beginner-03': 'آرایِشِ وارونِه · بخش ۲' } },
-    { name: 'The Conference of the Birds Abridged in Dari', shelfName: 'منطق‌الطیر · خلاصه به دری', barName: 'منطق‌الطیر · دری',
+    { name: 'The Conference of the Birds Abridged in Dari', tabName: 'Conference of the Birds', shelfName: 'منطق‌الطیر · خلاصه به دری', barName: 'منطق‌الطیر · دری',
       lang: 'fa', dir: 'rtl', groups: ['Conference of the Birds · Dari'] },
     { name: 'Dari Grade 9', shelfName: 'زبان و ادبیات دری · صنف نهم', barName: 'دری · صنف نهم',
       lang: 'fa', dir: 'rtl', groups: ['Dari · grade 9'] },
@@ -213,7 +213,7 @@
     document.querySelector('.spread').classList.toggle('bare', !pic && !r.audio);
     $('shelf').hidden = true;
     $('reading').hidden = false;
-    document.title = r.label + ' · ' + r.name;
+    document.title = (set.tabName || set.name) + ', ' + r.label;
     window.scrollTo(0, 0);
   }
 
