@@ -42,17 +42,24 @@
   // groups of readings in each. On the website the class set is locked by a
   // password (see "the class readings on the website" below).
   var SETS = [
-    { name: 'Chai and Conversation Fall Bootcamp', shelfName: 'چای و گفت‌وگو · دورهٔ فشردهٔ پاییزی', barName: 'چای و گفت‌وگو',
+    // key: the book's address (index.html#book-birds); cover: its picture;
+    // colour: the cloth of the cover under the picture
+    { key: 'birds', cover: 'pictures/cover_birds.jpg', colour: '#1e3a6e', english: 'Conference of the Birds',
+      name: 'The Conference of the Birds Abridged in Dari', tabName: 'Conference of the Birds', shelfName: 'منطق‌الطیر · خلاصه به دری', barName: 'منطق‌الطیر · دری',
+      lang: 'fa', dir: 'rtl', groups: ['Conference of the Birds · Dari'] },
+    { key: 'crossing', cover: 'pictures/cover_crossing.jpg', colour: '#7d0f0f', english: 'Crossing Persia',
+      name: 'Crossing Persia', shelfName: 'گذر از پارس', barName: 'گذر از پارس',
+      lang: 'fa', dir: 'rtl', groups: ['Crossing Persia · Dari'] },
+    { key: 'grade9', cover: 'pictures/cover_grade9.jpg', colour: '#2f4a3a', english: 'Dari Grade 9',
+      name: 'Dari Grade 9', shelfName: 'زبان و ادبیات دری · صنف نهم', barName: 'دری · صنف نهم',
+      lang: 'fa', dir: 'rtl', groups: ['Dari · grade 9'] },
+    { key: 'chai', cover: 'pictures/cover_chai.jpg', colour: '#0e5a63', english: 'Chai and Conversation',
+      name: 'Chai and Conversation Fall Bootcamp', shelfName: 'چای و گفت‌وگو · دورهٔ فشردهٔ پاییزی', barName: 'چای و گفت‌وگو',
       lang: 'fa', dir: 'rtl', groups: ['Reading · beginner', 'Reading · advanced'], locked: true,
       shelfGroups: { 'Reading · beginner': 'مبتدی', 'Reading · advanced': 'پیشرفته' },
       shelfTitles: { 'beginner-02': 'آرایِشِ وارونِه · بخش ۱', 'beginner-03': 'آرایِشِ وارونِه · بخش ۲' } },
-    { name: 'The Conference of the Birds Abridged in Dari', tabName: 'Conference of the Birds', shelfName: 'منطق‌الطیر · خلاصه به دری', barName: 'منطق‌الطیر · دری',
-      lang: 'fa', dir: 'rtl', groups: ['Conference of the Birds · Dari'] },
-    { name: 'Dari Grade 9', shelfName: 'زبان و ادبیات دری · صنف نهم', barName: 'دری · صنف نهم',
-      lang: 'fa', dir: 'rtl', groups: ['Dari · grade 9'] },
-    { name: 'Crossing Persia', shelfName: 'گذر از پارس', barName: 'گذر از پارس',
-      lang: 'fa', dir: 'rtl', groups: ['Crossing Persia · Dari'] },
-    { name: 'Siya Evînê', shelfName: 'Siya Evînê', lang: 'kmr', dir: 'ltr',
+    { key: 'siya', cover: 'pictures/lang_kurmanji.jpg', colour: '#8a1c1c', english: 'Siya Evînê',
+      name: 'Siya Evînê', shelfName: 'Siya Evînê', lang: 'kmr', dir: 'ltr',
       groups: ['Siya Evînê · Kurmanji'], contents: SIYA_CONTENTS }
   ];
   function setOf(r) {
@@ -64,56 +71,144 @@
       (r.id.indexOf('birds-') === 0 ? 'بخش ' : r.id.indexOf('grade9-') === 0 ? 'درس ' :
        r.id.indexOf('crossing-day-') === 0 ? 'روز ' : r.id.indexOf('crossing-') === 0 ? 'پست ' : 'هفتهٔ ') + fa(number);
   }
-  function shelfCard(label, name, r, set) {
-    var card = el(r ? 'a' : 'div', 'card' + (r ? '' : ' card-disabled'));
-    if (r) card.href = '#' + r.id;
-    else card.setAttribute('aria-disabled', 'true');
-    card.appendChild(el('span', 'card-label', label));
-    var title = el('span', 'card-fa', name);
-    title.dir = set.dir;
-    title.lang = set.lang;
-    card.appendChild(title);
-    return card;
+  function readingsOf(set) {
+    return READINGS.filter(function (r) { return set.groups.indexOf(r.group) >= 0; });
   }
-  function showShelf() {
+  function bookOf(key) { return SETS.filter(function (s) { return s.key === key; })[0]; }
+  // where a book's back button goes: Persian books back to the shelf of
+  // books, the one Kurmanji book back to the choice of language
+  function homeOf(set) { return set.lang === 'kmr' ? '#' : '#persian'; }
+  function backLink(href, text) {
+    var a = el('a', 'home-back');
+    a.href = href;
+    a.innerHTML = '<svg viewBox="0 0 16 16"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    a.appendChild(el('span', null, text));
+    return a;
+  }
+  function picture(src, cls) {
+    var img = el('img', cls);
+    img.src = src;
+    img.alt = '';
+    return img;
+  }
+  function showView(build, title) {
     reading = null;
     hideSlip();
     setTheme(null);
     audio.pause();
     var list = $('list');
     list.textContent = '';
-    SETS.forEach(function (set) {
-      var col = el('section', 'set' + (set.lang === 'kmr' ? ' set-kurmanji' : ''));
-      col.dir = set.dir;
-      col.lang = set.lang;
-      var heading = el('h1', 'set-name', set.shelfName);
-      col.appendChild(heading);
-      list.appendChild(col);
+    build(list);
+    $('reading').hidden = true;
+    $('shelf').hidden = false;
+    document.body.classList.add('on-shelf');
+    document.title = title;
+    window.scrollTo(0, 0);
+  }
+
+  // the first page: Persian or Kurmanji
+  function showLanguages() {
+    showView(function (list) {
+      var page = el('div', 'languages');
+      page.appendChild(el('h1', 'shelf-title', 'What would you like to read?'));
+      var row = el('div', 'language-row');
+      [['#persian', 'pictures/lang_persian.jpg', 'فارسی و دری', 'Persian and Dari', 'fa'],
+       ['#book-siya', 'pictures/lang_kurmanji.jpg', 'Kurmancî', 'Kurmanji', 'kmr']].forEach(function (l) {
+        var a = el('a', 'language');
+        a.href = l[0];
+        a.appendChild(picture(l[1], 'language-pic'));
+        var name = el('span', 'language-name', l[2]);
+        name.lang = l[4];
+        a.appendChild(name);
+        a.appendChild(el('span', 'language-en', l[3]));
+        row.appendChild(a);
+      });
+      page.appendChild(row);
+      list.appendChild(page);
+    }, 'Farsi, Dari and Kurmanji reading');
+  }
+
+  // the Persian books, each with its cover
+  function showBooks() {
+    showView(function (list) {
+      list.appendChild(backLink('#', 'Languages'));
+      list.appendChild(el('h1', 'shelf-title', 'Persian and Dari books'));
+      var row = el('div', 'books');
+      SETS.filter(function (s) { return s.lang === 'fa'; }).forEach(function (set) {
+        var a = el('a', 'book');
+        a.href = '#book-' + set.key;
+        a.appendChild(cover(set));
+        a.appendChild(el('span', 'book-en', set.english));
+        var n = readingsOf(set).length;
+        a.appendChild(el('span', 'book-count', isLocked(set) ? 'Needs the class password' :
+          n + (set.key === 'crossing' ? ' days' : set.key === 'grade9' ? ' lessons' : ' chapters')));
+        row.appendChild(a);
+      });
+      list.appendChild(row);
+    }, 'Persian and Dari books');
+  }
+  function cover(set) {
+    var c = el('span', 'cover');
+    c.style.setProperty('--cloth', set.colour);
+    c.appendChild(picture(set.cover, 'cover-pic'));
+    var name = el('span', 'cover-name', set.barName || set.shelfName);
+    name.dir = set.dir;
+    name.lang = set.lang;
+    c.appendChild(name);
+    return c;
+  }
+
+  // one book: its cover and name, then its chapters
+  function showBook(set) {
+    showView(function (list) {
+      list.appendChild(backLink(homeOf(set), set.lang === 'kmr' ? 'Languages' : 'All books'));
+      var head = el('header', 'book-head');
+      head.appendChild(cover(set));
+      var words = el('div', 'book-words');
+      var name = el('h1', 'book-name', set.shelfName);
+      name.dir = set.dir;
+      name.lang = set.lang;
+      words.appendChild(name);
+      words.appendChild(el('p', 'book-sub', set.name));
+      head.appendChild(words);
+      list.appendChild(head);
+      var box = el('div', 'chapters');
+      box.dir = set.dir;
+      box.lang = set.lang;
+      if (set.lang === 'kmr') box.classList.add('chapters-kmr');
+      list.appendChild(box);
       if (set.contents) {
-        set.contents.forEach(function (section) {
-          col.appendChild(el('h2', 'group', section.name));
+        // only the parts of the book that have at least one reading ready
+        set.contents.filter(function (section) {
+          return section.chapters.some(function (chapter) { return chapter.readingId; });
+        }).forEach(function (section, i, ready) {
+          if (ready.length > 1) box.appendChild(el('h2', 'chapter-group', section.name));
           section.chapters.forEach(function (chapter) {
-            var r = READINGS.filter(function (reading) { return reading.id === chapter.readingId; })[0];
-            col.appendChild(shelfCard(chapter.label, chapter.name, r, set));
+            var r = READINGS.filter(function (x) { return x.id === chapter.readingId; })[0];
+            box.appendChild(chapterRow(chapter.label, chapter.name, r));
           });
         });
         return;
       }
-      if (isLocked(set)) { lockForm(col); return; }
+      if (isLocked(set)) { lockForm(box); return; }
       set.groups.forEach(function (g) {
         var mine = READINGS.filter(function (r) { return r.group === g; });
-        // a set of one group needs no group heading
-        if (mine.length && set.groups.length > 1) col.appendChild(el('h2', 'group', set.shelfGroups[g]));
+        if (mine.length && set.groups.length > 1) box.appendChild(el('h2', 'chapter-group', set.shelfGroups[g]));
         mine.forEach(function (r) {
           var name = set.shelfTitles && set.shelfTitles[r.id] ||
             (r.title ? r.title.words.map(function (w) { return clean(w[0]); }).join(' ') : '');
-          col.appendChild(shelfCard(shelfLabel(r, set), name, r, set));
+          box.appendChild(chapterRow(shelfLabel(r, set), name, r, r.label));
         });
       });
-    });
-    $('reading').hidden = true;
-    $('shelf').hidden = false;
-    document.title = 'Farsi, Dari and Kurmanji reading';
+    }, set.tabName || set.name);
+  }
+  function chapterRow(label, name, r, english) {
+    var row = el(r ? 'a' : 'div', 'chapter' + (r ? '' : ' chapter-off'));
+    if (r) row.href = '#' + r.id;
+    row.appendChild(el('span', 'chapter-num', label));
+    row.appendChild(el('span', 'chapter-name', name));
+    if (english) row.appendChild(ltr(el('span', 'chapter-en', english)));
+    return row;
   }
 
   // ---------- one reading ----------
@@ -213,6 +308,9 @@
     document.querySelector('.spread').classList.toggle('bare', !pic && !r.audio);
     $('shelf').hidden = true;
     $('reading').hidden = false;
+    document.body.classList.remove('on-shelf');
+    // the back button returns to this reading's book
+    document.querySelector('#reading .back').href = set.key ? '#book-' + set.key : '#';
     document.title = (set.tabName || set.name) + ', ' + r.label;
     window.scrollTo(0, 0);
   }
@@ -547,7 +645,11 @@
   function route() {
     var id = decodeURIComponent(location.hash.slice(1));
     var r = READINGS.filter(function (x) { return x.id === id; })[0];
-    if (r) openReading(r); else showShelf();
+    var book = id.indexOf('book-') === 0 && bookOf(id.slice(5));
+    if (r) openReading(r);
+    else if (book) showBook(book);
+    else if (id === 'persian') showBooks();
+    else showLanguages();
   }
   // the password this browser was given before
   var remembered = null;
