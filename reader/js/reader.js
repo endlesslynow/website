@@ -61,14 +61,18 @@
       shelfTitles: { 'beginner-02': 'آرایِشِ وارونِه · بخش ۱', 'beginner-03': 'آرایِشِ وارونِه · بخش ۲' } },
     { key: 'siya', cover: 'pictures/lang_kurmanji.jpg', colour: '#8a1c1c', english: 'Siya Evînê',
       name: 'Siya Evînê', shelfName: 'Siya Evînê', lang: 'kmr', dir: 'ltr',
-      groups: ['Siya Evînê · Kurmanji'], contents: SIYA_CONTENTS }
+      groups: ['Siya Evînê · Kurmanji'], contents: SIYA_CONTENTS },
+    // Crossing Persia in very simple Kurmanji, made by Rufus (rufus_crossing_kurmanji.py)
+    { key: 'crossing-kmr', cover: 'pictures/cover_crossing.jpg', colour: '#7d0f0f', english: 'Crossing Persia',
+      name: 'Crossing Persia Kurmanji Edition', shelfName: 'Crossing Persia Kurmanji Edition', barName: 'Crossing Persia Kurmanji Edition',
+      lang: 'kmr', dir: 'ltr', groups: ['Crossing Persia · Kurmanji'] }
   ];
   function setOf(r) {
     return SETS.filter(function (s) { return s.groups.indexOf(r.group) >= 0; })[0] || { name: r.group, groups: [r.group] };
   }
   function shelfLabel(r, set) {
     var number = (r.label.match(/\d+/) || [''])[0];
-    return set.lang === 'kmr' ? 'Beşa ' + number :
+    return set.lang === 'kmr' ? (r.id.indexOf('crossing-kmr-day-') === 0 ? 'Roja ' : 'Beşa ') + Number(number) :
       (r.id.indexOf('birds-') === 0 ? 'بخش ' : r.id.indexOf('grade9-') === 0 ? 'درس ' :
        r.id.indexOf('crossing-day-') === 0 ? 'روز ' : r.id.indexOf('crossing-') === 0 ? 'پست ' : 'هفتهٔ ') + fa(number);
   }
@@ -80,7 +84,7 @@
   // Day 2 on the 18th, and so on, at midnight on the reader's own clock.
   // The introduction (post 0) is always open. Once a day opens it stays open.
   function opensOn(r) {
-    var m = /^crossing-day-(\d+)$/.exec(r.id);
+    var m = /^crossing-(?:kmr-)?day-(\d+)$/.exec(r.id);
     return m ? new Date(2026, 10, 16 + Number(m[1])) : null;
   }
   function notYet(r) {
@@ -90,11 +94,11 @@
   // "wait until 20 November", in Persian
   function waitText(r) {
     var d = opensOn(r);
+    if (r.lang === 'kmr') return 'opens on ' + d.getDate() + ' November';
     return 'تا ' + fa(d.getDate()) + ' نوامبر صبر کنید';
   }
-  // where a book's back button goes: Persian books back to the shelf of
-  // books, the one Kurmanji book back to the choice of language
-  function homeOf(set) { return set.lang === 'kmr' ? '#' : '#persian'; }
+  // where a book's back button goes: back to the shelf of books in its language
+  function homeOf(set) { return set.lang === 'kmr' ? '#kurmanji' : '#persian'; }
   // the same round back button as on a reading
   function backLink(href) {
     var a = el('a', 'back home-back');
@@ -130,7 +134,7 @@
       var page = el('div', 'languages');
       var row = el('div', 'language-row');
       [['#persian', 'فارسی و دری', 'fa'],
-       ['#book-siya', 'Kurmancî', 'kmr']].forEach(function (l) {
+       ['#kurmanji', 'Kurmancî', 'kmr']].forEach(function (l) {
         var a = el('a', 'language');
         a.href = l[0];
         var name = el('span', 'language-name', l[1]);
@@ -143,26 +147,31 @@
     }, 'Farsi, Dari and Kurmanji reading');
   }
 
-  // the Persian books, each with its cover
-  function showBooks() {
+  // the books in one language ('fa' or 'kmr'), each with its cover
+  function showBooks(lang) {
+    lang = lang || 'fa';
     showView(function (list) {
       list.appendChild(backLink('#'));
+      document.body.classList.toggle('kurmanji', lang === 'kmr');
       var row = el('div', 'books');
-      SETS.filter(function (s) { return s.lang === 'fa'; }).forEach(function (set) {
+      SETS.filter(function (s) { return s.lang === lang; }).forEach(function (set) {
         var a = el('a', 'book');
         a.href = '#book-' + set.key;
         a.appendChild(cover(set));
         // the class set's cover already says what it is
         if (!set.locked) {
-          var count = el('span', 'book-count', fa(readingsOf(set).length) +
-            (set.key === 'crossing' ? ' روز' : set.key === 'grade9' ? ' درس' : ' بخش'));
-          count.dir = 'rtl';
+          var n = readingsOf(set).length;
+          var count = lang === 'kmr'
+            ? el('span', 'book-count', n + (set.key === 'crossing-kmr' ? ' roj' : ' beş'))
+            : el('span', 'book-count', fa(n) +
+              (set.key === 'crossing' ? ' روز' : set.key === 'grade9' ? ' درس' : ' بخش'));
+          count.dir = set.dir;
           a.appendChild(count);
         }
         row.appendChild(a);
       });
       list.appendChild(row);
-    }, 'Persian and Dari books');
+    }, lang === 'kmr' ? 'Kurmanji books' : 'Persian and Dari books');
   }
   function cover(set) {
     var c = el('span', 'cover');
@@ -673,7 +682,8 @@
     if (r && notYet(r)) location.replace('#book-' + setOf(r).key);   // a day not open yet
     else if (r) openReading(r);
     else if (book) showBook(book);
-    else if (id === 'persian') showBooks();
+    else if (id === 'persian') showBooks('fa');
+    else if (id === 'kurmanji') showBooks('kmr');
     else showLanguages();
   }
   // the password this browser was given before
