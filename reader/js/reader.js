@@ -59,7 +59,8 @@
       lang: 'fa', dir: 'rtl', groups: ['Reading · beginner', 'Reading · advanced'], locked: true,
       shelfGroups: { 'Reading · beginner': 'مبتدی', 'Reading · advanced': 'پیشرفته' },
       shelfTitles: { 'beginner-02': 'آرایِشِ وارونِه · بخش ۱', 'beginner-03': 'آرایِشِ وارونِه · بخش ۲' } },
-    { key: 'siya', cover: 'pictures/lang_kurmanji.jpg', colour: '#8a1c1c', english: 'Siya Evînê',
+    // cover: the real cover of the Sel Yayıncılık edition (a pink maple leaf), cut square
+    { key: 'siya', cover: 'pictures/cover_siya.jpg', colour: '#8a1c1c', english: 'Siya Evînê',
       name: 'Siya Evînê', shelfName: 'Siya Evînê', lang: 'kmr', dir: 'ltr',
       groups: ['Siya Evînê · Kurmanji'], contents: SIYA_CONTENTS },
     // Crossing Persia in very simple Kurmanji, made by Rufus (rufus_crossing_kurmanji.py)
@@ -338,6 +339,11 @@
       $('picture-note').hidden = !pic.note;
     }
     loadSound(r.audio);
+    // the EN button, on Crossing Persia pages that have an English article
+    var english = englishOf(r);
+    $('english-switch').hidden = !english;
+    if (english) fillEnglish(english);
+    showEnglish(false);
     document.querySelector('.spread').classList.toggle('bare', !pic && !r.audio);
     $('shelf').hidden = true;
     $('reading').hidden = false;
@@ -347,6 +353,36 @@
     document.title = (set.tabName || set.name) + ', ' + r.label;
     window.scrollTo(0, 0);
   }
+
+  // ---------- Crossing Persia's EN button ----------
+  // On a Crossing Persia page in Dari or Kurmanji, the EN button puts the
+  // English article (its title and story only, from readings/crossing_english.js)
+  // in place of the reading. Pressed again, it shows the reading once more; it
+  // then says دری or KU. Each page opens in its own language.
+  function englishOf(r) {
+    var m = /^crossing-(?:kmr-)?(?:day-)?(\d+)$/.exec(r.id);
+    var all = window.CROSSING_ENGLISH;
+    return m && all ? all[('0' + Number(m[1])).slice(-2)] || null : null;
+  }
+  function fillEnglish(post) {
+    var box = $('english');
+    box.textContent = '';
+    box.appendChild(el('h2', 'en-title', post.title));
+    post.paragraphs.forEach(function (text) { box.appendChild(el('p', null, text)); });
+  }
+  function showEnglish(on) {
+    var btn = $('english-switch');
+    hideSlip();
+    $('english').hidden = !on;
+    $('story').hidden = on;
+    $('title').hidden = on || !reading.title;
+    if (on) ltr($('paper')); else scriptOf(reading, $('paper'));
+    btn.textContent = on ? (reading.lang === 'kmr' ? 'KU' : 'دری') : 'EN';
+    btn.classList.toggle('fa-label', on && reading.lang !== 'kmr');
+    btn.setAttribute('aria-label', on ? (reading.lang === 'kmr' ? 'Back to Kurmanji' : 'Back to Dari') : 'Read in English');
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
+  $('english-switch').addEventListener('click', function () { showEnglish($('english').hidden); });
 
   // ---------- the slip ----------
   function hideSlip() {
