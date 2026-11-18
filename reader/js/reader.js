@@ -53,8 +53,9 @@
     { key: 'grade9', cover: 'pictures/cover_grade9.jpg', colour: '#2f4a3a', english: 'Dari Grade 9',
       name: 'Dari Grade 9', shelfName: 'زبان و ادبیات دری · صنف نهم', barName: 'دری · صنف نهم',
       lang: 'fa', dir: 'rtl', groups: ['Dari · grade 9'] },
-    { key: 'chai', cover: 'pictures/cover_chai.jpg', colour: '#0e5a63', english: 'Chai and Conversation',
-      name: 'Chai and Conversation Fall Bootcamp', shelfName: 'چای و گفت‌وگو · دورهٔ فشردهٔ پاییزی', barName: 'چای و گفت‌وگو',
+    // the class's own material: the owner does not want the class named anywhere on the page
+    { key: 'chai', cover: 'pictures/cover_chai.jpg', colour: '#0e5a63', english: 'Copyrighted material',
+      name: 'Copyrighted material', shelfName: 'Copyrighted material', barName: 'Copyrighted material',
       lang: 'fa', dir: 'rtl', groups: ['Reading · beginner', 'Reading · advanced'], locked: true,
       shelfGroups: { 'Reading · beginner': 'مبتدی', 'Reading · advanced': 'پیشرفته' },
       shelfTitles: { 'beginner-02': 'آرایِشِ وارونِه · بخش ۱', 'beginner-03': 'آرایِشِ وارونِه · بخش ۲' } },
@@ -75,6 +76,22 @@
     return READINGS.filter(function (r) { return set.groups.indexOf(r.group) >= 0; });
   }
   function bookOf(key) { return SETS.filter(function (s) { return s.key === key; })[0]; }
+  // Crossing Persia opens one day at a time: Day 1 on 17 November 2026,
+  // Day 2 on the 18th, and so on, at midnight on the reader's own clock.
+  // The introduction (post 0) is always open. Once a day opens it stays open.
+  function opensOn(r) {
+    var m = /^crossing-day-(\d+)$/.exec(r.id);
+    return m ? new Date(2026, 10, 16 + Number(m[1])) : null;
+  }
+  function notYet(r) {
+    var d = opensOn(r);
+    return !!d && new Date() < d;
+  }
+  // "wait until 20 November", in Persian
+  function waitText(r) {
+    var d = opensOn(r);
+    return 'تا ' + fa(d.getDate()) + ' نوامبر صبر کنید';
+  }
   // where a book's back button goes: Persian books back to the shelf of
   // books, the one Kurmanji book back to the choice of language
   function homeOf(set) { return set.lang === 'kmr' ? '#' : '#persian'; }
@@ -112,13 +129,12 @@
     showView(function (list) {
       var page = el('div', 'languages');
       var row = el('div', 'language-row');
-      [['#persian', 'pictures/lang_persian.jpg', 'فارسی و دری', 'fa'],
-       ['#book-siya', 'pictures/lang_kurmanji.jpg', 'Kurmancî', 'kmr']].forEach(function (l) {
+      [['#persian', 'فارسی و دری', 'fa'],
+       ['#book-siya', 'Kurmancî', 'kmr']].forEach(function (l) {
         var a = el('a', 'language');
         a.href = l[0];
-        a.appendChild(picture(l[1], 'language-pic'));
-        var name = el('span', 'language-name', l[2]);
-        name.lang = l[3];
+        var name = el('span', 'language-name', l[1]);
+        name.lang = l[2];
         a.appendChild(name);
         row.appendChild(a);
       });
@@ -136,14 +152,13 @@
         var a = el('a', 'book');
         a.href = '#book-' + set.key;
         a.appendChild(cover(set));
-        var n = readingsOf(set).length, count;
-        // the class set is the teacher's own material
-        if (set.locked) count = ltr(el('span', 'book-count', 'Copyrighted material'));
-        else {
-          count = el('span', 'book-count', fa(n) + (set.key === 'crossing' ? ' روز' : set.key === 'grade9' ? ' درس' : ' بخش'));
+        // the class set's cover already says what it is
+        if (!set.locked) {
+          var count = el('span', 'book-count', fa(readingsOf(set).length) +
+            (set.key === 'crossing' ? ' روز' : set.key === 'grade9' ? ' درس' : ' بخش'));
           count.dir = 'rtl';
+          a.appendChild(count);
         }
-        a.appendChild(count);
         row.appendChild(a);
       });
       list.appendChild(row);
@@ -164,6 +179,8 @@
   function showBook(set) {
     showView(function (list) {
       list.appendChild(backLink(homeOf(set)));
+      // the Kurmanji book on the Kurdish background, as its readings are
+      document.body.classList.toggle('kurmanji', set.lang === 'kmr');
       var head = el('header', 'book-head');
       head.appendChild(cover(set));
       var words = el('div', 'book-words');
@@ -198,7 +215,14 @@
         mine.forEach(function (r) {
           var name = set.shelfTitles && set.shelfTitles[r.id] ||
             (r.title ? r.title.words.map(function (w) { return clean(w[0]); }).join(' ') : '');
-          box.appendChild(chapterRow(shelfLabel(r, set), name, r));
+          // a Crossing Persia day: its date in 500 BCE before its places, as in
+          // the article's heading "Day 1 · 17 November, 500 BCE · Athens to Eleusis"
+          var day = /^crossing-day-(\d+)$/.exec(r.id);
+          if (day) name = fa(16 + Number(day[1])) + ' نوامبر، ' + fa(500) + ' پیش از میلاد · ' + name;
+          var row = chapterRow(shelfLabel(r, set), name, notYet(r) ? null : r);
+          // a day not open yet keeps its title, greyed, with the day it opens
+          if (notYet(r)) row.appendChild(el('span', 'chapter-wait', waitText(r)));
+          box.appendChild(row);
         });
       });
     }, set.tabName || set.name);
@@ -646,7 +670,8 @@
     var id = decodeURIComponent(location.hash.slice(1));
     var r = READINGS.filter(function (x) { return x.id === id; })[0];
     var book = id.indexOf('book-') === 0 && bookOf(id.slice(5));
-    if (r) openReading(r);
+    if (r && notYet(r)) location.replace('#book-' + setOf(r).key);   // a day not open yet
+    else if (r) openReading(r);
     else if (book) showBook(book);
     else if (id === 'persian') showBooks();
     else showLanguages();
