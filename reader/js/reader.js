@@ -78,11 +78,12 @@
   // where a book's back button goes: Persian books back to the shelf of
   // books, the one Kurmanji book back to the choice of language
   function homeOf(set) { return set.lang === 'kmr' ? '#' : '#persian'; }
-  function backLink(href, text) {
-    var a = el('a', 'home-back');
+  // the same round back button as on a reading
+  function backLink(href) {
+    var a = el('a', 'back home-back');
     a.href = href;
-    a.innerHTML = '<svg viewBox="0 0 16 16"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    a.appendChild(el('span', null, text));
+    a.setAttribute('aria-label', 'Back');
+    a.innerHTML = '<svg viewBox="0 0 16 16"><path d="M3 8l5-5v3h5v4H8v3z" fill="currentColor"/></svg>';
     return a;
   }
   function picture(src, cls) {
@@ -110,17 +111,15 @@
   function showLanguages() {
     showView(function (list) {
       var page = el('div', 'languages');
-      page.appendChild(el('h1', 'shelf-title', 'What would you like to read?'));
       var row = el('div', 'language-row');
-      [['#persian', 'pictures/lang_persian.jpg', 'فارسی و دری', 'Persian and Dari', 'fa'],
-       ['#book-siya', 'pictures/lang_kurmanji.jpg', 'Kurmancî', 'Kurmanji', 'kmr']].forEach(function (l) {
+      [['#persian', 'pictures/lang_persian.jpg', 'فارسی و دری', 'fa'],
+       ['#book-siya', 'pictures/lang_kurmanji.jpg', 'Kurmancî', 'kmr']].forEach(function (l) {
         var a = el('a', 'language');
         a.href = l[0];
         a.appendChild(picture(l[1], 'language-pic'));
         var name = el('span', 'language-name', l[2]);
-        name.lang = l[4];
+        name.lang = l[3];
         a.appendChild(name);
-        a.appendChild(el('span', 'language-en', l[3]));
         row.appendChild(a);
       });
       page.appendChild(row);
@@ -131,17 +130,20 @@
   // the Persian books, each with its cover
   function showBooks() {
     showView(function (list) {
-      list.appendChild(backLink('#', 'Languages'));
-      list.appendChild(el('h1', 'shelf-title', 'Persian and Dari books'));
+      list.appendChild(backLink('#'));
       var row = el('div', 'books');
       SETS.filter(function (s) { return s.lang === 'fa'; }).forEach(function (set) {
         var a = el('a', 'book');
         a.href = '#book-' + set.key;
         a.appendChild(cover(set));
-        a.appendChild(el('span', 'book-en', set.english));
-        var n = readingsOf(set).length;
-        a.appendChild(el('span', 'book-count', isLocked(set) ? 'Needs the class password' :
-          n + (set.key === 'crossing' ? ' days' : set.key === 'grade9' ? ' lessons' : ' chapters')));
+        var n = readingsOf(set).length, count;
+        // the class set is the teacher's own material
+        if (set.locked) count = ltr(el('span', 'book-count', 'Copyrighted material'));
+        else {
+          count = el('span', 'book-count', fa(n) + (set.key === 'crossing' ? ' روز' : set.key === 'grade9' ? ' درس' : ' بخش'));
+          count.dir = 'rtl';
+        }
+        a.appendChild(count);
         row.appendChild(a);
       });
       list.appendChild(row);
@@ -161,7 +163,7 @@
   // one book: its cover and name, then its chapters
   function showBook(set) {
     showView(function (list) {
-      list.appendChild(backLink(homeOf(set), set.lang === 'kmr' ? 'Languages' : 'All books'));
+      list.appendChild(backLink(homeOf(set)));
       var head = el('header', 'book-head');
       head.appendChild(cover(set));
       var words = el('div', 'book-words');
@@ -169,7 +171,6 @@
       name.dir = set.dir;
       name.lang = set.lang;
       words.appendChild(name);
-      words.appendChild(el('p', 'book-sub', set.name));
       head.appendChild(words);
       list.appendChild(head);
       var box = el('div', 'chapters');
@@ -197,17 +198,16 @@
         mine.forEach(function (r) {
           var name = set.shelfTitles && set.shelfTitles[r.id] ||
             (r.title ? r.title.words.map(function (w) { return clean(w[0]); }).join(' ') : '');
-          box.appendChild(chapterRow(shelfLabel(r, set), name, r, r.label));
+          box.appendChild(chapterRow(shelfLabel(r, set), name, r));
         });
       });
     }, set.tabName || set.name);
   }
-  function chapterRow(label, name, r, english) {
+  function chapterRow(label, name, r) {
     var row = el(r ? 'a' : 'div', 'chapter' + (r ? '' : ' chapter-off'));
     if (r) row.href = '#' + r.id;
     row.appendChild(el('span', 'chapter-num', label));
     row.appendChild(el('span', 'chapter-name', name));
-    if (english) row.appendChild(ltr(el('span', 'chapter-en', english)));
     return row;
   }
 
