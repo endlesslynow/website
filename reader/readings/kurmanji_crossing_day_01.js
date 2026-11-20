@@ -935,10 +935,10 @@ READINGS.push({
       "say": "nay-zeek",
       "mean": "near / close"
     },
-    "20": {
-      "text": "20",
-      "say": "20",
-      "mean": "twenty"
+    "23": {
+      "text": "23",
+      "say": "23",
+      "mean": "twenty-three"
     },
     "km": {
       "text": "km",
@@ -2501,7 +2501,7 @@ READINGS.push({
     ],
     [
       {
-        "say": "ez ji atînayê heta bajarokê elewsîsê nêzîkî 20 km meşiyam",
+        "say": "ez ji atînayê heta bajarokê elewsîsê nêzîkî 23 km meşiyam",
         "words": [
           [
             "Ez",
@@ -2543,9 +2543,9 @@ READINGS.push({
             "base:nêzîk"
           ],
           [
-            "20",
-            "20",
-            "20"
+            "23",
+            "23",
+            "23"
           ],
           [
             "km",
@@ -2559,7 +2559,7 @@ READINGS.push({
             "base:meşiyan"
           ]
         ],
-        "mean": "I walked for about 20 km from Athens to the town of Eleusis,"
+        "mean": "I walked for about 23 km from Athens to the town of Eleusis,"
       },
       {
         "say": "ez di nav girên nizm re çûm",

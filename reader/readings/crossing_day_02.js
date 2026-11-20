@@ -1,6 +1,6 @@
 /* Crossing Persia, Day 2, in Dari.
    The Dari is the owner's text, copied exactly from
-   "Crossing Persia/Articles_daily_dari/02 Day 2 · Eleusis - Dari.md" in the Obsidian vault (the story
+   "Crossing Persia/Articles_daily_dari/02 Day 2 · 18 November, 500 BCE · Eleusis - Dari.md" in the Obsidian vault (the story
    only; a daily post's caption and notes are left out). Each sentence's English
    follows the owner's English post.
    Every sound and meaning was written for this reader, in Kabul Dari as spoken,
@@ -11,7 +11,7 @@ READINGS.push({
   group: 'Crossing Persia · Dari',
   label: 'Day 2',
   name: "i-loo-sees",
-  source: "Articles_daily_dari/02 Day 2 · Eleusis - Dari.md",
+  source: "Articles_daily_dari/02 Day 2 · 18 November, 500 BCE · Eleusis - Dari.md",
 
   // No recording yet: the file is not there and the player stays hidden.
   audio: 'audio/crossing_day_02.js',
@@ -35,7 +35,7 @@ READINGS.push({
     "az":                                        { fa: "از", mean: "from; than" },
     "az khaa-ti-ri":                             { fa: "از خاطر", mean: "because of" },
     "khaa-tir":                                  { fa: "خاطر", mean: "sake (ba khaa-tir-i, because of)" },
-    "bist":                                      { fa: "20", mean: "twenty" },
+    "bist-o-se":                                 { fa: "23", mean: "twenty-three" },
     "kee-lo-me-tir":                             { fa: "کیلومتر", mean: "kilometre" },
     "pi-yaa-da":                                 { fa: "پیاده", mean: "on foot" },
     "pi-yaa-da raf-tan":                         { fa: "پیاده رفتن", mean: "walking" },
@@ -297,8 +297,8 @@ READINGS.push({
         ]
       },
       {
-        "say": "ee az khaa-ti-ri bist kee-lo-me-tir pi-yaa-da raf-tan dee-roz bood.",
-        "mean": "That was because of walking 20 km yesterday.",
+        "say": "ee az khaa-ti-ri bist-o-se kee-lo-me-tir pi-yaa-da raf-tan dee-roz bood.",
+        "mean": "That was because of walking 23 km yesterday.",
         "words": [
           [
             "ای",
@@ -318,9 +318,9 @@ READINGS.push({
             "az khaa-ti-ri"
           ],
           [
-            "20",
-            "bist",
-            "bist"
+            "23",
+            "bist-o-se",
+            "bist-o-se"
           ],
           [
             "کیلومتر",

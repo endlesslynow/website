@@ -1,6 +1,6 @@
 /* Crossing Persia, Day 7, in Dari.
    The Dari is the owner's text, copied exactly from
-   "Crossing Persia/Articles_daily_dari/07 Day 7 · Plataea - Dari.md" in the Obsidian vault (the story
+   "Crossing Persia/Articles_daily_dari/07 Day 7 · 23 November, 500 BCE · Plataea - Dari.md" in the Obsidian vault (the story
    only; a daily post's caption and notes are left out). Each sentence's English
    follows the owner's English post.
    Every sound and meaning was written for this reader, in Kabul Dari as spoken,
@@ -11,7 +11,7 @@ READINGS.push({
   group: 'Crossing Persia · Dari',
   label: 'Day 7',
   name: "plaa-tee-yaa",
-  source: "Articles_daily_dari/07 Day 7 · Plataea - Dari.md",
+  source: "Articles_daily_dari/07 Day 7 · 23 November, 500 BCE · Plataea - Dari.md",
 
   // No recording yet: the file is not there and the player stays hidden.
   audio: 'audio/crossing_day_07.js',
@@ -170,7 +170,7 @@ READINGS.push({
     "reekh-tam":                                  { fa: "ریختم", mean: "I poured" },
     "reekh-tan":                                  { fa: "ریختن", mean: "to pour" },
     "taq-ree-ban":                                { fa: "تقریبا", mean: "about, almost" },
-    "shast":                                      { fa: "60", mean: "sixty" },
+    "haf-taad-o-haft":                            { fa: "77", mean: "seventy-seven" },
     "kee-lo-me-tir":                              { fa: "کیلومتر", mean: "kilometre" },
     "raah":                                       { fa: "راه", mean: "road, way" },
     "qis-sa":                                     { fa: "قصه", mean: "story" },
@@ -1452,8 +1452,8 @@ READINGS.push({
         ]
       },
       {
-        "say": "baad az shash roz wa taq-ree-ban shast kee-lo-me-tir raah, ma ee qis-sa ra az za-baa-ni yak na-fa-ri plaa-tee-yaa-yee may-shu-nee-dam.",
-        "mean": "After six days and about 60 km of road, I was hearing this story from a Plataean.",
+        "say": "baad az shash roz wa taq-ree-ban haf-taad-o-haft kee-lo-me-tir raah, ma ee qis-sa ra az za-baa-ni yak na-fa-ri plaa-tee-yaa-yee may-shu-nee-dam.",
+        "mean": "After six days and about 77 km of road, I was hearing this story from a Plataean.",
         "words": [
           [
             "بعد",
@@ -1486,9 +1486,9 @@ READINGS.push({
             "taq-ree-ban"
           ],
           [
-            "60",
-            "shast",
-            "shast"
+            "77",
+            "haf-taad-o-haft",
+            "haf-taad-o-haft"
           ],
           [
             "کیلومتر",

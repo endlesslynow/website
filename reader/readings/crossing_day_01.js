@@ -1,6 +1,6 @@
 /* Crossing Persia, Day 1, in Dari.
    The Dari is the owner's text, copied exactly from
-   "Crossing Persia/Articles_daily_dari/01 Day 1 · Athens to Eleusis - Dari.md" in the Obsidian vault (the story
+   "Crossing Persia/Articles_daily_dari/01 Day 1 · 17 November, 500 BCE · Athens to Eleusis - Dari.md" in the Obsidian vault (the story
    only; a daily post's caption and notes are left out). Each sentence's English
    follows the owner's English post.
    Every sound and meaning was written for this reader, in Kabul Dari as spoken,
@@ -11,7 +11,7 @@ READINGS.push({
   group: 'Crossing Persia · Dari',
   label: 'Day 1',
   name: "az aa-tan taa i-loo-sees",
-  source: "Articles_daily_dari/01 Day 1 · Athens to Eleusis - Dari.md",
+  source: "Articles_daily_dari/01 Day 1 · 17 November, 500 BCE · Athens to Eleusis - Dari.md",
 
   // No recording yet: the file is not there and the player stays hidden.
   audio: 'audio/crossing_day_01.js',
@@ -173,7 +173,7 @@ READINGS.push({
     "is-ti-faa-da":                          { fa: "استفاده", mean: "use" },
     "is-ti-faa-da may-sha":                  { fa: "استفاده میشه", mean: "will be used" },
     "naz-deek":                              { fa: "نزدیک", mean: "near; about" },
-    "bist":                                  { fa: "20", mean: "twenty" },
+    "bist-o-se":                             { fa: "23", mean: "twenty-three" },
     "kee-lo-me-tir":                         { fa: "کیلومتر", mean: "kilometre" },
     "koo-chak":                              { fa: "کوچک", mean: "small" },
     "pi-yaa-da":                             { fa: "پیاده", mean: "on foot" },
@@ -1578,8 +1578,8 @@ READINGS.push({
     ],
     [
       {
-        "say": "ma naz-deek bist kee-lo-me-tir az aa-tan taa shah-ri koo-cha-ki i-loo-sees pi-yaa-da raf-tam.",
-        "mean": "I walked about 20 km from Athens to the small town of Eleusis.",
+        "say": "ma naz-deek bist-o-se kee-lo-me-tir az aa-tan taa shah-ri koo-cha-ki i-loo-sees pi-yaa-da raf-tam.",
+        "mean": "I walked about 23 km from Athens to the small town of Eleusis.",
         "words": [
           [
             "مه",
@@ -1592,9 +1592,9 @@ READINGS.push({
             "naz-deek"
           ],
           [
-            "20",
-            "bist",
-            "bist"
+            "23",
+            "bist-o-se",
+            "bist-o-se"
           ],
           [
             "کیلومتر",

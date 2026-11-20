@@ -105,10 +105,10 @@ READINGS.push({
       "say": "ber",
       "mean": "in front of / toward"
     },
-    "20": {
-      "text": "20",
-      "say": "20",
-      "mean": "twenty"
+    "23": {
+      "text": "23",
+      "say": "23",
+      "mean": "twenty-three"
     },
     "km": {
       "text": "km",
@@ -933,7 +933,7 @@ READINGS.push({
         "mean": "The soles of my feet were still burning this morning"
       },
       {
-        "say": "ev ji ber 20 km yên duh bû",
+        "say": "ev ji ber 23 km yên duh bû",
         "words": [
           [
             "Ev",
@@ -953,9 +953,9 @@ READINGS.push({
             "phrase:ji ber"
           ],
           [
-            "20",
-            "20",
-            "20"
+            "23",
+            "23",
+            "23"
           ],
           [
             "km",
@@ -979,7 +979,7 @@ READINGS.push({
             "base:bûn"
           ]
         ],
-        "mean": "from yesterday's 20 km."
+        "mean": "from yesterday's 23 km."
       },
       {
         "say": "fîlon bi awayê meşa min henek kir",

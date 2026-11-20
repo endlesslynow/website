@@ -1,6 +1,6 @@
 /* Crossing Persia, Day 6, in Dari.
    The Dari is the owner's text, copied exactly from
-   "Crossing Persia/Articles_daily_dari/06 Day 6 · Hysiai to Plataea - Dari.md" in the Obsidian vault (the story
+   "Crossing Persia/Articles_daily_dari/06 Day 6 · 22 November, 500 BCE · Hysiai to Plataea - Dari.md" in the Obsidian vault (the story
    only; a daily post's caption and notes are left out). Each sentence's English
    follows the owner's English post.
    Every sound and meaning was written for this reader, in Kabul Dari as spoken,
@@ -11,7 +11,7 @@ READINGS.push({
   group: 'Crossing Persia · Dari',
   label: 'Day 6',
   name: "hee-see-yaay taa plaa-tee-yaa",
-  source: "Articles_daily_dari/06 Day 6 · Hysiai to Plataea - Dari.md",
+  source: "Articles_daily_dari/06 Day 6 · 22 November, 500 BCE · Hysiai to Plataea - Dari.md",
 
   // No recording yet: the file is not there and the player stays hidden.
   audio: 'audio/crossing_day_06.js',
@@ -25,7 +25,7 @@ READINGS.push({
     "ma":                             { fa: "مه", mean: "I, me (spoken من)" },
     "fa-qat":                         { fa: "فقط", mean: "only, just" },
     "naz-deek":                       { fa: "نزدیک", mean: "near; about" },
-    "shash":                          { fa: "6", mean: "six" },
+    "hasht":                          { fa: "8", mean: "eight" },
     "kee-lo-me-tir":                  { fa: "کیلومتر", mean: "kilometre" },
     "ta-raf":                         { fa: "طرف", mean: "side, direction" },
     "ta-ra-fi gharb":                 { fa: "طرف غرب", mean: "west, toward the west" },
@@ -245,8 +245,8 @@ READINGS.push({
   paragraphs: [
     [
       {
-        "say": "az hee-see-yaay taa plaa-tee-yaa ma fa-qat naz-deek shash kee-lo-me-tir ta-ra-fi gharb pi-yaa-da raf-tam.",
-        "mean": "From Hysiai to Plataea I walked only about 6 km west.",
+        "say": "az hee-see-yaay taa plaa-tee-yaa ma fa-qat naz-deek hasht kee-lo-me-tir ta-ra-fi gharb pi-yaa-da raf-tam.",
+        "mean": "From Hysiai to Plataea I walked only about 8 km west.",
         "words": [
           [
             "از",
@@ -284,9 +284,9 @@ READINGS.push({
             "naz-deek"
           ],
           [
-            "6",
-            "shash",
-            "shash"
+            "8",
+            "hasht",
+            "hasht"
           ],
           [
             "کیلومتر",
