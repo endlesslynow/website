@@ -127,5 +127,60 @@ var CROSSING_ENGLISH = {
    "Hermaios showed his horses this morning. He told me about the horse races they hold beside Athena's temple out on the plain, and he sang me a line that people there still sang about their goddess. \"Queen Athena, warlike one, ruler of Koroneia.\" A poet from the island of Lesbos named Alkaios made the song long ago, Hermaios said.",
    "In the afternoon I sat in the sun and was able to catch up on my journal. At supper I asked Hermaios about the road ahead. Lebadeia, the next town, was about 12 km further west along the shore, he said. Near Lebadeia was the mouth of the river Herkyna, and there was a marsh there. However, he warned that after heavy rain, the road would be under water. If the sky is clear again tomorrow, I'll be able to make it to Lebadeia in a few hours. If it rains, perhaps I'll ask Thaleia to sing me the next line of that Athena song."
   ]
+ },
+ "15": {
+  "title": "Day 15 · 1 December, 500 BCE · Koroneia to Lebadeia",
+  "paragraphs": [
+   "The sky was clear this morning, so, as planned, I left the town of Koroneia. Hermaios helped me load my donkey and Thaleia gave me bread wrapped in a cloth. Instead of asking her to sing, I merely thanked her politely, while cringing at my cowardice. What a brave explorer I turned out to be.",
+   "Lebadeia was only about 11 km away. I walked round the foot of Mount Laphystios, a craggy mountain with dark woods in its gorges. Hermaios had told me there's a sanctuary of Zeus on the mountain top, but I kept to the flat ground below. Near the town of Lebadeia at the mouth of the river Herkyna, the ground became marshy, just as Hermaios had warned. I led the donkey around the wettest parts but nothing could prevent us from becoming muddy to the knee by the time we reached dryer ground.",
+   "In Lebadeia I found a house that rents beds to people who come here to visit the shrine of Trophonios. I paid a few Theban coins for the bed and for barley for the donkey. Tomorrow I'll walk over to the shrine and see it for myself. Maybe I'll bring Thaleia's cloth with me."
+  ]
+ },
+ "16": {
+  "title": "Day 16 · 2 December, 500 BCE · Lebadeia",
+  "paragraphs": [
+   "Thrasyllos, the owner of the house I stayed in, walked me across the river Herkyna this morning to the shrine of Trophonios. Trophonios is the god of this area, and he answers questions in an interesting fashion. Apparently, Trophonios only answers questions in the darkness of a cave at the shrine. I stood by the cold, clear water of the Herkyna under the rock and thought about climbing down into the cave. The thought made my stomach tight.",
+   "Thrasyllos told me that King Croesus of Lydia once sent men all the way here with questions for Trophonios, the same Croesus whose gold I saw in Thebes. Thrasyllos also said that a visitor who doesn't want to go down can pay someone to go down into the cave for him, and bring back the answer. Since my question was about Thaleia's cloth, and the cave was less inviting than marsh I crossed yesterday, I simply made a show of observance outside the shrine, and returned to my lodgings in Lebadeia.",
+   "During supper in Lebadeia, Thrasyllos told me about a friend of his in the town of Chaeronea. Weather permitting, I'll walk north to Chaeronea tomorrow."
+  ]
+ },
+ "17": {
+  "title": "Day 17 · 3 December, 500 BCE · Lebadeia to Chaeronea",
+  "paragraphs": [
+   "From Lebadeia I walked north for about 10 km into the valley of the river Cephissus. It was an ordinary day of walking, cold and dry, and smooth traveling. Men ploughed the wet fields on both sides of the road, and others walked behind them, throwing seed on the ground.",
+   "The town of Chaeronea was the last town of the region of Boeotia. Above it loomed a steep hill with a wall of enormous stones round its top. Thrasyllos's friend turned out to be a man named Onasimos, a farmer of Chaeronea. Onasimos gave me a place by his fire and a bowl of bean soup.",
+   "At supper Onasimos asked where I was headed. I told him I was going north, toward Thessaly. Onasimos said it would be a shame to come this far and not see Delphi, only two days' walk west along the side of Mount Parnassus. I've wanted to see Delphi since I was a boy, but apparently I needed a farmer to remind me. Tomorrow I'll go west."
+  ]
+ },
+ "18": {
+  "title": "Day 18 · 4 December, 500 BCE · Chaeronea to Daulis",
+  "paragraphs": [
+   "Today I left Boeotia. Not long after I left Chaeronea, I climbed a steep hill to the town of Panopeus. Panopeus was the first town of the region of Phocis. From the top of the hill I looked back east over all the farmland I'd crossed in the last ten days. I felt rather proud of myself.",
+   "In the afternoon I walked west toward Mount Parnassus, a huge grey mountain with snow on its top. By evening I'd walked about 15 km and reached the town of Daulis, high on another steep hill. Yesterday I'd been given the name of a man here, Peisias, and Peisias took me in for the night. He warned me that tomorrow's walk to Delphi would be uphill all day, so I'll leave before sunrise."
+  ]
+ },
+ "19": {
+  "title": "Day 19 · 5 December, 500 BCE · Daulis toward Delphi",
+  "paragraphs": [
+   "This morning before sunrise, I left the town of Daulis with bread and cheese in my bag, hoping to reach Delphi by dark. All day Mount Parnassus was on my right. I climbed along the side of the mountain, up over stony ridges and down into cold valleys, then up again. The wind that came down off the snow was so cold that I wrapped Thaleia's cloth round my hand to hold the donkey's rope. The donkey was slow on the climbs, and I stopped again and again to let her rest.",
+   "By late afternoon the light was going, and Delphi was still somewhere ahead of me. Not wanting to attempt a mountain road in the dark, I gave up on the plan of reaching Delphi by nightfall. Just off the road I found a shallow cave in the rock, big enough for me, with the donkey tied at the mouth. I ate the last of the bread and cheese, wrapped myself in my blanket and could do nothing more than listen to the wind. It was the first night of this journey that I didn't sleep under a roof. I hoped it would also be the last."
+  ]
+ },
+ "20": {
+  "title": "Day 20 · 6 December, 500 BCE · Delphi",
+  "paragraphs": [
+   "I woke, if I slept at all, stiff with cold, then warmed up a little by continuing my trek to Delphi. At midday I came round a shoulder of the mountain and finally saw Delphi below me. My benefactor's third letter was for Euthydikos, a man of Delphi and an old friend of his. Euthydikos saw my sorry state and sat me down by his fire with a cup of hot wine. My hands shook so much that I could hardly hold the cup.",
+   "Once I was truly warm, Euthydikos walked me up through the sanctuary of Apollo, a hillside of little treasure houses where the cities kept their gifts to the god. At the top of the hill stood the new temple of Apollo. An Athenian family, the Alcmaeonids, built it only about ten years ago, after the old temple burned down. They had made its front out of white marble from the island of Paros. In the low winter sun the marble was so white that I had to narrow my eyes. I stood a little straighter in front of it, as an Athenian.",
+   "A huge silver bowl was in a corner of the temple's front hall. Euthydikos said the bowl could hold 600 jars of wine, and that the Delphians mixed the wine in it for their festival of the Theophania. King Croesus of Lydia sent the bowl, and a lion of pure gold. But the lion fell from the gold bars it sat on when the old temple burned, and now it was kept in the treasure house of the Corinthians. It was a sight to behold. Between Thebes and Delphi, I've now seen more of Croesus's gold than I could even dream of existing."
+  ]
+ },
+ "21": {
+  "title": "Day 21 · 7 December, 500 BCE · Delphi",
+  "paragraphs": [
+   "This morning I consulted Apollo at the temple of Delphi. Surely something I'll remember for the rest of my life. Euthydikos took me up to the temple at first light and showed me what to do. I paid a large fee and bought a goat. Outside the temple a priest sprinkled the goat with cold water and then sacrificed it. Inside the temple I offered a cake in front of Apollo's inner room. Then Apollo's interpreters led me in to the Pythia, the priestess who gives Apollo's answers. I asked whether my journey east would end well. I didn't ask about Thaleia since apparently I'm still a coward.",
+   "The Pythia spoke, but her words were too fast and too strange for me to follow. The interpreters talked together, and then they gave me the answer.",
+   "\"Roads with no endings lead towards lands of death and birth.\"",
+   "Afterwards I sat below the statues of Kleobis and Biton, two marble brothers from the city of Argos, and read the answer again and again. Euthydikos said the Pythia never speaks plainly, and that men usually understand their prophecies when it's too late."
+  ]
  }
 };

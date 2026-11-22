@@ -23274,3 +23274,48 @@
 
 7759. Piştre heta dema fatihê bi nav û deng Emîr Tîmûrê Kurganî -rehma Xwedê lê be, tu fermanrewayên cîranên wan destê xwe dirêjî wan neki- rin.
 7759. Afterwards until the time of the famous conqueror Emîr Tîmûr the Kurganî (may the mercy of God be upon him), no rulers of their neighbors stretched their hand to them.
+
+7760. ## BEŞA DUDUYAN
+7760. ## THE SECOND SECTION
+
+7761. bailids
+7761. bailids
+
+7762. ## DI DERHEQÊ HACI ŞEREFÊ KURÊ DIYAEDDİN DE YE
+7762. ## IT IS CONCERNING HACÎ ŞEREF THE SON OF DIYAEDDÎN
+
+7763. Ji aliyê kesên ku zanyariya wan di derheqê xeberan û dîrokê de hene û ji aliyê dîroknas û bûyernasan ve jî tê zanîn, li gor zanyariyên di kitêbên ji aliyê dîroknivîsan ve hatine nivîsandin: di sala 796'ê koçî (1394'e z) û meha Firordînmah (Ferwerdînmah) a celali ku teqabûlê "sala seyî" dike, piştî ku Emîr Tîmûrê Kurganî ê despot, Bexdada diyarê aşîtiyê, Cezîra Omer, Mûsil, Tikrît, Mêrdîn û Amed fetih kir, bi riya Siwaseri re berê xwe da girên Eledaxê.
+7763. From the side of the persons whose knowledge exists concerning reports and history and from the side of historians and chroniclers too it comes to be known, according to the knowledges in the books that have come to be written from the side of history writers: in the year 796 Hijri (1394 AD) and the Celalî month of Firordînmah (Ferwerdînmah) which corresponds to "the dog year", after the despot Emîr Tîmûr the Kurganî, conquered Baghdad the abode of peace, Cezîra Omer, Mûsil, Tikrît, Mêrdîn and Amed, through the road of Siwaserî he turned his face to the hills of Eledax.
+
+7764. 15'yê receba eynî salê, ku teqabûlê roja yekşembê dike, dema ku Sultan baregeha xwe li Deşta Mûşê danî, li gor gotina nivîskarê Zafernameyê: Hacî Şeref, yê di seranserê welatê Kurdistanê de di warê rastî, qencîxwazî û dostiyê de emsalekî wî tunebû û xwediyê hêz û qudret bû, bi hemû mirovên Sultan Timur Kurganî re di nav hevdengî û yekîtiyê de û li hemberî wan bi temamî sitûtewandî, miftên Bedlîsê, Xelatê, Mûşê û yên kelên din ên li ser erdê wilayeta wî yê irsî ku rêvebiriya wan ji aliyê wî ve dihatin meşandin, pêşkêşî otaxa Sultan kir.
+7764. On the 15th of Receb of the same year, which corresponds to Sunday, when the Sultan set up his headquarters on the Plain of Mûş, according to the saying of the writer of Zafername: Hacî Şeref, of whom throughout the country of Kurdistan in the field of truth, goodwill and friendship an equal existed not and who was possessor of force and power, in agreement and unity with all the men of Sultan Tîmûr Kurganî and before them completely submissive (literally neck bowed), presented the keys of Bedlîs, Xelat, Mûş and those of the other castles upon the soil of his hereditary province whose administration came to be carried on from his side, to the royal tent of the Sultan.
+
+7765. Ji bilî vê, bi xwe re diyariyên bi qîmet, hediyên kêmdîtî, hespên 'Ereb ên bi cins û beza birin.
+7765. Apart from this, with himself he took valuable gifts, rare presents, purebred and swift Arab horses.
+
+7766. Yek ji van hespan wekî ku şair digot wisa bû:
+7766. One of these horses as the poet said was thus:
+
+7767. "Hespek wisan ku rengareng rengê asîmanî Bi hezaran şev û rojan hunandibû bi dil û canî
+7767. "Hespek wisan ku rengareng rengê asîmanî "Such a horse that multicolored the color of the sky Bi hezaran şev û rojan hunandibû bi dil û canî For thousands of nights and days had been woven with heart and soul
+
+7768. Dinê ji hinarikên wî hatibû çêkirin Giloveriya hîvê jî ji simên wî hatibû jêkirin Biki du şeq eger tu nalên wî Dibe wekî çerxa hilali Ji rojava heta rojhilat, tenê hebe meydanekê Dibûre jê wekî birûska agirîn bi bezekê Ger bi piyên xwe lotikekê bide xwe Nagehe wî ba û babelisk bi xwe"
+7768. Dinê ji hinarikên wî hatibû çêkirin The world had been made from his cheeks Giloveriya hîvê jî ji simên wî hatibû jêkirin The roundness of the moon too had been cut from his hooves Biki du şeq eger tu nalên wî If you split his horseshoes into two halves Dibe wekî çerxa hilali It becomes like the crescent wheel Ji rojava heta rojhilat, tenê hebe meydanekê From west to east, let there be only one field Dibûre jê wekî birûska agirîn bi bezekê He passes it like a fiery lightning with one gallop Ger bi piyên xwe lotikekê bide xwe If with his feet he gives himself a leap Nagehe wî ba û babelisk bi xwe" Wind and whirlwind themselves reach him not"
+
+7769. Sultan, bi awakî gelek zêde ji Hacî Şeref re îltîfat kir û wî bi dilekî xweş şadî girt nav eleqeyên fermanrewatiya xwe; baweriya xwe ya payebilind jê re bexşî; qedirşînasî û nîmetên xwe bi ser de barand; wî bi şûrên zêr û kincên bi dur û cewheran neqişkirî û bi diyariyên giranbiha û bi rutbeyên bilind perû kir; ji bilî ku desthilata irsî ya wilayeta Bedlîsê jê re hişt, ciyên wekî Pasîn, Evînk û Melazkirdê jî bi wilayeta wî ve girê dan.
+7769. The Sultan, in a very great way showed favor to Hacî Şeref and with a happy heart and gladness took him into the attentions of his rulership; bestowed his high ranking trust to him; rained down his appreciation and bounties upon him; rewarded him with golden swords and clothes embroidered with pearls and jewels and with precious gifts and with high ranks; apart from that he left the hereditary authority of the province of Bedlîs to him, he attached places like Pasîn, Evînk and Melazkird too to his province.
+
+7770. Ji derveyê van, jê re, di derheqê van welatên han ku ji wefadarî û sedeqeta wî re hatin pêşkêşkirin, beratên bi sondên pîroz û giran ve hatî qewîkirin, hat dan.
+7770. Outside of these, to him, concerning these very countries which were presented to his faithfulness and loyalty, charters strengthened with sacred and heavy oaths, came to be given.
+
+7771. Ji bo ku gelek baweriya wî pê hat, Ayik Sofî yê yek ji wan kurên qralê Ozbekîstanê, ku li mirovên Sultan îxanetî kiribû û ji ber vê jî di otaxê de girtî bû, ji bo ku heta di derheqê wî de biryarekê bide, teslîmî Haci Şeref kir ku di zîndana Bedlîsê de bide girtin.
+7771. Because his trust came to him much, he delivered Ayik Sofî who was one of those sons of the king of Uzbekistan, who had betrayed the men of the Sultan and because of this too was imprisoned in the royal tent, until he gives a decision concerning him, to Hacî Şeref to have him held in the prison of Bedlîs.
+
+7772. Ev berata Tîmûr a hêja, heta sala 940ê koçî (1534'ê z) li ba malbata me dima.
+7772. This precious charter of Tîmûr, remained at the side of our family until the year 940 Hijri (1534 AD).
+
+7773. Dema ku Şeref Xan çû rehma Xwedê û kurê wî Şemseddîn bi serok û giregirên Eşîreta Rojkî ve pena bir ber welatê 'Ecem, ew belgenameya Timûr a hêja bi fermanên sultantiyê yên din, belge û beratên din re, ku berî ji wan re hatibûn dan, wenda bûn.
+7773. When Şeref Xan went to the mercy of God and his son Şemseddîn with the chiefs and notables of the Rojkî Tribe took refuge to the country of 'Ecem, that precious document of Tîmûr with the other sultanate decrees, other documents and charters, which before had come to be given to them, became lost.
+
+7774. Bi kurti, piştî mirina Hacî Şeref Xan, kurê wî û cînişînê wî yê sadiq ku bi "Weli'ti bi nav û deng bû, li ciyê wî rûnişt.
+7774. In short, after the death of Hacî Şeref Xan, his son and his loyal successor who was famous by "Welî", sat in his place.
