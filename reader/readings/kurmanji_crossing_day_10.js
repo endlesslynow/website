@@ -555,6 +555,11 @@ READINGS.push({
       "say": "se-ki-neen",
       "mean": "to stand / to stop"
     },
+    "phrase:nêzîkî wî": {
+      "text": "nêzîkî wî",
+      "say": "nay-zee-kee wee",
+      "mean": "close to it"
+    },
     "dikarî": {
       "text": "dikarî",
       "say": "di-kaa-ree",
@@ -980,6 +985,11 @@ READINGS.push({
       "say": "daan",
       "mean": "to give"
     },
+    "phrase:ji nav malê": {
+      "text": "ji nav malê",
+      "say": "zhi naav maa-lay",
+      "mean": "from the spoils"
+    },
     "dema": {
       "text": "dema",
       "say": "de-maa",
@@ -999,6 +1009,11 @@ READINGS.push({
       "text": "vegeriyan",
       "say": "ve-ge-ri-yaan",
       "mean": "returned"
+    },
+    "base:vegerîn": {
+      "text": "vegerîn",
+      "say": "ve-ge-reen",
+      "mean": "to return"
     },
     "têano": {
       "text": "Têano",
@@ -1099,6 +1114,11 @@ READINGS.push({
       "text": "bi hev re",
       "say": "bi hev re",
       "mean": "together"
+    },
+    "phrase:nanê sibê": {
+      "text": "nanê sibê",
+      "say": "naa-nay si-bay",
+      "mean": "tomorrow's bread"
     },
     "mîrto": {
       "text": "Mîrto",
@@ -1965,12 +1985,14 @@ READINGS.push({
             "nêzîkî",
             "nêzîkî",
             "nêzîkî",
+            "phrase:nêzîkî wî",
             "base:nêzîk"
           ],
           [
             "wî",
             "wî",
             "wî",
+            "phrase:nêzîkî wî",
             "base:ew"
           ],
           [
@@ -2520,17 +2542,20 @@ READINGS.push({
           [
             "ji",
             "ji",
-            "ji"
+            "ji",
+            "phrase:ji nav malê"
           ],
           [
             "nav",
             "nav",
-            "nav"
+            "nav",
+            "phrase:ji nav malê"
           ],
           [
             "malê",
             "malê",
             "malê",
+            "phrase:ji nav malê",
             "base:mal"
           ],
           [
@@ -2583,7 +2608,8 @@ READINGS.push({
           [
             "vegeriyan",
             "vegeriyan",
-            "vegeriyan"
+            "vegeriyan",
+            "base:vegerîn"
           ],
           [
             "malê,",
@@ -2667,7 +2693,7 @@ READINGS.push({
             "bûn"
           ]
         ],
-        "mean": "Back at the house, Theano, the wife of Polykritos, and Ismene, their older daughter, at a long trough,"
+        "mean": "Back at the house, Theano, the wife of Polykritos, and Ismene, their older daughter,"
       },
       {
         "say": "wan bi hev re hevîrê nanê sibê distirî",
@@ -2706,12 +2732,14 @@ READINGS.push({
             "nanê",
             "nanê",
             "nanê",
+            "phrase:nanê sibê",
             "base:nan"
           ],
           [
             "sibê",
             "sibê",
             "sibê",
+            "phrase:nanê sibê",
             "base:sibeh"
           ],
           [
@@ -2721,7 +2749,7 @@ READINGS.push({
             "base:stirîn"
           ]
         ],
-        "mean": "were kneading tomorrow's bread together."
+        "mean": "were kneading tomorrow's bread together at a long trough."
       },
       {
         "say": "mîrto keça wan a biçûk bû",
